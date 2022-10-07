@@ -1,0 +1,1090 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/logo.png">
+  <link rel="icon" href="/img/bg/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="杨再俨">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="数据结构是计算机存储、组织数据的方式。数据结构是指相互之间存在一种或多种特定关系的数据元素的集合。通常情况下，精心选择的数据结构可以带来更高的运行或者存储效率。数据结构往往同高效的检索算法和索引技术有关。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构与算法">
+<meta property="og:url" content="https://gintoki-jpg.github.io/2022/06/27/%E9%80%9A%E8%AF%86_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:site_name" content="Tintoki_blog">
+<meta property="og:description" content="数据结构是计算机存储、组织数据的方式。数据结构是指相互之间存在一种或多种特定关系的数据元素的集合。通常情况下，精心选择的数据结构可以带来更高的运行或者存储效率。数据结构往往同高效的检索算法和索引技术有关。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/num.png">
+<meta property="article:published_time" content="2022-06-27T03:40:00.000Z">
+<meta property="article:modified_time" content="2022-09-08T01:43:25.377Z">
+<meta property="article:author" content="YangZaiyan">
+<meta property="article:tag" content="课程学习">
+<meta property="article:tag" content="考研">
+<meta property="article:tag" content="计算机基础">
+<meta property="article:tag" content="刷题">
+<meta property="article:tag" content="面试">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gintoki-jpg.github.io/img/bg/num.png">
+  
+  
+  
+  <title>数据结构与算法 - Tintoki_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"gintoki-jpg.github.io","root":"/","version":"1.9.1","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tintoki_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/bg1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">数据结构与算法</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-06-27 11:40" pubdate>
+          2022年6月27日 中午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          20k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          168 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">数据结构与算法</h1>
+            
+            <div class="markdown-body">
+              
+              <p>数据结构的基本的知识点在<a target="_blank" rel="noopener" href="https://www.yuque.com/tintoki/pufkgq/rc4ltz%EF%BC%8C%E5%BD%93%E7%84%B6%E8%AF%AD%E9%9B%80%E4%B8%8A%E9%9D%A2%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9%E4%BB%8B%E7%BB%8D%E7%9A%84%E7%89%B9%E5%88%AB%E6%B5%85%EF%BC%8C%E4%B9%8B%E5%90%8E%E5%A4%A7%E6%A6%82%E7%8E%87%E8%BF%98%E4%BC%9A%E8%BF%9B%E9%98%B6%E5%AD%A6%E4%B9%A0%EF%BC%88%E6%9A%82%E6%97%B6%E8%BF%98%E6%B2%A1%E6%89%BE%E5%88%B0%E7%9B%B8%E5%BA%94%E8%B5%84%E6%96%99%EF%BC%89%EF%BC%9B">https://www.yuque.com/tintoki/pufkgq/rc4ltz，当然语雀上面的知识点介绍的特别浅，之后大概率还会进阶学习（暂时还没找到相应资料）；</a></p>
+<p>这里博客中我们主要总结力扣上一些经典的算法题目，参考网站<a target="_blank" rel="noopener" href="https://programmercarl.com/">代码随想录 (programmercarl.com)</a></p>
+<h1 id="一、数组"><a href="#一、数组" class="headerlink" title="一、数组"></a>一、数组</h1><blockquote>
+<ul>
+<li><p>数组是存放在连续内存空间上的相同类型的数据的集合；</p>
+</li>
+<li><p>因为数组在内存空间的地址是连续的，所以针对数组不能删除某元素只能覆盖某元素；</p>
+</li>
+</ul>
+</blockquote>
+<p>一维数组<img src="/images/image-20220705085743151.png" srcset="/img/loading.gif" lazyload></p>
+<p>二维数组<img src="/images/image-20220705085826800.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="1-二分查找"><a href="#1-二分查找" class="headerlink" title="1.二分查找"></a>1.二分查找</h2><p>题目要求：</p>
+<p><img src="/images/image-20220704082530804.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>解析：</p>
+<p>本题可以直接暴力遍历数组，以查找数组中不重复的某个元素（由假设得来）；</p>
+<p>但是直接使用暴力遍历会导致时间复杂度极高，题干中出现关键词“有序”“不重复元素”，可以考虑使用二分法；</p>
+<p>使用二分法要注意原始区间是双闭还是半闭半开，这将影响判断条件的书写；</p>
+</blockquote>
+<p>解题思路1：</p>
+<p><img src="/images/image-20220704084647270.png" srcset="/img/loading.gif" lazyload></p>
+<p>实现代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">search</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums, <span class="hljs-type">int</span> target)</span> </span>&#123;<br>        <span class="hljs-type">int</span> left = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> right = nums.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>; <span class="hljs-comment">// 定义target在左闭右闭的区间里，[left, right]</span><br>        <span class="hljs-keyword">while</span> (left &lt;= right) &#123; <span class="hljs-comment">// 当left==right，区间[left, right]依然有效，所以用 &lt;=</span><br>            <span class="hljs-type">int</span> middle = left + ((right - left) / <span class="hljs-number">2</span>);<span class="hljs-comment">// 防止溢出 等同于(left + right)/2</span><br>            <span class="hljs-keyword">if</span> (nums[middle] &gt; target) &#123;<br>                right = middle - <span class="hljs-number">1</span>; <span class="hljs-comment">// target 在左区间，所以[left, middle - 1]</span><br>            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (nums[middle] &lt; target) &#123;<br>                left = middle + <span class="hljs-number">1</span>; <span class="hljs-comment">// target 在右区间，所以[middle + 1, right]</span><br>            &#125; <span class="hljs-keyword">else</span> &#123; <span class="hljs-comment">// nums[middle] == target</span><br>                <span class="hljs-keyword">return</span> middle; <span class="hljs-comment">// 数组中找到目标值，直接返回下标</span><br>            &#125;<br>        &#125;<br>        <span class="hljs-comment">// 未找到目标值</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>解题思路2：</p>
+<p><img src="/images/image-20220704084703328.png" srcset="/img/loading.gif" lazyload></p>
+<p>实现代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">search</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums, <span class="hljs-type">int</span> target)</span> </span>&#123;<br>        <span class="hljs-type">int</span> left = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> right = nums.<span class="hljs-built_in">size</span>(); <span class="hljs-comment">// 定义target在左闭右开的区间里，即：[left, right)</span><br>        <span class="hljs-keyword">while</span> (left &lt; right) &#123; <span class="hljs-comment">// 因为left == right的时候，在[left, right)是无效的空间，所以使用 &lt;</span><br>            <span class="hljs-type">int</span> middle = left + ((right - left) &gt;&gt; <span class="hljs-number">1</span>);<br>            <span class="hljs-keyword">if</span> (nums[middle] &gt; target) &#123;<br>                right = middle; <span class="hljs-comment">// target 在左区间，在[left, middle)中</span><br>            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (nums[middle] &lt; target) &#123;<br>                left = middle + <span class="hljs-number">1</span>; <span class="hljs-comment">// target 在右区间，在[middle + 1, right)中</span><br>            &#125; <span class="hljs-keyword">else</span> &#123; <span class="hljs-comment">// nums[middle] == target</span><br>                <span class="hljs-keyword">return</span> middle; <span class="hljs-comment">// 数组中找到目标值，直接返回下标</span><br>            &#125;<br>        &#125;<br>        <span class="hljs-comment">// 未找到目标值</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-移除元素"><a href="#2-移除元素" class="headerlink" title="2.移除元素"></a>2.移除元素</h2><p>题目要求：</p>
+<p><img src="/images/image-20220704085005077.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20220704085029658.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>解析：</p>
+<p>这道题直接看示例很容易把人搞晕不知道该干什么，实际上就是一个简单的删除数组中所有值等于val的元素并返回最终数组的大小；</p>
+<p>因为数组内存空间连续，只能使用后面的元素将前面的元素覆盖，所以我们有两种解题思路；</p>
+<p>一种是使用两层for循环，第一个循环遍历数组元素，第二个循环用于更新数组，时间复杂度为O(n^2)；</p>
+<p>第二种是使用双指针，通过一个快指针一个慢指针，在一层for循环中完成两层for循环的工作；</p>
+</blockquote>
+<p>思路1实现代码如下:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-comment">// 时间复杂度：O(n^2)</span><br><span class="hljs-comment">// 空间复杂度：O(1)</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">removeElement</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums, <span class="hljs-type">int</span> val)</span> </span>&#123;<br>        <span class="hljs-type">int</span> size = nums.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; size; i++) &#123;<br>            <span class="hljs-keyword">if</span> (nums[i] == val) &#123; <span class="hljs-comment">// 发现需要移除的元素，就将数组中该元素以后的部分集体向前移动一位</span><br>                <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = i + <span class="hljs-number">1</span>; j &lt; size; j++) &#123;<br>                    nums[j - <span class="hljs-number">1</span>] = nums[j];<br>                &#125;<br>                i--; <span class="hljs-comment">// 因为下标i以后的数值都向前移动了一位，所以i也向前移动一位（这里如果不处理i会导致下一次直接处理i+2忽略i+1）</span><br>                size--; <span class="hljs-comment">// 此时数组的大小-1</span><br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> size;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>解题思路2：</p>
+<blockquote>
+<p>首先我们需要定义快慢指针的含义（其实这里的指针并不是严格意义上的指针，只能说是一个数组元素位置标记）：</p>
+<ul>
+<li>快指针：遍历原数组，寻找新数组的元素 ，新数组就是不含有目标元素的数组</li>
+<li>慢指针：更新新数组元素</li>
+</ul>
+</blockquote>
+<p>实现代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">// 时间复杂度：O(n)</span><br><span class="hljs-comment">// 空间复杂度：O(1)</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">removeElement</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums, <span class="hljs-type">int</span> val)</span> </span>&#123;<br>        <span class="hljs-type">int</span> slowIndex = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> fastIndex = <span class="hljs-number">0</span>; fastIndex &lt; nums.<span class="hljs-built_in">size</span>(); fastIndex++) &#123;<br>            <span class="hljs-keyword">if</span> (val != nums[fastIndex]) &#123;<br>                nums[slowIndex++] = nums[fastIndex];<span class="hljs-comment">//这里是本题的核心所在，简单来说就是使用slowIndex创建了一个新的数组，该数组只保存fastIndex数组中与val值不同的数值</span><br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> slowIndex;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="3-有序数组的平方"><a href="#3-有序数组的平方" class="headerlink" title="3.有序数组的平方"></a>3.有序数组的平方</h2><p>题目要求：</p>
+<p><img src="/images/image-20220704092459647.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>解析：</p>
+<p>这道题有一个很容易忽略的点，假如原数组只有正数则直接遍历并返回平方即可，但是原数组是可以有负数的；</p>
+<p>本题同样有两种解法，一种是使用单层for循环返回原数组的平方，接着再对返回的数进行排序（自己写函数或者直接调用sort()函数都可以）；</p>
+<p>第二种是使用双指针（注意这里的双指针是头尾指针，与前面使用的快慢指针有一定区别）；</p>
+</blockquote>
+<p>思路1代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//时间复杂度是 O(n + nlogn)</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">sortedSquares</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; A)</span> </span>&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; A.<span class="hljs-built_in">size</span>(); i++) &#123;<br>            A[i] *= A[i];<br>        &#125;<br>        <span class="hljs-built_in">sort</span>(A.<span class="hljs-built_in">begin</span>(), A.<span class="hljs-built_in">end</span>()); <span class="hljs-comment">// 快速排序，默认升序排序</span><br>        <span class="hljs-keyword">return</span> A;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>思路2：</p>
+<blockquote>
+<p>尽管数组中有负数，但是原数组因为是有序的，所以平方后得到的较大值在原数组中要么就是靠左要么靠右；</p>
+</blockquote>
+<p><img src="/images/image-20220704093646806.png" srcset="/img/loading.gif" lazyload></p>
+<p>代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//时间复杂度为O(n)</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">sortedSquares</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; A)</span> </span>&#123;<br>        <span class="hljs-type">int</span> k = A.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>;<br>        <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">result</span><span class="hljs-params">(A.size(), <span class="hljs-number">0</span>)</span></span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>, j = A.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>; i &lt;= j;) &#123; <span class="hljs-comment">// 注意这里要i &lt;= j，因为最后要处理两个元素</span><br>            <span class="hljs-keyword">if</span> (A[i] * A[i] &lt; A[j] * A[j])  &#123;<br>                result[k--] = A[j] * A[j];<br>                j--;<br>            &#125;<br>            <span class="hljs-keyword">else</span> &#123;<br>                result[k--] = A[i] * A[i];<br>                i++;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> result;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="4-长度最小的子数组"><a href="#4-长度最小的子数组" class="headerlink" title="4.长度最小的子数组"></a>4.长度最小的子数组</h2><p><img src="/images/image-20220704093835769.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>解析：</p>
+<p>这道题同样也是题干就很容易让人混淆，究竟是什么意思？</p>
+<p>翻译过来就是给定一个target，我们需要在原数组中寻找元素使其和大于等于target，我们使用的这些元素将会构成一个新的数组，要求该数组的长度最小；</p>
+<p>这道题同样有两种解法，一种是使用暴力双循环，外循环用于确定子序列起点i，内循环用于确定子序列的终点j；</p>
+<p>第二种解法是使用滑动窗口，本质上也是双指针；                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           </p>
+</blockquote>
+<p>思路1代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//时间复杂度：O(n^2)</span><br><span class="hljs-comment">//空间复杂度：O(1)</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">minSubArrayLen</span><span class="hljs-params">(<span class="hljs-type">int</span> s, vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>&#123;<br>        <span class="hljs-type">int</span> result = INT32_MAX; <span class="hljs-comment">// 最终的结果</span><br>        <span class="hljs-type">int</span> sum = <span class="hljs-number">0</span>; <span class="hljs-comment">// 子序列的数值之和</span><br>        <span class="hljs-type">int</span> subLength = <span class="hljs-number">0</span>; <span class="hljs-comment">// 子序列的长度</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; nums.<span class="hljs-built_in">size</span>(); i++) &#123; <span class="hljs-comment">// 设置子序列起点为i</span><br>            sum = <span class="hljs-number">0</span>;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = i; j &lt; nums.<span class="hljs-built_in">size</span>(); j++) &#123; <span class="hljs-comment">// 设置子序列终止位置为j</span><br>                sum += nums[j];<br>                <span class="hljs-keyword">if</span> (sum &gt;= s) &#123; <span class="hljs-comment">// 一旦发现子序列和超过了s，更新result</span><br>                    subLength = j - i + <span class="hljs-number">1</span>; <span class="hljs-comment">// 取子序列的长度</span><br>                    result = result &lt; subLength ? result : subLength;<br>                    <span class="hljs-keyword">break</span>; <span class="hljs-comment">// 因为我们是找符合条件最短的子序列，所以一旦符合条件就break，注意break仅是退出当前for循环</span><br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-comment">// 如果result没有被赋值的话，就返回0，说明没有符合条件的子序列</span><br>        <span class="hljs-keyword">return</span> result == INT32_MAX ? <span class="hljs-number">0</span> : result;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>思路2：</p>
+<blockquote>
+<p>滑动窗口：不断调整子序列的起始位置和终止位置（其实和上面设置起始位置i和终止位置j相同，但是只用了一个for循环）</p>
+<p>使用滑动窗口需要解决下面的几个问题</p>
+<ul>
+<li>窗口内是什么？——窗口内是满足其和 ≥s 的长度最小的连续子数组</li>
+<li>如何移动窗口的起始位置？——如果当前窗口的值大于s了，窗口就要向后移动了（也就是该缩小了）</li>
+<li>如何移动窗口的结束位置？——窗口的结束位置就是遍历数组的指针，也就是for循环里的索引值i</li>
+</ul>
+<p>因此使用滑动窗口的关键在于 如何移动窗口的起始位置</p>
+</blockquote>
+<p>代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">minSubArrayLen</span><span class="hljs-params">(<span class="hljs-type">int</span> s, vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>&#123;<br>        <span class="hljs-type">int</span> result = INT32_MAX;<br>        <span class="hljs-type">int</span> sum = <span class="hljs-number">0</span>; <span class="hljs-comment">// 滑动窗口数值之和</span><br>        <span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; <span class="hljs-comment">// 滑动窗口起始位置</span><br>        <span class="hljs-type">int</span> subLength = <span class="hljs-number">0</span>; <span class="hljs-comment">// 滑动窗口的长度</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt; nums.<span class="hljs-built_in">size</span>(); j++) &#123;<br>            sum += nums[j];<br>            <span class="hljs-comment">// 注意这里使用while，每次更新 i（起始位置），并不断比较子序列是否符合条件（即窗口内的值是否大于等于s）</span><br>            <span class="hljs-comment">//只要窗口内的值大于等于s,则比较子序列的长度，取长度较小者作为最新的result</span><br>            <span class="hljs-comment">//尽管此处使用了while循环，但是它只是作为一个条件偶尔执行，所以和for循环比起来可以不算复杂度</span><br>            <span class="hljs-keyword">while</span> (sum &gt;= s) &#123;<br>                subLength = (j - i + <span class="hljs-number">1</span>); <span class="hljs-comment">// 取子序列的长度</span><br>                result = result &lt; subLength ? result : subLength;<br>                sum -= nums[i++]; <span class="hljs-comment">// 这里体现出滑动窗口的精髓之处，不断变更i（即子序列的起始位置）</span><br>            &#125;<br>        &#125;<br>        <span class="hljs-comment">// 如果result没有被赋值的话，就返回0，说明没有符合条件的子序列</span><br>        <span class="hljs-keyword">return</span> result == INT32_MAX ? <span class="hljs-number">0</span> : result;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="5-螺旋矩阵"><a href="#5-螺旋矩阵" class="headerlink" title="5.螺旋矩阵"></a>5.螺旋矩阵</h2><p><img src="/images/image-20220704102601003.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>解析</p>
+<p>首先这道题其实就是考察我们对二维数组&#x2F;矩阵的掌握程度，</p>
+<ul>
+<li>二维数组&#x2F;矩阵是以数组作为数组元素的数组；</li>
+<li>二维数组第一个参数是行，第二个参数是列，先按照行排再按照列排，即数Aij位于矩阵的第i行第j列；</li>
+</ul>
+<p>第二个考察点是在画矩阵的时候需要按照顺序，不要想到哪里画哪里</p>
+<ul>
+<li><p>由外向内构建二维矩阵</p>
+</li>
+<li><p>填充上行从左到右</p>
+</li>
+<li><p>填充右列从上到下</p>
+</li>
+<li><p>填充下行从右到左</p>
+</li>
+<li><p>填充左列从下到上</p>
+</li>
+</ul>
+<p>第三点是每一条边都要遵守某个相同的规则</p>
+<ul>
+<li>按照左闭右开构建每一条边</li>
+</ul>
+<p><img src="/images/image-20220704103617858.png" srcset="/img/loading.gif" lazyload></p>
+</blockquote>
+<p>代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">generateMatrix</span>(<span class="hljs-type">int</span> n) &#123;<br>        vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">res</span>(n, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-type">int</span>&gt;(n, <span class="hljs-number">0</span>)); <span class="hljs-comment">// 使用vector定义一个二维数组</span><br>        <span class="hljs-type">int</span> startx = <span class="hljs-number">0</span>, starty = <span class="hljs-number">0</span>; <span class="hljs-comment">// 定义每循环一个圈的起始位置</span><br>        <span class="hljs-type">int</span> loop = n / <span class="hljs-number">2</span>; <span class="hljs-comment">// 每个圈循环几次，例如n为奇数3，那么loop = 1 只循环构造一圈，矩阵中间的值需要单独处理不作为圈构造 </span><br>        <span class="hljs-type">int</span> mid = n / <span class="hljs-number">2</span>; <span class="hljs-comment">// 矩阵中间的位置，例如：n为3， 中间的位置就是(1，1)，n为5，中间位置为(2, 2)</span><br>        <span class="hljs-type">int</span> count = <span class="hljs-number">1</span>; <span class="hljs-comment">// 用来给矩阵中每一个空格赋值</span><br>        <span class="hljs-type">int</span> offset = <span class="hljs-number">1</span>; <span class="hljs-comment">// 需要控制每一条边遍历的长度，每次循环右边界收缩一位</span><br>        <span class="hljs-type">int</span> i,j;<br>        <span class="hljs-keyword">while</span> (loop --) &#123;<br>            i = startx;<br>            j = starty; <br><br>            <span class="hljs-comment">// 下面开始的四个for就是模拟转了一圈</span><br>            <span class="hljs-comment">// 模拟填充上行从左到右(左闭右开)</span><br>            <span class="hljs-keyword">for</span> (j = starty; j &lt; n - offset; j++) &#123;<br>                res[startx][j] = count++;<br>            &#125;<br>            <span class="hljs-comment">// 模拟填充右列从上到下(左闭右开)</span><br>            <span class="hljs-keyword">for</span> (i = startx; i &lt; n - offset; i++) &#123;<br>                res[i][j] = count++;<br>            &#125;<br>            <span class="hljs-comment">// 模拟填充下行从右到左(左闭右开)</span><br>            <span class="hljs-keyword">for</span> (; j &gt; starty; j--) &#123;<br>                res[i][j] = count++;<br>            &#125;<br>            <span class="hljs-comment">// 模拟填充左列从下到上(左闭右开)</span><br>            <span class="hljs-keyword">for</span> (; i &gt; startx; i--) &#123;<br>                res[i][j] = count++;<br>            &#125;<br><br>            <span class="hljs-comment">// 第二圈开始的时候，起始位置要各自加1， 例如：第一圈起始位置是(0, 0)，第二圈起始位置是(1, 1)</span><br>            startx++;<br>            starty++;<br><br>            <span class="hljs-comment">// offset 控制每一圈里每一条边遍历的长度</span><br>            offset += <span class="hljs-number">1</span>;<br>        &#125;<br><br>        <span class="hljs-comment">// 如果n为奇数的话，需要单独给矩阵最中间的位置赋值</span><br>        <span class="hljs-keyword">if</span> (n % <span class="hljs-number">2</span>) &#123;<br>            res[mid][mid] = count;<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="二、链表"><a href="#二、链表" class="headerlink" title="二、链表"></a>二、链表</h1><p>链表这一章仔细看看，能够提升对C++指针概念的理解</p>
+<blockquote>
+<p>链表是通过指针串联在一起的节点的线性集合；</p>
+<p>每个节点由两部分组成，数据域用于存放数据，指针域用于存放指向下一个节点的指针（最后一个节点的指针域为NULL）</p>
+</blockquote>
+<p>单链表<img src="/images/image-20220705090117890.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>注意区分头指针和头节点的概念</p>
+<ul>
+<li>头指针指向链表的第一个结点，若存在头结点则指向头结点，若不存在头节点则指向第一个结点；</li>
+<li>头节点的数据域一般不存数据（也可以存储表长等数据），头节点不一定是链表必须要的元素（引入头节点为了方便单链表的特殊操作,保证在表头插入或者删除第一个结点与其他结点操作相同.保持了单链表操作的统一性）；</li>
+<li>常用头指针冠以链表的名字，头指针是链表的必要元素；</li>
+</ul>
+</blockquote>
+<p>双链表（每一个节点有两个指针域，一个指向下一个节点，一个指向上一个节点；双链表既可以向前查询也可以向后查询）</p>
+<p><img src="/images/image-20220705090645334.png" srcset="/img/loading.gif" lazyload></p>
+<p>循环链表<img src="/images/image-20220705090709409.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="1-移除链表元素"><a href="#1-移除链表元素" class="headerlink" title="1.移除链表元素"></a>1.移除链表元素</h2><p><img src="/images/image-20220705091135505.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>这道题本质上非常简单，就是考察单链表的删除操作；</p>
+<p>需要注意的是，因为力扣直接给出了单链表的定义，但是这个单链表是不包含头节点的，需要我们在处理的时候增加一个头节点；</p>
+</blockquote>
+<p>代码如下</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">ListNode* <span class="hljs-title">removeElements</span><span class="hljs-params">(ListNode* head, <span class="hljs-type">int</span> val)</span> </span>&#123;<br>        ListNode* dummyHead = <span class="hljs-keyword">new</span> <span class="hljs-built_in">ListNode</span>(<span class="hljs-number">0</span>); <span class="hljs-comment">// 设置一个虚拟头结点，数据域为0，由dummyHead指针指着（此时dummyHead指针指向虚拟头节点，头指针head指向第一个节点）</span><br>        dummyHead-&gt;next = head; 			  <span class="hljs-comment">// 令虚拟头结点的指针域指向head，这样对后面结点的操作都统一</span><br>        ListNode* cur = dummyHead;			  <span class="hljs-comment">// 令寻址指针初始指向虚拟头节点，注意不是头指针，头指针不能移动</span><br>        <span class="hljs-keyword">while</span> (cur-&gt;next != <span class="hljs-literal">NULL</span>) &#123;			  <br>            <span class="hljs-keyword">if</span>(cur-&gt;next-&gt;val == val) &#123;			<span class="hljs-comment">// 当寻址指针指向的下一个节点的数据域是需要删除的val值时，进行删除操作</span><br>                ListNode* tmp = cur-&gt;next;		<span class="hljs-comment">// 首先使用临时指针tmp指向待删除节点（如果不保存则下一步拆断联系后就找不到这个节点了，也就无法回收）</span><br>                cur-&gt;next = cur-&gt;next-&gt;next;	<span class="hljs-comment">// 拆断原有联系</span><br>                <span class="hljs-keyword">delete</span> tmp;					   <span class="hljs-comment">// 删除无用节点，养成内存回收机制的好习惯</span><br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                cur = cur-&gt;next;<br>            &#125;<br>        &#125;<br>        head = dummyHead-&gt;next;				<span class="hljs-comment">//为了避免第一个节点被删除后head没有指向的问题，最后需要重新给head赋值</span><br>        <span class="hljs-keyword">delete</span> dummyHead;					<span class="hljs-comment">//最后返回结果之前我们还需要手动将增加的虚拟头节点删除</span><br>        <span class="hljs-keyword">return</span> head;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-设计链表"><a href="#2-设计链表" class="headerlink" title="2.设计链表"></a>2.设计链表</h2><p><img src="/images/image-20220705093337483.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>可能刚开始看到这个题会很疑惑，不是说leecode不是已经帮我们定义了链表吗？怎么这里又让我们自己去设计？</p>
+<p>其实这是leecode刷题这种模式的特点，它不像牛客所有的题都让你从0开始写，很多题目leecode是直接帮你调用了STL或者默认帮你实现了数据结构，只需要额外定义一个solution类来解决题目中的问题即可；</p>
+<p>但是这道题的话就有点0基础使用链表定义来设计并实现具有特定功能的链表了；</p>
+<p>这个题也非常简单非常基础，有利于理解链表的知识框架，我们直接给出代码和注释即可；</p>
+</blockquote>
+<p>代码如下（虚拟头节点版本）：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyLinkedList</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-comment">// 定义链表节点结构体</span><br>    <span class="hljs-keyword">struct</span> <span class="hljs-title class_">LinkedNode</span> &#123;<br>        <span class="hljs-type">int</span> val;									<span class="hljs-comment">//数据域</span><br>        LinkedNode* next;							<span class="hljs-comment">//指针域</span><br>        <span class="hljs-built_in">LinkedNode</span>(<span class="hljs-type">int</span> val):<span class="hljs-built_in">val</span>(val), <span class="hljs-built_in">next</span>(<span class="hljs-literal">nullptr</span>)&#123;&#125;  <span class="hljs-comment">//自定义节点构造函数（如果使用默认构造函数在初始化节点时不能直接给节点的数据域赋值）</span><br>    &#125;;<br><br>    <span class="hljs-comment">// 初始化链表</span><br>    <span class="hljs-built_in">MyLinkedList</span>() &#123;<br>        _dummyHead = <span class="hljs-keyword">new</span> <span class="hljs-built_in">LinkedNode</span>(<span class="hljs-number">0</span>); 			<span class="hljs-comment">// 这里定义的头结点是一个虚拟头结点（数据域存0），而不是真正的链表头结点（习惯上称为第一个节点）</span><br>        _size = <span class="hljs-number">0</span>;								  <span class="hljs-comment">//初始化链表大小为0（虚拟头节点不算size）</span><br>    &#125;<br><br>    <span class="hljs-comment">// 获取到第index个节点数值，如果index是非法数值直接返回-1， 注意index是从0开始的，第0个节点就是第一个节点（而非虚拟节点）</span><br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">get</span><span class="hljs-params">(<span class="hljs-type">int</span> index)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (index &gt; (_size - <span class="hljs-number">1</span>) || index &lt; <span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>        &#125;<br>        LinkedNode* cur = _dummyHead-&gt;next;			<span class="hljs-comment">//令寻址指针从第一个节点（而非虚拟头节点）开始</span><br>        <span class="hljs-keyword">while</span>(index--)&#123; 						   <span class="hljs-comment">// 如果--index 就会陷入死循环（index为0导致无限循环，因为非0即真while会一直执行下去）</span><br>            cur = cur-&gt;next;<br>        &#125;<br>        <span class="hljs-keyword">return</span> cur-&gt;val;<br>    &#125;<br><br>    <span class="hljs-comment">// 在链表最前面插入一个节点，插入完成后，新插入的节点为链表的新的头结点</span><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">addAtHead</span><span class="hljs-params">(<span class="hljs-type">int</span> val)</span> </span>&#123;<br>        LinkedNode* newNode = <span class="hljs-keyword">new</span> <span class="hljs-built_in">LinkedNode</span>(val);	<span class="hljs-comment">//创建一个新的节点，使用newNode指针指向该新节点</span><br>        newNode-&gt;next = _dummyHead-&gt;next;		   <span class="hljs-comment">//添加节点的操作，不用太在意顺序，只要不搞丢要添加或者删除的节点就行</span><br>        _dummyHead-&gt;next = newNode;				  <span class="hljs-comment">//令虚拟头节点指向新的第一个节点</span><br>        _size++;<br>    &#125;<br><br>    <span class="hljs-comment">// 在链表最后面添加一个节点</span><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">addAtTail</span><span class="hljs-params">(<span class="hljs-type">int</span> val)</span> </span>&#123;<br>        LinkedNode* newNode = <span class="hljs-keyword">new</span> <span class="hljs-built_in">LinkedNode</span>(val);<br>        LinkedNode* cur = _dummyHead;<br>        <span class="hljs-keyword">while</span>(cur-&gt;next != <span class="hljs-literal">nullptr</span>)&#123;<br>            cur = cur-&gt;next;<br>        &#125;<br>        cur-&gt;next = newNode;					<span class="hljs-comment">//最后一个节点直接在末尾添加就可以，不用考虑它后面再连接哪个节点</span><br>        _size++;<br>    &#125;<br><br>    <span class="hljs-comment">// 在第index个节点之前插入一个新节点，例如index为0，那么新插入的节点为链表的新头节点。</span><br>    <span class="hljs-comment">// 如果index 等于链表的长度，则说明是新插入的节点为链表的尾结点</span><br>    <span class="hljs-comment">// 如果index大于链表的长度，则返回空</span><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">addAtIndex</span><span class="hljs-params">(<span class="hljs-type">int</span> index, <span class="hljs-type">int</span> val)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (index &gt; _size) &#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        LinkedNode* newNode = <span class="hljs-keyword">new</span> <span class="hljs-built_in">LinkedNode</span>(val);<br>        LinkedNode* cur = _dummyHead;<br>        <span class="hljs-keyword">while</span>(index--) &#123;<br>            cur = cur-&gt;next;<br>        &#125;<br>        newNode-&gt;next = cur-&gt;next;<br>        cur-&gt;next = newNode;<br>        _size++;<br>    &#125;<br><br>    <span class="hljs-comment">// 删除第index个节点，如果index 大于等于链表的长度，直接return，注意index是从0开始的</span><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">deleteAtIndex</span><span class="hljs-params">(<span class="hljs-type">int</span> index)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (index &gt;= _size || index &lt; <span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        LinkedNode* cur = _dummyHead;<br>        <span class="hljs-keyword">while</span>(index--) &#123;<br>            cur = cur -&gt;next;<br>        &#125;<br>        LinkedNode* tmp = cur-&gt;next;<br>        cur-&gt;next = cur-&gt;next-&gt;next;<br>        <span class="hljs-keyword">delete</span> tmp;<br>        _size--;<br>    &#125;<br><br>    <span class="hljs-comment">// 打印链表</span><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">printLinkedList</span><span class="hljs-params">()</span> </span>&#123;<br>        LinkedNode* cur = _dummyHead;<br>        <span class="hljs-keyword">while</span> (cur-&gt;next != <span class="hljs-literal">nullptr</span>) &#123;<br>            cout &lt;&lt; cur-&gt;next-&gt;val &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br>            cur = cur-&gt;next;<br>        &#125;<br>        cout &lt;&lt; endl;<br>    &#125;<br><span class="hljs-keyword">private</span>:<br>    <span class="hljs-comment">//私有变量</span><br>    <span class="hljs-type">int</span> _size;							<span class="hljs-comment">//size表示链表的大小</span><br>    LinkedNode* _dummyHead;				<span class="hljs-comment">//用头指针冠以链表的名字</span><br><br>&#125;;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="3-反转链表"><a href="#3-反转链表" class="headerlink" title="3.反转链表"></a>3.反转链表</h2><p><img src="/images/image-20220707101621250.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>解析</p>
+<p>反转链表这种题，实际上就是改变了next指针的指向，同时将第一个节点和最后一个节点互换；</p>
+<p>解题使用双指针，第一个cur指针用于从前到后遍历链表的每个节点，第二个pre指针用于创建新的链表</p>
+</blockquote>
+<p>代码如下</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">ListNode* <span class="hljs-title">reverseList</span><span class="hljs-params">(ListNode* head)</span> </span>&#123;<br>        ListNode* temp; 		<span class="hljs-comment">// 保存cur的下一个节点</span><br>        ListNode* cur = head;	<span class="hljs-comment">//cur指针从head指向的结点开始，这里没有虚拟头节点故head指向第一个节点</span><br>        ListNode* pre = <span class="hljs-literal">NULL</span>;	<span class="hljs-comment">//pre指针开始指向NULL，用于构建新的链表</span><br>        <span class="hljs-keyword">while</span>(cur) &#123;<br>            temp = cur-&gt;next;  <span class="hljs-comment">// 保存一下 cur的下一个节点，因为接下来要改变cur-&gt;next</span><br>            cur-&gt;next = pre;   <span class="hljs-comment">// 翻转操作，第一轮时pre指向NULL，cur指向第一个节点，cur-&gt;next=pre意味着让第一个节点指向NULL</span><br>            <span class="hljs-comment">// 更新pre 和 cur指针，pre移动到第一个节点，cur移动到下一个节点</span><br>            pre = cur;<br>            cur = temp;<br>        &#125;<br>        <span class="hljs-keyword">return</span> pre;			<span class="hljs-comment">//最终当cur==NULL的时候，pre刚好移动到最后一个节点，也就是反转过后的第一个节点，此时返回pre也就返回了反转过后的链表（此处涉及C++特性，和数组类似）</span><br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="4-交换链表节点"><a href="#4-交换链表节点" class="headerlink" title="4.交换链表节点"></a>4.交换链表节点</h2><p><img src="/images/image-20220707103150488.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>leecode的题总是能够让你读的半懵半懵的，实际上就是交换相邻的两个节点（交换过后的节点不再交换）——所以如果节点个数是奇数怎么办？？？假如是单数的话默认最后一个节点没得交换；</p>
+<p>注意这个是单向链表，只能操作其next指针，所以需要注意交换的步骤</p>
+<p>具体交换过程主要分为三个步骤（这里需要引入虚拟头节点，我们假设涉及交换的节点分别为cur，1，2，3，其中要交换的节点是1，2）</p>
+<ul>
+<li>cur-&gt;next&#x3D;2</li>
+<li>2-&gt;next&#x3D;1</li>
+<li>1-&gt;next&#x3D;3</li>
+</ul>
+</blockquote>
+<p><img src="/images/image-20220707104121887.png" srcset="/img/loading.gif" lazyload></p>
+<p>代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//时间复杂度O(n)</span><br><span class="hljs-comment">//空间复杂度O(1)</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">ListNode* <span class="hljs-title">swapPairs</span><span class="hljs-params">(ListNode* head)</span> </span>&#123;<br>        ListNode* dummyHead = <span class="hljs-keyword">new</span> <span class="hljs-built_in">ListNode</span>(<span class="hljs-number">0</span>); <span class="hljs-comment">// 设置一个虚拟头节点，方便统一处理第一个节点</span><br>        dummyHead-&gt;next = head; 			  <span class="hljs-comment">// 将虚拟头结点指向head</span><br>        ListNode* cur = dummyHead;			  <span class="hljs-comment">//初始时，遍历指针cur处于虚拟头节点位置</span><br>        <span class="hljs-keyword">while</span>(cur-&gt;next != <span class="hljs-literal">nullptr</span> &amp;&amp; cur-&gt;next-&gt;next != <span class="hljs-literal">nullptr</span>) &#123;<br>            ListNode* tmp = cur-&gt;next; 		  <span class="hljs-comment">// 记录临时节点，也就是1，因为cur指向2后就只能靠tmp找到1了</span><br>            ListNode* tmp1 = cur-&gt;next-&gt;next-&gt;next; <span class="hljs-comment">// 记录临时节点，也就是3，因为2指向1后就只能靠tmp1找到3了</span><br><br>            cur-&gt;next = cur-&gt;next-&gt;next;    <span class="hljs-comment">// 步骤一，cur-&gt;next=2</span><br>            cur-&gt;next-&gt;next = tmp;          <span class="hljs-comment">// 步骤二，2-&gt;next=1</span><br>            cur-&gt;next-&gt;next-&gt;next = tmp1;   <span class="hljs-comment">// 步骤三，1-&gt;next=3</span><br><br>            cur = cur-&gt;next-&gt;next; <span class="hljs-comment">// cur指针在交换过后的基础上移动两位，准备下一轮交换（第一轮后cur移动到2），当是单数的时候因为不符合cur-&gt;next-&gt;next != nullptr条件所以直接结束</span><br>        &#125;<br>        <span class="hljs-keyword">return</span> dummyHead-&gt;next;	<span class="hljs-comment">//返回第一个节点，注意虚拟头节点是手动增加的所以不要返回</span><br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="5-删除链表倒数第n个节点"><a href="#5-删除链表倒数第n个节点" class="headerlink" title="5.删除链表倒数第n个节点"></a>5.删除链表倒数第n个节点</h2><p><img src="/images/image-20220711082146252.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>解析：</p>
+<p>这个题感觉很简单啊，直接找到并删除倒数第n个节点即可；</p>
+<p>所以这道题是中等难度的原因就在于，找到倒数第n个节点在链表中是一件不容易的事；</p>
+<p>这道题使用双指针可以快速解决——如果要删除倒数第n个节点，让fast移动n步，然后让fast和slow同时移动，直到fast指向链表末尾NULL，删掉slow所指向的节点就可以了</p>
+<p>细节：</p>
+<ul>
+<li>定义虚拟头节点且fast和slow初值均指向虚拟头节点；</li>
+<li>slow指针在fast指针指向NULL的时候，slow指针是指向要删除的节点的前一个节点而非要删除的节点（否则没办法进行删除操作）；</li>
+<li>删除的节点是slow指针指向的节点的下一个节点；</li>
+</ul>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">ListNode* <span class="hljs-title">removeNthFromEnd</span><span class="hljs-params">(ListNode* head, <span class="hljs-type">int</span> n)</span> </span>&#123;<br>        ListNode* dummyHead = <span class="hljs-keyword">new</span> <span class="hljs-built_in">ListNode</span>(<span class="hljs-number">0</span>);  <span class="hljs-comment">//定义虚拟头节点</span><br>        dummyHead-&gt;next = head;                 <span class="hljs-comment">//将虚拟头节点加入链表中</span><br>        ListNode* slow = dummyHead;			   <span class="hljs-comment">//初始slow和fast均指向虚拟头节点</span><br>        ListNode* fast = dummyHead;<br>        <span class="hljs-keyword">while</span>(n-- &amp;&amp; fast != <span class="hljs-literal">NULL</span>) &#123;		   <span class="hljs-comment">//先移动fast指针，fast != NULL是为了防止用户输入大于链表长度的n导致程序错误</span><br>            fast = fast-&gt;next;<br>        &#125;<br>        fast = fast-&gt;next; 					  <span class="hljs-comment">// fast再提前走一步，因为需要让slow指向删除节点的上一个节点</span><br>        <span class="hljs-keyword">while</span> (fast != <span class="hljs-literal">NULL</span>) &#123;				  <span class="hljs-comment">//fast和slow同时移动，直到fast指向NULL（这道题细节很多，注意画图理解）</span><br>            fast = fast-&gt;next;<br>            slow = slow-&gt;next;<br>        &#125;<br>        slow-&gt;next = slow-&gt;next-&gt;next;		  <span class="hljs-comment">//直接暴力改指向，回收甚至都不使用，这样做可能导致算法内存比较大；</span><br>        <span class="hljs-keyword">return</span> dummyHead-&gt;next;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="6-环形链表1"><a href="#6-环形链表1" class="headerlink" title="6.环形链表1"></a>6.环形链表1</h2><p><img src="/images/image-20220711083400787.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20220711083421493.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>这道题不是直接根据输入的skip就写出来了吗…还是说是我读题理解有问题？</p>
+<p>这道题的举例是有问题的，我们定义的Solution类中的方法仅仅只有两个参数，即传入链表A和链表B，而相交节点的值明显是一个误导信息，因为链表中节点相同实质上是指向节点的指针的地址相同而不是节点存储的值相同，另外，skip这个条件属于是作弊条件，我要是都知道相交节点在距离头节点多远的位置，为什么我不直接跳过去呢？</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">ListNode *<span class="hljs-title">getIntersectionNode</span><span class="hljs-params">(ListNode *headA, ListNode *headB)</span> </span>&#123;<br>        ListNode* curA = headA;	<span class="hljs-comment">//初始curA指针指向A链表头节点</span><br>        ListNode* curB = headB; <span class="hljs-comment">//初始curB指针指向B链表头节点</span><br>        <span class="hljs-type">int</span> lenA = <span class="hljs-number">0</span>, lenB = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span> (curA != <span class="hljs-literal">NULL</span>) &#123; <span class="hljs-comment">// 求链表A的长度</span><br>            lenA++;<br>            curA = curA-&gt;next;<br>        &#125;<br>        <span class="hljs-keyword">while</span> (curB != <span class="hljs-literal">NULL</span>) &#123; <span class="hljs-comment">// 求链表B的长度</span><br>            lenB++;<br>            curB = curB-&gt;next;<br>        &#125;<br>        curA = headA;<br>        curB = headB;		<span class="hljs-comment">//求完长度之后重新调整curA和curB的指向</span><br>        <span class="hljs-comment">// 让curA指向长链表的头节点，len(长链表)为该链表长度</span><br>        <span class="hljs-keyword">if</span> (lenB &gt; lenA) &#123;<br>            <span class="hljs-built_in">swap</span> (lenA, lenB);<br>            <span class="hljs-built_in">swap</span> (curA, curB);<br>        &#125;<br>        <span class="hljs-comment">// 求长度差</span><br>        <span class="hljs-type">int</span> gap = lenA - lenB;<br>        <span class="hljs-comment">// 让curA和curB在同一起点上（末尾位置对齐）</span><br>        <span class="hljs-keyword">while</span> (gap--) &#123;<br>            curA = curA-&gt;next;<br>        &#125;<br>        <span class="hljs-comment">// 遍历curA 和 curB，遇到相同则直接返回</span><br>        <span class="hljs-keyword">while</span> (curA != <span class="hljs-literal">NULL</span>) &#123;<br>            <span class="hljs-keyword">if</span> (curA == curB) &#123;<br>                <span class="hljs-keyword">return</span> curA;<span class="hljs-comment">//如果指针相同则返回此时的指针即可</span><br>            &#125;<br>            curA = curA-&gt;next;<br>            curB = curB-&gt;next;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">NULL</span>;<span class="hljs-comment">//如果永远都没有相同的指针则返回NULL</span><br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="7-环形链表2"><a href="#7-环形链表2" class="headerlink" title="7.环形链表2"></a>7.环形链表2</h2><p><img src="/images/image-20220711090656787.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>这道题乍一看挺吓人的，找到环形的入口，这让人如何是好？实际上这道题主要有两个考点：</p>
+<ul>
+<li>判断链表是否有环；</li>
+<li>若存在环，如何找到这个环的入口；</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>判断链表是否有环可以使用双指针，fast每次移动2步，slow每次移动1步，如果有环则fast和slow一定会相交并且是在环内相交</p>
+</blockquote>
+<blockquote>
+<p>如果链表有环，</p>
+<p>参考题解：刘翔以老八2倍的速度和老八从头开始跑，直到和老八相遇，很疑惑：哦原来有环啊？ </p>
+<p>老八也很疑惑，那么什么是哪个点出现的环啊？ </p>
+<p>刘翔说：忘记了，我只知道我跑的路程是你的两倍，而且我已经比你这个乌龟多跑一圈了，不然怎么可能抓到你。 </p>
+<p>老八说：杀千刀的，那假设那个点前距离是a好了，我现在跑了a+b了，你比我多一圈那就是2(a+b) 那 2(a+b)&#x3D;&#x3D;a+c(c是圈的长度)+b 得出a+b&#x3D;c。</p>
+<p>刘翔：哦那简单啊，那你现在距离那个点已经b了，再跑a个点不就到那里了嘛。</p>
+<p>老八生气的说： 我他niang的怎么知道a是多少？求的就是a啊大哥！</p>
+<p>刘翔邪魅一笑：那简单啊，我现在叫我朋友博尔特从起点和你一个速度跑，你们都差a 就到了，相遇了就是答案了哇。 </p>
+<p>老八： 呵呵。算你狠。</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">detectCycle</span><span class="hljs-params">(ListNode head)</span> </span>&#123;<br>        ListNode root=head;<span class="hljs-comment">//博尔特</span><br>        ListNode left=head;<span class="hljs-comment">//老八</span><br>        ListNode right=head;<span class="hljs-comment">//刘翔</span><br>        <span class="hljs-keyword">while</span>(right!=null &amp;&amp; right.next!=null)&#123;<br>           right=right.next.next;<span class="hljs-comment">//刘翔两倍速</span><br>           left=left.next;		<span class="hljs-comment">//老八一倍速</span><br>           <span class="hljs-keyword">if</span>(left==right)&#123;<br>               <span class="hljs-keyword">while</span>(root!=right)&#123;<span class="hljs-comment">//当刘翔和老八相遇，博尔特开始以一倍速跑步</span><br>                   root=root.next;<br>                   right=right.next;<br>               &#125;<br>               <span class="hljs-keyword">return</span> root;<span class="hljs-comment">//要是root==right说明环入口就在第一个节点</span><br>           &#125;<br>       &#125;<br>       <span class="hljs-keyword">return</span> null;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="三、哈希表"><a href="#三、哈希表" class="headerlink" title="三、哈希表"></a>三、哈希表</h1><h2 id="0-哈希表概述"><a href="#0-哈希表概述" class="headerlink" title="0.哈希表概述"></a>0.哈希表概述</h2><p>hash table即哈希表、散列表，一般用来快速判断一个元素是否出现在集合里；</p>
+<blockquote>
+<p>哈希表是根据关键码的值直接进行访问的数据结构；</p>
+</blockquote>
+<p>数组就是一张哈希表，哈希表中关键码就是数组的索引下标，然后通过下标直接访问数组中的元素；</p>
+<p><img src="/images/image-20220712095046278.png" srcset="/img/loading.gif" lazyload></p>
+<p>哈希表上的映射函数也称为哈希函数，下面展示了一个将学生姓名映射到哈希表上的hash function；</p>
+<p><img src="/images/image-20220712095516062.png" srcset="/img/loading.gif" lazyload></p>
+<p>使用哈希函数涉及模运算，这可能导致小王和小张在哈希表的同一个索引下标的位置进而发生冲突，这就叫做哈希碰撞；</p>
+<p>一般哈希碰撞有两种解决方法， 拉链法和线性探测法；</p>
+<blockquote>
+<p>拉链法是指将发生冲突的元素都存储在链表中；</p>
+</blockquote>
+<p><img src="/images/image-20220712095946318.png" srcset="/img/loading.gif" lazyload></p>
+<p>拉链法就是要选择适当的哈希表的大小，这样既不会因为哈希表空值而浪费大量内存，也不会因为链表太长而在查找上浪费太多时间；</p>
+<blockquote>
+<p>使用线性探测法，一定要保证哈希表大小tableSize大于数据规模dataSize，我们需要依靠哈希表中的空位来解决碰撞问题；</p>
+</blockquote>
+<p>例如冲突的位置，放了小李，那么就向下找一个空位放置小王的信息。所以要求tableSize一定要大于dataSize ，要不然哈希表上就没有空置的位置来存放冲突的数据了</p>
+<p><img src="/images/image-20220712100252040.png" srcset="/img/loading.gif" lazyload></p>
+<p>上面我们介绍了哈希表的基本概念（这个在数据结构的笔记里没有专门的介绍，感兴趣可以再查资料学习），当我们需要使用哈希算法解决问题通常涉及如下三种数据结构：</p>
+<ul>
+<li>数组</li>
+<li>集合</li>
+<li>映射</li>
+</ul>
+<p>STL中集合提供了以下三种数据结构</p>
+<blockquote>
+<p>红黑树是一种平衡二叉搜索树，所以key值是有序的，但key不可以修改，改动key值会导致整棵树的错乱，所以只能删除和增加</p>
+</blockquote>
+<p><img src="/images/image-20220712100634088.png" srcset="/img/loading.gif" lazyload></p>
+<p>STL中映射提供了以下三种数据结构</p>
+<p><img src="/images/image-20220712100745347.png" srcset="/img/loading.gif" lazyload></p>
+<p>虽然std::set、std::multiset 的底层实现是红黑树，不是哈希表，但是std::set、std::multiset 依然使用哈希函数来做映射，只不过底层的符号表使用了红黑树来存储数据，所以使用这些数据结构来解决映射问题的方法，我们依然称之为哈希法。 map也是一样的道理。</p>
+<blockquote>
+<p>当我们遇到了要快速判断一个元素是否出现集合里的时候，就要考虑哈希法；</p>
+<p>但是哈希法也是牺牲了空间换取了时间，因为我们要使用额外的数组，set或者是map来存放数据，才能实现快速的查找；</p>
+<p>如果在做面试题目的时候遇到需要判断一个元素是否出现过的场景也应该第一时间想到哈希法；</p>
+</blockquote>
+<hr>
+<p>红黑树是一种自平衡二叉查找树，是一种接近平衡的二叉搜索树，它能够保证任意一个节点左右子树的高度差不会超过较低子树的高度；</p>
+<h2 id="1-有效字母异位词"><a href="#1-有效字母异位词" class="headerlink" title="1.有效字母异位词"></a>1.有效字母异位词</h2><p><img src="/images/image-20220905092901161.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>解析：</p>
+<p>首先要知道什么是字母异位词，实际上就是两个单词包含相同的字母但是字母的次序不同如”anagram” 和 “nagaram”；</p>
+<p>暴力解法本质上就是两层for循环并记录出现的字符是否重复，时间复杂度为O(n^2^)；</p>
+<p>第二种解法使用数组，数组是一个哈希表，因为这题的本质就是判断元素是否出现在集合中（可以使用两个集合互相比较，也可以使用一个集合加减判断），所以我们考虑哈希表；</p>
+<p>因为题目说只需要考虑小写字母，故数组的大小设置为26，字母a映射在数组下标0，字母z映射在数组下标25，数组record用于记录字符串s和t中字符出现的次数，s中出现的字符对应在数组中+1，t中出现的字符对应在数组中-1，最后检查record数组中如果存在元素不为0则reurn false，该方法时间复杂度为O(n)，空间复杂度为O(1)；</p>
+</blockquote>
+<p>代码如下</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">isAnagram</span><span class="hljs-params">(string s, string t)</span> </span>&#123;<br>        <span class="hljs-type">int</span> record[<span class="hljs-number">26</span>] = &#123;<span class="hljs-number">0</span>&#125;;				<span class="hljs-comment">//初始化record数组</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; s.<span class="hljs-built_in">size</span>(); i++) &#123;<br>            <span class="hljs-comment">// 此处非常巧妙的利用了a作为26个小写字母起始字符的特点，因此s[i]或者t[i]如果是&#x27;a&#x27;则&#x27;a&#x27;-&#x27;a&#x27;会得到0也就刚好映射在record数组的第一个位置</span><br>            record[s[i] - <span class="hljs-string">&#x27;a&#x27;</span>]++;<br>        &#125;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; t.<span class="hljs-built_in">size</span>(); i++) &#123;<br>            record[t[i] - <span class="hljs-string">&#x27;a&#x27;</span>]--;<br>        &#125;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">26</span>; i++) &#123;<br>            <span class="hljs-keyword">if</span> (record[i] != <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-comment">// 假如record数组存在元素不为零0，说明字符串s和t一定是谁多了字符或者谁少了字符</span><br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>            &#125;<br>        &#125;<br>        <span class="hljs-comment">// record数组所有元素都为零0，说明字符串s和t是字母异位词</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h2 id="2-两个数组的交集"><a href="#2-两个数组的交集" class="headerlink" title="2.两个数组的交集"></a>2.两个数组的交集</h2><p><img src="/images/image-20220906200348036.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>解析：</p>
+<p>这道题本质上也就是需要判断某个元素是否出现在集合中，因此我们选择考虑哈希表；</p>
+<p>当然这道题可以使用暴力for循环，其时间复杂度为O(n^2^)；</p>
+<p>前面使用了数组作为哈希表，但需要注意这样的前提是题目已经限制了数组的大小，而且如果哈希值较少、分散且跨度很大使用数组会造成浪费；</p>
+<p>我们这里考虑使用set结构体作为哈希表，关于set，C++提供了三种可用的数据结构：</p>
+<ul>
+<li>std::set</li>
+<li>std::multiset</li>
+<li>std::unordered_set</li>
+</ul>
+<p>std::set和std::multiset底层实现都是红黑树，std::unordered_set的底层实现是哈希表，更多关于set容器的介绍可以参考<a href="https://gintoki-jpg.github.io/2022/07/08/CPP_STL%E5%88%9D%E7%BA%A7/#3-set%E5%AE%B9%E5%99%A8">STL初级 - Tintoki_blog (gintoki-jpg.github.io)</a></p>
+<p>set 容器具有以下几个特性：</p>
+<ul>
+<li>不再以键值对的方式存储数据，因为 set 容器专门用于存储键和值相等的键值对，因此该容器中真正存储的是各个键值对的值（value）；</li>
+<li>set 容器在存储数据时，会根据各元素值的大小对存储的元素进行排序（默认做升序排序）；</li>
+<li>存储到 set 容器中的元素，虽然其类型没有明确用 const 修饰，但正常情况下它们的值是无法被修改的；</li>
+<li>set 容器存储的元素必须互不相等；</li>
+</ul>
+<p>我们很容易看出set容器恰好符合题干的要求，这里综合考虑最终选择unordered_set</p>
+</blockquote>
+<p>set容器代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">intersection</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums1, vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums2)</span> </span>&#123;<br>        unordered_set&lt;<span class="hljs-type">int</span>&gt; result_set; <span class="hljs-comment">// 存放最终结果，用set容器是为了给结果集去重</span><br>        <span class="hljs-function">unordered_set&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">nums_set</span><span class="hljs-params">(nums1.begin(), nums1.end())</span></span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> num : nums2) &#123;<br>            <span class="hljs-comment">// 假如发现nums2的元素在nums_set中没有出现过，则insert该num</span><br>            <span class="hljs-keyword">if</span> (nums_set.<span class="hljs-built_in">find</span>(num) != nums_set.<span class="hljs-built_in">end</span>()) &#123;<br>                result_set.<span class="hljs-built_in">insert</span>(num);<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">vector</span>&lt;<span class="hljs-type">int</span>&gt;(result_set.<span class="hljs-built_in">begin</span>(), result_set.<span class="hljs-built_in">end</span>());<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>数组代码如下</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">intersection</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums1, vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums2)</span> </span>&#123;<br>        unordered_set&lt;<span class="hljs-type">int</span>&gt; result_set; <span class="hljs-comment">// 存放最终结果，之所以用set是为了给结果集去重，注意这里使用的是两个数据结构，所以一个使用set一个使用数组</span><br>        <span class="hljs-type">int</span> hash[<span class="hljs-number">1005</span>] = &#123;<span class="hljs-number">0</span>&#125;; <span class="hljs-comment">// 默认数值为0</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> num : nums1) &#123; <span class="hljs-comment">// nums1中出现的字母在hash数组中做记录，这里直接用字母对应的ASCLL作为数组索引</span><br>            hash[num] = <span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> num : nums2) &#123; <span class="hljs-comment">// 假如num2中出现相同的字母则将该字母insert进最终结果集中</span><br>            <span class="hljs-keyword">if</span> (hash[num] == <span class="hljs-number">1</span>) &#123;<br>                result_set.<span class="hljs-built_in">insert</span>(num);<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">vector</span>&lt;<span class="hljs-type">int</span>&gt;(result_set.<span class="hljs-built_in">begin</span>(), result_set.<span class="hljs-built_in">end</span>());<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h2 id="3-快乐数"><a href="#3-快乐数" class="headerlink" title="3.快乐数"></a>3.快乐数</h2><p>题目链接<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/happy-number/">202. 快乐数 - 力扣（LeetCode）</a></p>
+<p>快乐数被定义为</p>
+<ul>
+<li><p>对于一个正整数，每一次将该数替换为它每个位置上的数字的平方和；</p>
+</li>
+<li><p>然后重复这个过程直到这个数变为 1，也可能是 无限循环 但始终变不到 1；</p>
+</li>
+<li><p>如果这个过程 结果为 1，那么这个数就是快乐数；</p>
+</li>
+</ul>
+<p><img src="/images/image-20220908085220431.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>解析：</p>
+<p>“需要快速判断一个元素是否出现在集合中，考虑哈希法”，本题采用哈希法快速判断sum平方和是否重复出现，如果sum重复出现代表一定是无限循环，则return false，否则需要一直计算sum直到sum为1；</p>
+<p>因为需要判断sum是否重复出现，也就是集合中重复元素的判断，因此这里使用unordered_set而非数组；</p>
+</blockquote>
+<p>代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-comment">// 1.定义取数值各个位上的单数平方和函数，比如n是101，则n依次赋值为101,10,1,0因此会进行三次循环，对应n是一个三位数</span><br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">getSum</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span> </span>&#123;<br>        <span class="hljs-type">int</span> sum = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span> (n) &#123;<br>            <span class="hljs-comment">/*除法运算用作判断数值的位数，取模运算用作判断数值的每一位</span><br><span class="hljs-comment">            *n依次被赋值为101，10，1，对应取模运算得到的值依次是1,0,1符合数值的每一位</span><br><span class="hljs-comment">            */</span><br>            sum += (n % <span class="hljs-number">10</span>) * (n % <span class="hljs-number">10</span>);<br>            <span class="hljs-comment">/*“/=”属于复合赋值运算符中的一种，把左边的变量除以右边变量的值赋予左边的变量，如a/=b等价于a=a/b</span><br><span class="hljs-comment">            *C++中除法的运算规则是强制类型转换，如果两个操作数中有一个为浮点型，则结果为浮点，如果两个均为整型，则为整除（int a = 5、int b = 2，则a/b的值为2（整除），而用(double)a/b			  *的值则为2.5）</span><br><span class="hljs-comment">            */</span><br>            n /= <span class="hljs-number">10</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> sum;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">isHappy</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span> </span>&#123;<br>        unordered_set&lt;<span class="hljs-type">int</span>&gt; set;<br>        <span class="hljs-comment">//只要sum不是循环，就一直求解下去</span><br>        <span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>) &#123;<br>            <span class="hljs-type">int</span> sum = <span class="hljs-built_in">getSum</span>(n);<br>            <span class="hljs-keyword">if</span> (sum == <span class="hljs-number">1</span>) &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>            &#125;<br>            <span class="hljs-comment">// 如果这个sum曾经出现过，说明已经陷入了无限循环了，立刻return false，此处调用了set的find方法，如果sum已经在set中出现过则返回的两个迭代器指向的位置不会一致</span><br>            <span class="hljs-keyword">if</span> (set.<span class="hljs-built_in">find</span>(sum) != set.<span class="hljs-built_in">end</span>()) &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<span class="hljs-comment">//如果sum没出现过则直接insert在最后即可</span><br>                set.<span class="hljs-built_in">insert</span>(sum);<br>            &#125;<br>            n = sum;<br>        &#125;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h2 id="4-两数之和"><a href="#4-两数之和" class="headerlink" title="4.两数之和"></a>4.两数之和</h2><p><img src="/images/image-20220908092230853.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>解析：</p>
+<p>这道题很眼熟…因该是之前在哪里做过？或者其实数组那一节的第四题有点类似；</p>
+<p>什么时候使用哈希法 —— 需要查询一个元素是否出现过，或者一个元素是否在集合里的时候</p>
+<p>本题题意为使用一个集合存放我们遍历过的元素，然后在遍历数组的时候去访问这个集合（如果觉得绕的话可以看了代码解析再回头理解这句话）</p>
+<p>本题采用map的key value结构分别存放元素以及该元素对应的下标，之所以不选择数组和set是因为</p>
+<ul>
+<li>数组的大小是受限制的，而且如果元素很少，而哈希值太大会造成内存空间的浪费；</li>
+<li>set是一个集合，里面放的元素只能是一个key，而本题不仅要判断y是否存在而且还要记录y的下标位置，所以set 也不能用；</li>
+</ul>
+<p>C++提供了三种map的数据类型</p>
+</blockquote>
+<p><img src="/images/image-20220908093249743.png" srcset="/img/loading.gif" lazyload></p>
+<p>基本原理图如下</p>
+<p><img src="/images/image-20220908093657510.png" srcset="/img/loading.gif" lazyload></p>
+<p>代码如下</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">twoSum</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums, <span class="hljs-type">int</span> target)</span> </span>&#123;<br>        std::unordered_map &lt;<span class="hljs-type">int</span>,<span class="hljs-type">int</span>&gt; map;				<span class="hljs-comment">//用于存放遍历过的元素的map</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; nums.<span class="hljs-built_in">size</span>(); i++) &#123;			<span class="hljs-comment">// 遍历当前元素，并在map中寻找是否有匹配的key，至于为什么不是我们以为的value，是因为map.find查找的是key的位置</span><br>            <span class="hljs-keyword">auto</span> iter = map.<span class="hljs-built_in">find</span>(target - nums[i]); <br>            <span class="hljs-keyword">if</span>(iter != map.<span class="hljs-built_in">end</span>()) &#123;					   <span class="hljs-comment">//假如在map中找到匹配的value则返回其key和value</span><br>                <span class="hljs-keyword">return</span> &#123;iter-&gt;second, i&#125;;<br>            &#125;<br>            map.<span class="hljs-built_in">insert</span>(<span class="hljs-built_in">pair</span>&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt;(nums[i], i)); 	<span class="hljs-comment">// 如果没找到匹配对，就把访问过的元素和下标加入到map中</span><br>        &#125;<br>        <span class="hljs-keyword">return</span> &#123;&#125;;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/" class="category-chain-item">大学课程</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/">#课程学习</a>
+      
+        <a href="/tags/%E8%80%83%E7%A0%94/">#考研</a>
+      
+        <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">#计算机基础</a>
+      
+        <a href="/tags/%E5%88%B7%E9%A2%98/">#刷题</a>
+      
+        <a href="/tags/%E9%9D%A2%E8%AF%95/">#面试</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>数据结构与算法</div>
+      <div>https://gintoki-jpg.github.io/2022/06/27/通识_数据结构与算法/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>杨再俨</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年6月27日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/06/27/%E5%B7%A5%E5%85%B7_pyside2/" title="Pyside2">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Pyside2</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/06/27/%E9%80%9A%E8%AF%86_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" title="计算机组成原理">
+                        <span class="hidden-mobile">计算机组成原理</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+</div>
+
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

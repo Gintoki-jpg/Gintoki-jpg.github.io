@@ -1,0 +1,1144 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/logo.png">
+  <link rel="icon" href="/img/bg/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="杨再俨">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="编译原理是计算机专业的一门重要专业课，旨在介绍编译程序构造的一般原理和基本方法。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="编译原理">
+<meta property="og:url" content="https://gintoki-jpg.github.io/2022/09/09/%E9%80%9A%E8%AF%86_%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/index.html">
+<meta property="og:site_name" content="Tintoki_blog">
+<meta property="og:description" content="编译原理是计算机专业的一门重要专业课，旨在介绍编译程序构造的一般原理和基本方法。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/compile.jpg">
+<meta property="article:published_time" content="2022-09-09T01:50:00.000Z">
+<meta property="article:modified_time" content="2022-10-07T08:09:39.957Z">
+<meta property="article:author" content="YangZaiyan">
+<meta property="article:tag" content="课程学习">
+<meta property="article:tag" content="计算机基础">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gintoki-jpg.github.io/img/bg/compile.jpg">
+  
+  
+  
+  <title>编译原理 - Tintoki_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"gintoki-jpg.github.io","root":"/","version":"1.9.1","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tintoki_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/bg1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">编译原理</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-09-09 09:50" pubdate>
+          2022年9月9日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          13k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          107 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">编译原理</h1>
+            
+            <div class="markdown-body">
+              
+              <p>先解决一个困扰很久的问题：编译原理和汇编语言的区别？参考<a target="_blank" rel="noopener" href="https://zhidao.baidu.com/question/78670594.html">编译和汇编的区别是什么？_百度知道 (baidu.com)</a></p>
+<ul>
+<li><p>编译: 检查语法，生成汇编代码</p>
+</li>
+<li><p>汇编: 将汇编代码转换为机器码</p>
+</li>
+</ul>
+<p>其实在很多地方，都会把编译器的作用给放大，也就是说编译器能够直接编译并汇编语言，直接得到机器语言，参考<a href="https://gintoki-jpg.github.io/2022/06/27/%E5%90%8E%E7%AB%AF_C/#%E5%89%8D%E8%A8%80%EF%BC%88%E4%B8%80%EF%BC%89">C语言 - Tintoki_blog (gintoki-jpg.github.io)</a>-编译器简介；</p>
+<p>编译：将高级语言翻译成汇编语言或机器语言；从定义可以看出其实上面的说法没错，本门课程主要讲解的编译指的是将高级语言翻译成汇编语言，在汇编原理课程中主要讲解将汇编语言翻译为机器语言；</p>
+<hr>
+<p>2022&#x2F;9&#x2F;9 10:06 这门课程给我很强烈的熟悉感，但是有感觉有陌生的地方，熟悉是因为之前看过《程序员的自我修养》，拥有一个整体的概述，陌生是因为之前看的是纯粹的框架，编译原理这门课程是深入进去具体考虑形式语言之类对于词法分析、语法分析的作用等，所以还是需要看书，参考教材《编译原理与技术》第2版</p>
+<p>2022&#x2F;9&#x2F;9 10:13 期中考试三个题：词法分析一个题，语法分析两个题（自顶向下，自底向上）</p>
+<p>2022&#x2F;9&#x2F;11 9:27 老师和书上讲的几乎一摸一样，而且这书上的知识点更加成体系（很难得北邮的老师写得出这么好的书），这门课直接跟书学就OK，一定注意做好笔记；</p>
+<p>2022&#x2F;9&#x2F;16 10:52 坏了坏了，现在自己看书看不懂了，好像所有中文作者编书都是这样（把学生当天才），很多词语的混用直接当头一棒，对于初学者来说这些名词的胡乱使用真的非常不友好，我现在学到第三章看书就已经摸不着头脑了，现在也只能先停一停找找学习视频（或者是上课好好听一下讲），这门课程看到后面就感觉不能纯自学；</p>
+<p>2022&#x2F;9&#x2F;16 11:13 老师按照PPT上讲的和书上的是相辅相成的，PPT的顺序更加适合初学者阅读，但是书上的讲解更加严谨；补充说一句，这老师讲课是真的好，可以课前预习或者全程跟着，没必要找视频自学；</p>
+<p>2022&#x2F;9&#x2F;16 13:28 这个书和老师给的PPT有很大的问题，就是其中某些重要的知识点根本就没有，导致有些东西会看的很迷糊，这就只能靠自己百度索引了；</p>
+<p>2022&#x2F;9&#x2F;25 9:41 关于看书的事情，到现在为止我觉得看书可以暂时不看了，因为书上描述的过于冗余，而且和PPT上的行文方式不太一样（PPT上非常简洁），但是PPT可能单独看是不太能看懂的，所以这就要求我们上课的时候好好听，然后下课了及时总结；</p>
+<hr>
+<h1 id="第一章-编译概述"><a href="#第一章-编译概述" class="headerlink" title="第一章 编译概述"></a>第一章 编译概述</h1><h2 id="1-翻译和解释"><a href="#1-翻译和解释" class="headerlink" title="1.翻译和解释"></a>1.翻译和解释</h2><h3 id="1-1-程序设计语言"><a href="#1-1-程序设计语言" class="headerlink" title="1.1 程序设计语言"></a>1.1 程序设计语言</h3><p>机器语言-&gt;符号语言-&gt;汇编语言-&gt;高级语言</p>
+<p>面向用户的、面向问题的以及面向对象的语言等统称为高级语言，机器语言和汇编语言称为低级语言。相对于低级语言，高级语言具有以下优点：</p>
+<p>（1）更接近于自然语言、独立于机器。<br>程序设计人员不必了解计算机的硬件，对计算机了解甚少的用户也可以学习和使用。<br>一条高级语言的语句对应多条汇编指令或机器指令，编程效率高，所编程序可读性好，便于交流和维护，并且具有较好的移植性。</p>
+<p>（2）运行环境透明性。<br>程序员在编写程序时，不必对程序中出现的变量和常量分配具体的存储单元，不必了解如何将数据的外部表示形式转换成机器的内部表示形式等细节，也不必了解程序运行环境是如何建立和维护的，所有这些工作都由“编译程序”完成。</p>
+<p>（3）具有丰富的数据结构和控制结构，编程效率高。<br>高级语言通常都支持数组、记录等数据结构，支持循环、分支以及过程&#x2F;函数调用等控制结构。这些结构的使用改善了程序的风格，便于程序设计人员采用科学的方法（如结构化的方法、面向对象的方法）来开发程序，从而提高程序的规范性、可靠性，缩短了开发周期、降低了开发费用。</p>
+<h3 id="1-2-翻译程序"><a href="#1-2-翻译程序" class="headerlink" title="1.2 翻译程序"></a>1.2 翻译程序</h3><p>通常将源程序翻译成另外一种表示形式的翻译器称为编译器（即编译程序），而直接执行源程序给出运行结果的翻译器称为解释器（即解释程序）；</p>
+<p>编译程序扫描所输入的源程序，并将其转换为目标程序。通常，源程序是用高级语言或汇编语言编写的：</p>
+<p><img src="/images/image-20220909111019619.png" srcset="/img/loading.gif" lazyload></p>
+<p>如果源语言是汇编语言，目标语言是机器语言，则该编译程序称为“汇编程序”；如果源语言为高级语言，目标语言是某种机器的机器语言或汇编语言，则该编译程序称为“编译程序”，我们之后的编译程序都是基于图中最底层的“编译程序”而言，汇编程序将在汇编语言中介绍；</p>
+<p><img src="/images/image-20220928223737257.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>补充说明一点，在大多数资料（包括本书）很多地方对于编译程序的限定其实非常松散：</p>
+<ul>
+<li>有些编译程序先产生汇编语言的目标代码进而由汇编程序生成可重定位的机器代码；</li>
+<li>有的编译程序生成可重定位的机器代码；</li>
+<li>甚至还有的编译程序直接生成可执行的机器代码；</li>
+</ul>
+<p>但是无论是哪种定义，编译的基本流程都遵守同样的规则，所以我们可以一同分析；</p>
+</blockquote>
+<h2 id="2-编译的阶段和任务"><a href="#2-编译的阶段和任务" class="headerlink" title="2.编译的阶段和任务"></a>2.编译的阶段和任务</h2><p>按照编译程序的执行过程和所完成的任务，可以把它分成前后两个阶段，即分析阶段和综合阶段：</p>
+<ul>
+<li><p>在分析阶段，编译程序根据源语言的定义检查源程序的结构是否符合语言规定，确定源程序所表示的对象和规定的操作，并将源程序以<code>某种中间形式</code>表示出来；</p>
+</li>
+<li><p>在综合阶段，编译程序根据分析阶段的分析结果构造出与源程序等价的目标程序；</p>
+</li>
+</ul>
+<p>编译程序需要定义一个<code>数据结构</code>来保存在分析过程中识别出来的<code>标识符及其有关信息</code>，为语义分析和代码生成提供支持，该数据结构即“符号表”；</p>
+<p>下面给出一个典型的编译过程的表示（尽管对于不同的高级语言其编译过程略有不同）</p>
+<p><img src="/images/image-20220909112538942.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-1-分析阶段"><a href="#2-1-分析阶段" class="headerlink" title="2.1 分析阶段"></a>2.1 分析阶段</h3><p>分析阶段的任务是<code>根据源语言的定义对源程序进行结构分析和语义分析，从而把源程序正文转换为某种中间表示形式</code>；</p>
+<p>分析阶段对源程序的结构进行静态分析，包括词法分析、语法分析和语义分析；</p>
+<h4 id="2-1-1-词法分析"><a href="#2-1-1-词法分析" class="headerlink" title="2.1.1 词法分析"></a>2.1.1 词法分析</h4><p>词法分析是一种线性分析；</p>
+<p>词法分析程序在扫描源程序的过程中，对构成源程序的字符串进行分解：</p>
+<ul>
+<li>识别出每个具有独立意义的字符串（即单词lexeme），将其转换为记号(token)加以输出，所有的记号组织成记号流；</li>
+<li>将需要存放的单词（变量名、函数名、语句标号等）保存在符号表中；<ul>
+<li>对于某些记号（不只是标识符）还需要增加一个“属性值”以示区别，并根据需要把<code>标识符</code>存入符号表</li>
+</ul>
+</li>
+</ul>
+<p>词法分析的<code>工作依据</code>是源语言的构词规则（即语法，也称为模式）；</p>
+<p>单词分隔符（如空格、制表符、回车换行符等）通常在词法分析时跳过，对于源程序中出现的注释，词法分析程序同样会直接跳过；</p>
+<h4 id="2-1-2-语法分析"><a href="#2-1-2-语法分析" class="headerlink" title="2.1.2 语法分析"></a>2.1.2 语法分析</h4><p>语法分析是一种层次结构的分析；</p>
+<p>语法分析根据源语言的语法结构把记号流按层次分组，以形成短语，源程序的语法短语常使用分析树表示，而语法树是分析树的浓缩表示；</p>
+<p>语法分析的工作依据是源语言的语法规则；</p>
+<h4 id="2-1-3-语义分析"><a href="#2-1-3-语义分析" class="headerlink" title="2.1.3 语义分析"></a>2.1.3 语义分析</h4><p>语义分析是对源程序的含义进行分析，以保证程序各部分能够有机地结合在一起，并为以后生成目标代码收集必要的信息（如数据对象的类型、目标地址等）：</p>
+<ul>
+<li>语义分析的一个重要任务是类型检查 ———— 按照源语言的类型机制，检查源程序中每个语法成分的类型是否合乎要求；</li>
+</ul>
+<p>语义分析的工作依据是源语言的语义规则；</p>
+<blockquote>
+<p>以上每个分析步骤中，编译程序都把源程序变换成便于下一个步骤处理的内部表示形式；</p>
+</blockquote>
+<h3 id="2-2-综合阶段"><a href="#2-2-综合阶段" class="headerlink" title="2.2 综合阶段"></a>2.2 综合阶段</h3><p>综合阶段的任务是根据源语言到目标语言的对应关系，对分析阶段所产生的中间表示形式进行加工处理，从而得到与源程序等价的目标程序；</p>
+<p>综合阶段包括中间代码生成、代码优化和目标代码生成；</p>
+<h4 id="2-2-1-中间代码生成"><a href="#2-2-1-中间代码生成" class="headerlink" title="2.2.1 中间代码生成"></a>2.2.1 中间代码生成</h4><p>编译程序通常需要把分析阶段产生的结果进一步转换成中间代码，中间代码应当具备两个重要的特点：易于产生和易于翻译成目标代码；</p>
+<p>中间代码所表示的操作比源程序语句所表示的操作更详细，因为这里不但要考虑在计算机上实现时用汇编指令表示的细节，还要考虑控制流、过程调用以及参数传递等各个细节；</p>
+<h4 id="2-2-2-代码优化"><a href="#2-2-2-代码优化" class="headerlink" title="2.2.2 代码优化"></a>2.2.2 代码优化</h4><p>代码优化就是对代码进行改进，使之占用的空间少、运行速度快：</p>
+<ul>
+<li><p>编译程序的代码优化工作首先是在<code>中间代码</code>上进行的，基于优化后的中间代码可以得到更好的目标代码；</p>
+</li>
+<li><p>其次，还可以根据目标机器的特点，对<code>目标代码</code>做进一步的优化；</p>
+</li>
+</ul>
+<h4 id="2-2-3-目标代码生成"><a href="#2-2-3-目标代码生成" class="headerlink" title="2.2.3 目标代码生成"></a>2.2.3 目标代码生成</h4><p>生成的目标代码通常是可重定位的机器代码或汇编语言代码；</p>
+<p>为了生成目标代码，需要对源程序中使用的每个变量指定存储单元，并且把每条中间代码语句一一翻译成等价的汇编语句或机器指令；</p>
+<h3 id="2-3-符号表管理"><a href="#2-3-符号表管理" class="headerlink" title="2.3 符号表管理"></a>2.3 符号表管理</h3><p>编译程序的一项重要工作是收集源程序中使用的标识符，并记录每个<code>标识符</code>（标识符属于token的一种）的相关信息：</p>
+<ul>
+<li>如源程序中使用的标识符是变量名、函数名、还是形参名等；<ul>
+<li>如果是变量名，它的类型是什么；</li>
+<li>如果是形参名，参数的传递方式是什么；</li>
+<li>如果是函数名，函数有几个参数，都是什么类型的，函数是否有返回值、返回值是什么类型的等；</li>
+</ul>
+</li>
+</ul>
+<p>编译程序使用符号表来记录<code>标识符</code>及其相关信息，符号表的结构应支持标识符的快速查找以及数据的快速存取；</p>
+<p>符号表由若干条记录组成，每个标识符在符号表中都对应一条记录，记录了各域中保存的标识符相应的属性：</p>
+<ul>
+<li>标识符的各个属性值是在编译的不同阶段收集并写入符号表的；</li>
+</ul>
+<p>编译程序的后续阶段通过不同的方式使用符号表中记录的信息：</p>
+<ul>
+<li>进行语义分析和中间代码生成时，需要根据标识符的类型来检查源程序是否以合法的方式使用它们，并为它们产生适当的操作；</li>
+<li>代码生成时，需要根据标识符的类型和存储分配信息来产生正确的目标语言指令；</li>
+</ul>
+<h3 id="2-4-错误处理"><a href="#2-4-错误处理" class="headerlink" title="2.4 错误处理"></a>2.4 错误处理</h3><p>错误检测和恢复是编译程序的一项很重要的任务，在编译的每个阶段都可能检测出源程序中存在的错误；</p>
+<p>发现错误之后应做<code>适当的处理</code>，使编译工作能够继续进行，以便对源程序中可能存在的其他错误进行检测。如果编译时，编译程序每发现一个错误后就停止编译，则调试程序的效率将非常低，这种情况绝不是用户所希望的；</p>
+<p>编译过程中，发现任何错误，都应该报告给错误处理程序，以产生适当的诊断信息帮助程序员判断错误出现的准确位置，并对源程序进行适当的恢复以保持程序的一致性；</p>
+<h2 id="3-其他概念"><a href="#3-其他概念" class="headerlink" title="3.其他概念"></a>3.其他概念</h2><h3 id="3-1-前端和后端"><a href="#3-1-前端和后端" class="headerlink" title="3.1 前端和后端"></a>3.1 前端和后端</h3><p>通常可以将编译程序划分为前端（front end）和后端（back end）两部分：</p>
+<ul>
+<li><p>前端主要由<code>与源语言有关而与目标机器无关</code>的部分组成，通常包括词法分析、语法分析、语义分析和中间代码生成、符号表的建立、中间代码的优化，以及相应的错误处理工作和符号表操作；</p>
+</li>
+<li><p>后端由编译程序中<code>与目标机器有关</code>的部分组成，这些部分<code>与源语言无关</code>而仅仅依赖于中间语言。后端包括目标代码的生成、目标代码的优化，以及相应的错误处理和符号表操作；</p>
+</li>
+</ul>
+<p>把编译程序划分成前端和后端的优点是便于编译程序的移植和构造：</p>
+<ul>
+<li>重写后端使得可以将该语言的编译程序移植到另一种类型的机器上；</li>
+<li>重写前端可以把一种新的程序设计语言编译成同一种中间语言；</li>
+</ul>
+<h3 id="3-2-“遍”的概念"><a href="#3-2-“遍”的概念" class="headerlink" title="3.2 “遍”的概念"></a>3.2 “遍”的概念</h3><p>（这一节的概念确实不好理解，很容易产生读不懂的感觉）</p>
+<p>在<code>设计</code>编译程序时，还需要考虑编译分“遍”（pass）的问题；一“遍”指的是对<code>源程序</code>或<code>源程序的中间表示形式</code>(这个地方其实有点不太理解，笔者自认为“一遍”应该指的是直接将源程序处理成为目标程序)从头到尾扫描一次，并在扫描过程中完成相应的加工处理，生成新的<code>中间表示形式</code>或<code>目标程序</code>；</p>
+<hr>
+<p>阶段（词法分析、语法分析…）和遍的概念是不同的：</p>
+<ul>
+<li><p>一遍可以由若干阶段组成；</p>
+</li>
+<li><p>一个阶段也可由若干遍来完成；</p>
+</li>
+</ul>
+<hr>
+<blockquote>
+<p>（1）一遍扫描的编译程序</p>
+</blockquote>
+<p>这种编译程序对源语言程序进行一遍扫描就能完成编译的各项任务（简单理解的话就是上面介绍过的分析阶段和综合阶段的六个步骤），其典型结构如下</p>
+<p><img src="/images/image-20220915212348934.png" srcset="/img/loading.gif" lazyload></p>
+<p>这种结构的编译程序的核心是<code>语法分析程序</code>，<code>没有中间代码的生成环节</code>；一遍编译程序的工作过程大致如下：</p>
+<p>（1）每当<code>语法分析程序</code>需要一个新的单词符号时，就调用<code>词法分析程序</code>。词法分析程序则从源程序中依次读入字符，并组合成单词符号，将其记号返回给语法分析程序；</p>
+<p>（2）每当<code>语法分析程序</code>识别出一个语法成分时，就调用<code>语义分析及代码生成程序</code>对该语法成分进行语义分析（主要是类型检查），并生成目标程序；</p>
+<p>（3）当<code>源程序</code>全部处理完后，转善后处理，即<code>整理目标程序</code>（如优化等），并结束编译；</p>
+<blockquote>
+<p>（2）多遍扫描的编译程序</p>
+</blockquote>
+<p>这种编译程序把编译的6个逻辑部分应该完成的工作分遍进行，每一遍完成一个或多个相连逻辑部分的工作，其结构如下</p>
+<p><img src="/images/image-20220915212956511.png" srcset="/img/loading.gif" lazyload></p>
+<p>多遍编译程序的工作过程如下：</p>
+<ul>
+<li><p><code>编译程序的主程序</code>调用<code>词法分析程序</code>，词法分析程序对源程序进行扫描，并将它转换为一种内部表示，称为<code>中间表示形式1</code>，同时产生有关的一些表；</p>
+</li>
+<li><p>然后，<code>主程序</code>调用<code>语法分析程序</code>，语法分析程序以中间表示形式1作为输入，进行语法分析，产生<code>中间表示形式2</code>以及相关表；</p>
+</li>
+</ul>
+<p>……</p>
+<ul>
+<li>最后，<code>主程序</code>调用<code>目标代码生成程序</code>，该程序把输入的<code>中间代码</code>转换为等价的<code>目标程序</code>；</li>
+</ul>
+<hr>
+<p>那么一遍编译程序和多遍编译程序应该如何选择呢？这要视计算机容量的大小、源语言的繁简、目标程序质量的高低等；</p>
+<blockquote>
+<p>分遍的好处：</p>
+</blockquote>
+<ul>
+<li>可以减少对主存容量的要求；</li>
+<li>可以使得编译程序结构清晰，各编译程序功能独立、单纯，相互联系简单；</li>
+<li>能够实现更充分的优化工作；</li>
+<li>通过分遍将编译程序的前端和后端分开，可以为编译程序的构造和移植创造条件；</li>
+</ul>
+<blockquote>
+<p>分遍的坏处：</p>
+</blockquote>
+<ul>
+<li>增加不少重复性的工作（因为每遍都有符号的输入和输出，这将降低编译的效率）；</li>
+</ul>
+<h2 id="4-编译程序的辅助"><a href="#4-编译程序的辅助" class="headerlink" title="4.编译程序的辅助"></a>4.编译程序的辅助</h2><p>要将源程序转换为可执行的代码，除了需要编译程序，还必须有其他程序配合，比如我们要设计如下一个语言处理系统</p>
+<p><img src="/images/image-20220915221513962.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="第二章-形式语言与自动机"><a href="#第二章-形式语言与自动机" class="headerlink" title="第二章 形式语言与自动机"></a>第二章 形式语言与自动机</h1><p>（这一章因为涉及形式语言，不是重点考核内容，只需要过一遍即可）</p>
+<p>基本概念：</p>
+<ul>
+<li><p>字母表：一个有穷字符集，记为∑</p>
+</li>
+<li><p>字母表中每个元素称为字符</p>
+</li>
+<li><p>∑上的字(也叫字符串) 是指由∑中的字符所构成的一个有穷序列</p>
+</li>
+<li><p>不包含任何字符的序列称为空字，记为ε</p>
+</li>
+<li><p>用∑*表示∑上的所有字的全体，包含空字ε</p>
+</li>
+</ul>
+<p>其他的一些规则：</p>
+<p><img src="/images/image-20220923100023477.png" srcset="/img/loading.gif" lazyload></p>
+<p>更多关于形式语言与自动机的概念参考<a href="https://gintoki-jpg.github.io/2022/06/17/%E6%9C%9F%E6%9C%AB_%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%A4%8D%E4%B9%A0/">形式语言与自动机复习笔记 - Tintoki_blog (gintoki-jpg.github.io)</a></p>
+<h1 id="第三章-词法分析"><a href="#第三章-词法分析" class="headerlink" title="第三章 词法分析"></a>第三章 词法分析</h1><p>编译过程的第一步是进行词法分析（词法分析和形式语言关系非常密切），其主要任务是从左至右逐个字符地对源程序进行扫描，按照源语言的词法规则识别出一个个单词符号，产生用于语法分析的记号序列（特殊地，需要将识别出来的标识符存入符号表中，）；</p>
+<p>在词法分析过程中，还可以完成用户接口有关的一些任务，如跳过源程序中的注释和空格，把来自编译程序的错误信息和源程序联系起来，如记住单词在源程序中的行&#x2F;列位置，从而行号可以作为错误信息的一部分提示给用户。有些词法分析程序可以复制源程序，并把错误信息嵌入其中；</p>
+<hr>
+<p>单词符号（记号）的分类：</p>
+<ul>
+<li>关键字&#x2F;基本字：begin，for…</li>
+<li>标识符：用来表示各种名字，如变量名、数组名和过程名；</li>
+<li>常数：各种类型的常数；</li>
+<li>运算符</li>
+<li>分界符</li>
+</ul>
+<p>输出的单词符号的表示形式<code>(单词种别，单词自身的值)</code>（等价于（记号，属性））</p>
+<h2 id="1-词法分析程序和语法分析程序的关系"><a href="#1-词法分析程序和语法分析程序的关系" class="headerlink" title="1.词法分析程序和语法分析程序的关系"></a>1.词法分析程序和语法分析程序的关系</h2><p>词法分析程序与语法分析程序之间的关系可以是3种形式之一：</p>
+<ul>
+<li>词法分析程序作为独立的一遍：经过这一遍的加工，可以将以字符串表示的源程序转换成以记号序列表示的源程序；</li>
+</ul>
+<p><img src="/images/image-20220916095929798-16632936138612.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>词法分析程序作为语法分析程序的子程序：将词法分析程序和语法分析程序安排在同一遍中，词法分析程序作为语法分析程序的一个子程序，每当语法分析程序需要一个新的记号时就调用词法分析程序，每调用一次，词法分析程序就从源程序字符串中识别出一个具有独立意义的单词，并把相应的记号返回。这种方法不仅避免了中间文件，而且还省去了取送符号的工作，有利于提高编译程序的效率；</li>
+</ul>
+<p><img src="/images/image-20220916100235907.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>词法分析程序与语法分析程序作为协同程序：将两个程序以协同工作的方式安排在同一遍中，以生产者和消费者的关系同步运行（将它们安排成交替执行的协同程序）</li>
+</ul>
+<p>无论采取哪种方式，词法分析程序都是独立于语法分析程序的，这样的好处是：</p>
+<ul>
+<li>简化设计，程序结构清晰；</li>
+<li>改进编译程序的效率，利用专门的读字符和处理记号的技术加快编译速度；</li>
+<li>加强编译程序的可移植性（在词法分析程序中处理特殊的或者非标准的符号）；</li>
+</ul>
+<h2 id="2-词法分析程序的输入与输出"><a href="#2-词法分析程序的输入与输出" class="headerlink" title="2.词法分析程序的输入与输出"></a>2.词法分析程序的输入与输出</h2><h3 id="2-1-词法分析程序的输入"><a href="#2-1-词法分析程序的输入" class="headerlink" title="2.1 词法分析程序的输入"></a>2.1 词法分析程序的输入</h3><p>根据词法分析程序的实现方法不同，其源程序的输入方法也不同，词法分析程序的实现主要有以下三种：</p>
+<p>（1）利用词法分析程序生成器LEX，从基于正规表达式的规范说明自动生成词法分析程序。这种情况下，生成器将提供用于源程序字符串的读入和缓冲的若干子程序；</p>
+<p>（2）利用传统的系统程序设计语言（如Pascal、C语言等）来编写词法分析程序。这种情况下，需要利用该语言所提供的输入&#x2F;输出能力来处理源程序字符串的读入操作；</p>
+<p>（3）利用汇编语言编写词法分析程序，此时需要直接管理源程序字符串的读入；</p>
+<hr>
+<p>（本节主要参考<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/7c1036461d98">编译原理总结提炼 - 简书 (jianshu.com)</a>）</p>
+<p>最基本的词法分析器包含扫描器、预处理子程序、扫描缓冲区、输入缓冲区，其核心为扫描器，对于将一个扫描缓冲区分为左右两个大小相同的半区的，我们称为双缓冲区输入模式：</p>
+<ul>
+<li><p>输入缓冲区：源程序进入输入缓冲区；</p>
+</li>
+<li><p>预处理程序：取消注释、剔除无用的空白、回车、换行等；</p>
+</li>
+<li><p>扫描缓冲区：从输入缓冲区输入固定长度的字符串到另一个缓冲区（扫描缓冲区），词法分析可以直接在此缓冲区中进行符号识别；</p>
+</li>
+</ul>
+<p><img src="/images/webp.webp" srcset="/img/loading.gif" lazyload></p>
+<p>主要概念说明：</p>
+<ul>
+<li>超前扫描：有时词法分析程序为了得到某一个单词符号的确切性质，只从该单词本身所含有的字符不能做出判定，需要超前扫描若干个字符之后才能做出确定的分析（如x&#x3D;(y++)+z，只有超前扫描才能确定运算符“+”和“++”）</li>
+<li>双缓冲区：扫描缓冲区的大小是有限的，有可能出现一个情况，就是从输入缓冲区预处理完的串装进扫描缓冲区时候，一次没有装完，末尾的某个单词被分开了，为了解决这个问题，就需要扫描缓冲区最好使用一个如下所示的一分为二的区域，设置双缓冲区</li>
+</ul>
+<p><img src="/images/webp-166330625414412.webp" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><p>起点指针 (lexeme Begin) ：用来指示正在扫描的单词的起点；</p>
+</li>
+<li><p>搜索指针 (forward) ：用于向前搜索，寻找单词的结束；</p>
+</li>
+</ul>
+<blockquote>
+<p>注意：假定每个半区可容N个字符，而这两个半区又是互补使用的，如果搜索指示器从单词起点出发搜索到半区边缘还没有达到单词终点，就会调用预处理程序，把后续的N个输入字符装进另一个半区，搜索指示器（搜索指针）进去那个半区再扫描就好了，这就不存在断掉的问题了，相当于是个循环链表；</p>
+<p>还有没有可能出现意外呢？当然可能，假如某个标志符或者常数的长度超过2N了，这神仙也没办法，所以应该在长度上加以一定的限制；</p>
+</blockquote>
+<h3 id="2-2-词法分析程序的输出"><a href="#2-2-词法分析程序的输出" class="headerlink" title="2.2 词法分析程序的输出"></a>2.2 词法分析程序的输出</h3><p>词法分析程序将源程序字符串转换为<code>记号序列</code>的形式，在此之前我们介绍几个特定概念：</p>
+<ul>
+<li>记号token：指的是某一类单词符号的<code>类别编码</code>，比如我们令标识符的记号为id，常数的记号为num等；</li>
+<li>模式pattern：指的是某一类单词符号的<code>构造规则</code>，比如标识符的模式是“由字母开头的字母数字串”</li>
+<li>单词lexeme：指的是某一类单词符号的一个<code>实例</code>，比如一个具体的标识符position就是一个单词</li>
+</ul>
+<p><img src="/images/image-20220916103138682.png" srcset="/img/loading.gif" lazyload></p>
+<p>大多数程序设计语言都包含如下记号：关键字、标识符、常数、运算符以及标点符号，在描述程序设计语言语法结构的上下文无关文法中记号是终结符；</p>
+<p>词法分析程序识别出一个记号之后，要把与之相关的信息作为它的<code>属性</code>保留下来：</p>
+<ul>
+<li>记号影响语法分析的决策；</li>
+<li>属性影响记号的翻译；</li>
+<li>对于标识符来说，记号的属性是它代表的单词在符号表中的入口指针；对于常数来说它的属性是它所表示的值；</li>
+</ul>
+<blockquote>
+<p>对关键字、运算符和标点符号来说，如果<code>每一个</code>关键字、运算符或标点符号作为单独的<code>一类</code>，则记号所代表的单词是唯一的，不再需要属性：</p>
+</blockquote>
+<ul>
+<li>若记号所代表的单词不唯一，如表3-1中的记号relop，则需要给出属性；</li>
+<li>若将所有的关键字归为一类，则对某一关键字的输出，除了类别编码外，还应该指出它在关键字表中的位置；</li>
+</ul>
+<p><img src="/images/image-20220916111308192-16632986586677.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="3-记号的描述和识别"><a href="#3-记号的描述和识别" class="headerlink" title="3.记号的描述和识别"></a>3.记号的描述和识别</h2><blockquote>
+<p>结论1：识别单词是按照记号的模式进行，一种记号的模式匹配一类单词的集合；</p>
+</blockquote>
+<p>正规表达式和正规文法是描述模式的重要工具，正规表达式和正规文法都可以用来描述程序设计语言中单词符号的结构，二者具有相同的表达能力：</p>
+<ul>
+<li>用正规表达式描述，清晰而简洁；</li>
+<li>用正规文法描述，则易于识别；</li>
+</ul>
+<p>通常，先用正规表达式来描述单词符号的结构，然后根据需要，把正规表达式转换为等价的正规文法，正规定义式为这种转换提供了条件（这部分实际就是上学期形式语言与自动机的内容，这部分书上讲的非常混乱不建议阅读）；</p>
+<h2 id="4-词法分析程序的设计与实现"><a href="#4-词法分析程序的设计与实现" class="headerlink" title="4.词法分析程序的设计与实现"></a>4.词法分析程序的设计与实现</h2><p>主要步骤如下（书本P65详细实现了一个词法分析程序，可供参考）：</p>
+<ul>
+<li>首先给出描述该语言各种单词符号（记号）的词法规则</li>
+</ul>
+<p><img src="/images/image-20220916144219352.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>使用正规文法描述各种单词符号（记号），我们这里均使用的是右线性文法（下图仅展示部分不全）</li>
+</ul>
+<p><img src="/images/image-20220916144248119.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>接着构造其状态转换图：根据每种记号的文法构造出相应的状态转换图，让这些状态转换图共用一个初态，就可以得到词法分析程序的状态转换图</li>
+</ul>
+<p><img src="/images/image-20220916144404575.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>最后根据状态转换图构造词法分析程序：有了状态转换图，只要把语义动作进一步添加到状态转换图中，使每一个状态都对应一小段程序，就可以构造出相应的词法分析程序；</li>
+</ul>
+<blockquote>
+<p>注意一点，在词法分析过程中，为了判断是否已经读到单词符号的右端字符，有时需要向前多读入一个字符，比如在标识符状态和无符号数状态，因此词法分析程序在返回调用程序之前，应将向前指针后退一个字符；</p>
+</blockquote>
+<h2 id="5-LEX软件"><a href="#5-LEX软件" class="headerlink" title="5.LEX软件"></a>5.LEX软件</h2><p>LEX全称为LEXical compiler的缩写，主要功能是根据LEX源程序生成一个C语言描述的词法分析程序：</p>
+<ul>
+<li>LEX源程序是词法分析程序的规格说明文件；</li>
+</ul>
+<p>使用LEX生成词法分析程序的流程图如下（Linux环境下）</p>
+<p><img src="/images/image-20220923100917659.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="5-1-LEX源程序结构"><a href="#5-1-LEX源程序结构" class="headerlink" title="5.1 LEX源程序结构"></a>5.1 LEX源程序结构</h3><p>一个LEX源程序由声明、翻译规则以及辅助过程三部分组成，各个部分间使用”%%”分隔：</p>
+<p><img src="/images/image-20220923101052349-16639017880044.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>声明部分：包括变量的声明、符号常量的声明以及正规定义（正规定义中定义的名字可以出现在翻译规则的正规表达式中），C语言声明语句一定要使用“%{}%”括起来；</li>
+<li>翻译规则部分：由正规表达式和相应动作组成的具有如下形式的语句序列；</li>
+</ul>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs mathematica"><span class="hljs-variable">P1</span> <span class="hljs-punctuation">&#123;</span>动作<span class="hljs-number">1</span><span class="hljs-punctuation">&#125;</span><br><span class="hljs-variable">P2</span> <span class="hljs-punctuation">&#123;</span>动作<span class="hljs-number">2</span><span class="hljs-punctuation">&#125;</span><br><br>其中<span class="hljs-built_in">Pi</span>是正规表达式，描述一种记号的模式；动作<span class="hljs-variable">i</span>是<span class="hljs-built_in">C</span>语言描述的程序段，表示当一个符号串匹配模式<span class="hljs-built_in">Pi</span>时词法分析程序执行的动作；<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>辅助过程是对翻译规则的补充：对于翻译规则部分中某些动作需要调用的过程或函数，若不是C语言的函数库则需要在此给出具体的定义；</li>
+</ul>
+<blockquote>
+<p>LEX源程序中翻译规则部分是必须的，声明部分和辅助过程部分可以没有</p>
+</blockquote>
+<h3 id="5-2-LEX使用指南"><a href="#5-2-LEX使用指南" class="headerlink" title="5.2 LEX使用指南"></a>5.2 LEX使用指南</h3><p>原文链接：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/wp5719/p/5528896.html">Lex使用指南 - 火雨(Nick) - 博客园 (cnblogs.com)</a></p>
+<h1 id="第四章-语法分析"><a href="#第四章-语法分析" class="headerlink" title="第四章 语法分析"></a>第四章 语法分析</h1><p>（实际上这章好像还是依赖形式语言，所以有时间还是回头复习一下形式语言）</p>
+<h2 id="1-语法分析简介"><a href="#1-语法分析简介" class="headerlink" title="1.语法分析简介"></a>1.语法分析简介</h2><p>语法分析的目的就是根据源语言的语法规则，从源程序记号序列中识别出各种语法成分同时进行语法检查，为语义分析和代码生成做准备；</p>
+<p>语法分析工作由语法分析程序完成；</p>
+<p><img src="/images/image-20220923111414520.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>需要注意的是语法分析有两个前提：</p>
+<ul>
+<li>采用正规式和有限自动机描述和识别语言的单词符号；</li>
+<li>用上下文无关文法来描述语法规则（关于上下文无关文法的解释参考<a href="https://gintoki-jpg.github.io/2022/06/17/%E6%9C%9F%E6%9C%AB_%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%A4%8D%E4%B9%A0/#1-1-%E4%B8%8A%E4%B8%8B%E6%96%87%E6%97%A0%E5%85%B3%E6%96%87%E6%B3%95CFG%E7%9A%84%E5%AE%9A%E4%B9%89">形式语言与自动机复习笔记 - Tintoki_blog (gintoki-jpg.github.io)</a>）；</li>
+</ul>
+</blockquote>
+<p>常用的语法分析方法有自顶向下和自底向上两大类：</p>
+<p>（1）自顶向下的分析方法：语法分析程序从树根到树叶自顶向下地为输入的记号序列建立分析树。如预测分析程序采用的就是自顶向下的分析方法；<br>（2）自底向上的分析方法：语法分析程序从树叶到树根自下而上地为输人的记号序列建立分析树。如LR分析程序采用的就是自底向上的分析方法；</p>
+<table>
+<thead>
+<tr>
+<th>自下而上</th>
+<th>自上而下</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>从输入串开始，逐步进行归约，直到文法的开始符号</td>
+<td>从文法的开始符号出发，反复使用各种产生式，寻找”匹配”的推导</td>
+</tr>
+<tr>
+<td>归约：根据文法的产生式规则，把串中出现的产生式的右部替换成左部符号</td>
+<td>推导：根据文法的产生式规则，把串中出现的产生式的左部符号替换成右部</td>
+</tr>
+<tr>
+<td>从树叶节点开始，构造语法树</td>
+<td>从树的根开始，构造语法树</td>
+</tr>
+<tr>
+<td>算符优先分析法、LR分析法</td>
+<td>递归下降分析法、预测分析程序</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>无论采用的是哪种分析方法，语法分析程序对输入记号序列的扫描均是<code>自左向右</code>进行的，<code>每次读入一个记号</code>；</p>
+</blockquote>
+<hr>
+<p>通常用户要求编译程序在工作过程中能够识别出源程序中存在的错误并能确定错误出现的位置和性质，而源程序中出现的错误大多是语法错误；</p>
+<p>语法分析程序主要处理语法错误：如算数表达式的括号不匹配、缺少运算对象等，错误处理的基本目标为：</p>
+<ul>
+<li>能够清楚而准确地报告发现的错误，如错误的位置和性质；</li>
+<li>能够迅速地从错误中恢复过来，以便继续诊断后面可能存在的错误；</li>
+<li>错误处理功能不应该明显地影响编译程序对正确程序的处理效率；</li>
+</ul>
+<p>语法分析程序可以采用的错误恢复策略主要有如下：</p>
+<ul>
+<li>紧急恢复：一旦发现错误，分析程序每次抛弃一个输入记号，直到向前指针所指向的记号属于某个指定的同步记号集合为止。同步记号通常是定界符，如语句结束符分号、块结束标识END等，它们在源程序中的作用是清楚的；<ul>
+<li>由于常常跳过一段记号不做分析，这要求编译程序必须选择合适的同步记号；</li>
+</ul>
+</li>
+<li>短语级恢复：一旦发现错误，分析程序便对剩余输入做局部纠正，用可以使分析程序继续分析的符号串代替剩余输入串的前缀；<ul>
+<li>典型的局部纠正有用分号代替逗号、删除多余的分号、插入遗漏的分号等。但如果总是在当前输入串前面插入一些记号的话，这种策略就可能使分析陷入死循环，所以编译程序的设计者必须仔细选择替换串；</li>
+</ul>
+</li>
+<li>出错产生式：通过增加产生错误结构的产生式，扩充源语言的文法，然后根据扩充后的文法构造分析程序。如果分析程序在分析过程中使用了这些扩充的产生式，表示输入记号序列中的这个错误结构已经被识别，产生适当的错误诊断信息；</li>
+<li>全局纠正：使用全局纠正策略的分析程序在处理不正确的输入符号串时，作尽可能少的修改，即给定不正确的输入串x和文法G，获得串y的分析树，使把x变成y所需要的插入、删除和修改量最少；</li>
+</ul>
+<h2 id="2-自顶向下分析方法"><a href="#2-自顶向下分析方法" class="headerlink" title="2.自顶向下分析方法"></a>2.自顶向下分析方法</h2><p>前面已经说过，自上而下的分析实质上就是从文法的开始符号S推导出字符串w的过程</p>
+<p><img src="/images/image-20220925092008326.png" srcset="/img/loading.gif" lazyload></p>
+<p>在每一步的推导过程中我们需要思考如下两个问题：</p>
+<ol>
+<li>替换当前句型中的哪个非终结符；</li>
+<li>用该终结符的哪个候选式进行替换；</li>
+</ol>
+<p>关于第一个问题，我们规定了两种选择：</p>
+<ul>
+<li>最左推导：最左推导中，总是选择句型最左非终结符进行替换；</li>
+<li>最右推导：最右推导中，总是选择句型最右非终结符进行替换；</li>
+</ul>
+<blockquote>
+<ul>
+<li><p>我们称最左规约为规范规约，相应的最右推导称为规范推导；（不要问为什么，这就是规定没有为什么）</p>
+</li>
+<li><p><code>自顶向下的语法分析采用最左推导方式</code>；（是不是觉得很神奇？？最右推导是规范的但是我就是要用最左…）</p>
+</li>
+</ul>
+</blockquote>
+<p>无论是最左推导还是最右推导，它们的推导结果以及产生的语法树一定是唯一的（除非这个句子是有二义性的）</p>
+<p>解决了第一个问题就该解决第二个问题了，这个问题就引出自顶向下分析将要面临的两个困境：</p>
+<ul>
+<li>回溯问题：分析过程中，当一个非终结符用某一个候选匹配成功时，这种匹配可能是暂时的（很可能因为后面的非终结符匹配不成功而重新匹配-回溯）</li>
+<li>文法左递归问题：因为我们规定了使用最左推导，所以如果出现这样的产生式P-&gt;Pa，那就永远别想推导出一个终结符串了；</li>
+</ul>
+<h3 id="2-1-消除左递归"><a href="#2-1-消除左递归" class="headerlink" title="2.1 消除左递归"></a>2.1 消除左递归</h3><p>发现了问题就需要解决问题，我们先来消除文法的左递归（因为形式语言学过），再来消除回溯；</p>
+<p>关于消除左递归我们参考<a href="https://gintoki-jpg.github.io/2022/06/17/%E6%9C%9F%E6%9C%AB_%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%A4%8D%E4%B9%A0/#4-%E6%A0%BC%E9%9B%B7%E5%B7%B4%E8%B5%AB%E8%8C%83%E5%BC%8FGNF">形式语言与自动机复习笔记 - Tintoki_blog (gintoki-jpg.github.io)</a>，左递归分为直接左递归和间接左递归：</p>
+<ul>
+<li>引入带下标的变量A1、A2来替换原有变量，利用规则“产生式左部变量下标要小于右部第一个变量下标”来调整变量下标消除间接左递归（间接左递归不是课程考察的重点）；</li>
+<li>通过构造产生式组（实质上就是将左递归变为右递归）消除直接左递归；</li>
+</ul>
+<p><img src="/images/image-20220925093853000.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-2-消除回溯"><a href="#2-2-消除回溯" class="headerlink" title="2.2 消除回溯"></a>2.2 消除回溯</h3><p>引起回溯的原因是，在文法中某个非终结符A有多个候选式，需要使用A匹配当前的输入符号的时候，无法确定选用唯一的候选式只能逐一试探，这将引起回溯；</p>
+<p>为了消除回溯，必须保证对文法的任何非终结符，当要它去匹配输入串时，能够根据它所面临的输入符号准确地指派它的一个候选去执行任务，并且此候选的工作结果应是确信无疑的（这不是废话，引起回溯的原因就是选的式子不唯一）；</p>
+<p>解决回溯的关键：已知所有产生式以及当前匹配符号串，选择一个最好的产生式；</p>
+<h4 id="2-2-1-First集合"><a href="#2-2-1-First集合" class="headerlink" title="2.2.1 First集合"></a>2.2.1 First集合</h4><p><code>First集合的定义</code>：令G是一个不含左递归的文法，对G的所有非终结符的每个候选产生式α定义它的<code>终结首符集</code>FIRST(α)为FIRST(α)&#x3D;{a│α⇒∗ a…，其中a∈V<del>T</del> }，特别是，若α⇒∗ ε，则规定ε∈FIRST(α)。</p>
+<p>简单来说就是有产生式A-&gt;bB，且当前匹配到的符号串是cb指针指向b，那么就直接选这个产生式相对来说最好；特别地，如果产生式恰好产生的是空串则需要特别处理；</p>
+<p><img src="/images/image-20220930104459404.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>结论1：如果非终结符A的所有First集两两不相交，即A的任何两个不同候选产生式a<del>i</del>和a<del>j</del>，有FIRST(a<del>i</del>)∩FIRST(a<del>j</del>)＝空集（举个例子，First(a<del>1</del>)&#x3D;{b,c}，First(a<del>2</del>)&#x3D;{d,e}，则两个集合不相交），则当要求A匹配输入串时，A能根据它所面临的第一个输入符号a，准确地指派某一个候选去执行任务，这个候选就是那个终结首符集含a的α产生式</p>
+</blockquote>
+<p>所以现在我们需要做的就是如何将每个非终结符的所有First集变成两两不相交的，我们使用提取公共左因子的方式：</p>
+<p>假定关于A的规则（产生式）是（其中β是含有其他终结符的句型）</p>
+<p><img src="/images/image-20220930102730035.png" srcset="/img/loading.gif" lazyload></p>
+<p>那么，可以将这些规则改写成</p>
+<p><img src="/images/image-20220930102805266.png" srcset="/img/loading.gif" lazyload></p>
+<p>（实际做题过程中提取左公共因子这一步应该在First集合之前完成）</p>
+<h4 id="2-2-2-Follow集合"><a href="#2-2-2-Follow集合" class="headerlink" title="2.2.2 Follow集合"></a>2.2.2 Follow集合</h4><p>上面说到的非终结符推出空串需要特殊处理，这里我们来详细介绍一下怎么特殊处理；</p>
+<p><img src="/images/image-20220930104602272.png" srcset="/img/loading.gif" lazyload></p>
+<p>当非终结符的产生式中有空串，则需要求这个非终结符的Follow集，便于在推导过程中是否应该选择空产生式；</p>
+<p>上面的例子中我们只需要关注E·以及T·的Follow集即可（因为只有它们两个的产生式中有空产生式） </p>
+<blockquote>
+<p>结论2：如果当前某非终结符A与当前输入符a不匹配时，若存在A→ε，可以通过检查a是否可以出现在A的后面，来决定是否使用产生式 A→ε（若文法中无 A→ε，则应报错（当然这是尝试了所有的匹配之后））</p>
+</blockquote>
+<p>我们再次举个例子来看Follow集的必要性</p>
+<p><img src="/images/image-20220930110756974.png" srcset="/img/loading.gif" lazyload></p>
+<p>因为能够跟在B后面的终结符只可能是c和a（“紧跟”这个词需要好好理解），所以第二个符号串我们不可能使用”B-&gt;空串”来匹配adBC得到目标符号串ade，而因为另外两个B的产生式也不匹配，所以语法分析器会直接返回符号串不匹配错误；</p>
+<hr>
+<p><code>Follow集合的定义</code>：假定S是文法G的开始符号，对于G的任何非终结符A，我们定义A的FOLLOW集合</p>
+<p>FOLLOW(A)&#x3D;{a│S⇒∗ …Aa…，其中a∈V<del>T</del> }，特别是，若S⇒∗ …A，则规定#∈FOLLOW(A) （也就是说如果从开始符号推出的A的后面没有终结符，则把#语法结束符号加入Follow(A)集）</p>
+<blockquote>
+<p>结论3：只要给定了文法，就能求出唯一不变的First集和Follow集；</p>
+</blockquote>
+<h4 id="2-2-3-First和Follow集合的构造"><a href="#2-2-3-First和Follow集合的构造" class="headerlink" title="2.2.3 First和Follow集合的构造"></a>2.2.3 First和Follow集合的构造</h4><p>文章参考：[编译原理求FIRST集、FOLLOW集和SELECT集 | 言曌博客 (liuyanzhao.com)](<a target="_blank" rel="noopener" href="http://liuyanzhao.com/8279.html#:~:text=First%E9%9B%86%E5%90%88%E9%A1%BE%E5%90%8D%E6%80%9D%E4%B9%89%E5%B0%B1%E6%98%AF%E6%B1%82,%E4%B8%80%E4%B8%AA%E6%96%87%E6%B3%95%E7%AC%A6%E5%8F%B7%E4%B8%B2%E6%89%80%E5%8F%AF%E8%83%BD%E6%8E%A8%E5%AF%BC%E5%87%BA%E7%9A%84%E7%AC%A6%E5%8F%B7%E4%B8%B2%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%BB%88%E7%BB%93%E7%AC%A6%E7%9A%84%E9%9B%86%E5%90%88">http://liuyanzhao.com/8279.html#:~:text=First集合顾名思义就是求,一个文法符号串所可能推导出的符号串的第一个终结符的集合</a> 。)</p>
+<p>我们总结一下计算First集合和Follow集合的方法；</p>
+<blockquote>
+<p>First集合：一个文法符号(串)可能推导出的所有符号串的第一个终结符的集合</p>
+</blockquote>
+<ul>
+<li><p><code>计算单个终结符号的First(a)</code>：单个终结符的Fistr集合就是它自己</p>
+</li>
+<li><p><code>计算文法符号X的First(X)</code>（即单个非终结符的First集合）</p>
+</li>
+</ul>
+<p><img src="/images/image-20221007100825921.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><code>计算文法符号串X1X2X3...Xn的First集合</code>（这里的Xi可以是终结符也可以是非终结符）</li>
+</ul>
+<p><img src="/images/image-20221007100943624.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>Follow集合：文法符号后面可能跟随的终结符的集合（不包括空串）</p>
+</blockquote>
+<p>注意终结符的Follow集合没有定义，只有非终结符才会有Follow集合；Follow集合中的符号一定是终结符且不包含空串；</p>
+<p>定义开始符号的Follow集合初始为</p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/" class="category-chain-item">大学课程</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/">#课程学习</a>
+      
+        <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">#计算机基础</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>编译原理</div>
+      <div>https://gintoki-jpg.github.io/2022/09/09/通识_编译原理/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>杨再俨</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年9月9日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/09/12/%E5%85%AD%E7%BA%A7%E8%8B%B1%E8%AF%AD/" title="六级英语">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">六级英语</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/09/08/%E9%80%9A%E8%AF%86_%E7%A7%91%E6%8A%80%E5%8F%B2%E4%B8%8E%E6%96%B9%E6%B3%95%E5%AD%A6/" title="科技史与方法学">
+                        <span class="hidden-mobile">科技史与方法学</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+</div>
+
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

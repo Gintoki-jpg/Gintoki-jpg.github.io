@@ -1,0 +1,2064 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/logo.png">
+  <link rel="icon" href="/img/bg/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="杨再俨">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="操作系统是管理计算机硬件与软件资源的计算机程序。操作系统需要处理如管理与配置内存、决定系统资源供需的优先次序、控制输入设备与输出设备、操作网络与管理文件系统等基本事务。操作系统也提供一个让用户与系统交互操作的界面。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机操作系统">
+<meta property="og:url" content="https://gintoki-jpg.github.io/2022/06/27/%E9%80%9A%E8%AF%86_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:site_name" content="Tintoki_blog">
+<meta property="og:description" content="操作系统是管理计算机硬件与软件资源的计算机程序。操作系统需要处理如管理与配置内存、决定系统资源供需的优先次序、控制输入设备与输出设备、操作网络与管理文件系统等基本事务。操作系统也提供一个让用户与系统交互操作的界面。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/sys.png">
+<meta property="article:published_time" content="2022-06-27T03:38:00.000Z">
+<meta property="article:modified_time" content="2022-09-28T09:26:21.932Z">
+<meta property="article:author" content="YangZaiyan">
+<meta property="article:tag" content="课程学习">
+<meta property="article:tag" content="考研">
+<meta property="article:tag" content="计算机基础">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gintoki-jpg.github.io/img/bg/sys.png">
+  
+  
+  
+  <title>计算机操作系统 - Tintoki_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"gintoki-jpg.github.io","root":"/","version":"1.9.1","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tintoki_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/bg1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">计算机操作系统</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-06-27 11:38" pubdate>
+          2022年6月27日 中午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          50k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          417 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">计算机操作系统</h1>
+            
+            <div class="markdown-body">
+              
+              <p>操作系统基本知识点链接：<a target="_blank" rel="noopener" href="https://www.yuque.com/tintoki/pufkgq/vnq8g6%EF%BC%8C%E8%AF%AD%E9%9B%80%E4%B8%BB%E8%A6%81%E8%B7%9F%E7%9A%84%E6%98%AFB%E7%AB%99%E7%8E%8B%E9%81%93%E8%A7%86%E9%A2%91%EF%BC%8C%E4%BD%9C%E4%B8%BA%E5%9F%BA%E7%A1%80%E7%9A%84%E5%85%A5%E9%97%A8%E8%A7%86%E9%A2%91%E4%BB%A5%E5%8F%8A%E6%9C%80%E7%BB%88%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%9A%84%E5%8F%82%E8%80%83%EF%BC%9B">https://www.yuque.com/tintoki/pufkgq/vnq8g6，语雀主要跟的是B站王道视频，作为基础的入门视频以及最终期末复习笔记的参考；</a></p>
+<hr>
+<p>2022&#x2F;7&#x2F;11 9:40 CSAPP到后面真的讲的过于专业了，知识体系完全不成结构，这也是黑皮书的通病，暂且放一下吧，这本书确实非常不适合初学者学习，操作系统可以另外找书看或者找视频辅助；</p>
+<p>2022&#x2F;9&#x2F;5 13:09 本博客前半部分本来是打算整理 《深入理解计算机系统》原书第三版的读书笔记，读了一段时间之后发现确实读不进去，接着就是第五学期学习操作系统的相关知识点，于是重新开始写这篇博客，主要还是跟着B站视频先来过一遍，毕竟上课老师讲的确实不太适合用来整理笔记，视频选择<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1d4411v7u7?from=search&seid=2361361014547524697&vd_source=276d55048634a5b508b1b53a1ecd56b3">操作系统（哈工大李治军老师）32讲（全）超清_哔哩哔哩_bilibili</a>；</p>
+<p>2022&#x2F;9&#x2F;7 18:32 B站哈工大的操作系统结合了原理和实际一起讲解，同时还有coding，非常符合我们老师的讲课方式，使用的教材是操作系统原理与实践（哈工大 李治军）；这里我要说一下王道的视频，只适合用来最后复习，因为王道的视频全是散乱的知识点，对于初学者来说简直是噩梦无法构成知识体系；还有CSAPP，这个不管是书还是视频都只能是你学完整体计算机的体系结构之后才能理解，这本书相当于就是一个整合提高的，千万别用来初学；</p>
+<p>2022&#x2F;9&#x2F;8 16:45 B站视频最好用来打辅助，书上晦涩的点比如图灵机直接看视频即可，其他部分看书效率更高；</p>
+<p>2022&#x2F;9&#x2F;9 9:19 每当我们看完一章然后不知道怎么串知识点的时候，可以回头看看每章开头的前言，能够帮助我们较好的掌握这一章的主线；</p>
+<p>2022&#x2F;9&#x2F;16 9:02 现在的问题就是因为前面看书看的太快了，导致很多细节的寄存器或者专有名词没有总结，于是看到后面根本就看不懂了，所以这里先停一停往后学习，回到前面重新看书总结之前漏过的知识点（不要为王道寄予太多希望，那个书只适合考研，对于自己构建一个完整的操作系统的体系是没有好处的），实在不想整理遇到不懂的问题善用搜索引擎也是可以的；</p>
+<p>2022&#x2F;9&#x2F;16 15:15 要是真的很闲的话就去学学<code>汇编语言</code>（推荐《汇编语言》王爽），对之后的学习很有用，不仅是操作系统还是编译原理都极大的依赖这门课；</p>
+<p>2022&#x2F;9&#x2F;18 17:07 我终于知道为什么你看不懂了，因为操作系统最重要的基本知识点，这本书没有提及，这就意味着我们现在应该停下脚步去把最基本的一些知识点总结之后再继续学习整体规划；</p>
+<p>2022&#x2F;9&#x2F;19 8:30 这本书缺少一些必要的知识点总结，到时候根据王道操作系统总结在一个专题博客里面即可，其实硬要学的话也学的下去，反正看个人学习习惯吧；</p>
+<hr>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><h2 id="1-导论"><a href="#1-导论" class="headerlink" title="1.导论"></a>1.导论</h2><p>从宏观的鱼度看，可以计算机系统分成三个基本组成部分：底层的计算机硬件、中间层的操作系统以及上层的计算机应用程序，操作系统属于承上启下的中间层，所以它在计算机系统中的地位和作用尤为重要；</p>
+<blockquote>
+<p>操作系统是计算机系统中最基本的系统软件；</p>
+</blockquote>
+<p>操作系统的层次结构如下，可以认为对操作系统来说，用户和应用进程等价，都是其服务对象；</p>
+<p><img src="/images/image-20220919130028986.png" srcset="/img/loading.gif" lazyload></p>
+<p>本书以“如何给一个拥有单核CPU、内存、磁盘、键盘和显示器的基本计算机配备一个可实际运转的小操作系统”这一基本问题作为主线，对这个基本操作系统中的六个基本模块，即CPU管理、内存管理、外设管理、磁盘管理与文件系统、用户接口和启动模块，以及这些模块之间的内在联系，进行了深入细致的原理阐述、算法与数据结构设计；</p>
+<p><img src="/images/image-20220908151913042.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<blockquote>
+<p>Q：处理机和CPU有什么关系，是等价的吗？</p>
+</blockquote>
+<p>A：可以简单的认为处理机&#x3D;CPU+存储器+I&#x2F;O接口，所以对于单核CPU实际上也就是只有一个处理机；</p>
+<hr>
+<h2 id="2-专业术语"><a href="#2-专业术语" class="headerlink" title="2.专业术语"></a>2.专业术语</h2><ul>
+<li>PC寄存器：程序计数器，保存程序指令当前执行的位置；</li>
+<li>CS寄存器：段寄存器</li>
+<li>IP寄存器：段内偏移寄存器</li>
+<li>BIOS：基本输入输出系统，是一段ROM，其中放置的代码是对基本硬件的测试代码，同时提供一些让用户调用硬件基本输入输出功能的子程序；</li>
+<li>DS:SI：DS和ES是段寄存器，SI和DI是变址寄存器，DS和SI组成DS:SI，ES和DI组成ES:DI，<code>DS:SI</code>和<code>ES:DI</code>表示相关寄存器所引用的segment:offset；</li>
+</ul>
+<h1 id="第一章-系统启动"><a href="#第一章-系统启动" class="headerlink" title="第一章 系统启动"></a>第一章 系统启动</h1><h2 id="1-什么是操作系统"><a href="#1-什么是操作系统" class="headerlink" title="1.什么是操作系统"></a>1.什么是操作系统</h2><p>操作系统就是安装在计算机硬件之上的一个实实在在的软件，人们通过这个软件可以方便而高效地使用计算机硬件。</p>
+<p>（1）操作系统是安装在计算机硬件之上的一层软件；</p>
+<p>（2）操作系统之上可以安装各种应用程序软件；</p>
+<p>（3）用户可以通过应用程序软件来间接使用操作系统，也可以直接使用操作系统，但通常都是通过操作系统来最终使用计算机硬件的；</p>
+<p>（4）直接使用操作系统的含义就是让用户通过编写程序来调用操作系统提供的系统接口从而进入操作系统，而图1.1中的应用程序软件就是为调用这些系统接口而编写的程序；</p>
+<p>（5）用户通过系统接口进入操作系统后使用计算机硬件，即用户必须“穿过”操作系统才能使用计算机硬件；</p>
+<p>（6）操作系统管理计算机硬件，目的是让用户对计算机硬件的使用更加简便，也更加高效。</p>
+<p><img src="/images/image-20220908153234191.png" srcset="/img/loading.gif" lazyload></p>
+<p>操作系统在管理CPU的时候，抽象出来一个基本概念——进程，因此CPU管理就变成了<code>进程管理</code>；操作系统在管理磁盘等外部设备的时候，又抽象出来一个被称为文件的基本概念，这样磁盘管理又变成了<code>文件系统</code>。</p>
+<p>一个基本操作系统包含如下四个基本管理模块：进程管理、内存管理、I&#x2F;O管理以及文件系统，再加上提供给上层应用的系统接口，就形成了如图1.3所示的操作系统结构（当然这只是基本的操作系统结构，还有很多与之不同的结构图）</p>
+<p><img src="/images/image-20220908153519558.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-1-操作系统的特征"><a href="#1-1-操作系统的特征" class="headerlink" title="1.1 操作系统的特征"></a>1.1 操作系统的特征</h3><p>操作系统是一种系统软件，操作系统的基本特征包括并发、共享、虚拟和异步；</p>
+<hr>
+<blockquote>
+<p>Q：系统软件和应用软件的区别？</p>
+</blockquote>
+<p>A：</p>
+<ul>
+<li>系统软件负责管理计算机系统中各种独立的硬件，使得它们可以协调工作。系统软件有如下：<ul>
+<li>操作系统，操作系统管理计算机的硬件设备，能够使应用软件方便，高效地使用这些设备；</li>
+<li>语言处理程序，语言处理程序有汇编语言，汇编器，连接器等；</li>
+<li>数据库管理系统，数据库管理系统是一种操纵和管理数据库的大型软件，用于建立，使用和维护数据库；</li>
+</ul>
+</li>
+<li>应用软件是电脑软件的主要分类之一，是为满足用户不同领域，不同问题的应用需求而提供的那部分软件。应用软件有如下：<ul>
+<li>办公软件，有图片商场，梦想编织者等；</li>
+<li>图像处理软件，有绘声绘影，数码大师，影视屏王等；</li>
+<li>翻译软件，有金山词霸，有道词典等；</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="1-1-1-并发"><a href="#1-1-1-并发" class="headerlink" title="1.1.1 并发"></a>1.1.1 并发</h4><p>操作系统的并发性是指计算机系统中“同时”存在多个运行的程序，它具有处理和调度多个程序“同时”执行的能力；</p>
+<hr>
+<blockquote>
+<p>Q：并发和并行的区别？</p>
+</blockquote>
+<p>A：</p>
+<ul>
+<li>并发：同一时间间隔</li>
+<li>并行：同一时刻</li>
+</ul>
+<p>基于单处理机的背景，实际上每个时刻仅能有一道程序执行，<code>在一段时间内</code>，宏观上有多道程序在同时执行，微观上这些程序仍然是分时交替执行的 —— 操作系统的并发性是通过分时得以实现的；</p>
+<p>而并行性需要有相关硬件的支持，要么是多流水线，要么是多处理机硬件；</p>
+<hr>
+<h4 id="1-1-2-共享"><a href="#1-1-2-共享" class="headerlink" title="1.1.2 共享"></a>1.1.2 共享</h4><p>共享也就是资源共享，是指系统中的资源可供内存中多个并发执行的进程共同使用，共享可分为以下两种资源共享方式：</p>
+<ul>
+<li>互斥共享方式：规定在一段时间内只允许一个进程访问资源，将在一段时间内只允许一个进程访问的资源成为临界资源或独占资源；</li>
+<li>同时访问方式：“同时”通常是指宏观上的，微观上这些进程可能是交替地对资源进行访问，即“分时共享”；</li>
+</ul>
+<h4 id="1-1-3-虚拟"><a href="#1-1-3-虚拟" class="headerlink" title="1.1.3 虚拟"></a>1.1.3 虚拟</h4><p>虚拟是指将一个物理上的实体变为若干逻辑上的对应物；</p>
+<p>操作系统利用了多种虚拟技术来实现虚拟处理器、虚拟内存和虚拟外部设备等：</p>
+<ul>
+<li>利用多道程序设计技术把一个物理上的CPU虚拟为多个逻辑上的CPU（即分时使用一个处理器），称为虚拟处理器；</li>
+<li>将用户感受到的存储器称为虚拟存储器（实际存储器我们编程的时候根本接触不到）；</li>
+</ul>
+<p>简单来说，操作系统的虚拟技术可以归纳为：时分复用技术（处理器的分时共享）和空分复用技术（虚拟存储器）</p>
+<h4 id="1-1-4-异步"><a href="#1-1-4-异步" class="headerlink" title="1.1.4 异步"></a>1.1.4 异步</h4><p>异步是在多道程序环境下允许多个程序并发执行极有可能导致的进程与时间有关的错误，操作系统可以解决多道程序引发的异步问题，保证多次运行进程后都能获得相同的结果；</p>
+<h3 id="1-2-操作系统的接口"><a href="#1-2-操作系统的接口" class="headerlink" title="1.2 操作系统的接口"></a>1.2 操作系统的接口</h3><p>操作系统系统了一系列接口为用户服务，主要分为两类：</p>
+<ul>
+<li><p>命令接口：用户利用这些操作命令来组织和控制作业的执行，使用命令接口进行作业控制的主要方式有两种，按照控制的方式可将命令接口分为两类</p>
+<ul>
+<li>脱机控制接口：脱机命令接口又称为批处理命令接口，适用于批处理系统，批处理类比于雇主将工人需要做的事写在清单上，工人按照清单命令逐条完成这些事；</li>
+<li>联机控制接口：又称为交互式命令接口，适用于分时或实时系统的接口，雇主说一句话工人做一件事并反馈，强调交互性；</li>
+</ul>
+</li>
+<li><p>程序接口：编程人员使用它们来请求操作系统服务，实际上就是系统调用；</p>
+</li>
+<li></li>
+</ul>
+<h2 id="2-操作系统的历史"><a href="#2-操作系统的历史" class="headerlink" title="2.操作系统的历史"></a>2.操作系统的历史</h2><blockquote>
+<p>简单的批处理系统</p>
+</blockquote>
+<p>“批处理”工作模式即计算机逐个执行每个任务，每个任务只有在执行完毕或出错以后才会切换去执行下一个任务；</p>
+<p>批处理操作系统的任务就是在当前程序执行完毕或出错时，将下一个程序读入内存，并将程序执行指针设置为 放置下一个计算任务第一句代码所在的内存地址；</p>
+<p>这样的操作系统实际上只能算是一个监控小程序，远不能算作是操作系统；</p>
+<blockquote>
+<p>多道程序系统</p>
+</blockquote>
+<p>假设有JOB1和JOB2，JOB1涉及外存的使用非常耗时，JOB2只进行科学计算；</p>
+<p>多道程序的概念是指，可以同时启动JOB1和JOB2两个任务。首先执行J0B1，当其执行到外存读写操作时，CPU向外存发出操作指令后记住JOB1的当前执行状态，然后CPU切换到JOB2去执行，当J0B1的外存读写操作完成时，CPU保存JOB2当前的执行状态并切换回到JOB1，从那个保存下来的执行状态处继续执行；</p>
+<p>多道程序是指计算机系统中有多个程序“同时”向前推进（这里的同时加引号是因为只有一个CPU，同时仅仅只是宏观上的感觉）</p>
+<blockquote>
+<p>分时处理系统</p>
+</blockquote>
+<p>在多道程序的基础上，MULTICS为了解决多个用户共同使用一台计算机的资源共享问题，让每一个用户启动的计算任务对应一个多道程序，通过切换让每个用户的任务都得到执行，同时引入“时间片”的概念，使得每个用户被分配到一个固定大小的时间片T，用完这个时间片后将CPU切换给下一个用户；</p>
+<blockquote>
+<p>总结</p>
+</blockquote>
+<p>根据操作系统的发展历史，可以总结出操作系统的核心轮廓，即<code>多进程视图</code>和<code>文件视图</code>；</p>
+<p>无论操作系统如何演进，操作系统的基本思想——多道程序一直没有改变过，这依赖于现代计算机都以“存储程序”思想作为基本结构；因为程序执行和未执行的状态差别非常大，所以针对执行中的程序定义了进程的概念，也因此CPU在多个程序之间来回切换就变成了在多个进程之间不断交替执行，也就是著名的多进程切换视图</p>
+<p><img src="/images/image-20220908160711363.png" srcset="/img/loading.gif" lazyload></p>
+<p>文件视图简单来说就是将所有的计算机外部设备都统一抽象成文件（类似于Linux“一切皆文件”的思想）</p>
+<p>多进程视图让CPU和内存高效运转，用户程序在文件视图下使用各种外部设备，因此在多进程视图和文件视图下，整个计算机硬件系统不断高效运转，操作系统也就完成了其对计算机硬件的管理。因此，多进程视图和文件视图构成了操作系统的完整轮廓；</p>
+<h2 id="3-操作系统启动过程"><a href="#3-操作系统启动过程" class="headerlink" title="3.操作系统启动过程"></a>3.操作系统启动过程</h2><h3 id="3-1-计算机工作原理"><a href="#3-1-计算机工作原理" class="headerlink" title="3.1 计算机工作原理"></a>3.1 计算机工作原理</h3><p>计算机本质上是一个计算模型，最著名的计算模型是图灵机</p>
+<blockquote>
+<p>简单图灵机</p>
+</blockquote>
+<p>模拟大脑-&gt;笔-&gt;纸张的计算过程，图灵机由控制器、纸带以及连接两者的读写指针组成</p>
+<p><img src="/images/image-20220908163759796.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>通用图灵机</p>
+</blockquote>
+<p>当然简单图灵机只能做非常简单的加法、减法等单一的操作，简单图灵机经过演化得到通用图灵机</p>
+<p><img src="/images/image-20220908163948272.png" srcset="/img/loading.gif" lazyload></p>
+<p>类比厨师做菜，简单图灵机就只是一个只会做一道菜肴的普通厨师，一个能看懂菜谱的厨师对应可以修改的控制器，不同的菜谱（做菜的步骤）对应设置控制器动作（这也就是现代计算机中的程序），数据对象对应按照菜谱做出的菜肴；</p>
+<blockquote>
+<p>总结</p>
+</blockquote>
+<p>通用图灵机已经非常接近现代“冯诺依曼”体系的计算机，我们可以得出结论，计算机的工作原理无非四个字——取值执行</p>
+<h3 id="3-2-启动操作系统"><a href="#3-2-启动操作系统" class="headerlink" title="3.2 启动操作系统"></a>3.2 启动操作系统</h3><p>（这一章我们可以参考汇编语言<a href="https://gintoki-jpg.github.io/2022/09/20/%E9%80%9A%E8%AF%86_%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/#%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%86%85%E4%B8%AD%E6%96%AD">汇编语言 - Tintoki_blog (gintoki-jpg.github.io)</a>）</p>
+<p>操作系统启动的主要工作就三项：系统准备、系统初始化和系统运转进入shell。系统准备又包括读入内核、启动保护模式、启动段页等，图1.30给出了系统启动过程的基本轮廓。</p>
+<p><img src="/images/image-20220908170529921.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<p>2022&#x2F;9&#x2F;8 17:06 这里要说一下，因为这部分对汇编原理的要求极高，而根据现在半吊子的水平可以说对汇编语言一窍不通，所以我们这部分就暂且只记一个结论，之后需要深入了解的时候回头复习也是OK的，对应视频<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1d4411v7u7?p=2&vd_source=276d55048634a5b508b1b53a1ecd56b3">L2 开始揭开钢琴的盖子_哔哩哔哩_bilibili</a></p>
+<hr>
+<h3 id="3-3-实模式和保护模式"><a href="#3-3-实模式和保护模式" class="headerlink" title="3.3 实模式和保护模式"></a>3.3 实模式和保护模式</h3><p>文章参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42968829/article/details/100897095">(29条消息) x86架构实模式和保护模式_liuxinux的博客-CSDN博客</a></p>
+<p>之所以要介绍这个概念是因为这个概念很重要，在汇编和之后的操作系统课程中还会提及；</p>
+<p>X86架构是Intel较早出的CPU（8086、80286等16位以及之后的32位都属于这个架构），现在的64位CPU被称为X64（至于是AMD的还是Intel的就不要太纠结了），至于其他的ARM架构等不在我们的讨论范围中；</p>
+<p>现在我们来介绍为什么会有实模式real model和保护模式protected model这两个专业术语；</p>
+<p>保护模式又被称为虚地址保护模式，是在80286系列之后出现的一种CPU操作模式，在此之前只有实模式，为了兼容，现代计算机上电后CPU首先会在实模式下再转换为保护模式；</p>
+<h4 id="3-3-1-实模式"><a href="#3-3-1-实模式" class="headerlink" title="3.3.1 实模式"></a>3.3.1 实模式</h4><p>CPU实模式的内存寻址方式为分段寻址（段地址*16+段内偏移）；</p>
+<blockquote>
+<p>要注意寻址方式不是操作系统专有（操作系统寻址也是需要借助硬件的），当数据存放在内存中的时候，我们称定位内存单元地址的方法为寻址，不管寻址方式如何，最终的内存中的物理地址还是一个整形的数值；</p>
+</blockquote>
+<h4 id="3-3-2-保护模式"><a href="#3-3-2-保护模式" class="headerlink" title="3.3.2 保护模式"></a>3.3.2 保护模式</h4><p>CPU保护模式脱胎于32位CPU，这意味着保护模式下CPU可以利用2^32^的内存区域，而如今流行的64位CPU的内存空间几乎是无限大；</p>
+<p>32位CPU除了能够寻址32位的地址以外（16位CPU可以寻址20位），还发展出了很多的功能，与现代操作系统相辅相成，例如内存保护，分页系统，以及硬件支援的 虚拟内存，拥有这么多的功能，硬件自然要提供很多机制才能实现出来，这就叫做保护模式；且保护模式下可以防止程序之间互相访问带来的问题；</p>
+<p>因为保护模式利用了更大的内存空间，所以其寻址方式相较于实模式更加复杂，其段寄存器不再是一个单纯的段基址而是一个指向数据结构的指针；保护模式下的寻址方式主要有分段模式和分页模式；</p>
+<h5 id="1-全局描述符表GDT"><a href="#1-全局描述符表GDT" class="headerlink" title="(1)全局描述符表GDT"></a>(1)全局描述符表GDT</h5><p>GDT是在保护模式下一个必不可少的数据结构，同时在系统中只能是唯一的；</p>
+<p>实模式下对内存地址的访问通过段基址:段内偏移实现，保护模式下内存的管理模式分为段模式和页模式（页模式基于段模式，也被称为段页式）；</p>
+<p>段模式下对一个段的描述包括3个因素[段基址，段最大长度，访问权限]，我们将该64bit长的数据结构称为段描述符，而寄存器始终是16bit的，因此只能将这些长度为64bit的数据结构放在一个数组中，该全局可见数组就是GDT（事实上GDT不仅存了段描述符，还有其他描述符）；</p>
+<p>GDT可以存放在内存的任何位置，GDTR寄存器专门用于存放GDT的入口地址，之后CPU就可以根据该寄存器中的内容作为GDT的入口来访问GDT；</p>
+<h5 id="2-局部描述符表LDT"><a href="#2-局部描述符表LDT" class="headerlink" title="(2)局部描述符表LDT"></a>(2)局部描述符表LDT</h5><p>除了GDT，Intel 32位体系架构还支持构建与GDT类似的数据结构LDT（每个进程的段表实际就是LDT）：</p>
+<ul>
+<li>LDT可以在系统中存在多个；</li>
+<li>它们只对引用它们的任务可见，每个任务最多有一个LDT；</li>
+<li>LDT作为一个段存在，其段描述符放在GDT中；</li>
+</ul>
+<p>同样的，Intel 32位架构提供了LDTR寄存器来保存LDT的入口地址（全局只需要一个）；</p>
+<blockquote>
+<p>GDT表描述的是操作系统的代码段、数据段等（主要存放操作系统和各任务公用的描述符），LDT表用来描述每个进程的代码段、数据段等；</p>
+</blockquote>
+<h4 id="3-3-3-其他"><a href="#3-3-3-其他" class="headerlink" title="3.3.3 其他"></a>3.3.3 其他</h4><p>文章参考<a target="_blank" rel="noopener" href="https://www.cnblogs.com/xjjsk/p/9396505.html">实模式：奇葩的存在 - 心渐渐失空 - 博客园 (cnblogs.com)</a>，主要介绍一下为啥现在的计算机有实模式和保护模式；</p>
+<p>作为操作系统中奇葩的存在，电脑启动时CPU在实模式，启动过程中的某个阶段会切换成保护模式（CPU是保护模式，那么我们就可以说操作系统运行在硬件的实模式下）；</p>
+<p>传统的16位处理器启动时就是在实模式，也就是纯裸的，没有任何支持。32位处理器为了兼容16处理器，把开机时的实模式也兼容了，所以即使是16位的操作系统，放到32位处理器上，仍然能运行。所以开机的时候CPU就是实模式，然后32位操作系统又将实模式切换成保护模式。如果发现是16位的操作系统，就直接运行在实模式好了。实模式的存在就能兼容之前的16位程序。</p>
+<h2 id="4-操作系统的运行环境"><a href="#4-操作系统的运行环境" class="headerlink" title="4.操作系统的运行环境"></a>4.操作系统的运行环境</h2><p>CPU通常会执行两种不同性质的程序：</p>
+<ul>
+<li>一种是操作系统内核程序（简称管理程序，可以理解为系统软件的组成）；</li>
+<li>一种是用户自编程序（简称应用程序，可以理解为应用软件的组成）；</li>
+</ul>
+<p>对操作系统而言，前者是后者的管理者，因此“管理程序”会使用一些“应用软件”不允许执行的特权指令如I&#x2F;O指令、置中断指令等；</p>
+<p>具体实现就是将CPU的状态划分为用户态和核心态，使得用户自编程序运行在用户态，操作系统内核程序运行在核心态；</p>
+<h3 id="4-1-操作系统的内核"><a href="#4-1-操作系统的内核" class="headerlink" title="4.1 操作系统的内核"></a>4.1 操作系统的内核</h3><p>一些与硬件关联比较密切的模块如时钟管理、中断处理等；其次是运行频率较高的程序如进程管理、设备管理等，这两部分内容构成了操作系统的内核 —— 这部分的指令操作工作在核心态，内核是计算机上配置的底层软件；</p>
+<p>内核是不能直接使用的，如Linux内核，必须包装（添加C库、C编译器、绘图软件等应用软件）之后才能给用户使用；</p>
+<p>不同的系统对内核的定义有区别，大多数操作系统内核包括：</p>
+<ol>
+<li>时钟管理：时序发生器是计算机最关键的设备，系统管理的方方面面都依赖于时钟；</li>
+<li>中断机制：现代操作系统是靠中断驱动的软件；</li>
+<li>原语：原语是指一系列特殊的程序，这种程序的运行具有原子性 —— 定义原语最直接的方法就是关闭中断，使其所有动作不可分割地完成后再打开中断；</li>
+<li>操作系统管理和处理数据结构：为了对系统中的数据结构实现有效的管理，系统（本博客中的系统默认情况下都是指操作系统）需要一些基本的操作：<ul>
+<li>进程管理</li>
+<li>存储器管理</li>
+<li>设备管理</li>
+</ul>
+</li>
+</ol>
+<hr>
+<blockquote>
+<p>Q：程序和软件的区别是什么？</p>
+</blockquote>
+<p>A：简单来说，软件&#x3D;程序+文档&#x3D;数据结构+算法+文档</p>
+<hr>
+<h3 id="4-2-中断和异常"><a href="#4-2-中断和异常" class="headerlink" title="4.2 中断和异常"></a>4.2 中断和异常</h3><p>上面我们提到，操作系统引入了核心态和用户态两种工作状态，这里我们讨论这两种状态如何切换：</p>
+<ul>
+<li>中断是唯一让用户态切换到核心态的方式；</li>
+<li>核心态转换为用户态只需要修改程序状态字PSW的标志位（通过执行特权指令来修改）；</li>
+</ul>
+<p>当用户程序需要使用一些核心态的功能时，就需要借助一些建立在核心态的“门”以便实现从用户态进入核心态，实际操作中唯一能够进入这些gate的途径就是通过中断或异常；</p>
+<blockquote>
+<p>发生中断或异常时，运行用户态的CPU会立即进入核心态，这是通过硬件实现的（一位寄存器0表示核心态、1表示用户态）</p>
+</blockquote>
+<h4 id="4-2-1-中断的定义"><a href="#4-2-1-中断的定义" class="headerlink" title="4.2.1 中断的定义"></a>4.2.1 中断的定义</h4><ul>
+<li>中断也称外中断（外设请求、人工干预），指来自CPU执行指令以外的事件发生（I&#x2F;O中断、时钟中断），这一类中断通常是与当前指令执行无关的事件；</li>
+<li>异常也称内中断（例外、陷入），指来自CPU执行指令内部的事件（程序非法操作码、地址越界），对异常的处理通常依赖当前程序的运行现场，且异常<code>不能被屏蔽</code>，一旦出现应当立即处理；</li>
+</ul>
+<h4 id="4-2-2-中断处理过程"><a href="#4-2-2-中断处理过程" class="headerlink" title="4.2.2 中断处理过程"></a>4.2.2 中断处理过程</h4><p>中断（默认情况下所说的中断都是指外中断）处理流程大致如下：</p>
+<ul>
+<li>关中断；</li>
+<li>保存断点；</li>
+<li>引出中断服务程序；</li>
+<li>保存现场和屏蔽字；</li>
+<li>开中断；</li>
+<li>执行中断服务程序；</li>
+<li>关中断；</li>
+<li>恢复现场和屏蔽字；</li>
+<li>开中断、中断返回；</li>
+</ul>
+<p>上述流程我们在 <a href="https://gintoki-jpg.github.io/2022/06/11/%E6%9C%9F%E6%9C%AB_%E8%AE%A1%E7%BB%84%E5%A4%8D%E4%B9%A0/#%E5%9B%9B%E3%80%81%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F">计组期末复习笔记 - Tintoki_blog (gintoki-jpg.github.io)</a> 有详细介绍；</p>
+<h2 id="5-操作系统的体系结构"><a href="#5-操作系统的体系结构" class="headerlink" title="5.操作系统的体系结构"></a>5.操作系统的体系结构</h2><p>操作系统在核心态应当为应用程序提供什么样的公共服务？主要有两种主要的体系结构解答：大内核和微内核；</p>
+<h3 id="5-1-大内核和微内核"><a href="#5-1-大内核和微内核" class="headerlink" title="5.1 大内核和微内核"></a>5.1 大内核和微内核</h3><ul>
+<li>大内核系统将操作系统的主要功能模块都作为一个紧密联系的整体运行在核心态，从而为应用提供高性能的系统服务；<ul>
+<li>由于复杂的交互关系使得层次之间的界限极其模糊，定义清晰的层次间接口非常困难；</li>
+</ul>
+</li>
+<li>微内核将内核中最基本的功能保留在内核，将那些不需要在核心态执行的功能移到用户态执行；<ul>
+<li>微内核结构最大的问题是性能问题，需要频繁在核心态与用户态之间进行切换；</li>
+</ul>
+</li>
+</ul>
+<h1 id="第二章-系统接口"><a href="#第二章-系统接口" class="headerlink" title="第二章 系统接口"></a>第二章 系统接口</h1><p>系统接口是用户使用操作系统（计算机系统）的基本入口，系统接口也是通向操作系统内核的窗口，很多关乎内核模块的理解都需要通过系统接口进入；</p>
+<h2 id="1-计算机系统的使用"><a href="#1-计算机系统的使用" class="headerlink" title="1.计算机系统的使用"></a>1.计算机系统的使用</h2><p>计算机系统的使用方式主要可以分为如下三种：</p>
+<ul>
+<li>第一种，直接打开一个应用程序使用，通常都是图形界面的，如Word、QQ等；</li>
+<li>第二种，使用命令行，如在Linux下输入命令ls、gcc-o hello hello.c等；</li>
+<li>第三种，自己编写一个程序，然后再编译执行，如大家熟悉的编程显示Hello World信息；</li>
+</ul>
+<p>无论哪种方式，最终真正能让计算机产生效果，即真正使用计算机硬件的那一部分实际上是一样的，即<code>调用函数</code>；</p>
+<p>无论是命令行、应用程序或图形界面，在本质上都是一样的，即用户编写应用程序，在应用程序中会调用一些由操作系统提供的重要接口函数。然后这些应用程序相互配合，实现对计算机的使用；</p>
+<p>接口函数就是应用程序在使用计算机时要调用的函数，由于这些函数是系统提供的，又是以函数调用的形式出现的，而且这些函数非常重要，所以这些函数对应一个非常重要的概念——系统调用；</p>
+<blockquote>
+<p>Q：操作系统接口和系统调用等价吗？</p>
+</blockquote>
+<p>A：等价，操作系统接口表现为函数调用，因为函数由系统提供，所以操作系统接口就是系统调用 —— “系统调用实际上就是操作系统提供给应用程序的接口函数”</p>
+<h2 id="2-基本的系统调用"><a href="#2-基本的系统调用" class="headerlink" title="2.基本的系统调用"></a>2.基本的系统调用</h2><p>操作系统提供的服务分为面向客户（命令接口）和面向软件&#x2F;编程人员（系统调用）；</p>
+<p>在用户程序中凡是与资源有关的操作都必须通过系统调用的方式向操作系统提出服务请求，由操作系统代替完成，系统调用按照功能可以大致分为如下几类：</p>
+<ul>
+<li><p>设备管理，完成设备的请求或释放，以及设备启动等功能；</p>
+</li>
+<li><p>文件管理，完成文件的读、写、创建及删除等功能；</p>
+</li>
+<li><p>进程控制，完成进程的创建、撤销、阻塞及唤醒等功能；</p>
+</li>
+<li><p>进程通信，完成进程之间的消息传递或信号传递等功能；</p>
+</li>
+<li><p>内存管理，完成内存的分配、回收以及获取作业占用内存区大小及始址等功能；</p>
+</li>
+</ul>
+<p>系统调用的处理需要由操作系统内核程序负责完成，这需要运行在核心态；</p>
+<h3 id="2-1-fork、exec、wait、exit"><a href="#2-1-fork、exec、wait、exit" class="headerlink" title="2.1 fork、exec、wait、exit"></a>2.1 fork、exec、wait、exit</h3><p>fork、exec、wait和exit这四个系统调用是和进程有关的最为重要的四个系统调用：</p>
+<ul>
+<li>fork用来创建进程；</li>
+<li>exec从磁盘上载入并执行某个可执行程序；</li>
+<li>exit是进程自己退出时要调用的函数；</li>
+<li>调用wait的进程会等到子进程退出时才继续执行；</li>
+</ul>
+<blockquote>
+<p>fork</p>
+</blockquote>
+<p>fork系统调用的函数原型定义为：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">fork</span><span class="hljs-params">()</span></span>;<br></code></pre></td></tr></table></figure>
+
+<p>这个函数没有参数，调用该函数的进程会再创建一个进程，新创建的进程是原进程的子进程；<br>两个进程都从fork（）这个地方继续往下执行，并且执行“同样”的代码。但是父进程执行fork（）会返回子进程的ID，而子进程调用fork（）会返回0，父子进程正是通过对这个返回值的判断（用if 语句）来决定分别执行哪段代码；</p>
+<blockquote>
+<p>exec</p>
+</blockquote>
+<p>系统调用exec（）的功能是在当前进程中执行一段新程序，进程的PID保持不变。可以这样形象地理解，一个进程就像一个壳子，在这个壳子里可以装各种可执行代码。fork（）创建了这个壳子，并且将父进程的代码装在这个壳子中执行，而exec（）是用一个磁盘上的可执行程序（exec（）的参数告诉操作系统是哪个可执行程序）替换了这个壳子里原有的内容；</p>
+<p>exec()函数分为两类，分别以execl和execv开头，其函数原型定义如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">execl</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">char</span>*filepath,<span class="hljs-type">const</span> <span class="hljs-type">char</span>*arg1,<span class="hljs-type">char</span>*arg2,…)</span></span>;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">execlp</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">char</span>*filename,<span class="hljs-type">const</span> <span class="hljs-type">char</span>*argl,<span class="hljs-type">char</span>*arg2,…)</span></span>; <br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">execv</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">char</span>* filepath,<span class="hljs-type">char</span>* argv[])</span></span>; <br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">execvp</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">char</span>* filename,<span class="hljs-type">char</span>* argv[])</span></span>;<br></code></pre></td></tr></table></figure>
+
+<p>这些函数基本上一样，只是execl中对应可执行程序入口函数的参数，即其中的arg1、arg2等，是一个一个列举出来的，而execv是将这些参数组织成一个数组告诉操作系统的；</p>
+<p>可执行程序入口函数的参数就是可执行程序的main（int argc，char*argv[]）函数中的参数argv，我们都知道这些参数是通过命令行输入的，命令行中的参数实际上就是用系统调用execl&#x2F;execv函数中的参数传进去的；</p>
+<p>函数名中带p和不带p的差别在于：execv（）中filepath是绝对路径，而execvp（）中的filename是相对路径；</p>
+<blockquote>
+<p>exit</p>
+</blockquote>
+<p>系统调用exit用来终止一个进程，在进程中可以显式调用exit来终止自己，也可以隐式调用exit；</p>
+<p>操作系统在编译main（）函数时，当遇到main（）函数的最后一个}时会“塞入”一个exit；</p>
+<p>exit（）函数的原型定义为：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">exit</span><span class="hljs-params">(<span class="hljs-type">int</span> status)</span></span>;<br></code></pre></td></tr></table></figure>
+
+<p>exit中的参数status是退出进程返回给其父进程的退出码。同时，退出的进程会向其父进程发送一个SIGCHILD信号，一个进程执行wait系统调用时就会暂停自己的执行来等待这个信号。所以wait和exit合在一起可以完成这样一种进程之间的同步合作：父进程启动了一个子进程，调用wait 等待子进程执行完毕；子进程执行完毕以后调用exit给父进程发送一个信号SIGCHILD，父进程被唤醒继续执行；</p>
+<blockquote>
+<p>wait</p>
+</blockquote>
+<p>wait系统调用的函数原型定义为：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">wait</span><span class="hljs-params">(<span class="hljs-type">int</span> *stat_addr)</span></span>;<br></code></pre></td></tr></table></figure>
+
+<p>其返回值是exit子进程的PID，stat_addr是进程中定义的一个变量，用于存放子进程调用exit时的退出码，即exit 系统调用的参数status；</p>
+<h3 id="2-2-open、read、write"><a href="#2-2-open、read、write" class="headerlink" title="2.2 open、read、write"></a>2.2 open、read、write</h3><p>open、read、write是典型的操纵文件的系统调用。同时，这三个系统调用也是用户编程时最为常用的系统调用，这是因为文件是用户操作计算机的基本单位；</p>
+<p>三个系统调用的函数原型定义为</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">open</span><span class="hljs-params">(<span class="hljs-type">char</span> *filename,<span class="hljs-type">int</span> mode)</span></span>; <br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">read</span><span class="hljs-params">(<span class="hljs-type">int</span> fd,<span class="hljs-type">char</span> *buf,<span class="hljs-type">int</span> count)</span></span>; <br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">write</span><span class="hljs-params">(<span class="hljs-type">int</span> fd,<span class="hljs-type">char</span> *buf,<span class="hljs-type">int</span> count)</span></span>;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>open</p>
+</blockquote>
+<p>open系统调用用来打开文件，其中第一个参数filename是要打开的文件名，mode是打开方式，返回值fd是打开文件后产生的句柄，以后就用这个句柄来操作打开的文件；</p>
+<blockquote>
+<p>read</p>
+</blockquote>
+<p>read和write是操作打开文件的系统调用，read用来将句柄fd对应的文件读入到内存缓存区buf中，并且要读入count个字节，而真正读入的字节数会由read返回；</p>
+<blockquote>
+<p>write</p>
+</blockquote>
+<p>write用来向句柄fd对应的文件写内容，即从内存缓存区buf中取出count个字节写出到文件中，当然真正写出的字节数由write返回；</p>
+<h3 id="2-3-printf、scanf"><a href="#2-3-printf、scanf" class="headerlink" title="2.3 printf、scanf"></a>2.3 printf、scanf</h3><p>printf和scanf是用来分别操纵显示器和键盘的<code>函数</code>，函数原型是：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-type">void</span> printf（格式化输出字符串，输出内容，…）；<span class="hljs-comment">//如printf(&quot;ID:%d&quot;,3)</span><br><span class="hljs-type">void</span> scanf（格式化输入字符串，输入内存地址，…）；<span class="hljs-comment">//如scanf(&quot;ID:%d&quot;,&amp;id)</span><br></code></pre></td></tr></table></figure>
+
+<p>注意，这两个函数不是系统调用，仅仅只是两个库函数，这两个库函数的实现依赖于write和read实现“写显示器”和“读键盘”</p>
+<blockquote>
+<p>Q：库函数和系统调用的区别在哪里？</p>
+</blockquote>
+<p>A：</p>
+<ul>
+<li>系统调用是最底层的应用，是面向硬件的。而库函数的调用是面向开发的，相当于应用程序的API接口；</li>
+<li>各个操作系统的系统调用是不同的，因此系统调用一般是没有跨操作系统的可移植性，而库函数的移植性良好；</li>
+<li>库函数属于过程调用，调用开销小；系统调用需要在用户空间和内核上下文环境切换，开销较大；</li>
+<li>库函数调用函数库中的一段程序，这段程序最终还是通过系统调用来实现的；系统调用调用的是系统内核的服务；</li>
+</ul>
+<h2 id="3-系统调用的实现机理"><a href="#3-系统调用的实现机理" class="headerlink" title="3.系统调用的实现机理"></a>3.系统调用的实现机理</h2><p>系统调用不仅是为了给上层用户提供“统一接口”供其使用，同时作为操作系统的大门，上层应用只能通过这个大门才能进入操作系统；</p>
+<h3 id="3-1-内核态和用户态"><a href="#3-1-内核态和用户态" class="headerlink" title="3.1 内核态和用户态"></a>3.1 内核态和用户态</h3><p>要实现系统调用的“大门”作用，首先要区分“门里”和“门外”，在操作系统中我们称其为内核态和用户态：</p>
+<ul>
+<li>内核态是操作系统代码执行时的状态；</li>
+<li>用户态是应用程序代码执行时的状态；</li>
+</ul>
+<p>无论是操作系统内核代码还是应用程序代码都是装入内存后才执行的，因此，内核态代码和用户态代码在内存中放置的区域不同：</p>
+<ul>
+<li>放置内核代码的那一段内存区域是“内核态区域”；</li>
+<li>放置用户代码的那段内存区域就是“用户态区域”；</li>
+</ul>
+<p>系统调用的“大门”作用体现在让执行在用户态区域的代码不能进入内核态区域（具体来说就是用户态代码不能通过jmp跳转到内核态内存区域中，用户态代码也不能通过mov访问存放在内核态内存中的数据）</p>
+<p><img src="/images/image-20220908221029613.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<p>同样在内存中，如何区分是用户态内存还是内核态内存呢？</p>
+<p>内存的使用由操作系统统一管理，操作系统在内存中划定一个区域并设置该区域的特权级，操作系统会及那个自己所在的内存区域的特权级别设置的非常高，将用户程序所在区域的特权级别设置的较低；</p>
+<p>在用户程序执行时每访问一次内存都做一次审查。如果要访问的内存区域比自己的特权级高，CPU会拒绝执行，这就实现了操作系统的保护机制；</p>
+<hr>
+<p>CPU提供了一种被称为特权环的机制来实现这个特权级检查；</p>
+<p>由于很多指令在执行时都要进行这样的特权级检查，为了提高执行效率，应该用计算机硬件即CPU电路来实现这个权限检查，而不是用软件来完成这个检查；</p>
+<p><img src="/images/image-20220908221532278.png" srcset="/img/loading.gif" lazyload></p>
+<p>特权级检查涉及两个重要的数值：</p>
+<ul>
+<li>当前特权级（CPL）：表示当前执行指令的特权级</li>
+<li>描述符特权级（DPL）：表示一个目标段的特权级，将目标内存区域的特权级信息放在目标段描述符中</li>
+</ul>
+<hr>
+<h1 id="第三章-多进程"><a href="#第三章-多进程" class="headerlink" title="第三章 多进程"></a>第三章 多进程</h1><p>前面已经介绍过，操作系统是管理计算机硬件的软件系统，本章开始将讨论操作系统如何管理各种计算机硬件，本章讨论操作系统如何管理CPU；</p>
+<h2 id="1-CPU工作原理"><a href="#1-CPU工作原理" class="headerlink" title="1.CPU工作原理"></a>1.CPU工作原理</h2><p>CPU的工作原理就是不断地重复执行“取指-执行”，因此想要让CPU运转起来只需要将一段程序放入内存中，接着将PC指针设置为这段程序的起始地址，接着CPU便自动循环“取指-执行”开始工作；</p>
+<p>这个直观方法也很容易实现：</p>
+<ul>
+<li>第一步，在内存中分割出一些区域（内存管理章节）；</li>
+<li>第二步，调用磁盘驱动和文件系统（文件系统章节）将一个程序的可执行程序读入到分配好的内存区域中；</li>
+<li>第三步，将这段内存区域的首地址即存储程序第一条指令的内存地址赋值给CS:EIP；</li>
+</ul>
+<p>当然这样使用CPU必然存在很大的问题，在实际场合中这样的管理会使得CPU的利用率变得非常低，解决办法就是利用 —— 并发（在并发的思想下，分析程序执行起来的样子并对比执行起来的程序和静态程序之间的本质差别，为了描述这种本质区别提出了进程的概念，基于进程的概念提出多进程视图的概念）；</p>
+<p>类比现实世界中的烧水问题，烧水的过程中可以利用这段时间去做一些别的事，并发即多个程序同时出发、交替执行，当CPU采用并发思想之后可以一直处于忙碌状态；</p>
+<h2 id="2-进程与多进程视图"><a href="#2-进程与多进程视图" class="headerlink" title="2.进程与多进程视图"></a>2.进程与多进程视图</h2><h3 id="2-1-进程的概念"><a href="#2-1-进程的概念" class="headerlink" title="2.1 进程的概念"></a>2.1 进程的概念</h3><p>在采用了并发思想之后，操作系统高效管理CPU就具体实现为“在多段程序之间来回切换”，要实现这种切换，只修改PC指针（即修改寄存器CS:EIP）是不够的，不仅要修改PC指针，同时还要将曾经执行的信息保存起来，于是需要引入新的数据结构以保证程序的正确执行并实现多个执行的程序之间来回切换，这个数据结构保存了该程序当前执行位置、执行现场等重要信息；</p>
+<p>介绍这种数据结构之前，我们先介绍一个概念 —— 进程，进程用来描述一个程序及其执行过程中的信息，即描述一个执行中的程序；</p>
+<ul>
+<li>程序：程序是静态的指令、数据等；</li>
+<li>进程：进程是执行起来的程序；</li>
+</ul>
+<p>进程描述的是“程序以及反映程序执行信息的数据结构的总和”，该数据结构即<code>进程控制块</code>（process control block，PCB）；</p>
+<p><img src="/images/image-20220919205117541.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<blockquote>
+<p>Q：进程与PCB之间的关系？进程实体和进程映像呢？</p>
+</blockquote>
+<p>A：</p>
+<ul>
+<li>进程映像&#x2F;进程实体&#x3D;代码段+数据段+PCB，进程映像是静态的，进程是动态的；</li>
+<li>进程是进程映像&#x2F;进程实体的运行过程，是系统进行资源分配和调度的一个独立单位；</li>
+<li>进程控制块PCB是存放进程的管理和控制信息的数据结构，进程控制块PCB是进程存在的唯一标志（类似于身份证）；</li>
+<li>所谓创建进程实质上就是创建进程映像中的PCB，撤销进程实质上是撤销进程的PCB；</li>
+</ul>
+<blockquote>
+<p>Q：PID和PCB之间的关系？</p>
+</blockquote>
+<p>A：</p>
+<ul>
+<li>PID是操作系统中的进程标识符，操作系统中每打开一个程序都会创建一个进程ID也就是PID，在运行时每个进程有唯一的PID编号，进程终止后PID标识符会被系统回收利用；</li>
+<li>PCB是是操作系统中最重要的记录性数据结构；</li>
+<li>PID存在并不能说明进程一定创建完成并存在，因此我们得出结论 —— <code>PCB是进程存在的唯一标志！</code>；</li>
+</ul>
+<hr>
+<blockquote>
+<p>传统操作系统中的进程定义为：进程是进程实体的运行过程，是系统进行资源分配和调度的一个独立单位；</p>
+</blockquote>
+<h4 id="2-1-1-进程的特征"><a href="#2-1-1-进程的特征" class="headerlink" title="2.1.1 进程的特征"></a>2.1.1 进程的特征</h4><p>进程的基本特征是对比单个程序的顺序执行提出的，也是对进程管理提出的基本要求：</p>
+<ul>
+<li>动态性：进程具有一定的生命周期，是动态产生、变化和消亡；</li>
+<li>并发性：指多个进程实体同时存于内存中，能在一段时间内同时运行；</li>
+<li>独立性：指进程实体是一个能够独立运行、独立获得资源和独立接受调度的基本单位；</li>
+<li>异步性：进程按照各自独立的、不可预知的速度向前推进，为了避免异步，在操作系统中必须配置相应的进程同步机制；</li>
+<li>结构性：结构上看，进程实体是由程序段、数据段以及进程控制块三部分组成；</li>
+</ul>
+<h4 id="2-1-2-进程的状态"><a href="#2-1-2-进程的状态" class="headerlink" title="2.1.2 进程的状态"></a>2.1.2 进程的状态</h4><p>（我们在下面还会涉及进程的状态，但是那个地方为了简化分析所以就只讨论最基本的三种情况，这里我们详细介绍五种状态的进程）</p>
+<ul>
+<li>运行态：当前占有CPU、正在执行的进程状态；</li>
+<li>就绪态：一个进程具备所有可执行的条件，只要获得了CPU就能开始执行；</li>
+<li>阻塞态：也称为睡眠态或等待态，指进程缺少某些条件（比如磁盘正在读写、打印机忙等），即使分配了CPU也无法执行的状态；</li>
+<li>创建态：进程正在被创建，尚未转到就绪态；</li>
+<li>结束态：进程需要结束运行时，系统首先必须置该进程为结束态，再进一步处理资源释放和回收等工作；</li>
+</ul>
+<h3 id="2-2-多进程视图"><a href="#2-2-多进程视图" class="headerlink" title="2.2 多进程视图"></a>2.2 多进程视图</h3><p>有了进程的概念后，可以应用进程的概念对CPU管理做描述：CPU管理的最终结构概括为操作系统启动多个进程，并能够在多个进程之间调度&#x2F;切换，从而实现CPU高效管理；</p>
+<p><img src="/images/image-20220909073236212.png" srcset="/img/loading.gif" lazyload></p>
+<p>（1）在操作系统中现在有三个进程，其PID分别是1、2、3；</p>
+<p>（2）现在正在执行的是2号进程；</p>
+<p>（3）进程1执行到53地址处停了下来，进程3执行到250地址处停了下来，进程1停下来的原因是进程1用完了时间片，进程3停下来的原因是进程3要等到磁盘读写完成；</p>
+<p>（4）进程1和进程3停下来的执行现场分别存放在各自的PCB中；</p>
+<p>（5）操作系统通过这些PCB可以感知、了解并控制各个进程，操作系统对进程的管理关键在于对这些PCB的管理；</p>
+<p>多进程视图是操作系统的核心视图.操作系统在从开机启动到最后关机的全部运行过程中都要围绕这个多进程视图工作；</p>
+<p>一个进程执行完毕以后可以调用exit（）来退出自己，但shell不会调用exit（）退出自己，除非关机。因此shell进程会一直执行，不断创建新的进程，并用这些新进程完成各种各样的任务。在操作系统最终关机时，会将系统中所有进程杀死；</p>
+<p><img src="/images/image-20220909073759287.png" srcset="/img/loading.gif" lazyload></p>
+<p>编写操作系统中的进程管理模块，需要做到以下两点：</p>
+<ul>
+<li>从上层用户角度想象系统中的多个进程，要在头脑里形成这样的画面，操作系统里有多个进程，每个进程各司其职，要做新的工作就会在系统中创建出的新进程等；</li>
+<li>从下层系统内核角度感知和控制系统中的多个进程；</li>
+</ul>
+<h2 id="3-进程控制"><a href="#3-进程控制" class="headerlink" title="3.进程控制"></a>3.进程控制</h2><p>在操作系统中，一般把进程控制用的程序段称为原语，原语的特点是执行期间不允许中断，它是一个不可分割的基本单位；</p>
+<h3 id="3-1-进程的创建"><a href="#3-1-进程的创建" class="headerlink" title="3.1 进程的创建"></a>3.1 进程的创建</h3><p>允许一个进程创建另一个进程，此时创建者称为父进程，被创建的进程称为子进程：</p>
+<ul>
+<li>子进程可以继承父进程所拥有的资源；</li>
+<li>子进程被撤销的时候需要将从父进程那里获得的资源归还给父进程；</li>
+<li>撤销父进程必须同时撤销其所有的子进程；</li>
+</ul>
+<p>我们简单介绍操作系统创建一个新进程的过程（即给出一段创建原语）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs 原语">1.为新进程分配唯一的PID并申请一个空白的PCB，若PCB申请失败则创建失败；<br>2.为新进程的程序和数据以及用户栈分配必要的内存空间，若资源不足不会导致创建失败，而是处于阻塞态等待内存资源；<br>3.初始化PCB，主要包括初始化标志信息、初始化处理机状态信息以及初始化处理机控制信息、进程优先级等；<br>4.若就绪队列能够接纳新进程则将新进程插入就绪队列等待被调度运行；<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-2-进程的终止"><a href="#3-2-进程的终止" class="headerlink" title="3.2 进程的终止"></a>3.2 进程的终止</h3><p>引起进程终止的事件有：</p>
+<ul>
+<li>正常结束：表示进程的任务完成并准备退出运行；</li>
+<li>异常结束：进程运行过程中发生异常导致程序无法继续运行；</li>
+<li>外界干预：进程因为外界的请求而终止运行；</li>
+</ul>
+<p>撤销原语如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs 原语">1.根据被终止进程的标识符检索PCB，从中读出该进程的状态；<br>2.若被终止的进程处于执行状态则立即终止该进程的执行，将处理机的资源分配给其他进程；<br>3.若该进程有子孙进程则将其所有子孙进程终止；<br>4.将该进程拥有的全部资源归还给其父进程或操作系统；<br>5.将该PCB从所在队列删除；<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-3-进程的阻塞和唤醒"><a href="#3-3-进程的阻塞和唤醒" class="headerlink" title="3.3 进程的阻塞和唤醒"></a>3.3 进程的阻塞和唤醒</h3><p>进程的阻塞是进程自身的一种主动行为，只有处于运行状态的进程才可能转换为阻塞态，阻塞原语的执行过程如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs 原语">1.找到将要被阻塞进程的PID对应的PCB；<br>2.若该进程为运行态则保护其现场并将其状态转换为阻塞态；<br>3.把该PCB插入相应事件的等待队列，将处理机资源调度给其他就绪进程；<br></code></pre></td></tr></table></figure>
+
+<p>当被阻塞进程需要的资源到达，由相关进程调用唤醒原语，将等待该事件的进程唤醒，唤醒原语如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs 原语">1.在该事件的等待队列中找到相应进程的PCB；<br>2.将其从等待队列中移出，并置其状态为就绪态；<br>3.把该PCB插入就绪队列，等待调度程序调度；<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：Block 原语和Wakeup 原语是一对作用刚好相反的原语，必须成对使用。Block原语是由被阻塞进程自我调用实现的，而Wakeup原语则是由一个与被唤醒进程合作或被其他相关的进程调用实现的；</p>
+</blockquote>
+<h3 id="3-4-进程的切换"><a href="#3-4-进程的切换" class="headerlink" title="3.4 进程的切换"></a>3.4 进程的切换</h3><p>多进程视图工作的核心是多个进程之间的来回切换，这也是并发的基本含义，操作系统实现多进程视图需要解决如下两点：</p>
+<ul>
+<li>什么时候切换；</li>
+<li>具体如何切换；</li>
+</ul>
+<p>切换的时机就是当CPU出现空闲的时候，这种空闲点也被称为调度点，调度点可以是当前进程在执行过程中产生的如exit()，也可以是操作系统强行加入的如进程分配的时间片耗尽；</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//一个调度点的实例代码</span><br>某个进程&#123;<br> 	启动磁盘写；<br>    pCur.state=<span class="hljs-string">&#x27;W&#x27;</span>;<span class="hljs-comment">//将进程状态修改为阻塞态</span><br>    将pCur放在DiskWaitQueue;<span class="hljs-comment">//pCur就是用于保存 “CPU中当前进程执行现场” 的PCB结构，当然它就是当前进程的PCB，便于将来能够切换回当前进程</span><br>    schedule();<span class="hljs-comment">//调用schedule函数完成进程切换</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>操作系统调用函数schedule()实现切换，其实现原理如下：</p>
+<ol>
+<li>从就绪队列中选出下一个进程的PCB，我们称为pNew；</li>
+<li>用PCB结构pNew中存放的执行现场去替换CPU中的PC、AX等寄存器；</li>
+<li>为了能够切换回当前进程，切换之前还应将CPU中的“当前进程执行现场”保存在当前进程的PCB结构中，该PCB结构我们称为pCur；</li>
+</ol>
+<p>这其中如何选择pNew需要精心设计算法，如果只是简单的选择就绪队列首部的进程作为下一个进程，这样公平但是对于某些应当需要优先执行的进程来说非常致命；</p>
+<p>简单给出schedule函数的基本代码结构</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c">schedule()&#123;<br>    pNew=getNext(ReadyQueue);<br>    switch_to(pCur,pNew);<br>&#125;<br>switch_to(pCur,pNew)&#123;<br>    <span class="hljs-comment">//保存当前进程的PCB结构</span><br>    pCur.ax=CPU.ax;<br>    pCur.bx=CPU.bx;<br>    ...<br>    <span class="hljs-comment">//用pNew中的执行现场替换CPU中的寄存器</span><br>    CPU.ax=pNew.ax;<br>    CPU.bx=pNew.bx;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="4-进程组织"><a href="#4-进程组织" class="headerlink" title="4.进程组织"></a>4.进程组织</h2><p>要论述操作系统是如何实现多进程视图（前面已经给出过图示）的，第一步要解决的问题就是在计算机中如何组织多个进程；</p>
+<p>操作系统管理进程的关键就是管理进程对应的PCB数据结构，所以很容易就能想到，组织多个进程就是用合适的数据结构来管理这些PCB；</p>
+<p>PCB之间存在简单的线性关系，简单而高效的方式就是将这些PCB组织成队列，并且在管理进程时需要区分进程位于哪个队列，根据进程状态概念可以分类描述操作系统中的进程：</p>
+<ul>
+<li>运行态：当前占有CPU、正在执行的进程状态；</li>
+<li>就绪态：一个进程具备所有可执行的条件，只要获得了CPU就能开始执行；</li>
+<li>阻塞态：也称为睡眠态或等待态，指进程缺少某些条件（比如磁盘正在读写、打印机忙等），即使分配了CPU也无法执行的状态；</li>
+</ul>
+<p>基于单CPU的背景，因此只有一个CPU意味着只会有一个处于运行态的进程，多个阻塞队列（多种等待事件），一个就绪队列（都在等待CPU），故形成下图所示多进程基本组织方式</p>
+<p><img src="/images/image-20220909080954044.png" srcset="/img/loading.gif" lazyload></p>
+<p>上图类似于一张合照，是某一时刻下多个进程在操作系统中的样子，当然利用进程状态还可以描述一个进程在其执行过程中的演化过程（该过程常被称为进程的生存周期）</p>
+<p><img src="/images/image-20220909081255306.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="4-1-进程隔离"><a href="#4-1-进程隔离" class="headerlink" title="4.1 进程隔离"></a>4.1 进程隔离</h3><p>尽管多个进程同时在内存中交替执行可以提高CPU的使用效率，但是同时在内存中的多个进程也会相互影响（比如某个进程把另一个进程的内存地址给修改了）；</p>
+<p>解决上述问题的办法就是使用地址隔离</p>
+<p><img src="/images/image-20220909084301384.png" srcset="/img/loading.gif" lazyload></p>
+<p>进程操作的地址并不是真的物理内存地址，而是通过一个映射表对应到一个真实的物理地址，这也是需要用GDT表和页表来翻译CS:EIP的根本原因；</p>
+<p>操作系统给每个进程分配的真实的内存区域是只属于该进程的、互相不重叠的，就算进程1和进程2同时访问的地址是100，但是通过映射表后访问的真实地址其实是2100和1100；</p>
+<h2 id="5-进程通信"><a href="#5-进程通信" class="headerlink" title="5.进程通信"></a>5.进程通信</h2><p>多进程之间不仅需要隔离，更需要合作，最基本的进程间合作模型是一个进程要往一个缓存区写数据，而另外一个进程要从缓存区里读数据。此时就需要一个合适的进程间通信机制与合作机制；</p>
+<p>实现进程间通信的方法很多，可以读写同一个数据库、文件、共享内容以及一段内核态内存等；</p>
+<p>真正困难的是提供合适的进程间合作机制，如果没有一个良好的机制可能导致一些问题（如一边写一边读，但是缓存已经满了，于是写不进去导致信息丢失）。我们将这种基本进程间合作模型（一个进程写共享空间，另一个进程读共享空间）称作“生产者-消费者”模型：</p>
+<ul>
+<li>往共享缓存区中写的进程被称为生产者进程；</li>
+<li>从共享缓存区中读的进程被称为消费者进程；</li>
+</ul>
+<p>这两个进程通过共享缓存区进行通信与合作，主要依靠变量counter来完成（counter等于不同的值的时候生产者和消费者会进行不同的行为），但是因为多个进程在操作系统中交替执行，调度顺序完全不可控，因为时间片到时、每条指令要具体执行多少时间、在什么时刻进行I&#x2F;O操作都是无法预料的，很可能本来预期的counter变量值因为不可控因素发生语义错误 —— 针对这个问题，解决方法是counter要么全部修改完成，要么一点也不修改，这就是<code>临界区</code>的概念；（不用强行理解，后面进程同步还会介绍）</p>
+<hr>
+<p>（上面说了那么多好像也不是很清楚，我们结合王道书再总结一下）</p>
+<p>进程通信指的是进程之间的信息交换，PV操作是低级通信方式，高级通信方式（以较高的效率传输大量数据的通信方式）主要有以下三类：</p>
+<ul>
+<li>共享存储：通信的进程之间存在一块可以直接访问的共享空间，需要使用同步互斥工具对共享空间的读写进行控制，共享存储分为两种：<ul>
+<li>低级方式的共享是基于数据结构的共享；</li>
+<li>高级方式的共享是基于存储区的共享；</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/image-20220919211554675.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>消息传递：消息传递系统中，进程间的数据交换以格式化的消息为单位，进程通过系统提供的发送消息和接收消息两个原语进行数据交换：<ul>
+<li>直接通信方式：发送进程直接把消息发送给接收进程（实质上是挂在接收进程的消息缓冲队列上）；</li>
+<li>间接通信方式：发送进程把消息发送到某个中间实体（信箱），接收进程从中间实体取得消息；</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/image-20220919211527895.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>管道通信：管道是指用于连接一个读进程和一个写进程以实现它们之间的通信的一个共享文件，又称为pipe文件，管道可以理解为共享存储的优化和发展；</li>
+</ul>
+<p><img src="/images/image-20220919211511692.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>注意：从管道读数据是一次性操作，数据一旦被读取，它就从管道中被抛弃，释放空间以便写更多的数据。管道只能采用半双工通信，即某一时刻只能单向传输。要实现父子进程双方互动通信，需要定义两个管道。</p>
+</blockquote>
+<h1 id="第四章-多线程"><a href="#第四章-多线程" class="headerlink" title="第四章 多线程"></a>第四章 多线程</h1><p>本章首先引出线程这个概念，并以线程为单位对CPU切换进行详细论述，这是因为<code>线程切换是进程切换的核心内容</code>；</p>
+<p>进程切换由资源切换和指令流切换两部分构成，其中资源切换是将分配给进程的非CPU以外的资源进行切换，如对当前地址空间的切换；而指令流切换就是CPU切换，也就是线程切换；</p>
+<h2 id="1-线程与进程"><a href="#1-线程与进程" class="headerlink" title="1.线程与进程"></a>1.线程与进程</h2><h3 id="1-1-线程的概念"><a href="#1-1-线程的概念" class="headerlink" title="1.1 线程的概念"></a>1.1 线程的概念</h3><p>并发是CPU高效工作的基础，并发的基本含义就是多段程序交替执行，我们思考，是否可以将这种交替执行的思想应用于一个进程（同一个可执行文件）的不同函数之间呢？这样的交替执行就产生了线程的概念；</p>
+<p>我们给出一个浏览器使用线程和不使用线程的例子：</p>
+<ul>
+<li>使用四个线程实现一个浏览器，分别是获取数据的线程(GetData)、显示文本的线程(ShowText)、解压图片的线程(ProcessImage)以及渲染图片的线程(ShowImage)<ul>
+<li>首先获取数据的线程（GetData）被调度开始工作，将网页的总体布局以及页面中的文本信息下载下来；</li>
+<li>然后切换到显示文本的线程（ShowText）将网页的基本结构和其中的文本信息显示在浏览器中；</li>
+<li>接下来再切回GetData工作，通过网页布局信息下载其中的图形对象标签；下载一些图片对象以后再切换到解压图片的线程（ProcesImage）执行，待解码完成以后切换到渲染图片的线程（Showlmage）执行，此时图片就会被逐个显示出来；</li>
+</ul>
+</li>
+<li>假如只使用一个进程来实现，效果将会变成执行的代码必然是首先将页面布局、文本信息、图片对象等内容全部下载下来，然后再逐个解码渲染，最后再将所有的信息全部整理好输出到屏幕上；</li>
+</ul>
+<p>肯定又有人问了，那我使用四个进程呗？和使用四个线程有什么区别？进程和线程的区别在于是否共享资源（<code>线程之间不会共享栈！！！</code>这在之后我们会介绍），此处因为这四个函数是可以不使用地址隔离策略将内存缓存区分离的（不存在安全性问题），况且使用四个进程会造成内存的浪费以及代码执行效率的降低，所以我们选择共享共同地址空间等进程资源的四个并发指令执行序列作为四个线程；</p>
+<h3 id="1-2-线程与进程"><a href="#1-2-线程与进程" class="headerlink" title="1.2 线程与进程"></a>1.2 线程与进程</h3><p>下面的表格给出了线程和进程的区别和联系</p>
+<p><img src="/images/image-20220915142323732.png" srcset="/img/loading.gif" lazyload></p>
+<p>线程相较于进程的优点：</p>
+<p>1.从资源上来讲：线程是一种非常“节俭”的多任务操作方式。而进程的创建需要更多的资源。<br>2.从切换效率上来讲：运行于一个进程中的多个线程，它们之间使用相同的地址空间，而且线程间彼此切换所需时间也远远小于进程间切换所需要的时间。<br>据统计，一个进程的开销大约是一个线程开销的30倍左右。<br>3.从通信机制上来讲：对不同进程来说，它们具有独立的数据空间，要进行数据的传递只能通过进程间通信的方式进行，这种方式不仅费时，而且很不方便。线程则不然，由于同一进程下的线程之间共享数据空间，所以一个线程的数据可以直接为其他线程所用，这不仅快捷，而且方便。</p>
+<p>线程和进程的关系：</p>
+<ul>
+<li>进程是处理机提供的并发抽象；</li>
+<li>线程是进程层面提供的并发抽象；</li>
+<li>流水线是指令层面提供的并发抽象；</li>
+</ul>
+<h2 id="2-用户级线程的创建和切换"><a href="#2-用户级线程的创建和切换" class="headerlink" title="2.用户级线程的创建和切换"></a>2.用户级线程的创建和切换</h2><p>在一个地址空间下启动并交替执行的线程既可以由操作系统管理，也可以由用户程序管理：</p>
+<ul>
+<li>由用户程序管理的线程对操作系统透明，操作系统完全不知道这些线程的存在，称为用户级线程；</li>
+<li>由操作系统管理的线程是内核级线程；</li>
+</ul>
+<h3 id="2-1-用户级线程间的切换"><a href="#2-1-用户级线程间的切换" class="headerlink" title="2.1 用户级线程间的切换"></a>2.1 用户级线程间的切换</h3><p>想要实现多个用户级线程之间的切换，只需要在切换位置（调度点）调用一个普通的用户态切换函数（由用户自己编写）即可；</p>
+<p>在设计用户态切换函数的时候需要注意：如果每个线程用自己的栈，那么在线程中执行函数调用和返回时就不会莫名其妙地跳转到其他线程中；</p>
+<blockquote>
+<p>单个栈执行的两个用户级线程的切换实例</p>
+</blockquote>
+<p>切换函数Yield是完成线程切换的核心，这里我们举例说明Yiled的工作过程：两个用户级线程，线程1执行A函数并在其中调用B函数；线程2执行C函数并在C函数中调用D函数；</p>
+<p><img src="/images/image-20220918143552680.png" srcset="/img/loading.gif" lazyload></p>
+<p>首先线程1正常执行函数A，当需要调用函数B时需要通过一些栈来保存信息以便在函数B执行完毕后可以跳回A继续执行（这是函数调用的基本常识），因此我们将需要返回的地址104压栈；同理B中调用Yield的时候也会将204压栈，接着执行Yield函数（找到下一个线程以及下一个线程切换过去的时候的执行位置）</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-built_in">Yiled</span>()&#123;jmp <span class="hljs-number">300</span>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>切换到线程2执行，同理依次压入304和404，此时再次执行Yield函数跳转回线程1，因此此时的Yield函数应该为</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">Yiled</span>()&#123;jmp <span class="hljs-number">204</span>&#125;;//跳转回<span class="hljs-number">204</span>的地址，因为刚才线程<span class="hljs-number">1</span>是从<span class="hljs-number">204</span>之前切换出去的<br></code></pre></td></tr></table></figure>
+
+<p>当我们从204继续执行的时候，遇到B的“}”会发生弹栈进行函数返回，我们期望的情况是能够弹回104即A函数中，但是很明显我们的栈会弹出线程2的404地址，因此我们需要做出改进</p>
+<blockquote>
+<p>独立栈执行的用户级线程的切换实例</p>
+</blockquote>
+<p><img src="/images/image-20220918144828931.png" srcset="/img/loading.gif" lazyload></p>
+<p>因为现在每个线程都拥有自己的栈，所以在Yiled函数切换的时候不仅要修改PC的值，还需要完成栈的切换，总结如下：</p>
+<ul>
+<li><p>用户级线程的切换就是在切换位置上调用Yield函数；</p>
+</li>
+<li><p>切换函数Yield完成的基本工作就是找到下一个线程的TCB，根据当前线程中的TCB和下一个线程的TCB完成用户栈的切换，具体来说就是将寄存器ESP中的值esp1保存在当前线程的TCB中，然后从下一个线程的TCB中取出保存的esp2值赋给ESP寄存器；</p>
+</li>
+<li><p>新栈中的Yield函数中的“}”会将PC指针切换到下一个线程要执行的指令的位置；</p>
+</li>
+</ul>
+<hr>
+<blockquote>
+<p>Q：TCB和PCB有什么区别？答案参考自<a target="_blank" rel="noopener" href="https://blog.csdn.net/shintyan/article/details/123507205">(28条消息) 进程PCB与线程线程TCB_shintyan的博客-CSDN博客_pcb和tcb</a></p>
+</blockquote>
+<p>A：TCB是进程控制块，PCB是线程控制块（也称为任务控制块）：</p>
+<ul>
+<li><p>PCB作为独立运行基本单位的标志，PCB也是进程存在于系统中的唯一标志，PCB提供了进程管理所需要的信息、提供了进程调度所需要的信息并实现与其他进程的同步与通信，PCB中主要有如下信息：</p>
+<ul>
+<li>进程标识符：用于唯一地标识一个进程，一个进程通常有外部标识符（方便用户对进程的访问）和内部标识符（方便系统对进程的使用）两种；</li>
+<li>处理机状态：由处理机的各种寄存器（通用寄存器、指令计数器、程序状态字、用户栈指针）中的内容组成；</li>
+<li>进程调度信息：OS进行调度的时候必须了解进程的状态及相关信息，包含进程状态、进程优先级、进程调度所需的其他信息、事件；</li>
+<li>进程控制信息：用于进程控制所必须的信息，包含程序和数据的地址、进程同步和通信机制、资源清单、链接指针；</li>
+</ul>
+</li>
+<li><p>每个进程都有一个PCB，每个线程也都存在一个TCB，将所有控制和管理线程的信息记录在TCB中，TCB中主要包含如下信息：</p>
+<ul>
+<li>线程标识符：每个线程都存在一个唯一的线程标识符</li>
+<li>一组寄存器（PC、状态寄存器、通用寄存器）</li>
+<li>线程运行状态</li>
+<li>线程优先级</li>
+<li>线程专有存储区域：用于线程切换时存放线程保护信息以及与该线程相关的统计信息</li>
+<li>信号屏蔽：对某些信号加以屏蔽</li>
+<li>堆栈指针：在TCB中需要设置两个指向堆栈的指针，即指向用户自己堆栈的指针（当线程运行在用户态时，使用用户栈保存局部变量和返回地址）和指向核心栈的指针（当线程运行在核心态时使用系统的核心栈）</li>
+</ul>
+<blockquote>
+<p>与TCB相比，PCB额外存放地址空间、进程包含的线程Tid</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="2-2-用户级线程的创建"><a href="#2-2-用户级线程的创建" class="headerlink" title="2.2 用户级线程的创建"></a>2.2 用户级线程的创建</h3><blockquote>
+<p>用户级线程由线程库创建和管理，其实现都在用户态，内核无法感知；（老师发的PDF里面还介绍了一种通过内核线程创建用户线程的方式，关于这点我在网上没有查阅到相关资料）</p>
+</blockquote>
+<p>一旦明白切换的具体实现，线程的创建就非常容易理解 —— 线程的创建就是将线程做成第一次切换的样子（此处描述可能比较抽象，下面会详细描述）；</p>
+<p>一个进程通常包含多个线程，多个线程中必须包含一个主线程，进程启动时会从主线程（程序运行时即使没有创建线程后台也会存在如主线程、gc线程等多个线程）开始执行，接着主线程调用其他子线程或其他子线程之间相互调用，主线程结束意味着整个进程都会结束，那么其他所有子线程也会结束（强制结束）；</p>
+<p>我们假设线程1是主线程，线程1在执行过程中调用Yield()转换函数让出CPU切换到线程2中执行，如果线程2能够顺利执行则证明线程2创建成功（当然这里讨论的都是用户态线程的创建）</p>
+<p><img src="/images/image-20220915155840287.png" srcset="/img/loading.gif" lazyload></p>
+<p>创建用户级线程的函数thread_create()大致如下</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//用户级线程创建代码</span><br><span class="hljs-built_in">thread_create</span>(<span class="hljs-type">void</span>*func)<br>&#123;<br>    <span class="hljs-type">long</span>*stack = <span class="hljs-built_in">malloc</span>(SIZE_OF_USERSTACK)+ SOME SIZE;<br>    TCB*p = <span class="hljs-built_in">malloc</span>(SIZE OF_TCB);<br>	*stack = func;<br>	*(stack--)=eax；<span class="hljs-comment">//初始化执行现场，可以全是0</span><br>	......<br>	p-&gt;esp = stack;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="3-内核级线程的切换与创建"><a href="#3-内核级线程的切换与创建" class="headerlink" title="3.内核级线程的切换与创建"></a>3.内核级线程的切换与创建</h2><h3 id="3-1-内核级线程"><a href="#3-1-内核级线程" class="headerlink" title="3.1 内核级线程"></a>3.1 内核级线程</h3><p>前面介绍了用户级线程，下面我们通过用户级线程引出内核级线程，主要参照文章<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/87272557">用户级线程和内核级线程，你分得清吗？ - 知乎 (zhihu.com)</a>（这篇文章争议比较多，但是对于初学者理解用户级线程和内核级线程完全够用）</p>
+<p>用户级线程这个概念刚提出的时候，操作系统的厂商为了避免直接将未验证过的东西加入内核于是编写了一个关于用户级线程的函数库，However，这个函数库位于用户空间，也就是说操作系统内核对这个函数库一无所知（也就意味着操作系统的眼中还是只有进程而没有线程这个概念，所以借助线程库写的多线程进程实质上还是只能在一个CPU核心上运行）</p>
+<blockquote>
+<p>结论1：对操作系统来说，用户级线程具有不可见性（透明性）</p>
+</blockquote>
+<blockquote>
+<p>结论2：用户级线程只能使用一个处理器，只能做到并发而无法做到并行加速</p>
+</blockquote>
+<p>因为用户级线程的透明性，导致操作系统无法主动切换线程，也就意味着A、B两个进程同时存在时，A在运行的时候线程B想要运行只能等待A主动放弃CPU；</p>
+<p>那么用户级线程就一无是处了？作为程序员，我们可以为自己编写的应用程序定制调度算法（自己决定什么时候退出线程），有关用户级线程的其他好处我们在之后会总结；</p>
+<p>因为用户级线程在操作系统中是看不见的，那么当其中某一个线程阻塞（比如上面的A线程阻塞，那么B也会一直等待下去），在操作系统眼中是整个进程都阻塞了，对于这种情况也出现了相应的解决方法（如jacket），但如果我们使用内核级线程就不会存在这样的问题（线程A被阻塞，但与它同属一个进程的线程B不会被阻塞）；</p>
+<p>为了实现内核级线程，内核中需要有一个能够记录系统中所有线程的线程表，每当需要新建一个内核级线程的时候都需要进行一个系统调用进行线程表的更新，得益于线程表，操作系统可以看见内核级线程，因此操作系统可以将这些多线程放在多个CPU核心上实现真正的<code>并行</code>，然而内核级线程并不是完全优秀，因为内核级的线程调度需要操作系统来实现，这意味着每次切换内核级线程都需要陷入内核态，而操作系统从用户态到内核态是有开销的，同时线程表存放在堆栈空间其数量受到限制，拓展性比不上用户级线程；</p>
+<hr>
+<p>总结一下用户级线程和内核级线程（原文链接<a target="_blank" rel="noopener" href="https://blog.csdn.net/TABE_/article/details/126394402">(28条消息) 用户级线程和内核级线程_TABE_的博客-CSDN博客_用户线程和内核线程</a>）：</p>
+<ul>
+<li>用户级线程：用户级线程仅存在于用户空间中，对于操作系统是不可见的。此类线程的创建、撤销、线程之间的同步与通信功能，都无须利用系统调用来实现。每个线程并不具有自身的线程上下文（线程上下文保存的是线程用到的寄存器、内存中的数据等）；</li>
+<li>内核级线程：内核级线程的管理（建立和销毁等）是由操作系统通过系统调用完成的。内核为进程及其内部的每个线程维护上下文信息，调度也是在内核基于线程架构的基础上完成。内核线程驻留在内核空间，它们是内核对象；</li>
+<li>有了内核线程的概念，每个用户线程被映射或绑定到一个内核线程，用户线程在其生命期内都会绑定到该内核线程，一旦用户线程终止，两个线程都将离开系统，这被称作”一对一”线程映射；除此之外，还有多对一，多对多的线程映射（关于线程映射之后还会细说）；</li>
+<li>用户级线程和内核级线程的切换（下一节介绍）同样存在区别：<ul>
+<li><p>用户级线程切换的核心是根据存放在用户程序中的TCB找到用户栈，通过用户栈切换完成用户级线程的切换，整个切换过程通过调用Yiled（）函数引发；</p>
+</li>
+<li><p>内核级线程切换的核心是首先进入操作系统内核并在内核中找到线程TCB，进而根据TCB找到线程的内核栈（进入内核之后需要在内核中的某个地方完成PC指针切换，于是仿照用户级线程，将这个PC指针放在栈中，利用内核栈的切换引发PC指针的切换）、通过内核栈切换完成内核级线程切换，整个切换过程由中断引发；</p>
+</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>用户级线程的优点</th>
+<th>用户级线程的缺点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>线程切换代价的代价比内核线程少，因为保存线程状态的过程和调用程序都只是本地过程，没有上下文的切换</td>
+<td>线程发生I&#x2F;O或页面故障引起的阻塞时，如果调用阻塞系统调用则内核由于不知道有多线程的存在，而会阻塞整个进程</td>
+</tr>
+<tr>
+<td>允许每个进程定制自己的调度算法，线程管理（创建、销毁等）比较灵活</td>
+<td>由于每个线程并不具有自身的线程上下文。因此就线程的同时执行而言，任意给定时刻每个进程只能够有一个线程在运行，而且只有一个处理器内核会被分配给该进程。</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>内核级线程的优点</th>
+<th>内核级线程的缺点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>多处理器系统中，内核能够<code>并行</code>执行同一进程内的多个线程</td>
+<td>即使CPU在同一个进程的多个线程之间切换，也需要陷入内核，因此其速度和效率不如用户级线程</td>
+</tr>
+<tr>
+<td>如果进程中的一个线程被阻塞，能够切换同一进程内的其他线程继续执行</td>
+<td></td>
+</tr>
+</tbody></table>
+<hr>
+<h4 id="3-1-1-多线程模型"><a href="#3-1-1-多线程模型" class="headerlink" title="3.1.1 多线程模型"></a>3.1.1 多线程模型</h4><p>某些操作系统同时支持用户线程和内核线程，实现了用户级线程和内核级线程的连接方式：</p>
+<p>1）多对一模型。将多个用户级线程映射到一个内核级线程，线程管理在用户空间完成。此模式中，用户级线程对操作系统不可见（即透明）。<br>优点：线程管理是在用户空间进行的，因而效率比较高。<br>缺点：一个线程在使用内核服务时被阻塞，整个进程都会被阻塞；多个线程不能并行地运行在多处理机上。<br>2）一对一模型。将每个用户级线程映射到一个内核级线程。<br>优点：当一个线程被阻塞后，允许另一个线程继续执行，所以并发能力较强。<br>缺点：每创建一个用户级线程都需要创建一个内核级线程与其对应，这样创建线程的开销比较大，会影响到应用程序的性能。<br>3）多对多模型。将n个用户级线程映射到m个内核级线程上，要求m≤n。<br>特点：多对多模型是多对一模型和一对一模型的折中，既克服了多对一模型并发度不高的缺点，又克服了一对一模型的一个用户进程占用太多内核级线程而开销太大的缺点。此外，还拥有多对一模型和一对一模型各自的优点，可谓集两者之所长。</p>
+<hr>
+<blockquote>
+<p>Q：为什么要把用户线程和内核线程结合在一起啊？有什么意义呢？</p>
+</blockquote>
+<p>A：用户线程就是用户自己创建的线程调度程序，但是这样的用户线程实际上不能单独运行，用户线程运行的唯一方法就是告诉内核线程，使其帮忙执行用户线程中包含的代码；</p>
+<p>简单来说用户线程根本就不是线程，仅仅算得上是用户程序中的一堆数据，内核线程才是真正的线程，所以要使得用户线程能够运行只能是将其与内核线程映射关联；</p>
+<hr>
+<h3 id="3-2-内核级线程间的切换"><a href="#3-2-内核级线程间的切换" class="headerlink" title="3.2 内核级线程间的切换"></a>3.2 内核级线程间的切换</h3><p>回顾用户级线程的切换主要分为三个步骤：</p>
+<ul>
+<li><p>TCB切换；</p>
+</li>
+<li><p>根据TCB中存储的栈指针完成用户栈切换；</p>
+</li>
+<li><p>根据用户栈中压入函数返回地址完成PC指针切换；</p>
+</li>
+</ul>
+<blockquote>
+<p>补充知识点：</p>
+<p>内核栈（<code>栈是用来在函数跳转时保存返回地址等重要信息以备将来返回的</code>）中记录了当前用户栈的位置和当前用户程序执行的位置，在内核级线程切换的时候利用这两个信息完成PC指针的切换以及用户栈的切换；</p>
+</blockquote>
+<p>内核级线程的TCB存储在操作系统的内核中，因此完成TCB切换的程序应该执行在操作系统的内核中，因此内核级线程的切换应该从进入内核开始，那么我们就必须先介绍中断，因为中断会导致用户态到内核态的切换，那么首先我们就先来弄明白发生中断过后会有什么情况（几乎所有的外部中断都会引起下面的动作）：</p>
+<p>中断指令执行时，会找到当前进程的内核栈，然后将用户态执行的一些重要信息压到内核栈中；</p>
+<hr>
+<p>简单来说内核级线程切换仍然完成三个工作：切换TCB、切换栈和切换PC指针，但是这些切换动作要分散在中断入口、中断处理、线程调度、上下文切换以及中断返回等多个地方。不像用户级线程切换那样所有切换动作都在一个Yeild()函数中。因此内核级的切换过程就复杂得多，为清晰起见，将内核级线程的切换过程归纳整理为下图所示的五个阶段：</p>
+<hr>
+<blockquote>
+<p>Q：很多人可能会疑惑不是说内核级线程之间的切换吗？怎么看图好像是用户线程1-&gt;内核线程1-&gt;内核线程2-&gt;用户线程2这样的一个切换顺序</p>
+</blockquote>
+<p>A：这里因为书上有些概念没讲明白，所以我们额外讲一下</p>
+<ul>
+<li>用户线程和内核线程（上面已经介绍过）：<ul>
+<li>内核线程只工作在内核态中；</li>
+<li>用户线程既可以工作在内核态，也可以运行在用户态；</li>
+</ul>
+</li>
+<li>用户态和内核态：操作系统的两种运行级别，线程处于用户态则其访问资源受限，处于内核态则可访问计算机任何资源；</li>
+<li>内核栈和用户栈：每个进程都有两个栈，用户栈与内核栈（不同进程共享内核空间）：<ul>
+<li>进程处于用户空间（用户态）的时候，CPU堆栈指针寄存器的内容是用户栈地址；</li>
+<li>进程中断或系统调用陷入内核态时，CPU堆栈指针寄存器的内容是内核空间（内核栈）地址；</li>
+<li>更多详细关于内核栈和用户栈之间的相互转换参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/jinyidong/article/details/83215995">(28条消息) 用户线程&#x2F;内核线程、用户态&#x2F;内核态、用户栈&#x2F;内核栈的理解_jinyidong的博客-CSDN博客</a></li>
+</ul>
+</li>
+</ul>
+<p>好的，现在我们来讲为什么会出现用户栈的概念（参考原文<a target="_blank" rel="noopener" href="https://blog.csdn.net/PacosonSWJTU/article/details/125098794">(28条消息) 8.内核级线程（核心级线程）_PacosonSWJTU的博客-CSDN博客_内核级线程</a>）：</p>
+<ul>
+<li>进程必须在内核中，切换进程实际上就是切换内核级线程；</li>
+<li>切换用户级线程是切换内核级线程的一部分；</li>
+<li>每个内核级线程需要的是一套栈（用户栈和内核栈）而不仅仅只是一个栈，不要觉得说内核线程就只能有内核栈，因此内核线程的切换是需要TCB切换一套栈的：<ul>
+<li>进入内核态前，把线程的用户栈信息（元数据）压入到内核栈，即把同一个线程的用户栈与内核栈关联起来</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><img src="/images/image-20220916082948616.png" srcset="/img/loading.gif" lazyload></p>
+<ol>
+<li>第一阶段是中断进入，是中断处理的入口，核心工作是记录当前程序在用户态执行的信息（当前使用的用户栈、当前程序执行的位置、当前执行的现场信息等）；</li>
+<li>第二阶段是调用schedule引起TCB的切换（当发现线程应当让出CPU时，系统内核会调用schedule完成TCB的切换）：<ul>
+<li>schedule函数首先从就绪队列中选出下一个要执行线程的TCB；</li>
+<li>找到下一个TCB后使用next指针指向这个TCB；</li>
+<li>利用current（内核全局变量current指向当前线程的TCB）和next指针指向的信息就可以开始第三阶段；</li>
+</ul>
+</li>
+<li>第三阶段是内核栈的切换：将当前的ESP寄存器（指向当前线程的内核栈）存放在current指向的TCB中，再从next指向的TCB中取出esp字段（线程的内核栈地址）赋值给ESP寄存器；</li>
+<li>第四阶段是中断返回：在这一阶段中，要将存放在下一个线程的内核栈（因为内核栈已经切换完成）中的用户态程序执行现场恢复出来，这个现场是这个线程在切换出去时由中断入口程序保存的；</li>
+<li>第五阶段是用户栈切换：实际上就是切换用户态程序PC指针以及相应的用户栈，即需要将CS:EIP寄存器设置为当前用户程序执行地址，将SS:ESP寄存器设置为当前用户栈地址即可；</li>
+</ol>
+<h3 id="3-3-内核级线程的创建"><a href="#3-3-内核级线程的创建" class="headerlink" title="3.3 内核级线程的创建"></a>3.3 内核级线程的创建</h3><blockquote>
+<p>内核级线程由内核直接创建并管理</p>
+</blockquote>
+<p>前面已经介绍过内核级线程的切换主要由四个具体的切换构成：切换TCB，切换内核栈，切换用户栈，用户程序PC指针切换；</p>
+<p>相应地创建内核级线程的关键在于初始化TCB、内核栈以及用户栈：</p>
+<ul>
+<li><p>第一，创建一个TCB，主要存放内核栈的esp指针；</p>
+</li>
+<li><p>第二，分配一个内核栈，其中主要存放用户态程序的PC指针、用户栈地址以及执行现场；</p>
+</li>
+<li><p>第三，分配用户栈，主要存放进入用户态函数时用到的参数等内容；</p>
+</li>
+</ul>
+<h2 id="4-0号进程和1号进程"><a href="#4-0号进程和1号进程" class="headerlink" title="4.0号进程和1号进程"></a>4.0号进程和1号进程</h2><p>前面已经介绍过，多进程视图是操作系统的核心视图，多进程视图的核心就是<code>创建进程</code>的<code>系统调用</code>fork；</p>
+<p>fork的核心是通过复制父进程来创建子进程，操作系统中最基本的两个父进程是0号和1号进程（在操作系统初始化时由系统建立），系统中所有的进程都是从0号进程和1号进程继承而来；</p>
+<p>fork是一个只能工作在用户态应用程序中的系统调用，创建0号进程不能使用fork，需要手动设置进程信息（PCB、内核栈、用户栈以及用户程序等）</p>
+<h2 id="5-CPU调度"><a href="#5-CPU调度" class="headerlink" title="5.CPU调度"></a>5.CPU调度</h2><blockquote>
+<p>调度的基本概念：当有一堆任务需要处理，但是由于资源有限，这些任务不能同时处理（此处是真正意义上的同时），于是就需要确定某种规则来决定处理这些任务的顺序，这就是调度研究的问题；</p>
+</blockquote>
+<p>线程切换中我们并没有解决这样一个问题 —— 如何在一系列可供选择的就绪线程中选择下一个线程（其目的是将CPU分配给这个线程）是良好的，这就引出本节的主题，CPU调度；</p>
+<blockquote>
+<p>CPU调度简单来说就是在就绪<code>线程/进程队列</code>中选择一个合适的<code>线程/进程</code>，再通过切换机制将CPU资源分配给选择的<code>线程/进程</code>；（说一下，这里本质上应该是进程调度，只是哈工大教材根本没有提及三级调度的概念）</p>
+</blockquote>
+<p>因为根据操作系统是否支持线程，CPU调度的基本单位分为线程和进程，所以这里我们将线程和进程统称为任务；</p>
+<p>这里我们以PC机的通用操作系统作为基本对象分析（注意不同的对象其调度策略的目的和设计、实现原则等可能不同），需要考虑如下准则：</p>
+<ul>
+<li>任务的周转时间：任务从新建 进入操作系统到任务完成 离开操作系统所经历的全部时间；</li>
+<li>任务的响应时间：用户向程序发起一个交互操作（单击菜单）到该任务响应该操作（菜单弹出）经历的时间；</li>
+<li>系统吞吐量：一段时间区域内计算机系统能够完成的任务总数；</li>
+</ul>
+<p>我们举个例子说明CPU调度的重要性，PC机上交互任务和非交互任务同时存在：</p>
+<ul>
+<li>交互任务不关心周转时间，强调响应时间；</li>
+<li>非交互任务关心周转时间，执行过程中无需交互；</li>
+</ul>
+<p>这两个目标之间存在矛盾，不可能同时优化，因此能够有效的折中任务调度策略成为CPU调度分析的核心问题；</p>
+<h3 id="5-1-调度的层次"><a href="#5-1-调度的层次" class="headerlink" title="5.1 调度的层次"></a>5.1 调度的层次</h3><p>一个作业从提交开始到完成，一般需要经历如下三级调度：</p>
+<ul>
+<li><p>作业调度。又称<code>高级调度</code>，其主要任务是按一定的原则从<code>外存</code>上处于后备状态的作业中挑选一个（或多个）作业，给它（们）分配内存、输入&#x2F;输出设备等必要的资源，并建立相应的进程，以使它（们）获得竞争处理机的权利。简言之，<code>作业调度就是内存与辅存之间的调度</code>。对于每个作业只调入一次、调出一次。多道批处理系统中大多配有作业调度，而其他系统中通常不需要配置作业调度。作业调度的执行频率较低，通常为几分钟一次；</p>
+</li>
+<li><p>中级调度。又称<code>内存调度</code>，其作用是提高内存利用率和系统吞吐量。为此，应将那些暂时不能运行的进程调至外存等待，把此时的进程状态称为挂起态。当它们已具备运行条件且内存又稍有空闲时，由中级调度来决定把外存上的那些已具备运行条件的就绪进程，再重新调入内存，并修改其状态为就绪态，挂在就绪队列上等待；</p>
+</li>
+<li><p>进程调度。又称<code>低级调度</code>，其主要任务是按照某种方法和策略从就绪队列中选取一个进程，将处理机分配给它。进程调度是操作系统中最基本的一种调度，在一般的操作系统中都必须配置进程调度。进程调度的频率很高，一般几十毫秒一次（咱们下面讲的非交互式、交互式实际上都只是讲的进程调度）</p>
+</li>
+</ul>
+<p>作业调度从外存的后备队列中选择一批作业进入内存，为它们建立进程，这些进程被送入就绪队列，进程调度从就绪队列中选出一个进程，并把其状态改为运行态，把CPU分配给它。中级调度是为了提高内存的利用率，系统将那些暂时不能运行的进程挂起来。当内存空间宽松时，通过中级调度选择具备运行条件的进程，将其唤醒；</p>
+<blockquote>
+<p>这里我们再辨析两个概念：进程调度和进程切换</p>
+<ul>
+<li><p>进程调度就是我们上面所说的从就绪队列中选中一个要运行的进程（这个进程可能是刚刚被暂停执行的进程（原因可能是因为资源不足等因素），也可能是另一个进程）；</p>
+</li>
+<li><p>进程切换就是指一个进程让出处理机，由另一个进程占用处理机，进程调度中的第一种情况不需要进程切换（因为本来就是同一个进程），第二种情况（即不同进程的调度）才需要进程切换；</p>
+</li>
+</ul>
+<p>调度了新的就绪进程之后才会进行进程间的切换，理论上这两个事件顺序不能颠倒（事实上也确实不会颠倒），进程切换（也就是我们上面刚开始所说的切换机制）主要完成：</p>
+<ol>
+<li>对原来运行进程各种数据的保存</li>
+<li>对新的进程各种数据的恢复</li>
+</ol>
+<p>（有没有发现很类似之前介绍过的线程切换？因为线程切换是进程切换的核心，但是对于进程切换，王道和哈工大似乎都没怎么细讲）</p>
+</blockquote>
+<h3 id="5-2-进程调度方式"><a href="#5-2-进程调度方式" class="headerlink" title="5.2 进程调度方式"></a>5.2 进程调度方式</h3><p>进程调度方式简单来说就是当有优先级更高的进程进入就绪队列的时候应该如何分配处理机，通常有两种进程调度方式：</p>
+<ul>
+<li>非抢占方式：这种方式下一旦把CPU分给一个进程，该进程就会保持CPU直到终止或转换到等待状态，这种方式不能用于分时系统和多数实时系统（无法处理紧急任务）</li>
+<li>抢占方式：若有某个更加重要的进程需要使用处理机的时候，立即暂停正在执行的进程，将处理机分配给这个更加重要的进程，这种方式可以处理更高优先级的进程，也可以实现时间片的轮流处理</li>
+</ul>
+<h3 id="5-3-典型调度算法"><a href="#5-3-典型调度算法" class="headerlink" title="5.3 典型调度算法"></a>5.3 典型调度算法</h3><p>操作系统中有多种调度算法，有些调度算法适用于作业调度，有的适用于进程调度，有的两者都适用，下面我们介绍的都是能用于进程调度的一些调度算法；</p>
+<h4 id="5-3-1-非交互式调度"><a href="#5-3-1-非交互式调度" class="headerlink" title="5.3.1 非交互式调度"></a>5.3.1 非交互式调度</h4><h5 id="1-先来先服务调度"><a href="#1-先来先服务调度" class="headerlink" title="(1)先来先服务调度"></a>(1)先来先服务调度</h5><p>FCFS调度算法就是选择就绪队列头部的的任务调度执行，特性是公平，缺点是很可能导致任务的平均周转时间较长，我们用下面这个例子举例</p>
+<p><img src="/images/image-20220919083641065.png" srcset="/img/loading.gif" lazyload></p>
+<p>根据FCFS的基本思想我们可以得到其算法实例如下</p>
+<p><img src="/images/image-20220919084235965.png" srcset="/img/loading.gif" lazyload></p>
+<p>则其平均周转时间为(10+39+42+49+61)&#x2F;5&#x3D;40.2，那么假如我们让T2和T3交换次序，则平均周转时间为(10+13+42+49+61)&#x2F;5&#x3D;35，其背后的思想是：让任务执行时间短的任务提前执行可以使平均周转时间变小，也就是下面我们会介绍的最短作业优先调度算法；</p>
+<h5 id="2-最短作业优先调度"><a href="#2-最短作业优先调度" class="headerlink" title="(2)最短作业优先调度"></a>(2)最短作业优先调度</h5><p>SJF算法的思想就是按照任务的执行时间从小到大排序，任务按照这个顺序依次调度执行，我们假设表4.2中的五个任务同时出现在0时刻</p>
+<p><img src="/images/image-20220919084142256.png" srcset="/img/loading.gif" lazyload></p>
+<p>基本思想：如果在调度序列中存在Ti排在Tj前面，但是其执行时间大于Tj，那么就交换Ti和Tj在调度序列中的位置</p>
+<hr>
+<blockquote>
+<p>Q：不难发现这里假设的是5个任务同时到达，然后按照执行时间大小顺序排列，假如不是同时到达呢？</p>
+</blockquote>
+<p>关于上面那个问题，其实也就引出了最短剩余时间优先调度SRTF：<code>每当有新任务到达时</code>，选择当前剩余执行时间最短的任务进行调度执行；</p>
+<p><code>SRTF一定不是直接选择执行时间最短的！</code>这点很容易忽略，SRTF是一种可抢占式调度，这就意味着不是由任务自身主动让出CPU才引起的调度，而是只要有新任务到达就可能导致有任务抢占当前任务的CPU（因为新出现的任务具有更短的执行时间，所以具有更高的优先级）；</p>
+<p><img src="/images/image-20220919090127921.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="5-3-2-交互式调度"><a href="#5-3-2-交互式调度" class="headerlink" title="5.3.2 交互式调度"></a>5.3.2 交互式调度</h4><h5 id="1-轮转调度"><a href="#1-轮转调度" class="headerlink" title="(1)轮转调度"></a>(1)轮转调度</h5><p>SRTF在非交互任务中完成的很好，但是在交互任务中可能会不尽人意，最简单的，假设图4.15的T2是一个交互任务（用户点击鼠标），在时刻1我们点击了鼠标，在时刻32该用户操作才被响应，这在交互式体验中是非常差的！假如我们在一段时间内让所有的任务都有机会向前推进而不是呆呆的让抢占到CPU的任务执行完毕才让出CPU，是否可以优化响应时间呢？这就引出时间片轮转RR调度：将一段时间等分（执行时间片）的分割给每个任务，当前任务的时间片用完后就会切换到下一个任务；</p>
+<p>假设一共有N个任务，时间片长度固定为u，则对于任何一个任务，最多等待N*u的时间，这个任务一定会得到执行的机会；</p>
+<p>因此，通过设计合理的N和u可以保证用户响应时间的上界；</p>
+<h4 id="5-3-3-综合调度"><a href="#5-3-3-综合调度" class="headerlink" title="5.3.3 综合调度"></a>5.3.3 综合调度</h4><h5 id="1-多级队列调度"><a href="#1-多级队列调度" class="headerlink" title="(1)多级队列调度"></a>(1)多级队列调度</h5><p>操作系统中既有交互任务，也有非交互任务，如何组合RR和SRTF来处理两种任务都存在的情况呢？</p>
+<p>最简单的思想就是引入两个队列：</p>
+<ul>
+<li>交互任务队列：也称为前台任务队列，采用RR调度；</li>
+<li>非交互任务队列：也称为后台任务队列，采用SRTF调度；</li>
+</ul>
+<p>通常让前台队列具有更高的优先级，即假如前台队列中存在就绪任务则采用RR调度处理这个队列中的任务（此时就只能让后台队列中的队列慢慢等待）；</p>
+<h5 id="2-多级反馈队列调度"><a href="#2-多级反馈队列调度" class="headerlink" title="(2)多级反馈队列调度"></a>(2)多级反馈队列调度</h5><p>多级队列调度存在一个明显的问题：假如采用非抢占式调用，则一旦被后台任务调度得到CPU，则只能等待它执行完毕之后才会主动释放CPU，这段时间可能导致前台任务的响应时间变长；但是如果采用抢占式调用（这里的抢占就是指只要有前台任务就执行前台任务），后果就是后台任务需要等待前台队列中没有任务才能调度；</p>
+<p>解决上述问题的方法是后台任务也需要分配时间片，这样就算前台队列中存在任务，后台任务也不至于一直无法执行；</p>
+<p>第二个问题是操作系统如何区分前台任务和后台任务 —— 多级队列中的任务类型并不是在任务创建时确定，应该根据任务在执行过程的具体表现来动态调整（编译过程看起来是后台任务，但是Ctrl+C中断编译术语用户交互），而这个动态调整实际上就是“反馈”的含义；</p>
+<p>因此动态调整就成为了多级反馈队列调度的核心：</p>
+<ul>
+<li>I&#x2F;O动态调整：I&#x2F;O操作是与用户进行交互的一种方式，因此可以根据I&#x2F;O操作的多少来区分前后台任务（当然不能说某段时间内没有I&#x2F;O操作就一定不是交互任务）；</li>
+<li>执行时长动态调整：对于执行时间较长的任务，降低其优先级并延长其时间片</li>
+</ul>
+<p>多级反馈队列调度算法实现思想如下：</p>
+<ul>
+<li>设置多个就绪队列，为各个队列赋予不同的优先级；</li>
+<li>赋予各个队列中进程执行时间片的大小各不相同，在优先级越高的队列中每个进程的运行时间片越小；</li>
+<li>当一个新进程进入内存后，首先将它放在第一级队列的末尾，按照FCFS先来先服务原则排队等待调度，当该进程执行时：<ul>
+<li>如果能在该时间片内完成则可以准备撤离系统；</li>
+<li>如果在一个时间片结束尚未完成，则该进程转入第二级队列的末尾，按照FCFS原则等待…</li>
+</ul>
+</li>
+<li>仅当第一级队列为空时调度程序才会调度第二级队列中的进程运行，同理推导低优先级的队列的进程执行顺序；<ul>
+<li>若处理机在处理i级的进程时有更高优先级（1~i-1级）队列的进程插入，则新进程直接抢占正在运行进程的处理机</li>
+</ul>
+</li>
+</ul>
+<h1 id="第五章-进程同步"><a href="#第五章-进程同步" class="headerlink" title="第五章 进程同步"></a>第五章 进程同步</h1><p>多个进程在并发执行的过程中并不一定完全独立，会相互依赖，本章就是解决在操作系统中如何实现这些依赖关系（比如多项式1+2*3，必须保证乘法先于加法执行才能得到正确结果）；</p>
+<p>当进程之间存在依赖关系的时候，进程不能一直执行自己的工作，需要在适当时间查看其它进程的工作情况，根据查看情况再决定自己是否需要继续工作；</p>
+<p>进程同步的基本结构：</p>
+<ul>
+<li>一个进程在需要同步的地方停下来等待依赖进程，当发现依赖进程完成了和同步对应的工作以后，这个进程再继续向前执行；</li>
+</ul>
+<p>上述流程我们称为睡眠和唤醒，据此可以给出进程同步的描述性定义：进程同步就是通过对进程睡眠和唤醒的控制使得多个进程步调一致，合理有序地向前推进；</p>
+<h2 id="1-进程互斥"><a href="#1-进程互斥" class="headerlink" title="1.进程互斥"></a>1.进程互斥</h2><p>进程互斥和进程同步不是类似的概念，进程互斥是指当一个进程访问某临界资源时另一个想要访问该临界资源的进程必须等待直到访问临界资源的进程释放；</p>
+<p>系统中的资源主要有两种共享方式：</p>
+<ul>
+<li>互斥共享方式：系统中的某些资源可以提供给多个进程使用，但一个时间段内只允许一个进程访问该资源 ———— 把这种资源称为临界资源；</li>
+<li>同时共享方式：系统中的某些资源允许一个时间段内有多个进程“同时”对其进行访问；</li>
+</ul>
+<p>对临界资源的访问必须<code>互斥地</code>进行，可以在逻辑上分为如下四部分</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">do</span>&#123;<br>    entry section;		<span class="hljs-comment">//进入区：负责检查是否可以进入临界区，如果可以进入则应上锁，以阻止其他进程同时进入临界区</span><br>    critical section;	<span class="hljs-comment">//临界区：访问临界资源的那段代码</span><br>    <span class="hljs-built_in">exit</span> section;	    <span class="hljs-comment">//退出区：负责解除正在访问临界资源的标志“解锁”</span><br>    remainder section;	<span class="hljs-comment">//剩余区：做其他处理</span><br>&#125;<span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>)<br><span class="hljs-comment">//临界区是进程中访问临界资源的代码段；</span><br><span class="hljs-comment">//进入区和退出区是负责实现互斥的代码段；</span><br></code></pre></td></tr></table></figure>
+
+<p>进程互斥需要遵循以下原则：</p>
+<p>1.空闲让进。临界区空闲时，可以允许一个请求进入临界区的进程立即进入临界区；<br>2.忙则等待。当已有进程进入临界区时，其他试图进入临界区的进程必须等待；<br>3.有限等待。对请求访问的进程，应保证能在有限时间内进入临界区（保证不会饥饿）；<br>4.让权等待。当进程不能进入临界区时，应立即释放处理机，防止进程忙等待；</p>
+<p>为什么要介绍进程互斥？因为进程互斥是实现进程同步的一种方式，进程同步是一种处理异步性的方式，基于互斥实现对资源的有序访问；</p>
+<h2 id="2-信号-amp-信号量"><a href="#2-信号-amp-信号量" class="headerlink" title="2.信号&amp;信号量"></a>2.信号&amp;信号量</h2><p>我们已经建立了基于睡眠和唤醒的进程同步轮廓，接下来就是实现这个轮廓，实现的核心在于进程间如何实现睡眠和唤醒（有些地方也称为等待和通知）——进程间通过信号实现等待和通知；</p>
+<p>我们以前面提到过的“生产者-消费者”模型分析如何利用信号解决进程同步问题：</p>
+<p>生产者-消费者模型是多个进程共享一个缓存区产生的相互依赖的问题，生产者进程往共享缓存区写入内存，消费者进程从共享缓存区取出内容：</p>
+<ul>
+<li>缓存区满的时候生产者进程需要等待消费者进程取走内容；</li>
+<li>缓存区空的时候消费者进程需要等待生产者进程写入内容；</li>
+</ul>
+<p>要解决生产者-消费者问题，首先需要找到两个进程之间需要同步的地方：对于生产者进程，需要停下来等待的地方是在缓存区满的时候，在此处插入等待信号的动作；</p>
+<p>接下来要找到发送信号的地方（让生产者进程继续前进的地方）：对于生产者进程，消费者进程制造出一个空闲缓存区时需要唤醒生产者进程，在此处发出生产者进程等待的信号；</p>
+<p>消费者进程的睡眠和唤醒与之类似，此处不再赘述；</p>
+<p><img src="/images/image-20220922205609203.png" srcset="/img/loading.gif" lazyload></p>
+<p>上述解决方案中，定义了两个信号：</p>
+<ul>
+<li>empty表示“空闲单元信号”，消费者进程用掉一个内容单元则产生一个空闲缓存区，则向生产者进程发送一个empty信号；</li>
+<li>full表示“内容单元信号”，生产者进程产生一个内容单元则向消费者发出一个full信号；</li>
+</ul>
+<p>通过<code>if(counter==BUFFER_SIZE)</code>来判断counter(当前缓存区中内容单元的个数)是否等于BUFFER_SIZE，如果相等说明缓存区已满生产者进程会令自己进入阻塞态并等待信号empty；</p>
+<p>当消费者进程消耗掉一个内容单元后消费者发现counter变成BUFFER_SIZE-1，那么就会给生产者发送empty信号并唤醒生产者<code>wake_up(empty)</code>；（消费者进程与之类似不再赘述）</p>
+<hr>
+<p>上述依赖变量counter进行判断是否需要同步存在一个问题，因为counter表达出来的语义不够因而无法应对多变的调度情况；</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs abnf">当缓存区满的时候，此时进来两个生产者进程P1和P2以及一个消费者进程C；<br>此时的counter<span class="hljs-operator">=</span><span class="hljs-operator">=</span>BUFFER_SIZE，当C消耗掉一个内容单元会给P1发送empty唤醒P1，此时counter<span class="hljs-operator">=</span><span class="hljs-operator">=</span>BUFFER_SIZE-<span class="hljs-number">1</span><span class="hljs-comment">;</span><br>C再次消耗掉一个内容单元后此时counter<span class="hljs-operator">=</span><span class="hljs-operator">=</span>BUFFER_SIZE-<span class="hljs-number">2</span>，现在P2就不能被唤醒了；<br></code></pre></td></tr></table></figure>
+
+<p>引入信号量的概念：信号量就是在信号上关联一个表达“量”的整数（这个量可以自定义，如阻塞在empty上的进程个数）：</p>
+<p>（1）信号量就是一个整型变量，用来记录和进程同步有关的重要信息；</p>
+<p>（2）能让进程阻塞睡眠在这个信号量上；</p>
+<p>（3）需要同步的进程通过操作（加1和减1）信号量实现进程的阻塞和唤醒，即进程间的同步；</p>
+<p>因此，信号量就是一个数据对象以及操作这个数据对象的两个操作：</p>
+<ul>
+<li>其中数据对象是信号量数值以及相应的阻塞进程队列；</li>
+<li>而在这个数据对象上的两个操作就是对信号量数值的加1和减1，并根据加减后的信号量数值决定的睡眠和唤醒；</li>
+</ul>
+<p>我们还是用前面的例子来讲解</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">如果P1阻塞，则需要等待的<span class="hljs-literal">empty</span>=<span class="hljs-number">1</span>，<br>如果P2阻塞，则需要等待的<span class="hljs-literal">empty</span>=<span class="hljs-number">1</span>+<span class="hljs-number">1</span>=<span class="hljs-number">2</span>，<br>C执行一次发现<span class="hljs-literal">empty</span>==<span class="hljs-number">1</span>这意味着还有一个进程在阻塞，C再次执行一次发现<span class="hljs-literal">empty</span>==<span class="hljs-number">0</span>；<br><br>综上，对于<span class="hljs-literal">empty</span>这个信号来说，当它为正数或者<span class="hljs-number">0</span>的时候，表示现在和该信号量对应的资源还有<span class="hljs-literal">empty</span>个；当它为负数的时候表示亏欠|<span class="hljs-literal">empty</span>|个资源（这个地方不要纠结，本质上就是简单的多余资源和少资源；<br>总而言之信号量的定义是人为的，只要给出一个合理的定义就可以，不要太纠结树上的语法；<br></code></pre></td></tr></table></figure>
+
+<p>综上，我们得出信号量的含义：</p>
+<ul>
+<li>信号量是一个需要被多个进程共享的整数；</li>
+<li>通过信号量的值判断进程是否需要睡眠&#x2F;唤醒，睡眠&#x2F;唤醒的操作对象是进程的PCB；</li>
+<li>修改信号量的值的时候需要进行临界区保护，具体实现方法参考上面介绍的Lamport面包店算法或开关中断；</li>
+</ul>
+<h2 id="3-临界区"><a href="#3-临界区" class="headerlink" title="3.临界区"></a>3.临界区</h2><p>信号量的数值非常重要，只有信号量的数值与信号量对应的语义信息保持一致才能正确地使用信号量来决定进程的同步；</p>
+<p>在多个进程“共同”修改信号量时需要对信号量进行保护，不能随意修改：每个进程对信号量的修改要么一点也不做，要么全部做完，中途不能被打断（每个进程对信号量的修改必须是一个原子操作）；</p>
+<p>下图中P1和P2一次最多只能有一个进程进入执行某一段代码，这段<code>代码</code>就是进程的<code>临界区</code>；</p>
+<p><img src="/images/image-20220923151216967.png" srcset="/img/loading.gif" lazyload></p>
+<p>临界区并非是信号量的专有概念，我们将一次仅允许一个进程使用的资源称为临界资源，对临界资源的访问必须互斥的进行，将临界资源的访问过程分为下面4部分：</p>
+<ul>
+<li>进入区。为了进入临界区使用临界资源，在进入区要检查可否进入临界区，若能进入临界区，则应设置正在访问临界区的标志，以阻止其他进程同时进入临界区。</li>
+<li>临界区。进程中访问临界资源的那段代码，又称临界段。</li>
+<li>退出区。将正在访问临界区的标志清除。</li>
+<li>剩余区。代码中的其余部分。</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">do</span>&#123;<br>    entry section;		<span class="hljs-comment">//进入区</span><br>    critical section;	<span class="hljs-comment">//临界区</span><br>    <span class="hljs-built_in">exit</span> section;		<span class="hljs-comment">//退出区</span><br>    remainder section;	<span class="hljs-comment">//剩余区</span><br>&#125;<span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>)<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>有了临界区的概念以后，信号量的保护机制就是让进程中修改信号量的代码成为临界区代码（“进入区”-&gt;“临界区”修改信号量-&gt;“退出区”）；</p>
+</blockquote>
+<h3 id="3-1-临界区的软件实现"><a href="#3-1-临界区的软件实现" class="headerlink" title="3.1 临界区的软件实现"></a>3.1 临界区的软件实现</h3><h4 id="3-1-1-轮换法"><a href="#3-1-1-轮换法" class="headerlink" title="3.1.1 轮换法"></a>3.1.1 轮换法</h4><p>任何时候只有一个进程有权利进入临界区，只有这个进程退出临界区后才能轮换到其他进程，保证了临界区的互斥性；</p>
+<p>turn变量在任意时刻只能取值为0或1，对P0而言turn&#x3D;0，对P1而言turn&#x3D;1；</p>
+<p><img src="/images/image-20220923151902927.png" srcset="/img/loading.gif" lazyload></p>
+<p>当然上述如果P1不执行就直接退出会导致P0永远无法进入临界区执行，因此实现临界区还要考虑如下（其实就是前面已经介绍过的进程互斥）：</p>
+<p>第一，互斥进入。如果有多个进程要求进入空闲的临界区，一次仅允许一个进程进入；在任何时候，一旦已经有进程进入其自身的临界区，则其他所有试图进入相应临界区的进程都必须等待。<br>第二，有空让进。如果没有进程处于临界区内且有进程请求进入临界区，则应该能让某个请求进程进入临界区执行，即不发生资源的死锁情况。（轮换法并没有实现有空让进）<br>第三，有限等待。有限等待意味着一个进程在提出进入临界区请求后，最多需要等待临界区被使用有限次以后，该进程就可以进入临界区。这样，任何一个进程对临界区的等待时间都是有限的，即不出现因等待临界区而造成的饿死情况。</p>
+<h4 id="3-1-2-标记法"><a href="#3-1-2-标记法" class="headerlink" title="3.1.2 标记法"></a>3.1.2 标记法</h4><p>进程P0想进入临界区就做一个标记flag[0]&#x3D;ture</p>
+<p><img src="/images/image-20220923222154467.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们分析标记法是否可以满足上述临界区的实现要求：</p>
+<ul>
+<li>互斥进入：若两个进程都在临界区则flag[0]&#x3D;flag[1]&#x3D;ture，但是对于P0来说flag[1]&#x3D;ture会自旋等待，对P1来说flag[0]&#x3D;ture会自旋等待，这与假设矛盾，所以可以保证互斥进入；</li>
+<li>有空让进：这是标记法不能解决的，假设进程P0设置了flag[0]&#x3D;ture之后并没有进入临界区，而是切换到进程P1，进程P1设置flag[1]&#x3D;true后发现满足while(flag[0] &#x3D;&#x3D; ture)则自旋等待（实际上P0并没有在临界区中），而P0也因为满足while(flag[1] &#x3D;&#x3D; ture)所以自旋等待</li>
+</ul>
+<h4 id="3-1-3-Peterson算法"><a href="#3-1-3-Peterson算法" class="headerlink" title="3.1.3 Peterson算法"></a>3.1.3 Peterson算法</h4><p><img src="/images/image-20220923224031831.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>互斥进入：若P0和P1都在临界区中则flag[0]&#x3D;flag[1]&#x3D;ture，且因为经过了进入区所以turn&#x3D;0且turn&#x3D;1，这明显是不可能的；</li>
+<li>有空让进：如果P0和P1都请求进入临界区，turn会使得轮到的进程一定能够进入临界区；如果某个进程不愿意进入临界区则flag[]&#x3D;flase，该进程根本不会自旋等待；</li>
+<li>有限等待：如果P0请求但不能进入临界区，只可能是flag[1]&#x3D;ture且turn&#x3D;1，这意味着P1在临界区中，P1使用一次临界区后会将turn设置为0，此时P0就可以进入临界区了；</li>
+</ul>
+<h4 id="3-1-4-Lamport面包店算法"><a href="#3-1-4-Lamport面包店算法" class="headerlink" title="3.1.4 Lamport面包店算法"></a>3.1.4 Lamport面包店算法</h4><p>Peterson算法只能处理两个进程的临界区，涉及多进程时就需要Lamport面包店算法；</p>
+<p>面包店（临界区）一次只能接待一个客户（进程），按照次序给每个客户分发一个号码，顾客按照其号码由小到大的次序进行购买，完成购买的顾客号码置零（这意味着如果该顾客需要再次购买需要重新取号排队）；</p>
+<h3 id="3-2-临界区的硬件实现"><a href="#3-2-临界区的硬件实现" class="headerlink" title="3.2 临界区的硬件实现"></a>3.2 临界区的硬件实现</h3><p>当软件实现变得复杂以后，可以使用硬件来简化操作、提高效率；</p>
+<p>禁止中断是一种实现临界区保护的方法（禁止中断意味着禁止进入内核，那么就无法调用schedule函数进而无法实现进程切换，则CPU只会执行一个进程的临界区代码）</p>
+<p><img src="/images/image-20220923230009416.png" srcset="/img/loading.gif" lazyload></p>
+<p>However，这种关中断操作对于多CPU计算机的其他CPU没有任何影响，我们联想之前的消费者-生产者模型 —— 这就引出了保护临界区的互斥信号量，该信号量只会取0、1两个值，通常被命名为lock，该信号量的P、V操作非常简单所以可以使用硬件实现：</p>
+<ul>
+<li>lock当前值为0则说明没有上锁，可以执行进入临界区并将lock修改为1（上锁）；</li>
+<li>lock当前值为1则进程自旋等待；</li>
+</ul>
+<p><img src="/images/image-20220923230912058.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="4-信号量的实现"><a href="#4-信号量的实现" class="headerlink" title="4.信号量的实现"></a>4.信号量的实现</h2><p>（这部分得刷题才行，使用PV操作解决进程之间的同步互斥问题是考察重点）</p>
+<blockquote>
+<p>临界区保护了信号量P、V操作的原子性进而保证信号量数值的语义正确性（根据信号量数值表达的语义可以正确地控制进程的阻塞和唤醒，也就是实现进程同步），因此操作系统给上层用户提供了信号量定义接口以及P、V操作后用户就可以调用这些接口完成进程同步；</p>
+</blockquote>
+<p>通常信号量被实现为操作系统内核中的一个数据对象，而P、V操作被实现为操作系统提供的系统调用；</p>
+<p>POSIX标准针对信号量定义如下四个基本系统调用：</p>
+<ul>
+<li>sem_t *sem_open(const char *name,int oflag,mode_t mode,unsigned int value)：打开或创建一个信号量变量；</li>
+<li>int sem_unlink(count char*name)：根据名字从操作系统中删除信号量；</li>
+<li>int sem_wait(sem_t *sem)：信号量的P操作；</li>
+<li>int sem_post(sem_t *sem)：信号量的V操作；</li>
+</ul>
+<p>我们可以根据自己的需要实现或使用系统提供的标准信号量或只有正数的信号量；</p>
+<h2 id="5-死锁"><a href="#5-死锁" class="headerlink" title="5.死锁"></a>5.死锁</h2><p>死锁现象简单来说就是进程P0在等待P1的时候，P1也在等待P0；</p>
+<p>死锁现象在多进程并发和同步的计算机系统中是必然会产生且不可预见的，故必须依靠操作系统提供的处理机制保证进程的有序推进；</p>
+<h3 id="5-1-死锁预防"><a href="#5-1-死锁预防" class="headerlink" title="5.1 死锁预防"></a>5.1 死锁预防</h3><p>死锁发生的四个基本条件（必要条件）如下：</p>
+<ul>
+<li>互斥：资源不能被共享，一个资源每次只能被一个进程使用。</li>
+<li>不可剥夺：进程已获得的资源，在未使用完之前，不能强行剥夺。</li>
+<li>请求与保持：一个进程因请求资源而阻塞时，对已获得的资源保持不放。</li>
+<li>循环等待：若干进程之间形成一种头尾相接的循环性资源等待关系。</li>
+</ul>
+<p>只需要破坏这四个必要条件中的某个条件，就不会形成死锁，这就是死锁预防的基本思想；</p>
+<p>但是“互斥”和“不可剥夺”这两个条件在通常条件下是资源自身特性或程序本身决定，无法直接破坏，所以死锁预防主要是破坏“请求与保持”和“循环等待”两个条件：</p>
+<ul>
+<li>请求与保持：将申请资源的方式修改为一次性申请进程所需的所有资源（当进程在请求资源阻塞时，它不会占有任何资源）；</li>
+<li>循环等待：避免资源等待形成环路（因为环路等待是死锁的必要条件），只要资源按序申请就一定不会造成死锁；</li>
+</ul>
+<p>死锁预防固然是一种解决死锁的方式，但是它需要预先计算资源且预留资源，这样的设计是及其不合理的，所以我们需要想出新的解决办法；</p>
+<h3 id="5-2-死锁避免"><a href="#5-2-死锁避免" class="headerlink" title="5.2 死锁避免"></a>5.2 死锁避免</h3><p>死锁避免的基本思想：每次资源申请都要判断是否有出现死锁的危险，如果有危险就拒绝此次申请；</p>
+<p>银行家算法是一种优秀的避免死锁的算法：在银行中，客户要向银行申请贷款，每个客户在第一次申请贷款时会声明完成项目所需的最大资金量，客户会分期贷款，且贷款的总数不超过其声明的最大需求量。只有客户贷到了所需的全部资金才能完成项目，也才能向银行归还其全部贷款。银行要考虑的关键问题是如何处理这些贷款请求，既保证银行有钱给客户放款，同时又保证所有客户的总贷款要求得到满足，最终能偿还其全部贷款，这样银行才不会有损失；与银行贷款类比：</p>
+<p>（1）银行是操作系统，资金就是资源，客户相当于要申请资源的进程；</p>
+<p>（2）客户能最终偿还贷款需要银行满足客户的全部贷款请求，相当于操作系统满足进程的所有资源请求，即让进程执行完成，不造成死锁；</p>
+<p>（3）银行判断贷款请求是否应该被批准相当于操作系统判断进程资源请求是否可以被允许，银行没有损失相当于操作系统没有死锁；</p>
+<p>（4）操作系统判断这个资源请求是否安全的算法就是银行判断此次贷款是否安全的算法，因此被称为银行家算法；</p>
+<p>银行家算法的核心在于确保“系统安全”，也就是找到一个安全序列，使得对所有进程的资源请求都存在一种调度方案令其满足，从而能顺利执行完成；</p>
+<p>我们下面直接给出一个例子</p>
+<p><img src="/images/image-20220925192325008.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20220925192423341.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20220925192441553.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="5-3-死锁检测-x2F-恢复"><a href="#5-3-死锁检测-x2F-恢复" class="headerlink" title="5.3 死锁检测&#x2F;恢复"></a>5.3 死锁检测&#x2F;恢复</h3><p>前面介绍的两种方式都是通过资源使用的限制保证不出现死锁，这样的限制会造成资源使用效率的降低；那么我们就直接放开资源的使用，这意味着一定会造成死锁（因为相当于预防和避免直接跳过），此时我们的死锁检测&#x2F;恢复就派上用场了；</p>
+<p>经过改造的银行家算法可以进行死锁检测，用于判断进程当前提出的请求是否会导致死锁，也就是通过算法检测哪些进程死锁了；</p>
+<p>死锁恢复是指当检测到一个集合中的进程处于死锁状态时，要选择一些进程进行回滚，这里就引出更多的问题：</p>
+<ul>
+<li>如何进行回滚；</li>
+<li>回滚到哪里比较合适；</li>
+<li>选择哪些进程回滚合适；</li>
+</ul>
+<h1 id="第六章-内存管理"><a href="#第六章-内存管理" class="headerlink" title="第六章 内存管理"></a>第六章 内存管理</h1><p>“进程管理和内存管理两部分构成操作系统的真正内核”</p>
+<blockquote>
+<p>内存管理相对复杂，涉及到硬件和软件，从微机原理到应用程序到内核。</p>
+<p>比如，硬件上的cache，CPU如何去寻址内存，页表， DMA，IOMMU； 软件上，要知道底层怎么分配内存，怎么管理内存，应用程序怎么申请内存。</p>
+</blockquote>
+<p>本章的主线就是程序正确载入内存和指令正确读写内存：</p>
+<ul>
+<li>程序载入内存旨在让程序执行；</li>
+<li>指令正确读写内存旨在让某些读写指令能够正确执行；</li>
+</ul>
+<h2 id="1-重定位"><a href="#1-重定位" class="headerlink" title="1.重定位"></a>1.重定位</h2><blockquote>
+<p>重定位保证了指令正确读写内存，以致读写指令能够正确执行；重定位是由操作系统安排执行的；</p>
+</blockquote>
+<p>我们知道，计算机工作的基本过程是：CPU不断重复“取指-执行”的过程，而取指和执行指令这两个过程都涉及内存；</p>
+<p>源文件编译形成可执行文件的时候（准确来说应该是链接后形成可执行文件），使用的地址都是从0开始的相对地址，而当程序真正被载入物理内存的时候可能使用任意一段空闲物理地址，此时如果想要保证程序的正确执行就需要做重定位（也就是将程序中的逻辑地址对应到实际使用的物理内存地址）</p>
+<p><img src="/images/image-20220926140823168.png" srcset="/img/loading.gif" lazyload></p>
+<p>重定位主要分为如下几种：</p>
+<p>(1)编译时重定位：这样产生的可执行文件的地址就是实际地址而不是相对地址，显然这种方法不能用于任务不断“启动-退出”的通用计算机系统中；</p>
+<p>(2)载入时重定位：在程序载入的过程中根据载入的物理内存地址区域来修改程序中的逻辑地址；</p>
+<p>但是载入时重定位不是最优的方法，因为假如进程1因为阻塞所以被换出到磁盘上，过一段时间被重新载入的时候很可能已经不是第一次载入时的内存地址了</p>
+<p><img src="/images/image-20220926142116357.png" srcset="/img/loading.gif" lazyload></p>
+<p>因此诞生了另一种重定位的方法</p>
+<p>(3)运行时重定位：在内存中存放的指令一直都是“call 40”，只有在指令执行的时候才将指令的逻辑地址转换为物理地址；</p>
+<p>具体实现：程序在载入内存的时候，记录下这段内存区域的基址（将其放在某个约定的寄存器中），执行每一条指令都会将指令中的逻辑地址加上基址以后才会放在地址总线上，计算机中有这样专门的硬件MMU，每条指令运行时进行的从逻辑地址到物理地址换算的过程被称为<code>地址转换</code>；</p>
+<p>现在回到多进程的视图下，MMU进行重定位的CPU寄存器只能有一个，所以每个进程的重定位基址都需要放在PCB中供需要时使用；</p>
+<blockquote>
+<p>进程切换的两个部分：指令执行序列的切换（实际就是PC指针的切换）和地址空间的切换（实际上就是重定位基址寄存器的切换）到此阐述完毕；</p>
+</blockquote>
+<h2 id="2-分段"><a href="#2-分段" class="headerlink" title="2.分段"></a>2.分段</h2><blockquote>
+<p>2022&#x2F;9&#x2F;26 19:01 分段给我的感觉不像是操作系统做的事，而是CPU自己完成了分段，操作系统不得不接受这个事实，也就是与硬件上的内存分段机制对应（毕竟操作系统是运行在硬件之上的，这就类似于在操作系统之下写的汇编程序也得遵守CPU的寻址方式）；</p>
+</blockquote>
+<blockquote>
+<p>2022&#x2F;9&#x2F;26 20:17 跟你说了看太多书不消化是会出问题的（你上面那个理解是有错误的），实际上在硬件层面根本就没有分段这个概念，这个概念是将程序载入内存区域的一种方式，分段是程序层面的概念；（虽然这门课叫做操作系统，但这并不意味着书中所有的概念都是操作系统的子集）</p>
+</blockquote>
+<p>上面我们已经清楚了指令如何正确读写内存，现在我们来介绍程序载入内存的方式；</p>
+<p>关于段的概念，我们在汇编语言中有简单的介绍<a href="https://gintoki-jpg.github.io/2022/09/20/%E9%80%9A%E8%AF%86_%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/#2-%E7%89%A9%E7%90%86%E5%9C%B0%E5%9D%80">汇编语言 - Tintoki_blog (gintoki-jpg.github.io)</a>，程序由若干段组成（这里的程序一般指的都是汇编程序，在编程中可以根据需要将若干连续内存单元看作一个段）：</p>
+<ul>
+<li>代码段：程序指令形成的段（代码段只读）；</li>
+<li>数据段：存放程序使用的数据（数据段可读可写）；</li>
+<li>栈段：实现函数调用，栈通常只能向下增长；</li>
+</ul>
+<p>实际上段这个概念源自于CPU管理内存（分段是CPU管理内存的一种方式），这也是我们接下来会介绍的；</p>
+<p>既然程序已经被分段，那么在载入内存的时候也不应该作为一个整体载入 —— 程序中多个段分别载入内存，前面我们提高如果程序整体载入内存需要记录基址，那么这里需要记录每个段的基址，多个基址形成<code>段表</code></p>
+<p><img src="/images/image-20220926161851807.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20220926162205275.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<p>使用了分段机制以后的，程序中的逻辑地址会变成“段号：段内偏移”这种基本格式(注意是逻辑地址不是物理地址！！物理地址还是一个整型数值)；</p>
+<p>分段机制下的地址转换核心就是查找段表，我们给出下面一个地址转换过程图</p>
+<p><img src="/images/image-20220926163023541.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="3-分页"><a href="#3-分页" class="headerlink" title="3.分页"></a>3.分页</h2><p>在介绍分页之前先介绍一下内存分区，前面介绍了程序以分段的方式载入内存，但能够载入的前提是内存中拥有这样一段空闲内存，因此我们需要分割内存；</p>
+<p>从空闲内存区域中分割出一个分区来满足段请求，关键是记录和维护“内存空闲区域”信息，具体的内存分区的算法我们这里就不介绍，感兴趣自行Google；</p>
+<p>因为不合理的内存分区，将会导致尽管总空闲的内存很大，但是无法满足某个大小的内存请求，这就是内存碎片导致的，解决内存碎片的方法主要有：</p>
+<ul>
+<li>内存紧缩：通过移动将零碎的空闲区域合并成一整块空闲区域；</li>
+<li>内存离散化：将内存主动分为固定大小的片，内存请求到达时，根据请求尺寸计算出总共需要的小片个数，然后在内存中（任意位置）找出同样数量的小片分配给内存请求；</li>
+</ul>
+<p>这就是分页机制的基本思想，上述片就是内存页；</p>
+<hr>
+<blockquote>
+<p>Q：有些人可能乐了，你刚才讲的分段机制难道不算内存分区？</p>
+</blockquote>
+<p>A：额，严格意义上来说分段机制甚至都算不上内存分区，它只是方便程序员编程使用而提出的概念（这么说吧，分页是系统管理的需要，对用户透明，分段是为了满足用户编程需要）；</p>
+<p>分段和分页根本就不是一个层面上的概念，一个是内存硬件的层面，一个是程序员编程的层面，不要将两者混为一谈；</p>
+<blockquote>
+<p>Q：分页机制和分段机制有什么不同？为什么虚拟内存中又把页式虚拟存储器和段式虚拟存储器以及段页式虚拟存储器相提并论？</p>
+</blockquote>
+<p>A：分段和分页相似之处在于两者都不要求作业连续存放，但两者在概念上是完全不同的：</p>
+<table>
+<thead>
+<tr>
+<th>分页</th>
+<th>分段</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>页是信息的物理单位，分页是为了实现非连续分配以便解决内存碎片的问题；</td>
+<td>段是信息的逻辑单位，含有一组意义相对完整的信息，分段是为了更好的实现共享；</td>
+</tr>
+<tr>
+<td>分页是系统管理的需要；</td>
+<td>分页是用户的需要；</td>
+</tr>
+<tr>
+<td>页的大小固定，由系统确定，将地址划分为页号和页内地址由机器硬件实现；</td>
+<td>段的长度不固定，取决于用户编写的程序，通常由编译程序在对源程序编译的时候根据信息的性质划分；</td>
+</tr>
+<tr>
+<td>分页的作业地址空间是一维的；</td>
+<td>分段的地址空间是二维的；</td>
+</tr>
+</tbody></table>
+<p>分页能有效提高内存的利用率，分段能反映程序的逻辑结构，便于段的共享和保护，因此诞生了一种新的思想 —— 将分页和分段存储方式结合，形成段页式存储管理方式；</p>
+<p>至于第二个问题，虚拟存储器为什么将分页和分段放在一个高度谈，这就是我们之后才讨论的问题了；</p>
+<hr>
+<p>分页机制首先将物理内存分割成大小相等的页框，然后再将请求放入物理内存的数据（比如代码段）也分割成同样大小的页，最后将所有页都映射到页框上，完成物理内存页框的使用；</p>
+<p><img src="/images/image-20220927082047518.png" srcset="/img/loading.gif" lazyload></p>
+<p>上述过程是内存使用的第一步——程序载入，接下来解决重定位的问题；</p>
+<p>分页机制下的地址转换过程如下所示</p>
+<p><img src="/images/image-20220927082427437.png" srcset="/img/loading.gif" lazyload></p>
+<p>因为页是信息的最小的物理单位，所以为了避免内存空间的浪费，通常需要将页的尺寸设置的合理，而页的尺寸越小，页表就越大，这将引出多级页表和快表；</p>
+<p>页表由页表项组成，每个页表项记录逻辑页放在了哪个物理页框；</p>
+<p>根据程序执行的局部性原理（一段时间内执行的指令地址总是在一个局部变化），这就意味着即使是很大的程序，当前访问的逻辑页也不多；</p>
+<p>根据上述理论，提出这样的想法：对于没有被存放到物理页框中的逻辑页（因为物理页框是有数量限制的），将其页表项从页表中删除（这样就减小了页表占用内存的大小）；但是因为删除了无效页表项，导致页表中的逻辑页号不再连续，这将增大查找的时间代价，并且这种代价我们是不能接受的（具体论证见书P167）</p>
+<p><img src="/images/image-20220927083304842.png" srcset="/img/loading.gif" lazyload></p>
+<p>总结一下现在的问题：设计页表，使其既不存储无效页表项，又能保证页表中的逻辑页号连续；</p>
+<blockquote>
+<p>多级页表</p>
+</blockquote>
+<p>多级页表的思想与书本的主目录非常相似</p>
+<p><img src="/images/image-20220927090004435.png" srcset="/img/loading.gif" lazyload></p>
+<p>上图中的节目录对应页表（每一小节对应一个页表项），多级页表是在页表的基础上建立一个高层结构，通常称为页目录（多级页表的基本思想就是构造一个页表的页表，每一章对应一个页表）；</p>
+<p>两级页表结构及其地址转换过程如下所示</p>
+<p><img src="/images/image-20220927090244835.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<blockquote>
+<p>Q：多级页表究竟怎么减小进程对内存的占用？</p>
+</blockquote>
+<p>A：单级页表存在的最大问题就是操作系统为每个进程分配了固定大小的空间作为页表，并且这个页表必须包括所有的页表项（因为OS不知道进程到底会访问哪些页表项），这就意味着操作系统不能实现按需分配页表空间；</p>
+<p>而多级页表可以在使用时根据内存的占用为进程分配页表空间，实现动态按需分配而不是预先全部分配；</p>
+<hr>
+<blockquote>
+<p>快表</p>
+</blockquote>
+<p>注意虽然快表和多级页表都是表，但是两个根本不是一个层次的概念（快表是个硬件！），计组中说到利用Cache可以更加告诉的进行地址转换，因此借助硬件电路TLB(变换旁查缓冲器)“快表”可以实现；</p>
+<p>快表会缓存常用的逻辑页映射，引入快表的地址转换过程为：先查快表，如果未命中则查找页目录表、页表、找到物理页框号并更新快表；若命中则能够快速的获得物理页框号；</p>
+<h2 id="4-虚拟内存"><a href="#4-虚拟内存" class="headerlink" title="4.虚拟内存"></a>4.虚拟内存</h2><p>现在我们终于到了这小节了，前面分段和分页的概念极其绕，以至于我们花费大量时间来整介绍、辨析这两个概念以及相关知识点，这个小节我们正式将两者作为主角同时讨论；</p>
+<p>不知道在学习分页和分段的时候大家脑子里有没有这样一个问题“这两概念看起来和操作系统没啥关系啊？”，而事实的确是这样，程序用户想要分段，物理内存想要分页；那么能不能将分段和分页结合在一起？这就是操作系统大显身手的时候了 —— 操作系统通过在用户和硬件之间加一个中间结构（中间层这个概念真的是计算机界的万精油），我们将这个数据结构称为虚拟内存，正是虚拟内存这个抽象将分段机制和分页机制有机地结合；</p>
+<p>现在结合虚拟内存来回答之前的两个问题：</p>
+<ul>
+<li>程序如何放在内存中？<ol>
+<li>在虚拟内存中分区，将程序各个段载入；</li>
+<li>建立段表记录程序各个段和虚拟内存之间的映射关系；</li>
+<li>将虚拟内存分割成页，选择物理内存中的空闲页框，将虚拟内存中的页放在物理页框中；</li>
+<li>建立页表记录虚拟内存页和物理页框之间的映射关系；</li>
+</ol>
+</li>
+<li>放在内存中的指令如何正确执行？<ol>
+<li>利用 段地址：段内偏移 算出在虚拟内存中的位置（即虚拟地址）；</li>
+<li>根据虚拟地址查找页表找到物理地址；</li>
+<li>只需要将LDTR和CR3的值设置为正确段表初始地址和页表初始地址，则执行每条指令时MMU都会自动地完成上述地址转换过程；</li>
+</ol>
+</li>
+</ul>
+<h3 id="4-1-页面换入"><a href="#4-1-页面换入" class="headerlink" title="4.1 页面换入"></a>4.1 页面换入</h3><p>接着我们来聊聊虚拟内存真正厉害的地方，假设虚拟内存大小为4GB而实际物理内存只有1GB，是否意味着我们4GB的程序无法运行了呢？</p>
+<p>换入&#x2F;换出行为使得可以使用一个小的物理内存来制造一个大且规整的虚拟内存用户视图 —— 实际上就算物理内存是4GB也需要换入&#x2F;换出，因为每个进程都需要有一个4GB的虚拟内存</p>
+<hr>
+<p>当然想要在系统中实现换入&#x2F;换出只是一个概念，真正要实现需要从段页式内存管理机制入手分析，下图给出了段页式内存机制下地址转换过程遇到的问题：</p>
+<p><img src="/images/image-20220927135203210.png" srcset="/img/loading.gif" lazyload></p>
+<p>地址转换的第一步能够正确得到虚拟地址，但是根据虚拟地址和页表获得物理地址时发现页表中没有该虚拟页对应的物理页 —— 这是因为这一页的虚拟内存还没有和物理内存建立关联；</p>
+<p>在具体实现时，MMU检查页表项的有效位，如果为0表示该虚拟页还没有映射到物理页框，此时就需要内存换入 —— 操作系统实现请求调页：</p>
+<ol>
+<li>MMU向CPU发出缺页中断；</li>
+<li>执行缺页中断处理程序，操作系统去磁盘找到未驻留虚拟页对应的程序代码，将其读入物理内存（当然此时的物理内存应该是有空位的）并更新页表；</li>
+<li>中断处理返回以后重新执行被中断的指令，此时指令就能正确找到物理地址；</li>
+</ol>
+<blockquote>
+<p>常识：一个程序在被加载进入内存的时候只会加载很少一部分进入内存（这部分标识为“驻留”），另一部分会在需要的时候才调入内存（这部分标识为未驻留），也就对应了有效位为1和0的情况；</p>
+</blockquote>
+<p><img src="/images/image-20220927140703995.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="4-2-页面换出"><a href="#4-2-页面换出" class="headerlink" title="4.2 页面换出"></a>4.2 页面换出</h3><p>页面换出要解决的基本问题就是选择哪个页面进行淘汰，我们定义一个指标来评价页面换出算法的优劣：缺页次数；</p>
+<p>我们要介绍的页面换出算法曾经在计算机组成原理课程中也有介绍 —— LRU最近最少使用算法，LRU也有多种选择，这里我们选择使用基于页面栈的LRU算法</p>
+<p><img src="/images/image-20220927191320037.png" srcset="/img/loading.gif" lazyload></p>
+<p>然而直接在计算机中实现精准的LRU算法代价过大，所以出现了类LRU的算法 —— clock算法：</p>
+<ul>
+<li>将分配给进程的所有虚拟页框组织成环形线性表，产生缺页时，，从当前的线性表指针开始进行环形扫描；</li>
+<li>如果扫描的虚拟页框的访问位R为1则修改为0，如果访问的虚拟页框的访问位为0则将该页面淘汰换出；</li>
+</ul>
+<p>当然还可以引入一个扫描指针，该指针定期扫描所有页面，并将所有页面为1的清零；当出现缺页时调用换出指针来扫描页面判断页面的R位</p>
+<p><img src="/images/image-20220927192253114.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="4-3-页框个数"><a href="#4-3-页框个数" class="headerlink" title="4.3 页框个数"></a>4.3 页框个数</h3><p>只有当分配给进程的所有物理页框都被用完之后，发生缺页才会调用clock算法进行淘汰，所以操作系统应该决定给进程分配多少个物理页框：</p>
+<ul>
+<li>从进程自身的角度来说分配的页框越多越好，但是物理内存总量有限，页框越多能够支持的并发进程就越少；</li>
+<li>如果给进程分配的页框太少会出现系统颠簸的情况，也就是进程在内存页和磁盘之间频繁换入&#x2F;换出，导致CPU利用率急剧下降（因为换入&#x2F;换出的时候CPU只能空闲等待）</li>
+</ul>
+<h1 id="第七章-I-x2F-O管理"><a href="#第七章-I-x2F-O管理" class="headerlink" title="第七章 I&#x2F;O管理"></a>第七章 I&#x2F;O管理</h1><p>（这章不难，但是把我搞得很崩溃，因为王道和哈工大的书立足点完全不一样，然后这部分和计算机组成原理也疯狂重合，不断冲击我的认知，哭了WW…）</p>
+<h2 id="1-I-x2F-O系统"><a href="#1-I-x2F-O系统" class="headerlink" title="1.I&#x2F;O系统"></a>1.I&#x2F;O系统</h2><p>（哈工大的教材对于I&#x2F;O管理这部分描述的不是很清楚，所以我们结合王道的教材额外补充未涉及的知识点；）</p>
+<p>计组中涉及一部分的I&#x2F;O系统，学习这部分内容之前可以先看一看<a href="https://gintoki-jpg.github.io/2022/06/11/%E6%9C%9F%E6%9C%AB_%E8%AE%A1%E7%BB%84%E5%A4%8D%E4%B9%A0/#%E4%B8%83%E3%80%81I-O%E7%B3%BB%E7%BB%9F">计组期末复习笔记 - Tintoki_blog (gintoki-jpg.github.io)</a>（需要注意的是我们在计算机组成原理课程中介绍的实际大部分是I&#x2F;O系统的硬件部分，仅仅只是I&#x2F;O系统非常小的一部分，我们在操作系统中介绍的I&#x2F;O子系统更多的是偏向操作系统软件的部分）</p>
+<h3 id="1-1-I-x2F-O设备"><a href="#1-1-I-x2F-O设备" class="headerlink" title="1.1 I&#x2F;O设备"></a>1.1 I&#x2F;O设备</h3><p>I&#x2F;O设备按照<code>使用特性</code>可分为以下类型：</p>
+<p>​	1）人机交互类外部设备。用于与计算机用户之间交互的设备，如打印机、显示器、鼠标、键盘等。这类设备的数据交换速度相对较慢，通常是以字节为单位进行数据交换的。<br>​	2）存储设备。用于存储程序和数据的设备，如磁盘、磁带、光盘等。这类设备用于数据交换，速度较快，通常以多字节组成的块为单位进行数据交换。<br>​	3）网络通信设备。用于与远程设备通信的设备，如各种网络接口、调制解调器等。其速度介于前两类设备之间。网络通信设备在使用和管理上与前两类设备也有很大不同。</p>
+<p>I&#x2F;O设备按照<code>传输速率</code>可分为以下类型：</p>
+<p>​	1）低速设备。传输速率仅为每秒几字节到数百字节的一类设备，如键盘、鼠标等。<br>​	2）中速设备。传输速率为每秒数千字节至数万字节的一类设备，如行式打印机、激光打印机等。<br>​	3）高速设备。传输速率在数百千字节至千兆字节的一类设备，如磁带机、磁盘机、光盘机等。</p>
+<p>I&#x2F;O设备按照<code>信息交换的单位</code>可分为以下类型：</p>
+<p>​	1）块设备。由于信息的存取总是以数据块为单位的，所以存储信息的设备称为块设备。它属于有结构设备，如磁盘等。磁盘设备的基本特征是传输速率较高、可寻址，即对它可随机地读&#x2F;写任一块。<br>​	2）字符设备。用于数据输入&#x2F;输出的设备为字符设备，因为其传输的基本单位是字符。它属于无结构类型，如交互式终端机、打印机等。它们的基本特征是传输速率低、不可寻址，并且在输入&#x2F;输出时常采用中断驱动方式。	</p>
+<h3 id="1-2-I-x2F-O控制方式"><a href="#1-2-I-x2F-O控制方式" class="headerlink" title="1.2 I&#x2F;O控制方式"></a>1.2 I&#x2F;O控制方式</h3><p>设备管理的主要任务之一是控制外部设备和内存或处理机之间的数据传送，主要有四种控制方式，具体参照<a href="https://gintoki-jpg.github.io/2022/06/11/%E6%9C%9F%E6%9C%AB_%E8%AE%A1%E7%BB%84%E5%A4%8D%E4%B9%A0/#3-I-O%E6%96%B9%E5%BC%8F">计组期末复习笔记 - Tintoki_blog (gintoki-jpg.github.io)</a></p>
+<h2 id="2-I-x2F-O子系统"><a href="#2-I-x2F-O子系统" class="headerlink" title="2.I&#x2F;O子系统"></a>2.I&#x2F;O子系统</h2><p>整个I&#x2F;O系统可以视为具有如下层次的系统结构，各层次及其功能如下：<img src="/images/image-20220928134444071.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><p>用户层I&#x2F;O软件：实现与用户交互的接口；</p>
+</li>
+<li><p>设备独立性软件：用于实现用户程序与设备驱动器的统一接口、设备命令、设备保护以及设备分配与释放等，同时为设备管理和数据传送提供必要的存储空间；设备独立性也称为设备无关性，使得应用程序独立于具体使用的物理设备；</p>
+</li>
+<li><p>设备驱动程序：与硬件直接相关，负责具体实现系统对设备发出的操作指令，驱动I&#x2F;O设备工作的驱动程序；</p>
+</li>
+<li><p>中断处理程序：用于保存被中断进程的CPU环境，转入相应的中断处理程序进行处理，处理完并恢复被中断进程的现场后，返回到被中断进程；</p>
+</li>
+<li><p>硬件设备：I&#x2F;O设备通常包括一个机械部件和一个电子部件。为了达到设计的模块性和通用性，一般将其分开：</p>
+<ul>
+<li>电子部件称为设备控制器（或适配器），在个人计算机中，通常是一块插入主板扩充槽的印制电路板；</li>
+<li>机械部件则是设备本身；</li>
+</ul>
+</li>
+</ul>
+<p>I&#x2F;O子系统不同于I&#x2F;O系统，I&#x2F;O子系统是操作系统中负责和I&#x2F;O设备打交道的子系统（也就是说操作系统中负责I&#x2F;O管理部分的就是I&#x2F;O子系统），而I&#x2F;O系统是由输入输出控制系统和外围设备两部分组成的一个系统；</p>
+<p>下面我们介绍I&#x2F;O子系统提供的主要服务：</p>
+<h3 id="2-1-I-x2F-O调度"><a href="#2-1-I-x2F-O调度" class="headerlink" title="2.1 I&#x2F;O调度"></a>2.1 I&#x2F;O调度</h3><p>I&#x2F;O调度就是确定一个好的顺序来执行这些I&#x2F;O请求。应用程序所发布的系统调用的顺序不一定总是最佳选择，所以需要I&#x2F;O调度来改善系统整体性能，使进程之间公平地共享设备访问，减少I&#x2F;O完成所需要的平均等待时间；</p>
+<h3 id="2-2-磁盘高速缓存"><a href="#2-2-磁盘高速缓存" class="headerlink" title="2.2 磁盘高速缓存"></a>2.2 磁盘高速缓存</h3><p>I&#x2F;O子系统还可使用主存或磁盘上的存储空间的技术，如缓冲、高速缓存、假脱机等来改善计算机效率；</p>
+<p>磁盘高速缓存技术不同于常规意义下的介于CPU与内存之间的小容量高速存储器(Cache，注意这里的Cache是一种硬件，由SRAM组成)，磁盘高速缓存逻辑上属于磁盘，物理上是驻留在内存中的盘块；</p>
+<p>磁盘高速缓存在内存中分为两种形式：</p>
+<ul>
+<li>一种是在内存中开辟一个单独的存储空间作为磁盘高速缓存，大小固定；</li>
+<li>另一种是把未利用的内存空间作为一个缓冲池，供请求分页系统和磁盘I&#x2F;O时共享；</li>
+</ul>
+<hr>
+<blockquote>
+<p>Q：是不是觉得很神奇，这和我们计组学的Cache不一样啊，我不能接受！</p>
+</blockquote>
+<p>A：现在Cache的概念已经被扩充了：不仅在CPU和主内存之间有Cache，而且在内存和硬盘之间也有Cache（磁盘高速缓存），乃至在硬盘与网络之间也有某种意义上的“Cache”（Inter临时文件夹），因此Cache现在的定义为：凡是位于速度相差较大的两种硬件之间的，用于协调两者数据传输速度差异的结构，均可称之为Cache；</p>
+<hr>
+<h3 id="2-3-缓冲区"><a href="#2-3-缓冲区" class="headerlink" title="2.3 缓冲区"></a>2.3 缓冲区</h3><p>在设备管理子系统中，引入缓冲区的目的主要如下：<br>1）缓和CPU与1O设备间速度不匹配的矛盾。<br>2）减少对CPU的中断频率，放宽对CPU中断响应时间的限制。<br>3）解决基本数据单元大小（即数据粒度）不匹配的问题。<br>4）提高CPU 和I&#x2F;O设备之间的并行性。</p>
+<p>其实现方法如下：<br>1）采用硬件缓冲器，但由于成本太高，除一些关键部位外，一般不采用硬件缓冲器。<br>2）采用缓冲区（位于内存区域）。</p>
+<p>缓冲区有一个特点，即当缓冲区的数据非空时，不能往缓冲区冲入数据，只能从缓冲区把数据传出；当缓冲区为空时，可以往缓冲区冲入数据，但必须把缓冲区充满后，才能从缓冲区把数据传出；</p>
+<p>学习了磁盘高速缓存和缓冲区之后，我们会产生疑问，这两东西真的好像，下面我们给出表格区分：</p>
+<p><img src="/images/image-20220928152347855.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-4-设备分配"><a href="#2-4-设备分配" class="headerlink" title="2.4 设备分配"></a>2.4 设备分配</h3><p>设备分配是指根据用户的I&#x2F;O请求分配所需的设备。分配的总原则是充分发挥设备的使用效率，尽可能地让设备忙碌，又要避免由于不合理的分配方法造成进程死锁。从设备的特性来看，采用下述三种使用方式的设备分别称为独占设备、共享设备和虚拟设备：</p>
+<ul>
+<li>独占式使用设备：在申请设备时，若设备空闲则将其独占，不再允许其他进程申请使用，直到该设备被释放才允许其他进程申请使用；</li>
+<li>分时式共享使用设备：独占式使用设备时，设备利用率很低，当设备没有独占使用的要求时，可以通过分时共享使用提高利用率。例如，对磁盘设备的I&#x2F;O操作，各进程的每次I&#x2F;O操作请求可以通过分时来交替进行。</li>
+<li>以Spooling方式使用设备：假脱机I&#x2F;O技术是在批处理操作系统时代引入的，这种技术对I&#x2F;O技术进行批处理，实质上这是一种以空间换取时间的技术；</li>
+</ul>
+<h2 id="3-设备驱动"><a href="#3-设备驱动" class="headerlink" title="3.设备驱动"></a>3.设备驱动</h2><p>上面我们只是在理论层面介绍了I&#x2F;O子系统提供的一些服务，现在我们真正用实例来体验一下操作系统如何参与控制I&#x2F;O设备工作；</p>
+<hr>
+<p>“外部设备也称为输入输出(I&#x2F;O)设备，通过总线和CPU、内存连接在一起”</p>
+<p>外设的工作模式非常直观：</p>
+<ol>
+<li>CPU通过端口地址发送对外设的工作要求”out ax,端口号”；</li>
+<li>外设开始工作，工作完成后使用中断机制告诉CPU，CPU会在中断处理程序中处理外设的工作结果；</li>
+</ol>
+<p>上述两个步骤是操作系统使用外设的核心主线，但外设管理不只包括外设的使用，还包括外设使用效率的提高；</p>
+<p>操作系统引入文件视图的概念，使得所有外设的使用都被统一为对文件视图的使用，文件视图给上层用户提供了一个统一的接口，屏蔽了细节；文件视图背后根据外设各自的特点实现缓冲机制、排队调度等来提高外设的工作效率；</p>
+<h3 id="3-1-外设工作"><a href="#3-1-外设工作" class="headerlink" title="3.1 外设工作"></a>3.1 外设工作</h3><p>CPU对外设的使用主要由以下两条主线构成（有点啰嗦，但是这两条主线就是外设管理的整个核心）：</p>
+<ol>
+<li>从CPU开始，CPU发送命令给外设，最终表现为CPU执行指令”out ax,端口号” —— <code>发出命令</code>；</li>
+<li>从外设开始，外设在完成工作后或出现状态变化时通过中断通知CPU，CPU通过中断处理程序完成后续工作 —— <code>中断处理</code>；</li>
+</ol>
+<p><img src="/images/image-20220928081538534.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-2-文件视图"><a href="#3-2-文件视图" class="headerlink" title="3.2 文件视图"></a>3.2 文件视图</h3><p>如果按照8.1的方式来使用外设，需要知道外设的端口地址、设备操控指令的详细格式和指令流程等信息，这对一个普通程序员来说是很困难的，让应用程序员通过命令直接操作计算机外设的想法几乎不可行；</p>
+<p>文件视图应运而生，不管是什么样的外设，操作系统都将其抽象为一个文件，程序员只需要通过文件接口open、read、write来使用这些外设；</p>
+<p>有了文件视图之后，上层用户操作外设和对文件的操作完全一样（外设端口号、设备指令格式等细节交给操作系统完成），操作系统负责将上层接口展开形成对设备的具体操作，形成一系列out语句；</p>
+<p>操作系统进行外设管理的核心就是构建两条路线：</p>
+<ul>
+<li>从文件读写到设备命令 —— 显示器驱动；</li>
+<li>从设备驱动回到文件读写 —— 键盘驱动；</li>
+</ul>
+<p><img src="/images/image-20220928082309168.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="3-2-1-显示器驱动"><a href="#3-2-1-显示器驱动" class="headerlink" title="3.2.1 显示器驱动"></a>3.2.1 显示器驱动</h4><p>printf是一个库函数，该库函数会调用系统调用write，write的内核实现是sys_write；</p>
+<p>sys_write首先需要找到所写文件的属性，以区分它究竟是普通文件还是设备文件：</p>
+<ul>
+<li>如果是设备文件，则sys_write根据设备文件中存放的设备属性转到相应的操作命令；</li>
+</ul>
+<p>设备属性被存放在一个数据结构中（该数据结构描述了文件），这个数据结构就是FCB文件控制块，因此sys_write的第一步就是找到要写的目标文件（当然这里的文件就是设备文件）的FCB；为了找到FCB，需要从当前进程的PCB中找到文件的句柄标识fd，根据fd就可以找到文件的FCB；</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">sys_write</span><span class="hljs-params">(<span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> fd,<span class="hljs-type">char</span> *buf,<span class="hljs-type">int</span> count)</span><br>&#123;<br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">file</span>*<span class="hljs-title">file</span>;</span><br>    file=current-&gt;filp[fd];<span class="hljs-comment">//current是当前进程，current-&gt;filp存放了当前进程打开的文件，根据fd可以在文件FCB数组中找到我们需要的目标文件的FCB</span><br>    inode=file-&gt;f_inode;   <span class="hljs-comment">//inode变量就是文件的FCB，file中的属性信息被存储在inode变量中</span><br>    ...<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>我们已经获得inode变量，首先根据inode中的信息来判断该文件对应的设备是否是一个字符设备（显示器就是一个字符设备）：</p>
+<ul>
+<li>如果是字符设备则继续向下执行相应的字符设备处理代码；</li>
+</ul>
+<p>接下来的函数根据是设备读操作还是设备写操作继续分支（显示器只写，键盘只读）：</p>
+<ul>
+<li>显示器和键盘合在一起构成终端设备tty，显示器写操作将调用函数tty_write</li>
+</ul>
+<p>tty_write函数向显示器进行输出，之后的过程我们就不再细讲，感兴趣可以见书P205自学；</p>
+<hr>
+<blockquote>
+<p>Q：为什么显示器是写操作，不是显示给用户吗？</p>
+</blockquote>
+<p>A：我们将显示器理解为一个设备文件，要让显示器显示东西那么这个设备文件中一定要有东西才行，所以显示器对应写操作；</p>
+<hr>
+<p>整个文件视图路线总结如下：</p>
+<p><img src="/images/image-20220928104821669.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="3-2-2-键盘驱动"><a href="#3-2-2-键盘驱动" class="headerlink" title="3.2.2 键盘驱动"></a>3.2.2 键盘驱动</h4><p>按下键盘会产生0x21号中断，所以先来看0x21号中断的中断处理函数；</p>
+<p>CPU向设备写的最终命令是”out”，相应的，读设备的第一步是”in”即从设备上取出内容交给CPU；</p>
+<p>整个文件视图路线总结如下：</p>
+<p><img src="/images/image-20220928105305674.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="第八章-文件系统"><a href="#第八章-文件系统" class="headerlink" title="第八章 文件系统"></a>第八章 文件系统</h1><p>文件系统归根结底是对磁盘的驱动，因为在磁盘驱动的过程中发现直接使用磁盘非常繁琐，所以引入如下五层抽象：</p>
+<ol>
+<li>从扇区到磁盘块的抽象；</li>
+<li>从单个磁盘块请求到多个进程的磁盘请求队列；</li>
+<li>从磁盘请求到高速缓存；</li>
+<li>从盘块集合到文件的抽象；</li>
+<li>从多个文件到构建文件系统；（看不懂？看不懂就对了，这就是下面我们会讲的）</li>
+</ol>
+<p>操作系统通过上述五层抽象讲整个磁盘变成一系列文件，并将这些文件组织成树状结构，形成操作系统第二个基本的视图 —— 文件视图；</p>
+<h2 id="1-磁盘简介"><a href="#1-磁盘简介" class="headerlink" title="1.磁盘简介"></a>1.磁盘简介</h2><p>磁盘作为一种外部设备，其工作原理和一般外设工作原理完全一样：</p>
+<ol>
+<li>从CPU开始，用户需要使用磁盘设备时，CPU发送命令给磁盘设备，通过”out ax,端口号”指令告诉磁盘具体的动作细节；</li>
+<li>从磁盘开始，磁盘在工作完成之后使用磁盘中断告诉CPU，CPU将在中断处理程序中完成后续工作；</li>
+</ol>
+<p><img src="/images/image-20220928091723495.png" srcset="/img/loading.gif" lazyload></p>
+<p>磁盘的构成：磁盘是由多个圆形盘面形成的盘面组，每个盘面上又有多个同心圆环，每个同心圆环被称为一个磁道，多个磁盘的同一磁道合在一起形成一个圆柱面，简称<code>柱面</code>。每个磁道再被分割为多个扇区，扇区是磁盘读写的基本单位。由于有多个盘面，所以在每个盘面上都有一个读写磁头，进行磁盘读写时，只有一个磁头是上电的，会读写该上电磁头对应的那个磁道上的那个扇区。</p>
+<blockquote>
+<p>总结：一块磁盘有多个记录面，每个记录面有多条磁道，每条磁道被划分为多个扇区（也被称为块，块是磁盘最小的读写单位）</p>
+</blockquote>
+<p>CPU使用磁盘的方法非常直观：让CPU给磁盘控制器发出读写命令，具体就是告诉磁盘控制器读写哪个柱面C、哪个磁头H、哪个扇区S以及要读写的内存缓存区的位置和读写长度即可。当然需要查阅硬件手册，找到这些信息对应的端口地址，一旦找到以后，CPU用out指令将这些信息写出去即可，磁盘控制器一旦看到了这些信息就会执行磁头滑动、磁盘旋转以及读写扇区等动作了。</p>
+<p><img src="/images/image-20220928091834386.png" srcset="/img/loading.gif" lazyload></p>
+<p>磁盘读写的具体过程是：</p>
+<p>（1）磁头移动，找到要读的那个柱面（cylinder，以下简称C），由于多个磁头是绑在一起移动的，所以每个磁头下面的磁道在各自的盘面中具有同样的位置，所有磁头下面的磁道从上到下组合在一起就形成了一个“柱面”；</p>
+<p>（2）从柱面中选择要具体读写哪个磁道，实际上就是选择哪个磁头（magnetic head，以下简称H）上电；</p>
+<p>（3）旋转磁盘，将对应磁道中要读写的那个扇区（sector，以下简称S）转到磁头的下方；</p>
+<p>（4）开始读写，将扇区中的内容读到内存缓存区中，或者是将内存缓存区中的内容写出到该扇区中；</p>
+<h2 id="2-磁盘驱动"><a href="#2-磁盘驱动" class="headerlink" title="2.磁盘驱动"></a>2.磁盘驱动</h2><h3 id="2-1-第一层抽象"><a href="#2-1-第一层抽象" class="headerlink" title="2.1 第一层抽象"></a>2.1 第一层抽象</h3><p>符合程序员使用习惯的磁盘读写是抹去C、H、S等具体细节，让程序员感觉是一堆扇区排成一排等待用户使用；</p>
+<p>实现这种访问的核心是建立从C、H、S扇区地址到扇区号的一个映射，即建立一个在C、H、S基础之上的编址方案，该编址方案是文件系统第一层抽象的中心任务；</p>
+<p>因为读写磁盘的时间主要花费在寻道上，所以最好的编址方案就是将逻辑上相邻的扇区在物理上也是在同一个磁道上且相邻；</p>
+<p>完成了从C、H、S到扇区号的完整映射后，操作系统用户可以通过一个一维扇区编号来访问磁盘扇区而不需要再使用繁琐的C、H、S地址，也不需要记住磁头个数等硬件参数；</p>
+<p>操作系统还做了另外一件令人匪夷所思的事情 —— 引入磁盘块作为用户读写磁盘的基本单位（磁盘块就是多个连续的扇区），为啥这么做？因为当使用磁盘块作为读写基本单位之后，只需要经过一次磁盘寻道和磁盘旋转就可以读写一块非常大的磁盘空间，这将提高磁盘的读写效率（这当然会产生一些碎片被浪费掉），这是一个用空间换时间的思路（现在的磁盘容量通常很大，不用过多的担心）；</p>
+<h3 id="2-2-第二层抽象"><a href="#2-2-第二层抽象" class="headerlink" title="2.2 第二层抽象"></a>2.2 第二层抽象</h3><p>经过第一层抽象之后，我们可以处理磁盘块的读写请求了；</p>
+<p>操作系统中有多个进程，每个进程都会提出磁盘块访问请求，所以在实际操作系统中是多个进程产生多个磁盘块读写请求的情形。多个磁盘读写请求，需要用队列来组织这些请求，这就是操作系统对磁盘管理的第二层抽象；</p>
+<p>经过第二层抽象以后，磁盘读写会变成这个样子：想进行磁盘读写的进程首先建立一个磁盘请求数据结构，并在这个数据结构中填上要读写的磁盘块号（简称盘块号），然后将这个数据结构放入磁盘请求队列中就完成了“磁盘读写”。剩下的工作交给操作系统来完成，对用户进程完全透明，操作系统要处理的工作如下：</p>
+<p>（1）从队列中选择一个磁盘请求 —— 第二层抽象的核心，磁盘调度算法；</p>
+<p>（2）取出请求读写的；</p>
+<p>（3）根据盘块号计算出C、H、S；</p>
+<p>（4）用out语句向磁盘控制器发出具体指令；</p>
+<h3 id="2-3-第三层抽象"><a href="#2-3-第三层抽象" class="headerlink" title="2.3 第三层抽象"></a>2.3 第三层抽象</h3><p>整理一下到目前为止的磁盘处理过程：操作系统处理各个进程提出的磁盘请求，根据请求中的磁盘块号在磁盘上找到相应的扇区位置，将这些扇区读入到内核态内存中，然后再由系统调用<br>（如sys_read）将存放于内核态内存中的磁盘数据复制到用户态内存中，用户态程序操作用户态内存中的数据。</p>
+<p>磁盘高速缓存能大幅度减少磁盘读写次数，是磁盘管理的又一层抽象，简单来说就是操作系统将磁盘数据“变成一系列位于内核态内存中的缓存区内容”；</p>
+<p>简单分析一下磁盘高速缓存的工作原理：当用户发出一个磁盘块读写请求时，操作系统会在高速缓存中查找这个磁盘块是否已经在高速缓存中</p>
+<ul>
+<li>如果在就直接返回；</li>
+<li>如果发现高速缓存中没有用户请求的磁盘块，此时应该去读写物理磁盘;</li>
+</ul>
+<p>所以高速缓存的关键是要提供一种机制来快速查找一个磁盘块数据是否在高速缓存中，根据关键字（盘块号）来快速查找其是否在一个表中，最常使用的数据结构就是散列表，因此以盘块号为关键字形成一个散列表来组织已经载入的磁盘块数据 —— 缓存块；</p>
+<p>而当在物理磁盘中读写的情况下，这要求在高速缓存中取出一个空闲缓存块，用来缓存从磁盘块中读出的数据，组织空闲缓存块通常使用的数据结构就是空闲链表；</p>
+<p>因此设计磁盘高速缓存的核心就是要建立两个数据结构：用一个散列表组织有内容的缓存块，再用一个空闲链接组织那些空闲的缓存块；</p>
+<h3 id="2-4-第四层抽象"><a href="#2-4-第四层抽象" class="headerlink" title="2.4 第四层抽象"></a>2.4 第四层抽象</h3><p>抽象到现在，用户通过盘块号来调用bread函数，就可以读写磁盘了，看起来已经比较方便了。但是对于那些连磁盘是什么都不知道的大多数计算机用户而言，用磁盘块号来读写磁盘仍然不可行，因为这要求用户除了知道磁盘块的概念外，还需知道磁盘块大小这样一些“高级参数”。</p>
+<p>为了让磁盘上的数据访问更符合人们的习惯，操作系统引出了磁盘使用的第四层抽象文件，文件是一个连续的字符流。为什么是字符流？因为不管是什么数据，也不管这个数据内容有多大，我们都将其看成是一个字符流。在这个字符流上读取、改写、插入、删除某个或某些字符，这才是符合人类习惯的数据访问方式。</p>
+<p>操作系统的这一层抽象就是要将磁盘块抽象为一个字符流，经过抽象以后：</p>
+<p>（1）用户看到并访问的是一个文件，是一个字符流，和磁盘块没有任何关系；</p>
+<p>（2）从磁盘物理设备出发，磁盘中只有磁盘块，所以字符流最终还是要存放在磁盘块上；</p>
+<p>（3）操作系统将字符流读写映射为对磁盘块的读写；</p>
+<p>经过抽象之后，用户可以在这个字符流上随意滑动，随意处理，操作系统会根据一个映射表找到和字符流位置对应的磁盘块号，操作系统完成了从磁盘块到字符流的映射。显然，实现文件抽象的关键就在于能根据字符流位置找到对应的盘块号，即建立字符流和盘块号之间的映射关系。</p>
+<blockquote>
+<p>顺序存储结构</p>
+</blockquote>
+<p><img src="/images/image-20220928171122395.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>链式存储结构</p>
+</blockquote>
+<p>文件字符流存放的磁盘块不需要连续，只要每个磁盘块中存放下一个字符流片段所在的盘块号即可。这样就会形成一个“链”式结构；</p>
+<p><img src="/images/image-20220928171206693.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>索引存储结构</p>
+</blockquote>
+<p>文件字符流被分割成多个逻辑块，在物理磁盘上寻找一些空闲物理盘块（无须连续），将这些逻辑块的内容存放进去，再找一个磁盘块作为索引块，其中按序存放各个逻辑块对应的物理磁盘块号</p>
+<p><img src="/images/image-20220928171428323.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>多阶索引存储结构</p>
+</blockquote>
+<p><img src="/images/image-20220928171827521.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-5-第五层抽象"><a href="#2-5-第五层抽象" class="headerlink" title="2.5 第五层抽象"></a>2.5 第五层抽象</h3><p>引入了文件抽象以后，对磁盘的使用已经变成对文件的访问。抽象到现在，磁盘的使用更符合人们的直观感觉，并且在整个抽象过程中操作系统引人了高速缓存等提高磁盘读写效率的处理技术，磁盘使用的效率也有了大幅提升。</p>
+<p>但是，现在还没有完成对整个磁盘的全部抽象。因为一个文件可以将磁盘上的一些磁盘块抽象成一个字符流，但是磁盘是很大的，不可能用一个文件完成对磁盘上所有物理盘块的抽象。另外，从给用户提供文件视图的角度出发，整个磁盘上也绝不可能只有一个文件，显示器对应一个文件，打印机也对应另一个文件。</p>
+<p>本节的核心就是讲述操作系统如何组织多个文件（这里是多个文件，不是多个进程，注意和第二层抽象区分），磁盘中的文件按照树形结构组织，形成目录树；</p>
+<p><img src="/images/image-20220928172505990.png" srcset="/img/loading.gif" lazyload></p>
+<p>实现磁盘的抽象就是实现目录树，那么实现目录树的关键又是什么呢？目录树由文件和目录两部分组成，实现目录树的关键就是实现目录；</p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/" class="category-chain-item">大学课程</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/">#课程学习</a>
+      
+        <a href="/tags/%E8%80%83%E7%A0%94/">#考研</a>
+      
+        <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">#计算机基础</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>计算机操作系统</div>
+      <div>https://gintoki-jpg.github.io/2022/06/27/通识_操作系统/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>杨再俨</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年6月27日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/06/27/%E9%80%9A%E8%AF%86_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" title="计算机组成原理">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">计算机组成原理</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/06/27/%E5%89%8D%E7%AB%AF_Bootstrap/" title="Bootstrap">
+                        <span class="hidden-mobile">Bootstrap</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+</div>
+
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,1791 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/logo.png">
+  <link rel="icon" href="/img/bg/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="杨再俨">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="深入理解并掌握网络爬虫相关库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python3_网络爬虫">
+<meta property="og:url" content="https://gintoki-jpg.github.io/2022/07/06/%E5%B7%A5%E5%85%B7_%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB/index.html">
+<meta property="og:site_name" content="Tintoki_blog">
+<meta property="og:description" content="深入理解并掌握网络爬虫相关库">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/TOOLS.PNG">
+<meta property="article:published_time" content="2022-07-06T07:03:00.000Z">
+<meta property="article:modified_time" content="2022-08-13T07:59:29.222Z">
+<meta property="article:author" content="YangZaiyan">
+<meta property="article:tag" content="开发工具">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="数据爬取">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gintoki-jpg.github.io/img/bg/TOOLS.PNG">
+  
+  
+  
+  <title>Python3_网络爬虫 - Tintoki_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"gintoki-jpg.github.io","root":"/","version":"1.9.1","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tintoki_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/bg1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">Python3_网络爬虫</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-07-06 15:03" pubdate>
+          2022年7月6日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          52k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          436 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Python3_网络爬虫</h1>
+            
+            <div class="markdown-body">
+              
+              <p>本来是想把这个内容一起写在Python开发工具那一章的，无奈爬虫的知识体量实在太大了所以单独写一篇博客记录学习过程<br><code>参考自书籍《Python3——网络爬虫开发实战》（非常感谢大佬写的书，写的真的很好很好）</code></p>
+<p>2022&#x2F;7&#x2F;21 20:56 关于爬虫的学习可能得暂且告一段落了，因为之后的课程深度和前面几节基本不搭边，而且涉及的网络知识和电脑知识已经超过了现在我能掌握的水平，之后可能还会回过头来继续学习的，现阶段对于爬虫的掌握程度是：能够掌握基本的爬虫原理，知道具体有什么步骤，高级用法并不是很熟练；</p>
+<p>2022&#x2F;8&#x2F;13 15:57 今天又稍微看了一下到第九章的代理，但是感觉这之后的内容的确是进阶的内容（普通的爬虫基本用不到这部分的知识点），然后因为本来平时使用的也少所以就决定暂时把爬虫这部分的内容放一放了；</p>
+<h1 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h1><p>学习的第一步就是配置环境，这里简单做一下按照书上的教程进行环境安装的时候出现的一些问题以及解决办法（没有特殊备注的默认按照书上的教程不会出现问题）</p>
+<blockquote>
+<p>2022&#x2F;7&#x2F;4</p>
+</blockquote>
+<p>python3安装：这里我们直接使用miniconda搭建了一个新的spider环境，安装python&#x3D;&#x3D;3.7.3</p>
+<p>requests安装</p>
+<p>selenimu安装</p>
+<p>Chrome浏览器以及ChromeDriver安装</p>
+<p>PhantomJS浏览器的下载与安装，解决方案参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45827692/article/details/121154252">(18条消息) module ‘selenium.webdriver‘ has no attribute ‘PhantomJS‘_走到哪，爬到哪的博客-CSDN博客</a></p>
+<p>aiohttp安装</p>
+<p>lxml安装</p>
+<p>Beautiful Soup 安装</p>
+<p>pyquery安装</p>
+<p>tesseroct安装，在安装1.3.4 tesserocr的时候直接使用其安装包安装并下载语言拓展会导致被墙从而下载失败，所以最终选择了网上的方法<a target="_blank" rel="noopener" href="https://blog.csdn.net/y180813/article/details/107432840">(18条消息) tesseract-ocr在安装过程中出现Download error以及anaconda下安装tesserocr库_y180813的博客-CSDN博客</a>，根据网上的方法在spider环境下面安装完成之后根据书上的测试方法一切都正常，注意我们文件的安装目录是在C:\Users\a7386\AppData\Local\Tesseract-OCR；还有就是安装错误之后第二次我选择的默认安装位置但是还是安装出错。然后我就跑去把C盘的Programx86文件夹下的一个相关文件夹删除了，不知道会不会有什么影响</p>
+<p>Mysql安装：参考尚硅谷视频教程</p>
+<p>MongoDB安装与配置：根据教程<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44486583/article/details/122873970">(18条消息) MongoDB的下载与安装_头秃怎么办的博客-CSDN博客_mongodb怎么下载</a></p>
+<p>Redis的安装依据博客<a target="_blank" rel="noopener" href="https://blog.51cto.com/u_14575624/3655447">Redis下载与安装（Windows）_wx5da4624409480的技术博客_51CTO博客</a></p>
+<p>Redis可视化工具安装依据博客<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39715000/article/details/120724800">(18条消息) Redis可视化连接工具RedisDesktopManager的下载与安装_乞力马扎罗の黎明的博客-CSDN博客_redis连接工具下载</a></p>
+<p>Ruby安装教程<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38191191/article/details/80836239">(18条消息) 2. Ruby下载安装_开猿节流的博客-CSDN博客_ruby下载</a></p>
+<p>PyMySQL安装</p>
+<p>PyMongo安装</p>
+<p>redis-py安装</p>
+<p>Ruby安装：教程参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38191191/article/details/80836239">(18条消息) 2. Ruby下载安装_开猿节流的博客-CSDN博客_ruby下载</a></p>
+<p>RedisDump安装</p>
+<p>Flask安装</p>
+<p>Tornado安装</p>
+<p>Charles安装：破解以及安装参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45346741/article/details/106201031">(18条消息) 抓包工具Charles下载安装使用_Lucky52hz的博客-CSDN博客_charles下载</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/zhuochong/p/10412755.html">	Charles安装及使用教程 - 圆圆测试日记 - 博客园 (cnblogs.com)</a></p>
+<p>​	配置参考书上教程</p>
+<p>mitproxy安装，启动过程中报错，解决方法：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36969407/article/details/123335945">(18条消息) ImportError: cannot import name ‘soft_unicode‘ from ‘markupsafe‘_qq_36969407的博客-CSDN博客</a></p>
+<p>​	手机证书配置过程查看<a target="_blank" rel="noopener" href="https://blog.csdn.net/u014540814/article/details/80518208">(18条消息) Android手机安装.pem证书文件_太书红叶的博客-CSDN博客_安卓手机如何打开.pem文件</a>，pem存放于手机Andriod目录下</p>
+<blockquote>
+<p>2022&#x2F;7&#x2F;5</p>
+</blockquote>
+<p>使用npm全局安装appium</p>
+<p>Andriod Studio只是按照链接下载了，并没有安装，因为涉及到科学上网，同时我们使用Appium只需要Andriod SDK即可<a target="_blank" rel="noopener" href="https://blog.csdn.net/wangmx1993328/article/details/81905195">(18条消息) Android Studio 下载 与 安装 详细步骤_蚩尤后裔的博客-CSDN博客_android stuidio下载</a></p>
+<p><img src="/images/image-20220808133145777.png" srcset="/img/loading.gif" lazyload></p>
+<p>Andriod SDK下载参考<a target="_blank" rel="noopener" href="https://www.cnblogs.com/nebie/p/9145627.html">Android SDK的下载与安装 - 菜鸟学飞ing - 博客园 (cnblogs.com)</a></p>
+<p>在安装Andriod SDK之前必须先配置JDK环境<a target="_blank" rel="noopener" href="https://blog.csdn.net/u012934325/article/details/73441617">(18条消息) JDK下载与安装教程_墨笙弘一的博客-CSDN博客_jdk安装教程</a>，否则会在开启SDK Manager的时候直接闪退（如果安装JDK任然闪退参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/x530681545/article/details/124960334">(18条消息) SDK Manager.exe打不开 闪退 的解决方法 win11下搭建android sdk_一丨丿丶乙7的博客-CSDN博客_android sdk打不开</a>）</p>
+<p>要说明一点——安装appium的环境是让我觉得最难受的，因为涉及到JAVA和Andriod等知识盲区，而且还要FQ之类的，可能安装过程有错误但是只能硬着头皮先装好，之后出问题了再修改即可；</p>
+<p>++++++++下面是爬虫框架的安装++++++++</p>
+<p>安装pyspider的时候爆红但是最终还是成功安装</p>
+<p><img src="/images/image-20220808133235994.png" srcset="/img/loading.gif" lazyload></p>
+<p>但是使用命令pyspider all的时候报错，这个报错搞了我一个小时，解决方法分很多步（pyspider这个库真的不稳定），最重要的一步Windows一定要关闭防火墙（控制面板关闭）</p>
+<p>参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_39190382/article/details/104923254">(18条消息) pyspider 安装及问题处理（pyspider一直卡在result_worker starting的解决办法）_胡侃有料的博客-CSDN博客_result_worker starting…</a></p>
+<p><a target="_blank" rel="noopener" href="http://t.zoukankan.com/xuan52rock-p-14393817.html">【转】pyspider运行卡死在result_worker starting 的解决办法 - 走看看 (zoukankan.com)</a></p>
+<p>安装Scrapy直接使用conda即可安装完毕</p>
+<p>安装scrapy-splash可能需要额外花费时间</p>
+<p>+++++首先是splash服务的安装+++++</p>
+<p>首先我们需要安装docker</p>
+<p>安装Docker需要更新WSL参考<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/84d89744f2a9">安装Docker Desktop报错WSL 2 installation is incomplete. - 简书 (jianshu.com)</a></p>
+<p>Docker配置参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_53582111/article/details/120190491?ops_request_misc=%7B%22request_id%22:%22163832557616780264032595%22,%22scm%22:%2220140713.130102334.pc_blog.%22%7D&request_id=163832557616780264032595&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~blog~first_rank_v2~rank_v29-3-120190491.pc_v2_rank_blog_default&utm_term=docker&spm=1018.2226.3001.4450">(18条消息) Dockerapp安装与使用_宠乖仪的博客-CSDN博客</a></p>
+<p>安装完成后使用Docker安装Splash参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_53582111/article/details/121649717">(18条消息) Splash安装和使用_宠乖仪的博客-CSDN博客_splash安装</a></p>
+<p>+++++接着是Scrapy-Splash的安装+++++</p>
+<p>直接pip即可</p>
+<p>Scrapy-Redis的安装</p>
+<p>关于之后的Scrapyd的安装以及配件是Linux下，所以这里就直接略过</p>
+<blockquote>
+<p>2022&#x2F;7&#x2F;5 19：20 </p>
+</blockquote>
+<p>至此，爬虫相关环境安装完毕，准备开始学习</p>
+<blockquote>
+<p>2022&#x2F;7&#x2F;6</p>
+</blockquote>
+<p>尝试安装jupyter notebook的时候安装成功但是报错了一小部分，原因是某些库的版本不兼容</p>
+<p><img src="/images/image-20220808133304236.png" srcset="/img/loading.gif" lazyload></p>
+<p>先正常使用，之后遇见问题再解决</p>
+<h1 id="爬虫基础（一）"><a href="#爬虫基础（一）" class="headerlink" title="爬虫基础（一）"></a>爬虫基础（一）</h1><p>21世纪，大数据成为最重要的经济资源之一，如何获取这些宝贵的资源成为一个问题，网络爬虫作为一种高效的信息采集利器，可以快速、准确的采集到需要的资源数据。</p>
+<p>写爬虫之前我们需要了解一些基础知识（比方说我们之前配置环境安装的那么多库有什么用，专业术语又代表什么）</p>
+<h2 id="1-HTTP基本原理"><a href="#1-HTTP基本原理" class="headerlink" title="1.HTTP基本原理"></a>1.HTTP基本原理</h2><h3 id="1-1-URI和URL"><a href="#1-1-URI和URL" class="headerlink" title="1.1 URI和URL"></a>1.1 URI和URL</h3><p>我们在计网中只学习了URL（统一资源定位符），URI称为统一资源标志符；、</p>
+<blockquote>
+<p>URL常见格式：&lt;协议&gt;：&#x2F;&#x2F;&lt;主机&gt;:&lt;端口&gt;&#x2F;&lt;路径&gt;<br>&lt;主机&gt;就是存放资源的主机在因特网上的域名或IP地址</p>
+</blockquote>
+<blockquote>
+<p>URL是URI的子集，URI还包括一个子类称为URN（统一资源名称）；</p>
+<p>URN可以只命名资源而不定位资源的位置，但是URN使用的非常少，几乎所有的URI都是URL；</p>
+</blockquote>
+<h3 id="1-2-HTTP和HTTPS"><a href="#1-2-HTTP和HTTPS" class="headerlink" title="1.2 HTTP和HTTPS"></a>1.2 HTTP和HTTPS</h3><p>HTTP（超文本传输协议）用于网络传输超文本数据到本地浏览器，能保证高效、准确地传送超文本文档；</p>
+<p>HTTPS（安全版HTTP）在HTTP下加入SSL层；</p>
+<h3 id="1-3-请求报文"><a href="#1-3-请求报文" class="headerlink" title="1.3 请求报文"></a>1.3 请求报文</h3><p>请求由客户端发送给服务器，可分为大致四个部分：请求方法、请求URL、请求头和请求体</p>
+<p>a)请求方法</p>
+<ul>
+<li><p>假如使用GET方式请求登录，用户输入的·用户名和密码都会暴露在URL中造成密码泄露；</p>
+</li>
+<li><p>当文件过大时也采用POST的方式；</p>
+</li>
+</ul>
+<p><img src="/images/image-20220705200428841-16570911131371.png" srcset="/img/loading.gif" lazyload></p>
+<p>常见请求方法如下</p>
+<p><img src="/images/image-20220705200634595-16570911131384.png" srcset="/img/loading.gif" lazyload></p>
+<p>b)请求头</p>
+<p>请求头是请求的重要组成部分，大多数时候需要我们设定请求头，常见的头部信息如下</p>
+<p><img src="/images/image-20220705201106686-16570911131382.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-4-响应报文"><a href="#1-4-响应报文" class="headerlink" title="1.4 响应报文"></a>1.4 响应报文</h3><p>响应是由服务端返回给客户端的，主要分为三部分：响应状态码、响应头和响应体</p>
+<p>a)响应状态码</p>
+<p>表示服务器的响应状态，下面给出了常见的错误代码和错误原因</p>
+<p><img src="/images/image-20220705201752792-16570911131383.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20220705201815153-16570911131385.png" srcset="/img/loading.gif" lazyload></p>
+<p>b)响应头</p>
+<p>包含了服务器对客户端请求的应答信息，下面展示常用的头信息</p>
+<p><img src="/images/image-20220705201924138-16570911131386.png" srcset="/img/loading.gif" lazyload></p>
+<p>c)响应体</p>
+<p>响应的正文数据都在响应体中，请求网页则响应体中是网页的HTML代码，请求图片则响应体中是图片的二进制数据；</p>
+<p>响应体是响应最重要的内容，也是爬虫需要解析的内容；</p>
+<p>爬虫主要通过响应体得到网页的源代码、JSON数据等，然后从中提取有用内容；</p>
+<h2 id="2-爬虫基本原理"><a href="#2-爬虫基本原理" class="headerlink" title="2.爬虫基本原理"></a>2.爬虫基本原理</h2><p>简单来说，爬虫就是获取网页并提取和保存信息的自动化程序；</p>
+<ul>
+<li><p>爬虫第一步就是获取网页，也就是向网站服务器构造并发送一个请求，得到响应体中网页的源代码并将其解析出来，我们可以通过<code>urllib、requests</code>库来实现<code>获取网页</code>，注意使用这两个库只能请求静态页面，要实现动态JS渲染界面的请求就需要借助<code>Selenium、Splash</code>来模拟；</p>
+</li>
+<li><p>获取网页源代码后，需要分析网页源代码并从中提取出我们需要的数据，这里可以使用<code>正则表达式</code>这种最万能但是也最麻烦的方法，也可以根据网页节点的属性、CSS选择器或者XPath来提取网页信息比如<code>Beatiful Soup、pyquery、lxml</code>库</p>
+</li>
+<li><p>提取有效信息后我们需要将信息进行保存，有多种形式，可以简单的保存为TXT文本或者JSON文本，也可以保存到数据库如MySQL、MongoDB或者Redis，甚至可以借助SFTP保存至远程服务器；</p>
+</li>
+</ul>
+<h1 id="基本库（二）"><a href="#基本库（二）" class="headerlink" title="基本库（二）"></a>基本库（二）</h1><p>python为我们提供了功能非常强大的一系列库，如可以使我们无需关注如何构造请求报文、请求如何在网络中传输等问题，不必深入到底层去了解请求是如何传输和通信的；</p>
+<p>下面介绍我们已安装或python内置的基本爬虫库；</p>
+<h2 id="1-urllib库"><a href="#1-urllib库" class="headerlink" title="1.urllib库"></a>1.urllib库</h2><p>urllib库是python内置的HTTP请求库，因为是内置所以无需额外安装，主要包含以下四个模块：</p>
+<p><img src="/images/image-20220706094324100-16570911131387.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-1-request模块"><a href="#1-1-request模块" class="headerlink" title="1.1 request模块"></a>1.1 request模块</h3><h4 id="（1）urlopen-方法"><a href="#（1）urlopen-方法" class="headerlink" title="（1）urlopen()方法"></a>（1）urlopen()方法</h4><p><img src="/images/image-20220706101359515-16570911131388.png" srcset="/img/loading.gif" lazyload></p>
+<p>最基本的urlopen()使用方法如下</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> urllib.request<br>response=urllib.request.urlopen(<span class="hljs-string">&#x27;HTTPS://WWW.PYTHON.ORG&#x27;</span>)<br><span class="hljs-comment">#利用最基本的urlopen()方法可以完成最基本的网页的GET请求抓取</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="（2）Request类"><a href="#（2）Request类" class="headerlink" title="（2）Request类"></a>（2）Request类</h4><p>使用urlopen()方法可以完成最简单的请求和网页抓取，但是这几个简单的参数并不足以构建一个完整的请求，假如请求中需要加入Headers等信息需要使用Request类来构建；</p>
+<p>Request类的构造函数如下</p>
+<p><img src="/images/image-20220706102012219-16570911131389.png" srcset="/img/loading.gif" lazyload></p>
+<p>其中第一个参数url是必选参数，其他是可选参数；</p>
+<p>下面我们使用一个实例展示如何传入多个参数构建请求对象，并将该对象作为参数传入urlopen()方法爬取网页</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">from</span> urllib <span class="hljs-keyword">import</span> request,parse<br><span class="hljs-comment">#构造参数</span><br><span class="hljs-comment">#请求URL</span><br>url = <span class="hljs-string">&#x27;http://httpbin.org/post&#x27;</span><br><span class="hljs-comment">#指定了User-Agent和Host</span><br>headers =&#123;<br><span class="hljs-string">&#x27;User-Agent&#x27;</span>: <span class="hljs-string">&#x27;Mozilla/4.o (compatible; MSIE 5.5; Windows NT)&#x27;</span>,<br><span class="hljs-string">&#x27;Host&#x27;</span>: <span class="hljs-string">&#x27;httpbin.org&#x27;</span>&#125;<br><span class="hljs-comment">#参数data使用urlencode()和bytes()方法转换为字节流</span><br><span class="hljs-built_in">dict</span> = &#123;<br><span class="hljs-string">&#x27; name&#x27;</span> : <span class="hljs-string">&#x27; Germey&#x27;</span><br>&#125;<br>data =<span class="hljs-built_in">bytes</span>(parse.urlencode(<span class="hljs-built_in">dict</span>),encoding=<span class="hljs-string">&#x27;utf8&#x27;</span>)<br><span class="hljs-comment">#传入参数构造请求，指定请求方式为POST</span><br>req = request.Request(url=url,data=data,headers=headers,method= <span class="hljs-string">&#x27;POST&#x27;</span>)<br><span class="hljs-comment">#开始爬取，urlopen()方法的参数不再是URL而是一个Request类的对象</span><br>response = request.urlopen(req)<br><span class="hljs-built_in">print</span>(response.read().decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>))<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="（3）Handler类"><a href="#（3）Handler类" class="headerlink" title="（3）Handler类"></a>（3）Handler类</h4><p>我们通过上面构造Request类的对象的方法实现了构造请求，但是对于更高级的如Cookies、代理等该如何处理呢？</p>
+<p>我们需要使用Handler工具类，它是一个强大的工具箱，可以利用不同的处理器处理登录验证、Cookies、代理设置；</p>
+<p>urllib.request模块里的BaseHandler类是其他所有Handler的父类，提供了最基本的方法，各种Handler子类继承BaseHandler并拓展其功能，常见的Handler子类如下</p>
+<p><img src="/images/image-20220706105218390-165709111313810.png" srcset="/img/loading.gif" lazyload></p>
+<p>通常我们都会将构建好的Handler和build_opener()方法来构造一个新的Opener，实现如验证、代理、Cookies等高级问题；</p>
+<h5 id="验证问题"><a href="#验证问题" class="headerlink" title="验证问题"></a>验证问题</h5><p><img src="/images/image-20220706105527351-16570761456459-165709111313812.png" srcset="/img/loading.gif" lazyload></p>
+<p>模板代码如下：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment">#注意下面这个代码跑不起来，只是一个模板代码</span><br><span class="hljs-keyword">from</span> urllib.request <span class="hljs-keyword">import</span> HTTPPasswordMgrWithDefaultRealm, HTTPBasicAuthHandler, build_opener<br><span class="hljs-keyword">from</span> urllib.error <span class="hljs-keyword">import</span> URLError<br><br><span class="hljs-comment">#构造用户名</span><br>username = <span class="hljs-string">&#x27;username&#x27;</span><br><span class="hljs-comment">#构造密码</span><br>password = <span class="hljs-string">&#x27; password&#x27;</span><br><span class="hljs-comment">#请求url</span><br>url = <span class="hljs-string">&quot;http://localhost:5000/&#x27;</span><br><span class="hljs-string"></span><br><span class="hljs-string">#实例化HTTPPasswordMgrWithDefaultRealm对象，利用add_password()添加用户名和密码</span><br><span class="hljs-string">P= HTTPPasswordMgrWithDefaultRealm()</span><br><span class="hljs-string">p.add_password(None, url, username,password)</span><br><span class="hljs-string">#实例化HTTPBasicAuthHandler对象，其参数是HTTPPasswordMgrWithDefaultRealm对象</span><br><span class="hljs-string">auth_handler = HTTPBasicAuthHandler(p)</span><br><span class="hljs-string"></span><br><span class="hljs-string">#上述过程建立了一个处理验证的Handler，接下来利用这个Handler并使用build_opener()构建一个Opener对象</span><br><span class="hljs-string">opener= build_opener(auth_handler)</span><br><span class="hljs-string"></span><br><span class="hljs-string"></span><br><span class="hljs-string">try:</span><br><span class="hljs-string">    #利用Opener对象的open()方法打开链接即可完成验证并获取验证后页面的源码内容，将其赋值给result</span><br><span class="hljs-string">    result = opener.open(ur1)#Opener的open()方法返回的类型和urlopen()如出一辙</span><br><span class="hljs-string">    html = result.read().decode(&quot;</span>utf-<span class="hljs-number">8</span><span class="hljs-string">&#x27;)</span><br><span class="hljs-string">    print(html)</span><br><span class="hljs-string">except URLError as e:</span><br><span class="hljs-string">    print(e.reason)</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h5 id="代理问题"><a href="#代理问题" class="headerlink" title="代理问题"></a>代理问题</h5><p>首先熟悉一下代理相关知识点，常见的代理使用方法主要有以下几种</p>
+<p><img src="/images/image-20220706111448168-165709111313811-165709964305111.png" srcset="/img/loading.gif" lazyload></p>
+<p>代理的作用如下</p>
+<p><img src="/images/image-20220706111524272-165709111313813.png" srcset="/img/loading.gif" lazyload></p>
+<p>爬虫需要添加代理可以使用如下代码</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">from</span> urllib.error <span class="hljs-keyword">import</span> URLError<br><span class="hljs-keyword">from</span>.request <span class="hljs-keyword">import</span> ProxyHandler,build_opener<br><br><span class="hljs-comment">#ProxyHandler参数是一个字典，键名为协议类型</span><br>proxy_handler=ProxyHandler(&#123;<br>    <span class="hljs-comment">#首先我们在本地搭建了一个代理，运行在9743端口</span><br>    <span class="hljs-string">&#x27;http&#x27;</span>:<span class="hljs-string">&#x27;http://127.0.0.1:9743&#x27;</span>,<br>    <span class="hljs-string">&#x27;http&#x27;</span>:<span class="hljs-string">&#x27;https://127.0.0.1:9743&#x27;</span><br>&#125;)<br><br><span class="hljs-comment">#利用上述Handler和build_opener()方法构造一个Opener</span><br>opener=build_opener(proxy_handler)<br><br><span class="hljs-keyword">try</span>:<br>    response=opener.<span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;http://www.baidu.com&#x27;</span>)<br>    <span class="hljs-built_in">print</span>(respopnse.read().decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>))<br><span class="hljs-keyword">except</span> URLError <span class="hljs-keyword">as</span> e:<br>    <span class="hljs-built_in">print</span>(e.reason)<br></code></pre></td></tr></table></figure>
+
+
+
+<h5 id="Cookies问题"><a href="#Cookies问题" class="headerlink" title="Cookies问题"></a>Cookies问题</h5><p>在介绍如何处理Cookies之前我们先简单介绍一下Cookies</p>
+<p>Cookies常常和会话成对出现，众所周知HTTP是无状态的，会话和Cookies用于保持HTTP的连接状态（记住用户的登录状态）；</p>
+<ul>
+<li><p>会话在服务端，也就是网站的服务器，用来保存用户的会话信息；</p>
+</li>
+<li><p>Cookies 在客户端，有了 Cookies，浏览器在下次访问网页时会自动附带上它发送给服务器，服务器通过识别 Cookies 并鉴定出是哪个用户，然后再判断用户是否是登录状态，然后返回对应的响应</p>
+</li>
+</ul>
+<p>因此在爬虫中，有时候处理需要登录才能访问的页面时，我们一般会直接将登录成功后获取的 Cookies 放在请求头里面直接请求，而不必重新模拟登录（模拟登录可以使用selenium等或者用post提交登录信息）</p>
+<p>获取网站的Cookies如下</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> http.cookiejar, urllib.request  <br><br><span class="hljs-comment">#将获取得到的cookies保存在文件中</span><br>filename=<span class="hljs-string">&#x27;cookies.txt&#x27;</span><br><span class="hljs-comment">#首先声明一个MozillaCookieJar对象（CookieJar类的子类，用于处理Cookies文件相关的事件）</span><br>cookie = http.cookiejar.MozillaCookieJar(filename)<br><span class="hljs-comment">#接着利用HTTPCookieProcessor来构建一个Handler对象</span><br>handler = urllib.request.HTTPCookieProcessor(cookie)  <br><span class="hljs-comment">#然后利用Handler对象和build_opener()方法构建Opener对象</span><br>opener = urllib.request.build_opener(handler)  <br><span class="hljs-comment">#获取目标URL的cookies</span><br>response = opener.<span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;http://www.baidu.com&#x27;</span>)  <br><span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> cookie:  <br>    <span class="hljs-built_in">print</span>(item.name+<span class="hljs-string">&quot;=&quot;</span>+item.value)<br>cookie.save(ignore_discard=<span class="hljs-literal">True</span>,ignore_expires=<span class="hljs-literal">True</span>)<br></code></pre></td></tr></table></figure>
+
+<p>我们如何从文件中读取并使用生成的Coolies文件呢？参考如下代码</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs py">cookie = http.cookiejar.MozillaCookieJar()  <br><span class="hljs-comment">#首先调用load()方法读取本地Cookies文件</span><br>cookie.load(<span class="hljs-string">&#x27;cookies.txt&#x27;</span>, ignore_discard=<span class="hljs-literal">True</span>, ignore_expires=<span class="hljs-literal">True</span>)  <br><span class="hljs-comment">#接着按照获取网站Cookies相同的方法依次构建Handler和Opener即可</span><br>handler = urllib.request.HTTPCookieProcessor(cookie)  <br>opener = urllib.request.build_opener(handler)  <br>response = opener.<span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;http://www.baidu.com&#x27;</span>)  <br><span class="hljs-built_in">print</span>(response.read().decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>))<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="1-2-error模块"><a href="#1-2-error模块" class="headerlink" title="1.2 error模块"></a>1.2 error模块</h3><p>urllib的error模块定义了由request模块产生的异常，假如在某些情况下（如网络状况不好）出现问题则request模块会抛出error模块中定义的异常；</p>
+<p>合理使用error模块，通过捕获异常可以做出更准确的异常判断，使程序更加稳健；</p>
+<h4 id="（1）URLError类"><a href="#（1）URLError类" class="headerlink" title="（1）URLError类"></a>（1）URLError类</h4><p>URLError 类来自 urllib 库的 error 模块，它继承自 OSError 类，是 error 异常模块的基类，由 request 模块产生的异常都可以通过捕获这个类来处理；</p>
+<p>它具有一个属性 reason，即返回错误的原因；</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">from</span> urllib <span class="hljs-keyword">import</span> request, error  <br><span class="hljs-keyword">try</span>:  <br>    <span class="hljs-comment">#我们尝试打开一个不存在的页面</span><br>    response = request.urlopen(<span class="hljs-string">&#x27;https://cuiqingcai.com/index.htm&#x27;</span>)  <br><span class="hljs-keyword">except</span> error.URLError <span class="hljs-keyword">as</span> e:  <br>    <span class="hljs-comment">#会导致执行这一句，输出错误原因</span><br>    <span class="hljs-built_in">print</span>(e.reason)<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="（2）HTTPError类"><a href="#（2）HTTPError类" class="headerlink" title="（2）HTTPError类"></a>（2）HTTPError类</h4><p>HTTPError类是 URLError 的子类，专门用来处理 HTTP 请求错误，比如认证请求失败等。它有如下 3 个属性。</p>
+<ul>
+<li><p>code：返回 HTTP 状态码，比如 404 表示网页不存在，500 表示服务器内部错误等；</p>
+</li>
+<li><p>reason：同父类一样，用于返回错误的原因；</p>
+</li>
+<li><p>headers：返回请求头；</p>
+</li>
+</ul>
+<p>因为HTTPError类是URLError类的子类，所以可以先获取子类异常，否则获取URL异常</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">from</span> urllib <span class="hljs-keyword">import</span> request, error  <br><br><span class="hljs-keyword">try</span>:  <br>    response = request.urlopen(<span class="hljs-string">&#x27;https://cuiqingcai.com/index.htm&#x27;</span>)  <br><span class="hljs-comment">#先尝试获取子类异常</span><br><span class="hljs-keyword">except</span> error.HTTPError <span class="hljs-keyword">as</span> e:  <br>    <span class="hljs-built_in">print</span>(e.reason, e.code, e.headers, sep=<span class="hljs-string">&#x27;\n&#x27;</span>)  <br><span class="hljs-comment">#再尝试获取父类异常</span><br><span class="hljs-keyword">except</span> error.URLError <span class="hljs-keyword">as</span> e:  <br>    <span class="hljs-built_in">print</span>(e.reason)  <br><span class="hljs-keyword">else</span>:  <br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;Request Successfully&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="1-3-parse模块"><a href="#1-3-parse模块" class="headerlink" title="1.3 parse模块"></a>1.3 parse模块</h3><p>urllib库的parse 模块，定义了处理 URL 的标准接口，比如实现 URL 各部分的抽取、合并以及链接转换；</p>
+<h4 id="（1）urlparse-方法"><a href="#（1）urlparse-方法" class="headerlink" title="（1）urlparse()方法"></a>（1）urlparse()方法</h4><p>urlparse()方法的标准API如下</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">urllib.parse.urlparse(urlstring, scheme=<span class="hljs-string">&#x27;&#x27;</span>, allow_fragments=<span class="hljs-literal">True</span>)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>urlstring参数是必选项也就是待解析的URL；</li>
+<li>scheme：它是默认的协议（比如 http 或 https 等）。假如这个链接没有带协议信息，会将这个作为默认的协议（比如我们传入的urlstring参数为’<a target="_blank" rel="noopener" href="http://www.baidu.com/index.html;user?id=5#comment&#39;%E4%BC%9A%E6%A0%B9%E6%8D%AE%E6%88%91%E4%BB%AC%E6%89%80%E7%BB%99%E7%9A%84scheme%E9%BB%98%E8%AE%A4%E6%B7%BB%E5%8A%A0%E8%BF%9B%E5%8E%BB%EF%BC%89%EF%BC%9B">www.baidu.com/index.html;user?id=5#comment&#39;会根据我们所给的scheme默认添加进去）；</a></li>
+<li>allow_fragments：即是否忽略 fragment。如果它被设置为 False，fragment 部分就会被忽略，它会被解析为 path、parameters 或者 query 的一部分</li>
+</ul>
+<p>该方法可以实现 URL 的识别和分段</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">from</span> urllib.parse <span class="hljs-keyword">import</span> urlparse  <br><span class="hljs-comment">#使用urlparse()方法对URL进行解析，简单来说urlparse()方法将下面的URL按照URL标准格式拆分</span><br>result = urlparse(<span class="hljs-string">&#x27;http://www.baidu.com/index.html;user?id=5#comment&#x27;</span>)  <br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">type</span>(result), result)<br></code></pre></td></tr></table></figure>
+
+<p>URL链接标准格式</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">scheme:<span class="hljs-regexp">//</span>netloc/path;params?query<span class="hljs-comment">#fragment</span><br></code></pre></td></tr></table></figure>
+
+<p>比如说</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">http:<span class="hljs-regexp">//</span>www.baidu.com/index.html;user?id=<span class="hljs-number">5</span><span class="hljs-comment">#comment</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>:&#x2F;&#x2F; 前面的就是 scheme，代表协议<code>http</code></li>
+<li>第一个 &#x2F; 符号前面便是 netloc，即域名<a target="_blank" rel="noopener" href="http://www.baidu.com/">www.baidu.com</a></li>
+<li>path，即访问路径<code>index.html</code></li>
+<li>分号后面是 params，代表参数<code>user</code></li>
+<li>问号？后面是查询条件 query，一般用作 GET 类型的 URL</li>
+<li>井号 #后面是锚点，用于直接定位页面内部的下拉位置<code>comment</code></li>
+</ul>
+<h4 id="（2）urlunparse-方法"><a href="#（2）urlunparse-方法" class="headerlink" title="（2）urlunparse()方法"></a>（2）urlunparse()方法</h4><p>urlparse()方法对应的是urlunparse()方法，其参数个数必须为6，用于构造URL</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">from</span> urllib.parse <span class="hljs-keyword">import</span> urlunparse  <br><br>data = [<span class="hljs-string">&#x27;http&#x27;</span>, <span class="hljs-string">&#x27;www.baidu.com&#x27;</span>, <span class="hljs-string">&#x27;index.html&#x27;</span>, <span class="hljs-string">&#x27;user&#x27;</span>, <span class="hljs-string">&#x27;a=6&#x27;</span>, <span class="hljs-string">&#x27;comment&#x27;</span>]  <br><span class="hljs-built_in">print</span>(urlunparse(data))<br><br><span class="hljs-comment">#输出结果http://www.baidu.com/index.html;user?a=6#comment</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="（3）urlsplit-方法"><a href="#（3）urlsplit-方法" class="headerlink" title="（3）urlsplit()方法"></a>（3）urlsplit()方法</h4><p>这个方法和 urlparse 方法非常相似，只不过它不再单独解析 params 这一部分，只返回 5 个结果。urlparse()例子中的 params 会合并到 path 中；</p>
+<h4 id="（4）urlunsplit-方法"><a href="#（4）urlunsplit-方法" class="headerlink" title="（4）urlunsplit()方法"></a>（4）urlunsplit()方法</h4><p>urlsplit()方法对应的是urlunsplit()方法，其参数个数必须为4，用于构造URL；</p>
+<h4 id="（5）urljoin-方法"><a href="#（5）urljoin-方法" class="headerlink" title="（5）urljoin()方法"></a>（5）urljoin()方法</h4><p>有了 urlunparse() 和 urlunsplit() 方法，我们可以完成链接的合并，不过前提必须要有特定长度的对象，链接的每一部分都要清晰分开。</p>
+<p>生成URL链接还有另一个方法，那就是 urljoin 方法。我们可以提供一个 base_url（基础链接）作为第一个参数，将新的链接作为第二个参数，该方法会分析 base_url 的 scheme、netloc 和 path 这 3 个内容并对新链接缺失的部分进行补充，最后返回结果。</p>
+<p>base_url 需要提供三项内容 scheme、netloc 和 path；</p>
+<ul>
+<li>如果这 3 项在新的链接里不存在，就予以补充；</li>
+<li>如果新的链接存在，就使用新的链接的部分，此时 base_url 中的 params、query 和 fragment 是不起作用的</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">urljoin(<span class="hljs-string">&#x27;http://www.baidu.com&#x27;</span>, <span class="hljs-string">&#x27;https://cuiqingcai.com/FAQ.html&#x27;</span>)<span class="hljs-comment">#基础链接作为第一个参数，新链接作为第二个参数</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="（6）quote-方法"><a href="#（6）quote-方法" class="headerlink" title="（6）quote()方法"></a>（6）quote()方法</h4><p>该方法可以将参数内容转化为 URL 编码的格式（对于我们爬取特定内容很有用）。URL 中带有中文参数时，有时可能会导致乱码的问题，此时用这个方法可以将中文字符转化为 URL 编码，示例如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> urllib.parse <span class="hljs-keyword">import</span> quote  <br><br>keyword = <span class="hljs-string">&#x27; 壁纸 &#x27;</span>  <br>url = <span class="hljs-string">&#x27;https://www.baidu.com/s?wd=&#x27;</span> + quote(keyword)  <br><span class="hljs-built_in">print</span>(url)<br></code></pre></td></tr></table></figure>
+
+<p>这里我们声明了一个中文的搜索文字，然后用 quote 方法对其进行 URL 编码，最后得到的结果如下：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">https:<span class="hljs-regexp">//</span>www.baidu.com/s?wd=% E5% A3%<span class="hljs-number">81</span>% E7% BA% B8<br></code></pre></td></tr></table></figure>
+
+<h4 id="（7）unquote-方法"><a href="#（7）unquote-方法" class="headerlink" title="（7）unquote()方法"></a>（7）unquote()方法</h4><p>有了 quote 方法，当然还有 unquote 方法，它可以进行 URL 解码，示例如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> urllib.parse <span class="hljs-keyword">import</span> unquote  <br><br>url = <span class="hljs-string">&#x27;https://www.baidu.com/s?wd=% E5% A3%81% E7% BA% B8&#x27;</span>  <br><span class="hljs-built_in">print</span>(unquote(url))<br></code></pre></td></tr></table></figure>
+
+<p>这是上面得到的 URL 编码后的结果，这里利用 unquote 方法还原，结果如下：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">https:<span class="hljs-regexp">//</span>www.baidu.com/s?wd = 壁纸<br></code></pre></td></tr></table></figure>
+
+<p>可以看到，利用 unquote 方法可以方便地实现解码。</p>
+<p>之后是几个不常见的模块这里不再赘述</p>
+<h3 id="1-4-robotparser模块"><a href="#1-4-robotparser模块" class="headerlink" title="1.4 robotparser模块"></a>1.4 robotparser模块</h3><p>利用 urllib 的 robotparser 模块，我们可以实现网站 Robots 协议的分析；</p>
+<p>Robots 协议也称作爬虫协议、机器人协议，它的全名叫作网络爬虫排除标准（Robots Exclusion Protocol），用来告诉爬虫和搜索引擎哪些页面可以抓取，哪些不可以抓取；</p>
+<p>Robots 协议通常保存为一个叫作 robots.txt 的文本文件，一般放在网站的根目录下；</p>
+<ul>
+<li>当搜索爬虫访问一个站点时，它首先会检查这个站点根目录下是否存在 robots.txt 文件，如果存在，搜索爬虫会根据其中定义的爬取范围来爬取；</li>
+<li>如果没有找到这个文件，搜索爬虫便会访问所有可直接访问的页面。</li>
+</ul>
+<p>一般robots.txt文件的格式如下</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs txt">User-agent: *        搜索爬虫的名称（实际上正规的爬虫都是有名字的，咱们自己写的爬虫没有名字，但是百度、谷歌这种搜索引擎使用的搜索爬虫有规定名称如BaiduSpider）<br>Disallow: /  		不允许爬取的页面<br>Allow: /public/		允许爬取的页面<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="（1）RobotFileParser类"><a href="#（1）RobotFileParser类" class="headerlink" title="（1）RobotFileParser类"></a>（1）RobotFileParser类</h4><p>RobotFileParse类的常用方法如下</p>
+<ul>
+<li>set_url ：用来设置 robots.txt 文件的链接。如果在创建 RobotFileParser 对象时传入了链接，那么就不需要再使用这个方法设置了</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">rp = RobotFileParser(<span class="hljs-string">&#x27;http://www.jianshu.com/robots.xt&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><p>read：读取 robots.txt 文件并进行分析。注意，这个方法执行一个读取和分析操作，如果不调用这个方法，接下来的判断都会为 False，所以一定记得调用这个方法。这个方法不会返回任何内容，但是执行了读取操作。</p>
+</li>
+<li><p>parse：用来解析 robots.txt 文件，传入的参数是 robots.txt 某些行的内容，它会按照 robots.txt 的语法规则来分析这些内容。</p>
+</li>
+<li><p>can_fetch：该方法传入两个参数，第一个是 User-agent，第二个是要抓取的 URL。返回的内容是该搜索引擎是否可以抓取这个 URL，返回结果是 True 或 False。</p>
+</li>
+<li><p>mtime：返回的是上次抓取和分析 robots.txt 的时间，这对于长时间分析和抓取的搜索爬虫是很有必要的，你可能需要定期检查来抓取最新的 robots.txt。</p>
+</li>
+<li><p>modified：它同样对长时间分析和抓取的搜索爬虫很有帮助，将当前时间设置为上次抓取和分析 robots.txt 的时间。</p>
+</li>
+</ul>
+<p>直接上代码</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">from</span> urllib.robotparser <span class="hljs-keyword">import</span> RobotFileParser<br><span class="hljs-comment">#实例化一个RobotFileParser对象</span><br>rp = RobotFileParser()<br><span class="hljs-comment">#使用set_url()方法传入robots.txt所在路径</span><br>rp.set_url(<span class="hljs-string">&#x27;http://www.jianshu.com/robots.txt&#x27;</span>)<br>rp.read()<br><span class="hljs-comment">#利用 can_fetch 方法判断链接指向的网页是否可以被抓取</span><br><span class="hljs-built_in">print</span>(rp.can_fetch(<span class="hljs-string">&#x27;*&#x27;</span>, <span class="hljs-string">&#x27;http://www.jianshu.com/p/b67554025d7d&#x27;</span>))<br><span class="hljs-built_in">print</span>(rp.can_fetch(<span class="hljs-string">&#x27;*&#x27;</span>, <span class="hljs-string">&quot;http://www.jianshu.com/search?q=python&amp;page=1&amp;type=collections&quot;</span>))<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-requests库"><a href="#2-requests库" class="headerlink" title="2.requests库"></a>2.requests库</h2><p>前面介绍的urllib库因为是内置的，多少有些功能不够完善，在解决验证和Cookies时需要非常麻烦的行为，这里我们引入功能更加强大的requests库，可以轻松解决验证、代理等问题；</p>
+<h3 id="2-1-GET请求"><a href="#2-1-GET请求" class="headerlink" title="2.1 GET请求"></a>2.1 GET请求</h3><p>HTTP 中最常见的请求之一就是 GET 请求，下面首先来详细了解一下利用 requests 库构建 GET 请求的方法；</p>
+<p>首先是简单的直接构造一个GET请求，传入的参数是URL</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> requests  <br>r = requests.get(<span class="hljs-string">&#x27;http://httpbin.org/get&#x27;</span>)  <br><span class="hljs-built_in">print</span>(r.text)<br></code></pre></td></tr></table></figure>
+
+<h4 id="（1）附加信息"><a href="#（1）附加信息" class="headerlink" title="（1）附加信息"></a>（1）附加信息</h4><p>对于 GET 请求，如果要附加额外的信息，一般使用字典存储要添加的信息数据，然后借助params参数即可将请求的链接自动构造成<a target="_blank" rel="noopener" href="http://httpbin.org/get?age=22&amp;name=germey">http://httpbin.org/get?age=22&amp;name=germey</a></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> requests  <br>data = &#123;  <br>    <span class="hljs-string">&#x27;name&#x27;</span>: <span class="hljs-string">&#x27;germey&#x27;</span>,  <br>    <span class="hljs-string">&#x27;age&#x27;</span>: <span class="hljs-number">22</span>  <br>&#125;  <br>r = requests.get(<span class="hljs-string">&quot;http://httpbin.org/get&quot;</span>, params=data)  <br><span class="hljs-built_in">print</span>(r.text)<br></code></pre></td></tr></table></figure>
+
+
+
+<p>接着书上给我们讲解了一些例子，分别是</p>
+<ul>
+<li>爬取知乎网站返回HTML文档，使用正则表达式进行解析提取有用内容；</li>
+<li>爬取Github网站的icon图标（返回二进制数据），使用open方法以二进制写形式打开，将图标保存在文件中——这启发我们音频、视频也可以这样爬取并保存；</li>
+</ul>
+<blockquote>
+<p>注意，如果网站返回的是二进制数据，千万别用简单粗暴的print(r.text)将其转换为str类型来输出，这将得到一堆乱码；</p>
+</blockquote>
+<h4 id="（2）添加headers"><a href="#（2）添加headers" class="headerlink" title="（2）添加headers"></a>（2）添加headers</h4><p>针对某些网站（如知乎），如果不添加headers头信息的某些信息（如User-Agent 字段信息，也就是浏览器标识信息）直接爬取会被知乎给禁止，</p>
+<p>除了User-Agent，我们可以在headers中添加其他合法字段信息</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> requests<br><span class="hljs-comment">#构造头部信息</span><br>headers = &#123;<span class="hljs-string">&#x27;User-Agent&#x27;</span>: <span class="hljs-string">&#x27;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36&#x27;</span><br>&#125;<br><span class="hljs-comment">#发送请求时直接加入构造好的headers</span><br>r = requests.get(<span class="hljs-string">&quot;https://www.zhihu.com/explore&quot;</span>, headers=headers)<br><span class="hljs-built_in">print</span>(r.text)<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-2-POST请求"><a href="#2-2-POST请求" class="headerlink" title="2.2 POST请求"></a>2.2 POST请求</h3><p>使用requests库实现POST请求同样非常简单（前面我们介绍urllib库没有明确区分GET请求和POST请求，两者的区别在最前面1.3 请求报文中介绍过）</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> requests<br><span class="hljs-comment">#构造表单信息</span><br>data = &#123;<span class="hljs-string">&#x27;name&#x27;</span>: <span class="hljs-string">&#x27;germey&#x27;</span>, <span class="hljs-string">&#x27;age&#x27;</span>: <span class="hljs-string">&#x27;22&#x27;</span>&#125;<br>r = requests.post(<span class="hljs-string">&quot;http://httpbin.org/post&quot;</span>, data=data)<br><span class="hljs-built_in">print</span>(r.text)<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="2-3-高级用法"><a href="#2-3-高级用法" class="headerlink" title="2.3 高级用法"></a>2.3 高级用法</h3><p>前面的GET请求和POST请求都是比较简单的requests库的用法，还不足以体现其优越性，下面介绍一些requests库的高级用法（因为requests库没有明显区分什么模块，所以我们没有像介绍iurllib一样的结构去介绍）</p>
+<h4 id="（1）文件上传"><a href="#（1）文件上传" class="headerlink" title="（1）文件上传"></a>（1）文件上传</h4><p> requests 可以模拟提交一些数据。假如有的网站需要上传文件，我们也可以用它来实现：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> requests<br><span class="hljs-comment">#这里我们假设在当前脚本的同一目录下有一个favicon.ico文件用于提交</span><br>files = &#123;<span class="hljs-string">&#x27;file&#x27;</span>: <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;favicon.ico&#x27;</span>, <span class="hljs-string">&#x27;rb&#x27;</span>)&#125;<br><span class="hljs-comment">#使用post提交文件</span><br>r = requests.post(<span class="hljs-string">&#x27;http://httpbin.org/post&#x27;</span>, files=files)<br><span class="hljs-built_in">print</span>(r.text)<br></code></pre></td></tr></table></figure>
+
+<h4 id="（2）Cookies"><a href="#（2）Cookies" class="headerlink" title="（2）Cookies"></a>（2）Cookies</h4><p>前面我们使用 urllib 处理过 Cookies，写法比较复杂，而有了 requests，获取和设置 Cookies 只需一步即可完成；</p>
+<p>先介绍获取Cookies的方法：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> requests<br><br>r = requests.get(<span class="hljs-string">&#x27;https://www.baidu.com&#x27;</span>)<br><span class="hljs-comment">#调用 cookies 属性即可成功得到 Cookies，可以发现它是 RequestCookieJar 类型</span><br><span class="hljs-built_in">print</span>(r.cookies)<br><span class="hljs-comment">#用 items 方法将其转化为元组组成的列表，遍历输出每一个 Cookie 的名称和值，实现 Cookie 的遍历解析</span><br><span class="hljs-keyword">for</span> key, value <span class="hljs-keyword">in</span> r.cookies.items():<br>    <span class="hljs-built_in">print</span>(key + <span class="hljs-string">&#x27;=&#x27;</span> + value)<br></code></pre></td></tr></table></figure>
+
+<p>使用Cookies来维持某个网站的登陆状态也非常简单：</p>
+<ul>
+<li>首先登录该网站，找到Headers里面的Cookies将其复制下来；</li>
+</ul>
+<p><img src="/images/image-20220711171202912.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>接着直接在Headers里面设置刚刚复制的Cookies即可</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> requests<br><br>headers = &#123;<br>    <span class="hljs-string">&#x27;Cookie&#x27;</span>: <span class="hljs-string">&#x27;q_c1=31653b264a074fc9a57816d1ea93ed8b|1474273938000|1474273938000; d_c0=&quot;AGDAs254kAqPTr6NW1U3XTLFzKhMPQ6H_nc=|1474273938&quot;; __utmv=51854390.100-1|2=registration_date=20130902=1^3=entry_date=20130902=1;a_t=&quot;2.0AACAfbwdAAAXAAAAso0QWAAAgH28HQAAAGDAs254kAoXAAAAYQJVTQ4FCVgA360us8BAklzLYNEHUd6kmHtRQX5a6hiZxKCynnycerLQ3gIkoJLOCQ==&quot;;z_c0=Mi4wQUFDQWZid2RBQUFBWU1DemJuaVFDaGNBQUFCaEFsVk5EZ1VKV0FEZnJTNnp3RUNTWE10ZzBRZFIzcVNZZTFGQmZn|1474887858|64b4d4234a21de774c42c837fe0b672fdb5763b0&#x27;</span>,<br>    <span class="hljs-string">&#x27;Host&#x27;</span>: <span class="hljs-string">&#x27;www.zhihu.com&#x27;</span>,<br>    <span class="hljs-string">&#x27;User-Agent&#x27;</span>: <span class="hljs-string">&#x27;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.116 Safari/537.36&#x27;</span>,<br>&#125;<br>r = requests.get(<span class="hljs-string">&#x27;https://www.zhihu.com&#x27;</span>, headers=headers)<br><span class="hljs-built_in">print</span>(r.text)<br></code></pre></td></tr></table></figure>
+
+<h4 id="（3）会话"><a href="#（3）会话" class="headerlink" title="（3）会话"></a>（3）会话</h4><p>在 requests 中，使用get()或post()发送请求相当于建立不同的会话，也就是说使用两次GET或者POST请求相当于用了两个浏览器打开了网站，这两个页面是不相关无联系的；</p>
+<p>设想这样一个场景，第一个请求利用 post() 方法登录了某个网站，第二次想获取成功登录后的自己的个人信息，于是又用了一次 get() 方法去请求个人信息页面。实际上，这相当于打开了两个浏览器，是两个完全不相关的会话，这将导致获取个人信息失败（因为get()那个页面实际上并没有登录成功）</p>
+<p>解决方法1：在两次请求时设置一样的 cookies；</p>
+<p>解决方法2：解决方法1因为每次爬取网页都需要附带发送登录成功的Cookies以通过服务器识别，所以显得可能会比较复杂；我们思考能否维持该会话，这样就不需要我们重新登录或者用Cookies伪装；</p>
+<blockquote>
+<p>疑问：既然有会话维持这么高级的功能，那Cookies的功能应该被取代…？有没有一种可能是因为urllib中只有手动添加Cookies这种低级方法所以才在requests中保留了Cookies的用法；</p>
+</blockquote>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> requests<br><span class="hljs-comment">#启动一个Session</span><br>s = requests.Session()<br><span class="hljs-comment">#请求该网址时设置一个Cookies名为number，内容为123456789</span><br>s.get(<span class="hljs-string">&#x27;http://httpbin.org/cookies/set/number/123456789&#x27;</span>)<br><span class="hljs-comment">#接着我们重新发送一个GET请求，假如获取的网站Cookies就是我们设置的Cookies表示这两个GET请求的会话是同一个</span><br>r = s.get(<span class="hljs-string">&#x27;http://httpbin.org/cookies&#x27;</span>)<br><span class="hljs-built_in">print</span>(r.text)<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li><p>利用 Session，可以做到模拟同一个会话而不用担心 Cookies 的问题。它通常用于模拟登录成功之后再进行下一步的操作；</p>
+</li>
+<li><p>Session 在平常用得非常广泛，可以用于模拟在一个浏览器中打开同一站点的不同页面；</p>
+</li>
+</ul>
+</blockquote>
+<h4 id="（4）SSL证书验证"><a href="#（4）SSL证书验证" class="headerlink" title="（4）SSL证书验证"></a>（4）SSL证书验证</h4><p>关于这个用法就属于非常高级的领域了，这里我们暂时先不研究（毕竟证书那一块我都还没接触过）；</p>
+<h4 id="（5）代理设置"><a href="#（5）代理设置" class="headerlink" title="（5）代理设置"></a>（5）代理设置</h4><p>前面也说过，对于某些网站，在测试的时候请求几次，能正常获取内容。但是一旦开始大规模爬取，对于大规模且频繁的请求，网站可能会弹出验证码，或者跳转到登录认证页面，更甚者可能会直接封禁客户端的 IP，导致一定时间段内无法访问。那么，为了防止这种情况发生，我们需要设置代理来解决这个问题，这就需要用到 proxies 参数。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> requests<br><span class="hljs-comment">#设置代理，注意这里的代理可能是无效的左演示使用，一般代理需要付费购买</span><br>proxies = &#123;<br>  <span class="hljs-string">&#x27;http&#x27;</span>: <span class="hljs-string">&#x27;http://10.10.1.10:3128&#x27;</span>,<br>  <span class="hljs-string">&#x27;https&#x27;</span>: <span class="hljs-string">&#x27;http://10.10.1.10:1080&#x27;</span>,<br>&#125;<br><br>requests.get(<span class="hljs-string">&#x27;https://www.taobao.com&#x27;</span>, proxies=proxies)<br></code></pre></td></tr></table></figure>
+
+<p>除了基本的 HTTP 代理外，requests 还支持 SOCKS 协议的代理。</p>
+<p>首先，需要安装 socks 这个库：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">pip3 <span class="hljs-keyword">install</span><span class="hljs-string">&quot;requests[socks]&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>然后就可以使用 SOCKS 协议代理了，示例如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><br>proxies = &#123;<br>    <span class="hljs-string">&#x27;http&#x27;</span>: <span class="hljs-string">&#x27;socks5://user:password@host:port&#x27;</span>,<br>    <span class="hljs-string">&#x27;https&#x27;</span>: <span class="hljs-string">&#x27;socks5://user:password@host:port&#x27;</span><br>&#125;<br>requests.get(<span class="hljs-string">&#x27;https://www.taobao.com&#x27;</span>, proxies=proxies)<br></code></pre></td></tr></table></figure>
+
+<h4 id="（6）超时设置"><a href="#（6）超时设置" class="headerlink" title="（6）超时设置"></a>（6）超时设置</h4><p>在本机网络状况不好或者服务器网络响应太慢甚至无响应时，我们可能会等待特别久的时间才可能收到响应，甚至到最后收不到响应而报错（比如请求github经常会超时）；</p>
+<p>为了防止服务器不能及时响应，应该设置一个超时时间，即超过了这个时间还没有得到响应，那就抛出异常，可以结合异常处理函数进行下一步处理（而不是一直傻等着程序报错说超时了）。这需要用到 timeout 参数。这个时间的计算是发出请求到服务器返回响应的时间；</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> requests<br><span class="hljs-comment">#将超时时间设置为 1 秒，如果 1 秒内没有响应，那就抛出异常</span><br>r = requests.get(<span class="hljs-string">&#x27;https://www.taobao.com&#x27;</span>, timeout=<span class="hljs-number">1</span>)<br><span class="hljs-built_in">print</span>(r.status_code)<br></code></pre></td></tr></table></figure>
+
+<p>如果想永久等待，可以直接将 timeout 设置为 None，或者不设置直接留空，因为默认是 None。这样的话，如果服务器还在运行，但是响应特别慢，那就慢慢等吧，它永远不会返回超时错误的。其用法如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">r = requests.get(<span class="hljs-string">&#x27;https://www.taobao.com&#x27;</span>, timeout=<span class="hljs-literal">None</span>)<br></code></pre></td></tr></table></figure>
+
+<h4 id="（7）身份认证"><a href="#（7）身份认证" class="headerlink" title="（7）身份认证"></a>（7）身份认证</h4><p><img src="/images/image-20220711191523769.png" srcset="/img/loading.gif" lazyload></p>
+<p>遇到这种认证问题，requests自带认证功能</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> requests  <br><span class="hljs-keyword">from</span> requests.auth <span class="hljs-keyword">import</span> HTTPBasicAuth  <br><span class="hljs-comment">#注意username和password都需要用户手动填写</span><br>r = requests.get(<span class="hljs-string">&#x27;http://localhost:5000&#x27;</span>, auth=HTTPBasicAuth(<span class="hljs-string">&#x27;username&#x27;</span>, <span class="hljs-string">&#x27;password&#x27;</span>))  <br><span class="hljs-built_in">print</span>(r.status_code)<br></code></pre></td></tr></table></figure>
+
+<p>如果用户名和密码正确的话，请求时就会自动认证成功，会返回 200 状态码；如果认证失败，则返回 401 状态码</p>
+<h4 id="（8）Prepared-Request"><a href="#（8）Prepared-Request" class="headerlink" title="（8）Prepared Request"></a>（8）Prepared Request</h4><p>前面介绍 urllib 的Request类时，将各个参数通过一个 Request 对象来表示，这样发送请求的时候直接将对象作为参数传入即可；</p>
+<p>在 requests 里同样可以做到，这个数据结构就叫 Prepared Request（需要由Session 的 prepare_request 方法转换为Prepared Request 对象）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> requests <span class="hljs-keyword">import</span> Request, Session<br><br>url = <span class="hljs-string">&#x27;http://httpbin.org/post&#x27;</span><br>data = &#123;<span class="hljs-string">&#x27;name&#x27;</span>: <span class="hljs-string">&#x27;germey&#x27;</span>&#125;<br>headers = &#123;<span class="hljs-string">&#x27;User-Agent&#x27;</span>: <span class="hljs-string">&#x27;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.116 Safari/537.36&#x27;</span><br>&#125;<br>s = Session()<br>req = Request(<span class="hljs-string">&#x27;POST&#x27;</span>, url, data=data, headers=headers)<br>prepped = s.prepare_request(req)<br>r = s.send(prepped)<br><span class="hljs-built_in">print</span>(r.text)<br></code></pre></td></tr></table></figure>
+
+<p>这里我们引入了 Request，然后用 url、data 和 headers 参数构造了一个 Request 对象，这时需要再调用 Session 的 prepare_request 方法将其转换为一个 Prepared Request 对象，然后调用 send 方法发送即可；</p>
+<h2 id="3-正则表达式"><a href="#3-正则表达式" class="headerlink" title="3.正则表达式"></a>3.正则表达式</h2><p>正则表达式是处理字符串的强大工具，它有自己特定的语法结构，有了它，实现字符串的检索、替换、匹配验证都不在话下。对于爬虫来说，有了它，从 HTML 里提取想要的信息就非常方便了。</p>
+<p>常用匹配规则：</p>
+<table>
+<thead>
+<tr>
+<th>模　　式</th>
+<th>描　　述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>\w</td>
+<td>匹配字母、数字及下划线</td>
+</tr>
+<tr>
+<td>\W</td>
+<td>匹配不是字母、数字及下划线的字符</td>
+</tr>
+<tr>
+<td>\s</td>
+<td>匹配任意空白字符，等价于 [\t\n\r\f]</td>
+</tr>
+<tr>
+<td>\S</td>
+<td>匹配任意非空字符</td>
+</tr>
+<tr>
+<td>\d</td>
+<td>匹配任意数字，等价于 [0-9]</td>
+</tr>
+<tr>
+<td>\D</td>
+<td>匹配任意非数字的字符</td>
+</tr>
+<tr>
+<td>\A</td>
+<td>匹配字符串开头</td>
+</tr>
+<tr>
+<td>\Z</td>
+<td>匹配字符串结尾，如果存在换行，只匹配到换行前的结束字符串</td>
+</tr>
+<tr>
+<td>\z</td>
+<td>匹配字符串结尾，如果存在换行，同时还会匹配换行符</td>
+</tr>
+<tr>
+<td>\G</td>
+<td>匹配最后匹配完成的位置</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>匹配一个换行符</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>匹配一个制表符</td>
+</tr>
+<tr>
+<td>^</td>
+<td>匹配一行字符串的开头</td>
+</tr>
+<tr>
+<td>$</td>
+<td>匹配一行字符串的结尾</td>
+</tr>
+<tr>
+<td>.</td>
+<td>匹配任意字符，除了换行符，当 re.DOTALL 标记被指定时，则可以匹配包括换行符的任意字符</td>
+</tr>
+<tr>
+<td>[…]</td>
+<td>用来表示一组字符，单独列出，比如 [amk] 匹配 a、m 或 k</td>
+</tr>
+<tr>
+<td>[^…]</td>
+<td>不在 [] 中的字符，比如 [^abc] 匹配除了 a、b、c 之外的字符</td>
+</tr>
+<tr>
+<td>*</td>
+<td>匹配 0 个或多个表达式</td>
+</tr>
+<tr>
+<td>+</td>
+<td>匹配 1 个或多个表达式</td>
+</tr>
+<tr>
+<td>?</td>
+<td>匹配 0 个或 1 个前面的正则表达式定义的片段，非贪婪方式</td>
+</tr>
+<tr>
+<td>{n}</td>
+<td>精确匹配 n 个前面的表达式</td>
+</tr>
+<tr>
+<td>{n, m}</td>
+<td>匹配 n 到 m 次由前面正则表达式定义的片段，贪婪方式</td>
+</tr>
+<tr>
+<td>a</td>
+<td>b</td>
+</tr>
+<tr>
+<td>( )</td>
+<td>匹配括号内的表达式，也表示一个组</td>
+</tr>
+</tbody></table>
+<p>Python 的 re 库提供了整个正则表达式的实现，利用这个库，可以在 Python 中使用正则表达式</p>
+<h3 id="3-1-match-方法"><a href="#3-1-match-方法" class="headerlink" title="3.1 match()方法"></a>3.1 match()方法</h3><p>功能：向它传入要匹配的字符串以及正则表达式，就可以检测这个正则表达式是否匹配字符串；match 方法会尝试从字符串的起始位置匹配正则表达式，如果匹配，就返回匹配成功的结果；如果不匹配，就返回 None</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> re<br><br>content = <span class="hljs-string">&#x27;Hello 123 4567 World_This is a Regex Demo&#x27;</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">len</span>(content))  <span class="hljs-comment">#41</span><br>result = re.<span class="hljs-keyword">match</span>(<span class="hljs-string">&#x27;^Hello\s\d\d\d\s\d&#123;4&#125;\s\w&#123;10&#125;&#x27;</span>, content)<span class="hljs-comment">#结果是 SRE_Match 对象</span><br><span class="hljs-built_in">print</span>(result)		<span class="hljs-comment">#&lt;_sre.SRE_Match object; span=(0, 25), match=&#x27;Hello 123 4567 World_This&#x27;&gt;</span><br><span class="hljs-built_in">print</span>(result.group())<span class="hljs-comment">#group 方法可以输出匹配到的内容：Hello 123 4567 World_This</span><br><span class="hljs-built_in">print</span>(result.span()) <span class="hljs-comment">#span 方法可以输出匹配的范围：(0, 25)</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>如果我们只是想要提取匹配字符串中的某些内容，可以在进行匹配的时候在正则表达式中为想要提取的子字符串添加括号，之后输出按照group(1)、group(2)的顺序依次输出匹配的分组；</li>
+<li>假如字符串中出现换行符（HTML中经常出现），则需要额外添加修饰符才能成功匹配</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">result = re.<span class="hljs-keyword">match</span>(<span class="hljs-string">&#x27;^He.*?(\d+).*?Demo$&#x27;</span>, content, re.S)<br></code></pre></td></tr></table></figure>
+
+<p>常用修饰符如下</p>
+<p><img src="/images/image-20220719093430593.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-2-search-方法"><a href="#3-2-search-方法" class="headerlink" title="3.2 search()方法"></a>3.2 search()方法</h3><p>match 方法是从字符串的开头开始匹配的，一旦开头不匹配，那么整个匹配就失败了——match 方法更适合用来检测某个字符串是否符合某个正则表达式的规则；</p>
+<p>search方法在匹配时会扫描整个字符串，然后返回第一个成功匹配的结果。也就是说，正则表达式可以是字符串的一部分，在匹配时，search 方法会依次扫描字符串，直到找到第一个符合规则的字符串，然后返回匹配内容，如果搜索完了还没有找到，就返回 None；</p>
+<h3 id="3-3-findall-方法"><a href="#3-3-findall-方法" class="headerlink" title="3.3 findall()方法"></a>3.3 findall()方法</h3><p> search 方法的用法，它可以返回匹配正则表达式的<code>第一个内容</code>，但是如果想要获取匹配正则表达式的<code>所有内容</code>，这时就要借助 findall 方法了。该方法会搜索整个字符串，然后返回匹配正则表达式的所有内容</p>
+<p>返回的列表中的每个元素都是元组类型，我们用对应的索引依次取出即可</p>
+<h3 id="3-4-sub-方法"><a href="#3-4-sub-方法" class="headerlink" title="3.4 sub()方法"></a>3.4 sub()方法</h3><p>正则表达式除了可以用来匹配信息外，还可以用来修改文本，比如将文本中的所有数字都去掉</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> re<br><br>content = <span class="hljs-string">&#x27;54aK54yr5oiR54ix5L2g&#x27;</span><br>content = re.sub(<span class="hljs-string">&#x27;\d+&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>, content)<span class="hljs-comment">#第一个参数传入 \d+ 来匹配所有的数字，第二个参数为替换成的字符串（如果去掉该参数的话，可以赋值为空），第三个参数是原字符串</span><br><span class="hljs-built_in">print</span>(content)<br></code></pre></td></tr></table></figure>
+
+<p>sub()方法对于HTML文档的提取也有一定作用，我们可以事先使用sub()方法替换掉HTML文档中的无用内容，然后使用findall()方法等进行匹配提取</p>
+<h3 id="3-5-compile-方法"><a href="#3-5-compile-方法" class="headerlink" title="3.5 compile()方法"></a>3.5 compile()方法</h3><p>compile方法可以将正则表达式编译成一个正则表达式对象，便于之后复用（复用的时候直接调用对象名而不用重新书写正则表达式了）；</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> re<br><br>content1 = <span class="hljs-string">&#x27;2016-12-15 12:00&#x27;</span><br>content2 = <span class="hljs-string">&#x27;2016-12-17 12:55&#x27;</span><br>content3 = <span class="hljs-string">&#x27;2016-12-22 13:21&#x27;</span><br>pattern = re.<span class="hljs-built_in">compile</span>(<span class="hljs-string">&#x27;\d&#123;2&#125;:\d&#123;2&#125;&#x27;</span>)<br>result1 = re.sub(pattern, <span class="hljs-string">&#x27;&#x27;</span>, content1)<br>result2 = re.sub(pattern, <span class="hljs-string">&#x27;&#x27;</span>, content2)<br>result3 = re.sub(pattern, <span class="hljs-string">&#x27;&#x27;</span>, content3)<br><span class="hljs-built_in">print</span>(result1, result2, result3)<br></code></pre></td></tr></table></figure>
+
+<p>compile 还可以传入修饰符，例如 re.S 等修饰符，这样在 search、findall 等方法中就不需要额外传了；</p>
+<h1 id="解析库（三）"><a href="#解析库（三）" class="headerlink" title="解析库（三）"></a>解析库（三）</h1><p>前面介绍的使用正则表达式对网页信息进行解析非常的麻烦，而且也记不住…适用于非常牛的选手使用，下面我们介绍一些借助Python库的方法来解析网页信息；</p>
+<p>对于网页HTML的节点来说，它可以定义id、class或其他属性。而且节点之间还有层次关系，在网页HTML中可以通过XPath（XML路径语言，XML是HTML的元语言）或CSS选择器（HTML中的选择器）来定位一个或多个节点。那么反过来，在页面解析时，利用XPath或CSS选择器来提取某个节点，然后再调用相应方法获取它的正文内容或者属性，不就可以提取我们想要的任意信息了吗？</p>
+<h2 id="1-lxml库"><a href="#1-lxml库" class="headerlink" title="1.lxml库"></a>1.lxml库</h2><ul>
+<li>lxml是一个Python库，使用它可以轻松处理XML和HTML文件，还可以用于web爬取。主要优点是易于使用，在解析大型文档时速度非常快，归档的也非常好，并且提供了简单的转换方法来将数据转换为Python数据类型，从而使文件操作更容易。</li>
+<li>XPath，全称 XML Path Language，即 XML 路径语言，它是一门在 XML 文档中查找信息的语言。它最初是用来搜寻 XML 文档的，但是它同样适用于 HTML 文档的搜索；</li>
+</ul>
+<p>通过 Python 的 lxml 库，利用 <code>XPath选择器</code> 进行 HTML 的解析抽取相应的信息；</p>
+<h3 id="1-1-初始化"><a href="#1-1-初始化" class="headerlink" title="1.1 初始化"></a>1.1 初始化</h3><p>在进行解析之前我们需要先引入需要解析的文本文件；</p>
+<ul>
+<li>使用字符串变量（通常是上一步得到的HTML代码）</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">from</span> lxml <span class="hljs-keyword">import</span> etree<br>text = <span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">&lt;div&gt;</span><br><span class="hljs-string">    &lt;ul&gt;</span><br><span class="hljs-string">         &lt;li class=&quot;item-0&quot;&gt;&lt;a href=&quot;link1.html&quot;&gt;first item&lt;/a&gt;&lt;/li&gt;</span><br><span class="hljs-string">         &lt;li class=&quot;item-1&quot;&gt;&lt;a href=&quot;link2.html&quot;&gt;second item&lt;/a&gt;&lt;/li&gt;</span><br><span class="hljs-string">         &lt;li class=&quot;item-inactive&quot;&gt;&lt;a href=&quot;link3.html&quot;&gt;third item&lt;/a&gt;&lt;/li&gt;</span><br><span class="hljs-string">         &lt;li class=&quot;item-1&quot;&gt;&lt;a href=&quot;link4.html&quot;&gt;fourth item&lt;/a&gt;&lt;/li&gt;</span><br><span class="hljs-string">         &lt;li class=&quot;item-0&quot;&gt;&lt;a href=&quot;link5.html&quot;&gt;fifth item&lt;/a&gt;</span><br><span class="hljs-string">     &lt;/ul&gt;</span><br><span class="hljs-string"> &lt;/div&gt;</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br>html = etree.HTML(text)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>使用HTML代码文件</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">from</span> lxml <span class="hljs-keyword">import</span> etree<br><br>html = etree.parse(<span class="hljs-string">&#x27;./test.html&#x27;</span>, etree.HTMLParser())<span class="hljs-comment">#初始化构造 XPath 解析对象</span><br><br><span class="hljs-comment">#一般情况下只需要上一步即可，下面这两步只是便于查看是否导入html成功，我们下面都是调用XPath解析对象的xpath方法进行解析</span><br>result = etree.tostring(html)<span class="hljs-comment">#调用 tostring 方法即可输出修正后的 HTML 代码，但是结果是 bytes 类型</span><br><span class="hljs-built_in">print</span>(result.decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>))<span class="hljs-comment">#利用 decode 方法将其转成 str 类型</span><br></code></pre></td></tr></table></figure>
+
+<p>.&#x2F;test.html文件中的内容如下</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span><br>         <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;item-0&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;link1.html&quot;</span>&gt;</span>first item<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>         <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;item-1&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;link2.html&quot;</span>&gt;</span>second item<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>         <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;item-inactive&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;link3.html&quot;</span>&gt;</span>third item<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>         <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;item-1&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;link4.html&quot;</span>&gt;</span>fourth item<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>         <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;item-0&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;link5.html&quot;</span>&gt;</span>fifth item<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br>     <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span><br> <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>XPath学习教程可以参考<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1tE411F7do?p=8&vd_source=276d55048634a5b508b1b53a1ecd56b3">10天快速学会【爬虫】 +【 数据分析】实战_哔哩哔哩_bilibili</a></p>
+<p>XPath使用规范可以参考<a target="_blank" rel="noopener" href="https://www.w3school.com.cn/xpath/index.asp">XPath 教程 (w3school.com.cn)</a></p>
+<h3 id="1-2-匹配规则"><a href="#1-2-匹配规则" class="headerlink" title="1.2 匹配规则"></a>1.2 匹配规则</h3><p>常用规则如下</p>
+<p><img src="/images/image-20220719101718873.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="（1）获取所有节点"><a href="#（1）获取所有节点" class="headerlink" title="（1）获取所有节点"></a>（1）获取所有节点</h4><p>一般会用 &#x2F;&#x2F; 开头的 XPath 规则来选取<code>所有</code>符合要求的节点（注意输出都是列表，每个元素都是Element类型，其后跟节点名称）；</p>
+<ul>
+<li>选取所有节点</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">result = html.xpath(<span class="hljs-string">&#x27;//*&#x27;</span>)<span class="hljs-comment">#使用 * 代表匹配所有节点，整个 HTML 文本中的所有节点都会被获取选取所有节点</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>选取所有li节点</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">result = html.xpath(<span class="hljs-string">&#x27;//li&#x27;</span>)<span class="hljs-comment">#使用 //，然后直接加上节点名称即可</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="（2）获取子节点"><a href="#（2）获取子节点" class="headerlink" title="（2）获取子节点"></a>（2）获取子节点</h4><p>通过 &#x2F; 或 &#x2F;&#x2F; 即可查找元素的子节点或子孙节点，&#x2F; 用于获取直接子节点，&#x2F;&#x2F; 用于获取子孙节点；</p>
+<ul>
+<li>选择 li 节点的<code>所有直接 a 子节点</code></li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">result = html.xpath(<span class="hljs-string">&#x27;//li/a&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>获取 ul 节点下的<code>所有子孙 a 节点</code></li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">result = html.xpath(<span class="hljs-string">&#x27;//ul//a&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<h4 id="（3）获取父节点"><a href="#（3）获取父节点" class="headerlink" title="（3）获取父节点"></a>（3）获取父节点</h4><p>通过..实现选中父节点，也可以通过 parent:: 来获取父节点</p>
+<ul>
+<li>选中 href 属性为 link4.html 的 a 节点，然后再获取其父节点，然后再获取其 class 属性</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">result = html.xpath(<span class="hljs-string">&#x27;//a[@href=&quot;link4.html&quot;]/../@class&#x27;</span>)  <br></code></pre></td></tr></table></figure>
+
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">result = html.xpath(<span class="hljs-string">&#x27;//a[@href=&quot;link4.html&quot;]/parent::*/@class&#x27;</span>)  <br></code></pre></td></tr></table></figure>
+
+<h4 id="（4）属性匹配"><a href="#（4）属性匹配" class="headerlink" title="（4）属性匹配"></a>（4）属性匹配</h4><p>可以用 @符号进行属性过滤</p>
+<ul>
+<li>选取 class 为 item-0 的 li 节点</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">result = html.xpath(<span class="hljs-string">&#x27;//li[@class=&quot;item-0&quot;]&#x27;</span>)  <br></code></pre></td></tr></table></figure>
+
+<p>假如class有两个属性值item-0和item-1，则需要使用contains方法</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">result = html.xpath(<span class="hljs-string">&#x27;//li[contains(@class, &quot;item-0&quot;)]/a/text()&#x27;</span>)  <br></code></pre></td></tr></table></figure>
+
+<p>还有一种情况是我们需要多个属性来确定一个节点，使用and操作符</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">result = html.xpath(<span class="hljs-string">&#x27;//li[contains(@class, &quot;li&quot;) and @name=&quot;item&quot;]&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<h3 id="1-3-获取文本和属性"><a href="#1-3-获取文本和属性" class="headerlink" title="1.3 获取文本和属性"></a>1.3 获取文本和属性</h3><p>我们通过上面的方法可以成功获取到节点，接着我们介绍如何获取节点中的文本和属性；</p>
+<p>用 XPath 中的 text 方法获取节点中的文本；</p>
+<ul>
+<li>获取某些特定子孙节点下的所有文本</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">result = html.xpath(<span class="hljs-string">&#x27;//li[@class=&quot;item-0&quot;]/a/text()&#x27;</span>) <br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>获取所有子孙节点内部的所有文本</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">result = html.xpath(<span class="hljs-string">&#x27;//li[@class=&quot;item-0&quot;]//text()&#x27;</span>)  <br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果要想获取子孙节点内部的所有文本，可以直接用 &#x2F;&#x2F; 加 text 方法的方式，这样可以保证获取到最全面的文本信息，但是可能会夹杂一些换行符等特殊字符；</p>
+<p>如果想获取某些特定子孙节点下的所有文本，可以先选取到特定的子孙节点，然后再调用 text 方法方法获取其内部文本，这样可以保证获取的结果是整洁的；</p>
+</blockquote>
+<p>获取属性只需要使用@符号即可</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">result = html.xpath(<span class="hljs-string">&#x27;//li/a/@href&#x27;</span>)  <br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-Beautiful-Soup库"><a href="#2-Beautiful-Soup库" class="headerlink" title="2.Beautiful Soup库"></a>2.Beautiful Soup库</h2><p>Beautiful Soup借助网页的结构和属性等特性来解析网页。有了它，我们不用再去写一些复杂的正则表达式，只需要简单的几条语句，就可以完成网页中某个元素的提取。</p>
+<p>BeautifulSoup 就是 Python 的一个 HTML 或 XML 的解析库，我们可以用它来方便地从网页中提取数据（Beautiful Soup库已经成为和lxml一样出色的Python解析库），Beautiful Soup实际上是依赖于其他解析库的解析器</p>
+<p><img src="/images/image-20220719110015966.png" srcset="/img/loading.gif" lazyload></p>
+<p>综上所述，lxml解析器是首选，所以下面我们都是基于依赖于lxml的Beautiful Soup进行解析；</p>
+<p>BS常用提供了三种选择器：</p>
+<ul>
+<li>节点选择器</li>
+<li>方法选择器</li>
+<li>CSS选择器</li>
+</ul>
+<h3 id="2-1-初始化"><a href="#2-1-初始化" class="headerlink" title="2.1 初始化"></a>2.1 初始化</h3><ul>
+<li>使用字符串变量，通常是上一步得到的HTML代码</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 从bs4库中导入BeautifulSoup 类 </span><br><span class="hljs-keyword">from</span> bs4 <span class="hljs-keyword">import</span> BeautifulSoup<br><span class="hljs-comment">#将html文件当作第一个参数传给 BeautifulSoup 对象，该对象的第二个参数为解析器的类型（这里使用 lxml），此时就完成了 BeaufulSoup 对象的初始化。然后，将这个对象赋值给 soup 变量。</span><br><span class="hljs-comment"># html_str是一个字符串变量，通常是上一步得到的HTML代码</span><br>soup = BeautifulSoup(html_str,<span class="hljs-string">&#x27;lxml&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>使用HTML代码文件</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 从bs4库中导入BeautifulSoup 类 </span><br><span class="hljs-keyword">from</span> bs4 <span class="hljs-keyword">import</span> BeautifulSoup<br><br><span class="hljs-comment"># 使用open函数将文件打开，得到文件对象</span><br><span class="hljs-comment"># 文件对象也可以作为初始化参数</span><br><span class="hljs-comment"># index.html存储HTML代码</span><br>soup = BeautifulSoup(<span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;test.html&#x27;</span>),<span class="hljs-string">&#x27;lxml&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-2-节点选择器"><a href="#2-2-节点选择器" class="headerlink" title="2.2 节点选择器"></a>2.2 节点选择器</h3><p>直接调用节点的名称就可以选择节点元素，再调用 string 属性就可以得到节点内的文本了，这种选择方式速度非常快。如果单个节点结构层次非常清晰，可以选用这种方式来解析；</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-built_in">print</span>(soup.title)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>当有多个节点时，这种选择方式只会选择到第一个匹配的节点，其他的后面节点都会忽略；</p>
+</li>
+<li><p>经过选择器选择后的结果都是 bs4.element.Tag 类型。Tag 具有一些属性，比如 string 属性，调用该属性，可以得到节点的文本内容；</p>
+</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-built_in">print</span>(soup.title.string)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>获取节点名称</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-built_in">print</span>(soup.title.name)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>获取节点属性</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-built_in">print</span>(soup.p.attrs)<span class="hljs-comment">#调用 attrs 获取所有属性</span><br><span class="hljs-built_in">print</span>(soup.p[<span class="hljs-string">&#x27;name&#x27;</span>])<span class="hljs-comment">#直接在节点元素后面加中括号，传入属性名获取属性值</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>因为节点选择其返回的是节点类型这种特殊类型，所以可以在返回值的基础上继续调用选择器选择节点，也就衍生出了嵌套选择、关联选择等</p>
+</blockquote>
+<h3 id="2-3-方法选择器"><a href="#2-3-方法选择器" class="headerlink" title="2.3 方法选择器"></a>2.3 方法选择器</h3><h4 id="（1）find-all"><a href="#（1）find-all" class="headerlink" title="（1）find_all()"></a>（1）find_all()</h4><p>find_all，顾名思义，就是查询所有符合条件的元素，可以给它传入一些属性或文本来得到符合条件的元素</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs py">find_all(name [, attrs , recursive , text , **kwargs])<br><span class="hljs-comment">#@name：可以根据节点名来查询元素</span><br><span class="hljs-comment">#@attrs：除了根据节点名查询，我们也可以传入一些属性来进行查询</span><br><span class="hljs-comment">#@text：text 参数可用来匹配节点的文本，传入的形式可以是字符串，可以是正则表达式对象</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="（2）find"><a href="#（2）find" class="headerlink" title="（2）find()"></a>（2）find()</h4><p>除了 find_all 方法，还有 find 方法，只不过 find 方法返回的是单个元素，也就是第一个匹配的元素，而 find_all 返回的是所有匹配的元素组成的列表;</p>
+<ul>
+<li>返回结果不再是列表形式，而是第一个匹配的节点元素，类型依然是 Tag 类型</li>
+</ul>
+<h3 id="2-4-CSS选择器"><a href="#2-4-CSS选择器" class="headerlink" title="2.4 CSS选择器"></a>2.4 CSS选择器</h3><p>使用 CSS 选择器，只需要调用 select 方法，传入相应的 CSS 选择器即可（这个在前端开发中有介绍过），返回的节点类型依然是Tag类型；</p>
+<p>（CSS选择器查看笔记<a target="_blank" rel="noopener" href="https://www.yuque.com/tintoki/gl9lfg/wqmakq">CSS · 语雀 (yuque.com)</a>即可）</p>
+<h2 id="3-pyquery库"><a href="#3-pyquery库" class="headerlink" title="3.pyquery库"></a>3.pyquery库</h2><p>Beautiful Soup的CSS选择器使用起来并不是很方便，下面介绍一个新的解析库——pyquery</p>
+<h3 id="3-1-初始化"><a href="#3-1-初始化" class="headerlink" title="3.1 初始化"></a>3.1 初始化</h3><ul>
+<li>字符串初始化</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs py">html = <span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">&lt;div&gt;</span><br><span class="hljs-string">    &lt;ul&gt;</span><br><span class="hljs-string">         &lt;li class=&quot;item-0&quot;&gt;first item&lt;/li&gt;</span><br><span class="hljs-string">         &lt;li class=&quot;item-1&quot;&gt;&lt;a href=&quot;link2.html&quot;&gt;second item&lt;/a&gt;&lt;/li&gt;</span><br><span class="hljs-string">         &lt;li class=&quot;item-0 active&quot;&gt;&lt;a href=&quot;link3.html&quot;&gt;&lt;span class=&quot;bold&quot;&gt;third item&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;</span><br><span class="hljs-string">         &lt;li class=&quot;item-1 active&quot;&gt;&lt;a href=&quot;link4.html&quot;&gt;fourth item&lt;/a&gt;&lt;/li&gt;</span><br><span class="hljs-string">         &lt;li class=&quot;item-0&quot;&gt;&lt;a href=&quot;link5.html&quot;&gt;fifth item&lt;/a&gt;&lt;/li&gt;</span><br><span class="hljs-string">     &lt;/ul&gt;</span><br><span class="hljs-string"> &lt;/div&gt;</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><span class="hljs-comment">#声明了一个长 HTML 字符串</span><br><span class="hljs-keyword">from</span> pyquery <span class="hljs-keyword">import</span> PyQuery <span class="hljs-keyword">as</span> pq<span class="hljs-comment">#引入 PyQuery 这个对象，取别名为 pq</span><br>doc = pq(html)<span class="hljs-comment">#将html字符串当作参数传递给 PyQuery 类，这样就成功完成了初始化</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>URL初始化</li>
+</ul>
+<p>初始化的参数不仅可以以字符串的形式传递，还可以传入网页的 URL，此时只需要指定参数为 url 即可</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">from</span> pyquery <span class="hljs-keyword">import</span> PyQuery <span class="hljs-keyword">as</span> pq<br>doc = pq(url=<span class="hljs-string">&#x27;http://www.baidu.com&#x27;</span>)<br><span class="hljs-comment">#PyQuery 对象会首先请求这个 URL，然后用得到的 HTML 内容完成初始化</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>文件初始化</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">from</span> pyquery <span class="hljs-keyword">import</span> PyQuery <span class="hljs-keyword">as</span> pq<br>doc = pq(filename=<span class="hljs-string">&#x27;demo.html&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<p>因为Pyquery涉及的参数也都是CSS选择器，所以这里就跳过不再赘述；</p>
+<h1 id="文件存储（四）"><a href="#文件存储（四）" class="headerlink" title="文件存储（四）"></a>文件存储（四）</h1><p>文件存储形式多种多样，比如可以保存成 TXT 纯文本形式，也可以保存为 JSON 格式、CSV 格式等（之后会介绍数据库存储）</p>
+<h2 id="1-TXT文件存储"><a href="#1-TXT文件存储" class="headerlink" title="1.TXT文件存储"></a>1.TXT文件存储</h2><blockquote>
+<p>将数据保存到 TXT 文本的操作非常简单，而且 TXT 文本几乎兼容任何平台，但是这有个缺点，那就是不利于检索。所以如果对检索和数据结构要求不高，追求方便第一的话，可以采用 TXT 文本存储；</p>
+</blockquote>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">from</span> pyquery <span class="hljs-keyword">import</span> PyQuery <span class="hljs-keyword">as</span> pq<br><br>url = <span class="hljs-string">&#x27;https://www.zhihu.com/explore&#x27;</span><br>headers = &#123;<span class="hljs-string">&#x27;User-Agent&#x27;</span>: <span class="hljs-string">&#x27;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36&#x27;</span><br>&#125;<br>html = requests.get(url, headers=headers).text<br>doc = pq(html)<br>items = doc(<span class="hljs-string">&#x27;.explore-tab .feed-item&#x27;</span>).items()<br><span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> items:<br>    question = item.find(<span class="hljs-string">&#x27;h2&#x27;</span>).text()<br>    author = item.find(<span class="hljs-string">&#x27;.author-link-line&#x27;</span>).text()<br>    answer = pq(item.find(<span class="hljs-string">&#x27;.content&#x27;</span>).html()).text()<br>    file = <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;explore.txt&#x27;</span>, <span class="hljs-string">&#x27;a&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br>    file.write(<span class="hljs-string">&#x27;\n&#x27;</span>.join([question, author, answer]))<br>    file.write(<span class="hljs-string">&#x27;\n&#x27;</span> + <span class="hljs-string">&#x27;=&#x27;</span> * <span class="hljs-number">50</span> + <span class="hljs-string">&#x27;\n&#x27;</span>)<br>    file.close()<br></code></pre></td></tr></table></figure>
+
+<p>首先，用 requests 提取知乎的 “发现” 页面，然后将热门话题的问题、回答者、答案全文提取出来，然后利用 Python 提供的 open 方法打开一个文本文件，获取一个文件操作对象，这里赋值为 file，接着利用 file 对象的 write 方法将提取的内容写入文件，最后调用 close 方法将其关闭，这样抓取的内容即可成功写入文本中了</p>
+<p>上面的实例中，open 方法的第二个参数设置成了 a，这样在每次写入文本时不会清空源文件，而是在文件末尾写入新的内容，这是一种文件打开方式。关于文件的打开方式，其实还有其他几种，这里简要介绍一下。</p>
+<ul>
+<li>r：以只读方式打开文件。文件的指针将会放在文件的开头。这是默认模式。</li>
+<li>rb：以二进制只读方式打开一个文件。文件指针将会放在文件的开头。</li>
+<li>r+：以读写方式打开一个文件。文件指针将会放在文件的开头。</li>
+<li>rb+：以二进制读写方式打开一个文件。文件指针将会放在文件的开头。</li>
+<li>w：以写入方式打开一个文件。如果该文件已存在，则将其覆盖。如果该文件不存在，则创建新文件。</li>
+<li>wb：以二进制写入方式打开一个文件。如果该文件已存在，则将其覆盖。如果该文件不存在，则创建新文件。</li>
+<li>w+：以读写方式打开一个文件。如果该文件已存在，则将其覆盖。如果该文件不存在，则创建新文件。</li>
+<li>wb+：以二进制读写格式打开一个文件。如果该文件已存在，则将其覆盖。如果该文件不存在，则创建新文件。</li>
+<li>a：以追加方式打开一个文件。如果该文件已存在，文件指针将会放在文件结尾。也就是说，新的内容将会被写入到已有内容之后。如果该文件不存在，则创建新文件来写入。</li>
+<li>ab：以二进制追加方式打开一个文件。如果该文件已存在，则文件指针将会放在文件结尾。也就是说，新的内容将会被写入到已有内容之后。如果该文件不存在，则创建新文件来写入。</li>
+<li>a+：以读写方式打开一个文件。如果该文件已存在，文件指针将会放在文件的结尾。文件打开时会是追加模式。如果该文件不存在，则创建新文件来读写。</li>
+<li>ab+：以二进制追加方式打开一个文件。如果该文件已存在，则文件指针将会放在文件结尾。如果该文件不存在，则创建新文件用于读写。</li>
+</ul>
+<h2 id="2-JSON文件存储"><a href="#2-JSON文件存储" class="headerlink" title="2.JSON文件存储"></a>2.JSON文件存储</h2><blockquote>
+<p>JSON，全称为 JavaScript Object Notation, 也就是 JavaScript 对象标记，它通过对象和数组的组合来表示数据，构造简洁但是结构化程度非常高，是一种轻量级的数据交换格式；</p>
+</blockquote>
+<h3 id="2-1-对象和数组"><a href="#2-1-对象和数组" class="headerlink" title="2.1 对象和数组"></a>2.1 对象和数组</h3><p>JavaScript 语言中，<code>一切都是对象</code>。因此，任何支持的类型的数据都可以通过 JSON 来表示，例如字符串、数字、对象、数组等，而JSON是通过对象和数组的组合来表示数据，所以下面简单介绍一下JS中的对象和数组类型；</p>
+<p><code>对象</code>：它在 JavaScript 中是使用花括号 {} 包裹起来的内容，数据结构为 {key1：value1, key2：value2, …} 的键值对结构。在面向对象的语言中，key 为对象的属性，value 为对应的值。键名可以使用整数和字符串来表示。值的类型可以是任意类型。获取键值时有两种方式，一种是中括号加键名，另一种是通过 get 方法传入键名。这里推荐使用 get 方法，这样如果键名不存在，则不会报错，会返回 None。另外，get 方法还可以传入第二个参数（即默认值），如果传入第二个参数（即默认值），那么在不存在的情况下返回该默认值；</p>
+<p><code>数组</code>：数组在 JavaScript 中是方括号 [] 包裹起来的内容，数据结构为 [“java”, “javascript”, “vb”, …] 的索引结构。在 JavaScript 中，数组是一种比较特殊的数据类型，它也可以像对象那样使用键值对，但还是索引用得多。同样，值的类型可以是任意类型。</p>
+<p>一个 JSON 对象可以写为如下形式：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs JSON"><span class="hljs-punctuation">[</span><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Bob&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;gender&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;male&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;birthday&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;1992-10-18&quot;</span><br><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span> <span class="hljs-punctuation">&#123;</span><br>     <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Selina&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;gender&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;female&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;birthday&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;1995-10-18&quot;</span><br><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">]</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-2-处理JSON文本"><a href="#2-2-处理JSON文本" class="headerlink" title="2.2 处理JSON文本"></a>2.2 处理JSON文本</h3><blockquote>
+<p>我们可以调用 JSON 库的 loads 方法将 JSON 文本字符串转为 JSON 对象，可以通过 dumps() 方法将 JSON 对象转为文本字符串；</p>
+</blockquote>
+<p>如果从 JSON 文本中读取内容，例如这里有一个 data.json 文本文件，其内容是之前定义过的 JSON 字符串（一定注意JSON文本文件中保存的依然是字符串！！！），我们可以先将文本文件内容读出，然后再利用 loads 方法转化</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> json<br><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;data.json&#x27;</span>, <span class="hljs-string">&#x27;r&#x27;</span>) <span class="hljs-keyword">as</span> file:<br>    <span class="hljs-built_in">str</span> = file.read()<br>    data = json.loads(<span class="hljs-built_in">str</span>)<span class="hljs-comment">#这里使用 loads 方法将字符串转为 JSON 对象</span><br>    <span class="hljs-built_in">print</span>(data)<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>千万注意 JSON 字符串的表示需要用双引号而非单引号</p>
+</blockquote>
+<p>对于保存JSON文本有两种方法：</p>
+<ul>
+<li>一种是先转换为文本字符串再调用文件的write()方法写入文本，保存为txt格式；</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;data.txt&#x27;</span>, <span class="hljs-string">&#x27;w&#x27;</span>) <span class="hljs-keyword">as</span> file:<br>    file.write(json.dumps(data))<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>另一种是直接保存为JSON格式的文件，可以增加参数indent表示缩进字符个数使格式清晰</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;data.json&#x27;</span>, <span class="hljs-string">&#x27;w&#x27;</span>) <span class="hljs-keyword">as</span> file:<br>    file.write(json.dumps(data, indent=<span class="hljs-number">2</span>))<br></code></pre></td></tr></table></figure>
+
+<p>当写入文本中有中文时，需要指定参数 ensure_ascii 为 False，另外还要规定文件输出的编码</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;data.json&#x27;</span>, <span class="hljs-string">&#x27;w&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> file:<br>    file.write(json.dumps(data, indent=<span class="hljs-number">2</span>, ensure_ascii=<span class="hljs-literal">False</span>))<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="3-CSV文件存储"><a href="#3-CSV文件存储" class="headerlink" title="3.CSV文件存储"></a>3.CSV文件存储</h2><p>CSV，全称为 Comma-Separated Values，中文可以叫作逗号分隔值或字符分隔值，其文件以纯文本形式存储表格数据。该文件是一个字符序列，可以由任意数目的记录组成，记录间以某种换行符分隔。每条记录由字段组成，字段间的分隔符是其他字符或字符串，最常见的是逗号或制表符。不过所有记录都有完全相同的字段序列，相当于一个结构化表的纯文本形式。它比 Excel 文件更加简洁，XLS 文本是电子表格，它包含了文本、数值、公式和格式等内容，而 CSV 中不包含这些内容，就是特定字符分隔的纯文本，结构简单清晰。所以，有时候用 CSV 来保存数据是比较方便的</p>
+<h3 id="3-1-写入CSV文件"><a href="#3-1-写入CSV文件" class="headerlink" title="3.1 写入CSV文件"></a>3.1 写入CSV文件</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> csv<br><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;data.csv&#x27;</span>, <span class="hljs-string">&#x27;w&#x27;</span>) <span class="hljs-keyword">as</span> csvfile:<span class="hljs-comment">#打开 data.csv 文件，然指定打开的模式为 w（即写入），获得文件句柄</span><br>    writer = csv.writer(csvfile)	<span class="hljs-comment">#调用 csv 库的 writer 方法初始化写入对象，传入该句柄</span><br>    writer.writerow([<span class="hljs-string">&#x27;id&#x27;</span>, <span class="hljs-string">&#x27;name&#x27;</span>, <span class="hljs-string">&#x27;age&#x27;</span>])<span class="hljs-comment">#调用 writerow 方法传入每行的数据即可完成写入</span><br>    writer.writerow([<span class="hljs-string">&#x27;10001&#x27;</span>, <span class="hljs-string">&#x27;Mike&#x27;</span>, <span class="hljs-number">20</span>])<br>    writer.writerow([<span class="hljs-string">&#x27;10002&#x27;</span>, <span class="hljs-string">&#x27;Bob&#x27;</span>, <span class="hljs-number">22</span>])<br>    writer.writerow([<span class="hljs-string">&#x27;10003&#x27;</span>, <span class="hljs-string">&#x27;Jordan&#x27;</span>, <span class="hljs-number">21</span>])<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>写入的文本默认以逗号分隔，调用一次 writerow 方法即可写入一行数据</p>
+</blockquote>
+<ul>
+<li>如果想修改列与列之间的分隔符，可以传入 delimiter 参数</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">writer = csv.writer(csvfile, delimiter=<span class="hljs-string">&#x27; &#x27;</span>)<span class="hljs-comment">#在初始化写入对象时传入 delimiter 为空格，则输出结果的每一列就是以空格分隔了</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>可以调用 writerows 方法同时写入多行，此时参数需要为二维列表</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;data.csv&#x27;</span>, <span class="hljs-string">&#x27;w&#x27;</span>) <span class="hljs-keyword">as</span> csvfile:<br>    writer = csv.writer(csvfile)<br>    writer.writerow([<span class="hljs-string">&#x27;id&#x27;</span>, <span class="hljs-string">&#x27;name&#x27;</span>, <span class="hljs-string">&#x27;age&#x27;</span>])<br>    writer.writerows([[<span class="hljs-string">&#x27;10001&#x27;</span>, <span class="hljs-string">&#x27;Mike&#x27;</span>, <span class="hljs-number">20</span>], [<span class="hljs-string">&#x27;10002&#x27;</span>, <span class="hljs-string">&#x27;Bob&#x27;</span>, <span class="hljs-number">22</span>], [<span class="hljs-string">&#x27;10003&#x27;</span>, <span class="hljs-string">&#x27;Jordan&#x27;</span>, <span class="hljs-number">21</span>]])<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>在 csv 库中也提供了字典的写入方式</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;data.csv&#x27;</span>, <span class="hljs-string">&#x27;w&#x27;</span>) <span class="hljs-keyword">as</span> csvfile:<br>    fieldnames = [<span class="hljs-string">&#x27;id&#x27;</span>, <span class="hljs-string">&#x27;name&#x27;</span>, <span class="hljs-string">&#x27;age&#x27;</span>]<span class="hljs-comment">#先定义 3 个字段，用 fieldnames 表示</span><br>    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)<span class="hljs-comment">#将其传给 DictWriter 来初始化一个字典写入对象</span><br>    writer.writeheader()<span class="hljs-comment">#接着可以调用 writeheader 方法先写入头信息</span><br>    writer.writerow(&#123;<span class="hljs-string">&#x27;id&#x27;</span>: <span class="hljs-string">&#x27;10001&#x27;</span>, <span class="hljs-string">&#x27;name&#x27;</span>: <span class="hljs-string">&#x27;Mike&#x27;</span>, <span class="hljs-string">&#x27;age&#x27;</span>: <span class="hljs-number">20</span>&#125;)<span class="hljs-comment">#然后再调用 writerow 方法传入相应字典即可</span><br>    writer.writerow(&#123;<span class="hljs-string">&#x27;id&#x27;</span>: <span class="hljs-string">&#x27;10002&#x27;</span>, <span class="hljs-string">&#x27;name&#x27;</span>: <span class="hljs-string">&#x27;Bob&#x27;</span>, <span class="hljs-string">&#x27;age&#x27;</span>: <span class="hljs-number">22</span>&#125;)<br>    writer.writerow(&#123;<span class="hljs-string">&#x27;id&#x27;</span>: <span class="hljs-string">&#x27;10003&#x27;</span>, <span class="hljs-string">&#x27;name&#x27;</span>: <span class="hljs-string">&#x27;Jordan&#x27;</span>, <span class="hljs-string">&#x27;age&#x27;</span>: <span class="hljs-number">21</span>&#125;)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>如果要写入中文内容的话，可能会遇到字符编码的问题，此时需要给 open 参数指定编码格式</p>
+</li>
+<li><p>如果使用Pandas等库，可以调用 DataFrame 对象的 to_csv 方法来将数据写入 CSV 文件中</p>
+</li>
+</ul>
+<h3 id="3-2-读取CSV文件"><a href="#3-2-读取CSV文件" class="headerlink" title="3.2 读取CSV文件"></a>3.2 读取CSV文件</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> csv  <br><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;data.csv&#x27;</span>, <span class="hljs-string">&#x27;r&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> csvfile:  <br>    reader = csv.reader(csvfile)  <br>    <span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> reader:  <br>        <span class="hljs-built_in">print</span>(row)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>如果 CSV 文件中包含中文的话，还需要指定文件编码</li>
+<li>如果接触过 pandas 的话，可以利用 read_csv 方法将数据从 CSV 中读取出来</li>
+</ul>
+<h1 id="数据库存储（五）"><a href="#数据库存储（五）" class="headerlink" title="数据库存储（五）"></a>数据库存储（五）</h1><h2 id="1-关系型数据库"><a href="#1-关系型数据库" class="headerlink" title="1.关系型数据库"></a>1.关系型数据库</h2><p>（这一章的内容也就是结合了嵌入式SQL的知识点和MySQL基本语句的使用，可以在之后强化学习的时候再仔细看）</p>
+<p>关系型数据库是基于关系模型的数据库，而关系模型是通过二维表来保存的，所以它的存储方式就是行列组成的表，每一列是一个字段，每一行是一条记录。表可以看作某个实体的集合，而实体之间存在联系，这就需要表与表之间的关联关系来体现，如主键外键的关联关系。多个表组成一个数据库，也就是关系型数据库；</p>
+<p>常用的关系型数据库主要有MySQL、Oracle；</p>
+<p>Python3主要使用 PyMySQL 操作 MySQL 数据库；</p>
+<h2 id="2-非关系型数据库"><a href="#2-非关系型数据库" class="headerlink" title="2.非关系型数据库"></a>2.非关系型数据库</h2><p>NoSQL，全称 Not Only SQL，意为不仅仅是 SQL，泛指非关系型数据库。NoSQL 是基于键值对的，而且不需要经过 SQL 层的解析，数据之间没有耦合性，性能非常高。</p>
+<p>非关系型数据库又可细分如下：</p>
+<ul>
+<li><p>键值存储数据库：代表有 Redis、Voldemort 和 Oracle BDB 等；</p>
+</li>
+<li><p>列存储数据库：代表有 Cassandra、HBase 和 Riak 等；</p>
+</li>
+<li><p>文档型数据库：代表有 CouchDB 和 MongoDB 等；</p>
+</li>
+<li><p>图形数据库：代表有 Neo4J、InfoGrid 和 Infinite Graph 等；</p>
+</li>
+</ul>
+<p>对于爬虫的数据存储来说，一条数据可能存在某些字段提取失败而缺失的情况，而且数据可能随时调整。另外，数据之间还存在嵌套关系。如果使用关系型数据库存储，一是需要提前建表，二是如果存在数据嵌套关系的话，需要进行序列化操作才可以存储，这非常不方便。如果用了非关系型数据库，就可以避免一些麻烦，更简单高效；</p>
+<p>常用的非关系型数据库主要有MongoDB、Redis；</p>
+<h1 id="Ajax技术（六）"><a href="#Ajax技术（六）" class="headerlink" title="Ajax技术（六）"></a>Ajax技术（六）</h1><p>利用前面的知识点我们基本上能够爬取一些简单的网页了，但是当我们遇到<code>动态网页</code>的时候还是使用前面介绍的方法就会出很大问题，例如当我们使用requests抓取页面信息的时候，抓取的结果和在浏览器上看到的不一样。浏览器中显示正常的页面数据，但是抓取的却是没有具体数据或者说只是首界面的源码。这是因为requests获取的都是原始的HTML文档，而浏览器中的页面则是经过JavaScript处理数据后生成的结果，这些数据的来源有多种，可能是<code>通过Ajax加载的</code>，可能是<code>包含在HTML文档中的</code>，也可能是经过<code>JavaScript和特定算法计算后生成的</code>。</p>
+<p>对于第一种情况，现在很多Web页面的原始HTML页面不会包含任何数据，数据通过Ajax统一加载出来再呈现出来，这样Web就可以做到前后端的分离，而且降低了服务器直接渲染页面带来的压力，但是这样就不太方便咱们直接无脑抓取网页信息，咱们需要使用requests来模拟Ajax请求；</p>
+<p>Ajax笔记参考<a target="_blank" rel="noopener" href="https://www.yuque.com/tintoki/gl9lfg/aaqe62">Ajax · 语雀 (yuque.com)</a>（这个笔记含量有点水，只介绍了怎么使用AJAX并没有讲AJAX的原理，爬虫需要涉及的前端底层原理还是挺多的）</p>
+<p>Ajax，全称为 Asynchronous JavaScript and XML，即<code>异步 JavaScript 和 XML</code>。它不是一门编程语言，而是利用 JavaScript 在保证页面不被刷新、页面链接不改变的情况下与服务器交换数据并更新部分网页的<code>技术</code>。对于传统的网页，如果想更新其内容，那么必须要刷新整个页面，但有了 Ajax，便可以在页面不被全部刷新的情况下更新其内容。在这个过程中，页面实际上是在后台与服务器进行了数据交互，获取到数据之后，再利用 JavaScript 改变网页，这样网页内容就会更新了；</p>
+<h2 id="1-Ajax工作原理"><a href="#1-Ajax工作原理" class="headerlink" title="1.Ajax工作原理"></a>1.Ajax工作原理</h2><p>发送 Ajax 请求到网页更新的这个过程可以简单分为以下 3 步：</p>
+<ul>
+<li>发送请求</li>
+<li>解析内容</li>
+<li>渲染网页</li>
+</ul>
+<h4 id="1-1-发送请求"><a href="#1-1-发送请求" class="headerlink" title="1.1 发送请求"></a>1.1 发送请求</h4><p>我们知道 JavaScript 可以实现页面的各种交互功能，Ajax 也可以实现页面的各种交互功能，因为它也是由 JavaScript 实现的，实际上执行了如下代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> xmlhttp;<br><span class="hljs-comment">//1.新建 XMLHttpRequest 对象</span><br><span class="hljs-keyword">if</span> (<span class="hljs-variable language_">window</span>.<span class="hljs-property">XMLHttpRequest</span>) &#123;<br>    <span class="hljs-comment">//code for IE7+, Firefox, Chrome, Opera, Safari</span><br>    xmlhttp=<span class="hljs-keyword">new</span> <span class="hljs-title class_">XMLHttpRequest</span>();&#125; <span class="hljs-keyword">else</span> &#123;<span class="hljs-comment">//code for IE6, IE5</span><br>    xmlhttp=<span class="hljs-keyword">new</span> <span class="hljs-title class_">ActiveXObject</span>(<span class="hljs-string">&quot;Microsoft.XMLHTTP&quot;</span>);<br>&#125;<br><span class="hljs-comment">//2.调用 onreadystatechange 属性设置了监听</span><br>xmlhttp.<span class="hljs-property">onreadystatechange</span>=<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<span class="hljs-keyword">if</span> (xmlhttp.<span class="hljs-property">readyState</span>==<span class="hljs-number">4</span> &amp;&amp; xmlhttp.<span class="hljs-property">status</span>==<span class="hljs-number">200</span>) &#123;<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;myDiv&quot;</span>).<span class="hljs-property">innerHTML</span>=xmlhttp.<span class="hljs-property">responseText</span>;<br>    &#125;<br>&#125;<br><span class="hljs-comment">//3.调用 open() 和 send() 方法向某个链接（也就是服务器）发送请求</span><br>xmlhttp.<span class="hljs-title function_">open</span>(<span class="hljs-string">&quot;POST&quot;</span>,<span class="hljs-string">&quot;/ajax/&quot;</span>,<span class="hljs-literal">true</span>);<br>xmlhttp.<span class="hljs-title function_">send</span>();<br></code></pre></td></tr></table></figure>
+
+<p>这是 JavaScript 对 Ajax 最底层的实现，这里请求的发送变成 JavaScript 来完成（而不是Python，因为咱们现在讲的是Ajax的底层原理，和Python没有关系），由于设置了监听，所以当服务器返回响应时，onreadystatechange 对应的方法便会被触发，然后在这个方法里面解析响应内容即可。</p>
+<h4 id="1-2-解析内容"><a href="#1-2-解析内容" class="headerlink" title="1.2 解析内容"></a>1.2 解析内容</h4><p>得到响应之后，onreadystatechange 属性对应的方法便会被触发，此时利用 xmlhttp 的 responseText 属性便可取到响应内容。这类似于 Python 中利用 requests 向服务器发起请求，然后得到响应的过程。那么返回内容可能是 HTML，可能是 JSON，接下来只需要在方法中用 JavaScript 进一步处理即可。</p>
+<h4 id="1-3-渲染网页"><a href="#1-3-渲染网页" class="headerlink" title="1.3 渲染网页"></a>1.3 渲染网页</h4><p>JavaScript 有改变网页内容的能力，解析完响应内容之后，就可以调用 JavaScript 来针对解析完的内容对网页进行下一步处理了。</p>
+<p>上例中，<code>document.getElementById(&quot;myDiv&quot;).innerHTML=xmlhttp.responseText</code> 便将 ID 为 myDiv 的节点内部的 HTML 代码更改为服务器返回的内容，这样 myDiv 元素内部便会呈现出服务器返回的新数据，网页的部分内容看上去就更新了（这样的操作也被称作 DOM 操作，即对 Document 网页文档进行操作，如更改、删除等）。</p>
+<blockquote>
+<p>总结：上述三个步骤其实都是由 JavaScript 完成的（Ajax只是一种技术，用的语言还是JS），它完成了整个请求、解析和渲染的过程。例如微博的下拉刷新，本质上就是 JavaScript 向服务器发送了一个 Ajax 请求，然后获取新的微博数据，将其解析，并将其渲染在网页中。</p>
+</blockquote>
+<h2 id="2-Ajax分析"><a href="#2-Ajax分析" class="headerlink" title="2.Ajax分析"></a>2.Ajax分析</h2><p>我们可以通过过滤选项卡得到在页面加载过程中浏览器与服务器之间发送请求和接收响应的所有Ajax记录，当页面出现Ajax刷新的时候开发者工具中也会相继出现Ajax请求，随意点开一个条目，都可以清楚地看到其 Request URL、Request Headers、Response Headers、Response Body 等内容，此时想要模拟请求和提取就非常简单了；</p>
+<p><img src="/images/image-20220719194537953.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-1-分析请求"><a href="#2-1-分析请求" class="headerlink" title="2.1 分析请求"></a>2.1 分析请求</h3><p>Ajax 有其特殊的请求类型Type，它叫作 xhr，这里我们选择其中一个Ajax请求（当然我们直接选择使用上面的过滤器更好），点击该请求分析它的参数信息；</p>
+<p><img src="/images/image-20220719194154811.png" srcset="/img/loading.gif" lazyload></p>
+<p>Request Headers 中有一个信息为 X-Requested-With:XMLHttpRequest，这就标记了此请求是 Ajax 请求；</p>
+<ul>
+<li>这是一个Get请求，请求连接在Request URL后；</li>
+</ul>
+<p><img src="/images/image-20220719194245933-16582324963244.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-2-分析响应"><a href="#2-2-分析响应" class="headerlink" title="2.2 分析响应"></a>2.2 分析响应</h3><p>Preview中是经过Chrome自动解析过的JSON格式的相应内容，是用来渲染网页所使用的数据；</p>
+<p>Response中是真实的返回数据；</p>
+<p><img src="/images/image-20220719201810778.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>请求一个接口，就可以得到 10 条微博，而且请求时只需要改变 page 参数即可 —— 因此只需要简单做一个循环，就可以获取由Ajax技术返回的所有微博；</p>
+</blockquote>
+<p>关于如何处理Ajax的数据爬取，本质上是非常简单的，只需要仔细分析请求和响应中的特征字段然后利用循环或者一些函数模拟发送Ajax请求即可爬取完整的内容，故此处就不再展示相关python代码；</p>
+<h1 id="动态页面（七）"><a href="#动态页面（七）" class="headerlink" title="动态页面（七）"></a>动态页面（七）</h1><p>上面所说的Ajax技术属于一种JS动态渲染技术，通过直接分析Ajax请求和响应可以借助之前的requests或者urllib实现数据的爬取；</p>
+<p>However，JS的动态渲染可不止Ajax这一种技术，况且有些网页的Ajax的接口含有很多加密参数难以人工分析找出规律；</p>
+<p>为了解决爬取动态页面出现的问题，可以直接使用模拟浏览器运行的方式来实现，这样就可以做到在浏览器中看到是什么样，抓取的源码就是什么样，也就是可见即可爬。这样我们就不用再去管网页内部的JavaScript用了什么算法宣染页面，不用管网页后台的Ajax接口到底有哪些参数；</p>
+<p>Python提供了大量模拟浏览器运行的库：Selenium、Splash等；</p>
+<h2 id="1-Selenium的使用"><a href="#1-Selenium的使用" class="headerlink" title="1.Selenium的使用"></a>1.Selenium的使用</h2><p>Selenium 是一个自动化测试工具，利用它可以驱动浏览器执行特定的动作，对于一些 JavaScript 动态渲染的页面来说，此种抓取方式非常有效。</p>
+<h3 id="1-1-声明浏览器对象"><a href="#1-1-声明浏览器对象" class="headerlink" title="1.1 声明浏览器对象"></a>1.1 声明浏览器对象</h3><p>Selenium 支持非常多的浏览器，如 Chrome、Firefox、Edge 等，还有 Android、BlackBerry 等手机端的浏览器。另外，也支持无界面浏览器 PhantomJS；</p>
+<ul>
+<li>初始化格式</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">from</span> selenium <span class="hljs-keyword">import</span> webdriver<br><br>browser = webdriver.Chrome()<span class="hljs-comment">#对Chrome浏览器对象初始化并将其赋值给browser对象</span><br><span class="hljs-comment">#browser = webdriver.Firefox()</span><br><span class="hljs-comment">#browser = webdriver.Edge()</span><br><span class="hljs-comment">#browser = webdriver.PhantomJS()</span><br><span class="hljs-comment">#browser = webdriver.Safari()</span><br></code></pre></td></tr></table></figure>
+
+<p>初始化完成后我们需要调用browser对象，让它执行各个动作模拟浏览器操作；</p>
+<h3 id="1-2-访问页面"><a href="#1-2-访问页面" class="headerlink" title="1.2 访问页面"></a>1.2 访问页面</h3><p>用 get() 方法来请求网页，参数传入链接 URL 即可</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs py">browser.get(<span class="hljs-string">&#x27;https://www.taobao.com&#x27;</span>)<br><span class="hljs-built_in">print</span>(browser.page_source)<span class="hljs-comment">#输出获取的源代码</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="1-3-查找节点"><a href="#1-3-查找节点" class="headerlink" title="1.3 查找节点"></a>1.3 查找节点</h3><p>当我们需要完成向某个输入框输入文字的操作需要定位输入框在哪里，可以使用Selenium提供的一系列查找节点的方法</p>
+<h4 id="（1）单个节点"><a href="#（1）单个节点" class="headerlink" title="（1）单个节点"></a>（1）单个节点</h4><p>可以通过ID选择器、CSS选择器或XPath来定位页面的单个节点</p>
+<ul>
+<li>方法</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs py">find_element_by_id<br>find_element_by_name<br>find_element_by_xpath<br>find_element_by_link_text<br>find_element_by_partial_link_text<br>find_element_by_tag_name<br>find_element_by_class_name<br>find_element_by_css_selector<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>举例</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment">#获取淘宝页面的输入框</span><br>input_first = browser.find_element_by_id(<span class="hljs-string">&#x27;q&#x27;</span>)<br>input_second = browser.find_element_by_css_selector(<span class="hljs-string">&#x27;#q&#x27;</span>)<br>input_third = browser.find_element_by_xpath(<span class="hljs-string">&#x27;//*[@id=&quot;q&quot;]&#x27;</span>)<br><span class="hljs-comment">#返回结果是 WebElement 类型</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="（2）多个节点"><a href="#（2）多个节点" class="headerlink" title="（2）多个节点"></a>（2）多个节点</h4><ul>
+<li>方法</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs py">find_elements_by_id<br>find_elements_by_name<br>find_elements_by_xpath<br>find_elements_by_link_text<br>find_elements_by_partial_link_text<br>find_elements_by_tag_name<br>find_elements_by_class_name<br>find_elements_by_css_selector<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>举例</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment">#获取淘宝左侧所有的导航条目</span><br>lis = browser.find_elements_by_css_selector(<span class="hljs-string">&#x27;.service-bd li&#x27;</span>)<br><span class="hljs-comment">#返回结果是元素为 WebElement 类型的列表</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="1-4-操作节点"><a href="#1-4-操作节点" class="headerlink" title="1.4 操作节点"></a>1.4 操作节点</h3><p>网页中的节点我们可以认为是任何可以看到的东西，比如按钮、输入框、标题等（本质上节点是HTML中的概念）；</p>
+<p>Selenium除了可以获取到节点外，还可以模拟浏览器执行一些操作节点的行为比如：输入输入框中的文字、清除输入框中的文字、点击按钮</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">from</span> selenium <span class="hljs-keyword">import</span> webdriver<br><span class="hljs-keyword">import</span> time<br><br>browser = webdriver.Chrome()<br>browser.get(<span class="hljs-string">&#x27;https://www.taobao.com&#x27;</span>)  <span class="hljs-comment">#首先驱动浏览器打开淘宝</span><br><span class="hljs-built_in">input</span> = browser.find_element_by_id(<span class="hljs-string">&#x27;q&#x27;</span>)<span class="hljs-comment">#用 find_element_by_id() 方法获取输入框，这个方法获取的是第一个输入框</span><br><span class="hljs-built_in">input</span>.send_keys(<span class="hljs-string">&#x27;iPhone&#x27;</span>)			  <span class="hljs-comment">#用 send_keys() 方法输入 iPhone 文字</span><br>time.sleep(<span class="hljs-number">1</span>)						 <span class="hljs-comment">#等待1s</span><br><span class="hljs-built_in">input</span>.clear()						 <span class="hljs-comment">#用 clear() 方法清空输入框</span><br><span class="hljs-built_in">input</span>.send_keys(<span class="hljs-string">&#x27;iPad&#x27;</span>)				  <span class="hljs-comment">#调用 send_keys() 方法输入 iPad 文字</span><br>button = browser.find_element_by_class_name(<span class="hljs-string">&#x27;btn-search&#x27;</span>)<span class="hljs-comment">#用 find_element_by_class_name() 方法获取搜索按钮</span><br>button.click()						 <span class="hljs-comment">#调用 click() 方法完成点击搜索按钮动作</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="1-5-动作链"><a href="#1-5-动作链" class="headerlink" title="1.5 动作链"></a>1.5 动作链</h3><p>上面介绍的交互动作都是针对节点进行（对文本框我们输入、清楚，对按钮我们可以点击），但是有一些特殊的动作（鼠标悬停等待出现复选框再点击元素），这些动作需要使用动作链的方式来执行（本质上就是一些复杂动作函数的调用）；</p>
+<p>资料参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/pywjh/p/9787605.html">selenium动作链 - pywjh - 博客园 (cnblogs.com)</a></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">from</span> selenium <span class="hljs-keyword">import</span> webdriver<br><span class="hljs-keyword">from</span> selenium.webdriver <span class="hljs-keyword">import</span> ActionChains<span class="hljs-comment">#导入动作链包</span><br><br>browser = webdriver.Chrome()<br>url = <span class="hljs-string">&#x27;http://www.runoob.com/try/try.php?filename=jqueryui-api-droppable&#x27;</span><br>browser.get(url)<br><span class="hljs-comment">#浮动框架iframe是利用了网页设计中的浮动技术，相当于在网页中嵌套了一个网页，默认使用Selenium打开操作的是父级frame，此时是不能获取到子frame中的节点的，需要使用switch_to.frame()切换frame</span><br>browser.switch_to.frame(<span class="hljs-string">&#x27;iframeResult&#x27;</span>)<br>source = browser.find_element_by_css_selector(<span class="hljs-string">&#x27;#draggable&#x27;</span>)<br>target = browser.find_element_by_css_selector(<span class="hljs-string">&#x27;#droppable&#x27;</span>)<br><br>actions = ActionChains(browser)<span class="hljs-comment">#创建ActionChains对象，browser作为参数传入，将该对象赋值给actions对象</span><br>actions.drag_and_drop(source, target)<span class="hljs-comment">#通过actions变量调用ActionChains内部附带的各种动作方法</span><br>actions.perform()<br></code></pre></td></tr></table></figure>
+
+<p>首先将要执行的事件加入ActionChains对象的队列，队列后面调用perform()方法，队列中的事件动作才会依次执行；</p>
+<p>ActionChains方法列表</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs py">click(on_element=<span class="hljs-literal">None</span>) ——单击鼠标左键<br>click_and_hold(on_element=<span class="hljs-literal">None</span>) ——点击鼠标左键，不松开<br>context_click(on_element=<span class="hljs-literal">None</span>) ——点击鼠标右键<br>double_click(on_element=<span class="hljs-literal">None</span>) ——双击鼠标左键<br>drag_and_drop(source, target) ——拖拽到某个元素然后松开<br>drag_and_drop_by_offset(source, xoffset, yoffset) ——拖拽到某个坐标然后松开<br>key_down(value, element=<span class="hljs-literal">None</span>) ——按下某个键盘上的键<br>key_up(value, element=<span class="hljs-literal">None</span>) ——松开某个键<br>move_by_offset(xoffset, yoffset) ——鼠标从当前位置移动到某个坐标<br>move_to_element(to_element) ——鼠标移动到某个元素<br>move_to_element_with_offset(to_element, xoffset, yoffset) ——移动到距某个元素（左上角坐标）多少距离的位置<br>perform() ——执行链中的所有动作<br>release(on_element=<span class="hljs-literal">None</span>) ——在某个元素位置松开鼠标左键<br>send_keys(*keys_to_send) ——发送某个键到当前焦点的元素<br></code></pre></td></tr></table></figure>
+
+<h3 id="1-6-执行JS"><a href="#1-6-执行JS" class="headerlink" title="1.6 执行JS"></a>1.6 执行JS</h3><p>Selenium的API可能并未提供某些操作，此时我们可以调用Selenium的JavaScript接口execute_script()，用JavaScript的方式来实现API未提供的那些功能</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">from</span> selenium <span class="hljs-keyword">import</span> webdriver<br><br>browser = webdriver.Chrome()<br>browser.get(<span class="hljs-string">&#x27;https://www.zhihu.com/explore&#x27;</span>)<br>browser.execute_script(<span class="hljs-string">&#x27;window.scrollTo(0, document.body.scrollHeight)&#x27;</span>)<span class="hljs-comment">#执行JS，使进度条到最底部</span><br>browser.execute_script(<span class="hljs-string">&#x27;alert(&quot;To Bottom&quot;)&#x27;</span>)						  <span class="hljs-comment">#执行JS，弹出alert提示框</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="1-7-延时等待"><a href="#1-7-延时等待" class="headerlink" title="1.7 延时等待"></a>1.7 延时等待</h3><p>Selenium 中，get() 方法会在网页框架加载结束后结束执行，此时如果获取 page_source，可能并不是浏览器完全加载完成的页面，如果某些页面有额外的 Ajax 请求，我们在网页源代码中也不一定能成功获取到。所以，这里需要延时等待一定时间，确保节点已经加载出来，主要有两种等待方式：隐式等待和显式等待</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">browser.implicitly_wait(<span class="hljs-number">10</span>)<span class="hljs-comment">#隐式等待，也就是我们规定了一个固定的时间，而页面的加载往往受到网络条件的影响</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs py">wait = WebDriverWait(browser, <span class="hljs-number">10</span>)								<span class="hljs-comment">#引入 WebDriverWait 这个对象，指定最长等待时间</span><br><span class="hljs-built_in">input</span> = wait.until(EC.presence_of_element_located((By.ID, <span class="hljs-string">&#x27;q&#x27;</span>)))   <span class="hljs-comment">#调用 until() 方法，传入等待条件 expected_conditions</span><br><span class="hljs-comment">#presence_of_element_located 这个条件，代表节点出现的意思，其参数是节点的定位元组，也就是 ID 为 q 的节点搜索框</span><br>button = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, <span class="hljs-string">&#x27;.btn-search&#x27;</span>)))<br><span class="hljs-comment">#element_to_be_clickable，也就是可点击，所以查找按钮时查找 CSS 选择器为.btn-search 的按钮</span><br></code></pre></td></tr></table></figure>
+
+<p>更多显式等待条件如下</p>
+<table>
+<thead>
+<tr>
+<th>等待条件</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>title_is</td>
+<td>标题是某内容</td>
+</tr>
+<tr>
+<td>title_contains</td>
+<td>标题包含某内容</td>
+</tr>
+<tr>
+<td>presence_of_element_located</td>
+<td>节点加载出，传入定位元组，如 (By.ID, ‘p’)</td>
+</tr>
+<tr>
+<td>visibility_of_element_located</td>
+<td>节点可见，传入定位元组</td>
+</tr>
+<tr>
+<td>visibility_of</td>
+<td>可见，传入节点对象</td>
+</tr>
+<tr>
+<td>presence_of_all_elements_located</td>
+<td>所有节点加载出</td>
+</tr>
+<tr>
+<td>text_to_be_present_in_element</td>
+<td>某个节点文本包含某文字</td>
+</tr>
+<tr>
+<td>text_to_be_present_in_element_value</td>
+<td>某个节点值包含某文字</td>
+</tr>
+<tr>
+<td>frame_to_be_available_and_switch_to_it frame</td>
+<td>加载并切换</td>
+</tr>
+<tr>
+<td>invisibility_of_element_located</td>
+<td>节点不可见</td>
+</tr>
+<tr>
+<td>element_to_be_clickable</td>
+<td>节点可点击</td>
+</tr>
+<tr>
+<td>staleness_of</td>
+<td>判断一个节点是否仍在 DOM，可判断页面是否已经刷新</td>
+</tr>
+<tr>
+<td>element_to_be_selected</td>
+<td>节点可选择，传节点对象</td>
+</tr>
+<tr>
+<td>element_located_to_be_selected</td>
+<td>节点可选择，传入定位元组</td>
+</tr>
+<tr>
+<td>element_selection_state_to_be</td>
+<td>传入节点对象以及状态，相等返回 True，否则返回 False</td>
+</tr>
+<tr>
+<td>element_located_selection_state_to_be</td>
+<td>传入定位元组以及状态，相等返回 True，否则返回 False</td>
+</tr>
+<tr>
+<td>alert_is_present</td>
+<td>是否出现 Alert</td>
+</tr>
+</tbody></table>
+<p>隐式等待和显式等待的主要区别如下：</p>
+<ul>
+<li>显示等待只<code>单独针对某个元素</code>，设置一个等待时间如5秒，每隔0.5秒检查一次是否出现。如果在5秒之前任何时候出现该元素，则继续向下，超过5秒尚未出现则抛异常。显示等待与隐式等待相对，显式等待必须在每个要等待的元乘前面进行声明。当打开一个新页面，执行第一个元素操作的时候或当某一步操作会引发页面的加载，并旦加载的内容包含了下一步需要操作的元素。综上也就是当某个元素有加载过程的时候，都需要加上显示等待；</li>
+<li>隐式等待是全局的<code>针对所有元素</code>，设置等待时间如10秒，如果10秒内页面所有的元素都出现，则继续向下，否则抛异常。可以理解为在10秒以内，不停刷新看元素是否加载出来。隐式等待只需要声明一次，一般在打开浏览器后进行声明。声明之后对整个drvier的生命周期都有效，后面不用重复声明。隐式等待存在一个问题，那就是程序会一直等待整个页面加载完成，也就是一般情况下浏览器标签栏小图标不转，才会开始执行下一步，但有时候需要的元素其实早就加载完成了，但是因为个别JS相关加载的特别慢，所有仍得等到页面全部完成才能执行下一步；</li>
+<li>隐式等待和显式等待同时拥有的时候，优先权交给显式等待</li>
+</ul>
+<p>最后还有一种强制等待，也就是使得整个脚本暂停一段时间，不到万不得已最好别用</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment">#强制等待sleep()方法由Python的time模块提供</span><br>time.sleep(<span class="hljs-number">1</span>)<br></code></pre></td></tr></table></figure>
+
+<p>关于Selenium，还有其他许多功能如前进后退、处理Cookies、选项卡管理等操作，这里就不再赘述，感兴趣可以查阅资料；</p>
+<h2 id="2-Splash的使用"><a href="#2-Splash的使用" class="headerlink" title="2.Splash的使用"></a>2.Splash的使用</h2><p>Splash 是一个 JavaScript 渲染服务，是一个带有 HTTP API 的轻量级浏览器，同时它对接了 Python 中的 Twisted 和 QT 库。利用它，我们同样可以实现动态渲染页面的抓取。</p>
+<p>在学习Splashzhi前我们其实应该了解Docker相关知识点（不需要太深入，知道是什么有什么用就差不多了），推荐教程<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1og4y1q7M4?spm_id_from=333.337.search-card.all.click&vd_source=276d55048634a5b508b1b53a1ecd56b3">【狂神说Java】Docker最新超详细版教程通俗易懂_哔哩哔哩_bilibili</a>（尚硅谷的可能过于详细了…不适合速通），还需要注意的一点是教程基本上都使用的是Linux系统，但实际上我已经在Windows上成功安装好Docker了，可以正常学习；</p>
+<p>Splash通过Lua脚本来控制页面的加载过程（Lua语法参看 <a target="_blank" rel="noopener" href="http://www.runoob.com/lua/lua-basic-syntax.html">http://www.runoob.com/lua/lua-basic-syntax.html</a>），其加载过程完全模拟浏览器，最终可以返回各种格式的结果，至于为什么有了Selenium还要使用Splash可以参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_40743639/article/details/122833394">https://blog.csdn.net/weixin_40743639/article/details/122833394</a></p>
+<p>官方教程<a target="_blank" rel="noopener" href="https://splash.readthedocs.io/en/stable/index.html">Splash - A javascript rendering service — Splash 3.5 documentation</a></p>
+<h3 id="2-1-启动Splash服务"><a href="#2-1-启动Splash服务" class="headerlink" title="2.1 启动Splash服务"></a>2.1 启动Splash服务</h3><p>首先我们需要在服务-手动打开Docker的服务</p>
+<p><img src="/images/image-20220801222620787.png" srcset="/img/loading.gif" lazyload></p>
+<p>接着我们需要打开Docker的应用程序</p>
+<p><img src="/images/image-20220801222711610.png" srcset="/img/loading.gif" lazyload></p>
+<p>最后我们只需要在命令行输入</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker run -p 8050:8050 scrapinghub/splash<br></code></pre></td></tr></table></figure>
+
+<p>成功启动Splash</p>
+<p><img src="/images/image-20220801222823121.png" srcset="/img/loading.gif" lazyload></p>
+<p>打开 <a target="_blank" rel="noopener" href="http://localhost:8050/">http://localhost:8050/</a> 即可看到其 Web 页面</p>
+<p><img src="/images/image-20220801222908323.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-2-splash对象属性"><a href="#2-2-splash对象属性" class="headerlink" title="2.2 splash对象属性"></a>2.2 splash对象属性</h3><p>Lua脚本的基本格式大致如下</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main</span><span class="hljs-params">(splash, args)</span></span><br>  <span class="hljs-built_in">assert</span>(splash:go(args.url))<br>  <span class="hljs-built_in">assert</span>(splash:wait(<span class="hljs-number">0.5</span>))<br>  <span class="hljs-keyword">return</span> &#123;html = splash:html(),<br>    png = splash:png(),<br>    har = splash:har(),&#125;<br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+
+<p>定义的方法名为mian（这是固定不变的），Splash会默认调用main方法；</p>
+<p>main方法中的第一个参数是splash，这个对象类似于Selenium中的WebDriver对象，可调用它的属性和方法来控制加载过程；</p>
+<h4 id="2-2-1-args"><a href="#2-2-1-args" class="headerlink" title="2.2.1 args"></a>2.2.1 args</h4><p>该属性可以获取加载时配置的参数，比如 URL，Splash 也支持使用main方法的第二个参数直接作为 args</p>
+<ul>
+<li>如果为 GET 请求，它还可以获取 GET 请求参数；</li>
+<li>如果为 POST 请求，它可以获取表单提交的数据；</li>
+</ul>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main</span><span class="hljs-params">(splash, args)</span></span><br>    <span class="hljs-keyword">local</span> url = args.url<br><span class="hljs-keyword">end</span><br><span class="hljs-comment">--等价于</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main</span><span class="hljs-params">(splash)</span></span><br>    <span class="hljs-keyword">local</span> url = splash.args.url<br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="2-2-2-js-enabled"><a href="#2-2-2-js-enabled" class="headerlink" title="2.2.2 js_enabled"></a>2.2.2 js_enabled</h4><p>这个属性是 Splash 的 JavaScript 执行开关，可以将其配置为 true 或 false 来控制是否执行 JavaScript 代码，默认为 true（一般来说我们不用设置此属性开关，默认开启即可，否则调用 evaljs 方法执行 JavaScript 代码会出现错误）；</p>
+<h4 id="2-2-3-resource-timeout"><a href="#2-2-3-resource-timeout" class="headerlink" title="2.2.3 resource_timeout"></a>2.2.3 resource_timeout</h4><p>此属性可以设置加载的超时时间，单位是秒。如果设置为 0 或 nil（类似 Python 中的 None），代表不检测超时；将超时时间设置为 0.1 秒。如果在 0.1 秒之内没有得到响应，就会抛出异常；</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs lua">splash.resource_timeout = <span class="hljs-number">0.1</span><br></code></pre></td></tr></table></figure>
+
+<p>此属性适合在网页加载速度较慢的情况下设置。如果超过了某个时间无响应，则直接抛出异常并忽略即可；</p>
+<h4 id="2-2-4-images-enabled"><a href="#2-2-4-images-enabled" class="headerlink" title="2.2.4 images_enabled"></a>2.2.4 images_enabled</h4><p>此属性可以设置图片是否加载，默认情况下是加载的。禁用该属性后，可以节省网络流量并提高网页加载速度。但是需要注意的是，禁用图片加载可能会影响 JavaScript 渲染。因为禁用图片之后，它的外层 DOM 节点的高度会受影响，进而影响 DOM 节点的位置。因此，如果 JavaScript 对图片节点有操作的话，其执行就会受到影响。</p>
+<p>另外值得注意的是，Splash 使用了缓存。如果一开始加载出来了网页图片，然后禁用了图片加载，再重新加载页面，之前加载好的图片可能还会显示出来，这时直接重启 Splash 即可。</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs lua">splash.images_enabled = <span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>
+
+<p>这样返回的页面截图就不会带有任何图片，加载速度也会快很多；</p>
+<h4 id="2-2-5-plugins-enabled"><a href="#2-2-5-plugins-enabled" class="headerlink" title="2.2.5 plugins_enabled"></a>2.2.5 plugins_enabled</h4><p>此属性可以控制浏览器插件（如 Flash 插件）是否开启。默认情况下，此属性是 false，表示不开启</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs lua">splash.plugins_enabled = <span class="hljs-literal">true</span>/<span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="2-2-6-scroll-position"><a href="#2-2-6-scroll-position" class="headerlink" title="2.2.6 scroll_position"></a>2.2.6 scroll_position</h4><p>通过设置此属性，可以控制页面上下或左右滚动</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main</span><span class="hljs-params">(splash, args)</span></span><br>  <span class="hljs-built_in">assert</span>(splash:go(<span class="hljs-string">&#x27;https://www.runoob.com&#x27;</span>))<br>  splash.scroll_position = &#123;y=<span class="hljs-number">400</span>&#125;<br>  <span class="hljs-keyword">return</span> &#123;png=splash:png()&#125;<br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+
+<p>如果要让页面左右滚动，可以传入 x 参数</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs lua">splash.scroll_position = &#123;x=<span class="hljs-number">100</span>, y=<span class="hljs-number">200</span>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>举例</li>
+</ul>
+<p>这是向下滚动400像素值<img src="/images/image-20220803142114734.png" srcset="/img/loading.gif" lazyload></p>
+<p>这是默认不滚动<img src="/images/image-20220803142209497.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-3-splash对象方法"><a href="#2-3-splash对象方法" class="headerlink" title="2.3 splash对象方法"></a>2.3 splash对象方法</h3><p>注意，lua中访问属性是(.)，调用方法是(:)</p>
+<h4 id="2-3-1-go"><a href="#2-3-1-go" class="headerlink" title="2.3.1 go"></a>2.3.1 go</h4><p>该方法用来请求某个链接，而且它可以模拟 GET 和 POST 请求，同时支持传入<code>请求头</code>、<code>表单</code>等数据</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs lua">ok, reason = splash:go&#123;url, baseurl=<span class="hljs-literal">nil</span>, headers=<span class="hljs-literal">nil</span>, http_method=<span class="hljs-string">&quot;GET&quot;</span>, body=<span class="hljs-literal">nil</span>, formdata=<span class="hljs-literal">nil</span>&#125;<br><span class="hljs-comment">--[[</span><br><span class="hljs-comment">参数说明：</span><br><span class="hljs-comment">	@url，即请求的 URL</span><br><span class="hljs-comment">	@baseurl，可选参数，默认为空，资源加载相对路径</span><br><span class="hljs-comment">	@headers，可选参数，默认为空，请求的 Headers</span><br><span class="hljs-comment">	@http_method，可选参数，默认为 GET，同时支持 POST</span><br><span class="hljs-comment">	@body，可选参数，默认为空，POST 的时候的表单数据，使用的 Content-type 为 application/json</span><br><span class="hljs-comment">	@formdata，可选参数，默认为空，POST 的时候表单数据，使用的 Content-type 为 application/x-www-form-urlencoded</span><br><span class="hljs-comment">返回值：</span><br><span class="hljs-comment">	该方法的返回结果是结果 ok 和原因 reason 的组合，如果 ok 为空，代表网页加载出现了错误，此时 reason 变量中包含了错误的原因，否则证明页面加载成功</span><br><span class="hljs-comment"> --]]</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="2-3-2-wait"><a href="#2-3-2-wait" class="headerlink" title="2.3.2 wait"></a>2.3.2 wait</h4><p>此方法可以控制页面等待时间</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs lua">ok, reason = splash:wait&#123;<span class="hljs-built_in">time</span>, cancel_on_redirect=<span class="hljs-literal">false</span>, cancel_on_error=<span class="hljs-literal">true</span>&#125;<br><span class="hljs-comment">--[[</span><br><span class="hljs-comment">参数说明：</span><br><span class="hljs-comment">	@time，等待的秒数</span><br><span class="hljs-comment">	@cancel_on_redirect，可选参数，默认 False，如果发生了重定向就停止等待，并返回重定向结果</span><br><span class="hljs-comment">	@cancel_on_error，可选参数，默认 False，如果发生了加载错误就停止等待</span><br><span class="hljs-comment">返回值：</span><br><span class="hljs-comment">	返回结果同样是结果 ok 和原因 reason 的组合</span><br><span class="hljs-comment"> --]]</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="2-3-3-jsfunc"><a href="#2-3-3-jsfunc" class="headerlink" title="2.3.3 jsfunc"></a>2.3.3 jsfunc</h4><p>此方法可以直接调用 JavaScript 定义的方法，但是所调用的方法需要用双中括号包围，这相当于实现了 JavaScript 方法到 Lua 脚本的转换</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main</span><span class="hljs-params">(splash, args)</span></span><br>    <span class="hljs-comment">--声明一个JS语言定义的方法，使用jsfunc调用，调用时使用双中括号包围</span><br>  <span class="hljs-keyword">local</span> get_div_count = splash:jsfunc(<span class="hljs-string">[[function () &#123;</span><br><span class="hljs-string">    var body = document.body;</span><br><span class="hljs-string">    var divs = body.getElementsByTagName(&#x27;div&#x27;);</span><br><span class="hljs-string">    return divs.length;</span><br><span class="hljs-string">  &#125;</span><br><span class="hljs-string">  ]]</span>)<br>  splash:go(<span class="hljs-string">&quot;https://www.baidu.com&quot;</span>)<br>  <span class="hljs-keyword">return</span> (<span class="hljs-string">&quot;There are % s DIVs&quot;</span>):<span class="hljs-built_in">format</span>(get_div_count())<br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="2-3-4-evaljs"><a href="#2-3-4-evaljs" class="headerlink" title="2.3.4 evaljs"></a>2.3.4 evaljs</h4><p>此方法可以执行 JavaScript <code>代码</code>（注意是代码而不仅仅只是JS函数）并返回最后一条 JavaScript 语句的返回结果</p>
+<ul>
+<li>语法</li>
+</ul>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs lua">result = splash:evaljs(js)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>举例</li>
+</ul>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-keyword">local</span> title = splash:evaljs(<span class="hljs-string">&quot;document.title&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<h4 id="2-3-5-runjs"><a href="#2-3-5-runjs" class="headerlink" title="2.3.5 runjs"></a>2.3.5 runjs</h4><p>此方法可以执行 JavaScript 代码，它与 evaljs 方法的功能类似，但是更偏向于执行某些动作或声明某些方法</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs lua">splash:runjs(<span class="hljs-string">&quot;foo = function() &#123;return &#x27;bar&#x27;&#125;&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+
+
+<p>…(更多的我就不列举了，《Python3——网络爬虫开发实战》这本书讲的很详细)</p>
+<h3 id="2-4-Splash-API"><a href="#2-4-Splash-API" class="headerlink" title="2.4 Splash API"></a>2.4 Splash API</h3><p>回归主题，我们需要使用Python语句来编写爬虫，而不是之家在Splash页面上写lua脚本，所以需要使用一系列Splash提供给Python的API，Splash 给我们提供了一些 HTTP API 接口，我们只需要请求这些接口并传递相应的参数（wait、width、height等）即可获取页面渲染后的结果</p>
+<h4 id="2-4-1-render-html"><a href="#2-4-1-render-html" class="headerlink" title="2.4.1 render.html"></a>2.4.1 render.html</h4><p>此接口用于获取 JavaScript 渲染的页面的 HTML 代码，接口地址就是 Splash 的运行地址加此接口名称，例如：<a target="_blank" rel="noopener" href="http://localhost:8050/render.html">http://localhost:8050/render.html</a></p>
+<p><img src="/images/image-20220803150242344.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-4-2-render-png"><a href="#2-4-2-render-png" class="headerlink" title="2.4.2 render.png"></a>2.4.2 render.png</h4><p>此接口可以获取网页截图，返回的是PNG格式的图片二进制数据（render.jpeg和 render.png 类似，不过它返回的是 JPEG 格式的图片二进制数据）</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> requests<br><br>url = <span class="hljs-string">&#x27;http://localhost:8050/render.png?url=https://www.taobao.com&amp;wait=5&amp;width=1000&amp;height=700&#x27;</span><br>response = requests.get(url)<br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;taobao.png&#x27;</span>, <span class="hljs-string">&#x27;wb&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>    f.write(response.content)<br></code></pre></td></tr></table></figure>
+
+<p>得到的网页截图如下，为什么呢？？我们使用Splash抓取淘宝的时候也是这种情况（估计是淘宝有反爬机制）</p>
+<p><img src="/images/image-20220803150955315.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-4-3-render-har"><a href="#2-4-3-render-har" class="headerlink" title="2.4.3 render.har"></a>2.4.3 render.har</h4><p>接口用于获取页面加载的 HAR 数据，返回结果非常多，是一个 Json 格式的数据，里面包含了页面加载过程中的 HAR 数据</p>
+<h4 id="2-4-4-render-json"><a href="#2-4-4-render-json" class="headerlink" title="2.4.4 render.json"></a>2.4.4 render.json</h4><p>此接口包含了前面接口的所有功能，返回结果是 Json 格式，可以通过传入不同参数控制其返回结果。比如，传入 html&#x3D;1，返回结果即会增加源代码数据；传入 png&#x3D;1，返回结果即会增加页面 PNG 截图数据；传入 har&#x3D;1，则会获得页面 HAR 数据</p>
+<h4 id="2-4-5-quote-方法"><a href="#2-4-5-quote-方法" class="headerlink" title="2.4.5 quote()方法"></a>2.4.5 quote()方法</h4><p>urllib.parse 模块里的 quote() 方法可以将lua脚本进行 URL 转码，实现Python与lua脚本的交互（这个功能最强大，这个可以直接转码所有的lua脚本，也就能完成所有可以使用lua脚本写的功能）</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">from</span> urllib.parse <span class="hljs-keyword">import</span> quote<br><br>lua = <span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">function main(splash)</span><br><span class="hljs-string">    return &#x27;hello&#x27;</span><br><span class="hljs-string">end</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><br>url = <span class="hljs-string">&#x27;http://localhost:8050/execute?lua_source=&#x27;</span> + quote(lua)<span class="hljs-comment">#转码后构造splash请求的url</span><br>response = requests.get(url)<br><span class="hljs-built_in">print</span>(response.text)<br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="验证码（八）"><a href="#验证码（八）" class="headerlink" title="验证码（八）"></a>验证码（八）</h1><p>验证码实际上就属于网站的一种反爬措施：验证码最初是几个数字组合的简单的图形验证码，后来加入了英文字母和混淆曲线，有的网站还可能看到中文字符的验证码，这使得识别愈发困难，直到现在甚至出现了行为验证码（点击与文字描述完全符合的图片，全部正确验证通过）；</p>
+<h2 id="1-图形验证码"><a href="#1-图形验证码" class="headerlink" title="1.图形验证码"></a>1.图形验证码</h2><p>这种验证码最早出现，现在也很常见，一般由 4 位字母或者数字组成</p>
+<p><img src="/images/image-20220804200750645.png" srcset="/img/loading.gif" lazyload></p>
+<p>解决方法：使用OCR技术识别图形验证码（需要借助PIL库以及tesserocr库）</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> tesserocr<br><span class="hljs-keyword">from</span> PIL <span class="hljs-keyword">import</span> Image<br><span class="hljs-comment">#此处也可以使用tesserocr.file_to_text(&#x27;code.jpg&#x27;)替代</span><br>image = Image.<span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;code.jpg&#x27;</span>)<br>result = tesserocr.image_to_text(image)<br><span class="hljs-built_in">print</span>(result)<br></code></pre></td></tr></table></figure>
+
+<p>当然，很多图像并不仅仅只是单纯的字符，还有一些干扰线条，我们使用转灰度+二值化的手段处理，至于为什么这么做可以参考<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/536992465">灰度与二值化处理 - 知乎 (zhihu.com)</a></p>
+<h2 id="2-滑动验证码"><a href="#2-滑动验证码" class="headerlink" title="2.滑动验证码"></a>2.滑动验证码</h2><p>滑动验证码属于极验验证技术中的一部分，简介可参考<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%9E%81%E9%AA%8C%E9%AA%8C%E8%AF%81/9766404?fr=aladdin">极验验证_百度百科 (baidu.com)</a>大致流程主要是，点击按钮进行智能验证，如果验证不通过，则弹出滑动验证的窗口，拖动滑块拼合图像进行验证，之后三个加密参数会生成，通过表单提交到后台，后台还会进行一次验证；</p>
+<ul>
+<li><p>极验验证第一次的智能按钮大致规则为同一个会话，一段时间内第二次点击会直接通过验证，若智能识别不通过，则会弹出滑动验证窗口；</p>
+<p><img src="/images/image-20220804203334983.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>针对极验验证的第二次验证，主要分为识别缺口位置（利用缺口边缘算法或者同时对比两张图像，找出相同位置RGB像素值超过阈值的点）和模拟滑动滑块（人类的移动轨迹一般是先加速再减速）</p>
+<ul>
+<li>这里我们要注意一个误区，原本的图像本身是没有缺口的，只有当我们点击滑块的时候才会出现缺口；</li>
+<li>寻找缺口的时候从右边开始找，因为滑块本身一般是处在左边，原图与验证图会有两处不同的地方；</li>
+<li>模拟滑动滑块可以利用物理学中的加速度公式，将运动轨迹分为几个阶段避免全程匀速运动</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/image-20220804203007979-16596170742484.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="3-点触验证码"><a href="#3-点触验证码" class="headerlink" title="3.点触验证码"></a>3.点触验证码</h2><p>点触验证码的交互形式有很多，但是基本原理都类似</p>
+<p><img src="/images/image-20220804205646200.png" srcset="/img/loading.gif" lazyload></p>
+<p>思路：无论是使用文字识别还是图像识别都是很困难的（你稍微模拟一下机器识别文字和图像同时还附带干扰就知道难度），所以这里崔作者选择的是借助外部API（超级鹰）？？？</p>
+<p>主要步骤就是将验证图片提交给平台，平台会返回识别结果在图片中的坐标位置，然后我们再解析坐标并使用Selenium模拟点击；</p>
+<p>总结：用作者的话来说就是，如果遇到难题提我们自己无法解决可以求助在线打码平台，不要和这些问题死磕…</p>
+<h2 id="4-宫格验证码"><a href="#4-宫格验证码" class="headerlink" title="4.宫格验证码"></a>4.宫格验证码</h2><p>这种宫格验证码，仔细分析的话其实是可以找到规律的：此验证码的四个宫格一定是有连线经过的，每一条连线上都会相应的指示箭头，连线的形状多样，包括 C 型、Z 型、X 型等，且同一种类型的连线轨迹相同，只是连线方向不同；</p>
+<p>最暴力的方法就是把所有可能的结果的图片保存下来依次比对…只要两张图完全一致则按照匹配成功的结果使用Selenium模拟鼠标滑动轨迹完成匹配；</p>
+<p><img src="/images/image-20220804210722664.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="代理详解（九）"><a href="#代理详解（九）" class="headerlink" title="代理详解（九）"></a>代理详解（九）</h1><p>某些网站采取的反爬措施是令服务器检测某个IP在单位时间内的请求次数，如果超过某个阈值则直接拒绝提供服务（这称之为封IP），利用代理可以伪装爬虫IP使服务器无法识别出本机IP；</p>
+<p>（因为网上很多免费的代理并不是很好用，且我也不想购买付费的代理，所以这一章就只会记录一些比较重要的知识点）</p>
+<h2 id="1-代理的设置"><a href="#1-代理的设置" class="headerlink" title="1.代理的设置"></a>1.代理的设置</h2><p>应该有这样一个概念：在请求库中设置代理，如果不设置则默认不使用代理；前面介绍过多种请求库如urllib、requests、Selenium，这些请求库都可以设置代理，如为urllib设置代理（其实在前面的章节中简单的介绍过）</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">from</span> urllib.error <span class="hljs-keyword">import</span> URLError<br><span class="hljs-keyword">from</span> urllib.request <span class="hljs-keyword">import</span> ProxyHandler, build_opener<br><br>proxy = <span class="hljs-string">&#x27;127.0.0.1:9743&#x27;</span>             <span class="hljs-comment">#代理软件在本机9743端口上创建HTTP代理服务127.0.0.1:9743</span><br>proxy_handler = ProxyHandler(&#123;		<span class="hljs-comment">#借助ProxyHandler设置代理，参数是字典类型，键名为协议类型，键值为代理</span><br>    <span class="hljs-string">&#x27;http&#x27;</span>: <span class="hljs-string">&#x27;http://&#x27;</span> + proxy,<br>    <span class="hljs-string">&#x27;https&#x27;</span>: <span class="hljs-string">&#x27;https://&#x27;</span> + proxy<br>&#125;)<br>opener = build_opener(proxy_handler)<span class="hljs-comment">#利用build_opener方法传入上述创建的ProxyHandler对象来创建一个Opener，相当于此Opener已经设置好代理</span><br><span class="hljs-keyword">try</span>:<br>    response = opener.<span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;http://httpbin.org/get&#x27;</span>)<span class="hljs-comment">#调用Opener对象的open方法即可访问链接</span><br>    <span class="hljs-built_in">print</span>(response.read().decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>))<br><span class="hljs-keyword">except</span> URLError <span class="hljs-keyword">as</span> e:<br>    <span class="hljs-built_in">print</span>(e.reason)<br></code></pre></td></tr></table></figure>
+
+<p>关于requests库以及Selenium库如何设置代理这里不再赘述，这些设置代理的基本方法在后面会用于搭建代理池；</p>
+<h2 id="2-代理池"><a href="#2-代理池" class="headerlink" title="2.代理池"></a>2.代理池</h2><p>无论代理是免费的还是付费的都不代表一定能够使用（此代理IP正在被使用或者是代理服务器故障），代理池的作用就是提前做出筛选，将不可用的代理删除保留可用代理；</p>
+<h3 id="2-1-代理池的目标"><a href="#2-1-代理池的目标" class="headerlink" title="2.1 代理池的目标"></a>2.1 代理池的目标</h3><p>一个高效的代理池应当具备四个基本模块：</p>
+<ul>
+<li><p>存储模块：负责存储抓取下来的代理。因为要保证代理不重复，标识代理的可用情况，还要动态实时处理每个代理，所以一种比较高效和方便的存储代理的方式就是使用 Redis 的 Sorted Set（有序集合）；</p>
+</li>
+<li><p>获取模块：定时在各大代理网站抓取代理。代理可以是免费公开代理也可以是付费代理，<code>代理的形式都是 IP 加端口</code>，此模块尽量从不同来源获取，尽量抓取高匿代理，抓取成功之后将可用代理保存到数据库中；</p>
+</li>
+<li><p>检测模块：定时检测数据库中的代理。这里需要设置一个检测链接，最好是爬取哪个网站就检测哪个网站，这样更加有针对性，如果要做一个通用型的代理，可以设置百度等链接来检测。另外，我们需要标识每一个代理的状态，如设置分数标识，100 分代表可用，分数越少代表越不可用。检测一次，如果代理可用，我们可以将分数标识立即设置为 100 满分，也可以在原基础上加 1 分；如果代理不可用，可以将分数标识减 1 分，当分数减到一定阈值后，代理就直接从数据库移除。通过这样的标识分数，我们就可以辨别代理的可用情况，选用的时候会更有针对性；</p>
+</li>
+<li><p>接口模块：提供对外服务的接口。我们可以直接连接数据库来取对应的代理，但是这样就需要知道数据库的连接信息，并且要配置连接，而比较安全和方便的方式就是提供一个 Web API 接口，我们通过访问接口即可拿到可用代理。另外，由于可用代理可能有多个，那么我们可以设置一个随机返回某个可用代理的接口，这样就能保证每个可用代理都可以取到，实现负载均衡；</p>
+</li>
+</ul>
+<h3 id="2-2-代理池的架构"><a href="#2-2-代理池的架构" class="headerlink" title="2.2 代理池的架构"></a>2.2 代理池的架构</h3><p>代理池的四个模块决定了代理池的架构如下：</p>
+<ul>
+<li><p>存储模块使用 Redis 的有序集合，用来做代理的去重和状态标识，同时它也是中心模块和基础模块，将其他模块串联起来；</p>
+</li>
+<li><p>获取模块定时从代理网站获取代理，将获取的代理传递给存储模块，并保存到数据库；</p>
+</li>
+<li><p>检测模块定时通过存储模块获取所有代理，并对代理进行检测，根据不同的检测结果对代理设置不同的标识；</p>
+</li>
+<li><p>接口模块通过 Web API 提供服务接口，接口通过连接数据库并以 Web 形式返回可用的代理；</p>
+</li>
+</ul>
+<p><img src="/images/image-20220813153028195.png" srcset="/img/loading.gif" lazyload></p>
+<p>至于如何使用代码实现一个代理池，这里不再赘述，详情参考<a target="_blank" rel="noopener" href="https://github.com/Python3WebSpider">Python3WebSpider (github.com)</a></p>
+<h2 id="3-ADSL拨号代理"><a href="#3-ADSL拨号代理" class="headerlink" title="3.ADSL拨号代理"></a>3.ADSL拨号代理</h2><p>上述介绍的代理池可以在一定程度上解决无效代理的问题，但是代理池整体效率偏低且公共代理IP很容易被封（多人同时使用某个IP），所以有人提出了另一种办法 —— 购买专用代理或手动搭建代理服务器，因为在进行爬取数据的时候需要使用的代理不止一个，所以搭建多个代理可能就需要多个服务器，这显然不现实，这里使用ADSL拨号解决；</p>
+<p>《计算机网络》中简单介绍过ADSL（非对称数字用户环路），ADSL通过拨号的方式上网，需要输入ADSL账号和密码，使用ADSL拨号上网时每次拨号都会更换一个IP，假如我们将 ADSL服务器作为代理服务器，则只需要每隔一段时间的重新拨号一次更换一个IP即可，无需其他服务器；</p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%87%AA%E5%AD%A6%E8%AF%BE%E7%A8%8B/" class="category-chain-item">自学课程</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">#开发工具</a>
+      
+        <a href="/tags/python/">#python</a>
+      
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E7%88%AC%E5%8F%96/">#数据爬取</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Python3_网络爬虫</div>
+      <div>https://gintoki-jpg.github.io/2022/07/06/工具_网络爬虫/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>杨再俨</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年7月6日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/07/08/CPP_STL%E5%88%9D%E7%BA%A7/" title="STL初级">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">STL初级</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/07/02/%E5%B7%A5%E5%85%B7_MySQL%E5%88%9D%E7%BA%A7/" title="MySQL初级">
+                        <span class="hidden-mobile">MySQL初级</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+</div>
+
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

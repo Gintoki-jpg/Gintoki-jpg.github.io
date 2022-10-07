@@ -1,0 +1,1013 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/logo.png">
+  <link rel="icon" href="/img/bg/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="杨再俨">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="这门课程开设在第五学期，本篇博客主要记录课程所学以及相关知识点。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法设计与分析">
+<meta property="og:url" content="https://gintoki-jpg.github.io/2022/09/07/%E9%80%9A%E8%AF%86_%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90/index.html">
+<meta property="og:site_name" content="Tintoki_blog">
+<meta property="og:description" content="这门课程开设在第五学期，本篇博客主要记录课程所学以及相关知识点。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/cpp.png">
+<meta property="article:published_time" content="2022-09-07T00:07:00.000Z">
+<meta property="article:modified_time" content="2022-10-03T08:19:44.596Z">
+<meta property="article:author" content="YangZaiyan">
+<meta property="article:tag" content="课程学习">
+<meta property="article:tag" content="数据结构与算法">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gintoki-jpg.github.io/img/bg/cpp.png">
+  
+  
+  
+  <title>算法设计与分析 - Tintoki_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"gintoki-jpg.github.io","root":"/","version":"1.9.1","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tintoki_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/bg1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">算法设计与分析</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-09-07 08:07" pubdate>
+          2022年9月7日 早上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          9.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          83 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">算法设计与分析</h1>
+            
+            <div class="markdown-body">
+              
+              <p>这门课在计算机专业是核心课程，但是在我所学的智能科学与技术专业作为选修课程出现，尽管作为选修课，但是算法作为公司面试必考，有必要深入好好学习，我们在<a href="https://gintoki-jpg.github.io/">Tintoki_blog (gintoki-jpg.github.io)</a>博客上总结了力扣上一些比较经典的题目，本博客主要侧重算法的介绍而不是刷题（实质上前三年仅仅学了数据结构，并没有系统的学习过算法）；教程采用的教程是王晓东的《计算机算法设计与分析》第五版，辅助慕课视频教程<a target="_blank" rel="noopener" href="https://www.icourse163.org/learn/QDU-1460628161?tid=1468216562#/learn/announce">算法设计与分析_中国大学MOOC(慕课) (icourse163.org)</a></p>
+<hr>
+<p>2022&#x2F;9&#x2F;11 10:00 先来说一下慕课上的课程，讲的真的非常差劲…而且基本就没有按照书上的顺序来讲，个人认为书上循序渐进的有条理的讲述方式是非常好的，而视频中更类似于想到哪里讲到哪里，非常不适合做笔记，所以最后总结一下：看书为主，慕课教程几乎可以不用看，遇到晦涩的知识点直接上Google搜索或者B站知识点讲解视频；</p>
+<p>2022&#x2F;9&#x2F;14 10:04 事先声明一个问题，而且可能还改不了，hexo的显示和markdown之间存在一些兼容性的问题导致有些在md文件上正常显示的如下标之类的在hexo上面就成了删除线，这个只能阅读的时候多注意一下，然后我也会尽量在之后的书写过程中避免这种问题；</p>
+<p>2022&#x2F;9&#x2F;14 10:57 发现一个问题，老师讲课是没有按照书上来的，反而更倾向于按照慕课上面的顺序来讲的，我们的原则就是严格跟着老师讲课的方式走，所以这里重新改变策略：书本作为参考，上课听老师的讲之后不懂的直接上网搜索视频或者资料来解答，慕课讲的过于啰嗦（而且有些PPT做的没有我们老师做的好）就不推荐了；</p>
+<hr>
+<h1 id="第一章-算法概述"><a href="#第一章-算法概述" class="headerlink" title="第一章 算法概述"></a>第一章 算法概述</h1><h2 id="1-算法与程序"><a href="#1-算法与程序" class="headerlink" title="1.算法与程序"></a>1.算法与程序</h2><p>通俗的讲，算法是指解决问题的一种方法或一个过程；</p>
+<p>严格的讲，算法是指由若干条指令组成的有穷序列，且满足以下性质：</p>
+<ul>
+<li>输入：有零个或多个由外部提供的量作为算法的输入；</li>
+<li>输出：算法产生至少一个量作为输出；</li>
+<li>确定性：组成算法的每条指令是清晰的，无歧义的；</li>
+<li>有限性：算法中每条指令的执行次数是有限的，执行每条指令的时间也是有限的；</li>
+</ul>
+<p>程序是<code>算法</code>用某种程序设计语言<code>的具体实现</code>，程序可以不满足上述第四点性质（操作系统就是一个在无限循环中执行的程序，不是一个算法）；</p>
+<p>在学习完毕算法设计与分析之后，应当按照如下流程来解决问题：</p>
+<p><img src="/images/image-20220911095458953.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="2-算法复杂性分析"><a href="#2-算法复杂性分析" class="headerlink" title="2.算法复杂性分析"></a>2.算法复杂性分析</h2><p>算法的复杂性是算法运行需要的计算机资源的量，需要时间资源的量称为时间复杂性，需要空间资源的量称为空间复杂性；</p>
+<p>这个量应该集中反映算法的效率，并从运行这算法的实际计算机中<code>抽象</code>出来，换句话说，这个量应该是只依赖于要解的<code>问题的规模、算法的输入和算法本身</code>的函数；</p>
+<p>如果分别用N、I和A表示算法要解的问题的规模、算法的输入和算法本身，而且用C表示复杂性，那么应该有C&#x3D;F（N，l，A），其中F（N，I，A）是一个由N、I和A确定的三元函数；</p>
+<p>如果把时间复杂性和空间复杂性分开，并分别用T和S来表示，应该有T&#x3D;T（N，I，A）和S&#x3D;S（N，I，A）。通常，A隐含在复杂性函数名当中，因而将T和S分别简写为T&#x3D;T（N，I）和S&#x3D;S（N，I）；（因为空间复杂性和时间复杂性类似且空间复杂性较简单，所以下面默认讨论时间复杂性）</p>
+<hr>
+<p>上述理论分析较简单，那么实际我们应该如何将复杂性函数（复杂性函数不是说这个函数很复杂，而是指这个函数是描述时间复杂性的函数）具体化呢？也就是对于给定的N、I和A，如何导出T(N,I)和S(N,I)的数学表达式？下面我们以T(N,I)举例说明；</p>
+<p>T(N,I)反映算法在一台<code>抽象</code>计算机上运行所需要的时间，假设该抽象计算机提供的<code>元运算</code>有k种，分别是O<del>1</del>,O<del>2</del>…O<del>k</del>，每执行一次这些元运算需要的时间分别为t<del>1</del>,t<del>2</del>…t<del>k</del>，那么对于算法A，假设使用到元运算O<del>i</del>的次数为e<del>i</del>，对于每个i(1&lt;&#x3D;i&lt;&#x3D;k)来说e<del>i</del>都是N(问题规模)和I(算法的输入)的函数，即e<del>i</del>&#x3D;e<del>i</del>(N,I)，但注意t<del>i</del>是与N和I无关的常数，故可得</p>
+<p><img src="/images/image-20220910101114615.png" srcset="/img/loading.gif" lazyload></p>
+<p>注意一个问题，e<del>i</del>代表的是使用到元运算O<del>i</del>的次数，但是我们不可能对规模为N的每种合法的输入I都统计e<del>i</del>（这也是不可能的事情，不管你排列组合学的多好…），所以上面那个式子必然还需要简化；</p>
+<p>我们作出限制，只考虑三种情况下的时间复杂性：</p>
+<ul>
+<li>最坏情况：<img src="/images/image-20220910101610990.png" srcset="/img/loading.gif" lazyload></li>
+<li>最好情况：<img src="/images/image-20220910101635401.png" srcset="/img/loading.gif" lazyload></li>
+<li>平均情况：<img src="/images/image-20220910101658191.png" srcset="/img/loading.gif" lazyload></li>
+</ul>
+<p>上述式子中，D<del>N</del>是规模为N的<code>合法输入的集合</code>，I*是D<del>N</del>中使T(N,I)达到T<del>max</del>(N)的合法输入，I^<del>^是D</del>N<del>中使得T(N,I)达到T</del>min~(N)的合法输入，P(I)是算法的应用中出现输入I的概率；</p>
+<blockquote>
+<p>可操作性最好且最有实际价值的是最坏情况下的时间复杂性；</p>
+</blockquote>
+<hr>
+<h3 id="2-1-算法渐进复杂性"><a href="#2-1-算法渐进复杂性" class="headerlink" title="2.1 算法渐进复杂性"></a>2.1 算法渐进复杂性</h3><p>只限制情况还不够，现在需要计算机解决的问题的规模越来越大，因此引入<code>复杂性渐近性态</code>的概念；</p>
+<p>假设T(N)是之前定义的关于算法A的复杂性函数，称T^<del>^(N)是T(N)当N趋于无穷时的渐近性态，直观上T^</del>^(N)就是T(N)中略去低阶项留下的主项，如T(N)&#x3D;3n^2^+4NlogN+7时T^~^(N)&#x3D;3N^2^</p>
+<h4 id="2-1-1-渐进上界"><a href="#2-1-1-渐进上界" class="headerlink" title="2.1.1 渐进上界"></a>2.1.1 渐进上界</h4><p><img src="/images/image-20220914103954528.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20220914103912988.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-1-2-渐进下界"><a href="#2-1-2-渐进下界" class="headerlink" title="2.1.2 渐进下界"></a>2.1.2 渐进下界</h4><p><img src="/images/image-20220914104046817.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20220914104105612.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-1-3-非紧上界"><a href="#2-1-3-非紧上界" class="headerlink" title="2.1.3 非紧上界"></a>2.1.3 非紧上界</h4><p><img src="/images/image-20220914104504999.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20220914104223018.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-1-4-非紧下界"><a href="#2-1-4-非紧下界" class="headerlink" title="2.1.4 非紧下界"></a>2.1.4 非紧下界</h4><p><img src="/images/image-20220914104333744.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-1-5-紧渐进界"><a href="#2-1-5-紧渐进界" class="headerlink" title="2.1.5 紧渐进界"></a>2.1.5 紧渐进界</h4><p><img src="/images/image-20220914104447665.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20220914104412143.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-2-渐进分析性质"><a href="#2-2-渐进分析性质" class="headerlink" title="2.2 渐进分析性质"></a>2.2 渐进分析性质</h3><h4 id="2-2-1-传递性"><a href="#2-2-1-传递性" class="headerlink" title="2.2.1 传递性"></a>2.2.1 传递性</h4><p><img src="/images/image-20220914104711273.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-2-2-自反性"><a href="#2-2-2-自反性" class="headerlink" title="2.2.2 自反性"></a>2.2.2 自反性</h4><p><img src="/images/image-20220914104732115.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-2-3-对称性"><a href="#2-2-3-对称性" class="headerlink" title="2.2.3 对称性"></a>2.2.3 对称性</h4><p><img src="/images/image-20220914104800428.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-2-4-互对称性"><a href="#2-2-4-互对称性" class="headerlink" title="2.2.4 互对称性"></a>2.2.4 互对称性</h4><p><img src="/images/image-20220914104828768.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-2-5-算术运算"><a href="#2-2-5-算术运算" class="headerlink" title="2.2.5 算术运算"></a>2.2.5 算术运算</h4><p><img src="/images/image-20220914104857002.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-3-常见复杂性函数"><a href="#2-3-常见复杂性函数" class="headerlink" title="2.3 常见复杂性函数"></a>2.3 常见复杂性函数</h3><p><img src="/images/image-20220914105007671.png" srcset="/img/loading.gif" lazyload></p>
+<p>当n为具体数字的时候的Time值</p>
+<p><img src="/images/image-20220914105035687.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-4-时间复杂性渐进阶"><a href="#2-4-时间复杂性渐进阶" class="headerlink" title="2.4 时间复杂性渐进阶"></a>2.4 时间复杂性渐进阶</h3><blockquote>
+<p>注意：这些结论只适用于非递归，在递归的情况下就需要使用之后我们会介绍到的几种方法求解时间复杂性</p>
+</blockquote>
+<p><img src="/images/image-20220914105326485.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="3-NP完全性理论"><a href="#3-NP完全性理论" class="headerlink" title="3.NP完全性理论"></a>3.NP完全性理论</h2><blockquote>
+<p>这小节书上讲的的确是有点混乱了，到时候参考一下视频做修正</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>多项式时间</p>
+</blockquote>
+<p>通常将可在多项式时间内解决的问题看作“易”解问题，而将需要指数函数时间解决的问题看作“难”问题；</p>
+<p>这里所说的多项式时间和指数函数时间是针对问题的规模而言的，即解决问题所需的时间是问题规模的多项式函数或指数函数：</p>
+<ul>
+<li>书中的许多算法都是多项式时间算法，即对规模为n的输入，算法在最坏情况下的计算时间为O(n^k^)，k为一个常数；</li>
+</ul>
+<p>一般地，将可由多项式时间算法求解的问题看作易解的问题，将需要超多项式时间才能求解的问题看作难解的问题（注意这里就不是上面说的指数函数时间了）；</p>
+<p>那么，有人会说了，有些问题看起来很容易但是我就是找不出在多项式时间内将它解出来的算法，也就是说这类问题的复杂性未知（未知它是易解答还是难解答）：</p>
+<ul>
+<li>为了研究这类问题的计算复杂性，提出了<code>非确定性图灵机</code>的计算模型，这使得许多问题可以在多项式时间内求解（原理是啥之后我们会介绍）；</li>
+</ul>
+<hr>
+<blockquote>
+<p>判定问题：判断是否有一种能够解决某一类问题的能行算法的研究课题；</p>
+</blockquote>
+<p>书上讨论的大多数问题是以<code>最优化问题</code>的形式出现，对于每个最优化问题都存在与之对应的<code>判定问题</code>，一般情况下判定问题比相应的最优化问题多一个参数：</p>
+<ul>
+<li>直观上判定问题比对应的最优化问题易于求解；</li>
+<li>从一个最优化问题的多项式时间算法容易得到与之对应的判定问题的多项式时间算法；</li>
+</ul>
+<hr>
+<h3 id="3-1-P类问题"><a href="#3-1-P类问题" class="headerlink" title="3.1 P类问题"></a>3.1 P类问题</h3><blockquote>
+<p>P类问题：所有可以在多项式时间内求解的判定问题构成P类问题（多项式问题Polynomial Problem）；</p>
+</blockquote>
+<ul>
+<li>P类问题是<code>确定性计算模型</code>下的<code>易解问题类</code>；</li>
+<li>NP类问题是<code>非确定性计算模型</code>下的<code>易验证问题类</code>（通常情况下解答一个问题比验证一个问题困难得多）；</li>
+</ul>
+<hr>
+<h3 id="3-2-NP类问题"><a href="#3-2-NP类问题" class="headerlink" title="3.2 NP类问题"></a>3.2 NP类问题</h3><blockquote>
+<p>NP类问题：所有的非确定性多项式时间可解的判定问题构成NP类问题；</p>
+</blockquote>
+<p>什么是NP类问题（Non-deterministic Polynomial Problem非确定性多项式问题）？在此之前我们首先需要了解非确定性算法的概念；</p>
+<p>非确定性算法将问题求解分为猜测和验证两个阶段：</p>
+<ul>
+<li>算法的猜测阶段是非确定性的，给出问题解的一个猜测；</li>
+<li>算法的验证阶段是确定性的，验证猜测阶段给出解的正确性；</li>
+</ul>
+<p>设算法A是解一个判定问题Q的非确定性算法。如果算法A的<code>验证阶段</code>可以在多项式时间内完成，则称算法A是一个<code>多项式时间非确定性算法</code>，也称问题Q是<code>非确定性多项式时间可解的</code>；</p>
+<h3 id="3-3-NPC问题"><a href="#3-3-NPC问题" class="headerlink" title="3.3 NPC问题"></a>3.3 NPC问题</h3><p>NP中的某些问题的复杂性与<code>整个类</code>的复杂性相关联，这些问题中任何一个如果存在多项式时间的算法，那么所有NP问题都是多项式时间可解的，这些问题被称为NP-完全问题(NPC问题)；</p>
+<p>NPC包含了NP中最难的问题，解决了这个NPC问题，所有NP问题都能够被解决了；</p>
+<h3 id="3-4-NP-hard问题"><a href="#3-4-NP-hard问题" class="headerlink" title="3.4 NP hard问题"></a>3.4 NP hard问题</h3><p>Non-deterministic Polynomial hard problem(NPH)问题：如果所有NP问题可在多项式时间内转化（归约，意思是解决了后者也就相应的解决了前者）成某个问题，则该问题称为NP难问题；</p>
+<p>规约：将一个特殊问题一般化，即将原问题推广为一个最一般的、最有概括性、也更难的、计算复杂度更高的问题，这个问题具有最高的计算复杂度，如果这个最一般的问题也能有多项式时间求解算法，那么那些特殊的原问题也能有多项式时间求解算法；</p>
+<h1 id="第二章-递归与分治策略"><a href="#第二章-递归与分治策略" class="headerlink" title="第二章 递归与分治策略"></a>第二章 递归与分治策略</h1><p>分治思想与递归思想关系密切：</p>
+<ul>
+<li>分治法的设计思想是：将一个难以直接解决的大问题分割成一些规模较小的相同问题，以便各个击破，即分而治之。如果原问题可分割成k个子问题，1&lt;k&lt;&#x3D;n，且这些子问题都可解，并可利用这些子问题的解求出原问题的解，那么这种分治法就是可行的；</li>
+<li>由分治法产生的子问题往往是原问题的较小模式，这为使用递归技术提供了方便。在这种情况下，反复应用分治手段，可以使子问题与原问题类型一致而其规模不断缩小，最终使子问题缩小到容易求出其解，由此自然引出递归算法；</li>
+</ul>
+<blockquote>
+<p>Q：递归和迭代的区别？</p>
+</blockquote>
+<p>A：递归，就是在运行的过程中调用自己，构成递归需具备的条件：</p>
+<ul>
+<li><p>子问题须与原始问题为同样的事，且更为简单；</p>
+</li>
+<li><p>不能无限制地调用本身，须有个出口，化简为非递归状况处理；</p>
+</li>
+</ul>
+<p>总结：</p>
+<ul>
+<li>递归就是指程序调用自身的编程思想，即一个函数调用本身；迭代是利用已知的变量值，根据递推公式不断演进得到变量新的编程思想；</li>
+<li>迭代与普通循环的区别是：迭代时，循环代码中参与运算的变量同时是保存结果的变量，当前保存的结果作为下一次循环计算的初始值；</li>
+</ul>
+<h2 id="1-递归的概念"><a href="#1-递归的概念" class="headerlink" title="1.递归的概念"></a>1.递归的概念</h2><h3 id="1-1-递归和迭代"><a href="#1-1-递归和迭代" class="headerlink" title="1.1 递归和迭代"></a>1.1 递归和迭代</h3><p>在说递归之前不得不提及迭代，上面虽然稍微介绍了一下，我们这里再详细说一说；</p>
+<p>首先直观上从代码看递归和迭代（参考原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_31057219/article/details/105135510">(28条消息) 递归&#x2F;迭代对比，算法时间复杂度_Mars-xq的博客-CSDN博客_迭代的时间复杂度</a>）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//求1+2+3+…+n</span><br><br><span class="hljs-comment">//递归</span><br><span class="hljs-function">fun <span class="hljs-title">recursive</span><span class="hljs-params">(n: Int)</span>: Int &#123;</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">if</span> (n == <span class="hljs-number">0</span>) <span class="hljs-number">0</span> <span class="hljs-keyword">else</span> n + <span class="hljs-built_in">recursive</span>(n - <span class="hljs-number">1</span>)<br>&#125;<br><br><span class="hljs-comment">//迭代</span><br>fun <span class="hljs-built_in">iteration</span>(n: Int): Int &#123;<br>    var result = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">for</span> (i in <span class="hljs-number">1.</span>.n) result += i<br>    <span class="hljs-keyword">return</span> result<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>直接拆解递归和迭代</p>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs subunit">使用递归 : recursive(5)<br>recursive(5)<br>5+recursive(4)<br>5<span class="hljs-string">+4</span>+recursive(3)<br>5<span class="hljs-string">+4</span><span class="hljs-string">+3</span>+recursive(2)<br>5<span class="hljs-string">+4</span><span class="hljs-string">+3</span><span class="hljs-string">+2</span>+recursive(1)<br>5<span class="hljs-string">+4</span><span class="hljs-string">+3</span><span class="hljs-string">+2</span><span class="hljs-string">+1</span>+recursive(0)<br>5<span class="hljs-string">+4</span><span class="hljs-string">+3</span><span class="hljs-string">+2</span><span class="hljs-string">+1</span><span class="hljs-string">+0</span><br>5<span class="hljs-string">+4</span><span class="hljs-string">+3</span><span class="hljs-string">+2</span><span class="hljs-string">+1</span><br>5<span class="hljs-string">+4</span><span class="hljs-string">+3</span><span class="hljs-string">+3</span><br>5<span class="hljs-string">+4</span><span class="hljs-string">+6</span><br>5<span class="hljs-string">+10</span><br>15<br><br>使用迭代 : iteration(5)<br>0<span class="hljs-string">+1</span>=1<br>1<span class="hljs-string">+2</span>=3<br>3<span class="hljs-string">+3</span>=6<br>6<span class="hljs-string">+4</span>=10<br>10<span class="hljs-string">+5</span>=15<br><br>上面两个计算过程所需的步骤都是O(n)。但是两个计算过程的形状不一样。<br></code></pre></td></tr></table></figure>
+
+<p>递归过程是一个先逐步展开而后收缩的形状，在展开阶段，这一计算过程构造一个推迟进行的操作（这里是+)所形成的的链条，在收缩阶段才会实际执行这些操作。<br>这种类型的计算过程由一个推迟执行的运算链条刻画，称为一个递归计算过程，要执行这种计算过程，就需要维护将要执行的操作的轨迹。<br>在计算1+2+3+…+n时，推迟执行的加法链条的长度就是为了保存其轨迹需要保存的信息量，这个长度随着n值而线性增长，这样的过程称为线性递归过程。</p>
+<p>迭代过程的形成没有任何增长或收缩。对于任意一个n，在计算的每一步，我们需要保存的就只有i和return，这个过程就是一个迭代计算过程。<br>一般来说，迭代计算过程就是那种其状态可以用固定数目的状态变量描述的结算过程。<br>在计算1+2+…+n时，所需的计算步骤与n成正比，这种过程称为线性迭代过程。</p>
+<h3 id="1-2-递归的应用"><a href="#1-2-递归的应用" class="headerlink" title="1.2 递归的应用"></a>1.2 递归的应用</h3><p>（该部分参考原文链接：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/balalawy/p/12909472.html#title2.1">数据结构——递归与非递归 - Balalawy - 博客园 (cnblogs.com)</a>）</p>
+<p>使用递归的思想解决问题很容易，但是初学者可能对于递归思想解决问题存在困难，递归解题主要依据以下三个步骤：</p>
+<ol>
+<li>确定函数功能：我们不需要给出这个函数内部的具体定义，只要先明白函数是用来干嘛的就可以；</li>
+<li>确定递归终止条件：计算机的资源有限，如果递归的层次过深会导致“爆栈”的风险，内存会发生溢出；</li>
+<li>确定递归关系式：这部分是递归函数的核心，需要多加练习；</li>
+</ol>
+<h3 id="1-3-递归的转化"><a href="#1-3-递归的转化" class="headerlink" title="1.3 递归的转化"></a>1.3 递归的转化</h3><p>递归解题固然很爽，但是因为“爆栈”的风险所以我们应该尽量少用，所以很多时候需要我们将递归进行非递归化，也称为迭代化（因为非递归也称为迭代）（当然使用尾递归的方式也可以避免“爆栈”，但是并非每一种递归都可以转换为尾递归的形式，并且也不是所有的编译器都支持尾递归的优化，我们这里主要还是介绍常用的迭代化方式）；</p>
+<p>函数的递归调用本质是借助函数栈来实现的，函数递归的本质可以归结为如下几点：</p>
+<p>（1）在函数递归调用之前将局部变量保存到栈中</p>
+<p>（2）修改参数列表</p>
+<p>（3）进行函数递归调用</p>
+<p>（4）获得栈顶元素（恢复现场）</p>
+<p>（5）弹出栈顶元素（释放内存空间）</p>
+<p>递归迭代化的本质就是掌握函数栈的本质，注意当递归层次不是很深的时候没必要进行迭代化，因为迭代化之后的代码会变得比较难以理解；</p>
+<h3 id="1-4-递归方程渐进阶的求解"><a href="#1-4-递归方程渐进阶的求解" class="headerlink" title="1.4 递归方程渐进阶的求解"></a>1.4 递归方程渐进阶的求解</h3><p>该部分参考自：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1V54y187iL?spm_id_from=333.337.search-card.all.click&vd_source=276d55048634a5b508b1b53a1ecd56b3">递推方程的求解_哔哩哔哩_bilibili</a></p>
+<h4 id="（1）迭代展开"><a href="#（1）迭代展开" class="headerlink" title="（1）迭代展开"></a>（1）迭代展开</h4><p>顾名思义就是不断迭代展开递归方程，最后得到一个解析式；</p>
+<p>当然这种方法也是一种将一个递归算法转换为一个非递归算法的方式</p>
+<blockquote>
+<p>例题：</p>
+</blockquote>
+<p><img src="/images/image-20220914185738549.png" srcset="/img/loading.gif" lazyload></p>
+<p>因为迭代展开的过程中经常涉及数列求和，所以下面总结一下常见数列的求和</p>
+<p><img src="/images/image-20220914190300559.png" srcset="/img/loading.gif" lazyload></p>
+<p>当然迭代法也不会才那么点难度，有时候我们需要换元进行迭代：</p>
+<ul>
+<li>先换元</li>
+</ul>
+<p><img src="/images/image-20220914191055218.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>再迭代</li>
+</ul>
+<p><img src="/images/image-20220914191156705.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="（2）递归树表示"><a href="#（2）递归树表示" class="headerlink" title="（2）递归树表示"></a>（2）递归树表示</h4><p>将上述迭代展开的过程用一个树型的结构（递归树）来表示，递归树是迭代展开的可视化表示；</p>
+<p>T(n)&#x3D;2T(n&#x2F;2)+n-1，其中T(n)首先作为树根，第一项是递归项，另一项是子问题的合并项，展开的时候将合并项放在上面，两个分支表示两个子问题：</p>
+<p><img src="/images/image-20220914192224461.png" srcset="/img/loading.gif" lazyload></p>
+<p>下面的T(n&#x2F;2)也是按照同样的方法进行展开：</p>
+<p><img src="/images/image-20220914192911125.png" srcset="/img/loading.gif" lazyload></p>
+<p>最后我们可以得到如下完全展开后的迭代树：</p>
+<p><img src="/images/image-20220914192009434.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="（3）假设归纳"><a href="#（3）假设归纳" class="headerlink" title="（3）假设归纳"></a>（3）假设归纳</h4><p>先假设，之后使用数学归纳证明该猜想；</p>
+<p><img src="/images/image-20220914193212798.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20220914193340903.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="（4）主定理"><a href="#（4）主定理" class="headerlink" title="（4）主定理"></a>（4）主定理</h4><p>根据已经证明的一个主定理直接套用，得到特殊递归方程的解；</p>
+<p>1个规模为n的问题，可以拆分为a个规模为n&#x2F;b子问题，合并a个子问题所需要的时间为O(n^d^)</p>
+<p><img src="/images/image-20220914194257409.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>上述主定理也适用于子问题大小为n&#x2F;b的上界，n&#x2F;b的下界以及n&#x2F;b+1的情况</p>
+</blockquote>
+<p>当然上述主定理也可以用通俗一点的语言描述：</p>
+<p><img src="/images/image-20220914200604678.png" srcset="/img/loading.gif" lazyload></p>
+<p>除了主定理1，还有主定理2</p>
+<p><img src="/images/image-20220914200235992.png" srcset="/img/loading.gif" lazyload></p>
+<p>同理，用通俗的语言描述如下</p>
+<p><img src="/images/image-20220914200712649.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="（5）特征方程"><a href="#（5）特征方程" class="headerlink" title="（5）特征方程"></a>（5）特征方程</h4><p>求解递归方程不得不提及使用特征方程求解（当然还有生成函数、递推方法等，这里只介绍特征方程求解），这也是需要我们掌握的一种方法；</p>
+<p>递归方程通常分为：</p>
+<ul>
+<li>K阶常系数线性齐次递归方程；</li>
+</ul>
+<p><img src="/images/image-20220914203723071.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>K阶常系数线性非齐次递归方程；</li>
+</ul>
+<p><img src="/images/image-20220914203659863.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>K阶常系数线性齐次递归方程</p>
+</blockquote>
+<p><img src="/images/image-20220914201727114.png" srcset="/img/loading.gif" lazyload></p>
+<p>为了求解得到特征方程，需要</p>
+<p><img src="/images/image-20220914201753127.png" srcset="/img/loading.gif" lazyload></p>
+<p>得到最终的特征方程如下</p>
+<p><img src="/images/image-20220914201944144.png" srcset="/img/loading.gif" lazyload></p>
+<p>求得特征方程只是最基本的一个步骤，接下来的解题步骤如下：</p>
+<ul>
+<li><p>求解上述特征方程的根，得到递归方程的通解</p>
+</li>
+<li><p>利用递归方程初始条件，确定通解中待定系数，得到递归方程的解</p>
+</li>
+</ul>
+<p>需要考虑2种情况：</p>
+<ul>
+<li>特征方程的k个根不相同</li>
+</ul>
+<p><img src="/images/image-20220914203456764.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>特征方程有相同的重根</li>
+</ul>
+<p><img src="/images/image-20220914203514169.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20220914203549793.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>K阶常系数线性非齐次递归方程</p>
+</blockquote>
+<p><img src="/images/image-20220914203808074.png" srcset="/img/loading.gif" lazyload></p>
+<p>更多关于K阶常系数线性非齐次递归方程的介绍就不再赘述，感兴趣可以自行百度；</p>
+<h2 id="2-排序算法"><a href="#2-排序算法" class="headerlink" title="2.排序算法"></a>2.排序算法</h2><p><img src="/images/image-20220926080054726.png" srcset="/img/loading.gif" lazyload></p>
+<p>稳定性是指排序后两个相等键值的顺序和排序之前它们的顺序相同，图中的In-place表示占用常数内存而不占用额外内存，Out-place表示占用额外内存，n表示数据规模，k表示“桶”的个数；</p>
+<p>排序算法可以分为内部排序和外部排序：</p>
+<ul>
+<li>内部排序是数据记录在内存中进行排序，上面的排序算法都是内部排序；</li>
+<li>外部排序是因为需要排序的数据很大，不能一次性容纳全部的排序记录，故在排序过程中需要访问外存；</li>
+</ul>
+<p>下图展示了常见排序算法的一些简单描述，我们在之后还会详细对它们进行介绍（有些描述不太准确&#x2F;甚至是错的，比如计数排序、桶排序，注意辨别）</p>
+<p><img src="/images/image-20220926080735535.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-1-冒泡排序"><a href="#2-1-冒泡排序" class="headerlink" title="2.1 冒泡排序"></a>2.1 冒泡排序</h3><p>算法步骤（当然也可以从左向右）：</p>
+<ol>
+<li>将“天平”置于待排序序列最右端，比较相邻元素，如果右边元素小于左边元素则交换两个元素，否则不变；</li>
+<li>“天平”向左移动一位，继续比较左右两端的数；</li>
+<li>重复1、2步骤，当“天平”移动到最左的时候，其左边的数即使整个序列最小的数，此时将该数提出序列不再参与后续比较；</li>
+<li>“天平”再次移动到序列最右开始重复上述步骤，直到所有的数字都被排序；</li>
+</ol>
+<p>最好情况：输入的数据都是正序（对于这种情况可以立flag，如果一趟序列遍历中元素没有发生交换则证明该序列有序）；</p>
+<p>最坏情况：输入的数据都是反序；</p>
+<h3 id="2-2-选择排序"><a href="#2-2-选择排序" class="headerlink" title="2.2 选择排序"></a>2.2 选择排序</h3><p>选择排序顾名思义就是简单直观的选择序列中最小（大）的值将其放在序列最前（后）；</p>
+<p>算法步骤：</p>
+<ol>
+<li>首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置；</li>
+<li>再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾；</li>
+<li>重复第二步，直到所有元素均排序完毕；</li>
+</ol>
+<p>如何在序列中寻找最小（大）元素呢？很简单，只需要遍历序列并每次都比较当前值和记录的最小（大）值，如果当前值更小（大）则更新最小（大）值；</p>
+<h3 id="2-3-插入排序"><a href="#2-3-插入排序" class="headerlink" title="2.3 插入排序"></a>2.3 插入排序</h3><p>插入排序实际上就是我们打扑克牌的常用策略，将最左端的牌固定不变（有序序列），右边的牌（未排序序列）比较大小并插入左边的牌堆；</p>
+<p>算法步骤：</p>
+<ol>
+<li>将待排序序列的第一个元素看作是有序序列，第二个元素开始看作是未排序序列；</li>
+<li>在已排序序列中从后向前扫描，找到相应位置（升序的话就是小数&lt;mid&lt;大数）并插入未排序序列的元素；</li>
+<li>从头到尾依次扫描未排序序列，重复2步骤，将扫描到的每个元素插入到有序序列的适当位置；</li>
+</ol>
+<h3 id="2-4-希尔排序"><a href="#2-4-希尔排序" class="headerlink" title="2.4 希尔排序"></a>2.4 希尔排序</h3><p>希尔排序也称为递减增量排序算法，可以看作是插入排序的改进版本；</p>
+<p>希尔排序的基本思想是：将整个待排序的记录序列分割为若干子序列，在这些子序列中分别进行插入排序，待子序列排序完成后，整个序列呈基本有序状态，此时对全体记录序列进行插入排序；</p>
+<p>算法步骤：</p>
+<ol>
+<li>先确定一个增量序列t1,t2…tk（当然我们为了不引起混淆可以将增量称为间隔），增量会依次减小且最后一个增量一定是1；</li>
+<li>上述我们确定了k个间隔，所以要进行k趟排序，每趟排序根据间隔的大小将待排序记录分割为若干子序列，对这些子序列进行插入排序；</li>
+<li>最后依次排序间隔为1也就意味着将整个记录序列使用插入排序进行排序；</li>
+</ol>
+<h3 id="2-5-归并排序"><a href="#2-5-归并排序" class="headerlink" title="2.5 归并排序"></a>2.5 归并排序</h3><p>文章参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_34771124/article/details/121377265">(29条消息) 自下而上与自上而下的归并排序_Crer_lu的博客-CSDN博客</a></p>
+<p>归并排序是一种建立在归并操作上的一种排序算法，归并排序主要有以下两种实现：</p>
+<ul>
+<li>自上而下的递归；</li>
+<li>自下而上的迭代；</li>
+</ul>
+<p>算法步骤：</p>
+<ol>
+<li>首先将待排序记录的数字分为两半，一直到只剩下一个数字；</li>
+<li>合并的时候，按照数字的升序移动，使得合并后的数字在组内按照升序排列；当合并包含多个数字的组的时候，比较开头的数字并移动较小的数字即可；</li>
+<li>递归重复合并组，直到所有的数字都在一个组中并排序完毕；</li>
+</ol>
+<p><img src="/images/image-20220926084718285.png" srcset="/img/loading.gif" lazyload></p>
+<p>自下而上迭代实现：首先将原始序列看成N个只包含1个元素的有序子序列，然后每次迭代归并两个相邻的有序子序列，直到最后只剩下1个有序的序列。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">Merge_sort_downtoup</span><span class="hljs-params">()</span>&#123;<br>	<span class="hljs-type">int</span> t = <span class="hljs-number">2</span>;<span class="hljs-comment">//最小分割单元 </span><br>	<span class="hljs-keyword">while</span>(t &lt;= n)&#123;<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i += t)&#123;<br>			sort(a + i, a + min(i + t, n + <span class="hljs-number">1</span>));<span class="hljs-comment">//注意sort的使用 </span><br>		&#125;<br>		<span class="hljs-comment">/*这里可以进行一些操作 */</span> <br>		t *= <span class="hljs-number">2</span>;<br>	&#125;<br>	<span class="hljs-keyword">return</span> ;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>自上而下递归实现：对一个数组（str）选中一个中间位置（mid&#x3D;（start+end）&#x2F;2），分别进行左递归（mergeSort（str，start，mid，length）），右递归（mergeSort（str，mid+1，end，length）），在回朔的时候分别对以中间为分割的数组进行排序（merge（str,start,end,mid）），此时是一个归并的过程，这是自上而下的方法。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">merge_sort_recursive</span><span class="hljs-params">(<span class="hljs-type">int</span> arr[], <span class="hljs-type">int</span> reg[], <span class="hljs-type">int</span> start, <span class="hljs-type">int</span> end)</span> &#123;<br>    <span class="hljs-keyword">if</span> (start &gt;= end)<br>        <span class="hljs-keyword">return</span>;<br>    <span class="hljs-type">int</span> len = end - start, mid = (len &gt;&gt; <span class="hljs-number">1</span>) + start;<br>    <span class="hljs-type">int</span> start1 = start, end1 = mid;<br>    <span class="hljs-type">int</span> start2 = mid + <span class="hljs-number">1</span>, end2 = end;<br>    merge_sort_recursive(arr, reg, start1, end1);<br>    merge_sort_recursive(arr, reg, start2, end2);<br>    <span class="hljs-type">int</span> k = start;<br>    <span class="hljs-keyword">while</span> (start1 &lt;= end1 &amp;&amp; start2 &lt;= end2)<br>        reg[k++] = arr[start1] &lt; arr[start2] ? arr[start1++] : arr[start2++];<br>    <span class="hljs-keyword">while</span> (start1 &lt;= end1)<br>        reg[k++] = arr[start1++];<br>    <span class="hljs-keyword">while</span> (start2 &lt;= end2)<br>        reg[k++] = arr[start2++];<br>    <span class="hljs-keyword">for</span> (k = start; k &lt;= end; k++)<br>        arr[k] = reg[k];<br>&#125;<br><br><span class="hljs-type">void</span> <span class="hljs-title function_">merge_sort</span><span class="hljs-params">(<span class="hljs-type">int</span> arr[], <span class="hljs-type">const</span> <span class="hljs-type">int</span> len)</span> &#123;<br>    <span class="hljs-type">int</span> reg[len];<br>    merge_sort_recursive(arr, reg, <span class="hljs-number">0</span>, len - <span class="hljs-number">1</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-6-快速排序"><a href="#2-6-快速排序" class="headerlink" title="2.6 快速排序"></a>2.6 快速排序</h3><p>本质上来看快速排序是建立在冒泡排序的基础上的递归分治法；</p>
+<p>算法步骤：</p>
+<ol>
+<li>从数列中挑选一个元素称为基准pivot（一般都选择序列最左端的元素）；</li>
+<li>所有比pivot小的元素在pivot左边，所有比pivot大的元素在pivot右边（与pivot相同的数可以在任意一边）；</li>
+<li>递归地将小于pivot的子序列和大于pivot的子序列使用1、2步骤进行排序；</li>
+</ol>
+<p>关于如何实现2，我们用下面的图进行解释</p>
+<p><img src="/images/image-20220926091301980.png" srcset="/img/loading.gif" lazyload></p>
+<p>快速排序实质上就是利用L、R、pivot这些标记递归地重复一系列操作的算法；</p>
+<h3 id="2-7-堆排序"><a href="#2-7-堆排序" class="headerlink" title="2.7 堆排序"></a>2.7 堆排序</h3><p>堆排序利用了堆的数据结构，堆主要有如下两种：</p>
+<ul>
+<li>大顶堆：每个节点的值都大于或等于其子节点的值，在堆排序算法中用于升序排列；</li>
+<li>小顶堆：每个节点的值都小于或等于其子节点的值，在堆排序算法中用于降序排列；</li>
+</ul>
+<p>堆是一种树形结构，是一种特殊的完全二叉树（完全二叉树不要求像满二叉树一样全部填满）；</p>
+<p>算法步骤：</p>
+<ol>
+<li>首先将所有数字存储在堆中，按照降序构建堆（大顶堆）；</li>
+<li>接着逐个取出存储在堆中的数字（从堆顶开始取出，注意每次取出之后都需要调整节点使其满足大顶堆的性质），取出的数字按照相反的顺序排序可以得到升序序列；</li>
+</ol>
+<h3 id="2-8-计数排序"><a href="#2-8-计数排序" class="headerlink" title="2.8 计数排序"></a>2.8 计数排序</h3><p>算法步骤：</p>
+<ol>
+<li>根据待排序集合中最大元素和最小元素的差值范围申请额外空间；</li>
+<li>遍历待排序集合，将每一个元素出现的次数记录到元素值对应的额外空间内；</li>
+<li>继续遍历并修改数组，数组遍历完毕后直接遍历输出数组即可</li>
+</ol>
+<p><img src="/images/image-20220926093531560.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-9-桶排序"><a href="#2-9-桶排序" class="headerlink" title="2.9 桶排序"></a>2.9 桶排序</h3><p>桶排序是计数排序的升级版，它利用了函数的映射关系：</p>
+<ul>
+<li>在额外空间充足的情况下，尽量增大桶的数量；</li>
+<li>使用的映射函数能够将输入的N个数据均匀分配到K个桶中；</li>
+<li>对于桶中元素的排序，选择何种排序算法堆性能影响很大；</li>
+</ul>
+<p><img src="/images/image-20220926095719535.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-10-基数排序"><a href="#2-10-基数排序" class="headerlink" title="2.10 基数排序"></a>2.10 基数排序</h3><p>这三种排序算法都利用了桶的概念，但对桶的使用方法上有明显差异：</p>
+<ul>
+<li>基数排序：根据键值的每位数字来分配桶；</li>
+<li>计数排序：每个桶只存储单一键值；</li>
+<li>桶排序：每个桶存储一定范围的数值；</li>
+</ul>
+<p>具体实现步骤参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_52253798/article/details/122930548">(29条消息) 基数排序（详细图解）_s逐梦少年的博客-CSDN博客_基数排序</a></p>
+<h1 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h1><blockquote>
+<p>这里我们主要总结归纳一些书上没有介绍到并且很美妙的算法</p>
+</blockquote>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/" class="category-chain-item">大学课程</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/">#课程学习</a>
+      
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">#数据结构与算法</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>算法设计与分析</div>
+      <div>https://gintoki-jpg.github.io/2022/09/07/通识_算法设计与分析/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>杨再俨</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年9月7日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/09/08/%E9%80%9A%E8%AF%86_%E7%A7%91%E6%8A%80%E5%8F%B2%E4%B8%8E%E6%96%B9%E6%B3%95%E5%AD%A6/" title="科技史与方法学">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">科技史与方法学</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/09/06/%E8%80%83%E7%A0%94/" title="考研">
+                        <span class="hidden-mobile">考研</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+</div>
+
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
