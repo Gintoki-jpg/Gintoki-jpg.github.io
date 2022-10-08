@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/project.png">
 <meta property="article:published_time" content="2022-08-22T08:47:00.000Z">
-<meta property="article:modified_time" content="2022-10-07T13:21:02.241Z">
+<meta property="article:modified_time" content="2022-10-08T02:07:57.125Z">
 <meta property="article:author" content="YangZaiyan">
 <meta property="article:tag" content="学习工具">
 <meta name="twitter:card" content="summary_large_image">
@@ -221,7 +221,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.1k 字
+          4.5k 字
         
       </span>
     
@@ -232,7 +232,7 @@
         
         
         
-          35 分钟
+          38 分钟
         
       </span>
     
@@ -331,6 +331,7 @@
 <h3 id="5-2-关于迁移"><a href="#5-2-关于迁移" class="headerlink" title="5.2 关于迁移"></a>5.2 关于迁移</h3><p>此处所说的迁移并不是在两台电脑上迁移，而是将Gitee上的仓库迁移到Github上的仓库（为什么要这样做，等真正用了一段时间就知道了…或者说直接网上搜索也是可以的，Gitee真的不推荐…）</p>
 <p>迁移教程参考<a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv12633102/">2021最全hexo搭建博客+matery美化+使用（保姆级教程） - 哔哩哔哩 (bilibili.com)</a></p>
 <h3 id="5-3-关于报错"><a href="#5-3-关于报错" class="headerlink" title="5.3 关于报错"></a>5.3 关于报错</h3><p>不要有事没事去搞什么插件之类的，hexo本身就不太稳定，加入过多的插件和外部链接会导致网站加载巨慢，而且很可能出一些问题(-_-!我已经体会过一次了)，还有就是配置文件你也别自己一个人乱改，YAMI对格式的要求非常严格，hexo的报错就是那种你几乎看都看不懂的（这意味着一旦报错估计就得重装了…）</p>
+<h3 id="5-4-关于不同步"><a href="#5-4-关于不同步" class="headerlink" title="5.4 关于不同步"></a>5.4 关于不同步</h3><p>我一定要来说一下，今天遇到了一个巨夸张的问题，在编写“编译原理.md”的时候我发现无论如何md文档和本地显示的html文档都对不上，然后我找到中断的位置，发现是因为编写了如下字符串<img src="/images/image-20221008100742745.png" srcset="/img/loading.gif" lazyload>当我将其改成<code>&#123; # &#125;</code>之后md文档与html文档显示完全一致；（很有可能重装之前报错一大堆也是因为不恰当的使用了符号)</p>
 <h1 id="二、重装"><a href="#二、重装" class="headerlink" title="二、重装"></a>二、重装</h1><p>我先来说一下为什么要重装，因为前几天脑子发热装了一些插件，导致今天在进行hexo g的时候直接报错，然后报错信息也是一大堆，网络上也没有什么相关解决方法（我真的是服了，网上全是废话），而且现在我的hexo博客进去一开始就直接灰屏，看起来特别难受，抱着完美主义者以及优化的态度，这里我们重装一次hexo，全程记录相关信息（这个过程其实是很有意义的，类似于你之前重装Ubuntu发现了很多以前没有注意过的问题一样），同时这次重装过程也会增加一些重要功能比如评论系统等；</p>
 <p>(PS：不管是重装Ubuntu还是hexo都很耗费时间，但同时也能够极大的增强我们对这个过程的理解，不失为一种学习，所以不要抱怨觉得这些事情没有意义，玩一天的游戏才是没有意义的事情)</p>
 <h2 id="1-前置知识点"><a href="#1-前置知识点" class="headerlink" title="1.前置知识点"></a>1.前置知识点</h2><h3 id="1-1-注意事项"><a href="#1-1-注意事项" class="headerlink" title="1.1 注意事项"></a>1.1 注意事项</h3><ol>
@@ -352,6 +353,16 @@
 <blockquote>
 <p>2022&#x2F;10&#x2F;7 21:11 没想到这次重装过程这么顺利…至于其他的功能组件、评论系统就不乱搞了，好好使用最简单的blog即可；</p>
 </blockquote>
+<h2 id="2-重装后问题汇总"><a href="#2-重装后问题汇总" class="headerlink" title="2.重装后问题汇总"></a>2.重装后问题汇总</h2><h3 id="2-1-关于博客顺序"><a href="#2-1-关于博客顺序" class="headerlink" title="2.1 关于博客顺序"></a>2.1 关于博客顺序</h3><p>重装之前的博客顺序都是按照我的创建顺序进行排序，越先创建的文档显示越后（注意这里是创建而不是修改），但是重装之后创建的新博客很神奇的把我之前创建的一些文章的时间给修改了？？？</p>
+<p><img src="/images/image-20221008095349660.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221008095423292.png" srcset="/img/loading.gif" lazyload></p>
+<p>太夸张了…于是我尝试手动再次修改front-matter中的date，将<code>11：33</code>改为<code>11:33</code>，此时正常显示</p>
+<p><img src="/images/image-20221008095707077.png" srcset="/img/loading.gif" lazyload></p>
+<p>综上，我们得到两点结论：</p>
+<ol>
+<li>博客顺序默认不是按照名称首字母或创建时期排序，而是按照front-matter中的date排序；</li>
+<li>date书写格式一定要标准，否则在后期进行同步的时候很容易出现问题；</li>
+</ol>
 
               
             </div>

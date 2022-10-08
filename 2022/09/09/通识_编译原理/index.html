@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/compile.jpg">
 <meta property="article:published_time" content="2022-09-09T01:50:00.000Z">
-<meta property="article:modified_time" content="2022-10-08T01:36:35.337Z">
+<meta property="article:modified_time" content="2022-10-08T01:46:31.276Z">
 <meta property="article:author" content="YangZaiyan">
 <meta property="article:tag" content="课程学习">
 <meta property="article:tag" content="计算机基础">
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          13k 字
+          16k 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          107 分钟
+          134 分钟
         
       </span>
     
@@ -743,8 +743,155 @@
 <p>Follow集合：文法符号后面可能跟随的终结符的集合（不包括空串）</p>
 </blockquote>
 <p>注意终结符的Follow集合没有定义，只有非终结符才会有Follow集合；Follow集合中的符号一定是终结符且不包含空串；</p>
-<p>定义开始符号的Follow集合初始为</p>
+<p>定义开始符号的Follow集合初始为 { # }</p>
+<ul>
+<li><code>计算非终结符A的Follow集合</code></li>
+</ul>
+<p><img src="/images/image-20221007101933933.png" srcset="/img/loading.gif" lazyload></p>
+<p>简单来说：</p>
+<ul>
+<li>当有产生式A-&gt;…Ua…，则a属于Follow(U)，此时Follow(U)和产生式左边的A没有任何关系；</li>
+<li>当有产生式A-&gt;…UP…，则First(P)属于Follow(U)；</li>
+<li>当有产生式A-&gt;…UP并且空串属于First(P):<ul>
+<li>当P推导为空串的时候，空串是不能出现在Follow集中的，这种情况下Follow(A)也属于Follow(U)；</li>
+<li>当P推导不是空串的时候，First(P)属于Follow(U)；</li>
+</ul>
+</li>
+<li>当有产生式A-&gt;…U，则Follow(A)属于Follow(U)；</li>
+</ul>
+<h4 id="2-2-4-Select集合"><a href="#2-2-4-Select集合" class="headerlink" title="2.2.4 Select集合"></a>2.2.4 Select集合</h4><p>Select集合直观上理解就是上面我们介绍过的产生式右边的符号串的First集合（在特殊情况下也就是产生式推出空的时候Select集合是产生式左边的非终结符的Follow集合）</p>
+<p><img src="/images/image-20221007102451793.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>Select集合：产生式左部的可能的推导结果的起始符号</p>
+</blockquote>
+<p>Select(A-&gt;B)就是求这个产生式中A可能推导出的起始符号集合（不包含空串，但是可能包含 #(结束符)），可分为如下情况：</p>
+<ul>
+<li>A-&gt;X（X为任意文法符号串，不仅限于非终结符或单个符号，X不能推导出空串），此时Select(A-&gt;X)&#x3D;First(X);</li>
+<li>A-&gt;X(X为任意文法符号串，不仅限于非终结符或单个符号，X能推导出空串)，此时不仅First(X)属于Select(A-&gt;X)，同时Follow(A)也属于Select(A-&gt;X)；</li>
+</ul>
+<h3 id="2-3-LL1文法"><a href="#2-3-LL1文法" class="headerlink" title="2.3 LL1文法"></a>2.3 LL1文法</h3><p>LL1文法是构造不带回溯的自上而下分析的必要条件，实际上我们前面的步骤都是为了构造LL1文法；</p>
+<p>我们对LL1文法的定义如下</p>
+<p><img src="/images/image-20220930111807826.png" srcset="/img/loading.gif" lazyload></p>
+<p>对于第三点做一个解释，<code>并不是说所有的First集合和Follow集合都不能有交集，而是说当一个非终结符A可以推出空串的情况，才需要保证First(A)交Follow(A)=空集</code></p>
+<p>即B后面可能跟a，同时B也可以推出a，这就将导致我们在选择产生a的时候面临两个选择，这是需要避免的；</p>
+<hr>
+<blockquote>
+<p>Q：上面也没讲怎么避免First和Follow出现交集啊？如果我在求解过程中出现交集了咋办？？</p>
+</blockquote>
+<p>A：假如First和Follow集出现了交集，则这就不符合LL1文法，那就不能用自上而下的分析方法（我们之后会用自下而上的方法解决这个问题）；</p>
+<hr>
+<p>关于LL1名称的解释：</p>
+<ul>
+<li><p>L：从左到右扫描输入串；</p>
+</li>
+<li><p>L：最左推导；</p>
+</li>
+<li><p>1：每一步骤只向前查看一个符号；</p>
+</li>
+</ul>
+<p>那么当我们已经拥有一个LL1文法，就可以使用严谨的推导规则对输入串进行有效的无回溯的自顶向下的分析（之所以要避免First集和Follow集有交集，也是因为下面的if else只能选择其一）：</p>
+<p><img src="/images/image-20220930113253815.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>LL1文法具备一个非常强的性质：当且仅当文法为LL1时，该文法的预测分析表M不包含多重定义入口，简单来说LL1文法不是二义的；</p>
+</blockquote>
+<h3 id="2-4-预测分析表"><a href="#2-4-预测分析表" class="headerlink" title="2.4 预测分析表"></a>2.4 预测分析表</h3><p>现在我们来总结一下如何把一个普通的文法改造为LL1文法后进行自上而下的分析：</p>
+<ol>
+<li>消除文法的左递归；</li>
+<li>提取左公共因子；</li>
+<li>计算First集合和Follow集合；</li>
+<li>如果原文法为LL1文法，使用LL1文法的分析进行自顶向下的不带回溯的分析；</li>
+</ol>
+<p>之所以LL1文法必须要符合一些特殊性质，就是因为在使用LL1文法对符号串进行自上而下的推导(匹配)的时候，可以明确唯一的选择产生式，进而构造预测分析表（给定一个LL1文法就能唯一构造一个预测分析表）</p>
+<p><img src="/images/image-20221007104656275.png" srcset="/img/loading.gif" lazyload></p>
+<p>下面我们介绍如何构造一个预测分析表（基于下面的题干）</p>
+<p><img src="/images/image-20221007110627036.png" srcset="/img/loading.gif" lazyload></p>
+<p>构造文法G的分析表M[A,o]，确定每个产生式A-&gt;a在表中的位置：</p>
+<ul>
+<li><p>对文法G的每个产生式A→a执行第2步和第3步；</p>
+</li>
+<li><p>对每个终结符 o属于FIRST(A) ，把A→a加至M[A，o]中；</p>
+</li>
+<li><p>若空串属于FIRST(A)，则对任何 b属于FOLLOW(A) 把A→a加至M[A，b]中；</p>
+</li>
+<li><p>把所有无定义的M[A，o]标上“出错标志”；</p>
+</li>
+</ul>
+<p>下面给出预测分析表的构造伪代码</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">for</span><span class="hljs-params">(文法G的每一个产生式A-&gt;a)</span></span>&#123;<br>	<span class="hljs-built_in">for</span>(每个终结符号 o属于<span class="hljs-built_in">First</span>(A))&#123;<br>		将A-&gt;a放入表项M<span class="hljs-selector-attr">[A,o]</span>中；<br>	&#125;<br>	<span class="hljs-built_in">if</span>(空串属于<span class="hljs-built_in">First</span>(A))&#123;<br>		<span class="hljs-built_in">for</span>(每个 b属于<span class="hljs-built_in">Follow</span>(A))&#123;<br>			把A-&gt;a放入表项M<span class="hljs-selector-attr">[A,b]</span>中；<br>		&#125;<br>	&#125;<br><span class="hljs-function"><span class="hljs-title">for</span><span class="hljs-params">(所有无定义的表项M[A,o])</span></span>&#123;<br>	标志错误标志<br>&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
+<p>根据上述构造步骤，首先根据所给文法构造每个非终结符的First集合和Follow集合</p>
+<p><img src="/images/image-20221007112357197.png" srcset="/img/loading.gif" lazyload></p>
+<p>构造空白分析表，左侧为所有非终结符，上侧为所有终结符（不包括空串）</p>
+<p><img src="/images/image-20221007114036501.png" srcset="/img/loading.gif" lazyload></p>
+<p>然后按照规则依次把每个产生式填入分析表中（看规则可能觉得很难理解，实际上就是先看第一个产生式E-&gt;TE&#96;，因此把这个产生式填在E行，First(E)列（即(和i列），接着是第二个产生式，注意把多个产生式分开填写），将所有的产生式都填写完毕后就构造出了该文法的预测分析表</p>
+<p><img src="/images/image-20221007114513585.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<blockquote>
+<p>Q：为什么最后F-&gt;(E)和F-&gt;i是分别占一个，怎么感觉应该是会重复（也就是产生二义性）？</p>
+</blockquote>
+<p>A：实际上上述确定产生式A-&gt;a在表中的位置的规则并不完全，当面对有多个产生式如上述F-&gt;(E)和F-&gt;i，此时我们不仅需要考虑First集合，同时还需要考虑填入之后是否会影响，具体表现为假如将F-&gt;(E)填入M(F,i)，这将导致当我们的非终结符为F同时需要匹配的单词符号为i的时候，我们选择了F-&gt;(E)，那么(直接和i不匹配了，这是直接会失败的；</p>
+<hr>
+<h3 id="2-5-LL1的非递归预测分析"><a href="#2-5-LL1的非递归预测分析" class="headerlink" title="2.5 LL1的非递归预测分析"></a>2.5 LL1的非递归预测分析</h3><p>LL1的递归预测分析不是考试重点所以我们不介绍；</p>
+<p>非递归的预测分析程序模型如下</p>
+<p><img src="/images/image-20221007115509718.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><p>输入缓冲区：用于存放被分析的输入符号串，串尾结束符号#或者$；</p>
+</li>
+<li><p>分析栈：存放一系列的文法符号，使用符号#或$标识栈底，接着是文法的开始符号…</p>
+</li>
+<li><p>分析表：二维表M[A,a]，其中A是非终结符号，a是终结符号或#，分析表用于给出分析动作指引；</p>
+</li>
+<li><p>输出流：分析过程中采用的产生式序列；</p>
+</li>
+<li><p>预测分析控制程序：总控程序；</p>
+</li>
+</ul>
+<p>总控程序也被称为预测分析控制程序，是预测分析程序的核心部分，由分析表驱动，它总是根据栈顶符号X和当前输入符号a来决定分析程序应该采取的动作，有如下四种可能：</p>
+<p><img src="/images/image-20221007115142428.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>整个非递归预测分析程序的结构为</p>
+<ul>
+<li>输入：输入符号串w以及文法G的预测分析表M；</li>
+<li>输出：如果该符号串w属于文法G识别的语言，则输出符号串w的最左推导，否则报告错误；</li>
+</ul>
+</blockquote>
+<p>输入和输出的中间过程如下</p>
+<p><img src="/images/image-20221007120328399.png" srcset="/img/loading.gif" lazyload></p>
+<p>下面我们给出一道例题直观的感受一下自顶向下的非递归预测分析过程（题目中的i1、i2以及i3实际上都是终结符i，只是为了表明在匹配过程中始终用栈顶符号去匹配输入符号串的第一个符号）</p>
+<p><img src="/images/image-20221008085324989.png" srcset="/img/loading.gif" lazyload></p>
+<p>预测推导过程如下（非递归的预测分析过程），其中输出栏表示在分析符号串的过程中采用的产生式</p>
+<p><img src="/images/image-20221007120608949.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-5-1-错误处理程序"><a href="#2-5-1-错误处理程序" class="headerlink" title="2.5.1 错误处理程序"></a>2.5.1 错误处理程序</h4><p>当出现如下两种情况表示源程序中出现语法错误：</p>
+<ol>
+<li>分析栈栈顶符号是终结符号，但是与当前输入符号不匹配；</li>
+<li>分析栈栈顶符号是非终结符号A，当前输入符号为a，但分析表中M[A,a]为空；</li>
+</ol>
+<p>一种“应急”处理方式是：</p>
+<ul>
+<li>情况1预测分析控制程序将栈顶的终结符号弹出；</li>
+<li>情况2预测分析符号移动指针跳过若干输入符号，直到可以继续分析为止；</li>
+</ul>
+<p>这需要一种新的分析表，额外有同步信息synch（对非终结符A，终结符号 b属于Follow(A)，如果表项M[A,b]为空，则填入synch）</p>
+<p><img src="/images/image-20221008091435818.png" srcset="/img/loading.gif" lazyload></p>
+<p>给出文法4.4的First集合和Follow集合</p>
+<p><img src="/images/image-20221008091714499.png" srcset="/img/loading.gif" lazyload></p>
+<p>下面是文法4.4带同步信息的预测分析表</p>
+<p><img src="/images/image-20221008091517012.png" srcset="/img/loading.gif" lazyload></p>
+<p>到此，综合处理步骤如下：</p>
+<ul>
+<li><p>如果栈顶符号是终结符号，但它与当前输入符号不匹配，则将此终结符号从栈顶弹出；</p>
+</li>
+<li><p>如果栈顶符号是非终结符号A，当前输入符号是a，预测分析控制程序在分析表中查表项M[A，a]：</p>
+<ul>
+<li>若它是空白，则移动向前指针，使它指向下一个符号；</li>
+<li>若它是synch，则从栈顶弹出A；</li>
+</ul>
+</li>
+</ul>
+<p>我们给出实例演示错误处理程序（这里的输出栏有点问题，应该除了第一行其他整体向下移动一行）</p>
+<p><img src="/images/image-20221008091951807.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221008092014096.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="3-自下向上分析方法"><a href="#3-自下向上分析方法" class="headerlink" title="3.自下向上分析方法"></a>3.自下向上分析方法</h2>
               
             </div>
             <hr/>
@@ -833,9 +980,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/09/09/%E6%B5%8B%E8%AF%95/" title="编译原理">
+                      <a href="/2022/09/12/%E5%85%AD%E7%BA%A7%E8%8B%B1%E8%AF%AD/" title="六级英语">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">编译原理</span>
+                        <span class="hidden-mobile">六级英语</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
