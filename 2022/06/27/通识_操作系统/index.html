@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/sys.png">
 <meta property="article:published_time" content="2022-06-27T03:38:00.000Z">
-<meta property="article:modified_time" content="2022-09-28T09:26:21.932Z">
+<meta property="article:modified_time" content="2022-10-10T10:08:11.865Z">
 <meta property="article:author" content="YangZaiyan">
 <meta property="article:tag" content="课程学习">
 <meta property="article:tag" content="计算机基础">
@@ -223,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          50k 字
+          53k 字
         
       </span>
     
@@ -234,7 +234,7 @@
         
         
         
-          417 分钟
+          443 分钟
         
       </span>
     
@@ -1407,10 +1407,7 @@
 <p>根据上述理论，提出这样的想法：对于没有被存放到物理页框中的逻辑页（因为物理页框是有数量限制的），将其页表项从页表中删除（这样就减小了页表占用内存的大小）；但是因为删除了无效页表项，导致页表中的逻辑页号不再连续，这将增大查找的时间代价，并且这种代价我们是不能接受的（具体论证见书P167）</p>
 <p><img src="/images/image-20220927083304842.png" srcset="/img/loading.gif" lazyload></p>
 <p>总结一下现在的问题：设计页表，使其既不存储无效页表项，又能保证页表中的逻辑页号连续；</p>
-<blockquote>
-<p>多级页表</p>
-</blockquote>
-<p>多级页表的思想与书本的主目录非常相似</p>
+<h3 id="3-1-多级页表"><a href="#3-1-多级页表" class="headerlink" title="3.1 多级页表"></a>3.1 多级页表</h3><p>多级页表的思想与书本的主目录非常相似</p>
 <p><img src="/images/image-20220927090004435.png" srcset="/img/loading.gif" lazyload></p>
 <p>上图中的节目录对应页表（每一小节对应一个页表项），多级页表是在页表的基础上建立一个高层结构，通常称为页目录（多级页表的基本思想就是构造一个页表的页表，每一章对应一个页表）；</p>
 <p>两级页表结构及其地址转换过程如下所示</p>
@@ -1422,12 +1419,120 @@
 <p>A：单级页表存在的最大问题就是操作系统为每个进程分配了固定大小的空间作为页表，并且这个页表必须包括所有的页表项（因为OS不知道进程到底会访问哪些页表项），这就意味着操作系统不能实现按需分配页表空间；</p>
 <p>而多级页表可以在使用时根据内存的占用为进程分配页表空间，实现动态按需分配而不是预先全部分配；</p>
 <hr>
+<h3 id="3-2-Cache"><a href="#3-2-Cache" class="headerlink" title="3.2 Cache"></a>3.2 Cache</h3><p>尽管引入多级页表的页目录后，降低了存储页表造成的空间代价，但取而代之的是加长了地址的转换时间（简单来看地址的转换效率降低了50%）；这里我们自然而然的想到将一些常用的逻辑页映射关系记录下来，具体是记录在Cache寄存器中，这样能够一定程度上加快地址转换；</p>
+<p>计组中已经介绍过Cache，现在我们再次复习一遍；</p>
+<h4 id="3-2-1-基本概念"><a href="#3-2-1-基本概念" class="headerlink" title="3.2.1 基本概念"></a>3.2.1 基本概念</h4><p>Cache出现的前提是因为CPU和内存之间的速度差异，在Cache之前有诸如双端口RAM、多模块存储器这些特殊结构的存储器，但是采用存储体结构上的优化速度仍然匹配不上CPU，所以考虑直接优化存储元，引入了局部性原理的Cache层次化设计；</p>
+<p>CPU与Cache&#x2F;主存之间交换数据以字为单位，Cache与主存之间交换数据以块（多个字）为单位，Cache基于局部性原理：</p>
+<ul>
+<li><p>空间局部性：访问顺序与存放顺序是一致的；</p>
+</li>
+<li><p>时间局部性：访问过的元素再次访问则时间局部性好；</p>
+</li>
+</ul>
+<p>下面我们介绍几个重要的知识点：</p>
 <blockquote>
-<p>快表</p>
+<p>命中率：设一个程序执行期间Cache的总命中次数为Nc，访问主存的次数为Nm，则命中率H为</p>
 </blockquote>
-<p>注意虽然快表和多级页表都是表，但是两个根本不是一个层次的概念（快表是个硬件！），计组中说到利用Cache可以更加告诉的进行地址转换，因此借助硬件电路TLB(变换旁查缓冲器)“快表”可以实现；</p>
-<p>快表会缓存常用的逻辑页映射，引入快表的地址转换过程为：先查快表，如果未命中则查找页目录表、页表、找到物理页框号并更新快表；若命中则能够快速的获得物理页框号；</p>
-<h2 id="4-虚拟内存"><a href="#4-虚拟内存" class="headerlink" title="4.虚拟内存"></a>4.虚拟内存</h2><p>现在我们终于到了这小节了，前面分段和分页的概念极其绕，以至于我们花费大量时间来整介绍、辨析这两个概念以及相关知识点，这个小节我们正式将两者作为主角同时讨论；</p>
+<p>$$<br>H&#x3D;Nc&#x2F;(Nc+Nm)<br>$$</p>
+<blockquote>
+<p>缺失率&#x3D;1-命中率</p>
+</blockquote>
+<blockquote>
+<p>Cache-主存系统平均访问时间Ta：假设命中率为H，tc为命中时Cache的访问时间，tm为未命中时的访问时间</p>
+</blockquote>
+<p>——访问时间指的是CPU访问存储单元的时间（一般认为存取周期等于访问时间）<br>——Cache和主存同时被访问&#x2F;先访问Cache未命中时再访问主存这两种方式，tc相同而tm不同<br>$$<br>Ta&#x3D;H*tc+(1-H)*tm<br>$$</p>
+<p>假设已知命中时间tc，未命中时间tm，平均访问时间Ta,则<br>$$<br>系统效率&#x3D;tc&#x2F;Ta<br>$$</p>
+<p>$$<br>不使用Cache时间&#x2F;使用Cache时间&#x3D;性能提升&#x3D;tm&#x2F;Ta<br>$$</p>
+<h4 id="3-2-2-地址映射"><a href="#3-2-2-地址映射" class="headerlink" title="3.2.2 地址映射"></a>3.2.2 地址映射</h4><ul>
+<li><p>地址映射：把主存地址空间映射到Cache地址空间，也就是将主存中的信息按照某种映射关系装入Cache中；</p>
+</li>
+<li><p>地址变换：在信息按上述映射关系装入Cache后，CPU执行程序时，会将程序中的主存地址变换成Cache地址；</p>
+</li>
+</ul>
+<h5 id="（1）直接映射"><a href="#（1）直接映射" class="headerlink" title="（1）直接映射"></a>（1）直接映射</h5><p>地址映射规则：将主存分区，每个区域内的主存块数与Cache内的块数相同；</p>
+<ol>
+<li><p>主存中的每一块只能映射到Cache内的固定行，规则为<br>$$<br>i&#x3D;j mod m<br>$$<br>其中i为Cache的行号，j为主存的块号，m为Cache的总块数</p>
+</li>
+<li><p>不使用替换算法，产生冲突直接替换原有内容；</p>
+</li>
+<li><p>为了在Cache中记住自己存储的数据块属于主存中的哪一个区，Cache需要额外在Cache行中设置标记字段，假设主存有256块，Cache有8块，则主存要划分32个区，Cache需要5位标记字段来标记区号，3位标记Cache行号；</p>
+</li>
+<li><p>使用直接映射，则CPU使用的内存地址结构为：<img src="/images/image-20221010162856116.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>地址变换过程为：先按照Cache行号找到Cache中的块，接着用标记字段与Cache中的区号&#x2F;标记进行比较，如果相同则命中，使用块内地址在Cache中取出需要的数据；</p>
+</li>
+</ol>
+<p><img src="/images/image-20221010162832463.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="（2）全相联映射"><a href="#（2）全相联映射" class="headerlink" title="（2）全相联映射"></a>（2）全相联映射</h5><p>地址映射规则：主存的任意一块可以映射到Cache中的任意一块</p>
+<ol>
+<li><p>主存与缓存分成相同大小的数据块。</p>
+</li>
+<li><p>主存的某一数据块可以装入缓存的任意一块空间中。</p>
+</li>
+<li><p>为了在Cache中记住自己存储的数据块来自主存中的哪一块，Cache需要额外在Cache行中设置标记字段，假设主存有2048个地址块，则Cache标记字段的位数为11位</p>
+</li>
+<li><p>假设使用全相联映射，则CPU使用的内存地址结构为：<img src="/images/image-20221010162912973.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>地址变换过程为：先按照标记找到存储主存块数据的Cache块，若找到则代表命中，接着使用块内地址在Cache块中取出需要的数据；</p>
+</li>
+</ol>
+<p><img src="/images/image-20221010162935543.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="（3）组相联映射"><a href="#（3）组相联映射" class="headerlink" title="（3）组相联映射"></a>（3）组相联映射</h5><p>地址映射规则：将主存分区，将Cache分组，要求主存的每个区的块数与Cache的组数相同（主存中一个区分为4块所以Cache中需要4组）</p>
+<p>为了在Cache中记住自己存储的数据块来自主存中的哪一个区，Cache额外增加了标记字段；</p>
+<p>假设每组有r个Cache块，则称为r路组相联；</p>
+<p><img src="/images/image-20221010162953192.png" srcset="/img/loading.gif" lazyload></p>
+<ol>
+<li>Cache组间采用直接映射（主存块存放到哪个组是固定的），组内采用全相联映射（主存块存放到组内的哪一行是灵活的）</li>
+</ol>
+<p>组间直接映射规则：<br>$$<br>Cache组号&#x3D;主存块号modcache组数<br>$$<br>2.使用组相联映射，CPU的内存地址结构为：</p>
+<p><img src="/images/image-20221010163021498.png" srcset="/img/loading.gif" lazyload></p>
+<p>​												标记：主存区号的标记    组号：Cache组的地址    块内地址：Cache中的字块内的地址</p>
+<p>3.地址变换过程：首先使用组号找到Cache中的组，然后将标记与该组所有Cache块中的区号比较，如果相同则命中，使用块内地址取出需要的数据；</p>
+<h3 id="3-3-快表TLB"><a href="#3-3-快表TLB" class="headerlink" title="3.3 快表TLB"></a>3.3 快表TLB</h3><p>（快表的知识点网上是真难找啊！！！参考文章<a target="_blank" rel="noopener" href="https://blog.csdn.net/u014174955/article/details/50920212">快表原理_csjinzhao的博客-CSDN博客</a>，<a target="_blank" rel="noopener" href="https://blog.csdn.net/lianhunqianr1/article/details/124811987?spm=1001.2101.3001.6650.7&utm_medium=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-7-124811987-blog-50920212.pc_relevant_3mothn_strategy_recovery&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-7-124811987-blog-50920212.pc_relevant_3mothn_strategy_recovery&utm_relevant_index=8">深入理解TLB原理_极客重生的博客-CSDN博客</a>）</p>
+<p>上面我们介绍了Cache，但是实际上常用的逻辑页不会是连续的，且常用的逻辑页不会很少（这意味着Cache中往往缓存了几百个映射关系），使用基于Cache的传统比较查找方法效率将会很低，无法起到提高效率的作用，因此我们引出了借助硬件电路设计来实现对Cache的查找，我们将这种硬件电路称为快表（简单理解的话就是快表是专门针对页表的Cache，所以其效率比普通Cache要高（具体原因我这里猜测是因为不同的组织方式有关系））；</p>
+<p>注意虽然快表和页表都是表，但是两个根本不是一个层次的概念（快表是个硬件！）；快表是一种特殊的Cache，内容是页表中的一部分或全部内容，在OS中引入快表是为了加快地址映射的速度；快表就是将页表存在Cache中，慢表表示将页表存在内存上；</p>
+<p>快表会缓存常用的逻辑页映射（虚拟地址&lt;-&gt;逻辑地址），引入快表的地址转换过程为：先查快表，若命中hit则能够快速的获得物理页框号；如果未命中则查找页目录表、页表、找到物理页框号并更新快表；</p>
+<p>快表、CPU以及Cache的速度比较大致如下</p>
+<p><img src="/images/image-20221010165631348.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>TLB表项映射</p>
+</blockquote>
+<p>TLB中存放的基本单位是页表条目（虚拟页表项），对应RAM中存放的页表条目（物理页框）；页表条目大小不变，但是RAM不可能与TLB一一对应（因为TLB始终容量有限）；</p>
+<p>CPU收到一个线性地址需要做如下判断：</p>
+<ul>
+<li>所需的页表条目否已经缓存在TLB内部（TLB miss或者TLB hit）；</li>
+<li>所需的页表条目对应TLB的哪个条目；</li>
+</ul>
+<p>为了减少CPU做出上述判断的时间，所以必须在TLB页表条目和内存页表条目之间的对应方式下功夫，而实际上对应方式也就是Cache和主存之间的映射方式（因为快表就是一种特殊的Cache，本质上也是Cache）：</p>
+<ul>
+<li>全相联映射；</li>
+<li>直接映射；</li>
+<li>组相联；</li>
+</ul>
+<blockquote>
+<p>TLB表项更新</p>
+</blockquote>
+<p>TLB表项更新可以有TLB硬件自动发起，也可以有软件主动更新</p>
+<ol>
+<li><p>TLB miss发生后，CPU从RAM获取页表项，会自动更新TLB表项</p>
+</li>
+<li><p>TLB中的表项在某些情况下是无效的，比如进程切换，更改内核页表等，此时CPU硬件不知道哪些TLB表项是无效的，只能由软件在这些场景下，刷新TLB。在linux kernel软件层，提供了丰富的TLB表项刷新方法，但是不同的体系结构提供的硬件接口不同。比如x86_32仅提供了两种硬件接口来刷新TLB表项：</p>
+<ul>
+<li><p>向cr3寄存器写入值时，会导致处理器自动刷新非全局页的TLB表项；</p>
+</li>
+<li><p>在Pentium Pro以后，invlpg汇编指令用来无效指定线性地址的单个TLB表项无效；</p>
+</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>TLB Shootdown</p>
+</blockquote>
+<p>文章参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/u012489236/article/details/104117002">linux内存管理笔记(三）—-TLB_奇小葩的博客-CSDN博客</a>以及Stack Overflow<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/3748384/what-is-tlb-shootdown">caching - What is TLB shootdown? - Stack Overflow</a></p>
+<p>TLB 条目需要始终与其各自的页表条目同步，现在，TLB是每核缓存，即每个核心都有自己的 TLB，每当页表条目被任何内核修改时，该特定 TLB 条目在所有内核中都会失效，此过程称为 TLB 击落；</p>
+<p>简单来说，一个处理器导致 TLB 在其他处理器上刷新（当处理器更改地址的虚拟到物理映射时，它需要告诉其他处理器在其缓存中使该映射失效）的操作就是所谓的 TLB 击落；</p>
+<p>TLB刷新可以由各种虚拟内存操作触发，这些操作会更改页表条目，如页面迁移，释放页面等；</p>
+<h2 id="4-虚拟内存"><a href="#4-虚拟内存" class="headerlink" title="4.虚拟内存"></a>4.虚拟内存</h2><p>现在我们终于到了这小节了，前面分段和分页的概念极其烧脑，以至于我们花费大量时间来整介绍、辨析这两个概念以及相关知识点，这个小节我们正式将两者作为主角同时讨论；</p>
 <p>不知道在学习分页和分段的时候大家脑子里有没有这样一个问题“这两概念看起来和操作系统没啥关系啊？”，而事实的确是这样，程序用户想要分段，物理内存想要分页；那么能不能将分段和分页结合在一起？这就是操作系统大显身手的时候了 —— 操作系统通过在用户和硬件之间加一个中间结构（中间层这个概念真的是计算机界的万精油），我们将这个数据结构称为虚拟内存，正是虚拟内存这个抽象将分段机制和分页机制有机地结合；</p>
 <p>现在结合虚拟内存来回答之前的两个问题：</p>
 <ul>
