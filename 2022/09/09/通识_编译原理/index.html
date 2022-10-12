@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/compile.jpg">
 <meta property="article:published_time" content="2022-09-09T01:50:00.000Z">
-<meta property="article:modified_time" content="2022-10-08T01:46:31.276Z">
+<meta property="article:modified_time" content="2022-10-12T12:05:10.351Z">
 <meta property="article:author" content="YangZaiyan">
 <meta property="article:tag" content="课程学习">
 <meta property="article:tag" content="计算机基础">
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          16k 字
+          20k 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          134 分钟
+          166 分钟
         
       </span>
     
@@ -481,7 +481,7 @@
 <ul>
 <li>词法分析程序作为独立的一遍：经过这一遍的加工，可以将以字符串表示的源程序转换成以记号序列表示的源程序；</li>
 </ul>
-<p><img src="/images/image-20220916095929798-16632936138612.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221012200500254.png" srcset="/img/loading.gif" lazyload></p>
 <ul>
 <li>词法分析程序作为语法分析程序的子程序：将词法分析程序和语法分析程序安排在同一遍中，词法分析程序作为语法分析程序的一个子程序，每当语法分析程序需要一个新的记号时就调用词法分析程序，每调用一次，词法分析程序就从源程序字符串中识别出一个具有独立意义的单词，并把相应的记号返回。这种方法不仅避免了中间文件，而且还省去了取送符号的工作，有利于提高编译程序的效率；</li>
 </ul>
@@ -548,7 +548,7 @@
 <li>若记号所代表的单词不唯一，如表3-1中的记号relop，则需要给出属性；</li>
 <li>若将所有的关键字归为一类，则对某一关键字的输出，除了类别编码外，还应该指出它在关键字表中的位置；</li>
 </ul>
-<p><img src="/images/image-20220916111308192-16632986586677.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221012145504703.png" srcset="/img/loading.gif" lazyload></p>
 <h2 id="3-记号的描述和识别"><a href="#3-记号的描述和识别" class="headerlink" title="3.记号的描述和识别"></a>3.记号的描述和识别</h2><blockquote>
 <p>结论1：识别单词是按照记号的模式进行，一种记号的模式匹配一类单词的集合；</p>
 </blockquote>
@@ -558,7 +558,8 @@
 <li>用正规文法描述，则易于识别；</li>
 </ul>
 <p>通常，先用正规表达式来描述单词符号的结构，然后根据需要，把正规表达式转换为等价的正规文法，正规定义式为这种转换提供了条件（这部分实际就是上学期形式语言与自动机的内容，这部分书上讲的非常混乱不建议阅读）；</p>
-<h2 id="4-词法分析程序的设计与实现"><a href="#4-词法分析程序的设计与实现" class="headerlink" title="4.词法分析程序的设计与实现"></a>4.词法分析程序的设计与实现</h2><p>主要步骤如下（书本P65详细实现了一个词法分析程序，可供参考）：</p>
+<h2 id="4-词法分析程序的设计与实现"><a href="#4-词法分析程序的设计与实现" class="headerlink" title="4.词法分析程序的设计与实现"></a>4.词法分析程序的设计与实现</h2><h3 id="4-1-词法分析程序的设计"><a href="#4-1-词法分析程序的设计" class="headerlink" title="4.1 词法分析程序的设计"></a>4.1 词法分析程序的设计</h3><p>实现一个词法分析程序的大致流程为给出描述该语言各种单词符号的词法规则，接着构造它的状态转换图，最后根据状态转换图构造词法分析程序</p>
+<p>主要步骤如下（书本P65详细实现了一个词法分析程序，可供参考）：</p>
 <ul>
 <li>首先给出描述该语言各种单词符号（记号）的词法规则</li>
 </ul>
@@ -574,9 +575,51 @@
 <ul>
 <li>最后根据状态转换图构造词法分析程序：有了状态转换图，只要把语义动作进一步添加到状态转换图中，使每一个状态都对应一小段程序，就可以构造出相应的词法分析程序；</li>
 </ul>
+<p>“使每一个状态对应一小段程序”这句话是什么意思呢？我们举例说明：</p>
+<ul>
+<li><p>在开始状态，首先要读进一个字符。若读入的字符是一个空格（包括blank、tab、enter）就跳过它，继续读字符，直到读进一个非空字符为止。接下来的工作就是根据所读进的非空字符转相应的程序段进行处理；</p>
+</li>
+<li><p>在标识符状态，识别并组合出一个标识符之后，还必须加入一些动作，如查关键字表，以确定识别出的单词符号是关键字还是用户自定义标识符，并输出相应的记号；</p>
+</li>
+<li><p>在无符号数状态，可识别出各种常数，包括整数、小数和无符号数。在组合常数的同时，还要进行从字符串到数字的转换；</p>
+</li>
+<li><p>在“&lt;”状态，若读进的下一个字符是“&#x3D;”，则输出关系运算符“&lt;&#x3D;”；若读进的下个字符是“&gt;”，则输出关系运算符“&lt;&gt;”；否则输出关系运算符“&lt;”；</p>
+</li>
+<li><p>在“&#x2F;”状态，若读进的下一个字符是“ * ”，则进入注释处理状态，词法分析程序要做的工作是跳过注释，具体做法就是不断地读字符，直到遇到“ * &#x2F; ”为止，然后转开始状态，继续识别和分析下一个单词；若读进的下一个字符不是“*”，则输出斜杠“&#x2F;”；</p>
+</li>
+<li><p>在“:”状态，若读进的下一个字符是“&#x3D;”，则输出赋值号“:&#x3D;”；否则，输出冒号“:”；</p>
+</li>
+<li><p>在其他算术运算符和标点符号状态，只需输出其相应的记号即可；</p>
+</li>
+<li><p>若进入错误处理状态，表示词法分析程序从源程序中读入了一个不合法的字符。所谓不合法的字符是指该语言不包括以此字符开头的单词符号。词法分析程序发现不合法字符时，要做错误处理，其主要工作是显示或打印错误信息，并跳过这个字符，然后转开始状态继续识别和分析下一个单词符号；</p>
+</li>
+</ul>
 <blockquote>
 <p>注意一点，在词法分析过程中，为了判断是否已经读到单词符号的右端字符，有时需要向前多读入一个字符，比如在标识符状态和无符号数状态，因此词法分析程序在返回调用程序之前，应将向前指针后退一个字符；</p>
 </blockquote>
+<h3 id="4-2-词法分析程序的实现"><a href="#4-2-词法分析程序的实现" class="headerlink" title="4.2 词法分析程序的实现"></a>4.2 词法分析程序的实现</h3><h4 id="4-2-1-定义输出形式"><a href="#4-2-1-定义输出形式" class="headerlink" title="4.2.1 定义输出形式"></a>4.2.1 定义输出形式</h4><p>假设我们的词法分析程序使用的是下面的翻译表，那么在分离出一个单词之后，对识别出的记号以二元形式输出，记为&lt;记号，属性&gt;；（我们观察这个表还能发现这个语言只有3个关键字，分别是if、then和else，且这三个关键字各自是一类，因此相应记号就唯一的代表了一个关键字，不再需要属性标识）</p>
+<p><img src="/images/image-20221012151022245.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="4-2-2-定义全局变量和过程"><a href="#4-2-2-定义全局变量和过程" class="headerlink" title="4.2.2 定义全局变量和过程"></a>4.2.2 定义全局变量和过程</h4><p>词法分析程序的规模大小一般和状态转换图中的状态数和边数和成正比：</p>
+<ul>
+<li>对转换图中的每一个状态分别用一段程序实现<ul>
+<li>若某状态有若干条射出边，则程序段首先读入一个字符，根据读到的字符，程序控制转去执行下一个状态对应的语句序列</li>
+</ul>
+</li>
+</ul>
+<p>现在回到正题，程序中使用的一些全局变量和需要调用的函数&#x2F;过程如下（基于上述例子）：</p>
+<p><img src="/images/image-20221012153329352.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221012153349156.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<blockquote>
+<p>Q：过程和函数的区别？</p>
+</blockquote>
+<p>A：实际上程序的子程序分为两种，过程和函数，函数是有参数有返回值的（函数的定义就是从一个非空集合到另一个非空集合的映射），除了函数以外其他的子程序都被称为过程；（过程这个概念在数据库中使用的比较多，编程语言中应该是只有函数这一种子程序）</p>
+<hr>
+<h4 id="4-2-3-程序框架"><a href="#4-2-3-程序框架" class="headerlink" title="4.2.3 程序框架"></a>4.2.3 程序框架</h4><p>这里使用伪代码的方式给出大致的词法分析程序的主体框架</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><code class="hljs C">state=<span class="hljs-number">0</span>;															   <span class="hljs-comment">//初始状态，状态码设置为0</span><br>DO&#123;<br>    SWITCH(state)&#123;<br>        CASE <span class="hljs-number">0</span>:														    <span class="hljs-comment">//初始状态													</span><br>            token=<span class="hljs-string">&quot;;  												 	//token字符数组，存放当前正在识别的单词字符串，因为刚开始什么都没有所以只存储了开始的&quot;</span>符号<br>            get_char（）；												   <span class="hljs-comment">//get_char过程，每调用一次，根据向前指针forward的指示从输入缓冲区中读一个字符，并把它放入变量C中，然后移动forward，使之指向下一个字符</span><br>            get_nbc（）；												   <span class="hljs-comment">//get_nbc过程，每次调用时，检查C中的字符是否为空格，若是，则反复调用过程get_char，直到C中进人一个非空字符为止</span><br>            SWITCH（C）&#123;												    <span class="hljs-comment">//字符变量C，用于存放当前读入的字符</span><br>                 CASE<span class="hljs-number">&#x27;</span>a<span class="hljs-number">&#x27;</span>：state=<span class="hljs-number">1</span>；<span class="hljs-keyword">break</span>；<br>                 CASE<span class="hljs-number">&#x27;b</span><span class="hljs-number">&#x27;</span>：state=<span class="hljs-number">1</span>；<span class="hljs-keyword">break</span>；<br>                 ...<br>                 CASE<span class="hljs-number">&#x27;</span>z<span class="hljs-number">&#x27;</span>：state=<span class="hljs-number">1</span>；<span class="hljs-keyword">break</span>；									<span class="hljs-comment">//设置标识符的状态</span><br>                 CASE<span class="hljs-number">&#x27;0&#x27;</span>：state=<span class="hljs-number">2</span>；<span class="hljs-keyword">break</span>；<br>                 CASE<span class="hljs-number">&#x27;1&#x27;</span>：state=<span class="hljs-number">2</span>；<span class="hljs-keyword">break</span>；<br>                 ...<br>                 CASE<span class="hljs-number">&#x27;9&#x27;</span>：state=<span class="hljs-number">2</span>；<span class="hljs-keyword">break</span>；								    <span class="hljs-comment">//设置常数符状态</span><br>                 CASE<span class="hljs-number">&#x27;</span>&lt;<span class="hljs-string">&#x27;：state=8；break；									//设置&#x27;</span>&lt;<span class="hljs-string">&#x27;符状态</span><br><span class="hljs-string">                 CASE&#x27;</span>&gt;<span class="hljs-string">&#x27;：state=9；break；									//设置&#x27;</span>&gt;<span class="hljs-string">&#x27;符状态</span><br><span class="hljs-string">                 CASE&#x27;</span>:<span class="hljs-string">&#x27;：state=10；break；								//设置&#x27;</span>:<span class="hljs-string">&#x27;符状态</span><br><span class="hljs-string">                 CASE&#x27;</span>/<span class="hljs-string">&#x27;：state=11；break；								//设置&#x27;</span>/<span class="hljs-string">&#x27;符状态</span><br><span class="hljs-string">                 CASE&#x27;</span>=<span class="hljs-string">&#x27;：state=O；return（relop，EQ）；break；			  //返回&#x27;</span>=<span class="hljs-string">&#x27;的记号，并回到初始状态	</span><br><span class="hljs-string">                 CASE&#x27;</span>+<span class="hljs-string">&#x27;：state=0；return（&#x27;</span>+<span class="hljs-string">&#x27;，-）；break；				  //返回&#x27;</span>+<span class="hljs-string">&#x27;的记号</span><br><span class="hljs-string">                 CASE&#x27;</span>-<span class="hljs-string">&#x27;：state= O；return（&#x27;</span>-<span class="hljs-string">&#x27;，-）：break；				  //返回&#x27;</span>-<span class="hljs-string">&#x27;的记号</span><br><span class="hljs-string">                 CASE&#x27;</span>*<span class="hljs-string">&#x27;：state= O；return（&#x27;</span>*<span class="hljs-string">&#x27;，-）；break；				  //返回&#x27;</span>*<span class="hljs-string">&#x27;的记号</span><br><span class="hljs-string">                 CASE&#x27;</span>（<span class="hljs-string">&#x27;：state=0；return（&#x27;</span>（<span class="hljs-string">&#x27;，-）：break；   			//返回&#x27;</span>（<span class="hljs-string">&#x27;的记号</span><br><span class="hljs-string">                 CASE&#x27;</span>）<span class="hljs-string">&#x27;：state=0；return（&#x27;</span>）<span class="hljs-string">&#x27;，-）；break；				//返回&#x27;</span>）<span class="hljs-string">&#x27;的记号</span><br><span class="hljs-string">                 CASE&#x27;</span>；<span class="hljs-string">&#x27;：state=0；return（&#x27;</span>：<span class="hljs-string">&#x27;，-）：break；				//返回&#x27;</span>;<span class="hljs-string">&#x27;的记号</span><br><span class="hljs-string">                CASE&#x27;</span>\<span class="hljs-string">&#x27;&#x27;：state=0；return（&#x27;</span>\<span class="hljs-string">&#x27;&#x27;，-）；break；				  //返回&quot;的记号</span><br><span class="hljs-string">                 default：state=13；break；							   //设置错误状态</span><br><span class="hljs-string">            &#125;</span><br><span class="hljs-string">	   break；</span><br><span class="hljs-string">       CASE 1：														//标识符状态（注意这里标识符是有可能包含关键字的需要判断）</span><br><span class="hljs-string">           cat（）；												   //将C中的字符连接在token中的字符串后面</span><br><span class="hljs-string">           get_char（）；											   //get_char过程，每调用一次，根据向前指针forward的指示从输入缓冲区中读一个字符，并把它放入变量C中，然后移动forward，使之指向下一个字符</span><br><span class="hljs-string">           IF（letter（）|| digit（））								   //letter函数和digit函数，分别判断C中的字符是否是字符或数字，若是则返回ture</span><br><span class="hljs-string">           		state=1；											  //如果已经不是字符或数字，代表很有可能一个单词已经结束，此时对token中的单词进行判断</span><br><span class="hljs-string">           ELSE&#123;</span><br><span class="hljs-string">               retract（）；											    //前向指针forward后退一个字符</span><br><span class="hljs-string">               state=0；</span><br><span class="hljs-string">               iskey=reserve（）；											//根据token中的单词查询关键字表，若token中的是关键字则返回该关键字的记号，否则返回-1</span><br><span class="hljs-string">              IF（iskey！=-1）</span><br><span class="hljs-string">                   return（iskey，-）；							 		   //1.如果识别出的是关键字，则返回该关键字的记号（这里没有返回属性是因为只有三个关键字）</span><br><span class="hljs-string">              ELSE&#123;														//2.如果识别出的是用户自定义标识符，将识别出来的用户自定义标识符（即token中的单词）插人符号表，返回该单词在符号表中的位置指针，即返回该标识符在符号表的入口指针</span><br><span class="hljs-string">                identry=table_insert（）；									</span><br><span class="hljs-string">                return（ID，identry）；										//return二元组（ID,identry）</span><br><span class="hljs-string">               &#125;;</span><br><span class="hljs-string">           &#125;;</span><br><span class="hljs-string">	   break；</span><br><span class="hljs-string">       CASE 2：														  //常数状态</span><br><span class="hljs-string">           cat（）；</span><br><span class="hljs-string">		  get_char（）；</span><br><span class="hljs-string">           SWITCH（C）&#123;</span><br><span class="hljs-string">		  CASE&#x27;</span><span class="hljs-number">0&#x27;</span>：state= <span class="hljs-number">2</span>；<span class="hljs-keyword">break</span>；<br>           CASE<span class="hljs-number">&#x27;1&#x27;</span>：state= <span class="hljs-number">2</span>；<span class="hljs-keyword">break</span>；<br>		  ...<br>		  CASE<span class="hljs-number">&#x27;9&#x27;</span>：state= <span class="hljs-number">2</span>；<span class="hljs-keyword">break</span>；<br>          CASE<span class="hljs-number">&#x27;.&#x27;</span>：state=<span class="hljs-number">3</span>；<span class="hljs-keyword">break</span>；<br>          CASE<span class="hljs-number">&#x27;E&#x27;</span>：state=<span class="hljs-number">5</span>；<span class="hljs-keyword">break</span>；<br>          DEFAULT:													   <span class="hljs-comment">//如果token后面已经不跟着数字或者小数点或者E，则表示已经是一个整常数，此时可以进行处理</span><br>			retract（）；												<span class="hljs-comment">//前向指针forward后退一个字符</span><br>             state=<span class="hljs-number">0</span>；<br>             <span class="hljs-keyword">return</span>（NUM，SToI（token））；								<span class="hljs-comment">//返回整数</span><br>             <span class="hljs-keyword">break</span>；<br>       &#125;；<br>       <span class="hljs-keyword">break</span>；<br>      ...														       <span class="hljs-comment">//之后就是各种上面列举的状态的处理，我们就不再赘述   </span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
 <h2 id="5-LEX软件"><a href="#5-LEX软件" class="headerlink" title="5.LEX软件"></a>5.LEX软件</h2><p>LEX全称为LEXical compiler的缩写，主要功能是根据LEX源程序生成一个C语言描述的词法分析程序：</p>
 <ul>
 <li>LEX源程序是词法分析程序的规格说明文件；</li>

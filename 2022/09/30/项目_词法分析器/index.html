@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/project.png">
 <meta property="article:published_time" content="2022-09-30T09:13:00.000Z">
-<meta property="article:modified_time" content="2022-10-04T10:27:53.775Z">
+<meta property="article:modified_time" content="2022-10-12T09:23:15.991Z">
 <meta property="article:author" content="YangZaiyan">
 <meta property="article:tag" content="编译原理">
 <meta name="twitter:card" content="summary_large_image">
@@ -221,7 +221,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          543 字
+          1.4k 字
         
       </span>
     
@@ -232,7 +232,7 @@
         
         
         
-          5 分钟
+          12 分钟
         
       </span>
     
@@ -274,28 +274,70 @@
             
             <div class="markdown-body">
               
-              <h1 id="绪论"><a href="#绪论" class="headerlink" title="绪论"></a>绪论</h1><p>题目：词法分析程序的设计与实现。</p>
+              <h1 id="绪论"><a href="#绪论" class="headerlink" title="绪论"></a>绪论</h1><blockquote>
+<p>实验题目：词法分析程序的设计与实现。</p>
+</blockquote>
+<blockquote>
 <p>实验内容：设计并实现C语言的词法分析程序，要求实现如下功能：</p>
+</blockquote>
 <p>（1）可以识别出用C语言编写的源程序中的每个单词符号，并以记号的形式输出每个单词符号；</p>
 <p>（2）可以识别并跳过源程序中的注释；</p>
 <p>（3）可以统计源程序中的语句行数、各类单词的个数、以及字符总数，并输出统计结果；</p>
 <p>（4）检查源程序中存在的词法错误，并报告错误所在的位置；</p>
 <p>（5）对源程序中出现的错误进行适当的回复，使词法分析可以继续进行，对源程序进行一次扫描，即可检查并报告源程序中存在的所有词法错误；</p>
+<blockquote>
 <p>实现要求：可以选择以下两种方案中的一种实现：</p>
+</blockquote>
 <ul>
 <li><p>方法1：采用编程语言，手工编写词法分析程序；</p>
 </li>
 <li><p>方法2：基于LEX，自动生成词法分析程序；</p>
 </li>
 </ul>
+<blockquote>
 <p>实验报告：按照实验报告要求，对实现的词法分析器进行说明；</p>
+</blockquote>
+<blockquote>
+<p>实验环境：源码的作者使用的是64位的Linux环境，但是实测验证发现64位的Windows11同样可以执行，为了实验的方便，我们采用直接在Windows环境下进行开发测试（虚拟机的Linux环境真的太难弄了，每次切换文件啥的真的会疯掉…）</p>
+</blockquote>
+<p>以下是我们在开发过程中的过程图</p>
+<p><img src="/images/image-20221012144356100.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221012144442740.png" srcset="/img/loading.gif" lazyload></p>
 <hr>
 <p>关于参考资料，我来说说我的看法：</p>
 <ul>
 <li>源码2本身存在问题，而且给出来的exe程序也有问题，我们直接pass了，然后因为网上关于这方面的介绍特别少，所以只剩下源码1可以选择；</li>
-<li>源码1分为C++实现和LEX实现，因为LEX实现过于不同常人所以直接pass，经过测试C++实现的代码也非常简洁，只有五个，并且build生成的exe可以正确的完美的完成老师的要求，所以接下来直接看源码慢慢啃就OK了（可以结合书或者网上资料一起啃）；</li>
+<li>源码1分为C++实现和LEX实现，因为LEX实现过于不同常人所以直接pass，经过测试C++实现的代码也非常简洁，只有五个，并且build生成的exe可以正确的完美的完成老师的要求，所以接下来直接看源码慢慢啃就OK了（可以结合书或者网上资料一起啃），源码1的参考链接<a target="_blank" rel="noopener" href="https://github.com/gkkeys/alex">gkkeys&#x2F;alex: The Agile Lexical Analyzer for C (github.com)</a>；（分析方法，先把各个功能函数的功能记录下来，完整的过一遍流程之后再详细理解每一个功能函数的意义）</li>
 </ul>
+<p>源码1的目录结构：</p>
+<p><img src="/images/image-20221012143025688.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>def文件夹是一些集合定义，实际编译过程中不引进也没有任何影响，可以放在最后看；</li>
+<li>flex文件夹是LEX编译程序生成的词法分析程序，因为咱们不采用这种方式所以这个也pass掉；</li>
+<li>graph文件夹中写Readme文档所用的图片；</li>
+<li>test文件夹中是我们会用到的测试程序，分为没有词法错误的程序test1.c和有词法错误的程序test2.c</li>
+</ul>
+<p>其余五个文件就是核心文件：</p>
+<p>├── alex.cpp            主程序<br>├── lexer.cpp           语法分析类实现<br>├── token.cpp           标记类实现<br>├── lexer.h             语法分析类声明<br>├── token.h             标记类声明</p>
 <hr>
+<p>好了，介绍完基本的结构之后我们可以开始正式开发一个基于C++的C语言词法分析器了；</p>
+<h1 id="一、词法分析程序的实现"><a href="#一、词法分析程序的实现" class="headerlink" title="一、词法分析程序的实现"></a>一、词法分析程序的实现</h1><h2 id="1-理论知识"><a href="#1-理论知识" class="headerlink" title="1.理论知识"></a>1.理论知识</h2><p>参考<a href="https://gintoki-jpg.github.io/2022/09/09/%E9%80%9A%E8%AF%86_%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/#4-%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90%E7%A8%8B%E5%BA%8F%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0">编译原理 - Tintoki_blog (gintoki-jpg.github.io)</a></p>
+<p>其实这部分读不懂也没关系，只需要好好阅读代码即可；</p>
+<h2 id="2-数据结构设计"><a href="#2-数据结构设计" class="headerlink" title="2.数据结构设计"></a>2.数据结构设计</h2><p>C语言中的Token主要有以下几类：</p>
+<ul>
+<li>Keyword: 关键词。C中的保留字。</li>
+<li>Identifier: 标识符。变量名或函数名。</li>
+<li>Numerical_Constant: 数值常量。</li>
+<li>Char_Constant: 字符常量。如<code>&#39;a&#39;</code>。</li>
+<li>String_Literal: 字符串常量。如<code>&quot;bupt\n&quot;</code>。</li>
+<li>Punctuator: 运算符。</li>
+<li>Error: 异常Token。</li>
+</ul>
+<p>词法分析程序定义了两个类：</p>
+<ul>
+<li>Lexer类：实现词法分析器；</li>
+<li>Token类：产生标识对象；</li>
+</ul>
 
               
             </div>
