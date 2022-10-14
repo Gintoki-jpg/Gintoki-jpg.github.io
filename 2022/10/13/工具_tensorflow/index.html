@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/TOOLS.PNG">
 <meta property="article:published_time" content="2022-10-13T01:34:00.000Z">
-<meta property="article:modified_time" content="2022-10-13T10:20:41.398Z">
+<meta property="article:modified_time" content="2022-10-14T01:48:20.843Z">
 <meta property="article:author" content="YangZaiyan">
 <meta property="article:tag" content="机器学习">
 <meta property="article:tag" content="python">
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          7.8k 字
+          13k 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          65 分钟
+          112 分钟
         
       </span>
     
@@ -278,7 +278,7 @@
               <p>关于tensorflow版本的问题，参考[(1条消息) <a target="_blank" rel="noopener" href="https://blog.csdn.net/HiWangWenBing/article/details/119547495">TensorFlow系列-3]：初学者是选择Tensorflow2.x还是1.x? 2.x与1.x的主要区别？_文火冰糖的硅基工坊的博客-CSDN博客_tensorflow2和1哪个好</a>，现在默认安装的基本上都是2.x，但是在实际很多教学的课程中使用的都是1.x的版本（这一点从大多数教程还坚持使用session可以看出），如果要安装低版本的tensorflow使用如下命令</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">pip install tensorflow==1.14<br></code></pre></td></tr></table></figure>
 
-<p>这里给出的建议是主要学习tensorflow2.x，间接性学习1.x，因为2.x是在2019年推出（在这个时间点之前的关于tensorflow的学习资料全是1.x的，注意辨别），同时舍去了大量1.x中的复杂概念如session、graph等，但是现在网上大量的参考资料还是使用的1.x的书写方式，所以对于1.x还是要有一定了解；因为tensorflow在网上系统的参考资料也不是特别多，所以简单罗列了一些使用的参考，其他的比较细节的知识点推荐直接Google自查；（当然关于python使用的3.x版本这是毋庸置疑的）</p>
+<p>这里给出的建议是主要学习tensorflow2.x，间接性学习1.x，因为2.x是在2019年推出（在这个时间点之前的关于tensorflow的学习资料全是1.x的，注意辨别），同时舍去了大量1.x中的复杂概念如session、graph等，并且最重要的一点是1.x已经快停止更新了（这就好比你非得去学习python2.x一样，没有太大实用意义），但是现在网上大量的参考资料还是使用的1.x的书写方式，所以对于1.x还是要有一定了解；因为tensorflow在网上系统的参考资料也不是特别多，所以简单罗列了一些使用的参考，其他的比较细节的知识点推荐直接Google自查；（当然关于python使用的3.x版本这是毋庸置疑的）</p>
 <p>还有一点要说的就是有些人说可以在2.x中使用一些诸如compat.v1的方式兼容1.x，这只是一种治标不治本的方式，而且很多概念在2.x中根本没有，推荐的方式还是直接安装一个1.x使用；</p>
 <p>参考资料：</p>
 <ul>
@@ -320,6 +320,18 @@
 <li>在执行阶段, 使用会话执行执行图中的 op.</li>
 </ul>
 <p>例如, 通常在构建阶段创建一个图来表示和训练神经网络,然后在执行阶段反复执行图中的训练 op.</p>
+<p>下面以简单的2.0+4.0的加法运算为例子，说明1.x的程序构成</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> tensorflow <span class="hljs-keyword">as</span> tf<br><span class="hljs-comment"># 1.创建计算图阶段，此处代码需要使用 tf 1.x 版本运行</span><br><span class="hljs-comment"># 创建 2 个输入端子，并指定类型和名字</span><br>a_ph = tf.placeholder(tf.float32, name=<span class="hljs-string">&#x27;variable_a&#x27;</span>)<br>b_ph = tf.placeholder(tf.float32, name=<span class="hljs-string">&#x27;variable_b&#x27;</span>)<br><span class="hljs-comment"># 创建输出端子的运算操作，并命名</span><br>c_op = tf.add(a_ph, b_ph, name=<span class="hljs-string">&#x27;variable_c&#x27;</span>)<br><br></code></pre></td></tr></table></figure>
+
+<p>上述过程仅仅只是创建计算图的阶段，简单理解就是通过符号建立c&#x3D;a+b，但是此时因为a和b还没有被赋值且需要运行公式的输出端子c才能获得c的数值结果</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 2.运行计算图阶段，此处代码需要使用 tf 1.x 版本运行</span><br><span class="hljs-comment"># 创建运行环境</span><br>sess = tf.InteractiveSession()<br><span class="hljs-comment"># 初始化步骤也需要作为操作运行</span><br>init = tf.global_variables_initializer()<br>sess.run(init) <span class="hljs-comment"># 运行初始化操作，完成初始化</span><br><span class="hljs-comment"># 运行输出端子，需要给输入端子赋值</span><br>c_numpy = sess.run(c_op, feed_dict=&#123;a_ph: <span class="hljs-number">2.</span>, b_ph: <span class="hljs-number">4.</span>&#125;)<br><span class="hljs-comment"># 运算完输出端子才能得到数值类型的 c_numpy</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;a+b=&#x27;</span>,c_numpy)<br></code></pre></td></tr></table></figure>
+
+<p>可见使用1.x进行简单的加法运算都如此复杂，更别说神经网络的搭建，这种先搭建计算图后运行的编程方式被称作<code>符号式编程</code>；</p>
+<p>我们类比一下2.x的代码，同样是计算2.0+4.0</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> tensorflow <span class="hljs-keyword">as</span> tf<br><span class="hljs-comment"># 此处代码需要使用 tf 2 版本运行</span><br><span class="hljs-comment"># 1.创建输入张量，并赋初始值</span><br>a = tf.constant(<span class="hljs-number">2.</span>)<br>b = tf.constant(<span class="hljs-number">4.</span>)<br><span class="hljs-comment"># 2.直接计算，并打印结果</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;a+b=&#x27;</span>,a+b)<br></code></pre></td></tr></table></figure>
+
+<p>这种同时创建计算图c&#x3D;a+b和数值结果6.0&#x3D;2.0+4.0的方式被称作<code>命令式编程</code>，也称为<code>动态图模式</code>；</p>
+<p>TensorFlow 2 和 PyTorch 都是采用动态图(优先)模式开发，调试方便，所见即所得。一般来说，动态图模式开发效率高，但是运行效率可能不如静态图模式。TensorFlow 2 也支持通过 tf.function 将动态图优先模式的代码转化为静态图模式，实现开发和运行效率的双赢。</p>
 <h3 id="2-1-张量"><a href="#2-1-张量" class="headerlink" title="2.1 张量"></a>2.1 张量</h3><p>Tensorflow中的所有数据都通过张量的形式来表示，张量从功能上来说可以理解为多维数组</p>
 <ul>
 <li>零阶张量表示为标量；</li>
@@ -397,7 +409,7 @@
 <blockquote>
 <p>多个操作可以通过一次Feed完成执行</p>
 </blockquote>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> tensorflow <span class="hljs-keyword">as</span> tf<br><br>a = tf.placeholder(tf.float32, name=<span class="hljs-string">&#x27;a&#x27;</span>)<br>b = tf.placeholder(tf.float32, name=<span class="hljs-string">&#x27;b&#x27;</span>)<br>c = tf.multiply(a, b, name=<span class="hljs-string">&#x27;c&#x27;</span>)<br><br>init = tf.global_variables_initializer()<br><br><span class="hljs-keyword">with</span> tf.Session() <span class="hljs-keyword">as</span> sess:<br><span class="hljs-comment">#    sess.run(init)</span><br>    <span class="hljs-comment"># 通过feed_dict的参数传值，按字典格式</span><br>    result = sess.run(c, feed_dict=&#123;a:<span class="hljs-number">10.0</span>, b:<span class="hljs-number">3.5</span>&#125;)<br>    <br><span class="hljs-built_in">print</span>(result)<br></code></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> tensorflow <span class="hljs-keyword">as</span> tf<br><br>a = tf.placeholder(tf.float32, name=<span class="hljs-string">&#x27;a&#x27;</span>)<br>b = tf.placeholder(tf.float32, name=<span class="hljs-string">&#x27;b&#x27;</span>)<br>c = tf.multiply(a, b, name=<span class="hljs-string">&#x27;c&#x27;</span>)<br><br>init = tf.global_variables_initializer()<br><br><span class="hljs-keyword">with</span> tf.Session() <span class="hljs-keyword">as</span> sess:<br>    <span class="hljs-comment"># sess.run(init)</span><br>    <span class="hljs-comment"># 通过feed_dict的参数传值，按字典格式</span><br>    result = sess.run(c, feed_dict=&#123;a:<span class="hljs-number">10.0</span>, b:<span class="hljs-number">3.5</span>&#125;)<br>    <br><span class="hljs-built_in">print</span>(result)<br></code></pre></td></tr></table></figure>
 
 <h5 id="2-fetch操作"><a href="#2-fetch操作" class="headerlink" title="(2)fetch操作"></a>(2)fetch操作</h5><p>会话运行完成之后，如果我们想查看会话运行的结果，就需要使用fetch来实现，feed、fetch一般搭配起来使用</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> tensorflow <span class="hljs-keyword">as</span> tf<br>a = tf.placeholder(tf.float32, name=<span class="hljs-string">&#x27;a&#x27;</span>)<br>b = tf.placeholder(tf.float32, name=<span class="hljs-string">&#x27;b&#x27;</span>)<br>c = tf.multiply(a, b, name=<span class="hljs-string">&#x27;c&#x27;</span>)<br>d = tf.subtract(a, b, name=<span class="hljs-string">&#x27;d&#x27;</span>)<br><span class="hljs-keyword">with</span> tf.Session() <span class="hljs-keyword">as</span> sess:<br>    <br>    <span class="hljs-comment">#返回的两个值分别赋给两个变量</span><br>    rc,rd = sess.run([c,d], feed_dict=&#123;a:[<span class="hljs-number">8.0</span>,<span class="hljs-number">2.0</span>,<span class="hljs-number">3.5</span>], b:[<span class="hljs-number">1.5</span>,<span class="hljs-number">2.0</span>,<span class="hljs-number">4.</span>]&#125;)<br>    <br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;value of c=&quot;</span>,rc,<span class="hljs-string">&quot;value of d=&quot;</span>,rd)<br></code></pre></td></tr></table></figure>
@@ -416,7 +428,72 @@
 <blockquote>
 <p>说一下为什么不非常详细的介绍tensorflow1.x的内容，一个原因是参考资料确实不多，另一个原因就是因为tensorflow1.x只是为了能够在我们copy代码的时候看得懂，实际上现在运用的比较多的代码都是使用的tensorflow2.x，所以接下来我们会将中心放在tensorflow2.x上，主要按照龙龙老师的tensorflow深度学习来进行；</p>
 </blockquote>
-<h1 id="第一章-人工智能绪论"><a href="#第一章-人工智能绪论" class="headerlink" title="第一章 人工智能绪论"></a>第一章 人工智能绪论</h1>
+<h2 id="3-深度学习框架"><a href="#3-深度学习框架" class="headerlink" title="3.深度学习框架"></a>3.深度学习框架</h2><p>人工智能的发展主要经历三个阶段：</p>
+<ul>
+<li>推理期：人们试图通过总结、归纳出一些逻辑规则，并将逻辑规则以计算机程序的方式实现，来开发出智能系统。但是这种显式的规则往往过于简单，并且很难表达复杂、抽象的概念和规则；</li>
+<li>专家系统，机器学习；</li>
+<li>神经网络，深度神经网络；</li>
+</ul>
+<p>深度学习特指基于深层神经网络实现的模型或算法；</p>
+<p>常用的深度学习算法使用的工具如下：</p>
+<ul>
+<li><p>Theano是最早的深度学习框架之一，由Yoshua Bengio 和Ian Goodfellow等人开发，是一个基于Python语言、定位底层运算的计算库，Theano同时支持GPU和CPU运算。由于Theano开发效率较低，模型编译时间较长，同时开发人员转投TensorFlow等原因，Theano目前已经停止维护；</p>
+</li>
+<li><p>Torch是一个非常优秀的科学计算库，基于较冷门的编程语言Lua开发。Torch灵活性较高，容易实现自定义网络层，这也是PyTorch继承获得的优良基因。但是由于Lua语言使用人群较少，Torch一直未能获得主流应用。</p>
+</li>
+<li><p>TensorFlow是Google 于2015年发布的深度学习框架，最初版本只支持符号式编程。得益于发布时间较早，以及Google在深度学习领域的影响力，TensorFlow很快成为最流行的深度学习框架。但是由于TensorFlow接口设计频繁变动，功能设计重复冗余，符号式编程开发和调试非常困难等问题，TensorFlow 1.x版本一度被业界诉病。2019年，Google推出TensorFlow 2正式版本，将以动态图优先模式运行，从而能够避免TensorFlow 1.x版本的诸多缺陷，已获得业界的广泛认可；</p>
+</li>
+<li><p>Keras是一个基于Theano和TensorFlow等框架提供的底层运算而实现的高层框架，提供了大量快速训练、测试网络的高层接口。对于常见应用来说，使用Keras开发效率非常高。但是由于没有底层实现，需要对底层框架进行抽象，运行效率不高，灵活性一般；</p>
+</li>
+<li><p>PyTorch是Facebook基于原Torch框架推出的采用Python作为主要开发语言的深度学习框架。PyTorch借鉴了Chainer的设计风格，采用命令式编程，使得搭建网络和调试网络非常方便。尽管PyTorch在2017年才发布，但是由于精良紧凑的接口设计，PyTorch在学术界获得了广泛好评。在PyTorch 1.0版本后，原来的PyTorch与Caffe2进行了合并，弥补了PyTorch在工业部署方面的不足。总的来说，PyTorch是一个非常优秀的深度学习框架；</p>
+</li>
+<li><p>Scikit-learn是一个完整的面向机器学习算法的计算库，内建了常见的传统机器学习算法支持，文档和案例也较为丰富，但是Scikit-learn并不是专门面向神经网络而设计的，不支持GPU加速，对神经网络相关层的实现也较欠缺；</p>
+</li>
+</ul>
+<p>目前来看，TensorFlow和PyTorch框架是业界使用最为广泛的两个深度学习框架，TensorFlow在工业界拥有完备的解决方案和用户基础，PyTorch得益于其精简灵活的接口设计，可以快速搭建和调试网络模型，在学术界获得好评如潮。TensorFlow2发布后，弥补了TensorFlow在上手难度方面的不足，使得用户既能轻松上手TensorFlow框架，又能无缝部署网络模型至工业系统；</p>
+<blockquote>
+<p>这里特别介绍TensorFlow与Keras之间的联系与区别。Keras可以理解为一套高层API的设计规范，Keras本身对这套规范有官方的实现，在TensorFlow中也实现了这套规范，称为tf.keras模块，并且 tf.keras将作为TensorFlow 2版本的唯一高层接口，避免出现接口重复冗余的问题。如无特别说明，本书中Keras均指代tf.keras。</p>
+</blockquote>
+<h3 id="3-1-核心功能"><a href="#3-1-核心功能" class="headerlink" title="3.1 核心功能"></a>3.1 核心功能</h3><p>任何深度学习框架只是实现算法的工具（即我们已经有了一个算法的设计，可以直接使用现成的框架来搭建实现该算法），真正深度学习的核心是算法的设计思想（这就需要我们个人能力足够强），下面我们介绍如何使用框架进行算法的实现；</p>
+<h4 id="3-1-1-加速运算"><a href="#3-1-1-加速运算" class="headerlink" title="3.1.1 加速运算"></a>3.1.1 加速运算</h4><p>神经网络的本质就是大量矩阵运算，tensorflow的一个重要功能就是通过GPU是西安矩阵运算的加速（当然这是针对能够使用tesorflow gpu版本而言，关于tensorflow gpu和tensorflow cpu版本的区别，参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/hello_program_world/article/details/111052928%EF%BC%89%EF%BC%8C%E4%B8%8B%E9%9D%A2%E6%BC%94%E7%A4%BAGPU%E5%92%8CCPU%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%9F%A9%E9%98%B5%E8%AE%A1">https://blog.csdn.net/hello_program_world/article/details/111052928），下面演示GPU和CPU环境下矩阵计</a></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 创建在 CPU 环境上运算的 2 个矩阵</span><br><span class="hljs-keyword">with</span> tf.device(<span class="hljs-string">&#x27;/cpu:0&#x27;</span>):<br>	cpu_a = tf.random.normal([<span class="hljs-number">1</span>, n])<br>	cpu_b = tf.random.normal([n, <span class="hljs-number">1</span>])<br>	<span class="hljs-built_in">print</span>(cpu_a.device, cpu_b.device)<br><br><span class="hljs-comment"># 创建使用 GPU 环境运算的 2 个矩阵</span><br><span class="hljs-keyword">with</span> tf.device(<span class="hljs-string">&#x27;/gpu:0&#x27;</span>):<br>	gpu_a = tf.random.normal([<span class="hljs-number">1</span>, n])<br>	gpu_b = tf.random.normal([n, <span class="hljs-number">1</span>])<br>	<span class="hljs-built_in">print</span>(gpu_a.device, gpu_b.device)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">cpu_run</span>(): <span class="hljs-comment"># CPU 运算函数</span><br>	<span class="hljs-keyword">with</span> tf.device(<span class="hljs-string">&#x27;/cpu:0&#x27;</span>):<br>	c = tf.matmul(cpu_a, cpu_b)<br>	<span class="hljs-keyword">return</span> c<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">gpu_run</span>():<span class="hljs-comment"># GPU 运算函数</span><br>	<span class="hljs-keyword">with</span> tf.device(<span class="hljs-string">&#x27;/gpu:0&#x27;</span>):<br>	c = tf.matmul(gpu_a, gpu_b)<br>	<span class="hljs-keyword">return</span> c<br><br><span class="hljs-comment"># 第一次计算需要热身，避免将初始化时间结算在内</span><br>cpu_time = timeit.timeit(cpu_run, number=<span class="hljs-number">10</span>)<br>gpu_time = timeit.timeit(gpu_run, number=<span class="hljs-number">10</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;warmup:&#x27;</span>, cpu_time, gpu_time)<br><br><span class="hljs-comment"># 正式计算 10 次，取平均时间</span><br>cpu_time = timeit.timeit(cpu_run, number=<span class="hljs-number">10</span>)<br>gpu_time = timeit.timeit(gpu_run, number=<span class="hljs-number">10</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;run time:&#x27;</span>, cpu_time, gpu_time)<br></code></pre></td></tr></table></figure>
+
+<p>下面是两个环境下矩阵的计算效率（之所以GPU运行效率高是因为GPU可以实现并行运算）</p>
+<p><img src="/images/image-20221014084444922.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="3-1-2-自动梯度-x2F-求导"><a href="#3-1-2-自动梯度-x2F-求导" class="headerlink" title="3.1.2 自动梯度&#x2F;求导"></a>3.1.2 自动梯度&#x2F;求导</h4><p>考虑如下函数表达式<br>$$<br>y&#x3D;aw^2+bw+c<br>$$<br>输出y对变量w的导数关系为<br>$$<br>dy&#x2F;dw&#x3D;2aw+b<br>$$<br>考虑求解(a,b,c,w)&#x3D;(1,2,3,4)处的导数，代入可得dy&#x2F;dw&#x3D;10，通过tensorflow计算方式如下</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> tensorflow <span class="hljs-keyword">as</span> tf<br><span class="hljs-comment"># 创建 4 个张量，并赋值</span><br>a = tf.constant(<span class="hljs-number">1.</span>)<br>b = tf.constant(<span class="hljs-number">2.</span>)<br>c = tf.constant(<span class="hljs-number">3.</span>)<br>w = tf.constant(<span class="hljs-number">4.</span>)<br><span class="hljs-keyword">with</span> tf.GradientTape() <span class="hljs-keyword">as</span> tape:<span class="hljs-comment"># 构建梯度环境</span><br>	tape.watch([w]) <span class="hljs-comment"># 将 w 加入梯度跟踪列表</span><br><span class="hljs-comment"># 构建计算过程，函数表达式</span><br>y = a * w**<span class="hljs-number">2</span> + b * w + c<br><span class="hljs-comment"># 自动求导</span><br>[dy_dw] = tape.gradient(y, [w])<br><span class="hljs-built_in">print</span>(dy_dw) <span class="hljs-comment"># 打印出导数</span><br><br><span class="hljs-comment">#程序运行结果为 tf.Tensor(10.0, shape=(), dtype=float32)</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="3-1-3-常用神经网络接口"><a href="#3-1-3-常用神经网络接口" class="headerlink" title="3.1.3 常用神经网络接口"></a>3.1.3 常用神经网络接口</h4><p>TensorFlow 除了提供底层的矩阵相乘、相加等数学函数，还内建了常用神经网络运算函数、常用网络层、网络训练、模型保存与加载、网络部署等一系列深度学习系统的便捷功能。使用 TensorFlow 开发，可以方便地利用这些功能完成常用业务流程，高效稳定；</p>
+<h1 id="第一章-tensorflow2-x基础"><a href="#第一章-tensorflow2-x基础" class="headerlink" title="第一章 tensorflow2.x基础"></a>第一章 tensorflow2.x基础</h1><h2 id="1-数据类型"><a href="#1-数据类型" class="headerlink" title="1.数据类型"></a>1.数据类型</h2><p>tensorflow内部的数据均保存在张量对象上，所有的OP都是基于张量对象进行的；tensorflow中的基本数据类型包含数值类型、字符串类型和布尔类型；</p>
+<h3 id="1-1-数值类型"><a href="#1-1-数值类型" class="headerlink" title="1.1 数值类型"></a>1.1 数值类型</h3><p>数值类型的张量是tensorflow主要的数据载体，根据维度可以分为：</p>
+<ul>
+<li><p>标量（Scalar）：单个的实数，如1.2，3.4等，维度（Dimension）数为0，shape为[]；</p>
+</li>
+<li><p>向量（Vector）：n个实数的有序集合，通过中括号包裹，如[1.2]，[1.2，3.4]等，维度数为1，长度不定，shape为[n]；</p>
+</li>
+<li><p>矩阵（Matrix）：n行m列实数的有序集合，如[[1，2]，[3，4]]，维度为2，每个维度上的长度不定，shape为[n,m]；</p>
+</li>
+<li><p>张量（Tensor）：所有维度数dim &gt;2的数组统称为张量。张量的每个维度也称作轴（Axis），每个维度代表了具体的物理含义。比如Shape为[2，32，32，3]的张量共有4维，如果表示图片数据的话，每个维度&#x2F;轴代表的含义分别是图片数量、图片高度、图片宽度、图片通道数，其中2代表了2张图片，32代表了高、宽均为32，3代表了RGB共3个通道。张量的维度数以及每个维度所代表的具体物理含义需要由用户自行定义；</p>
+</li>
+</ul>
+<p>tensorflow中将上述四者统称为张量，可以根据张量的维度或形状自行判断；</p>
+<blockquote>
+<p>创建0维张量</p>
+</blockquote>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs py">In [<span class="hljs-number">1</span>]:<br>	a = <span class="hljs-number">1.2</span> <span class="hljs-comment"># python 语言方式创建标量</span><br>	aa = tf.constant(<span class="hljs-number">1.2</span>) <span class="hljs-comment"># TF 方式创建标量</span><br>	<span class="hljs-built_in">type</span>(a), <span class="hljs-built_in">type</span>(aa), tf.is_tensor(aa)<span class="hljs-comment">#输出类型以及判断是否为tensor</span><br>Out[<span class="hljs-number">1</span>]:<br>	(<span class="hljs-built_in">float</span>, tensorflow.python.framework.ops.EagerTensor, <span class="hljs-literal">True</span>)<br></code></pre></td></tr></table></figure>
+
+<p>与标量不同，向量的定义须通过 List 容器传给 tf.constant()函数</p>
+<blockquote>
+<p>创建向量</p>
+</blockquote>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs py">In [<span class="hljs-number">5</span>]:<br>	a = tf.constant([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>, <span class="hljs-number">3.</span>]) <span class="hljs-comment"># 创建 3 个元素的向量</span><br>	a, a.shape<br>Out[<span class="hljs-number">5</span>]:<br>	(&lt;tf.Tensor: <span class="hljs-built_in">id</span>=<span class="hljs-number">11</span>, shape=(<span class="hljs-number">3</span>,), dtype=float32, numpy=array([<span class="hljs-number">1.</span>, <span class="hljs-number">2.</span>, <span class="hljs-number">3.</span>],dtype=float32)&gt;,TensorShape([<span class="hljs-number">3</span>]))<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>创建矩阵</p>
+</blockquote>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs py">In [<span class="hljs-number">6</span>]:<br>	a = tf.constant([[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>],[<span class="hljs-number">3</span>,<span class="hljs-number">4</span>]]) <span class="hljs-comment"># 创建 2 行 2 列的矩阵</span><br>	a, a.shape<br>Out[<span class="hljs-number">6</span>]:<br>	(&lt;tf.Tensor: <span class="hljs-built_in">id</span>=<span class="hljs-number">13</span>, shape=(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>), dtype=int32, numpy=array([[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>],[<span class="hljs-number">3</span>, <span class="hljs-number">4</span>]])&gt;, TensorShape([<span class="hljs-number">2</span>, <span class="hljs-number">2</span>])<br></code></pre></td></tr></table></figure>
+
+<h3 id="1-2-字符串类型"><a href="#1-2-字符串类型" class="headerlink" title="1.2 字符串类型"></a>1.2 字符串类型</h3>
               
             </div>
             <hr/>
