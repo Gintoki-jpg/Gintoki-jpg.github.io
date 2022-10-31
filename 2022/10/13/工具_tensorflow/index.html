@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/TOOLS.PNG">
 <meta property="article:published_time" content="2022-10-13T01:34:00.000Z">
-<meta property="article:modified_time" content="2022-10-14T01:48:20.843Z">
+<meta property="article:modified_time" content="2022-10-18T02:26:23.762Z">
 <meta property="article:author" content="YangZaiyan">
 <meta property="article:tag" content="机器学习">
 <meta property="article:tag" content="python">
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          13k 字
+          30k 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          112 分钟
+          249 分钟
         
       </span>
     
@@ -275,16 +275,20 @@
             
             <div class="markdown-body">
               
-              <p>关于tensorflow版本的问题，参考[(1条消息) <a target="_blank" rel="noopener" href="https://blog.csdn.net/HiWangWenBing/article/details/119547495">TensorFlow系列-3]：初学者是选择Tensorflow2.x还是1.x? 2.x与1.x的主要区别？_文火冰糖的硅基工坊的博客-CSDN博客_tensorflow2和1哪个好</a>，现在默认安装的基本上都是2.x，但是在实际很多教学的课程中使用的都是1.x的版本（这一点从大多数教程还坚持使用session可以看出），如果要安装低版本的tensorflow使用如下命令</p>
+              <p>关于tensorflow版本的问题，参考 <a target="_blank" rel="noopener" href="https://blog.csdn.net/HiWangWenBing/article/details/119547495">初学者是选择Tensorflow2.x还是1.x? 2.x与1.x的主要区别？</a>，现在默认安装的基本上都是2.x，但是在实际很多教学的课程中使用的都是1.x的版本（因为1.x和2.x太多人喜欢混用了，我也不知道为啥），如果要安装低版本的tensorflow使用如下命令</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">pip install tensorflow==1.14<br></code></pre></td></tr></table></figure>
 
-<p>这里给出的建议是主要学习tensorflow2.x，间接性学习1.x，因为2.x是在2019年推出（在这个时间点之前的关于tensorflow的学习资料全是1.x的，注意辨别），同时舍去了大量1.x中的复杂概念如session、graph等，并且最重要的一点是1.x已经快停止更新了（这就好比你非得去学习python2.x一样，没有太大实用意义），但是现在网上大量的参考资料还是使用的1.x的书写方式，所以对于1.x还是要有一定了解；因为tensorflow在网上系统的参考资料也不是特别多，所以简单罗列了一些使用的参考，其他的比较细节的知识点推荐直接Google自查；（当然关于python使用的3.x版本这是毋庸置疑的）</p>
-<p>还有一点要说的就是有些人说可以在2.x中使用一些诸如compat.v1的方式兼容1.x，这只是一种治标不治本的方式，而且很多概念在2.x中根本没有，推荐的方式还是直接安装一个1.x使用；</p>
+<p>这里给出的建议是学习tensorflow2.x，因为2.x是在2019年推出（在这个时间点之前的关于tensorflow的学习资料全是1.x的，注意辨别），同时舍去了大量1.x中的复杂概念如session、graph等（However，很多博主，在使用tensorflow2.x书写代码的时候还是会使用1.x里面的概念，这给初学者带来了极大的困惑）；</p>
+<p>最重要的一点是1.x已经快停止更新了（这就好比你非得去学习python2.x一样，没有太大实用意义），但是现在网上大量的参考资料还是使用的1.x的书写方式，所以对于1.x还是要有一定了解；因为tensorflow在网上系统的参考资料也不是特别多，所以简单罗列了一些使用的参考，其他的比较细节的知识点推荐直接Google自查；（当然无论tensorflow是哪个版本，python使用的3.x版本这是毋庸置疑的）</p>
+<p>最后，有些人说可以在2.x中使用一些诸如compat.v1的方式兼容1.x，个人认为这不是一种良好的习惯，1.x中很多概念在2.x中不存在，这会导致一些问题，最推荐的方式还是直接安装一个1.x环境单独使用；</p>
+<blockquote>
+<p>小结：tensorflow1.x的基本语法和概念必须理解，因为现在网上不管是视频还是网页教程都是1.x的；tensorflow2.x适合长期学习；</p>
+</blockquote>
 <p>参考资料：</p>
 <ul>
-<li>texsorflow1（很详细但是很乱）：<a target="_blank" rel="noopener" href="https://www.w3cschool.cn/tensorflow_python/tensorflow_python-bm7y28si.html">介绍TensorFlow_w3cschool</a></li>
-<li>tensorflow1（较简洁但是有条理）：<a target="_blank" rel="noopener" href="https://minghuiwu.gitbook.io/tfbook/di-san-zhang-mo-dao-bu-wu-kan-chai-gong-tensorflow-ji-chu/di-san-zhang-tensorflow-ji-chu/3.1-tensorflow-ji-chu">3.1 TensorFlow 基础 - csmhwu (gitbook.io)</a></li>
-<li>tensorflow2:Tensorflow深度学习 - 龙龙老师</li>
+<li>texsorflow1.x（很详细但是很乱）：<a target="_blank" rel="noopener" href="https://www.w3cschool.cn/tensorflow_python/tensorflow_python-bm7y28si.html">介绍TensorFlow_w3cschool</a></li>
+<li>tensorflow1.x（较简洁但是有条理）：<a target="_blank" rel="noopener" href="https://minghuiwu.gitbook.io/tfbook/di-san-zhang-mo-dao-bu-wu-kan-chai-gong-tensorflow-ji-chu/di-san-zhang-tensorflow-ji-chu/3.1-tensorflow-ji-chu">3.1 TensorFlow 基础 - csmhwu (gitbook.io)</a></li>
+<li>tensorflow2.x:Tensorflow深度学习 - 龙龙老师</li>
 </ul>
 <h1 id="绪论"><a href="#绪论" class="headerlink" title="绪论"></a>绪论</h1><p>在介绍tensorflow之前先介绍一下miniconda，这是一个Anaconda的压缩版本，主要用于管理python虚拟环境，我们罗列常用命令（命令参考: <a target="_blank" rel="noopener" href="https://blog.csdn.net/hxxjxw/article/details/99200660%EF%BC%89">https://blog.csdn.net/hxxjxw/article/details/99200660）</a></p>
 <p>-查看常用conda命令：conda help<br>-查看conda版本：用户根目录下使用 conda –version ；<br>-查看所有的conda环境：用户根目录下直接使用 conda info –env 即可；<br>-激活某个conda环境：用户根目录下直接使用 conda activate [conda环境名] ；<br>-查看某个环境下安装的所有包：激活conda环境后使用 pip list ；<br>-关闭某个conda环境：使用 conda deactivate 退出；</p>
@@ -334,11 +338,11 @@
 <p>TensorFlow 2 和 PyTorch 都是采用动态图(优先)模式开发，调试方便，所见即所得。一般来说，动态图模式开发效率高，但是运行效率可能不如静态图模式。TensorFlow 2 也支持通过 tf.function 将动态图优先模式的代码转化为静态图模式，实现开发和运行效率的双赢。</p>
 <h3 id="2-1-张量"><a href="#2-1-张量" class="headerlink" title="2.1 张量"></a>2.1 张量</h3><p>Tensorflow中的所有数据都通过张量的形式来表示，张量从功能上来说可以理解为多维数组</p>
 <ul>
-<li>零阶张量表示为标量；</li>
-<li>一阶张量为向量，也就是一维数组；</li>
+<li>零阶张量表示为标量（表现为高维空间中的一个点，由多个标量描述的概念构成向量）；</li>
+<li>一阶张量为向量，也就是一维数组（表现为高维空间中的一条有向线段）；</li>
 <li>n阶张量为一个n维数组；</li>
 </ul>
-<p>需要注意的是tensor实际并不保存真正的数字，保存的是计算过程；</p>
+<p>需要注意的是tensor实际并不保存真正的数字，保存的只是计算过程；</p>
 <p>张量的属性主要有（以张量Tensor(“Add:0”,shape&#x3D;(),dtype&#x3D;float32)为例）：</p>
 <ol>
 <li><p>Name：Name的一般形式为“node:src_output”，node表示节点名称，src_output 来自节点的第几个输出；</p>
@@ -353,6 +357,12 @@
 <p>默认类型：不带小数点的数会被默认为int32，带小数点的会被默认为float32。</p>
 </li>
 </ol>
+<hr>
+<blockquote>
+<p>Q：为什么以前学习物理的时候标量的定义是只有大小没有方向的矢量？这里又认为它只是一个点？</p>
+</blockquote>
+<p>A：因为物理中标量不等同于此处的标量，尽管名字相同但是两者的意义完全不同（巧合的是物理中的矢量和数学中的向量又是类似的）；</p>
+<hr>
 <h3 id="2-2-数据流图"><a href="#2-2-数据流图" class="headerlink" title="2.2 数据流图"></a>2.2 数据流图</h3><p>数据流图是一个有向图，由以下内容构成：</p>
 <ul>
 <li>一组节点，每个节点都代表一个操作、一种运算；</li>
@@ -414,17 +424,8 @@
 <h5 id="2-fetch操作"><a href="#2-fetch操作" class="headerlink" title="(2)fetch操作"></a>(2)fetch操作</h5><p>会话运行完成之后，如果我们想查看会话运行的结果，就需要使用fetch来实现，feed、fetch一般搭配起来使用</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> tensorflow <span class="hljs-keyword">as</span> tf<br>a = tf.placeholder(tf.float32, name=<span class="hljs-string">&#x27;a&#x27;</span>)<br>b = tf.placeholder(tf.float32, name=<span class="hljs-string">&#x27;b&#x27;</span>)<br>c = tf.multiply(a, b, name=<span class="hljs-string">&#x27;c&#x27;</span>)<br>d = tf.subtract(a, b, name=<span class="hljs-string">&#x27;d&#x27;</span>)<br><span class="hljs-keyword">with</span> tf.Session() <span class="hljs-keyword">as</span> sess:<br>    <br>    <span class="hljs-comment">#返回的两个值分别赋给两个变量</span><br>    rc,rd = sess.run([c,d], feed_dict=&#123;a:[<span class="hljs-number">8.0</span>,<span class="hljs-number">2.0</span>,<span class="hljs-number">3.5</span>], b:[<span class="hljs-number">1.5</span>,<span class="hljs-number">2.0</span>,<span class="hljs-number">4.</span>]&#125;)<br>    <br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;value of c=&quot;</span>,rc,<span class="hljs-string">&quot;value of d=&quot;</span>,rd)<br></code></pre></td></tr></table></figure>
 
-<h3 id="2-6-tensorboard"><a href="#2-6-tensorboard" class="headerlink" title="2.6 tensorboard"></a>2.6 tensorboard</h3><p>tensorboard作为tensorflow的可视化工具，通过TensorFlow程序运行过程中产生的日志文件来对TensorFlow的程序运行状态进行可视化，它与TensorFlow跑在两个不同的进程中；</p>
-<p>如下代码将当前的tensorflow计算写入日志</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> tensorflow <span class="hljs-keyword">as</span> tf<br><br><span class="hljs-comment">#清除default graph和不断增加的节点</span><br>tf.reset_default_graph() <br><br><span class="hljs-comment"># logdir改为自己机器上的合适路径</span><br>logdir=<span class="hljs-string">&#x27;D:/log&#x27;</span><br><br><span class="hljs-comment">#定义一个简单的计算图，实现向量加法的操作</span><br>input1 = tf.constant([<span class="hljs-number">1.0</span>, <span class="hljs-number">2.0</span>, <span class="hljs-number">3.0</span>], name=<span class="hljs-string">&quot;input1&quot;</span>)<br>input2 = tf.Variable(tf.random_uniform([<span class="hljs-number">3</span>]), name=<span class="hljs-string">&quot;input2&quot;</span>)<br>output = tf.add_n([input1, input2], name=<span class="hljs-string">&quot;add&quot;</span>)<br><br><span class="hljs-comment">#生成一个写日志的writer，并将当前的TensorFlow计算图写入日志。</span><br>writer = tf.summary.FileWriter(logdir,tf.get_default_graph())<br>writer.close()<br></code></pre></td></tr></table></figure>
 
-<p>TensorBoard不需要额外安装，在TensorFlow安装时已自动完成，在Anaconda Prompt中先进入日志存放的目录（非常重要），再运行TensorBoard，并将日志的地址指向程序日志输出的地址。</p>
-<p>启动tensorboard的命令：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">tensorboard --logdir=/path/log （/path/log为产生日志文件的目录）<br></code></pre></td></tr></table></figure>
 
-<p>启动服务的端口默认为6006；使用 –port 参数可以改编启动服务的端口，TensorBoard是一个在本地启动的服务，启动完成后在浏览器网址：<a href="http://localhost:6006即可进行访问。">http://localhost:6006即可进行访问。</a></p>
-<p>下面是一些常用的tensorboard API</p>
-<p><img src="/images/image-20221013171135994.png" srcset="/img/loading.gif" lazyload></p>
 <blockquote>
 <p>说一下为什么不非常详细的介绍tensorflow1.x的内容，一个原因是参考资料确实不多，另一个原因就是因为tensorflow1.x只是为了能够在我们copy代码的时候看得懂，实际上现在运用的比较多的代码都是使用的tensorflow2.x，所以接下来我们会将中心放在tensorflow2.x上，主要按照龙龙老师的tensorflow深度学习来进行；</p>
 </blockquote>
@@ -455,16 +456,16 @@
 <p>这里特别介绍TensorFlow与Keras之间的联系与区别。Keras可以理解为一套高层API的设计规范，Keras本身对这套规范有官方的实现，在TensorFlow中也实现了这套规范，称为tf.keras模块，并且 tf.keras将作为TensorFlow 2版本的唯一高层接口，避免出现接口重复冗余的问题。如无特别说明，本书中Keras均指代tf.keras。</p>
 </blockquote>
 <h3 id="3-1-核心功能"><a href="#3-1-核心功能" class="headerlink" title="3.1 核心功能"></a>3.1 核心功能</h3><p>任何深度学习框架只是实现算法的工具（即我们已经有了一个算法的设计，可以直接使用现成的框架来搭建实现该算法），真正深度学习的核心是算法的设计思想（这就需要我们个人能力足够强），下面我们介绍如何使用框架进行算法的实现；</p>
-<h4 id="3-1-1-加速运算"><a href="#3-1-1-加速运算" class="headerlink" title="3.1.1 加速运算"></a>3.1.1 加速运算</h4><p>神经网络的本质就是大量矩阵运算，tensorflow的一个重要功能就是通过GPU是西安矩阵运算的加速（当然这是针对能够使用tesorflow gpu版本而言，关于tensorflow gpu和tensorflow cpu版本的区别，参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/hello_program_world/article/details/111052928%EF%BC%89%EF%BC%8C%E4%B8%8B%E9%9D%A2%E6%BC%94%E7%A4%BAGPU%E5%92%8CCPU%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%9F%A9%E9%98%B5%E8%AE%A1">https://blog.csdn.net/hello_program_world/article/details/111052928），下面演示GPU和CPU环境下矩阵计</a></p>
+<h4 id="3-1-1-加速运算"><a href="#3-1-1-加速运算" class="headerlink" title="3.1.1 加速运算"></a>3.1.1 加速运算</h4><p>神经网络的本质就是大量矩阵运算，tensorflow的一个重要功能就是通过GPU是实现运算的加速（当然这是针对能够使用tesorflow gpu版本而言，关于tensorflow gpu和tensorflow cpu版本的区别，参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/hello_program_world/article/details/111052928%EF%BC%89%EF%BC%8C%E4%B8%8B%E9%9D%A2%E6%BC%94%E7%A4%BAGPU%E5%92%8CCPU%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%9F%A9%E9%98%B5%E8%AE%A1%E7%AE%97">https://blog.csdn.net/hello_program_world/article/details/111052928），下面演示GPU和CPU环境下矩阵计算</a></p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 创建在 CPU 环境上运算的 2 个矩阵</span><br><span class="hljs-keyword">with</span> tf.device(<span class="hljs-string">&#x27;/cpu:0&#x27;</span>):<br>	cpu_a = tf.random.normal([<span class="hljs-number">1</span>, n])<br>	cpu_b = tf.random.normal([n, <span class="hljs-number">1</span>])<br>	<span class="hljs-built_in">print</span>(cpu_a.device, cpu_b.device)<br><br><span class="hljs-comment"># 创建使用 GPU 环境运算的 2 个矩阵</span><br><span class="hljs-keyword">with</span> tf.device(<span class="hljs-string">&#x27;/gpu:0&#x27;</span>):<br>	gpu_a = tf.random.normal([<span class="hljs-number">1</span>, n])<br>	gpu_b = tf.random.normal([n, <span class="hljs-number">1</span>])<br>	<span class="hljs-built_in">print</span>(gpu_a.device, gpu_b.device)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">cpu_run</span>(): <span class="hljs-comment"># CPU 运算函数</span><br>	<span class="hljs-keyword">with</span> tf.device(<span class="hljs-string">&#x27;/cpu:0&#x27;</span>):<br>	c = tf.matmul(cpu_a, cpu_b)<br>	<span class="hljs-keyword">return</span> c<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">gpu_run</span>():<span class="hljs-comment"># GPU 运算函数</span><br>	<span class="hljs-keyword">with</span> tf.device(<span class="hljs-string">&#x27;/gpu:0&#x27;</span>):<br>	c = tf.matmul(gpu_a, gpu_b)<br>	<span class="hljs-keyword">return</span> c<br><br><span class="hljs-comment"># 第一次计算需要热身，避免将初始化时间结算在内</span><br>cpu_time = timeit.timeit(cpu_run, number=<span class="hljs-number">10</span>)<br>gpu_time = timeit.timeit(gpu_run, number=<span class="hljs-number">10</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;warmup:&#x27;</span>, cpu_time, gpu_time)<br><br><span class="hljs-comment"># 正式计算 10 次，取平均时间</span><br>cpu_time = timeit.timeit(cpu_run, number=<span class="hljs-number">10</span>)<br>gpu_time = timeit.timeit(gpu_run, number=<span class="hljs-number">10</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;run time:&#x27;</span>, cpu_time, gpu_time)<br></code></pre></td></tr></table></figure>
 
 <p>下面是两个环境下矩阵的计算效率（之所以GPU运行效率高是因为GPU可以实现并行运算）</p>
 <p><img src="/images/image-20221014084444922.png" srcset="/img/loading.gif" lazyload></p>
 <h4 id="3-1-2-自动梯度-x2F-求导"><a href="#3-1-2-自动梯度-x2F-求导" class="headerlink" title="3.1.2 自动梯度&#x2F;求导"></a>3.1.2 自动梯度&#x2F;求导</h4><p>考虑如下函数表达式<br>$$<br>y&#x3D;aw^2+bw+c<br>$$<br>输出y对变量w的导数关系为<br>$$<br>dy&#x2F;dw&#x3D;2aw+b<br>$$<br>考虑求解(a,b,c,w)&#x3D;(1,2,3,4)处的导数，代入可得dy&#x2F;dw&#x3D;10，通过tensorflow计算方式如下</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> tensorflow <span class="hljs-keyword">as</span> tf<br><span class="hljs-comment"># 创建 4 个张量，并赋值</span><br>a = tf.constant(<span class="hljs-number">1.</span>)<br>b = tf.constant(<span class="hljs-number">2.</span>)<br>c = tf.constant(<span class="hljs-number">3.</span>)<br>w = tf.constant(<span class="hljs-number">4.</span>)<br><span class="hljs-keyword">with</span> tf.GradientTape() <span class="hljs-keyword">as</span> tape:<span class="hljs-comment"># 构建梯度环境</span><br>	tape.watch([w]) <span class="hljs-comment"># 将 w 加入梯度跟踪列表</span><br><span class="hljs-comment"># 构建计算过程，函数表达式</span><br>y = a * w**<span class="hljs-number">2</span> + b * w + c<br><span class="hljs-comment"># 自动求导</span><br>[dy_dw] = tape.gradient(y, [w])<br><span class="hljs-built_in">print</span>(dy_dw) <span class="hljs-comment"># 打印出导数</span><br><br><span class="hljs-comment">#程序运行结果为 tf.Tensor(10.0, shape=(), dtype=float32)</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> tensorflow <span class="hljs-keyword">as</span> tf<br><span class="hljs-comment"># 创建 4 个张量，并赋值</span><br>a = tf.constant(<span class="hljs-number">1.</span>)<br>b = tf.constant(<span class="hljs-number">2.</span>)<br>c = tf.constant(<span class="hljs-number">3.</span>)<br>w = tf.constant(<span class="hljs-number">4.</span>)<br><span class="hljs-keyword">with</span> tf.GradientTape() <span class="hljs-keyword">as</span> tape:<span class="hljs-comment"># 构建梯度环境</span><br>	tape.watch([w]) <span class="hljs-comment"># 将 w 加入梯度跟踪列表</span><br>	<span class="hljs-comment"># 构建计算过程，函数表达式</span><br>	y = a * w**<span class="hljs-number">2</span> + b * w + c<br>	<span class="hljs-comment"># 自动求导</span><br>	[dy_dw] = tape.gradient(y, [w])<br>	<span class="hljs-built_in">print</span>(dy_dw) <span class="hljs-comment"># 打印出导数</span><br><span class="hljs-comment">#程序运行结果为 tf.Tensor(10.0, shape=(), dtype=float32)</span><br></code></pre></td></tr></table></figure>
 
 <h4 id="3-1-3-常用神经网络接口"><a href="#3-1-3-常用神经网络接口" class="headerlink" title="3.1.3 常用神经网络接口"></a>3.1.3 常用神经网络接口</h4><p>TensorFlow 除了提供底层的矩阵相乘、相加等数学函数，还内建了常用神经网络运算函数、常用网络层、网络训练、模型保存与加载、网络部署等一系列深度学习系统的便捷功能。使用 TensorFlow 开发，可以方便地利用这些功能完成常用业务流程，高效稳定；</p>
-<h1 id="第一章-tensorflow2-x基础"><a href="#第一章-tensorflow2-x基础" class="headerlink" title="第一章 tensorflow2.x基础"></a>第一章 tensorflow2.x基础</h1><h2 id="1-数据类型"><a href="#1-数据类型" class="headerlink" title="1.数据类型"></a>1.数据类型</h2><p>tensorflow内部的数据均保存在张量对象上，所有的OP都是基于张量对象进行的；tensorflow中的基本数据类型包含数值类型、字符串类型和布尔类型；</p>
+<h1 id="第一章-tensorflow2-x基础"><a href="#第一章-tensorflow2-x基础" class="headerlink" title="第一章 tensorflow2.x基础"></a>第一章 tensorflow2.x基础</h1><h2 id="1-数据类型"><a href="#1-数据类型" class="headerlink" title="1.数据类型"></a>1.数据类型</h2><p>tensorflow内部的数据均保存在<code>张量对象</code>上，所有的OP都是基于张量对象进行的；tensorflow中的基本数据类型包含数值类型、字符串类型和布尔类型；</p>
 <h3 id="1-1-数值类型"><a href="#1-1-数值类型" class="headerlink" title="1.1 数值类型"></a>1.1 数值类型</h3><p>数值类型的张量是tensorflow主要的数据载体，根据维度可以分为：</p>
 <ul>
 <li><p>标量（Scalar）：单个的实数，如1.2，3.4等，维度（Dimension）数为0，shape为[]；</p>
@@ -493,7 +494,395 @@
 </blockquote>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs py">In [<span class="hljs-number">6</span>]:<br>	a = tf.constant([[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>],[<span class="hljs-number">3</span>,<span class="hljs-number">4</span>]]) <span class="hljs-comment"># 创建 2 行 2 列的矩阵</span><br>	a, a.shape<br>Out[<span class="hljs-number">6</span>]:<br>	(&lt;tf.Tensor: <span class="hljs-built_in">id</span>=<span class="hljs-number">13</span>, shape=(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>), dtype=int32, numpy=array([[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>],[<span class="hljs-number">3</span>, <span class="hljs-number">4</span>]])&gt;, TensorShape([<span class="hljs-number">2</span>, <span class="hljs-number">2</span>])<br></code></pre></td></tr></table></figure>
 
-<h3 id="1-2-字符串类型"><a href="#1-2-字符串类型" class="headerlink" title="1.2 字符串类型"></a>1.2 字符串类型</h3>
+<h4 id="1-1-1-数值精度"><a href="#1-1-1-数值精度" class="headerlink" title="1.1.1 数值精度"></a>1.1.1 数值精度</h4><p>对于数值类型的张量，可以保存为不同字节长度的精度，位越长则精度越高占用的内存空间越大；</p>
+<p>常用的精度类型有tf.int16、tf.int32、tf.int64、tf.float16、tf.float32、tf.float64 等，其中 tf.float64 即为 tf.double；</p>
+<p>在创建张量的同时可以指定张量的保存精度</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs py">In [<span class="hljs-number">12</span>]: <span class="hljs-comment"># 创建指定精度的张量</span><br>tf.constant(<span class="hljs-number">123456789</span>, dtype=tf.int16)<br>tf.constant(<span class="hljs-number">123456789</span>, dtype=tf.int32)<br>Out[<span class="hljs-number">12</span>]:<br>&lt;tf.Tensor: <span class="hljs-built_in">id</span>=<span class="hljs-number">33</span>, shape=(), dtype=int16, numpy=-<span class="hljs-number">13035</span>&gt;<span class="hljs-comment">#保存精度过低，数据发生溢出（一般不选择int16保存精度)</span><br>&lt;tf.Tensor: <span class="hljs-built_in">id</span>=<span class="hljs-number">35</span>, shape=(), dtype=int32, numpy=<span class="hljs-number">123456789</span>&gt;<br></code></pre></td></tr></table></figure>
+
+<p>通过访问张量的dtype成员属性可以判断张量的保存精度</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs py">In [<span class="hljs-number">15</span>]:<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;before:&#x27;</span>,a.dtype) <span class="hljs-comment"># 读取原有张量的数值精度</span><br><span class="hljs-keyword">if</span> a.dtype != tf.float32: <span class="hljs-comment"># 如果精度不符合要求，则进行转换</span><br>	a = tf.cast(a,tf.float32) <span class="hljs-comment"># tf.cast 函数可以完成精度转换</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;after :&#x27;</span>,a.dtype) <span class="hljs-comment"># 打印转换后的精度</span><br>Out[<span class="hljs-number">15</span>]:<br>before: &lt;dtype: <span class="hljs-string">&#x27;float16&#x27;</span>&gt;<br>after : &lt;dtype: <span class="hljs-string">&#x27;float32&#x27;</span>&gt;<br><span class="hljs-comment">#这样操作的意义在于针对某些只能处理特定精度的运算对数据进行预处理</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="1-2-字符串类型"><a href="#1-2-字符串类型" class="headerlink" title="1.2 字符串类型"></a>1.2 字符串类型</h3><p>tensorflow中的字符串类型数据可以认为就是C中的字符串类似，例如可以将图片路径保存为路径字符串，只需要传入字符串对象就能创建字符串类型的张量</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">In [<span class="hljs-number">8</span>]:<br>a = tf.constant(<span class="hljs-string">&#x27;Hello, Deep Learning.&#x27;</span>) <span class="hljs-comment"># 创建字符串</span><br>Out[<span class="hljs-number">8</span>]:<br>&lt;tf.Tensor: <span class="hljs-built_in">id</span>=<span class="hljs-number">17</span>, shape=(), dtype=string, numpy=<span class="hljs-string">b&#x27;Hello, Deep Learning.&#x27;</span>&gt;<br></code></pre></td></tr></table></figure>
+
+<h3 id="1-3-布尔类型"><a href="#1-3-布尔类型" class="headerlink" title="1.3 布尔类型"></a>1.3 布尔类型</h3><p>tensorflow引入布尔类型主要是为了能够方便地比较运算操作的结果，布尔类型的张量只需要传入 Python 语言的布尔类型数据，转换成 TensorFlow 内部布尔型即可</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs py">In [<span class="hljs-number">10</span>]: a = tf.constant(<span class="hljs-literal">True</span>) <span class="hljs-comment"># 创建布尔类型标量</span><br>Out[<span class="hljs-number">10</span>]:<br>&lt;tf.Tensor: <span class="hljs-built_in">id</span>=<span class="hljs-number">22</span>, shape=(), dtype=<span class="hljs-built_in">bool</span>, numpy=<span class="hljs-literal">True</span>&gt;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs py">In [<span class="hljs-number">11</span>]:<br>a = tf.constant([<span class="hljs-literal">True</span>, <span class="hljs-literal">False</span>]) <span class="hljs-comment"># 创建布尔类型向量</span><br>Out[<span class="hljs-number">11</span>]:<br>&lt;tf.Tensor: <span class="hljs-built_in">id</span>=<span class="hljs-number">25</span>, shape=(<span class="hljs-number">2</span>,), dtype=<span class="hljs-built_in">bool</span>, numpy=array([ <span class="hljs-literal">True</span>, <span class="hljs-literal">False</span>])&gt;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>尽管可以使用python的布尔数据创建tensorflow的布尔数据，但是两者并不等价</p>
+</blockquote>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs py">In [<span class="hljs-number">11</span>]:<br>a = tf.constant(<span class="hljs-literal">True</span>) <span class="hljs-comment"># 创建 TF 布尔张量</span><br>a <span class="hljs-keyword">is</span> <span class="hljs-literal">True</span> <span class="hljs-comment"># TF 布尔类型张量与 python 布尔类型比较</span><br>a == <span class="hljs-literal">True</span> <span class="hljs-comment"># 仅数值比较</span><br>Out[<span class="hljs-number">11</span>]:<br><span class="hljs-literal">False</span> <span class="hljs-comment"># 对象不等价</span><br>&lt;tf.Tensor: <span class="hljs-built_in">id</span>=<span class="hljs-number">8</span>, shape=(), dtype=<span class="hljs-built_in">bool</span>, numpy=<span class="hljs-literal">True</span>&gt; <span class="hljs-comment"># 数值比较结果</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="1-4-Variable类型"><a href="#1-4-Variable类型" class="headerlink" title="1.4 Variable类型"></a>1.4 Variable类型</h3><p>为了区分需要计算梯度信息的张量与不需要计算梯度信息的张量，TensorFlow 增加了一种专门的数据类型来支持梯度信息的记录：tf.Variable。tf.Variable 类型在普通的张量类型基础上添加了 name，trainable 等属性来支持计算图的构建；</p>
+<p>由于梯度运算会消耗大量的计算资源，而且会自动更新相关参数，对于不需要的优化的张量，如神经网络的输入𝒀，不需要通过 tf.Variable 封装；相反，对于需要计算梯度并优化的张量，如神经网络层的𝑿和𝒃，需要通过 tf.Variable 包裹以便 TensorFlow 跟踪相关梯度信息；</p>
+<blockquote>
+<p>通过 tf.Variable()函数可以将普通张量转换为待优化张量（这个地方的待优化张量实际上就是1.x中的变量，但是2.x的变量意义仅在于支持梯度计算，所以我们呢不称之为变量而是Variable）</p>
+</blockquote>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs py">In [<span class="hljs-number">20</span>]:<br>a = tf.constant([-<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>]) <span class="hljs-comment"># 创建 TF 张量</span><br>aa = tf.Variable(a) <span class="hljs-comment"># 转换为 Variable 类型</span><br>aa.name, aa.trainable <span class="hljs-comment"># Variable 类型张量的属性</span><br>Out[<span class="hljs-number">20</span>]:<br>(<span class="hljs-string">&#x27;Variable:0&#x27;</span>, <span class="hljs-literal">True</span>)<br></code></pre></td></tr></table></figure>
+
+<p>属性name和trainable是Variale特有的：</p>
+<ul>
+<li><p>name 属性用于命名计算图中的变量，这套命名体系是 TensorFlow 内部维护的，一般不需要用户关注 name 属性；</p>
+</li>
+<li><p>trainable属性表征当前张量是否需要被优化，创建 Variable 对象时是默认启用优化标志，可以设置trainable&#x3D;False 来设置张量不需要优化；</p>
+</li>
+</ul>
+<p>除了可以使用函数转换普通张量以得到Variable外，也可以直接创建Variable</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs py">In [<span class="hljs-number">21</span>]:<br>a = tf.Variable([[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>],[<span class="hljs-number">3</span>,<span class="hljs-number">4</span>]]) <span class="hljs-comment"># 直接创建 Variable 张量</span><br>Out[<span class="hljs-number">21</span>]:<br>&lt;tf.Variable <span class="hljs-string">&#x27;Variable:0&#x27;</span> shape=(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>) dtype=int32, numpy=array([[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>],[<span class="hljs-number">3</span>, <span class="hljs-number">4</span>]])&gt;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-创建张量"><a href="#2-创建张量" class="headerlink" title="2.创建张量"></a>2.创建张量</h2><p>tensorflow中可以通过多种方式创建张量</p>
+<h3 id="2-1-数组、列表对象和张量"><a href="#2-1-数组、列表对象和张量" class="headerlink" title="2.1 数组、列表对象和张量"></a>2.1 数组、列表对象和张量</h3><p>Numpy的array数组和python的list列表是非常重要的数据载体容器；</p>
+<blockquote>
+<p>通过 tf.convert_to_tensor 函数可以创建新 Tensor，并将保存在 Python List 对象或者Numpy Array 对象中的数据导入到新 Tensor 中</p>
+</blockquote>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs py">In [<span class="hljs-number">22</span>]:<br>tf.convert_to_tensor([<span class="hljs-number">1</span>,<span class="hljs-number">2.</span>]) <span class="hljs-comment"># 从列表创建张量</span><br>Out[<span class="hljs-number">22</span>]:<br>&lt;tf.Tensor: <span class="hljs-built_in">id</span>=<span class="hljs-number">86</span>, shape=(<span class="hljs-number">2</span>,), dtype=float32, numpy=array([<span class="hljs-number">1.</span>, <span class="hljs-number">2.</span>],<br>dtype=float32)&gt;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs py">In [<span class="hljs-number">23</span>]:<br>tf.convert_to_tensor(np.array([[<span class="hljs-number">1</span>,<span class="hljs-number">2.</span>],[<span class="hljs-number">3</span>,<span class="hljs-number">4</span>]])) <span class="hljs-comment"># 从数组中创建张量</span><br>Out[<span class="hljs-number">23</span>]:<br>&lt;tf.Tensor: <span class="hljs-built_in">id</span>=<span class="hljs-number">88</span>, shape=(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>), dtype=float64, numpy=array([[<span class="hljs-number">1.</span>, <span class="hljs-number">2.</span>],[<span class="hljs-number">3.</span>, <span class="hljs-number">4.</span>]])&gt;<span class="hljs-comment">#numpy的array浮点数组默认使用64bit精度，可以手动转换为32bit的精度保存在tensor中</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>事实上，tf.constant()和 tf.convert_to_tensor()都能够自动的把 Numpy 数组或者 Python列表数据类型转化为 Tensor 类型（所以我们选择其中一个使用即可）</p>
+</blockquote>
+<h3 id="2-2-创建全0-x2F-1张量"><a href="#2-2-创建全0-x2F-1张量" class="headerlink" title="2.2 创建全0&#x2F;1张量"></a>2.2 创建全0&#x2F;1张量</h3><p>将张量创建为全 0 或者全 1 数据是非常常见的张量初始化手段；</p>
+<blockquote>
+<p>通过 tf.zeros()和 tf.ones()即可创建任意形状，且内容全 0 或全 1 的张量；</p>
+</blockquote>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs py">In [<span class="hljs-number">24</span>]: tf.zeros([]),tf.ones([]) <span class="hljs-comment"># 创建全 0，全 1 的标量</span><br>Out[<span class="hljs-number">24</span>]:<br>(&lt;tf.Tensor: <span class="hljs-built_in">id</span>=<span class="hljs-number">90</span>, shape=(), dtype=float32, numpy=<span class="hljs-number">0.0</span>&gt;,<br>&lt;tf.Tensor: <span class="hljs-built_in">id</span>=<span class="hljs-number">91</span>, shape=(), dtype=float32, numpy=<span class="hljs-number">1.0</span>&gt;)<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs py">In [<span class="hljs-number">25</span>]: tf.zeros([<span class="hljs-number">1</span>]),tf.ones([<span class="hljs-number">1</span>]) <span class="hljs-comment"># 创建全 0，全 1 的向量</span><br>Out[<span class="hljs-number">25</span>]:<br>(&lt;tf.Tensor: <span class="hljs-built_in">id</span>=<span class="hljs-number">96</span>, shape=(<span class="hljs-number">1</span>,), dtype=float32, numpy=array([<span class="hljs-number">0.</span>],dtype=float32)&gt;,<br>&lt;tf.Tensor: <span class="hljs-built_in">id</span>=<span class="hljs-number">99</span>, shape=(<span class="hljs-number">1</span>,), dtype=float32, numpy=array([<span class="hljs-number">1.</span>],dtype=float32)&gt;)<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs py">In [<span class="hljs-number">26</span>]: tf.zeros([<span class="hljs-number">2</span>,<span class="hljs-number">2</span>]) <span class="hljs-comment"># 创建全 0 矩阵，指定 shape 为 2 行 2 列</span><br>Out[<span class="hljs-number">26</span>]:<br>&lt;tf.Tensor: <span class="hljs-built_in">id</span>=<span class="hljs-number">104</span>, shape=(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>), dtype=float32, numpy=array([[<span class="hljs-number">0.</span>, <span class="hljs-number">0.</span>],[<span class="hljs-number">0.</span>, <span class="hljs-number">0.</span>]], dtype=float32)&gt;<br><br>In [<span class="hljs-number">27</span>]: tf.ones([<span class="hljs-number">3</span>,<span class="hljs-number">2</span>]) <span class="hljs-comment"># 创建全 1 矩阵，指定 shape 为 3 行 2 列</span><br>Out[<span class="hljs-number">27</span>]:<br>&lt;tf.Tensor: <span class="hljs-built_in">id</span>=<span class="hljs-number">108</span>, shape=(<span class="hljs-number">3</span>, <span class="hljs-number">2</span>), dtype=float32, numpy=array([[<span class="hljs-number">1.</span>, <span class="hljs-number">1.</span>],[<span class="hljs-number">1.</span>, <span class="hljs-number">1.</span>],[<span class="hljs-number">1.</span>, <span class="hljs-number">1.</span>]], dtype=float32)&gt;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>通过 tf.zeros_like, tf.ones_like 可以方便地新建与某个张量 shape 一致，且内容为全 0 或全 1 的张量</p>
+</blockquote>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs py">In [<span class="hljs-number">28</span>]: a = tf.ones([<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]) <span class="hljs-comment"># 创建一个矩阵</span><br>tf.zeros_like(a) <span class="hljs-comment"># 创建一个与 a 形状相同，但是全 0 的新矩阵</span><br>Out[<span class="hljs-number">28</span>]:<br>&lt;tf.Tensor: <span class="hljs-built_in">id</span>=<span class="hljs-number">113</span>, shape=(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>), dtype=float32, numpy=array([[<span class="hljs-number">0.</span>, <span class="hljs-number">0.</span>, <span class="hljs-number">0.</span>],[<span class="hljs-number">0.</span>, <span class="hljs-number">0.</span>, <span class="hljs-number">0.</span>]], dtype=float32)&gt;<br><br>In [<span class="hljs-number">29</span>]: a = tf.zeros([<span class="hljs-number">3</span>,<span class="hljs-number">2</span>]) <span class="hljs-comment"># 创建一个矩阵</span><br>tf.ones_like(a) <span class="hljs-comment"># 创建一个与 a 形状相同，但是全 1 的新矩阵</span><br>Out[<span class="hljs-number">29</span>]:<br>&lt;tf.Tensor: <span class="hljs-built_in">id</span>=<span class="hljs-number">120</span>, shape=(<span class="hljs-number">3</span>, <span class="hljs-number">2</span>), dtype=float32, numpy=array([[<span class="hljs-number">1.</span>, <span class="hljs-number">1.</span>],[<span class="hljs-number">1.</span>, <span class="hljs-number">1.</span>],[<span class="hljs-number">1.</span>, <span class="hljs-number">1.</span>]], dtype=float32)&gt;<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-3-创建自定义数值张量"><a href="#2-3-创建自定义数值张量" class="headerlink" title="2.3 创建自定义数值张量"></a>2.3 创建自定义数值张量</h3><blockquote>
+<p>通过 tf.fill(shape, value)可以创建全为自定义数值 value 的张量，形状由 shape 参数指定</p>
+</blockquote>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs py">In [<span class="hljs-number">30</span>]:tf.fill([], -<span class="hljs-number">1</span>) <span class="hljs-comment"># 创建-1 的标量</span><br>Out[<span class="hljs-number">30</span>]:<br>&lt;tf.Tensor: <span class="hljs-built_in">id</span>=<span class="hljs-number">124</span>, shape=(), dtype=int32, numpy=-<span class="hljs-number">1</span>&gt;<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-4-创建已知分布的张量"><a href="#2-4-创建已知分布的张量" class="headerlink" title="2.4 创建已知分布的张量"></a>2.4 创建已知分布的张量</h3><p>正态分布和均匀分布是最常见的分布之一，因此创建采样自这两种分布的张量非常有用（卷积神经网络中，卷积核张量𝑿初始化为正态分布有利于网络的训练）</p>
+<blockquote>
+<p>通过 tf.random.normal(shape, mean&#x3D;0.0, stddev&#x3D;1.0)可以创建形状为 shape，均值为mean，标准差为 stddev 的正态分布𝒩(mean,stddev^2^)</p>
+</blockquote>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs py">In [<span class="hljs-number">33</span>]: tf.random.normal([<span class="hljs-number">2</span>,<span class="hljs-number">2</span>]) <span class="hljs-comment"># 创建标准正态分布的张量(均值为0，标准差为1，mean值默认是0，stddev值默认是1)</span><br>Out[<span class="hljs-number">33</span>]:<br>&lt;tf.Tensor: <span class="hljs-built_in">id</span>=<span class="hljs-number">143</span>, shape=(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>), dtype=float32, numpy=array([[-<span class="hljs-number">0.4307344</span> , <span class="hljs-number">0.44147003</span>],[-<span class="hljs-number">0.6563149</span> , -<span class="hljs-number">0.30100572</span>]], dtype=float32)&gt;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>通过 tf.random.uniform(shape, minval&#x3D;0, maxval&#x3D;None, dtype&#x3D;tf.float32)可以创建采样自[minval,maxval)区间的均匀分布的张量</p>
+</blockquote>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs py">In [<span class="hljs-number">35</span>]: tf.random.uniform([<span class="hljs-number">2</span>,<span class="hljs-number">2</span>]) <span class="hljs-comment"># 创建采样自[0,1)均匀分布的矩阵（minval默认值为0，maxval默认值为1）</span><br>Out[<span class="hljs-number">35</span>]:<br>&lt;tf.Tensor: <span class="hljs-built_in">id</span>=<span class="hljs-number">158</span>, shape=(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>), dtype=float32, numpy=array([[<span class="hljs-number">0.65483284</span>, <span class="hljs-number">0.63064325</span>],[<span class="hljs-number">0.008816</span> , <span class="hljs-number">0.81437767</span>]], dtype=float32)&gt;<br></code></pre></td></tr></table></figure>
+
+<p>如果需要均匀采样整形类型的数据，必须指定采样区间的最大值 maxval 参数，同时指定数据类型为 tf.int*型</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs py">In [<span class="hljs-number">37</span>]: <span class="hljs-comment"># 创建采样自[0,100)均匀分布的整型矩阵</span><br>tf.random.uniform([<span class="hljs-number">2</span>,<span class="hljs-number">2</span>],maxval=<span class="hljs-number">100</span>,dtype=tf.int32)<br>Out[<span class="hljs-number">37</span>]:<br>&lt;tf.Tensor: <span class="hljs-built_in">id</span>=<span class="hljs-number">171</span>, shape=(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>), dtype=int32, numpy=array([[<span class="hljs-number">61</span>, <span class="hljs-number">21</span>],[<span class="hljs-number">95</span>, <span class="hljs-number">75</span>]])&gt;<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-5-创建序列"><a href="#2-5-创建序列" class="headerlink" title="2.5 创建序列"></a>2.5 创建序列</h3><p>在循环计算或者对张量进行索引时，经常需要创建一段连续的整型序列，可以通过tf.range()函数实现；</p>
+<blockquote>
+<p>tf.range(limit, delta&#x3D;1)可以创建[0,limit)之间，步长为 delta 的整型序列，不包含 limit 本身</p>
+</blockquote>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs py">In [<span class="hljs-number">38</span>]: tf.<span class="hljs-built_in">range</span>(<span class="hljs-number">10</span>) <span class="hljs-comment"># 0~10且步长为1，不包含 10</span><br>Out[<span class="hljs-number">38</span>]:<br>&lt;tf.Tensor: <span class="hljs-built_in">id</span>=<span class="hljs-number">180</span>, shape=(<span class="hljs-number">10</span>,), dtype=int32, numpy=array([<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>,<span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>])&gt;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>通过 tf.range(start, limit, delta&#x3D;1)可以创建[start,limit)，步长为 delta 的序列，不包含limit 本身</p>
+</blockquote>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs py">In [<span class="hljs-number">40</span>]: tf.<span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-number">10</span>,delta=<span class="hljs-number">2</span>) <span class="hljs-comment"># 1~10</span><br>Out[<span class="hljs-number">40</span>]:<br>&lt;tf.Tensor: <span class="hljs-built_in">id</span>=<span class="hljs-number">190</span>, shape=(<span class="hljs-number">5</span>,), dtype=int32, numpy=array([<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>, <span class="hljs-number">7</span>, <span class="hljs-number">9</span>])&gt;<br></code></pre></td></tr></table></figure>
+
+<h2 id="3-维度变换"><a href="#3-维度变换" class="headerlink" title="3.维度变换"></a>3.维度变换</h2><p>（如果对于张量的基本意义还不太熟悉可能会觉得本节有点抽象，尽量理解）</p>
+<p>假设我们有这样两个张量，b的shape为[3]，X的shape为[2,3]，现在我们需要计算X+b，也就是进行如下两个张量的计算</p>
+<p><img src="/images/image-20221016172221289.png" srcset="/img/loading.gif" lazyload><img src="/images/image-20221016172237802.png" srcset="/img/loading.gif" lazyload></p>
+<p>基本思想是讲shape为[3]的b偏置后按照样本数量进行复制，将其变成如下形式矩阵</p>
+<p><img src="/images/image-20221016172347448.png" srcset="/img/loading.gif" lazyload></p>
+<p>至此可以将两个shape相同的张量进行相加</p>
+<p><img src="/images/image-20221016172540905.png" srcset="/img/loading.gif" lazyload></p>
+<p>通过上面的例子我们大概知道，算法的每个模块对于数据张量的格式有不同的逻辑要求，当现有的数据格式不满足算法要求时，需要通过维度变换将数据调整为正确的格式，这就是维度变换的功能；</p>
+<p>基本的维度变换操作函数包含了改变视图 reshape、插入新维度 expand_dims，删除维度 squeeze、交换维度 transpose、复制数据 tile 等函数；</p>
+<h3 id="3-1-改变视图"><a href="#3-1-改变视图" class="headerlink" title="3.1 改变视图"></a>3.1 改变视图</h3><p>首先需要介绍张量的存储和视图这两个概念：</p>
+<ul>
+<li>视图：实际上就是我们理解张量的方式，如shape为[2,4,4,3]的张量A可以被理解为2张图片，每张图片4行4列，图片的每个位置(行,列)有RGB3个通道的数据；</li>
+<li>存储：张量在内存上被保存为一段连续的内存区域；</li>
+</ul>
+<p>对于同样的存储，可以有不同的理解方式，进而产生不同的视图；</p>
+<p>简单来说就是上述[2,4,4,3]的视图被理解为[2,48]一样是合理的，因为内存并不支持维度层级的概念，只能以平铺的方式按序写入内存，对于内存的层级关系需要人为管理：</p>
+<ul>
+<li>shape中相对靠左侧的维度称为大维度；</li>
+<li>shape中相对靠左侧的维度称为小维度；</li>
+</ul>
+<p>当然改变视图需要在合法的操作下进行（默认前提是不会改变内存的存储，仅改变数据的逻辑结构）</p>
+<p><img src="/images/image-20221016173915812.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>从语法上来说，视图变换只需要满足新视图的元素总量与存储区域大小相等即可，正是因为极少的语法约束导致很容易在切换视图时出现逻辑隐患；</p>
+</blockquote>
+<p>什么情况下的视图变换是不合法的呢？简单理解就是我们并没有按照维度的存储顺序来变换视图，这就将导致根据视图恢复数据的时候会出现问题；</p>
+<p>例如根据“图片数量-行-列-通道”初始视图保存的张量，存储也是按照“图片数量-行-列-通道”的顺序写入的：</p>
+<ul>
+<li>如果按着“图片数量-像素-通道”的方式恢复数据，并没有与“图片数量-行-列-通道”相悖，因此能得到合法的数据；</li>
+<li>但是如果按着“图片数量-通道-像素”的方式恢复数据，由于内存布局是按着“图片数量-行-列-通道”的顺序，视图维度顺序与存储维度顺序相悖，提取的数据将是错乱的；</li>
+</ul>
+<p>在 TensorFlow 中，可以通过张量的 ndim 和 shape 成员属性获得张量的维度数和形状</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs py">In [<span class="hljs-number">68</span>]: x.ndim,x.shape <span class="hljs-comment"># 获取张量的维度数和形状列表</span><br>Out[<span class="hljs-number">68</span>]:(<span class="hljs-number">4</span>, TensorShape([<span class="hljs-number">2</span>, <span class="hljs-number">4</span>, <span class="hljs-number">4</span>, <span class="hljs-number">3</span>]))<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>通过 tf.reshape(x, new_shape)，可以将张量的视图任意地合法改变</p>
+</blockquote>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs py">In [<span class="hljs-number">69</span>]: tf.reshape(x,[<span class="hljs-number">2</span>,-<span class="hljs-number">1</span>])<span class="hljs-comment">#参数−1表示当前轴上长度需要根据张量总元素不变的法则自动推导，也就是48实际上是根据2*4*4*3/2得到</span><br>Out[<span class="hljs-number">69</span>]:&lt;tf.Tensor: <span class="hljs-built_in">id</span>=<span class="hljs-number">520</span>, shape=(<span class="hljs-number">2</span>, <span class="hljs-number">48</span>), dtype=int32, numpy=<br>array([[ <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>, <span class="hljs-number">11</span>, <span class="hljs-number">12</span>, <span class="hljs-number">13</span>, <span class="hljs-number">14</span>, <span class="hljs-number">15</span>,<br>		<span class="hljs-number">16</span>, <span class="hljs-number">17</span>, <span class="hljs-number">18</span>, <span class="hljs-number">19</span>, <span class="hljs-number">20</span>, <span class="hljs-number">21</span>, <span class="hljs-number">22</span>, <span class="hljs-number">23</span>, <span class="hljs-number">24</span>, <span class="hljs-number">25</span>, <span class="hljs-number">26</span>, <span class="hljs-number">27</span>, <span class="hljs-number">28</span>, <span class="hljs-number">29</span>, <span class="hljs-number">30</span>, <span class="hljs-number">31</span>,…<br>		<span class="hljs-number">80</span>, <span class="hljs-number">81</span>, <span class="hljs-number">82</span>, <span class="hljs-number">83</span>, <span class="hljs-number">84</span>, <span class="hljs-number">85</span>, <span class="hljs-number">86</span>, <span class="hljs-number">87</span>, <span class="hljs-number">88</span>, <span class="hljs-number">89</span>, <span class="hljs-number">90</span>, <span class="hljs-number">91</span>, <span class="hljs-number">92</span>, <span class="hljs-number">93</span>, <span class="hljs-number">94</span>, <span class="hljs-number">95</span>]])&gt;<br></code></pre></td></tr></table></figure>
+
+<p>再次改变数据的视图为[2,4,12]</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs py">In [<span class="hljs-number">70</span>]: tf.reshape(x,[<span class="hljs-number">2</span>,<span class="hljs-number">4</span>,<span class="hljs-number">12</span>])<br>Out[<span class="hljs-number">70</span>]:&lt;tf.Tensor: <span class="hljs-built_in">id</span>=<span class="hljs-number">523</span>, shape=(<span class="hljs-number">2</span>, <span class="hljs-number">4</span>, <span class="hljs-number">12</span>), dtype=int32, numpy=<br>array([[[ <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>, <span class="hljs-number">11</span>],…<br>[<span class="hljs-number">36</span>, <span class="hljs-number">37</span>, <span class="hljs-number">38</span>, <span class="hljs-number">39</span>, <span class="hljs-number">40</span>, <span class="hljs-number">41</span>, <span class="hljs-number">42</span>, <span class="hljs-number">43</span>, <span class="hljs-number">44</span>, <span class="hljs-number">45</span>, <span class="hljs-number">46</span>, <span class="hljs-number">47</span>]],<br>[[<span class="hljs-number">48</span>, <span class="hljs-number">49</span>, <span class="hljs-number">50</span>, <span class="hljs-number">51</span>, <span class="hljs-number">52</span>, <span class="hljs-number">53</span>, <span class="hljs-number">54</span>, <span class="hljs-number">55</span>, <span class="hljs-number">56</span>, <span class="hljs-number">57</span>, <span class="hljs-number">58</span>, <span class="hljs-number">59</span>], …<br>[<span class="hljs-number">84</span>, <span class="hljs-number">85</span>, <span class="hljs-number">86</span>, <span class="hljs-number">87</span>, <span class="hljs-number">88</span>, <span class="hljs-number">89</span>, <span class="hljs-number">90</span>, <span class="hljs-number">91</span>, <span class="hljs-number">92</span>, <span class="hljs-number">93</span>, <span class="hljs-number">94</span>, <span class="hljs-number">95</span>]]])&gt;<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-2-增-x2F-删维度"><a href="#3-2-增-x2F-删维度" class="headerlink" title="3.2 增&#x2F;删维度"></a>3.2 增&#x2F;删维度</h3><p>增加维度：增加一个长度为1的维度相当于给原有的数据添加一个新维度的概念，维度长度为1，故数据并不需要改变，仅仅是改变数据的理解方式（这一点很有意思，其实不能说改变了理解方式，这相当于在原来的理解方式上增加新的理解而非改变理解方式，注意只有维度长度为1的时候才有这个结论），因此它其实可以理解为改变视图的一种特殊方式；</p>
+<p>考虑给一张28*28的灰度图片数据保存为shape为[28,28]的张量，接着我们在末尾给该张量增加一个新的维度定义为通道维度数，则此时张量的shape变为[28,28,1]；</p>
+<p>我们使用相同的方法在shape最前面插入一个新的维度，命名为图片数量维度，该维度长度为1，那么此时张量的shape变为[1,28,28,1]；</p>
+<blockquote>
+<p>通过 tf.expand_dims(x, axis)可在指定的 axis 轴前可以插入一个新的维度</p>
+</blockquote>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs py">x = tf.expand_dims(x,axis=<span class="hljs-number">2</span>) <span class="hljs-comment"># axis=2 表示第三个维度前面的一个维度，使得shape成为[28,28,1]</span><br>x = tf.expand_dims(x,axis=<span class="hljs-number">0</span>) <span class="hljs-comment"># axis=0 表示在第一个维度之前插入新维度，使得shape变为[1,28,28,1]</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>tf.expand_dims的axis为正时，表示在当前维度之前插入一个新维度，为负时，表示当前维度之后插入一个新的维度；</p>
+</blockquote>
+<p><img src="/images/image-20221016210749003.png" srcset="/img/loading.gif" lazyload></p>
+<p>删除维度是增加维度的逆向操作与增加维度一样，删除维度只能删除长度为 1 的维度，也不会改变张量的存储；</p>
+<blockquote>
+<p>如果希望将图片数量维度删除，可以通过 tf.squeeze(x, axis)函数</p>
+</blockquote>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs py">x = tf.squeeze(x, axis=<span class="hljs-number">0</span>) <span class="hljs-comment"># 删除图片数量维度得到[28,28,1]</span><br>x = tf.squeeze(x, axis=<span class="hljs-number">2</span>) <span class="hljs-comment"># 删除图片通道数维度得到[28,28]</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果不指定维度参数 axis，即 tf.squeeze(x)，那么它会默认删除所有长度为 1 的维度</p>
+</blockquote>
+<p>可能有些读者还是觉得增加维度这个功能很鸡肋，我们举个直观的例子说明，现在我们有一个shape为[3]的张量b</p>
+<p><img src="/images/image-20221016212420360.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>通过tf.expand_dims(b, axis&#x3D;0)插入新维度，变成shape为[1,3]的张量B</p>
+</blockquote>
+<p><img src="/images/image-20221016212502455.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-3-交换维度"><a href="#3-3-交换维度" class="headerlink" title="3.3 交换维度"></a>3.3 交换维度</h3><p>尽管上述两个方法都不会影响张量的存储，但是仅仅改变张量的理解方式也就是改变视图实际上是不够用的，很多时候需要直接调整张量的存储顺序，该操作被称为交换维度；</p>
+<p>交换维度操作是非常常见的，比如在TensorFlow中，图片张量的默认存储格式是通道后行格式：[b，h，w，c]，但是部分库的图片格式是通道先行格式：[b，c，h，w]，因此需要完成[b，h，w，c]到[b，c，h，w]维度交换运算，此时若简单的使用改变视图函数reshape，则新视图的存储方式需要改变（原因我们已经介绍过），因此使用改变视图函数是不合法的；</p>
+<blockquote>
+<p>我们以[b，h，w，c]转换到[b，c，h，w]为例，介绍如何使用tf.transpose（x，perm）函数完成维度交换操作，其中参数perm表示新维度的顺序List；</p>
+</blockquote>
+<p>考虑图片张量shape为[2,32,32,3]，”图片数量、行、列、通道数”的维度索引分别为0、1、2、3，如果需要交换为[b,c,h,w]格式，则新维度的排序为“图片数量、通道数、行、列”，对应的索引号为[0,3,1,2]，因此参数perm需设置为[0,3,1,2]，实现如下：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs py">x = tf.random.normal([<span class="hljs-number">2</span>,<span class="hljs-number">32</span>,<span class="hljs-number">32</span>,<span class="hljs-number">3</span>])<br>tf.transpose(x,perm=[<span class="hljs-number">0</span>,<span class="hljs-number">3</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>]) <span class="hljs-comment"># 交换维度</span><br></code></pre></td></tr></table></figure>
+
+<p>如果希望将[b,h,w,c]交换为[b,w,h,c]，即将高、宽维度互换，则新维度索引为[0,2,1,3]</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs py">x = tf.random.normal([<span class="hljs-number">2</span>,<span class="hljs-number">32</span>,<span class="hljs-number">32</span>,<span class="hljs-number">3</span>])<br>tf.transpose(x,perm=[<span class="hljs-number">0</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>,<span class="hljs-number">3</span>]) <span class="hljs-comment"># 交换维度</span><br></code></pre></td></tr></table></figure>
+
+<p>需要注意的是，通过 tf.transpose 完成维度交换后，张量的存储顺序已经改变，视图也随之改变，后续的所有操作必须基于新的存续顺序和视图进行；</p>
+<h3 id="3-4-复制数据"><a href="#3-4-复制数据" class="headerlink" title="3.4 复制数据"></a>3.4 复制数据</h3><p>当通过增加维度操作插入新维度后，可能希望在新的维度上面复制若干份数据以满足后续算法的格式要求；</p>
+<p>考虑前面的例子，我们在新维度上复制了Batch size份数据才能构造一个完整的shape为[2,3]的张量</p>
+<p><img src="/images/image-20221016172347448-166592642746416.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>可以通过 tf.tile(x, multiples)函数完成数据在指定维度上的复制操作，multiples分别指定了每个维度上面的复制倍数，对应位置为1表明不复制，为2表明新长度为原来长度的2倍，即数据复制一份，以此类推；</p>
+</blockquote>
+<p>在实际实验中我们并不需要手动增加维度并复制数据，这些操作tensorflow会自动完成（这就是tensorflow的自动扩展功能，且该功能优于手动增加、复制）；</p>
+<blockquote>
+<p>需要注意的是，tf.tile 会创建一个新的张量来保存复制后的张量，由于复制操作涉及大量数据的读写 IO 运算，计算代价相对较高。神经网络中不同 shape 之间的张量运算操作十分频繁，那么有没有轻量级的复制操作呢？这就是接下来要介绍的 Broadcasting 操作</p>
+</blockquote>
+<h2 id="4-Broadcasting"><a href="#4-Broadcasting" class="headerlink" title="4.Broadcasting"></a>4.Broadcasting</h2><p>Broadcasting 称为广播机制(或自动扩展机制)，它是一种轻量级的张量复制手段，在逻辑上扩展张量数据的形状，但是只会在需要时才会执行实际存储复制操作。对于大部分场景，Broadcasting 机制都能通过优化手段避免实际复制数据而完成逻辑运算，从而相对于tf.tile 函数，减少了大量计算代价；Broadcasting 会通过深度学习框架的优化手段避免实际复制数据而完成逻辑运算，至于怎么实现的用户不必关心；</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs py">x = tf.random.normal([<span class="hljs-number">2</span>,<span class="hljs-number">4</span>])<br>w = tf.random.normal([<span class="hljs-number">4</span>,<span class="hljs-number">3</span>])<br>b = tf.random.normal([<span class="hljs-number">3</span>])<br>y = x@w+b <span class="hljs-comment"># 不同 shape 的张量直接相加</span><br></code></pre></td></tr></table></figure>
+
+<p>上述运算在tensorflow中是合法的，因为它自动调用 Broadcasting函数 tf.broadcast_to(x, new_shape)，将b的shape扩展为与x@w的shape相同的[2,3]</p>
+<blockquote>
+<p>Broadcasting 机制并不会扰乱正常的计算逻辑，它只会针对于最常见的场景自动完成增加维度并复制数据的功能</p>
+</blockquote>
+<p>当然broadcasting机制不是万能的，在对两个shape右对齐后它需要进行普适性判断：</p>
+<ul>
+<li><p>对于长度为 1 的维度，默认这个数据普遍适合于当前维度的其他位置；</p>
+</li>
+<li><p>对于不存在的维度，则在增加新维度后默认当前数据也是普适于新维度的，从而可以扩展为更多维度数、任意长度的张量形状，如[32,1]可以直接broadcasting为[2,32,32,4]；</p>
+</li>
+<li><p>对于已经存在且长度不为1的维度则不符合普适性原则如[32,2]不能直接broadcasting为[2,32,32,4]</p>
+</li>
+</ul>
+<p><img src="/images/image-20221016214353010.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="5-数学运算"><a href="#5-数学运算" class="headerlink" title="5.数学运算"></a>5.数学运算</h2><p>本节介绍tensorflow中常见的数学运算函数；</p>
+<h3 id="5-1-四则运算"><a href="#5-1-四则运算" class="headerlink" title="5.1 四则运算"></a>5.1 四则运算</h3><blockquote>
+<p>加、减、乘、除是最基本的数学运算，分别通过 tf.add, tf.subtract, tf.multiply, tf.divide函数实现，TensorFlow 已经重载了+、 −、 ∗ 、&#x2F;运算符，一般推荐直接使用运算符来完成加、减、乘、除运算；整除和余除也是常见的运算之一，分别通过&#x2F;&#x2F;和%运算符实现；</p>
+</blockquote>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs py">In [<span class="hljs-number">89</span>]:<br>a = tf.<span class="hljs-built_in">range</span>(<span class="hljs-number">5</span>)<br>b = tf.constant(<span class="hljs-number">2</span>)<br>a//b <span class="hljs-comment"># 整除运算</span><br>Out[<span class="hljs-number">89</span>]:<br>&lt;tf.Tensor: <span class="hljs-built_in">id</span>=<span class="hljs-number">115</span>, shape=(<span class="hljs-number">5</span>,), dtype=int32, numpy=array([<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>])&gt;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs py">In [<span class="hljs-number">90</span>]: a%b <span class="hljs-comment"># 余除运算</span><br>Out[<span class="hljs-number">90</span>]:<br>&lt;tf.Tensor: <span class="hljs-built_in">id</span>=<span class="hljs-number">117</span>, shape=(<span class="hljs-number">5</span>,), dtype=int32, numpy=array([<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>])&gt;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>乘方运算可以通过tf.pow(x,a)完成，也可以使用运算符**完成</p>
+</blockquote>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs py">In [<span class="hljs-number">91</span>]:<br>x = tf.<span class="hljs-built_in">range</span>(<span class="hljs-number">4</span>)<br>tf.<span class="hljs-built_in">pow</span>(x,<span class="hljs-number">3</span>) <span class="hljs-comment"># 乘方运算</span><br>Out[<span class="hljs-number">91</span>]:<br>&lt;tf.Tensor: <span class="hljs-built_in">id</span>=<span class="hljs-number">124</span>, shape=(<span class="hljs-number">4</span>,), dtype=int32, numpy=array([ <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">8</span>, <span class="hljs-number">27</span>])&gt;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs py">In [<span class="hljs-number">92</span>]: x**<span class="hljs-number">2</span> <span class="hljs-comment"># 乘方运算符</span><br>Out[<span class="hljs-number">92</span>]:<br>&lt;tf.Tensor: <span class="hljs-built_in">id</span>=<span class="hljs-number">127</span>, shape=(<span class="hljs-number">4</span>,), dtype=int32, numpy=array([<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">9</span>])&gt;<br></code></pre></td></tr></table></figure>
+
+<p>如果我们将指数设置为分数，则可以实现开方运算</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs py">In [<span class="hljs-number">93</span>]: x=tf.constant([<span class="hljs-number">1.</span>,<span class="hljs-number">4.</span>,<span class="hljs-number">9.</span>])<br>x**(<span class="hljs-number">0.5</span>) <span class="hljs-comment"># 平方根</span><br>Out[<span class="hljs-number">93</span>]:<br>&lt;tf.Tensor: <span class="hljs-built_in">id</span>=<span class="hljs-number">139</span>, shape=(<span class="hljs-number">3</span>,), dtype=float32, numpy=array([<span class="hljs-number">1.</span>, <span class="hljs-number">2.</span>, <span class="hljs-number">3.</span>],dtype=float32)&gt;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>特别地，对于常见的平方和平方根运算，可以使用 tf.square(x)和 tf.sqrt(x)实现；</p>
+</blockquote>
+<h3 id="5-2-指数和对数运算"><a href="#5-2-指数和对数运算" class="headerlink" title="5.2 指数和对数运算"></a>5.2 指数和对数运算</h3><blockquote>
+<p>指数运算可以通过tf.pow(x,a)完成，也可以使用运算符**完成（因为乘方x^a^和指数运算a^x^都是相同的形式，只是参数的位置不同）</p>
+</blockquote>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs py">In [<span class="hljs-number">96</span>]: x = tf.constant([<span class="hljs-number">1.</span>,<span class="hljs-number">2.</span>,<span class="hljs-number">3.</span>])<br><span class="hljs-number">2</span>**x <span class="hljs-comment"># 指数运算</span><br>Out[<span class="hljs-number">96</span>]:<br>&lt;tf.Tensor: <span class="hljs-built_in">id</span>=<span class="hljs-number">179</span>, shape=(<span class="hljs-number">3</span>,), dtype=float32, numpy=array([<span class="hljs-number">2.</span>, <span class="hljs-number">4.</span>, <span class="hljs-number">8.</span>],dtype=float32)&gt;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>特别地，对于自然指数e^x^ ，可以通过tf.exp(x)实现；</p>
+</blockquote>
+<blockquote>
+<p>在TensorFlow中，自然对数log<del>e</del>x可以通过 tf.math.log(x)实现</p>
+</blockquote>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs py">In [<span class="hljs-number">98</span>]: x=tf.exp(<span class="hljs-number">3.</span>)<span class="hljs-comment">#自然指数运算</span><br>tf.math.log(x) 		 <span class="hljs-comment">#对数运算</span><br>Out[<span class="hljs-number">98</span>]:<br>&lt;tf.Tensor: <span class="hljs-built_in">id</span>=<span class="hljs-number">186</span>, shape=(), dtype=float32, numpy=<span class="hljs-number">3.0</span>&gt;<br></code></pre></td></tr></table></figure>
+
+<p>如果需要计算其他底数的对数，需要使用对数的换底公式</p>
+<p><img src="/images/image-20221017081531164.png" srcset="/img/loading.gif" lazyload></p>
+<p>间接性实现（当然这本书是2019年写的，2022年应该已经具备直接计算其他底数的对数的函数了）；</p>
+<h3 id="5-3-矩阵乘法"><a href="#5-3-矩阵乘法" class="headerlink" title="5.3 矩阵乘法"></a>5.3 矩阵乘法</h3><p>其实这里称作张量乘法更加合适；</p>
+<blockquote>
+<p>可以通过@运算符或者tf.matmul(a,b)函数实现矩阵乘法，tensorflow中的矩阵支持批量方式，也就是张量A和B的维度数可以大于2，此时tensorflow会选择A和B的最后两个维度进行矩阵相乘，将前面所有的维度都视作batch维度；</p>
+</blockquote>
+<p>根据矩阵相乘的定义，𝑩和𝑪能够矩阵相乘的条件是，𝑩的倒数第一个维度长度(列)和𝑪的倒数第二个维度长度(行)必须相等，比如张量a shape:[4,3,28,32]可以与张量b shape:[4,3,32,2]进行矩阵相乘；</p>
+<p>当然张量乘法函数同样支持broadcasting机制</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs py">a = tf.random.normal([<span class="hljs-number">4</span>,<span class="hljs-number">28</span>,<span class="hljs-number">32</span>])<br>b = tf.random.normal([<span class="hljs-number">32</span>,<span class="hljs-number">16</span>])<br>tf.matmul(a,b) <span class="hljs-comment">#首先会将b拓展为shape[4,32,16]，再与张量a进行批量形式地矩阵相乘，得到结果的shape为[4,28,16]</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="第二章-tensorflow2-x进阶"><a href="#第二章-tensorflow2-x进阶" class="headerlink" title="第二章 tensorflow2.x进阶"></a>第二章 tensorflow2.x进阶</h1><h2 id="1-合并与分割"><a href="#1-合并与分割" class="headerlink" title="1.合并与分割"></a>1.合并与分割</h2><h3 id="1-1-拼接与堆叠"><a href="#1-1-拼接与堆叠" class="headerlink" title="1.1 拼接与堆叠"></a>1.1 拼接与堆叠</h3><p>合并是指将多个张量在某个维度上合并为一个张量；</p>
+<p>以某学校班级成绩册数据为例，设张量𝑩保存了某学校 1~4 号班级的成绩册，每个班级 35 个学生，共 8 门科目成绩，则张量𝑩的 shape 为：[4,35,8]；同样的方式，张量𝑪保存了其它 6 个班级的成绩册，shape 为[6,35,8]。通过合并这 2 份成绩册，便可得到学校所有班级的成绩册，记为张量𝑫，shape 应为[10,35,8]，其中，10 代表 10 个班级，35 代表 35 个学生，8 代表 8 门科目。这就是张量合并的意义所在；</p>
+<p>张量的合并可以使用拼接(Concatenate)和堆叠(Stack)操作实现：</p>
+<ul>
+<li>拼接操作并不会产生新的维度，仅在现有的维度上合并，而堆叠会创建新维度；</li>
+</ul>
+<p>选择使用拼接还是堆叠操作来合并张量，取决于具体的场景是否需要创建新维度；</p>
+<blockquote>
+<p>在 TensorFlow 中，可以通过 tf.concat(tensors, axis)函数拼接张量，其中参数tensors 保存了所有需要合并的张量 List，axis 参数指定需要合并的维度索引</p>
+</blockquote>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs py">a = tf.random.normal([<span class="hljs-number">4</span>,<span class="hljs-number">35</span>,<span class="hljs-number">8</span>]) <span class="hljs-comment"># 模拟成绩册 A</span><br>b = tf.random.normal([<span class="hljs-number">6</span>,<span class="hljs-number">35</span>,<span class="hljs-number">8</span>]) <span class="hljs-comment"># 模拟成绩册 B</span><br>tf.concat([a,b],axis=<span class="hljs-number">0</span>) <span class="hljs-comment"># 拼接合并成绩册，因为班级维度索引号为0，所以axis=0</span><br></code></pre></td></tr></table></figure>
+
+<p>从语法上来说，拼接合并操作可以在任意的维度上进行，唯一的约束是非合并维度的长度必须一致。比如 shape为[4,32,8]和shape为[6,35,8]的张量不能直接在班级维度上进行合并，因为学生数量维度的长度并不一致，一个为32，另一个为35；</p>
+<blockquote>
+<p>使用 tf.stack(tensors, axis)可以堆叠方式合并多个张量，通过 tensors 列表表示，参数axis 指定新维度插入的位置，axis 的用法与 tf.expand_dims 的一致：</p>
+<ul>
+<li>当axis ≥ 0时，在axis之前插入；</li>
+<li>当axis &lt; 0时，在axis之后插入新维度；</li>
+</ul>
+</blockquote>
+<p><img src="/images/image-20221017083532446.png" srcset="/img/loading.gif" lazyload></p>
+<p>如果想要在合并的时候创建一个新的维度，就需要使用堆叠；</p>
+<p>考虑张量𝑩保存了某个班级的成绩册，shape 为[35,8]，张量𝑪保存了另一个班级的成绩册，shape 为[35,8]。合并这 2 个班级的数据时，则需要创建一个新维度，定义为班级维度，新维度可以选择放置在任意位置，一般根据大小维度的经验法则，将较大概念的班级维度放置在学生维度之前；</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs py">a = tf.random.normal([<span class="hljs-number">35</span>,<span class="hljs-number">8</span>])<br>b = tf.random.normal([<span class="hljs-number">35</span>,<span class="hljs-number">8</span>])<br>tf.stack([a,b],axis=<span class="hljs-number">0</span>) <span class="hljs-comment"># 堆叠合并为 2 个班级，班级维度插入在最前</span><br></code></pre></td></tr></table></figure>
+
+<p>tf.stack 也需要满足张量堆叠合并条件，它需要所有待合并的张量 shape 完全一致才可合并；</p>
+<h3 id="1-2-分割"><a href="#1-2-分割" class="headerlink" title="1.2 分割"></a>1.2 分割</h3><p>合并操作的逆过程就是分割，将一个张量分拆为多个张量。继续考虑成绩册的例子，我们得到整个学校的成绩册张量，shape 为[10,35,8]，现在需要将数据在班级维度切割为10 个张量，每个张量保存了对应班级的成绩册数据；</p>
+<blockquote>
+<p>通过 tf.split(x, num_or_size_splits, axis)可以完成张量的分割操作：</p>
+<ul>
+<li>x 参数：待分割张量。</li>
+<li>num_or_size_splits 参数：切割方案。当 num_or_size_splits 为单个数值时，如 10，表示等长切割为 10 份；当 num_or_size_splits 为 List 时，List 的每个元素表示每份的长度，如[2,4,2,2]表示切割为 4 份，每份的长度依次是 2、4、2、2。</li>
+<li>axis 参数：指定分割的维度索引号</li>
+</ul>
+</blockquote>
+<p>上述成绩册分割的例子代码如下</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs py">In [<span class="hljs-number">8</span>]:<br>x = tf.random.normal([<span class="hljs-number">10</span>,<span class="hljs-number">35</span>,<span class="hljs-number">8</span>])<br><span class="hljs-comment"># 等长切割为 10 份</span><br>result = tf.split(x, num_or_size_splits=<span class="hljs-number">10</span>, axis=<span class="hljs-number">0</span>)<br><span class="hljs-built_in">len</span>(result) <span class="hljs-comment"># 返回的列表为包含切割后的 10 个张量的列表，result[0]表示第一个班级的成绩册数据，其shape为[1,35,8]</span><br>Out[<span class="hljs-number">8</span>]: <span class="hljs-number">10</span><br></code></pre></td></tr></table></figure>
+
+<p>注意：使用split切割不等于降维，切割后的张量仍然保持了先前的维度；</p>
+<blockquote>
+<p>特别地，如果希望在某个维度上全部按长度为 1 的方式分割，还可以使用 tf.unstack(x,axis)函数。这种方式是 tf.split 的一种特殊情况，切割长度固定为 1，只需要指定切割维度的索引号即可</p>
+</blockquote>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs py">In [<span class="hljs-number">11</span>]: x = tf.random.normal([<span class="hljs-number">10</span>,<span class="hljs-number">35</span>,<span class="hljs-number">8</span>])<br>result = tf.unstack(x,axis=<span class="hljs-number">0</span>) <span class="hljs-comment"># Unstack 为长度为 1 的张量</span><br><span class="hljs-built_in">len</span>(result) <span class="hljs-comment"># 返回 10 个张量的列表</span><br>Out[<span class="hljs-number">11</span>]: <span class="hljs-number">10</span><br></code></pre></td></tr></table></figure>
+
+<p>注意：使用unstack切割会导致维度消失，这也是它和split的区别；</p>
+<h2 id="2-统计属性"><a href="#2-统计属性" class="headerlink" title="2.统计属性"></a>2.统计属性</h2><p>在计算过程中，经常需要统计数据的各种属性如均值、范数等信息，之所以要获取这些信息是因为张量一般都很庞大，直接观察很难获取有用信息，通过获取这些张量的统计属性可以较轻松地推测张量数值的分布；</p>
+<h3 id="2-1-向量范数"><a href="#2-1-向量范数" class="headerlink" title="2.1 向量范数"></a>2.1 向量范数</h3><p>向量范数(Vector Norm)是表征向量“长度”的一种度量方法，它可以推广到张量上，在神经网络中，常用来表示张量的权值大小，梯度大小等；</p>
+<ul>
+<li><p>L1 范数，定义为向量𝒙的所有元素绝对值之和<img src="/images/image-20221017085741998.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>L2 范数，定义为向量𝒙的所有元素的平方和开根号<img src="/images/image-20221017085822412.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>∞ 范数，定义为向量𝒙的所有元素绝对值的最大值<img src="/images/image-20221017085909130.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ul>
+<p>尽管上述公式都是针对向量的，在应对矩阵和张量时都可以将其平铺为向量再进行范数的计算；</p>
+<blockquote>
+<p>在 TensorFlow 中，可以通过 tf.norm(x, ord)求解张量的 L1、L2、∞ 等范数，其中参数ord 指定为 1、2 时计算 L1、L2 范数，指定为 np.inf 时计算∞ 范数</p>
+</blockquote>
+<h3 id="2-2-最值、均值"><a href="#2-2-最值、均值" class="headerlink" title="2.2 最值、均值"></a>2.2 最值、均值</h3><blockquote>
+<p>通过 tf.reduce_max、tf.reduce_min、tf.reduce_mean、tf.reduce_sum 函数可以求解张量在某个维度上的最大、最小、均值、和，也可以求全局最大、最小、均值、和信息</p>
+</blockquote>
+<p>当不指定 axis 参数时，tf.reduce_*函数会求解出全局元素的最大、最小、均值、和等数据</p>
+<blockquote>
+<p>通过 tf.argmax(x, axis)和 tf.argmin(x, axis)可以求解在 axis 轴上，x 的最大值、最小值所在的索引号</p>
+</blockquote>
+<h2 id="3-张量比较"><a href="#3-张量比较" class="headerlink" title="3.张量比较"></a>3.张量比较</h2><p><img src="/images/image-20221017090748916.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="4-数据限幅"><a href="#4-数据限幅" class="headerlink" title="4.数据限幅"></a>4.数据限幅</h2><p>现在考虑如何实现非线性激活函数ReLu(这个函数的本质很简单，就是最小数值为0)，可以通过数据限幅实现，只需要限制元素的范围𝑦 ∈ [0,+∞)即可；</p>
+<blockquote>
+<p>在 TensorFlow 中，可以通过 tf.maximum(x, a)实现数据元素的下限幅，即𝑦 ∈ [𝑏,+∞)；可以通过 tf.minimum(x, a)实现数据元素的上限幅，即𝑦 ∈ (−∞,𝑏]</p>
+</blockquote>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs py">In [<span class="hljs-number">33</span>]:x = tf.<span class="hljs-built_in">range</span>(<span class="hljs-number">9</span>)<br>tf.maximum(x,<span class="hljs-number">2</span>) <span class="hljs-comment"># 下限幅到 2</span><br>Out[<span class="hljs-number">33</span>]:&lt;tf.Tensor: <span class="hljs-built_in">id</span>=<span class="hljs-number">48</span>, shape=(<span class="hljs-number">9</span>,), dtype=int32, numpy=array([<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>,<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>])&gt;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs py">In [<span class="hljs-number">34</span>]:tf.minimum(x,<span class="hljs-number">7</span>) <span class="hljs-comment"># 上限幅到 7</span><br>Out[<span class="hljs-number">34</span>]:&lt;tf.Tensor: <span class="hljs-built_in">id</span>=<span class="hljs-number">41</span>, shape=(<span class="hljs-number">9</span>,), dtype=int32, numpy=array([<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>,<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">7</span>])&gt;<br></code></pre></td></tr></table></figure>
+
+<p>通过组合 tf.maximum(x, a)和 tf.minimum(x, b)可以实现同时对数据的上下边界限幅，即𝑦 ∈ [𝑏,𝑐]</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs py">In [<span class="hljs-number">35</span>]:x = tf.<span class="hljs-built_in">range</span>(<span class="hljs-number">9</span>)<br>tf.minimum(tf.maximum(x,<span class="hljs-number">2</span>),<span class="hljs-number">7</span>) <span class="hljs-comment"># 限幅为 2~7</span><br>Out[<span class="hljs-number">35</span>]:&lt;tf.Tensor: <span class="hljs-built_in">id</span>=<span class="hljs-number">57</span>, shape=(<span class="hljs-number">9</span>,), dtype=int32, numpy=array([<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>,<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">7</span>])&gt;<br></code></pre></td></tr></table></figure>
+
+<p>更方便地，我们可以使用 tf.clip_by_value 函数实现上下限幅</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs py">In [<span class="hljs-number">36</span>]:x = tf.<span class="hljs-built_in">range</span>(<span class="hljs-number">9</span>)<br>tf.clip_by_value(x,<span class="hljs-number">2</span>,<span class="hljs-number">7</span>) <span class="hljs-comment"># 限幅为 2~7</span><br>Out[<span class="hljs-number">36</span>]:&lt;tf.Tensor: <span class="hljs-built_in">id</span>=<span class="hljs-number">66</span>, shape=(<span class="hljs-number">9</span>,), dtype=int32, numpy=array([<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>,<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">7</span>])&gt;<br></code></pre></td></tr></table></figure>
+
+<p>现在我们解决刚开始的问题，实现一个ReLu函数，只需要使用到maximum</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">relu</span>(<span class="hljs-params">x</span>): <span class="hljs-comment"># ReLU 函数</span><br>	<span class="hljs-keyword">return</span> tf.maximum(x,<span class="hljs-number">0.</span>) <span class="hljs-comment"># 下限幅为 0 即可</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="第三章-tensorflow2-x高级"><a href="#第三章-tensorflow2-x高级" class="headerlink" title="第三章 tensorflow2.x高级"></a>第三章 tensorflow2.x高级</h1><p>本章我们主要介绍如何将神经网络、机器学习等抽象的概念用tensorflow实现（这一章很有可能需要手写并进行纸上演算，需要非常多的推导，需要耐心）；</p>
+<blockquote>
+<p>我其实一直有一个问题，为什么这些教材都只是教我们怎么调用API，但是对于一些语法规则只字不提，比如说为什么要用with，为什么要用def？这些问题如果不自行上网搜索根本就找不到；</p>
+</blockquote>
+<h2 id="1-数据可视化"><a href="#1-数据可视化" class="headerlink" title="1.数据可视化"></a>1.数据可视化</h2><p>首先我们介绍一下tensorflow中tensorboard包的使用，这个可视化工具在机器学习的训练过程中尤其重要；（尽管现在我并不知道tensorboard是否会受到tensorflow版本的不同带来的影响）</p>
+<p>注意一个很容易混淆的点就是，数据可视化不完全等于简单的调用matplotlib库画出数据曲线，当我们面对一些高级的过程时就需要选择tensorboard工具；</p>
+<p>（关键是市面上的tensorboard教程真的好少啊我的天，真是无语了…)</p>
+<p>参考链接:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/deephub/article/details/123086159">(1条消息) TensorBoard的最全使用教程：看这篇就够了_deephub的博客-CSDN博客_tensorboard</a></li>
+</ul>
+<hr>
+<p>tensorboard作为tensorflow的可视化工具，通过TensorFlow程序运行过程中产生的日志文件来对TensorFlow的程序运行状态进行可视化，它与TensorFlow跑在两个不同的进程中；</p>
+<p>TensorBoard不需要额外安装，在TensorFlow安装时已自动完成，在Anaconda Prompt中先进入日志存放的目录（非常重要），再运行TensorBoard，并将日志的地址指向程序日志输出的地址；</p>
+<p>启动服务的端口默认为6006；使用 –port 参数可以改编启动服务的端口，TensorBoard是一个在本地启动的服务，启动完成后在浏览器网址：<a href="http://localhost:6006即可进行访问；">http://localhost:6006即可进行访问；</a></p>
+<p>下面是一些常用的tensorboard API</p>
+<p><img src="/images/image-20221013171135994.png" srcset="/img/loading.gif" lazyload></p>
+<p>TensorBoard提供了很多种数据类型的显示：</p>
+<ul>
+<li><p>标量通过tf.summary.scalar()函数显示；</p>
+</li>
+<li><p>图像通过tf.summary.image()函数显示；</p>
+</li>
+<li><p>声音通过tf.summary.audio()函数显示；</p>
+</li>
+<li><p>张量通过tf.summary.histogram()函数显示；</p>
+</li>
+</ul>
+<p>这些摘要的操作定义完毕后，可以通过tf.summary.merge_all()函数把它们合并起来，合并后的摘要操作就可以通过session来运行，得到摘要信息（summary_str），通过FileWrite写入事件日志文件中；</p>
+<p><img src="/images/image-20221017201341150.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>tensorflow包的大致使用流程如下：</p>
+</blockquote>
+<ol>
+<li>设置保存路径: tenboard_dir &#x3D; ‘.&#x2F;MNIST’</li>
+<li>指定⽂件⽤来保存TensorFlow的图（分为train和test图）</li>
+<li>把图add保存在本地磁盘</li>
+<li>进⼊⽣成的events⽂件的上⼀级⽂件夹⽬录中，如在DOS窗⼝运⾏命令： <code>tensorboard --logdir=test</code> 或 <code>tensorboard --logdir=train</code></li>
+<li>复制终端返回的⽹址，使⽤浏览器进⼊该⽹址</li>
+</ol>
+<h3 id="1-1-启动tensorboard"><a href="#1-1-启动tensorboard" class="headerlink" title="1.1 启动tensorboard"></a>1.1 启动tensorboard</h3><p>本地启动tensorboard使用命令行运行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">tensorboard --logdir=&lt;directory_name&gt;  <br></code></pre></td></tr></table></figure>
+
+<p>注意将<code>directory_name</code>标记替换为保存数据的目录，默认是’logs’；</p>
+<p>使用其他端口开启服务</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">tensorboard --logdir=test --host=127.0.0.1 --port=8008<br></code></pre></td></tr></table></figure>
+
+<p>当然也可以在jupyter notebook中使用tensorboard，使用以下命令</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">%load_ext tensorboard<br></code></pre></td></tr></table></figure>
+
+<p>运行上述代码将加载 TensorBoard并允许我们将其用于可视化，加载扩展后，我们现在可以启动 TensorBoard：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">%tensorboard --logdir logs<br></code></pre></td></tr></table></figure>
+
+<p>（在jupyter notebook中启动几乎是不可能成功的…一直显示端口被占用）</p>
+
               
             </div>
             <hr/>
@@ -581,6 +970,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2022/10/24/%E9%80%9A%E8%AF%86_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" title="数据结构与算法">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">数据结构与算法</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">

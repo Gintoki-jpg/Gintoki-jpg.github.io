@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/compile.jpg">
 <meta property="article:published_time" content="2022-09-09T01:50:00.000Z">
-<meta property="article:modified_time" content="2022-10-14T14:28:05.241Z">
+<meta property="article:modified_time" content="2022-10-28T14:36:57.974Z">
 <meta property="article:author" content="YangZaiyan">
 <meta property="article:tag" content="课程学习">
 <meta property="article:tag" content="计算机基础">
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          23k 字
+          28k 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          195 分钟
+          231 分钟
         
       </span>
     
@@ -783,7 +783,7 @@
 </ul>
 <p><img src="/images/image-20221007100943624.png" srcset="/img/loading.gif" lazyload></p>
 <blockquote>
-<p>Follow集合：文法符号后面可能跟随的终结符的集合（不包括空串）</p>
+<p>Follow集合：文法符号后面可能跟随的终结符的集合（<code>Follow集不包括空串！！！</code>）</p>
 </blockquote>
 <p>注意终结符的Follow集合没有定义，只有非终结符才会有Follow集合；Follow集合中的符号一定是终结符且不包含空串；</p>
 <p>定义开始符号的Follow集合初始为 { # }</p>
@@ -874,7 +874,9 @@
 </blockquote>
 <p>A：实际上上述确定产生式A-&gt;a在表中的位置的规则并不完全，当面对有多个产生式如上述F-&gt;(E)和F-&gt;i，此时我们不仅需要考虑First集合，同时还需要考虑填入之后是否会影响，具体表现为假如将F-&gt;(E)填入M(F,i)，这将导致当我们的非终结符为F同时需要匹配的单词符号为i的时候，我们选择了F-&gt;(E)，那么(直接和i不匹配了，这是直接会失败的；</p>
 <hr>
-<h3 id="2-5-LL1的非递归预测分析"><a href="#2-5-LL1的非递归预测分析" class="headerlink" title="2.5 LL1的非递归预测分析"></a>2.5 LL1的非递归预测分析</h3><p>LL1的递归预测分析不是考试重点所以我们不介绍；</p>
+<h3 id="2-5-LL1的非递归预测分析"><a href="#2-5-LL1的非递归预测分析" class="headerlink" title="2.5 LL1的非递归预测分析"></a>2.5 LL1的非递归预测分析</h3><blockquote>
+<p>LL1的递归预测分析不是考试重点所以我们不介绍；</p>
+</blockquote>
 <p>非递归的预测分析程序模型如下</p>
 <p><img src="/images/image-20221007115509718.png" srcset="/img/loading.gif" lazyload></p>
 <ul>
@@ -904,7 +906,10 @@
 <p><img src="/images/image-20221008085324989.png" srcset="/img/loading.gif" lazyload></p>
 <p>预测推导过程如下（非递归的预测分析过程），其中输出栏表示在分析符号串的过程中采用的产生式</p>
 <p><img src="/images/image-20221007120608949.png" srcset="/img/loading.gif" lazyload></p>
-<h4 id="2-5-1-错误处理程序"><a href="#2-5-1-错误处理程序" class="headerlink" title="2.5.1 错误处理程序"></a>2.5.1 错误处理程序</h4><p>当出现如下两种情况表示源程序中出现语法错误：</p>
+<h4 id="2-5-1-错误处理程序"><a href="#2-5-1-错误处理程序" class="headerlink" title="2.5.1 错误处理程序"></a>2.5.1 错误处理程序</h4><blockquote>
+<p>这一节不作为考察重点；</p>
+</blockquote>
+<p>当出现如下两种情况表示源程序中出现语法错误：</p>
 <ol>
 <li>分析栈栈顶符号是终结符号，但是与当前输入符号不匹配；</li>
 <li>分析栈栈顶符号是非终结符号A，当前输入符号为a，但分析表中M[A,a]为空；</li>
@@ -1072,12 +1077,16 @@
 </ul>
 </li>
 </ul>
+<hr>
+<p>下面我们简单举一个例子说明LR分析如何进行（假设已经知道产生式以及分析表）</p>
+<p><img src="/images/image-20221020163450667.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221020163510151.png" srcset="/img/loading.gif" lazyload></p>
 <h4 id="3-3-2-LR分析表"><a href="#3-3-2-LR分析表" class="headerlink" title="3.3.2 LR分析表"></a>3.3.2 LR分析表</h4><p>我们已经知道LR分析的关键是确定句柄，并不是直接识别句柄，而是构造一个DFA，识别规范归约过程中出现在栈中的符号串，该DFA的状态中包含有句柄是否形成的信息（终态表示句柄形成），所以我们可以说<code>一个LR分析器实质上是一个DFA</code>；至于这个DFA是如何构造的我们将在之后介绍（我们当然可以试探性的根据产生式构造DFA，但实际在做题过程中是有形式化的逻辑的）；</p>
 <p><img src="/images/image-20221014213245057.png" srcset="/img/loading.gif" lazyload></p>
-<p>得到了文法的 DFA之后，我们可以根据该DFA构造该DFA的矩阵表示，也就是我们前面提到的LR分析表；</p>
+<p>得到了文法的DFA之后，我们可以根据该DFA构造该DFA的矩阵表示，也就是我们前面提到的LR分析表（现在我还不是很清楚这个分析表是如何构造的，我们只需要知道这个分析表中的字母代表什么意思即可）；</p>
 <p><img src="/images/image-20221014213922357.png" srcset="/img/loading.gif" lazyload></p>
 <blockquote>
-<p>注意：不同的文法其分析表不同（因为DFA不同）；相同的文法采用不同的LR分析器（LR(0)、SLR(1)…）得到的分析表也不同；</p>
+<p>注意：不同的文法其分析表不同（因为DFA不同）；相同的文法采用不同的LR分析器（LR(0)、SLR(1)…）得到的分析表也不同，我们之后会具体介绍；</p>
 </blockquote>
 <h4 id="3-3-3-可归前缀和活前缀"><a href="#3-3-3-可归前缀和活前缀" class="headerlink" title="3.3.3 可归前缀和活前缀"></a>3.3.3 可归前缀和活前缀</h4><p>上面我们说到LR分析思想是构造一个DFA，识别<code>规范规约过程中出现在栈中的符号串</code>，我们将这一段称之为活前缀&#x2F;可行前缀；</p>
 <p>活前缀的特点：</p>
@@ -1089,6 +1098,176 @@
 <p>活前缀的定义：规范句型的一个前缀，这种前缀不包含句柄之后的任何符号；</p>
 <p>可归前缀的定义：活前缀恰好包含句柄，也就意味着这是一个可以归约的前缀；</p>
 </blockquote>
+<h3 id="3-4-LR-0-分析"><a href="#3-4-LR-0-分析" class="headerlink" title="3.4 LR(0)分析"></a>3.4 LR(0)分析</h3><p>本节的目的就是构造识别文法所有活前缀的DFA，我们这里构造DFA并不是像前面一样试探的根据产生式推测性的构造，而是通过一个形式化的算法得到；</p>
+<p>在学习本节之前强烈建议温习一遍LR分析法的整个流程，参照视频<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1wb4y1B7dd/?p=2&spm_id_from=pageDriver&vd_source=276d55048634a5b508b1b53a1ecd56b3">2-LR分析器模型_哔哩哔哩_bilibili</a>（强推！！！）</p>
+<h4 id="3-4-1-基本概念"><a href="#3-4-1-基本概念" class="headerlink" title="3.4.1 基本概念"></a>3.4.1 基本概念</h4><p>首先我们需要介绍几个前置概念；</p>
+<h5 id="1-文法的拓展"><a href="#1-文法的拓展" class="headerlink" title="(1)文法的拓展"></a>(1)文法的拓展</h5><p>将文法G(S)拓展为G’(S’)，这实际上非常简单，只需要增加一条表达式S’-&gt;S，其意义在于当符号栈出现S’的时候我们可以判断整个分析过程结束（如果不扩展的话存在S-&gt;Sa这样的表达式不知道是否应当向下继续）</p>
+<p><img src="/images/image-20221020105933453.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>PS:即使原开始符号S不出现在任何产生式右部，为了统一起见仍然需要增加S’-&gt;S产生式进行拓展</p>
+</blockquote>
+<h5 id="2-LR-0-项目"><a href="#2-LR-0-项目" class="headerlink" title="(2)LR(0)项目"></a>(2)LR(0)项目</h5><p>在产生式右部加上·的每一条产生式我们称之为<code>LR(0)项目</code>；</p>
+<p>对于每一个DFA的状态来说，我们称之为<code>LR(0)项目集</code> —— 所有等价的项目组成的一个项目集，称为项目集闭包，每个项目集闭包对应自动机的一个状态 —— 当原点后面存在非终结符时，就有与之等价的项目；</p>
+<p>对于整个DFA来说，它是状态的集合，我们称之为<code>规范LR(0)项集族</code>；</p>
+<p><img src="/images/image-20221020110158097.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221020110257143.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>PS:对于空产生式A-&gt;空串，仅有项目A-&gt;·，并不存在什么A-&gt;·空集这种形式</p>
+</blockquote>
+<p>LR(0)项目主要有以下几个类别：</p>
+<ul>
+<li>移进项目：A-&gt;α·aβ（·后跟着终结符）</li>
+<li>待约项目：A-&gt;α·Bβ（·后跟着非终结符）</li>
+<li>归约项目：A-&gt;α·（·已经移动到最右边）</li>
+<li>接受项目：S’-&gt;S·（意味着此时可以将S归约到S’，整个分析结束）</li>
+</ul>
+<h5 id="3-闭包函数"><a href="#3-闭包函数" class="headerlink" title="(3)闭包函数"></a>(3)闭包函数</h5><p><img src="/images/image-20221020110425650.png" srcset="/img/loading.gif" lazyload></p>
+<p>在状态转移的过程中，如果出现了·右部是非终结符的情况，我们需要添加所有该非终结符的产生式，这个过程称之为闭包函数</p>
+<p>也就是说我们不仅得到状态I0读入a转移到I2的<code>核S-&gt;a·AcBe</code>以外，还需要对该核求一个闭包；</p>
+<blockquote>
+<p>核的定义：除了S’-&gt;·S以外，圆点不在产生式右部最左边的项目</p>
+</blockquote>
+<p>闭包函数的基本逻辑如下</p>
+<p><img src="/images/image-20221020115342046.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="4-状态转移函数"><a href="#4-状态转移函数" class="headerlink" title="(4)状态转移函数"></a>(4)状态转移函数</h5><p>状态转移函数GO的定义如下</p>
+<p><img src="/images/image-20221020115644668.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="3-4-2-LR-0-分析表"><a href="#3-4-2-LR-0-分析表" class="headerlink" title="3.4.2 LR(0)分析表"></a>3.4.2 LR(0)分析表</h4><p><img src="/images/image-20221020171739126.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221020171804008.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>结论：如果一个文法G的LR(0)分析表不含多重定义，则称G为LR(0)文法；</p>
+</blockquote>
+<h4 id="3-4-3-LR-0-冲突"><a href="#3-4-3-LR-0-冲突" class="headerlink" title="3.4.3 LR(0)冲突"></a>3.4.3 LR(0)冲突</h4><blockquote>
+<p>移进-归约冲突</p>
+</blockquote>
+<p>一个项目集中，移进和归约项目同时存在，即：</p>
+<ul>
+<li>A-&gt;α·aβ（点后面是终结符表示移进项目）</li>
+<li>B-&gt;γ·（点在产生式最右边是归约项目）</li>
+</ul>
+<p><img src="/images/image-20221020191343763.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>归约-归约冲突</p>
+</blockquote>
+<p>一个项目集中归约和归约项目同时存在，即：</p>
+<ul>
+<li>A-&gt;β·</li>
+<li>B-&gt;γ·</li>
+</ul>
+<blockquote>
+<p>结论：LR(0)文法是指文法G的拓展文法G’的活前缀识别自动机中的每个状态都不存在移进-归约冲突或归约-归约冲突；</p>
+</blockquote>
+<h3 id="3-5-SLR-1-分析"><a href="#3-5-SLR-1-分析" class="headerlink" title="3.5 SLR(1)分析"></a>3.5 SLR(1)分析</h3><p>实际上大多数程序设计语言的文法都不满足LR(0)文法的条件，这就意味着我们对其构造分析表总是会出现多重定义；</p>
+<p><img src="/images/image-20221020191708127.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们思考为什么会出现这样的问题：因为LR(0)分析表在构造的时候其归约项目并不查看下一个字符，直接进行归约，这就导致了可能发生的冲突；</p>
+<p>相应的解决办法就是修改LR(0)分析表的构造方式，即通过向前查看一个符号来检查LR(0)分析表中是否存在无效归约；</p>
+<p><img src="/images/image-20221020192335632.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>PS：</p>
+<ul>
+<li>待移进的终结符b一定不能在A和B的Follow集中；</li>
+<li>Follow(A)与Follow(B)相交应当是空集（如果不是空集则SLR解决不了这种冲突，需要使用更高级的分析方法）；</li>
+<li>实际上做题一般都只会有一个归约项目，所以只需要考虑待移进的终结符b不在Follow集当中（表现为两个集合相交为空）</li>
+</ul>
+</blockquote>
+<p>下面我们来看例题</p>
+<p><img src="/images/image-20221020193021769.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>结论：SLR文法(其中S是指simple)是指SLR分析表中不含多重定义的文法；</p>
+</blockquote>
+<p>当然SLR文法也不能解决所有的重定义问题，即针对非SLR文法，我们还可以使用更高级的分析方法，即下面要介绍的LR(1)和LALR分析方法；</p>
+<h3 id="3-6-LR-1-分析"><a href="#3-6-LR-1-分析" class="headerlink" title="3.6 LR(1)分析"></a>3.6 LR(1)分析</h3><p>举例说明SLR可能发生的冲突</p>
+<p><img src="/images/image-20221028103301459.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>对于状态I2，当我们采用SLR分析：当下一个输入符号为 &#x3D; 的时候，因为 &#x3D; 属于 R 的FOLLOW集，所以采用归约操作；但是我们又发现， &#x3D; 又是S–&gt;L . &#x3D;R 中圆点后的一个字符，按照规则应该采用移进操作；这就在造成了重定义的问题；</p>
+</blockquote>
+<p>SLR分析仍然可能存在语法冲突，因为SLR只是简单地考察下一个输入符号b是否属于与归约项目A→α相关联的FOLLOW(A)，但b∈FOLLOW(A)只是归约α的一个必要条件，而非充分条件；</p>
+<p>简单来说就是如果输入下一个字符是b，我们采用了归约操作，那么就一定可以说明b属于A的FOLLOW集。但我们不能说：如果b属于A的FOLLOW集，那么就一定可以对A采用归约操作</p>
+<p><img src="/images/image-20221028100658560.png" srcset="/img/loading.gif" lazyload></p>
+<p>从上图右边生成树可以我们得知，此时 L&#x3D;R 中的R后面跟着的终结符只能是 # ，不可能是 &#x3D; ，但是R的FOLLOW中却包含了 &#x3D; ，这明显是范围扩大了；</p>
+<p>又比如说下一行中的 * R，R下一个终结符只可以是 &#x3D; ，不会是 # ；</p>
+<p>综上，只凭FOLLOW集合判断是否采用归约是不合适的（如果使用FOLLOW相当于归约的条件放宽了），所以引入了LR(1)分析来解决这种问题；</p>
+<blockquote>
+<p>LR(1)的基本思想：对于产生式A-&gt;α的归约，在不同的使用位置，A会要求不同的后继符号；</p>
+</blockquote>
+<h4 id="3-6-1-基本概念"><a href="#3-6-1-基本概念" class="headerlink" title="3.6.1 基本概念"></a>3.6.1 基本概念</h4><h5 id="（1）LR-1-项目"><a href="#（1）LR-1-项目" class="headerlink" title="（1）LR(1)项目"></a>（1）LR(1)项目</h5><p>介绍LR(1)之前先说一下前面介绍过的LR(0)、SLR(1)以及下面要介绍的LR(1)、LALR之间的联系与区别</p>
+<p>LR(0)的基础上才有SLR(1) —— SLR分析方法只用在分析表上，DFA与LR(0)相同；<br>LR(1)的基础上才有LALR(1) —— LR(1)的DFA合并同心项才能为LALR(1)；</p>
+<p>这四个文法的本质区别实际都只在一点 —— 构造的分析表中ACTION部分的归约动作的区别：</p>
+<ul>
+<li>LR(0) 状态有归约状态，整个状态都会进行该归约动作；</li>
+<li>SLR(1) 状态中针对FOLLOW集中有的终结符号会进行该归约动作；</li>
+<li>LR(1) 状态中针对展望符对应的总结符号进行该归约动作（一般为FOLLOW集的真子集）；</li>
+<li>LALR(1) 状态中也是针对展望符对应的总结符号进行该归约动作（一般为FOLLOW集的真子集）；</li>
+</ul>
+<p>理论上LR(1)的分析效果最好，但是实际开发中LR(1)的状态数会非常多，这是不合理的，所以出现了LALR(1)分析方法（相应的，LALR(1)分析法也存在一些问题）；</p>
+<hr>
+<p>在LR(0)分析的时候，我们并没有考虑下一个输入的字符。而对于LR(1)，我们就需要对每一个项目多考虑一项：下一个输入字符（也就是展望符，这是整个LR(1)的难点和核心）</p>
+<blockquote>
+<p>LR(1)项目定义：将一般形式为 [A→α·β, a]的项称为 LR(1) 项；</p>
+<p>其中A→αβ 是一个产生式，a 是一个终结符(这里将#视为一个特殊的终结符)，它表示在当前状态下，A后面必须紧跟的终结符，称为该项的展望符(lookahead)</p>
+</blockquote>
+<ul>
+<li><p>LR(1) 中的1指的是项的第二个分量的长度，也就是：往后多看一个字符</p>
+</li>
+<li><p>形如[A→α·β, a]且β ≠ ε的项中，展望符a没有任何作用（尽管没作用但是构造的过程中仍然要写） —— 当LR(1)中的点号不在项的最右侧，向前看符号没有任何意义；</p>
+</li>
+<li><p>形如[A→α·, a]的项在只有在下一个输入符号等于a时才可以按照A→α 进行归约：这样的a的集合总是FOLLOW(A)的子集，而且它通常是一个真子集 —— 当点号在最右端时，只有下一个输入的符号和向前看符号一致时，我们才归约这个产生式；</p>
+</li>
+</ul>
+<h5 id="（2）LR-1-等价项目"><a href="#（2）LR-1-等价项目" class="headerlink" title="（2）LR(1)等价项目"></a>（2）LR(1)等价项目</h5><p>有项目 [A-&gt;α·Bβ,a]，则该项目的<code>等价项目</code>形式如下 [B-&gt;·γ,b]，其中b∈FIRST(βa)；</p>
+<blockquote>
+<p>当β-&gt;+ ε时，称b&#x3D;a叫做继承的后继符，否则称b为自生的后继符；</p>
+</blockquote>
+<p>而仅仅只是利用上述规则还不足以求出所有情况的展望符，我们给出通用求解展望符的算法：</p>
+<ol>
+<li>项目[S’-&gt;·S,#]，这个最基本的项目的展望符固定为#</li>
+<li>由项目[A-&gt;α·Bβ,a]生成的项目[B-&gt;·γ,b]，其中b∈FIRST(βa)</li>
+<li>除了上述自动生成的展望符外，展望符还有两种传播方式：<ul>
+<li>项目[A-&gt;α·Bβ,a]中，β-&gt;+ ε时，该项目的a<code>纵向传播</code>到项目[B-&gt;·γ,b]</li>
+<li>项目[A-&gt;α·Bβ,a]中，展望符a无条件<code>横向传播</code>到项目[αB·β,a]</li>
+</ul>
+</li>
+</ol>
+<h4 id="3-6-2-LR-1-自动机"><a href="#3-6-2-LR-1-自动机" class="headerlink" title="3.6.2 LR(1)自动机"></a>3.6.2 LR(1)自动机</h4><p>假设我们有如下文法</p>
+<p><img src="/images/image-20221028102239978.png" srcset="/img/loading.gif" lazyload></p>
+<p>构造LR(1)自动机的步骤主要如下：</p>
+<ol>
+<li>拓展文法G得到G’；</li>
+<li>类似LR(0)分析的方法构造得到LR(1)自动机（与LR(0)不同的是多了展望符）</li>
+</ol>
+<p><img src="/images/image-20221028103039002.png" srcset="/img/loading.gif" lazyload></p>
+<p>由0)可以推导出I<del>0</del>式，有I<del>0</del>式中的S是非终结符，所以又可以继续推出等价项目I<del>2</del>和I<del>3</del>。又I<del>2</del>式中圆点后面的L属于非终结符，继续推出I<del>4</del>、I<del>5</del>式【注意：I<del>4</del>、I<del>5</del>中的展望符是&#x3D;，因为I<del>2</del>式中L后面有终结符&#x3D;，求展望符就是这么简单】然后继续对左边橙色框中的式子进行相同算法的推导即可；</p>
+<blockquote>
+<p>注：如果除展望符外，两个LR(1)项目集是相同的，则称这两个LR(1)项目集是同心的</p>
+</blockquote>
+<h4 id="3-6-3-LR-1-分析表"><a href="#3-6-3-LR-1-分析表" class="headerlink" title="3.6.3 LR(1)分析表"></a>3.6.3 LR(1)分析表</h4><p>拥有自动机之后就可以得到分析表了，LR(1)与LR(0)分析表类似，只是在归约的某些地方做了更加严格的限制，我们先看一下课堂上讲的LR(1)和SLR(1)分析表的构造方法的对比</p>
+<p><img src="/images/image-20221028112348251.png" srcset="/img/loading.gif" lazyload></p>
+<p>根据上述规则，根据上面我们得到的LR(1)自动机可以构造得到下面的LR(1)分析表</p>
+<p><img src="/images/image-20221028104626323.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>相应的，如果LR(1)分析表中没有语法冲突（具体什么冲突课堂上也没说…），则称给定的文法为LR(1)文法；</p>
+</blockquote>
+<h3 id="3-7-LALR-1-分析"><a href="#3-7-LALR-1-分析" class="headerlink" title="3.7 LALR(1)分析"></a>3.7 LALR(1)分析</h3><blockquote>
+<p>一般不会考察LALR(1)，了解即可</p>
+</blockquote>
+<p>在进行LR(1)分析的过程中，我们会发现存在一些同心项目，经过简化后的这些项目就被称为LALR分析，其基本思想如下：</p>
+<ul>
+<li>寻找具有相同核心的LR (1) 项集，并将这些项集合并为一个项集。 所谓项集的核心就是其第一分量的集合</li>
+<li>然后根据合并后得到的项集族构造语法分析表</li>
+</ul>
+<p>我们还是用之前的例子举例</p>
+<p><img src="/images/image-20221028113528996.png" srcset="/img/loading.gif" lazyload></p>
+<p>从上图我们可以发现：I4和I11、I8和I10、I7和I13、I5和I12都是同心的，那么我们就可以将这些同心的项目集合并，构成如下的自动机，再利用自动机构造分析表（分析表的构造方法和LR(1)相同）</p>
+<p><img src="/images/image-20221028113622852.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>注：</p>
+<ul>
+<li>合并同心项集，不会产生移进-归约冲突，但是会产生归约归约冲突；</li>
+<li>合并同心项集后，虽然不产生冲突，但可能会推迟错误的发现；</li>
+</ul>
+</blockquote>
+<h3 id="3-8-二义性文法的LR分析"><a href="#3-8-二义性文法的LR分析" class="headerlink" title="3.8 二义性文法的LR分析"></a>3.8 二义性文法的LR分析</h3><p>实际上所有的语言都有二义性（因为二义性文法更加简短和自然），注意任何二义性文法都不是LR的；</p>
+<p>解决二义性的方法也很多，最常用的就是优先级和结合性解决冲突；</p>
+<p>关于二义性和错误处理我们不在这里详细讨论，感兴趣可以参考链接<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1zW411t7YE?p=33&vd_source=276d55048634a5b508b1b53a1ecd56b3">4-15二义性文法的LR分析_哔哩哔哩_bilibili</a></p>
 
               
             </div>
@@ -1188,8 +1367,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/09/08/%E9%80%9A%E8%AF%86_%E7%A7%91%E6%8A%80%E5%8F%B2%E4%B8%8E%E6%96%B9%E6%B3%95%E5%AD%A6/" title="科技史与方法学">
-                        <span class="hidden-mobile">科技史与方法学</span>
+                      <a href="/2022/09/07/%E9%80%9A%E8%AF%86_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/" title="计算机系统">
+                        <span class="hidden-mobile">计算机系统</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

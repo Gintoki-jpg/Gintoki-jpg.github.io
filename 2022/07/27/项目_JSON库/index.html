@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/project.png">
 <meta property="article:published_time" content="2022-07-27T07:49:00.000Z">
-<meta property="article:modified_time" content="2022-07-30T02:39:32.405Z">
+<meta property="article:modified_time" content="2022-10-20T00:21:31.233Z">
 <meta property="article:author" content="YangZaiyan">
 <meta property="article:tag" content="C语言项目">
 <meta name="twitter:card" content="summary_large_image">
@@ -221,7 +221,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          18k 字
+          20k 字
         
       </span>
     
@@ -232,7 +232,7 @@
         
         
         
-          148 分钟
+          164 分钟
         
       </span>
     
@@ -276,7 +276,7 @@
               
               <p>项目参考<a target="_blank" rel="noopener" href="https://github.com/miloyip/json-tutorial">https://github.com/miloyip/json-tutorial</a></p>
 <p><a target="_blank" rel="noopener" href="https://sourceforge.net/projects/cjson/">https://sourceforge.net/projects/cjson/</a></p>
-<h1 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h1><p>首先我们要明白什么是JSON库，在了解JSON库之前就需要JSON是什么，这里我们引用网络爬虫那一篇里关于JSON的介绍</p>
+<h1 id="一、实现"><a href="#一、实现" class="headerlink" title="一、实现"></a>一、实现</h1><p>首先我们要明白什么是JSON库，在了解JSON库之前就需要JSON是什么，这里我们引用网络爬虫那一篇里关于JSON的介绍</p>
 <h2 id="1-JSON数据格式"><a href="#1-JSON数据格式" class="headerlink" title="1.JSON数据格式"></a>1.JSON数据格式</h2><blockquote>
 <p>JSON，全称为 JavaScript Object Notation, 也就是 JavaScript 对象标记，它通过对象和数组的组合来表示数据，构造简洁但是结构化程度非常高，是一种轻量级的<code>数据交换格式</code>；</p>
 </blockquote>
@@ -408,40 +408,27 @@
 
 
 
+<h1 id="二、附录"><a href="#二、附录" class="headerlink" title="二、附录"></a>二、附录</h1><h2 id="1-单元测试"><a href="#1-单元测试" class="headerlink" title="1.单元测试"></a>1.单元测试</h2><p>我们日常在写练习题的时候一般都是以printf&#x2F;cout输出结果观察是否正确，但是随着软件项目越来越复杂这样做会非常低效，我们经常采用的一种方式是单元测试；</p>
+<p>常用的单元测试框架有 xUnit 系列，如 C++ 的 <a target="_blank" rel="noopener" href="https://github.com/google/googletest">Google Test</a>、C# 的 <a target="_blank" rel="noopener" href="https://www.nunit.org/">NUnit</a>。简单起见，本项目编写了一个极简单的单元测试方式。</p>
+<p>一般来说，软件开发是以周期进行的。例如，加入一个功能，再写关于该功能的单元测试。但也有另一种软件开发方法论，称为测试驱动开发（test-driven development, TDD），它的主要循环步骤是：</p>
+<ol>
+<li>加入一个测试。</li>
+<li>运行所有测试，新的测试应该会失败。</li>
+<li>编写实现代码。</li>
+<li>运行所有测试，若有测试失败回到3。</li>
+<li>重构代码。</li>
+<li>回到 1。</li>
+</ol>
+<p>TDD 是先写测试，再实现功能（单元测试是先加入功能再写测试）。好处是实现只会刚好满足测试，而不会写了一些不需要的代码，或是没有被测试的代码。</p>
+<p>但无论我们是采用 TDD，或是先实现后测试，都应尽量加入足够覆盖率的单元测试。</p>
+<p>回到 leptjson 项目，<code>test.c</code> 包含了一个极简的单元测试框架：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;leptjson.h&quot;</span></span><br><br><span class="hljs-type">static</span> <span class="hljs-type">int</span> main_ret = <span class="hljs-number">0</span>;<br><span class="hljs-type">static</span> <span class="hljs-type">int</span> test_count = <span class="hljs-number">0</span>;<br><span class="hljs-type">static</span> <span class="hljs-type">int</span> test_pass = <span class="hljs-number">0</span>;<br><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> EXPECT_EQ_BASE(equality, expect, actual, format) \</span><br><span class="hljs-meta">    do &#123;\</span><br><span class="hljs-meta">        test_count++;\</span><br><span class="hljs-meta">        <span class="hljs-keyword">if</span> (equality)\</span><br><span class="hljs-meta">            test_pass++;\</span><br><span class="hljs-meta">        <span class="hljs-keyword">else</span> &#123;\</span><br><span class="hljs-meta">            fprintf(stderr, <span class="hljs-string">&quot;%s:%d: expect: &quot;</span> format <span class="hljs-string">&quot; actual: &quot;</span> format <span class="hljs-string">&quot;\n&quot;</span>, __FILE__, __LINE__, expect, actual);\</span><br><span class="hljs-meta">            main_ret = 1;\</span><br><span class="hljs-meta">        &#125;\</span><br><span class="hljs-meta">    &#125; while(0)</span><br><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> EXPECT_EQ_INT(expect, actual) EXPECT_EQ_BASE((expect) == (actual), expect, actual, <span class="hljs-string">&quot;%d&quot;</span>)</span><br><br><span class="hljs-type">static</span> <span class="hljs-type">void</span> <span class="hljs-title function_">test_parse_null</span><span class="hljs-params">()</span> &#123;<br>    lept_value v;<br>    v.type = LEPT_TRUE;<br>    EXPECT_EQ_INT(LEPT_PARSE_OK, lept_parse(&amp;v, <span class="hljs-string">&quot;null&quot;</span>));<br>    EXPECT_EQ_INT(LEPT_NULL, lept_get_type(&amp;v));<br>&#125;<br><br><span class="hljs-comment">/* ... */</span><br><br><span class="hljs-type">static</span> <span class="hljs-type">void</span> <span class="hljs-title function_">test_parse</span><span class="hljs-params">()</span> &#123;<br>    test_parse_null();<br>    <span class="hljs-comment">/* ... */</span><br>&#125;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    test_parse();<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d/%d (%3.2f%%) passed\n&quot;</span>, test_pass, test_count, test_pass * <span class="hljs-number">100.0</span> / test_count);<br>    <span class="hljs-keyword">return</span> main_ret;<br>&#125;<br></code></pre></td></tr></table></figure>
 
+<p>现时只提供了一个 <code>EXPECT_EQ_INT(expect, actual)</code> 的宏，每次使用这个宏时，如果 expect !&#x3D; actual（预期值不等于实际值），便会输出错误信息。<br>若按照 TDD 的步骤，我们先写一个测试，如上面的 <code>test_parse_null()</code>，而 <code>lept_parse()</code> 只返回 <code>LEPT_PARSE_OK</code>：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">/Users/mi</span>loyip<span class="hljs-regexp">/github/</span>json-tutorial<span class="hljs-regexp">/tutorial01/</span>test.c:<span class="hljs-number">27</span>: expect: <span class="hljs-number">0</span> actual: <span class="hljs-number">1</span><br><span class="hljs-number">1</span>/<span class="hljs-number">2</span> (<span class="hljs-number">50.00</span>%) passed<br></code></pre></td></tr></table></figure>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<p>第一个返回 <code>LEPT_PARSE_OK</code>，所以是通过的。第二个测试因为 <code>lept_parse()</code> 没有把 <code>v.type</code> 改成 <code>LEPT_NULL</code>，造成失败。我们再实现 <code>lept_parse()</code> 令到它能通过测试。</p>
+<p>然而，完全按照 TDD 的步骤来开发，是会减慢开发进程。所以我个人会在这两种极端的工作方式取平衡。通常会在设计 API 后，先写部分测试代码，再写满足那些测试的实现。</p>
 
               
             </div>

@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/linux.png">
 <meta property="article:published_time" content="2022-06-27T03:35:00.000Z">
-<meta property="article:modified_time" content="2022-10-08T01:59:57.583Z">
+<meta property="article:modified_time" content="2022-10-29T08:50:08.627Z">
 <meta property="article:author" content="YangZaiyan">
 <meta property="article:tag" content="操作系统">
 <meta name="twitter:card" content="summary_large_image">
@@ -221,7 +221,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          11k 字
+          13k 字
         
       </span>
     
@@ -232,7 +232,7 @@
         
         
         
-          92 分钟
+          106 分钟
         
       </span>
     
@@ -274,12 +274,15 @@
             
             <div class="markdown-body">
               
-              <p>文章链接：<a target="_blank" rel="noopener" href="https://www.yuque.com/tintoki/znb576/sik6ux">https://www.yuque.com/tintoki/znb576/sik6ux</a></p>
+              <p>语雀文章链接：<a target="_blank" rel="noopener" href="https://www.yuque.com/tintoki/znb576/sik6ux">https://www.yuque.com/tintoki/znb576/sik6ux</a></p>
+<blockquote>
+<p>链接中的文章讲的更偏向于理论，这里我们实际操作Linux系统做一个学习总结；</p>
+</blockquote>
 <p>2022&#x2F;7&#x2F;25 9:27 因为之前学Linux就是跟着视频直接硬学没怎么动手实践所以这段时间再看Linux会觉得很生疏，这里参考<a target="_blank" rel="noopener" href="http://c.biancheng.net/linux_tutorial/10/">Linux系统简介 (biancheng.net)</a>的教程再简单复习巩固一遍Linux</p>
 <p>2022&#x2F;7&#x2F;26 9:31 刚刚稍微把中文网的Shell编程看了一下，说实话也全都是介绍怎么调用API之类的或者一些常规命令，但是这种方式反而是我最反感的方式（亲测学完就忘，现在打算的是找书自己来看）</p>
 <p>2022&#x2F;7&#x2F;27 11:10 差不多简单的把《Ubuntu Linux 从入门到精通》看了一下，反正结合实际的操作系统而不是全部的命令讲解的话这本教材还是可以的，然后Linux基本上也算是入门了，要学习Linux高级的话就得静下心来把这本书上的概念全部搞懂才行；</p>
 <h1 id="Linux操作系统（一）"><a href="#Linux操作系统（一）" class="headerlink" title="Linux操作系统（一）"></a>Linux操作系统（一）</h1><h2 id="1-Linux概述"><a href="#1-Linux概述" class="headerlink" title="1.Linux概述"></a>1.Linux概述</h2><p>作为服务器部署，绝大多数 Linux 并不安装或并不启用图形环境（UNIX&#x2F;Linux 系统不依赖图形环境，依然可以通过命令行完成 100% 的功能，而且因为不使用图形环境还会节省大量的系统资源）</p>
-<h2 id="2-Ubuntu的安装和配置"><a href="#2-Ubuntu的安装和配置" class="headerlink" title="2.Ubuntu的安装和配置"></a>2.Ubuntu的安装和配置</h2><p>2022&#x2F;7&#x2F;25 11:31 安装Ubuntu22.4成功但是在配置中文还有安装VMTools的时候暴毙了，所以这里直接选择删除，安装较低版本的Ubuntu（第一次重装失败，注意重装失败直接把Ubuntu的磁盘文件删除了就行了，VMware软件本身是没有任何问题的不要去乱动）</p>
+<h2 id="2-Ubuntu-Vmware"><a href="#2-Ubuntu-Vmware" class="headerlink" title="2.Ubuntu+Vmware"></a>2.Ubuntu+Vmware</h2><p>2022&#x2F;7&#x2F;25 11:31 安装Ubuntu22.4成功但是在配置中文还有安装VMTools的时候暴毙了，所以这里直接选择删除，安装较低版本的Ubuntu（第一次重装失败，注意重装失败直接把Ubuntu的磁盘文件删除了就行了，VMware软件本身是没有任何问题的不要去乱动）</p>
 <p>2022&#x2F;10&#x2F;2 18:43 本来今天准备安装一下16.04的32单核版本，结果按照教程来又出问题了，真的是让人头大；然而只能怪自己做笔记没认真，所以我们把一些需要修改的地方重新改了一下；</p>
 <h3 id="2-0-VMware的安装"><a href="#2-0-VMware的安装" class="headerlink" title="2.0 VMware的安装"></a>2.0 VMware的安装</h3><p>因为VMware的安装特别简单所以这里就不花时间介绍怎么安装它，主要介绍以下怎么在VMware上把Ubuntu装好，同时汉化以及配置共享文件等；</p>
 <p>需要注意的是VM之前我应该是关过一些自动启用项所以在服务中重新启动，这四个都得启动才能保证虚拟机的正常工作!!!（这四个服务究竟代表什么参考<a target="_blank" rel="noopener" href="http://t.zoukankan.com/Zlcode-p-10602978.html%EF%BC%8C%E6%8D%AE%E8%AF%B4%E8%BF%98%E6%9C%89%E4%B8%80%E4%B8%AA%E6%9C%8D%E5%8A%A1%E6%98%AFworkstation">http://t.zoukankan.com/Zlcode-p-10602978.html，据说还有一个服务是workstation</a> server，资料说安装了VMTools才有，但是我的电脑上始终没有，但是不影响正常使用）</p>
@@ -318,6 +321,29 @@
 <h3 id="2-7-Ubuntu问题"><a href="#2-7-Ubuntu问题" class="headerlink" title="2.7 Ubuntu问题"></a>2.7 Ubuntu问题</h3><h4 id="2-7-1-挂起"><a href="#2-7-1-挂起" class="headerlink" title="2.7.1 挂起"></a>2.7.1 挂起</h4><p>Ubuntu的挂起功能（本质上就是电脑休眠），这个功能好像是因为显卡的问题所以会导致挂起之后无论怎么操作都无法再唤醒，所以尽量少用这个功能吧…</p>
 <p>参考文章<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41722833/article/details/119184210">(21条消息) ubuntu20.04挂起&#x2F;休眠后无法唤醒，只能强制重启_koigh的博客-CSDN博客_ubuntu挂起后怎么唤醒</a></p>
 <h4 id="2-7-2-物理驱动"><a href="#2-7-2-物理驱动" class="headerlink" title="2.7.2 物理驱动"></a>2.7.2 物理驱动</h4><p>根据教程最后我把CD的配置修改为了物理驱动，然后第一次重启的时候提出了一个警示，之后的重启就没有这些警示了，还不影响正常使用所以就先不管这个（主要我也不懂物理驱动和iso的区别），可以参照<a target="_blank" rel="noopener" href="https://blog.csdn.net/zygood_/article/details/123011990">(21条消息) VMware虚拟机提示：无法连接虚拟设备ide1:0，因为主机上没有相应的设备。_OpenAll_Zzz的博客-CSDN博客_无法连接虚拟设备ide1:0</a>，实际上修改为物理光驱之后就可以不用链接iso快速启动；</p>
+<h2 id="3-Ubuntu-Hyper-v"><a href="#3-Ubuntu-Hyper-v" class="headerlink" title="3.Ubuntu+Hyper-v"></a>3.Ubuntu+Hyper-v</h2><p>我说一下为什么要用这个，因为我今天(2022&#x2F;10&#x2F;29)使用Vmware的时候就开始持续转圈进不去系统（很有可能是因为使用的Vmware没有花米吧，然后不知道什么奇怪的操作更新啥的就导致无法正常运行了…），然后浪费了我大量时间（网上也没有这方面问题的解决方法），加上我并不是很想重装Vmware（这个破软件实在给我整的伤心了），所以选择白手起家开始学习Hyper-v+Ubuntu的使用（至于为什么我这么钟情于使用Ubuntu，是因为我的操作系统作业依赖于Linux环境啊！！！）；</p>
+<blockquote>
+<p>关于虚拟机的使用，请养成一个良好的习惯就是备份到主机，不要像我一样因为一些奇怪的问题不能正常开机，甚至连之前存在里面的学习资料都用不了了（幸运的是我至少把作业要交的那部分给备份了，否则我还得重新写一遍！）</p>
+</blockquote>
+<h3 id="3-1-Hyper-v概述"><a href="#3-1-Hyper-v概述" class="headerlink" title="3.1 Hyper-v概述"></a>3.1 Hyper-v概述</h3><p>Hyper-v是什么？与Vmware有什么区别？是免费的吗？文章参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/427870520">微软亲儿子Hyper-V与虚拟化巨头VMware Workstation性能大比拼 - 知乎 (zhihu.com)</a></p>
+<p>1：Hyper-V为Windows10自带，不需要下载安装，开启后重启即可，而Vmware需要下载安装；</p>
+<p>2：Hyper-V虚拟硬盘采用vhdx格式，宿主机可直接读取虚拟机文件，而Vmware需要自行映射；</p>
+<p>3：Hyper-V内存动态分配，当虚拟机处于后台运行时，自动降低内存使用率，而Vmware则是固定内存；</p>
+<p>4：Hyper-V挂起虚拟机比较快，且可在不考虑虚拟系统运行的情况下直接关机，而Vmware挂起虚拟机较慢，需要等到虚拟内存释放掉才能关机；</p>
+<p>5：Hyper-V开启后宿主机性能稍下降，而Vmware则不会；</p>
+<p>6：Hyper-V只能显示固定大小（Linux），而Vmware在安装vm-tools之后可以跟随窗口动态调整大小；</p>
+<p>7：Hyper-V默认不能连接外网，且只有虚拟交换机的网络方案，Vmware默认NAT网络模式能连接外网，且有三种网络模式；</p>
+<p>8：Hyper-V USB外设不能直接连接虚拟机，而Vmware可以；</p>
+<p>9：Hyper-V 支持的操作系统更少，对Windows支持更好，对Linux支持较差，如果要使用Linux虚拟机（如Ubuntu），不推荐Hyper-V，而Vmware支持更多的操作系统；</p>
+<p>10：Hyper-V默认是用CPU来模拟显示，性能较低，但可以通过手段对GPU进行虚拟化，而VMware安装完Vmware-tool后直接可以利用GPU提升显示性能；</p>
+<h3 id="3-1-Hyper-v安装"><a href="#3-1-Hyper-v安装" class="headerlink" title="3.1 Hyper-v安装"></a>3.1 Hyper-v安装</h3><p>尽管Win10默认安装了Hyper-v，但是我使用的Win11并没有安装该服务，所以需要手动安装</p>
+<p>文章参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Johnston_man/article/details/124808923">(2条消息) Windows11家庭中文版没有hyper-v_Johnston_man的博客-CSDN博客_win11没有hyperv</a></p>
+<h3 id="3-3-Ubunutu安装"><a href="#3-3-Ubunutu安装" class="headerlink" title="3.3 Ubunutu安装"></a>3.3 Ubunutu安装</h3><p>文章参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43452542/article/details/123248655">(2条消息) Hyper-V安装Ubuntu_CCCCChristopher的博客-CSDN博客_hyper-v安装ubuntu</a>（文字和图片结合，仅有前半部分安装映像文件）</p>
+<p>实际上因为我们前面已经配置过Ubunutu，所以之后的配置和前面相同，开启虚拟机并配置完成后等待安装即可（不知道是单核还是什么缘故，最近16.04给我的感觉就是非常卡）；</p>
+<p><img src="/images/image-20221029141731499.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<p>2022&#x2F;10&#x2F;29 16:47 说一个我很无语的事情，本来今天上午Vmware根本就完全打不开之前安装的两个Ubuntu，结果下午在安装18.04版本的时候告知我找不到操作系统，所以我破罐子破摔重新启动了16.04，结果发现不仅可以良好运行，甚至比之前还要流畅。关于为什么我放弃使用Hyper-v，是因为这个虚拟真的太…甚至比Vm要差，特别是桌面版本的Ubuntu，我鼠标卡的都看不清，除此之外我也不知道怎么简单的将本机的代码拖进去，思前想后最终还是决定使用Vm；</p>
+<hr>
 <h1 id="Shell脚本（二）"><a href="#Shell脚本（二）" class="headerlink" title="Shell脚本（二）"></a>Shell脚本（二）</h1><p>本章主要参考<a target="_blank" rel="noopener" href="http://c.biancheng.net/shell/">Shell脚本：Linux Shell脚本学习指南（超详细） (biancheng.net)</a>学习Linux下的Shell脚本（当然学了Linux的Shell脚本就基本上很容易理解Windows的Shell了）</p>
 <h2 id="——Shell入门——"><a href="#——Shell入门——" class="headerlink" title="——Shell入门——"></a>——Shell入门——</h2><h2 id="1-Shell简介"><a href="#1-Shell简介" class="headerlink" title="1.Shell简介"></a>1.Shell简介</h2><ul>
 <li><p>shell是一个连接用户和Linux内核的程序，也是一门管理Linux系统的脚本语言（作为初学者我们简单认为shell就是shell script）；</p>
