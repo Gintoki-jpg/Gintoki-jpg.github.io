@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/num.png">
 <meta property="article:published_time" content="2022-06-27T03:40:00.000Z">
-<meta property="article:modified_time" content="2022-11-01T01:30:56.554Z">
+<meta property="article:modified_time" content="2022-11-04T01:35:31.859Z">
 <meta property="article:author" content="YangZaiyan">
 <meta property="article:tag" content="考研">
 <meta property="article:tag" content="刷题">
@@ -223,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          48k 字
+          56k 字
         
       </span>
     
@@ -234,7 +234,7 @@
         
         
         
-          400 分钟
+          465 分钟
         
       </span>
     
@@ -1006,9 +1006,10 @@
 </blockquote>
 <p><img src="/images/image-20221031132454844.png" srcset="/img/loading.gif" lazyload></p>
 <blockquote>
-<p>平衡二叉树：又被称为AVL（Adelson-Velsky and Landis）树，它是一棵空树或它的左右两个子树的高度差的绝对值不超过1，并且左右两个子树都是一棵平衡二叉树。</p>
+<p>平衡二叉搜索树：又被称为AVL（Adelson-Velsky and Landis）树，它是一棵空树或它的左右两个子树的高度差的绝对值不超过1，并且左右两个子树都是一棵平衡二叉搜索树。</p>
 </blockquote>
 <p><img src="/images/image-20221031132622958.png" srcset="/img/loading.gif" lazyload></p>
+<p>C++中的map、set等容器的底层实现都是<code>平衡二叉搜索树</code>，实际上红黑树就是一种平衡二叉搜索树，红黑树和平衡二叉搜索树不是独立的，具体信息可以参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/TABE_/article/details/116160330">(4条消息) 红黑树和AVL树_TABE_的博客-CSDN博客_avl和红黑树区别</a></p>
 <blockquote>
 <p>二叉树的遍历方式</p>
 </blockquote>
@@ -1101,72 +1102,110 @@
 </ul>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">TreeNode* <span class="hljs-title">invertTree</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>        queue&lt;TreeNode*&gt; que;<br>        <span class="hljs-keyword">if</span> (root != <span class="hljs-literal">NULL</span>) que.<span class="hljs-built_in">push</span>(root);<br>        <span class="hljs-keyword">while</span> (!que.<span class="hljs-built_in">empty</span>()) &#123;<br>            <span class="hljs-type">int</span> size = que.<span class="hljs-built_in">size</span>();<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; size; i++) &#123;<br>                TreeNode* node = que.<span class="hljs-built_in">front</span>();<br>                que.<span class="hljs-built_in">pop</span>();<br>                <span class="hljs-built_in">swap</span>(node-&gt;left, node-&gt;right); <span class="hljs-comment">// 节点处理</span><br>                <span class="hljs-keyword">if</span> (node-&gt;left) que.<span class="hljs-built_in">push</span>(node-&gt;left);<br>                <span class="hljs-keyword">if</span> (node-&gt;right) que.<span class="hljs-built_in">push</span>(node-&gt;right);<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> root;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<h2 id="5-对称二叉树"><a href="#5-对称二叉树" class="headerlink" title="5.对称二叉树"></a>5.对称二叉树</h2><p><img src="/images/image-20221102081408865.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>解析</p>
+<p>判断二叉树是否对称，要比较的不是左右节点，而是根节点的左子树和右子树是否是相互翻转的，即比较的是两个树，因此在递归遍历的过程中要同时遍历两棵子树；</p>
+<p>接着比较两个子树的内侧和外侧元素是否相等；</p>
+</blockquote>
+<blockquote>
+<p>递归解法</p>
+</blockquote>
+<p>本题的遍历顺序只能是后序遍历，即“左右中”，因为要通过递归函数的返回值来判断两个子树的内侧节点和外侧节点是否相等 —— 实际上一棵树的遍历顺序是“左右中”，另一棵树的遍历顺序是“右左中”</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-comment">//1.确定递归函数的参数和返回值，参数就是左子树和右子树（更准确来说是树的节点），返回值是bool类型的值</span><br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">compare</span><span class="hljs-params">(TreeNode* left, TreeNode* right)</span> </span>&#123;<br>        <span class="hljs-comment">//2.确定终止条件</span><br>        <span class="hljs-comment">//2.1 首先排除空节点的情况（否则后面比较数值的时候会操作空指针，是很危险的事）</span><br>        <span class="hljs-keyword">if</span> (left == <span class="hljs-literal">NULL</span> &amp;&amp; right != <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;       <span class="hljs-comment">//2.1.1 左节点空，右节点不为空</span><br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (left != <span class="hljs-literal">NULL</span> &amp;&amp; right == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;  <span class="hljs-comment">//2.1.2 左节点不为空，右节点为空</span><br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (left == <span class="hljs-literal">NULL</span> &amp;&amp; right == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;   <span class="hljs-comment">//2.1.3 左右都为空</span><br>        <span class="hljs-comment">//2.2 排除了空节点，再排除数值不相同的情况</span><br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (left-&gt;val != right-&gt;val) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;        <span class="hljs-comment">//2.2.1 左右节点不为空，但左右节点的数值不同</span><br>	    <span class="hljs-comment">//3.确定单层递归的逻辑，单层递归的逻辑就是处理左右节点都不为空，且数值相同的情况</span><br>        <span class="hljs-type">bool</span> outside = <span class="hljs-built_in">compare</span>(left-&gt;left, right-&gt;right);   <span class="hljs-comment">// 比较二叉树外侧是否对称，传入左子树的左孩子、右子树的右子树</span><br>        <span class="hljs-type">bool</span> inside = <span class="hljs-built_in">compare</span>(left-&gt;right, right-&gt;left);    <span class="hljs-comment">// 比较二叉树内侧是否对称，传入左子树的右孩子、右子树的左孩子左</span><br>        <span class="hljs-type">bool</span> isSame = outside &amp;&amp; inside;                    <span class="hljs-comment">// 如果内外侧都对称则返回ture，只要有一侧不对称就返回false</span><br>        <span class="hljs-keyword">return</span> isSame;									 <span class="hljs-comment">//如上代码可以看出来，左子树的遍历方式是左右中，右子树的遍历方式是右左中</span><br>    &#125;<br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">isSymmetric</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">compare</span>(root-&gt;left, root-&gt;right);<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>迭代解法</p>
+</blockquote>
+<p>本题的迭代解法既可以使用队列也可以使用栈，大致的意思参考下面的动画</p>
+<p><img src="/images/008eGmZEly1gnwcimlj8lg30hm0bqnpd.gif" srcset="/img/loading.gif" lazyload></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">isSymmetric</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        queue&lt;TreeNode*&gt; que;<br>        que.<span class="hljs-built_in">push</span>(root-&gt;left);   <span class="hljs-comment">// 将左子树头结点加入队列</span><br>        que.<span class="hljs-built_in">push</span>(root-&gt;right);  <span class="hljs-comment">// 将右子树头结点加入队列</span><br>        <br>        <span class="hljs-keyword">while</span> (!que.<span class="hljs-built_in">empty</span>()) &#123;  <span class="hljs-comment">// 接下来就要判断这两个树是否相互翻转</span><br>            TreeNode* leftNode = que.<span class="hljs-built_in">front</span>(); que.<span class="hljs-built_in">pop</span>();<br>            TreeNode* rightNode = que.<span class="hljs-built_in">front</span>(); que.<span class="hljs-built_in">pop</span>();<br>            <span class="hljs-keyword">if</span> (!leftNode &amp;&amp; !rightNode) &#123;  <span class="hljs-comment">// 左节点为空、右节点为空，此时说明是对称的</span><br>                <span class="hljs-keyword">continue</span>;                   <span class="hljs-comment">//continue是指直接进入下层循环，不执行下面的代码</span><br>            &#125;<br><br>            <span class="hljs-comment">// 左右一个节点不为空，或者都不为空但数值不相同，返回false</span><br>            <span class="hljs-keyword">if</span> ((!leftNode || !rightNode || (leftNode-&gt;val != rightNode-&gt;val))) &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>            &#125;<br>            que.<span class="hljs-built_in">push</span>(leftNode-&gt;left);   <span class="hljs-comment">// 加入左节点左孩子</span><br>            que.<span class="hljs-built_in">push</span>(rightNode-&gt;right); <span class="hljs-comment">// 加入右节点右孩子</span><br>            que.<span class="hljs-built_in">push</span>(leftNode-&gt;right);  <span class="hljs-comment">// 加入左节点右孩子</span><br>            que.<span class="hljs-built_in">push</span>(rightNode-&gt;left);  <span class="hljs-comment">// 加入右节点左孩子</span><br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h2 id="6-二叉树的最大深度"><a href="#6-二叉树的最大深度" class="headerlink" title="6.二叉树的最大深度"></a>6.二叉树的最大深度</h2><p><img src="/images/image-20221103080455839.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>递归解法</p>
+</blockquote>
+<p>这道题使用前序遍历可以求得深度，使用后序遍历求的是高度，深度和高度的区别是什么？</p>
+<ul>
+<li>二叉树节点的深度：指从根节点到该节点的最长简单路径边的条数或者节点数（取决于深度从0开始还是从1开始）</li>
+<li>二叉树节点的高度：指从该节点到叶子节点的最长简单路径边的条数或者节点数（取决于高度从0开始还是从1开始）</li>
+</ul>
+<p><img src="/images/image-20221103081325092.png" srcset="/img/loading.gif" lazyload></p>
+<p>因此根节点的高度就是二叉树的最大深度，因此本题选用后序遍历求根节点的高度进而得到二叉树的最大深度（实际上使用前序遍历才是真正的求深度的逻辑）；</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-comment">//1.确定递归函数的参数和返回值，参数是树的根节点，返回值是int型树的深度</span><br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">getdepth</span><span class="hljs-params">(treenode* node)</span> </span>&#123;<br>        <span class="hljs-comment">//2.确定终止条件，若节点为空则返回0表示高度为0</span><br>        <span class="hljs-keyword">if</span> (node == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-comment">//3.确定单层递归的逻辑，先求得左子树的深度，再求得右子树的深度，最后取左右子树深度较大者加1即为以当前节点为根节点的树的深度</span><br>        <span class="hljs-type">int</span> leftdepth = <span class="hljs-built_in">getdepth</span>(node-&gt;left);       <span class="hljs-comment">// 左</span><br>        <span class="hljs-type">int</span> rightdepth = <span class="hljs-built_in">getdepth</span>(node-&gt;right);     <span class="hljs-comment">// 右</span><br>        <span class="hljs-type">int</span> depth = <span class="hljs-number">1</span> + <span class="hljs-built_in">max</span>(leftdepth, rightdepth); <span class="hljs-comment">// 中</span><br>        <span class="hljs-keyword">return</span> depth;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">maxdepth</span><span class="hljs-params">(treenode* root)</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">getdepth</span>(root);<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>迭代解法</p>
+</blockquote>
+<p>迭代解法使用层序遍历是最适合的，因为二叉树的层数就是器最大深度，实际上这道题直接使用层序遍历模板即可求解		</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">maxdepth</span><span class="hljs-params">(treenode* root)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> depth = <span class="hljs-number">0</span>;<br>        queue&lt;treenode*&gt; que;<br>        que.<span class="hljs-built_in">push</span>(root);<br>        <span class="hljs-keyword">while</span>(!que.<span class="hljs-built_in">empty</span>()) &#123;<br>            <span class="hljs-type">int</span> size = que.<span class="hljs-built_in">size</span>();<br>            depth++; <span class="hljs-comment">// 记录深度</span><br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; size; i++) &#123;<br>                treenode* node = que.<span class="hljs-built_in">front</span>();<br>                que.<span class="hljs-built_in">pop</span>();<br>                <span class="hljs-keyword">if</span> (node-&gt;left) que.<span class="hljs-built_in">push</span>(node-&gt;left);<br>                <span class="hljs-keyword">if</span> (node-&gt;right) que.<span class="hljs-built_in">push</span>(node-&gt;right);<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> depth;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h2 id="7-n叉树的最大深度"><a href="#7-n叉树的最大深度" class="headerlink" title="7.n叉树的最大深度"></a>7.n叉树的最大深度</h2><p><img src="/images/image-20221103082925293.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>在介绍了二叉树的最大深度之后，可以直接利用类似的思路</p>
+</blockquote>
+<blockquote>
+<p>后续递归遍历</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">maxdepth</span><span class="hljs-params">(node* root)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (root == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> depth = <span class="hljs-number">0</span>;<br>        <span class="hljs-comment">//找到子树中深度最大的子树深度，最后加1表示当前根节点的最大深度</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; root-&gt;children.<span class="hljs-built_in">size</span>(); i++) &#123;<br>            depth = <span class="hljs-built_in">max</span> (depth, <span class="hljs-built_in">maxdepth</span>(root-&gt;children[i]));<br>        &#125;<br>        <span class="hljs-keyword">return</span> depth + <span class="hljs-number">1</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>层序迭代遍历</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">maxdepth</span><span class="hljs-params">(node* root)</span> </span>&#123;<br>        queue&lt;node*&gt; que;<br>        <span class="hljs-keyword">if</span> (root != <span class="hljs-literal">NULL</span>) que.<span class="hljs-built_in">push</span>(root);<br>        <span class="hljs-type">int</span> depth = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span> (!que.<span class="hljs-built_in">empty</span>()) &#123;<br>            <span class="hljs-type">int</span> size = que.<span class="hljs-built_in">size</span>();<br>            depth++; <span class="hljs-comment">// 记录深度</span><br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; size; i++) &#123;<br>                node* node = que.<span class="hljs-built_in">front</span>();<br>                que.<span class="hljs-built_in">pop</span>();<br>                <span class="hljs-comment">//同理，将所有的子节点都加入队列</span><br>                <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt; node-&gt;children.<span class="hljs-built_in">size</span>(); j++) &#123;<br>                    <span class="hljs-keyword">if</span> (node-&gt;children[j]) que.<span class="hljs-built_in">push</span>(node-&gt;children[j]);<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> depth;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h2 id="8-二叉树的最小深度"><a href="#8-二叉树的最小深度" class="headerlink" title="8.二叉树的最小深度"></a>8.二叉树的最小深度</h2><p><img src="/images/image-20221103083928080.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>后序递归遍历</p>
+</blockquote>
+<p>需要注意的是最小深度很容易理解出错，最小深度指的是根节点到最近叶子节点的最短路径上的节点数量，因此不能将根节点本身算进去（叶子节点指的是左右孩子都为空的节点）；</p>
+<p><img src="/images/image-20221103084117926.png" srcset="/img/loading.gif" lazyload></p>
+<p>为了解决上述问题，需要利用以下逻辑：</p>
+<ul>
+<li><p>左子树为空，右子树不为空，说明最小深度是 1 + 右子树的深度；</p>
+</li>
+<li><p>右子树为空，左子树不为空，最小深度是 1 + 左子树的深度；</p>
+</li>
+<li><p>如果左右子树都不为空，返回左右子树深度最小值 + 1 ；</p>
+</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-comment">//1.确定函数的参数和返回值</span><br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">getDepth</span><span class="hljs-params">(TreeNode* node)</span> </span>&#123;<br>        <span class="hljs-comment">//2.终止条件为遇到空节点返回0表示当前节点的高度为0</span><br>        <span class="hljs-keyword">if</span> (node == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>        <br>        <span class="hljs-comment">//3.确定单层逻辑</span><br>        <span class="hljs-type">int</span> leftDepth = <span class="hljs-built_in">getDepth</span>(node-&gt;left);           <span class="hljs-comment">// 左</span><br>        <span class="hljs-type">int</span> rightDepth = <span class="hljs-built_in">getDepth</span>(node-&gt;right);         <span class="hljs-comment">// 右</span><br>                                                        <span class="hljs-comment">// 中</span><br>        <span class="hljs-comment">/*</span><br><span class="hljs-comment">        int leftDepth = getDepth(node-&gt;left);</span><br><span class="hljs-comment">	    int rightDepth = getDepth(node-&gt;right);</span><br><span class="hljs-comment">	    int result = 1 + min(leftDepth, rightDepth);</span><br><span class="hljs-comment">		return result;</span><br><span class="hljs-comment">		可能很多人会直接套用最大深度的公式，那么就会导致之前所说的根节点会将到达自己的深度算成最小深度</span><br><span class="hljs-comment">		*/</span><br>        <span class="hljs-comment">//3.1 当一个左子树为空，右不为空</span><br>        <span class="hljs-keyword">if</span> (node-&gt;left == <span class="hljs-literal">NULL</span> &amp;&amp; node-&gt;right != <span class="hljs-literal">NULL</span>) &#123; <br>            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span> + rightDepth;<br>        &#125;   <br>        <span class="hljs-comment">//3.2 当一个右子树为空，左不为空</span><br>        <span class="hljs-keyword">if</span> (node-&gt;left != <span class="hljs-literal">NULL</span> &amp;&amp; node-&gt;right == <span class="hljs-literal">NULL</span>) &#123; <br>            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span> + leftDepth;<br>        &#125;<br>        <span class="hljs-comment">//3.3 如果左右子树都不为空，返回左右子树深度最小值 + 1</span><br>        <span class="hljs-type">int</span> result = <span class="hljs-number">1</span> + <span class="hljs-built_in">min</span>(leftDepth, rightDepth);<br>        <span class="hljs-keyword">return</span> result;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">minDepth</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">getDepth</span>(root);<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>层序递归遍历</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br><br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">minDepth</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> depth = <span class="hljs-number">0</span>;<br>        queue&lt;TreeNode*&gt; que;<br>        que.<span class="hljs-built_in">push</span>(root);<br>        <span class="hljs-keyword">while</span>(!que.<span class="hljs-built_in">empty</span>()) &#123;<br>            <span class="hljs-type">int</span> size = que.<span class="hljs-built_in">size</span>();<br>            depth++; <span class="hljs-comment">// 记录最小深度</span><br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; size; i++) &#123;<br>                TreeNode* node = que.<span class="hljs-built_in">front</span>();<br>                que.<span class="hljs-built_in">pop</span>();<br>                <span class="hljs-keyword">if</span> (node-&gt;left) que.<span class="hljs-built_in">push</span>(node-&gt;left);<br>                <span class="hljs-keyword">if</span> (node-&gt;right) que.<span class="hljs-built_in">push</span>(node-&gt;right);<br>                <span class="hljs-keyword">if</span> (!node-&gt;left &amp;&amp; !node-&gt;right) &#123; <span class="hljs-comment">// 当左右孩子都为空的时候，说明是最低点的一层了，退出</span><br>                    <span class="hljs-keyword">return</span> depth;<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> depth;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h2 id="9-完全二叉树的节点个数"><a href="#9-完全二叉树的节点个数" class="headerlink" title="9.完全二叉树的节点个数"></a>9.完全二叉树的节点个数</h2><p><img src="/images/image-20221104083906681.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>解析</p>
+<p>完全二叉树：在完全二叉树中，除了最底层节点可能没填满外，其余每层节点数都达到最大值，并且最下面一层的节点都集中在该层最左边的若干位置。若完全二叉树最底层为第h层，则该层包含1~ 2^(h-1)^个节点；</p>
+<p>额…我们看输入和输出的时候很容易产生这样一个疑问，我不是只需要获取root数组的元素个数就知道节点个数了吗，关键真的好像是这样？？？实际考察的是我们对完全二叉树性质的掌握（类中的某个函数是不能获取构造函数的参数的），当然不熟悉直接使用普通二叉树的遍历方法也可以做出来，我们下面会介绍这两种解法；</p>
+</blockquote>
+<blockquote>
+<p>普通二叉树的后序递归解法：</p>
+</blockquote>
+<p>只需要修改模板加入treeNum变量记录节点数量即可，时间复杂度为O(n)，空间复杂度为O(logn)-递归栈会占用空间</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">private</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">getNodesNum</span><span class="hljs-params">(TreeNode* cur)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (cur == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> leftNum = <span class="hljs-built_in">getNodesNum</span>(cur-&gt;left);      <span class="hljs-comment">// 左</span><br>        <span class="hljs-type">int</span> rightNum = <span class="hljs-built_in">getNodesNum</span>(cur-&gt;right);    <span class="hljs-comment">// 右</span><br>        <span class="hljs-type">int</span> treeNum = leftNum + rightNum + <span class="hljs-number">1</span>;      <span class="hljs-comment">// 中</span><br>        <span class="hljs-keyword">return</span> treeNum;<br>    &#125;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">countNodes</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">getNodesNum</span>(root);<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>普通二叉树的层序迭代解法：</p>
+</blockquote>
+<p>同理，层序遍历模板不变，增加统计节点数量即可，时间复杂度和空间复杂度均为O(n)；</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">countNodes</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>        queue&lt;TreeNode*&gt; que;<br>        <span class="hljs-keyword">if</span> (root != <span class="hljs-literal">NULL</span>) que.<span class="hljs-built_in">push</span>(root);<br>        <span class="hljs-type">int</span> result = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span> (!que.<span class="hljs-built_in">empty</span>()) &#123;<br>            <span class="hljs-type">int</span> size = que.<span class="hljs-built_in">size</span>();<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; size; i++) &#123;<br>                TreeNode* node = que.<span class="hljs-built_in">front</span>();<br>                que.<span class="hljs-built_in">pop</span>();<br>                result++;   <span class="hljs-comment">// 记录节点数量</span><br>                <span class="hljs-keyword">if</span> (node-&gt;left) que.<span class="hljs-built_in">push</span>(node-&gt;left);<br>                <span class="hljs-keyword">if</span> (node-&gt;right) que.<span class="hljs-built_in">push</span>(node-&gt;right);<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> result;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>完全二叉树性质：完全二叉树分为两种情况，当它为满二叉树的时候直接使用2^深度-1得到节点数；当它最后一层的叶子节点不满时，可以分别递归左孩子和右孩子，递归到一定深度就可以发现左孩子或右孩子为满二叉树，同理使用计算公式计算；</p>
+</blockquote>
+<p><img src="/images/image-20221104090318414.png" srcset="/img/loading.gif" lazyload></p>
+<p>关键在于如何判断左子树或者右子树是否是一个满二叉树呢？</p>
+<p>在完全二叉树中，如果递归向左遍历的深度等于递归向右遍历的深度，那说明该完全二叉树是一棵满二叉树；</p>
+<p><img src="/images/image-20221104090519638.png" srcset="/img/loading.gif" lazyload></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-comment">//1.传入参数以及确定返回值</span><br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">countNodes</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>        <span class="hljs-comment">//2.确定终止条件</span><br>        <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>        TreeNode* left = root-&gt;left;<br>        TreeNode* right = root-&gt;right;<br>        <span class="hljs-type">int</span> leftDepth = <span class="hljs-number">0</span>, rightDepth = <span class="hljs-number">0</span>; <span class="hljs-comment">// 这里初始为0是有目的的，为了下面求指数方便</span><br>        <span class="hljs-keyword">while</span> (left) &#123;  <span class="hljs-comment">// 求左子树深度</span><br>            left = left-&gt;left;<br>            leftDepth++;<br>        &#125;<br>        <span class="hljs-keyword">while</span> (right) &#123; <span class="hljs-comment">// 求右子树深度</span><br>            right = right-&gt;right;<br>            rightDepth++;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (leftDepth == rightDepth) &#123;<br>            <span class="hljs-keyword">return</span> (<span class="hljs-number">2</span> &lt;&lt; leftDepth) - <span class="hljs-number">1</span>; <span class="hljs-comment">// 这里就是满二叉树的节点数量计算方式(2^深度-1)</span><br>        &#125;<br>        <span class="hljs-comment">//3.确定单层递归逻辑（实际就是后序遍历）</span><br>		<span class="hljs-type">int</span> leftTreeNum = <span class="hljs-built_in">countNodes</span>(root-&gt;left);       <span class="hljs-comment">// 左</span><br>		<span class="hljs-type">int</span> rightTreeNum = <span class="hljs-built_in">countNodes</span>(root-&gt;right);     <span class="hljs-comment">// 右</span><br> 		<span class="hljs-type">int</span> result = leftTreeNum + rightTreeNum + <span class="hljs-number">1</span>;    <span class="hljs-comment">// 中</span><br>         <span class="hljs-keyword">return</span> result;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h1 id="七、回溯算法"><a href="#七、回溯算法" class="headerlink" title="七、回溯算法"></a>七、回溯算法</h1><h1 id="八、贪心算法"><a href="#八、贪心算法" class="headerlink" title="八、贪心算法"></a>八、贪心算法</h1><h1 id="九、动态规划"><a href="#九、动态规划" class="headerlink" title="九、动态规划"></a>九、动态规划</h1><h2 id="0-动态规划概述"><a href="#0-动态规划概述" class="headerlink" title="0.动态规划概述"></a>0.动态规划概述</h2><p>动态规划Dyanmic Programming，简称DP，针对具有很多重叠子问题的问题来说很适合使用动态规划；</p>
+<p>动态规划中的每一个状态一定是由上一个状态推导出来的，区别于直接从局部选最优的贪心算法；</p>
+<p>需要注意的是分治法和动态规划都要求原问题具有最优子结构（可以认为动态规划也是一种分治思想），都是将原问题分治接着合并子问题的解形成原问题的解，分治法通常使用递归求解，动态规划可以使用自底向上的迭代或自顶向下的递归，不同点在于分治法将子问题看作独立的而动态规划将子问题看作相互依赖的、有重叠部分的；（分治法是万精油，动态规划可以求解全局最优并避免重复的计算，但是使用有限制）</p>
 
               
             </div>

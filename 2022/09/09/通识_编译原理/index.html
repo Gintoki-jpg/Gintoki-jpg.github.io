@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/compile.jpg">
 <meta property="article:published_time" content="2022-09-09T01:50:00.000Z">
-<meta property="article:modified_time" content="2022-10-28T14:36:57.974Z">
+<meta property="article:modified_time" content="2022-11-04T15:51:58.252Z">
 <meta property="article:author" content="YangZaiyan">
 <meta property="article:tag" content="课程学习">
 <meta property="article:tag" content="计算机基础">
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          28k 字
+          31k 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          231 分钟
+          261 分钟
         
       </span>
     
@@ -292,6 +292,8 @@
 <p>2022&#x2F;9&#x2F;16 11:13 老师按照PPT上讲的和书上的是相辅相成的，PPT的顺序更加适合初学者阅读，但是书上的讲解更加严谨；补充说一句，这老师讲课是真的好，可以课前预习或者全程跟着，没必要找视频自学；</p>
 <p>2022&#x2F;9&#x2F;16 13:28 这个书和老师给的PPT有很大的问题，就是其中某些重要的知识点根本就没有，导致有些东西会看的很迷糊，这就只能靠自己百度索引了；</p>
 <p>2022&#x2F;9&#x2F;25 9:41 关于看书的事情，到现在为止我觉得看书可以暂时不看了，因为书上描述的过于冗余，而且和PPT上的行文方式不太一样（PPT上非常简洁），但是PPT可能单独看是不太能看懂的，所以这就要求我们上课的时候好好听，然后下课了及时总结；</p>
+<p>2022&#x2F;11&#x2F;4 16:14 现在上课听老师讲课的确是听不懂了，需要自己下课找视频或者资料自学，但是网络上的资料真的是各显神通，最终经过比对我们选择了使用这个视频作为复习和预习的参考<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1cW411B7DW?p=44&vd_source=276d55048634a5b508b1b53a1ecd56b3">44_bilibili_哔哩哔哩_bilibili</a>，之所以选择这个视频是因为它并不是完全按照PPT在念，有自己的思想并且是层层递进的；</p>
+<p>2022&#x2F;11&#x2F;4 17:28 关于上面那个视频，咱们还是避雷吧，讲的确实很好，我也认真听了能听进去，但是和我们要学的（特别是语法制导编译那一章）可以说毫不相关，我也不是很理解为什么同样是语法制导编译这个章节，不同的教学视频内容居然能够呈一个完美的不相交的情况；so，各位还是自己再找找适合自己的网课视频吧，编译原理真的不是一门好学的课程；</p>
 <hr>
 <h1 id="第一章-编译概述"><a href="#第一章-编译概述" class="headerlink" title="第一章 编译概述"></a>第一章 编译概述</h1><h2 id="1-翻译和解释"><a href="#1-翻译和解释" class="headerlink" title="1.翻译和解释"></a>1.翻译和解释</h2><h3 id="1-1-程序设计语言"><a href="#1-1-程序设计语言" class="headerlink" title="1.1 程序设计语言"></a>1.1 程序设计语言</h3><p>机器语言-&gt;符号语言-&gt;汇编语言-&gt;高级语言</p>
 <p>面向用户的、面向问题的以及面向对象的语言等统称为高级语言，机器语言和汇编语言称为低级语言。相对于低级语言，高级语言具有以下优点：</p>
@@ -844,36 +846,31 @@
 <li>计算First集合和Follow集合；</li>
 <li>如果原文法为LL1文法，使用LL1文法的分析进行自顶向下的不带回溯的分析；</li>
 </ol>
-<p>之所以LL1文法必须要符合一些特殊性质，就是因为在使用LL1文法对符号串进行自上而下的推导(匹配)的时候，可以明确唯一的选择产生式，进而构造预测分析表（给定一个LL1文法就能唯一构造一个预测分析表）</p>
+<p>之所以必须使用ll(1)文法进行自上而下的分析，是因为在使用ll(1)文法对符号串进行自上而下的推导(匹配)的时候，可以明确唯一的选择产生式，也就对应了预测分析表中的唯一一个选项；</p>
+<p>同时给定一个LL1文法就能唯一构造一个预测分析表；</p>
 <p><img src="/images/image-20221007104656275.png" srcset="/img/loading.gif" lazyload></p>
-<p>下面我们介绍如何构造一个预测分析表（基于下面的题干）</p>
+<p>下面我们介绍如何构造一个预测分析表（基于下面的文法G(E)，注意预测分析表只和文法有关，和具体要匹配的符号串没有关系）</p>
 <p><img src="/images/image-20221007110627036.png" srcset="/img/loading.gif" lazyload></p>
 <p>构造文法G的分析表M[A,o]，确定每个产生式A-&gt;a在表中的位置：</p>
 <ul>
-<li><p>对文法G的每个产生式A→a执行第2步和第3步；</p>
+<li><p>对每个终结符o属于FIRST(a) ，把A→a加至M[A,o]中；</p>
 </li>
-<li><p>对每个终结符 o属于FIRST(A) ，把A→a加至M[A，o]中；</p>
+<li><p>若空串属于FIRST(a)，则对任何b属于FOLLOW(A) 把A→a加至M[A,b]中；</p>
 </li>
-<li><p>若空串属于FIRST(A)，则对任何 b属于FOLLOW(A) 把A→a加至M[A，b]中；</p>
+<li><p>对文法G的每个产生式A→a执行第1步和第2步；</p>
 </li>
-<li><p>把所有无定义的M[A，o]标上“出错标志”；</p>
+<li><p>把所有无定义的M[A,o]标上“出错标志”；</p>
 </li>
 </ul>
 <p>下面给出预测分析表的构造伪代码</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">for</span><span class="hljs-params">(文法G的每一个产生式A-&gt;a)</span></span>&#123;<br>	<span class="hljs-built_in">for</span>(每个终结符号 o属于<span class="hljs-built_in">First</span>(A))&#123;<br>		将A-&gt;a放入表项M<span class="hljs-selector-attr">[A,o]</span>中；<br>	&#125;<br>	<span class="hljs-built_in">if</span>(空串属于<span class="hljs-built_in">First</span>(A))&#123;<br>		<span class="hljs-built_in">for</span>(每个 b属于<span class="hljs-built_in">Follow</span>(A))&#123;<br>			把A-&gt;a放入表项M<span class="hljs-selector-attr">[A,b]</span>中；<br>		&#125;<br>	&#125;<br><span class="hljs-function"><span class="hljs-title">for</span><span class="hljs-params">(所有无定义的表项M[A,o])</span></span>&#123;<br>	标志错误标志<br>&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">for</span><span class="hljs-params">(文法G的每一个产生式A-&gt;a)</span></span>&#123;<br>	<span class="hljs-built_in">for</span>(每个终结符号o属于<span class="hljs-built_in">First</span>(a))&#123;<br>		将A-&gt;a放入表项M<span class="hljs-selector-attr">[A,o]</span>中；<br>	&#125;<br>	<span class="hljs-built_in">if</span>(空串属于<span class="hljs-built_in">First</span>(A))&#123;<br>		<span class="hljs-built_in">for</span>(每个 b属于<span class="hljs-built_in">Follow</span>(A))&#123;<br>			把A-&gt;a放入表项M<span class="hljs-selector-attr">[A,b]</span>中；<br>		&#125;<br>	&#125;<br><span class="hljs-function"><span class="hljs-title">for</span><span class="hljs-params">(所有无定义的表项M[A,o])</span></span>&#123;<br>	标志错误标志<br>&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>根据上述构造步骤，首先根据所给文法构造每个非终结符的First集合和Follow集合</p>
+<p>根据上述构造步骤，首先根据所给文法构造每个非终结符的First集合和Follow集合(这里的First集合不是用来构造分析表的，而是用来计算Follow集合的)</p>
 <p><img src="/images/image-20221007112357197.png" srcset="/img/loading.gif" lazyload></p>
 <p>构造空白分析表，左侧为所有非终结符，上侧为所有终结符（不包括空串）</p>
 <p><img src="/images/image-20221007114036501.png" srcset="/img/loading.gif" lazyload></p>
-<p>然后按照规则依次把每个产生式填入分析表中（看规则可能觉得很难理解，实际上就是先看第一个产生式E-&gt;TE&#96;，因此把这个产生式填在E行，First(E)列（即(和i列），接着是第二个产生式，注意把多个产生式分开填写），将所有的产生式都填写完毕后就构造出了该文法的预测分析表</p>
+<p>然后按照规则依次把每个产生式填入分析表中（看规则可能觉得很难理解，实际上就是先看第一个产生式E-&gt;TE’，因此把这个产生式填在E行，First(TE’)列（即i列和(列），接着是第二个产生式，注意把多个产生式分开填写），将所有的产生式都填写完毕后就构造出了该文法的预测分析表</p>
 <p><img src="/images/image-20221007114513585.png" srcset="/img/loading.gif" lazyload></p>
-<hr>
-<blockquote>
-<p>Q：为什么最后F-&gt;(E)和F-&gt;i是分别占一个，怎么感觉应该是会重复（也就是产生二义性）？</p>
-</blockquote>
-<p>A：实际上上述确定产生式A-&gt;a在表中的位置的规则并不完全，当面对有多个产生式如上述F-&gt;(E)和F-&gt;i，此时我们不仅需要考虑First集合，同时还需要考虑填入之后是否会影响，具体表现为假如将F-&gt;(E)填入M(F,i)，这将导致当我们的非终结符为F同时需要匹配的单词符号为i的时候，我们选择了F-&gt;(E)，那么(直接和i不匹配了，这是直接会失败的；</p>
-<hr>
 <h3 id="2-5-LL1的非递归预测分析"><a href="#2-5-LL1的非递归预测分析" class="headerlink" title="2.5 LL1的非递归预测分析"></a>2.5 LL1的非递归预测分析</h3><blockquote>
 <p>LL1的递归预测分析不是考试重点所以我们不介绍；</p>
 </blockquote>
@@ -1268,6 +1265,129 @@
 <h3 id="3-8-二义性文法的LR分析"><a href="#3-8-二义性文法的LR分析" class="headerlink" title="3.8 二义性文法的LR分析"></a>3.8 二义性文法的LR分析</h3><p>实际上所有的语言都有二义性（因为二义性文法更加简短和自然），注意任何二义性文法都不是LR的；</p>
 <p>解决二义性的方法也很多，最常用的就是优先级和结合性解决冲突；</p>
 <p>关于二义性和错误处理我们不在这里详细讨论，感兴趣可以参考链接<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1zW411t7YE?p=33&vd_source=276d55048634a5b508b1b53a1ecd56b3">4-15二义性文法的LR分析_哔哩哔哩_bilibili</a></p>
+<h1 id="第五章-语法制导翻译"><a href="#第五章-语法制导翻译" class="headerlink" title="第五章 语法制导翻译"></a>第五章 语法制导翻译</h1><p>我们往往会将语法分析作为程序的主程序，而在整个过程当中我们还需要进行语义分析和中间代码的生成，大多数教材将语义分析和中间代码生成合并在一起（因为语义分析的结果经常直接表现为中间代码的形式）称之为<code>语义翻译</code>，<code>语法制导翻译</code>是在语法分析的基础上对于语义的理解（可以理解为在语法分析的同时进行语义翻译并生成中间代码）</p>
+<p><img src="/images/image-20221104095400108.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>语法制导翻译的定义：语法制导翻译使用上下文无关文法CFG来引导对语言的翻译，是一种面向文法的翻译技术；</p>
+</blockquote>
+<p>实际上中间代码生成有两种方法，一种就是<code>语法制导翻译</code>，另一种是<code>属性文法制导翻译</code>；中间代码是指不是机器语言但便于生成机器语言的、便于代码优化的一种语言，中间代码的形式主要有如下：</p>
+<ul>
+<li>逆波兰表达式</li>
+<li>树形表示法</li>
+<li>三元式</li>
+<li>四元式（最常用的形式）</li>
+</ul>
+<h2 id="1-语法制导翻译概述"><a href="#1-语法制导翻译概述" class="headerlink" title="1.语法制导翻译概述"></a>1.语法制导翻译概述</h2><p>语法制导翻译是指在语法分析的基础上边进行语法分析边翻译（<code>翻译</code>我们理解为一个过程，输入是源代码，输出是中间代码）：</p>
+<ul>
+<li>语法制导翻译时会根据文法产生式右部符号串的含义进行翻译，翻译的结果就是生成的相应中间代码（简单理解就是根据句子是什么意思将其翻译为相应的中间代码）</li>
+<li>语法制导翻译是使用语义子程序来翻译的，即语法分析程序在语法分析过程中调用该语义子程序来进行翻译<ul>
+<li>具体做法就是为每个产生式配置一个语义子程序，当语法分析进行归约或推导时，调用语义子程序完成一部分的翻译任务</li>
+</ul>
+</li>
+<li>语法分析过程结束时翻译工作同步结束</li>
+</ul>
+<p>语法制导翻译主要有两种形式：</p>
+<ul>
+<li>自上而下的语法制导翻译：对每个文法符号配以相应的语义动作</li>
+<li>自下而上的语法制导翻译：主要讨论LR语法制导翻译</li>
+</ul>
+<h3 id="1-1-语义子程序"><a href="#1-1-语义子程序" class="headerlink" title="1.1 语义子程序"></a>1.1 语义子程序</h3><h4 id="1-1-1-作用"><a href="#1-1-1-作用" class="headerlink" title="1.1.1 作用"></a>1.1.1 作用</h4><p>语义子程序的作用：</p>
+<ul>
+<li>用于描述一个产生式对应的翻译工作（这些工作可能是改变某些变量的值、产生中间代码、发现并报告源程序的错误等），这些翻译工作很大程度上决定了会产生什么形式的中间代码<ul>
+<li>如果将语义子程序改成产生某种中间代码的动作，就能在语法分析制导下，随着分析的进展逐步生成中间代码；</li>
+<li>若把语义子程序改成产生某种机器的汇编语言指令，就能随着分析的进展逐步生成某机器的汇编语言代码；</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/image-20221104165851642.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="1-1-2-格式"><a href="#1-1-2-格式" class="headerlink" title="1.1.2 格式"></a>1.1.2 格式</h4><p>语义子程序的写法如下：</p>
+<ul>
+<li>语义子程序写在产生式后面的花括号内，形如</li>
+</ul>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">X</span>-&gt;α&#123;语义子程序<span class="hljs-number">1</span>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>注：在一个产生式中同一个文法符号可能出现多次，但他们代表的是不同的语义值，需要加上角标以区分（如E-&gt;E^1^+E^2^）；</p>
+<blockquote>
+<p>语义值：为了描述语义动作，需要为每个文法符号赋予不同的语义值：如类型、地址、代码值等（可以理解为每个文法符号的语义值就是它在符号表的入口，可能代表变量的类型、变量的地址或变量的值等）</p>
+</blockquote>
+<blockquote>
+<p>注意：只有非终结符才有语义值！！！</p>
+</blockquote>
+<h4 id="1-1-3-语义栈"><a href="#1-1-3-语义栈" class="headerlink" title="1.1.3 语义栈"></a>1.1.3 语义栈</h4><p>各个符号的语义值都存放在语义栈中：</p>
+<ul>
+<li>当产生式进行归约时，需对产生式右部符号的语义值进行综合，其结果作为左部符号的语义值保存到语义栈中；</li>
+</ul>
+<p>之前我们介绍的LR分析法当中下推栈包含了两部分：状态栈和符号栈，现在需要额外增加一个语义栈，同样的，<code>语义栈和状态栈、符号栈的变化是同步的</code></p>
+<p><img src="/images/image-20221104170108101.png" srcset="/img/loading.gif" lazyload></p>
+<p>因为将语义值存放在语义栈中，因此语义值可以使用栈顶指针TOP指出，因此我们可以将1.1.1中的语义子程序改写为如下更加直观的形式</p>
+<p><img src="/images/image-20221104170559371.png" srcset="/img/loading.gif" lazyload></p>
+<p>介绍完以上的知识点其实我们已经能够给出一个大致的语法制导翻译的计值过程了，与LR分析的流程图非常类似</p>
+<p><img src="/images/image-20221104171142230.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="2-属性文法"><a href="#2-属性文法" class="headerlink" title="2.属性文法"></a>2.属性文法</h2><p>学习视频：<a target="_blank" rel="noopener" href="https://www.icourse163.org/learn/NUDT-1003101005?tid=1468256483#/learn/content?type=detail&id=1250071246">编译原理_中国大学MOOC(慕课) (icourse163.org)</a></p>
+<p>听完了语法制导翻译是什么是不是感觉好像似懂非懂了？那么我要告诉你这章根本就还没有开始，上面我们讲解的语法制导翻译的知识点只是作为一个热身的知识点，你完全可以跳过不学直接从本节开始学习（原因其实还是因为我一开始参考的B站视频，结果都学完了一节才发现和我们课程要求的语法制导翻译的知识点不相交…我的心态也是有点崩溃的，然后在哈工大和国科大之间艰难的选择了国科大的教学视频，如果你想纯看书或者看PPT学习的话我只能说你是大佬，因为这一章真的太抽象了非常不推荐自学）</p>
+<h3 id="2-1-概述"><a href="#2-1-概述" class="headerlink" title="2.1 概述"></a>2.1 概述</h3><p>属性文法也称属性翻译文法，以上下文无关文法为基础，我们给上下文无关文法配备一些语义规则就得到了属性文法；</p>
+<p><img src="/images/image-20221104223801311.png" srcset="/img/loading.gif" lazyload></p>
+<p>该属性文法对上下文无关文法做了两个扩充，扩充了语义的描述机制：</p>
+<ul>
+<li>为每个文法符号（终结符或非终结符）配备了若干相关的值，这个值也称为<code>属性</code>，这些属性代表与文法符号相关的信息；当然属性文法中的属性除了能够存放具体的数值，还可以用来记录类型、代码序列、符号表内容等；</li>
+<li>为了描述属性如何计算，对于文法的每个产生式都配备了一组属性的<code>语义规则</code>，对属性进行计算和传递；这些语义规则说明了每一个语法规则或产生式所涉及的语法单位之间的语义关系，这种语义关系是通过属性计算来表达的；当然属性文法中语义规则除了这类数值计算规则以外，还可以用来描述更加广泛的属性处理功能如进行类型信息的传递、代码的拼接、符号表的访问和修改，凡是能够用程序实现的信息处理都可以成为语义规则；</li>
+</ul>
+<blockquote>
+<p>属性文法实际上描述的是某个程序设计语言的变量声明语句的语法和语义</p>
+</blockquote>
+<h4 id="2-1-1-属性"><a href="#2-1-1-属性" class="headerlink" title="2.1.1 属性"></a>2.1.1 属性</h4><p>属性包括综合属性和继承属性两类；</p>
+<h5 id="1-综合属性"><a href="#1-综合属性" class="headerlink" title="(1)综合属性"></a>(1)综合属性</h5><p>综合属性主要用来自下而上的传递信息；</p>
+<ul>
+<li>从语法规则的角度：属性文法当中总是根据产生式右部候选式的符号的属性来计算左部符号的非终结符（即被定义的符号的综合属性）的<code>综合属性</code></li>
+<li>从语法树的角度：<code>综合属性</code>的计算都是根据子节点的属性和父节点自身的属性计算父节点的综合属性</li>
+</ul>
+<h5 id="2-继承属性"><a href="#2-继承属性" class="headerlink" title="(2)继承属性"></a>(2)继承属性</h5><p>继承属性主要用来自上而下的传递信息；</p>
+<p>我们这里给出一个带继承属性的属性文法<img src="/images/image-20221104225423072.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><p>从语法规则的角度：<code>继承属性</code>的计算都是根据产生式右部候选式中的符号的属性和左部被定义符号的属性来计算语法规则右部候选式中的符号的继承属性；</p>
+</li>
+<li><p>从语法树的角度：<code>继承属性</code>的计算总是根据父节点和兄弟节点的属性来计算子节点的继承属性；</p>
+</li>
+</ul>
+<h5 id="3-属性依赖"><a href="#3-属性依赖" class="headerlink" title="(3)属性依赖"></a>(3)属性依赖</h5><blockquote>
+<p>所有的语义规则都可以写成对某些属性进行f函数变换，把变换结果设置为某个属性的值；</p>
+</blockquote>
+<p>在属性文法中，对应于每个产生式A-&gt;α，都有一套与之关联的语义规则，每条规则的形式都可以写成一个统一的模式</p>
+<p><img src="/images/image-20221104230641360.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>f是一个函数，接受若干输入参数；</li>
+<li>c<del>1</del>、c<del>2</del>等都是某些符号的某些属性；</li>
+<li>b是我们期望设置、计算的属性；</li>
+</ul>
+<p>我们说属性b<code>依赖</code>于属性c<del>1</del>、c<del>2</del>…这种依赖关系有两类：</p>
+<ul>
+<li>b是产生式左边被定义的非终结符的<code>综合属性</code>，而c<del>1</del>、c<del>2</del>是产生式右部中的某些符号的某些属性(包括综合属性和依赖属性)；</li>
+<li>b是产生式右边中的某个文法的符号的<code>继承属性</code>，c<del>1</del>、c<del>2</del>要么是左部符号的属性，要么是产生式右边的某个符号的属性</li>
+</ul>
+<blockquote>
+<p>结论1：终结符只有综合属性，由词法分析器提供</p>
+</blockquote>
+<p>因为终结符没有子节点，因此综合属性不能从子节点计算，只能由词法分析器提供；</p>
+<blockquote>
+<p>结论2：非终结符在属性文法中既可以有综合属性也可以有继承属性，文法开始符号的所有继承属性作为属性计算前的初始值，必须设置</p>
+</blockquote>
+<p>我们可以根据需要，既定义非终结符的综合属性，也可以定义它的继承属性；</p>
+<p>因为开始符号(从语法树的角度来看)没有父节点，所以如果文法的开始符号有继承属性的话那么它所有的继承属性都应当事先给定，即必须初始化；</p>
+<blockquote>
+<p>结论3：一个符号的同一个属性不能既是综合属性又是继承属性</p>
+</blockquote>
+<h4 id="2-1-2-语义规则"><a href="#2-1-2-语义规则" class="headerlink" title="2.1.2 语义规则"></a>2.1.2 语义规则</h4><p>语义规则是属性文法对上下文无关文法所做的另一个扩充；</p>
+<hr>
+<blockquote>
+<p>Q：每个产生式应当配备什么样的语义规则？</p>
+</blockquote>
+<p>A：每个产生式配备的语义规则应该是说明该产生式中出现的语法符号的对应的属性的计算方法，以表达这个产生式所对应的语法结构的意义，这就是语义规则设计的目的；</p>
+<hr>
+<p>一般来说，程序设计语言的一个语法单位的语义是由构成该单位的各个部分决定的，所以语义规则就是描述该产生式中出现的语法符号的属性之间的相互关系，语义规则以函数计算的方式体现这种关系；</p>
+<ul>
+<li>对于出现在<code>产生式右边的符号的继承属性</code>和出现在<code>产生式左边的符号的综合属性</code>都必须提供计算规则，都必须由这个产生式的语义规则来提供计算方法；属性计算只能使用相应产生式中的文法符号的属性；这样描述的语义规则才是有意义的；</li>
+<li>对于出现在<code>产生式左部的符号的继承属性</code>和出现在<code>产生式右边符号的综合属性</code>的计算方法不应当由这个产生式的属性计算规则来描述，这些属性的计算应当由其他产生式的属性规则计算或者由属性计算器作为参数提前设置；</li>
+</ul>
 
               
             </div>

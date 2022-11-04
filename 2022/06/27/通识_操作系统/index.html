@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/sys.png">
 <meta property="article:published_time" content="2022-06-27T03:38:00.000Z">
-<meta property="article:modified_time" content="2022-11-01T03:10:00.763Z">
+<meta property="article:modified_time" content="2022-11-04T00:11:26.794Z">
 <meta property="article:author" content="YangZaiyan">
 <meta property="article:tag" content="课程学习">
 <meta property="article:tag" content="计算机基础">
@@ -234,7 +234,7 @@
         
         
         
-          512 分钟
+          513 分钟
         
       </span>
     
@@ -1332,7 +1332,7 @@
 <p>定义：用一个整数型的变量作为信号量，用来表示系统中某种资源的数量；</p>
 </blockquote>
 <p>信号量与普通整数变量的区别在于对信号量的操作只有初始化、P操作以及V操作，我们这里用计算机系统中存在一台打印机举例说明整型信号量的简单使用；</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">int</span> S= <span class="hljs-number">1</span>；<span class="hljs-comment">//初始化整型信号量s，表示当前系统中可用的打印机资源数</span><br><span class="hljs-type">void</span> wait（<span class="hljs-type">int</span> S）f<span class="hljs-comment">//wait 原语，相当于&quot;进入区&quot;</span><br><span class="hljs-keyword">while</span>（S &lt;= <span class="hljs-number">0</span>）；  <span class="hljs-comment">//如果资源数不够，就一直循环等待</span><br>S=S<span class="hljs-number">-1</span>；            <span class="hljs-comment">//如果资源数够，则占用一个资源</span><br><span class="hljs-type">void</span> signal（<span class="hljs-type">int</span> S）f<span class="hljs-comment">//signal 原语，相当于“退出区&quot;</span><br>S=S+<span class="hljs-number">1</span>；<br><span class="hljs-comment">//使用完资源后，在退出区释放资源</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">int</span> S= <span class="hljs-number">1</span>；<span class="hljs-comment">//初始化整型信号量s，表示当前系统中可用的打印机资源数</span><br><span class="hljs-type">void</span> wait（<span class="hljs-type">int</span> S）&#123;<span class="hljs-comment">//wait 原语，相当于&quot;进入区&quot;</span><br>	<span class="hljs-keyword">while</span>（S &lt;= <span class="hljs-number">0</span>）；  <span class="hljs-comment">//如果资源数不够，就一直循环等待</span><br>	S=S<span class="hljs-number">-1</span>；            <span class="hljs-comment">//如果资源数够，则占用一个资源</span><br>&#125;<br><span class="hljs-type">void</span> signal（<span class="hljs-type">int</span> S）&#123;<span class="hljs-comment">//signal 原语，相当于“退出区&quot;</span><br>S	=S+<span class="hljs-number">1</span>；<span class="hljs-comment">//使用完资源后，在退出区释放资源</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//进程P0：</span><br>...<br>wait（S）；          <span class="hljs-comment">//进入区，申请资源</span><br><span class="hljs-comment">//使用打印机资源...   //临界区，访问资源</span><br>signal（S）；        <span class="hljs-comment">//退出区，释放资源</span><br>...<br></code></pre></td></tr></table></figure>
 
@@ -1348,7 +1348,7 @@
 
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">/*进程使用完资源后，通过 signal 原语释放*/</span><br><span class="hljs-type">void</span> signal（semaphore S）&#123;<br>	s.value++；<br>    <span class="hljs-keyword">if</span>（S.value &lt;= <span class="hljs-number">0</span>）&#123;<br>		wakeup（S.L）；<span class="hljs-comment">//释放资源后，若还有别的进程在等待这种资源，则使用wakeup原语e醒等待队列中的一个进程，该进程从阻塞态变为就绪态</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>关于记录型信号量的使用参考<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1YE411D7nH?t=970.8%EF%BC%8C%E8%BF%99%E9%87%8C%E4%B8%8D%E5%86%8D%E8%B5%98%E8%BF%B0%EF%BC%9B">https://www.bilibili.com/video/BV1YE411D7nH?t=970.8，这里不再赘述；</a></p>
+<p>关于记录型信号量的使用参考<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1YE411D7nH?p=22&vd_source=276d55048634a5b508b1b53a1ecd56b3">2.3_5_用信号量实现进程互斥、同步、前驱关系_哔哩哔哩_bilibili</a>，这里不再赘述；</p>
 <h3 id="4-2-信号量机制的运用"><a href="#4-2-信号量机制的运用" class="headerlink" title="4.2 信号量机制的运用"></a>4.2 信号量机制的运用</h3><p>本节将介绍如何利用信号量机制实现进程互斥、同步以及进程的前驱关系；</p>
 <h4 id="4-2-1-信号量机制实现进程互斥"><a href="#4-2-1-信号量机制实现进程互斥" class="headerlink" title="4.2.1 信号量机制实现进程互斥"></a>4.2.1 信号量机制实现进程互斥</h4><p>1.分析并发进程的关键活动，划定临界区（如：对临界资源打印机的访问就应放在临界区）；</p>
 <p>2.设置互斥信号量mutex，初值为1；</p>
@@ -1359,9 +1359,9 @@
 <blockquote>
 <p>注意：对不同的临界资源需要设置不同的互斥信号量；</p>
 </blockquote>
-<h4 id="4-2-2-信号量机制实现进程同步"><a href="#4-2-2-信号量机制实现进程同步" class="headerlink" title="4.2.2 信号量机制实现进程同步"></a>4.2.2 信号量机制实现进程同步</h4><p>讲解视频参考：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1YE411D7nH?t=421.0">https://www.bilibili.com/video/BV1YE411D7nH?t=421.0</a></p>
+<h4 id="4-2-2-信号量机制实现进程同步"><a href="#4-2-2-信号量机制实现进程同步" class="headerlink" title="4.2.2 信号量机制实现进程同步"></a>4.2.2 信号量机制实现进程同步</h4><p>讲解视频参考：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1YE411D7nH?p=22&vd_source=276d55048634a5b508b1b53a1ecd56b3">2.3_5_用信号量实现进程互斥、同步、前驱关系_哔哩哔哩_bilibili</a></p>
 <p><img src="/images/image-20221031233703363.png" srcset="/img/loading.gif" lazyload></p>
-<h4 id="4-2-3-信号量机制实现进程的前驱关系"><a href="#4-2-3-信号量机制实现进程的前驱关系" class="headerlink" title="4.2.3 信号量机制实现进程的前驱关系"></a>4.2.3 信号量机制实现进程的前驱关系</h4><p>视频参考：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1YE411D7nH?t=700.9">https://www.bilibili.com/video/BV1YE411D7nH?t=700.9</a></p>
+<h4 id="4-2-3-信号量机制实现进程的前驱关系"><a href="#4-2-3-信号量机制实现进程的前驱关系" class="headerlink" title="4.2.3 信号量机制实现进程的前驱关系"></a>4.2.3 信号量机制实现进程的前驱关系</h4><p>视频参考：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1YE411D7nH?p=22&vd_source=276d55048634a5b508b1b53a1ecd56b3">2.3_5_用信号量实现进程互斥、同步、前驱关系_哔哩哔哩_bilibili</a></p>
 <p><img src="/images/image-20221031234001640.png" srcset="/img/loading.gif" lazyload></p>
 <h2 id="5-死锁"><a href="#5-死锁" class="headerlink" title="5.死锁"></a>5.死锁</h2><p>死锁现象简单来说就是进程P0在等待P1的时候，P1也在等待P0；</p>
 <p>死锁现象在多进程并发和同步的计算机系统中是必然会产生且不可预见的，故必须依靠操作系统提供的处理机制保证进程的有序推进；</p>
@@ -1442,6 +1442,9 @@
 <p>而使用信号量实现条件变量可能不是一件容易的事，这里我们不再赘述；</p>
 <blockquote>
 <p>结论：信号量是编写并发程序的强大而灵活的原语，因为其简单实用，所以很多时候可以只用信号量而不需要使用锁和条件变量；</p>
+</blockquote>
+<h2 id="7-管程"><a href="#7-管程" class="headerlink" title="7.管程"></a>7.管程</h2><h2 id="8-经典同步问题"><a href="#8-经典同步问题" class="headerlink" title="8.经典同步问题"></a>8.经典同步问题</h2><blockquote>
+<p>前面我们介绍线程同步的时候简单介绍过一些同步问题，这里我们对经典的同步问题做一个总结和整理；</p>
 </blockquote>
 <h1 id="第六章-内存管理"><a href="#第六章-内存管理" class="headerlink" title="第六章 内存管理"></a>第六章 内存管理</h1><p>“进程管理和内存管理两部分构成操作系统的真正内核”</p>
 <blockquote>
