@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/sys.png">
 <meta property="article:published_time" content="2022-06-27T03:38:00.000Z">
-<meta property="article:modified_time" content="2022-11-04T00:11:26.794Z">
+<meta property="article:modified_time" content="2022-11-05T14:55:04.471Z">
 <meta property="article:author" content="YangZaiyan">
 <meta property="article:tag" content="课程学习">
 <meta property="article:tag" content="计算机基础">
@@ -223,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          61k 字
+          64k 字
         
       </span>
     
@@ -234,7 +234,7 @@
         
         
         
-          513 分钟
+          532 分钟
         
       </span>
     
@@ -1327,6 +1327,28 @@
 <li>int sem_post(sem_t *sem)：信号量的V操作；</li>
 </ul>
 <p>（简单理解信号量机制就是将前面的临界区和信号量概念整合在一起，共同实现进程同步和进程互斥）</p>
+<hr>
+<blockquote>
+<p>关于P、V操作究竟是什么，怎么一来就抛出这样的概念不加解释？</p>
+</blockquote>
+<p>信号量的P操作实质就是wait原语操作，而之前我们写的一系列wait函数实际上都是在模拟wait原语的动作（signal类似），所以其实我们是应当早就熟悉P、V操作；</p>
+<blockquote>
+<p>wait用法：</p>
+</blockquote>
+<p>wait(num)，num是目标参数，wait的作用是使其（信息量）减一。<br>如果信息量&gt;&#x3D;0，则该进程继续执行；否则该进程置为等待状态，排入等待队列；</p>
+<blockquote>
+<p>signal用法：</p>
+</blockquote>
+<p>signal(num)，num是目标参数，signal的作用是使其（信息量）加一。如果信息量&gt;0，则该进程继续执行；否则释放队列中第一个等待信号量的进程；</p>
+<blockquote>
+<p>P操作</p>
+</blockquote>
+<p>加锁对应的是P将信号量减1，并阻塞其他线程；(注意注意注意，P操作就是wait原语，它们两个的描述虽然不太一样但是并不矛盾！！！它俩就是同一个概念！！！)</p>
+<blockquote>
+<p>V操作</p>
+</blockquote>
+<p>解锁对应的是V将信号量加1，并唤醒某一个线程；</p>
+<hr>
 <h3 id="4-1-信号量的分类"><a href="#4-1-信号量的分类" class="headerlink" title="4.1 信号量的分类"></a>4.1 信号量的分类</h3><p>关于信号量机制的详细讲解参考：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1YE411D7nH?p=21&spm_id_from=pageDriver&vd_source=276d55048634a5b508b1b53a1ecd56b3">2.3_4_信号量机制_哔哩哔哩_bilibili</a>（强推！！！）</p>
 <h4 id="4-1-1-整型信号量"><a href="#4-1-1-整型信号量" class="headerlink" title="4.1.1 整型信号量"></a>4.1.1 整型信号量</h4><blockquote>
 <p>定义：用一个整数型的变量作为信号量，用来表示系统中某种资源的数量；</p>
@@ -1346,7 +1368,7 @@
 
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">/*某进程需要使用资源时，通过 wait 原语申请*/</span><br><span class="hljs-type">void</span> wait（semaphore S）&#123;<br>	S.value--；<br>    <span class="hljs-keyword">if</span>（S.value &lt;<span class="hljs-number">0</span>）&#123;<br>        block（S.L）；<span class="hljs-comment">//如果剩余资源数不够，则使用block原语，block原语的作用是使得进程从运行态进入阻塞态，并将其挂在到信号量S的阻塞队列中</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">/*进程使用完资源后，通过 signal 原语释放*/</span><br><span class="hljs-type">void</span> signal（semaphore S）&#123;<br>	s.value++；<br>    <span class="hljs-keyword">if</span>（S.value &lt;= <span class="hljs-number">0</span>）&#123;<br>		wakeup（S.L）；<span class="hljs-comment">//释放资源后，若还有别的进程在等待这种资源，则使用wakeup原语e醒等待队列中的一个进程，该进程从阻塞态变为就绪态</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">/*进程使用完资源后，通过 signal 原语释放*/</span><br><span class="hljs-type">void</span> signal（semaphore S）&#123;<br>	s.value++；<br>    <span class="hljs-keyword">if</span>（S.value &lt;= <span class="hljs-number">0</span>）&#123;<br>		wakeup（S.L）；<span class="hljs-comment">//释放资源后，若还有别的进程在等待这种资源，则使用wakeup原语唤醒等待队列中的一个进程，该进程从阻塞态变为就绪态</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>关于记录型信号量的使用参考<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1YE411D7nH?p=22&vd_source=276d55048634a5b508b1b53a1ecd56b3">2.3_5_用信号量实现进程互斥、同步、前驱关系_哔哩哔哩_bilibili</a>，这里不再赘述；</p>
 <h3 id="4-2-信号量机制的运用"><a href="#4-2-信号量机制的运用" class="headerlink" title="4.2 信号量机制的运用"></a>4.2 信号量机制的运用</h3><p>本节将介绍如何利用信号量机制实现进程互斥、同步以及进程的前驱关系；</p>
@@ -1363,52 +1385,17 @@
 <p><img src="/images/image-20221031233703363.png" srcset="/img/loading.gif" lazyload></p>
 <h4 id="4-2-3-信号量机制实现进程的前驱关系"><a href="#4-2-3-信号量机制实现进程的前驱关系" class="headerlink" title="4.2.3 信号量机制实现进程的前驱关系"></a>4.2.3 信号量机制实现进程的前驱关系</h4><p>视频参考：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1YE411D7nH?p=22&vd_source=276d55048634a5b508b1b53a1ecd56b3">2.3_5_用信号量实现进程互斥、同步、前驱关系_哔哩哔哩_bilibili</a></p>
 <p><img src="/images/image-20221031234001640.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="5-死锁"><a href="#5-死锁" class="headerlink" title="5.死锁"></a>5.死锁</h2><p>死锁现象简单来说就是进程P0在等待P1的时候，P1也在等待P0；</p>
-<p>死锁现象在多进程并发和同步的计算机系统中是必然会产生且不可预见的，故必须依靠操作系统提供的处理机制保证进程的有序推进；</p>
-<h3 id="5-1-死锁预防"><a href="#5-1-死锁预防" class="headerlink" title="5.1 死锁预防"></a>5.1 死锁预防</h3><p>死锁发生的四个基本条件（必要条件）如下：</p>
-<ul>
-<li>互斥：资源不能被共享，一个资源每次只能被一个进程使用。</li>
-<li>不可剥夺：进程已获得的资源，在未使用完之前，不能强行剥夺。</li>
-<li>请求与保持：一个进程因请求资源而阻塞时，对已获得的资源保持不放。</li>
-<li>循环等待：若干进程之间形成一种头尾相接的循环性资源等待关系。</li>
-</ul>
-<p>只需要破坏这四个必要条件中的某个条件，就不会形成死锁，这就是死锁预防的基本思想；</p>
-<p>但是“互斥”和“不可剥夺”这两个条件在通常条件下是资源自身特性或程序本身决定，无法直接破坏，所以死锁预防主要是破坏“请求与保持”和“循环等待”两个条件：</p>
-<ul>
-<li>请求与保持：将申请资源的方式修改为一次性申请进程所需的所有资源（当进程在请求资源阻塞时，它不会占有任何资源）；</li>
-<li>循环等待：避免资源等待形成环路（因为环路等待是死锁的必要条件），只要资源按序申请就一定不会造成死锁；</li>
-</ul>
-<p>死锁预防固然是一种解决死锁的方式，但是它需要预先计算资源且预留资源，这样的设计是及其不合理的，所以我们需要想出新的解决办法；</p>
-<h3 id="5-2-死锁避免"><a href="#5-2-死锁避免" class="headerlink" title="5.2 死锁避免"></a>5.2 死锁避免</h3><p>死锁避免的基本思想：每次资源申请都要判断是否有出现死锁的危险，如果有危险就拒绝此次申请；</p>
-<p>银行家算法是一种优秀的避免死锁的算法：在银行中，客户要向银行申请贷款，每个客户在第一次申请贷款时会声明完成项目所需的最大资金量，客户会分期贷款，且贷款的总数不超过其声明的最大需求量。只有客户贷到了所需的全部资金才能完成项目，也才能向银行归还其全部贷款。银行要考虑的关键问题是如何处理这些贷款请求，既保证银行有钱给客户放款，同时又保证所有客户的总贷款要求得到满足，最终能偿还其全部贷款，这样银行才不会有损失；与银行贷款类比：</p>
-<p>（1）银行是操作系统，资金就是资源，客户相当于要申请资源的进程；</p>
-<p>（2）客户能最终偿还贷款需要银行满足客户的全部贷款请求，相当于操作系统满足进程的所有资源请求，即让进程执行完成，不造成死锁；</p>
-<p>（3）银行判断贷款请求是否应该被批准相当于操作系统判断进程资源请求是否可以被允许，银行没有损失相当于操作系统没有死锁；</p>
-<p>（4）操作系统判断这个资源请求是否安全的算法就是银行判断此次贷款是否安全的算法，因此被称为银行家算法；</p>
-<p>银行家算法的核心在于确保“系统安全”，也就是找到一个安全序列，使得对所有进程的资源请求都存在一种调度方案令其满足，从而能顺利执行完成；</p>
-<p>我们下面直接给出一个例子</p>
-<p><img src="/images/image-20220925192325008.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/images/image-20220925192423341.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/images/image-20220925192441553.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="5-3-死锁检测-x2F-恢复"><a href="#5-3-死锁检测-x2F-恢复" class="headerlink" title="5.3 死锁检测&#x2F;恢复"></a>5.3 死锁检测&#x2F;恢复</h3><p>前面介绍的两种方式都是通过资源使用的限制保证不出现死锁，这样的限制会造成资源使用效率的降低；那么我们就直接放开资源的使用，这意味着一定会造成死锁（因为相当于预防和避免直接跳过），此时我们的死锁检测&#x2F;恢复就派上用场了；</p>
-<p>经过改造的银行家算法可以进行死锁检测，用于判断进程当前提出的请求是否会导致死锁，也就是通过算法检测哪些进程死锁了；</p>
-<p>死锁恢复是指当检测到一个集合中的进程处于死锁状态时，要选择一些进程进行回滚，这里就引出更多的问题：</p>
-<ul>
-<li>如何进行回滚；</li>
-<li>回滚到哪里比较合适；</li>
-<li>选择哪些进程回滚合适；</li>
-</ul>
-<h2 id="6-锁-amp-条件变量-amp-信号量"><a href="#6-锁-amp-条件变量-amp-信号量" class="headerlink" title="6.锁&amp;条件变量&amp;信号量"></a>6.锁&amp;条件变量&amp;信号量</h2><p>相信很多人或多或少在学习操作系统的时候听说过类似锁、条件变量等名词，但国内大部分教科书好像都对这些概念视而不见或仅仅只是浅谈几句（甚至有的教材默认我们已经了解这些概念），让人很是疑惑，所以这里我们将锁、条件变量以及信号量三者之间究竟有什么关系以及三者的详细概念做一个整理；</p>
-<h3 id="6-1-锁"><a href="#6-1-锁" class="headerlink" title="6.1 锁"></a>6.1 锁</h3><p>并发编程的最基本的问题：我们希望原子式执行一系列指令，但由于单处理器上的中断导致其难以实现；锁就是专门用于解决这一问题的，在源代码中加锁，放在临界区的周围以保证临界区代码能够像单条原子指令一样执行；</p>
+<h2 id="5-锁-amp-条件变量-amp-信号量"><a href="#5-锁-amp-条件变量-amp-信号量" class="headerlink" title="5.锁&amp;条件变量&amp;信号量"></a>5.锁&amp;条件变量&amp;信号量</h2><p>相信很多人或多或少在学习操作系统的时候听说过类似锁、条件变量等名词，但国内大部分教科书好像都对这些概念视而不见或仅仅只是浅谈几句（甚至有的教材默认我们已经了解这些概念），让人很是疑惑，所以这里我们将锁、条件变量以及信号量三者之间究竟有什么关系以及三者的详细概念做一个整理；</p>
+<h3 id="5-1-锁"><a href="#5-1-锁" class="headerlink" title="5.1 锁"></a>5.1 锁</h3><p>并发编程的最基本的问题：我们希望原子式执行一系列指令，但由于单处理器上的中断导致其难以实现；锁就是专门用于解决这一问题的，在源代码中加锁，放在临界区的周围以保证临界区代码能够像单条原子指令一样执行；</p>
 <p>简单来说，锁就是一个变量，这个锁变量保存了锁在某一时刻的状态；它要么是可用的（available，或 unlocked，或free），表示没有线程持有锁，要么是被占用的（acquired，或locked，或held），表示有一个线程持有锁，正处于临界区。我们也可以保存其他的信息，比如持有锁的线程，或请求获取锁的线程队列，但这些信息会隐藏起来，锁的使用者不会发现。</p>
 <p>锁的操作主要有lock()和unlock()：</p>
 <ul>
 <li>调用lock()尝试获取锁，如果没有其他线程持有锁（即它是可用的），该线程会获得锁，进入临界区。这个线程有时被称为锁的持有者（owner）。如果另外一个线程对相同的锁变量调用lock()，因为锁被另一线程持有，该调用不会返回。这样，当持有锁的线程在临界区时，其他线程就无法进入临界区。</li>
 <li>锁的持有者一旦调用unlock()，锁就变成可用了。如果没有其他等待线程（即没有其他线程调用过lock()并卡在那里），锁的状态就变成可用了，如果有等待线程（卡在lock()里），其中一个会注意到（或收到通知）锁状态的变化，获取该锁，进入临界区。</li>
 </ul>
-<h4 id="6-1-1-Pthread锁"><a href="#6-1-1-Pthread锁" class="headerlink" title="6.1.1 Pthread锁"></a>6.1.1 Pthread锁</h4><p>POSIX库将锁称为互斥量（mutex），因为它被用来提供线程之间的互斥。即当一个线程在临界区，它能够阻止其他线程进入直到本线程离开临界区。</p>
+<h4 id="5-1-1-Pthread锁"><a href="#5-1-1-Pthread锁" class="headerlink" title="5.1.1 Pthread锁"></a>5.1.1 Pthread锁</h4><p>POSIX库将锁称为互斥量（mutex），因为它被用来提供线程之间的互斥。即当一个线程在临界区，它能够阻止其他线程进入直到本线程离开临界区。</p>
 <p>当然我们可以选择使用不同的锁来保护不同的变量或数据结构，这样可以增加并发；</p>
-<h4 id="6-1-2-锁的实现"><a href="#6-1-2-锁的实现" class="headerlink" title="6.1.2 锁的实现"></a>6.1.2 锁的实现</h4><p>首先我们需要明确，如何评价一种锁的实现效果，我们设立了如下标准：</p>
+<h4 id="5-1-2-锁的实现"><a href="#5-1-2-锁的实现" class="headerlink" title="5.1.2 锁的实现"></a>5.1.2 锁的实现</h4><p>首先我们需要明确，如何评价一种锁的实现效果，我们设立了如下标准：</p>
 <ol>
 <li>有效性：锁是否能完成它的基本任务，即提供互斥，阻止多个线程进入临界区；</li>
 <li>公平性：当锁可用时是否每一个竞争线程都有公平的机会抢到锁？即是否有线程会被starve；</li>
@@ -1426,26 +1413,184 @@
 <p>Linux采用的是一种古老的锁方案，多年来不断被采用，可以追溯到20世纪60年代早期的Dahm锁[M82]，现在也称为两阶段锁（two-phase lock）。两阶段锁意识到自旋可能很有用，尤其是在很快就要释放锁的场景。因此，两阶段锁的第一阶段会先自旋段时间，希望它可以获取锁。</p>
 <p>但是，如果第一个自旋阶段没有获得锁，第二阶段调用者会睡眠，直到锁可用。Linux锁就是这种锁，不过只自旋一次；更常见的方式是在循环中自旋固定的次数，然后使用futex睡眠。</p>
 <p>两阶段锁是一个杂合（hybrid）方案的例子，即结合两种好想法得到更好的想法。当然，硬件环境、线程数、其他负载等这些因素，都会影响锁的效果。</p>
-<h3 id="6-2-条件变量"><a href="#6-2-条件变量" class="headerlink" title="6.2 条件变量"></a>6.2 条件变量</h3><p>上文介绍的锁并不是并发程序设计所需要的唯一原语；在很多情况下线程需要检查某一条件满足之后才会继续运行，因此引出了条件变量的概念；</p>
-<p>条件变量是一个显式队列，当某些执行条件不满足时，线程可以将自己加入队列等待该条件；而另外某些线程改变了执行条件之后就可以唤醒一个或多个等待线程（这个概念实际就是信号量机制那一节的概念，只是那个时候我们并没有将其总结为条件变量）；</p>
+<h3 id="5-2-条件变量"><a href="#5-2-条件变量" class="headerlink" title="5.2 条件变量"></a>5.2 条件变量</h3><p>上文介绍的锁并不是并发程序设计所需要的唯一原语；在很多情况下线程需要检查某一条件满足之后才会继续运行，因此引出了条件变量的概念；</p>
+<p>条件变量(condition variable)是利用线程间共享的全局变量进行同步的一种机制，主要包括两个动作：一个线程等待某个条件为真，而将自己挂起；另一个线程使的条件成立，并通知等待的线程继续。为了防止竞争，条件变量的使用总是和一个互斥锁结合在一起。</p>
+<p>条件变量是一个显式队列，当某些执行条件不满足时，线程可以将自己加入队列等待该条件；而另外某些线程改变了执行条件之后就可以唤醒一个或多个等待线程；（实际上信号量机制中有非常类似条件变量的概念，这也体现出三者之间的关系）</p>
 <p>最早条件变量被称为“私有信号量”，有两种相关操作:wait()和signal()</p>
 <ul>
-<li>线程要睡眠的时候，调用wait()，wait()调用有一个参数就是互斥量&#x2F;锁，wait()的作用是释放锁并让线程休眠；</li>
+<li>线程要睡眠的时候，调用wait()，wait()调用有一个参数就是互斥量&#x2F;锁，wait()的作用是释放锁并让线程休眠(线程既然都休眠了必然需要释放锁以释放资源给其他线程使用)；</li>
 <li>当线程想唤醒等待在某个条件变量上的睡眠线程时，调用signal()；</li>
 </ul>
 <blockquote>
 <p>提示：对条件变量使用while而不是if（原因在《操作系统导论》P260）</p>
 </blockquote>
-<h3 id="6-3-信号量"><a href="#6-3-信号量" class="headerlink" title="6.3 信号量"></a>6.3 信号量</h3><p>信号量作为与同步有关的所有工作的唯一原语，可以使用信号量代替锁和条件变量；</p>
+<h3 id="5-3-信号量"><a href="#5-3-信号量" class="headerlink" title="5.3 信号量"></a>5.3 信号量</h3><hr>
+<blockquote>
+<p>Q：为什么有了互斥锁和条件变量还需要提供信号量？</p>
+</blockquote>
+<p>A：在Posix.1基本原理一文声称，有了互斥锁和条件变量还提供信号量的原因是：“本标准提供信号量的而主要目的是提供一种进程间同步的方式；这些进程可能共享也可能不共享内存区。互斥锁和条件变量是作为线程间的同步机制说明的；这些线程总是共享(某个)内存区。这两者都是已广泛使用了多年的同步方式。每组原语都特别适合于特定的问题”。尽管信号量的意图在于进程间同步，互斥锁和条件变量的意图在于线程间同步，但是信号量也可用于线程间，互斥锁和条件变量也可用于进程间。应当根据实际的情况进行决定。信号量最有用的场景是用以指明可用资源的数量。</p>
+<hr>
+<p>信号量作为与同步有关的所有工作的唯一原语，可以使用信号量代替锁和条件变量；</p>
 <p>使用信号量实现锁非常简单，因为锁只有两个状态（持有和未持有），所以信号量的这种用法也被称为二值信号量；</p>
 <p>当然我们完全可以自己实现一个信号量，这只需要一把锁、一个条件变量和一个状态变量来记录信号的值；</p>
 <p>而使用信号量实现条件变量可能不是一件容易的事，这里我们不再赘述；</p>
 <blockquote>
 <p>结论：信号量是编写并发程序的强大而灵活的原语，因为其简单实用，所以很多时候可以只用信号量而不需要使用锁和条件变量；</p>
 </blockquote>
-<h2 id="7-管程"><a href="#7-管程" class="headerlink" title="7.管程"></a>7.管程</h2><h2 id="8-经典同步问题"><a href="#8-经典同步问题" class="headerlink" title="8.经典同步问题"></a>8.经典同步问题</h2><blockquote>
-<p>前面我们介绍线程同步的时候简单介绍过一些同步问题，这里我们对经典的同步问题做一个总结和整理；</p>
+<h2 id="6-经典同步问题"><a href="#6-经典同步问题" class="headerlink" title="6.经典同步问题"></a>6.经典同步问题</h2><blockquote>
+<p>前面我们介绍线程同步的时候简单介绍过一些同步问题，这里我们对经典的同步问题及其规范的解答方法做一个总结和整理；</p>
 </blockquote>
+<h3 id="6-1-生产者-消费者问题"><a href="#6-1-生产者-消费者问题" class="headerlink" title="6.1 生产者-消费者问题"></a>6.1 生产者-消费者问题</h3><blockquote>
+<p>问题描述：</p>
+</blockquote>
+<p><img src="/images/image-20221105202010823.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>问题分析：</p>
+</blockquote>
+<p><img src="/images/image-20221105215716656-16676566596385.png" srcset="/img/loading.gif" lazyload></p>
+<p>1.关系分析</p>
+<p>互斥关系：</p>
+<ul>
+<li>缓冲区是临界资源，各进程必须互斥地访问；</li>
+</ul>
+<p>同步关系：</p>
+<ul>
+<li>只有缓冲区没满时，生产者才能把产品放入缓冲区，否则必须等待 —— 缓冲区满时，生产者要等待消费者取走产品；</li>
+<li>只有缓冲区不空时，消费者才能从中取出产品，否则必须等待 —— 缓冲区空时（即没有产品时），消费者要等待生产者放入产品；</li>
+</ul>
+<p>2.整理思路</p>
+<p>一共需要三对P、V操作以对应三个不同的信号量：</p>
+<ul>
+<li><p>生产者每次要消耗（P）一个空闲缓冲区，并生产（V）一个产品；</p>
+</li>
+<li><p>消费者每次要消耗（P）一个产品，并释放一个空闲缓冲区（V）；</p>
+</li>
+<li><p>往缓冲区放入&#x2F;取走产品需要互斥；</p>
+</li>
+</ul>
+<p>3.设置信号量</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp">semaphore mutex = <span class="hljs-number">1</span>；<span class="hljs-comment">//互斥信号量，实现对缓冲区的互斥访问</span><br>semaphore empty = n；<span class="hljs-comment">//同步信号量，表示空闲缓冲区的数量</span><br>semaphore full = <span class="hljs-number">0</span>；<span class="hljs-comment">//同步信号量，表示产品的数量，也即非空缓冲区的数量</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>具体代码实现：</p>
+</blockquote>
+<p><img src="/images/image-20221105214803943.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>注意：实现互斥的P操作一定要在实现同步的P操作之后，但是因为V操作不会导致进程阻塞，所以V操作的顺序可以交换</p>
+</blockquote>
+<h3 id="6-2-多生产者-多消费者问题"><a href="#6-2-多生产者-多消费者问题" class="headerlink" title="6.2 多生产者-多消费者问题"></a>6.2 多生产者-多消费者问题</h3><blockquote>
+<p>问题描述：</p>
+</blockquote>
+<p><img src="/images/image-20221105220340419.png" srcset="/img/loading.gif" lazyload></p>
+<p>注意这里的“多”并不是指多个生产者、消费者，而是指生产者生产的产品的类别不同；</p>
+<blockquote>
+<p>问题分析：</p>
+</blockquote>
+<p>1.关系分析</p>
+<p><img src="/images/image-20221105220656515.png" srcset="/img/loading.gif" lazyload></p>
+<p>2.整理思路</p>
+<p><img src="/images/image-20221105221503457.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221105220912515.png" srcset="/img/loading.gif" lazyload></p>
+<p>3.设置信号量</p>
+<p><img src="/images/image-20221105220947076.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>具体代码实现：</p>
+</blockquote>
+<p><img src="/images/image-20221105221034150.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221105221146433.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="6-3-吸烟者问题"><a href="#6-3-吸烟者问题" class="headerlink" title="6.3 吸烟者问题"></a>6.3 吸烟者问题</h3><blockquote>
+<p>问题描述：</p>
+</blockquote>
+<p><img src="/images/image-20221105222203550.png" srcset="/img/loading.gif" lazyload></p>
+<p>本质上这题也属于“生产者-消费者”问题，更详细的说应该是“可生产多种产品的单生产者-多消费者”；</p>
+<blockquote>
+<p>问题分析：</p>
+</blockquote>
+<p>1.关系分析</p>
+<p><img src="/images/image-20221105222436976.png" srcset="/img/loading.gif" lazyload></p>
+<p>2.整理思路</p>
+<p><img src="/images/image-20221105222553496.png" srcset="/img/loading.gif" lazyload></p>
+<p>3.设置信号量</p>
+<p><img src="/images/image-20221105222622317.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>代码实现：</p>
+</blockquote>
+<p>注意本题不需要专门给桌子设置一个专门的互斥信号量（这是缓冲区大小为1的时候的一种特殊情况，可以参考<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1YE411D7nH?p=24&vd_source=276d55048634a5b508b1b53a1ecd56b3">2.3_7_多生产者-多消费者问题_哔哩哔哩_bilibili</a>了解原理）</p>
+<p><img src="/images/image-20221105222734004.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221105222800824.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="6-4-读者-写者问题"><a href="#6-4-读者-写者问题" class="headerlink" title="6.4 读者-写者问题"></a>6.4 读者-写者问题</h3><blockquote>
+<p>问题描述：</p>
+</blockquote>
+<p><img src="/images/image-20221105223207226.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>问题分析：</p>
+</blockquote>
+<p><img src="/images/image-20221105223409857.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>代码实现：</p>
+</blockquote>
+<p><img src="/images/image-20221105223758656.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221105223821715.png" srcset="/img/loading.gif" lazyload></p>
+<p>潜在的问题：只要有读进程还在读，写进程就要一直阻塞等待，可能“饿死”，因此，这种算法中，读进程是优先的；</p>
+<p>解决方法很简单，只需要额外加一个互斥信号量w即可</p>
+<p><img src="/images/image-20221105224131422.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="6-5-哲学家进餐问题"><a href="#6-5-哲学家进餐问题" class="headerlink" title="6.5 哲学家进餐问题"></a>6.5 哲学家进餐问题</h3><blockquote>
+<p>问题描述：</p>
+</blockquote>
+<p><img src="/images/image-20221105224449516.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>问题分析：</p>
+</blockquote>
+<p><img src="/images/image-20221105224547734.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们很容易想到使用如下的代码解决方案，但这将导致死锁的发生</p>
+<p><img src="/images/image-20221105224946455.png" srcset="/img/loading.gif" lazyload></p>
+<p>如何防止死锁的发生呢？主要有如下解决方案：</p>
+<ol>
+<li>可以对哲学家进程施加一些限制条件，比如最多允许四个哲学家同时进餐。这样可以保证至少有一个哲学家是可以拿到左右两只筷子的；</li>
+<li>要求奇数号哲学家先拿左边的筷子，然后再拿右边的筷子，而偶数号哲学家刚好相反。用这种方法可以保证如果相邻的两个奇偶号哲学家都想吃饭，那么只会有其中一个可以拿起第一只筷子，另一个会直接阻塞。这就避免了占有一支后再等待另一只的情况；</li>
+<li>仅当一个哲学家左右两支筷子都可用时才允许他抓起筷子；更准确的说法应该是：各哲学家拿筷子这件事必须互斥的执行。这就保证了即使一个哲学家在拿筷子拿到一半时被阻塞，也不会有别的哲学家会继续尝试拿筷子。这样的话，当前正在吃饭的哲学家放下筷子后，被阻塞的哲学家就可以获得等待的筷子了；</li>
+</ol>
+<p><img src="/images/image-20221105225416794.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="7-管程"><a href="#7-管程" class="headerlink" title="7.管程"></a>7.管程</h2><p>在管程引入之前，实现同步机制和互斥机制一般都是使用信号量机制，但是信号量机制存在的问题就是编写程序困难、易出错；</p>
+<p>管程是这样一种机制，让程序员在写程序的时候不需要关注复杂的PV操作；</p>
+<p>管程是一种特殊的软件模块，由这些部分组成：<br>1.局部于管程的<code>共享数据结构</code>说明；<br>2.对该数据结构进行操作的<code>一组过程</code>(函数)；<br>3.对局部于管程的共享数据设置初始值的语句；<br>4.管程有一个名字(其实这里可以看出管程类似于面向对象语言中的类)；</p>
+<p>管程的基本特征：<br>1.局部于管程的数据只能被局部于管程的过程所访问；<br>2.一个进程只有通过调用管程内的过程才能进入管程访问共享数据；<br>3.每次仅充许一个进程在管程内执行某个内部过程；</p>
+<p><img src="/images/image-20221105201538989.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="8-死锁"><a href="#8-死锁" class="headerlink" title="8.死锁"></a>8.死锁</h2><p>死锁现象简单来说就是进程P0在等待P1的时候，P1也在等待P0；</p>
+<p>死锁现象在多进程并发和同步的计算机系统中是必然会产生且不可预见的，故必须依靠操作系统提供的处理机制保证进程的有序推进；</p>
+<h3 id="8-1-死锁预防"><a href="#8-1-死锁预防" class="headerlink" title="8.1 死锁预防"></a>8.1 死锁预防</h3><p>死锁发生的四个基本条件（必要条件）如下：</p>
+<ul>
+<li>互斥：资源不能被共享，一个资源每次只能被一个进程使用。</li>
+<li>不可剥夺：进程已获得的资源，在未使用完之前，不能强行剥夺。</li>
+<li>请求与保持：一个进程因请求资源而阻塞时，对已获得的资源保持不放。</li>
+<li>循环等待：若干进程之间形成一种头尾相接的循环性资源等待关系。</li>
+</ul>
+<p>只需要破坏这四个必要条件中的某个条件，就不会形成死锁，这就是死锁预防的基本思想；</p>
+<p>但是“互斥”和“不可剥夺”这两个条件在通常条件下是资源自身特性或程序本身决定，无法直接破坏，所以死锁预防主要是破坏“请求与保持”和“循环等待”两个条件：</p>
+<ul>
+<li>请求与保持：将申请资源的方式修改为一次性申请进程所需的所有资源（当进程在请求资源阻塞时，它不会占有任何资源）；</li>
+<li>循环等待：避免资源等待形成环路（因为环路等待是死锁的必要条件），只要资源按序申请就一定不会造成死锁；</li>
+</ul>
+<p>死锁预防固然是一种解决死锁的方式，但是它需要预先计算资源且预留资源，这样的设计是及其不合理的，所以我们需要想出新的解决办法；</p>
+<h3 id="8-2-死锁避免"><a href="#8-2-死锁避免" class="headerlink" title="8.2 死锁避免"></a>8.2 死锁避免</h3><p>死锁避免的基本思想：每次资源申请都要判断是否有出现死锁的危险，如果有危险就拒绝此次申请；</p>
+<p>银行家算法是一种优秀的避免死锁的算法：在银行中，客户要向银行申请贷款，每个客户在第一次申请贷款时会声明完成项目所需的最大资金量，客户会分期贷款，且贷款的总数不超过其声明的最大需求量。只有客户贷到了所需的全部资金才能完成项目，也才能向银行归还其全部贷款。银行要考虑的关键问题是如何处理这些贷款请求，既保证银行有钱给客户放款，同时又保证所有客户的总贷款要求得到满足，最终能偿还其全部贷款，这样银行才不会有损失；与银行贷款类比：</p>
+<p>（1）银行是操作系统，资金就是资源，客户相当于要申请资源的进程；</p>
+<p>（2）客户能最终偿还贷款需要银行满足客户的全部贷款请求，相当于操作系统满足进程的所有资源请求，即让进程执行完成，不造成死锁；</p>
+<p>（3）银行判断贷款请求是否应该被批准相当于操作系统判断进程资源请求是否可以被允许，银行没有损失相当于操作系统没有死锁；</p>
+<p>（4）操作系统判断这个资源请求是否安全的算法就是银行判断此次贷款是否安全的算法，因此被称为银行家算法；</p>
+<p>银行家算法的核心在于确保“系统安全”，也就是找到一个安全序列，使得对所有进程的资源请求都存在一种调度方案令其满足，从而能顺利执行完成；</p>
+<p>我们下面直接给出一个例子</p>
+<p><img src="/images/image-20220925192325008.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20220925192423341.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20220925192441553.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="8-3-死锁检测-x2F-恢复"><a href="#8-3-死锁检测-x2F-恢复" class="headerlink" title="8.3 死锁检测&#x2F;恢复"></a>8.3 死锁检测&#x2F;恢复</h3><p>前面介绍的两种方式都是通过资源使用的限制保证不出现死锁，这样的限制会造成资源使用效率的降低；那么我们就直接放开资源的使用，这意味着一定会造成死锁（因为相当于预防和避免直接跳过），此时我们的死锁检测&#x2F;恢复就派上用场了；</p>
+<p>经过改造的银行家算法可以进行死锁检测，用于判断进程当前提出的请求是否会导致死锁，也就是通过算法检测哪些进程死锁了；</p>
+<p>死锁恢复是指当检测到一个集合中的进程处于死锁状态时，要选择一些进程进行回滚，这里就引出更多的问题：</p>
+<ul>
+<li>如何进行回滚；</li>
+<li>回滚到哪里比较合适；</li>
+<li>选择哪些进程回滚合适；</li>
+</ul>
 <h1 id="第六章-内存管理"><a href="#第六章-内存管理" class="headerlink" title="第六章 内存管理"></a>第六章 内存管理</h1><p>“进程管理和内存管理两部分构成操作系统的真正内核”</p>
 <blockquote>
 <p>内存管理相对复杂，涉及到硬件和软件，从微机原理到应用程序到内核。</p>
