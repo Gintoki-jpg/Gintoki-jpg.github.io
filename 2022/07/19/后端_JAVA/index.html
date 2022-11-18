@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/JAVA.png">
 <meta property="article:published_time" content="2022-07-19T12:57:00.000Z">
-<meta property="article:modified_time" content="2022-07-24T07:21:47.231Z">
+<meta property="article:modified_time" content="2022-11-16T06:49:21.835Z">
 <meta property="article:author" content="YangZaiyan">
 <meta property="article:tag" content="后端开发">
 <meta property="article:tag" content="编程语言">
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          23k 字
+          25k 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          190 分钟
+          212 分钟
         
       </span>
     
@@ -345,7 +345,7 @@
 <blockquote>
 <p>尽管拥有自动垃圾回收机制，但是有时候我们写的程序有问题导致自动回收机制无法识别垃圾进而造成内存泄漏（某些对象申请内存没有被释放,一直占用）和内存溢出（程序所需的内存大于系统所能提供的最大内存）；</p>
 </blockquote>
-<h2 id="3-JAVA环境"><a href="#3-JAVA环境" class="headerlink" title="3.JAVA环境"></a>3.JAVA环境</h2><p>JDK（Java Development Kit Java开发工具包）JDK是提供给Java开发人员使用的，其中包含了<code>java的开发工具</code>，也包括了<code>JRE</code>。所以安装了JDK，就不用在单独安装JRE了。</p>
+<h2 id="3-JAVA环境"><a href="#3-JAVA环境" class="headerlink" title="3.JAVA环境"></a>3.JAVA环境</h2><p>JDK（Java Development Kit Java开发工具包）JDK是提供给Java开发人员使用的，其中包含了<code>java的开发工具</code>，也包括了<code>JRE</code>。所以安装了JDK，就不用再单独安装JRE了。</p>
 <ul>
 <li><p>开发工具包括编译工具（javac.exe）打包工具（jar.exe）等（<code>开发工具用于编写代码</code>）；</p>
 </li>
@@ -379,6 +379,33 @@
 <li>字符串中数组的名字（代码中的 args）可以任意设置，但是根据习惯，这个字符串数组的名字一般和 Java 规范范例中 main() 参数名保持一致，命名为 args，而方法中的其他内容都是固定不变的。</li>
 <li>main() 方法定义必须是“public static void main(String[] 字符串数组参数名)”，即main()方法的格式必须固定不变。</li>
 <li>一个类只能有一个 main() 方法，这是一个常用于对类进行单元测试（对软件中的最小可测试单元进行检查和验证）的技巧。</li>
+</ul>
+<h2 id="5-JAVA开发工具"><a href="#5-JAVA开发工具" class="headerlink" title="5.JAVA开发工具"></a>5.JAVA开发工具</h2><p>参考文章<a target="_blank" rel="noopener" href="http://c.biancheng.net/view/5637.html">Java常用开发工具有哪些？ (biancheng.net)</a></p>
+<p>俗话说得好“工欲善其事，必先利其器”，本节介绍的常用的JAVA开发工具在某些功能和作用上可能存在不同，但是其主旨都是为了给JAVA编码和开发提供支持；</p>
+<h3 id="5-1-文本编辑器"><a href="#5-1-文本编辑器" class="headerlink" title="5.1 文本编辑器"></a>5.1 文本编辑器</h3><p>JAVA源代码本质上就是普通的文本文件，所以理论上任何可以编辑文本文件的编辑器都可以作为JAVA代码的编辑工具，但是Windows自带的记事本没有语法高亮提示等功能，所以我们可以选择使用notepad3、Sublime Text、editplus、Vim这种功能较为强大的类记事本工具(当然如果你喜欢上这些工具之后你可能就不会再想使用记事本了)</p>
+<h3 id="5-2-集成开发环境"><a href="#5-2-集成开发环境" class="headerlink" title="5.2 集成开发环境"></a>5.2 集成开发环境</h3><p>我们使用高级记事本类的工具作为初学是没问题的，但是实际进行项目开发的时候更多的还是选择使用继承IDE作为开发工具，目前最主流的两款JAVA集成IDE是Eclipse和IDEA(强烈建议两个都学，我一个初学者都安装了这两个IDE)</p>
+<h4 id="5-2-1-Eclipse-IDE"><a href="#5-2-1-Eclipse-IDE" class="headerlink" title="5.2.1 Eclipse IDE"></a>5.2.1 Eclipse IDE</h4><p>Eclipse最初主要用来 Java 语言开发，后来通过安装不同的插件 Eclipse 可以支持不同的计算机语言，比如C++和Python</p>
+<p>Eclipse 优点：</p>
+<ul>
+<li>能提供关于代码完成、重构和语法检查这些急需的帮助。</li>
+<li>能提供 JDT 的一系列工具，包括各种插件工具来帮助开发各种 Java 应用。</li>
+<li>允许开发人员使用不同的语言支持，如它也可以提供 C&#x2F;C++ 和 PHP 的 IDE。这使得它成为了 Java 开发的一个一站式资源。</li>
+<li>Eclipse 是免费的，这点很重要，所以大多公司里依然是使用 Eclipse 这款 IDE，而且它良好的性能，也在市场占着不小的比重。</li>
+</ul>
+<p>Eclipse 缺点：</p>
+<ul>
+<li>版本间不兼容，特别是插件，在一个版本下可以很好工作，在另一个版本下就完全无法工作，就算两个版本的版本号只有微小的差异。</li>
+<li>与 JDK 捆绑过于紧密。当 JDK 新的版本出来后，Eclipse 一般要滞后很长一段时间才有一个新版本支持新的 JDK，然后等各个插件能在新版本的 Eclipse 下使用又要过很长时间。</li>
+</ul>
+<blockquote>
+<p>简单的如何使用Eclipse参考<a target="_blank" rel="noopener" href="http://c.biancheng.net/view/5631.html">使用Eclipse开发第一个Java程序 (biancheng.net)</a>，咱们之后会有专门的一个章节来介绍IDEA的使用(因为IDEA经常被用来开发大型JAVA项目)；</p>
+</blockquote>
+<h4 id="5-2-2-Intellij-IDEA"><a href="#5-2-2-Intellij-IDEA" class="headerlink" title="5.2.2 Intellij IDEA"></a>5.2.2 Intellij IDEA</h4><p>简称IDEA，旗舰版本支持 HTML，CSS，PHP，MySQL，Python等，免费版只支持 Java 等少数语言；</p>
+<p>IDEA 缺点：</p>
+<ul>
+<li>编辑超大文件不靠谱，易卡顿或直接卡死。</li>
+<li>相对于一些专用工具，显得不够专业：比如批量修改项目中的文件编码效果就很差劲。</li>
+<li>消耗大量硬件资源，IntelliJ IDEA 要求内存大，并且还要用的流畅还需要固态硬盘辅助。比如在做微服务类的项目的时候，一般需要同时启动多个项目，内存一会就上来的，8G 内存完全不够用的。</li>
 </ul>
 <h1 id="二、JAVA基础"><a href="#二、JAVA基础" class="headerlink" title="二、JAVA基础"></a>二、JAVA基础</h1><h2 id="1-JAVA注释"><a href="#1-JAVA注释" class="headerlink" title="1.JAVA注释"></a>1.JAVA注释</h2><ul>
 <li>单行注释</li>
@@ -831,7 +858,7 @@
 <ul>
 <li>可以使用Object类的对象变量引用任何类型的对象</li>
 </ul>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">Object obj = new Employee();<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">Object</span> <span class="hljs-variable">obj</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Employee</span>();<br></code></pre></td></tr></table></figure>
 
 <ul>
 <li>JAVA中除了基本数据类型不是对象（数值、字符、布尔值），其他类型都拓展于Object类（包括数组类型）</li>
@@ -922,6 +949,33 @@
 <li>生成动态代理。</li>
 </ul>
 <p>JAVA中反射机制用的比较少，这里就不再赘述，感兴趣可以自己查阅资料；</p>
+<h1 id="四、IDEA集成开发环境"><a href="#四、IDEA集成开发环境" class="headerlink" title="四、IDEA集成开发环境"></a>四、IDEA集成开发环境</h1><p>常用的JAVA集成开发环境(IDE)有Eclipse和IDEA</p>
+<p>Eclipse应该是大多数Java程序员使用的第一个IDE。众所周知的、最流行、也最受欢迎的Java开发工具。优点很多：免费、更新快、代码智能化、ANT构建等，拥有众多插件，完全免费、有中文版、上手比较快。缺点也非常明显，安装插件麻烦、插件对版本要求比较严格。</p>
+<p>IntelliJ　IDEA被认为是目前Java开发效率最快的IDE工具。是JetBrains公司的产品，这家公司总部位于捷克共和国的首都布拉格。它整合了开发过程中实用的众多功能，智能提示错误，强大的调试工Ant，JavaEE支持CVS整合-最大程度的加快开发的速度。简单而又功能强大。与其他的一些繁冗而复杂的IDE工具有鲜明的对比。</p>
+<p>Eclipse和IDEA是竞争关系，现在大多数公司都在使用IDEA(作者学习这个的原因是项目开发需要)，同时Android Studio（用于开发 android的平台）也是google基IDEA 社区版进行的迭代，故这里对IDEA做一个简单的学习；</p>
+<p>IDEA 的主要优势(相较于 Eclipse 而言)：</p>
+<p>① 强大的整合能力。比如：Git、Maven、Spring 等</p>
+<p>② 提示功能的快速、便捷</p>
+<p>③ 提示功能的范围广</p>
+<p>④ 好用的快捷键和代码模板</p>
+<p>⑤ 精准搜索</p>
+<hr>
+<p>然后简单说一下，因为之前弄过jetbrain的学生认证所以现在是可以免费使用IDEA的，所以咱们就暂时不搞什么pojie，之后过期了再考虑其他方法；</p>
+<p>另外一点需要注意的是选择64.exe的文件启动，选择默认的exe是认为是32bit的，因为电脑只装了64的JVM所以运行不了32的exe；</p>
+<p>关于如何配置IDEA参考<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1PW411X75p?p=8&vd_source=276d55048634a5b508b1b53a1ecd56b3">8_尚硅谷_IDEA的常用设置_哔哩哔哩_bilibili</a></p>
+<h2 id="1-创建项目"><a href="#1-创建项目" class="headerlink" title="1.创建项目"></a>1.创建项目</h2><p>关于如何创建一个简单的IDEA项目并运行参考<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1PW411X75p?p=6&vd_source=276d55048634a5b508b1b53a1ecd56b3">6_尚硅谷_启动IDEA并执行HelloWorld_哔哩哔哩_bilibili</a>，需要注意的是IntelliJ IDEA 没有类似 Eclipse 的工作空间的概念（Workspaces），最大单元就是<br>Project，这里可以把 Project 理解为 Eclipse 中的 Workspace；</p>
+<p>项目创建成功后的工程界面如下</p>
+<p><img src="/images/image-20221112185016499.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>工程下的 src 类似于 Eclipse 下的 src 目录，用于存放代码；</li>
+<li>工程下的.idea 和 project01.iml 文件都是 IDEA 工程特有的，类似于 Eclipse 工程下的.settings、.classpath、.project 等；</li>
+</ul>
+<h2 id="2-创建Module"><a href="#2-创建Module" class="headerlink" title="2.创建Module"></a>2.创建Module</h2><p>在 Eclipse 中我们有 Workspace（工作空间）和 Project（工程）的概念，在 IDEA 中只有 Project（工程）和 Module（模块）的概念。这里的对应关系为</p>
+<p><img src="/images/image-20221112184510095.png" srcset="/img/loading.gif" lazyload></p>
+<p>从 Eclipse 转过来的人总是下意识地要在同一个窗口管理 n 个项目，这在IntelliJ IDEA 是无法做到的。IntelliJ IDEA 提供的解决方案是打开多个项目实例，即打开多个项目窗口(一个 Project 打开一个 Window 窗口)；</p>
+<p>在 IntelliJ IDEA 中 Project 是最顶级的级别，次级别是 Module，一个 Project可以有多个 Module，目前主流的大型项目都是分布式部署的，结构都是类似这种多 Module 结构</p>
+<p><img src="/images/image-20221112184743117.png" srcset="/img/loading.gif" lazyload></p>
+<p>这类项目一般是这样划分的，比如：core Module、web Module、plugin Module、solr Module 等等，模块之间彼此可以相互依赖。通过这些 Module 的命名也可以看出，他们之间都是处于同一个项目业务下的模块，彼此之间是有不可分割的业务关系；</p>
 
               
             </div>

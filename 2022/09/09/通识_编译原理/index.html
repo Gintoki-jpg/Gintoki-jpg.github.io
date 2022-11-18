@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/compile.jpg">
 <meta property="article:published_time" content="2022-09-09T01:50:00.000Z">
-<meta property="article:modified_time" content="2022-11-05T09:03:56.320Z">
+<meta property="article:modified_time" content="2022-11-11T09:51:08.389Z">
 <meta property="article:author" content="YangZaiyan">
 <meta property="article:tag" content="课程学习">
 <meta property="article:tag" content="计算机基础">
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          37k 字
+          40k 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          308 分钟
+          334 分钟
         
       </span>
     
@@ -295,6 +295,7 @@
 <p>2022&#x2F;11&#x2F;4 16:14 现在上课听老师讲课的确是听不懂了，需要自己下课找视频或者资料自学，但是网络上的资料真的是各显神通，最终经过比对我们选择了使用这个视频作为复习和预习的参考<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1cW411B7DW?p=44&vd_source=276d55048634a5b508b1b53a1ecd56b3">44_bilibili_哔哩哔哩_bilibili</a>，之所以选择这个视频是因为它并不是完全按照PPT在念，有自己的思想并且是层层递进的；</p>
 <p>2022&#x2F;11&#x2F;4 17:28 关于上面那个视频，咱们还是避雷吧，讲的确实很好，我也认真听了能听进去，但是和我们要学的（特别是语法制导编译那一章）可以说毫不相关，我也不是很理解为什么同样是语法制导编译这个章节，不同的教学视频内容居然能够呈一个完美的不相交的情况；so，各位还是自己再找找适合自己的网课视频吧，编译原理真的不是一门好学的课程；</p>
 <p>2022&#x2F;11&#x2F;5 11:06 这里我说一下上面推荐那个视频其实人家讲的还是不错的，只是没有介绍前置知识点同时使用的名词不一样所以我们以为学到了假的语法制导翻译（缺点是每个视频跨度太大对于初学者来说不能形成知识图谱），但是课程学习还是推荐国科大的视频，因为它的PPT甚至都和我们课程使用的是一样的；</p>
+<p>2022&#x2F;11&#x2F;11 17:50 发现一个宝藏博主：<a target="_blank" rel="noopener" href="https://www.jianshu.com/u/aa4583fb8687">穷人黄六 - 简书 (jianshu.com)</a>，他讲的是真的好，期末复习可以做参考；</p>
 <hr>
 <h1 id="第一章-编译概述"><a href="#第一章-编译概述" class="headerlink" title="第一章 编译概述"></a>第一章 编译概述</h1><h2 id="1-翻译和解释"><a href="#1-翻译和解释" class="headerlink" title="1.翻译和解释"></a>1.翻译和解释</h2><h3 id="1-1-程序设计语言"><a href="#1-1-程序设计语言" class="headerlink" title="1.1 程序设计语言"></a>1.1 程序设计语言</h3><p>机器语言-&gt;符号语言-&gt;汇编语言-&gt;高级语言</p>
 <p>面向用户的、面向问题的以及面向对象的语言等统称为高级语言，机器语言和汇编语言称为低级语言。相对于低级语言，高级语言具有以下优点：</p>
@@ -656,7 +657,7 @@
 </ul>
 </blockquote>
 <p>常用的语法分析方法有自顶向下和自底向上两大类：</p>
-<p>（1）自顶向下的分析方法：语法分析程序从树根到树叶自顶向下地为输入的记号序列建立分析树。如预测分析程序采用的就是自顶向下的分析方法；<br>（2）自底向上的分析方法：语法分析程序从树叶到树根自下而上地为输人的记号序列建立分析树。如LR分析程序采用的就是自底向上的分析方法；</p>
+<p>（1）自顶向下的分析方法：语法分析程序从树根到树叶自顶向下地为输入的记号序列建立分析树。如预测分析程序采用的就是自顶向下的分析方法；<br>（2）自底向上的分析方法：语法分析程序从树叶到树根自下而上地为输入的记号序列建立分析树。如LR分析程序采用的就是自底向上的分析方法；</p>
 <table>
 <thead>
 <tr>
@@ -786,35 +787,44 @@
 </ul>
 <p><img src="/images/image-20221007100943624.png" srcset="/img/loading.gif" lazyload></p>
 <blockquote>
-<p>Follow集合：文法符号后面可能跟随的终结符的集合（<code>Follow集不包括空串！！！</code>）</p>
+<p>Follow集合：文法符号后面可能跟随的终结符的集合（Follow集不包括空串！！！）</p>
 </blockquote>
 <p>注意终结符的Follow集合没有定义，只有非终结符才会有Follow集合；Follow集合中的符号一定是终结符且不包含空串；</p>
-<p>定义开始符号的Follow集合初始为 { # }</p>
 <ul>
 <li><code>计算非终结符A的Follow集合</code></li>
 </ul>
 <p><img src="/images/image-20221007101933933.png" srcset="/img/loading.gif" lazyload></p>
 <p>简单来说：</p>
+<ol>
+<li><p>开始符号的Follow集合初始为 { # }；</p>
+</li>
+<li><p>当有产生式A-&gt;…Ua…，则a属于Follow(U)，此时Follow(U)和产生式左边的A没有任何关系；</p>
+</li>
+<li><p>当有产生式A-&gt;…UP…：</p>
 <ul>
-<li>当有产生式A-&gt;…Ua…，则a属于Follow(U)，此时Follow(U)和产生式左边的A没有任何关系；</li>
-<li>当有产生式A-&gt;…UP…，则First(P)属于Follow(U)；</li>
-<li>当有产生式A-&gt;…UP并且空串属于First(P):<ul>
-<li>当P推导为空串的时候，空串是不能出现在Follow集中的，这种情况下Follow(A)也属于Follow(U)；</li>
-<li>当P推导不是空串的时候，First(P)属于Follow(U)；</li>
+<li><p>当P推导为空串的时候，空串是不能出现在Follow集中的，这种情况下Follow(A)也属于Follow(U)；</p>
+</li>
+<li><p>当P推导不是空串的时候，First(P)属于Follow(U)；</p>
+</li>
 </ul>
 </li>
-<li>当有产生式A-&gt;…U，则Follow(A)属于Follow(U)；</li>
-</ul>
-<h4 id="2-2-4-Select集合"><a href="#2-2-4-Select集合" class="headerlink" title="2.2.4 Select集合"></a>2.2.4 Select集合</h4><p>Select集合直观上理解就是上面我们介绍过的产生式右边的符号串的First集合（在特殊情况下也就是产生式推出空的时候Select集合是产生式左边的非终结符的Follow集合）</p>
+<li><p>当有产生式A-&gt;…U，则Follow(A)属于Follow(U)；</p>
+</li>
+</ol>
+<h4 id="2-2-4-Select集合"><a href="#2-2-4-Select集合" class="headerlink" title="2.2.4 Select集合"></a>2.2.4 Select集合</h4><blockquote>
+<p>实际上构造预测分析表使用的是Select集合而不是First集合</p>
+</blockquote>
+<p>Select集合直观上理解就是上面我们介绍过的产生式右边的符号串的First集合（在特殊情况下也就是产生式推出空的时候Select集合是产生式左边的非终结符的Follow集合）</p>
 <p><img src="/images/image-20221007102451793.png" srcset="/img/loading.gif" lazyload></p>
 <blockquote>
-<p>Select集合：产生式左部的可能的推导结果的起始符号</p>
+<p>Select集合：产生式左部的可能的推导结果的起始符号集合</p>
 </blockquote>
-<p>Select(A-&gt;B)就是求这个产生式中A可能推导出的起始符号集合（不包含空串，但是可能包含 #(结束符)），可分为如下情况：</p>
+<p>Select(A-&gt;B)就是求这个产生式中A可能推导出的结果(实际上就只有B)起始符号集合（不包含空串，但是可能包含 #(结束符)），可分为如下情况：</p>
 <ul>
 <li>A-&gt;X（X为任意文法符号串，不仅限于非终结符或单个符号，X不能推导出空串），此时Select(A-&gt;X)&#x3D;First(X);</li>
 <li>A-&gt;X(X为任意文法符号串，不仅限于非终结符或单个符号，X能推导出空串)，此时不仅First(X)属于Select(A-&gt;X)，同时Follow(A)也属于Select(A-&gt;X)；</li>
 </ul>
+<p>当然实际计算过程中用上面的口诀求Select集合就是蠢…直接求产生式右部所有符号串的First串的并集即可；</p>
 <h3 id="2-3-LL1文法"><a href="#2-3-LL1文法" class="headerlink" title="2.3 LL1文法"></a>2.3 LL1文法</h3><p>LL1文法是构造不带回溯的自上而下分析的必要条件，实际上我们前面的步骤都是为了构造LL1文法；</p>
 <p>我们对LL1文法的定义如下</p>
 <p><img src="/images/image-20220930111807826.png" srcset="/img/loading.gif" lazyload></p>
@@ -864,7 +874,7 @@
 </li>
 </ul>
 <p>下面给出预测分析表的构造伪代码</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">for</span><span class="hljs-params">(文法G的每一个产生式A-&gt;a)</span></span>&#123;<br>	<span class="hljs-built_in">for</span>(每个终结符号o属于<span class="hljs-built_in">First</span>(a))&#123;<br>		将A-&gt;a放入表项M<span class="hljs-selector-attr">[A,o]</span>中；<br>	&#125;<br>	<span class="hljs-built_in">if</span>(空串属于<span class="hljs-built_in">First</span>(A))&#123;<br>		<span class="hljs-built_in">for</span>(每个 b属于<span class="hljs-built_in">Follow</span>(A))&#123;<br>			把A-&gt;a放入表项M<span class="hljs-selector-attr">[A,b]</span>中；<br>		&#125;<br>	&#125;<br><span class="hljs-function"><span class="hljs-title">for</span><span class="hljs-params">(所有无定义的表项M[A,o])</span></span>&#123;<br>	标志错误标志<br>&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">for</span><span class="hljs-params">(文法G的每一个产生式A-&gt;a)</span></span>&#123;<br>	<span class="hljs-built_in">for</span>(每个终结符号o属于<span class="hljs-built_in">First</span>(a))&#123;<br>		将A-&gt;a放入表项M<span class="hljs-selector-attr">[A,o]</span>中；<br>	&#125;<br>	<span class="hljs-built_in">if</span>(空串属于<span class="hljs-built_in">First</span>(a))&#123;<br>		<span class="hljs-built_in">for</span>(每个 b属于<span class="hljs-built_in">Follow</span>(A))&#123;<br>			把A-&gt;a放入表项M<span class="hljs-selector-attr">[A,b]</span>中；<br>		&#125;<br>	&#125;<br><span class="hljs-function"><span class="hljs-title">for</span><span class="hljs-params">(所有无定义的表项M[A,o])</span></span>&#123;<br>	标志错误标志<br>&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>根据上述构造步骤，首先根据所给文法构造每个非终结符的First集合和Follow集合(这里的First集合不是用来构造分析表的，而是用来计算Follow集合的)</p>
 <p><img src="/images/image-20221007112357197.png" srcset="/img/loading.gif" lazyload></p>
@@ -1237,7 +1247,7 @@
 <li>类似LR(0)分析的方法构造得到LR(1)自动机（与LR(0)不同的是多了展望符）</li>
 </ol>
 <p><img src="/images/image-20221028103039002.png" srcset="/img/loading.gif" lazyload></p>
-<p>由0)可以推导出I<del>0</del>式，有I<del>0</del>式中的S是非终结符，所以又可以继续推出等价项目I<del>2</del>和I<del>3</del>。又I<del>2</del>式中圆点后面的L属于非终结符，继续推出I<del>4</del>、I<del>5</del>式【注意：I<del>4</del>、I<del>5</del>中的展望符是&#x3D;，因为I<del>2</del>式中L后面有终结符&#x3D;，求展望符就是这么简单】然后继续对左边橙色框中的式子进行相同算法的推导即可；</p>
+<p>由0)可以推导出I<del>0</del>式，因为I<del>0</del>式中的S是非终结符，所以又可以继续推出等价项目I<del>2</del>和I<del>3</del>。又I<del>2</del>式中圆点后面的L属于非终结符，继续推出I<del>4</del>、I<del>5</del>式【注意：I<del>4</del>、I<del>5</del>中的展望符是&#x3D;，因为I<del>2</del>式中L后面有终结符&#x3D;，求展望符就是这么简单】然后继续对左边橙色框中的式子进行相同算法的推导即可；</p>
 <blockquote>
 <p>注：如果除展望符外，两个LR(1)项目集是相同的，则称这两个LR(1)项目集是同心的</p>
 </blockquote>
@@ -1294,7 +1304,7 @@
 <p>语法制导翻译主要有两种形式：</p>
 <ul>
 <li>自上而下的语法制导翻译：对每个文法符号配以相应的语义动作；</li>
-<li>自下而上的语法制导翻译：LR语法制导翻译，这是我们主要讨论的翻译形式；</li>
+<li>自下而上的语法制导翻译：LR语法制导翻译；</li>
 </ul>
 <h3 id="1-1-语义子程序"><a href="#1-1-语义子程序" class="headerlink" title="1.1 语义子程序"></a>1.1 语义子程序</h3><h4 id="1-1-1-作用"><a href="#1-1-1-作用" class="headerlink" title="1.1.1 作用"></a>1.1.1 作用</h4><p>语义子程序的作用：</p>
 <ul>
@@ -1401,7 +1411,15 @@
 <li>对于出现在<code>产生式右边的符号的继承属性</code>和出现在<code>产生式左边的符号的综合属性</code>都必须提供计算规则，都必须由这个产生式的语义规则来提供计算方法；属性计算只能使用相应产生式中的文法符号的属性；这样描述的语义规则才是有意义的；</li>
 <li>对于出现在<code>产生式左部的符号的继承属性</code>和出现在<code>产生式右边符号的综合属性</code>的计算方法不应当由这个产生式的属性计算规则来描述，这些属性的计算应当由其他产生式的属性规则计算或者由属性计算器作为参数提前设置；</li>
 </ul>
-<h4 id="2-1-3-带注释的语法树"><a href="#2-1-3-带注释的语法树" class="headerlink" title="2.1.3 带注释的语法树"></a>2.1.3 带注释的语法树</h4><p>本节对语法树进行拓广，普通的语法树描述了语法单位之间的构成关系，是一种层次结构，如下是一个变量声明语句的语法树</p>
+<h4 id="2-1-3-带注释的语法树"><a href="#2-1-3-带注释的语法树" class="headerlink" title="2.1.3 带注释的语法树"></a>2.1.3 带注释的语法树</h4><p>为了适应翻译的需要，将语法规则中对语义无关紧要的具体规定去掉，将剩下的本质性东西称为抽象语法，而语法树(也被称为抽象语法树AST)是源代码的抽象语法结构的树状表现形式；</p>
+<p>语法树是分析树的抽象&#x2F;压缩形式，它去掉了分析树中语义无关的成分：</p>
+<ul>
+<li>语法树中每个内部节点表示一个运算符号，其子节点表示运算分量；</li>
+<li>在语法树中，运算符号和关键字都不在叶结点的位置出现，而是与分析树中作为这些叶结点的父节点对应；</li>
+</ul>
+<p>语法制导翻译既可以基于分析树，也可以基于语法树，这两种情况下都是将属性附加到语法树的节点上；</p>
+<hr>
+<p>本节对语法树进行拓广，普通的语法树描述了语法单位之间的构成关系，是一种层次结构，如下是一个变量声明语句的语法树</p>
 <p><img src="/images/image-20221105092609331.png" srcset="/img/loading.gif" lazyload></p>
 <p>我们对语法树中的节点（即终结符和非终结符）都标注上对应的属性值，就得到了带注释的语法树（准确来说应该是带属性注释的语法树）</p>
 <p><img src="/images/image-20221105092810662.png" srcset="/img/loading.gif" lazyload></p>
@@ -1414,7 +1432,9 @@
 <ul>
 <li>语法树中，一个节点的继承属性由其父节点、兄弟节点和本身的某些属性值来确定，因此对于继承属性来说，可以使用自下而上的方法在每一个节点处使用语义规则进行计算；使用继承属性来表示程序设计语言结构中的上下文依赖很方便；</li>
 </ul>
-<h3 id="2-2-属性计算"><a href="#2-2-属性计算" class="headerlink" title="2.2 属性计算"></a>2.2 属性计算</h3><p>语义规则可以完成很多计算，包括产生代码、在符号表中存放信息、给出错误信息、执行其他任何动作；所有这些处理都可以理解为信息的变换或翻译；因此<code>对输入串的翻译就是根据语义规则进行计算</code>；</p>
+<p>为表达式构造语法树的过程与计算表达式的值类似：通过为每一个运算符号或运算分量建立相应的结点来为子表达式构造子树，运算符结点的子结点分别是与其各运算分量相应的子树的根；</p>
+<h3 id="2-2-属性计算"><a href="#2-2-属性计算" class="headerlink" title="2.2 属性计算"></a>2.2 属性计算</h3><p>(PS：这一节书上倒是讲的很细致，如果听不大懂的话就看看书仔细理解一下)</p>
+<p>语义规则可以完成很多计算，包括产生代码、在符号表中存放信息、给出错误信息、执行其他任何动作；所有这些处理都可以理解为信息的变换或翻译；因此<code>对输入串的翻译就是根据语义规则进行计算</code>；</p>
 <p>在语法制导翻译中，语法分析和语义分析的结合方式是多种多样的，但都以语法分析来驱动语义分析，下面将介绍三种按照语义规则进行属性计算的方法；</p>
 <h4 id="2-2-1-依赖图"><a href="#2-2-1-依赖图" class="headerlink" title="2.2.1 依赖图"></a>2.2.1 依赖图</h4><p>依赖图方法是通过寻找属性之间的依赖关系来确定属性计算的先后顺序，选择相应的语义规则来完成属性计算；</p>
 <p>在一棵语法树中的节点的继承属性和综合属性之间的相互依赖关系可以由依赖图(有向图)来描述；</p>
@@ -1474,7 +1494,11 @@
 <li><p>自下而上分析，一个产生式被用于进行归约时；</p>
 </li>
 </ul>
-<h5 id="1-S-属性文法"><a href="#1-S-属性文法" class="headerlink" title="(1)S-属性文法"></a>(1)S-属性文法</h5><p>S-属性文法是只含有综合属性的文法，综合属性只依赖于子节点和自身属性计算，所以可以在分析输入符号的同时由自下而上的分析器来计算属性</p>
+<h5 id="1-S-属性文法翻译"><a href="#1-S-属性文法翻译" class="headerlink" title="(1)S-属性文法翻译"></a>(1)S-属性文法翻译</h5><p>前面大部分内容介绍的都是如何使用语法制导定义来说明翻译，本节主要介绍通过改造LR分析程序来实现翻译；</p>
+<p>LR分析程序是使用一个栈来存放已经分析过的子树的信息，而根据定义5.1可知分析树中某节点的综合属性是由其子节点的属性值计算得到，这就意味着可以在分析输入符号串的同时自底向上的计算综合属性；</p>
+<p>要实现这种功能我们需要对LR分析器做一定的改造；</p>
+<hr>
+<p>S-属性文法是只含有综合属性的文法，综合属性只依赖于子节点和自身属性计算，所以可以在分析输入符号的同时由自下而上的分析器来计算属性</p>
 <ul>
 <li>为了计算属性，我们扩充了分析器，使得分析器不仅保存分析中形成的语法符号，同时还保存与栈中文法符号有关的综合属性值；</li>
 <li>每当进行归约的时候，新的语法符号的属性值由栈中正在归约的产生式右边的符号的属性值来计算；</li>
@@ -1486,13 +1510,13 @@
 <p><img src="/images/image-20221105124619975.png" srcset="/img/loading.gif" lazyload></p>
 <p><img src="/images/image-20221105124925724.png" srcset="/img/loading.gif" lazyload></p>
 <h5 id="2-L-属性文法"><a href="#2-L-属性文法" class="headerlink" title="(2)L-属性文法"></a>(2)L-属性文法</h5><p>一遍扫描属性计算方法是在语法分析的同时计算属性值，语法分析结束的时候，语法分析树的构造完成，所有节点的属性也计算完毕，同时完成语法分析和语义分析；</p>
-<p>S-属性文法由于只有综合属性，所以非常适合与一遍扫描的自下而上的语法分析结合进行，当一个产生式被用来进行归约的时候执行该产生式对应的语义规则；</p>
+<p>S-属性文法由于只有综合属性，所以非常适合与一遍扫描的<code>自下而上</code>的语法分析结合进行，当一个产生式被用来进行归约的时候执行该产生式对应的语义规则；</p>
 <p>如果属性文法中既有综合属性又有继承属性该如何处理呢？是否也有一遍扫描的处理方法呢？</p>
 <blockquote>
-<p>L-属性文法适合一遍扫描的自上而下的分析；</p>
+<p>L-属性文法适合一遍扫描的<code>自上而下</code>的分析；</p>
 </blockquote>
 <p>L-属性文法可以和自上而下的语法分析器配合，当使用一个产生式推导或者匹配输入串的时候，执行该产生式对应的语义规则；</p>
-<p>下面我们要介绍的这种属性计算方法主要是针对一类特殊的属性文法（L-属性文法）进行一遍扫描的处理：该方法按照深度优先遍历语法树，计算所有属性值；通常与LL(1)分析法结合；</p>
+<p>下面我们要介绍的这种属性计算方法主要是针对这类特殊的属性文法（L-属性文法）进行一遍扫描的处理：该方法按照深度优先遍历语法树，计算所有属性值；通常与LL(1)分析法结合；</p>
 <blockquote>
 <p>L-属性文法是指对于文法的每个产生式对应的语义规则中的每个属性要么是综合属性，要么是继承属性</p>
 <ul>
@@ -1506,7 +1530,7 @@
 <p>下面例题中Q的继承属性的计算只能依赖于它左边的符号(这里体现为A)来计算，而划线处使用了其右部符号的属性来计算，因此该文法不属于L-属性文法；</p>
 <p><img src="/images/image-20221105130553793.png" srcset="/img/loading.gif" lazyload></p>
 <h5 id="3-翻译模式"><a href="#3-翻译模式" class="headerlink" title="(3)翻译模式"></a>(3)翻译模式</h5><p>语义规则给出了属性计算的定义，但是没有给出属性计算的次序等实现细节，因此我们需要通过依赖图、树遍历等方法确定属性计算的顺序(之所以上面的一边扫描只用了一遍是因为对于S属性文法的分析是很简单的，但是对于L属性文法的分析必须严格在合适的位置选择合适的语义规则)；</p>
-<p>实际上我们可以在属性文法的基础上进一步给出每个产生式的语义计算规则具体实现的细节：包括产生式分析到什么时候执行哪个语义规则，这就是翻译模式的概念；</p>
+<p>实际上我们可以在属性文法的基础上进一步给出每个产生式的语义计算规则具体实现的细节：包括产生式分析到什么时候执行哪个语义规则，这就是翻译模式(很多地方也称为<code>翻译方案</code>、<code>翻译动作</code>)的概念；</p>
 <p>翻译模式是对属性文法朝着具体实现的方向做的进一步改造，主要就是给出了使用语义规则进行计算的次序，将某些实现细节表示出来</p>
 <p>翻译模式的实现很简单，只需要将与文法符号相关的属性和语义规则用花括号{}括起来，插入到产生式右部合适的位置上；</p>
 <p><img src="/images/image-20221105132546738.png" srcset="/img/loading.gif" lazyload></p>
@@ -1553,12 +1577,112 @@
 <p>可以直接记忆结论，推导过程和证明过程实在是有点烧脑…</p>
 <p><img src="/images/image-20221105154910381.png" srcset="/img/loading.gif" lazyload></p>
 <blockquote>
-<p>注意：带有左递归的翻译模式只能使用自下而上的翻译方法</p>
+<p>注意：带有左递归的翻译模式只能使用<code>自下而上</code>的翻译方法</p>
 </blockquote>
 <h5 id="4-递归下降翻译器的设计"><a href="#4-递归下降翻译器的设计" class="headerlink" title="(4)递归下降翻译器的设计"></a>(4)递归下降翻译器的设计</h5><p>递归下降分析器是由一组递归子程序&#x2F;函数组成，对于文法当中的每一个语法单位也就是非终结符构造一个相应的子程序&#x2F;函数来识别对应的语法单位，通过子程序之间的相互调用，实现对输入串的识别；</p>
 <p>当我们对产生式进行扩充得到了翻译模式，考虑是否能够将递归下降分析器升级为递归下降翻译器以在递归下降的过程中实现翻译模式；</p>
-<p>（因为我们的课程并没有介绍过递归下降分析器的相关知识点，所以这里默认就不学习本小节了，感兴趣可以参考<a target="_blank" rel="noopener" href="https://www.icourse163.org/learn/NUDT-1003101005?tid=1468256483#/learn/content?type=detail&id=1250071251&sm=1">编译原理_中国大学MOOC(慕课) (icourse163.org)</a>进行学习）</p>
+<p>（因为我们的课程在语法分析那一章并没有介绍过递归下降分析器的相关知识点，所以这里默认就不学习本小节了，感兴趣可以参考<a target="_blank" rel="noopener" href="https://www.icourse163.org/learn/NUDT-1003101005?tid=1468256483#/learn/content?type=detail&id=1250071251&sm=1">编译原理_中国大学MOOC(慕课) (icourse163.org)</a>进行学习）</p>
 <hr>
+<h4 id="2-2-4-L属性文法翻译"><a href="#2-2-4-L属性文法翻译" class="headerlink" title="2.2.4 L属性文法翻译"></a>2.2.4 L属性文法翻译</h4><h5 id="1-自顶向下的翻译"><a href="#1-自顶向下的翻译" class="headerlink" title="(1)自顶向下的翻译"></a>(1)自顶向下的翻译</h5><p>文章参考（这一节太他妈扯淡，实在不行期末就放弃这部分的分数，真的很离谱…老师讲的和网上的资料真的是众说纷纭…）：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/f261ae6ea5e7">编译器笔记24-语法制导翻译-在非递归的预测分析过程中进行翻译(自顶向下) - 简书 (jianshu.com)</a>（适用于一步一步跟着演算）</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42815609/article/details/107787217">【编译原理笔记09】语法制导翻译：语法制导翻译方案，在非递归的预测分析过程中进行翻译_枇杷鹭的博客-CSDN博客</a>（适用于后期总结提升）</li>
+</ul>
+<p>首先我们需要拓展语法分析栈，一个非终结符A其继承属性和综合属性的计算时机是不同的。其继承属性是在非终结符即将出现的时刻进行计算，而其综合属性必须在其子节点都分析完毕后才可以计算。因此我们将A的继承属性与综合属性存放在不同的记录当中：</p>
+<ol>
+<li>增加属性值（value）字段</li>
+<li>将继承属性和综合属性存放在不同的记录中</li>
+<li>增加动作记录用来存放语义动作代码的指针(SDT中因为还有一种动作属性所以需要使用action记录类型记录动作)<ul>
+<li>不光是动作记录，其实分析栈中的每一个记录都对应着一段执行代码：</li>
+<li>综合记录出栈时，要将综合属性值复制给后面特定的语义动作；</li>
+<li>变量展开时（即变量本身的记录出栈时），如果其含有继承属性，则要将继承属性值复制给后面特定的语义动作；</li>
+</ul>
+</li>
+</ol>
+<p>经过拓展后的语法分析栈成为如下形式(需要注意的是与自底向上的语法分析区分，该分析过程没有状态栈)</p>
+<p><img src="/images/image-20221111165812671.png" srcset="/img/loading.gif" lazyload></p>
+<p>A的继承属性放在其本身的记录中，A的综合属性产生的时间不同，因此，放在Asyn中。此外，还有用于记录<code>语义动作代码</code>的指针；</p>
+<blockquote>
+<p>PS：继承属性相对于综合属性在左边是有原因的，根据L-SDD的定义可知继承属性可能来自于其左边的文法符号的属性或其父节点的继承属性；</p>
+</blockquote>
+<p>除了拓展语法分析栈，我们还需要改写翻译模式SDT，改写后的SDT可以看做是特殊的上下文无关文法(CFG)，在此类文法中有三类符号 —— 终结符、非终结符和动作符号</p>
+<p><img src="/images/image-20221111171548240.png" srcset="/img/loading.gif" lazyload></p>
+<p>下面通过一个例子实际展示翻译过程：</p>
+<p><img src="/images/image-20221111171810403.png" srcset="/img/loading.gif" lazyload></p>
+<p>(1)输入指针指向第一个输入符号3，因为采用的是自顶向下分析，因此分析栈栈顶在左侧，栈底在右侧（自底向上分析则相反）；</p>
+<ul>
+<li>初始时刻只有开始符号T，因为T没有继承属性所以T的本身字段初始记录是空的；</li>
+<li>因为T有综合属性所以T有记录Tsyn，用于存放T的综合属性val；</li>
+<li>此时栈顶是非终结符T，其表示当前句型最左非终结符；</li>
+</ul>
+<p><img src="/images/image-20221111171937957.png" srcset="/img/loading.gif" lazyload></p>
+<p>(2)根据第一条产生式，将T替换成<code>F&#123;a1&#125;T′&#123;a2&#125;</code>；</p>
+<ul>
+<li>亦即T出栈，但T的综合属性Tsyn不能出栈，因T的综合属性val值要等T的子节点都分析完毕才能计算出来；</li>
+<li>因F跟T’都具有综合属性，因此它们的综合属性与其本身属性一起进栈；</li>
+<li>T’具有继承属性，因此T’本身的记录将存放T’的继承属性inh；</li>
+</ul>
+<p>	</p>
+<p><img src="/images/image-20221111172144332.png" srcset="/img/loading.gif" lazyload></p>
+<p>(3)根据第四条产生式将栈顶F替换成digit{a6}；</p>
+<ul>
+<li>digit是终结符只有词法分析器提供的综合属性值，因此digit的记录存放其综合属性值；</li>
+</ul>
+<p><img src="/images/image-20221111172712393.png" srcset="/img/loading.gif" lazyload></p>
+<p>(4)digit与3匹配成功出栈；</p>
+<ul>
+<li>digit后连接的语义动作{a6}将使用digit的属性值计算F的综合属性值，因此digit出栈前需要将其属性备份到{a6}的属性中，备份后digit可以出栈；</li>
+<li>digit出栈后指向下一个符号乘号，此时栈顶露出动作记录a6，a6记录中存放了指向用于计算F的综合属性值的语义代码的指针（红框将a6抽象定义式改写为可以执行的栈操作），a6的任务是利用其备份的digit的属性值计算F的综合属性值，并将结果存放在F的综合记录中；</li>
+<li>a6的栈操作实际上是将3赋值给其栈之后的Fsyn对应的val，此时栈中Fsyn对应的val变为3；</li>
+</ul>
+<p><img src="/images/image-20221111172501738-16681588456379.png" srcset="/img/loading.gif" lazyload></p>
+<p>(5)F的综合属性计算出来后，Fsyn应该就可以像F一样出栈了；</p>
+<ul>
+<li>根据第一条产生式可知，Fsyn之下连接的a1将要使用F的综合属性计算T’的继承属性（右向左从兄弟节点继承值的在翻译中的实际意义），因此Fsyn出栈前需要将其对应的综合属性值val备份到a1对应的字段中；</li>
+<li>备份后F的综合记录Fsyn就可以出栈了，可见继承值在翻译时可起到保存之前分析结果的作用；</li>
+<li>a1是用于计算T’的继承属性值inh，因此T’的继承属性值变为3，然后动作记录a1出栈；</li>
+<li>此后栈顶变为终结符T’；</li>
+</ul>
+<p><img src="/images/image-20221111173029393.png" srcset="/img/loading.gif" lazyload></p>
+<p>(6)根据第二个产生式进行替换；</p>
+<ul>
+<li>T’出栈 *F{a3}T1’{a4}进栈；</li>
+<li>将T’的继承属性值备份到a3所在的动作记录中；</li>
+</ul>
+<p><img src="/images/image-20221111173506991.png" srcset="/img/loading.gif" lazyload></p>
+<p>(7)此时栈顶的终结符与当前的*匹配成功出栈，匹配成功后输入指针指向下一个输入符号5；</p>
+<ul>
+<li>接着F出栈digit a6进栈；</li>
+</ul>
+<p><img src="/images/image-20221111174026414.png" srcset="/img/loading.gif" lazyload></p>
+<p>(8)栈顶与输入符5匹配成功digit出栈，出栈前将digit的值备份到a6中。之后输入指针指向$符号。a6是用于计算F的综合属性，计算完后Fsyn对应的值val为5；</p>
+<p><img src="/images/image-20221111174150853.png" srcset="/img/loading.gif" lazyload></p>
+<p>(9)a6计算完成后出栈；</p>
+<p><img src="/images/image-20221111174224761.png" srcset="/img/loading.gif" lazyload></p>
+<p>(10)Fsyn出栈前将其值备份至a3中。然后执行a3对应的语义代码，用于计算T1’的继承属性值。计算完成后a3出栈。</p>
+<p><img src="/images/image-20221111174253056.png" srcset="/img/loading.gif" lazyload></p>
+<p>(11)a3出栈后露出T1’而此时输入指针指向$，因此选用第三个产生式替换T1’即T1’出栈 a5进栈；</p>
+<ul>
+<li><p>因为a5要使用到其继承属性，因此T1’出栈前将其继承属性备份到a5的所在记录中；</p>
+</li>
+<li><p>因为T1’出栈后a5将处于栈顶，因此栈顶的属性值字段是不需要改变的；</p>
+</li>
+<li><p>执行a5对应的操作，将之前T1’的继承属性保存到T1’的综合属性中，然后出栈；</p>
+</li>
+</ul>
+<p><img src="/images/image-20221111174333157.png" srcset="/img/loading.gif" lazyload></p>
+<p>(12)然后栈顶变为T1’syn，接着将其综合属性值备份到a4的所在记录中，然后T1’syn出栈；</p>
+<p>执行a4对应的代码，其作用是用于计算T’的综合属性，计算完后T’的综合属性的值变为15，动作记录a4出栈，此时栈顶变为T’syn；</p>
+<p><img src="/images/image-20221111174542070.png" srcset="/img/loading.gif" lazyload></p>
+<p>(13)T’syn出栈前将其综合属性备份至a2所对应的记录中，备份后T’syn出栈；</p>
+<ul>
+<li><p>接着执行a2对应的语义代码，其作用是用于计算T的综合属性值的；</p>
+</li>
+<li><p>执行完a2的语义代码后T的综合属性就计算出来了即T.val &#x3D; 15，之后a2出栈；</p>
+</li>
+</ul>
+<p><img src="/images/image-20221111174633326.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="2-自底向上的翻译"><a href="#2-自底向上的翻译" class="headerlink" title="(2)自底向上的翻译"></a>(2)自底向上的翻译</h5><p>文章参考：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/514a3969207f">编译器笔记26-语法制导翻译-L属性定义的自底向上翻译 - 简书 (jianshu.com)</a></p>
 <h2 id="3-小结"><a href="#3-小结" class="headerlink" title="3.小结"></a>3.小结</h2><p>本章的小结有些特殊，准确来说应该是对本章知识点的一个概述，我们在本章学了一堆看起来很抽象的知识点，这些知识点究竟和编译过程中的哪些行为对应？起到了什么作用？我们将详细介绍；</p>
 <p>整个编译程序的任务是将源程序转换成等价的目标程序，何为等价？即目标程序必须和源程序具有同样的语义，在前面的章节我们只是对源程序进行了词法分析和语法分析，本章我们对源程序的语义进行了分析和处理，目的是<code>检查每个语法单位的静态语义，以验证语法结构正确的语法成分或程序是否具有正确的语义</code>，进而完成相应的翻译工作；</p>
 <p>本章介绍的语法制导翻译技术是目前大多数编译程序普遍采用的一种技术，尽管它并非一种形式系统，但还是非常接近形式化。使用这种方法对上下文无关语言进行翻译的整体思路是：</p>

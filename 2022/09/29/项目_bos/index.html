@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/project.png">
 <meta property="article:published_time" content="2022-09-29T08:27:00.000Z">
-<meta property="article:modified_time" content="2022-10-25T13:44:23.509Z">
+<meta property="article:modified_time" content="2022-11-15T15:43:22.461Z">
 <meta property="article:author" content="YangZaiyan">
 <meta property="article:tag" content="操作系统">
 <meta name="twitter:card" content="summary_large_image">
@@ -221,7 +221,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          44k 字
+          57k 字
         
       </span>
     
@@ -232,7 +232,7 @@
         
         
         
-          364 分钟
+          473 分钟
         
       </span>
     
@@ -274,7 +274,8 @@
             
             <div class="markdown-body">
               
-              <h1 id="绪论"><a href="#绪论" class="headerlink" title="绪论"></a>绪论</h1><h2 id="1-bos-lab简介"><a href="#1-bos-lab简介" class="headerlink" title="1.bos lab简介"></a>1.bos lab简介</h2><p>bos主要是实现一个用户态线程管理器和内存管理器，用户态线程管理器由三个部分组成，用户态线程创建，多种调度策略，同步机制；内存管理器由内存管理构成。bos lab的情况如下：</p>
+              <p>源码和相关资料在github上获取<a target="_blank" rel="noopener" href="https://github.com/Gintoki-jpg/BOS_lab">https://github.com/Gintoki-jpg/BOS_lab</a></p>
+<h1 id="绪论"><a href="#绪论" class="headerlink" title="绪论"></a>绪论</h1><h2 id="1-bos-lab简介"><a href="#1-bos-lab简介" class="headerlink" title="1.bos lab简介"></a>1.bos lab简介</h2><p>bos主要是实现一个用户态线程管理器和内存管理器，用户态线程管理器由三个部分组成，用户态线程创建，多种调度策略，同步机制；内存管理器由内存管理构成。bos lab的情况如下：</p>
 <ul>
 <li>Lab 1: 用户态线程创建  - 2022&#x2F;10&#x2F;14</li>
 <li>Lab 2: 多种调度策略    - 2022&#x2F;11&#x2F;04</li>
@@ -878,6 +879,244 @@
 <li>同时开局申请的内存大小是以4Byte为单位，与128KB进行换算的时候需要注意；</li>
 </ul>
 <p><img src="/images/image-20221025211912434.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="Lab-3"><a href="#Lab-3" class="headerlink" title="Lab_3"></a>Lab_3</h1><h2 id="1-实验要求-2"><a href="#1-实验要求-2" class="headerlink" title="1.实验要求"></a>1.实验要求</h2><p>在lab1中，我们拥有了用户态线程库，但是驱动我们进行线程管理的动力是我们在线程里面显示调用schedule函数，而操作系统往往是采用时钟tick来管理线程，在这个lab中，我们会让大家首先实现tick机制，然后继承多种调度策略</p>
+<ol>
+<li>实现定时器的机制，作为tick和给线程提供定时能力的基础；<ul>
+<li>定时器结构体需要自己手写，不能采用现成的定时器，表示时间相关的结构体可以采用现成的库；</li>
+<li>定时器的相关接口最少需要有create_timer、start_timer、stop_timer、delete_timer的api接口；</li>
+<li>需要借助外部机制通知定时器到期，但是不能借助外部机制完成处理定时器handler、组织管理定时器的任务；</li>
+<li>组织定时器队列的数据结构、定时器的类型、定时器的时钟源不做要求；</li>
+<li>需要考虑定时器过期的情况；</li>
+</ul>
+</li>
+<li>在定时器的基础上产生tick作为驱动线程调度的动力，并实现相关调度策略<ul>
+<li>采用tick机制改写lab1中的多线程管理，不在线程里面调用schedule机制；</li>
+<li>tick的间隔时长自定义；</li>
+<li>实现FIFO，RR，彩票调度算法；</li>
+<li>注意在关键的代码段，防止时钟进入；</li>
+</ul>
+</li>
+</ol>
+<h2 id="2-开发日志-2"><a href="#2-开发日志-2" class="headerlink" title="2.开发日志"></a>2.开发日志</h2><p>2022&#x2F;11&#x2F;14 22:58 本质上我们的Lab_1早就实现了tick，所以我们这里只需要简单的复习一下然后再补充一点相关的还没有实现的功能进去即可；</p>
+<p>2022&#x2F;11&#x2F;15 10:47 经过一上午的头脑风暴和资料搜索，我差不多是明白了我们这个实验应该做什么，首先这个实验并不是看起来的那么简单，主要分为两部分，实现定时器和实现三个调度算法，实现定时器的完整代码和demo我们已经找到并且能够成功运行，实现FIFO以及RR的算法是内置已经设计好了的，我们只需要手动参考彩票算法的讲解简单实现彩票算法即可；</p>
+<h2 id="3-前置知识点-2"><a href="#3-前置知识点-2" class="headerlink" title="3.前置知识点"></a>3.前置知识点</h2><h3 id="3-1-定时器的实现"><a href="#3-1-定时器的实现" class="headerlink" title="3.1 定时器的实现"></a>3.1 定时器的实现</h3><p>文章参考：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/rikeyone/article/details/51435562">(1条消息) Linux自定义timer实现（基于setitimer)_程序猿Ricky的日常干货的博客-CSDN博客_timer_getoverrun</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/lixianlin/article/details/25604779">(1条消息) linux c setitimer用法说明_hijack-x的博客-CSDN博客_setitimer</a></li>
+</ul>
+<h4 id="3-1-1-setitimer概述"><a href="#3-1-1-setitimer概述" class="headerlink" title="3.1.1 setitimer概述"></a>3.1.1 setitimer概述</h4><p>在linux c编程中，setitimer是一个比较常用的函数，可用来实现延时和定时的功能，因此我们这里考虑使用setitimer函数来实现一个简单的定时器；</p>
+<p>首先我们简单介绍一下setitimer这个函数，在使用的时候需要引入头文件</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;sys/time.h&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<p>setitimer函数原型如下</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">setitimer</span><span class="hljs-params">(<span class="hljs-type">int</span> which, <span class="hljs-type">const</span> <span class="hljs-keyword">struct</span> itimerval *new_value,<span class="hljs-keyword">struct</span> itimerval *old_value)</span>;<br></code></pre></td></tr></table></figure>
+
+<p>其中which参数表示类型，可选的值有：</p>
+<ul>
+<li><p>ITIMER_REAL：以系统真实的时间来计算，它送出SIGALRM信号；</p>
+</li>
+<li><p>ITIMER_VIRTUAL：以该进程在用户态下花费的时间来计算，它送出SIGVTALRM信号；</p>
+</li>
+<li><p>ITIMER_PROF：以该进程在用户态下和内核态下所费的时间来计算，它送出SIGPROF信号；</p>
+</li>
+</ul>
+<p>new_value和old_value均为itimerval结构体，itimerval结构体定义如下，itimeval由两个timeval结构体组成</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">itimerval</span> &#123;</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">timeval</span> <span class="hljs-title">it_interval</span>;</span> <span class="hljs-comment">/* next value */</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">timeval</span> <span class="hljs-title">it_value</span>;</span>    <span class="hljs-comment">/* current value */</span><br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>timeval结构体包含tv_sec和tv_usec两部分，其中tv_se为秒，tv_usec为微秒</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">timeval</span> &#123;</span><br>    <span class="hljs-type">time_t</span>      tv_sec;         <span class="hljs-comment">/* seconds */</span><br>    <span class="hljs-type">suseconds_t</span> tv_usec;        <span class="hljs-comment">/* microseconds */</span><br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>参数总结如下：</p>
+<ul>
+<li>new_value参数用来对计时器进行设置；</li>
+<li>it_interval为计时间隔；</li>
+<li>it_value为延时时长；</li>
+<li>old_value参数，通常用不上，设置为NULL，它是用来存储上一次setitimer调用时设置的new_value值；</li>
+</ul>
+<p>settimer工作机制是，先对it_value倒计时，当it_value为零时触发信号，然后重置为it_interval，继续对it_value倒计时，一直这样循环下去；基于此机制，setitimer既可以用来延时执行，也可定时执行；</p>
+<p>需要注意的是若it_value为0是不会触发信号的，所以要能触发信号，it_value需要设置为大于0；如果it_interval为零，只会延时，不会定时（也就是说只会触发一次信号)；</p>
+<h4 id="3-1-2-定时器概述"><a href="#3-1-2-定时器概述" class="headerlink" title="3.1.2 定时器概述"></a>3.1.2 定时器概述</h4><p>无论是用户态程序还是内核态程序的开发，大多数时候都需要有定时器的支持，定时器属于程序开发中最基本的组件之一，一般按照使用场景分为如下两种类型：</p>
+<p>1.Single-Shot Timer：从注册到终止只执行一次；</p>
+<p>2.Repeating Timer：在每次执行完以后，自动重新开始；</p>
+<p>本质上，可以认为 Repeating Timer 是在 Single-Shot Timer 终止之后，再次注册到定时器系统里的 Single-Shot Timer；</p>
+<p>Linux定时器主要有两种，第一种是2.4内核版本的，也就是我们上面介绍的itimerval结构体和setitimer api，setitimer 能够在 timer 到期之后，自动再次启动自己，因此，用它来解决 Single-Shot Timer 和 Repeating Timer 的问题较简单；</p>
+<p>另一种是2.6内核版本的，新增了POSIX timer的API，这也是我们要模拟自定义的版本（需要注意的是，POSIX timer 接口支持在一个进程中同时拥有多个定时器实例，但POSIX timer 接口只在进程环境下才有意义 ，并不适合多线程环境）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">timer_create</span><span class="hljs-params">(<span class="hljs-type">clockid_t</span> clockid, <span class="hljs-keyword">struct</span> sigevent *evp,<span class="hljs-type">timer_t</span> *timerid)</span>; 									<span class="hljs-comment">//创建了一个定时器</span><br><span class="hljs-type">int</span> <span class="hljs-title function_">timer_settime</span><span class="hljs-params">(<span class="hljs-type">timer_t</span> timerid, <span class="hljs-type">int</span> flags, <span class="hljs-type">const</span> <span class="hljs-keyword">struct</span> itimerspec *new_value, <span class="hljs-keyword">struct</span> itimerspec * old_value)</span>;   <span class="hljs-comment">//启动或者停止一个定时器</span><br><span class="hljs-type">int</span> <span class="hljs-title function_">timer_gettime</span><span class="hljs-params">(<span class="hljs-type">timer_t</span> timerid, <span class="hljs-keyword">struct</span> itimerspec *curr_value)</span>; 											    <span class="hljs-comment">//返回到下一次到期的剩余时间值和定时器定义的时间间隔</span><br><span class="hljs-type">int</span> <span class="hljs-title function_">timer_getoverrun</span><span class="hljs-params">(<span class="hljs-type">timer_t</span> timerid)</span>; 																          <span class="hljs-comment">//返回上次定时器到期时超限值</span><br><span class="hljs-type">int</span> <span class="hljs-title function_">timer_delete</span><span class="hljs-params">(<span class="hljs-type">timer_t</span> timerid)</span>;																			 <span class="hljs-comment">//停止并删除一个定时器</span><br></code></pre></td></tr></table></figure>
+
+<p>最重要的接口是timer_create，其参数介绍如下：</p>
+<ul>
+<li>clockid 表明了要使用的时钟类型，在 POSIX 中要求必须实现 CLOCK_REALTIME 类型的时钟；</li>
+<li>evp 参数指明了在定时到期后，调用者被通知的方式；</li>
+<li>sigev_notify 指明了通知的方式：<ul>
+<li>SIGEV_NONE：当定时器到期时，不发送异步通知，但该定时器的运行进度可以使用 timer_gettime监测；</li>
+<li>SIGEV_SIGNAL：当定时器到期时，发送 sigev_signo 指定的信号；</li>
+<li>SIGEV_THREAD：当定时器到期时，以 sigev_notify_function 开始一个新的线程。该函数使用 sigev_value 作为其参数，当 sigev_notify_attributes 非空，则指定该线程的属性。注意，由于 Linux 上线程的特殊性，这个功能实际上是由 glibc 和内核一起实现的；</li>
+<li>SIGEV_THREAD_ID (Linux-specific)：仅推荐在实现线程库时候使用，如果 evp 为空的话，则该函数的行为等效于：sigev_notify &#x3D; SIGEV_SIGNAL，sigev_signo &#x3D; SIGVTALRM，sigev_value.sival_int &#x3D; timer ID</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-2-彩票调度算法"><a href="#3-2-彩票调度算法" class="headerlink" title="3.2 彩票调度算法"></a>3.2 彩票调度算法</h3><p>因为我们对FIFO以及RR算法都比较熟悉，所以这里我们只介绍彩票调度算法；</p>
+<p>彩票调度的基本思想是：一开始的时候给每个进程发彩票（优先级越高，发的彩票越多），然后每隔一段时间（一个时间片），举行一次彩票抽奖，抽出来的号是谁的，谁就能运行；</p>
+<p>假如有两个进程A和B，调度器想让A占用80%的 CPU 时间，B占用20%的CPU时间，调度器就给A发80张彩票，给B发20张彩票；这样，每次抽奖的时候，A就有80%的概率占用CPU，从数学期望上讲，1秒钟之内，A能运行800ms；</p>
+<p>实际上彩票调度并没有在CPU调度程序里广泛使用，一个原因是不能很好的适合I&#x2F;O，另一个原因是票数分配问题没有确定的解决方式，比如新打开了一个浏览器进程，那该给它分配多少票？票数少了，响应跟不上，票数多了，又会浪费 CPU时间；</p>
+<p>彩票调度的实现非常简单，只需要使用一个随机数生成器选择中奖彩票、一个记录系统中所有进程的数据结构、所有彩票的总数；</p>
+<p>这里我们简单举个例子来说明，假设我们使用列表记录进程，下面进程A、B、C分别持有一定数量的彩票</p>
+<p><img src="/images/image-20221115092100408.png" srcset="/img/loading.gif" lazyload></p>
+<p>在做出调度决策之前需要先从彩票总数400中选择一个随机数，假设是300，然后遍历链表，借助一个计数器帮助我们找到该数字；</p>
+<p>从前向后遍历进程列表，将每张票的值加到couter上，直到所有的值超过winner，此时当前列表对应的进程就是中奖进程；</p>
+<p>本例中，中奖彩票是300。首先，计A的票后，counter增加到100。因为100小于300，继续遍历。然后counter会增加到150（B的彩票），仍然小于300，继续遍历。最后，counter增加到400（显然大于300），因此退出遍历，current指向C（中奖者）；</p>
+<h2 id="4-数据结构设计-2"><a href="#4-数据结构设计-2" class="headerlink" title="4.数据结构设计"></a>4.数据结构设计</h2><h3 id="4-1-线程结构体"><a href="#4-1-线程结构体" class="headerlink" title="4.1 线程结构体"></a>4.1 线程结构体</h3><p>在Lab_1中我们大致介绍过，整个程序的主要函数及其功能如下：</p>
+<ol>
+<li>通过调用thread_create函数(这个是自己写的函数，不是pthread_create)创建线程；</li>
+<li>通过两种方式启动线程：<ul>
+<li>调用函数detach实现线程的分离式启动（父线程不必等待子线程执行结束，可以继续执行）；</li>
+<li>调用函数thread_join实现阻塞式启动（父线程等待该子线程结束后才能继续执行）；</li>
+</ul>
+</li>
+<li>线程的状态转换：通过一系列的线程状态函数实现线程的状态转换</li>
+<li>线程切换：线程的切换方式有两种：<ul>
+<li>主动切换my_sleep：调用schedule切换到指定线程，并在一段时间后wakeup可调度；</li>
+<li>时钟中断切换do_timer：通过设置时钟中断，中断后执行schedule函数来完成；</li>
+</ul>
+</li>
+<li>线程调度pick：采用时间片轮转调度算法，根据线程优先级为每个线程设置时间片；</li>
+</ol>
+<p>本次实验我们详细介绍如何实现tick机制以及实现FIFO、RR和彩票调度算法（即线程调度部分）；</p>
+<p>可以将tick理解为嘀嗒，也就是对时间的粗粒度化，我们可以任意规定一个tick的大小，此处我们假设一个tick为10ms，之所以要介绍tick是因为它作为时间片的基本单位，比如我们规定我们程序中使用的时间片的大小为15个tick，这就意味着线程的一个时间片换算为时间为150ms；</p>
+<p>因为我们引入了时间片的概念，所以需要将时间片引入线程结构体</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">thread_struct</span> &#123;</span><br>  <span class="hljs-type">int</span> id;                                       <span class="hljs-comment">//线程标识符</span><br>  <span class="hljs-type">void</span> (*thread_func)();                        <span class="hljs-comment">//指向线程过程函数的函数指针，用来记录线程执行的函数</span><br>  <span class="hljs-type">int</span> esp;                                      <span class="hljs-comment">//stack的栈顶指针</span><br>  <span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> wakeuptime;                     <span class="hljs-comment">//线程唤醒时间</span><br>  <span class="hljs-type">int</span> status;                                   <span class="hljs-comment">//线程状态</span><br>  <span class="hljs-type">int</span> counter;                                  <span class="hljs-comment">//时间片数量</span><br>  <span class="hljs-type">int</span> priority;                                 <span class="hljs-comment">//线程优先级</span><br>  <span class="hljs-type">int</span> <span class="hljs-built_in">stack</span>[STACK_SIZE];                        <span class="hljs-comment">//线程运行栈</span><br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>要实现时间中断的原理非常简单，系统在每个tick中产生一个时钟中断并进入时钟中断处理函数do_timer，在do_timer中让线程的时间片值减1直到0，执行schedule函数；</p>
+<p>难点在于如何使do_timer时间中断函数在每个嘀嗒数知道自己应当自动执行，这里借助了Linux中的signal机制，使用函数 setitimer 每隔 10 ms 发送一次信号 SIGALRM，然后捕捉此信号；</p>
+<p>当然上述想法只是最简单的一种方式，我们这个实验要求的是具备至少有create_timer、start_timer、stop_timer和delete_timer的定时器，所以我们需要基于settimer函数对定时器进行设计和实现；</p>
+<p>至于我们要实现的FIFO、RR以及彩票调度算法都是基于tick机制对pick函数的修改；</p>
+<h2 id="5-函数封装-2"><a href="#5-函数封装-2" class="headerlink" title="5.函数封装"></a>5.函数封装</h2><h3 id="5-1-定时器的实现"><a href="#5-1-定时器的实现" class="headerlink" title="5.1 定时器的实现"></a>5.1 定时器的实现</h3><p>主要定义了如下结构体和函数指针</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-title function_">void</span> <span class="hljs-params">(*callback)</span><span class="hljs-params">(<span class="hljs-type">int</span> id, <span class="hljs-type">void</span> *data, <span class="hljs-type">int</span> len)</span>;  <span class="hljs-comment">//给void(*)(int id, void *data, int len)函数指针定义别名callback</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-title function_">void</span> <span class="hljs-params">(*SIG_FUNC)</span><span class="hljs-params">(<span class="hljs-type">int</span> signo)</span>;                    <span class="hljs-comment">//给void (*)(int signo)函数指针定义别名SIG_FUNC</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//timer_node_t作为struct timer的别名</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">timer</span>&#123;</span><br>	<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">list_head</span> <span class="hljs-title">node</span>;</span><br>	<span class="hljs-type">int</span> interval;		 	<span class="hljs-comment">/*timer interval(second)*/</span><br>	<span class="hljs-type">int</span> elapse;  		 	<span class="hljs-comment">/*timer count*/</span><br>	<br>	callback cb; 			<span class="hljs-comment">/*call back function*/</span><br>	<span class="hljs-type">void</span> *user;  			<span class="hljs-comment">/*user data*/</span><br>	<span class="hljs-type">int</span> len;<br>	<span class="hljs-type">int</span> id; 				<span class="hljs-comment">/*timerid*/</span><br>&#125;<span class="hljs-type">timer_node_t</span>;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">timer_list</span>&#123;</span><br>	<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">list_head</span> <span class="hljs-title">head</span>;</span><br>	<span class="hljs-type">int</span> num;<br>	<span class="hljs-type">int</span> size;<br>	<span class="hljs-type">void</span> (*sighandler_old)(<span class="hljs-type">int</span>);<br>	<span class="hljs-type">void</span> (*sighandler)(<span class="hljs-type">int</span>);<br>	<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">itimerval</span> <span class="hljs-title">ovalue</span>;</span><br>	<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">itimerval</span> <span class="hljs-title">value</span>;</span><br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>接着定义如下函数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">static</span> <span class="hljs-type">void</span> <span class="hljs-title function_">sig_func</span><span class="hljs-params">(<span class="hljs-type">int</span> signo)</span> ;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">/**</span><br><span class="hljs-comment">*Create timer list</span><br><span class="hljs-comment">*@param</span><br><span class="hljs-comment">*/</span><br><span class="hljs-keyword">struct</span> timer_list *<span class="hljs-title function_">create_timer_list</span><span class="hljs-params">(<span class="hljs-type">int</span> count)</span> ;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">/*</span><br><span class="hljs-comment">* Add a timer to timer list.</span><br><span class="hljs-comment">*</span><br><span class="hljs-comment">* @param interval  The timer interval(second).</span><br><span class="hljs-comment">* @param cb When cb!= NULL and timer expiry, call it.</span><br><span class="hljs-comment">* @param user_data Callback&#x27;s param.</span><br><span class="hljs-comment">* @param len The length of the user_data.</span><br><span class="hljs-comment">*</span><br><span class="hljs-comment">* @return if == -1, add timer fail.</span><br><span class="hljs-comment">*/</span><br><span class="hljs-type">int</span>  <span class="hljs-title function_">add_timer</span><span class="hljs-params">(<span class="hljs-type">int</span> interval, callback cb, <span class="hljs-type">void</span> *user_data, <span class="hljs-type">int</span> len)</span> ;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span>  <span class="hljs-title function_">del_timer</span><span class="hljs-params">(<span class="hljs-type">int</span> timer_id)</span>;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">/*</span><br><span class="hljs-comment">* Destroy the timer list.</span><br><span class="hljs-comment">*</span><br><span class="hljs-comment">* @return 0 means ok, the other means fail.</span><br><span class="hljs-comment">*/</span><br><span class="hljs-type">int</span> <span class="hljs-title function_">destroy_timer</span><span class="hljs-params">(<span class="hljs-keyword">struct</span> timer_list *<span class="hljs-built_in">list</span>)</span>;<br></code></pre></td></tr></table></figure>
+
+<p>使用定时器的方式也很简单，我们只需要依次调用create_timer_list创建timer队列、使用add_timer加并启动入计时器，计时器使用完毕后调用del_timer删除计时器，最后销毁整个timer队列并结束整个进程；</p>
+<h3 id="5-2-调度算法实现"><a href="#5-2-调度算法实现" class="headerlink" title="5.2 调度算法实现"></a>5.2 调度算法实现</h3><h4 id="5-2-1-FIFO调度算法"><a href="#5-2-1-FIFO调度算法" class="headerlink" title="5.2.1 FIFO调度算法"></a>5.2.1 FIFO调度算法</h4><p>该调度算法也被称为先进先出算法，需要注意的是和先来先服务算法FCFS做区别：</p>
+<ul>
+<li>FIFO：按照时间片轮转方式运行，分给每个进程的时间一样，若正在运行的进程在一个时间片内已经完成，则激活调度程序，此时调度就绪队列排在队首的进程运行；若在一个时间片内进程没有运行完，就将它送到就绪队列的末尾，等待下一个时间片再执行；</li>
+<li>FCFS：对每个进程都比较公平FCFS算法就是调度最先进入就绪队列的进程，不考虑时间长短，比如A进程执行30min，B进程执行10s，此时B进程就必须等30min；</li>
+</ul>
+<p>很多人可能会有疑问，FIFO明明是页面置换算法，和进程调度八竿子打不着…其实这里是因为在某些教材中将FCFS也称作FIFO，简单来说就是让我们实现FCFS（稍微动动脑子也知道Lab_3怎么可能让我们去做内存相关）；</p>
+<p>对FCFS调度的实现如下</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><br></code></pre></td></tr></table></figure>
+
+<h4 id="5-2-2-RR调度算法"><a href="#5-2-2-RR调度算法" class="headerlink" title="5.2.2 RR调度算法"></a>5.2.2 RR调度算法</h4><p>RR调度算法的基本思想就是每次执行调度函数的时候都会在线程队列中挑选一个时间片counter最大的线程运行，也就是遍历所有THREAD_STATUS_RUNNING的线程并找到其中couter值最大的线程进行返回；</p>
+<p>存在的一个问题是假如所有的THREAD_STATUS_RUNNING的线程的时间片都是0，则该调度函数会重新为所有的线程设置couter；</p>
+<p>下面的RR调度算法对于THREAD_SLEEP的任务优先级设置很高，这意味着THREAD_SLEEP的线程一旦进入THREAD_RUNNING状态就会被优先投入运行；</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">static</span> <span class="hljs-keyword">struct</span> thread_struct *<span class="hljs-title function_">RR_pick</span><span class="hljs-params">()</span><br>&#123;<br>    <span class="hljs-type">int</span> i, next, c;<br>    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; THR_TASKS; ++i)<br>    &#123;<br>        <span class="hljs-keyword">if</span> (task[i] &amp;&amp; task[i]-&gt;status != THREAD_STATUS_EXIT &amp;&amp; getmstime() &gt; task[i]-&gt;wakeuptime)<br>        &#123;<br>            task[i]-&gt;status = THREAD_STATUS_RUNNING;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">while</span> (<span class="hljs-number">1</span>)<br>    &#123;<br>        c = <span class="hljs-number">-1</span>;<br>        next = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; THR_TASKS; ++i)<br>        &#123;<br>            <span class="hljs-keyword">if</span> (!task[i])<br>                <span class="hljs-keyword">continue</span>;<br>            <span class="hljs-keyword">if</span> (task[i]-&gt;status == THREAD_STATUS_RUNNING &amp;&amp; task[i]-&gt;counter &gt; c)<br>            &#123;<br>                c = task[i]-&gt;counter;<br>                next = i;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (c)<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">if</span> (c == <span class="hljs-number">0</span>)<br>        &#123;<br>            <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; THR_TASKS; ++i)<br>            &#123;<br>                <span class="hljs-keyword">if</span> (task[i])<br>                &#123;<br>                    task[i]-&gt;counter = task[i]-&gt;priority + (task[i]-&gt;counter &gt;&gt; <span class="hljs-number">1</span>);<br>                &#125;<br>            &#125;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> task[next];<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="5-3-2-彩票调度算法"><a href="#5-3-2-彩票调度算法" class="headerlink" title="5.3.2 彩票调度算法"></a>5.3.2 彩票调度算法</h4><p>彩票调度算法的基本思想和原理也不难，一个实现伪代码如下</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// counter: used to track if we&#x27;ve found the winner yet</span><br><span class="hljs-type">int</span> counter = <span class="hljs-number">0</span>;<br><br><span class="hljs-comment">// winner: use some call to a random number generator to get a value, between 0 and the total # of tickets</span><br><span class="hljs-type">int</span> winner = getrandom(<span class="hljs-number">0</span>, totaltickets);<br><br><span class="hljs-comment">// current: use this to walk through the list of jobs</span><br><span class="hljs-type">node_t</span> *current = head;<br><br><span class="hljs-comment">// loop until the sum of ticket values is &amp;gt; the winner</span><br><span class="hljs-keyword">while</span> (current) &#123;<br>  counter = counter + current-&gt;tickets;<br>  <span class="hljs-keyword">if</span> (counter &lt; winner) <span class="hljs-keyword">break</span>;  <span class="hljs-comment">// found the winner</span><br>  current = current-&gt;next;<br>&#125;  <span class="hljs-comment">// &#x27;current&#x27; is the winner: schedule it...</span><br></code></pre></td></tr></table></figure>
+
+<p>主要难点在于对每个线程彩票数量的分配，同时因为我们为线程分配了彩票所以需要拓展结构体</p>
+<h1 id="Lab-4"><a href="#Lab-4" class="headerlink" title="Lab_4"></a>Lab_4</h1><h2 id="1-实验要求-3"><a href="#1-实验要求-3" class="headerlink" title="1.实验要求"></a>1.实验要求</h2><p>虽然我们可以通过关闭中断来实现UP（Uni-Processor）下临界区的互斥，但是这会引发安全、效率等诸多问题。在lab4中我们需要实现一个用户态的同步机制，这是完成多线程相互协作使用的最后一环。</p>
+<ol>
+<li>利用test&amp;set或者Compare&amp;Swap构建spinlock、mutex、condition variable<ul>
+<li>spinlock<ul>
+<li>spinlock的要求是如果锁正在占用，就需要一直忙等待；</li>
+</ul>
+</li>
+<li>mutex<ul>
+<li>mutex是睡眠锁，如果当前的线程被上锁了，就不需要等待了，直接让出当前的CPU，需要维护一个等待队列，然后把自己放在等待队列里面，等到下一次唤醒；</li>
+<li>mutex实现时需要注意让出CPU和guard锁解锁这两个操作的原子性；</li>
+</ul>
+</li>
+<li>condition variable<ul>
+<li>实现cv的wait，signal，Broadcast三个接口；</li>
+<li>注意wait使用时需要持锁；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>测试mutex&#x2F;spinlock锁的正确性，以下二选一：<ul>
+<li>lab2配合<ul>
+<li>在之前的lab2中，我们拥有了内存管理机制，但是当时我们不能支持多个线程同时使用这个内存分配器，现在我们可以拥有这个feature；</li>
+<li>现在我们可以用spinlock和mutex分别给内存分配器加上同步的机制，支持多个线程同时使用malloc；<ul>
+<li>使用200个线程，每个线程分配1kB内存，在200个线程里面将申请到的内存每个字节依次填写为0-199；</li>
+<li>最后检查这些内存区域是否和分配预取的一致，重复以上实验50次；</li>
+<li>注：如果你自己写的用户库没有实现lab3中的tick调度功能，需要使用pthread线程库来创建线程；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>lab3配合<ul>
+<li>在之前的lab3中，我们拥有了具有“中断”功能的用户态线程库，但是多线程之间无法协作，在lab4中我们将其升级为具有同步机制的用户态线程库；</li>
+<li>分别使用spinlock&#x2F;mutex，计算把0自加加100000次的结果是否正确；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>测试condition variable的正确性：<ul>
+<li>搭建一个消费生产者模型，生产者在每次被唤醒时向一个全局变量依次写入1-100000，两个消费者线程获取这个全局变量的值，并打印；</li>
+<li>需要保证结果的正确性：在生产者写入和消费者读值后，需要对一个flag分别设0和1；在写入和读值前，需要在assert里面假设这个flag分别为1和0；</li>
+</ul>
+</li>
+</ol>
+<h2 id="2-开发日志-3"><a href="#2-开发日志-3" class="headerlink" title="2.开发日志"></a>2.开发日志</h2><p>2022&#x2F;11&#x2F;14 20:33 今天稍微看了以下lab4的简介，差不多是能够理解一些意思，初步打算是先看这篇文章（三种经典的同步工具）：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_36073895/article/details/112678185%EF%BC%8C%E7%90%86%E8%A7%A3%E8%BF%99%E4%B8%89%E4%B8%AA%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%9C%E7%94%A8%E5%92%8C%E5%B7%AE%E5%BC%82%E4%BB%A5%E5%8F%8A%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8(%E5%85%B7%E4%BD%93%E6%98%AF%E4%B8%BA%E4%BA%86%E4%B9%8B%E5%90%8Emain%E4%B8%AD%E6%B5%8B%E8%AF%95%E4%BD%BF%E7%94%A8)%EF%BC%8C%E7%84%B6%E5%90%8E%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E8%BF%99%E4%B8%89%E4%B8%AA%E5%B7%A5%E5%85%B7%E7%BD%91%E4%B8%8A%E7%9B%B4%E6%8E%A5%E6%90%9C%E7%B4%A2%E5%8D%B3%E5%8F%AF(%E6%B3%A8%E6%84%8F%E4%B8%8D%E8%A6%81%E7%9B%B4%E6%8E%A5%E6%90%9C%E7%B4%A2%E4%B8%89%E4%B8%AA%E4%B8%80%E8%B5%B7%E7%9A%84%EF%BC%8C%E8%A6%81%E5%88%86%E5%BC%80%E6%90%9C%E7%B4%A2%EF%BC%8C%E5%92%B1%E4%BB%AC%E8%BF%99%E4%B8%AA%E5%AE%9E%E9%AA%8C%E7%BD%91%E4%B8%8A%E6%B2%A1%E6%9C%89%EF%BC%8C%E7%B1%BB%E4%BC%BClab2%E9%9C%80%E8%A6%81%E8%87%AA%E5%B7%B1%E5%AE%9E%E7%8E%B0%E7%84%B6%E5%90%8E%E8%BF%9B%E8%A1%8C%E6%B5%8B%E8%AF%95)%EF%BC%8C%E6%8E%A5%E7%9D%80%E5%88%86%E5%88%AB%E9%92%88%E5%AF%B9%E6%AF%8F%E4%B8%80%E4%B8%AA%E5%B7%A5%E5%85%B7%E8%BF%9B%E8%A1%8C%E5%AE%9E%E7%8E%B0%E5%8D%B3%E5%8F%AF%EF%BC%9B">https://blog.csdn.net/weixin_36073895/article/details/112678185，理解这三个工具的作用和差异以及怎么使用(具体是为了之后main中测试使用)，然后怎么实现这三个工具网上直接搜索即可(注意不要直接搜索三个一起的，要分开搜索，咱们这个实验网上没有，类似lab2需要自己实现然后进行测试)，接着分别针对每一个工具进行实现即可；</a></p>
+<ul>
+<li>自旋锁：<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43869898/article/details/109721333">(5条消息) C++的自旋锁(spin_lock)实现：使用atomic_flag类型_JunJie_1107的博客-CSDN博客_c++ spinlock</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_31261871/article/details/122638975">(5条消息) 自旋锁模拟实现（C语言）_窗前的黑法师的博客-CSDN博客_c语言自旋锁</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/68750396">C|并发编程|互斥锁实现 - 知乎 (zhihu.com)</a></li>
+</ul>
+</li>
+</ul>
+<p>2022&#x2F;11&#x2F;14 22:55 刚刚看了一下，lab4完全没办法做，真的是一点实现办法都没有的，因为没有人会无聊甚至虐待自己到这种地步去使用C语言实现一个自旋锁、互斥锁甚至条件变量，这是非常无脑的行为，还是好好准备实现lab3吧；</p>
+<h2 id="3-前置知识点-3"><a href="#3-前置知识点-3" class="headerlink" title="3.前置知识点"></a>3.前置知识点</h2><h3 id="3-1-synchronization概述"><a href="#3-1-synchronization概述" class="headerlink" title="3.1 synchronization概述"></a>3.1 synchronization概述</h3><p>并发编程如果各自处理自己的任务互不干涉，这是最理想的情况，但在实际开发过程中我们需要在各个执行体之间进行通信或资源共享，此时就需要保证对共享资源操作的安全性，因此引入了synchronization(同步)，synchronization发生在一个执行体与另外的执行体有交互依赖的场景，通常有两种交互需要synchronization：competition和cooperation</p>
+<ul>
+<li>competition经常是发生在多个执行体需要对共享资源执行指令，但是必须只能同时有一个执行体执行指令；比较典型的场景，多个线程执行计数，对一个共享的全局计数变量执行自加操作，那么这个自加操作指令就是会存在competition，需要synchronization工具保证正确性和安全性；</li>
+<li>cooperation发生在多个执行体需要依赖对方的执行结果的时候，很典型的场景就是生产者消费者模型，为了保证生产者和消费者问题中的特性，需要一种在生产者和消费者之间的synchronization工具来保证生产者与消费者之间的cooperation</li>
+</ul>
+<p>无论是competition还是cooperation一般都会涉及到共享资源的操作，为了保护共享资源通常使用锁；</p>
+<p>这里还需要介绍一些零碎的概念：</p>
+<ul>
+<li>critical section：操作共享资源的代码片段称之为临界区，这个临界区就是我们在并发编程中需要保护的地方；</li>
+<li>race condition：多个执行体（线程或进程）同时进入临界区的时候，同时进行共享资源修改，这时候就产生了race condition(竞态条件)；</li>
+<li>indeterminate：因为多个执行体同时进入临界区，可能带来的执行结果是不能预料的，所以对于一个并发的执行来说，其结果是indeterminate的；</li>
+<li>mutual exclusive：mutex(互斥量，也称为互斥锁)的命名也是来源于这个词，它代表着一种互斥机制，用来保证只有一个线程可以进入临界区，对于临界区的操作保证其不存在race condition并且执行结果是deterministric；关于mutex和spinlock的区别可以参考<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1506546">【转】自旋锁spin和互斥量mutex的区别 - 腾讯云开发者社区-腾讯云 (tencent.com)</a></li>
+</ul>
+<h3 id="3-2-锁概述"><a href="#3-2-锁概述" class="headerlink" title="3.2 锁概述"></a>3.2 锁概述</h3><p>这里我们简单介绍一下为什么锁能够保证只有一个线程进入临界区；</p>
+<p>在涉及并发编程中共享资源的保护首先我们想到的就是使用锁，锁可以保证在多并发环境下只有一个线程进入临界区，但是锁也是一个共享资源，为什么锁不会有并发问题呢？</p>
+<p>从内部看，无论是mutex还是spinlock都依赖于test&amp;set或者compare&amp;swap或者compare&amp;exchange的原子性；换句话说，保证只有一个线程进入临界区的真正原因在于OS对原子性保证；</p>
+<h3 id="3-3-常见synchronization工具"><a href="#3-3-常见synchronization工具" class="headerlink" title="3.3 常见synchronization工具"></a>3.3 常见synchronization工具</h3><p>常见的synchronization工具可以按照行为(抢锁的时候没有抢到)分为两类：</p>
+<ul>
+<li>spin是指不停地去查询状态，占用了CPU；</li>
+<li>blocking是指在没有抢到锁的时候切换出去，然后当前执行体处于blocking状态；</li>
+</ul>
+<p>我们主要介绍mutex、spinlock、condition variable三种synchronization工具，因为这三种比较典型：</p>
+<ul>
+<li><p>spinlock是spin类型的synchronization；</p>
+</li>
+<li><p>mutex和condition variable是blocking类型的synchronization，且condition variable是一种monitor 类型的bocking synchronization工具；</p>
+</li>
+</ul>
+<h4 id="3-3-1-spinlock"><a href="#3-3-1-spinlock" class="headerlink" title="3.3.1 spinlock"></a>3.3.1 spinlock</h4><p>spinlock是一种spin类型的lock，在抢不到锁的时候会保持spin状态，spin状态会消耗CPU资源，但这并非一定是一件不好的事情，在临界区运行时间非常短且不会出现block的场景下，spinlock就比较合适，因为如果不在用户态spin，而是进入内核等待，内核的切换也会带来一定的时间开销，假设临界区执行时间是1us，内核切换是4us，那么陷入内核就有点得不偿失了；<br>spinlock是纯用户态锁，当然也是基于TAS的原子性来保证只有一个线程会进入临界区；</p>
+<p>用户可以自己实现spinlock，只是要注意两个点：1. 保证进入临界区的原子性，2. 保证lock的acquire语意和unlock的release语意；</p>
+<p>spinlock比较适合的场景：临界区内执行时间较短，不会出现block，比如单纯的查表操作可以使用spinlock；</p>
+<h4 id="3-3-2-mutex"><a href="#3-3-2-mutex" class="headerlink" title="3.3.2 mutex"></a>3.3.2 mutex</h4><p>spinlock的特点就是用户态完成同步操作，但是对于临界区很长或者会存在block的场景下，spinlock显然是一种浪费CPU的行为，因此对于那种临界区可能会block或者花很久事件的场景来说，需要让那些没有抢到锁的线程放弃掉CPU，主动进入睡眠，因此就需要mutex，mutex可以使没有抢到锁的线程放弃CPU进入睡眠；</p>
+<p>既然要放弃CPU且需要唤醒，就需要OS的支持，内核态会将sleep的线程切换出去，Linux内核通过futex提供了mutex所需要的陷入内核，放弃CPU的功能；</p>
+<p>futex提供了完整的线程间同步机制，由用户态和内核态两部分组成，在非竞争状态下，是在用户态运行的，当遇到竞争的时候，没抢到锁会陷入内核；futex提供了两个主要的接口，futex_wait和futex_wake；futex有一个内核对象waiting queue，用于提供队列和调度交互；</p>
+<p>mutex的使用场景：在划分锁的时候，有时候会以用户态和内核态来区分，mutex通常被划分为内核态的锁，所以会被认为性能比较差，因为它牵涉到了内核的上下文切换，上面已经提到，mutex只会在竞争的时候陷入内核，通常情况下mutex并不会造成性能影响，常规的在没有竞争情况下mutex lock和unlock的时间大概是在ns级别的且只是在用户态切换，所以在竞争不激烈的情况下mutex不会是瓶颈；临界区的耗时相对较长，或者用户不希望当前线程在抢锁失败的时候仍然占用CPU的时候；</p>
+<h4 id="3-3-3-condition-variable"><a href="#3-3-3-condition-variable" class="headerlink" title="3.3.3 condition variable"></a>3.3.3 condition variable</h4><p>条件变量是一种monitor synchronization工具，通常用于cooperation场景，比较典型的应用场景是在producer和consumer。condition variable与mutex都是一种blocking类型的synchronization，也就是说condition variable在没有满足条件的时候也会陷入内核睡眠，前提是他先抢占了锁。因为也需要陷入内核睡眠，因此很容易想到，condition variable在内核中也是基于futex实现；</p>
+<p>条件变量通常需要与一把锁联合使用，来提供synchronization功能，condition variable提供wait方法，在线程抢到锁的时候如果不满足响应的条件调用wait的时候，会执行两个操作：release lock，陷入内核等待，同时condition variable提供了notify方法，notify方法会将wait的thread从内核唤醒，调用wait的线程在唤醒的时候会重新acquire lock；</p>
 
               
             </div>

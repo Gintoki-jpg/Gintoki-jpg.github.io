@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/TOOLS.PNG">
 <meta property="article:published_time" content="2022-10-13T01:34:00.000Z">
-<meta property="article:modified_time" content="2022-10-18T02:26:23.762Z">
+<meta property="article:modified_time" content="2022-11-17T03:01:50.122Z">
 <meta property="article:author" content="YangZaiyan">
 <meta property="article:tag" content="机器学习">
 <meta property="article:tag" content="python">
@@ -374,7 +374,6 @@
 </ul>
 <h3 id="2-3-Operation"><a href="#2-3-Operation" class="headerlink" title="2.3 Operation"></a>2.3 Operation</h3><p>数据流图中的节点就是操作operation，一次加法是一个操作，一次乘法是一次操作，构建变量的初始值也是一个操作；</p>
 <p>每个操作都有属性，它在构建图的时候会被确定，操作也可以和计算设备绑定，指定操作在某个设备上执行。操作之间存在顺序关系，这些操作之间的依赖就是“边”。如果操作A的输入是操作B执行的结果，那么这个操作A就依赖于操作B。</p>
-<p>- </p>
 <h3 id="2-4-Session"><a href="#2-4-Session" class="headerlink" title="2.4 Session"></a>2.4 Session</h3><p>session拥有并管理tensorflow运行时所有的物理资源（如GPU和网络连接等），因此当所有计算完成后需要关闭session帮助系统回收资源，否则容易发生资源泄露；下面我们介绍三种常见的会话模式避免资源的泄露；</p>
 <h4 id="2-4-1-session-1"><a href="#2-4-1-session-1" class="headerlink" title="2.4.1 session_1"></a>2.4.1 session_1</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 定义计算图</span><br>tens1 = tf.constant([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>])<br><br><span class="hljs-comment"># 创建一个会话</span><br>sess = tf.Session()<br><br><span class="hljs-comment">#使用这个创建好的会话来得到关心的运算的结果。比如可以调用 sess.run(result)</span><br><span class="hljs-comment">#来得到张量result的取值</span><br><span class="hljs-built_in">print</span>(sess.run(tens1))<br><br><span class="hljs-comment">#关闭会话使得本次运行中使用到的资源可以被释放</span><br>sess.close()<br></code></pre></td></tr></table></figure>
 

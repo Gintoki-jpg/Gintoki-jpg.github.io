@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/git.png">
 <meta property="article:published_time" content="2022-06-27T03:16:00.000Z">
-<meta property="article:modified_time" content="2022-10-08T02:05:27.217Z">
+<meta property="article:modified_time" content="2022-11-08T01:22:49.213Z">
 <meta property="article:author" content="YangZaiyan">
 <meta property="article:tag" content="开发工具">
 <meta name="twitter:card" content="summary_large_image">
@@ -221,7 +221,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          48 字
+          991 字
         
       </span>
     
@@ -232,7 +232,7 @@
         
         
         
-          1 分钟
+          9 分钟
         
       </span>
     
@@ -275,6 +275,46 @@
             <div class="markdown-body">
               
               <p>文章链接：<a target="_blank" rel="noopener" href="https://www.yuque.com/tintoki/gl9lfg/qidpe7">https://www.yuque.com/tintoki/gl9lfg/qidpe7</a></p>
+<h2 id="1-后记"><a href="#1-后记" class="headerlink" title="1.后记"></a>1.后记</h2><p>语雀的文章大致上简单的介绍了git的一些细节，但是我相信很多人学git只是为了把github当作一个仓库来保存自己的一些文件或者只是想知道git到底是怎么玩的，并不乐意花时间看那些概念，所以这里直接上步骤；（实际上是因为我不常用git，偶尔用一次会忘记…所以做一个使用记录）</p>
+<p>参考文章：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/tzwbk/p/13896509.html">Git小乌龟的安装及使用 - 醉温柔 - 博客园 (cnblogs.com)</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/xuanwotianming153/p/8504762.html">git 小乌龟安装教程 - 闪闪&amp;红星 - 博客园 (cnblogs.com)</a></li>
+</ul>
+<h3 id="1-1-新建git项目"><a href="#1-1-新建git项目" class="headerlink" title="1.1 新建git项目"></a>1.1 新建git项目</h3><p>(1)首先新建github项目(gitee操作类似不再赘述)</p>
+<p><img src="/images/image-20221108085015993.png" srcset="/img/loading.gif" lazyload></p>
+<p>(2)新建完成项目以后打开项目，点击克隆、下载，复制这串地址</p>
+<p><img src="/images/image-20221108085249734.png" srcset="/img/loading.gif" lazyload></p>
+<p>(3)在本地新建或直接选择需要上传的文件夹，右键进入文件夹内，右键新建版本库</p>
+<p><img src="/images/image-20221108085625771.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221108085725687.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221108085851602.png" srcset="/img/loading.gif" lazyload></p>
+<p>(4)右键设置</p>
+<p><img src="/images/image-20221108090031540.png" srcset="/img/loading.gif" lazyload></p>
+<p>点击右侧远端，将之前码云或者github上面的那串复制的http地址写入url以及推送url里面，先点击添加&#x2F;保存，跳出的框不用做任何修改，直接确定</p>
+<p><img src="/images/image-20221108090202654.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221108090300305.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-2-提交-amp-推送"><a href="#1-2-提交-amp-推送" class="headerlink" title="1.2 提交&amp;推送"></a>1.2 提交&amp;推送</h3><p>之后我们需要对仓库的内容进行更新，只需要先提交，再推送即可，需要注意的是，提交只是提交到本地版本库，并非提交到远程版本服务器，所以，要想在远程版本服务器上看到最新的修改，还需要推送；</p>
+<p>我们新建的仓库在完成了1.1的配置之后还没有东西，我们这里来进行同步更新；</p>
+<p><img src="/images/image-20221108090742563.png" srcset="/img/loading.gif" lazyload></p>
+<p>需要注意提交弹出框的日志信息一定要写（随便写点啥），不然无法选中提交按钮</p>
+<p><img src="/images/image-20221108090852783.png" srcset="/img/loading.gif" lazyload></p>
+<p>在提交完成后会自动弹出推送框，直接选择即可</p>
+<p><img src="/images/image-20221108091127009.png" srcset="/img/loading.gif" lazyload></p>
+<p>在推送成功后会出现创建拉去请求的按钮，此时直接关闭该弹窗即可</p>
+<p><img src="/images/image-20221108091242248.png" srcset="/img/loading.gif" lazyload></p>
+<p>接着来到github对应仓库刷新，可以看到已经有了我们需要的文件</p>
+<p><img src="/images/image-20221108092125974.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<blockquote>
+<p>Q：同步和推送有什么区别？</p>
+</blockquote>
+<p>A：提交commit指的是将本地的修改提交到本地库中，推送push指的是将本地的修改提交到远程库中，这是我们最常用的两个命令，更新作为小乌龟自增的命令，实际上就是继承了推送、拉取等动作（同步顾名思义就是保持本地和远端一致，保持一致的方法有很多，需要用户选择一种方式），一般不需要使用；</p>
+<p><img src="/images/image-20221108091724074.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<blockquote>
+<p>注意：git的使用当然并不只是这么简单，我们只是总结了日常最常用的动作，如果需要深入使用git还是需要掌握一定的git基本知识的，可以参考文章<a target="_blank" rel="noopener" href="https://www.yuque.com/tintoki/gl9lfg/qidpe7%E8%BF%9B%E8%A1%8C%E5%AD%A6%E4%B9%A0%EF%BC%9B">https://www.yuque.com/tintoki/gl9lfg/qidpe7进行学习；</a></p>
+</blockquote>
 
               
             </div>
