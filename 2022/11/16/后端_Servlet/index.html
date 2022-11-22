@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/JAVA.png">
 <meta property="article:published_time" content="2022-11-16T06:34:00.000Z">
-<meta property="article:modified_time" content="2022-11-17T11:52:59.586Z">
+<meta property="article:modified_time" content="2022-11-18T03:09:43.482Z">
 <meta property="article:author" content="YangZaiyan">
 <meta property="article:tag" content="后端开发">
 <meta property="article:tag" content="JAVA架构">
@@ -233,7 +233,7 @@
         
         
         
-          160 分钟
+          161 分钟
         
       </span>
     
@@ -302,7 +302,7 @@
 
 <p>直接实现 Servlet 接口比较麻烦，需要实现很多方法，所以 Servlet 规范又提供了两个抽象类，分别是 GenericServlet 类和 HttpServlet 类，它们都实现了 Servlet 接口的很多常用功能。和 GenericServlet 类相比，HttpServlet 类更加方便，所以实际开发中一般都继承自 HttpServlet ；</p>
 <h3 id="1-2-JSP"><a href="#1-2-JSP" class="headerlink" title="1.2 JSP"></a>1.2 JSP</h3><p>Servlet 是第一代 Java Web 开发技术，它将 HTML 代码以字符串的形式向外输出，编写 HTML 文档的过程就是拼接字符串的过程，非常麻烦，所以 Java 官方又推出了第二代 Web 开发技术 —— JSP；</p>
-<p>JSP 是现代化的 Web 开发技术，它允许 HTML 代码和 JSP 代码分离，让程序员能够在 HTML 文档中直接嵌入 JSP 代码；</p>
+<p>JSP 是现代化的 Web 开发技术，它允许 HTML 代码和 JSP 代码分离，让程序员能够<code>在 HTML 文档中直接嵌入 JSP 代码</code>；</p>
 <p>直接使用Servlet开发动态网站并不是很明智的选择，开发者一般都选择JSP，但是前面也说过JSP依赖于Servlet，即用户访问 JSP 页面时，JSP 代码会被翻译成 Servlet 代码，最终，HTML 代码还是以字符串的形式向外输出的；实际上JSP就是在Servlet的基础上做进一步的封装，要想学习JSP一定要先学会Servlet；</p>
 <h3 id="1-3-Applet"><a href="#1-3-Applet" class="headerlink" title="1.3 Applet"></a>1.3 Applet</h3><p>尽管Servlet的全称是Servlet applet，但是Applet和Servlet不是同一个概念：</p>
 <ul>
@@ -408,6 +408,7 @@
 </ul>
 </li>
 </ul>
+<p>关于Tomcat出现乱码，解决方法参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/luoluo95/article/details/123913646">(1条消息) Tomcat首次登录 执行startup.bat 出现乱码_luoluo95的博客-CSDN博客_startup.bat打开乱码</a>；</p>
 <h2 id="3-Servlet注解"><a href="#3-Servlet注解" class="headerlink" title="3.Servlet注解"></a>3.Servlet注解</h2><p>在 Servlet 中，web.xml 扮演的角色十分的重要，它可以将所有的 Servlet 的配置集中进行管理，但是若项目中 Servelt 数量较多时，web.xml 的配置会变得十分的冗长。这种情况下，注解（Annotation）就是一种更好的选择；</p>
 <p>注解可以直接在类中使用，其对Servlet所作的配置只对当前类有效，有效避免了集中管理造成的配置冗长问题；</p>
 <p>Servlet在3.0版本之后增加了注解的支持以简化Servlet的配置，例如@WebServlet、@WebInitParm 、@WebFilter 和 @WebLitener 等，正是因为这些注解的出现使得web.xml不再是必选项；</p>

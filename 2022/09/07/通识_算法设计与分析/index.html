@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/cpp.png">
 <meta property="article:published_time" content="2022-09-07T00:07:00.000Z">
-<meta property="article:modified_time" content="2022-11-16T03:06:09.565Z">
+<meta property="article:modified_time" content="2022-11-22T07:40:21.423Z">
 <meta property="article:author" content="YangZaiyan">
 <meta property="article:tag" content="课程学习">
 <meta property="article:tag" content="数据结构与算法">
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          25k 字
+          28k 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          208 分钟
+          233 分钟
         
       </span>
     
@@ -751,7 +751,8 @@
 <blockquote>
 <p>总结：上述算法将每一组的大小定为5，并选取75作为是否作递归调用的分界点。这2点保证了T（n）的递归式中2个自变量之和n&#x2F;5+3n&#x2F;4&#x3D;19n&#x2F;20&#x3D;en，0&lt;&lt;1，这是使T（n）&#x3D;O（n）的关键之处。当然，除了5和75之外，还有其他选择。</p>
 </blockquote>
-<h4 id="3-2-5-最接近点对问题"><a href="#3-2-5-最接近点对问题" class="headerlink" title="3.2.5 最接近点对问题"></a>3.2.5 最接近点对问题</h4><p>主要考虑平面上的最接近点对问题，这类问题是计算几何学中研究的基本问题之一；</p>
+<h4 id="3-2-5-最接近点对问题"><a href="#3-2-5-最接近点对问题" class="headerlink" title="3.2.5 最接近点对问题"></a>3.2.5 最接近点对问题</h4><p>（这个题也有点抽象，实在不理解就看看视频<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Z14y157EY/?spm_id_from=333.337.search-card.all.click&vd_source=276d55048634a5b508b1b53a1ecd56b3">4.2 最近点对问题_哔哩哔哩_bilibili</a>）</p>
+<p>主要考虑平面上的最接近点对问题，这类问题是计算几何学中研究的基本问题之一；</p>
 <p>最接近点对问题：给定平面上的n个点，找出其中的一对点，使得在n个点组成的所有点对中，该点对的距离最小；严格来说最接近点对可能多于一对，简单起见规定只需要找出其中的一对作为问题的解；</p>
 <p>最直观的解法当然是将每个点和其他n-1个点的距离全部计算出之后找出最小距离，这样的时间复杂度为T(n)&#x3D;n(n-1)&#x2F;2+n&#x3D;O(n^2^)，即求出n(n-1)&#x2F;2个点对距离的时间+选出最小距离的时间；</p>
 <p>考虑分治法的思想：</p>
@@ -887,7 +888,8 @@
 <li>当子问题空间中的大量子问题无需求解时，使用备忘录方法较省时；但当无需计算的子问题有少部分或全部都要计算时，使用动态规划算法，节省递归带来的额外消耗；(金字塔问题可以很明显的看出备忘录算法和动态规划算法的差别)</li>
 </ul>
 <h3 id="1-3-解题步骤"><a href="#1-3-解题步骤" class="headerlink" title="1.3 解题步骤"></a>1.3 解题步骤</h3><p>解题主要按照如下步骤进行即可：</p>
-<p>（1）分析最优解的性质，并刻画其结构特征  									&#x2F;&#x2F;确定满足最优化原理、划分阶段、确定状态<br>（2）递归地定义最优解  													&#x2F;&#x2F;确定状态转移方程(递推方程)<br>（3）以自底向上或自顶向下(备忘录)的方式计算出最优值(这一步就是为了构造最优解做准备)<br>（4）根据计算最优值时得到的信息，从子问题的最优解逐步构造出整个问题的最优解(如果只需要求出最优值(如矿工获取的钻石数量最大值)则该步骤可以省略)</p>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs gcode">（<span class="hljs-number">1</span>）分析最优解的性质，并刻画其结构特征  									  <span class="hljs-comment">//确定满足最优化原理、划分阶段、确定状态</span><br>（<span class="hljs-number">2</span>）递归地定义最优解  													<span class="hljs-comment">//确定状态转移方程(递推方程)</span><br>（<span class="hljs-number">3</span>）以自底向上或自顶向下<span class="hljs-comment">(备忘录)</span>的方式计算出最优值<span class="hljs-comment">(这一步就是为了构造最优解做准备)</span><br>（<span class="hljs-number">4</span>）根据计算最优值时得到的信息，从子问题的最优解逐步构造出整个问题的最优解<span class="hljs-comment">(如果只需要求出最优值(如矿工获取的钻石数量最大值)</span>则该步骤可以省略)<br></code></pre></td></tr></table></figure>
+
 <p>下面我们详细讲一下解题步骤中的细节，当然考试的时候只需要按照上述四个步骤即可，这里的细节是为了初学保证理解透彻；</p>
 <p>首先是将原问题分解为子问题(划分阶段)：</p>
 <ul>
@@ -914,6 +916,14 @@
 <p>最后就可以开始计算了，以<code>自底向上</code>或<code>自顶向下的记忆化方式（备忘录法）</code>计算出最优值，根据计算最优值时得到的信息，构造问题的最优解</p>
 <p><img src="/images/image-20221111114011433.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="1-4-算法设计"><a href="#1-4-算法设计" class="headerlink" title="1.4 算法设计"></a>1.4 算法设计</h3><p>动态规划的主要难点在于理论上的设计，使用动态规划求解问题，最重要的就是确定动态规划三要素：<br>（1）问题的阶段(子问题划分)；<br>（2）每个阶段的状态；<br>（3）从前一个阶段转化到后一个阶段之间的递推关系(从这个程度上来说动态规划往往可以使用递归程序来实现)；</p>
+<hr>
+<blockquote>
+<p>Q：动态规划和递归之间的关系？</p>
+</blockquote>
+<p>动态规划：一种解决问题的算法思想，与之同属于算法思想的有：枚举（暴力）、分治、贪心等；</p>
+<p>递归：一种具体的代码结构，即在本函数中调用了本身。与之同属于代码结构的有：递推（迭代）；</p>
+<p>动态规划和递归的关系可以理解为：动态规划是解决问题的一种算法思想&#x2F;题型，具体的实现&#x2F;解题方法可以用递归；</p>
+<hr>
 <h2 id="2-范例"><a href="#2-范例" class="headerlink" title="2.范例"></a>2.范例</h2><h3 id="2-1-矩阵连乘"><a href="#2-1-矩阵连乘" class="headerlink" title="2.1 矩阵连乘"></a>2.1 矩阵连乘</h3><p>问题描述：给定n个矩阵，其中A<del>i</del>和A<del>i+1</del>是可乘的(也就是前者的列等于后者的行，乘积矩阵的行数等于前者行数，列数等于后者列数)，请求解这n个矩阵的连乘积；</p>
 <p>由于矩阵乘法满足结合律，因此计算矩阵的连乘积可以有不同的计算次序。这种计算次序可以用加括号的方式来确定。若一个矩阵连乘积的计算次序完全确定，即该连乘积已<code>完全加括号</code>，则可依此次序反复调用两个矩阵相乘的标准算法计算出矩阵连乘积。<code>完全加括号的矩阵连乘积</code>可递归地定义为：</p>
 <ol>
@@ -940,24 +950,112 @@
 <p><code>a)分析最优解的结构</code></p>
 <p>设计求解具体问题的动态规划算法的第一步是刻画该问题的最优解的结构特征，这里为了简化表示将矩阵连乘积记为A[i:j]；</p>
 <p>现在需要计算A[1:n]的最优计算次序(也就是连乘序列加括号的问题)，还是将其划分为两个子序列求解，因此总计算量等于A[1:k]加上A[1+k:n]加上A[1:k]乘以A[k+1:n]的计算量；</p>
-<p>我们可以发现，子序列连乘A[1:k]和A[1+k:n]在A[1:n最优的情况下的计算次序也是最优的，因此，矩阵连乘积计算次序问题的最优解包含着其子问题的最优解。这种性质称为最优子结构性质。问题的最优子结构性质是该问题可用动态规划算法求解的显著特征；</p>
+<p>我们可以发现，子序列连乘A[1:k]和A[1+k:n]在A[1:n]最优的情况下的计算次序也是最优的，因此，矩阵连乘积计算次序问题的最优解包含着其子问题的最优解。这种性质称为最优子结构性质。问题的最优子结构性质是该问题可用动态规划算法求解的显著特征；</p>
 <p><code>b)建立递归关系</code></p>
 <p>设计动态规划算法的第二步是递归地定义最优值；</p>
 <p>规定计算A[i:j]所需要的最少数乘次数为m[i,j]，因此原问题A[1:n]的所需的最少连乘次数为m[1,m]；</p>
 <ul>
 <li><p>当i&#x3D;j时，A[i:j]是一个单一矩阵A<del>i</del>，此时根本不需要计算，m[i,j]&#x3D;0；</p>
 </li>
-<li><p>当i&lt;j时，</p>
+<li><p>当i&lt;j时，m[i,j]等于前半部分的数乘次数加后半部分的数乘次数加两个子序列合并需要的相乘次数（因为k的位置不同最终结果不同，所以选择结果集中的最小值）</p>
 <p><img src="/images/image-20221116090144944.png" srcset="/img/loading.gif" lazyload></p>
 </li>
 </ul>
 <p><img src="/images/image-20221116090309279.png" srcset="/img/loading.gif" lazyload></p>
 <p><code>c)计算最优值</code></p>
-<p>用动态规划算法解此问题，可依据其递归式以自底向上的方式进行计算。在计算过程中，保存已解决的子问题答案。每个子问题只计算一次，而在后面需要时只要简单查一下，从而避免大量的重复计算，最终得到多项式时间的算法；<br>在下面给出的动态规划算法MatrixChain中，输入参数（p0，p1，…，pn）存储于数组p中，除了输出最优值数组m，算法还输出记录最优断开位置的数组s；（当然该算法只是计算出了最优值，并未给出最优解，但是该算法记录了构造最优解需要的全部信息）</p>
+<p>用动态规划算法解此问题，可依据其递归式以自底向上的方式进行计算。在计算过程中，保存已解决的子问题答案。每个子问题只计算一次，而在后面需要时只要简单查一下，从而避免大量的重复计算，最终得到多项式时间的算法；<br>在下面给出的动态规划算法MatrixChain中，输入参数（p0，p1，…，pn）存储于数组p中，除了输出最优值数组m，算法还输出记录最优断开位置的数组s；（当然该算法只是计算出了最优值，并未给出最优解，但是该算法记录了构造最优解需要的全部信息），关于代码的解释可以参考<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1CK411n7y1/?spm_id_from=333.337.search-card.all.click&vd_source=276d55048634a5b508b1b53a1ecd56b3">【学习记录】矩阵连乘-动态规划-计算机算法_哔哩哔哩_bilibili</a>；</p>
 <p><img src="/images/image-20221116091251553.png" srcset="/img/loading.gif" lazyload></p>
 <p><img src="/images/image-20221116091333869.png" srcset="/img/loading.gif" lazyload></p>
-<p>关于上面的算法究竟是怎么使用的我们这里参考视频讲解(看书什么的真的会很头大)</p>
-<h3 id="2-2-最长公共子序列"><a href="#2-2-最长公共子序列" class="headerlink" title="2.2 最长公共子序列"></a>2.2 最长公共子序列</h3><h3 id="2-3-最大子段和"><a href="#2-3-最大子段和" class="headerlink" title="2.3 最大子段和"></a>2.3 最大子段和</h3><h3 id="2-4-背包问题"><a href="#2-4-背包问题" class="headerlink" title="2.4 背包问题"></a>2.4 背包问题</h3><h1 id="第四章-贪心算法"><a href="#第四章-贪心算法" class="headerlink" title="第四章 贪心算法"></a>第四章 贪心算法</h1><h2 id="1-概述-1"><a href="#1-概述-1" class="headerlink" title="1.概述"></a>1.概述</h2><p>参考文章链接：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/909f740f523a">(三) 贪心算法 - 简书 (jianshu.com)</a></p>
+<p>上述算法主要取决于程序对r、i和k的三重循环，循环体内的计算量为O(1)，三重循环的总次数为O(n^3^)，因此该算法的计算时间上界为O(n^3^)，算法占用的空间为O(n^2^)；</p>
+<p><code>d)构造最优解</code></p>
+<p>前面的算法我们说过只计算出了最优值（最大值、最少数乘次数），并没有给出最优解（也就是相应的最优路径、具体数乘次序），但是s数组记录了所有的断点，也就是s数组中的数k表明计算矩阵链A[i:j]的最佳方式是(A[i:k])(A[k+1:j])，下面的算法Traceback按算法MatrixChain计算出的断点矩阵s指示的加括号方式输出计算A[i:j]的最优计算次序；</p>
+<p><img src="/images/image-20221122083856920.png" srcset="/img/loading.gif" lazyload></p>
+<p>要输出A[1:n]的最优计算次序只要调用Traceback（1,n,s）即可；</p>
+<h3 id="2-2-最长公共子序列"><a href="#2-2-最长公共子序列" class="headerlink" title="2.2 最长公共子序列"></a>2.2 最长公共子序列</h3><p>子序列：将该序列中删除若干元素后得到的序列；</p>
+<p>公共子序列：序列既是X又是Y的子序列（不需要子元素连续）；</p>
+<p>例如，若X&#x3D;（A，B，C，B，D，A，B），Y&#x3D;（B，D，C，A，B，A）则序列（B，C，A）是X和Y的一个公共子序列，但它不是X和Y的一个最长公共子序列。序列（B，C，B，A）也是X和Y的一个公共子序列，其长度为4，而且它是X和Y的最长公共子序列，因为X和Y没有长度大于4的公共子序列；</p>
+<blockquote>
+<p>最长公共子序列问题：给定两个序列X和Y，找出X和Y的最长公共子序列；</p>
+</blockquote>
+<p>穷举搜索法（对X的所有子序列，检查它是否是Y的子序列，并且在检查过程中记录最长的公共子序列）需要指数时间；</p>
+<p>这里使用动态规划算法可以有效解决问题；</p>
+<p><code>a)分析最优解的结构</code></p>
+<p>这一步就是分析最长公共子序列的结构</p>
+<p><img src="/images/image-20221122085715378.png" srcset="/img/loading.gif" lazyload></p>
+<p>证明方法使用反证法，这里我们不再赘述；</p>
+<p>两个序列的最长公共子序列包含了这两个序列的前缀的最长公共子序列，因此，最长公共子序列问题具有最优子结构性质；</p>
+<p><code>b)子问题的递归结构</code></p>
+<p>根据最长公共子序列问题的最优子结构的性质可知，要找出X&#x3D;{x<del>1</del>…x<del>m</del>}和Y&#x3D;{y<del>1</del>…y<del>n</del>}的最长公共子序列，可以按照方式递归进行：</p>
+<ol>
+<li>当x<del>m</del>&#x3D;y<del>n</del>时，找出X<del>m-1</del>和Y<del>n-1</del>的最长公共子序列，最后在其尾部加上x<del>m</del>；</li>
+<li>当x<del>m</del>!&#x3D;y<del>n</del>时，需要解决两个子问题，即找出X<del>m-1</del>和Y的最长公共子序列以及X和Y<del>n-1</del>的最长公共子序列，选择较长者；<ul>
+<li>上述情况下的两个子问题都包含一个公共子问题（我们称这种性质为子问题重叠性质），即计算X<del>m-1</del>和Y<del>n-1</del>的最长公共子序列；</li>
+</ul>
+</li>
+</ol>
+<p><img src="/images/image-20221122090648212.png" srcset="/img/loading.gif" lazyload></p>
+<p><code>c)计算最优值</code></p>
+<p>直接自顶向下利用简单递归当然很容易的就能写出算法，但是出现的问题就是其计算时间会随着输入长度指数增长，所以这里考虑使用动态规划的自底向上计算；</p>
+<p>LCSLength以序列X和Y作为输入，输出两个数组c和b，其中c存储X<del>i</del>和Y<del>j</del>的最长公共子序列的<code>长度</code>，最终问题的最优值（X和Y的最长公共子序列的长度），b存储c对应的元素的值由哪个子问题的解得到，用于构造最优解使用；</p>
+<p><img src="/images/image-20221122094410301.png" srcset="/img/loading.gif" lazyload></p>
+<p>由于每个数组单元的计算耗费O(1)时间，因此算法的LCSLength耗时O(mn)，其中m为X长度，n为Y长度；</p>
+<p><code>d)构造最长公共子序列</code></p>
+<p>前面构造得到的数组b可用于快速构造序列X和Y的最长公共子序列：</p>
+<ul>
+<li><p>当b<del>ｉ</del>&#x3D;1时，表示X<del>ｉ</del>和Y<del>ｊ</del>的最长公共子序列是由X<del>ｉ－１</del>和Y<del>ｊ－１</del>的最长公共子序列在尾部加上ｘ<del>ｉ</del>所得到的子序列；</p>
+</li>
+<li><p>当b<del>ｉ</del>&#x3D;2时，表示X<del>ｉ</del>和Y<del>ｊ</del>的最长公共子序列与X<del>ｉ－１</del>和Y<del>ｊ</del>的最长公共子序列相同；</p>
+</li>
+<li><p>当b<del>ｉ</del>&#x3D;3时，表示X<del>ｉ</del>和Y<del>ｊ</del>的最长公共子序列与X<del>ｉ</del>和Y<del>ｊ－１</del>的最长公共子序列相同；</p>
+</li>
+</ul>
+<p>下面的算法LCS实现根据b的内容打印出X<del>i</del>和Y<del>j</del>的最长公共子序列，通过算法调用LCS（m,n,x,b）便可打印出序列X和Y的最长公共子序列</p>
+<p><img src="/images/image-20221122095740105.png" srcset="/img/loading.gif" lazyload></p>
+<p>在算法LCS中，每次递归调用使i或j减1，因此算法的计算时间为O(m+n)；</p>
+<h3 id="2-3-最大子段和"><a href="#2-3-最大子段和" class="headerlink" title="2.3 最大子段和"></a>2.3 最大子段和</h3><p>问题描述：</p>
+<p><img src="/images/image-20221122084951074.png" srcset="/img/loading.gif" lazyload></p>
+<p>关于这个问题有多种解法，详情参考<a target="_blank" rel="noopener" href="https://wenku.baidu.com/view/84ea87270440be1e650e52ea551810a6f424c840.html?_wkts_=1669078295904">最大子段和详解（N种解法汇总） - 百度文库 (baidu.com)</a>；</p>
+<p>我们这里总结一下几个经典解决方法的复杂度即可</p>
+<blockquote>
+<p>暴力枚举</p>
+</blockquote>
+<p><img src="/images/image-20221122101349470.png" srcset="/img/loading.gif" lazyload></p>
+<p>从该算法的三层for循环可以看出时间复杂度为O(n^3^)，当然可以将算法的最后一个for循环省略，改进后的算法只需要O(n^2^)的时间复杂度；</p>
+<blockquote>
+<p>分治法</p>
+</blockquote>
+<p><img src="/images/image-20221122101704110.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>动态规划</p>
+</blockquote>
+<p>时间复杂度和空间复杂度都是O(n)；</p>
+<h3 id="2-4-0-1-背包问题"><a href="#2-4-0-1-背包问题" class="headerlink" title="2.4 0-1 背包问题"></a>2.4 0-1 背包问题</h3><blockquote>
+<p>0-1 背包问题：给定n种物品和一个背包，物品i的重量是w<del>i</del>，其价值为v<del>i</del>，背包的容量是c，应当如何选择装入背包中的物品才能使得装入背包中物品的总价值最大；</p>
+</blockquote>
+<p>在选择装入背包的物品时，对每种物品i只有两种选择，即装入背包或不装入背包，需要注意的是不能将物品i装入背包多次（可以看作是只有一个物品i，装入了就没了），也不能只装入部分的物品i；因此该问题称为0-1 背包问题；</p>
+<p><img src="/images/image-20221122102612582.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<p>关于几类背包问题的区别：</p>
+<ul>
+<li>0-1 背包：有n种物品，每种物品只有一个可选择；</li>
+<li>完全背包：有n种物品，每种物品有无限多个可选择；</li>
+<li>多重背包：看作是0-1 背包和完全背包的组合，有n种物品，每种物品的个数最多有S<del>i</del>个；</li>
+</ul>
+<hr>
+<p>首先来看看0-1 背包的暴力解法，使用回溯进行暴力搜索，枚举所有情况，比较装满背包的最大价值，假设有n个物品，则时间复杂度是2^n^（每个物品两个状态“取&#x2F;不取”）</p>
+<p><code>a)最优子结构性质</code></p>
+<p><img src="/images/image-20221122103515005.png" srcset="/img/loading.gif" lazyload></p>
+<p><code>b)递归关系</code></p>
+<p><img src="/images/image-20221122103541865.png" srcset="/img/loading.gif" lazyload></p>
+<p>需要注意的是，在这一步很重要的一点其实是确定dp数组的定义，本题的dp数组就是m(i,j)，意义是下标为0-i之间的物品任取，放入容量为j的背包中的最大价值，在之后的推导递归公式、初始化以及确定遍历顺序的时候都是围绕着dp数组的含义来进行；</p>
+<p>接着我们需要确定dp数组可以从哪几个方向推导出来（确定递推公式），对于m(i,j)来说，有两种选择，这两种选择中取最大值</p>
+<p><code>c)算法描述</code></p>
+<p>这一步首先需要做的事是初始化dp数组，如何初始化dp数组可以看视频<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1cg411g7Y6/?spm_id_from=333.337.search-card.all.click&vd_source=276d55048634a5b508b1b53a1ecd56b3">带你学透0-1背包问题！| 关于背包问题，你不清楚的地方，这里都讲了！| 动态规划经典问题 | 数据结构与算法_哔哩哔哩_bilibili</a>，接着来看对二维dp数组的遍历顺序，背包问题一般都需要两个for循环，一个用于遍历物品，一个用于遍历背包，这里给出结论 —— 对于二维数组实现的dp数组，for循环的次序不会导致结构的改变；</p>
+<p><img src="/images/image-20221122103648488.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221122103707477.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<p>书上描述可能会比较简短，这里推荐一个文章以层层递进的方式讲解<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_59139260/article/details/124600813">(1条消息) 动态规划之0-1背包问题（详解+分析+原码）_未见花闻的博客-CSDN博客</a>，当然看视频也可以<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1cg411g7Y6/?spm_id_from=333.337.search-card.all.click&vd_source=276d55048634a5b508b1b53a1ecd56b3">带你学透0-1背包问题！| 关于背包问题，你不清楚的地方，这里都讲了！| 动态规划经典问题 | 数据结构与算法_哔哩哔哩_bilibili</a>；</p>
+<h1 id="第四章-贪心算法"><a href="#第四章-贪心算法" class="headerlink" title="第四章 贪心算法"></a>第四章 贪心算法</h1><h2 id="1-概述-1"><a href="#1-概述-1" class="headerlink" title="1.概述"></a>1.概述</h2><p>参考文章链接：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/909f740f523a">(三) 贪心算法 - 简书 (jianshu.com)</a></p>
 <hr>
 <p>所谓贪心算法，就是 <code>总是做出在当前看来是最好的选择(未从整体考虑)</code>的一种方法；</p>
 <h3 id="1-1-基本思想"><a href="#1-1-基本思想" class="headerlink" title="1.1 基本思想"></a>1.1 基本思想</h3><ul>
@@ -1006,7 +1104,7 @@
 
 
 
-<h2 id="2-范例-1"><a href="#2-范例-1" class="headerlink" title="2.范例"></a>2.范例</h2><h1 id="第五章-回溯法"><a href="#第五章-回溯法" class="headerlink" title="第五章 回溯法"></a>第五章 回溯法</h1><p>文章参考：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/96616c2487a5">(四) 回溯法(试探算法) - 简书 (jianshu.com)</a></p>
+<h2 id="2-范例-1"><a href="#2-范例-1" class="headerlink" title="2.范例"></a>2.范例</h2><h3 id="2-1-活动安排"><a href="#2-1-活动安排" class="headerlink" title="2.1 活动安排"></a>2.1 活动安排</h3><h3 id="2-2-背包问题"><a href="#2-2-背包问题" class="headerlink" title="2.2 背包问题"></a>2.2 背包问题</h3><h3 id="2-3-哈夫曼编码"><a href="#2-3-哈夫曼编码" class="headerlink" title="2.3 哈夫曼编码"></a>2.3 哈夫曼编码</h3><h3 id="2-4-最小生成树"><a href="#2-4-最小生成树" class="headerlink" title="2.4 最小生成树"></a>2.4 最小生成树</h3><h3 id="2-5-单源最短路径"><a href="#2-5-单源最短路径" class="headerlink" title="2.5 单源最短路径"></a>2.5 单源最短路径</h3><h1 id="第五章-回溯法"><a href="#第五章-回溯法" class="headerlink" title="第五章 回溯法"></a>第五章 回溯法</h1><p>文章参考：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/96616c2487a5">(四) 回溯法(试探算法) - 简书 (jianshu.com)</a></p>
 <h2 id="1-概述-2"><a href="#1-概述-2" class="headerlink" title="1.概述"></a>1.概述</h2><p>回溯法也称为试探算法，回溯法的求解目标一般是找出解空间树中满足约束条件的所有解；</p>
 <h3 id="1-1-术语-1"><a href="#1-1-术语-1" class="headerlink" title="1.1 术语"></a>1.1 术语</h3><p>在此之前介绍一些术语：</p>
 <ul>
@@ -1080,7 +1178,8 @@
 <li>从<code>根节点</code>开始，以<code>深度优先</code>方式搜索解空间；</li>
 <li>在搜索过程中用<code>剪枝函数</code>避免搜索进入不可能得到解的子空间；</li>
 </ol>
-
+<h2 id="2-范例-2"><a href="#2-范例-2" class="headerlink" title="2.范例"></a>2.范例</h2><h3 id="2-1-轮船装载问题"><a href="#2-1-轮船装载问题" class="headerlink" title="2.1 轮船装载问题"></a>2.1 轮船装载问题</h3><h3 id="2-2-作业调度问题"><a href="#2-2-作业调度问题" class="headerlink" title="2.2 作业调度问题"></a>2.2 作业调度问题</h3><h3 id="2-3-旅行售货员问题"><a href="#2-3-旅行售货员问题" class="headerlink" title="2.3 旅行售货员问题"></a>2.3 旅行售货员问题</h3><p>旅行售货员问题travelling salesman problem</p>
+<h3 id="2-4-N皇后问题"><a href="#2-4-N皇后问题" class="headerlink" title="2.4 N皇后问题"></a>2.4 N皇后问题</h3><h3 id="2-5-图着色问题"><a href="#2-5-图着色问题" class="headerlink" title="2.5 图着色问题"></a>2.5 图着色问题</h3>
               
             </div>
             <hr/>
