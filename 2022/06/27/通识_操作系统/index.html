@@ -27,11 +27,11 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/sys.png">
 <meta property="article:published_time" content="2022-06-27T03:38:00.000Z">
-<meta property="article:modified_time" content="2022-11-27T14:05:05.545Z">
+<meta property="article:modified_time" content="2022-11-30T13:16:34.991Z">
 <meta property="article:author" content="YangZaiyan">
 <meta property="article:tag" content="课程学习">
-<meta property="article:tag" content="计算机基础">
 <meta property="article:tag" content="考研">
+<meta property="article:tag" content="计算机基础">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://gintoki-jpg.github.io/img/bg/sys.png">
   
@@ -223,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          79k 字
+          80k 字
         
       </span>
     
@@ -234,7 +234,7 @@
         
         
         
-          657 分钟
+          664 分钟
         
       </span>
     
@@ -2154,6 +2154,31 @@
 <p>CPU向设备写的最终命令是”out”，相应的，读设备的第一步是”in”即从设备上取出内容交给CPU；</p>
 <p>整个文件视图路线总结如下：</p>
 <p><img src="/images/image-20220928105305674.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="4-I-x2F-O栈-amp-文件系统"><a href="#4-I-x2F-O栈-amp-文件系统" class="headerlink" title="4.I&#x2F;O栈&amp;文件系统"></a>4.I&#x2F;O栈&amp;文件系统</h2><p>（本节直接从课堂上的PPT总结，主要目的就是为了承上启下引出文件系统）</p>
+<p>I&#x2F;O栈非常复杂，利用计算机系统中常规的分层思想我们大致可以将其分为如下（I&#x2F;O栈本质上就是用户从应用的层次对磁盘进行读写如何影响到最终磁盘的读写）</p>
+<p><img src="/images/image-20221129085723686.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们仅介绍其中最核心的文件系统，文件系统的主要功能（也是设计一个文件系统需要具备的最基本的功能）如下</p>
+<p><img src="/images/image-20221129090132150.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>结论：</p>
+<ul>
+<li>一切文件系统的操作都是以block为单位，一个文件就是多个block的集合；</li>
+<li>block是逻辑上的单位，扇区是物理上的单位，一般一个block的大小大于等于一个扇区的大小；</li>
+</ul>
+</blockquote>
+<p>其中Naming是文件系统最基本的功能，课堂上老师讲解文件系统的流程也是按照Naming的两个阶段进行</p>
+<p><img src="/images/image-20221129090916285.png" srcset="/img/loading.gif" lazyload></p>
+<p>操作系统打开(open)一个文件的时候会对文件名做一个解析，将文件名转换为文件号，操作系统赋予该文件一个文件描述符并返回一个句柄，之后所有的操作(read、write)都是基于句柄操作，将操作映射到文件描述符和磁盘块上；</p>
+<p>该过程主要分为两个阶段，<code>目录</code>承担了文件名到文件号的映射阶段的任务，<code>文件</code>承担了文件号到磁盘块的映射阶段的任务；</p>
+<hr>
+<p>目录对任何文件数据都认为是&lt;文件名：文件号&gt;的对，目录对文件名的映射过程如下（实际上就是根据目录结构对文件进行查找）</p>
+<p><img src="/images/image-20221129091514353.png" srcset="/img/loading.gif" lazyload></p>
+<p>通过对目录结构的改进可以得到更高效的查找效率（如B+树的结构）</p>
+<p><img src="/images/image-20221129091938488.png" srcset="/img/loading.gif" lazyload></p>
+<p>这部分的考点是计算将文件名映射为文件号需要做多少次的磁盘访问（文件号也是保存在磁盘中的）</p>
+<p><img src="/images/image-20221129092223102.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<p>第二阶段，从文件号到磁盘块的映射，我们将在下面章节<code>10.常见文件系统</code>一节进行介绍，分文件系统对这部分知识点讲解（因为常见文件系统的区别也主要就体现在从文件号到磁盘块的映射）</p>
 <h1 id="第八章-文件系统"><a href="#第八章-文件系统" class="headerlink" title="第八章 文件系统"></a>第八章 文件系统</h1><p>CPU管理和内存管理构成了操作系统的核心kernal，通过外设管理用户可以用键盘和显示器进行输入和输出（可以将文件视图理解为文件系统的一个子集），本章将讨论构成一个完整的操作系统的最后一部分 —— 文件系统，用户对操作系统的使用都是以文件为基础的，无论是用户编辑的文档、执行的指令还是使用的外部设备在OS中都是文件，因此文件系统是构成操作系统的必要组成部分；</p>
 <p>文件系统归根结底是对磁盘的驱动，因为在磁盘驱动的过程中发现直接使用磁盘非常繁琐，所以引入如下五层抽象：</p>
 <ol>
@@ -2165,7 +2190,7 @@
 </ol>
 <p>操作系统通过上述五层抽象讲整个磁盘变成一系列文件，并将这些文件组织成树状结构，形成操作系统第二个基本的视图 —— 文件视图；</p>
 <p>本章从磁盘驱动出发逐层揭开上述抽象过程；</p>
-<h2 id="1-磁盘简介"><a href="#1-磁盘简介" class="headerlink" title="1.磁盘简介"></a>1.磁盘简介</h2><p>磁盘是一类较为特殊的I&#x2F;O设备，也就是持久性存储设备，学习磁盘是接触文件系统的基础，在本章的后面章节我们将基于磁盘讨论读写速度的优化和文件系统的设计</p>
+<h2 id="1-磁盘简介"><a href="#1-磁盘简介" class="headerlink" title="1.磁盘简介"></a>1.磁盘简介</h2><p>磁盘是一类较为特殊的I&#x2F;O设备，也就是持久性存储设备，学习磁盘是接触文件系统的基础（因为文件系统的底层就是存储设备，且一般考虑块设备而不是字符设备），在本章的后面章节我们将基于磁盘讨论读写速度的优化和文件系统的设计</p>
 <hr>
 <p>磁盘作为一种外部设备，其工作原理和一般外设工作原理完全一样：</p>
 <ol>
@@ -2184,6 +2209,13 @@
 <p>（2）从柱面中选择要具体读写哪个磁道，实际上就是选择哪个磁头（magnetic head，以下简称H）上电；</p>
 <p>（3）旋转磁盘，将对应磁道中要读写的那个扇区（sector，以下简称S）转到磁头的下方；</p>
 <p>（4）开始读写，将扇区中的内容读到内存缓存区中，或者是将内存缓存区中的内容写出到该扇区中；</p>
+<h3 id="1-1-磁盘调度算法"><a href="#1-1-磁盘调度算法" class="headerlink" title="1.1 磁盘调度算法"></a>1.1 磁盘调度算法</h3><p>参考链接：</p>
+<ul>
+<li><p>知识点讲解：<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%A3%81%E7%9B%98%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/3505728">磁盘调度算法_百度百科 (baidu.com)</a></p>
+</li>
+<li><p>例题：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44279771/article/details/112536036">(1条消息) 操作系统磁盘调度算法相关习题_作业写不完的卑微小cookie的博客-CSDN博客_单向扫描调度算法例题</a>（最后的单向扫描算法有点问题）</p>
+</li>
+</ul>
 <h2 id="2-磁盘驱动"><a href="#2-磁盘驱动" class="headerlink" title="2.磁盘驱动"></a>2.磁盘驱动</h2><h3 id="2-1-第一层抽象"><a href="#2-1-第一层抽象" class="headerlink" title="2.1 第一层抽象"></a>2.1 第一层抽象</h3><p>符合程序员使用习惯的磁盘读写是抹去C、H、S等具体细节，让程序员感觉是一堆扇区排成一排等待用户使用；</p>
 <p>实现这种访问的核心是建立从C、H、S扇区地址到扇区号的一个映射，即建立一个在C、H、S基础之上的编址方案，该编址方案是文件系统第一层抽象的中心任务；</p>
 <p>因为读写磁盘的时间主要花费在寻道上，所以最好的编址方案就是将逻辑上相邻的扇区在物理上也是在同一个磁道上且相邻；</p>
@@ -2236,7 +2268,7 @@
 <p>本节的核心就是讲述操作系统如何组织多个文件（这里是多个文件，不是多个进程，注意和第二层抽象区分），磁盘中的文件按照树形结构组织，形成目录树；</p>
 <p><img src="/images/image-20220928172505990.png" srcset="/img/loading.gif" lazyload></p>
 <p>实现磁盘的抽象就是实现目录树，那么实现目录树的关键又是什么呢？目录树由文件和目录两部分组成，实现目录树的关键就是实现目录；</p>
-<h2 id="3-文件系统概述"><a href="#3-文件系统概述" class="headerlink" title="3.文件系统概述"></a>3.文件系统概述</h2><p>本节主要参考王道，因为哈工大的教材是根据抽象构成来描绘文件系统的，但是知识点的抛出并不是很清晰，所以这里使用王道视频做一个对上面知识点的总结和拓展；</p>
+<h2 id="3-文件系统概述"><a href="#3-文件系统概述" class="headerlink" title="3.文件系统概述"></a>3.文件系统概述</h2><p>本节主要参考王道，因为哈工大的教材是根据抽象构成来描绘文件系统的，但是知识点&#x2F;考点的总结并不是很清晰，所以这里使用王道视频做一个对上面知识点的总结和拓展；</p>
 <blockquote>
 <p>文件：一组有意义的信息&#x2F;数据集合；</p>
 </blockquote>
@@ -2600,9 +2632,9 @@
       
         <a href="/tags/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/">#课程学习</a>
       
-        <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">#计算机基础</a>
-      
         <a href="/tags/%E8%80%83%E7%A0%94/">#考研</a>
+      
+        <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">#计算机基础</a>
       
     </div>
   
