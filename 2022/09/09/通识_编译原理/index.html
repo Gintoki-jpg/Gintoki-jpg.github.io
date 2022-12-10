@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/compile.jpg">
 <meta property="article:published_time" content="2022-09-09T01:50:00.000Z">
-<meta property="article:modified_time" content="2022-12-07T10:48:29.885Z">
+<meta property="article:modified_time" content="2022-12-08T02:18:52.975Z">
 <meta property="article:author" content="YangZaiyan">
 <meta property="article:tag" content="课程学习">
 <meta property="article:tag" content="计算机基础">
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          62k 字
+          63k 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          518 分钟
+          527 分钟
         
       </span>
     
@@ -2322,6 +2322,13 @@
 <p><img src="/images/image-20221206175416433.png" srcset="/img/loading.gif" lazyload></p>
 <p><img src="/images/image-20221206175429308.png" srcset="/img/loading.gif" lazyload></p>
 <p><img src="/images/image-20221206175445326.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>控制流语句的例子</p>
+</blockquote>
+<p>完整版的控制流语句的SDT如下（布尔表达式的SDT我们将在后面详细介绍）</p>
+<p><img src="/images/image-20221208082440539.png" srcset="/img/loading.gif" lazyload></p>
+<p>上述SDT中的基础文法并不是一个LL1文法，因此不能在自顶向下的语法分析过程中同时实现语义翻译，同时因为在产生式右部中内嵌有语义动作，因此使用自底向上的语法分析中进行语义翻译需要修改上述文法；</p>
+<p>详细流程参考<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1hE411M75v?p=49&vd_source=276d55048634a5b508b1b53a1ecd56b3">13.3.1 6-7控制流翻译的例子_哔哩哔哩_bilibili</a>；</p>
 <h3 id="5-1-布尔表达式的翻译"><a href="#5-1-布尔表达式的翻译" class="headerlink" title="5.1 布尔表达式的翻译"></a>5.1 布尔表达式的翻译</h3><p>在分支语句和循环语句中都会用到布尔表达式，布尔表达式的基本文法如下</p>
 <ul>
 <li>将关系运算符作用于两个算术表达式就可以得到一个关系表达式，关系表达式本身可以构成一个布尔表达式；</li>
@@ -2341,7 +2348,7 @@
 <p><img src="/images/image-20221207173318935.png" srcset="/img/loading.gif" lazyload></p>
 <p><img src="/images/image-20221207173332577.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="5-2-布尔表达式的回填"><a href="#5-2-布尔表达式的回填" class="headerlink" title="5.2 布尔表达式的回填"></a>5.2 布尔表达式的回填</h3><p>在为布尔表达式和控制流语句生成中间代码的时候，关键的问题是确定跳转指令的目标标号，在生成跳转指令的时候目标标号还不能确定，在前面介绍的翻译方案中，解决这一问题的方法就是将存放标号的地址作为继承属性传递到跳转指令生成的地方，但是这样做需要额外的处理（将标号和特定的地址绑定）；</p>
-<p>下面将介绍回填技术，回填技术的基本思想如下：生成一个跳转指令时，暂时不指定该跳转指令的目标标号。这样的指令都被放入由跳转指令组成的列表中。同一个列表中的所有跳转指令具有相同的目标标号。等到能够确定正确的目标标号时，才去填充这些指令的目标标号；</p>
+<p>下面将介绍回填技术，回填技术的基本思想如下：生成一个跳转指令时，暂时不指定该跳转指令的目标标号。这样的指令都被放入由跳转指令组成的列表中，等到能够确定正确的目标标号时，才去填充这些指令的目标标号；</p>
 <p>为非终结符设置两个综合属性：</p>
 <ul>
 <li><p>B.truelist：指向一个包含跳转指令的列表，这些指令最终获得的目标标号就是当B为真时控制流应该转向的指令的标号；</p>
@@ -2379,13 +2386,46 @@
 <p>B2.truelist的指令都要跳转到真出口，当B2为真时整个表达式的值也为真，因此B2的真出口就是B的真出口。要跳转到B2的真出口就是要跳转到B的真出口，因此B2.truelist中的指令都要放到B.truelist中；</p>
 <p>B1.falselist中的指令它们都是要跳转到B1的假出口，当B1的值为假的时候我们要进一步判断B2的值，因此B1的假出口就是B2的第一条指令，因此B1.falselist中的指令都要跳转到B2的第一条指令；</p>
 <p>B2.falselist中的指令都要跳转到B2的假出口，当B2的值为假的时候那么整个布尔表达式的值也是假的。因此B2的假出口就是B的假出口，要跳转到B2的假出口也就是要跳转到B的假出口。B2.falselist中的指令都要放置B.falselist中；</p>
-<p>根据此示意图可以看出，在分析B2之前，要用B2的第一条指令的标号来回填B1.falselist中的各条指令。当然我们可以记录下B2的第一条指令的标号在归约时完成此回填动作。为了记下B2第一条指令的标号我们在非终结符B2之前插入一个标记非终结符M。与M关联的语义动作它的任务就是记录下B2的第一条语义动作的标号。我们给M设置一个综合属性quad,M.quad等于下一条指令的标号。因为我们把M放在B2之前，因此M.quad记录的是第二条指令的标号。根据翻译方案示意图，我们要用M.quad来回填B1.falselist中的各条指令，因此调用backpatch用M.quad回填B1.falselist中的各条属性。B.truelist是由B1.truelist和B2.truelist合并而成的，因此我们调用merge函数将B1.truelist和B2.truelist进行合并，将合并后的指针赋值给B.truelist；</p>
+<p>根据此示意图可以看出，在分析B2之前，要用B2的第一条指令的标号来回填B1.falselist中的各条指令。我们可以记录下B2的第一条指令的标号，在归约时完成此回填动作。<code>为了记下B2第一条指令的标号我们在非终结符B2之前插入一个标记非终结符M。与M关联的语义动作它的任务就是记录下B2的第一条语义动作的标号</code>。我们给M设置一个综合属性quad， M.quad等于下一条指令的标号。因为我们把M放在B2之前，因此M.quad记录的是第二条指令的标号。根据翻译方案示意图，我们要用M.quad来回填B1.falselist中的各条指令，因此调用backpatch用M.quad回填B1.falselist中的各条属性。B.truelist是由B1.truelist和B2.truelist合并而成的，因此我们调用merge函数将B1.truelist和B2.truelist进行合并，将合并后的指针赋值给B.truelist；</p>
 <p><img src="/images/image-20221207183528980.png" srcset="/img/loading.gif" lazyload></p>
-<p>关于and的回填我们不再介绍，感兴趣看视频学习；</p>
-<p>下面举一个例子</p>
+<p>关于and的回填我们不再详细介绍，感兴趣看视频学习；</p>
+<hr>
+<p>下面举一个例子（上面看不懂也没关系，会做题就行）</p>
+<p>需要翻译的布尔表达式如下</p>
+<p><img src="/images/image-20221208083325073.png" srcset="/img/loading.gif" lazyload></p>
+<p>因为定义的都是综合属性，所以可以采用自底向上的分析；</p>
+<p>从左向右扫描输入串，将a&lt;b规约为文法符号B，根据B产生式的语义动作，makelist函数生成一个只包含下一条指令的列表，并把指针赋值给B.trulist；</p>
+<p>假设下一条指令从100开始，则B.trulist只包含标号100，B.falselist只包含标号101；</p>
+<p>接下来生成两条跳转指令，gen(‘if ’ E 1 .addr relop E 2 .addr ‘goto _’)中E1.address等于a，relop就是小于号，E2.address等于b，引号中的字符串按字面值传递，因此生成的100号指令和101号指令可以确定；</p>
+<blockquote>
+<p>注：下划线表示待回填的目标标号</p>
+</blockquote>
 <p><img src="/images/image-20221207183705413.png" srcset="/img/loading.gif" lazyload></p>
+<p>接下来读入下一个输入符号or，对应于对产生式B -&gt; B1 or M B2的运用；</p>
+<p>将栈顶中的空串归约成一个标记非终结符M（这句话的意思就是看到or和and无脑归约一个M即可），并执行M的语义动作；</p>
+<p>接着读入后面的输入符号，将c&lt;d规约为B，与上述分析方法相同，得到102和103的指令</p>
+<p><img src="/images/image-20221208083501962.png" srcset="/img/loading.gif" lazyload></p>
+<p>根据逻辑运算符的优先级，and优先级高于or的优先级，因此采用移入动作将and移入栈中（此时栈中已经存在B or B），对应于对and产生式的运用；</p>
+<p>读入关键字and之后，将栈顶的空串规约为M并执行M的语义动作，实际上就是计算下一条指令的标号；</p>
+<p>接着继续读入输入符号、归约、执行语义动作；</p>
+<p>接着就可以计算B and B（执行and产生式关联的语义动作）；</p>
+<p><img src="/images/image-20221208083524246.png" srcset="/img/loading.gif" lazyload></p>
+<p>接着执行栈顶的B or B</p>
+<p><img src="/images/image-20221208083538956.png" srcset="/img/loading.gif" lazyload></p>
+<p>上图是整个B对应的三地址码，其中有四条指令是等待回填的，在B的truelist中有两条指令100和104，当B的真出口确定以后我们将用B的真出口的标号回填这两条指令。同理B的faillist中有两条指令103和105，当B的假出口确定以后将会用B的假出口的标号回填此两条指令；</p>
 <h3 id="5-3-控制流语句的回填"><a href="#5-3-控制流语句的回填" class="headerlink" title="5.3 控制流语句的回填"></a>5.3 控制流语句的回填</h3><p>知识点部分参考<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/27b3d2e68c0c">编译器笔记35-中间代码生成-控制流语句的回填 - 简书 (jianshu.com)</a>，这里我们直接举例说明</p>
 <p><img src="/images/image-20221207183905360.png" srcset="/img/loading.gif" lazyload></p>
+<p>下面是上述输入的控制流语句对应的注释语法分析树，接下来看看是如何自底向上构造的</p>
+<p><img src="/images/image-20221208091614357.png" srcset="/img/loading.gif" lazyload></p>
+<p>从左向右读取输入，当读入while会运用产生式</p>
+<p><img src="/images/image-20221208091702928.png" srcset="/img/loading.gif" lazyload></p>
+<p>接着将a&lt;b规约为非终结符B，并执行B相关的语义动作，生成两条跳转指令；</p>
+<p>接着读入关键字do，栈顶归约出非终结符M2；</p>
+<p>接着读入if，对应如下产生式的使用</p>
+<p><img src="/images/image-20221208091927969.png" srcset="/img/loading.gif" lazyload></p>
+<p>将c&lt;5规约为布尔表达式B，执行其语义动作，生成两条跳转指令；</p>
+<p>接着读入输入符号then，将栈顶归约非终结符M1…</p>
+<p><img src="/images/image-20221208101844692.png" srcset="/img/loading.gif" lazyload></p>
 <h2 id="6-过程调用语句的翻译"><a href="#6-过程调用语句的翻译" class="headerlink" title="6.过程调用语句的翻译"></a>6.过程调用语句的翻译</h2><p>过程调用语句的基本文法如下</p>
 <p><img src="/images/image-20221207184502524.png" srcset="/img/loading.gif" lazyload></p>
 <p>过程调用语句的代码结构如下</p>
