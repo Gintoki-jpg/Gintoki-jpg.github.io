@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/sys.png">
 <meta property="article:published_time" content="2022-12-17T01:28:00.000Z">
-<meta property="article:modified_time" content="2022-12-17T12:04:58.278Z">
+<meta property="article:modified_time" content="2022-12-18T09:54:07.738Z">
 <meta property="article:author" content="YangZaiyan">
 <meta property="article:tag" content="期末复习">
 <meta property="article:tag" content="计算机基础">
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          16k 字
+          21k 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          137 分钟
+          172 分钟
         
       </span>
     
@@ -602,7 +602,7 @@
 <h3 id="3-6-小结"><a href="#3-6-小结" class="headerlink" title="3.6 小结"></a>3.6 小结</h3><p>下面给出几道练习题</p>
 <p><img src="/images/image-20221217153917098.png" srcset="/img/loading.gif" lazyload></p>
 <p><img src="/images/image-20221217155120679.png" srcset="/img/loading.gif" lazyload></p>
-<p>关于上面的4K，这是因为在二级页表中，一个页表或一个页目录的大小就是4K&#x3D;2^10^*32bit，而一共有2^10^的页目录项和2^10^的页表项，所以二级页表的内存就是4G</p>
+<p>4K是指一个物理页的大小是2^12^bit，一共有多少个物理页呢？一共有2^10^*2^10^的物理页框，故计算得到最大寻址空间为4GB</p>
 <p><img src="/images/image-20221217155803838.png" srcset="/img/loading.gif" lazyload></p>
 <blockquote>
 <p>Q：操作系统只能使用虚拟地址，那么操作系统如何知道一个虚拟地址的物理地址？</p>
@@ -937,7 +937,7 @@
 </blockquote>
 <p>A：饥饿是指线程一直等待，死锁是指对资源的申请陷入循环；死锁会导致饥饿，但是饥饿不一定导致死锁（因为饥饿一段时间后可能自动解除饥饿，但是如果没有外部干扰则死锁会一直存在）；</p>
 <p>关于银行家算法和哲学家进餐问题看王道和blog，银行家算法一定会考；</p>
-<h1 id="十二、disk-and-fs-abstraction"><a href="#十二、disk-and-fs-abstraction" class="headerlink" title="十二、disk and fs abstraction"></a>十二、disk and fs abstraction</h1><p>内存是非持久性存储设备，外存是持久性存储设备；</p>
+<h1 id="十二、disk-and-fs-abstraction"><a href="#十二、disk-and-fs-abstraction" class="headerlink" title="十二、disk and fs abstraction"></a>十二、disk and fs abstraction</h1><h2 id="1-磁盘"><a href="#1-磁盘" class="headerlink" title="1.磁盘"></a>1.磁盘</h2><p>内存是非持久性存储设备，外存是持久性存储设备；</p>
 <p>下面主要介绍两类二级存储器（注意除了主存储器以外的其他外存储器都是二级存储器）：</p>
 <ul>
 <li>磁盘是物理结构，闪存是电路结构；</li>
@@ -948,6 +948,177 @@
 </blockquote>
 <p>磁盘容量计算公式</p>
 <p><img src="/images/image-20221217195422940.png" srcset="/img/loading.gif" lazyload></p>
+<p>关于磁盘的计算题主要如下</p>
+<p><img src="/images/image-20221218155814671.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="2-read的生命周期"><a href="#2-read的生命周期" class="headerlink" title="2.read的生命周期"></a>2.read的生命周期</h2><p><img src="/images/image-20221218161000948.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>Q：read和write系统调用的区别是什么呢？</p>
+</blockquote>
+<p>A：read和write在形式几乎相同，对文件系统来说，写和读的区别在于写可能会有一个buffer在kernel中，写的时候先写入缓存再写入内存；</p>
+<h2 id="3-文件系统"><a href="#3-文件系统" class="headerlink" title="3.文件系统"></a>3.文件系统</h2><p><img src="/images/image-20221218161148445.png" srcset="/img/loading.gif" lazyload></p>
+<p>对上面的I&#x2F;O系统做一个细致的划分就可以得到I&#x2F;O栈（注意其组成）</p>
+<p><img src="/images/image-20221218162858554.png" srcset="/img/loading.gif" lazyload></p>
+<p>什么是MM I&#x2F;O呢？实际上是操作系统管理I&#x2F;O设备的一种方式，需要注意的是MM I&#x2F;O和Port I&#x2F;O是对应的，前者只需要使用常规的读写内存的操作就可以操作I&#x2F;O设备，但是后者只能使用单独的特殊命令来读写I&#x2F;O设备；</p>
+<p>文件系统主要有以下的功能</p>
+<p><img src="/images/image-20221218163419397.png" srcset="/img/loading.gif" lazyload></p>
+<p>分角度看待文件系统：</p>
+<ul>
+<li>用户角度来看就是持久存储的抽象</li>
+<li>系统有两个角度，系统调用和文件系统的角度<ul>
+<li>系统调用来看全是Bytes</li>
+<li>OS来看就是block，一个block的大小一般大于等于一个扇区的大小，block是逻辑单位，扇区是物理单位</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>注意：一切文件系统的操作都是以block为单位，一个文件就是一个block集合；</p>
+</blockquote>
+<h3 id="3-1-文件和目录"><a href="#3-1-文件和目录" class="headerlink" title="3.1 文件和目录"></a>3.1 文件和目录</h3><p>文件和目录是文件系统管理磁盘的两个手段：</p>
+<ul>
+<li>文件是block集合；</li>
+<li>目录是逻辑概念，表示映射结构，本质上是树状分层结构；</li>
+</ul>
+<p><img src="/images/image-20221218163651959.png" srcset="/img/loading.gif" lazyload></p>
+<p>将磁盘组织成线性扇区队列的方式有两种：</p>
+<ul>
+<li>第一种是由磁盘的物理结构决定的三元组寻址[cylinder, surface, sector]</li>
+<li>第二种是将所有的扇区都统一编号，使用控制器做映射，不需要关心使用的底层存储器，称为逻辑块寻址LBA</li>
+</ul>
+<h1 id="十三、fs-design"><a href="#十三、fs-design" class="headerlink" title="十三、fs design"></a>十三、fs design</h1><p>文件系统的底层是存储设备（一般考虑块设备而不是字符设备）</p>
+<p>文件系统的工作流程如下</p>
+<p><img src="/images/image-20221218164341929.png" srcset="/img/loading.gif" lazyload></p>
+<p>打开一个文件实际上就是做了一个文件名的解析，主要流程如下</p>
+<p><img src="/images/image-20221218164459322.png" srcset="/img/loading.gif" lazyload></p>
+<p>之后的所有操作都是在句柄上进行</p>
+<h2 id="1-目录"><a href="#1-目录" class="headerlink" title="1.目录"></a>1.目录</h2><p>目录的作用如下 - 将文件名转换为文件号</p>
+<p><img src="/images/image-20221218164628830.png" srcset="/img/loading.gif" lazyload></p>
+<p>目录一般是树状结构，根目录一般都是操作系统预先设定好的值</p>
+<p><img src="/images/image-20221218164741844.png" srcset="/img/loading.gif" lazyload></p>
+<p>将文件名映射到磁盘号需要做多少次磁盘的访问？</p>
+<p><img src="/images/image-20221218165238041.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="2-文件"><a href="#2-文件" class="headerlink" title="2.文件"></a>2.文件</h2><p>文件的主要功能就是讲述如何从文件号映射到真正的数据块；</p>
+<p>这里直接拿常见的三种文件系统举例说明</p>
+<h3 id="2-1-FAT"><a href="#2-1-FAT" class="headerlink" title="2.1 FAT"></a>2.1 FAT</h3><p>FAT表的长度和block的数量相同，每一个文件号会指向其中一个block</p>
+<p><img src="/images/image-20221218165618029.png" srcset="/img/loading.gif" lazyload></p>
+<p>访问其中的data block的方式类似于指针解引用</p>
+<p><img src="/images/image-20221218165727990.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>Q：FAT存在哪里？</p>
+</blockquote>
+<p>A：FAT既可以理解为一个文件系统，也可以理解为一个表，FAT存放在磁盘中固定的特殊位置上；</p>
+<blockquote>
+<p>Q：FAT中哪些磁盘块是空的？</p>
+</blockquote>
+<p>A：FAT值等于0就是空的；</p>
+<blockquote>
+<p>Q：如何在FAT中尽量保证局部性呢？</p>
+</blockquote>
+<p>A：FAT使用NextFit算法，在Append一个文件的时候寻找现在文件末尾最近的空闲block，相应的，FAT会产生零碎化的问题，尽管有整理碎片的方法，但是效率太低了</p>
+<blockquote>
+<p>Q:如何读&#x2F;写一个文件？</p>
+</blockquote>
+<p>A：直接按照FAT表block by block依次读取即可；写数据就是先append之后再修改FAT表；</p>
+<blockquote>
+<p>Q：如何格式化一个磁盘</p>
+</blockquote>
+<p>A：格式化磁盘，本质上就是清理磁盘然后清零FAT表，当然快速格式化就是直接清空FAT表</p>
+<p>关于FAT文件系统，存在很多问题</p>
+<p><img src="/images/image-20221218170044944.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-2-FFS"><a href="#2-2-FFS" class="headerlink" title="2.2 FFS"></a>2.2 FFS</h3><p>FFS文件系统的特点：</p>
+<ul>
+<li>文件号不是直接放在FAT表中，而是放在Inode向量中</li>
+<li>多层非对称树状结构</li>
+<li>FAT中文件的属性是存放在文件所在的目录中的，即不存放在文件中；而FFS文件属性是直接存放在文件对应的数据块中</li>
+</ul>
+<p>理解FFS只需要理解下面的图即可</p>
+<p><img src="/images/image-20221218170233382.png" srcset="/img/loading.gif" lazyload></p>
+<p>File Metadata是文件的元数据和基本属性；</p>
+<p>DP表示直接索引，表示其中每一项直接指向其中一个datablock，和FAT相同 - inode中有12个直接索引，因此可以寻址的范围是48kB，如果文件小于等于48kB，则直接使用直接索引就足够；</p>
+<p>Indirect Pointer一级间接索引指向的datablock不存储文件的数据，只存储索引，每个索引指向的datablock存储文件数据，二级索引和三级索引类似，要会计算其容量；</p>
+<p>一个一级间接索引：假设一个datablock是4kB，地址都是32bit，则一个datablock可以存储1024个索引，每个索引指向一个datablock，则寻址范围为4kB*1024&#x3D;4MB</p>
+<p><img src="/images/image-20221218170522814.png" srcset="/img/loading.gif" lazyload></p>
+<p>FFS文件系统的特性</p>
+<p><img src="/images/image-20221218170809137.png" srcset="/img/loading.gif" lazyload></p>
+<p>FFS对于稀疏文件可以良好的存储，少占用空间；</p>
+<p>FFS还是使用bitmap管理空闲空间，0&#x2F;1表示是否空闲，bitmap存放在固定的位置</p>
+<blockquote>
+<p>Q：inode究竟存放在哪里？</p>
+</blockquote>
+<p>A：最早的时候存放在磁道的最外面，问题就是距离datablock可能会有点远，现在存储inode会根据目录的具体结构进行存储；</p>
+<blockquote>
+<p>Q：FFS文件系统如何保证局部性？</p>
+</blockquote>
+<p>A：首先是块group，通过将文件数据块以合适的方式组织放置（非随机）以提高其局部性 - 将一个磁盘分为多个块组，思想是需要局部性的数据都放在同一个块组中，接着将文件的元数据等放在同一个块组中（各个块组的元数据放在自己的块组中），减少寻道时间</p>
+<p>具体设计：同一个目录&#x2F;文件下的所有文件尽量放在同一个块组中，因为同一个目录中的文件被打开的概率更大；当创建一个新文件的时候，在文件所属文件夹的块组中寻找一个inode，除非块组中已经没有空闲的inode了；需要注意的是不能将所有的目录放在一起，不然所有的文件都是在一个块组中没有意义，还是适当做一定的区分；</p>
+<blockquote>
+<p>Q：如何在一个块组内部分配datablock？</p>
+</blockquote>
+<p>A：思路是在块组中寻找第一个空闲块，这个方法能很好的规避碎片化，被称为FirstFit算法，需要注意的是FFS中永远不会将磁盘占满；</p>
+<p>First Fit算法的好处，因为前面的文件将空隙填满了，所以后面的文件几乎都会是连续的</p>
+<p><img src="/images/image-20221218171359892.png" srcset="/img/loading.gif" lazyload></p>
+<p>最后做一个关于FFS中文件号转化的题型</p>
+<p><img src="/images/image-20221218171650532.png" srcset="/img/loading.gif" lazyload></p>
+<p>之所以上面默认直接取inode中第一个项，实际上也是因为一般只需要一个对应的block就能存储所有文件&#x2F;目录</p>
+<p>其实还有一种可能是你这个地方没理解对，实际上应该是inode中存储了信息，是可以直接找到912号block存储了foo的，反正不可能是直接在block中寻找</p>
+<p>关于FFS的优点和缺点的整合</p>
+<p><img src="/images/image-20221218171725215.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-3-NTFS"><a href="#2-3-NTFS" class="headerlink" title="2.3 NTFS"></a>2.3 NTFS</h3><p><img src="/images/image-20221218171811692.png" srcset="/img/loading.gif" lazyload></p>
+<p>NTFS中最重要的数据结构是主文件表MFT，主文件表中的每一项都是1KB大小，有时候可以直接存储数据而不仅仅只是存储索引；</p>
+<p>MFT中条目的属性分为常驻和非常驻，常驻的意思就是直接存储在MFT表中，非常驻表示其属性的值存储在MFT指向的空间中 </p>
+<p><img src="/images/image-20221218171927676.png" srcset="/img/loading.gif" lazyload></p>
+<p>NTFS主要分小文件结构、中文件结构和大文件结构</p>
+<p><img src="/images/image-20221218172007988.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221218172101199.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221218172131525.png" srcset="/img/loading.gif" lazyload></p>
+<p>对于大文件，假如文件的碎片化实在是太多了，就需要加入间接的索引；</p>
+<p>NTFS中文件的元数据并不是存在文件的本身，而是存储在一些固定的文件中，即这些文件是专门存储MFT这些结构的；</p>
+<p>前面的文件系统都是把重要的结构简单的存放在固定的位置，但是在NTFS中将这些结构本身也作为文件来管理，好处是统一管理 ；</p>
+<blockquote>
+<p>Q：假如MFT本身是一个文件我们如何读它？</p>
+</blockquote>
+<p>A：因为读文件本身就需要MFT，但是MFT本身又是一个文件，无限循环，一般会直接约定NTFS的卷的第一个扇区指向MFT的第一个条目；</p>
+<blockquote>
+<p>Q：NTFS如何保证局部性？</p>
+</blockquote>
+<p>A：因为是变长的，所以使用bestfit，找到最小的合适的datablock即可</p>
+<h3 id="2-4-VFS"><a href="#2-4-VFS" class="headerlink" title="2.4 VFS"></a>2.4 VFS</h3><p>虚拟文件系统VFS用于给用户提供统一的接口，VFS并不是只提供统一的API接口，实际上还进行其他工作，比如协调Cache、路径查找等；</p>
+<p><img src="/images/image-20221218172612872.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="十四、reliable-fs"><a href="#十四、reliable-fs" class="headerlink" title="十四、reliable fs"></a>十四、reliable fs</h1><p>前面一直在讲文件系统功能和效率如何优化，本章讲解如何使得文件系统更加可靠；</p>
+<p>为什么需要可靠性？因为存储设备本身可能并不可靠（断电等行为），所以文件系统需要保证可靠性</p>
+<blockquote>
+<p>Q：可靠的文件系统的可靠，指的是什么？</p>
+</blockquote>
+<p>A：要么操作全部完成，要么一个操作都没有执行 - 即保证在各种错误情况下都能可靠，这与同步问题的原子性操作其实很类似；</p>
+<p>主要有两类技术保证文件系统的可靠性：事务和RAID冗余阵列</p>
+<h2 id="1-Transactions"><a href="#1-Transactions" class="headerlink" title="1.Transactions"></a>1.Transactions</h2><p>并不是所有的文件系统都使用事务，但是基本所有的数据库都使用事务；</p>
+<p>一个事务本质上就是一系列原子的行为，核心概念就是将两个consistent状态转换，不会出现中间状态</p>
+<p><img src="/images/image-20221218173730565.png" srcset="/img/loading.gif" lazyload></p>
+<p>一个事务的行为主要分为三个步骤，begin updates commit</p>
+<p><img src="/images/image-20221218173813427.png" srcset="/img/loading.gif" lazyload></p>
+<p>事务保证了四个非常重要的属性</p>
+<p><img src="/images/image-20221218173859170.png" srcset="/img/loading.gif" lazyload></p>
+<p>怎么实现一个事务？一个非常重要的手段就是logging，日志的思想非常简单，先将所有需要做的update写入log，写完log再写存储器；</p>
+<p>注意：log中是append-only，不能修改</p>
+<p>下面这个流程是事务的具体实现，被称为Redo loggiong</p>
+<p><img src="/images/image-20221218174053261.png" srcset="/img/loading.gif" lazyload></p>
+<p>其中添加commit record的操作可以理解为一个原子操作</p>
+<p><img src="/images/image-20221218174159472.png" srcset="/img/loading.gif" lazyload></p>
+<p>性能方面，log中记录了几乎所有的操作和数据的修改，本身就要写磁盘，现在还要写log，这将导致速度慢；</p>
+<p>这也是为什么有些文件系统不采用事务的方式（实际上因为log是顺序的所以其实对性能影响也不会很大）</p>
+<p>事务中的顺序非常重要</p>
+<p><img src="/images/image-20221218174436383.png" srcset="/img/loading.gif" lazyload></p>
+<p>现在主要有两种实现事务的方法 - Journaling和Logging，其中Journaling只会对metadata的数据进行事务操作，而 Logging会对所有的数据进行事务操作，这是为了在效率和可靠性之间做一个权衡；</p>
+<h2 id="2-RAID"><a href="#2-RAID" class="headerlink" title="2.RAID"></a>2.RAID</h2><p>RAID的整体思想非常简单，即将数据存储在多个Disk中，即使一个磁盘坏了也可以通过另一个磁盘恢复，恢复方法有多种，恢复方法既可以在硬件层面也可以在软件层面；</p>
+<p>RAID会有不同的Level</p>
+<ul>
+<li><p>RAID 0：Raid0技术是把多块（至少两块）物理硬盘通过工具绑在一起，将数据分成几块分别依次写入到各个物理硬盘中。这样，硬盘的读写性能会提高数倍，但是RAID 0也有局限性，提高读写速率的同时，如<br>果任意中的一块硬盘发生故障，将会导致整个系统的数据都受到破坏</p>
+</li>
+<li><p>RAID 1表示两个磁盘各存储完整的数据，整个I&#x2F;O的速度是比较快的，但是写的时候是比较慢的 - 一个磁盘坏了直接读另一个磁盘恢复</p>
+</li>
+<li><p>RAID 1对空间的浪费很大，RAID 5是对它的优化，使用奇偶校验；图中data被划分成不同的条带，将条带顺序的分配到不同的磁盘上，其中P0、P1等都是奇偶校验，异或操作可以得到其中某个错误的条带Unit中的一个条带的数据，即恢复 - 之所以奇偶校验旋转排列是为了避免Disk不平衡的问题（存储奇偶校验的Disk会被写的次数多），另外条带的大小需要考虑平衡性；RAID5的缺点是如果两个条带坏了就不能恢复，同时还需要知道需要恢复的磁盘是哪个才能恢复</p>
+</li>
+</ul>
+<p><img src="/images/image-20221218174852093.png" srcset="/img/loading.gif" lazyload></p>
 
               
             </div>
