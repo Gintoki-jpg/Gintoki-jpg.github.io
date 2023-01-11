@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/cpp.png">
 <meta property="article:published_time" content="2022-09-07T00:07:00.000Z">
-<meta property="article:modified_time" content="2022-12-05T02:14:11.719Z">
+<meta property="article:modified_time" content="2023-01-09T11:41:39.312Z">
 <meta property="article:author" content="YangZaiyan">
 <meta property="article:tag" content="课程学习">
 <meta property="article:tag" content="数据结构与算法">
@@ -284,10 +284,7 @@
 <p>2022&#x2F;11&#x2F;13 16:10 现在就是先跟着网上把知识点过一遍，之后再<code>看书！！！</code>一定要看书然后刷上面的题，老师的讲法和出题就是根据书上来的！！！</p>
 <p>2022&#x2F;11&#x2F;16 9:32 看书的效率真的是太慢了，得换个方法…实在不行再回头过去看看慕课的视频，或者是搜索零碎的视频来看；</p>
 <hr>
-<h1 id="第一章-算法概述"><a href="#第一章-算法概述" class="headerlink" title="第一章 算法概述"></a>第一章 算法概述</h1><blockquote>
-<p>考点：</p>
-</blockquote>
-<h2 id="1-算法与程序"><a href="#1-算法与程序" class="headerlink" title="1.算法与程序"></a>1.算法与程序</h2><p>通俗的讲，算法是指解决问题的一种方法或一个过程；</p>
+<h1 id="第一章-算法概述"><a href="#第一章-算法概述" class="headerlink" title="第一章 算法概述"></a>第一章 算法概述</h1><h2 id="1-算法与程序"><a href="#1-算法与程序" class="headerlink" title="1.算法与程序"></a>1.算法与程序</h2><p>通俗的讲，算法是指解决问题的一种方法或一个过程；</p>
 <p>严格的讲，算法是指由若干条指令组成的有穷序列，且满足以下性质：</p>
 <ul>
 <li>输入：有零个或多个由外部提供的量作为算法的输入；</li>
@@ -1405,7 +1402,7 @@
 <p>首先是如何使用二维数组存储金字塔，常见的方法有使用左上三角存储和左下三角存储，我们这里选择了使用左上三角存储的原因是为了更方便的观察和处理金字塔，同时将金字塔从数组的(1,1)位置开始存储，其他位置赋值为0，之所以这样做是为了便于之后的计算，当探测范围m加上当前矿工位置(x,y)超出了金字塔的范围的时候，因为超出部分被赋值为0所以不会对求和结果做出影响，这意味着我们不需要额外处理这种情况；</p>
 <p>那么应该如何选择遍历顺序呢？其实这里选择正序和逆序都是可以的，但是对我个人来说逆序遍历更好理解，同时ans数组的首元素就是最终的最优值，直接cout即可，非常方便；</p>
 <p>选择了逆序遍历就一定要注意遍历的逻辑，首先初始化ans对应pyramid的最后一层，接着从倒数第二层的最后一个节点使用逻辑max(left,right)+pyramid(x,y)即可得到ans数组每个节点的值，因为是从下向上、从右向左，所以外层循环和内层循环都是递减操作，边界条件是行数不低于x、列数不低于y，针对每层的节点的遍历，保持x值不变，y值递减即可，需要注意起始节点(也就是每层得最后一个节点)的位置是依赖于i和x以及steps值的，这里只需要简单的求解一个二元方程即可得到j值和i的关系；</p>
-<h3 id="2-6-最大子段和"><a href="#2-6-最大子段和" class="headerlink" title="2.6 最大子段和"></a>2.6 最大子段和</h3><p>文章参考：<a target="_blank" rel="noopener" href="https://wenku.baidu.com/view/84ea87270440be1e650e52ea551810a6f424c840.html?_wkts_=1669528748628">最大子段和详解（N种解法汇总） - 百度文库 (baidu.com)</a>；</p>
+<h3 id="2-6-最大子段和-续"><a href="#2-6-最大子段和-续" class="headerlink" title="2.6 最大子段和(续)"></a>2.6 最大子段和(续)</h3><p>文章参考：<a target="_blank" rel="noopener" href="https://wenku.baidu.com/view/84ea87270440be1e650e52ea551810a6f424c840.html?_wkts_=1669528748628">最大子段和详解（N种解法汇总） - 百度文库 (baidu.com)</a>；</p>
 <blockquote>
 <p>问题描述</p>
 </blockquote>
