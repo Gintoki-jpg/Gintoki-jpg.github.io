@@ -1,0 +1,846 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/logo.png">
+  <link rel="icon" href="/img/bg/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="杨再俨">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="大三上编译原理实验项目；">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初级项目_词法分析器">
+<meta property="og:url" content="https://gintoki-jpg.github.io/2022/09/30/%E9%A1%B9%E7%9B%AE_%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90%E5%99%A8/index.html">
+<meta property="og:site_name" content="Tintoki_blog">
+<meta property="og:description" content="大三上编译原理实验项目；">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/project.png">
+<meta property="article:published_time" content="2022-09-30T09:13:00.000Z">
+<meta property="article:modified_time" content="2023-04-19T02:52:26.171Z">
+<meta property="article:author" content="YangZaiyan">
+<meta property="article:tag" content="编译原理">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gintoki-jpg.github.io/img/bg/project.png">
+  
+  
+  
+  <title>初级项目_词法分析器 - Tintoki_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"gintoki-jpg.github.io","root":"/","version":"1.9.1","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tintoki_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/bg1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">初级项目_词法分析器</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-09-30 17:13" pubdate>
+          2022年9月30日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          18k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          153 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">初级项目_词法分析器</h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="绪论"><a href="#绪论" class="headerlink" title="绪论"></a>绪论</h1><blockquote>
+<p>实验题目：词法分析程序的设计与实现。</p>
+</blockquote>
+<blockquote>
+<p>实验内容：设计并实现C语言的词法分析程序，要求实现如下功能：</p>
+</blockquote>
+<p>（1）可以识别出用C语言编写的源程序中的每个单词符号，并以记号的形式输出每个单词符号；</p>
+<p>（2）可以识别并跳过源程序中的注释；</p>
+<p>（3）可以统计源程序中的语句行数、各类单词的个数、以及字符总数，并输出统计结果；</p>
+<p>（4）检查源程序中存在的词法错误，并报告错误所在的位置；</p>
+<p>（5）对源程序中出现的错误进行适当的回复，使词法分析可以继续进行，对源程序进行一次扫描，即可检查并报告源程序中存在的所有词法错误；</p>
+<blockquote>
+<p>实现要求：可以选择以下两种方案中的一种实现：</p>
+</blockquote>
+<ul>
+<li><p>方法1：采用编程语言，手工编写词法分析程序；</p>
+</li>
+<li><p>方法2：基于LEX，自动生成词法分析程序；</p>
+</li>
+</ul>
+<blockquote>
+<p>实验报告：按照实验报告要求，对实现的词法分析器进行说明；</p>
+</blockquote>
+<blockquote>
+<p>实验环境：源码的作者使用的是64位的Linux环境，但是实测验证发现64位的Windows11同样可以执行，为了实验的方便，我们采用直接在Windows环境下进行开发测试（虚拟机的Linux环境真的太难弄了，每次切换文件啥的真的会疯掉…）</p>
+</blockquote>
+<p>以下是我们在开发过程中的过程图</p>
+<p><img src="/images/image-20221012144356100.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221012144442740.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<p>关于参考资料，我来说说我的看法：</p>
+<ul>
+<li>源码2本身存在问题，而且给出来的exe程序也有问题，我们直接pass了，然后因为网上关于这方面的介绍特别少，所以只剩下源码1可以选择；</li>
+<li>源码1分为C++实现和LEX实现，因为LEX实现过于不同常人所以直接pass，经过测试C++实现的代码也非常简洁，只有五个，并且build生成的exe可以正确的完美的完成老师的要求，所以接下来直接看源码慢慢啃就OK了（可以结合书或者网上资料一起啃），源码1的参考链接<a target="_blank" rel="noopener" href="https://github.com/gkkeys/alex">gkkeys&#x2F;alex: The Agile Lexical Analyzer for C (github.com)</a>；（分析方法，先把各个功能函数的功能记录下来，完整的过一遍流程之后再详细理解每一个功能函数的意义）</li>
+</ul>
+<p>源码1的目录结构：</p>
+<p><img src="/images/image-20221012143025688.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>def文件夹是一些集合定义，实际编译过程中有很大作用，但都是一些枚举，可以放在最后看；</li>
+<li>flex文件夹是LEX编译程序生成的词法分析程序，因为咱们不采用这种方式所以这个也pass掉；</li>
+<li>graph文件夹中写Readme文档所用的图片；</li>
+<li>test文件夹中是我们会用到的测试程序，分为没有词法错误的程序test1.c和有词法错误的程序test2.c</li>
+</ul>
+<p>其余五个文件就是核心文件：</p>
+<p>├── alex.cpp            主程序<br>├── lexer.cpp           语法分析类实现<br>├── token.cpp           标记类实现<br>├── lexer.h             语法分析类声明<br>├── token.h             标记类声明</p>
+<hr>
+<p>好了，介绍完基本的结构之后我们可以开始正式开发一个基于C++的C语言词法分析器了；</p>
+<h1 id="一、词法分析程序的实现"><a href="#一、词法分析程序的实现" class="headerlink" title="一、词法分析程序的实现"></a>一、词法分析程序的实现</h1><h2 id="1-理论知识"><a href="#1-理论知识" class="headerlink" title="1.理论知识"></a>1.理论知识</h2><p>参考<a href="https://gintoki-jpg.github.io/2022/09/09/%E9%80%9A%E8%AF%86_%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/#4-%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90%E7%A8%8B%E5%BA%8F%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0">编译原理 - Tintoki_blog (gintoki-jpg.github.io)</a></p>
+<p>其实这部分读不懂也没关系，只需要好好阅读代码即可；</p>
+<h2 id="2-数据结构设计"><a href="#2-数据结构设计" class="headerlink" title="2.数据结构设计"></a>2.数据结构设计</h2><p>C语言中的Token类主要有以下几种Type类型：</p>
+<ul>
+<li>Keyword: 关键词。C中的保留字；</li>
+<li>Identifier: 标识符。变量名或函数名；</li>
+<li>Numerical_Constant: 数值常量；</li>
+<li>Char_Constant: 字符常量。如<code>&#39;a&#39;</code>、<code>&#39;b&#39;</code>；</li>
+<li>String_Literal: 字符串常量。如<code>&quot;abc&quot;</code>；</li>
+<li>Punctuator: 运算符；</li>
+<li>Error: 错误类型Token；</li>
+</ul>
+<p>我们的词法分析程序定义了两个类：</p>
+<ul>
+<li>Lexer类：Lexer类作为词法分析器类主要负责词法分析；</li>
+<li>Token类：Token类负责将词法分析识别的字符串整合成token形式输出；</li>
+</ul>
+<p>下面是我们关于这两个类的设计，包含了相关的属性以及方法</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Token</span>&#123;<br><span class="hljs-keyword">private</span>:<br>    string tokenType;         <span class="hljs-comment">//token类型</span><br>    <span class="hljs-type">unsigned</span> tokenLine;       <span class="hljs-comment">//token所在行</span><br>    <span class="hljs-type">unsigned</span> tokenColumn;     <span class="hljs-comment">//token所在列</span><br>    string tokenString;       <span class="hljs-comment">//token内容</span><br>    string tokenError;        <span class="hljs-comment">//token错误类型，仅对出错token有效</span><br><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">Token</span>();<br>    <span class="hljs-built_in">Token</span>(string type_, <span class="hljs-type">unsigned</span> line, <span class="hljs-type">unsigned</span> column, string str);<br>    ~<span class="hljs-built_in">Token</span>();<br><br>    <span class="hljs-function">string <span class="hljs-title">getType</span><span class="hljs-params">()</span> <span class="hljs-type">const</span></span>;            <span class="hljs-comment">//获取当前token类型</span><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">setType</span><span class="hljs-params">(string type_)</span></span>;        <span class="hljs-comment">//设置当前token类型</span><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">setToken</span><span class="hljs-params">(string token)</span></span>;       <span class="hljs-comment">//设置当前token内容</span><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">setError</span><span class="hljs-params">(string error)</span></span>;       <span class="hljs-comment">//设置当前token错误类型，该方法仅对出错token有效</span><br>    <span class="hljs-keyword">friend</span> ostream &amp;<span class="hljs-keyword">operator</span>&lt;&lt;(ostream &amp;os, <span class="hljs-type">const</span> Token &amp;token);<span class="hljs-comment">//重载输出流操作符&lt;&lt;</span><br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Lexer</span>&#123;<br><span class="hljs-keyword">private</span>:<br>    string fileName;                   <span class="hljs-comment">//词法分析器分析的源程序文件名</span><br>    ifstream fileSource;               <span class="hljs-comment">//词法分析器分析的源程序文件输入流，ifstream表示从已有文件对象读</span><br>    string stringBuffer;               <span class="hljs-comment">//字符串缓冲区</span><br>    <span class="hljs-type">unsigned</span> countChar;                     <span class="hljs-comment">//当前指针指向字符</span><br>    <span class="hljs-type">unsigned</span> countLine;                     <span class="hljs-comment">//当前指针所在行</span><br>    <span class="hljs-type">unsigned</span> countColumn;                   <span class="hljs-comment">//当前指针所在列</span><br><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">getIdentifierKeyword</span><span class="hljs-params">(Token &amp;token)</span></span>;   <span class="hljs-comment">//get标识符/关键字</span><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">getNumericalConstant</span><span class="hljs-params">(Token &amp;token)</span></span>;   <span class="hljs-comment">//get数值常量</span><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">getCharConstant</span><span class="hljs-params">(Token &amp;token)</span></span>;        <span class="hljs-comment">//get字符常量</span><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">getStringConstant</span><span class="hljs-params">(Token &amp;token)</span></span>;      <span class="hljs-comment">//get字符串常量</span><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">getPunctuator</span><span class="hljs-params">(Token &amp;token,<span class="hljs-type">char</span> &amp;ch,<span class="hljs-type">bool</span> &amp;res)</span></span>;          <span class="hljs-comment">//get运算符</span><br><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> TOKEN_TYPE(TYP) unsigned count_##TYP;<span class="hljs-comment">// 定义当前已分析出的各类token的数目，使用count_##TYP替代</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;def/TOKEN_TYPE.def&quot;</span>    <span class="hljs-comment">//引入之前定义的Token类型的def</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">undef</span> TOKEN_TYPE                <span class="hljs-comment">//#undef就是取消一个宏的定义，之后这个宏所定义的就无效，避免重定义</span></span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">Lexer</span>();                                <span class="hljs-comment">//默认构造函数</span><br>    <span class="hljs-built_in">Lexer</span>(string fileName);                <span class="hljs-comment">//含参构造函数</span><br>    ~<span class="hljs-built_in">Lexer</span>();                               <span class="hljs-comment">//默认析构函数</span><br><br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">lexer</span><span class="hljs-params">()</span></span>;                           <span class="hljs-comment">//词法分析程序</span><br>    <span class="hljs-function"><span class="hljs-type">char</span> <span class="hljs-title">getChar</span><span class="hljs-params">()</span></span>;                         <span class="hljs-comment">//get当前字符并将指针移至该char之后</span><br>    <span class="hljs-function"><span class="hljs-type">char</span> <span class="hljs-title">peekChar</span><span class="hljs-params">()</span></span>;                        <span class="hljs-comment">//get当前char但不移动指针</span><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">printResult</span><span class="hljs-params">()</span></span>;					  <span class="hljs-comment">//summary</span><br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>需要注意的是我们在Token类中重载了输出操作符&lt;&lt;，目的是为了在print结果的时候直接使用cout&lt;&lt;token的形式进行输出，当然不进行重载使用普通的cout分别对Token类的属性进行cout也是可以的；</p>
+<p>程序整体的数据结构设计非常简单，就只有以上两个，难点在于接下来将会介绍的函数封装部分，涉及大量自动机的使用；</p>
+<h2 id="3-函数封装"><a href="#3-函数封装" class="headerlink" title="3.函数封装"></a>3.函数封装</h2><h3 id="3-1-功能函数"><a href="#3-1-功能函数" class="headerlink" title="3.1 功能函数"></a>3.1 功能函数</h3><p>在词法分析的过程中会频繁使用到一些重复的判断逻辑，我们将这些逻辑封装为单个的函数方便调用</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">isAlpha</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">char</span> ch)</span>                       <span class="hljs-comment">// 判断字符是否为字母或&#x27;_&#x27;</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">isalpha</span>(ch) || ch == <span class="hljs-string">&#x27;_&#x27;</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">isAlphaDigit</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">char</span> ch)</span>                  <span class="hljs-comment">// 判断字符是否为字母、数字或&#x27;_&#x27;</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">isalpha</span>(ch) || <span class="hljs-built_in">isdigit</span>(ch) || ch == <span class="hljs-string">&#x27;_&#x27;</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">ise</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">char</span> ch)</span>                           <span class="hljs-comment">// 判断字符是否为&#x27;e&#x27;或&#x27;E&#x27;</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">return</span> ch == <span class="hljs-string">&#x27;e&#x27;</span> || ch == <span class="hljs-string">&#x27;E&#x27;</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">isws</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">char</span> ch)</span>                          <span class="hljs-comment">//判断是否是字符串结束符，根据ASCLL定义，小于0不属于char</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">return</span> ch == <span class="hljs-string">&#x27; &#x27;</span> || ch == <span class="hljs-string">&#x27;\t&#x27;</span> || ch == <span class="hljs-string">&#x27;\v&#x27;</span> || ch == <span class="hljs-string">&#x27;\f&#x27;</span> || ch == <span class="hljs-string">&#x27;\n&#x27;</span> || ch &lt;= <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-2-Token类方法"><a href="#3-2-Token类方法" class="headerlink" title="3.2 Token类方法"></a>3.2 Token类方法</h3><p>Token的类方法实现都非常简答，要么就是直接赋值要么就是直接return某个值，这里我们直接给出示例代码</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function">string <span class="hljs-title">Token::getType</span><span class="hljs-params">()</span> <span class="hljs-type">const</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">return</span> tokenType;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Token::setType</span><span class="hljs-params">(string tokentype)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">this</span>-&gt;tokenType = tokentype;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Token::setToken</span><span class="hljs-params">(string token)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">this</span>-&gt;tokenString = token;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Token::setError</span><span class="hljs-params">(string error)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">this</span>-&gt;tokenError = error;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>需要注意的是前面提到的输出运算符重载，为了效果明显我们为Error的语句加了高亮；</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs cpp">ostream &amp;<span class="hljs-keyword">operator</span>&lt;&lt;(ostream &amp;os, <span class="hljs-type">const</span> Token &amp;token)<br>&#123;<br>    <span class="hljs-keyword">if</span> (token.tokenType != <span class="hljs-string">&quot;Error&quot;</span>)<br>    &#123;<br>        os &lt;&lt; <span class="hljs-string">&quot;Type: &quot;</span>&lt;&lt;token.tokenType&lt;&lt;endl&lt;&lt;<br>        <span class="hljs-string">&quot;Location: &quot;</span>&lt;&lt;token.tokenLine &lt;&lt; <span class="hljs-string">&#x27;:&#x27;</span> &lt;&lt; token.tokenColumn &lt;&lt; endl &lt;&lt;<br>        <span class="hljs-string">&quot;Value: &quot;</span>&lt;&lt; token.tokenString &lt;&lt; endl;<br>    &#125;<br>    <span class="hljs-keyword">else</span><br>    &#123;<br>        <span class="hljs-comment">/*</span><br><span class="hljs-comment">        os &lt;&lt; &quot;\033[1m&quot; &lt;&lt; token.line_ &lt;&lt; &quot;:&quot; &lt;&lt; token.column_ &lt;&lt; &quot;: &quot;</span><br><span class="hljs-comment">           &lt;&lt; &quot;\033[31mError: \033[32m&quot; &lt;&lt; token.error_ &lt;&lt; &quot;\033[39m &quot; &lt;&lt; token.token_ &lt;&lt; &quot;\033[0m&quot;;</span><br><span class="hljs-comment">        */</span><br>        os &lt;&lt;<span class="hljs-string">&quot;\033[31mError: \033[32m&quot;</span> &lt;&lt; token.tokenError &lt;&lt;endl&lt;&lt;<br>        <span class="hljs-string">&quot;\033[1m&quot;</span>&lt;&lt;<span class="hljs-string">&quot;Loacation: &quot;</span> &lt;&lt; token.tokenLine &lt;&lt; <span class="hljs-string">&quot;:&quot;</span> &lt;&lt; token.tokenColumn &lt;&lt;endl&lt;&lt;<br>        <span class="hljs-string">&quot;\033[39m&quot;</span>&lt;&lt;<span class="hljs-string">&quot;Value: &quot;</span> &lt;&lt; token.tokenString &lt;&lt; <span class="hljs-string">&quot;\033[0m&quot;</span>&lt;&lt;endl;<br>    &#125;<br>    <span class="hljs-keyword">return</span> os;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-3-Lexer类方法"><a href="#3-3-Lexer类方法" class="headerlink" title="3.3 Lexer类方法"></a>3.3 Lexer类方法</h3><p>Lexer类中最主要的几个方法分别是：</p>
+<ul>
+<li>void getIdentifierKeyword(Token &amp;token);   &#x2F;&#x2F;get标识符&#x2F;关键字</li>
+<li>void getNumericalConstant(Token &amp;token);   &#x2F;&#x2F;get数值常量</li>
+<li>void getCharConstant(Token &amp;token);        &#x2F;&#x2F;get字符常量</li>
+<li>void getStringConstant(Token &amp;token);      &#x2F;&#x2F;get字符串常量</li>
+<li>void getPunctuator(Token &amp;token,char &amp;ch,bool &amp;res);          &#x2F;&#x2F;get运算符</li>
+<li>bool lexer();                           &#x2F;&#x2F;词法分析辅助</li>
+</ul>
+<p>前面5个函数都是为了最后的lexer词法分析函数辅助，我们分别介绍；</p>
+<h4 id="3-3-1-getIdentifierKeyword"><a href="#3-3-1-getIdentifierKeyword" class="headerlink" title="3.3.1 getIdentifierKeyword"></a>3.3.1 getIdentifierKeyword</h4><p>首先是获取标识符、关键字的函数（我们暂时不讨论如何区分标识符&#x2F;关键字和字符串常量）</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Lexer::getIdentifierKeyword</span><span class="hljs-params">(Token &amp;token)</span></span><br><span class="hljs-function"></span>&#123;<br>    token.<span class="hljs-built_in">setType</span>(<span class="hljs-string">&quot;Identifier&quot;</span>);<br>    <span class="hljs-built_in">getChar</span>();<br>    <span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>)<br>    &#123;<br>        <span class="hljs-type">char</span> ch = <span class="hljs-built_in">peekChar</span>();<br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isAlpha</span>(ch))<br>        &#123;<br>            <span class="hljs-built_in">getChar</span>();<br>        &#125;<br>        <span class="hljs-keyword">else</span><br>            <span class="hljs-keyword">break</span>;<br>    &#125;<br>    <span class="hljs-meta">#<span class="hljs-keyword">define</span> KEYWORD(TOK)     \</span><br><span class="hljs-meta">        <span class="hljs-keyword">if</span> (stringBuffer == #TOK) \</span><br><span class="hljs-meta">            token.setType(<span class="hljs-string">&quot;Keyword&quot;</span>), count_Keyword++;</span><br>    <span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;def/KEYWORD.def&quot;</span></span><br>    <span class="hljs-meta">#<span class="hljs-keyword">undef</span> KEYWORD</span><br>    <span class="hljs-keyword">if</span> (token.<span class="hljs-built_in">getType</span>() == <span class="hljs-string">&quot;Identifier&quot;</span>)<br>    &#123;<br>        count_Identifier++;<br>    &#125;<br>    token.<span class="hljs-built_in">setToken</span>(stringBuffer);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>这里借助def文件夹中实现定义的KEYWORD.def文件，定义了一个功能函数用于判断究竟是标识符还是关键字，分别为其设置type以及计数；</p>
+<h4 id="3-3-2-getNumericalConstant"><a href="#3-3-2-getNumericalConstant" class="headerlink" title="3.3.2 getNumericalConstant"></a>3.3.2 getNumericalConstant</h4><p>下面是获取数值常量的函数，我们这里指的数值常量就是C语言编程中使用的诸如 1、1.4、1.5e等合法数值</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Lexer::getNumericalConstant</span><span class="hljs-params">(Token &amp;token)</span></span><br><span class="hljs-function"></span>&#123;<br>    token.<span class="hljs-built_in">setType</span>(<span class="hljs-string">&quot;Numerical_Constant&quot;</span>);<br>    <span class="hljs-built_in">getChar</span>();<br>    <span class="hljs-type">unsigned</span> state = <span class="hljs-number">1</span>;<br>    <span class="hljs-type">char</span> ch;<br>    <span class="hljs-keyword">while</span>(state!=<span class="hljs-number">0</span>)&#123;<br>        <span class="hljs-keyword">switch</span> (state)<br>        &#123;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">0</span>:<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:<br>            ch = <span class="hljs-built_in">peekChar</span>();<br>            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isdigit</span>(ch))<br>            &#123;<br>                state = <span class="hljs-number">1</span>;<br>                <span class="hljs-built_in">getChar</span>();<br>            &#125;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (ch == <span class="hljs-string">&#x27;.&#x27;</span>)<br>            &#123;<br>                state = <span class="hljs-number">2</span>;<br>                <span class="hljs-built_in">getChar</span>();<br>            &#125;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-built_in">ise</span>(ch))<br>            &#123;<br>                state = <span class="hljs-number">4</span>;<br>                <span class="hljs-built_in">getChar</span>();<br>            &#125;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isAlpha</span>(ch))<br>            &#123;<br>                token.<span class="hljs-built_in">setType</span>(<span class="hljs-string">&quot;Error&quot;</span>);<br>                token.<span class="hljs-built_in">setError</span>(<span class="hljs-string">&quot;illegal name&quot;</span>);<br>                count_Error++;<br>                state = <span class="hljs-number">7</span>;<br>                <span class="hljs-built_in">getChar</span>();<br>            &#125;<br>            <span class="hljs-keyword">else</span><br>            &#123;<br>                state = <span class="hljs-number">0</span>;<br>            &#125;<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:<br>            ch = <span class="hljs-built_in">peekChar</span>();<br>            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isdigit</span>(ch))<br>            &#123;<br>                state = <span class="hljs-number">3</span>;<br>                <span class="hljs-built_in">getChar</span>();<br>            &#125;<br>            <span class="hljs-keyword">else</span><br>            &#123;<br>                state = <span class="hljs-number">0</span>;<br>            &#125;<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">3</span>:<br>            ch = <span class="hljs-built_in">peekChar</span>();<br>            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isdigit</span>(ch))<br>            &#123;<br>                state = <span class="hljs-number">3</span>;<br>                <span class="hljs-built_in">getChar</span>();<br>            &#125;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-built_in">ise</span>(ch))<br>            &#123;<br>                state = <span class="hljs-number">4</span>;<br>                <span class="hljs-built_in">getChar</span>();<br>            &#125;<br>            <span class="hljs-keyword">else</span><br>            &#123;<br>                state = <span class="hljs-number">0</span>;<br>            &#125;<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">4</span>:<br>            ch = <span class="hljs-built_in">peekChar</span>();<br>            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isdigit</span>(ch))<br>            &#123;<br>                state = <span class="hljs-number">6</span>;<br>                <span class="hljs-built_in">getChar</span>();<br>            &#125;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (ch == <span class="hljs-string">&#x27;+&#x27;</span> || ch == <span class="hljs-string">&#x27;-&#x27;</span>)<br>            &#123;<br>                state = <span class="hljs-number">5</span>;<br>                <span class="hljs-built_in">getChar</span>();<br>            &#125;<br>            <span class="hljs-keyword">else</span><br>            &#123;<br>                state = <span class="hljs-number">0</span>;<br>            &#125;<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">5</span>:<br>            ch = <span class="hljs-built_in">peekChar</span>();<br>            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isdigit</span>(ch))<br>            &#123;<br>                state = <span class="hljs-number">6</span>;<br>                <span class="hljs-built_in">getChar</span>();<br>            &#125;<br>            <span class="hljs-keyword">else</span><br>            &#123;<br>                state = <span class="hljs-number">0</span>;<br>            &#125;<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">6</span>:<br>            ch = <span class="hljs-built_in">peekChar</span>();<br>            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isdigit</span>(ch))<br>            &#123;<br>                state = <span class="hljs-number">6</span>;<br>                <span class="hljs-built_in">getChar</span>();<br>            &#125;<br>            <span class="hljs-keyword">else</span><br>            &#123;<br>                state = <span class="hljs-number">0</span>;<br>            &#125;<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">7</span>:<br>            ch = <span class="hljs-built_in">peekChar</span>();<br>            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isAlpha</span>(ch))<br>            &#123;<br>                state = <span class="hljs-number">7</span>;<br>                <span class="hljs-built_in">getChar</span>();<br>            &#125;<br>            <span class="hljs-keyword">else</span><br>            &#123;<br>                state = <span class="hljs-number">0</span>;<br>            &#125;<br>        <span class="hljs-keyword">default</span>:<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>    &#125;<br>    token.<span class="hljs-built_in">setToken</span>(stringBuffer);<br>    <span class="hljs-keyword">if</span> (token.<span class="hljs-built_in">getType</span>() == <span class="hljs-string">&quot;Numerical_Constant&quot;</span>)<br>    &#123;<br>        count_Numerical_Constant++;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>我们给出对应的自动机（事实上代码逻辑很简单，重点就是如何构造一个合法且严谨的自动机）</p>
+<p><img src="/images/image-20221015221434390.png" srcset="/img/loading.gif" lazyload></p>
+<p>事实上一开始我们并没有设置状态7，这就导致在出错的时候无法将一个完整的错误字符串提取（也就是错误处理不到位），结果就是剩下的部分会作为新的token出现在结果中，这绝对不是我们想要的；</p>
+<h4 id="3-3-3-getCharConstant"><a href="#3-3-3-getCharConstant" class="headerlink" title="3.3.3 getCharConstant"></a>3.3.3 getCharConstant</h4><p>字符常量是指单引号包含的单个字符，形如’a’、’b’</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Lexer::getCharConstant</span><span class="hljs-params">(Token &amp;token)</span></span><br><span class="hljs-function"></span>&#123;<br>    token.<span class="hljs-built_in">setType</span>(<span class="hljs-string">&quot;Char_Constant&quot;</span>);<br>    <span class="hljs-built_in">getChar</span>();<br>    <span class="hljs-type">unsigned</span> state = <span class="hljs-number">1</span>;<br>    <span class="hljs-type">char</span> ch;<br>    <span class="hljs-keyword">while</span>(state!=<span class="hljs-number">0</span>)<br>    &#123;<br>        <span class="hljs-keyword">switch</span> (state)<br>        &#123;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:<br>            ch = <span class="hljs-built_in">peekChar</span>();<br>            <span class="hljs-keyword">if</span> (ch == <span class="hljs-string">&#x27;\\&#x27;</span>)<br>            &#123;<br>                state = <span class="hljs-number">3</span>;<br>                <span class="hljs-built_in">getChar</span>();<br>            &#125;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (ch == <span class="hljs-string">&#x27;\&#x27;&#x27;</span>)<br>            &#123;<br>                state = <span class="hljs-number">0</span>;<br>                <span class="hljs-built_in">getChar</span>();<br>            &#125;<br>            <span class="hljs-keyword">else</span><br>            &#123;<br>                state = <span class="hljs-number">2</span>;<br>                <span class="hljs-built_in">getChar</span>();<br>            &#125;<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:<br>            ch = <span class="hljs-built_in">peekChar</span>();<br>            <span class="hljs-keyword">if</span> (ch == <span class="hljs-string">&#x27;\&#x27;&#x27;</span>)<br>            &#123;<br>                state = <span class="hljs-number">0</span>;<br>                <span class="hljs-built_in">getChar</span>();<br>            &#125;<br>            <span class="hljs-keyword">else</span><br>            &#123;<br>                state = <span class="hljs-number">0</span>;<br>            &#125;<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">3</span>:<br>            state = <span class="hljs-number">2</span>;<br>            <span class="hljs-built_in">getChar</span>();<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">default</span>:<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>    &#125;<br>    token.<span class="hljs-built_in">setToken</span>(stringBuffer);<br>    <span class="hljs-keyword">if</span> (token.<span class="hljs-built_in">getType</span>() == <span class="hljs-string">&quot;Char_Constant&quot;</span>)<br>    &#123;<br>        count_Char_Constant++;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<p>对应的自动机如下</p>
+<p><img src="/images/image-20221015222009063.png" srcset="/img/loading.gif" lazyload></p>
+<p>之所以2状态无论读取到什么都要转移就是因为字符常量只允许’’之间存在至多一个char，当然’’空字符也是能够被合法接受的；</p>
+<h4 id="3-3-4-getStringConstant"><a href="#3-3-4-getStringConstant" class="headerlink" title="3.3.4 getStringConstant"></a>3.3.4 getStringConstant</h4><p>字符串常量的定义是双引号””包含的一系列字符，形如”a”、”abc”、”3.14159”</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Lexer::getStringConstant</span><span class="hljs-params">(Token &amp;token)</span></span><br><span class="hljs-function"></span>&#123;<br>    token.<span class="hljs-built_in">setType</span>(<span class="hljs-string">&quot;String_Literal&quot;</span>);<br>    <span class="hljs-built_in">getChar</span>();<br>    <span class="hljs-type">unsigned</span> state = <span class="hljs-number">1</span>;<br>    <span class="hljs-type">char</span> ch;<br>    <span class="hljs-keyword">while</span>(state!=<span class="hljs-number">0</span>)<br>    &#123;<br>        <span class="hljs-keyword">switch</span> (state)<br>        &#123;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:<br>            ch = <span class="hljs-built_in">peekChar</span>();<br>            <span class="hljs-keyword">if</span> (ch == <span class="hljs-string">&#x27;\\&#x27;</span>)<br>            &#123;<br>                state = <span class="hljs-number">2</span>;<br>                <span class="hljs-built_in">getChar</span>();<br>            &#125;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (ch == <span class="hljs-string">&#x27;\&quot;&#x27;</span>)<br>            &#123;<br>                state = <span class="hljs-number">0</span>;<br>                <span class="hljs-built_in">getChar</span>();<br>            &#125;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (ch == <span class="hljs-string">&#x27;\n&#x27;</span>)<br>            &#123;<br>                token.<span class="hljs-built_in">setType</span>(<span class="hljs-string">&quot;Error&quot;</span>);<br>                token.<span class="hljs-built_in">setError</span>(<span class="hljs-string">&quot;unclosed string&quot;</span>);<br>                count_Error++;<br>                state = <span class="hljs-number">0</span>;<br>            &#125;<br>            <span class="hljs-keyword">else</span><br>            &#123;<br>                state = <span class="hljs-number">1</span>;<br>                <span class="hljs-built_in">getChar</span>();<br>            &#125;<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:<br>            state = <span class="hljs-number">1</span>;<br>            <span class="hljs-built_in">getChar</span>();<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">default</span>:<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>    &#125;<br>    token.<span class="hljs-built_in">setToken</span>(stringBuffer);<br>    <span class="hljs-keyword">if</span> (token.<span class="hljs-built_in">getType</span>() == <span class="hljs-string">&quot;String_Literal&quot;</span>)<br>    &#123;<br>        count_String_Literal++;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<p>对应的自动机如下</p>
+<p><img src="/images/image-20221015222400605.png" srcset="/img/loading.gif" lazyload></p>
+<p>没错，字符串常量的识别如此简单，这是因为字符串常量中除了转义字符就是普通字符，因此只要不遇到最后的结束双引号就不会进入接受状态；</p>
+<h4 id="3-3-5-getPunctuator"><a href="#3-3-5-getPunctuator" class="headerlink" title="3.3.5 getPunctuator"></a>3.3.5 getPunctuator</h4><p>识别运算符和前面不太一样，这里不能直接就用一个自动机来识别所有的运算符（C中的运算符不少，而且会面临超前读取的问题，自动机不是最佳选择）；</p>
+<p>对于需要特殊处理的运算符如”+&#x3D;”、”++”这种我们使用case分支特殊处理（本质上就是继续向后判断一个char是否为特殊运算符）</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;.&#x27;</span>:<br>          ch = <span class="hljs-built_in">peekChar</span>();<br>          <span class="hljs-keyword">if</span> (ch == <span class="hljs-string">&#x27;.&#x27;</span>)<br>          &#123;<br>              <span class="hljs-built_in">getChar</span>();<br>              <span class="hljs-keyword">if</span> ((ch = <span class="hljs-built_in">peekChar</span>()) == <span class="hljs-string">&#x27;.&#x27;</span>)<br>              &#123;<br>                  <span class="hljs-built_in">getChar</span>();<br>              &#125;<br>              <span class="hljs-keyword">else</span><br>              &#123;<br>                  has_error = <span class="hljs-literal">true</span>;<br>                  token.<span class="hljs-built_in">setType</span>(<span class="hljs-string">&quot;Error&quot;</span>);<br>              &#125;<br>          &#125;<br>          <span class="hljs-keyword">break</span>;<br>      <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;&gt;&#x27;</span>:<br>          ch = <span class="hljs-built_in">peekChar</span>();<br>          <span class="hljs-keyword">if</span> (ch == <span class="hljs-string">&#x27;&gt;&#x27;</span>)<br>          &#123;<br>              <span class="hljs-built_in">getChar</span>();<br>              ch = <span class="hljs-built_in">peekChar</span>();<br>              <span class="hljs-keyword">if</span> (ch == <span class="hljs-string">&#x27;=&#x27;</span>)<br>              &#123;<br>                  <span class="hljs-built_in">getChar</span>();<br>              &#125;<br>          &#125;<br>          <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (ch == <span class="hljs-string">&#x27;=&#x27;</span>)<br>              <span class="hljs-built_in">getChar</span>();<br>          <span class="hljs-keyword">break</span>;<br>      <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;&lt;&#x27;</span>:<br>          ch = <span class="hljs-built_in">peekChar</span>();<br>          <span class="hljs-keyword">if</span> (ch == <span class="hljs-string">&#x27;&lt;&#x27;</span>)<br>          &#123;<br>              <span class="hljs-built_in">getChar</span>();<br>              <span class="hljs-keyword">if</span> ((ch = <span class="hljs-built_in">peekChar</span>()) == <span class="hljs-string">&#x27;=&#x27;</span>)<br>              &#123;<br>                  <span class="hljs-built_in">getChar</span>();<br>              &#125;<br>          &#125;<br>          <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (ch == <span class="hljs-string">&#x27;=&#x27;</span>)<br>              <span class="hljs-built_in">getChar</span>();<br>          <span class="hljs-keyword">break</span>;<br>      <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;+&#x27;</span>:<br>          ch = <span class="hljs-built_in">peekChar</span>();<br>          <span class="hljs-keyword">if</span> (ch == <span class="hljs-string">&#x27;=&#x27;</span> || ch == <span class="hljs-string">&#x27;+&#x27;</span>)<br>              <span class="hljs-built_in">getChar</span>();<br>          <span class="hljs-keyword">break</span>;<br>      <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;-&#x27;</span>:<br>          ch = <span class="hljs-built_in">peekChar</span>();<br>          <span class="hljs-keyword">if</span> (ch == <span class="hljs-string">&#x27;=&#x27;</span> || ch == <span class="hljs-string">&#x27;-&#x27;</span> || ch == <span class="hljs-string">&#x27;&gt;&#x27;</span>)<br>              <span class="hljs-built_in">getChar</span>();<br>          <span class="hljs-keyword">break</span>;<br>      <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;&amp;&#x27;</span>:<br>          ch = <span class="hljs-built_in">peekChar</span>();<br>          <span class="hljs-keyword">if</span> (ch == <span class="hljs-string">&#x27;=&#x27;</span> || ch == <span class="hljs-string">&#x27;&amp;&#x27;</span>)<br>              <span class="hljs-built_in">getChar</span>();<br>          <span class="hljs-keyword">break</span>;<br>      <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;|&#x27;</span>:<br>          ch = <span class="hljs-built_in">peekChar</span>();<br>          <span class="hljs-keyword">if</span> (ch == <span class="hljs-string">&#x27;=&#x27;</span> || ch == <span class="hljs-string">&#x27;|&#x27;</span>)<br>              <span class="hljs-built_in">getChar</span>();<br>          <span class="hljs-keyword">break</span>;<br><span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;!&#x27;</span>:<br>          ch = <span class="hljs-built_in">peekChar</span>();<br>          <span class="hljs-keyword">if</span> (ch == <span class="hljs-string">&#x27;=&#x27;</span>)<br>              <span class="hljs-built_in">getChar</span>();<br>          <span class="hljs-keyword">break</span>;<br></code></pre></td></tr></table></figure>
+
+<p>注意实验要求注释和宏定义均被忽略，这意味着”#”以及”&#x2F;&#x2F;“、”&#x2F;**&#x2F;“之后的内容都将被忽略，而前者的处理方式和后两者又有不同，因为前者只会注释一行，这意味着只需要读取到”\n”就可以停止忽略了，但是对于C注释来说我们需要构造特殊的自动机来判断</p>
+<p><img src="/images/image-20221015223201996.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们这里考虑了C中所有可能的注释情况，不同的书写方式注释效果是不同的，相应自动机的处理方式也不同</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c">第一种情况<br><span class="hljs-comment">/*</span><br><span class="hljs-comment">*...</span><br><span class="hljs-comment">*/</span><br>第二种情况<br><span class="hljs-comment">//...</span><br>第三种情况<br><span class="hljs-comment">/*</span><br><span class="hljs-comment">...</span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="3-3-6-lexer"><a href="#3-3-6-lexer" class="headerlink" title="3.3.6 lexer"></a>3.3.6 lexer</h4><p>当我们拥有词法分析的基本的功能函数之后我们就可以组装得到一个完整的词法分析程序了；</p>
+<p>词法分析程序从源文件的第一个字符开始分析：</p>
+<ul>
+<li>假如是字符则使用子程序getIdentifierKeyword处理；</li>
+<li>假如是数字则使用子程序getNumericalConstant处理；</li>
+<li>假如是单引号则使用子程序getCharConstant处理；</li>
+<li>假如是双引号则使用子程序getStringConstant处理；</li>
+<li>除上述情况外，且并没有读取到诸如换行、文件末尾等特殊情况，使用子程序getPunctuator处理；</li>
+</ul>
+<p>当读取到文件末尾且输入缓冲区为空，词法分析程序停止工作并清clear输入缓冲区，退出程序；</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">Lexer::lexer</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">bool</span> res = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">while</span> (!(fileSource.<span class="hljs-built_in">eof</span>() &amp;&amp; stringBuffer.<span class="hljs-built_in">empty</span>()))<br>    &#123;<br>        <span class="hljs-type">char</span> ch = <span class="hljs-built_in">peekChar</span>();<br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isAlpha</span>(ch))<br>        &#123;<br>            <span class="hljs-function">Token <span class="hljs-title">token</span><span class="hljs-params">(<span class="hljs-string">&quot;Identifier&quot;</span>, countLine, countColumn, <span class="hljs-string">&quot;&quot;</span>)</span></span>;<br>            <span class="hljs-built_in">getIdentifierKeyword</span>(token);<br>            cout &lt;&lt; token &lt;&lt; endl;<br>        &#125;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isdigit</span>(ch))<br>        &#123;<br>            Token <span class="hljs-built_in">token</span>(<span class="hljs-string">&quot;Numerical_Constant&quot;</span>, countLine, countColumn, <span class="hljs-string">&quot;&quot;</span>);<br>            <span class="hljs-built_in">getNumericalConstant</span>(token);<br>            cout &lt;&lt; token &lt;&lt; endl;<br>        &#125;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (ch == <span class="hljs-string">&#x27;\&#x27;&#x27;</span>)<br>        &#123;<br>            Token <span class="hljs-built_in">token</span>(<span class="hljs-string">&quot;Char_Constant&quot;</span>, countLine, countColumn, <span class="hljs-string">&quot;&quot;</span>);<br>            <span class="hljs-built_in">getCharConstant</span>(token);<br>            cout &lt;&lt; token &lt;&lt; endl;<br>        &#125;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (ch == <span class="hljs-string">&#x27;\&quot;&#x27;</span>)<br>        &#123;<br>            Token <span class="hljs-built_in">token</span>(<span class="hljs-string">&quot;String_Literal&quot;</span>, countLine, countColumn, <span class="hljs-string">&quot;&quot;</span>);<br>            <span class="hljs-built_in">getStringConstant</span>(token);<br>            cout &lt;&lt; token &lt;&lt; endl;<br>        &#125;<br>        <span class="hljs-keyword">else</span><br>        &#123;<br>            <span class="hljs-keyword">if</span> (!<span class="hljs-built_in">isws</span>(ch))<br>            &#123;<br>                Token <span class="hljs-built_in">token</span>(<span class="hljs-string">&quot;Punctuator&quot;</span>, countLine, countColumn, <span class="hljs-string">&quot;&quot;</span>);<br>                <span class="hljs-built_in">getPunctuator</span>(token,ch,res);<br>            &#125;<br>            <span class="hljs-keyword">else</span><br>            &#123;<br>                <span class="hljs-built_in">getChar</span>();<br>            &#125;<br>        &#125;<br>        stringBuffer.<span class="hljs-built_in">clear</span>();<br>    &#125;<br>    <span class="hljs-keyword">return</span> res;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-4-main函数"><a href="#3-4-main函数" class="headerlink" title="3.4 main函数"></a>3.4 main函数</h3><p>main函数的逻辑非常简单，通过用户shell输入的第二个参数argv[1]获取到需要分析的filename，使用lexer词法分析程序对其进行分析，分析程序作为一个循环体，只有当文件指针指到EOF且读入缓冲区为空时才会结束此次词法分析；</p>
+<p>当用户shell输入不符合规则（如只输入了一个参数或者参数顺序不正确），抛出异常提示并退出词法分析程序</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc, <span class="hljs-type">char</span> <span class="hljs-type">const</span> *argv[])</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span> (argc == <span class="hljs-number">2</span>)<br>    &#123;<br>        <span class="hljs-function">Lexer <span class="hljs-title">C_lexer</span><span class="hljs-params">(argv[<span class="hljs-number">1</span>])</span></span>;           <span class="hljs-comment">//将第二个输入参数作为构造参数传入Lexer类以构造C_lexer对象</span><br>        <span class="hljs-type">bool</span> noerr = C_lexer.<span class="hljs-built_in">lexer</span>();     <span class="hljs-comment">//调用C_lexer类的lexer方法进行词法分析</span><br>        C_lexer.<span class="hljs-built_in">printResult</span>();            <span class="hljs-comment">//输出词法分析结果汇总</span><br>    &#125;<br>    <span class="hljs-keyword">else</span>                                 <span class="hljs-comment">//输入参数有误，程序退出</span><br>    &#123;<br>        cout &lt;&lt; <span class="hljs-string">&quot;Usage: ./exe &lt;file name&gt;&quot;</span> &lt;&lt; endl;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="4-功能演示"><a href="#4-功能演示" class="headerlink" title="4.功能演示"></a>4.功能演示</h2><p>我们将分别按照实验要求构造不同的源程序进行测试</p>
+<p>（1）可以识别出用C语言编写的源程序中的每个单词符号，并以记号的形式输出每个单词符号；</p>
+<p>（2）可以识别并跳过源程序中的注释；</p>
+<p>（3）可以统计源程序中的语句行数、各类单词的个数、以及字符总数，并输出统计结果；</p>
+<p>（4）检查源程序中存在的词法错误，并报告错误所在的位置；</p>
+<p>（5）对源程序中出现的错误进行适当的回复，使词法分析可以继续进行，对源程序进行一次扫描，即可检查并报告源程序中存在的所有词法错误；</p>
+<h3 id="4-1-识别功能"><a href="#4-1-识别功能" class="headerlink" title="4.1 识别功能"></a>4.1 识别功能</h3><p>源程序如下</p>
+<p><img src="/images/image-20221015224249597.png" srcset="/img/loading.gif" lazyload></p>
+<p>这是一个非常简单的源程序，我们主要的目的就是测试在完全正确的情况下词法分析程序能否识别源程序中的每个单词符号并以token形式输出</p>
+<p>首先是错误输入会导致程序报错并退出</p>
+<p><img src="/images/image-20221015224603662.png" srcset="/img/loading.gif" lazyload></p>
+<p>接着正确输入得到输出如下</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><code class="hljs txt">Type: Identifier<br>Location: 1:1<br>Value: using<br><br>Type: Identifier<br>Location: 1:7<br>Value: namespace<br><br>Type: Identifier<br>Location: 1:17<br>Value: std<br><br>Type: Punctuator<br>Location: 1:20<br>Value: ;<br><br>Type: Keyword<br>Location: 3:1<br>Value: int<br><br>Type: Identifier<br>Location: 3:5<br>Value: main<br><br>Type: Punctuator<br>Location: 3:9<br>Value: (<br><br>Type: Punctuator<br>Location: 3:10<br>Value: )<br><br>Type: Punctuator<br>Location: 4:1<br>Value: &#123;<br><br>Type: Identifier<br>Location: 5:4<br>Value: printf<br><br>Type: Punctuator<br>Location: 5:10<br>Value: (<br><br>Type: String_Literal<br>Location: 5:11<br>Value: &quot;Hello world!&quot;<br><br>Type: Punctuator<br>Location: 5:25<br>Value: )<br><br>Type: Punctuator<br>Location: 5:26<br>Value: ;<br><br>Type: Keyword<br>Location: 6:4<br>Value: return<br><br>Type: Numerical_Constant<br>Location: 6:11<br>Value: 0<br><br>Type: Punctuator<br>Location: 6:12<br>Value: ;<br><br>Type: Punctuator<br>Location: 7:1<br>Value: &#125;<br><br><br>&lt;=====Blow is a summary=====&gt;<br>Total characters:       77<br>Total lines:            8<br>Total Keyword:  2<br>Total Identifier:       5<br>Total Numerical_Constant:       1<br>Total Char_Constant:    0<br>Total String_Literal:   1<br>Total Punctuator:       9<br>Total Error:    0<br></code></pre></td></tr></table></figure>
+
+<h3 id="4-2-注释功能"><a href="#4-2-注释功能" class="headerlink" title="4.2 注释功能"></a>4.2 注释功能</h3><p>接下类我们测试其跳过源程序中的注释以及宏定义，测试代码如下</p>
+<p><img src="/images/image-20221015225040177.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们直接观察可以很明显的知道词法分析程序应该输出的是形如</p>
+<p><img src="/images/image-20221015225059609.png" srcset="/img/loading.gif" lazyload></p>
+<p>下面我们进行测试</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br></pre></td><td class="code"><pre><code class="hljs txt">Type: Keyword<br>Location: 4:1<br>Value: int<br><br>Type: Identifier<br>Location: 4:5<br>Value: main<br><br>Type: Punctuator<br>Location: 4:9<br>Value: (<br><br>Type: Punctuator<br>Location: 4:10<br>Value: )<br><br>Type: Punctuator<br>Location: 5:1<br>Value: &#123;<br><br>Type: Keyword<br>Location: 13:5<br>Value: char<br><br>Type: Punctuator<br>Location: 13:10<br>Value: *<br><br>Type: Identifier<br>Location: 13:11<br>Value: msg<br><br>Type: Punctuator<br>Location: 13:15<br>Value: =<br><br>Type: String_Literal<br>Location: 13:17<br>Value: &quot;Hello &quot;<br><br>Type: Punctuator<br>Location: 13:25<br>Value: ;<br><br>Type: Keyword<br>Location: 14:5<br>Value: float<br><br>Type: Identifier<br>Location: 14:11<br>Value: d<br><br>Type: Punctuator<br>Location: 14:13<br>Value: =<br><br>Type: Numerical_Constant<br>Location: 14:15<br>Value: 0.145e+3<br><br>Type: Punctuator<br>Location: 14:23<br>Value: ;<br><br>Type: Identifier<br>Location: 15:5<br>Value: printf<br><br>Type: Punctuator<br>Location: 15:11<br>Value: (<br><br>Type: String_Literal<br>Location: 15:12<br>Value: &quot;%s %f\n&quot;<br><br>Type: Punctuator<br>Location: 15:21<br>Value: ,<br><br>Type: Identifier<br>Location: 15:23<br>Value: msg<br><br>Type: Punctuator<br>Location: 15:26<br>Value: ,<br><br>Type: Identifier<br>Location: 15:28<br>Value: d<br><br>Type: Punctuator<br>Location: 15:29<br>Value: )<br><br>Type: Punctuator<br>Location: 15:30<br>Value: ;<br><br>Type: Keyword<br>Location: 16:5<br>Value: return<br><br>Type: Numerical_Constant<br>Location: 16:12<br>Value: 0<br><br>Type: Punctuator<br>Location: 16:13<br>Value: ;<br><br>Type: Punctuator<br>Location: 17:1<br>Value: &#125;<br><br><br>&lt;=====Blow is a summary=====&gt;<br>Total characters:       230<br>Total lines:            19<br>Total Keyword:  4<br>Total Identifier:       6<br>Total Numerical_Constant:       2<br>Total Char_Constant:    0<br>Total String_Literal:   2<br>Total Punctuator:       15<br>Total Error:    0<br></code></pre></td></tr></table></figure>
+
+<p>可以看到，词法分析程序的确忽略了宏定义以及各种形式的注释，对实际有意义的单词进行分析；</p>
+<h3 id="4-3-纠错功能"><a href="#4-3-纠错功能" class="headerlink" title="4.3 纠错功能"></a>4.3 纠错功能</h3><p>我们实现的词法分析程序并没有对错误的单词进行修改等，只是简单的记录并跳过并报告其错误位置，这是一种最简单的错误处理方式；</p>
+<p>下面的源程序可以很明显的看出几个错误，字符串常量双引号不匹配、int型变量a赋值错误、C变量名不能以数字开头</p>
+<p><img src="/images/image-20221015230353044.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们使用词法分析程序看是否存在这样的错误</p>
+<p>运行结果如下</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br></pre></td><td class="code"><pre><code class="hljs txt">Type: Keyword<br>Location: 1:1<br>Value: int<br><br>Type: Identifier<br>Location: 1:5<br>Value: main<br><br>Type: Punctuator<br>Location: 1:9<br>Value: (<br><br>Type: Punctuator<br>Location: 1:10<br>Value: )<br><br>Type: Punctuator<br>Location: 2:1<br>Value: &#123;<br><br>Type: Keyword<br>Location: 3:5<br>Value: float<br><br>Error: illegal name<br>Loacation: 3:11<br>Value: 2ch<br><br>Type: Punctuator<br>Location: 3:15<br>Value: =<br><br>Type: Numerical_Constant<br>Location: 3:17<br>Value: 1.0<br><br>Type: Punctuator<br>Location: 3:20<br>Value: ;<br><br>Error: unclosed string<br>Loacation: 4:5<br>Value: &quot;unclose;<br><br>Type: Keyword<br>Location: 5:9<br>Value: int<br><br>Type: Identifier<br>Location: 5:13<br>Value: a<br><br>Type: Punctuator<br>Location: 5:15<br>Value: =<br><br>Error: unexpected character<br>Loacation: 5:17<br>Value: @<br><br>Type: Punctuator<br>Location: 5:18<br>Value: ;<br><br>Type: Keyword<br>Location: 6:5<br>Value: int<br><br>Type: Identifier<br>Location: 6:9<br>Value: b<br><br>Type: Punctuator<br>Location: 6:11<br>Value: =<br><br>Type: Numerical_Constant<br>Location: 6:13<br>Value: 1.5e<br><br>Type: Punctuator<br>Location: 6:17<br>Value: *<br><br>Type: Numerical_Constant<br>Location: 6:18<br>Value: 2<br><br>Type: Punctuator<br>Location: 6:19<br>Value: ;<br><br>Type: Keyword<br>Location: 7:5<br>Value: char<br><br>Type: Identifier<br>Location: 7:10<br>Value: a<br><br>Type: Punctuator<br>Location: 7:12<br>Value: =<br><br>Type: String_Literal<br>Location: 7:14<br>Value: &quot;abc&quot;<br><br>Type: Punctuator<br>Location: 7:19<br>Value: ;<br><br>Type: Keyword<br>Location: 8:5<br>Value: return<br><br>Type: Numerical_Constant<br>Location: 8:12<br>Value: 0<br><br>Type: Punctuator<br>Location: 8:13<br>Value: ;<br><br>Type: Punctuator<br>Location: 9:1<br>Value: &#125;<br><br><br>&lt;=====Blow is a summary=====&gt;<br>Total characters:       124<br>Total lines:            11<br>Total Keyword:  6<br>Total Identifier:       4<br>Total Numerical_Constant:       4<br>Total Char_Constant:    0<br>Total String_Literal:   1<br>Total Punctuator:       14<br>Total Error:    3<br></code></pre></td></tr></table></figure>
+
+<p>可以看到程序非常完美的查出了所有错误并跳过这些错误（报告这些错误的位置和内容），完成了整体源文件的分析；</p>
+<h2 id="5-不足"><a href="#5-不足" class="headerlink" title="5.不足"></a>5.不足</h2><p>其实很明显我们可以看到4.3中的不足，<code>char a=&quot;abc&quot;</code>这个语法是错误的，但是我们额程序并没有检测出来，原因其实很简单，因为我们实现的仅仅只是一个词法分析程序，并没有联系上下文的能力，也就意味着词法分析程序仅仅只能检测词法错误并不能检测语法错误，要实现对语法错误的检测就需要借助之后我们设计的语法分析程序；</p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E8%B7%B5/" class="category-chain-item">课程实践</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">#编译原理</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>初级项目_词法分析器</div>
+      <div>https://gintoki-jpg.github.io/2022/09/30/项目_词法分析器/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>杨再俨</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年9月30日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/10/13/%E5%B7%A5%E5%85%B7_tensorflow/" title="Tensorflow">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Tensorflow</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/09/29/%E9%A1%B9%E7%9B%AE_bos/" title="中级项目_bos lab">
+                        <span class="hidden-mobile">中级项目_bos lab</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+</div>
+
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

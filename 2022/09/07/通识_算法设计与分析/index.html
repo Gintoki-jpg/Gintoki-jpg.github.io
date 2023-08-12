@@ -1,0 +1,2257 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/logo.png">
+  <link rel="icon" href="/img/bg/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="杨再俨">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="这门课程开设在第五学期，本篇博客主要记录课程所学以及相关知识点。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法设计与分析">
+<meta property="og:url" content="https://gintoki-jpg.github.io/2022/09/07/%E9%80%9A%E8%AF%86_%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90/index.html">
+<meta property="og:site_name" content="Tintoki_blog">
+<meta property="og:description" content="这门课程开设在第五学期，本篇博客主要记录课程所学以及相关知识点。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/cpp.png">
+<meta property="article:published_time" content="2022-09-07T00:07:00.000Z">
+<meta property="article:modified_time" content="2023-07-08T05:53:55.179Z">
+<meta property="article:author" content="YangZaiyan">
+<meta property="article:tag" content="课程学习">
+<meta property="article:tag" content="数据结构与算法">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gintoki-jpg.github.io/img/bg/cpp.png">
+  
+  
+  
+  <title>算法设计与分析 - Tintoki_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"gintoki-jpg.github.io","root":"/","version":"1.9.1","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tintoki_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/bg1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">算法设计与分析</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-09-07 08:07" pubdate>
+          2022年9月7日 早上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          47k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          391 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">算法设计与分析</h1>
+            
+            <div class="markdown-body">
+              
+              <p>这门课在计算机专业是核心课程，但是在我所学的智能科学与技术专业作为选修课程出现，尽管作为选修课，但是算法作为公司面试必考，有必要深入好好学习，我们在<a href="https://gintoki-jpg.github.io/">Tintoki_blog (gintoki-jpg.github.io)</a>博客上总结了力扣上一些比较经典的题目，本博客主要侧重算法的介绍而不是刷题（实质上前三年仅仅学了数据结构，并没有系统的学习过算法）；教程采用的教程是王晓东的《计算机算法设计与分析》第五版，辅助慕课视频教程<a target="_blank" rel="noopener" href="https://www.icourse163.org/learn/QDU-1460628161?tid=1468216562#/learn/announce">算法设计与分析_中国大学MOOC(慕课) (icourse163.org)</a></p>
+<hr>
+<p>2022&#x2F;9&#x2F;11 10:00 先来说一下慕课上的课程，讲的真的非常差劲…而且基本就没有按照书上的顺序来讲，个人认为书上循序渐进的有条理的讲述方式是非常好的，而视频中更类似于想到哪里讲到哪里，非常不适合做笔记，所以最后总结一下：看书为主，慕课教程几乎可以不用看，遇到晦涩的知识点直接上Google搜索或者B站知识点讲解视频；</p>
+<p>2022&#x2F;9&#x2F;14 10:04 事先声明一个问题，而且可能还改不了，hexo的显示和markdown之间存在一些兼容性的问题导致有些在md文件上正常显示的如下标之类的在hexo上面就成了删除线，这个只能阅读的时候多注意一下，然后我也会尽量在之后的书写过程中避免这种问题；</p>
+<p>2022&#x2F;9&#x2F;14 10:57 发现一个问题，老师讲课是没有按照书上来的，反而更倾向于按照慕课上面的顺序来讲的，我们的原则就是严格跟着老师讲课的方式走，所以这里重新改变策略：书本作为参考，上课听老师的讲之后不懂的直接上网搜索视频或者资料来解答，慕课讲的过于啰嗦（而且有些PPT做的没有我们老师做的好）就不推荐了；</p>
+<p>2022&#x2F;11&#x2F;9 16:55 就是说今天准备开始复习算法了，然后初步的打算是先跟着Github上的知识点复习一遍（此处指的是按照上面的知识点自己去简书或者其他地方找教程，当然代码部分一定要参考老师给的代码，最好能够默写一遍），然后再按照PPT上的知识点查漏补缺，非常不建议一开始就按照PPT来看，因为PPT上面啥玩意也没有只有一些动画和总结…</p>
+<p>2022&#x2F;11&#x2F;13 16:10 现在就是先跟着网上把知识点过一遍，之后再<code>看书！！！</code>一定要看书然后刷上面的题，老师的讲法和出题就是根据书上来的！！！</p>
+<p>2022&#x2F;11&#x2F;16 9:32 看书的效率真的是太慢了，得换个方法…实在不行再回头过去看看慕课的视频，或者是搜索零碎的视频来看；</p>
+<p>2023&#x2F;2&#x2F;20 8:25 这门课整体来说真的很简单，看视频课+手写代码只需要一周就可以解决基本的几章，这也启发我们没必要花大量时间来准备这门课；</p>
+<hr>
+<h1 id="第一章-算法概述"><a href="#第一章-算法概述" class="headerlink" title="第一章 算法概述"></a>第一章 算法概述</h1><h2 id="1-算法与程序"><a href="#1-算法与程序" class="headerlink" title="1.算法与程序"></a>1.算法与程序</h2><p>通俗的讲，算法是指解决问题的一种方法或一个过程；</p>
+<p>严格的讲，算法是指由若干条指令组成的有穷序列，且满足以下性质：</p>
+<ul>
+<li>输入：有零个或多个由外部提供的量作为算法的输入；</li>
+<li>输出：算法产生至少一个量作为输出；</li>
+<li>确定性：组成算法的每条指令是清晰的，无歧义的；</li>
+<li>有限性：算法中每条指令的执行次数是有限的，执行每条指令的时间也是有限的；</li>
+</ul>
+<p>程序是<code>算法</code>用某种程序设计语言<code>的具体实现</code>，程序可以不满足上述第四点性质（操作系统就是一个在无限循环中执行的程序，不是一个算法）；</p>
+<p>在学习完毕算法设计与分析之后，应当按照如下流程来解决问题：</p>
+<p><img src="/images/image-20220911095458953.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="2-算法复杂性分析"><a href="#2-算法复杂性分析" class="headerlink" title="2.算法复杂性分析"></a>2.算法复杂性分析</h2><p>算法的复杂性是算法运行需要的计算机资源的量，需要时间资源的量称为时间复杂性，需要空间资源的量称为空间复杂性；</p>
+<p>这个量应该集中反映算法的效率，并从运行这算法的实际计算机中<code>抽象</code>出来，换句话说，这个量应该是只依赖于要解的<code>问题的规模、算法的输入和算法本身</code>的函数；</p>
+<p>如果分别用N、I和A表示算法要解的问题的规模、算法的输入和算法本身，而且用C表示复杂性，那么应该有C&#x3D;F（N，l，A），其中F（N，I，A）是一个由N、I和A确定的三元函数；</p>
+<p>如果把时间复杂性和空间复杂性分开，并分别用T和S来表示，应该有T&#x3D;T（N，I，A）和S&#x3D;S（N，I，A）。通常，A隐含在复杂性函数名当中，因而将T和S分别简写为T&#x3D;T（N，I）和S&#x3D;S（N，I）；（因为空间复杂性和时间复杂性类似且空间复杂性较简单，所以下面默认讨论时间复杂性）</p>
+<hr>
+<p>上述理论分析较简单，那么实际我们应该如何将复杂性函数（复杂性函数不是说这个函数很复杂，而是指这个函数是描述时间复杂性的函数）具体化呢？也就是对于给定的N、I和A，如何导出T(N,I)和S(N,I)的数学表达式？下面我们以T(N,I)举例说明；</p>
+<p>T(N,I)反映算法在一台<code>抽象</code>计算机上运行所需要的时间，假设该抽象计算机提供的<code>元运算</code>有k种，分别是O<del>1</del>,O<del>2</del>…O<del>k</del>，每执行一次这些元运算需要的时间分别为t<del>1</del>,t<del>2</del>…t<del>k</del>，那么对于算法A，假设使用到元运算O<del>i</del>的次数为e<del>i</del>，对于每个i(1&lt;&#x3D;i&lt;&#x3D;k)来说e<del>i</del>都是N(问题规模)和I(算法的输入)的函数，即e<del>i</del>&#x3D;e<del>i</del>(N,I)，但注意t<del>i</del>是与N和I无关的常数，故可得</p>
+<p><img src="/images/image-20220910101114615.png" srcset="/img/loading.gif" lazyload></p>
+<p>注意一个问题，e<del>i</del>代表的是使用到元运算O<del>i</del>的次数，但是我们不可能对规模为N的每种合法的输入I都统计e<del>i</del>（这也是不可能的事情，不管你排列组合学的多好…），所以上面那个式子必然还需要简化；</p>
+<p>我们作出限制，只考虑三种情况下的时间复杂性：</p>
+<ul>
+<li>最坏情况：<img src="/images/image-20220910101610990.png" srcset="/img/loading.gif" lazyload></li>
+<li>最好情况：<img src="/images/image-20220910101635401.png" srcset="/img/loading.gif" lazyload></li>
+<li>平均情况：<img src="/images/image-20220910101658191.png" srcset="/img/loading.gif" lazyload></li>
+</ul>
+<p>上述式子中，D<del>N</del>是规模为N的<code>合法输入的集合</code>，I*是D<del>N</del>中使T(N,I)达到T<del>max</del>(N)的合法输入，I^<del>^是D</del>N<del>中使得T(N,I)达到T</del>min~(N)的合法输入，P(I)是算法的应用中出现输入I的概率；</p>
+<blockquote>
+<p>可操作性最好且最有实际价值的是最坏情况下的时间复杂性；</p>
+</blockquote>
+<hr>
+<h3 id="2-1-算法渐进复杂性"><a href="#2-1-算法渐进复杂性" class="headerlink" title="2.1 算法渐进复杂性"></a>2.1 算法渐进复杂性</h3><p>只限制情况还不够，现在需要计算机解决的问题的规模越来越大，因此引入<code>复杂性渐近性态</code>的概念；</p>
+<p>假设T(N)是之前定义的关于算法A的复杂性函数，称T^<del>^(N)是T(N)当N趋于无穷时的渐近性态，直观上T^</del>^(N)就是T(N)中略去低阶项留下的主项，如T(N)&#x3D;3n^2^+4NlogN+7时T^~^(N)&#x3D;3N^2^</p>
+<h4 id="2-1-1-渐进上界"><a href="#2-1-1-渐进上界" class="headerlink" title="2.1.1 渐进上界"></a>2.1.1 渐进上界</h4><p><img src="/images/image-20220914103954528.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20220914103912988.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-1-2-渐进下界"><a href="#2-1-2-渐进下界" class="headerlink" title="2.1.2 渐进下界"></a>2.1.2 渐进下界</h4><p><img src="/images/image-20220914104046817.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20220914104105612.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-1-3-非紧上界"><a href="#2-1-3-非紧上界" class="headerlink" title="2.1.3 非紧上界"></a>2.1.3 非紧上界</h4><p><img src="/images/image-20220914104504999.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20220914104223018.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-1-4-非紧下界"><a href="#2-1-4-非紧下界" class="headerlink" title="2.1.4 非紧下界"></a>2.1.4 非紧下界</h4><p><img src="/images/image-20220914104333744.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-1-5-紧渐进界"><a href="#2-1-5-紧渐进界" class="headerlink" title="2.1.5 紧渐进界"></a>2.1.5 紧渐进界</h4><p><img src="/images/image-20220914104447665.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20220914104412143.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-2-渐进分析性质"><a href="#2-2-渐进分析性质" class="headerlink" title="2.2 渐进分析性质"></a>2.2 渐进分析性质</h3><h4 id="2-2-1-传递性"><a href="#2-2-1-传递性" class="headerlink" title="2.2.1 传递性"></a>2.2.1 传递性</h4><p><img src="/images/image-20220914104711273.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-2-2-自反性"><a href="#2-2-2-自反性" class="headerlink" title="2.2.2 自反性"></a>2.2.2 自反性</h4><p><img src="/images/image-20220914104732115.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-2-3-对称性"><a href="#2-2-3-对称性" class="headerlink" title="2.2.3 对称性"></a>2.2.3 对称性</h4><p><img src="/images/image-20220914104800428.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-2-4-互对称性"><a href="#2-2-4-互对称性" class="headerlink" title="2.2.4 互对称性"></a>2.2.4 互对称性</h4><p><img src="/images/image-20220914104828768.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-2-5-算术运算"><a href="#2-2-5-算术运算" class="headerlink" title="2.2.5 算术运算"></a>2.2.5 算术运算</h4><p><img src="/images/image-20220914104857002.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-3-常见复杂性函数"><a href="#2-3-常见复杂性函数" class="headerlink" title="2.3 常见复杂性函数"></a>2.3 常见复杂性函数</h3><p><img src="/images/image-20220914105007671.png" srcset="/img/loading.gif" lazyload></p>
+<p>当n为具体数字的时候的Time值</p>
+<p><img src="/images/image-20220914105035687.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-4-时间复杂性渐进阶"><a href="#2-4-时间复杂性渐进阶" class="headerlink" title="2.4 时间复杂性渐进阶"></a>2.4 时间复杂性渐进阶</h3><blockquote>
+<p>注意：这些结论只适用于非递归，在递归的情况下就需要使用之后我们会介绍到的几种方法求解时间复杂性</p>
+</blockquote>
+<p><img src="/images/image-20220914105326485.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="3-NP完全性理论"><a href="#3-NP完全性理论" class="headerlink" title="3.NP完全性理论"></a>3.NP完全性理论</h2><blockquote>
+<p>这小节书上讲的的确是有点混乱了，到时候参考一下视频做修正</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>多项式时间</p>
+</blockquote>
+<p>通常将可在多项式时间内解决的问题看作“易”解问题，而将需要指数函数时间解决的问题看作“难”问题；</p>
+<p>这里所说的多项式时间和指数函数时间是针对问题的规模而言的，即解决问题所需的时间是问题规模的多项式函数或指数函数：</p>
+<ul>
+<li>书中的许多算法都是多项式时间算法，即对规模为n的输入，算法在最坏情况下的计算时间为O(n^k^)，k为一个常数；</li>
+</ul>
+<p>一般地，将可由多项式时间算法求解的问题看作易解的问题，将需要超多项式时间才能求解的问题看作难解的问题（注意这里就不是上面说的指数函数时间了）；</p>
+<p>那么，有人会说了，有些问题看起来很容易但是我就是找不出在多项式时间内将它解出来的算法，也就是说这类问题的复杂性未知（未知它是易解答还是难解答）：</p>
+<ul>
+<li>为了研究这类问题的计算复杂性，提出了<code>非确定性图灵机</code>的计算模型，这使得许多问题可以在多项式时间内求解（原理是啥之后我们会介绍）；</li>
+</ul>
+<hr>
+<blockquote>
+<p>判定问题：判断是否有一种能够解决某一类问题的能行算法的研究课题；</p>
+</blockquote>
+<p>书上讨论的大多数问题是以<code>最优化问题</code>的形式出现，对于每个最优化问题都存在与之对应的<code>判定问题</code>，一般情况下判定问题比相应的最优化问题多一个参数：</p>
+<ul>
+<li>直观上判定问题比对应的最优化问题易于求解；</li>
+<li>从一个最优化问题的多项式时间算法容易得到与之对应的判定问题的多项式时间算法；</li>
+</ul>
+<hr>
+<h3 id="3-1-P类问题"><a href="#3-1-P类问题" class="headerlink" title="3.1 P类问题"></a>3.1 P类问题</h3><blockquote>
+<p>P类问题：所有可以在多项式时间内求解的判定问题构成P类问题（多项式问题Polynomial Problem）；</p>
+</blockquote>
+<ul>
+<li>P类问题是<code>确定性计算模型</code>下的<code>易解问题类</code>；</li>
+<li>NP类问题是<code>非确定性计算模型</code>下的<code>易验证问题类</code>（通常情况下解答一个问题比验证一个问题困难得多）；</li>
+</ul>
+<hr>
+<h3 id="3-2-NP类问题"><a href="#3-2-NP类问题" class="headerlink" title="3.2 NP类问题"></a>3.2 NP类问题</h3><blockquote>
+<p>NP类问题：所有的非确定性多项式时间可解的判定问题构成NP类问题；</p>
+</blockquote>
+<p>什么是NP类问题（Non-deterministic Polynomial Problem非确定性多项式问题）？在此之前我们首先需要了解非确定性算法的概念；</p>
+<p>非确定性算法将问题求解分为猜测和验证两个阶段：</p>
+<ul>
+<li>算法的猜测阶段是非确定性的，给出问题解的一个猜测；</li>
+<li>算法的验证阶段是确定性的，验证猜测阶段给出解的正确性；</li>
+</ul>
+<p>设算法A是解一个判定问题Q的非确定性算法。如果算法A的<code>验证阶段</code>可以在多项式时间内完成，则称算法A是一个<code>多项式时间非确定性算法</code>，也称问题Q是<code>非确定性多项式时间可解的</code>；</p>
+<h3 id="3-3-NPC问题"><a href="#3-3-NPC问题" class="headerlink" title="3.3 NPC问题"></a>3.3 NPC问题</h3><p>NP中的某些问题的复杂性与<code>整个类</code>的复杂性相关联，这些问题中任何一个如果存在多项式时间的算法，那么所有NP问题都是多项式时间可解的，这些问题被称为NP-完全问题(NPC问题)；</p>
+<p>NPC包含了NP中最难的问题，解决了这个NPC问题，所有NP问题都能够被解决了；</p>
+<h3 id="3-4-NP-hard问题"><a href="#3-4-NP-hard问题" class="headerlink" title="3.4 NP hard问题"></a>3.4 NP hard问题</h3><p>Non-deterministic Polynomial hard problem(NPH)问题：如果所有NP问题可在多项式时间内转化（归约，意思是解决了后者也就相应的解决了前者）成某个问题，则该问题称为NP难问题；</p>
+<p>规约：将一个特殊问题一般化，即将原问题推广为一个最一般的、最有概括性、也更难的、计算复杂度更高的问题，这个问题具有最高的计算复杂度，如果这个最一般的问题也能有多项式时间求解算法，那么那些特殊的原问题也能有多项式时间求解算法；</p>
+<h1 id="第二章-递归与分治策略"><a href="#第二章-递归与分治策略" class="headerlink" title="第二章 递归与分治策略"></a>第二章 递归与分治策略</h1><p>分治思想与递归思想关系密切：</p>
+<ul>
+<li>分治法的设计思想是：将一个难以直接解决的大问题分割成一些规模较小的相同问题，以便各个击破，即分而治之。如果原问题可分割成k个子问题，1&lt;k&lt;&#x3D;n，且这些子问题都可解，并可利用这些子问题的解求出原问题的解，那么这种分治法就是可行的；</li>
+<li>由分治法产生的子问题往往是原问题的较小模式，这为使用递归技术提供了方便。在这种情况下，反复应用分治手段，可以使子问题与原问题类型一致而其规模不断缩小，最终使子问题缩小到容易求出其解，由此自然引出递归算法；</li>
+</ul>
+<blockquote>
+<p>Q：递归和迭代的区别？</p>
+</blockquote>
+<p>A：递归，就是在运行的过程中调用自己，构成递归需具备的条件：</p>
+<ul>
+<li><p>子问题须与原始问题为同样的事，且更为简单；</p>
+</li>
+<li><p>不能无限制地调用本身，须有个出口，化简为非递归状况处理；</p>
+</li>
+</ul>
+<p>总结：</p>
+<ul>
+<li>递归就是指程序调用自身的编程思想，即一个函数调用本身；迭代是利用已知的变量值，根据递推公式不断演进得到变量新的编程思想；</li>
+<li>迭代与普通循环的区别是：迭代时，循环代码中参与运算的变量同时是保存结果的变量，当前保存的结果作为下一次循环计算的初始值；</li>
+</ul>
+<h2 id="1-递归的概念"><a href="#1-递归的概念" class="headerlink" title="1.递归的概念"></a>1.递归的概念</h2><h3 id="1-1-递归和迭代"><a href="#1-1-递归和迭代" class="headerlink" title="1.1 递归和迭代"></a>1.1 递归和迭代</h3><p>在说递归之前不得不提及迭代，上面虽然稍微介绍了一下，我们这里再详细说一说；</p>
+<p>首先直观上从代码看递归和迭代（参考原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_31057219/article/details/105135510">(28条消息) 递归&#x2F;迭代对比，算法时间复杂度_Mars-xq的博客-CSDN博客_迭代的时间复杂度</a>）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//求1+2+3+…+n</span><br><br><span class="hljs-comment">//递归</span><br><span class="hljs-function">fun <span class="hljs-title">recursive</span><span class="hljs-params">(n: Int)</span>: Int &#123;</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">if</span> (n == <span class="hljs-number">0</span>) <span class="hljs-number">0</span> <span class="hljs-keyword">else</span> n + <span class="hljs-built_in">recursive</span>(n - <span class="hljs-number">1</span>)<br>&#125;<br><br><span class="hljs-comment">//迭代</span><br>fun <span class="hljs-built_in">iteration</span>(n: Int): Int &#123;<br>    var result = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">for</span> (i in <span class="hljs-number">1.</span>.n) result += i<br>    <span class="hljs-keyword">return</span> result<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>直接拆解递归和迭代</p>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs subunit">使用递归 : recursive(5)<br>recursive(5)<br>5+recursive(4)<br>5<span class="hljs-string">+4</span>+recursive(3)<br>5<span class="hljs-string">+4</span><span class="hljs-string">+3</span>+recursive(2)<br>5<span class="hljs-string">+4</span><span class="hljs-string">+3</span><span class="hljs-string">+2</span>+recursive(1)<br>5<span class="hljs-string">+4</span><span class="hljs-string">+3</span><span class="hljs-string">+2</span><span class="hljs-string">+1</span>+recursive(0)<br>5<span class="hljs-string">+4</span><span class="hljs-string">+3</span><span class="hljs-string">+2</span><span class="hljs-string">+1</span><span class="hljs-string">+0</span><br>5<span class="hljs-string">+4</span><span class="hljs-string">+3</span><span class="hljs-string">+2</span><span class="hljs-string">+1</span><br>5<span class="hljs-string">+4</span><span class="hljs-string">+3</span><span class="hljs-string">+3</span><br>5<span class="hljs-string">+4</span><span class="hljs-string">+6</span><br>5<span class="hljs-string">+10</span><br>15<br><br>使用迭代 : iteration(5)<br>0<span class="hljs-string">+1</span>=1<br>1<span class="hljs-string">+2</span>=3<br>3<span class="hljs-string">+3</span>=6<br>6<span class="hljs-string">+4</span>=10<br>10<span class="hljs-string">+5</span>=15<br><br>上面两个计算过程所需的步骤都是O(n)。但是两个计算过程的形状不一样。<br></code></pre></td></tr></table></figure>
+
+<p>递归过程是一个先逐步展开而后收缩的形状，在展开阶段，这一计算过程构造一个推迟进行的操作（这里是+)所形成的的链条，在收缩阶段才会实际执行这些操作。<br>这种类型的计算过程由一个推迟执行的运算链条刻画，称为一个递归计算过程，要执行这种计算过程，就需要维护将要执行的操作的轨迹。<br>在计算1+2+3+…+n时，推迟执行的加法链条的长度就是为了保存其轨迹需要保存的信息量，这个长度随着n值而线性增长，这样的过程称为线性递归过程。</p>
+<p>迭代过程的形成没有任何增长或收缩。对于任意一个n，在计算的每一步，我们需要保存的就只有i和return，这个过程就是一个迭代计算过程。<br>一般来说，迭代计算过程就是那种其状态可以用固定数目的状态变量描述的结算过程。<br>在计算1+2+…+n时，所需的计算步骤与n成正比，这种过程称为线性迭代过程。</p>
+<h3 id="1-2-递归的应用"><a href="#1-2-递归的应用" class="headerlink" title="1.2 递归的应用"></a>1.2 递归的应用</h3><p>（该部分参考原文链接：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/balalawy/p/12909472.html#title2.1">数据结构——递归与非递归 - Balalawy - 博客园 (cnblogs.com)</a>）</p>
+<p>使用递归的思想解决问题很容易，但是初学者可能对于递归思想解决问题存在困难，递归解题主要依据以下三个步骤：</p>
+<ol>
+<li>确定函数功能：我们不需要给出这个函数内部的具体定义，只要先明白函数是用来干嘛的就可以；</li>
+<li>确定递归终止条件：计算机的资源有限，如果递归的层次过深会导致“爆栈”的风险，内存会发生溢出；</li>
+<li>确定递归关系式：这部分是递归函数的核心，需要多加练习；</li>
+</ol>
+<h3 id="1-3-递归的转化"><a href="#1-3-递归的转化" class="headerlink" title="1.3 递归的转化"></a>1.3 递归的转化</h3><p>递归解题固然很爽，但是因为“爆栈”的风险所以我们应该尽量少用，所以很多时候需要我们将递归进行非递归化，也称为迭代化（因为非递归也称为迭代）（当然使用尾递归的方式也可以避免“爆栈”，但是并非每一种递归都可以转换为尾递归的形式，并且也不是所有的编译器都支持尾递归的优化，我们这里主要还是介绍常用的迭代化方式）；</p>
+<p>函数的递归调用本质是借助函数栈来实现的，函数递归的本质可以归结为如下几点：</p>
+<p>（1）在函数递归调用之前将局部变量保存到栈中</p>
+<p>（2）修改参数列表</p>
+<p>（3）进行函数递归调用</p>
+<p>（4）获得栈顶元素（恢复现场）</p>
+<p>（5）弹出栈顶元素（释放内存空间）</p>
+<p>递归迭代化的本质就是掌握函数栈的本质，注意当递归层次不是很深的时候没必要进行迭代化，因为迭代化之后的代码会变得比较难以理解；</p>
+<h3 id="1-4-递归方程渐进阶的求解"><a href="#1-4-递归方程渐进阶的求解" class="headerlink" title="1.4 递归方程渐进阶的求解"></a>1.4 递归方程渐进阶的求解</h3><p>该部分参考自：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1V54y187iL?spm_id_from=333.337.search-card.all.click&vd_source=276d55048634a5b508b1b53a1ecd56b3">递推方程的求解_哔哩哔哩_bilibili</a></p>
+<h4 id="（1）迭代展开"><a href="#（1）迭代展开" class="headerlink" title="（1）迭代展开"></a>（1）迭代展开</h4><p>顾名思义就是不断迭代展开递归方程，最后得到一个解析式；</p>
+<p>当然这种方法也是一种将一个递归算法转换为一个非递归算法的方式</p>
+<blockquote>
+<p>例题：</p>
+</blockquote>
+<p><img src="/images/image-20220914185738549.png" srcset="/img/loading.gif" lazyload></p>
+<p>因为迭代展开的过程中经常涉及数列求和，所以下面总结一下常见数列的求和</p>
+<p><img src="/images/image-20220914190300559.png" srcset="/img/loading.gif" lazyload></p>
+<p>当然迭代法也不会才那么点难度，有时候我们需要换元进行迭代：</p>
+<ul>
+<li>先换元</li>
+</ul>
+<p><img src="/images/image-20220914191055218.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>再迭代</li>
+</ul>
+<p><img src="/images/image-20220914191156705.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="（2）递归树表示"><a href="#（2）递归树表示" class="headerlink" title="（2）递归树表示"></a>（2）递归树表示</h4><p>将上述迭代展开的过程用一个树型的结构（递归树）来表示，递归树是迭代展开的可视化表示；</p>
+<p>T(n)&#x3D;2T(n&#x2F;2)+n-1，其中T(n)首先作为树根，第一项是递归项，另一项是子问题的合并项，展开的时候将合并项放在上面，两个分支表示两个子问题：</p>
+<p><img src="/images/image-20220914192224461.png" srcset="/img/loading.gif" lazyload></p>
+<p>下面的T(n&#x2F;2)也是按照同样的方法进行展开：</p>
+<p><img src="/images/image-20220914192911125.png" srcset="/img/loading.gif" lazyload></p>
+<p>最后我们可以得到如下完全展开后的迭代树：</p>
+<p><img src="/images/image-20220914192009434.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="（3）假设归纳"><a href="#（3）假设归纳" class="headerlink" title="（3）假设归纳"></a>（3）假设归纳</h4><p>先假设，之后使用数学归纳证明该猜想；</p>
+<p><img src="/images/image-20220914193212798.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20220914193340903.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="（4）主定理"><a href="#（4）主定理" class="headerlink" title="（4）主定理"></a>（4）主定理</h4><p>根据已经证明的一个主定理直接套用，得到特殊递归方程的解；</p>
+<p>1个规模为n的问题，可以拆分为a个规模为n&#x2F;b子问题，合并a个子问题所需要的时间为O(n^d^)</p>
+<p><img src="/images/image-20220914194257409.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>上述主定理也适用于子问题大小为n&#x2F;b的上界，n&#x2F;b的下界以及n&#x2F;b+1的情况</p>
+</blockquote>
+<p>当然上述主定理也可以用通俗一点的语言描述：</p>
+<p><img src="/images/image-20220914200604678.png" srcset="/img/loading.gif" lazyload></p>
+<p>除了主定理1，还有主定理2</p>
+<p><img src="/images/image-20220914200235992.png" srcset="/img/loading.gif" lazyload></p>
+<p>同理，用通俗的语言描述如下</p>
+<p><img src="/images/image-20220914200712649.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="（5）特征方程"><a href="#（5）特征方程" class="headerlink" title="（5）特征方程"></a>（5）特征方程</h4><p>求解递归方程不得不提及使用特征方程求解（当然还有生成函数、递推方法等，这里只介绍特征方程求解），这也是需要我们掌握的一种方法；</p>
+<p>递归方程通常分为：</p>
+<ul>
+<li>K阶常系数线性齐次递归方程；</li>
+</ul>
+<p><img src="/images/image-20220914203723071.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>K阶常系数线性非齐次递归方程；</li>
+</ul>
+<p><img src="/images/image-20220914203659863.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>K阶常系数线性齐次递归方程</p>
+</blockquote>
+<p><img src="/images/image-20220914201727114.png" srcset="/img/loading.gif" lazyload></p>
+<p>为了求解得到特征方程，需要</p>
+<p><img src="/images/image-20220914201753127.png" srcset="/img/loading.gif" lazyload></p>
+<p>得到最终的特征方程如下</p>
+<p><img src="/images/image-20220914201944144.png" srcset="/img/loading.gif" lazyload></p>
+<p>求得特征方程只是最基本的一个步骤，接下来的解题步骤如下：</p>
+<ul>
+<li><p>求解上述特征方程的根，得到递归方程的通解</p>
+</li>
+<li><p>利用递归方程初始条件，确定通解中待定系数，得到递归方程的解</p>
+</li>
+</ul>
+<p>需要考虑2种情况：</p>
+<ul>
+<li>特征方程的k个根不相同</li>
+</ul>
+<p><img src="/images/image-20220914203456764.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>特征方程有相同的重根</li>
+</ul>
+<p><img src="/images/image-20220914203514169.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20220914203549793.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>K阶常系数线性非齐次递归方程</p>
+</blockquote>
+<p><img src="/images/image-20220914203808074.png" srcset="/img/loading.gif" lazyload></p>
+<p>更多关于K阶常系数线性非齐次递归方程的介绍就不再赘述，感兴趣可以自行百度；</p>
+<h2 id="2-排序算法"><a href="#2-排序算法" class="headerlink" title="2.排序算法"></a>2.排序算法</h2><p>常用的十大排序算法汇总如下</p>
+<p><img src="/images/image-20220926080054726.png" srcset="/img/loading.gif" lazyload></p>
+<p>其中稳定性是指排序后两个相等键值的顺序和排序之前它们的顺序相同，图中的In-place表示占用常数内存而不占用额外内存，Out-place表示占用额外内存，n表示数据规模，k表示“桶”的个数；</p>
+<p>排序算法可以分为内部排序和外部排序：</p>
+<ul>
+<li>内部排序是数据记录在内存中进行排序，上面的排序算法都是内部排序；</li>
+<li>外部排序是因为需要排序的数据很大，不能一次性容纳全部的排序记录，故在排序过程中需要访问外存；</li>
+</ul>
+<p>下图展示了常见排序算法的一些简单描述，我们在之后还会详细对它们进行介绍（有些描述不太准确&#x2F;甚至是错的，比如计数排序、桶排序，注意辨别）</p>
+<p><img src="/images/image-20220926080735535.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-1-冒泡排序"><a href="#2-1-冒泡排序" class="headerlink" title="2.1 冒泡排序"></a>2.1 冒泡排序</h3><p>算法步骤（当然也可以从左向右）：</p>
+<ol>
+<li>将“天平”置于待排序序列最右端，比较相邻元素，如果右边元素小于左边元素则交换两个元素，否则不变；</li>
+<li>“天平”向左移动一位，继续比较左右两端的数；</li>
+<li>重复1、2步骤，当“天平”移动到最左的时候，其左边的数即使整个序列最小的数，此时将该数提出序列不再参与后续比较；</li>
+<li>“天平”再次移动到序列最右开始重复上述步骤，直到所有的数字都被排序；</li>
+</ol>
+<p>最好情况：输入的数据都是正序（对于这种情况可以立flag，如果一趟序列遍历中元素没有发生交换则证明该序列有序）；</p>
+<p>最坏情况：输入的数据都是反序；</p>
+<h3 id="2-2-选择排序"><a href="#2-2-选择排序" class="headerlink" title="2.2 选择排序"></a>2.2 选择排序</h3><p>选择排序顾名思义就是简单直观的选择序列中最小（大）的值将其放在序列最前（后）；</p>
+<p>算法步骤：</p>
+<ol>
+<li>首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置；</li>
+<li>再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾；</li>
+<li>重复第二步，直到所有元素均排序完毕；</li>
+</ol>
+<p>如何在序列中寻找最小（大）元素呢？很简单，只需要遍历序列并每次都比较当前值和记录的最小（大）值，如果当前值更小（大）则更新最小（大）值；</p>
+<h3 id="2-3-插入排序"><a href="#2-3-插入排序" class="headerlink" title="2.3 插入排序"></a>2.3 插入排序</h3><p>插入排序实际上就是我们打扑克牌的常用策略，将最左端的牌固定不变（有序序列），右边的牌（未排序序列）比较大小并插入左边的牌堆；</p>
+<p>算法步骤：</p>
+<ol>
+<li>将待排序序列的第一个元素看作是有序序列，第二个元素开始看作是未排序序列；</li>
+<li>在已排序序列中从后向前扫描，找到相应位置（升序的话就是小数&lt;mid&lt;大数）并插入未排序序列的元素；</li>
+<li>从头到尾依次扫描未排序序列，重复2步骤，将扫描到的每个元素插入到有序序列的适当位置；</li>
+</ol>
+<h3 id="2-4-希尔排序"><a href="#2-4-希尔排序" class="headerlink" title="2.4 希尔排序"></a>2.4 希尔排序</h3><p>希尔排序也称为递减增量排序算法，可以看作是插入排序的改进版本；</p>
+<p>希尔排序的基本思想是：将整个待排序的记录序列分割为若干子序列，在这些子序列中分别进行插入排序，待子序列排序完成后，整个序列呈基本有序状态，此时对全体记录序列进行插入排序；</p>
+<p>算法步骤：</p>
+<ol>
+<li>先确定一个增量序列t1,t2…tk（当然我们为了不引起混淆可以将增量称为间隔），增量会依次减小且最后一个增量一定是1；</li>
+<li>上述我们确定了k个间隔，所以要进行k趟排序，每趟排序根据间隔的大小将待排序记录分割为若干子序列，对这些子序列进行插入排序；</li>
+<li>最后依次排序间隔为1也就意味着将整个记录序列使用插入排序进行排序；</li>
+</ol>
+<h3 id="2-5-归并排序"><a href="#2-5-归并排序" class="headerlink" title="2.5 归并排序"></a>2.5 归并排序</h3><p>文章参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_34771124/article/details/121377265">(29条消息) 自下而上与自上而下的归并排序_Crer_lu的博客-CSDN博客</a></p>
+<p>归并排序是一种建立在归并操作上的一种排序算法，归并排序主要有以下两种实现：</p>
+<ul>
+<li>自上而下的递归；</li>
+<li>自下而上的迭代；</li>
+</ul>
+<p>算法步骤：</p>
+<ol>
+<li>首先将待排序记录的数字分为两半，一直到只剩下一个数字；</li>
+<li>合并的时候，按照数字的升序移动，使得合并后的数字在组内按照升序排列；当合并包含多个数字的组的时候，比较开头的数字并移动较小的数字即可；</li>
+<li>递归重复合并组，直到所有的数字都在一个组中并排序完毕；</li>
+</ol>
+<p><img src="/images/image-20220926084718285.png" srcset="/img/loading.gif" lazyload></p>
+<p>自下而上迭代实现：首先将原始序列看成N个只包含1个元素的有序子序列，然后每次迭代归并两个相邻的有序子序列，直到最后只剩下1个有序的序列。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">Merge_sort_downtoup</span><span class="hljs-params">()</span>&#123;<br>	<span class="hljs-type">int</span> t = <span class="hljs-number">2</span>;<span class="hljs-comment">//最小分割单元 </span><br>	<span class="hljs-keyword">while</span>(t &lt;= n)&#123;<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i += t)&#123;<br>			sort(a + i, a + min(i + t, n + <span class="hljs-number">1</span>));<span class="hljs-comment">//注意sort的使用 </span><br>		&#125;<br>		<span class="hljs-comment">/*这里可以进行一些操作 */</span> <br>		t *= <span class="hljs-number">2</span>;<br>	&#125;<br>	<span class="hljs-keyword">return</span> ;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>自上而下递归实现：对一个数组（str）选中一个中间位置（mid&#x3D;（start+end）&#x2F;2），分别进行左递归（mergeSort（str，start，mid，length）），右递归（mergeSort（str，mid+1，end，length）），在回朔的时候分别对以中间为分割的数组进行排序（merge（str,start,end,mid）），此时是一个归并的过程，这是自上而下的方法。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">merge_sort_recursive</span><span class="hljs-params">(<span class="hljs-type">int</span> arr[], <span class="hljs-type">int</span> reg[], <span class="hljs-type">int</span> start, <span class="hljs-type">int</span> end)</span> &#123;<br>    <span class="hljs-keyword">if</span> (start &gt;= end)<br>        <span class="hljs-keyword">return</span>;<br>    <span class="hljs-type">int</span> len = end - start, mid = (len &gt;&gt; <span class="hljs-number">1</span>) + start;<br>    <span class="hljs-type">int</span> start1 = start, end1 = mid;<br>    <span class="hljs-type">int</span> start2 = mid + <span class="hljs-number">1</span>, end2 = end;<br>    merge_sort_recursive(arr, reg, start1, end1);<br>    merge_sort_recursive(arr, reg, start2, end2);<br>    <span class="hljs-type">int</span> k = start;<br>    <span class="hljs-keyword">while</span> (start1 &lt;= end1 &amp;&amp; start2 &lt;= end2)<br>        reg[k++] = arr[start1] &lt; arr[start2] ? arr[start1++] : arr[start2++];<br>    <span class="hljs-keyword">while</span> (start1 &lt;= end1)<br>        reg[k++] = arr[start1++];<br>    <span class="hljs-keyword">while</span> (start2 &lt;= end2)<br>        reg[k++] = arr[start2++];<br>    <span class="hljs-keyword">for</span> (k = start; k &lt;= end; k++)<br>        arr[k] = reg[k];<br>&#125;<br><br><span class="hljs-type">void</span> <span class="hljs-title function_">merge_sort</span><span class="hljs-params">(<span class="hljs-type">int</span> arr[], <span class="hljs-type">const</span> <span class="hljs-type">int</span> len)</span> &#123;<br>    <span class="hljs-type">int</span> reg[len];<br>    merge_sort_recursive(arr, reg, <span class="hljs-number">0</span>, len - <span class="hljs-number">1</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-6-快速排序"><a href="#2-6-快速排序" class="headerlink" title="2.6 快速排序"></a>2.6 快速排序</h3><p>本质上来看快速排序是建立在冒泡排序的基础上的递归分治法；</p>
+<p>算法步骤：</p>
+<ol>
+<li>从数列中挑选一个元素称为基准pivot（一般都选择序列最左端的元素）；</li>
+<li>所有比pivot小的元素在pivot左边，所有比pivot大的元素在pivot右边（与pivot相同的数可以在任意一边）；</li>
+<li>递归地将小于pivot的子序列和大于pivot的子序列使用1、2步骤进行排序；</li>
+</ol>
+<p>关于如何实现2，我们用下面的图进行解释</p>
+<p><img src="/images/image-20220926091301980.png" srcset="/img/loading.gif" lazyload></p>
+<p>快速排序实质上就是利用L、R、pivot这些标记递归地重复一系列操作的算法；</p>
+<h3 id="2-7-堆排序"><a href="#2-7-堆排序" class="headerlink" title="2.7 堆排序"></a>2.7 堆排序</h3><p>堆排序利用了堆的数据结构，堆主要有如下两种：</p>
+<ul>
+<li>大顶堆：每个节点的值都大于或等于其子节点的值，在堆排序算法中用于升序排列；</li>
+<li>小顶堆：每个节点的值都小于或等于其子节点的值，在堆排序算法中用于降序排列；</li>
+</ul>
+<p>堆是一种树形结构，是一种特殊的完全二叉树（完全二叉树不要求像满二叉树一样全部填满）；</p>
+<p>算法步骤：</p>
+<ol>
+<li>首先将所有数字存储在堆中，按照降序构建堆（大顶堆）；</li>
+<li>接着逐个取出存储在堆中的数字（从堆顶开始取出，注意每次取出之后都需要调整节点使其满足大顶堆的性质），取出的数字按照相反的顺序排序可以得到升序序列；</li>
+</ol>
+<h3 id="2-8-计数排序"><a href="#2-8-计数排序" class="headerlink" title="2.8 计数排序"></a>2.8 计数排序</h3><p>算法步骤：</p>
+<ol>
+<li>根据待排序集合中最大元素和最小元素的差值范围申请额外空间；</li>
+<li>遍历待排序集合，将每一个元素出现的次数记录到元素值对应的额外空间内；</li>
+<li>继续遍历并修改数组，数组遍历完毕后直接遍历输出数组即可</li>
+</ol>
+<p><img src="/images/image-20220926093531560.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-9-桶排序"><a href="#2-9-桶排序" class="headerlink" title="2.9 桶排序"></a>2.9 桶排序</h3><p>桶排序是计数排序的升级版，它利用了函数的映射关系：</p>
+<ul>
+<li>在额外空间充足的情况下，尽量增大桶的数量；</li>
+<li>使用的映射函数能够将输入的N个数据均匀分配到K个桶中；</li>
+<li>对于桶中元素的排序，选择何种排序算法堆性能影响很大；</li>
+</ul>
+<p><img src="/images/image-20220926095719535.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-10-基数排序"><a href="#2-10-基数排序" class="headerlink" title="2.10 基数排序"></a>2.10 基数排序</h3><p>这三种排序算法都利用了桶的概念，但对桶的使用方法上有明显差异：</p>
+<ul>
+<li>基数排序：根据键值的每位数字来分配桶；</li>
+<li>计数排序：每个桶只存储单一键值；</li>
+<li>桶排序：每个桶存储一定范围的数值；</li>
+</ul>
+<p>具体实现步骤参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_52253798/article/details/122930548">(29条消息) 基数排序（详细图解）_s逐梦少年的博客-CSDN博客_基数排序</a></p>
+<h2 id="3-分治法"><a href="#3-分治法" class="headerlink" title="3.分治法"></a>3.分治法</h2><p>参考文章链接：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/95c97bf4a97a">(一) 分治算法 - 简书 (jianshu.com)</a></p>
+<h3 id="3-1-概述"><a href="#3-1-概述" class="headerlink" title="3.1 概述"></a>3.1 概述</h3><blockquote>
+<p>基本思想</p>
+</blockquote>
+<p>分治法在字面上的解释是“分而治之”，就是将一个规模为N的问题分解为K个规模较小的子问题(<code>反复分解</code>直到问题小到可直接求解为止)，使这些子问题相互独立可分别求解，再将k个子问题的解合并成原问题的解，这些子问题<code>相互独立且与原问题性质相同(规模一般也相同)</code>。只要求出子问题的解，合并就可得到原问题的解。</p>
+<p>在分治法中，子问题的解法通常与原问题相同，这就导致<code>递归过程</code>，分治与递归像一对孪生兄弟，经常同时应用在算法设计之中，并由此产生许多高效算法；</p>
+<blockquote>
+<p>适用情况</p>
+</blockquote>
+<p>分治法能解决的问题一般具有以下4个特征：<br> （1）当问题的规模缩小到一定的程度就可以容易地解决 —— 这个特征是绝大多数问题都可以满足的，因为问题的计算复杂性一般是随着问题规模的增加而增加；<br> （2）问题可以分解为若干个规模较小的问题，即该问题具有最优子结构性质 ——这个特征是<code>应用分治法的前提</code>，它也是大多数问题可以满足的，此特征反映了递归思想的应用；</p>
+<ul>
+<li><p>最优子结构性质是指问题的最优解包含其子问题的最优解时，就称该问题具有最优子结构性质；</p>
+</li>
+<li><p>重叠子问题指的是子问题可能被多次用到，多次计算，动态规划就是为了消除其重叠子问题而设计的；</p>
+</li>
+</ul>
+<p> （3）利用该问题分解出的子问题的解可以合并为该问题的解（<code>关键</code>） —— 能否利用分治法完全取决于问题是否具有第三条特征，如果具备了第一条和第二条特征，而不具备第三条特征，则可以考虑用贪心法或动态规划法；<br> （4）各个子问题是相互独立的，即子问题之间不包含公共的子问题 —— 第四条特征涉及到分治法的<code>效率</code>，如果各子问题是不独立的则分治法要做许多不必要的工作，重复地解公共的子问题，此时虽然可用分治法，但一般用动态规划法较好；</p>
+<blockquote>
+<p>基本步骤</p>
+</blockquote>
+<ol>
+<li>分解，将要解决的问题划分成若干个规模较小的同类问题</li>
+<li>求解，当子问题划分得足够小时，用较简单的方法解决</li>
+<li>合并，按原问题的要求，将子问题的解逐层合并构成原问题的解</li>
+</ol>
+<p><img src="/images/image-20221109164854788.png" srcset="/img/loading.gif" lazyload></p>
+<p>PS：将一个问题分成大小相等的 k 个子问题的处理方法是行之有效的；</p>
+<blockquote>
+<p>算法设计模式：</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cpp">Divide-<span class="hljs-keyword">and</span>-<span class="hljs-built_in">Conquer</span>(P)<br><br><span class="hljs-number">1.</span> <span class="hljs-keyword">if</span> |P|≤n0<br><span class="hljs-number">2.</span> <span class="hljs-function">then <span class="hljs-title">return</span><span class="hljs-params">(ADHOC(P))</span></span><br><span class="hljs-function">3. 将P分解为较小的子问题 P1 ,P2 ,…,Pk</span><br><span class="hljs-function">4. <span class="hljs-keyword">for</span> i←1 to k</span><br><span class="hljs-function">5. <span class="hljs-keyword">do</span> yi ← Divide-<span class="hljs-keyword">and</span>-<span class="hljs-title">Conquer</span><span class="hljs-params">(Pi)</span> <span class="hljs-comment">//递归解决Pi</span></span><br><span class="hljs-function">6. T ← <span class="hljs-title">MERGE</span><span class="hljs-params">(y1,y2,…,yk)</span> 		 <span class="hljs-comment">//合并子问题</span></span><br><span class="hljs-function">7. <span class="hljs-title">return</span><span class="hljs-params">(T)</span></span><br></code></pre></td></tr></table></figure>
+
+<p>其中:</p>
+<ul>
+<li><p>|P|表示问题P的规模；</p>
+</li>
+<li><p>n0为一阈值，表示当问题P的规模不超过n0时，问题已容易直接解出，不必再继续分解；</p>
+</li>
+<li><p>算法ADHOC(P)是该分治法中的基本子算法，用于直接解小规模的问题P。因此，当P的规模不超过n0时直接用算法ADHOC(P)求解；</p>
+</li>
+<li><p>算法MERGE(y1,y2,…,yk)是该分治法中的合并子算法，用于将P的子问题P1 ,P2 ,…,Pk的相应的解y1,y2,…,yk合并为P的解；</p>
+</li>
+</ul>
+<blockquote>
+<p>复杂性分析</p>
+</blockquote>
+<p>一个分治法将规模为n的问题分成k个规模为n／m的子问题去解。设分解阀值n<del>0</del>&#x3D;1，且adhoc解规模为1的问题耗费1个单位时间。再设将原问题分解为k个子问题以及用merge将k个子问题的解合并为原问题的解需用f(n)个单位时间。用T(n)表示该分治法解规模为|P|&#x3D;n的问题所需的计算时间，则有：</p>
+<p><img src="/images/image-20221109171253284.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-2-经典运用"><a href="#3-2-经典运用" class="headerlink" title="3.2 经典运用"></a>3.2 经典运用</h3><h4 id="3-2-1-二分搜索"><a href="#3-2-1-二分搜索" class="headerlink" title="3.2.1 二分搜索"></a>3.2.1 二分搜索</h4><p>二分搜索算法用于高效地在有序数组A中查找一个目标值v，和线性搜索不同，二分搜索利用数据结构中的信息让搜索更高效；</p>
+<blockquote>
+<p>原理</p>
+</blockquote>
+<p>不断地搜索空间分成两半，将搜索空间限制在其中的一半；这个算法通过改变上下界限有效地限制搜索空间：</p>
+<ul>
+<li>上界标记了搜索空间有效数组中最高的索引；</li>
+<li>下界标记了搜索空间有效数组中最低的索引；</li>
+</ul>
+<p>通过这个算法，如果目标值在这个数组中就可以保证：</p>
+<p><img src="/images/image-20221109194908966.png" srcset="/img/loading.gif" lazyload></p>
+<p>在搜索的每一步中，只需要依次判定上界和下界中间的值</p>
+<p><img src="/images/image-20221109195242608.png" srcset="/img/loading.gif" lazyload></p>
+<p>接下来，将中间值A[IndexMid]和目标值v进行比较：</p>
+<ul>
+<li>如果中间值小于目标值(A[IndexMid]&lt;v)，我们就知道目标值一定介于这个中间值之后。这样我们可以将【IndexLow】改为【IndexMid+1】来使搜索空间又变成原来的一半；</li>
+<li>如果中间值比目标值大(A[IndexMid]&gt;v)，我们就知道目标一定位于中间值之前，于是我们将【IndexHigh】改为【IndexMid-1】来使得搜索空间变成原来的一半；</li>
+<li>如果我们发现A[IndexMid]等于v，我们可以直接结束搜索，找到目标值；</li>
+<li>如果目标值不在数组中会发生什么呢?在搜索过程中，上下界之间的距离会越来越近，直到它们之间没有任何还未检查过的值。因为我们总是将其中一个界限移动到中间值的另一边， 所以我们可以在【IndexHigh&lt;Indexlow】的时候停下来，这个时候就可以保证目标值不在数组中了；</li>
+</ul>
+<p>这里举一个例子</p>
+<p><img src="/images/20210218163821400.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>第一个被判定的中点的值是11，比我们的目标值15小，因为我们知道这个数组是按照升序排列的，所以可以排除中点及其之前的所有部分，我们将下界索引移动到适当的地方 (IndexLow&#x3D;IndexMid+1)</p>
+<p><img src="/images/20210218163821384.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>在第二次比较之后，我们发现中点值是52，比目标值大。 我们可以排除中点和它之后的所有部分。此时需要移动我们上界(IndexHigh&#x3D;IndexMid-1)</p>
+<p><img src="/images/20210218163821389.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>请注意，通过这几次的操作，此时虽然下界已经是目标值了(v&#x3D;15)，但是我们仍需要继续搜索，直到中间值指向目标值。这是因为二分搜索是对中间值进行判定，而不会判定上界和下界是否是目标值；</p>
+<blockquote>
+<p>代码实现及复杂度分析</p>
+</blockquote>
+<p><img src="/images/image-20221109222018561.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="3-2-2-合并排序"><a href="#3-2-2-合并排序" class="headerlink" title="3.2.2 合并排序"></a>3.2.2 合并排序</h4><p>算法步骤：</p>
+<ol>
+<li>首先将待排序记录的数字分为两半，一直到只剩下一个数字；</li>
+<li>合并的时候，按照数字的升序移动，使得合并后的数字在组内按照升序排列；当合并包含多个数字的组的时候，比较开头的数字并移动较小的数字即可；</li>
+<li>递归重复合并组，直到所有的数字都在一个组中并排序完毕；</li>
+</ol>
+<blockquote>
+<p>代码实现及复杂度分析</p>
+</blockquote>
+<p><img src="/images/image-20221109222057502.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="3-2-3-快速排序"><a href="#3-2-3-快速排序" class="headerlink" title="3.2.3 快速排序"></a>3.2.3 快速排序</h4><p>本质上快速排序是建立在冒泡排序上的递归分治法，算法步骤：</p>
+<p>1.从数列中挑选一个元素称为基准 pivot（一般都选择序列最左端的元素）；<br>2.所有比 pivot 小的元素在 pivot 左边，所有比 pivot 大的元素在 pivot 右边（与 pivot 相同的数可以在任意一边）；<br>3.递归地将小于 pivot 的子序列和大于 pivot 的子序列使用 1、2 步骤进行排序；</p>
+<p>对于快速排序来说，当数据有序时，时间复杂度是 O(N^2)，为了解决这个问题，我们选择三数取中，简单来说就是将数组 left、right、mid 的数值比较，将其中数值处于中间的作为keyi 值，这样在有序的情况下中间的值刚好就是二分不会导致最差的情况出现；</p>
+<p>快慢指针完成单趟排序的思想非常简单，只需要遵循如下步骤：<br>1.采用 perv 记录区间第一个元素的下标，采用 cur 记录区间第二个元素的下标；<br>2.cur 找小，每次遇到比 key(坑值)小的值就停下来，++prev；<br>3.交换 prev 和 cur 位置的值；</p>
+<p>这样完成单趟的排序，因为我们需要实现整体的有序，这里选择了分治递归的思想：当左子区间有序，右子区间有序则该数组有序；<br>综上，快速排序主要分为三个部分：三数取中、单趟排序、整体分治递归</p>
+<blockquote>
+<p>代码实现</p>
+</blockquote>
+<p><img src="/images/image-20221109222331816.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221109222353053.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221109222407778.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>复杂度分析</p>
+</blockquote>
+<p>平均和最好情况都是O(nlogn)，最坏情况是O(n^2^)；</p>
+<p><img src="/images/image-20221109224700538.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="3-2-4-线性时间选择"><a href="#3-2-4-线性时间选择" class="headerlink" title="3.2.4 线性时间选择"></a>3.2.4 线性时间选择</h4><p>“线性时间选择”实际上就是“选择问题”的“线性时间”算法；</p>
+<p>选择问题：给定一个能够线性排序的集合（该集合中有 n 个元素，该集合是无序的）和 一个整数 k（1≤k≤n） ，找出这 n 个元素中第 k 小的元素；</p>
+<blockquote>
+<p>(1)随机划分线性选择</p>
+</blockquote>
+<p>线性时间选择随机划分法可以模仿随机化快速排序算法设计，基本思想是对输入数组进行递归划分，与快速排序不同的是，它只对划分出的子数组之一进行递归处理；</p>
+<p>算法实现可以参考<a target="_blank" rel="noopener" href="https://www.cnblogs.com/cy0628/p/13940467.html">线性时间选择 - Chen洋 - 博客园 (cnblogs.com)</a>，因为不是我们主要介绍的算法所以这里不重点介绍；</p>
+<p>主要思想就是首先利用随机函数产生划分基准，将数组a[p:r]划分成两个子数组a[p:i]和a[i+1:r]，使a[p:i]中的每个元素都不大于a[i+1:r]中的每个元素；</p>
+<p>接着令”j&#x3D;i-p+1”来计算a[p:i]中元素个数j：</p>
+<ul>
+<li>如果k&lt;&#x3D;j，则数组a[p:r]中第k小元素在子数组a[p:i]中；</li>
+<li>如果k&gt;j，则数组a[p:r]中第k小元素在子数组a[i+1:r]中；</li>
+</ul>
+<p> 在最坏的情况下，例如：总是找到最小元素时，总是在最大元素处划分，时间复杂度为O(n^2^)，平均时间复杂度与n呈线性关系，为O(n)；</p>
+<blockquote>
+<p>(2)中位数线性时间选择</p>
+</blockquote>
+<p>算法思路：如果能在线性时间内找到一个划分基准使得按这个基准所划分出的2个子数组的长度都至少为原数组长度的ε倍(0&lt;ε&lt;1)，那么就可以在最坏情况下用O(n)时间完成选择任务；</p>
+<p>例如，当ε&#x3D;9&#x2F;10，算法递归调用所产生的子数组的长度至少缩短1&#x2F;10，所以，在最坏情况下，算法所需的计算时间T(n)满足递推式T(n)&lt;&#x3D;T(9n&#x2F;10)+O(n)，由此可得T(n)&#x3D;O(n)；</p>
+<p>实现步骤：</p>
+<ol>
+<li>将所有的数n个以每5个划分为一组共n&#x2F;5组，将不足5个的那组忽略；</li>
+<li>用任意一种排序算法，因为只对5个数进行排序，所以任取一种排序法就可以了，将每组中的元素排好序再分别取每组的中位数，得到n&#x2F;5个中位数；</li>
+<li>取这n&#x2F;5个中位数的中位数，如果n&#x2F;5是偶数则找它的2个中位数中较大的一个作为划分标准(这种情况下找出的基准x至少比3(n-5)&#x2F;10个元素大，同理基准x也至少比3(n-5)&#x2F;10个元素小，当n&gt;&#x3D;75时有3(n-5)&#x2F;10&gt;&#x3D;n&#x2F;4，这意味着按照这个基准划分所得的两个子数组的长度至少会缩短1&#x2F;4，这就符合一开始我们定义的算法思路)；</li>
+<li>将全部的数划分为两个部分，小于基准的在左边，大于等于基准的放右边；</li>
+</ol>
+<p><img src="/images/image-20221113170448099.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>总结：上述算法将每一组的大小定为5，并选取75作为是否作递归调用的分界点。这2点保证了T（n）的递归式中2个自变量之和n&#x2F;5+3n&#x2F;4&#x3D;19n&#x2F;20&#x3D;en，0&lt;&lt;1，这是使T（n）&#x3D;O（n）的关键之处。当然，除了5和75之外，还有其他选择。</p>
+</blockquote>
+<h4 id="3-2-5-最接近点对问题"><a href="#3-2-5-最接近点对问题" class="headerlink" title="3.2.5 最接近点对问题"></a>3.2.5 最接近点对问题</h4><p>（这个题也有点抽象，实在不理解就看看视频<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Z14y157EY/?spm_id_from=333.337.search-card.all.click&vd_source=276d55048634a5b508b1b53a1ecd56b3">4.2 最近点对问题_哔哩哔哩_bilibili</a>）</p>
+<p>主要考虑平面上的最接近点对问题，这类问题是计算几何学中研究的基本问题之一；</p>
+<p>最接近点对问题：给定平面上的n个点，找出其中的一对点，使得在n个点组成的所有点对中，该点对的距离最小；严格来说最接近点对可能多于一对，简单起见规定只需要找出其中的一对作为问题的解；</p>
+<p>最直观的解法当然是将每个点和其他n-1个点的距离全部计算出之后找出最小距离，这样的时间复杂度为T(n)&#x3D;n(n-1)&#x2F;2+n&#x3D;O(n^2^)，即求出n(n-1)&#x2F;2个点对距离的时间+选出最小距离的时间；</p>
+<p>考虑分治法的思想：</p>
+<ul>
+<li>分解：将n个点的集合分成大小近似相等的两个子集；</li>
+<li>求解：递归地求解两个子集内部的最接近点对；</li>
+<li>合并（关键问题）：从子空间内部最接近点对，和两个子空间之间的最接近点对中，选择最接近点对；</li>
+</ul>
+<p>分解和求解步骤都不需要赘述，关键问题是合并步骤，如何由S1和S2两个子集中的最接近点对求得原集合S中的最接近点对，因为S1和S2的最接近点对未必就是S的最接近点对：</p>
+<ul>
+<li>如果组成S的最接近点对的两个点都在S1或S2中则该问题很容易解决；</li>
+<li>如果这两个点分别在S1和S2中，则对于S1中任意一点P，S2中所有的点都可能与其构成最接近点对候选者；</li>
+</ul>
+<p>算时间复杂度我们会发现使用上述合并方法还不如直接使用穷举法</p>
+<blockquote>
+<p>(1)一维最接近点对问题</p>
+</blockquote>
+<p><img src="/images/image-20221113163354275.png" srcset="/img/loading.gif" lazyload></p>
+<p>一维中原集合S中的n个点退化为x轴上的n个实数，最接近点对问题退化为n个实数中相差最小的两个实数；</p>
+<p>直观的解法是先将n个实数排序，接着只需要进行一次线性扫描(关于线性扫描在网上资料都有点奇怪…暂且认为就是直接遍历)即可找出最小点对，时间复杂度为O(nlogn)，这种方法不能推广到二维；</p>
+<p>假设使用某个实数m(选取分割点的一个基本要求是由m可以导出集合S的线性分隔，一般选取m&#x3D;(min(S)+max(S))&#x2F;2，当然这样选择m可能造成S1和S2集合不平衡，最坏情况下时间复杂度会变成O(n^2^)，所以我们也可以选择S中的中位数作为分割点)将S划分为两个集合S1和S2，使得S1集合中的所有数都小于等于m，S2集合中的所有数都大于m，那么对于所有S1中的元素都小于S2中的元素；递归地在S1和S2上找出最接近点对{p1,p2}和{q1,q2}，我们这里额外设置一个变量，令其d&#x3D;min{|p1-p2|,|q1,q2|}，则原集合S中最接近点对有如下三种情况：</p>
+<ul>
+<li>{p1,p2}</li>
+<li>{q1,q2}</li>
+<li>{p3,q3}：这意味着|p3-q3|&lt;d，也就是说p3和q3的距离小于d，同时p3和q3与m的距离也一定不超过d；</li>
+</ul>
+<p>由于每个长度为d的半闭区间至多包含S1中的一个点，并且m是S1，和S2的分割点，因此（m-d，m]中至多包含一个S中的点。同理，（m，m+d]中也至多包含一个S中的点。</p>
+<p>由图2-8可以看出，如果（m-d，m]中有S中点，则此点就是S1中最大点。同理，如果（m，m+d]中有S中的点，则此点就是S2中最小点。</p>
+<p>因此，用线性时间就能找到区间（m-d，m]和（m，m+d]中所有点，即p3和q3，从而用线性时间就可以将S1的解和S2的解合并成S的解，这样的合并步骤的时间复杂度只需要O(n)的时间复杂度；</p>
+<p><img src="/images/image-20221113170508524.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>(2)二维最接近点对问题</p>
+</blockquote>
+<p><img src="/images/image-20221113170749411.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221113170836330.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221113170857622.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221113171104331.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221113171121468.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221113171259510.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="3-2-6-循环赛"><a href="#3-2-6-循环赛" class="headerlink" title="3.2.6 循环赛"></a>3.2.6 循环赛</h4><blockquote>
+<p>问题描述</p>
+</blockquote>
+<p>设有 n 个运动员要进行网球循环赛，设计一个满足下列条件的比赛日程表：</p>
+<p>1）每个选手必须与其他 n-1 个选手各赛一次；</p>
+<p>2）每个选手一天只能赛一次</p>
+<p>3）当 n 是偶数时，循环赛只能进行 n-1 天</p>
+<p>4）当 n 是奇数时，循环赛只能进行 n 天</p>
+<p>依据数学方法，解决选手人数不等于2^k^时，在偶数和奇数情况下，依题目条件建立算法模型</p>
+<blockquote>
+<p>原理分析</p>
+</blockquote>
+<p>在进行算法设计之前我们先介绍当人数为2^k^的时候，这种最好的情况下应当如何分析。</p>
+<p>首先我们设比赛人数为2（假如只有一个人则根本不需要比赛，没有分析的必要），比赛人数为2的比赛矩阵为[[1,2],[2,1]]，我们规定纵向为参赛人员编号，横向（除第一列）其他列为比赛天数。</p>
+<p>接着分析比赛人数为4的情况，我们只需要将比赛人数为2的矩阵横向以及纵向扩充，扩充的规则是横向矩阵元素分别加原有矩阵的边长，作为基础矩阵2，接着分别将基础矩阵2和基础矩阵1逆序排列即可。按照上述规则，我们直接构造出人数为4的比赛矩阵[[1,2,3,4],[2,1,4,3],[3,4,1,2],[4,3,2,1]]。</p>
+<p>根据上述规则，我们可以很容易的构造出比赛人数为2^k^的比赛矩阵，通过观察我们还能够发现这个矩阵是对称的矩阵。</p>
+<p>接着我们尝试运用同样的分析方法来分析非2^k^人数的情况。</p>
+<p><img src="/images/image-20221127134123665.png" srcset="/img/loading.gif" lazyload></p>
+<p>从上面的分析可以看出，使用这种简单的递归方法是不能解决这种非特殊情况的，所以我们需要考虑使用其他方式；</p>
+<p>这道题并不是仅仅只需要无限划分矩阵就可以做出来这么简单，我们需要自底向上构造，当比赛人数为奇数的时候需要额外增加一个虚拟选手使得其他选手与之比赛，在最后需要将该虚拟选手删除并将其他选手与之比赛的安排置零</p>
+<p><img src="/images/image-20221127134141510.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>算法设计</p>
+</blockquote>
+<p>首先是分治法的分治过程</p>
+<p><img src="/images/image-20221127134238225.png" srcset="/img/loading.gif" lazyload></p>
+<p>注意这里我们需要做一个简单的判别</p>
+<ul>
+<li><p>当人数小于等于1的时候没有意义，故直接return结束分治；</p>
+</li>
+<li><p>当人数为2时，作为分治法的基本元素，直接赋值矩阵[[1,2],[2,1]]，当然也可以赋值矩阵为[[2,1],[1,2]]；</p>
+</li>
+<li><p>当人数大于等于2时，递归使用tournament进行分治，然后使用merge依次合并子问题；</p>
+</li>
+</ul>
+<p>本程序最关键的点就在于子问题的合并过程，这同时也是元素矩阵的构造过程</p>
+<p><img src="/images/image-20221127134313705.png" srcset="/img/loading.gif" lazyload></p>
+<p>分治法的基本思想就是先算出n&#x2F;2的情况，接着将n&#x2F;2的子问题进行合并构造出n的情况。</p>
+<p>我们将构造过程分为了横向构造和纵向构造，横向构造通过已知的前m个选手的比赛安排来确定后n-m个选手的比赛安排，纵向构造通过已知的前before_days的比赛安排来确定后days-before_days天的比赛安排。</p>
+<p>在横向构造的过程中需要注意的是，当我们总人数是奇数的时候，我们会额外增加一行（我们默认横向为比赛天数，纵向为参赛选手编号），之所以增加一行是为了按照和偶数一样的边界进行构造，而实际上这个参赛选手是不存在的，所以在最后我们需要将与该选手进行比赛的其他选手的相应位置设置为空或0，表示该选手在这天休息不进行比赛。</p>
+<p>在纵向构造的过程中需要注意一点就是需要避免矩阵元素重复，解决方法是使用一个标记来标志子问题是否为奇数，如果是则构造的纵向增量需要额外+1，这样就能够保证A【1】【j】不重复进而保证之后的构造增量不重复。</p>
+<h4 id="3-2-7-大整数乘法"><a href="#3-2-7-大整数乘法" class="headerlink" title="3.2.7 大整数乘法"></a>3.2.7 大整数乘法</h4><p>首先抛出一个问题，很多人认为有平时的乘法的为什么还需要大整数呢？这不是多此一举？这是因为计算机硬件或者软件的限制，无法存储那些非常大的数字（尤其是在某些特殊领域），所以就需要使用特殊手段对其存储并且能够设计有效的运算法则对其进行运算；</p>
+<blockquote>
+<p>简单大整数乘法</p>
+</blockquote>
+<p>首先我们来介绍一下什么是大整数乘法；大整数又被称为高精度整数，之所以称之为高精度整数是因为这样的整数用基本数据类型无法存储其精度，因此一般使用数组来存储大整数，数组中的每一位都代表了大整数的每一位：整数的高位存储在数组的高位，整数的低位存储在数组的低位，之所以这样存储是因为运算的时候都是从整数的低位到高位进行枚举，使用顺序存储是符合这种思维的；输入大整数时，一般都是先用字符串读入，然后再把字符串另存为至大整数结构体bign（该结构体包含大整数数组d[]和大整数长度len）。由于使用char数组进行读入时，整数的高位会变成数组的低位，而整数的低位会变成数组的高位，因此为了让整数在bign中是顺位存储，需要让字符串倒着赋给d[]数组（这点很重要，之后的代码我们会使用到char数组来接收大整数）；</p>
+<p>因为编程语言提供的基本数值数据类型表示的数值范围有限，不能满足较大规模的高精度数值计算，因此出现了大整数运算来实现高精度的数值计算，下面我们将介绍大数运算中的乘法运算。</p>
+<p>使用传统的乘法思想进行大数乘法时间复杂度为O(n^2^)，理想状态下优化过后的大整数乘法的时间复杂度为O(n^1.59^)。</p>
+<p>首先我们来看最直观的一个例子，假设我们这里要计算12345*12345，我们第一时间想到的是使用竖式计算，然后在计算完毕后将result结果数组的各个数值进行进位处理得到最终结果，大致流程如下</p>
+<p><img src="/images/image-20221127125149191.png" srcset="/img/loading.gif" lazyload></p>
+<p>当然这是最基础也是时间复杂度最高的方法，接下来我们介绍优化；</p>
+<p>在计算机中存储的整数都是二进制形式，大整数乘法首先需要将nbit二进制整数X和Y都分为2段，每段长度都是n&#x2F;2bit（为了方便讨论认为n是2的幂次）</p>
+<p><img src="/images/image-20221127125252944.png" srcset="/img/loading.gif" lazyload></p>
+<p>那么可以将X和Y表示为</p>
+<p><img src="/images/image-20221127125315129.png" srcset="/img/loading.gif" lazyload></p>
+<p>那么大整数X和Y的乘积就是</p>
+<p><img src="/images/image-20221127125329010.png" srcset="/img/loading.gif" lazyload></p>
+<p>如果使用上面的式子进行计算，我们需要进行4次n&#x2F;2位整数的乘法（AC,AD,BC和BD）以及3次不超过n位的整数加法和2次移位（2^n^和2^n&#x2F;2^），这需要的时间复杂度为O(n^2^)（解递归方程的方法求解）；</p>
+<p>为了改进算法的计算复杂度，需要减少乘法次数，对上式进行优化得到</p>
+<p><img src="/images/image-20221127125421120.png" srcset="/img/loading.gif" lazyload></p>
+<p>上式只需要3次n&#x2F;2位的整数乘法（AC,BD和(A-B)(D-C)）以及6次加减法和2次移位，其时间复杂度T(n)&#x3D;O(n^1.59^)；</p>
+<blockquote>
+<p>代码实现</p>
+</blockquote>
+<p>简单介绍一下时间复杂度为O(n^2^)的大整数乘法代码和时间复杂度为O(n^1.59^)的大整数乘法，<code>核心代码</code>主要如下</p>
+<ul>
+<li>时间复杂度为O(n^1.59^)的大整数乘法</li>
+</ul>
+<p><img src="/images/image-20221127125656713.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>时间复杂度为O(n^2^)的大整数乘法</li>
+</ul>
+<p><img src="/images/image-20221127125720167.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221127125729863.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>FFT改进大整数乘法</p>
+</blockquote>
+<p>我们知道FFT是用来加速计算多项式乘法A(x)*B(x)&#x3D;C(x)</p>
+<p><img src="/images/image-20221127131749937.png" srcset="/img/loading.gif" lazyload></p>
+<p>那么FFT和大整数乘法有什么关系呢？为什么可以使用FFT来实现大整数乘法的优化？</p>
+<p><img src="/images/image-20221127131809604.png" srcset="/img/loading.gif" lazyload></p>
+<p>下面我们介绍一下FFT到底是什么，因为FFT整个过程比较复杂，我们直接用手写的方式给出介绍</p>
+<p><img src="/images/image-20221127131829731.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221127131846904.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221127131857008.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221127131906143.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>FFT的代码实现</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">FFT</span><span class="hljs-params">(<span class="hljs-type">double</span> *reA, <span class="hljs-type">double</span> *inA, <span class="hljs-type">int</span> n, <span class="hljs-type">int</span> flag)</span><br>&#123;<br>	<span class="hljs-keyword">if</span>(n == <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span>;<br>    <span class="hljs-type">int</span> k, u, i;<br>	<span class="hljs-type">double</span> reWm = <span class="hljs-built_in">cos</span>(<span class="hljs-number">2</span>*pi/n), inWm = <span class="hljs-built_in">sin</span>(<span class="hljs-number">2</span>*pi/n);<br>	<span class="hljs-keyword">if</span>(flag) inWm = -inWm;<br>    <span class="hljs-type">double</span> reW = <span class="hljs-number">1.0</span>, inW = <span class="hljs-number">0.0</span>;<br>	<span class="hljs-comment">/* 把下标为偶数的值按顺序放前面，下标为奇数的值按顺序放后面 */</span><br>	<span class="hljs-keyword">for</span>(k = <span class="hljs-number">1</span>,u = <span class="hljs-number">0</span>; k &lt; n; k += <span class="hljs-number">2</span>,u++)&#123;<br>		Retmp[u] = reA[k];<br>		Intmp[u] = inA[k];<br>	&#125;<br>	<span class="hljs-keyword">for</span>(k = <span class="hljs-number">2</span>; k &lt; n; k += <span class="hljs-number">2</span>)&#123;<br>		reA[k/<span class="hljs-number">2</span>] = reA[k];<br>		inA[k/<span class="hljs-number">2</span>] = inA[k];<br>	&#125;<br>	<span class="hljs-keyword">for</span>(k = u,i = <span class="hljs-number">0</span>; k &lt; n &amp;&amp; i &lt; u; k++, i++)&#123;<br>		reA[k] = Retmp[i];<br>		inA[k] = Intmp[i];<br>	&#125;<br>	<span class="hljs-comment">/* 递归处理 */</span><br>	FFT(reA, inA, n/<span class="hljs-number">2</span>, flag);<br>	FFT(reA + n/<span class="hljs-number">2</span>, inA + n/<span class="hljs-number">2</span>, n/<span class="hljs-number">2</span>, flag);<br>	<span class="hljs-keyword">for</span>(k = <span class="hljs-number">0</span>; k &lt; n/<span class="hljs-number">2</span>; k++)&#123;<br>		<span class="hljs-type">int</span> tag = k+n/<span class="hljs-number">2</span>;<br>		<span class="hljs-type">double</span> reT = reW * reA[tag] - inW * inA[tag];<br>		<span class="hljs-type">double</span> inT = reW * inA[tag] + inW * reA[tag];<br>		<span class="hljs-type">double</span> reU = reA[k], inU = inA[k];<br>		reA[k] = reU + reT;<br>		inA[k] = inU + inT;<br>		reA[tag] = reU - reT;<br>		inA[tag] = inU - inT;<br>		<span class="hljs-type">double</span> <span class="hljs-type">rew_t</span> = reW * reWm - inW * inWm;<br>		<span class="hljs-type">double</span> <span class="hljs-type">inw_t</span> = reW * inWm + inW * reWm;<br>		reW = <span class="hljs-type">rew_t</span>;<br>		inW = <span class="hljs-type">inw_t</span>;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>使用FFT实现大整数乘法的时间复杂度为O(nlogn)；</p>
+<h1 id="第三章-动态规划"><a href="#第三章-动态规划" class="headerlink" title="第三章 动态规划"></a>第三章 动态规划</h1><h2 id="1-概述"><a href="#1-概述" class="headerlink" title="1.概述"></a>1.概述</h2><p>参考文章链接：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/3ef3a4797202">(二) 动态规划算法 - 简书 (jianshu.com)</a></p>
+<h3 id="1-1-术语"><a href="#1-1-术语" class="headerlink" title="1.1 术语"></a>1.1 术语</h3><p>动态规划是运筹学的一个分支，是求解决策过程最优化的数学方法；在研究多阶段决策过程的优化问题时，提出了著名的最优化原理，把多阶段过程转换为一系列单阶段问题，利用各个阶段之间的关系逐个求解，这就是动态规划的算法；</p>
+<p><img src="/images/image-20221109232800581.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>阶段</p>
+</blockquote>
+<p>把所给求解问题的过程恰当地分成若干个相互联系的<code>阶段</code>，以便于求解，过程不同，阶段数就可能不同；</p>
+<p>将描述阶段的变量称为<code>阶段变量</code>：</p>
+<ul>
+<li>在多数情况下，阶段变量是离散的，用k表示；</li>
+<li>此外，也有阶段变量是连续的情形，如果过程可以在任何时刻作出决策，且在任意两个不同的时刻之间允许有无穷多个决策时，阶段变量就是连续的；</li>
+</ul>
+<p>在前面的图中，第一个阶段就是点A，而第二个阶段就是点A到点Bi，第三个阶段是点Bi到点Ci，而第四个阶段是点Ci到点Di</p>
+<blockquote>
+<p>状态</p>
+</blockquote>
+<p>状态表示每个阶段开始面临的自然状况或客观条件，它不以人的主观意志为转移，也称为不可控因素。</p>
+<p>在上面的例子中状态就是某阶段的出发位置，它既是该阶段某路的起点，同时又是前一阶段某支路的终点。图中，第一个阶段有一个状态A，而第二个阶段有三个状态B<del>1</del>、B<del>2</del>和B<del>3</del>，第三个阶段有三个状态C<del>1</del>，C<del>2</del>和C<del>3</del>，而第四个阶段有两个状态D<del>1</del>和D<del>2</del>；</p>
+<ul>
+<li><p><code>状态变量</code>：过程的状态通常可以用一个或一组数来描述，称为状态变量。一般地，状态是离散的，但有时为了方便也将状态取成连续的；</p>
+</li>
+<li><p><code>状态集合</code>：在每个阶段的状态维数可以不同，当过程按所有可能不同的方式发展时，过程各阶段的状态变量将在某一确定的范围内取值(可能是离散的，也可能是连续的)，状态变量取值的集合称为状态集合；</p>
+</li>
+</ul>
+<blockquote>
+<p>无后效性</p>
+</blockquote>
+<p>要求状态具有下面的性质：如果某阶段的状态一旦确定，则在这一阶段以后过程的发展变化仅与此阶段的状态有关，不受这阶段以前各段状态的影响，所有各阶段都确定时，整个过程也就确定了；</p>
+<p>简单来说，过程的每一次实现可以用一个状态序列表示；在前面的例子中每阶段的状态是该线路的始点，确定了这些点的序列，整个线路也就完全确定；从某一阶段以后的线路开始，当这段的始点给定时，不受以前线路（所通过的点）的影响；</p>
+<p>即<code>未来与过去无关</code>，当前的状态是此前历史（以往决策）的一个完整总结，过程的历史只能通过当前的状态去影响它的未来的发展，这个性质称为无后效性（简单点说：过去只能通过影响现在，进而影响未来）</p>
+<blockquote>
+<p>决策</p>
+</blockquote>
+<p>一个阶段的状态给定以后，从该状态演变到下一阶段某个状态的一种选择（行动）称为<code>决策</code>；在最优控制中，也称为控制；每一个阶段都有若干个决策可供选择；在许多问题中，决策可以自然而然地表示为一个数或一组数；不同的决策对应着不同的数值；描述决策的变量称<code>决策变量</code>，因状态满足无后效性，故在每个阶段选择决策时只需考虑当前的状态而无须考虑过程的历史；</p>
+<p>决策变量的范围称为<code>允许决策集合</code>；</p>
+<blockquote>
+<p>多阶段决策问题</p>
+</blockquote>
+<p>如果一类活动过程可以分为若干个互相联系的阶段，在每一个阶段都需作出决策(采取措施)，一个阶段的决策确定以后，常常影响到下一个阶段的决策，从而就完全确定了一个过程的活动路线，则称它为<code>多阶段决策问题</code>；</p>
+<p><code>各个阶段的决策构成一个决策序列，称为一个策略</code>，每一个阶段都有若干个决策可供选择，因而就有许多策略供我们选取，对应于一个策略可以确定活动的效果，这个效果可以用数量来确定。策略不同，效果也不同，多阶段决策问题，就是要在可以选择的那些策略中间，选取一个最优策略，使在预定的标准下达到最好的效果；</p>
+<blockquote>
+<p>策略</p>
+</blockquote>
+<p>由每个阶段的决策组成的序列称为策略。对于每一个实际的多阶段决策过程，可供选取的策略有一定的范围限制，这个范围称为允许策略集合。允许策略集合中达到最优效果的策略称为最优策略；</p>
+<blockquote>
+<p>状态转移方程</p>
+</blockquote>
+<p><img src="/images/image-20221110000758019.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>最优化原理</p>
+</blockquote>
+<ul>
+<li><p>最优性原理：要求问题的<code>最优策略的子策略也是最优</code>。可以通俗地理解为子问题的局部最优将导致整个问题的全局最优，即<code>一个问题的最优解只取决于其子问题的最优解</code>，子问题的非最优解对问题的求解没有影响；</p>
+</li>
+<li><p>最优子结构性质：当一个问题的最优解包含着它的子问题的最优解时，就称此问题具有最优子结构性质；</p>
+</li>
+</ul>
+<p>一个问题 <code>满足最优化原理</code>也称其 <code>拥有最优子结构性质</code>；</p>
+<p>如何证明要解决的问题具备最优子结构？主要步骤如下：</p>
+<ol>
+<li>先假设由问题的最优解导出的子问题的解不是最优的；</li>
+<li>然后证明在这个假设下可构造出比原问题最优解更好的解；</li>
+<li>从而导致矛盾，证明最优化原理；</li>
+</ol>
+<hr>
+<p>多阶段决策问题中，各个阶段采取的决策，一般来说是与时间有关的，决策依赖于当前状态，又随即引起状态的转移，一个决策序列就是在变化的状态中产生出来的，故有“动态”的含义，称这种解决<code>多阶段决策最优化问题</code>的方法为动态规划方法；</p>
+<p>好了，动态规划的术语介绍完毕，是不是懵了？我也很懵，咱们实际上只需要简单过一遍这个概念即可，真正重要的还是刷题理解，概念性的知识不用硬磕；</p>
+<h3 id="1-2-基本思想"><a href="#1-2-基本思想" class="headerlink" title="1.2 基本思想"></a>1.2 基本思想</h3><p>动态规划算法主要用于求解最优性问题，此类问题通常具有许多可行解，我们需要找到具有最优值的解；</p>
+<blockquote>
+<p>动态规划的定义：动态规划(DP：Dynamic Programming)是一种重要的程序设计手段，其基本思想是在对一个多阶段决策的问题，按照某一顺序，根据每一步所选决策的不同会引起状态的转移，最后会在变化的状态中获取到一个决策序列；</p>
+</blockquote>
+<p>动态规划和分治法的异同：</p>
+<ul>
+<li>相同点：都是将待求解问题分解成若干个子问题，先求解子问题，然后从这些子问题的解得到原问题的解；</li>
+<li>不同点：分治法是将问题划分成相互独立的子问题，因此部分子问题会被重复计算；动态规划方法分解得到的<code>子问题往往不互相独立</code>，而是相互重叠的，从而避免了大量重复计算；</li>
+</ul>
+<p>动态规划的实质是分治思想和解决冗余的结合：</p>
+<ul>
+<li>将问题实例分解为更小的、相似的子问题；</li>
+<li>存储子问题的解，在需要时再找出已求得的答案，来避免计算重复的子问题，从而得到多项式时间算法；</li>
+</ul>
+<blockquote>
+<p>动态规划的基本思路：用一个表来记录所有已解的子问题的答案，不管该子问题以后是否被用到，只要它被计算过，就将其结果填入表中；具体的动态规划算法多种多样，但它们具有相同的填表格式；</p>
+</blockquote>
+<p>动态规划实际上就是一种用空间换取时间的算法(动态规划算法的空间复杂度较大)，如果要解决的问题不具备重叠子问题的特征，则动态算法与其他算法相比就不具备优势</p>
+<p>这里需要补充的一个概念是<code>备忘录算法</code>；</p>
+<blockquote>
+<p>备忘录算法的定义：备忘录方法是动态规划算法的变形，它通过分治思想对原问题进行分解，以<code>存储子问题的解</code>的方式解决冗余计算，并采用自顶向下的递归方式获取问题的最终解；</p>
+</blockquote>
+<p>备忘录算法和动态规划算法的异同：</p>
+<ul>
+<li>相同之处：都会对子问题的计算结果进行存储，解决冗余计算；</li>
+<li>不同之处：动态规划算法是<code>自底向上递推</code>求解，而备忘录方法是<code>自顶向下递归</code>求解；</li>
+<li>当子问题空间中的大量子问题无需求解时，使用备忘录方法较省时；但当无需计算的子问题有少部分或全部都要计算时，使用动态规划算法，节省递归带来的额外消耗；(金字塔问题可以很明显的看出备忘录算法和动态规划算法的差别)</li>
+</ul>
+<h3 id="1-3-解题步骤"><a href="#1-3-解题步骤" class="headerlink" title="1.3 解题步骤"></a>1.3 解题步骤</h3><p>解题主要按照如下步骤进行即可：</p>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs gcode">（<span class="hljs-number">1</span>）分析最优解的性质，并刻画其结构特征  									  <span class="hljs-comment">//确定满足最优化原理、划分阶段、确定状态</span><br>（<span class="hljs-number">2</span>）递归地定义最优解  													<span class="hljs-comment">//确定状态转移方程(递推方程)</span><br>（<span class="hljs-number">3</span>）以自底向上或自顶向下<span class="hljs-comment">(备忘录)</span>的方式计算出最优值<span class="hljs-comment">(这一步就是为了构造最优解做准备)</span><br>（<span class="hljs-number">4</span>）根据计算最优值时得到的信息，从子问题的最优解逐步构造出整个问题的最优解<span class="hljs-comment">(如果只需要求出最优值(如矿工获取的钻石数量最大值)</span>则该步骤可以省略)<br></code></pre></td></tr></table></figure>
+
+<p>下面我们详细讲一下解题步骤中的细节，当然考试的时候只需要按照上述四个步骤即可，这里的细节是为了初学保证理解透彻；</p>
+<p>首先是将原问题分解为子问题(划分阶段)：</p>
+<ul>
+<li><p>把原问题分解为若干个子问题，子问题和原问题形式相同或类似，只不过规模变小了，子问题都解决，原问题即解决；</p>
+</li>
+<li><p>子问题的解一旦求出就会被保存，所以每个子问题只需求解一次；</p>
+</li>
+<li><p>按照问题的时间或空间特征，把问题分为若干个子问题。划分时，需要注意<code>划分后的子问题一定要是有序的或者是可排序的</code>，否则问题就无法求解(多阶段决策问题)；</p>
+</li>
+</ul>
+<p>接着确定状态和状态空间：</p>
+<ul>
+<li><p>确定一些初始状态(边界状态)的值：在树形结构中初始状态对应叶节点的状态；</p>
+</li>
+<li><p>用动态规划解题时，我们往往将和子问题相关的各个变量的一组取值，称之为一个“状态”；一个“状态”对应一个或多个子问题，所谓某个“状态”下的“值”，就是这个“状态”所对应的子问题的解；当然，状态的选择要<code>满足无后效性</code>；</p>
+</li>
+<li><p>所有“状态”的集合，构成问题的“状态空间”；“状态空间”的大小，与用动态规划解决问题的时间复杂度直接相关；整个问题的时间复杂度是状态数乘以计算每个状态所需时间；</p>
+</li>
+</ul>
+<p>然后是确定状态转移方程，即如何从本阶段状态到达下一阶段未求解状态</p>
+<ul>
+<li>定义出什么是“状态”，以及在该“状态”下的“值”后，就要找出不同的状态之间如何迁移 —— 即如何从一个或多个(“值”已知的)“状态”，求出另一个“状态”的“值”(递推型)；状态的迁移可以用递推公式表示，此递推公式也可被称作“状态转移方程”；</li>
+</ul>
+<p>最后就可以开始计算了，以<code>自底向上</code>或<code>自顶向下的记忆化方式（备忘录法）</code>计算出最优值，根据计算最优值时得到的信息，构造问题的最优解</p>
+<p><img src="/images/image-20221111114011433.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-4-算法设计"><a href="#1-4-算法设计" class="headerlink" title="1.4 算法设计"></a>1.4 算法设计</h3><p>动态规划的主要难点在于理论上的设计，使用动态规划求解问题，最重要的就是确定动态规划三要素：<br>（1）问题的阶段(子问题划分)；<br>（2）每个阶段的状态；<br>（3）从前一个阶段转化到后一个阶段之间的递推关系(从这个程度上来说动态规划往往可以使用递归程序来实现)；</p>
+<hr>
+<blockquote>
+<p>Q：动态规划和递归之间的关系？</p>
+</blockquote>
+<p>动态规划：一种解决问题的算法思想，与之同属于算法思想的有：枚举（暴力）、分治、贪心等；</p>
+<p>递归：一种具体的代码结构，即在本函数中调用了本身。与之同属于代码结构的有：递推（迭代）；</p>
+<p>动态规划和递归的关系可以理解为：动态规划是解决问题的一种算法思想&#x2F;题型，具体的实现&#x2F;解题方法可以用递归；</p>
+<hr>
+<h2 id="2-范例"><a href="#2-范例" class="headerlink" title="2.范例"></a>2.范例</h2><h3 id="2-1-矩阵连乘"><a href="#2-1-矩阵连乘" class="headerlink" title="2.1 矩阵连乘"></a>2.1 矩阵连乘</h3><p>问题描述：给定n个矩阵，其中A<del>i</del>和A<del>i+1</del>是可乘的(也就是前者的列等于后者的行，乘积矩阵的行数等于前者行数，列数等于后者列数)，请求解这n个矩阵的连乘积；</p>
+<p>由于矩阵乘法满足结合律，因此计算矩阵的连乘积可以有不同的计算次序。这种计算次序可以用加括号的方式来确定。若一个矩阵连乘积的计算次序完全确定，即该连乘积已<code>完全加括号</code>，则可依此次序反复调用两个矩阵相乘的标准算法计算出矩阵连乘积。<code>完全加括号的矩阵连乘积</code>可递归地定义为：</p>
+<ol>
+<li>单个矩阵是完全加括号的；</li>
+<li>矩阵连乘积A是完全加括号的，则A可表示为两个<code>完全加括号的矩阵连乘积</code>B和C的乘积并加括号，即A&#x3D;（BC）；</li>
+</ol>
+<p>举例来说矩阵连乘积可以有如下5种完全加括号的方式</p>
+<p><img src="/images/image-20221116082515399.png" srcset="/img/loading.gif" lazyload></p>
+<p>每种完全加括号方式对应一种矩阵连乘积的计算次序，而矩阵连乘积的计算次序与其计算量有密切关系（这个其实在学习线性代数的时候已经可能有体会了，不同的计算次序会导致不同的计算量）；</p>
+<p>我们这里简单举个例子，首先我们直接给出计算两个矩阵的乘积的标准算法需要三重循环，假设A是pxq矩阵，B是qxr矩阵，则总共需要pxqxr次数的乘法；</p>
+<p>设3个矩阵的维数分别为10×100、100×5和5×50。若按第一种加括号方式（（A１A2）A3）计算，3个矩阵连乘积需要的数乘次数为10×100×5+10×5×50&#x3D;7500。若按第二种加括号方式（A１（A2A3））计算，3个矩阵连乘积需要100×5×50+10×100×50&#x3D;75000次数乘。第二种加括号方式的计算量是第一种加括号方式计算量的10倍。由此可见，在计算矩阵连乘积时，加括号方式即计算次序对计算量有很大影响；</p>
+<p>因此实际上矩阵连乘问题就转换成了确定矩阵连乘积的计算次序使得数乘次数最少的问题；</p>
+<blockquote>
+<p>(1)穷举搜索法</p>
+</blockquote>
+<p>即穷举出所有可能的计算次序，计算每种计算次序需要的数乘次数，从中找出数乘次数最少的计算次序；</p>
+<p>对于n个矩阵的连乘积，假设拥有P(n)种不同的计算次序，考虑以第k个矩阵为分割线，将原连乘序列分为两个连乘子序列，接着分别对这两个连乘子序列加括号，最后对综合结果加括号得到原矩阵序列的完全加括号方式，可以得到关于P(n)的递归式子如下：</p>
+<p><img src="/images/image-20221116083823052.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221116083856542.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>(2)动态规划算法</p>
+</blockquote>
+<p>动态规划算法按照以下步骤进行即可</p>
+<p><code>a)分析最优解的结构</code></p>
+<p>设计求解具体问题的动态规划算法的第一步是刻画该问题的最优解的结构特征，这里为了简化表示将矩阵连乘积记为A[i:j]；</p>
+<p>现在需要计算A[1:n]的最优计算次序(也就是连乘序列加括号的问题)，还是将其划分为两个子序列求解，因此总计算量等于A[1:k]加上A[1+k:n]加上A[1:k]乘以A[k+1:n]的计算量；</p>
+<p>我们可以发现，子序列连乘A[1:k]和A[1+k:n]在A[1:n]最优的情况下的计算次序也是最优的，因此，矩阵连乘积计算次序问题的最优解包含着其子问题的最优解。这种性质称为最优子结构性质。问题的最优子结构性质是该问题可用动态规划算法求解的显著特征；</p>
+<p><code>b)建立递归关系</code></p>
+<p>设计动态规划算法的第二步是递归地定义最优值；</p>
+<p>规定计算A[i:j]所需要的最少数乘次数为m[i,j]，因此原问题A[1:n]的所需的最少连乘次数为m[1,m]；</p>
+<ul>
+<li><p>当i&#x3D;j时，A[i:j]是一个单一矩阵A<del>i</del>，此时根本不需要计算，m[i,j]&#x3D;0；</p>
+</li>
+<li><p>当i&lt;j时，m[i,j]等于前半部分的数乘次数加后半部分的数乘次数加两个子序列合并需要的相乘次数（因为k的位置不同最终结果不同，所以选择结果集中的最小值）</p>
+<p><img src="/images/image-20221116090144944.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ul>
+<p><img src="/images/image-20221116090309279.png" srcset="/img/loading.gif" lazyload></p>
+<p><code>c)计算最优值</code></p>
+<p>用动态规划算法解此问题，可依据其递归式以自底向上的方式进行计算。在计算过程中，保存已解决的子问题答案。每个子问题只计算一次，而在后面需要时只要简单查一下，从而避免大量的重复计算，最终得到多项式时间的算法；<br>在下面给出的动态规划算法MatrixChain中，输入参数（p0，p1，…，pn）存储于数组p中，除了输出最优值数组m，算法还输出记录最优断开位置的数组s；（当然该算法只是计算出了最优值，并未给出最优解，但是该算法记录了构造最优解需要的全部信息），关于代码的解释可以参考<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1CK411n7y1/?spm_id_from=333.337.search-card.all.click&vd_source=276d55048634a5b508b1b53a1ecd56b3">【学习记录】矩阵连乘-动态规划-计算机算法_哔哩哔哩_bilibili</a>；</p>
+<p><img src="/images/image-20221116091251553.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221116091333869.png" srcset="/img/loading.gif" lazyload></p>
+<p>上述算法主要取决于程序对r、i和k的三重循环，循环体内的计算量为O(1)，三重循环的总次数为O(n^3^)，因此该算法的计算时间上界为O(n^3^)，算法占用的空间为O(n^2^)；</p>
+<p><code>d)构造最优解</code></p>
+<p>前面的算法我们说过只计算出了最优值（最大值、最少数乘次数），并没有给出最优解（也就是相应的最优路径、具体数乘次序），但是s数组记录了所有的断点，也就是s数组中的数k表明计算矩阵链A[i:j]的最佳方式是(A[i:k])(A[k+1:j])，下面的算法Traceback按算法MatrixChain计算出的断点矩阵s指示的加括号方式输出计算A[i:j]的最优计算次序；</p>
+<p><img src="/images/image-20221122083856920.png" srcset="/img/loading.gif" lazyload></p>
+<p>要输出A[1:n]的最优计算次序只要调用Traceback（1,n,s）即可；</p>
+<h3 id="2-2-最长公共子序列"><a href="#2-2-最长公共子序列" class="headerlink" title="2.2 最长公共子序列"></a>2.2 最长公共子序列</h3><p>子序列：将该序列中删除若干元素后得到的序列；</p>
+<p>公共子序列：序列既是X又是Y的子序列（不需要子元素连续）；</p>
+<p>例如，若X&#x3D;（A，B，C，B，D，A，B），Y&#x3D;（B，D，C，A，B，A）则序列（B，C，A）是X和Y的一个公共子序列，但它不是X和Y的一个最长公共子序列。序列（B，C，B，A）也是X和Y的一个公共子序列，其长度为4，而且它是X和Y的最长公共子序列，因为X和Y没有长度大于4的公共子序列；</p>
+<blockquote>
+<p>最长公共子序列问题：给定两个序列X和Y，找出X和Y的最长公共子序列；</p>
+</blockquote>
+<p>穷举搜索法（对X的所有子序列，检查它是否是Y的子序列，并且在检查过程中记录最长的公共子序列）需要指数时间；</p>
+<p>这里使用动态规划算法可以有效解决问题；</p>
+<p><code>a)分析最优解的结构</code></p>
+<p>这一步就是分析最长公共子序列的结构</p>
+<p><img src="/images/image-20221122085715378.png" srcset="/img/loading.gif" lazyload></p>
+<p>证明方法使用反证法，这里我们不再赘述；</p>
+<p>两个序列的最长公共子序列包含了这两个序列的前缀的最长公共子序列，因此，最长公共子序列问题具有最优子结构性质；</p>
+<p><code>b)子问题的递归结构</code></p>
+<p>根据最长公共子序列问题的最优子结构的性质可知，要找出X&#x3D;{x<del>1</del>…x<del>m</del>}和Y&#x3D;{y<del>1</del>…y<del>n</del>}的最长公共子序列，可以按照方式递归进行：</p>
+<ol>
+<li>当x<del>m</del>&#x3D;y<del>n</del>时，找出X<del>m-1</del>和Y<del>n-1</del>的最长公共子序列，最后在其尾部加上x<del>m</del>；</li>
+<li>当x<del>m</del>!&#x3D;y<del>n</del>时，需要解决两个子问题，即找出X<del>m-1</del>和Y的最长公共子序列以及X和Y<del>n-1</del>的最长公共子序列，选择较长者；<ul>
+<li>上述情况下的两个子问题都包含一个公共子问题（我们称这种性质为子问题重叠性质），即计算X<del>m-1</del>和Y<del>n-1</del>的最长公共子序列；</li>
+</ul>
+</li>
+</ol>
+<p><img src="/images/image-20221122090648212.png" srcset="/img/loading.gif" lazyload></p>
+<p><code>c)计算最优值</code></p>
+<p>直接自顶向下利用简单递归当然很容易的就能写出算法，但是出现的问题就是其计算时间会随着输入长度指数增长，所以这里考虑使用动态规划的自底向上计算；</p>
+<p>LCSLength以序列X和Y作为输入，输出两个数组c和b，其中c存储X<del>i</del>和Y<del>j</del>的最长公共子序列的<code>长度</code>，最终问题的最优值（X和Y的最长公共子序列的长度），b存储c对应的元素的值由哪个子问题的解得到，用于构造最优解使用；</p>
+<p><img src="/images/image-20221122094410301.png" srcset="/img/loading.gif" lazyload></p>
+<p>由于每个数组单元的计算耗费O(1)时间，因此算法的LCSLength耗时O(mn)，其中m为X长度，n为Y长度；</p>
+<p><code>d)构造最长公共子序列</code></p>
+<p>前面构造得到的数组b可用于快速构造序列X和Y的最长公共子序列：</p>
+<ul>
+<li><p>当b<del>ｉ</del>&#x3D;1时，表示X<del>ｉ</del>和Y<del>ｊ</del>的最长公共子序列是由X<del>ｉ－１</del>和Y<del>ｊ－１</del>的最长公共子序列在尾部加上ｘ<del>ｉ</del>所得到的子序列；</p>
+</li>
+<li><p>当b<del>ｉ</del>&#x3D;2时，表示X<del>ｉ</del>和Y<del>ｊ</del>的最长公共子序列与X<del>ｉ－１</del>和Y<del>ｊ</del>的最长公共子序列相同；</p>
+</li>
+<li><p>当b<del>ｉ</del>&#x3D;3时，表示X<del>ｉ</del>和Y<del>ｊ</del>的最长公共子序列与X<del>ｉ</del>和Y<del>ｊ－１</del>的最长公共子序列相同；</p>
+</li>
+</ul>
+<p>下面的算法LCS实现根据b的内容打印出X<del>i</del>和Y<del>j</del>的最长公共子序列，通过算法调用LCS（m,n,x,b）便可打印出序列X和Y的最长公共子序列</p>
+<p><img src="/images/image-20221122095740105.png" srcset="/img/loading.gif" lazyload></p>
+<p>在算法LCS中，每次递归调用使i或j减1，因此算法的计算时间为O(m+n)；</p>
+<h3 id="2-3-最大子段和"><a href="#2-3-最大子段和" class="headerlink" title="2.3 最大子段和"></a>2.3 最大子段和</h3><p>问题描述：</p>
+<p><img src="/images/image-20221122084951074.png" srcset="/img/loading.gif" lazyload></p>
+<p>关于这个问题有多种解法，详情参考<a target="_blank" rel="noopener" href="https://wenku.baidu.com/view/84ea87270440be1e650e52ea551810a6f424c840.html?_wkts_=1669078295904">最大子段和详解（N种解法汇总） - 百度文库 (baidu.com)</a>；</p>
+<p>我们这里总结一下几个经典解决方法的复杂度即可</p>
+<blockquote>
+<p>暴力枚举</p>
+</blockquote>
+<p><img src="/images/image-20221122101349470.png" srcset="/img/loading.gif" lazyload></p>
+<p>从该算法的三层for循环可以看出时间复杂度为O(n^3^)，当然可以将算法的最后一个for循环省略，改进后的算法只需要O(n^2^)的时间复杂度；</p>
+<blockquote>
+<p>分治法</p>
+</blockquote>
+<p><img src="/images/image-20221122101704110.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>动态规划</p>
+</blockquote>
+<p>时间复杂度和空间复杂度都是O(n)；</p>
+<h3 id="2-4-0-1-背包问题"><a href="#2-4-0-1-背包问题" class="headerlink" title="2.4 0-1 背包问题"></a>2.4 0-1 背包问题</h3><blockquote>
+<p>0-1 背包问题：给定n种物品和一个背包，物品i的重量是w<del>i</del>，其价值为v<del>i</del>，背包的容量是c，应当如何选择装入背包中的物品才能使得装入背包中物品的总价值最大；</p>
+</blockquote>
+<p>在选择装入背包的物品时，对每种物品i只有两种选择，即装入背包或不装入背包，需要注意的是不能将物品i装入背包多次（可以看作是只有一个物品i，装入了就没了），也不能只装入部分的物品i；因此该问题称为0-1 背包问题；</p>
+<p><img src="/images/image-20221122102612582.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<p>关于几类背包问题的区别：</p>
+<ul>
+<li>0-1 背包：有n种物品，每种物品只有一个可选择；</li>
+<li>完全背包：有n种物品，每种物品有无限多个可选择；</li>
+<li>多重背包：看作是0-1 背包和完全背包的组合，有n种物品，每种物品的个数最多有S<del>i</del>个；</li>
+</ul>
+<hr>
+<p>首先来看看0-1 背包的暴力解法，使用回溯进行暴力搜索，枚举所有情况，比较装满背包的最大价值，假设有n个物品，则时间复杂度是2^n^（每个物品两个状态“取&#x2F;不取”）</p>
+<p><code>a)最优子结构性质</code></p>
+<p><img src="/images/image-20221122103515005.png" srcset="/img/loading.gif" lazyload></p>
+<p><code>b)递归关系</code></p>
+<p><img src="/images/image-20221122103541865.png" srcset="/img/loading.gif" lazyload></p>
+<p>需要注意的是，在这一步很重要的一点其实是确定dp数组的定义，本题的dp数组就是m(i,j)，意义是下标为0-i之间的物品任取，放入容量为j的背包中的最大价值，在之后的推导递归公式、初始化以及确定遍历顺序的时候都是围绕着dp数组的含义来进行；</p>
+<p>接着我们需要确定dp数组可以从哪几个方向推导出来（确定递推公式），对于m(i,j)来说，有两种选择，这两种选择中取最大值</p>
+<p><code>c)算法描述</code></p>
+<p>这一步首先需要做的事是初始化dp数组，如何初始化dp数组可以看视频<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1cg411g7Y6/?spm_id_from=333.337.search-card.all.click&vd_source=276d55048634a5b508b1b53a1ecd56b3">带你学透0-1背包问题！| 关于背包问题，你不清楚的地方，这里都讲了！| 动态规划经典问题 | 数据结构与算法_哔哩哔哩_bilibili</a>，接着来看对二维dp数组的遍历顺序，背包问题一般都需要两个for循环，一个用于遍历物品，一个用于遍历背包，这里给出结论 —— 对于二维数组实现的dp数组，for循环的次序不会导致结构的改变；</p>
+<p><img src="/images/image-20221122103648488.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221122103707477.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<p>书上描述可能会比较简短，这里推荐一个文章以层层递进的方式讲解<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_59139260/article/details/124600813">(1条消息) 动态规划之0-1背包问题（详解+分析+原码）_未见花闻的博客-CSDN博客</a>，当然看视频也可以<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1cg411g7Y6/?spm_id_from=333.337.search-card.all.click&vd_source=276d55048634a5b508b1b53a1ecd56b3">带你学透0-1背包问题！| 关于背包问题，你不清楚的地方，这里都讲了！| 动态规划经典问题 | 数据结构与算法_哔哩哔哩_bilibili</a>；</p>
+<h3 id="2-5-钻石矿工"><a href="#2-5-钻石矿工" class="headerlink" title="2.5 钻石矿工"></a>2.5 钻石矿工</h3><ul>
+<li><p>参考文章：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41173604/article/details/103356862?spm=1001.2101.3001.6650.2&utm_medium=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-2-103356862-blog-126010366.pc_relevant_3mothn_strategy_recovery&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-2-103356862-blog-126010366.pc_relevant_3mothn_strategy_recovery&utm_relevant_index=3">(1条消息) 算法——钻石金字塔（动态规划+贪心）_小林Jolly的博客-CSDN博客_从金字塔的顶部向下直到底部,每个数据可以通过左下或右下到达下一层,这样到达底层</a>（代码有问题，我们修改之后可以正常运行）；</p>
+</li>
+<li><p>参考视频：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1fa4y147d3/?spm_id_from=333.880.my_history.page.click&vd_source=276d55048634a5b508b1b53a1ecd56b3">动态规划-1（入门：数字金字塔）_哔哩哔哩_bilibili</a>（有利于理解矿工问题，同时我们代码种使用的自下而上的动态规划代码也是参考的视频的代码）；</p>
+</li>
+</ul>
+<p>矿工问题也称为金字塔问题；</p>
+<blockquote>
+<p>经典版钻石矿工</p>
+</blockquote>
+<p>我们之所以先介绍经典的钻石矿工问题是为了更好的理解蒙图版本的钻石矿工问题。</p>
+<p>经典钻石矿工的问题描述如下：有一座金字塔，金字塔的每块石头上都镶有对应的钻石，钻石可以被取下来，不同的钻石有着不同的价值，你的任务是从金字塔的顶端向金字塔的底端收集钻石，并且尽可能收集价值高的钻石，但是只能从一块砖斜向左下或斜向右下走到另一块砖上。请找到一个收集最高价值钻石的路线，并给出能够获得的最大钻石总价值？</p>
+<p><img src="/images/image-20221127134911988.png" srcset="/img/loading.gif" lazyload></p>
+<p>本算法的主要设计思路是动态规划，首先根据金字塔每块砖的位置，使用二维数组将其进行存储，如上图所示，可以看出元素都存储在下三角内。</p>
+<p>可以将该问题用一个二元组A(x,y)来表示，A(x,y)表示从第x层第y个位置到达底层的最大价值，这样A(x,y)的最优路径Path(x,y)一定包含子问题A(x+1,y)和A(x+1,y+1)的最优路径，原问题的最大价值可以表示为A(1,1)。</p>
+<p>该问题因为具有最优子结构的性质，所以可以使用动态规划算法，对每个子问题只解一次，接着将解保存下来，递归关系如下（其中α(x,y)表示第x层第y个位置的值）</p>
+<p><img src="/images/image-20221127134933100.png" srcset="/img/loading.gif" lazyload></p>
+<p>从倒数第二层开始，每个位置只需要将自己下方可达的两个位置进行比较即可得到该位置的最大价值；</p>
+<p>动态规划的时间复杂度为O(n^2^)，递归的时间复杂度为O(2^n^)，可以看出动态规划的时间复杂度明显小于递归；</p>
+<blockquote>
+<p>蒙图版钻石矿工</p>
+</blockquote>
+<p>蒙图版问题是基于传统钻石矿工问题之上，在实际应用中，矿工事先往往无法提前知道金字塔的钻石分布。通常，他们只能估计面前两个方块内的钻石数，或者租用探测器来获得面前 x 步（x&lt;n，n 为金字塔的层数）内钻石的分布。又或者，假设他有一张残破的地图。</p>
+<p>这些情况下的信息量会对矿工的收益造成与传统钻石矿工问题不同的结果；</p>
+<p><strong>(1)上帝视角</strong></p>
+<p>我们首先讨论矿工探测范围为无限大的情况，使用ans数组存储确定状态，即ans[x][y]表示矿工从出发点到位置(x,y)的最优值，同时使用route数组存储节点向左还是向右，便于之后生成最优路径；</p>
+<p><img src="/images/image-20221127135045131.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们简单解释一下上述代码的逻辑，在此之前我们应该知道传统的钻石金字塔有两种解法，分别是正序遍历（即从上往下）和逆序遍历（即从下往上），这里我们选择了逆序遍历，也就是从金字塔的最下面一层开始逐层向上遍历，这样最后ans数组的第一个元素存储的值就是整个金字塔最优路径的值；</p>
+<p>在逆序遍历之前，需要先初始化ans数组最后一层的元素，直接使用pyramid数组的对应元素初始化即可，ans数组的其他位置我们初始化为0，等待之后的计算；</p>
+<p>接着我们从倒数第二层开始计算，计算方法实际就是比较当前节点加上左孩子节点或当前节点加上右孩子节点的较大值，需要注意的是最好从第二层的最后一个节点往第一个节点计算，否则很容易出现ans数组的节点的值不是正确的值（这点是在实际写代码的时候发现的）；之所以会出现这种情况是因为我们使用的是如下形式的二维数组存储金字塔，如果从前往后计算需要严格规定循环条件，否则容易导致某些节点不参与计算；</p>
+<p><img src="/images/image-20221127135101757.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们计算route数组的方式很简单，当该节点选择了自己的左孩子节点则标记route数组对应元素为1，当该节点选择了自己的右孩子节点则标记route数组对应元素为2；</p>
+<p>在之后输出结果的时候，我们使用一个for循环，利用if判断，当节点对应的route数组元素为1则向下移动（金字塔的左孩子实际就是二维数组的向下，之后不再强调），节点对应的route数组元素为2则向右移动，依次cout pyramid数组的元素即可得到最优值对应的俄最优路径；</p>
+<p><img src="/images/image-20221127135117999.png" srcset="/img/loading.gif" lazyload></p>
+<p><strong>(2)探测范围为1</strong></p>
+<p>对应于上帝视角的极端情况就是矿工只能看到自己下一步的两个矿的钻石数量，这就意味着他无法进行全局规划，这里我们选择了使用贪婪算法，即矿工每次都选择自己所看到的钻石数量最大的矿（这当然会导致问题，我们之后会展示），贪婪算法不一定能找到全局最优值，但是可以找到矿工所见的最优值，也就是局部最优值</p>
+<p>贪婪算法实现如下，算法思想很简单，矿工只会选择自己左边和右边的矿之一，选择依据是值较大者，这里借助了递归的思想，递归终止条件为矿工到达最底层，代码上体现为二维数组的横坐标加纵坐标值等于深度加1；</p>
+<p><img src="/images/image-20221127135152524.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们仍然借助了一个route数组，用于保存节点选择的移动方向（向左或向右），在最后输出结果的时候给出最优值对应的最优路径（当然这里只能是局部最优路径）</p>
+<p><img src="/images/image-20221127135205974.png" srcset="/img/loading.gif" lazyload></p>
+<p><strong>(3)探测范围为m</strong></p>
+<p>之所以要先介绍上帝视角和探测范围为1的情况实际就是为了这种情况做铺垫；</p>
+<p>假设现在矿工租用了一个探测范围为m的探测器，可以知道自身节点往下m范围的矿产资源，现在该如何设计算法？</p>
+<p>我们将这个问题分解，首先矿工处于(1,1)的起点位置，他知道接下来m的矿产，这里为了方便说明因此直接举实例，我们的金字塔如下</p>
+<table>
+<thead>
+<tr>
+<th>326</th>
+<th>330</th>
+<th>519</th>
+<th>961</th>
+<th>406</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>301</td>
+<td>142</td>
+<td>155</td>
+<td>963</td>
+<td></td>
+</tr>
+<tr>
+<td>872</td>
+<td>358</td>
+<td>226</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>124</td>
+<td>424</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>189</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>假设m&#x3D;2，则矿工眼中的矿产分布如下</p>
+<table>
+<thead>
+<tr>
+<th>326*</th>
+<th>330</th>
+<th>519</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>301</td>
+<td>142</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>872</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>现在矿工有四个选择，分别是330+519、330+142、301+142、301+872，根据局部最优原则，矿工会选择移动到(2,1)，此时矿工的地图被更新</p>
+<table>
+<thead>
+<tr>
+<th>326</th>
+<th>330</th>
+<th>519</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>301*</td>
+<td>142</td>
+<td>155</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>872</td>
+<td>358</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>124</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>同样的，矿工面临四个选择，分别是142+155、142+358、872+124、872+358，毫无疑问，矿工会选择移动到(3,1)，此时矿工的地图更新</p>
+<table>
+<thead>
+<tr>
+<th>326</th>
+<th>330</th>
+<th>519</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>301</td>
+<td>142</td>
+<td>155</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>872*</td>
+<td>358</td>
+<td>226</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>124</td>
+<td>424</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>189</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>矿工面临四个选择：358+226、358+424、124+424、124+189，因此矿工移动到(3,2)</p>
+<p>接着矿工更新自己的地图（注意我们的pyramid是1001*1001大小的，在未赋值的地方全部初始化为0也是为了方便计算）</p>
+<table>
+<thead>
+<tr>
+<th>326</th>
+<th>330</th>
+<th>519</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>301</td>
+<td>142</td>
+<td>155</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>872*</td>
+<td>358*</td>
+<td>226</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>124</td>
+<td>424</td>
+<td>0</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>189</td>
+<td>0</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>毫无疑问，矿工会选择424，因此探测范围为2的最优值为326+301+872+358+424&#x3D;2281（稍后我们会使用算法验证）</p>
+<p>可以很明显的体会到，假设矿工的探测范围为m，矿工处于(x,y)的位置，则矿工可以看到的金字塔信息为(x,y)(x+1,y)…(x+m,y)…(x,y+1)…(x,y+m)，简单来说矿工实际上是知道以自己为中心的范围为m的上帝视角的金字塔的，那么问题就变得很简单，矿工只需要分别对左下和右下进行m-1大小的上帝视角算法得到最优值，接着比较左下和右下的值得到较大者，向下移动，接着重复上述操作即可；实现代码如下</p>
+<p>Dynamic函数是这部分的核心，需要注意的是严格控制好边界条件，这里的倒三角数组因为x和y值不是严格对应的，所以不能直接套用前面实现上帝视角的代码，for循环的边界条件最好纸上作图手动确定，当然这里我们还是选择的逆序遍历，最终直接return ans数组的第一个元素即ans【x】【y】即可；</p>
+<p><img src="/images/image-20221127135403437.png" srcset="/img/loading.gif" lazyload></p>
+<p>Scope_m_comparation函数是一个递归函数，主要实现比较左孩子和右孩子的m-1最优值，将较大者加入result结果并保存路径节点至route数组中；需要注意的是这里传入dynamic函数的steps需要减去1，因为steps只是当前处于(x,y)节点的探测范围，但是对于(x+1,y)或者(x,y+1)来说其探测范围就变成了steps-1；</p>
+<p><img src="/images/image-20221127135418152.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221127135427236.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>代码总结</p>
+</blockquote>
+<p>在本次实验中主要遇到了如下问题：探测范围为m的代码逻辑出错导致最终结果不正确、递归算法的单层递归逻辑不好确定以及正序遍历和逆序遍历的选择、二维数组存储金字塔的选择；</p>
+<p>首先是如何使用二维数组存储金字塔，常见的方法有使用左上三角存储和左下三角存储，我们这里选择了使用左上三角存储的原因是为了更方便的观察和处理金字塔，同时将金字塔从数组的(1,1)位置开始存储，其他位置赋值为0，之所以这样做是为了便于之后的计算，当探测范围m加上当前矿工位置(x,y)超出了金字塔的范围的时候，因为超出部分被赋值为0所以不会对求和结果做出影响，这意味着我们不需要额外处理这种情况；</p>
+<p>那么应该如何选择遍历顺序呢？其实这里选择正序和逆序都是可以的，但是对我个人来说逆序遍历更好理解，同时ans数组的首元素就是最终的最优值，直接cout即可，非常方便；</p>
+<p>选择了逆序遍历就一定要注意遍历的逻辑，首先初始化ans对应pyramid的最后一层，接着从倒数第二层的最后一个节点使用逻辑max(left,right)+pyramid(x,y)即可得到ans数组每个节点的值，因为是从下向上、从右向左，所以外层循环和内层循环都是递减操作，边界条件是行数不低于x、列数不低于y，针对每层的节点的遍历，保持x值不变，y值递减即可，需要注意起始节点(也就是每层得最后一个节点)的位置是依赖于i和x以及steps值的，这里只需要简单的求解一个二元方程即可得到j值和i的关系；</p>
+<h3 id="2-6-最大子段和-续"><a href="#2-6-最大子段和-续" class="headerlink" title="2.6 最大子段和(续)"></a>2.6 最大子段和(续)</h3><p>文章参考：<a target="_blank" rel="noopener" href="https://wenku.baidu.com/view/84ea87270440be1e650e52ea551810a6f424c840.html?_wkts_=1669528748628">最大子段和详解（N种解法汇总） - 百度文库 (baidu.com)</a>；</p>
+<blockquote>
+<p>问题描述</p>
+</blockquote>
+<p><img src="/images/image-20221127140539376.png" srcset="/img/loading.gif" lazyload></p>
+<p><strong>(1)暴力枚举</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">MaxSubsequenceSum</span><span class="hljs-params">(<span class="hljs-type">const</span> intA[],<span class="hljs-type">int</span> N)</span><br>&#123;<br>	<span class="hljs-type">int</span> ThisSum,MaxSum,i,j,k;<br>	MaxSum=<span class="hljs-number">0</span>;				    <span class="hljs-comment">//initialize the maximum sum</span><br>	<span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;N;i++)			<span class="hljs-comment">//start from A[i]</span><br>		<span class="hljs-keyword">for</span>(j=i;j&lt;N;j++)&#123;		<span class="hljs-comment">//end at A[j]</span><br>			ThisSum=<span class="hljs-number">0</span>;<br>			<span class="hljs-keyword">for</span>(k=i;k&lt;=j;k++)<br>				ThisSum+=A[k];  <span class="hljs-comment">//sum from A[i] to A[j]</span><br>			<span class="hljs-keyword">if</span>(ThisSum&gt;MaxSum)<br>				MaxSum=ThisSum; <span class="hljs-comment">//update the maximum sum</span><br>		&#125;					<br>	<span class="hljs-keyword">return</span> MaxSum;<br>&#125;<br><span class="hljs-comment">//时间复杂度为O(N^3)</span><br></code></pre></td></tr></table></figure>
+
+<p>这种算法的时间复杂度T(N)&#x3D;O(N^3^)，使用三层循环，穷举所有的情况最后进行挑选：</p>
+<ul>
+<li>从序列A[]的第一个元素开始，算A[0]，A[0]+A[1],A[0]+A[1]+A[2]…A[1],A[1]+A[2],A[1]+A[2]+A[3]…一直穷举到数组最后一个数A[n-1]结束</li>
+<li>每次计算A[i]~A[j]的和之后，都需要与当前的最大子段和MaxSum比较，若发现更大的则更新MaxSum的值</li>
+<li>前两层循环完成穷举，第三层循环计算A[i]~A[j]的和</li>
+</ul>
+<p>上述算法重复做了很多工作，每次计算A[i]~A[j]都要从A[i]一直累加到A[j]，实际上我们可以先保存A[i]至A[j-1]的和到一个变量中，则A[i]至A[j]的和等于该变量+A[j]，只需要两层循环</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-type">int</span> MaxSubsequenceSum（<span class="hljs-type">const</span> intA[]，<span class="hljs-type">int</span> N）<br>&#123;<br>	<span class="hljs-type">int</span> ThisSum，MaxSum，i，j；<br>	MaxSum=<span class="hljs-number">0</span>；				    <span class="hljs-comment">//initialize the maximum sum</span><br>	<span class="hljs-keyword">for</span>（i=<span class="hljs-number">0</span>；i&lt;N；i++）&#123;		  <span class="hljs-comment">//start from A[i]</span><br>		ThisSum=<span class="hljs-number">0</span>；<br>        <span class="hljs-keyword">for</span>（j=i；j&lt;N；j++）&#123;	   <span class="hljs-comment">//end at A[j]</span><br>			ThisSum+=A[j]；	 	<span class="hljs-comment">//sum from A[i] to A[j]</span><br>			<span class="hljs-keyword">if</span>（ThisSum&gt;MaxSum）<br>				MaxSum=ThisSum;  <span class="hljs-comment">//update max sum</span><br>		&#125;<br>	&#125;<br>	<span class="hljs-keyword">return</span> MaxSum；<br>&#125;<br><span class="hljs-comment">//时间复杂度为O(N^2)</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>(2)分治法</strong></p>
+<p>分治策略基本思想是把问题规模分解为多个小规模问题，递归地解这些子问题，然后将各子问题的解合并得到原问题的解，一般采用二分法逐步分解（很可能还需要借助递归）；</p>
+<p>本题目的分治思想为，序列A[0:n-1]分为长度相等的两段子序列A[0:n&#x2F;2-1]和A[n&#x2F;2:n-1]，分别求出两段子序列最大子段和，则总序列的最大子段和可能情况如下：</p>
+<ul>
+<li>与前段相同；</li>
+<li>与后段相同；</li>
+<li>跨前后两段（指的是连续的子序列跨越前后两段而非前后两段最大子段和简单相加）；</li>
+</ul>
+<p>使用二分法做分治的终止条件为，直到每个子序列只有一个或两个数：</p>
+<ul>
+<li>子序列只有一个数的时候最大子段和要么是自身要么是0；</li>
+<li>子序列有两个数的时候最大子段和：<ul>
+<li>前一个数</li>
+<li>后一个数</li>
+<li>两个数之和</li>
+<li>0（两数均为负数）</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">maxSubSum</span><span class="hljs-params">(<span class="hljs-type">int</span> a[],<span class="hljs-type">int</span> left,<span class="hljs-type">int</span> right)</span></span>&#123;		<span class="hljs-comment">//left是左端点下标，right是右端点下标</span><br>    <span class="hljs-type">int</span> sum = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">if</span>(left==right)							  <span class="hljs-comment">//递归调用终止情况</span><br>        sum=(a[left]&gt;<span class="hljs-number">0</span>?a[left]:<span class="hljs-number">0</span>)<br>    <span class="hljs-keyword">else</span>&#123;<br>        <span class="hljs-comment">//1.递归调用，分别求解分治三种情况</span><br>        <span class="hljs-type">int</span> center=(left+right)/<span class="hljs-number">2</span>;<br>        <span class="hljs-type">int</span> leftSum=<span class="hljs-built_in">maxSubSum</span>(a,left,center);	<span class="hljs-comment">//求左边序列最大子段和</span><br>        <span class="hljs-type">int</span> rightSum=<span class="hljs-built_in">maxSubSum</span>(a,center+<span class="hljs-number">1</span>,right);<span class="hljs-comment">//求右边序列最大子段和</span><br>        <br>         <span class="hljs-comment">//2.解决跨前后两段的情况 —— 从中间分别向两端拓展</span><br>		<span class="hljs-comment">//2.1从中间往左拓展，中间往左第一个必然在内</span><br>		<span class="hljs-type">int</span> ls=<span class="hljs-number">0</span>;<br>		<span class="hljs-type">int</span> lefts=<span class="hljs-number">0</span>;<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=center;i&gt;=left;i--)&#123;<br>    		lefts+=a[i];<br>    		<span class="hljs-keyword">if</span>(lefts&gt;ls)<br>        		ls=lefts;<br>		&#125;<br>        <span class="hljs-comment">//2.2从中间往右拓展，中间往右第一个必然在内</span><br>        <span class="hljs-type">int</span> rs=<span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> rights=<span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=++center;i&lt;=right;i++)&#123;<br>            rights+=a[i];<br>            <span class="hljs-keyword">if</span>(rights&gt;rs)<br>                rs=rights;<br>        &#125;<br>        <span class="hljs-comment">//2.3保存跨前后两段的最大子段和</span><br>        sum=ls+rs;<br>		<br>        <span class="hljs-comment">//3.比较结果得到综合最大子段和</span><br>        <span class="hljs-keyword">if</span>(sum&lt;leftSum)<br>            sum=leftSum;<br>        <span class="hljs-keyword">if</span>(sum&lt;rightSum)<br>            sum=rightSum;<br>    &#125;<br>    <span class="hljs-keyword">return</span> sum;<br>&#125;<br><span class="hljs-comment">//时间复杂度为O(NlogN)</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>(3)动态规划法</strong></p>
+<p>动态规划与分治法的相同点：</p>
+<ul>
+<li><p>分治算法与动态规划都是将一个复杂问题分解为简单的子问题；</p>
+</li>
+<li><p>分治算法与动态规划都只能解决带有<code>最优子结构</code>性质的问题；</p>
+</li>
+</ul>
+<p>动态规划与分治法的区别：</p>
+<ul>
+<li><p>分治算法一般都是使用递归自顶向下实现，动态规划使用迭代自底向上实现或带有记忆功能的递归实现，动态规划解决带有<code>子问题重叠</code>性质的问题效率更加高效；</p>
+</li>
+<li><p>分治算法分解的子问题是相对独立的，动态规划分解的子问题是互相带有关联且有重叠的；</p>
+</li>
+</ul>
+<hr>
+<p>这道题的动态规划思想如下：</p>
+<p>已知前n个数的最大子段和，那么前n+1个数的最大子段和有两种情况，一是包含前面的结果，二是不包含；</p>
+<p>动态规划一项很重要的内容就是保存各个阶段的状态，我们这里只需要使用MaxSum来保存前一个状态即可</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">MaxSubsequenceSum</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">int</span> A[],<span class="hljs-type">int</span> N)</span></span>&#123;<br>    <span class="hljs-type">int</span> ThisSum,MaxSum,j;<br>    TinsSum=MaxSum=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(j=<span class="hljs-number">0</span>;j&lt;N;j++)&#123;<br>        ThisSum+=A[j];<br>        <span class="hljs-keyword">if</span>(ThisSum&gt;MaxSum)<br>            MaxSum=ThisSum;<span class="hljs-comment">//MaxSum只需要考虑最大子段和的状态即可</span><br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(ThisSum&lt;<span class="hljs-number">0</span>)<br>            ThisSum=<span class="hljs-number">0</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> MaxSum;<br>&#125;<br><span class="hljs-comment">//时间复杂度为O(N)</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="第四章-贪心算法"><a href="#第四章-贪心算法" class="headerlink" title="第四章 贪心算法"></a>第四章 贪心算法</h1><h2 id="1-概述-1"><a href="#1-概述-1" class="headerlink" title="1.概述"></a>1.概述</h2><p>参考文章链接：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/909f740f523a">(三) 贪心算法 - 简书 (jianshu.com)</a></p>
+<hr>
+<p>所谓贪心算法，就是 <code>总是做出在当前看来是最好的选择(未从整体考虑)</code>的一种方法；</p>
+<h3 id="1-1-基本思想"><a href="#1-1-基本思想" class="headerlink" title="1.1 基本思想"></a>1.1 基本思想</h3><ul>
+<li>贪心选择：所做的每一个选择都是当前状态下局部的最好选择；</li>
+<li>贪心算法：指从问题的初始状态出发，自顶向下，通过一系列的贪心选择来得到问题的解；</li>
+</ul>
+<p>贪心策略总是做出在当前看来是最优的选择，也就是说贪心策略并不是从整体上加以考虑，它所做出的选择只是在某种意义上的<code>局部最优解</code>，而许多问题自身的特性决定了该问题运用贪心策略可以得到最优解或较优解(注：贪心算法不是对所有问题都能得到整体最优解，但其解必然是最优解的很好近似解，同时对范围相当广泛的许多问题它的确能产生整体最优解）；</p>
+<p>贪心算法没有固定的算法框架，算法设计的关键是 <code>贪心策略的选择</code>。选择的贪心策略必须具备无后效性；</p>
+<p>需要解决的问题具备如下性质才能使用贪心算法解决：</p>
+<ul>
+<li>贪心选择性质：指所求解的问题的整体最优解可以通过一系列的局部最优解得到（等价于<code>局部最优策略能导致产生全局最优解!</code>），所谓局部最优解，就是指在当前的状态下做出的最好选择；<ul>
+<li>一旦证明贪心选择性质，用贪心算法解决问题比动态规划具有更低的时间复杂度和空间复杂度；<code>该性质一般使用数学归纳法证明</code>；</li>
+</ul>
+</li>
+<li>最优子结构性质：该性质和动态规划法的一样，最优子结构性质是可用动态规划算法或贪心算法求解的关键特征；</li>
+</ul>
+<p>实际上，贪心算法<code>适用的情况很少</code>，一般，对一个问题分析是否适用于贪心算法，可以先选择该问题下的几个实际数据进行分析，就可做出判断；</p>
+<p>贪心算法的局限性：</p>
+<ul>
+<li>不能保证最后的解是最优的；</li>
+<li>不能求最大最小解问题；</li>
+<li>只能求满足某些约束条件的可行解范围；</li>
+</ul>
+<p>贪心算法是动态规划方法的一个特例，可以证明每一个子树的根的值不取决于下面叶子的值，而只取决于当前问题的状况。换句话说，不需要知道一个节点所有子树的情况，就可以求出这个节点的值。由于贪心算法的这个特性，它对解空间树的遍历不需要自底向上，而只需要自根开始( <code>自顶向下</code>)，选择最优的路，一直走到底就可以；</p>
+<p>动态规划和贪心算法都是选择性算法，在进行决策选择时：</p>
+<ul>
+<li><p>动态规划：试探性选择 —— 每步所作的选择依赖于相关子问题的解。每一步要试探所有的可行解并将结果保存起来，最后通过回溯的方法确定最优解，其试探策略称为决策过程，可回退，所以，需要记录之前的所有最优解；</p>
+</li>
+<li><p>贪心算法：贪心选择 —— 仅在当前状态下做出最好选择，不依赖于子问题的解。优化了选择的策略，通过对候选解按照一定的规则进行排序，然后按照排好的顺序进行选择(将n个可选决策优化到了1个)，选择过程中仅需确定当前元素是否要选取，与后面的元素是什么没有关系。不可回退。所以，上一步之前的最优解则不作保留；</p>
+</li>
+</ul>
+<blockquote>
+<p>结论：贪心算法是动态规划的特例，所有的贪心算法都可以使用DP求解；</p>
+</blockquote>
+<h3 id="1-2-解题步骤"><a href="#1-2-解题步骤" class="headerlink" title="1.2 解题步骤"></a>1.2 解题步骤</h3><p>贪心算法采用<code>自顶向下</code>，以<code>迭代</code>的方法做出相继的贪心选择，每做一次贪心选择就将所求问题简化为一个规模更小的子问题，通过每一步贪心选择，可得到问题的一个最优解，虽然每一步上都要保证能获得局部最优解，但由此产生的全局解有时不一定是最优的，所以<code>贪心法不需要回溯</code>；</p>
+<p>主要的解题步骤如下：</p>
+<ol>
+<li>建立数学模型来描述问题；</li>
+<li>把求解的问题分成若干个子问题；</li>
+<li>对每一子问题求解，得到子问题的局部最优解；</li>
+<li>把子问题的解局部最优解合成原来解问题的一个解；</li>
+</ol>
+<p><img src="/images/image-20221111120838915.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-3-算法设计"><a href="#1-3-算法设计" class="headerlink" title="1.3 算法设计"></a>1.3 算法设计</h3><p>贪心算法的一般算法模块如下（实际上贪心算法并没有固定的解题模板）</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs actionscript">从问题的某一初始解出发；<br><span class="hljs-keyword">while</span> （能朝给定总目标前进一步）<br>&#123; <br>    利用可行的决策，求出可行解的一个解元素；<br>&#125;<br>由所有解元素组合成问题的一个可行解；<br></code></pre></td></tr></table></figure>
+
+<h2 id="2-范例-1"><a href="#2-范例-1" class="headerlink" title="2.范例"></a>2.范例</h2><h3 id="2-1-活动安排"><a href="#2-1-活动安排" class="headerlink" title="2.1 活动安排"></a>2.1 活动安排</h3><p>视频参考<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1r3411N7jh/?spm_id_from=333.337.top_right_bar_window_history.content.click&vd_source=276d55048634a5b508b1b53a1ecd56b3">贪心算法求解活动安排问题_哔哩哔哩_bilibili</a>；</p>
+<blockquote>
+<p>贪心算法GreedySelector并不总能求得问题的整体最优解。但对于活动安排问题，贪心算法总能求得的整体最优解，即它最终确定的相容活动集合A的规模最大。这个结论可以用数学归纳法证明。</p>
+</blockquote>
+<p>设有n个活动的集合E＝{1，2，…，n}，其中每个活动都要求使用同一资源，如演讲会场等，而在同一时间内只有一个活动能使用这一资源。每个活动i都有一个要求使用该资源的起始时间si和一个结束时间fi，且si＜fi。如果选择了活动i，则它在半开时间区间[si ，fi)内占用资源。若区间[si ，fi )与区间[sj，fj )不相交，则称活动i与活动j是相容的。当 si ≥ fj 或 sj ≥ fi时，活动i与活动j相容。 活动安排问题就是在所给的活动集合中选出最大的相容活动子集合<br>如下贪心算法，各个活动的起始时间和结束时间分别存储在数组s和f中，待选择活动按照其结束时间非减序排列（如果给出的活动并未按照此序排列，可以使用O(nlogn)做重排），形参数组A用来记录被选中的活动，变量j用来记录最近一次加入到A中的活动；</p>
+<p><img src="/images/image-20221123082553681.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>因为输入的活动按照其结束时间已经进行了非减序排列，故算法总是选择具有最早完成时间的相容活动加入集合A中；</p>
+<p>算法首先选择活动1，并将j初始化为1，接着检查活动i是否与A集合中的所有活动相容：</p>
+<ul>
+<li>相容，则将活动i加入集合A中，并取代活动j的位置；</li>
+<li>不相容，不选择活动i，继续检查下一个待选择活动与A的相容性；</li>
+</ul>
+<p>检查方法非常简单，只需要比较活动i的开始时间s<del>i</del>不早于A集合中最晚结束时间f<del>j</del>；</p>
+</blockquote>
+<p><img src="/images/image-20221123083253900.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221123083808968.png" srcset="/img/loading.gif" lazyload></p>
+<p>图中每行相应于算法的一次选代。阴影长条表示的活动是已选入集合A的活动，空白长条表示的活动是当前正在检查其相容性的活动。若被检查的活动i的开始时间s<del>i</del>小于最近选择的活动j的结束时间f<del>j</del>，则不选择活动i，否则选择活动i加入集合A中。</p>
+<h3 id="2-2-背包问题"><a href="#2-2-背包问题" class="headerlink" title="2.2 背包问题"></a>2.2 背包问题</h3><p>背包问题与0-1背包问题注意区分，尽管这两类问题都有最优子结构的性质，0-1背包不能用贪心求解，但是背包问题可以使用贪心求解</p>
+<p><img src="/images/image-20221123084049318.png" srcset="/img/loading.gif" lazyload></p>
+<p>对于0-1背包问题，贪心选择之所以不能得到最优解是因为，在这种情况下，它无法保证最终能将背包装满，部分闲置的背包空间使每千克背包空间的价值降低了（因为物品1每千克价值最大所以首选物品1，但是看图可以发现首选物品1的两种方案都不是最优的，应当选择物品2和物品3）；</p>
+<p><img src="/images/image-20221123084712061.png" srcset="/img/loading.gif" lazyload></p>
+<p>用贪心算法解背包问题的基本步骤是：首先计算每种物品单位重量的价值v<del>i</del>&#x2F;w<del>i</del>；然后依贪心选择策略，将尽可能多的单位重量价值最高的物品装入背包。若将这种物品全部装入背包后，背包内的物品总重量未超过c，则选择单位重量价值次高的物品并尽可能多地装入背包。以此策略，一直进行下去，直到背包装满为止。具体算法可描述如下：</p>
+<p><img src="/images/image-20221123084259604.png" srcset="/img/loading.gif" lazyload></p>
+<p>上述算法主要计算时间在于将各种物品按照其单位重量的价值从大到小排序，故算法的计算时间上界为O(nlogn)；</p>
+<h3 id="2-3-哈夫曼编码"><a href="#2-3-哈夫曼编码" class="headerlink" title="2.3 哈夫曼编码"></a>2.3 哈夫曼编码</h3><p>学习哈夫曼编码之前应当是先学习理解哈夫曼树的，这里给出哈夫曼树的讲解视频：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1hK4y1k7Wr/?spm_id_from=333.337.search-card.all.click&vd_source=276d55048634a5b508b1b53a1ecd56b3">哈夫曼树和哈夫曼编码_哔哩哔哩_bilibili</a>；</p>
+<p>最优编码&#x2F;最优前缀码问题：给出n个字符的频率c<del>i</del>，给每个字符赋予一个01编码串，使得任意字符的编码不是另一个编码的前缀，且编码后的总长度尽量小（总长度：每个字符的“频率*编码长度”的总和）</p>
+<p>哈夫曼提出了构造最优前缀码的贪心算法，由此产生的编码方案称为哈夫曼算法，哈夫曼算法以自底向上的方式构造表示最优前缀码的二叉树T；</p>
+<p>该最有前缀码的二叉树T具有以下性质，对这些性质的证明也就是对哈夫曼算法正确性的证明：</p>
+<ol>
+<li>最优子结构性质：编码可表示成每个非叶结点恰好有两个子结点的二叉树；<ul>
+<li>如果有一个非叶结点只有1个子结点，那可以把该结点去掉，使得编码更短；</li>
+</ul>
+</li>
+<li>贪心选择性质：频率最小的两种字符，一定是长度最长的编码，在二叉树是兄弟结点；<ul>
+<li><img src="/images/image-20221123090521408.png" srcset="/img/loading.gif" lazyload></li>
+</ul>
+</li>
+<li><img src="/images/image-20221123090742603.png" srcset="/img/loading.gif" lazyload></li>
+</ol>
+<blockquote>
+<p>时间复杂度分析：算法HuffmanTree用最小堆实现优先队列Q。初始化优先队列需要O(n)的计算时间，由于最小堆的DeleteMin和Insert运算均需O(logn)时间，n-1次的合并共需要O(nlogn)的计算时间。因此，关于n个字符的哈夫曼算法的计算时间为O（nlogn）；</p>
+</blockquote>
+<p>因为哈夫曼编码较难，所以这里我们就不再详细介绍如何证明哈夫曼算法的正确性（即证明最优前缀码问题具有贪心选择性质和最优子结构性质），感兴趣可以参考《计算机算法设计与分析 第五版》P104</p>
+<h3 id="2-4-单源最短路径"><a href="#2-4-单源最短路径" class="headerlink" title="2.4 单源最短路径"></a>2.4 单源最短路径</h3><p>这里推荐视频<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1uX4y137Hf/?spm_id_from=333.337.search-card.all.click&vd_source=276d55048634a5b508b1b53a1ecd56b3">程序员必会，单源最短路径，迪杰斯特拉算法，看动画就全明白了_哔哩哔哩_bilibili</a>详细讲解了迪杰斯特拉算法的基本思想和代码设计；</p>
+<blockquote>
+<p>时间复杂度分析：对于一个具有n个顶点和e条边的带权有向图，如果用带权邻接矩阵表示这个图，那么Dijkstra 算法的主循环体需要O(n)的时间。这个循环需要执行n-1次，所以完成循环需要O(n^2^)的时间，而算法的其余部分所需要的时间不超过O(n^2^)；</p>
+</blockquote>
+<p>关于迪杰斯特拉算法的正确性和复杂性证明，感兴趣可以参考《计算机算法设计与分析 第五版》P107</p>
+<h3 id="2-5-最小生成树"><a href="#2-5-最小生成树" class="headerlink" title="2.5 最小生成树"></a>2.5 最小生成树</h3><p>关于最小生成树的介绍和证明以及两种实现最小生成树的算法，参考视频<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Eb41177d1/?spm_id_from=333.337.search-card.all.click&vd_source=276d55048634a5b508b1b53a1ecd56b3">最小生成树(Kruskal(克鲁斯卡尔)和Prim(普里姆))算法动画演示_哔哩哔哩_bilibili</a>；</p>
+<ul>
+<li>克鲁斯卡尔算法是直接选择权值最小的边；</li>
+</ul>
+<blockquote>
+<p>时间复杂度分析：设输入的连通带权图有e条边，则将这些边依其权组成优先队列需要O(e)时间。在上述算法的while循环中，DeleteMin运算需要O(loge)时间，因此关于优先队列所作运算的时间为O(eloge)。实现UnionFind所需的时间为O(eloge)或 O(elog*e)。所以，Kruskal 算法所需的计算时间为O(eloge)；</p>
+</blockquote>
+<ul>
+<li>普里姆算法是从顶点出发，间接选择和顶点相连，权值最小的边；</li>
+</ul>
+<blockquote>
+<p>时间复杂度分析：Prim所需的计算时间为O(n^2^)；</p>
+</blockquote>
+<p>关于这两个算法的设计实现参考《计算机算法设计与分析 第五版》P108，而这两个算法的正确性教材并没有证明，所以我们也不拓展；</p>
+<h3 id="2-6-最优装载问题"><a href="#2-6-最优装载问题" class="headerlink" title="2.6 最优装载问题"></a>2.6 最优装载问题</h3><p>讲解视频链接：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Gf4y1T7qi/?spm_id_from=333.337.search-card.all.click&vd_source=276d55048634a5b508b1b53a1ecd56b3">最优装载问题（贪心算法）可以调整清晰度【试讲，不是很好，12月7号上午整体讲，因为有些同学反映发qq群iPad不方便下载视频观看，所以发上来了】_哔哩哔哩_bilibili</a>；</p>
+<blockquote>
+<p>问题描述：</p>
+</blockquote>
+<p><img src="/images/image-20221125084126556.png" srcset="/img/loading.gif" lazyload></p>
+<p>最优装载问题的难度不是很大，我们这里主要讨论该问题的贪心选择性质和最优子结构性质应该如何证明；</p>
+<blockquote>
+<p>贪心选择性质（数学归纳法）</p>
+</blockquote>
+<p><img src="/images/image-20221125085003054.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>最优子结构性质（反证法）</p>
+</blockquote>
+<p><img src="/images/image-20221125085041185.png" srcset="/img/loading.gif" lazyload></p>
+<p>最优装载问题可用贪心算法求解，采用重量最轻者先装的贪心选择策略，可产生最优装载问题的最优解，具体算法描述如下：</p>
+<p><img src="/images/image-20221125084648983.png" srcset="/img/loading.gif" lazyload></p>
+<p>因为最优装载问题满足贪心选择性质和最优子结构性质，所以可以使用上述贪心算法解决，上述算法主要计算量在于将集装箱的重量从小到大排序，故时间复杂度为O(nlogn)；</p>
+<h1 id="第五章-回溯法"><a href="#第五章-回溯法" class="headerlink" title="第五章 回溯法"></a>第五章 回溯法</h1><p>文章参考：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/96616c2487a5">(四) 回溯法(试探算法) - 简书 (jianshu.com)</a></p>
+<p>当然回溯法的概述实际上还是会比较难以理解，参考视频：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1cy4y167mM/?spm_id_from=333.337.search-card.all.click&vd_source=276d55048634a5b508b1b53a1ecd56b3">带你学透回溯算法（理论篇）| 回溯法精讲！_哔哩哔哩_bilibili</a></p>
+<h2 id="1-概述-2"><a href="#1-概述-2" class="headerlink" title="1.概述"></a>1.概述</h2><p>回溯法也称为试探算法，回溯法的求解目标一般是找出解空间树中满足约束条件的所有解；</p>
+<p>回溯和递归相辅相成，只要有递归就会有回溯（一般意义上我们所说的回溯函数实际上就是递归函数），回溯通常都是隐藏在递归函数的下面（递归函数下面的部分就是回溯的逻辑，没有人会去用迭代实现回溯(回溯是复杂递归，拆分为迭代的复杂程度极其大)）；</p>
+<p>回溯法的本质是穷举所有的可能选出我们想要的答案，所以回溯法尽管很难理解但实际上效率并不是很高；</p>
+<p>但是有些问题还真的就只能使用暴力穷举能做（for循环嵌套根本求解不出来），我们能够对回溯法做的优化最多就是加一些剪枝的处理，回溯法一般用于解决如下类型的问题：</p>
+<ul>
+<li>组合问题：N个数里面按一定规则找出k个数的集合</li>
+<li>切割问题：一个字符串按一定规则有几种切割方式</li>
+<li>子集问题：一个N个数的集合里有多少符合条件的子集</li>
+<li>排列问题：N个数按一定规则全排列，有几种排列方式</li>
+<li>棋盘问题：N皇后，解数独等等</li>
+</ul>
+<blockquote>
+<p>结论：回溯法解决的问题都可以抽象为树形结构(N叉树)，所有回溯法的问题都是如此没有例外(我们之后也会介绍相关的树形结构)</p>
+</blockquote>
+<p>因为回溯法解决的问题抽象出来都是在集合中递归的查找子集，此时集合的大小构成了树的宽度，递归的深度构成了树的深度；</p>
+<h3 id="1-1-术语-1"><a href="#1-1-术语-1" class="headerlink" title="1.1 术语"></a>1.1 术语</h3><p>在此之前介绍一些术语：</p>
+<ul>
+<li><p>问题的解向量：将一个问题的解表示成一个n元式的形式(x<del>1</del>,x<del>2</del>,…,x<del>n</del>)；</p>
+</li>
+<li><p>显式约束：对分量x<del>i</del>的取值限定，满足显式约束的解，称为<code>候选解</code>；</p>
+</li>
+<li><p>隐式约束：为了满足问题的解对不同分量之间施加的约束，候选解如果满足隐式约束，称为<code>可行解</code>；</p>
+</li>
+<li><p>目标函数：用来衡量每个可行解的优劣，使得目标函数取最大&#x2F;最小值的可行解为问题的最优解；</p>
+</li>
+<li><p>代价&#x2F;成本函数：与机器学习中的概念相同，一个最佳化问题的目标是将代价函数最小化(代价函数和目标函数在很多地方都被认为是类似的概念，简单理解一下目标函数就是最终版本的代价函数，目标函数&#x3D;代价函数+正则化项)；</p>
+</li>
+<li><p>解空间：对于问题的一个实例，解向量满足显示约束条件的所有多元组，构成该实例的一个解空间；将解空间组织起来一方面有助于快速找到所有问题的解，另一方面可以防止遗漏部分的可行解，常见的组织方式有树(子集树、排列树)和图；</p>
+<ul>
+<li>解空间树：解空间的树结构<ul>
+<li>树中每个结点称为一个<code>问题状态</code>(problem state)；</li>
+<li>由根节点到其它节点的所有路径确定了这个问题的<code>状态空间</code>，所以这个树也叫做<code>状态空间树</code>；</li>
+<li>如果从根到树中某个状态的路径代表一个作为候选解的元组，则称该状态为<code>解状态</code>(solution state)；</li>
+<li>如果从根到某个解状态的路径代表一个作为可行解的元组，则称该解状态为<code>答案状态</code>(answer state)；</li>
+</ul>
+</li>
+<li>扩展结点：一个正在产生儿子的结点称为扩展结点，又称E-结点；</li>
+<li>活结点：一个自身已生成但其儿子还没有全部生成的节点称做活结点；</li>
+<li>死结点：一个所有儿子已经产生的结点称做死结点；</li>
+</ul>
+</li>
+<li><p>深度优先的问题状态生成法：如果对一个扩展结点R，一旦产生了它的一个儿子C，就把C当做新的扩展结点。在完成对子树C（以C为根的子树）的穷尽搜索之后，将R重新变成扩展结点，继续生成R的下一个儿子（如果存在）；</p>
+</li>
+<li><p>宽度优先的问题状态生成法：在一个扩展结点变成死结点之前，它一直是扩展结点；</p>
+</li>
+<li><p>剪枝函数：搜索状态空间树过程中，剪去不必要搜索的子树，减少问题求解所需实际生成的状态结点数，提高搜索效率</p>
+<ul>
+<li><p>约束函数：在扩展结点处减去不满足约束条件的子树，避免无谓地搜索那些已知不含答案状态的子树；</p>
+</li>
+<li><p>限界函数：其意义是对最优解状态的目标函数值的范围进行界定。如果是最优化问题，可用限界函数(bound function)剪去那些得不到最优解的子树；</p>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>约束函数和限界函数的目的是相同的，都为了剪去不必要搜索的子树，减少问题求解所需实际生成的状态结点数，它们统称为剪枝函数；</p>
+</blockquote>
+<ol>
+<li>使用剪枝函数的深度优先生成状态空间树中结点的求解方法称为<code>回溯法(backtracking)</code></li>
+<li>使用剪枝函数的广度优先生成状态空间树中结点的求解方法称为<code>分支/枝限界法(branch-and-bound)</code></li>
+</ol>
+<blockquote>
+<p>回溯法&#x2F;分支限界法 &#x3D; 穷举 + 剪枝</p>
+</blockquote>
+<h4 id="1-1-1-子集树"><a href="#1-1-1-子集树" class="headerlink" title="1.1.1 子集树"></a>1.1.1 子集树</h4><p><img src="/images/image-20221116110400295.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="1-1-2-排列树"><a href="#1-1-2-排列树" class="headerlink" title="1.1.2 排列树"></a>1.1.2 排列树</h4><p><img src="/images/image-20221116110441750.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-2-基本思想-1"><a href="#1-2-基本思想-1" class="headerlink" title="1.2 基本思想"></a>1.2 基本思想</h3><p>回溯法是一个既带有系统性又带有跳跃性的搜索算法</p>
+<ul>
+<li>系统性：它在包含问题的所有解的解空间树中，按照深度优先的策略，从根结点出发搜索解空间树；</li>
+<li>跳跃性：算法搜索至解空间树的任一结点时，判断该结点为根的子树是否包含问题的解，如果肯定不包含，则跳过以该结点为根的子树的搜索，逐层向其祖先结点回溯(满足回溯条件的某个状态的点称为<code>回溯点</code>)；否则，进入该子树，继续深度优先的策略进行搜索；</li>
+</ul>
+<p>这种以深度优先的方式系统地搜索问题的解的算法称为回溯法，本质上回溯法就是对隐式图的深度优先搜索算法；</p>
+<p>回溯是穷举方法的一个改进，它在所有可行的选择中，系统地搜索问题的解。它假定解可以由向量形式 (x1,x2,…,xn) 来 表示，其中xi的值表示在第i次选择所作的决策值，并以深度优先的方式遍历向量空间,逐步确定xi 的值，直到解被找到；</p>
+<ul>
+<li>假设我们已经确定部分解的集合 (x1,x2,…,xi)，在此基础上通过增加解元素 xi+1来扩展解，确定xi+1的值后，我们要测试(x1,x2,…,xi+1)是否仍是可行解；</li>
+</ul>
+<blockquote>
+<p>若用回溯法求问题的所有解时，要回溯到根，且根结点的所有可行的子树都要已被搜索遍才结束，来确保解的正确性，若使用回溯法求任一个解时，只要搜索到问题的一个解就可以结束；</p>
+</blockquote>
+<p>回溯法的<code>使用情况</code>：</p>
+<p>有许多问题，当需要找出它的解集或者要求回答什么解是满足某些约束条件的最佳解时，往往要使用回溯法，(找出解空间树中满足约束条件的所有解)；回溯法的基本做法是搜索，或是一种组织得井井有条的，能避免不必要搜索的穷举式搜索法，这种方法适用于解一些组合数较大的问题；</p>
+<h3 id="1-3-解题步骤-1"><a href="#1-3-解题步骤-1" class="headerlink" title="1.3 解题步骤"></a>1.3 解题步骤</h3><ol>
+<li>针对所给问题，定义问题的解空间，首先应明确定义问题的解空间，问题的解空间应至少包含问题的一个（最优）解，通常这个解空间是非常巨大的，所以搜索一个目标解的代价是很难想象的；为了使回溯算法更有效率，我们必须缩小搜索空间；</li>
+<li>确定易于搜索的解空间结构(典型的组织方式是图、树-排列树&#x2F;子集树等)；</li>
+<li>从<code>根节点</code>开始，以<code>深度优先</code>方式搜索解空间；</li>
+<li>在搜索过程中用<code>剪枝函数</code>避免搜索进入不可能得到解的子空间；</li>
+</ol>
+<p>当然上述解题步骤只是泛泛而言的理论解题步骤，我们再给出具体的如何写代码的解题步骤</p>
+<ol>
+<li>确定回溯函数的参数和返回值<ul>
+<li>回溯法的返回值一般是void；</li>
+<li>回溯法的参数不像普通递归那么容易确定，一般是先写逻辑，需要什么参数写什么参数；</li>
+</ul>
+</li>
+<li>确定回溯函数的终止条件<ul>
+<li>回溯解决的问题是树形结构，一般而言树的终止条件就是搜索到叶子节点中，对回溯来说就是找到了满足条件的一条答案，将该答案保存并结束本层递归即可；</li>
+</ul>
+</li>
+<li>单层回溯搜索</li>
+</ol>
+<p><img src="/images/image-20221111092432505-16693359574611.png" srcset="/img/loading.gif" lazyload></p>
+<p>回溯算法的模板框架如下（之后的回溯算法几乎都是在这个框架上建立的）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">backtracking</span><span class="hljs-params">(参数)</span> &#123;<br>    <span class="hljs-keyword">if</span> (终止条件) &#123;<br>        存放结果;<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-keyword">for</span> (选择：本层集合中元素（树中节点孩子的数量就是集合的大小）) &#123;<br>        处理节点;<br>        backtracking(路径，选择列表); <span class="hljs-comment">// 递归</span><br>        回溯，撤销处理结果<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="2-范例-2"><a href="#2-范例-2" class="headerlink" title="2.范例"></a>2.范例</h2><h3 id="2-1-轮船装载问题"><a href="#2-1-轮船装载问题" class="headerlink" title="2.1 轮船装载问题"></a>2.1 轮船装载问题</h3><p>该算法可以看作是贪心算法的轮船装载问题的变形（实际上应当是我们下面介绍的普通装载的拓展），问题描述如下</p>
+<p><img src="/images/image-20221125085615165.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221125085658622.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221125085753650.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-1-1-普通装载问题"><a href="#2-1-1-普通装载问题" class="headerlink" title="2.1.1 普通装载问题"></a>2.1.1 普通装载问题</h4><p>在介绍复杂装载问题之前我们先使用回溯法来解决普通装载问题，涉及回溯法的剪枝策略；讲解视频参考链接<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1TK4y1a7dK/?spm_id_from=333.337.search-card.all.click&vd_source=276d55048634a5b508b1b53a1ecd56b3">chapt5-3-回溯-简单装载_哔哩哔哩_bilibili</a>；</p>
+<blockquote>
+<p>问题描述</p>
+</blockquote>
+<p><img src="/images/image-20221125090525306.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221125090549757.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>算法思路</p>
+</blockquote>
+<p>分别使用如下数据结构表示问题和解</p>
+<p><img src="/images/image-20221125105342761.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们定义一个dfs函数来求解该问题（即求解算法）</p>
+<p><img src="/images/image-20221125091133309.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>求解步骤</p>
+</blockquote>
+<p>简单装载问题的求解与幂集问题是同类问题，它们对应的解空间树都是一棵子集树，但不同的是简单装载问题是一个最优解问题 —— 每找到一个可行解，就需要与最优解进行比较以得到最优解</p>
+<p><img src="/images/image-20221125091350091.png" srcset="/img/loading.gif" lazyload></p>
+<p>幂集求解时每个节点都可以拓展出两个节点，但是简单装载问题不需要拓展所有的节点，即在求解过程中可以剪枝，通过剪枝可以提高求解速度；</p>
+<p><img src="/images/image-20221125091634683.png" srcset="/img/loading.gif" lazyload></p>
+<p>对应的剪枝方式有两种（原因是什么写出对应的情况就知道了，当然也可以按照下面的流程图进行理解，流程图中需要注意的是我们采用的是第一种右剪枝方式）</p>
+<p><img src="/images/image-20221125092115773.png" srcset="/img/loading.gif" lazyload></p>
+<p>可能上述描述比较抽象，这里直接给出实际的过程（参考视频更好理解，注意为什么数组第一个元素为0占位不使用这涉及数据结构）</p>
+<p><img src="/images/image-20221125092620067.png" srcset="/img/loading.gif" lazyload></p>
+<p>关于算法的代码部分我们就不做讲解了，该算法的解空间树是一棵子集树，其中最多包含2^n+1^-1个节点，因此对应的算法时间复杂度为O(2^n^)，因为使用了剪枝算法，所以一定程度上更快；</p>
+<p>最后要说的一点，为什么上述算法体现了回溯？因为我们如果不回溯的话只会按照一条路径向下搜索，但是这里的算法搜索完毕后会回到上一个节点考虑另一条路径的拓展，在代码中回溯体现的都不一样，可以使用path.pop_back()也可以使用op[i]&#x3D;0等不同的方式，具体取决于使用的数据结构；</p>
+<h4 id="2-1-2-复杂装载问题"><a href="#2-1-2-复杂装载问题" class="headerlink" title="2.1.2 复杂装载问题"></a>2.1.2 复杂装载问题</h4><p>参考视频链接：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1K64y1F7m9/?spm_id_from=pageDriver&vd_source=276d55048634a5b508b1b53a1ecd56b3">chapt5-3-回溯-复杂装载_哔哩哔哩_bilibili</a></p>
+<blockquote>
+<p>问题描述</p>
+</blockquote>
+<p><img src="/images/image-20221125103838287.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>简单装载问题是一个最优解问题，复杂装载问题是一个可行解问题；</p>
+</blockquote>
+<p>复杂装载问题可以借助简单装载方案解决，可以这样考虑如下问题</p>
+<p><img src="/images/image-20221125104145241.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>算法思路</p>
+</blockquote>
+<p>分别使用如下数据结构描述问题以及表示解</p>
+<p><img src="/images/image-20221125104527680.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们使用dfs表示求解算法</p>
+<p><img src="/images/image-20221125105940241.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>求解步骤</p>
+</blockquote>
+<p>首先将尽量多的集装箱装到第一艘船上，得到解向量X，这一步的求解过程实际上就是简单装载问题的求解过程（这里右剪枝采用的第二种策略，本质上和第一种没什么区别，可以参考视频<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1K64y1F7m9/?spm_id_from=pageDriver&vd_source=276d55048634a5b508b1b53a1ecd56b3">chapt5-3-回溯-复杂装载_哔哩哔哩_bilibili</a>理解）</p>
+<p><img src="/images/image-20221125104952082.png" srcset="/img/loading.gif" lazyload></p>
+<p>接着统计第一艘装完后剩余的集装箱重量sum；若sum&lt;&#x3D;c2，表示第二艘轮船可以装完，返回true；否则表示第二艘轮船不能装完，返回false；</p>
+<p><img src="/images/image-20221125110813354.png" srcset="/img/loading.gif" lazyload></p>
+<p>关于代码我们就不展开讲解了，感兴趣可以去视频里好好看一下；</p>
+<h3 id="2-2-作业调度问题"><a href="#2-2-作业调度问题" class="headerlink" title="2.2 作业调度问题"></a>2.2 作业调度问题</h3><p><img src="/images/image-20221125114706439.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221125115033156.png" srcset="/img/loading.gif" lazyload></p>
+<p>注意这个时间的计算方式，我们可以设定整个调度开始时间为0，那么最终结束时刻就是总时间，同时需要注意的是不要简单的将时间加起来，具体计算方式可以参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_46308522/article/details/109425775">(1条消息) 批处理作业调度【回溯算法】_哆啦 AI 梦的博客-CSDN博客_批处理作业调度</a>；</p>
+<p>关于算法的讲解参考<a target="_blank" rel="noopener" href="https://www.icourse163.org/learn/QDU-1460628161?tid=1468216562#/learn/content?type=detail&id=1250038487&sm=1">算法设计与分析_中国大学MOOC(慕课) (icourse163.org)</a>，这里不再赘述；</p>
+<h3 id="2-3-旅行售货员问题"><a href="#2-3-旅行售货员问题" class="headerlink" title="2.3 旅行售货员问题"></a>2.3 旅行售货员问题</h3><p>视频参考链接：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1pS4y1H7HX/?spm_id_from=333.337.search-card.all.click&vd_source=276d55048634a5b508b1b53a1ecd56b3">2022春浙江工业大学算法设计与分析习题分享——旅行售货员问题_哔哩哔哩_bilibili</a>；</p>
+<p>实验代码参考：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/Blackoutdragon/article/details/116358447">(1条消息) 算法设计与分析——旅行售货问题——代码分析和讲解_客院载论的博客-CSDN博客_旅行售货员问题算法分析</a>；</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_46296905/article/details/120027441">(1条消息) 【数据结构（C语言）】旅行售货员问题（最短汉密尔顿回路问题）_Em0s_Er1t的博客-CSDN博客_旅行售货员问题</a>；</li>
+</ul>
+<blockquote>
+<p>问题描述</p>
+</blockquote>
+<p>旅行售货员问题travelling salesman problem，问题描述如下</p>
+<p><img src="/images/image-20221126154547377.png" srcset="/img/loading.gif" lazyload></p>
+<p>可以很清楚的看到这是一个汉密尔顿回路问题，即从图中一点出发，经过所有点一次之后又重新回到起点，称该回路为汉密尔顿回路；可以知道这是一个NP问题，所以只能采用递归穷举+剪枝的方式解决；</p>
+<blockquote>
+<p>解题步骤</p>
+</blockquote>
+<ol>
+<li>使用回溯法对解空间树做深度优先搜索</li>
+<li>用递归法实现回溯</li>
+</ol>
+<blockquote>
+<p>算法实现</p>
+</blockquote>
+<p><img src="/images/image-20221126155358880.png" srcset="/img/loading.gif" lazyload></p>
+<p>对应的算法如下</p>
+<p><img src="/images/image-20221126155451830.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>实例</p>
+</blockquote>
+<p>对应算法的实现作图得到如下解空间树</p>
+<p><img src="/images/image-20221126155310408.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>算法效率分析</p>
+</blockquote>
+<p><img src="/images/image-20221126155849045.png" srcset="/img/loading.gif" lazyload></p>
+<p>简单理解，假如没有剪枝则每个树的分枝都要进行一遍搜索也就是O(n!)，但是有剪枝所以实际上会快于O(n!)的时间；</p>
+<h3 id="2-4-N皇后问题"><a href="#2-4-N皇后问题" class="headerlink" title="2.4 N皇后问题"></a>2.4 N皇后问题</h3><p>视频参考：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Rd4y1c7Bq/?spm_id_from=333.337.search-card.all.click&vd_source=276d55048634a5b508b1b53a1ecd56b3">这就是传说中的N皇后？ 回溯算法安排！| LeetCode：51.N皇后_哔哩哔哩_bilibili</a>；</p>
+<p>文章参考：<a target="_blank" rel="noopener" href="https://programmercarl.com/0051.N%E7%9A%87%E5%90%8E.html#%E6%80%9D%E8%B7%AF">代码随想录 (programmercarl.com)</a>；</p>
+<blockquote>
+<p>问题描述</p>
+</blockquote>
+<p><img src="/images/image-20221126160411953.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221126161608046.png" srcset="/img/loading.gif" lazyload></p>
+<p>简单来说规则就是：</p>
+<ul>
+<li>同一行不能出现两个皇后</li>
+<li>同一列不能出现两个皇后</li>
+<li>45度对角线不能出现两个皇后</li>
+</ul>
+<p>之前处理的问题都只是简单的一维集合，本题是需要处理一个二维的数组，即如何使用回溯法搜索二维棋盘；</p>
+<p>最暴力的方式当然就是嵌套for循环，即假如给的是一个4*4的棋盘则嵌套四个for循环分别遍历每一行，但是随着棋盘的增大暴力显然是不能解决的，所以本题需要使用回溯法解决；</p>
+<p>回溯法本质上也是暴力求解，故其时间复杂度和for循环实际是一样的，但是回溯法可以使用递归的方式帮助我们控制嵌套for循环的层，即每一层递归控制一个for循环</p>
+<blockquote>
+<p>问题分析</p>
+</blockquote>
+<p>这里使用一个3*3的棋盘举例；</p>
+<p><img src="/images/image-20221126161648700.png" srcset="/img/loading.gif" lazyload></p>
+<ol>
+<li>首先第一层递归取第一行；</li>
+<li>下一层递归取第二行；</li>
+<li>第三层递归取第三行；</li>
+</ol>
+<p>可以看到3*3的N皇后是一个无解问题；</p>
+<blockquote>
+<p>算法设计</p>
+</blockquote>
+<p>根据回溯法的三大步骤，首先确定递归函数的参数，定义全局变量二维数组result来记录最终结果，参数n是棋盘的大小，然后用row来记录当前遍历到棋盘的第几层</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp">vector&lt;vector&lt;string&gt;&gt; result;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">backtracking</span><span class="hljs-params">(<span class="hljs-type">int</span> n, <span class="hljs-type">int</span> row, vector&lt;string&gt;&amp; chessboard)</span> </span>&#123;<br></code></pre></td></tr></table></figure>
+
+<p>接着确定递归的终止条件，当递归到棋盘最底层（也就是叶子节点）的时候，就可以收集结果并返回</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">if</span> (row == n) &#123;<br>    result.<span class="hljs-built_in">push_back</span>(chessboard);<br>    <span class="hljs-keyword">return</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>最后是确定单层搜索的逻辑，递归深度就是row控制棋盘的行，每一层里for循环的col控制棋盘的列，一行一列，确定了放置皇后的位置。每次都是要从新的一行的起始位置开始搜，所以都是从0开始；</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> col = <span class="hljs-number">0</span>; col &lt; n; col++) &#123;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isValid</span>(row, col, chessboard, n)) &#123; <span class="hljs-comment">// 验证合法就可以放</span><br>        chessboard[row][col] = <span class="hljs-string">&#x27;Q&#x27;</span>; <span class="hljs-comment">// 放置皇后</span><br>        <span class="hljs-built_in">backtracking</span>(n, row + <span class="hljs-number">1</span>, chessboard);<br>        chessboard[row][col] = <span class="hljs-string">&#x27;.&#x27;</span>; <span class="hljs-comment">// 回溯，撤销皇后</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>去重函数按照上述我们介绍的三个规则去重，代码如下，代码中不存在同行检查，因为在单层搜索的过程中，每一层递归，只会选for循环（也就是同一行）里的一个元素，所以不用去重</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">bool</span> <span class="hljs-title function_">isValid</span><span class="hljs-params">(<span class="hljs-type">int</span> row, <span class="hljs-type">int</span> col, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt;&amp; chessboard, <span class="hljs-type">int</span> n)</span> &#123;<br>    <span class="hljs-comment">// 检查列</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; row; i++) &#123; <span class="hljs-comment">// 这是一个剪枝</span><br>        <span class="hljs-keyword">if</span> (chessboard[i][col] == <span class="hljs-string">&#x27;Q&#x27;</span>) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-comment">// 检查 45度角是否有皇后</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = row - <span class="hljs-number">1</span>, j = col - <span class="hljs-number">1</span>; i &gt;=<span class="hljs-number">0</span> &amp;&amp; j &gt;= <span class="hljs-number">0</span>; i--, j--) &#123;<br>        <span class="hljs-keyword">if</span> (chessboard[i][j] == <span class="hljs-string">&#x27;Q&#x27;</span>) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-comment">// 检查 135度角是否有皇后</span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = row - <span class="hljs-number">1</span>, j = col + <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span> &amp;&amp; j &lt; n; i--, j++) &#123;<br>        <span class="hljs-keyword">if</span> (chessboard[i][j] == <span class="hljs-string">&#x27;Q&#x27;</span>) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>根据回溯法框架和视频解题思路设计的整体代码如下</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">private</span>:<br>vector&lt;vector&lt;string&gt;&gt; result;<br><span class="hljs-comment">// n 为输入的棋盘大小</span><br><span class="hljs-comment">// row 是当前递归到棋盘的第几行了</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">backtracking</span><span class="hljs-params">(<span class="hljs-type">int</span> n, <span class="hljs-type">int</span> row, vector&lt;string&gt;&amp; chessboard)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (row == n) &#123;<br>        result.<span class="hljs-built_in">push_back</span>(chessboard);<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> col = <span class="hljs-number">0</span>; col &lt; n; col++) &#123;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isValid</span>(row, col, chessboard, n)) &#123; <span class="hljs-comment">// 验证合法就可以放</span><br>            chessboard[row][col] = <span class="hljs-string">&#x27;Q&#x27;</span>; <span class="hljs-comment">// 放置皇后</span><br>            <span class="hljs-built_in">backtracking</span>(n, row + <span class="hljs-number">1</span>, chessboard);<br>            chessboard[row][col] = <span class="hljs-string">&#x27;.&#x27;</span>; <span class="hljs-comment">// 回溯，撤销皇后</span><br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">isValid</span><span class="hljs-params">(<span class="hljs-type">int</span> row, <span class="hljs-type">int</span> col, vector&lt;string&gt;&amp; chessboard, <span class="hljs-type">int</span> n)</span> </span>&#123;<br>    <span class="hljs-comment">// 检查列</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; row; i++) &#123; <span class="hljs-comment">// 这是一个剪枝</span><br>        <span class="hljs-keyword">if</span> (chessboard[i][col] == <span class="hljs-string">&#x27;Q&#x27;</span>) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-comment">// 检查 45度角是否有皇后</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = row - <span class="hljs-number">1</span>, j = col - <span class="hljs-number">1</span>; i &gt;=<span class="hljs-number">0</span> &amp;&amp; j &gt;= <span class="hljs-number">0</span>; i--, j--) &#123;<br>        <span class="hljs-keyword">if</span> (chessboard[i][j] == <span class="hljs-string">&#x27;Q&#x27;</span>) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-comment">// 检查 135度角是否有皇后</span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = row - <span class="hljs-number">1</span>, j = col + <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span> &amp;&amp; j &lt; n; i--, j++) &#123;<br>        <span class="hljs-keyword">if</span> (chessboard[i][j] == <span class="hljs-string">&#x27;Q&#x27;</span>) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>&#125;<br><span class="hljs-keyword">public</span>:<br>    vector&lt;vector&lt;string&gt;&gt; <span class="hljs-built_in">solveNQueens</span>(<span class="hljs-type">int</span> n) &#123;<br>        result.<span class="hljs-built_in">clear</span>();<br>        <span class="hljs-function">std::vector&lt;std::string&gt; <span class="hljs-title">chessboard</span><span class="hljs-params">(n, std::string(n, <span class="hljs-string">&#x27;.&#x27;</span>))</span></span>;<br>        <span class="hljs-built_in">backtracking</span>(n, <span class="hljs-number">0</span>, chessboard);<br>        <span class="hljs-keyword">return</span> result;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-5-图着色问题"><a href="#2-5-图着色问题" class="headerlink" title="2.5 图着色问题"></a>2.5 图着色问题</h3><p>文章参考：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/wdays83892469/article/details/79648258">(1条消息) 图的着色问题_eck_燃的博客-CSDN博客_图的着色问题</a>；</li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/czsharecode/p/10558732.html">图着色问题 - 西风show码 - 博客园 (cnblogs.com)</a>；</li>
+</ul>
+<blockquote>
+<p>问题描述</p>
+</blockquote>
+<p>图的m着色问题：给定一个无向连通图G和m种颜色，给图G的所有<code>顶点</code>着色，使得任何两相邻顶点的颜色不同（G可以是平面图，也可以是非平面图）</p>
+<p>四色定理：任何平面图都是可以4着色的</p>
+<p><img src="/images/image-20221126165412251.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们这里使用4个顶点、3种颜色说明</p>
+<p><img src="/images/image-20221126170314123.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>算法实现</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">dfs</span><span class="hljs-params">(<span class="hljs-type">int</span> cur)</span>&#123;<br>    <span class="hljs-keyword">if</span>(cur &gt; n) &#123;<br>        ans = <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">return</span>;    <br>    &#125; <br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>; i&lt;=m; i++)&#123; <span class="hljs-comment">//对cur结点尝试使用每一种颜色进行涂色 </span><br>    <br>        <span class="hljs-type">bool</span> flag = <span class="hljs-number">1</span>;<br>        <span class="hljs-comment">//cur之前的结点必被涂色</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">1</span>; j&lt;cur; j++)&#123;<br>            <span class="hljs-keyword">if</span>(G[j][cur] == <span class="hljs-number">1</span> &amp;&amp; color[j] == i)&#123;<br>                flag = <span class="hljs-number">0</span>;<span class="hljs-comment">//只要有一个冲突都不行 </span><br>                <span class="hljs-keyword">break</span>;<br>            &#125;<br>        &#125; <br>        <span class="hljs-comment">//如果可以涂上i颜色，则考虑下一个结点的情况 </span><br>        <span class="hljs-keyword">if</span>(flag)&#123;<br>            color[cur] = i;<br>            dfs(cur + <span class="hljs-number">1</span>);<br>            <br>        &#125; <br>        <span class="hljs-comment">//如果到这一步第cur个结点无法着色，则返回探寻其他方案 </span><br>        <span class="hljs-keyword">else</span> color[cur] = <span class="hljs-number">0</span>;<span class="hljs-comment">//回溯 ;</span><br>    &#125;<br>    <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>算法效率</p>
+</blockquote>
+<p><img src="/images/image-20221126170046497.png" srcset="/img/loading.gif" lazyload></p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E9%80%9A%E8%AF%86%E8%AF%BE%E7%A8%8B/" class="category-chain-item">通识课程</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/">#课程学习</a>
+      
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">#数据结构与算法</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>算法设计与分析</div>
+      <div>https://gintoki-jpg.github.io/2022/09/07/通识_算法设计与分析/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>杨再俨</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年9月7日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/09/07/%E9%80%9A%E8%AF%86_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/" title="计算机系统">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">计算机系统</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/09/06/%E8%80%83%E7%A0%94_%E7%99%BD%E7%9A%AE%E4%B9%A6/" title="考研_白皮书">
+                        <span class="hidden-mobile">考研_白皮书</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+</div>
+
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

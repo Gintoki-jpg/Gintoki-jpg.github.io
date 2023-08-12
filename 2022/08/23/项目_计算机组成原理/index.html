@@ -1,0 +1,901 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/logo.png">
+  <link rel="icon" href="/img/bg/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="杨再俨">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="大三上关于计组课设的一些整理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初级项目_计算机组成原理课程设计">
+<meta property="og:url" content="https://gintoki-jpg.github.io/2022/08/23/%E9%A1%B9%E7%9B%AE_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/index.html">
+<meta property="og:site_name" content="Tintoki_blog">
+<meta property="og:description" content="大三上关于计组课设的一些整理">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/project.png">
+<meta property="article:published_time" content="2022-08-23T01:22:00.000Z">
+<meta property="article:modified_time" content="2023-02-08T02:23:20.386Z">
+<meta property="article:author" content="YangZaiyan">
+<meta property="article:tag" content="计算机组成原理">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gintoki-jpg.github.io/img/bg/project.png">
+  
+  
+  
+  <title>初级项目_计算机组成原理课程设计 - Tintoki_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"gintoki-jpg.github.io","root":"/","version":"1.9.1","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tintoki_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/bg1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">初级项目_计算机组成原理课程设计</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-08-23 09:22" pubdate>
+          2022年8月23日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          36 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">初级项目_计算机组成原理课程设计</h1>
+            
+            <div class="markdown-body">
+              
+              <hr>
+<p>2022&#x2F;8&#x2F;24 10:33 昨天稍微听了一下老师介绍，然后云里雾里的也不知道具体要干啥，所以今天静下心来准备好好整理一下思路然后再开始进行课设的设计；</p>
+<hr>
+<p>源码链接<a target="_blank" rel="noopener" href="https://github.com/Gintoki-jpg/Com_Org_Design">Gintoki-jpg&#x2F;Com_Org_Design: 大二下计算机组成原理课程设计参考资料 (github.com)</a></p>
+<h1 id="题目一"><a href="#题目一" class="headerlink" title="题目一"></a>题目一</h1><h2 id="1-实验目的"><a href="#1-实验目的" class="headerlink" title="1.实验目的"></a>1.实验目的</h2><p>按照所给的数据格式、指令系统和数据通路以及所给的器件，<code>设计一个基于硬布线控制器的顺序模型CPU</code>，要求满足：</p>
+<ul>
+<li>能够在TEC-8上组装、调试及运行</li>
+<li>在原指令基础上拓展指令至少三条</li>
+<li>修改PC指针功能（任意指针）</li>
+</ul>
+<h2 id="2-资料参考"><a href="#2-资料参考" class="headerlink" title="2.资料参考"></a>2.资料参考</h2><p>关于硬布线控制器和微程序控制器的区别，可以参考TEC-8仿真的说明书；</p>
+<p>关于硬布线控制器的详细原理可以参考<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1BE411D7ii?p=81&amp;vd_source=276d55048634a5b508b1b53a1ecd56b3%EF%BC%9B">https://www.bilibili.com/video/BV1BE411D7ii?p=81&amp;vd_source=276d55048634a5b508b1b53a1ecd56b3；</a></p>
+<p>关于TEC-8怎么用参考《TEC-8使用手册》；</p>
+<p>关于Quartus怎么用参考《Quartus ll说明书》；</p>
+<h2 id="3-VHDL语言"><a href="#3-VHDL语言" class="headerlink" title="3.VHDL语言"></a>3.VHDL语言</h2><p>因为实验过程中使用到了VHDL语言，但是之前一直没有系统学习过，这里集中整理一下基本知识点；</p>
+<h3 id="3-1-HDL简介"><a href="#3-1-HDL简介" class="headerlink" title="3.1 HDL简介"></a>3.1 HDL简介</h3><p>HDL是一门用于描述数字电路的功能或行为的语言，用于在芯片制造之前进行有效的仿真和错误检测；</p>
+<p>常用的HDL语言有VHDL和Verilog HDL；</p>
+<h3 id="3-2-VHDL基础"><a href="#3-2-VHDL基础" class="headerlink" title="3.2 VHDL基础"></a>3.2 VHDL基础</h3><blockquote>
+<p>VHDL的注释由两个连续的虚线<code>--</code>引导；</p>
+</blockquote>
+<h4 id="3-2-1-标识符"><a href="#3-2-1-标识符" class="headerlink" title="3.2.1 标识符"></a>3.2.1 标识符</h4><p>标识符用来定义常数、变量、信号、端口、子程序或参数的名字；</p>
+<blockquote>
+<p>注意：VHDL定义的保留字（关键字）不能用作标识符；</p>
+</blockquote>
+<h4 id="3-2-2-关键字"><a href="#3-2-2-关键字" class="headerlink" title="3.2.2 关键字"></a>3.2.2 关键字</h4><p>关键字（keyword）是VHDL中具有特别含义的单词，只能做为固定的用途，用户不能用其做为标识符；</p>
+<h4 id="3-2-3-数据对象"><a href="#3-2-3-数据对象" class="headerlink" title="3.2.3 数据对象"></a>3.2.3 数据对象</h4><p>数据对象包括<code>常量、变量、信号和文件</code>四种类型；</p>
+<h5 id="1-常量"><a href="#1-常量" class="headerlink" title="(1)常量"></a>(1)常量</h5><p>常量是对某一常量名赋予一个固定的值，而且只能赋值一次。通常赋值在程序开始前进行，该值的数据类型在说明语句中指明；</p>
+<p><img src="/images/image-20220825161757005.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>常量所赋的值应和定义的数据类型一致；</p>
+<p>常量在程序包、实体、构造体或进程的说明性区域内必须加以说明:</p>
+<ul>
+<li>定义在程序包内的常量可供所含的任何实体、构造体所引用;</li>
+<li>定义在实体说明内的常量只能在该实体内可见;</li>
+<li>定义在进程说明性区域中的常量只能在该进程内可见;</li>
+</ul>
+</blockquote>
+<h5 id="2-变量"><a href="#2-变量" class="headerlink" title="(2)变量"></a>(2)变量</h5><p>变量只能在进程语句、函数语句和过程语句结构中使用。变量的赋值是直接的，非预设的，分配给变量的值立即成为当前值，变量不能表达“连线”或存储元件，不能设置传输延迟量。</p>
+<p><img src="/images/image-20220825162133499.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="3-信号"><a href="#3-信号" class="headerlink" title="(3)信号"></a>(3)信号</h5><p>信号表示逻辑门的输入或输出，类似于连接线，也可以表达存储元件的状态。信号通常在构造体、程序包和实体中说明;</p>
+<p><img src="/images/image-20220825162540700.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="3-2-4-数据类型"><a href="#3-2-4-数据类型" class="headerlink" title="3.2.4 数据类型"></a>3.2.4 数据类型</h4><h5 id="1-预定义数据类型"><a href="#1-预定义数据类型" class="headerlink" title="(1)预定义数据类型"></a>(1)预定义数据类型</h5><p>VHDL的数据类型主要分为指的是预定义的数据类型,也就是在VHDL标准包STANDARD中定义好的自动包含进VHDL源文件中无需通过USE语句显式调用的;</p>
+<ul>
+<li>Boolean:取值为FALSE或TRUE,不是数值不能用于运算,常用于关系运算符;</li>
+<li>Bit:取值为0和1,用于逻辑运算;</li>
+<li>Bit_Vector:基于Bit类型的数组,用于逻辑运算;</li>
+<li>Character:通常使用’’括起,区分大小写;</li>
+<li>String:通常用””括起,区分大小写;</li>
+</ul>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vhdl">string_var:=<span class="hljs-string">&quot;A B C D&quot;</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>Integer:可用32位有符号二进制数表示,要求用RANGE子句为所定义的数限定范围，以便根据范围来决定表示此信号或变量的二进制数的位数;</li>
+</ul>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vhdl"><span class="hljs-keyword">variable</span> a:interger <span class="hljs-keyword">range</span> -<span class="hljs-number">63</span> <span class="hljs-keyword">to</span> <span class="hljs-number">63</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>Real:实数,仅可用于仿真不可综合;</p>
+</li>
+<li><p>Time:物理量数据，完整的包括整数和单位两个部分，用至少一个空格隔开，仅用于仿真不可综合；</p>
+</li>
+<li><p>Severity Level:错误等级,表示系统状态,仅可用于仿真;</p>
+</li>
+<li><p>Std_Logic:标准逻辑位;</p>
+</li>
+<li><p>Std_Logic_Vector:标准逻辑位矢量,即基于Std_Logic类型的数组;</p>
+</li>
+</ul>
+<h5 id="2-自定义数据类型"><a href="#2-自定义数据类型" class="headerlink" title="(2)自定义数据类型"></a>(2)自定义数据类型</h5><figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vhdl"><span class="hljs-keyword">TYPE</span> 数据类型名 <span class="hljs-keyword">IS</span> 数据类型定义 <span class="hljs-keyword">OF</span> 基本数据类型<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vhdl"><span class="hljs-keyword">TYPE</span> 数据类型名 <span class="hljs-keyword">IS</span> 数据类型定义<br></code></pre></td></tr></table></figure>
+
+<p><img src="/images/image-20220825164353060.png" srcset="/img/loading.gif" lazyload></p>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vhdl"><span class="hljs-keyword">SUBTYPE</span> 子类型名 <span class="hljs-keyword">IS</span> 基本数据类型定义 <span class="hljs-keyword">RANGE</span> 约束范围<br></code></pre></td></tr></table></figure>
+
+<p><img src="/images/image-20220825164458465.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="3-2-5-属性"><a href="#3-2-5-属性" class="headerlink" title="3.2.5 属性"></a>3.2.5 属性</h4><p>属性提供的是关于信号 类型等的指定特性;</p>
+<p>‘event’:若属性对象有事件发生，则生成布尔值”true”，常用来检查时钟边沿是否有效;</p>
+<p>‘range’:生成一个限制性数组对象的范围;</p>
+<p>‘left’:生成数据类型或数据子类型的左边界值;</p>
+<h4 id="3-2-6-运算符"><a href="#3-2-6-运算符" class="headerlink" title="3.2.6 运算符"></a>3.2.6 运算符</h4><p><img src="/images/image-20220825164829827.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>注意:&amp;代表并置操作符,如a&lt;&#x3D;’1’&amp;’0’&amp;’d(1)’&amp;’1’表示元素与元素并置,并置后的数组长度为4;</p>
+</blockquote>
+<h3 id="3-3-VHDL基本结构"><a href="#3-3-VHDL基本结构" class="headerlink" title="3.3 VHDL基本结构"></a>3.3 VHDL基本结构</h3><p>VHDL基本的结构如下:</p>
+<p><img src="/images/image-20220825165104477.png" srcset="/img/loading.gif" lazyload></p>
+<p>VHDL最基本的设计单元结构包含:程序包说明(库 程序包的说明调用) 实体说明(实体声明)以及结构体说明(结构体定义)三部分</p>
+<h4 id="3-3-1-实体"><a href="#3-3-1-实体" class="headerlink" title="3.3.1 实体"></a>3.3.1 实体</h4><p>实体描述了设计单元的输入输出接口信号或引脚，是设计实体经封装后对外的一个通信界面;</p>
+<p><img src="/images/image-20220825165503150.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>实体名由设计者自由命名，用来表示被设计电路芯片的名称，但是必须与VHDL程序的文件名称相同;</p>
+</blockquote>
+<p><img src="/images/image-20220825165623791.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="1-类属说明"><a href="#1-类属说明" class="headerlink" title="(1)类属说明"></a>(1)类属说明</h5><p>类属为设计实体与外界通信的静态信息提供通道，用来规定端口的大小、实体中子元件的数目和实体的定时特性等;</p>
+<p><img src="/images/image-20220825165736947.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="2-端口方向"><a href="#2-端口方向" class="headerlink" title="(2)端口方向"></a>(2)端口方向</h5><p><img src="/images/image-20220825165822344.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>同方向 同类型的端口可以放在同一个说明语句中</p>
+</blockquote>
+<p><img src="/images/image-20220825165943921.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="3-3-2-结构体"><a href="#3-3-2-结构体" class="headerlink" title="3.3.2 结构体"></a>3.3.2 结构体</h4><p>结构体定义了设计单元具体的功能，描述了该基本设计单元的行为、元件和内部的连接关系；</p>
+<p><img src="/images/image-20220825222002756.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><p>一个实体可对应多个结构体，每个结构体代表该实体功能的不同实现方案或不同实现方式。同一时刻只有一个结构体起作用，通过CONFIGURATION决定用哪个结构体进行仿真或综合；</p>
+</li>
+<li><p>在结构体描述中，具体给出了输入、输出信号之间的逻辑关系；</p>
+</li>
+</ul>
+<p><img src="/images/image-20220825222508519.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="3-3-3-库、程序包的调用"><a href="#3-3-3-库、程序包的调用" class="headerlink" title="3.3.3 库、程序包的调用"></a>3.3.3 库、程序包的调用</h4><ul>
+<li>格式</li>
+</ul>
+<p><img src="/images/image-20220825222605325.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>示例</li>
+</ul>
+<p><img src="/images/image-20220825222652114.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-4-VHDL语句"><a href="#3-4-VHDL语句" class="headerlink" title="3.4 VHDL语句"></a>3.4 VHDL语句</h3><h4 id="3-4-1-并行语句"><a href="#3-4-1-并行语句" class="headerlink" title="3.4.1 并行语句"></a>3.4.1 并行语句</h4><p>结构体中执行的是同时进行、执行顺序与书写顺序无关的语句</p>
+<p><img src="/images/image-20220825222819066.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="（1）简单赋值语句"><a href="#（1）简单赋值语句" class="headerlink" title="（1）简单赋值语句"></a>（1）简单赋值语句</h5><figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vhdl">目标信号名 &lt;= 表达式<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：目标信号的数据类型与右边表达式一致；</p>
+</blockquote>
+<p><img src="/images/image-20220825223000566.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="（2）选择信号赋值语句"><a href="#（2）选择信号赋值语句" class="headerlink" title="（2）选择信号赋值语句"></a>（2）选择信号赋值语句</h5><p><img src="/images/image-20220825223040170.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>选择值要覆盖所有可能情况，若不能一一指定，用OTHERS为其他情况找个出口；选择值必须互斥，不能出现条件重复或重叠的情况；</p>
+</blockquote>
+<h5 id="（3）条件信号赋值语句"><a href="#（3）条件信号赋值语句" class="headerlink" title="（3）条件信号赋值语句"></a>（3）条件信号赋值语句</h5><p><img src="/images/image-20220825223224956.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>各赋值语句有优先级的差别，按书写顺序从高到低排列；各赋值条件可以重叠；</p>
+</blockquote>
+<h5 id="（4）进程语句"><a href="#（4）进程语句" class="headerlink" title="（4）进程语句"></a>（4）进程语句</h5><p>进程语句定义顺序语句模块，用于将从外部获得的信号值，或内部的运算数据向其他的信号进行赋值。</p>
+<ul>
+<li><p>进程本身是并行语句，但内部是顺序语句；</p>
+</li>
+<li><p>进程只有在特定的时刻（敏感信号发生变化）才会被激活；</p>
+</li>
+</ul>
+<p><img src="/images/image-20220825223417116.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="（5）元件例化语句"><a href="#（5）元件例化语句" class="headerlink" title="（5）元件例化语句"></a>（5）元件例化语句</h5><p>元件例化引入一种连接关系，将预先设计好的实体定义为元件，并将此元件与当前设计实体中的端口相连接，从而为当前设计实体引入一个新的低一级的设计层次；</p>
+<p><img src="/images/image-20220825223902938.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="3-4-2-顺序语句"><a href="#3-4-2-顺序语句" class="headerlink" title="3.4.2 顺序语句"></a>3.4.2 顺序语句</h4><p>顺序语句仅出现在进程和子程序中；</p>
+<p>顺序语句综合后，映射为实际的门电路，系统一上电，门电路开始工作。电路可实现逻辑上的顺序执行，实际上所有门电路是并行工作的；</p>
+<h5 id="（1）赋值语句"><a href="#（1）赋值语句" class="headerlink" title="（1）赋值语句"></a>（1）赋值语句</h5><p>略</p>
+<h5 id="（2）流程控制语句"><a href="#（2）流程控制语句" class="headerlink" title="（2）流程控制语句"></a>（2）流程控制语句</h5><ul>
+<li>IF语句</li>
+</ul>
+<p><img src="/images/image-20220825224606322.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>用IF语句描述组合逻辑电路时，务必涵盖所有的情况，否则综合后将引入锁存器！</p>
+</blockquote>
+<hr>
+<ul>
+<li>CASE语句</li>
+</ul>
+<p><img src="/images/image-20220825224711291.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><p>选择值不可重复或重叠；</p>
+</li>
+<li><p>当CASE语句的选择值无法覆盖所有的情况时，要用OTHERS指定未能列出的其他所有情况的输出值；</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li>LOOP语句</li>
+</ul>
+<p><img src="/images/image-20220825224834491.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>循环次数只能用具体数值表达，否则不可以综合；</p>
+</blockquote>
+<hr>
+<ul>
+<li>NEXT语句</li>
+</ul>
+<p>NEXT语句主要用在LOOP语句执行中有条件或无条件转向控制，跳向LOOP语句的起点；</p>
+<p><img src="/images/image-20220825225017728.png" srcset="/img/loading.gif" lazyload></p>
+<p>上述表达式可能出现如下三种情况：<img src="/images/image-20220825225056911.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<ul>
+<li>EXIT语句</li>
+</ul>
+<p>EXIT语句主要用在LOOP语句执行中有条件或无条件内部转向控制，跳向LOOP语句的终点，用于退出循环。当程序需要处理保护、出错和警告状态时，语句能提供一个快捷、简便的方法；</p>
+<p><img src="/images/image-20220825225209129.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="（3）空操作语句"><a href="#（3）空操作语句" class="headerlink" title="（3）空操作语句"></a>（3）空操作语句</h5><p>NULL为空操作语句，一般用于CASE中，表示在某些情况下对输出不作任何改变，隐含锁存信号。不能用于纯组合逻辑电路；</p>
+<h5 id="（4）等待语句"><a href="#（4）等待语句" class="headerlink" title="（4）等待语句"></a>（4）等待语句</h5><p>在进程或过程中执行到WAIT语句时，程序将被挂起，并设置好再次执行的条件；</p>
+<p><img src="/images/image-20220825225351242.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="（5）子程序调用语句"><a href="#（5）子程序调用语句" class="headerlink" title="（5）子程序调用语句"></a>（5）子程序调用语句</h5><p>略</p>
+<h5 id="（6）返回语句"><a href="#（6）返回语句" class="headerlink" title="（6）返回语句"></a>（6）返回语句</h5><p>略</p>
+<h2 id="4-硬布线控制器"><a href="#4-硬布线控制器" class="headerlink" title="4.硬布线控制器"></a>4.硬布线控制器</h2><p>在《计算机组成原理》的博客中我们并没有过多的关注硬布线控制器，而是花大量篇幅介绍了微程序控制器，这里我们对硬布线控制器的底层原理做一个详细的说明；</p>
+<p>控制器负责从主存中取指令并确定指令类型，控制器是计算机系统的指挥中心，控制器的主要功能有：</p>
+<ol>
+<li>从主存中取出一条指令，并指出下一条指令在主存中的位置；</li>
+<li>对指令进行译码或测试，产生相应的操作控制信号，以便启动规定的动作；</li>
+<li>指挥并控制CPU、主存、输入和输出设备之间的数据流动方向；</li>
+</ol>
+<p>控制器控制整个计算机系统的运行，分为CPU内部控制（依靠数据通路）和系统外部控制（依靠一组系统总线-数据总线 地址总线 控制总线）：</p>
+<ul>
+<li>系统内部的控制：根据控制信号构建数据通路，完成微操作规定的功能；</li>
+<li>系统外部的控制：依靠一组系统总线进行控制；</li>
+</ul>
+<p>尽管硬件可以直接执行机器指令，但是当我们研究其本质时发现它还能被拆分为多个小的微操作，这些微操作对应相应的控制信号，根据产生微操作控制信号的方式不同(也就是根据微操作信号发生器的结构不同)，控制器分为硬布线和微程序；<br>硬布线控制器：</p>
+<ul>
+<li>主要由PC IR 指令译码器 MAR MDR 时序系统 微操作发生器组成；</li>
+<li>微操作控制信号由组合逻辑电路根据当前指令码、状态和时序即时产生；</li>
+<li>执行速度快，不易扩充，常用于RISC；</li>
+</ul>
+<p>微操作发生器：</p>
+<ul>
+<li>输入：IR中的操作码、时钟脉冲、指令标志、外来信号； 			</li>
+<li>输出：微操作控制信号（CPU内部控制信号&#x2F;到控制总线的控制信号）；</li>
+<li>微操作控制信号以微程序的形式存放在控制存储器中；</li>
+<li>执行速度慢，易扩充，常用于CISC；</li>
+</ul>
+<blockquote>
+<p>注意硬布线和微程序都是用于解释机器指令的，除了产生控制信号的方式不同（对应的电路逻辑也不同，也就是微操作信号发生器的结构不同），其他概念几乎一样（输入输出都是一样的）——这也导致很多书本上直接在画图的时候不区分是硬布线控制器还是微程序控制器很容易让人混淆（CU暗示硬布线，CM暗示微程序）；</p>
+</blockquote>
+<h3 id="4-1-控制单元"><a href="#4-1-控制单元" class="headerlink" title="4.1 控制单元"></a>4.1 控制单元</h3><p><img src="/images/image-20220828093814922.png" srcset="/img/loading.gif" lazyload></p>
+<p>注意：</p>
+<ul>
+<li>输入中的操作码是一个二进制编码对应一个状态而不是一个位对应一个状态，所以我们借助操作码译码器将其转换为一个位对应一个状态；</li>
+<li>输入中的时钟实际是CLK机器主频，会经过一个节拍发生器产生多个有先后顺序的节拍信号T<del>0</del>、T<del>1</del>…一个机器周期由多个时钟周期构成（这里的T<del>0</del>、T<del>1</del>…与常规的时钟仅仅只是定义上不同，一个是全高为一个周期，一个是一高一低为一个周期）</li>
+</ul>
+<p><img src="/images/image-20220828094452686.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="5-原理图"><a href="#5-原理图" class="headerlink" title="5.原理图"></a>5.原理图</h2><h3 id="5-1-TEC8数据通路"><a href="#5-1-TEC8数据通路" class="headerlink" title="5.1 TEC8数据通路"></a>5.1 TEC8数据通路</h3><p><img src="/images/clip_image002.jpg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="5-2-机器指令流程图"><a href="#5-2-机器指令流程图" class="headerlink" title="5.2 机器指令流程图"></a>5.2 机器指令流程图</h3><p><img src="/images/clip_image002-16619990272213.jpg" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<p>更多设计请参考 <a target="_blank" rel="noopener" href="https://www.aliyundrive.com/s/AUi2XPHFore">https://www.aliyundrive.com/s/AUi2XPHFore</a> </p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/" class="category-chain-item">项目开发</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">#计算机组成原理</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>初级项目_计算机组成原理课程设计</div>
+      <div>https://gintoki-jpg.github.io/2022/08/23/项目_计算机组成原理/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>杨再俨</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年8月23日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/09/05/%E4%B8%93%E4%B8%9A_%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" title="神经网络与深度学习">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">神经网络与深度学习</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/08/22/%E5%B7%A5%E5%85%B7_%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" title="初级项目_个人博客搭建">
+                        <span class="hidden-mobile">初级项目_个人博客搭建</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+</div>
+
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

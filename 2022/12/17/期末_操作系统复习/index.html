@@ -1,0 +1,1519 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/logo.png">
+  <link rel="icon" href="/img/bg/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="杨再俨">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="一、绪论1.OS概述操作系统的作用：  操作系统是硬件和用户&#x2F;应用之间的桥梁 操作系统管理硬件，为应用和用户服务 操作系统是裁判、魔法师、胶带 裁判：让应用之间隔离使用资源（用户态和内核态的设计） 魔法师：让应用感受到似乎独占所有的硬件资源 胶带：缝合了上层应用和底层硬件之间的gap，包括硬件的接口会改变、硬件的功能会进化、应用也会改变，操作系统给应用提供了一个统一的接口    2.CP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统期末复习笔记">
+<meta property="og:url" content="https://gintoki-jpg.github.io/2022/12/17/%E6%9C%9F%E6%9C%AB_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%8D%E4%B9%A0/index.html">
+<meta property="og:site_name" content="Tintoki_blog">
+<meta property="og:description" content="一、绪论1.OS概述操作系统的作用：  操作系统是硬件和用户&#x2F;应用之间的桥梁 操作系统管理硬件，为应用和用户服务 操作系统是裁判、魔法师、胶带 裁判：让应用之间隔离使用资源（用户态和内核态的设计） 魔法师：让应用感受到似乎独占所有的硬件资源 胶带：缝合了上层应用和底层硬件之间的gap，包括硬件的接口会改变、硬件的功能会进化、应用也会改变，操作系统给应用提供了一个统一的接口    2.CP">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/sys.png">
+<meta property="article:published_time" content="2022-12-17T01:28:00.000Z">
+<meta property="article:modified_time" content="2023-03-01T14:56:48.528Z">
+<meta property="article:author" content="YangZaiyan">
+<meta property="article:tag" content="期末复习">
+<meta property="article:tag" content="计算机基础">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gintoki-jpg.github.io/img/bg/sys.png">
+  
+  
+  
+  <title>操作系统期末复习笔记 - Tintoki_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"gintoki-jpg.github.io","root":"/","version":"1.9.1","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tintoki_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/bg1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">操作系统期末复习笔记</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-12-17 09:28" pubdate>
+          2022年12月17日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          21k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          172 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">操作系统期末复习笔记</h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="一、绪论"><a href="#一、绪论" class="headerlink" title="一、绪论"></a>一、绪论</h1><h2 id="1-OS概述"><a href="#1-OS概述" class="headerlink" title="1.OS概述"></a>1.OS概述</h2><p>操作系统的作用：</p>
+<ul>
+<li>操作系统是硬件和用户&#x2F;应用之间的桥梁</li>
+<li>操作系统管理硬件，为应用和用户服务</li>
+<li>操作系统是裁判、魔法师、胶带<ul>
+<li>裁判：让应用之间隔离使用资源（用户态和内核态的设计）</li>
+<li>魔法师：让应用感受到似乎独占所有的硬件资源</li>
+<li>胶带：缝合了上层应用和底层硬件之间的gap，包括硬件的接口会改变、硬件的功能会进化、应用也会改变，操作系统给应用提供了一个统一的接口</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-CPU概述"><a href="#2-CPU概述" class="headerlink" title="2.CPU概述"></a>2.CPU概述</h2><p>OS与CPU之间频繁的进行交互，因此了解CPU的组成非常必要</p>
+<p><img src="/images/image-20221217093222042.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="二、Boot-Process-Kernel"><a href="#二、Boot-Process-Kernel" class="headerlink" title="二、Boot,Process,Kernel"></a>二、Boot,Process,Kernel</h1><h2 id="1-BIOS"><a href="#1-BIOS" class="headerlink" title="1.BIOS"></a>1.BIOS</h2><p>BIOS是一种固件，固件是一种软件，和普通软件和操作系统都不一样，通常放在不可改的存储器上面；</p>
+<p>BIOS是第一个机器启动以后会运行的软件，BIOS主要执行以下的操作：</p>
+<p><img src="/images/image-20221217093349353.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="2-Bootloader"><a href="#2-Bootloader" class="headerlink" title="2.Bootloader"></a>2.Bootloader</h2><p>bootloader是OS的一部分，一般认为OS&#x3D;bootloader+kernel；</p>
+<p>bootloader主要完成下面的操作</p>
+<p><img src="/images/image-20221217093518634.png" srcset="/img/loading.gif" lazyload></p>
+<p>关于bootloader和BIOS的区别</p>
+<p><img src="/images/image-20221217093716173.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>Q：为什么BIOS不直接load整个OS？</p>
+</blockquote>
+<p>A：因为BIOS只能load很小的一部分的数据（历史的包袱），并且BIOS需要保持最简化的功能（固件最简化）；</p>
+<h2 id="3-双模式"><a href="#3-双模式" class="headerlink" title="3.双模式"></a>3.双模式</h2><p>实模式和保护模式的区别 - 历史的包袱，因为硬件不断演化，操作系统需要兼容，甚至硬件之间也要相互兼容；</p>
+<p>保护模式能够真正的保护进程的一些信息；</p>
+<p>实模式和保护模式实际上是CPU运行的两种状态，实模式下一般只能访问16bit的数据，为了访问更高位数的数据并兼容16bit出现了保护模式；</p>
+<h2 id="4-进程"><a href="#4-进程" class="headerlink" title="4.进程"></a>4.进程</h2><h3 id="4-1-进程定义"><a href="#4-1-进程定义" class="headerlink" title="4.1 进程定义"></a>4.1 进程定义</h3><p>进程的定义：一个程序的运行时，包含一些权限限制</p>
+<p><img src="/images/image-20221217093936543.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>Q：进程和普通程序的区别？</p>
+</blockquote>
+<p>A：</p>
+<p><img src="/images/image-20221217094048293.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="4-2-PCB"><a href="#4-2-PCB" class="headerlink" title="4.2 PCB"></a>4.2 PCB</h3><p><img src="/images/image-20221217094128032.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="4-3-进程-amp-内存"><a href="#4-3-进程-amp-内存" class="headerlink" title="4.3 进程&amp;内存"></a>4.3 进程&amp;内存</h3><p>对一个进程&#x2F;程序来说似乎独占所有硬件资源，一般进程会分为几个段，其中堆向上生长，栈向下生长</p>
+<p><img src="/images/image-20221217094312071.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221217094249010.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>注：这里讨论的地址都是虚拟地址，一个可执行的程序已经指定好了段的大小等信息；</p>
+</blockquote>
+<h2 id="5-双模态"><a href="#5-双模态" class="headerlink" title="5.双模态"></a>5.双模态</h2><p>操作系统设计了双模态的概念，即CPU在执行的时候可选择两种状态，其中内核态拥有更高的权限，能够做更多的事情；</p>
+<p>双模态由OS和硬件共同实现，其中硬件主要完成以下四部分的功能</p>
+<p><img src="/images/image-20221217094542528.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="5-1-特权指令"><a href="#5-1-特权指令" class="headerlink" title="5.1 特权指令"></a>5.1 特权指令</h3><p>特权指令：只有CPU在内核态的时候才能执行</p>
+<p><img src="/images/image-20221217094737300.png" srcset="/img/loading.gif" lazyload></p>
+<p>一个不严谨的说法是，影响其他进程的指令就是特权指令</p>
+<p>如何执行特权指令呢？让操作系统帮进程执行特权指令，其中系统调用是操作系统暴露给用户态程序的一些接口</p>
+<p><img src="/images/image-20221217094900954.png" srcset="/img/loading.gif" lazyload></p>
+<p>如果程序执行了特权指令会被检测到并kill</p>
+<p><img src="/images/image-20221217094951292.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="5-2-内存保护"><a href="#5-2-内存保护" class="headerlink" title="5.2 内存保护"></a>5.2 内存保护</h3><p>硬件需要提供的第二部分是内存保护，使得地址是隔离的</p>
+<h4 id="5-2-1-分段"><a href="#5-2-1-分段" class="headerlink" title="5.2.1 分段"></a>5.2.1 分段</h4><p>分段法是最简单的方法，每个程序使用bounds大小的内存空间，缺点是共享、碎片化问题</p>
+<p><img src="/images/image-20221217095102324.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="5-2-2-分页"><a href="#5-2-2-分页" class="headerlink" title="5.2.2 分页"></a>5.2.2 分页</h4><p>因为分段存在很大的问题，所以现代操作系统一般都使用分页的方法；</p>
+<p>由硬件(CPU)来执行虚拟地址到物理地址之间的映射，由软件OS来决定映射的策略；</p>
+<p>OS和CPU的中间体就是页表，页表存在内存中；</p>
+<p><img src="/images/image-20221217095215292.png" srcset="/img/loading.gif" lazyload></p>
+<p>一般多个进程的kernel代码都是相同的，映射到同一块区域</p>
+<p><img src="/images/image-20221217095244060.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>Q：为什么内核代码存放在高地址空间？</p>
+</blockquote>
+<p>A：历史的包袱 – 方便进程用户态从低地址处理</p>
+<h3 id="5-3-时间片中断"><a href="#5-3-时间片中断" class="headerlink" title="5.3 时间片中断"></a>5.3 时间片中断</h3><p><img src="/images/image-20221217095404784.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221217095454277.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="5-4-CPL"><a href="#5-4-CPL" class="headerlink" title="5.4 CPL"></a>5.4 CPL</h3><p><img src="/images/image-20221217095537323.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="6-小结"><a href="#6-小结" class="headerlink" title="6.小结"></a>6.小结</h2><p><img src="/images/image-20221217100044125.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221217100116890.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="三、context-switch"><a href="#三、context-switch" class="headerlink" title="三、context switch"></a>三、context switch</h1><p>上下文切换，主要讲解用户空间和内核空间的上下文切换（这个话是老师的原话，但是我感觉和上下文切换完全没有关系）</p>
+<h2 id="1-用户态到内核态"><a href="#1-用户态到内核态" class="headerlink" title="1.用户态到内核态"></a>1.用户态到内核态</h2><p>有三种可能CPU会从用户态切换到内核态</p>
+<p><img src="/images/image-20221217100245716.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-1-中断"><a href="#1-1-中断" class="headerlink" title="1.1 中断"></a>1.1 中断</h3><p>中断处理对用户来说是不可见的，对进程的状态不会影响；</p>
+<blockquote>
+<p>中断向量表</p>
+</blockquote>
+<p>中断向量表是在实模式下使用的，中断向量表一般保存在一个固定的位置</p>
+<p><img src="/images/image-20221217100408462.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>中断描述符表</p>
+</blockquote>
+<p>中断描述符表IDT是在保护模式下使用的，有更多专有名词，其中的每个元素称为一个门，一共有256个门，中断描述符表不是在固定的位置，通常其位置存放在一个寄存器IDTR中，该寄存器的值可以动态加载 </p>
+<p><img src="/images/image-20221217100826235.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>Q：具体如何从中断发生定位到中断处理程序？</p>
+</blockquote>
+<p>A：首先IDTR会指向中断描述符表的开始位置，接着根据中断号找到中断描述符表中对应的项，在项中提取出offset，因为分段的原因可能还需要加上一个基地址，就可以找到相应的中断处理程序</p>
+<p><img src="/images/image-20221217100952777.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>Q：如何知道中断号呢？如何知道现在发生的是第几号中断呢？ </p>
+</blockquote>
+<p>A：只有硬件知道，硬件层面会通知这个中断是第几号；</p>
+<p>中断向量表和中断描述符表的区别，首先它们的共性是可以实现隔离，所有用户态的代码要进入内核态只有这几道门，这两个表决定了门的数量和种类，因此在写内核的时候只需要保证这几个门的安全性即可  </p>
+<p><img src="/images/image-20221217101644143.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>中断屏蔽</p>
+</blockquote>
+<p>不是所有的中断都必须要发生，操作系统可以mask一些中断，有些中断可以屏蔽有些不可以；</p>
+<p>中断屏蔽只是推迟了中断的发生，并不是直接忽略的中断的发生；</p>
+<blockquote>
+<p>中断栈</p>
+</blockquote>
+<p>在内核的中断处理程序在处理中断的时候需要栈，这个栈放在内核态（因为用户态的栈会被修改）；</p>
+<p>如果没有中断产生的时候中断栈是空的，因为不需要处理任何事情；</p>
+<p>操作系统中的中断栈的计算公式</p>
+<p><img src="/images/image-20221217102156674.png" srcset="/img/loading.gif" lazyload></p>
+<p>数字1的原因是第一次中断就是我们常见的中断，将用户态转换为内核态，一般情况下可以在一层中断的基础上嵌套实现第二层中断，这个中断可以共享第一次的中断栈，二第三层中断一般不被允许直接导致OS重启；</p>
+<p>每一个线程或者进程都会有一个自己的中断栈，是为了使得操作系统能够更好的处理不同进程&#x2F;线程的中断（多个进程可能同时产生中断）  </p>
+<h2 id="2-从内核态到用户态"><a href="#2-从内核态到用户态" class="headerlink" title="2.从内核态到用户态"></a>2.从内核态到用户态</h2><p>如下情况（或者方式）会导致CPU从内核态切换到用户态</p>
+<p><img src="/images/image-20221217103019532.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="3-X86概述"><a href="#3-X86概述" class="headerlink" title="3.X86概述"></a>3.X86概述</h2><p>X86使用的是分段</p>
+<p><img src="/images/image-20221217103348680.png" srcset="/img/loading.gif" lazyload></p>
+<p>其中CS寄存器的值只能使用以下指令改变</p>
+<p><img src="/images/image-20221217103446081.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-1-X86的中断处理"><a href="#3-1-X86的中断处理" class="headerlink" title="3.1 X86的中断处理"></a>3.1 X86的中断处理</h3><p>当中断&#x2F;异常&#x2F;系统调用发生的时候，硬件会进行如下操作</p>
+<p><img src="/images/image-20221217103838078.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>Q：为什么需要临时寄存器？</p>
+</blockquote>
+<p>A：因为第三步切换栈是修改SS:ESP的地址，如果没有临时寄存器就根本不能保护现场即回不去之前的状态了</p>
+<p>硬件处理之前的栈状态</p>
+<p><img src="/images/image-20221217104059206.png" srcset="/img/loading.gif" lazyload></p>
+<p>硬件处理之后的栈状态</p>
+<p><img src="/images/image-20221217104239104.png" srcset="/img/loading.gif" lazyload></p>
+<p>中断发生的时候硬件会做上面的事，OS会做什么操作呢？</p>
+<p><img src="/images/image-20221217104428751.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>Q：专门的寄存器指向当前栈，但是为什么没有专门指向堆的寄存器？</p>
+</blockquote>
+<p>A：因为不需要，指向栈是因为OS需要用到栈，但是堆是用户自己操控的；</p>
+<h1 id="四、OS-Interfaces-and-Syscalls"><a href="#四、OS-Interfaces-and-Syscalls" class="headerlink" title="四、OS Interfaces and Syscalls"></a>四、OS Interfaces and Syscalls</h1><p>操作系统给应用&#x2F;用户提供了非常多的功能</p>
+<p><img src="/images/image-20221217105831779.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="1-进程管理"><a href="#1-进程管理" class="headerlink" title="1.进程管理"></a>1.进程管理</h2><h3 id="1-1-Windows中的API"><a href="#1-1-Windows中的API" class="headerlink" title="1.1 Windows中的API"></a>1.1 Windows中的API</h3><p>在Windows下通常使用CreateProcess这个API来创建进程</p>
+<p><img src="/images/image-20221217110108714.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-2-Linux中的API"><a href="#1-2-Linux中的API" class="headerlink" title="1.2 Linux中的API"></a>1.2 Linux中的API</h3><p>在Linux中会使用fork()和exec()函数创建一个新的进程；</p>
+<h4 id="1-2-1-fork"><a href="#1-2-1-fork" class="headerlink" title="1.2.1 fork()"></a>1.2.1 fork()</h4><p>fork没有任何参数，会完全拷贝一个当前进程，返回值为0则是子进程，父进程会得到子进程的进程ID，是一个大于0的值，父进程和子进程之间唯一的区别就是返回值不同，父进程和子进程不共享地址空间，但是它们的地址空间的值完全相同；</p>
+<p><img src="/images/image-20221217110410549.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>Q：为什么父进程和子进程的环境相同还需要拷贝再赋值？</p>
+</blockquote>
+<p>A：实际上这涉及Linux的优化问题，并不会是简单的值拷贝；</p>
+<h4 id="1-2-2-exec"><a href="#1-2-2-exec" class="headerlink" title="1.2.2 exec()"></a>1.2.2 exec()</h4><p>exec将会从磁盘下载并执行一个程序，需要注意的是exec不会创建任何新的进程；</p>
+<p><img src="/images/image-20221217110428272.png" srcset="/img/loading.gif" lazyload></p>
+<p>并不是每个fork后面都需要紧跟一个exec，例如浏览器中打开新的tag实际就是打开一个新的进程，但是这个进程实际上是和原来的进程使用的同一套代码，就不需要再load一个新的程序 </p>
+<hr>
+<p>Linux中除了fork()和exec()以外，还有其他辅助函数</p>
+<p><img src="/images/image-20221217110817533.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="2-输入-x2F-输出"><a href="#2-输入-x2F-输出" class="headerlink" title="2.输入&#x2F;输出"></a>2.输入&#x2F;输出</h2><p>OS除了提供进程管理功能，还提供I&#x2F;O功能；</p>
+<p>计算机有很多I&#x2F;O设备，最简单的管理方法就是给每一个设备一个系统调用，但是Unix将所有的设备抽象为文件，好处是接口简洁、统一；</p>
+<p>有文件就有相应的结构体来描述，Unix中使用文件描述符来描述，文件描述符本质上就是一个int类型的值；</p>
+<p>怎么使用int值来描述文件？操作系统有一个文件描述符表，每一个文件描述符可以在里面寻址到相应的文件的信息；</p>
+<p>需要注意的是每个进程都有自己的文件描述符表，只有打开的文件才有文件描述符（文件描述符是open函数的返回值，一个文件可以被open多次）；</p>
+<p><img src="/images/image-20221217111526938.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-1-通用输入-x2F-输出API"><a href="#2-1-通用输入-x2F-输出API" class="headerlink" title="2.1 通用输入&#x2F;输出API"></a>2.1 通用输入&#x2F;输出API</h3><p>注意点：</p>
+<ul>
+<li>每一类设备都对应一类文件描述符；</li>
+<li>要求所有的文件先打开再使用；</li>
+<li>文件描述符是有上下文的，多次read会累加进行；</li>
+<li>以字节为单位进行操作；</li>
+<li>内核对读写操作有缓冲作用；</li>
+<li>每一个文件描述符都要close帮助垃圾回收；</li>
+</ul>
+<blockquote>
+<p>open</p>
+</blockquote>
+<p><img src="/images/image-20221217111715553.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>close</p>
+</blockquote>
+<p><img src="/images/image-20221217111732362.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>read</p>
+</blockquote>
+<p><img src="/images/image-20221217111826386.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>write</p>
+</blockquote>
+<p><img src="/images/image-20221217111856315.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="3-系统调用的设计"><a href="#3-系统调用的设计" class="headerlink" title="3.系统调用的设计"></a>3.系统调用的设计</h2><p>对应用来说操作系统看起来就是提供了很多的函数（系统调用）而已，设计系统调用难点是如何保证内核态的安全性，Unix中的系统调用基本都是如下流程实现</p>
+<p><img src="/images/image-20221217112552558.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>Q：如果不拷贝，内核可以直接访问用户态的参数吗？</p>
+</blockquote>
+<p>A：当然可以，内核的权限高于用户；</p>
+<blockquote>
+<p>Q：为什么参数一定要拷贝到内核的内存中？</p>
+</blockquote>
+<p>A：直接使用会出现一些问题，本质上就是用户态的代码随时可能被改变不安全，所以一般不建议；</p>
+<blockquote>
+<p>Q：可不可以先检查再拷贝？</p>
+</blockquote>
+<p>A：如果在检查以后再拷贝进来就没办法修改了（内核态的代码不能修改），容易导致系统漏洞；</p>
+<h1 id="五、threads"><a href="#五、threads" class="headerlink" title="五、threads"></a>五、threads</h1><h2 id="1-线程抽象"><a href="#1-线程抽象" class="headerlink" title="1.线程抽象"></a>1.线程抽象</h2><blockquote>
+<p>Q：为什么需要线程？</p>
+</blockquote>
+<ul>
+<li><p>线程通常和并发联系在一起，并发是指多个任务同时进行；</p>
+<ul>
+<li><p>多任务和并发：多任务强调不同的任务，并发一般侧重多个任务“同时”执行；</p>
+</li>
+<li><p>并发和并行：并行是真正的同时执行；</p>
+</li>
+</ul>
+</li>
+<li><p>有些程序在逻辑上就应该是实现并发的（代码自上而下执行很别扭）</p>
+</li>
+<li><p>某些线程不应该影响另一些线程的体验：前台线程和后台线程分离执行</p>
+</li>
+<li><p>多线程&#x2F;多进程可以使用多个核</p>
+<ul>
+<li>并不是核越多越快，可能还有其他的瓶颈比如CPU、存储等速度限制</li>
+</ul>
+</li>
+<li><p>其他线程阻塞的时候可以让CPU一直保持忙碌状态</p>
+</li>
+</ul>
+<blockquote>
+<p>线程定义：一个可以被单独调度的顺序执行序列，即线程可以随便被挂起、恢复</p>
+</blockquote>
+<p>线程就是同一个进程中不同的函数，可以交替执行，线程是操作系统最小的调度单位；</p>
+<h3 id="1-1-线程的特点"><a href="#1-1-线程的特点" class="headerlink" title="1.1 线程的特点"></a>1.1 线程的特点</h3><p>线程之间不会共享栈，因为栈是执行的上下文，线程是被单独调用的，不能共享上下文；</p>
+<p>线程共享地址空间但是不共享栈、寄存器（上下文）；</p>
+<p>线程的执行速度是不可预测的，因为它随时可能被挂起（同步问题）</p>
+<h3 id="1-2-线程-amp-进程"><a href="#1-2-线程-amp-进程" class="headerlink" title="1.2 线程&amp;进程"></a>1.2 线程&amp;进程</h3><p><img src="/images/image-20221217115604088.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-3-线程API"><a href="#1-3-线程API" class="headerlink" title="1.3 线程API"></a>1.3 线程API</h3><p><img src="/images/image-20221217120012611.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-4-线程的生命周期"><a href="#1-4-线程的生命周期" class="headerlink" title="1.4 线程的生命周期"></a>1.4 线程的生命周期</h3><p><img src="/images/image-20221217120108645.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="2-线程实现"><a href="#2-线程实现" class="headerlink" title="2.线程实现"></a>2.线程实现</h2><h3 id="2-1-TCB"><a href="#2-1-TCB" class="headerlink" title="2.1 TCB"></a>2.1 TCB</h3><p>和进程控制块类似，线程也有控制块</p>
+<p><img src="/images/image-20221217120146782.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>Q：一个进程可以有很多线程，那么线程的栈的大小有限制吗？</p>
+</blockquote>
+<p>A：栈的大小实际上和递归的深度有关，在内核中，因为要处理中断所以需要中断栈，但是因为比较简洁所以中断栈不需要很大；</p>
+<hr>
+<p>同一个进程中的线程共享代码和地址空间、全局变量，因为线程共享地址空间，所以可能会导致一些危险；</p>
+<p>线程如何实现呢？这里循序渐进，先讲内核中如何实现线程，再讲用户态如何实现线程，需要注意的是<code>内核线程永远运行在内核态，其数据也存放在内核空间中</code>，由内核态线程可以扩展到用户态线程；</p>
+<h3 id="2-2-内核线程的实现"><a href="#2-2-内核线程的实现" class="headerlink" title="2.2 内核线程的实现"></a>2.2 内核线程的实现</h3><h4 id="2-2-1-创建线程"><a href="#2-2-1-创建线程" class="headerlink" title="2.2.1 创建线程"></a>2.2.1 创建线程</h4><p><img src="/images/image-20221217122044428.png" srcset="/img/loading.gif" lazyload></p>
+<p>下面这段代码是一个简单的在内核中创建线程的例子</p>
+<p><img src="/images/image-20221217122101748.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-2-2-删除线程"><a href="#2-2-2-删除线程" class="headerlink" title="2.2.2 删除线程"></a>2.2.2 删除线程</h4><p>怎么删除一个线程？只需要把这个线程从List中删除即可，再将相应的空间释放掉</p>
+<p><img src="/images/image-20221217122246862.png" srcset="/img/loading.gif" lazyload></p>
+<p>综上，一个线程不能销毁自己！！！解决办法是使用其他线程来帮助自己free掉finished的list中的线程；</p>
+<h4 id="2-2-3-线程切换"><a href="#2-2-3-线程切换" class="headerlink" title="2.2.3 线程切换"></a>2.2.3 线程切换</h4><p>主要分为两种切换方式，一种是主动切换，另一种是被动切换（中断、异常）；</p>
+<blockquote>
+<p>注意这里的线程切换不是指CPU状态的切换，因为内核线程只能运行在内核态，这里指的是将一个正在运行的内核线程挂起，运行另一个内核线程；</p>
+</blockquote>
+<p>主动切换的流程如下</p>
+<p><img src="/images/image-20221217122837551.png" srcset="/img/loading.gif" lazyload></p>
+<p>实例代码如下</p>
+<p><img src="/images/image-20221217122919281.png" srcset="/img/loading.gif" lazyload></p>
+<p>被动切换的流程相对简单</p>
+<p><img src="/images/image-20221217123015202.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-3-用户线程的实现"><a href="#2-3-用户线程的实现" class="headerlink" title="2.3 用户线程的实现"></a>2.3 用户线程的实现</h3><p>实现用户态的多线程主要有如下几种方法：</p>
+<p><img src="/images/image-20221217123147272.png" srcset="/img/loading.gif" lazyload></p>
+<p>假如要实现一个用户态的create_thread函数</p>
+<p><img src="/images/image-20221217123254691.png" srcset="/img/loading.gif" lazyload></p>
+<p>第二种方式就是完全使用用户态下的库函数，整个过程没有内核的参与，库维护了用户空间所需的一切状态；</p>
+<blockquote>
+<p>Q：如何使得在用户态下实现并发的多线程？</p>
+</blockquote>
+<p>A：操作系统并不知道用户线程的存在，内核线程可以实现线程的并发是基于时间片的中断，但是用户态根本感知不到时间片的中断（时间片是内核的东西），一个解决办法是主动让出，或者是抢占式的upcall </p>
+<blockquote>
+<p>Q：用户态线程如何切换程序指针或栈指针呢？</p>
+</blockquote>
+<p>A：用户态线程改变PC下一条指令使用jump指令实现，改变栈指针很简单，直接修改寄存器的值即可；</p>
+<hr>
+<p>下面总结用户线程和内核线程的异同</p>
+<p><img src="/images/image-20221217123629051.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="六、Address-Translation"><a href="#六、Address-Translation" class="headerlink" title="六、Address Translation"></a>六、Address Translation</h1><h2 id="1-地址翻译概述"><a href="#1-地址翻译概述" class="headerlink" title="1.地址翻译概述"></a>1.地址翻译概述</h2><p>用户看到的所有地址都是虚拟地址，从虚拟地址到物理地址有一个转换的过程，被称为地址翻译，地址翻译并不仅仅做翻译的事</p>
+<p><img src="/images/image-20221217151853683.png" srcset="/img/loading.gif" lazyload></p>
+<p>地址翻译的目标如下</p>
+<p><img src="/images/image-20221217151946917.png" srcset="/img/loading.gif" lazyload></p>
+<p>地址翻译需要硬件和操作系统同时协作实现；</p>
+<p>地址翻译主要有两种实现方式，分别是分段和分页，一般分段都使用16为操作系统，分页一般使用32位操作系统进行讲解；</p>
+<p>在分段和分页同时存在的情况下，虚拟地址经过分段后称为线性地址，线性地址经过分页过后才是物理地址；</p>
+<h2 id="2-分段"><a href="#2-分段" class="headerlink" title="2.分段"></a>2.分段</h2><p><img src="/images/image-20221217152053733.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-1-分段表"><a href="#2-1-分段表" class="headerlink" title="2.1 分段表"></a>2.1 分段表</h3><p>在实模式下不存在分段表</p>
+<p><img src="/images/image-20221217152153367.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-2-X86视角"><a href="#2-2-X86视角" class="headerlink" title="2.2 X86视角"></a>2.2 X86视角</h3><p>X86规定程序只能有6个段，并且规定了每个段怎么使用，默认会添加段前缀</p>
+<p><img src="/images/image-20221217152329111.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-2-1-实模式"><a href="#2-2-1-实模式" class="headerlink" title="2.2.1 实模式"></a>2.2.1 实模式</h4><p><img src="/images/image-20221217152430532.png" srcset="/img/loading.gif" lazyload></p>
+<p>最多能访问2^20^的物理地址，并且同一个物理地址可能有多种组合情况；</p>
+<h4 id="2-2-2-保护模式"><a href="#2-2-2-保护模式" class="headerlink" title="2.2.2 保护模式"></a>2.2.2 保护模式</h4><p>保护模式下，分段表被称为GDT全局描述符表和LDT局部描述符表</p>
+<p><img src="/images/image-20221217152813056.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-3-小结"><a href="#2-3-小结" class="headerlink" title="2.3 小结"></a>2.3 小结</h3><p>分段很强大，主要有以下功能</p>
+<p><img src="/images/image-20221217152851244.png" srcset="/img/loading.gif" lazyload></p>
+<p>分段最大的问题就是很容易产生碎片化</p>
+<h2 id="3-分页"><a href="#3-分页" class="headerlink" title="3.分页"></a>3.分页</h2><p>分页和分段最大的区别就是分页将物理地址分为一个个固定大小的页，以页位单位进行内存的映射；</p>
+<p>页表用于实现虚拟页和内存页之间的映射，记录了每一个虚拟页对应的物理页；使用页不再需要bound这个限制，因为页的大小已经固定；使用分页后，在虚拟地址看起来连续的页在物理地址上几乎是完全随机的；</p>
+<p>分页的好处：</p>
+<ul>
+<li><p>在分配内存的时候非常方便，直接以页为单位分配即可；</p>
+</li>
+<li><p>分页很容易实现内存的共享，将页表项映射到同一个物理页；</p>
+</li>
+</ul>
+<p>下图是一个最基本的分页的地址翻译的过程，使用的是一级页表</p>
+<p><img src="/images/image-20221217153109094.png" srcset="/img/loading.gif" lazyload></p>
+<p>当我们限定地址的大小为32bit的时候，需要会计算页表和物理页的大小</p>
+<p><img src="/images/image-20221217153328151.png" srcset="/img/loading.gif" lazyload></p>
+<p>可以看到一个页表大小为4MB，很多进程甚至都用不到4MB，而且每一个进程都需要这么大的页表，无疑会造成浪费，所以现代操作系统出现了多级页表</p>
+<p><img src="/images/image-20221217153510219.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>Q：本质上二级页表并没有增大逻辑地址或者物理地址，二级页表是怎么节省空间的呢？</p>
+</blockquote>
+<p>A：这是因为借助了稀疏性，只调用需要的页表即可；</p>
+<blockquote>
+<p>Q：在上下文切换的时候（指的是进程），什么也需要切换？</p>
+</blockquote>
+<p>A：CR3寄存器的值，也就是页目录的起始地址；</p>
+<h3 id="3-1-页目录"><a href="#3-1-页目录" class="headerlink" title="3.1 页目录"></a>3.1 页目录</h3><p><img src="/images/image-20221217153953912.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-2-页表"><a href="#3-2-页表" class="headerlink" title="3.2 页表"></a>3.2 页表</h3><p>每个进程和内核都有自己的页表，因为地址隔离，但是线程是共享地址空间的所以线程共享页表（页目录同理）；</p>
+<p><img src="/images/image-20221217154018439.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-3-MMU"><a href="#3-3-MMU" class="headerlink" title="3.3 MMU"></a>3.3 MMU</h3><p>整个翻译的过程是由一个被称为MMU的硬件完成，不是操作系统实现的（因为操作系统实现地址翻译非常缓慢）；</p>
+<p><img src="/images/image-20221217154133124.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>PS：页的大小非常重要，页太小会导致页表非常大（页变多了），页表太大会浪费空间；</p>
+</blockquote>
+<h3 id="3-4-缺页中断"><a href="#3-4-缺页中断" class="headerlink" title="3.4 缺页中断"></a>3.4 缺页中断</h3><p>简单理解缺页中断就是CPU&#x2F;MMU在进行映射的时候发现内存中并不存在与逻辑页对应的物理页；</p>
+<p>出现缺页中断的情况：页表项不存在（最后一个比特为0）、权限不足、页表不存在（最后一个比特为0）；</p>
+<h3 id="3-5-COW"><a href="#3-5-COW" class="headerlink" title="3.5 COW"></a>3.5 COW</h3><p>这个概念的全称是Copy-on-Write，是Linux中节省空间的做法</p>
+<p><img src="/images/image-20221217160228423.png" srcset="/img/loading.gif" lazyload></p>
+<p>拿fork举例，子进程和父进程完全一样，但是很可能子进程执行的动作完全不同，因此浪费大量时间在复制内存上，使用COW在复制页表的时候不会复制具体的内存的值，简单来说COW会检查页表项的比特来处理是否进行写入操作，对应的考题如下</p>
+<p><img src="/images/image-20221217160145010.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-6-小结"><a href="#3-6-小结" class="headerlink" title="3.6 小结"></a>3.6 小结</h3><p>下面给出几道练习题</p>
+<p><img src="/images/image-20221217153917098.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221217155120679.png" srcset="/img/loading.gif" lazyload></p>
+<p>4K是指一个物理页的大小是2^12^bit，一共有多少个物理页呢？一共有2^10^*2^10^的物理页框，故计算得到最大寻址空间为4GB</p>
+<p><img src="/images/image-20221217155803838.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>Q：操作系统只能使用虚拟地址，那么操作系统如何知道一个虚拟地址的物理地址？</p>
+</blockquote>
+<p>A：使用自映射，需要页表项的物理地址就映射一次，需要页目录项的物理地址就映射两次；</p>
+<p><img src="/images/image-20221217155943654.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="4-分段-amp-分页"><a href="#4-分段-amp-分页" class="headerlink" title="4.分段&amp;分页"></a>4.分段&amp;分页</h2><p>实际上分段和分页是可以合并使用的，逻辑&#x2F;虚拟地址经过分段称为线性地址，线性地址经过分页之后变成物理地址</p>
+<p><img src="/images/image-20221217160413826.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="七、TLB-and-cache"><a href="#七、TLB-and-cache" class="headerlink" title="七、TLB and cache"></a>七、TLB and cache</h1><p>缓存是一个非常广泛的概念（有各种各样的缓存），本质上是一段存储，访问速度非常快</p>
+<p>平均响应时间如下</p>
+<p><img src="/images/image-20221217162739215.png" srcset="/img/loading.gif" lazyload></p>
+<p>为什么需要缓存？存储器的提升并没有CPU的迭代速度快，缓存就是用于填补这部分的gap的</p>
+<p>缓存命中率取决于时间局部性和空间局部性：</p>
+<ul>
+<li>时间局部性：一个地址可能在短时间内被访问多次；</li>
+<li>空间局部性：要访问的内容在上次访问内容的附近；</li>
+</ul>
+<p>缓存可以构成如下架构</p>
+<p><img src="/images/image-20221217162258617.png" srcset="/img/loading.gif" lazyload></p>
+<p>常见的缓存如下</p>
+<p><img src="/images/image-20221217162336203.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="1-TLB"><a href="#1-TLB" class="headerlink" title="1.TLB"></a>1.TLB</h2><p>地址翻译最大的缺点就是使得内存的访问变慢；</p>
+<p>TLB是在MMU内部的一个加速地址翻译的缓存，为什么地址翻译可以被缓存？因为局部性原理：</p>
+<ul>
+<li>时间局部性：地址翻译过程中会重复访问一个地址（for循环）；</li>
+<li>空间局部性：访问的虚拟地址在原来地址的附近（代码顺序执行）；</li>
+</ul>
+<blockquote>
+<p>TLB中的翻译实际上是以页为单位，换句话来说，地址翻译都是以页为单位；</p>
+</blockquote>
+<p>TLB能够很好的工作的原因就是因为其命中率很高；</p>
+<p>TLB的工作过程非常简单：可以将TLB理解为具有如下三项的列表，分别是虚拟页号（之所以不是虚拟地址是因为地址翻译是以页对齐，因此只需要操作页）、物理页号和访问权限</p>
+<p><img src="/images/image-20221217162519423.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-1-TLB-Lookup"><a href="#1-1-TLB-Lookup" class="headerlink" title="1.1 TLB Lookup"></a>1.1 TLB Lookup</h3><p><img src="/images/image-20221217162630509.png" srcset="/img/loading.gif" lazyload></p>
+<p>通过引入TLB极大的减少了地址翻译的时间</p>
+<p><img src="/images/image-20221217162727110.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-2-TLB-Miss"><a href="#1-2-TLB-Miss" class="headerlink" title="1.2 TLB Miss"></a>1.2 TLB Miss</h3><p>TLB不命中的原因：页没有被访问过、TLB内存有限等其他原因</p>
+<p><img src="/images/image-20221217162849702.png" srcset="/img/loading.gif" lazyload></p>
+<p>如何解决TLB的Miss呢？当我们按照完整的地址翻译过程找到虚拟地址对应的物理地址之后，需要将其更新到TLB中，现在基本上都让硬件来完成更新的操作（因为硬件速度快）；</p>
+<h3 id="1-3-超页"><a href="#1-3-超页" class="headerlink" title="1.3 超页"></a>1.3 超页</h3><p>TLB最重要的一点就是需要保持一个非常高的命中率，如何进一步提高TLB的命中率呢？页大一点还是小一点更加容易命中？因为大一点可以导致页更少，因此只需要缓存更少的页即可，那么缓存命中的概率就更大；</p>
+<p>超页：向操作系统申请多个连续的极其大的页（物理地址上连续），这在一定程度上能够提高局部性原理，但是页变大了不够灵活浪费空间，并且物理页需要连续增加开销；</p>
+<p>一个超页在TLB中是对应了一个TLB项（如果对应多个TLB超页就没有存在的意义了，超页可以看作是多个页的集合体）；</p>
+<p><img src="/images/image-20221217163141077.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-4-TLB-Consistency"><a href="#1-4-TLB-Consistency" class="headerlink" title="1.4 TLB Consistency"></a>1.4 TLB Consistency</h3><p>无论是什么缓存（包括TLB），都需要具备一个非常重要的概念，即一致性，原因就是避免缓存和内存的值不同；</p>
+<p>主要在一下情况需要保持一致性：进程上下文切换、权限变换、TLB击落（多处理器访问）；</p>
+<blockquote>
+<p>进程上下文切换</p>
+</blockquote>
+<p><img src="/images/image-20221217163322897.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>权限变换</p>
+</blockquote>
+<p>当改变了页表的权限（权限降低，从可写改变成只读），解决办法是直接将整个TLB或者单个的TLB项丢弃；</p>
+<p>权限增大的时候是不需要做什么事情的，miss之后重新去页表中更新TLB即可；</p>
+<blockquote>
+<p>TLB Shutdown</p>
+</blockquote>
+<p>在多处理器系统中，如果多个处理器在跑同一个进程的多个线程（内核线程），它们的页表是相同的（因为是同一个进程），但是它们的TLB不同，因为TLB在CPU的MMU中，多处理器意味着多个CPU当然TLB也就不同，那么当一个处理器将页表改变过后，它不仅需要修改自己的TLB，还需要告知其它处理器对TLB进行修改；</p>
+<h2 id="2-Cache"><a href="#2-Cache" class="headerlink" title="2.Cache"></a>2.Cache</h2><p>此处的Cache就是CPU和内存之间的告诉缓存，块是Cache中的单位，块的大小取决于硬件的设计；</p>
+<h3 id="2-1-Cache-Lookup"><a href="#2-1-Cache-Lookup" class="headerlink" title="2.1 Cache Lookup"></a>2.1 Cache Lookup</h3><p>主要分为全相联映射、直接映射和N路组相联映射，理解这几种映射需要做题；</p>
+<h4 id="2-1-1-直接映射"><a href="#2-1-1-直接映射" class="headerlink" title="2.1.1 直接映射"></a>2.1.1 直接映射</h4><p>地址映射规则：将主存分区，每个区域内的主存块数与Cache内的块数相同；</p>
+<ol>
+<li><p>主存中的每一块只能映射到Cache内的固定行，规则为<br>$$<br>i&#x3D;j mod m<br>$$<br>其中i为Cache的行号，j为主存的块号，m为Cache的总块数</p>
+</li>
+<li><p>不使用替换算法，产生冲突直接替换原有内容；</p>
+</li>
+<li><p>为了在Cache中记住自己存储的数据块属于主存中的哪一个区，Cache需要额外在Cache行中设置标记字段，假设主存有256块，Cache有8块，则主存要划分32个区，Cache需要5位标记字段来标记区号，3位标记Cache行号；</p>
+</li>
+<li><p>使用直接映射，则CPU使用的内存地址结构为：<img src="/images/image-20221217200312868.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>地址变换过程为：先按照Cache行号找到Cache中的块，接着用标记字段与Cache中的区号&#x2F;标记进行比较，如果相同则命中，使用块内地址在Cache中取出需要的数据；</p>
+</li>
+</ol>
+<p><img src="/images/image-20221217200327610.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-1-2-全相联映射"><a href="#2-1-2-全相联映射" class="headerlink" title="2.1.2 全相联映射"></a>2.1.2 全相联映射</h4><p>地址映射规则：主存的任意一块可以映射到Cache中的任意一块</p>
+<ol>
+<li><p>主存与缓存分成相同大小的数据块。</p>
+</li>
+<li><p>主存的某一数据块可以装入缓存的任意一块空间中。</p>
+</li>
+<li><p>为了在Cache中记住自己存储的数据块来自主存中的哪一块，Cache需要额外在Cache行中设置标记字段，假设主存有2048个地址块，则Cache标记字段的位数为11位</p>
+</li>
+<li><p>假设使用全相联映射，则CPU使用的内存地址结构为：<img src="/images/image-20221217200349154.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>地址变换过程为：先按照标记找到存储主存块数据的Cache块，若找到则代表命中，接着使用块内地址在Cache块中取出需要的数据；</p>
+</li>
+</ol>
+<p><img src="/images/image-20221217200400605.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-1-3-组相联映射"><a href="#2-1-3-组相联映射" class="headerlink" title="2.1.3 组相联映射"></a>2.1.3 组相联映射</h4><p>地址映射规则：将主存分区，将Cache分组，要求主存的每个区的块数与Cache的组数相同（主存中一个区分为4块所以Cache中需要4组）</p>
+<p>为了在Cache中记住自己存储的数据块来自主存中的哪一个区，Cache额外增加了标记字段；</p>
+<p>假设每组有r个Cache块，则称为r路组相联；</p>
+<p><img src="/images/image-20221217200415058.png" srcset="/img/loading.gif" lazyload></p>
+<ol>
+<li>Cache组间采用直接映射（主存块存放到哪个组是固定的），组内采用全相联映射（主存块存放到组内的哪一行是灵活的）</li>
+</ol>
+<p>组间直接映射规则：<br>$$<br>Cache组号&#x3D;主存块号modcache组数<br>$$<br>2.使用组相联映射，CPU的内存地址结构为：</p>
+<p><img src="/images/image-20221217200428617.png" srcset="/img/loading.gif" lazyload></p>
+<p>​												标记：主存区号的标记    组号：Cache组的地址    块内地址：Cache中的字块内的地址</p>
+<p>3.地址变换过程：首先使用组号找到Cache中的组，然后将标记与该组所有Cache块中的区号比较，如果相同则命中，使用块内地址取出需要的数据；</p>
+<h3 id="2-2-Cache-Replacement"><a href="#2-2-Cache-Replacement" class="headerlink" title="2.2 Cache Replacement"></a>2.2 Cache Replacement</h3><p>采用全相联或组相联映射方式的时候，从主存向Cache映射一个块，当Cache或Cache组中的空间被占满时候，需要使用替换算法（直接映射没有选择直接替换，故不考虑替换算法）；</p>
+<ul>
+<li>随机算法：随机确定要替换的Cache块；</li>
+<li>FIFO算法：选择最早调入的Cache进行替换；</li>
+</ul>
+<p><img src="/images/image-20221217164530675.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>LRU算法：</li>
+</ul>
+<p><img src="/images/image-20221217200450751.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-3-Cache-Write-Policies"><a href="#2-3-Cache-Write-Policies" class="headerlink" title="2.3 Cache Write Policies"></a>2.3 Cache Write Policies</h3><p>Cache中的内容是主存的副本，当Cache中的内容更新的时候，需要选择写策略使得Cache与主存内容保持一致；</p>
+<h5 id="2-3-1-全写法"><a href="#2-3-1-全写法" class="headerlink" title="2.3.1 全写法"></a>2.3.1 全写法</h5><p>也称为写直通法、write-throught：</p>
+<ul>
+<li>当CPU对Cache写命中时，将数据同时写入Cache和主存；</li>
+<li>当Cache某块需要替换时，不必将这块写回主存（因为Cache和主存随时同步），直接用新调入的Cache块覆盖即可；</li>
+</ul>
+<p>优点是简单，随时保持主存数据的正确性；</p>
+<p>缺点是增加了访存次数，降低了Cache效率，我们可以适当在Cache和主存之间增加一个写缓冲 —— CPU同时将数据写入写缓冲和Cache，写缓冲再将内容写入主存，由此解决速度不匹配的问题；</p>
+<h5 id="2-3-2-写回法"><a href="#2-3-2-写回法" class="headerlink" title="2.3.2 写回法"></a>2.3.2 写回法</h5><p>write-back：</p>
+<ul>
+<li>当CPU对Cache写命中时，只修改Cache的内容，不会立刻写入主存，只有当该Cache块被替换出的时候才写回主存；</li>
+</ul>
+<p>这种方法减少了访存次数，但是增加了不一致的风险 —— 采用这种策略时每个Cache块必须设置一个标志位<code>脏位</code>以标志此块是否被CPU修改过；</p>
+<p>上述两种方法都应对的是Cache写命中（也就是要修改的单元在Cache中）；</p>
+<h3 id="2-4-TLB-amp-Cache"><a href="#2-4-TLB-amp-Cache" class="headerlink" title="2.4 TLB&amp;Cache"></a>2.4 TLB&amp;Cache</h3><blockquote>
+<p>Q：Cache中的地址是虚拟地址还是物理地址？</p>
+</blockquote>
+<p>A：从图中可以知道是物理地址（从MMU中出来的都是物理地址）</p>
+<p><img src="/images/image-20221217164950739.png" srcset="/img/loading.gif" lazyload></p>
+<p>如果Cache的命中率高但是TLB的命中率低则还是不能很好的协同工作，所以需要考虑如何使得TLB和Cache能够协同工作</p>
+<p><img src="/images/image-20221217165111655.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-5-工作集"><a href="#2-5-工作集" class="headerlink" title="2.5 工作集"></a>2.5 工作集</h3><p>一个进程需要工作，一般需要一块内存，该内存的大小就是该进程常驻在内存中的大小，过大浪费，过小需要不停的换入换出；</p>
+<p>工作集的定义就是进程在一段时间需要的内存，可以适当的将工作集放在Cache中进一步提升工作速度；</p>
+<h3 id="2-6-页着色"><a href="#2-6-页着色" class="headerlink" title="2.6 页着色"></a>2.6 页着色</h3><p>当Cache使用的是虚拟地址的时候会存在别名问题，原因是操作系统和用户程序可能对同一个物理地址使用两种以上不同形式的虚拟地址来访问，这些地址被称作别名，他们会导致同一个数据在使用虚拟地址的cache中存在两个副本，如果其中一个数据被修改，那么另外一个就是错误的；</p>
+<p>解决别名问题的方法之一就是使用页着色：</p>
+<ul>
+<li>如果强行要求别名的某些地址位相同，就可以用软件很容易地解决这一问题（如SUN公司的UNIX要求所有使用别名的地址最后18位都相同，这种限制被称为页着色）；</li>
+<li>上述页着色的限制使得容量不超过2^18字节（256KB）的直接映射Cache中不可能出现Cache块有重复物理地址的情况，所有别名将被映射到同一Cache块位置；</li>
+</ul>
+<p>总结：</p>
+<ul>
+<li>相同的color在内存中离散存在；</li>
+<li>相同的color在Cache中连续存在；</li>
+</ul>
+<h1 id="八、Demand-Paging"><a href="#八、Demand-Paging" class="headerlink" title="八、Demand Paging"></a>八、Demand Paging</h1><p>本节课主要讲解的是内存实际上也可以作为磁盘的缓存；</p>
+<p>最重要的概念就是需求分页：因为现在的程序需要大量的物理内存，但是存在这样一个规律 - 一个程序百分之九十的时间都用在它百分之十的代码上，因此实际上并不需要将程序所有的代码、数据都读取到内存中，可以将内存当作disk的一个缓存，仿佛磁盘中所有的东西都在内存中，称为lazy分配策略；</p>
+<p>这种做法有一个好处就是仿佛内存是无限大的（因为磁盘一般是足够大的），如何实现呢？借助页表以及Page fault（缺页中断是很广泛的概念）完成这种缓存的设计；</p>
+<blockquote>
+<p>TLB是虚拟地址和物理地址的缓存，Cache是CPU和内存之间的缓存，内存是CPU和磁盘之间的缓存，后两者都是基于前者工作的，Cache的单位是块，内存的单位是页</p>
+</blockquote>
+<h2 id="1-Memory-mapped-Files"><a href="#1-Memory-mapped-Files" class="headerlink" title="1.Memory-mapped Files"></a>1.Memory-mapped Files</h2><p>内存映射文件本质上是和需求分页的思想是相同的（甚至可以说是一回事）</p>
+<p>一个程序要使用磁盘的一个文件，最朴素的方法就是直接将文件读进来，第二种方法就是内存映射文件，就是操作一块内存等价于操作该文件</p>
+<p>内存映射文件的好处是不需要read文件所有的bit，可以访问文件的任何位置</p>
+<ul>
+<li><p>好处：完全透明、不进行拷贝、pipeling：不需要将整个程序读取到内存中再运行，可以边跑边加载剩余的内存、方便进程通信</p>
+</li>
+<li><p>坏处：很容易出现缺页</p>
+</li>
+</ul>
+<h2 id="2-Page-Eviction-Policy"><a href="#2-Page-Eviction-Policy" class="headerlink" title="2.Page Eviction Policy"></a>2.Page Eviction Policy</h2><p>实际上这一节的页的置换策略和前面的Cache置换策略很相似，分别是FIFO、MIN(LRU的理想版本)和Random；</p>
+<p>需求分页中一般不会使用LRU，因为LRU在内存分页中太耗时间了；</p>
+<h3 id="2-1-Clocking-algorithm"><a href="#2-1-Clocking-algorithm" class="headerlink" title="2.1 Clocking algorithm"></a>2.1 Clocking algorithm</h3><p>时钟算法 - 最适合需求分页的替换算法，本质上是在最大可能上逼近LRU算法</p>
+<p><img src="/images/image-20221217171601033.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>关于Use bit，1-&gt;0是操作系统完成，0-&gt;1是硬件完成</p>
+</blockquote>
+<p>时钟算法本质上就是一个页很久没用则替换出去，时钟算法之所以高效是因为访问页的频率很高，但是页的置换的频率很低，访问页的时候的比特位修改是硬件完成速度很快，时钟旋转这个操作相对硬件来说可能比较复杂则让软件完成即可，因为频率低所以总时间不会很高；当然时钟算法没有LRU精准，它不能记录精准的页被访问的时间的长短；</p>
+<p>具体工作流程可以看视频理解，需要注意的是指针不会随着当前访问的页移动（即访问页的时候不调用指针旋转），只会在置换算法实施（即发生Page Fault的时候）的时候才转动</p>
+<p>时钟的如果快速过快即一直在转，这是一个坏现象，表明一直在置换说明系统过载；</p>
+<p>可以对时钟算法进行改进，也就是将页面的访问的机会从1改成n次，n越大理论上越逼近LRU，但是n过大就一直找不到一个合适的页导致一直旋转，一种解决方法是针对性的设置，比如替换脏页的开销大（因为要写回），所以对于脏页和干净的页的n可以不同；</p>
+<h1 id="九、scheduling"><a href="#九、scheduling" class="headerlink" title="九、scheduling"></a>九、scheduling</h1><p><img src="/images/image-20221217172054563.png" srcset="/img/loading.gif" lazyload></p>
+<p>调度的评价指标主要是：</p>
+<ul>
+<li>最小化Response Time</li>
+<li>最大化Throughput(吞吐量，最大化的方式就是尽可能提高处理器的使用次数即最大化每秒操作次数)</li>
+<li>Fairness（改善平均响应时间）：理论上最小化响应时间做法就是给短任务更高的优先级，但是这样势必导致长任务饥饿，这就造成了不公平，所以需要给长任务机会运行 - 要实现公平性就必然会损失平均响应时间<ul>
+<li>一种解决方式是高优先级的任务多一些时间片，低优先级的任务少一些时间片（注意是时间片数量），网络调包常用的最大最小化公平策略就是这种思想（让拿到最少资源的任务尽量多，让拿到最多资源的任务尽量少）；</li>
+<li>另一种解决方式是如果一个任务的时间不够，那么就提高它的优先级；</li>
+</ul>
+</li>
+</ul>
+<p>下面直接介绍具体有哪些调度策略以及相关的计算</p>
+<h2 id="1-FCFS"><a href="#1-FCFS" class="headerlink" title="1.FCFS"></a>1.FCFS</h2><p><img src="/images/image-20221217172405163.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221217172420190.png" srcset="/img/loading.gif" lazyload></p>
+<p>假如对任务的先后次序进行调整</p>
+<p><img src="/images/image-20221217172527830.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="2-SJF-amp-SRTF"><a href="#2-SJF-amp-SRTF" class="headerlink" title="2.SJF&amp;SRTF"></a>2.SJF&amp;SRTF</h2><p>实际上上面的那种情况就是短任务优先的例子，与之相关联的还有一个被称为最短剩余时间优先的调度策略，SJF不是抢占式调度算法，SRTF是一个抢占式的调度算法；</p>
+<p>短任务优先的缺点是导致饥饿，进而影响公平性，并且在实现的时候实际上并不知道一个任务需要执行多久；</p>
+<h2 id="3-RR"><a href="#3-RR" class="headerlink" title="3.RR"></a>3.RR</h2><p>轮询调度实现方式有很多，时间片或者列表都可以，具体例题如下</p>
+<p><img src="/images/image-20221217172818371.png" srcset="/img/loading.gif" lazyload></p>
+<p>RR的好处是对于短任务有优势，但是会导致很多上下文切换，上下文包括寄存器的值、栈的地址，切换上下文的时候主要就是更改页目录的地址，并且上下文切换会改变缓存，也会增大时间；</p>
+<p>RR中时间片大小的设置非常重要，时间片过大就是FCFS，时间片过小导致上下文切换过于频繁得不偿失，时间片的选择一般依赖于硬件；</p>
+<p>如果任务的运行时间都一样则FCFS肯定优于RR，但是实际上肯定有长短任务所以需要综合考虑；</p>
+<h2 id="4-Strict-Priority-Scheduling"><a href="#4-Strict-Priority-Scheduling" class="headerlink" title="4.Strict Priority Scheduling"></a>4.Strict Priority Scheduling</h2><p><img src="/images/image-20221217173032771.png" srcset="/img/loading.gif" lazyload></p>
+<p>不是所有的任务都是平等的，前台应用优先级高于后台应用，同级之间可以使用RR等调度算法；</p>
+<p>优先级导致的问题：低优先级可能会被饥饿，或者高优先级被翻转（场景：一个高优先级的任务依赖一个锁，当前锁正在被低优先级的任务使用，但是因为优先级不能调用低优先级所以高优先级的任务和低优先级的任务都会被卡住）；</p>
+<p>解决严格优先级调度的问题一种方式是动态优先级调度算法，我们将在后面反馈队列中介绍；</p>
+<h2 id="5-EDF"><a href="#5-EDF" class="headerlink" title="5.EDF"></a>5.EDF</h2><p>最早DDL方法，和最短剩余时间SRTF的区别是最短剩余时间是看剩余时间，这个调度算法是看DDL结束时间</p>
+<p><img src="/images/image-20221217173152086.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="6-MFQ"><a href="#6-MFQ" class="headerlink" title="6.MFQ"></a>6.MFQ</h2><p>前面的调度算法一般都只优化了一个方面（最多DDL、最公平…），MFQ几乎是兼顾了所有的优点，但是都不是很优秀；</p>
+<p>基本思想：有多个队列，每个队列有不同的优先级，同级队列使用同一的调度算法，与严格优先级队列的区别就是CPU Bound的任务会从高优先级队列一直降到低优先级队列，而I&#x2F;O Bound的任务会一直维持在一个高优先级的队列中；</p>
+<p>MFQ另一个显著的特点是高优先级队列使用RR，低优先级队列使用FCFS，之所以这样设计是因为前台应用需要尽可能让短任务快速完成；</p>
+<p>不同的前台队列因为使用的都是RR，所以需要考虑时间片的长短，因为越长的时间片越接近FCFS，所以高优先级的前台队列的时间片短，低优先级的前台队列的时间片长（注意这里是时间片的长短）；</p>
+<p>如何安排多个队列之间的调度？最简单的就是严格优先级队列调度，另一种方式就是给高优先级队列分配多的时间片，低优先级队列分配少的时间片；</p>
+<p>当然放在最低优先级的任务还是可能面对饥饿的问题，MFQ额外增加了一个策略，即检查每个队列中的任务是否能够真正获得足够多的时间片，如果不够就主动提高其优先级</p>
+<p><img src="/images/image-20221217174218595.png" srcset="/img/loading.gif" lazyload></p>
+<p>可能我们在做题的过程中会产生疑问？每个任务在使用完时间片之后就被降低到更低的优先级，那么如何体现了同级队列中RR的调度思想呢？因为我们的题目实际上是进行简化过的，假如有一个I&#x2F;O主动让出的任务，那么这个任务就不会被降低优先级，只会被放在该队列的末尾，这就体现了RR的思想</p>
+<h2 id="7-Lottery-Scheduling"><a href="#7-Lottery-Scheduling" class="headerlink" title="7.Lottery Scheduling"></a>7.Lottery Scheduling</h2><p>彩票调度，不同之处是有了一些随机性（有时候随机可能是一件好事，实现比较简单）；</p>
+<p>基本思想：给每个任务一个彩票，在调度的时候刮奖，刮到谁（或者定制一个规则）就调度哪个任务；短任务会有多一些的彩票，长任务少一些的彩票，为了确保不会饥饿，每个任务至少都会有一个彩票；</p>
+<p>需要注意的是彩票刮完之后不能丢掉，不然彩票少的就不会再执行了（一次没执行完还需要执行第二次）；</p>
+<h2 id="8-RTS"><a href="#8-RTS" class="headerlink" title="8.RTS"></a>8.RTS</h2><p>调度算法 - 实时调度，针对实时操作系统，传统操作系统考虑的调度指标是效率，实时操作系统需要保证实时性，也就是可预见性</p>
+<h2 id="9-多处理器调度"><a href="#9-多处理器调度" class="headerlink" title="9.多处理器调度"></a>9.多处理器调度</h2><p>前面讨论的问题都是基于单处理器，多处理器调度会遇见诸如锁、Cache等问题</p>
+<h1 id="十、锁和条件变量"><a href="#十、锁和条件变量" class="headerlink" title="十、锁和条件变量"></a>十、锁和条件变量</h1><p>这是整个操作系统在线程层面的框架，存在多个进程，每个进程中又有多个线程，线程之间有自己的CPU状态，但是线程之间共享地址空间和I&#x2F;O；线程之间会有一个CPU调度器来对它们进行调度</p>
+<p><img src="/images/image-20221217185619264.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>进程是最小的资源(内存)分配单位；</li>
+<li>线程是最小的调度单位，是最小的CPU调度单位；</li>
+<li>用户态和内核态之间存在系统调用和upcall进行通信；</li>
+<li>线程之间协作于是出现了上下文切换、中断以及锁的概念；</li>
+</ul>
+<p>为什么需要线程同步？从开发者的角度来看似乎每个线程都在一个单独处理机上，也就是似乎有无限多个处理机，从开发者的角度来看线程是不会发生中断的，实际上应该是右边的情况：少数线程在run，其他线程在等待，这意味着线程的执行速度是不可预测的，这就可能出现一些同步的问题</p>
+<p><img src="/images/image-20221217185813606.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>多处理器：多个CPU或核或超线程，这是真正的并行，能够同时跑多个线程；</li>
+<li>多道程序：多任务或多进程同时存在（实际上是轮流在run）；</li>
+<li>多线程：有多个线程同时存在（实际也可能是轮流在run）；</li>
+</ul>
+<p>既然线程合作会产生同步问题，为什么还需要线程合作？线程合作有如下好处：</p>
+<ul>
+<li><p>首先是需要共享一些资源；</p>
+</li>
+<li><p>期望系统能够跑的更快</p>
+<ul>
+<li>重叠I&#x2F;O以及计算，以加快计算速度</li>
+<li>将程序切割为平行pieces</li>
+</ul>
+</li>
+<li><p>模块化，因为在逻辑上很多任务就应该是多线程的</p>
+</li>
+<li></li>
+</ul>
+<p>独立的线程不会出现问题（实际上并不存在完全独立的线程），但是合作的线程会出现不确定性和不可复现性，不确定性错误是非常难被找到并且不可被复现（两台机器几乎不可能出现同样的同步错误状态），因此我们很有必要使用锁这些方法来保证线程之间的状态的同步，下面是一些线程同步问题的具体例子</p>
+<p><img src="/images/image-20221217190223156.png" srcset="/img/loading.gif" lazyload></p>
+<p>除了上面出现的问题以外，因为编译器会进行一定程度的优化，修改顺序以最大化并行性，但是编译器只能保证在一个线程里面的依赖是正确的，不能保证多个线程的依赖顺序（编译的时候当然不知道有什么程序会和该程序一起运行，但是这不属于线程同步的问题了）</p>
+<p>关于线程同步，有三个概念非常重要</p>
+<p><img src="/images/image-20221217190539819.png" srcset="/img/loading.gif" lazyload></p>
+<p>有些操作可以在最基本的层面上解决一定程度的同步问题，比如原子操作，对于大部分机器来说，内存的访问是原子的（load和store指令）；</p>
+<p>但是并不是所有的汇编指令都是原子的，本质上由硬件决定（只有硬件能够支持原子操作，所以不能随心所欲的认为哪条指令就应当是原子操作）；</p>
+<p>下面我们再展示一幅图，表明了为什么一定要在中间加锁这些API而不是直接使用原子操作，因为开发者直接使用底层的原子操作来实现线程安全的话是非常复杂的</p>
+<p><img src="/images/image-20221217191052050.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="1-锁"><a href="#1-锁" class="headerlink" title="1.锁"></a>1.锁</h2><p>锁：阻止某人做某事，上锁的资源只能被等待才能使用，所有的同步问题一定会引入等待；</p>
+<p>问题：如何在硬件提供的有限的原子操作的基础之上来实现我们需要的锁，进而实现互斥；</p>
+<p>锁最基本的两个操作（这两个操作都是原子操作，因为我们在实现的时候就是按照原子操作的目标来实现的，基于硬件提供的最基本的原子操作实现）</p>
+<ul>
+<li>获取锁 - 如果这个锁是free的则获取，如果这个锁不是free的则一直等待；</li>
+<li>释放锁 - 将锁的状态从busy变成free，如果此时还有某些线程在等待这个锁，则适当的唤醒这些线程；</li>
+</ul>
+<p><img src="/images/image-20221217190849601.png" srcset="/img/loading.gif" lazyload></p>
+<p>使用加锁解决牛奶问题</p>
+<p><img src="/images/image-20221217190943011.png" srcset="/img/loading.gif" lazyload></p>
+<p>原理：通过加锁和解锁保证了中间代码的原子性 - 没有两个线程可以同时执行这段中间代码，这段代码被称为临界区</p>
+<p>锁的特性如下</p>
+<p><img src="/images/image-20221217191140875.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-1-开关中断实现锁"><a href="#1-1-开关中断实现锁" class="headerlink" title="1.1 开关中断实现锁"></a>1.1 开关中断实现锁</h3><p>锁的实现：在单处理机上最简单的实现就是加锁的时候将中断关闭，释放锁的时候将中断打开；这个方法的问题是中断不能随便开关，不能让用户线程来控制中断的开关；</p>
+<p>关中断和开中断之间运行的代码都是操作系统的可信任的代码，而不能是未知的用户代码</p>
+<p><img src="/images/image-20221217192707649.png" srcset="/img/loading.gif" lazyload></p>
+<p>之所以需要关闭中断是为了避免两个线程同时进入临界区；</p>
+<p>另一个重点是中断什么时候应该被打开，一般来说中断总是在代码的最后打开，中断在中途打开很可能出现问题</p>
+<h3 id="1-2-RMW实现锁"><a href="#1-2-RMW实现锁" class="headerlink" title="1.2 RMW实现锁"></a>1.2 RMW实现锁</h3><p>使用开关中断实现锁在多处理器的情况也可以实现，即使得所有的处理器一起中断，但是开销太大了（多处理器每个处理器都有L1缓存，需要注意缓存一致性），所以实现了更多的基础的原子操作，这些原子操作的集合被称为RMW；</p>
+<p>使用RMW既可以在单核也可以在多核的情况下实现锁；</p>
+<p>具体的RMW操作有很多，我们这里展示的是其中比较常用的原子操作，不同的原子操作与处理器和硬件是相关的</p>
+<p><img src="/images/image-20221217193047454.png" srcset="/img/loading.gif" lazyload></p>
+<p>这里只介绍使用t&amp;s实现自旋锁，基于test&amp;set实现的自旋锁的缺点是存在忙等待或者优先级翻转的问题，这也是自旋锁的名字的由来</p>
+<p><img src="/images/image-20221217193141237.png" srcset="/img/loading.gif" lazyload></p>
+<p>对于用户来说自旋锁的开销太大，所以可以进一步的优化（尽管前面我们说最好不要对锁进行优化），这里的优化主要是解决了busy waiting的问题，并且会主动放弃锁的持有权</p>
+<p><img src="/images/image-20221217193448386.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="2-条件变量"><a href="#2-条件变量" class="headerlink" title="2.条件变量"></a>2.条件变量</h2><p>事实证明条件变量优于信号量以实现锁，锁在某些情况下会出现拿着锁空等（死锁）这种问题，在等待期间我们应当将锁释放掉，条件变量就是用来做这个事情的；</p>
+<p>条件变量有三个函数</p>
+<p><img src="/images/image-20221217191344848.png" srcset="/img/loading.gif" lazyload></p>
+<p>wait函数的传入参数是一个锁，调用wait函数会释放掉这个锁，同时将这个线程放在一个等待队列中，直到接收到一些特定的信号才会唤醒这些等待线程，当这些线程被唤醒之后会重新尝试获取这些锁，注意获取锁的操作是在该函数返回返回值之前，这意味着wait函数可以理解为在实现过程中将锁丢掉再将锁拿回来，效果就是再wait前持有锁，wait之后仍然持有锁</p>
+<p>下面使用条件变量解决生产者-消费者问题</p>
+<p>假设这里持有锁但是需要等待生产者队列产生产品才能工作，所以我们再等待的过程中调用wait释放掉锁，当生产者进程生产出产品后会发出signal进而唤醒并归还锁，执行之后的操作</p>
+<p><img src="/images/image-20221217191801860.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>如何实现删除操作？此处需要注意一定会考试</p>
+</blockquote>
+<p>使用条件变量需要注意以下两个原则</p>
+<ul>
+<li>条件变量的使用一定是在持有锁的状态下进行</li>
+<li>while循环而不是if是因为很多条件变量它默认就只能使用while，否则会出现问题<ul>
+<li>管程模型主要有两种，其中Hoare模型可以使用if，而Mesa模型只能使用while</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-信号量"><a href="#3-信号量" class="headerlink" title="3.信号量"></a>3.信号量</h2><p>信号量可以理解为锁的一个更加强大的实现，但是信号量被认为是一种不太好的同步机制，反之只需要锁和条件变量就能够实现所有的同步</p>
+<p>可以认为信号量是一个整数值，这个整数值不会是负数，信号量整数有且仅有两种操作 - P、V</p>
+<ul>
+<li>P操作试图给信号量-1，如果这个信号量是0则P操作必须等到有线程给这个信号量+1后才能执行(类似wait操作)</li>
+<li>V操作试图给信号量+1，如果有P操作在等待则唤醒P操作(类似signal操作)</li>
+</ul>
+<p>信号量和锁很像，但是更强的功能在于锁只有两种状态，但是信号量可以使用多个值表示多种状态；</p>
+<p>信号量的特点：</p>
+<ul>
+<li>信号量不能是负数；</li>
+<li>只能对信号量进行P、V操作（P、V操作一定是原子性的操作）</li>
+<li>初始信号量的值不同可以实现不同的信号量的功能</li>
+</ul>
+<p>使用信号量解决生产者-消费者问题，需要设置如下三个信号量</p>
+<p><img src="/images/image-20221217192222122.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221217192201236.png" srcset="/img/loading.gif" lazyload></p>
+<p>对于上述Producer中的第一条和第二条代码如果交换顺序会导致死锁，这也是为什么信号量不太好的原因 - 太容易死锁</p>
+<h2 id="4-小结"><a href="#4-小结" class="headerlink" title="4.小结"></a>4.小结</h2><blockquote>
+<p>Q：在锁的各种实现过程中，加锁和释放锁操作是否都需要陷入内核态？</p>
+</blockquote>
+<p>A：首先开关中断一定需要陷入内核态，但是使用test&amp;set不是特权指令所以不需要陷入内核；</p>
+<blockquote>
+<p>Q：队列锁是什么？</p>
+</blockquote>
+<p>A：队列锁实际上就是对自旋锁的改进，在等待的时候会进入等待队列；</p>
+<blockquote>
+<p>Q：中断处理程序可以使用自旋锁吗？</p>
+</blockquote>
+<p>A：中断处理程序一般都使用的是自旋锁，因为中断处理程序不能写sleep函数（中断处理函数必须跑得很快）并且中断处理函数最好不要嵌套中断或者其他函数，因此中断处理程序的运行时间实际上是非常短的，所以使用自旋锁进行等待是没问题的</p>
+<h1 id="十一、readers-writers-and-deadlock"><a href="#十一、readers-writers-and-deadlock" class="headerlink" title="十一、readers_writers and deadlock"></a>十一、readers_writers and deadlock</h1><h2 id="1-读写者问题"><a href="#1-读写者问题" class="headerlink" title="1.读写者问题"></a>1.读写者问题</h2><blockquote>
+<p>明天再重新听一下这部分的实现，一定要会写代码；</p>
+</blockquote>
+<p><img src="/images/image-20221217194448354.png" srcset="/img/loading.gif" lazyload></p>
+<p>主要实现RWLock类以及四个函数</p>
+<p><img src="/images/image-20221217194351268.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221217194404837.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="2-死锁"><a href="#2-死锁" class="headerlink" title="2.死锁"></a>2.死锁</h2><blockquote>
+<p>Q：饥饿和死锁的区别？</p>
+</blockquote>
+<p>A：饥饿是指线程一直等待，死锁是指对资源的申请陷入循环；死锁会导致饥饿，但是饥饿不一定导致死锁（因为饥饿一段时间后可能自动解除饥饿，但是如果没有外部干扰则死锁会一直存在）；</p>
+<p>关于银行家算法和哲学家进餐问题看王道和blog，银行家算法一定会考；</p>
+<h1 id="十二、disk-and-fs-abstraction"><a href="#十二、disk-and-fs-abstraction" class="headerlink" title="十二、disk and fs abstraction"></a>十二、disk and fs abstraction</h1><h2 id="1-磁盘"><a href="#1-磁盘" class="headerlink" title="1.磁盘"></a>1.磁盘</h2><p>内存是非持久性存储设备，外存是持久性存储设备；</p>
+<p>下面主要介绍两类二级存储器（注意除了主存储器以外的其他外存储器都是二级存储器）：</p>
+<ul>
+<li>磁盘是物理结构，闪存是电路结构；</li>
+<li>闪存一般用于手机中，随机读取速度大于磁盘；</li>
+</ul>
+<blockquote>
+<p>关于磁盘的构造一定要搞清楚，磁盘的计算等是考点；</p>
+</blockquote>
+<p>磁盘容量计算公式</p>
+<p><img src="/images/image-20221217195422940.png" srcset="/img/loading.gif" lazyload></p>
+<p>关于磁盘的计算题主要如下</p>
+<p><img src="/images/image-20221218155814671.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="2-read的生命周期"><a href="#2-read的生命周期" class="headerlink" title="2.read的生命周期"></a>2.read的生命周期</h2><p><img src="/images/image-20221218161000948.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>Q：read和write系统调用的区别是什么呢？</p>
+</blockquote>
+<p>A：read和write在形式几乎相同，对文件系统来说，写和读的区别在于写可能会有一个buffer在kernel中，写的时候先写入缓存再写入内存；</p>
+<h2 id="3-文件系统"><a href="#3-文件系统" class="headerlink" title="3.文件系统"></a>3.文件系统</h2><p><img src="/images/image-20221218161148445.png" srcset="/img/loading.gif" lazyload></p>
+<p>对上面的I&#x2F;O系统做一个细致的划分就可以得到I&#x2F;O栈（注意其组成）</p>
+<p><img src="/images/image-20221218162858554.png" srcset="/img/loading.gif" lazyload></p>
+<p>什么是MM I&#x2F;O呢？实际上是操作系统管理I&#x2F;O设备的一种方式，需要注意的是MM I&#x2F;O和Port I&#x2F;O是对应的，前者只需要使用常规的读写内存的操作就可以操作I&#x2F;O设备，但是后者只能使用单独的特殊命令来读写I&#x2F;O设备；</p>
+<p>文件系统主要有以下的功能</p>
+<p><img src="/images/image-20221218163419397.png" srcset="/img/loading.gif" lazyload></p>
+<p>分角度看待文件系统：</p>
+<ul>
+<li>用户角度来看就是持久存储的抽象</li>
+<li>系统有两个角度，系统调用和文件系统的角度<ul>
+<li>系统调用来看全是Bytes</li>
+<li>OS来看就是block，一个block的大小一般大于等于一个扇区的大小，block是逻辑单位，扇区是物理单位</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>注意：一切文件系统的操作都是以block为单位，一个文件就是一个block集合；</p>
+</blockquote>
+<h3 id="3-1-文件和目录"><a href="#3-1-文件和目录" class="headerlink" title="3.1 文件和目录"></a>3.1 文件和目录</h3><p>文件和目录是文件系统管理磁盘的两个手段：</p>
+<ul>
+<li>文件是block集合；</li>
+<li>目录是逻辑概念，表示映射结构，本质上是树状分层结构；</li>
+</ul>
+<p><img src="/images/image-20221218163651959.png" srcset="/img/loading.gif" lazyload></p>
+<p>将磁盘组织成线性扇区队列的方式有两种：</p>
+<ul>
+<li>第一种是由磁盘的物理结构决定的三元组寻址[cylinder, surface, sector]</li>
+<li>第二种是将所有的扇区都统一编号，使用控制器做映射，不需要关心使用的底层存储器，称为逻辑块寻址LBA</li>
+</ul>
+<h1 id="十三、fs-design"><a href="#十三、fs-design" class="headerlink" title="十三、fs design"></a>十三、fs design</h1><p>文件系统的底层是存储设备（一般考虑块设备而不是字符设备）</p>
+<p>文件系统的工作流程如下</p>
+<p><img src="/images/image-20221218164341929.png" srcset="/img/loading.gif" lazyload></p>
+<p>打开一个文件实际上就是做了一个文件名的解析，主要流程如下</p>
+<p><img src="/images/image-20221218164459322.png" srcset="/img/loading.gif" lazyload></p>
+<p>之后的所有操作都是在句柄上进行</p>
+<h2 id="1-目录"><a href="#1-目录" class="headerlink" title="1.目录"></a>1.目录</h2><p>目录的作用如下 - 将文件名转换为文件号</p>
+<p><img src="/images/image-20221218164628830.png" srcset="/img/loading.gif" lazyload></p>
+<p>目录一般是树状结构，根目录一般都是操作系统预先设定好的值</p>
+<p><img src="/images/image-20221218164741844.png" srcset="/img/loading.gif" lazyload></p>
+<p>将文件名映射到磁盘号需要做多少次磁盘的访问？</p>
+<p><img src="/images/image-20221218165238041.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="2-文件"><a href="#2-文件" class="headerlink" title="2.文件"></a>2.文件</h2><p>文件的主要功能就是讲述如何从文件号映射到真正的数据块；</p>
+<p>这里直接拿常见的三种文件系统举例说明</p>
+<h3 id="2-1-FAT"><a href="#2-1-FAT" class="headerlink" title="2.1 FAT"></a>2.1 FAT</h3><p>FAT表的长度和block的数量相同，每一个文件号会指向其中一个block</p>
+<p><img src="/images/image-20221218165618029.png" srcset="/img/loading.gif" lazyload></p>
+<p>访问其中的data block的方式类似于指针解引用</p>
+<p><img src="/images/image-20221218165727990.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>Q：FAT存在哪里？</p>
+</blockquote>
+<p>A：FAT既可以理解为一个文件系统，也可以理解为一个表，FAT存放在磁盘中固定的特殊位置上；</p>
+<blockquote>
+<p>Q：FAT中哪些磁盘块是空的？</p>
+</blockquote>
+<p>A：FAT值等于0就是空的；</p>
+<blockquote>
+<p>Q：如何在FAT中尽量保证局部性呢？</p>
+</blockquote>
+<p>A：FAT使用NextFit算法，在Append一个文件的时候寻找现在文件末尾最近的空闲block，相应的，FAT会产生零碎化的问题，尽管有整理碎片的方法，但是效率太低了</p>
+<blockquote>
+<p>Q:如何读&#x2F;写一个文件？</p>
+</blockquote>
+<p>A：直接按照FAT表block by block依次读取即可；写数据就是先append之后再修改FAT表；</p>
+<blockquote>
+<p>Q：如何格式化一个磁盘</p>
+</blockquote>
+<p>A：格式化磁盘，本质上就是清理磁盘然后清零FAT表，当然快速格式化就是直接清空FAT表</p>
+<p>关于FAT文件系统，存在很多问题</p>
+<p><img src="/images/image-20221218170044944.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-2-FFS"><a href="#2-2-FFS" class="headerlink" title="2.2 FFS"></a>2.2 FFS</h3><p>FFS文件系统的特点：</p>
+<ul>
+<li>文件号不是直接放在FAT表中，而是放在Inode向量中</li>
+<li>多层非对称树状结构</li>
+<li>FAT中文件的属性是存放在文件所在的目录中的，即不存放在文件中；而FFS文件属性是直接存放在文件对应的数据块中</li>
+</ul>
+<p>理解FFS只需要理解下面的图即可</p>
+<p><img src="/images/image-20221218170233382.png" srcset="/img/loading.gif" lazyload></p>
+<p>File Metadata是文件的元数据和基本属性；</p>
+<p>DP表示直接索引，表示其中每一项直接指向其中一个datablock，和FAT相同 - inode中有12个直接索引，因此可以寻址的范围是48kB，如果文件小于等于48kB，则直接使用直接索引就足够；</p>
+<p>Indirect Pointer一级间接索引指向的datablock不存储文件的数据，只存储索引，每个索引指向的datablock存储文件数据，二级索引和三级索引类似，要会计算其容量；</p>
+<p>一个一级间接索引：假设一个datablock是4kB，地址都是32bit，则一个datablock可以存储1024个索引，每个索引指向一个datablock，则寻址范围为4kB*1024&#x3D;4MB</p>
+<p><img src="/images/image-20221218170522814.png" srcset="/img/loading.gif" lazyload></p>
+<p>FFS文件系统的特性</p>
+<p><img src="/images/image-20221218170809137.png" srcset="/img/loading.gif" lazyload></p>
+<p>FFS对于稀疏文件可以良好的存储，少占用空间；</p>
+<p>FFS还是使用bitmap管理空闲空间，0&#x2F;1表示是否空闲，bitmap存放在固定的位置</p>
+<blockquote>
+<p>Q：inode究竟存放在哪里？</p>
+</blockquote>
+<p>A：最早的时候存放在磁道的最外面，问题就是距离datablock可能会有点远，现在存储inode会根据目录的具体结构进行存储；</p>
+<blockquote>
+<p>Q：FFS文件系统如何保证局部性？</p>
+</blockquote>
+<p>A：首先是块group，通过将文件数据块以合适的方式组织放置（非随机）以提高其局部性 - 将一个磁盘分为多个块组，思想是需要局部性的数据都放在同一个块组中，接着将文件的元数据等放在同一个块组中（各个块组的元数据放在自己的块组中），减少寻道时间</p>
+<p>具体设计：同一个目录&#x2F;文件下的所有文件尽量放在同一个块组中，因为同一个目录中的文件被打开的概率更大；当创建一个新文件的时候，在文件所属文件夹的块组中寻找一个inode，除非块组中已经没有空闲的inode了；需要注意的是不能将所有的目录放在一起，不然所有的文件都是在一个块组中没有意义，还是适当做一定的区分；</p>
+<blockquote>
+<p>Q：如何在一个块组内部分配datablock？</p>
+</blockquote>
+<p>A：思路是在块组中寻找第一个空闲块，这个方法能很好的规避碎片化，被称为FirstFit算法，需要注意的是FFS中永远不会将磁盘占满；</p>
+<p>First Fit算法的好处，因为前面的文件将空隙填满了，所以后面的文件几乎都会是连续的</p>
+<p><img src="/images/image-20221218171359892.png" srcset="/img/loading.gif" lazyload></p>
+<p>最后做一个关于FFS中文件号转化的题型</p>
+<p><img src="/images/image-20221218171650532.png" srcset="/img/loading.gif" lazyload></p>
+<p>之所以上面默认直接取inode中第一个项，实际上也是因为一般只需要一个对应的block就能存储所有文件&#x2F;目录</p>
+<p>其实还有一种可能是你这个地方没理解对，实际上应该是inode中存储了信息，是可以直接找到912号block存储了foo的，反正不可能是直接在block中寻找</p>
+<p>关于FFS的优点和缺点的整合</p>
+<p><img src="/images/image-20221218171725215.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-3-NTFS"><a href="#2-3-NTFS" class="headerlink" title="2.3 NTFS"></a>2.3 NTFS</h3><p><img src="/images/image-20221218171811692.png" srcset="/img/loading.gif" lazyload></p>
+<p>NTFS中最重要的数据结构是主文件表MFT，主文件表中的每一项都是1KB大小，有时候可以直接存储数据而不仅仅只是存储索引；</p>
+<p>MFT中条目的属性分为常驻和非常驻，常驻的意思就是直接存储在MFT表中，非常驻表示其属性的值存储在MFT指向的空间中 </p>
+<p><img src="/images/image-20221218171927676.png" srcset="/img/loading.gif" lazyload></p>
+<p>NTFS主要分小文件结构、中文件结构和大文件结构</p>
+<p><img src="/images/image-20221218172007988.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221218172101199.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221218172131525.png" srcset="/img/loading.gif" lazyload></p>
+<p>对于大文件，假如文件的碎片化实在是太多了，就需要加入间接的索引；</p>
+<p>NTFS中文件的元数据并不是存在文件的本身，而是存储在一些固定的文件中，即这些文件是专门存储MFT这些结构的；</p>
+<p>前面的文件系统都是把重要的结构简单的存放在固定的位置，但是在NTFS中将这些结构本身也作为文件来管理，好处是统一管理 ；</p>
+<blockquote>
+<p>Q：假如MFT本身是一个文件我们如何读它？</p>
+</blockquote>
+<p>A：因为读文件本身就需要MFT，但是MFT本身又是一个文件，无限循环，一般会直接约定NTFS的卷的第一个扇区指向MFT的第一个条目；</p>
+<blockquote>
+<p>Q：NTFS如何保证局部性？</p>
+</blockquote>
+<p>A：因为是变长的，所以使用bestfit，找到最小的合适的datablock即可</p>
+<h3 id="2-4-VFS"><a href="#2-4-VFS" class="headerlink" title="2.4 VFS"></a>2.4 VFS</h3><p>虚拟文件系统VFS用于给用户提供统一的接口，VFS并不是只提供统一的API接口，实际上还进行其他工作，比如协调Cache、路径查找等；</p>
+<p><img src="/images/image-20221218172612872.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="十四、reliable-fs"><a href="#十四、reliable-fs" class="headerlink" title="十四、reliable fs"></a>十四、reliable fs</h1><p>前面一直在讲文件系统功能和效率如何优化，本章讲解如何使得文件系统更加可靠；</p>
+<p>为什么需要可靠性？因为存储设备本身可能并不可靠（断电等行为），所以文件系统需要保证可靠性</p>
+<blockquote>
+<p>Q：可靠的文件系统的可靠，指的是什么？</p>
+</blockquote>
+<p>A：要么操作全部完成，要么一个操作都没有执行 - 即保证在各种错误情况下都能可靠，这与同步问题的原子性操作其实很类似；</p>
+<p>主要有两类技术保证文件系统的可靠性：事务和RAID冗余阵列</p>
+<h2 id="1-Transactions"><a href="#1-Transactions" class="headerlink" title="1.Transactions"></a>1.Transactions</h2><p>并不是所有的文件系统都使用事务，但是基本所有的数据库都使用事务；</p>
+<p>一个事务本质上就是一系列原子的行为，核心概念就是将两个consistent状态转换，不会出现中间状态</p>
+<p><img src="/images/image-20221218173730565.png" srcset="/img/loading.gif" lazyload></p>
+<p>一个事务的行为主要分为三个步骤，begin updates commit</p>
+<p><img src="/images/image-20221218173813427.png" srcset="/img/loading.gif" lazyload></p>
+<p>事务保证了四个非常重要的属性</p>
+<p><img src="/images/image-20221218173859170.png" srcset="/img/loading.gif" lazyload></p>
+<p>怎么实现一个事务？一个非常重要的手段就是logging，日志的思想非常简单，先将所有需要做的update写入log，写完log再写存储器；</p>
+<p>注意：log中是append-only，不能修改</p>
+<p>下面这个流程是事务的具体实现，被称为Redo loggiong</p>
+<p><img src="/images/image-20221218174053261.png" srcset="/img/loading.gif" lazyload></p>
+<p>其中添加commit record的操作可以理解为一个原子操作</p>
+<p><img src="/images/image-20221218174159472.png" srcset="/img/loading.gif" lazyload></p>
+<p>性能方面，log中记录了几乎所有的操作和数据的修改，本身就要写磁盘，现在还要写log，这将导致速度慢；</p>
+<p>这也是为什么有些文件系统不采用事务的方式（实际上因为log是顺序的所以其实对性能影响也不会很大）</p>
+<p>事务中的顺序非常重要</p>
+<p><img src="/images/image-20221218174436383.png" srcset="/img/loading.gif" lazyload></p>
+<p>现在主要有两种实现事务的方法 - Journaling和Logging，其中Journaling只会对metadata的数据进行事务操作，而 Logging会对所有的数据进行事务操作，这是为了在效率和可靠性之间做一个权衡；</p>
+<h2 id="2-RAID"><a href="#2-RAID" class="headerlink" title="2.RAID"></a>2.RAID</h2><p>RAID的整体思想非常简单，即将数据存储在多个Disk中，即使一个磁盘坏了也可以通过另一个磁盘恢复，恢复方法有多种，恢复方法既可以在硬件层面也可以在软件层面；</p>
+<p>RAID会有不同的Level</p>
+<ul>
+<li><p>RAID 0：Raid0技术是把多块（至少两块）物理硬盘通过工具绑在一起，将数据分成几块分别依次写入到各个物理硬盘中。这样，硬盘的读写性能会提高数倍，但是RAID 0也有局限性，提高读写速率的同时，如<br>果任意中的一块硬盘发生故障，将会导致整个系统的数据都受到破坏</p>
+</li>
+<li><p>RAID 1表示两个磁盘各存储完整的数据，整个I&#x2F;O的速度是比较快的，但是写的时候是比较慢的 - 一个磁盘坏了直接读另一个磁盘恢复</p>
+</li>
+<li><p>RAID 1对空间的浪费很大，RAID 5是对它的优化，使用奇偶校验；图中data被划分成不同的条带，将条带顺序的分配到不同的磁盘上，其中P0、P1等都是奇偶校验，异或操作可以得到其中某个错误的条带Unit中的一个条带的数据，即恢复 - 之所以奇偶校验旋转排列是为了避免Disk不平衡的问题（存储奇偶校验的Disk会被写的次数多），另外条带的大小需要考虑平衡性；RAID5的缺点是如果两个条带坏了就不能恢复，同时还需要知道需要恢复的磁盘是哪个才能恢复</p>
+</li>
+</ul>
+<p><img src="/images/image-20221218174852093.png" srcset="/img/loading.gif" lazyload></p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E9%80%9A%E8%AF%86%E8%AF%BE%E7%A8%8B/" class="category-chain-item">通识课程</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">#期末复习</a>
+      
+        <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">#计算机基础</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>操作系统期末复习笔记</div>
+      <div>https://gintoki-jpg.github.io/2022/12/17/期末_操作系统复习/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>杨再俨</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年12月17日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/01/10/%E8%AE%BA%E6%96%87_%E4%BC%9A%E8%AF%9D%E6%83%85%E6%84%9F%E5%88%86%E6%9E%90/" title="会话情感分析">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">会话情感分析</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/11/23/%E5%90%8E%E7%AB%AF_Spring/" title="Spring">
+                        <span class="hidden-mobile">Spring</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+</div>
+
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

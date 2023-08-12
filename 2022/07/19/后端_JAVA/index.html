@@ -1,0 +1,1380 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/logo.png">
+  <link rel="icon" href="/img/bg/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="杨再俨">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Java是一门面向对象的编程语言，不仅吸收了C++语言的各种优点，还摒弃了C++里难以理解的多继承、指针等概念，因此Java语言具有功能强大和简单易用两个特征。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JAVA">
+<meta property="og:url" content="https://gintoki-jpg.github.io/2022/07/19/%E5%90%8E%E7%AB%AF_JAVA/index.html">
+<meta property="og:site_name" content="Tintoki_blog">
+<meta property="og:description" content="Java是一门面向对象的编程语言，不仅吸收了C++语言的各种优点，还摒弃了C++里难以理解的多继承、指针等概念，因此Java语言具有功能强大和简单易用两个特征。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/JAVA.png">
+<meta property="article:published_time" content="2022-07-19T12:57:00.000Z">
+<meta property="article:modified_time" content="2023-02-23T02:10:39.690Z">
+<meta property="article:author" content="YangZaiyan">
+<meta property="article:tag" content="后端开发">
+<meta property="article:tag" content="编程语言">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gintoki-jpg.github.io/img/bg/JAVA.png">
+  
+  
+  
+  <title>JAVA - Tintoki_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"gintoki-jpg.github.io","root":"/","version":"1.9.1","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tintoki_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/bg1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">JAVA</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-07-19 20:57" pubdate>
+          2022年7月19日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          26k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          216 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">JAVA</h1>
+            
+            <div class="markdown-body">
+              
+              <blockquote>
+<p>主要参考</p>
+</blockquote>
+<ul>
+<li><p>视频教程<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Kb411W75N?p=1&vd_source=276d55048634a5b508b1b53a1ecd56b3">尚硅谷Java入门视频教程(在线答疑+Java面试真题)_哔哩哔哩_bilibili</a></p>
+</li>
+<li><p>文档教程<a target="_blank" rel="noopener" href="http://c.biancheng.net/">C语言中文网：C语言程序设计门户网站(入门教程、编程软件) (biancheng.net)</a></p>
+</li>
+<li><p>书籍《JAVA学习笔记》</p>
+</li>
+<li><p>《JAVA核心技术卷1》</p>
+</li>
+</ul>
+<blockquote>
+<p>学习记录</p>
+</blockquote>
+<p>2022&#x2F;7&#x2F;20 19:39 有一说一，学这个JAVA也差不多一天了，现在好了，现在让我对C++产生了怀疑，要不是我对C++做了笔记可能知识点已经被JAVA给混淆了…中文网的教程偏向于只讲重点，有些细节的地方跳过去之后就没办法让人理解一些概念了（之后回头再来看吧），B站视频说实话讲的太细了也没必要花大量时间来看视频（直接放弃B站视频），所以下面准备跟着《JAVA学习笔记》跟着有条理的学一下；</p>
+<p>2022&#x2F;7&#x2F;20 21:41 《JAVA学习笔记》这本书是真的…咱们还是换本书吧，最好是能够成体系的讲底层原理的，不然我看你JAVA操作为什么不直接看中文网上的函数之类的呢？我要学的是JAVA的底层的一些原理！！！这是为了之后软件开发相关做准备而不是学会如何使用JAVA；</p>
+<p>2022&#x2F;7&#x2F;20 22：43 《Head_First_Java》作为一本JAVA入门书籍的确是算得上有条理的了，个人认为可以结合C++基础+中文网知识点+《Head_First_Java》串行初步学习，这本书本身没什么笔记需要做的，就当看着玩串一下知识点即可（有些知识点这本书是没有的比如包装类），整体来说这本书也不是很适合用来学习；</p>
+<p>2022&#x2F;7&#x2F;21 9:31 《JAVA核心技术卷》讲的确实很好，适合具有一定编程深度的人学习（而且没有废话），在阅读过程中可能有一些知识点如包装类没接触到，这个没关系，读完整本书之后还是没有提示的话再在网上查资料即可，不要带着恐惧和疑惑心理去阅读一本书学习；</p>
+<p>2022&#x2F;7&#x2F;24 15:20 重新复习整理了一下C++的类和对象的知识点之后其实JAVA面向对象的知识点和C++几乎一模一样，只是JAVA在一些特性方面比较晦涩（比如接口之类的），只能之后再慢慢补充理解学习了，JAVA基础先暂时学到这里吧；</p>
+<h2 id="——问题汇总——"><a href="#——问题汇总——" class="headerlink" title="——问题汇总——"></a>——问题汇总——</h2><p>至于为什么要学JAVA，学了C++之后学JAVA有什么不一样的，JAVA和C++有什么区别，这些问题能够解决的可以在学习过程中解决，不能解决的就放在之后学完JAVA后再重新审视；</p>
+<blockquote>
+<p>Q：JAVA和C++有什么区别</p>
+</blockquote>
+<p>A：</p>
+<p>解答1：<a target="_blank" rel="noopener" href="https://blog.csdn.net/lanxiaziyi/article/details/123145312">(18条消息) c++与java的应用区别_蓝黑墨水的博客-CSDN博客_c++和java区别</a></p>
+<p>解答2：<a target="_blank" rel="noopener" href="http://c.biancheng.net/view/5583.html">Java和C&#x2F;C++到底有什么关系？它们有什么区别？ (biancheng.net)</a></p>
+<p>发展历程：C -&gt; C++ -&gt; Java 。Java 是由 C++发展而来的，保留了 C++ 的大部分内容，其编程方式类似于 C++。但 Java 的句法更清晰、规模更小、更易学。Sun 公司曾对多种程序设计语言进行分析研究，取其精华去其糟粕，最终推出了 Java。Java 从根本上解决了 C++ 的固有缺陷，形成了新一代面向对象的程序设计语言。</p>
+<p>解答3：C&#x2F;C++和Java确实不太一样。C语言和C++，尤其是C++，语言密度更细，机制多，性能虽然高，但是就语言本身来说，包狱太重。所以也就称之为“造轮子”的语言，但是也正是因为他性能好，密度细，所以什么都能做。而Java本身是服务于<code>互联网软件</code>开发（后端开发、客户端开发）的语言，他有一个明显的生态圈的概念，所以应用领域非常清晰。因为Java是纯应用层的，所以相对而言C++学习更加困难一些，对于程序员能力的要求要更高一些。<code>C/C++的主场在系统底层</code>；（PS：现在JAVA很少用来做浏览器客户端的交互了，取代applet的是JS和Flash等脚本语言）</p>
+<p>解答4：</p>
+<p>后端逻辑使用JAVA或者Node.js做都可以，JS本身是做前端逻辑的，C&#x2F;C++更适合做底层系统相关的东西，python因为简单轻量有很多现成完善的库可以直接调用（自己写小工具也很方便）</p>
+<p><img src="/images/image-20220719214606924.png" srcset="/img/loading.gif" lazyload></p>
+<p>解答5：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_39584571/article/details/114163947">(19条消息) c面向对象 java_c++面向对象和java面向对象的区别？_weixin_39584571的博客-CSDN博客</a></p>
+<blockquote>
+<p>Q：为什么要学JAVA?</p>
+</blockquote>
+<p>A：因为我想知道有关软件开发和桌面应用等知识点，我学JAVA并不是需要会用这门语言，而是需要知道这门语言和我学习中会接触到的大量知识盲区的关系，所以学习过程中不要特别在于语法条件之类的，着重看重JAVA特性和用途；</p>
+<blockquote>
+<p>Q：为什么JAVA的项目名和什么类型这么麻烦？一旦不对应似乎整个程序都会崩溃？？？？</p>
+</blockquote>
+<p>A：因为JAVA是一门非常严谨的语言，任何规则都必须遵守；</p>
+<h1 id="一、引言"><a href="#一、引言" class="headerlink" title="一、引言"></a>一、引言</h1><h2 id="1-JAVA概述"><a href="#1-JAVA概述" class="headerlink" title="1.JAVA概述"></a>1.JAVA概述</h2><p>按应用范围，Java 可分为 3 个体系，即 Java SE、Java EE 和 Java ME</p>
+<ul>
+<li>JAVA SE：Java SE（Java Platform Standard Edition，<code>Java 平台标准版</code>）以前称为 J2SE，它允许开发和部署在桌面、服务器、嵌入式环境和实时环境中使用的 Java 应用程序。Java SE 包含了支持 Java Web 服务开发的类，并为 Java EE 提供基础，如 Java 语言基础、JDBC 操作、I&#x2F;O 操作、网络通信以及多线程等技术，<code>适合开发桌面级应用如QQ、微信</code>；</li>
+<li>JAVA EE：Java EE（Java Platform Enterprise Edition，<code>Java 平台企业版</code>）以前称为 J2EE。企业版本帮助开发和部署可移植、健壮、可伸缩且安全的服务器端 Java 应用程序。Java EE 是在 Java SE 基础上构建的，它提供 Web 服务、组件模型、管理和通信 API，可以用来实现企业级的面向服务体系结构（Service Oriented Architecture，SOA）和 Web 2.0 应用程序，<code>适合Web应用程序开发</code>；</li>
+<li>Java ME（Java Platform Micro Edition，<code>Java 平台微型版</code>）以前称为 J2ME，也叫 K-JAVA。 Java ME 为在移动设备和嵌入式设备（比如手机、PDA、电视机顶盒和打印机）上运行的应用程序提供一个健壮且灵活的环境。Java ME 包括灵活的用户界面、健壮的安全模型、丰富的内置网络协议以及对可以动态下载的联网和离线应用程序。基于 Java ME 规范的应用程序 只需编写一次就可以用于许多设备，而且可以利用每个设备的本机功能，<code>适合开发移动端的应用程序</code>；</li>
+</ul>
+<p>JAVA主要有以下特性：</p>
+<ul>
+<li>简单性：JAVA是C++的“纯净版本”</li>
+<li>面向对象</li>
+<li>网络技能：JAVA可以让socket通信等变得非常简单</li>
+<li>健壮性：JAVA采用的指针模型可以消除重写内存和损坏数据的可能性</li>
+<li>安全性：JAVA的网络环境绝对安全</li>
+<li>体系结构中立：JAVA编译器生成与操作系统无关的字节码实现</li>
+<li>可移植性：JAVA的基本数据类型大小是固定的，不依赖具体实现</li>
+<li>解释型</li>
+<li>高性能</li>
+<li>多线程：JAVA实现多线程非常简单</li>
+<li>动态性：C#与JAVA再这方面类似，可以自由在库中增加方法和实例变量</li>
+</ul>
+<h2 id="2-核心机制"><a href="#2-核心机制" class="headerlink" title="2.核心机制"></a>2.核心机制</h2><h3 id="2-1-JAVA虚拟机"><a href="#2-1-JAVA虚拟机" class="headerlink" title="2.1 JAVA虚拟机"></a>2.1 JAVA虚拟机</h3><p>JVM是一个虚拟的计算机，具有指令集并使用不同的存储区域。负责执行指令，管理数据、内存、寄存器。对于不同的平台，有不同的虚拟机。只有某平台提供了对应的java虚拟机，java程序才可在此平台运行。</p>
+<p><img src="/images/image-20220719220553846.png" srcset="/img/loading.gif" lazyload></p>
+<p>Java虚拟机机制屏蔽了底层运行平台的差别，实现了“一次编译，到处运行”；</p>
+<h3 id="2-2-垃圾回收机制"><a href="#2-2-垃圾回收机制" class="headerlink" title="2.2 垃圾回收机制"></a>2.2 垃圾回收机制</h3><p>C&#x2F;C++中需要程序员手动释放无用内存；</p>
+<p>Java 语言消除了程序员回收无用内存空间的责任：它提供一种系统级线程跟踪存储空间的分配情况。并在JVM空闲时，检查并释放那些可被释放的存储空间。垃圾回收在Java程序运行过程中自动进行，程序员无法精确控制和干预；</p>
+<blockquote>
+<p>尽管拥有自动垃圾回收机制，但是有时候我们写的程序有问题导致自动回收机制无法识别垃圾进而造成内存泄漏（某些对象申请内存没有被释放,一直占用）和内存溢出（程序所需的内存大于系统所能提供的最大内存）；</p>
+</blockquote>
+<h2 id="3-JAVA环境"><a href="#3-JAVA环境" class="headerlink" title="3.JAVA环境"></a>3.JAVA环境</h2><p>JDK（Java Development Kit Java开发工具包）JDK是提供给Java开发人员使用的，其中包含了<code>java的开发工具</code>，也包括了<code>JRE</code>。所以安装了JDK，就不用再单独安装JRE了。</p>
+<ul>
+<li><p>开发工具包括编译工具（javac.exe）打包工具（jar.exe）等（<code>开发工具用于编写代码</code>）；</p>
+</li>
+<li><p>JRE（Java Runtime Environment Java 运行环境）包括<code>Java虚拟机（JVM Java Virtual Machine）</code>和Java 程序所需的<code>核心类库</code>等，如果想要运行一个开发好的Java程序，计算机中只需要安装JRE即可（<code>JRE用于运行Java程序</code>）；</p>
+</li>
+</ul>
+<p><img src="/images/image-20220720121520872.png" srcset="/img/loading.gif" lazyload></p>
+<p>（非常幸运的是在之前安装爬虫appinum的时候安装Andriod SDK时顺便就安装了JDK环境，所以我们省略了安装JDK的步骤，教程参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/u012934325/article/details/73441617">(18条消息) JDK下载与安装教程_墨笙弘一的博客-CSDN博客_jdk安装教程</a>）</p>
+<p><code>因为按照网上的JDK安装教程并没有配置安装JRM所以可能目录环境和B站老师讲的不太一样，先将就用着，期间有什么问题做记录写下来记录即可</code></p>
+<p>报错解决：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44589991/article/details/116357307">(18条消息) 关于解决 错误: 找不到或无法加载主类 原因: java.lang.ClassNotFoundException 的方法_是我，Zack的博客-CSDN博客</a></p>
+<p>Eclipse安装：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44744652/article/details/125135394">(19条消息) eclipse官网下载超时解决方法_一起来见证奇迹啊的博客-CSDN博客</a></p>
+<p>Eclipse汉化：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43736451/article/details/116240449">(19条消息) eclipse汉化教程（官方汉化包，傻瓜式操作，附带中英文快捷切换方式）_Zeromes的博客-CSDN博客_eclipse汉化</a></p>
+<h2 id="4-JAVA标准格式"><a href="#4-JAVA标准格式" class="headerlink" title="4.JAVA标准格式"></a>4.JAVA标准格式</h2><p>我们这里给出一个基本的JAVA程序的模板，并简单解释下相关的参数，在之后会详细介绍</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">HelloJava</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> main（String[] args）&#123;<br>        System.out.println（<span class="hljs-string">&quot;&quot;</span>！我的第一个 Java程序！<span class="hljs-string">&quot;）；</span><br><span class="hljs-string">    &#125;</span><br><span class="hljs-string">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>JAVA程序中可以有多个类，但只能有一个public类，且主文件名必须与这个公开类的的名称相同；</li>
+<li>main()是JAVA程序的入口，程序的执行从入口开始，main()一定是public成员这样它才可以在执行环境中被调用，同时main()必须是个static成员这样它才能在不产生对象的情况下被执行；</li>
+<li>括号中的String[] args可以在执行程序时取得使用者指定的命令行参数，尽管现在用不着但仍然要书写；</li>
+<li>每一条语句的结束要用分号；</li>
+<li>println()输出的字符串后自动换行，print()输出字符串后程序并不会自动换行；</li>
+</ul>
+<blockquote>
+<p>JAVA中main()方法是应用程序的入口方法，main()方法与其他方法存在很大差别：</p>
+</blockquote>
+<ul>
+<li>访问控制权限是公有的（public）。</li>
+<li>main() 方法是静态的。如果要在 main() 方法中调用本类中的其他方法，则该方法也必须是静态的，否则需要先创建本类的实例对象，然后再通过对象调用成员方法。</li>
+<li>main() 方法没有返回值，只能使用 void。</li>
+<li>main() 方法具有一个字符串数组参数，用来接收执行 Java 程序的命令行参数。命令行参数作为字符串，按照顺序依次对应字符串数组中的元素。</li>
+<li>字符串中数组的名字（代码中的 args）可以任意设置，但是根据习惯，这个字符串数组的名字一般和 Java 规范范例中 main() 参数名保持一致，命名为 args，而方法中的其他内容都是固定不变的。</li>
+<li>main() 方法定义必须是“public static void main(String[] 字符串数组参数名)”，即main()方法的格式必须固定不变。</li>
+<li>一个类只能有一个 main() 方法，这是一个常用于对类进行单元测试（对软件中的最小可测试单元进行检查和验证）的技巧。</li>
+</ul>
+<h2 id="5-JAVA开发工具"><a href="#5-JAVA开发工具" class="headerlink" title="5.JAVA开发工具"></a>5.JAVA开发工具</h2><p>参考文章<a target="_blank" rel="noopener" href="http://c.biancheng.net/view/5637.html">Java常用开发工具有哪些？ (biancheng.net)</a></p>
+<p>俗话说得好“工欲善其事，必先利其器”，本节介绍的常用的JAVA开发工具在某些功能和作用上可能存在不同，但是其主旨都是为了给JAVA编码和开发提供支持；</p>
+<h3 id="5-1-文本编辑器"><a href="#5-1-文本编辑器" class="headerlink" title="5.1 文本编辑器"></a>5.1 文本编辑器</h3><p>JAVA源代码本质上就是普通的文本文件，所以理论上任何可以编辑文本文件的编辑器都可以作为JAVA代码的编辑工具，但是Windows自带的记事本没有语法高亮提示等功能，所以我们可以选择使用notepad3、Sublime Text、editplus、Vim这种功能较为强大的类记事本工具(当然如果你喜欢上这些工具之后你可能就不会再想使用记事本了)</p>
+<h3 id="5-2-集成开发环境"><a href="#5-2-集成开发环境" class="headerlink" title="5.2 集成开发环境"></a>5.2 集成开发环境</h3><p>我们使用高级记事本类的工具作为初学是没问题的，但是实际进行项目开发的时候更多的还是选择使用继承IDE作为开发工具，目前最主流的两款JAVA集成IDE是Eclipse和IDEA(强烈建议两个都学，我一个初学者都安装了这两个IDE)</p>
+<h4 id="5-2-1-Eclipse-IDE"><a href="#5-2-1-Eclipse-IDE" class="headerlink" title="5.2.1 Eclipse IDE"></a>5.2.1 Eclipse IDE</h4><p>Eclipse最初主要用来 Java 语言开发，后来通过安装不同的插件 Eclipse 可以支持不同的计算机语言，比如C++和Python</p>
+<p>Eclipse 优点：</p>
+<ul>
+<li>能提供关于代码完成、重构和语法检查这些急需的帮助。</li>
+<li>能提供 JDT 的一系列工具，包括各种插件工具来帮助开发各种 Java 应用。</li>
+<li>允许开发人员使用不同的语言支持，如它也可以提供 C&#x2F;C++ 和 PHP 的 IDE。这使得它成为了 Java 开发的一个一站式资源。</li>
+<li>Eclipse 是免费的，这点很重要，所以大多公司里依然是使用 Eclipse 这款 IDE，而且它良好的性能，也在市场占着不小的比重。</li>
+</ul>
+<p>Eclipse 缺点：</p>
+<ul>
+<li>版本间不兼容，特别是插件，在一个版本下可以很好工作，在另一个版本下就完全无法工作，就算两个版本的版本号只有微小的差异。</li>
+<li>与 JDK 捆绑过于紧密。当 JDK 新的版本出来后，Eclipse 一般要滞后很长一段时间才有一个新版本支持新的 JDK，然后等各个插件能在新版本的 Eclipse 下使用又要过很长时间。</li>
+</ul>
+<blockquote>
+<p>简单的如何使用Eclipse参考<a target="_blank" rel="noopener" href="http://c.biancheng.net/view/5631.html">使用Eclipse开发第一个Java程序 (biancheng.net)</a>，咱们之后会有专门的一个章节来介绍IDEA的使用(因为IDEA经常被用来开发大型JAVA项目)；</p>
+</blockquote>
+<h4 id="5-2-2-Intellij-IDEA"><a href="#5-2-2-Intellij-IDEA" class="headerlink" title="5.2.2 Intellij IDEA"></a>5.2.2 Intellij IDEA</h4><p>简称IDEA，旗舰版本支持 HTML，CSS，PHP，MySQL，Python等，免费版只支持 Java 等少数语言；</p>
+<p>IDEA 缺点：</p>
+<ul>
+<li>编辑超大文件不靠谱，易卡顿或直接卡死。</li>
+<li>相对于一些专用工具，显得不够专业：比如批量修改项目中的文件编码效果就很差劲。</li>
+<li>消耗大量硬件资源，IntelliJ IDEA 要求内存大，并且还要用的流畅还需要固态硬盘辅助。比如在做微服务类的项目的时候，一般需要同时启动多个项目，内存一会就上来的，8G 内存完全不够用的。</li>
+</ul>
+<h1 id="二、JAVA基础"><a href="#二、JAVA基础" class="headerlink" title="二、JAVA基础"></a>二、JAVA基础</h1><h2 id="1-JAVA注释"><a href="#1-JAVA注释" class="headerlink" title="1.JAVA注释"></a>1.JAVA注释</h2><ul>
+<li>单行注释</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//注释文字</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>多行注释</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/*注释文字*/</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>文档注释（JAVA特有）</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"><span class="hljs-doctag">@author</span> 指定 java 程序的作者 **</span><br><span class="hljs-comment"><span class="hljs-doctag">@version</span> 指定源文件的版本 **</span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
+
+<p>文档注释的内容可以被JDK提供的工具javadoc解析（包、公有类和接口、公有的和受保护的方法、公有的和受保护的域）生成一套以网页文件形式体现该程序的说明文档</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs applescript">javadoc -d 文件夹名 -author -<span class="hljs-built_in">version</span> 文件名<br></code></pre></td></tr></table></figure>
+
+<p>文档注释一般用在类、方法和变量上面，用来描述其作用。注释后，鼠标放在类和变量上面会自动显示出我们注释的内容</p>
+<p>关于JAVA文档注释的更多消息可以参考<a target="_blank" rel="noopener" href="http://c.biancheng.net/view/6262.html">Javadoc（文档注释）详解 (biancheng.net)</a>也可以参考《JAVA技术卷1》P137、<a target="_blank" rel="noopener" href="http://c.biancheng.net/view/6114.html">Java注释：类、方法和字段注释 (biancheng.net)</a></p>
+<h2 id="2-JAVA运行流程"><a href="#2-JAVA运行流程" class="headerlink" title="2.JAVA运行流程"></a>2.JAVA运行流程</h2><p><a target="_blank" rel="noopener" href="http://c.biancheng.net/view/5607.html">Java程序的运行过程（执行流程）分析 (biancheng.net)</a></p>
+<p><img src="/images/image-20220720121227738.png" srcset="/img/loading.gif" lazyload></p>
+<p>JAVA中的所有东西都会属于某个类，我们写的源文件经过编译后会得到类文件（.class，存储的字节码），被VM执行的实际是类 - 执行程序就表示命令JVM加载HelloJava这个类并开始执行它的main()，直到main的所有程序代码结束为止；</p>
+<h2 id="3-JAVA常量"><a href="#3-JAVA常量" class="headerlink" title="3.JAVA常量"></a>3.JAVA常量</h2><blockquote>
+<p>常量是指在程序的整个运行过程中值保持不变的量。</p>
+</blockquote>
+<p>注意：常量和常量值是不同的概念，常量值是常量的具体和直观的表现形式，常量是形式化的表现。通常在程序中既可以直接使用常量值，也可以使用常量</p>
+<h3 id="3-1-常量值"><a href="#3-1-常量值" class="headerlink" title="3.1 常量值"></a>3.1 常量值</h3><p>常量值又称<code>字面常量</code>，通过数据直接表示，可分为：</p>
+<ul>
+<li>整型常量值：整型（int）常量默认在内存中占 32 位，是具有整数类型的值，当运算过程中所需值超过 32 位长度时，可以把它表示为长整型（long）数值。长整型类型则要在数字后面加 L 或 1， 如 697L，表示一个长整型数，它在内存中占 64 位</li>
+<li>实型常量值：Java 实型常量默认在内存中占 64 位，是具有双精度型（double）的值。如果考虑到需要节省运行时的系统资源，而运算时的数据值取值范围并不大且运算精度要求不太高的情况，可以把它表示为单精度型（float）的数值，单精度型数值一般要在该常数后面加 F 或 f，如 69.7f，表示一个 float 型实数，它在内存中占 32 位</li>
+<li>布尔型常量：false true</li>
+<li>字符型&#x2F;字符串常量：Java 字符串常量值中的单引号和双引号不可混用，单引号表示字符型常量，双引号表示字符串常量；</li>
+</ul>
+<h3 id="3-2-常量"><a href="#3-2-常量" class="headerlink" title="3.2 常量"></a>3.2 常量</h3><p>JAVA中的常量名一般使用大写</p>
+<ul>
+<li>声明常量</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">final</span> <span class="hljs-type">dataType</span> <span class="hljs-variable">variableName</span> <span class="hljs-operator">=</span> value<br></code></pre></td></tr></table></figure>
+
+<p>final 是定义常量的关键字（实际上JAVA也有const关键字但没使用），dataType 指明常量的数据类型，variableName 是常量的名称，value 是初始值</p>
+<p>常量分为：</p>
+<ul>
+<li>静态全局常量</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">double</span> <span class="hljs-variable">PI</span> <span class="hljs-operator">=</span> <span class="hljs-number">3.14</span>;<br></code></pre></td></tr></table></figure>
+
+<p>在 final 之前 public static 修饰，public static 修饰的常量作用域是全局的，不需要创建对象就可以访问它</p>
+<ul>
+<li>成员常量</li>
+<li>局部常量</li>
+</ul>
+<h3 id="3-3-final修饰符"><a href="#3-3-final修饰符" class="headerlink" title="3.3 final修饰符"></a>3.3 final修饰符</h3><p>final 应用于类、方法和变量时意义是不同的，但本质是一样的，都表示不可改变；</p>
+<p>使用 final 关键字声明类、变量和方法需要注意以下几点：</p>
+<ul>
+<li>final 用在变量的前面表示变量的值不可以改变（不是不可以赋值，而是不可以改变！！！），此时该变量可以被称为<code>常量</code>；<ul>
+<li>当使用 final 修饰基本类型变量时，不能对基本类型变量重新赋值，因此基本类型变量不能被改变；</li>
+<li>对于引用类型变量而言，它保存的仅仅是一个引用，final 只保证这个引用类型变量所引用的地址不会改变，即一直引用同一个对象，但这个对象完全可以发生改变（使用 final 修饰的引用类型变量不能被重新赋值，但可以改变引用类型变量所引用对象的内容）；</li>
+</ul>
+</li>
+<li>final 用在方法的前面表示方法<code>不可以被重写</code>（子类中如果创建了一个与父类中相同名称、相同返回值类型、相同参数列表的方法，只是方法体中的实现不同，以实现不同于父类的功能，这种方式被称为方法重写，又称为方法覆盖，<code>重写不等于重载</code>）；</li>
+<li>final 用在类的前面表示该类不能有子类，即该类<code>不可以被继承</code>；</li>
+</ul>
+<h2 id="4-JAVA变量"><a href="#4-JAVA变量" class="headerlink" title="4.JAVA变量"></a>4.JAVA变量</h2><p>JAVA中的每一个变量都属于一种类型，声明变量时一定要声明变量所属类型；</p>
+<h3 id="4-1-变量"><a href="#4-1-变量" class="headerlink" title="4.1 变量"></a>4.1 变量</h3><ul>
+<li>声明变量</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">DataType identifier;<span class="hljs-comment">//每个声明以分号结束（因为声明是一条完整的语句）</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">DataType identifier=value;<span class="hljs-comment">//声明变量的同时初始化变量</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>DataType：变量类型，如 int、string、 char 和 double 等；</li>
+<li>identifier：标识符，也叫变量名称；</li>
+<li>value：声明变量时的值；</li>
+</ul>
+<blockquote>
+<p>C&#x2F;C++中int i&#x3D;10是定义一个变量，extern int i是声明一个变量，但是JAVA中并不区分变量的声明和定义；</p>
+</blockquote>
+<h3 id="4-2-变量作用域"><a href="#4-2-变量作用域" class="headerlink" title="4.2 变量作用域"></a>4.2 变量作用域</h3><p>变量根据作用域的不同可以分为：</p>
+<ul>
+<li>成员变量：定义在方法体和语句块之外，不属于任何一个方法，作用域是整个类（我们在后面也叫它域）<ul>
+<li>全局变量（实例变量）</li>
+<li>静态变量（类变量）</li>
+</ul>
+</li>
+<li>局部变量：在方法或者方法代码块中定义的变量，其作用域是其所在的代码块<ul>
+<li>方法参数变量（形参）：在整个方法内有效</li>
+<li>方法局部变量（方法内定义的变量）：从定义这个变量开始到方法结束这一段时间内有效</li>
+<li>代码块局部变量（代码块内定义的变量）：从定义这个变量开始到代码块结束这一段时间内有效（比如for循环中的循环计数器i）</li>
+</ul>
+</li>
+</ul>
+<p>成员变量和局部变量的主要不同点就在于，必须明确的初始化局部变量才能使用，而成员变量假如没有初始化则自动初始化为默认值（0、false、null）</p>
+<blockquote>
+<p>JAVA面向对象的概念中并不存在全局变量的概念；</p>
+</blockquote>
+<h2 id="5-JAVA数据类型"><a href="#5-JAVA数据类型" class="headerlink" title="5.JAVA数据类型"></a>5.JAVA数据类型</h2><p>数据类型是指编译器存储在变量中的数值应当具有适当的数据类型，JAVA是一种强数据类型的语言，必须为每一个变量声明一种类型，JAVA数据类型分为基本数据类型和引用数据类型</p>
+<p><img src="/images/image-20220720154957675.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="5-1-基本数据类型"><a href="#5-1-基本数据类型" class="headerlink" title="5.1 基本数据类型"></a>5.1 基本数据类型</h3><ul>
+<li>JAVA没有任何无符号类型；</li>
+<li>浮点类型用于表示有小数部分的数值，千万不要将浮点类型用在金融计算中（这将引发骚乱）；</li>
+<li>‘A’是编码为65对应的字符常量，”A”是包含A的字符串，建议不要在程序中使用char类型（JAVA的Unicode字符集比较特殊）；</li>
+<li>JAVA中的布尔型和整型不能相互转换，C++中数值或指针可以代替布尔值；</li>
+</ul>
+<p><img src="/images/image-20220720154905533.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="5-2-引用数据类型"><a href="#5-2-引用数据类型" class="headerlink" title="5.2 引用数据类型"></a>5.2 引用数据类型</h3><p>引用数据类型建立在基本数据类型的基础上，包括数组、类和接口。引用数据类型是由用户自定义，用来限制其他数据的类型（这一点其实非常类似C++的复合数据类型）。另外，Java 语言中不支持C++中的指针类型、结构类型、联合类型（类类型、枚举类型）。</p>
+<h2 id="6-JAVA流程控制"><a href="#6-JAVA流程控制" class="headerlink" title="6.JAVA流程控制"></a>6.JAVA流程控制</h2><p>程序设计主要有三种流程结构：顺序结构、选择结构和循环结构，系统默认是自上而下以顺序结构执行；</p>
+<h3 id="6-1-JAVA语句"><a href="#6-1-JAVA语句" class="headerlink" title="6.1 JAVA语句"></a>6.1 JAVA语句</h3><blockquote>
+<p>Java 中，语句是最小的组成单位，每个语句必须使用分号作为结束符</p>
+</blockquote>
+<p>按照语句的组成部分，可将JAVA中的语句分为如下三类</p>
+<h4 id="6-1-1-空语句"><a href="#6-1-1-空语句" class="headerlink" title="6.1.1 空语句"></a>6.1.1 空语句</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">;<br></code></pre></td></tr></table></figure>
+
+<p>空语句就是一个分号，在程序中什么也不做，主要用于做空循环体；</p>
+<h4 id="6-1-2-表达式语句"><a href="#6-1-2-表达式语句" class="headerlink" title="6.1.2 表达式语句"></a>6.1.2 表达式语句</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java">pi = <span class="hljs-number">3.1415926</span>;<br>output(pi); <span class="hljs-comment">// 将pi的值传递到output()函数中作为参数</span><br>sum = (a+b)/<span class="hljs-number">2</span>;<br>printf(<span class="hljs-string">&quot;%f&quot;</span>,sum); <span class="hljs-comment">// 将sum的值传递到printf()函数输出</span><br>temp = x*y*z-y+(<span class="hljs-number">20</span>-x); <span class="hljs-comment">// 将表达式的值保存到temp变量中</span><br></code></pre></td></tr></table></figure>
+
+<p>一般表达式语句应该能完成一个操作，如修改变量的值或者作为函数参数等</p>
+<h4 id="6-1-3-复合语句"><a href="#6-1-3-复合语句" class="headerlink" title="6.1.3 复合语句"></a>6.1.3 复合语句</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java">&#123;<br>    statement-list <span class="hljs-comment">// 语句列表</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>复合语句（代码块&#x2F;语句块）是很多语句的组合，将一个代码块&#x2F;语句块看作一个语句；</p>
+<h3 id="6-2-选择结构"><a href="#6-2-选择结构" class="headerlink" title="6.2 选择结构"></a>6.2 选择结构</h3><p>选择结构（也叫分支结构）解决了顺序结构不能判断的缺点，可以根据一个条件判断执行哪些语句块；</p>
+<p>JAVA支持两种选择语句（使用选择语句实现选择结构）：if 语句和 switch 语句，这些语句允许只有在程序运行时才能知道其状态的情况下，控制程序的执行过程</p>
+<ul>
+<li>if 语句使用布尔表达式或布尔值作为分支条件来进行分支控制；</li>
+<li>switch 语句则用于对多个整型值进行匹配，从而实现分支控制；</li>
+</ul>
+<h3 id="6-3-循环结构"><a href="#6-3-循环结构" class="headerlink" title="6.3 循环结构"></a>6.3 循环结构</h3><p>循环语句能够使程序代码重复执行，适用于需要重复一段代码直到满足特定条件为止的情况；</p>
+<p>JAVA中采用的循环语句与C语言中的循环语句相似，主要有 while、do-while 和 for、for-each 循环语句，for-each 循环是 for 循环的变形，它是专门为集合遍历而设计的；</p>
+<h4 id="6-3-1-for-each语句"><a href="#6-3-1-for-each语句" class="headerlink" title="6.3.1 for-each语句"></a>6.3.1 for-each语句</h4><ul>
+<li>格式</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">for</span>(类型 变量名:集合) &#123;<br>    语句块;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>举例</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 声明并初始化数组</span><br><span class="hljs-type">int</span>[] numbers = &#123; <span class="hljs-number">43</span>, <span class="hljs-number">32</span>, <span class="hljs-number">53</span>, <span class="hljs-number">54</span>, <span class="hljs-number">75</span>, <span class="hljs-number">7</span>, <span class="hljs-number">10</span> &#125;;<br>System.out.println(<span class="hljs-string">&quot;----for----&quot;</span>);<br><span class="hljs-comment">// for语句</span><br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; numbers.length; i++) &#123;<br>    System.out.println(<span class="hljs-string">&quot;Count is:&quot;</span> + numbers[i]);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 声明并初始化int数组</span><br><span class="hljs-type">int</span>[] numbers = &#123; <span class="hljs-number">43</span>, <span class="hljs-number">32</span>, <span class="hljs-number">53</span>, <span class="hljs-number">54</span>, <span class="hljs-number">75</span>, <span class="hljs-number">7</span>, <span class="hljs-number">10</span> &#125;;<br>System.out.println(<span class="hljs-string">&quot;----for each----&quot;</span>);<br><span class="hljs-comment">// for-each语句</span><br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> item : numbers) &#123;<br>    System.out.println(<span class="hljs-string">&quot;Count is:&quot;</span> + item);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>foreach 循环和普通循环不同的是，它无须循环条件，无须循环迭代语句，这些部分都由系统来完成，foreach 循环自动迭代数组的每个元素，当每个元素都被迭代一次后，foreach 循环自动结束；</p>
+<h4 id="6-3-2-退出循环"><a href="#6-3-2-退出循环" class="headerlink" title="6.3.2 退出循环"></a>6.3.2 退出循环</h4><p>可以使用return结束循环（本质上是终止函数的执行或退出类的方法并将控制权返回给方法的拥有者），JAVA中提供break专门用于强制退出循环；</p>
+<p>我们下面介绍break的特殊用途 —— 退出深层循环，要知道在C&#x2F;C++中要退出多层循环是没有简单方法的，JAVA提供了一种带标签的break语句，实现goto的功能，可以明确指定从何处重新开始执行</p>
+<ul>
+<li>格式</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">break</span> label;<br></code></pre></td></tr></table></figure>
+
+<p>label 是标识代码块的标签。当执行这种形式的 break 语句时，控制权被传递出指定的代码块。用标签（label）可以指定一个<code>代码块</code>，标签可以是任何合法有效的 Java 标识符，后跟一个冒号。加上标签的代码块可以作为 break 语句的对象，使程序在加标签的块的结尾继续执行；</p>
+<ol>
+<li>被加标签的代码块必须包围 break 语句，但是它不需要直接包围 break 的块。也就是说，可以使用一个加标签的 break 语句来退出一系列的嵌套块，但是不能使用 break 语句将控制权传递到不包含 break 语句的代码块；</li>
+<li>标签语句必须和循环匹配使用，使用时书写在对应的循环语句的上面，标签语句以冒号结束。如果需要中断标签语句对应的循环，可以采用 break 后面跟标签名的方式；</li>
+</ol>
+<ul>
+<li>举例</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">GotoDemo</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        label: <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">8</span>; j++) &#123;<br>                System.out.println(j);<br>                <span class="hljs-keyword">if</span> (j % <span class="hljs-number">2</span> != <span class="hljs-number">0</span>) &#123;<br>                    <span class="hljs-keyword">break</span> label;<br>                &#125;<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="7-JAVA数组"><a href="#7-JAVA数组" class="headerlink" title="7.JAVA数组"></a>7.JAVA数组</h2><p>数组（array）是一种最简单的复合数据类型，它是有序数据的集合，数组中的每个元素具有相同的数据类型，可以用一个统一的数组名和不同的下标来确定数组中唯一的元素。根据数组的维度，可以将其分为一维数组、二维数组和多维数组等；</p>
+<p>数组是一种引用数据类型</p>
+<h3 id="7-1-一维数组"><a href="#7-1-一维数组" class="headerlink" title="7.1 一维数组"></a>7.1 一维数组</h3><ul>
+<li>声明一维数组语法格式</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//声明一个引用该数组的变量，并指明整个变量可以引用的数组类型</span><br>type[] arrayName;    <span class="hljs-comment">// 数据类型[] 数组名，这种方式是推荐的，type[]是一种新的引用类型;</span><br><span class="hljs-comment">//或者</span><br>type arrayName[];    <span class="hljs-comment">// 数据类型 数组名[]，尽管C++是这种声明方式，但之后的语言都逐渐摒弃了这种方法;</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>声明数组时不要规定数组的长度，会导致错误</p>
+</blockquote>
+<ul>
+<li>实例</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span>[] score;    <span class="hljs-comment">// 存储学生的成绩，类型为整型</span><br><span class="hljs-type">double</span>[] price;    <span class="hljs-comment">// 存储商品的价格，类型为浮点型</span><br>String[] name;    <span class="hljs-comment">// 存储商品名称，类型为字符串型</span><br></code></pre></td></tr></table></figure>
+
+<p>声明了数组，只是得到了一个存放数组的变量，并没有为数组元素分配内存空间，不能使用。因此要为数组分配内存空间，这样数组的每一个元素才有一个空间进行存储， Java 中可以使用 new 关键字来给数组分配空间；</p>
+<ul>
+<li>分配空间语法格式</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java">arrayName = <span class="hljs-keyword">new</span> <span class="hljs-title class_">type</span>[size];    <span class="hljs-comment">// 数组名 = new 数据类型[数组长度];</span><br><span class="hljs-comment">//当然也可以将分配空间和声明数组的时机放在一起</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>举例</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java">score = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">10</span>];<br>price = <span class="hljs-keyword">new</span> <span class="hljs-title class_">double</span>[<span class="hljs-number">30</span>];<br>name = <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>[<span class="hljs-number">20</span>];<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：一旦声明了数组的大小，就不能再修改。这里的数组长度也是必需的，不能少；</p>
+</blockquote>
+<h2 id="8-JAVA集合类"><a href="#8-JAVA集合类" class="headerlink" title="8.JAVA集合类"></a>8.JAVA集合类</h2><p>（JAVA的集合类真的是一个非常非常天坑的知识点，光看知识点真的没法理解）</p>
+<p>数组长度不可变、数组无法保存具有映射关系的数据，为了保存数量不确定的数据，以及保存具有映射关系的数据（也被称为关联数组），JAVA提供了集合类；</p>
+<p>数组元素可以是基本类型的值也可以是对象，而集合类中只能保存对象；</p>
+<h3 id="8-1-List集合"><a href="#8-1-List集合" class="headerlink" title="8.1 List集合"></a>8.1 List集合</h3><ul>
+<li><p>List 是一个<code>有序、可重复的集合</code>，集合中每个元素都有其对应的顺序索引；</p>
+</li>
+<li><p>List 集合<code>允许使用重复元素</code>，可以通过索引来访问指定位置的集合元素；</p>
+</li>
+<li><p>List 集合默认按元素的添加顺序设置元素的索引，第一个添加到 List 集合中的元素的索引为 0，第二个为 1，依此类推；</p>
+</li>
+</ul>
+<h4 id="8-1-1-ArrayList类"><a href="#8-1-1-ArrayList类" class="headerlink" title="8.1.1 ArrayList类"></a>8.1.1 ArrayList类</h4><p>ArrayList 类实现了<code>可变数组的大小</code>，存储在内的数据称为元素；</p>
+<p>它还提供了快速基于索引访问元素的方式，对尾部成员的增加和删除支持较好；</p>
+<p>使用 ArrayList 创建的集合，允许对集合中的元素进行<code>快速的随机访问</code>，不过，向 ArrayList 中<code>插入与删除元素的速度相对较慢</code>；</p>
+<h4 id="8-1-2-LinkedList类"><a href="#8-1-2-LinkedList类" class="headerlink" title="8.1.2 LinkedList类"></a>8.1.2 LinkedList类</h4><p>LinkedList 类采用链表结构保存对象，这种结构的优点是便于向集合中插入或者删除元素；</p>
+<p>需要频繁向集合中插入和删除元素时，使用 LinkedList 类比 ArrayList 类效果高，但是 LinkedList 类随机访问元素的速度则相对较慢（这里的随机访问是指检索集合中特定索引位置的元素）；</p>
+<h3 id="8-2-set集合"><a href="#8-2-set集合" class="headerlink" title="8.2 set集合"></a>8.2 set集合</h3><ul>
+<li><p>Set 集合中的对象不按特定的方式排序，只是简单地把对象加入集合；</p>
+</li>
+<li><p>Set 集合中不能包含重复的对象，并且最多只允许包含一个 null 元素；</p>
+</li>
+</ul>
+<h4 id="8-2-1-HashSet类"><a href="#8-2-1-HashSet类" class="headerlink" title="8.2.1 HashSet类"></a>8.2.1 HashSet类</h4><p>HashSet 是 Set 接口的典型实现，大多数时候使用 Set 集合时就是使用这个实现类。HashSet 是按照 <code>Hash 算法</code>来存储集合中的元素。因此具有很好的存取和查找性能。</p>
+<ul>
+<li>不能保证元素的排列顺序，顺序可能与添加顺序不同，顺序也有可能发生变化；</li>
+<li>HashSet 不是同步的，如果多个线程同时访问或修改一个 HashSet，则必须通过代码来保证其同步；</li>
+<li>集合元素值可以是 null；</li>
+</ul>
+<h3 id="8-3-Map集合"><a href="#8-3-Map集合" class="headerlink" title="8.3 Map集合"></a>8.3 Map集合</h3><p>Map 是一种<code>键-值对（key-value）集合</code>，Map 集合中的每一个元素都包含一个键（key）对象和一个值（value）对象。用于保存具有映射关系的数据；</p>
+<ul>
+<li><p>Map 集合里保存着两组值，一组值用于保存 Map 里的 key，另外一组值用于保存 Map 里的 value，key 和 value 都可以是任何引用类型的数据；</p>
+</li>
+<li><p>Map 的 key 不允许重复，value 可以重复；</p>
+</li>
+<li><p>Map 中的 key 和 value 之间存在单向一对一关系，即通过指定的 key，总能找到唯一的、确定的 value；</p>
+</li>
+</ul>
+<p>Map 接口主要有两个实现类：<code>HashMap 类</code>和 <code>TreeMap 类</code>。其中，HashMap 类按哈希算法来存取键对象，而 TreeMap 类可以对键对象进行排序；</p>
+<h1 id="三、JAVA核心"><a href="#三、JAVA核心" class="headerlink" title="三、JAVA核心"></a>三、JAVA核心</h1><h2 id="1-JAVA类和对象"><a href="#1-JAVA类和对象" class="headerlink" title="1.JAVA类和对象"></a>1.JAVA类和对象</h2><blockquote>
+<p>首先，C++中没有这种将基本数据类型设计为包装类的说法，为什么？因为C++的特性并不仅限于面向对象，所以无论是基本数据类型还是复合数据类型（数组、类类型、结构）有各自的特点和作用；</p>
+<p>但是，JAVA不一样，它规定了“一切皆为对象”，它是完全面向对象的语言，也就是说无论是基本数据类型还是其他的类型，所有的操作都要求用对象的形式进行描述（比如.运算符访问属性），然而基本数据类型本身不符合这个规定，所以就出现了包装类这个说法（将在后面简单介绍这一性质，这个性质算不上JAVA的重点）；</p>
+</blockquote>
+<ul>
+<li>类：构造对象的模板或蓝图；</li>
+<li>对象：通过类构造（也称为创建）的实例；</li>
+<li>实例域：类中的数据称为实例域，每个特定的实例对象都有一组特定的实例域值，这些值的集合就是对象的<code>状态</code>；</li>
+<li>方法：类中操纵数据的过程；<ul>
+<li>对实例域做出修改的方法称为更改器方法；</li>
+<li>仅访问实例域而不进行修改的方法称为访问器方法；</li>
+</ul>
+</li>
+<li>封装：绝对不能让类中的方法直接地访问其他类的实例域（实例域设置为Private），程序只能通过对象的方法与对象数据进行交互进而改变对象的状态，<code>JAVA封装的基本单位是类</code>；</li>
+</ul>
+<p>类之间的关系有：</p>
+<ul>
+<li>依赖(uses-a)：一个类的对象操作另一个类的对象，应当减少依赖类的存在（让类之间的耦合程度最小）；</li>
+<li>聚合(has-a)：一个类的对象包含另一个类的对象；</li>
+<li>继承(is-a)：子类继承父类的成员（方法和域）（C++支持多继承，但是多继承往往会带来很多冲突，所以JAVA只支持单继承）；</li>
+</ul>
+<h3 id="1-1-对象和对象变量"><a href="#1-1-对象和对象变量" class="headerlink" title="1.1 对象和对象变量"></a>1.1 对象和对象变量</h3><p>JAVA中使用构造器来构造一个对象，我们假设使用JAVA中的Date类</p>
+<ul>
+<li>构造一个Date类的对象</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>();<span class="hljs-comment">//构造器的名字和类名相同，在构造器前面加上new操作符</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>构造一个Date类的对象变量</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">Date deadline;<br></code></pre></td></tr></table></figure>
+
+<p>一个对象变量并没有实际包含一个对象（所以在没有初始化对象变量的时候不能对对象变量使用成员运算符等），对象变量仅仅引用一个对象；</p>
+<blockquote>
+<p>可以将JAVA的对象变量看作是C++的对象指针</p>
+</blockquote>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs arcade"><span class="hljs-built_in">Date</span> birthday;<span class="hljs-comment">//JAVA</span><br><span class="hljs-built_in">Date</span> * birthday;<span class="hljs-comment">//C++</span><br></code></pre></td></tr></table></figure>
+
+<p>除了显式创建对象以外还可以隐式创建对象，无论釆用哪种方式创建对象，Java 虚拟机在创建一个对象时都包含以下步骤：</p>
+<ul>
+<li>给对象分配内存。</li>
+<li>将对象的实例变量自动初始化为其变量类型的默认值。</li>
+<li>初始化对象，给实例变量赋予正确的初始值。</li>
+</ul>
+<h3 id="1-2-用户自定义类"><a href="#1-2-用户自定义类" class="headerlink" title="1.2 用户自定义类"></a>1.2 用户自定义类</h3><p>要创建一个完整的程序，应该将若干类组合在一起，其中只有一个类有main方法；</p>
+<ul>
+<li><p>假设某个程序包含两个类EmployeeTest和Employee，其中EmployeeTest类带有public修饰符且包含了main方法，则该程序的源文件名应该是EmployeeTest.java，当编译器编译这段代码的时候将在目录下创建两个文件，EmployeeTest.class和Employee.class，要运行这段程序需要将程序中包含main方法的类名提供给字节码解释器javac；</p>
+</li>
+<li><p>假如习惯将每一个类存在一个单独的源文件中，如EmployeeTest在EmployeeTest.java，Employee在Employee.java，则有两种编译程序的方法使用通用符占位或直接只编译公有类文件；</p>
+</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">java Employee*.java <br></code></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">java EmployeeTest.java<br></code></pre></td></tr></table></figure>
+
+<h4 id="1-2-1-定义类"><a href="#1-2-1-定义类" class="headerlink" title="1.2.1 定义类"></a>1.2.1 定义类</h4><p>在 Java 中定义一个类，需要使用 class 关键字、一个自定义的类名和一对表示程序体的大括号</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java">[<span class="hljs-keyword">public</span>][<span class="hljs-keyword">abstract</span>|<span class="hljs-keyword">final</span>]class&lt;class_name&gt;[extends&lt;class_name&gt;][implements&lt;interface_name&gt;] &#123;<br>...<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>中括号“[]”中的部分表示可以省略，竖线“|”表示“或关系”，“|”两边的关键字不能同时出现</p>
+</blockquote>
+<ul>
+<li><code>public</code>：表示“共有”的意思。如果使用 public 修饰，则可以被其他类和程序访问。每个 Java 程序的主类都必须是 public 类，作为公共工具供其他类和程序使用的类应定义为 public 类。</li>
+<li><code>abstract</code>：如果类被 abstract 修饰，则该类为抽象类，抽象类不能被实例化，但抽象类中可以有抽象方法（使用 abstract 修饰的方法）和具体方法（没有使用 abstract 修饰的方法）。继承该抽象类的所有子类都必须实现该抽象类中的所有抽象方法（除非子类也是抽象类）。</li>
+<li><code>final</code>：如果类被 final 修饰，则不允许被继承。</li>
+<li><code>class</code>：声明类的关键字。</li>
+<li><code>class_name</code>：类的名称。</li>
+<li><code>extends</code>：表示继承其他类。</li>
+<li><code>implements</code>：表示实现某些接口。</li>
+</ul>
+<h4 id="1-2-2-构造器"><a href="#1-2-2-构造器" class="headerlink" title="1.2.2 构造器"></a>1.2.2 构造器</h4><p>这里所说的构造器本质上就是C++中的构造函数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-title function_">Employee</span><span class="hljs-params">(String n, <span class="hljs-type">double</span> s, <span class="hljs-type">int</span> year, <span class="hljs-type">int</span> month, <span class="hljs-type">int</span> day)</span><br>&#123;<br>name=n; <br>salary=s;<br><span class="hljs-type">GregorianCalendar</span> <span class="hljs-variable">calendar</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Gregoriancalendar</span>(year, month -<span class="hljs-number">1</span>, day); <br>hireDay =calendar. getTime();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>构造器与类同名，构造器的作用是将实例域初始化为所希望的状态；</p>
+<p>构造器与其他方法不同的地方在于构造器总是随着new运算符的执行被调用，不能对一个已经存在的对象调用其构造器来重置实例域；</p>
+<p>JAVA因为有自动回收机制所以不支持析构器（为什么这里又说有析构方法呢？<a target="_blank" rel="noopener" href="http://c.biancheng.net/view/980.html">Java析构方法 (biancheng.net)</a>解答参考<a target="_blank" rel="noopener" href="https://zhidao.baidu.com/question/507660012.html">java中怎么没有析构函数？_百度知道 (baidu.com)</a>）；</p>
+<blockquote>
+<p>仅当类没有提供任何构造器的时候系统才会自动提供一个默认构造器，此时构造对象可以不提供任何构造参数，否则要想使用这种形式只能自己额外提供一个重载构造函数；</p>
+</blockquote>
+<blockquote>
+<p>构造方法不能被 static、final、synchronized、abstract 和 native（类似于 abstract）修饰</p>
+</blockquote>
+<h4 id="1-2-3-成员变量"><a href="#1-2-3-成员变量" class="headerlink" title="1.2.3 成员变量"></a>1.2.3 成员变量</h4><p>声明成员变量格式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Test</span> &#123;<br>[<span class="hljs-keyword">public</span>|<span class="hljs-keyword">protected</span>|<span class="hljs-keyword">private</span>][<span class="hljs-keyword">static</span>][<span class="hljs-keyword">final</span>]&lt;type&gt;&lt;variable_name&gt;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>public、protected、private：用于表示成员变量的访问权限。</li>
+<li>static：表示该成员变量为类变量，也称为静态变量。</li>
+<li>final：表示将该成员变量声明为常量，其值无法更改。</li>
+<li>type：表示变量的类型。</li>
+<li>variable_name：表示变量名称。</li>
+</ul>
+<p>举例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Student</span> &#123;<br>    <span class="hljs-keyword">public</span> String name;    <span class="hljs-comment">// 姓名</span><br>    <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> <span class="hljs-variable">sex</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;    <span class="hljs-comment">// 性别：0表示女孩，1表示男孩</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> age;    <span class="hljs-comment">// 年龄</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="1-2-4-成员方法"><a href="#1-2-4-成员方法" class="headerlink" title="1.2.4 成员方法"></a>1.2.4 成员方法</h4><p>一个完整的方法通常包括方法名称、方法主体、方法参数和方法返回值类型</p>
+<p>声明成员方法的格式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Test</span> &#123;<br>    [<span class="hljs-keyword">public</span>|<span class="hljs-keyword">private</span>|<span class="hljs-keyword">protected</span>][<span class="hljs-keyword">static</span>]&lt;<span class="hljs-keyword">void</span>|return_type&gt;&lt;method_name&gt;([paramList]) &#123;<br>        <span class="hljs-comment">// 方法体</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="1-3-访问修饰符"><a href="#1-3-访问修饰符" class="headerlink" title="1.3 访问修饰符"></a>1.3 访问修饰符</h3><p>JAVA提供了多个作用域修饰符，这些修饰符有类修饰符、变量修饰符和方法修饰符，详细信息可参考<a target="_blank" rel="noopener" href="http://c.biancheng.net/view/965.html">Java访问控制修饰符详解（public、 private、protected 和 friendly） (biancheng.net)</a>；</p>
+<p>类的访问控制符只能是null或者public，方法和属性的访问控制符有 4 个，分别是 public、 private、protected 和 friendly，其中 friendly 是一种没有定义专门的访问控制符的默认情况；</p>
+<p><img src="/images/image-20220722164351363.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><p>在实现一个类的时候，公开数据是十分危险的，所以应该将所有的数据域都设置为私有private；</p>
+</li>
+<li><p>对于某些辅助方法，不应当充当共有接口的一部分（因为它们往往需要一个特定的调用次序），这样的方法最好设置为private；</p>
+</li>
+<li><p>实际应用中最好少用protected的域，protected的方法更加常见，因为JAVA的protected对所有子类和同一个包中的所有类都可见，所以安全性相较于C++会差一点；</p>
+</li>
+</ul>
+<h3 id="1-4-静态域和静态方法"><a href="#1-4-静态域和静态方法" class="headerlink" title="1.4 静态域和静态方法"></a>1.4 静态域和静态方法</h3><p>静态成员不依赖于类的特定实例，被类的所有实例共享，就是说 static 修饰的方法或者变量不需要依赖于对象来进行访问，只要这个类被加载，JAVA 虚拟机就可以根据类名找到它们</p>
+<p>调用静态成员的语法形式如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">类名.静态成员<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>static 修饰的成员变量和方法，从属于类。</li>
+<li>普通变量和方法从属于对象。</li>
+<li>静态方法不能调用非静态成员，编译会报错。</li>
+</ul>
+<h4 id="1-4-1-静态域"><a href="#1-4-1-静态域" class="headerlink" title="1.4.1 静态域"></a>1.4.1 静态域</h4><p>如果将类的实例域定义为static（每个类中只会有一个这样的域），那么这个类的每一个对象将共享这个静态域，即使没有任何一个类对象，静态域也存在（因为它属于类而不属于任何独立的对象）；</p>
+<p>实际上JAVA中的静态域一般都被称为类域；</p>
+<h4 id="1-4-2-静态常量"><a href="#1-4-2-静态常量" class="headerlink" title="1.4.2 静态常量"></a>1.4.2 静态常量</h4><p>静态变量使用较少而静态常量（不属于静态域的字符）使用较多；</p>
+<p>可以直接通过<code>类名.常量名</code>的形式获取这个常量；</p>
+<h4 id="1-4-3-静态方法"><a href="#1-4-3-静态方法" class="headerlink" title="1.4.3 静态方法"></a>1.4.3 静态方法</h4><p>使用静态方法的情况：</p>
+<ul>
+<li>该方法不需要访问对象状态，其所需参数都是通过显式参数提供；</li>
+<li>该方法只需要访问类的静态域；</li>
+</ul>
+<p>静态方法是一种不能向对象实施操作的方法，可以认为静态方法是没有this隐式参数的方法；</p>
+<p>因为静态方法不能操作对象故静态方法也就不能访问实例域，但是静态方法可以访问自身类中的静态域；</p>
+<p>同样可以通过类名来调用这个方法（当然使用对象名来调用静态方法也没有问题，但本质上静态方法的结果和对象没有任何关系，这容易造成混淆）；</p>
+<h3 id="1-5-包"><a href="#1-5-包" class="headerlink" title="1.5 包"></a>1.5 包</h3><p>JAVA使用包将类组织起来，标准的JAVA类库分布在多个包中；</p>
+<p>标准的JAVA包都有一个层次结构，JAVA包名是绝对唯一的；</p>
+<p>使用包的其中一个原因是为了确保类名的唯一性（这个包实际上非常类似于C++的名称空间），假如两个程序员都建立了Employee类，只要将这两个类放在不同的包中就不会产生冲突；</p>
+<h4 id="1-5-1-类的导入（类导出包）"><a href="#1-5-1-类的导入（类导出包）" class="headerlink" title="1.5.1 类的导入（类导出包）"></a>1.5.1 类的导入（类导出包）</h4><blockquote>
+<p>一个类可以访问所属包中的所有类以及其他包中的公有类public；</p>
+</blockquote>
+<p>访问其他包中的公有类主要有两种方法：</p>
+<ul>
+<li>在每个类名之前添加完整的包名</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">java.util.<span class="hljs-type">Date</span> <span class="hljs-variable">today</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">java</span>.util.Date()<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>使用import语句</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.*;<span class="hljs-comment">//导入java.util包中的所有类</span><br><span class="hljs-keyword">import</span> java.util.Date;<span class="hljs-comment">//导入包中一个特定的类</span><br></code></pre></td></tr></table></figure>
+
+<p>可以使用import语句导入一个特定的类或者整个包，import语句需要位于源文件的顶部、package语句后面</p>
+<h4 id="1-5-2-静态导入"><a href="#1-5-2-静态导入" class="headerlink" title="1.5.2 静态导入"></a>1.5.2 静态导入</h4><p>import语句不仅可以导入类，还可以导入静态方法和静态域，静态导入使用相对较少，主要用于以下情况：</p>
+<ul>
+<li>算术函数：对Math类使用静态导入则可以更加自然的使用算术函数；</li>
+<li>笨重的常量：如果需要使用大量带有冗长名字的常量则最好使用静态导入；</li>
+</ul>
+<h4 id="1-5-3-包导入类"><a href="#1-5-3-包导入类" class="headerlink" title="1.5.3 包导入类"></a>1.5.3 包导入类</h4><p>若需要将一个类放入包中，则必须将这个包的名字放在源文件的开头定义类的代码之前</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> java.util<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Employee</span><br>&#123;<br>    ...<br>    ...<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>如果没有在源文件中防止package语句则这个源文件的类就被放置在一个默认的包中（默认包是一个没有名字的包）；</p>
+<p>我们需要将包中的文件存放在与完整包名匹配的子目录中，com.horstman.corejava包中的所有源文件都应该被放在对应子目录下，这样编译器也会相应的将类文件放在同样的目录结构中；</p>
+<p><img src="/images/image-20220721154140901.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="1-5-4-包作用域"><a href="#1-5-4-包作用域" class="headerlink" title="1.5.4 包作用域"></a>1.5.4 包作用域</h4><p>前面介绍的访问修饰符public标记的部分可以被任意的类使用，private标记的部分只能被定义它们的类使用，如果没有指定public和private则这个部分可以被同一个包中的所有方法访问；</p>
+<h3 id="1-6-方法参数"><a href="#1-6-方法参数" class="headerlink" title="1.6 方法参数"></a>1.6 方法参数</h3><p>程序设计语言中将参数传递给方法&#x2F;函数有两种方式：</p>
+<ul>
+<li>值调用：表示方法接收的是调用者提供的值的拷贝；</li>
+<li>引用调用：表示方法接收的是调用者提供的变量地址；</li>
+</ul>
+<p>JAVA程序只能采用值调用（无论参数是值还是对象），因此JAVA的方法不能修改传递给它的任何一个参数；</p>
+<h3 id="1-7-this关键字"><a href="#1-7-this关键字" class="headerlink" title="1.7 this关键字"></a>1.7 this关键字</h3><p>this 关键字可用于任何实例方法内指向当前对象，也可指向对其调用当前方法的对象，或者在需要当前类型对象引用时使用</p>
+<h4 id="1-7-1-this-属性名"><a href="#1-7-1-this-属性名" class="headerlink" title="1.7.1 this.属性名"></a>1.7.1 this.属性名</h4><p>大部分时候，普通方法访问其他方法、成员变量时无须使用 this 前缀，但如果方法里有个局部变量和成员变量同名，但程序又需要在该方法里访问这个被覆盖的成员变量，则必须使用 this 前缀；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Teacher</span> &#123;<br>    <span class="hljs-keyword">private</span> String name;    <span class="hljs-comment">// 教师名称</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-type">double</span> salary;    <span class="hljs-comment">// 工资</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> age;    <span class="hljs-comment">// 年龄</span><br>    <span class="hljs-comment">// 创建构造方法，为上面的3个属性赋初始值</span><br>	<span class="hljs-keyword">public</span> <span class="hljs-title function_">Teacher</span><span class="hljs-params">(String name,<span class="hljs-type">double</span> salary,<span class="hljs-type">int</span> age)</span> &#123;<br>    	<span class="hljs-built_in">this</span>.name = name;    <span class="hljs-comment">// 设置教师名称</span><br>    	<span class="hljs-built_in">this</span>.salary = salary;    <span class="hljs-comment">// 设置教师工资</span><br>    	<span class="hljs-built_in">this</span>.age = age;    <span class="hljs-comment">// 设置教师年龄</span><br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>当一个类的属性（成员变量）名与访问该属性的方法参数名相同时，则需要使用 this 关键字来访问类中的属性，以区分类的属性和方法中的参数</p>
+</blockquote>
+<h4 id="1-7-2-this-方法名"><a href="#1-7-2-this-方法名" class="headerlink" title="1.7.2 this.方法名"></a>1.7.2 this.方法名</h4><p>this 关键字最大的作用就是让类中一个方法，访问该类里的另一个方法或实例变量(关于实例变量上面已经介绍过this.属性名)；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Dog</span> &#123;<br>    <span class="hljs-comment">// 定义一个jump()方法</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">jump</span><span class="hljs-params">()</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;正在执行jump方法&quot;</span>);<br>    &#125;<br>	<span class="hljs-comment">// 定义一个run()方法，run()方法需要借助jump()方法</span><br>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;<br>    	<span class="hljs-comment">// 使用this引用调用run()方法的对象</span><br>    	<span class="hljs-built_in">this</span>.jump();<br>    	System.out.println(<span class="hljs-string">&quot;正在执行run方法&quot;</span>);<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>对于 static 修饰的方法而言，可以使用类来直接调用该方法，如果在 static 修饰的方法中使用 this 关键字，则这个关键字就无法指向合适的对象。所以，static 修饰的方法中不能使用 this 引用。并且 Java 语法规定，静态成员不能直接访问非静态成员；</p>
+</blockquote>
+<h2 id="2-JAVA继承"><a href="#2-JAVA继承" class="headerlink" title="2.JAVA继承"></a>2.JAVA继承</h2><p>面向对象除了类和对象以外，另一个基本概念是继承，利用继承可以基于一个已经存在的类来构造一个新类；</p>
+<p>继承已经存在的类就是<code>复用这些类的方法和域</code>，再次基础上可以添加一些新的方法和域；</p>
+<h3 id="2-1-类的继承"><a href="#2-1-类的继承" class="headerlink" title="2.1 类的继承"></a>2.1 类的继承</h3><p>先展示一下由继承Employee类来定义Manager类的格式，extends关键字表示继承</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Manager</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Employee</span><br>&#123;<br>    <span class="hljs-comment">//添加方法和域</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>JAVA中的所有继承都是公有继承public，没有C++中的私有继承private和保护继承protected（但是是存在private和protected访问修饰符的）；</li>
+<li>已经存在的类称为<code>超类、基类或父类</code>，如上面的Employee；派生出的新类称为<code>子类、派生类或孩子类</code>；</li>
+<li>在通过<code>拓展</code>超类定义子类的时候，只需要指出子类和超类的不同之处即可，因此设计类的时候应该将通用的方法放在超类中，将具有特殊用途的方法放在子类中；</li>
+<li>子类可以通过重新定义超类中的方法来<code>覆盖</code>超类中原有方法，However，子类绝对不能删除继承的任何域或方法；</li>
+<li>当子类需要调用超类的同名方法时可以使用super关键字</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-built_in">super</span>.getSalary();<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>方法重载：同一个类中包含了两个或两个以上方法名相同的方法，但形参列表不同；</p>
+<p>方法重写：也称为覆盖，子类中如果创建了一个与父类中相同名称、相同返回值类型、相同参数列表的方法，只是方法体中的实现不同，以实现不同于父类的功能；</p>
+</blockquote>
+<h3 id="2-2-继承层次"><a href="#2-2-继承层次" class="headerlink" title="2.2 继承层次"></a>2.2 继承层次</h3><p>由一个超类派生出的所有类的集合被称为<code>继承层次</code>，在继承层次中从某个特定的类到其祖先的路径被称为<code>继承链</code>；</p>
+<p><img src="/images/image-20220721165817261.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-3-阻止继承"><a href="#2-3-阻止继承" class="headerlink" title="2.3 阻止继承"></a>2.3 阻止继承</h3><p>当需要阻止利用某个类来自定义子类，可以在定义该类的时候加上final标识符表明该类是final类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">final</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Executive</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Manager</span>&#123;<br>    <span class="hljs-comment">//阻止人们自定义Executive类的子类</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>类中的方法也可以被final修饰，这样子类就不能覆盖这个方法（final类的所有方法自动称为final方法）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Employee</span><br>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> String <span class="hljs-title function_">getName</span><span class="hljs-params">()</span><br>    &#123;<br>        <span class="hljs-keyword">return</span> name;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>当然域也可以被声明为final，final域在构造对象之后就不允许改变它们的值了；</p>
+<p>将类或方法声明为final的原因是为了确保它们不会在子类中改变语义</p>
+<h3 id="2-4-抽象类"><a href="#2-4-抽象类" class="headerlink" title="2.4 抽象类"></a>2.4 抽象类</h3><p>从继承结构来看，位于上层的类更加通用、抽象，而位于上层的类具备的一些通用方法，在本层可能暂时无法实现（因为可能需要的某些参数暂时还没有），此时可以使用abstract关键字，这样就完全无需在上层实现该方法（C++中利用纯虚函数实现抽象类）；</p>
+<p>包含一个或多个抽象方法的类本身必须被声明为抽象的，除了抽象方法外，抽象类还可以包含具体的数据和方法；</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs py">abstract <span class="hljs-keyword">class</span> <span class="hljs-title class_">Person</span><br>&#123;<br>    public abstract String getDescription();<br>    public String getName()<br>    &#123;<br>        <span class="hljs-keyword">return</span> name;<br>    &#125;<br>    private String name;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>抽象方法充当着占位的角色，它们的具体实现在子类中，扩展抽象类可以有两种选择：</p>
+<ul>
+<li>一种是在子类中定义部分抽象方法或不定义抽象方法，这样就必须将子类也标记为抽象类；</li>
+<li>另一种是定义全部的抽象方法，这样一来，子类就不是抽象的了；</li>
+</ul>
+<p>实际上抽象类就算不包含任何的抽象方法也可以被标记为抽象类，抽象类不能被<code>实例化</code>也就是不能创建这个类的对象；</p>
+<h3 id="2-5-Object超类"><a href="#2-5-Object超类" class="headerlink" title="2.5 Object超类"></a>2.5 Object超类</h3><p>尽管Object类是所有JAVA类的祖先（C++中没有根类），但是在类声明时没必要这样写</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Employee</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Object</span><br></code></pre></td></tr></table></figure>
+
+<p>在实际使用中，如果没有明确指出超类，则Object类默认成为该类的超类；</p>
+<ul>
+<li>可以使用Object类的对象变量引用任何类型的对象</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">Object</span> <span class="hljs-variable">obj</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Employee</span>();<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>JAVA中除了基本数据类型不是对象（数值、字符、布尔值），其他类型都拓展于Object类（包括数组类型）</li>
+</ul>
+<p>Object类中有一些重要的方法，比如equals方法检测两个对象是否相等、toString方法返回表示对象值的字符串，这些Object提供的服务需要掌握：</p>
+<p><img src="/images/image-20220722103045043.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="3-包装类"><a href="#3-包装类" class="headerlink" title="3.包装类"></a>3.包装类</h2><p>参考自：<a target="_blank" rel="noopener" href="http://c.biancheng.net/java/60/">Java内置的包装类 (biancheng.net)</a></p>
+<p>有时，需要将int这样的基本类型转换为对象，所有的基本类型都有一个与之对应的类。例如，Integer类对应基本类型int。通常，这些类称为<code>包装器（wrapper）、包装类、包装器类</code>。这些对象包装器类拥有很鲜明的名字：Integer，Long，Float，Double，Short，Byte，Character，Void和Boolean（前6个类派生于公共的超类Number）。</p>
+<ul>
+<li>对象包装器类是不可变的，即一旦构造了包装器，就不允许更改包装在其中的值；</li>
+<li>对象包装器类还是final，因此不能定义它们的子类；</li>
+</ul>
+<h3 id="3-1-装箱和拆箱"><a href="#3-1-装箱和拆箱" class="headerlink" title="3.1 装箱和拆箱"></a>3.1 装箱和拆箱</h3><ul>
+<li>基本数据类型转换为包装类的过程称为装箱（自动打包）；</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs py">Integer n = <span class="hljs-number">3</span>;<br><span class="hljs-comment">#编译器自动插入一条拆对象包指令</span><br>n++;<span class="hljs-comment">#接着进行int自增计算</span><br><span class="hljs-comment">#最后将结果打包进对象包Integer内</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>包装类变为基本数据类型的过程称为拆箱（自动拆包）；</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment">#将一个Integer对象赋值给一个int值时，会自动拆包</span><br><span class="hljs-built_in">int</span> n = <span class="hljs-built_in">list</span>.get(i);<br><span class="hljs-comment">#上述语句被编译器自动翻译为</span><br><span class="hljs-built_in">int</span> n = <span class="hljs-built_in">list</span>.get(i).intValue();<br></code></pre></td></tr></table></figure>
+
+<p><code>打包和拆包是编译器认可的，而不是虚拟机；编译器在进行打包和拆包的时候会插入必要的方法调用，接着生成类的字节码</code></p>
+<p>要实现手动装箱和拆箱需要借助包装类的构造方法装箱，通过包装类的intValue方法拆箱</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-built_in">int</span> m = <span class="hljs-number">500</span>;<br>Integer obj = new Integer(m);  // 手动装箱<br><span class="hljs-built_in">int</span> n = obj.intValue();  // 手动拆箱<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-2-Integer类"><a href="#3-2-Integer类" class="headerlink" title="3.2 Integer类"></a>3.2 Integer类</h3><p>Integer 类在对象中包装了一个基本类型 int 的值，该类提供了多个方法，能在 int 类型和 String 类型之间互相转换，还提供了处理 int 类型时非常有用的其他一些常量和方法；</p>
+<p>Integer 类中的构造方法有以下两个（手动装箱）：</p>
+<ul>
+<li>Integer(int value)：构造一个新分配的 Integer 对象，它表示指定的 int 值；</li>
+<li>Integer(String s)：构造一个新分配的 Integer 对象，它表示 String 参数所指示的 int 值；</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs py">Integer integer1 = new Integer(<span class="hljs-number">100</span>);    // 以 <span class="hljs-built_in">int</span> 型变量作为参数创建 Integer 对象<br>Integer integer2 = new Integer(<span class="hljs-string">&quot;100&quot;</span>);    // 以 String 型变量作为参数创建 Integer 对象<br></code></pre></td></tr></table></figure>
+
+<p>可以借助Integer中的方法将字符串（应当只包含数值类型的字符）和int类型的数值相互转换</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs py">String <span class="hljs-built_in">str</span> = <span class="hljs-string">&quot;456&quot;</span>;<br><span class="hljs-built_in">int</span> num = Integer.parseInt(<span class="hljs-built_in">str</span>);    // 将字符串转换为<span class="hljs-built_in">int</span>类型的数值<br><span class="hljs-built_in">int</span> i = <span class="hljs-number">789</span>;<br>String s = Integer.toString(i);    // 将<span class="hljs-built_in">int</span>类型的数值转换为字符串<br></code></pre></td></tr></table></figure>
+
+<p>Integer类包含以下四个<code>常量</code></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-built_in">int</span> max_value = Integer.MAX_VALUE;    // 获取 <span class="hljs-built_in">int</span> 类型可取的最大值<br><span class="hljs-built_in">int</span> min_value = Integer.MIN_VALUE;    // 获取 <span class="hljs-built_in">int</span> 类型可取的最小值<br><span class="hljs-built_in">int</span> size = Integer.SIZE;    // 获取 <span class="hljs-built_in">int</span> 类型的二进制位<br>Class c = Integer.TYPE;    // 获取基本类型 <span class="hljs-built_in">int</span> 的 Class 实例<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-3-Float类"><a href="#3-3-Float类" class="headerlink" title="3.3 Float类"></a>3.3 Float类</h3><p>Float 类在对象中包装了一个基本类型 float 的值，该类提供了多个方法，能在 float 类型与 String 类型之间互相转换，同时还提供了处理 float 类型时比较常用的常量和方法；</p>
+<p>Float 类中的构造方法有以下 3 个。</p>
+<ul>
+<li>Float(double value)：构造一个新分配的 Float 对象，它表示转换为 float 类型的参数；</li>
+<li>Float(float value)：构造一个新分配的 Float 对象，它表示基本的 float 参数；</li>
+<li>Float(String s)：构造一个新分配的 Float 对象，它表示 String 参数所指示的 float 值；</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs py">Float float1 = new Float(<span class="hljs-number">3.14145</span>);    // 以 double 类型的变量作为参数创建 Float 对象<br>Float float2 = new Float(<span class="hljs-number">6.5</span>);    // 以 <span class="hljs-built_in">float</span> 类型的变量作为参数创建 Float 对象<br>Float float3 = new Float(<span class="hljs-string">&quot;3.1415&quot;</span>);    // 以 String 类型的变量作为参数创建 Float 对象<br></code></pre></td></tr></table></figure>
+
+<p>可以借助Integer中的方法将字符串（应当只包含数值类型的字符）和float类型的数值相互转换</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs py">String <span class="hljs-built_in">str</span> = <span class="hljs-string">&quot;456.7&quot;</span>;<br><span class="hljs-built_in">float</span> num = Float.parseFloat(<span class="hljs-built_in">str</span>);    // 将字符串转换为 <span class="hljs-built_in">float</span> 类型的数值<br><span class="hljs-built_in">float</span> f = <span class="hljs-number">123.4</span>f;<br>String s = Float.toString(f);    // 将 <span class="hljs-built_in">float</span> 类型的数值转换为字符串<br></code></pre></td></tr></table></figure>
+
+<p>Float类包含很多常量，具体可以查阅资料</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-built_in">float</span> max_value = Float.MAX_VALUE;    // 获取 <span class="hljs-built_in">float</span> 类型可取的最大值<br><span class="hljs-built_in">float</span> min_value = Float.MIN_VALUE;    // 获取 <span class="hljs-built_in">float</span> 类型可取的最小值<br><span class="hljs-built_in">float</span> min_normal = Float.MIN_NORMAL;    // 获取 <span class="hljs-built_in">float</span> 类型可取的最小标准值<br><span class="hljs-built_in">float</span> size = Float.SIZE;    // 获取 <span class="hljs-built_in">float</span> 类型的二进制位<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-4-Number超类"><a href="#3-4-Number超类" class="headerlink" title="3.4 Number超类"></a>3.4 Number超类</h3><p>上面说过有六个基本的包装类派生于公共的Number超类，Number同时也是一个抽象类，Number类属于java.lang包；</p>
+<p>因为抽象类不能被实例化，只能实例化它的具体的子类（Double、Float…），下面简单展示一下Number类的使用</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs py">Number num = new Double(<span class="hljs-number">12.5</span>);<span class="hljs-comment">#定义一个抽象类的对象变量，只能引用非抽象子类的对象</span><br>System.out.println(<span class="hljs-string">&quot;返回 double 类型的值：&quot;</span> + num.doubleValue());<span class="hljs-comment">#返回 double 类型的值：12.5</span><br>System.out.println(<span class="hljs-string">&quot;返回 int 类型的值：&quot;</span> + num.intValue());<span class="hljs-comment">#返回 int 类型的值：12</span><br>System.out.println(<span class="hljs-string">&quot;返回 float 类型的值：&quot;</span> + num.floatValue());<span class="hljs-comment">#返回 float 类型的值：12.5</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="4-System类"><a href="#4-System类" class="headerlink" title="4.System类"></a>4.System类</h2><p>System 类位于 java.lang 包，代表当前JAVA程序的运行平台，系统级的很多属性和控制方法都放置在该类的内部。由于该类的构造方法是 private 的，所以无法创建该类的对象，也就是无法实例化该类；</p>
+<p>System 类提供了一些类变量和类方法，允许直接通过 System 类来调用这些类变量和类方法；</p>
+<h3 id="4-1-成员变量"><a href="#4-1-成员变量" class="headerlink" title="4.1 成员变量"></a>4.1 成员变量</h3><p>System类有3个<code>静态</code>成员变量：</p>
+<ul>
+<li>printstream out：标准输出流，对应于显示器输出或者由主机环境或用户指定的另一个输出目标</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java">#编写一行输出数据的典型方式<br>System.out.println(data);<br>#println 方法是属于流类 PrintStream 的方法，而不是 System 中的方法<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>inputstream in：标准输入流，对应于键盘输入或者由主机环境或用户指定的另一个输入源</li>
+<li>printstream err：标准错误输出流：语法与 System.out 类似，不需要提供参数就可输出错误信息，也可以用来输出用户指定的其他信息，包括变量的值</li>
+</ul>
+<h3 id="4-2-成员方法"><a href="#4-2-成员方法" class="headerlink" title="4.2 成员方法"></a>4.2 成员方法</h3><p>System 类中提供了一些系统级的操作方法，常用的方法有 arraycopy()、currentTimeMillis()、exit()、gc() 和 getProperty()，具体使用方法可以查阅资料；</p>
+<h2 id="5-反射"><a href="#5-反射" class="headerlink" title="5.反射"></a>5.反射</h2><ul>
+<li><p>编译期：指把源码交给编译器编译成计算机可以执行的文件的过程（Java 中也就是把 Java 代码编成 class 文件的过程）；</p>
+</li>
+<li><p>运行期：把编译后的文件交给计算机执行，直到程序运行结束（所谓运行期就把在磁盘中的代码放到内存中执行起）；</p>
+</li>
+</ul>
+<blockquote>
+<p>JAVA反射机制是指在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意方法和属性（简单来说，反射机制指的是程序在运行时能够获取自身的信息）；</p>
+</blockquote>
+<p>Java 反射机制主要提供了以下功能，这些功能都位于<code>java.lang.reflect</code>包：</p>
+<ul>
+<li>在运行时判断任意一个对象所属的类。</li>
+<li>在运行时构造任意一个类的对象。</li>
+<li>在运行时判断任意一个类所具有的成员变量和方法。</li>
+<li>在运行时调用任意一个对象的方法。</li>
+<li>生成动态代理。</li>
+</ul>
+<p>JAVA中反射机制用的比较少，这里就不再赘述，感兴趣可以自己查阅资料；</p>
+<h1 id="四、IDEA集成开发环境"><a href="#四、IDEA集成开发环境" class="headerlink" title="四、IDEA集成开发环境"></a>四、IDEA集成开发环境</h1><p>2023&#x2F;2&#x2F;22 18:58 之前跟着尚硅谷的IDEA教程过了一遍，直观感觉就是，IDEA不管怎么说都仅仅只是一个开发工具，与其熟练的背诵它的使用方法不如在实战中进行操作，我们在<a href="https://gintoki-jpg.github.io/2022/11/08/%E9%A1%B9%E7%9B%AE_%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/">中级项目_推荐系统 - Tintoki_blog (gintoki-jpg.github.io)</a>中使用IDEA进行了一个大型项目的开发，可以参考，实操永远优于理论理解；</p>
+<hr>
+<p>教程参考：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1PW411X75p?p=1&vd_source=276d55048634a5b508b1b53a1ecd56b3">1_尚硅谷_IntelliJ IDEA的介绍和优势_哔哩哔哩_bilibili</a>；</p>
+<h2 id="1-概述"><a href="#1-概述" class="headerlink" title="1.概述"></a>1.概述</h2><p>常用的JAVA集成开发环境(IDE)有Eclipse和IDEA</p>
+<p>Eclipse应该是大多数Java程序员使用的第一个IDE。众所周知的、最流行、也最受欢迎的Java开发工具。优点很多：免费、更新快、代码智能化、ANT构建等，拥有众多插件，完全免费、有中文版、上手比较快。缺点也非常明显，安装插件麻烦、插件对版本要求比较严格。</p>
+<p>IntelliJ　IDEA被认为是目前Java开发效率最快的IDE工具。是JetBrains公司的产品，这家公司总部位于捷克共和国的首都布拉格。它整合了开发过程中实用的众多功能，智能提示错误，强大的调试工Ant，JavaEE支持CVS整合-最大程度的加快开发的速度。简单而又功能强大。与其他的一些繁冗而复杂的IDE工具有鲜明的对比。</p>
+<p>Eclipse和IDEA是竞争关系，现在大多数公司都在使用IDEA(作者学习这个的原因是项目开发需要)，同时Android Studio（用于开发 android的平台）也是google基IDEA 社区版进行的迭代，故这里对IDEA做一个简单的学习；</p>
+<p>IDEA 的主要优势(相较于 Eclipse 而言)：</p>
+<p>① 强大的整合能力。比如：Git、Maven、Spring 等</p>
+<p>② 提示功能的快速、便捷</p>
+<p>③ 提示功能的范围广</p>
+<p>④ 好用的快捷键和代码模板</p>
+<p>⑤ 精准搜索</p>
+<hr>
+<p>因为之前弄过jetbrain的学生认证所以现在是可以免费使用IDEA的，所以咱们就暂时不搞什么pojie，之后过期了再考虑其他方法；另外一点需要注意的是选择64.exe的文件启动，选择默认的exe是认为是32bit的，因为电脑只装了64的JVM所以运行不了32的exe；关于如何配置IDEA参考<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1PW411X75p?p=8&vd_source=276d55048634a5b508b1b53a1ecd56b3">8_尚硅谷_IDEA的常用设置_哔哩哔哩_bilibili</a>；</p>
+<h2 id="2-IDEA-项目"><a href="#2-IDEA-项目" class="headerlink" title="2.IDEA 项目"></a>2.IDEA 项目</h2><p>关于如何创建一个简单的IDEA项目并运行参考<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1PW411X75p?p=6&vd_source=276d55048634a5b508b1b53a1ecd56b3">6_尚硅谷_启动IDEA并执行HelloWorld_哔哩哔哩_bilibili</a>，需要注意的是IntelliJ IDEA 没有类似 Eclipse 的工作空间的概念（Workspaces），最大单元就是Project，这里可以把 Project 理解为 Eclipse 中的 Workspace；</p>
+<p>项目创建成功后的工程界面如下（不同版本的IDEA可能略有不同但都大同小异）</p>
+<p><img src="/images/image-20221112185016499.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>工程下的 src 类似于 Eclipse 下的 src 目录，用于存放代码；</li>
+<li>工程下的.idea 和 project01.iml 文件都是 IDEA 工程特有的，类似于 Eclipse 工程下的.settings、.classpath、.project 等；</li>
+</ul>
+<h2 id="3-IDEA-Module"><a href="#3-IDEA-Module" class="headerlink" title="3.IDEA Module"></a>3.IDEA Module</h2><p>在 Eclipse 中我们有 Workspace（工作空间）和 Project（工程）的概念，在 IDEA 中只有 Project（工程）和 Module（模块）的概念。这里的对应关系为</p>
+<p><img src="/images/image-20221112184510095.png" srcset="/img/loading.gif" lazyload></p>
+<p>从 Eclipse 转过来的人总是下意识地要在同一个窗口管理 n 个项目，这在IntelliJ IDEA 是无法做到的；IntelliJ IDEA 提供的解决方案是打开多个项目实例，即打开多个项目窗口(一个 Project 打开一个 Window 窗口)；</p>
+<p>在 IntelliJ IDEA 中 Project 是最顶级的级别，次级别是 Module，一个 Project可以有多个 Module，目前主流的大型项目都是分布式部署的，结构都是类似这种多 Module 结构</p>
+<p><img src="/images/image-20221112184743117.png" srcset="/img/loading.gif" lazyload></p>
+<p>这类项目一般是这样划分的，比如：core Module、web Module、plugin Module、solr Module 等等，模块之间彼此可以相互依赖。通过这些 Module 的命名也可以看出，他们之间都是处于同一个项目业务下的模块，彼此之间是有不可分割的业务关系；</p>
+<p>相比较于多 Module 项目，小项目就无需搞得这么复杂，只有一个 Module 的结构 IntelliJ IDEA 也是支持的，并且 IntelliJ IDEA 创建项目的时候，默认就是单 Module 结构；</p>
+<h2 id="4-随笔"><a href="#4-随笔" class="headerlink" title="4.随笔"></a>4.随笔</h2><p>想要快速掌握入门级别的IDEA操作可以直接参考IDEA内置的入门导览</p>
+<p><img src="/images/image-20230223101005747.png" srcset="/img/loading.gif" lazyload></p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%87%AA%E5%AD%A6%E8%AF%BE%E7%A8%8B/" class="category-chain-item">自学课程</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/">#后端开发</a>
+      
+        <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">#编程语言</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>JAVA</div>
+      <div>https://gintoki-jpg.github.io/2022/07/19/后端_JAVA/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>杨再俨</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年7月19日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/07/27/%E9%A1%B9%E7%9B%AE_JSON%E5%BA%93/" title="初级项目_JSON库">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">初级项目_JSON库</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/07/15/%E9%A1%B9%E7%9B%AE_DNS%E6%9C%8D%E5%8A%A1%E5%99%A8/" title="初级项目_本地DNS服务器">
+                        <span class="hidden-mobile">初级项目_本地DNS服务器</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+</div>
+
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

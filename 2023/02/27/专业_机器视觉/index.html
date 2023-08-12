@@ -1,0 +1,1900 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/logo.png">
+  <link rel="icon" href="/img/bg/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="杨再俨">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="机器视觉主要用计算机来模拟人的视觉功能，从客观事物的图像中提取信息，进行处理并加以理解，最终用于实际检测、测量和控制。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器视觉">
+<meta property="og:url" content="https://gintoki-jpg.github.io/2023/02/27/%E4%B8%93%E4%B8%9A_%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/index.html">
+<meta property="og:site_name" content="Tintoki_blog">
+<meta property="og:description" content="机器视觉主要用计算机来模拟人的视觉功能，从客观事物的图像中提取信息，进行处理并加以理解，最终用于实际检测、测量和控制。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/AI.jpg">
+<meta property="article:published_time" content="2023-02-27T01:23:00.000Z">
+<meta property="article:modified_time" content="2023-07-04T12:14:32.956Z">
+<meta property="article:author" content="YangZaiyan">
+<meta property="article:tag" content="机器学习">
+<meta property="article:tag" content="机器视觉技术">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gintoki-jpg.github.io/img/bg/AI.jpg">
+  
+  
+  
+  <title>机器视觉 - Tintoki_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"gintoki-jpg.github.io","root":"/","version":"1.9.1","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tintoki_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/bg1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">机器视觉</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-02-27 09:23" pubdate>
+          2023年2月27日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          34k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          283 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">机器视觉</h1>
+            
+            <div class="markdown-body">
+              
+              <p>参考视频：</p>
+<ul>
+<li>机器视觉概念：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1nz4y197Qv/?vd_source=276d55048634a5b508b1b53a1ecd56b3">计算机视觉（本科） 北京邮电大学 鲁鹏 清晰完整合集_哔哩哔哩_bilibili</a>（本校老师，强烈推荐！！！）</li>
+<li>机器视觉实操（初级）<a target="_blank" rel="noopener" href="https://www.icourse163.org/learn/HDU-1461554161?tid=1468619460#/learn/content">机器视觉技术与应用_中国大学MOOC(慕课) (icourse163.org)</a></li>
+<li>机器视觉实操（进阶）：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV13L411j7YA/?spm_id_from=333.337.search-card.all.click&vd_source=276d55048634a5b508b1b53a1ecd56b3">强推！从零入门到超神 机器视觉 全套课程；机器视觉算法 | opencv | adaboost算法 | 人工智能 | aiot | 线性回归算法_哔哩哔哩_bilibili</a></li>
+</ul>
+<p>参考博客：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45894702/category_12181500.html">(8条消息) 计算机视觉基础_帅小帅家的小吴昊的博客-CSDN博客</a>；</li>
+<li>[<a target="_blank" rel="noopener" href="https://www.cnblogs.com/CCCat/p/14474878.html">计算机视觉（本科） 北京邮电大学 鲁鹏]笔记 - CheapCopyCat - 博客园 (cnblogs.com)</a>；</li>
+</ul>
+<hr>
+<p>2023&#x2F;3&#x2F;2 17:00 北京邮电大学的计算机视觉课程讲的非常好，看视频+适当的做笔记即可，教材暂时没有推荐（大部分教材都太老了，而且知识点很冗余），把视频中的知识点基本理解了就行；</p>
+<p>2023&#x2F;3&#x2F;3 10:43 这门课程就不要花时间去找对应教材了，应该是找不到的，只需要看视频然后在网上找相应的博客总结即可，网上大多数博客总结的都零零散散的，建议学到哪里整理到哪里 – 实在找不到详细的整理资料就自己整理也不是不行（类似上学期操作系统）；</p>
+<p>2023&#x2F;4&#x2F;20 21:58 从鲁鹏老师的机器视觉技术-recongnition章节开始其实就已经涉及到我们之前学习的一些交叉概念了，因为时间原因所以不再继续深入学习下去，机器视觉技术的学习告一段落；</p>
+<p>2023&#x2F;4&#x2F;28 23:29 因为作业的原因我又回来了…在脑子比较清醒的时候看这后面的内容还是能看懂一部分的（前段时间看不懂一方面是因为没有笔记做参考比较慌，另一方面是因为老师在这后面难度比较大的部分讲的确实不是很好），所以可以听一部分学一部分，主要还是拓宽知识面构建知识框架；</p>
+<hr>
+<h2 id="1-卷积"><a href="#1-卷积" class="headerlink" title="1.卷积"></a>1.卷积</h2><blockquote>
+<p>PS：下面的内容中我们可能会将滤波器、卷积核、模板等当作相同的概念，不必过于计较；</p>
+</blockquote>
+<h3 id="1-1-卷积核"><a href="#1-1-卷积核" class="headerlink" title="1.1 卷积核"></a>1.1 卷积核</h3><p>图像噪声点简单来说就是该点的像素值与该点周围的像素值差异过大，去除噪声点最直接的想法就是对噪声点和周围点进行加权平均，这就引出了卷积核的概念</p>
+<blockquote>
+<p>卷积核：存储权值的模板</p>
+</blockquote>
+<p>卷积核也称为滤波核，当我们使用卷积核对图像进行加权平均时我们称这样的卷积核为平均核</p>
+<p><img src="/images/image-20230304094457444.png" srcset="/img/loading.gif" lazyload alt="3*3大小的平均核"></p>
+<p>使用卷积核对图像进行卷积，在卷积之前一定要对其进行翻转（不翻转会导致相关），定义f是图像，g是卷积核，对图像进行卷积操作的表达式为</p>
+<p><img src="/images/image-20230304094743049.png" srcset="/img/loading.gif" lazyload></p>
+<p>式子中，(m,n)表示正在进行卷积的图像f上的点坐标，(k,l)表示卷积核g上的相对坐标</p>
+<p><img src="/images/image-20230304095032190.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>PS：要保证卷积图像和原图一样大，则需要提前对原图进行填充，常用的方法是周围补0、边缘填充、镜像填充…无论如何，填充的结果都是为了保证输入和输出大小固定</p>
+</blockquote>
+<h3 id="1-2-卷积的特性"><a href="#1-2-卷积的特性" class="headerlink" title="1.2 卷积的特性"></a>1.2 卷积的特性</h3><p>我们现在可以将卷积操作表示为数学公式filter(f)，卷积操作主要有以下特性</p>
+<p><img src="/images/image-20230304095346897.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-3-卷积的功能"><a href="#1-3-卷积的功能" class="headerlink" title="1.3 卷积的功能"></a>1.3 卷积的功能</h3><p>前面我们通过平均核对图像进行平滑降噪引入了卷积核的概念，事实上不同的卷积核作用也不同</p>
+<p><img src="/images/image-20230304095719013.png" srcset="/img/loading.gif" lazyload alt="原图核"><img src="/images/image-20230304095735771.png" srcset="/img/loading.gif" lazyload alt="左移核"><img src="/images/image-20230304095754127.png" srcset="/img/loading.gif" lazyload alt="平滑核"><img src="/images/image-20230304095821337.png" srcset="/img/loading.gif" lazyload alt="锐化核"></p>
+<h4 id="1-3-1-高斯平滑核"><a href="#1-3-1-高斯平滑核" class="headerlink" title="1.3.1 高斯平滑核"></a>1.3.1 高斯平滑核</h4><p>使用平滑核进行图像处理会出现振铃效果 – 因为模板的每个点的值一样，卷积过程中引入了一些不属于原图的信息</p>
+<p><img src="/images/image-20230304100121611.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们希望模板的效果是这样，中心的点权值大，边缘的权值小（边缘对中心的影响太大肯定是不好的）</p>
+<p><img src="/images/image-20230304100204523.png" srcset="/img/loading.gif" lazyload></p>
+<p>如何得到上述模板呢？这里引入二维高斯函数，我们称由高斯函数产生的模板为高斯核（其中(x,y)是模板的位置坐标，方差和模板大小由人为规定）</p>
+<p><img src="/images/image-20230304100422403.png" srcset="/img/loading.gif" lazyload alt="二维高斯函数"></p>
+<p><img src="/images/image-20230304100558725.png" srcset="/img/loading.gif" lazyload alt="高斯核"></p>
+<blockquote>
+<p>PS：我们希望模板所有权重值求和为1，如果不是1会导致最终原图的颜色值被衰减 - 在使用高斯函数计算之后进行一个归一化处理可以保证最终的求和为1</p>
+</blockquote>
+<p>因为方差和模板大小都由人为规定，所以其大小也对平滑操作有不同的影响：</p>
+<ul>
+<li>模板大小不变改变高斯核的方差 – 方差越小表示数据越集中，表示滤波后中心（即自身）占的比重大，即平滑的效果没那么强</li>
+<li>同理，固定方差调整模板的大小 – 因为涉及归一化处理，模板越小则归一化得到的中心值越大，导致滤波后被平滑的效果没那么强</li>
+</ul>
+<p>总结：</p>
+<ul>
+<li>无论是方差还是模板大小，越大导致图像越模糊，越小导致图像越清晰</li>
+<li>关于窗宽和方差的经验 – 若给出方差的值，则窗宽设置为1+2*3方差，这样的窗宽好处是高斯分布几乎包含了所有值（高斯分部图像的特征），归一化的影响微乎其微</li>
+</ul>
+<p>高斯核本身具备一些特性：</p>
+<ul>
+<li>高斯核可以去除高频信号，保留低频信号</li>
+<li>高斯卷积自身是另一个高斯 – 即连续使用两次方差为1的高斯核等同于使用一次方差为根号2的效果（勾股弦定理计算得到）</li>
+<li>高斯核还能够分解为x方向和y方向的高斯核，连续使用两次这样的高斯核与使用一次高斯核的效果完全相同</li>
+</ul>
+<p>第二点和第三点特性都表达了这样一个事情 – 一个大的高斯核可以拆分为两个小的高斯核，这意味着拆分后会大大减少图像运算的时间复杂度，这也是对图像进行卷积计算中常用的一种优化方式</p>
+<h4 id="1-3-2-锐化核"><a href="#1-3-2-锐化核" class="headerlink" title="1.3.2 锐化核"></a>1.3.2 锐化核</h4><p>简单理解锐化核：</p>
+<ul>
+<li>原图-平滑图&#x3D;边缘图</li>
+<li>原图+边缘图&#x3D;锐化图</li>
+<li>故 2脉冲核-平滑核&#x3D;锐化核（分配律）</li>
+</ul>
+<p><img src="/images/image-20230304102604511.png" srcset="/img/loading.gif" lazyload alt="锐化核的推导过程"></p>
+<p>其中α是锐化因子，表示对图像进行锐化处理的程度，e是脉冲模板，g是平滑模板</p>
+<h3 id="1-4-噪声处理"><a href="#1-4-噪声处理" class="headerlink" title="1.4 噪声处理"></a>1.4 噪声处理</h3><p>前面介绍了可以使用卷积核来去除噪声，下面详细介绍一下对不同的噪声具体如何选择卷积核进行处理；</p>
+<p>噪声一般分为三种，椒盐噪声（黑白），脉冲噪声（全白点），高斯噪声（每个点叠加符合独立正态分布的噪声变量产生）；</p>
+<p><img src="/images/image-20230304101610881.png" srcset="/img/loading.gif" lazyload alt="不同种类的噪声"></p>
+<p>高斯核主要用于去除高斯噪声（对于方差越小的高斯噪声去噪效果越好）</p>
+<p><img src="/images/image-20230304101915781.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>当噪声方差较小的时候使用方差较小的高斯核就可以滤波，反之就需要方差较大的模板才行</li>
+<li>高斯滤波器的问题：去除噪声的同时边缘也被平滑了，且高斯模板的方差越大平滑效果越明显</li>
+</ul>
+<p>对于椒盐噪声来说使用高斯模板的效果并不好，这里需要引入新的模板 – 中值滤波器</p>
+<p>中值滤波器的核没有任何权值 – 过滤方式不是加权求和，而是选取模板中的中值作为最后的值</p>
+<p><img src="/images/image-20230304102131279.png" srcset="/img/loading.gif" lazyload></p>
+<p>为什么使用中值滤波器去除椒盐噪声能够取得较好的效果呢？ – 因为使用中值滤波器不会给图像产生任何新的像素值，而如果使用平均值会导致图像出现从未有过的新的像素点</p>
+<p><img src="/images/image-20230304102301775.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>实际上，中值滤波对椒盐噪声和白噪声都非常有效</li>
+<li>中值滤波的模板大小过大会也导致图像模糊（类似磨皮过头）</li>
+</ul>
+<h2 id="2-边缘"><a href="#2-边缘" class="headerlink" title="2.边缘"></a>2.边缘</h2><p>参考文章：<a target="_blank" rel="noopener" href="https://blog.csdn.net/moonoa/article/details/107239832?spm=1001.2014.3001.5502">(8条消息) 边缘检测(Edge Detection)_Wang Yuexin的博客-CSDN博客</a>；</p>
+<hr>
+<blockquote>
+<p>边缘的作用：图像的大部分语义信息和形状信息都可以编码在边缘上，通过边缘图可以了解图像的信息，即使用边可理解表达图像</p>
+</blockquote>
+<p>不同的边的类型对不同问题的理解影响不同</p>
+<p><img src="/images/image-20230304102831695.png" srcset="/img/loading.gif" lazyload alt="边的分类"></p>
+<h3 id="2-1-边缘提取"><a href="#2-1-边缘提取" class="headerlink" title="2.1 边缘提取"></a>2.1 边缘提取</h3><blockquote>
+<p>边缘的特征：边缘是图像强度函数中快速变化的地方</p>
+</blockquote>
+<p>无论是什么类型的边，都需要先提取边缘；</p>
+<p>边缘和图像其他部分的区别主要在于边缘部分的信号是突变的，那么数学中应该如何找信号突变？ – 这转化为导数操作，即对信号求导，找到导数的极值点</p>
+<p><img src="/images/image-20230304103007225.png" srcset="/img/loading.gif" lazyload></p>
+<p>在二维空间中的偏导数计算公式如下</p>
+<p><img src="/images/image-20230304103101964.png" srcset="/img/loading.gif" lazyload alt="导数的数学公式"></p>
+<p>显然上述公式不容易计算，计算机视觉中对上述式子进行改进得到近似导数</p>
+<p><img src="/images/image-20230304103142623.png" srcset="/img/loading.gif" lazyload></p>
+<p>针对上述公式，边缘提取的任务恰好可以用卷积来计算 – 对x方向的偏导数和y方向的偏导数分别用x方向的卷积核((-1,1)表示自身为负，右边为正)和y方向的卷积核表示</p>
+<p><img src="/images/image-20230304103305714.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-2-有限差分滤波器"><a href="#2-2-有限差分滤波器" class="headerlink" title="2.2 有限差分滤波器"></a>2.2 有限差分滤波器</h3><p>事实上除了最简单的x方向和y方向的卷积核，还有如下不同算子定义的模板</p>
+<h4 id="2-2-1-Prewitt算子"><a href="#2-2-1-Prewitt算子" class="headerlink" title="2.2.1 Prewitt算子"></a>2.2.1 Prewitt算子</h4><p><img src="/images/image-20230310224854849.png" srcset="/img/loading.gif" lazyload></p>
+<p>对于单个区域的噪声点不太敏感，中间为0表示用左边和右边的差异来衡量本身是否是梯度，同时利用多个像素相减可以对单个噪声点的影响进行平均；</p>
+<h4 id="2-2-2-Sobel算子"><a href="#2-2-2-Sobel算子" class="headerlink" title="2.2.2 Sobel算子"></a>2.2.2 Sobel算子</h4><p><img src="/images/image-20230310225011122.png" srcset="/img/loading.gif" lazyload></p>
+<p>这个核是可分离的，先高斯平滑再边缘提取，该算子对噪声的敏感程度更低；</p>
+<p>Sobel 算子在 Prewitt 算子的基础上增加了权重的概念，认为相邻点的距离远近对当前像素点的影响是不同的，距离越近的像素点对应当前像素的影响越大，从而实现图像锐化并突出边缘轮廓；</p>
+<h4 id="2-2-3-Roberts算子"><a href="#2-2-3-Roberts算子" class="headerlink" title="2.2.3 Roberts算子"></a>2.2.3 Roberts算子</h4><p><img src="/images/image-20230310225041751.png" srcset="/img/loading.gif" lazyload></p>
+<p>检测模板检测的信号和模板垂直，Mx检测135°的信号，My检测45°的信号；</p>
+<h3 id="2-3-图像梯度"><a href="#2-3-图像梯度" class="headerlink" title="2.3 图像梯度"></a>2.3 图像梯度</h3><p>在高数中我们知道梯度表示方向导数最大的向量，在图像中梯度指向强度增长最快（信号变化最大）的方向</p>
+<p><img src="/images/image-20230304103637279.png" srcset="/img/loading.gif" lazyload></p>
+<p>梯度的方向与边缘垂直，梯度的模值代表了是边缘的可能性大小</p>
+<p><img src="/images/image-20230304103542709.png" srcset="/img/loading.gif" lazyload alt="梯度的方向"></p>
+<p><img src="/images/image-20230304103558036.png" srcset="/img/loading.gif" lazyload alt="梯度的模值"></p>
+<h3 id="2-4-高斯偏导核"><a href="#2-4-高斯偏导核" class="headerlink" title="2.4 高斯偏导核"></a>2.4 高斯偏导核</h3><p><img src="/images/image-20230310225648851.png" srcset="/img/loading.gif" lazyload></p>
+<p>如果对上述图像直接用边缘提取会得到下面的图像（因为每个点周围的信号浮动都较大），我们无法得到边缘的信息</p>
+<p><img src="/images/image-20230310225703475.png" srcset="/img/loading.gif" lazyload></p>
+<p>出现上述情况的原因是原始信号有噪声，因此在对原始信号求偏导之前需要使用高斯平滑核进行平滑去噪，如果用g表示高斯平滑核，则需要对图像进行两次卷积d(f*g)&#x2F;dx，能否转换为只对图像进行一次处理？</p>
+<p>利用卷积的运算性质可以交换得到f*(dg&#x2F;dx)，其中的dg&#x2F;dx我们称为高斯偏导核</p>
+<hr>
+<blockquote>
+<p>Q：为什么使用高斯偏导核更快？</p>
+</blockquote>
+<p>A：dg&#x2F;dx是高斯偏导模板，相比于f作卷积操作快得多，用算出来的高斯偏导模板与图像进行卷积，此时图像f就只会被操作一次；</p>
+<hr>
+<p><img src="/images/image-20230310230313848.png" srcset="/img/loading.gif" lazyload alt="高斯偏导核_三维"></p>
+<p>高斯偏导核是不可分离的，因为高斯g求偏导后的结果会多出一项（与高斯平滑核的区别之一）</p>
+<p><img src="/images/image-20230310230429298.png" srcset="/img/loading.gif" lazyload alt="高斯偏导核_二维"></p>
+<p>二维图像中，白色为正，黑色为负，值越大；颜色越深，卷积核的数值变化与其衡量的信号垂直；</p>
+<table>
+<thead>
+<tr>
+<th>高斯平滑核</th>
+<th>高斯卷积核&#x2F;偏导核</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>目标：去除高频噪声</td>
+<td>目标：边缘检测，提取边缘信息</td>
+</tr>
+<tr>
+<td>高斯平滑核没有负数</td>
+<td>高斯偏导核可以有负数</td>
+</tr>
+<tr>
+<td>高斯平滑核加权求和的结果为1（否则对图像信号放大或缩小）</td>
+<td>高斯偏导核求和结果为0（否则对平坦的区域卷积后结果非0表示有边，矛盾）</td>
+</tr>
+</tbody></table>
+<p>通过增大高斯偏导核的标准差(标准差是方差的算术平方根)，可以使得图像呈现不同的结果，标准差越大滤波后的细节信息丢失的越多（对于不同的任务细节信息的重要性不同） ；</p>
+<h3 id="2-5-Canny边缘提取算法"><a href="#2-5-Canny边缘提取算法" class="headerlink" title="2.5 Canny边缘提取算法"></a>2.5 Canny边缘提取算法</h3><p>Canny边缘提取算法是一个经典的边缘提取算法，主要贡献是双门限和非最大化抑制思想；</p>
+<blockquote>
+<p>问题1：使用简单的高斯偏导核往往会提取出一些无关紧要的噪声；</p>
+</blockquote>
+<p>解决办法：某些区域的幅值较小可能是由于噪声引起的，设置一个门限将低于该门限的边缘去除；</p>
+<blockquote>
+<p>问题2：边应当很细，但是往往提取出的边比较粗</p>
+</blockquote>
+<p>原因：</p>
+<p><img src="/images/image-20230310231144914.png" srcset="/img/loading.gif" lazyload></p>
+<p>解决办法：非最大化抑制，找到真正的边；</p>
+<h4 id="2-5-1-非最大化抑制"><a href="#2-5-1-非最大化抑制" class="headerlink" title="2.5.1 非最大化抑制"></a>2.5.1 非最大化抑制</h4><p>做法非常简单，对于粗边上的每一个像素点，与其梯度方向的前后点的梯度比较，保留值较大者</p>
+<p><img src="/images/image-20230310231303666.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-5-2-双门限法"><a href="#2-5-2-双门限法" class="headerlink" title="2.5.2 双门限法"></a>2.5.2 双门限法</h4><p>门限设置过高会导致原本某些边会被去除，但是门限设置的过低又会导致某些假边存在（噪声边）；</p>
+<p>双门限法的思想是：先用高门限将粗狂的边检测出来 – 这些边是噪声的可能性较低，接着降低门限使得较弱的边显现，只选择与粗狂边有连接的边保留</p>
+<p><img src="/images/image-20230310231526044.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-5-3-边缘提取算法"><a href="#2-5-3-边缘提取算法" class="headerlink" title="2.5.3 边缘提取算法"></a>2.5.3 边缘提取算法</h4><p>一个完整的边缘提取算法大致步骤如下（以Canny算法举例）</p>
+<p><img src="/images/image-20230310231614530.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="3-拟合"><a href="#3-拟合" class="headerlink" title="3.拟合"></a>3.拟合</h2><p>参考文章：<a target="_blank" rel="noopener" href="https://blog.csdn.net/moonoa/article/details/107354891">(8条消息) 拟合(Fitting)_fitting拟合_Wang Yuexin的博客-CSDN博客</a>；</p>
+<hr>
+<blockquote>
+<p>问题引出：仅靠边缘提取不能对物体进行整体的描述，提取完边缘后如何使用数学模型来描述边缘？</p>
+</blockquote>
+<p>边缘检测只能描述桌子上有钱币，而拟合可以描述钱币在桌子的什么地方、钱币的数学方程等</p>
+<p><img src="/images/image-20230310231954854.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>拟合的难点：</p>
+</blockquote>
+<p><img src="/images/image-20230310232210177.png" srcset="/img/loading.gif" lazyload></p>
+<ol>
+<li>噪声：噪声的存在使拟合的模型偏离真实的线</li>
+<li>外点：在目标图形以外的线，如上图中的目标图形为“车”，左边的“栅栏”就是外点</li>
+<li>目标图形部分被遮挡，使部分图形消失</li>
+</ol>
+<blockquote>
+<p>Overview</p>
+</blockquote>
+<p>Fitting中常用的几种方法根据问题的难度分别如下：</p>
+<ol>
+<li>假如我们已经知道了所有属于这条线上的像素点（噪声点也算原本属于线上的点，只是因为噪声的影响偏离了线） – 一般使用最小二乘法找出这条线</li>
+<li>假如我们知道的像素点中有不属于这条线的（外点），按照外点的多少使用不同的方法 – 外点较少使用Robust fitting，外点较多使用RANSAC</li>
+<li>假如存在很多线条，对于我们需要求解的线条来说都是外点 – RANSAC或Hough transform</li>
+<li>甚至我们连这是否是一条线都不能确定（无法写出它的数学方程） – 使用Snake等虚拟建模</li>
+</ol>
+<h3 id="3-1-最小二乘法"><a href="#3-1-最小二乘法" class="headerlink" title="3.1 最小二乘法"></a>3.1 最小二乘法</h3><blockquote>
+<p>最小二乘法的前提是所有的点都处于线上（都是有效点）</p>
+</blockquote>
+<p><img src="/images/image-20230310232549486.png" srcset="/img/loading.gif" lazyload></p>
+<p>目标：找到一条线，使得这些点到线沿着纵轴方向的距离最短（注意不是垂直！！！），转化为使得优化函数E最小</p>
+<p><img src="/images/image-20230310232641838.png" srcset="/img/loading.gif" lazyload></p>
+<p>经过上述变化可以直接求解B，使用最小二乘法求解得到的B是实际XB&#x3D;Y方程的近似解</p>
+<p>最小二乘法的问题：</p>
+<ol>
+<li>假如要估计的直线是垂直的则无法使用最小二乘法；</li>
+<li>假如摄像头旋转过后，原本可求解的直线可能就变得无法求解；</li>
+</ol>
+<h3 id="3-2-权最小二乘法"><a href="#3-2-权最小二乘法" class="headerlink" title="3.2 权最小二乘法"></a>3.2 权最小二乘法</h3><p>目标：找到一条线，使得这些点到线沿着纵轴方向的距离最短，此处的距离为点到直线的垂直距离，无论怎么旋转都不会影响点和直线之间的关系</p>
+<p><img src="/images/image-20230310232928138.png" srcset="/img/loading.gif" lazyload></p>
+<p>使用上述的模型则优化函数E的表达式和待求解矩阵N的关系推导如下</p>
+<p><img src="/images/image-20230310233031268.png" srcset="/img/loading.gif" lazyload></p>
+<p>权最小二乘法的几何解释：找到一条直线，使得所有点在法向量方向上的投影最小</p>
+<p><img src="/images/image-20230310233113497.png" srcset="/img/loading.gif" lazyload></p>
+<p>权最小二乘法的问题：全最小二乘对外点来说不适用，拟合性很差</p>
+<p><img src="/images/image-20230310233229415.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-3-鲁棒性最小二乘"><a href="#3-3-鲁棒性最小二乘" class="headerlink" title="3.3 鲁棒性最小二乘"></a>3.3 鲁棒性最小二乘</h3><blockquote>
+<p>假如点到直线的距离过大（外点），那么认为其贡献有上限</p>
+</blockquote>
+<p><img src="/images/image-20230310233334133.png" srcset="/img/loading.gif" lazyload></p>
+<p>使用鲁棒性最小二乘可以缓解外点带来的影响</p>
+<p><img src="/images/image-20230310233520535.png" srcset="/img/loading.gif" lazyload></p>
+<p>鲁棒函数的参数选取需要合适：</p>
+<ul>
+<li>参数过小会导致每个点都没有贡献</li>
+<li>参数过大会导致出现与权最小二乘相同的问题</li>
+</ul>
+<blockquote>
+<p>鲁棒性最小二乘只能用迭代方法求解（因为不是线性优化问题）</p>
+</blockquote>
+<h3 id="3-4-RANSAC"><a href="#3-4-RANSAC" class="headerlink" title="3.4 RANSAC"></a>3.4 RANSAC</h3><p>RANSAC也称为随机采样一致性，适用于外点较多的情况下，使用较少的点来拟合真实的模型；</p>
+<p>RANSAC算法的主要步骤如下：</p>
+<ul>
+<li>随机选择一个最小的集合s（对于拟合直线方程任务来说最小集合是两个点 – 两点确定一条直线）</li>
+<li>拟合出一个模型（对于直线拟合来说就是利用集合中的两个点写出直线方程）</li>
+<li>设置一个门限t（直线拟合任务中门限内的点我们认为是内点，门限外的点认为是外点）</li>
+<li>用门限t内剩余的点给这个模型“投票”（最简单的投票方式就是有几个点投几票）</li>
+<li>重复上述过程，取“得分”最高的模型，记录迭代次数N（这里的N就是得到最好模型一共进行的试验次数）<ul>
+<li>最后的输出结果有两种选择，一种是输出评分最高的模型，一种是输出大于一定门限值的一组模型（可用于存在外线的拟合）</li>
+<li>最后输出的模型并不是评分最高确定的直线模型，而是会将该直线和内点再次使用权最小二乘方法进行拟合</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>RANSAC算法是一种框架，这意味着RANSAC算法不仅可用于拟合直线方程，也可以进行其他应用（如指纹匹配等）；</p>
+</blockquote>
+<p>RANSAC算法主要有五个参数：</p>
+<ul>
+<li>最小集合s</li>
+<li>门限t</li>
+<li>拟合准确率p</li>
+<li>外点率e</li>
+<li>迭代次数N</li>
+</ul>
+<p>一般情况下已知s,t,p和e，我们可以直接根据下面的公式计算出迭代次数N</p>
+<p><img src="/images/image-20230314201653278.png" srcset="/img/loading.gif" lazyload></p>
+<p>而实际任务过程中，外点率e通常是未知的（因为我们要拟合的线是什么都不知道，又怎么可能知道哪些点不属于这条线？），如何确定迭代次数N呢？</p>
+<p>这里采用一种更普适的RANSAC方法 – 自适应参数提取RANSAC</p>
+<p><img src="/images/image-20230314202137408.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-5-Hough-transform"><a href="#3-5-Hough-transform" class="headerlink" title="3.5 Hough transform"></a>3.5 Hough transform</h3><p>基本思想：</p>
+<ul>
+<li>霍夫变换同样是使用图像上的所有点为直线模型投票，选择票数最高的模型进行输出；</li>
+<li>噪声点不会有一致性的答案；</li>
+<li>即使中间的某些点被遮挡也能拟合一个好的模型；</li>
+</ul>
+<p>霍夫变换首先需要引入原始图像空间和离散参数空间（将参数空间划离散化为一个个grid）</p>
+<p><img src="/images/image-20230314223050529.png" srcset="/img/loading.gif" lazyload></p>
+<p>霍夫变换的原理是图像空间中的一个点对应参数空间的一条直线，那么图像空间中的两个点对应参数空间中的两条直线，参数空间中这两条直线的交点对应的参数实际就是图像空间中两点确定的直线的参数；</p>
+<p><img src="/images/image-20230314222710832.png" srcset="/img/loading.gif" lazyload></p>
+<p>当图像空间中的点足够多的时候，参数空间中会存在多条直线，这些直线的交点（理解为得分最高的grid）就是图像空间中拟合的直线模型的参数</p>
+<p><img src="/images/image-20230314223202917.png" srcset="/img/loading.gif" lazyload></p>
+<p>直角坐标的缺点：</p>
+<ul>
+<li>对于m，b两个参数构成的参数空间本身是无范围的，这就给离散化带来困难（grid无穷）；</li>
+<li>对于垂直直线m的范围为无穷，在参数空间中无法表示；</li>
+</ul>
+<p>引入极坐标系解决问题，其中θ∈(0°,180°)，下面是如何将图像空间中的直线上的点转换为极坐标参数空间下的直线并进行投票的算法（也是真正常用的霍夫变换）</p>
+<p><img src="/images/image-20230314224211636.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="3-5-1-噪声影响"><a href="#3-5-1-噪声影响" class="headerlink" title="3.5.1 噪声影响"></a>3.5.1 噪声影响</h4><p>在霍夫变换中噪声的影响是非常大的</p>
+<ul>
+<li>自身的噪声：峰值变得模糊且难以定位<img src="/images/image-20230314224618115.png" srcset="/img/loading.gif" lazyload></li>
+<li>外界的噪声：随机噪声会导致出现很多伪峰值<img src="/images/image-20230314224745399.png" srcset="/img/loading.gif" lazyload></li>
+</ul>
+<p>解决上述问题主要有如下三种方法：</p>
+<ul>
+<li>选取合适大小的grid，即对参数空间进行适当的离散化；</li>
+<li>投票的时候采取“软投票”策略：即不仅仅只对中心网格投票，也适当的按照一定比例给网格周围的grid投票；</li>
+<li>Canny算子<ul>
+<li>只采用检测出的边上的点进行投票；</li>
+<li>因为在Candy算子中得到点时就知道了梯度方向，相应的边缘方向的范围就大概确认了，故可以缩小θ的范围，从而解决了噪声的影响，也简化了计算；</li>
+</ul>
+</li>
+</ul>
+<p>于是改进霍夫变换如下</p>
+<p><img src="/images/image-20230314225332181.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="3-5-2-圆拟合"><a href="#3-5-2-圆拟合" class="headerlink" title="3.5.2 圆拟合"></a>3.5.2 圆拟合</h4><p>直线空间上的一个点如何推测圆心和半径？（即如何给参数空间投票）</p>
+<p>给圆上一点和半径r，可以在参数空间对应两个点（圆心位置为圆周点加减半径，方向由梯度方向确定），圆心必定是投票数最高的地方，此时的(x,y,r)就是圆心坐标和圆半径</p>
+<p><img src="/images/image-20230314231613633.png" srcset="/img/loading.gif" lazyload></p>
+<p>在实际的求解中并不知道圆周上每一点(x,y)以及半径，所以需要穷举所有的r（大于0小于图像长度），遍历圆上每一点进行投票；</p>
+<h4 id="3-5-3-小结"><a href="#3-5-3-小结" class="headerlink" title="3.5.3 小结"></a>3.5.3 小结</h4><p>霍夫变化对参数空间非常敏感，如果空间维度高了霍夫变化的运算量会非常大</p>
+<p><img src="/images/image-20230324103430042.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="4-区域检测-角点"><a href="#4-区域检测-角点" class="headerlink" title="4.区域检测-角点"></a>4.区域检测-角点</h2><h3 id="4-1-特征点"><a href="#4-1-特征点" class="headerlink" title="4.1 特征点"></a>4.1 特征点</h3><p>文章参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/moonoa/article/details/107402763?spm=1001.2014.3001.5502">(15条消息) 区域检测——Harris角点_Wang Yuexin的博客-CSDN博客</a>；</p>
+<p><img src="/images/image-20230324154102036.png" srcset="/img/loading.gif" lazyload></p>
+<p>图像处理过程中有一种任务是图像拼接，图像拼接即实现全景拍摄的一种手段，需要分析图片结构提取其特征点；</p>
+<p>实现图像拼接具体步骤是什么？提取图像特征点采用的具体算法是什么？下面将介绍</p>
+<p>图像拼接主要分为如下三个步骤：</p>
+<ol>
+<li>提取特征点</li>
+<li>匹配特征点</li>
+<li>使用RANSAC方法将两张图片的对应的特征点转换的方式拟合出来，然后对图片采用相同的转换方式进行转换，最后进行拼接</li>
+</ol>
+<p>本节主要讲解第一步如何提取特征点，首先要知道什么样的像素点能够充当特征点，主要需要满足如下四个特性：</p>
+<ul>
+<li>可重复性：在一张图可以被观测到的，在其他同场景的图也可以被观测到</li>
+<li>显著性：检测的特征点需要是在某一类图像中“独有的”，尽量剔除“普遍性”的点，目的是为了将不同类的图区分开</li>
+<li>简洁和高效：尽可能的减少计算量，提高计算效率</li>
+<li>局部性：特征计算的时候只与局部有关，与全局无关，这样两张图的同一个特征计算出来值才会接近</li>
+</ul>
+<blockquote>
+<p>角点导数在两个及以上方向有变化的点满足上述四个条件，因此通常选择角点作为特征点；</p>
+</blockquote>
+<p>下面介绍如何提取图像中的角点的算法；</p>
+<h3 id="4-2-特征提取"><a href="#4-2-特征提取" class="headerlink" title="4.2 特征提取"></a>4.2 特征提取</h3><p>与平坦区域的点和边上的点不同的是，角点的导数在两个及以上方向有变化，因此最基本的想法为</p>
+<ol>
+<li>使用一个较小的窗口在图像上沿各个方向滑动，该窗口可以包含图像的多个像素点</li>
+<li>窗口移动前后不同的差异值显示了窗口内部像素点的信息</li>
+<li>图像内部所在的窗口沿各个方向都没有变化（即内部的点的导数变化均为0，表现为窗口前后差异值为0）；边缘所在的窗口沿边缘方向无变化；角点所在窗口会在各个方向上都有显著的变化（即若窗口内含有角点，则该窗口无论沿任何方向移动其前后差异值都不为0）</li>
+</ol>
+<p><img src="/images/image-20230324155330698.png" srcset="/img/loading.gif" lazyload></p>
+<p>将上述思想描述为数学公式如下</p>
+<p><img src="/images/image-20230324155439402.png" srcset="/img/loading.gif" lazyload></p>
+<p>公式的意思是平移后的窗口与平移前的窗口的对应位置差的平方累加求和，E(u,v)就表示两个窗口内容的差异值的总和，其中</p>
+<ul>
+<li>u和v是平移量；</li>
+<li>考虑到每个点对窗口影响的不同程度，因此可以乘以窗口权重，赋予不同位置的点的差值对E(u,v)的影响程度；</li>
+</ul>
+<p>如何直接建立u,v和E(u,v)之间的关系而不是如上面式子一样需要对应图像像素I(x,y)？这里使用泰勒展开式，在u&#x3D;0,v&#x3D;0的点二维泰勒展开</p>
+<p><img src="/images/image-20230324155947848.png" srcset="/img/loading.gif" lazyload></p>
+<p>将上述泰勒展开计算并简化后得到</p>
+<p><img src="/images/image-20230324160030776.png" srcset="/img/loading.gif" lazyload></p>
+<p>上述公式中I<del>x</del>、I<del>y</del>分别表示点在x方向和y方向的偏导，M是一个二阶矩矩阵加权求和；</p>
+<p>从矩阵M的公式可以知道，给定一个像素区域即可将矩阵M计算出来，而矩阵M决定了u,v和E(u,v)方程之间的特性，因此将上述问题转换为分析矩阵M；</p>
+<p>将上述E(u,v)与u,v的函数方程<img src="/images/image-20230324160909716.png" srcset="/img/loading.gif" lazyload></p>
+<p>绘制如下</p>
+<p><img src="/images/image-20230324160430038-16796453671379.png" srcset="/img/loading.gif" lazyload></p>
+<p>该图像沿平行uOv平面截取得到的截面是一个椭圆，这个椭圆可以看作是M矩阵的几何形状：</p>
+<ul>
+<li>当I<del>x</del>和I<del>y</del>均为0时（表现为窗口沿着任意方向移动前后差异值为0）截面为圆，表示此时窗口位于图像内部；</li>
+<li>当窗口沿某一方向的导数为零时（表现为窗口沿着该方向移动前后差异值为0），截面为一个“正椭圆”，此时窗口位于边缘；</li>
+<li>当窗口中含有角点（即窗口位于角上），截面椭圆的形状反映了当前窗口中角的特性；</li>
+</ul>
+<p>具体对某一个椭圆进行分析，根据M矩阵的形式可以知道椭圆的半长轴反应的是沿该方向导数变化的快慢，半长轴越长则导数变化越快（正椭圆的情况下）</p>
+<p><img src="/images/image-20230324161411080.png" srcset="/img/loading.gif" lazyload></p>
+<p>可以看到上述椭圆并不是正椭圆，即x方向的变化与y方向的变化并不能正交（无关），表现在M矩阵中即I<del>x</del>I<del>y</del>和I<del>y</del>I<del>x</del>都不为0，则不能使用前面三种判断方式，简单的，可以使用正交矩阵R对椭圆进行旋转使其成为正椭圆</p>
+<p><img src="/images/image-20230324161638852.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>PS：此处的λ<del>1</del>和λ<del>2</del>分别代表了I<del>x</del>和I<del>y</del>；</p>
+</blockquote>
+<p>利用上面定义的λ<del>1</del>和λ<del>2</del>可以定义角点响应函数R</p>
+<p><img src="/images/image-20230324162802390.png" srcset="/img/loading.gif" lazyload></p>
+<p>即将λ<del>1</del>和λ<del>2</del>特征转化给R，最终检测某个窗口内是否含有角点的问题就转化为判断R的问题</p>
+<p><img src="/images/image-20230324162924445.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="4-3-Harris检测器"><a href="#4-3-Harris检测器" class="headerlink" title="4.3 Harris检测器"></a>4.3 Harris检测器</h3><blockquote>
+<p>Invariance:特征提取器对进行变换过后的图像（光照、角度）提取到的特征和没有变换之前的图像提取到的特征完全相同；</p>
+<p>Covariance:特征提取器对进行变换过后的图像（光照、角度）提取到的特征需要经过一定的处理变换，处理后的特征等于没有变换之前的图像提取到的特征；</p>
+</blockquote>
+<p>拥有了角点检测算法以后，就可以将其与其他方法结合得到特征点检测器，一个经典的特征点检测器为Harris检测器，其基本工作原理为</p>
+<ol>
+<li>计算每个像素处的高斯导数</li>
+<li>计算每个像素周围的高斯窗口中的二阶矩矩阵M</li>
+<li>计算角点响应函数R</li>
+<li>设置门限R</li>
+<li>寻找响应函数的局部最大值(非最大抑制)</li>
+</ol>
+<p>Harris检测器有如下特性：</p>
+<ol>
+<li>当光线强度，明暗、像素改变时，只是改变了部分角点的值，还有大部分的点可以用于检测，可以进行检测(Partially invariance)；</li>
+<li>当改变位置，角度时，没有改变相对位置，可以检测(Covariance)；</li>
+<li>当改变窗口大小时，大窗口下是角点，而小窗口下是线或者边缘，无法检测，此时需要使用其他方法(Not invariance or covariance)；</li>
+</ol>
+<p><img src="/images/image-20230324163340955.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="5-区域检测-Blob检测"><a href="#5-区域检测-Blob检测" class="headerlink" title="5.区域检测-Blob检测"></a>5.区域检测-Blob检测</h2><p>参考文章：<a target="_blank" rel="noopener" href="https://blog.csdn.net/moonoa/article/details/107489004?spm=1001.2014.3001.5502">(5条消息) 区域检测——Blob检测_Wang Yuexin的博客-CSDN博客</a>；</p>
+<hr>
+<p>上面说到Harris检测器无法拟合尺度问题，Blob检测的目标是独立检测同一个图像不同缩放版本的对应区域</p>
+<p><img src="/images/image-20230331152235053.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="5-1-拉普拉斯核"><a href="#5-1-拉普拉斯核" class="headerlink" title="5.1 拉普拉斯核"></a>5.1 拉普拉斯核</h3><blockquote>
+<p>拉普拉斯核具备尺度不变性和旋转不变性，它作为工具与其他算法构成比如说Harris-Laplacian或SIFT算法，这些算法是具备检测尺度不变性特征点的；至于为什么使用拉普拉斯算子而不是高斯一阶偏导核，因为只有高斯二阶偏导才能做尺度选择；</p>
+</blockquote>
+<p>拉普拉斯核实际就是边缘检测中提到的[高斯一阶偏导核](#2.4 高斯偏导核)的二阶偏导版本</p>
+<p><img src="/images/image-20230331152648373.png" srcset="/img/loading.gif" lazyload></p>
+<p>对不同的图像使用同一个拉普拉斯核(方差为1)进行卷积，得到如下的波纹图</p>
+<p><img src="/images/image-20230331152944652.png" srcset="/img/loading.gif" lazyload></p>
+<p>波纹图中二阶偏导为0的点表示信号边缘，即波纹表示边缘信息，当波纹重叠并出现极值（最后一幅图），表示此时的信号和拉普拉斯核对应（尺度选择特性）；</p>
+<p>利用上述特性，在实际使用过程中利用拉普拉斯模板去匹配信号，即不断改变Laplacian的参数σ，取处理后的结果达到峰值时的σ，然而简单的增大σ会导致信号卷积后特征消失（因为高斯偏导的面积公式中的σ在分母）</p>
+<p><img src="/images/image-20230331153740836.png" srcset="/img/loading.gif" lazyload></p>
+<p>为了防止这种情况需要乘以σ^2^（拉普拉斯核是二阶高斯导数），称为尺度标准化，将标准化后的拉普拉斯核用于卷积信号图像得到如下波纹图</p>
+<p><img src="/images/image-20230331154006007.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="5-2-二维Blob检测"><a href="#5-2-二维Blob检测" class="headerlink" title="5.2 二维Blob检测"></a>5.2 二维Blob检测</h3><p>这里我们假设讨论的二维信号都是圆信号（之后会讨论非圆信号，由简到难），用于二维信号的拉普拉斯核的表达式及其图像如下（标准化需要乘以σ^2^）</p>
+<p><img src="/images/image-20230331155840210.png" srcset="/img/loading.gif" lazyload></p>
+<p>要使用上述拉普拉斯核对二维圆信号进行检测，拉普拉斯核的方差σ与圆信号的半径有什么关系呢？换句话说，当拉普拉斯核与圆信号匹配得到最大相应的时候，拉普拉斯核与圆信号有什么联系？</p>
+<p>为了得到最大相应（即拉普拉斯核与圆信号卷积后的结果最大），拉普拉斯核的零点需要与圆信号对齐 &lt;&#x3D;&gt; 卷积后响应最大，此时拉普拉斯核的零点与圆信号的边缘是对齐的；</p>
+<p><img src="/images/image-20230331160316223.png" srcset="/img/loading.gif" lazyload></p>
+<p>这点比较难以理解，不妨用一维的拉普拉斯核与一维信号解释，只有形式如下的拉普拉斯核与一维信号做卷积得到的结果最大（拉普拉斯核零点与信号边缘对齐），也就是出现波纹重叠的极值，否则正向面积均会被抵消一部分；</p>
+<p>这也解释了为什么原始信号与不匹配的拉普拉斯模板进行卷积后不会得到最大响应值；</p>
+<p><img src="/images/image-20230331160348936.png" srcset="/img/loading.gif" lazyload></p>
+<p>二维平面中拉普拉斯核的零点方程表示为</p>
+<p><img src="/images/image-20230331161110758.png" srcset="/img/loading.gif" lazyload></p>
+<p>化简后得到</p>
+<p><img src="/images/image-20230331161133932.png" srcset="/img/loading.gif" lazyload></p>
+<p>即圆半径r与拉普拉斯核的方差之间的关系为</p>
+<p><img src="/images/image-20230331161203038.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>多尺度理论：拉普拉斯核的方差越大则检测的圆信号越大，即大σ检测大信号，小σ检测小信号；</p>
+</blockquote>
+<p>有了上述定义后，将图像的特征尺度r定义为拉普拉斯峰值对应的尺度的根号2倍；</p>
+<p>下面举个例子表示拉普拉斯核的具体应用，特征尺度选择过程中将逐步增加参数σ，每个σ 逐像素计算最大响应，每相邻取九个像素取响应值最大的像素，再与上下两层不同尺度的最大相应取最大（即在一个3x3x3共27个的响应值中取最大的响应值对应的像素点和尺度值，这是一种非最大化抑制的思想） – 同一个像素点很可能画出多个圆信号，因为方差越大圆半径越大；</p>
+<p><img src="/images/image-20230331162706577.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>不变性：拉普拉斯核也就是拉普拉斯特征点具备尺度不变性和旋转不变性，因此是invariant的(拉普拉斯特征点无论是缩放还是旋转都是特征点)；但Blob圆的大小会因为缩放和图像旋转改变，因此是covariant的；</p>
+</blockquote>
+<h3 id="5-3-SIFT算法"><a href="#5-3-SIFT算法" class="headerlink" title="5.3 SIFT算法"></a>5.3 SIFT算法</h3><p>这个算法的理论难度非常大，所以额外参考了其他教程：</p>
+<ul>
+<li><p>博客：[<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/95c4890c486b">转]SIFT特征原理详解及实现 - 简书 (jianshu.com)</a>；</p>
+</li>
+<li><p>视频：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Qb411W7cK/?spm_id_from=333.1007.top_right_bar_window_history.content.click%EF%BC%9B">https://www.bilibili.com/video/BV1Qb411W7cK/?spm_id_from=333.1007.top_right_bar_window_history.content.click；</a></p>
+</li>
+</ul>
+<hr>
+<p>在实际运用过程中，使用Laplacian核可以很好的处理尺度变换的问题，但是需要大量的计算，有两种主流的解决方法：</p>
+<ul>
+<li>一种是将Harris与拉普拉斯核结合，只需要在Harris角点周围是否存在尺度空间；</li>
+<li>另一种是SIFT尺度不变特征；</li>
+</ul>
+<p>SIFT全称为Scale Invariant Feature Transform尺度不变特征变换，SIFT特征对于旋转、尺度缩放、亮度变化等保持不变性，是一种非常稳定的局部特征；</p>
+<p>SIFT特征检测的步骤主要分为如下四个步骤：</p>
+<ul>
+<li>尺度空间的极值检测：搜索所有尺度空间上的图像，通过高斯微分函数来识别潜在的对尺度和选择不变的兴趣点；</li>
+<li>特征点定位：在每个候选的位置上，通过一个拟合精细模型来确定位置尺度，关键点的选取依据他们的稳定程度；</li>
+<li>特征方向赋值：基于图像局部的梯度方向，分配给每个关键点位置一个或多个方向，后续的所有操作都是对于关键点的方向、尺度和位置进行变换，从而提供这些特征的不变性；</li>
+<li>特征点描述：在每个特征点周围的邻域内，在选定的尺度上测量图像的局部梯度，这些梯度被变换成一种表示，这种表示允许比较大的局部形状的变形和光照变换；</li>
+</ul>
+<p>在介绍SIFT算法之前先介绍DoG模板，一种拉普拉斯模板的替换版本；DoG的函数图像与Laplacian核很相似，具有相似的性质，但使用的是两个高斯差分来定义，大的高斯核可以使用小的高斯核来计算，大大减少了计算量</p>
+<p><img src="/images/image-20230331164648607.png" srcset="/img/loading.gif" lazyload></p>
+<p>DoG主要从以下几方面提升拉普拉斯核的效率（后面还会详细解释，这里仅给出结论）：</p>
+<ol>
+<li>高斯空间中的模板利用DoG算法直接在前一层的基础上计算，这样就形成一个DoG空间，得到的模板与高斯空间相差一个常数项(k-1)；</li>
+<li>计算大尺度的模板时不改变参数值，而改变图像大小，例如：将图像缩小一倍时不改变模板尺度得到效果和不改变图像大小时增大模板尺度的效果相同，那么计算四倍尺度的值就可以直接将图像缩小四倍；</li>
+<li>k&#x3D;2^1&#x2F;s^，其中s表示要输出的尺度数量，即可利用s来确定k；</li>
+<li>模板尺度通常取2的等比数列；</li>
+</ol>
+<h4 id="5-3-1-尺度空间"><a href="#5-3-1-尺度空间" class="headerlink" title="5.3.1 尺度空间"></a>5.3.1 尺度空间</h4><p>在未知场景中计算机视觉并不能提供物体的尺度大小，其中一种方法是将物体不同尺度下的图像都提供给机器，让机器能够对物体在不同的尺度下有一个统一的认知，因此需要考虑图像在不同尺度下都存在的特征点；</p>
+<h5 id="1-图像金字塔"><a href="#1-图像金字塔" class="headerlink" title="(1)图像金字塔"></a>(1)图像金字塔</h5><p><img src="/images/image-20230331183732189.png" srcset="/img/loading.gif" lazyload alt="多分辨率图像金字塔"></p>
+<p>早期图像的多尺度通常用图像金字塔表示，图像金字塔是同一图像在不同分辨率下得到的一组结果，其生成步骤主要分为两步：</p>
+<ol>
+<li>对原始图像进行平滑操作；</li>
+<li>对处理后的图像进行降采样（一般是水平、垂直方向的1&#x2F;2像素）</li>
+</ol>
+<h5 id="2-高斯金字塔"><a href="#2-高斯金字塔" class="headerlink" title="(2)高斯金字塔"></a>(2)高斯金字塔</h5><p>降采样后得到一系列不断尺寸缩小的图像，因为使用的是降采样方案，故图像的局部特征难以保持，也就是无法保持特征的尺度不变性；</p>
+<p>因此提出了另一种尺度空间的表现形式 – 高斯尺度空间，在分辨率不变的条件下使用不同的参数来模糊图像；</p>
+<p>图像和高斯函数进行卷积可以对图像进行模糊，因此使用不同的高斯核可以得到不同模糊程度的图像，一幅图像的高斯尺度空间可以由该图像和不同的高斯卷积得到</p>
+<p><img src="/images/image-20230331184327817.png" srcset="/img/loading.gif" lazyload></p>
+<p>其中的G(x,y,σ)是高斯核函数</p>
+<p><img src="/images/image-20230331184412063.png" srcset="/img/loading.gif" lazyload></p>
+<p>称方差σ为尺度空间因子，因为它能够反应图像被模糊的程度，σ值越大图像越模糊，对应的尺度L也就越大，由不同尺度L构成的L(x,y,σ)就是图像的高斯尺度空间；</p>
+<p>构建尺度空间是为了能够检测出在不同尺度下都存在的特征点，检测特征点使用的算子就是前面介绍过的拉普拉斯核</p>
+<p><img src="/images/image-20230331184748286.png" srcset="/img/loading.gif" lazyload></p>
+<p>因为拉普拉斯核LoG的运算量过大，所以引入了DoG差分高斯来近似计算LoG</p>
+<p><img src="/images/image-20230331185025026.png" srcset="/img/loading.gif" lazyload></p>
+<p>其中k是相邻两个高斯尺度空间的比例因子，L(x,y,σ)是图像的高斯尺度空间；</p>
+<p>DoG的计算公式表明将相邻的两个高斯空间的图像相减就可以得到DoG的响应图像，因此要得到DoG图像（因为得到DoG图像实际就得到了LoG），首先需要构建高斯尺度空间：高斯尺度空间可以在图像金字塔降采样的基础上加上高斯滤波得到，也就是对图像金字塔的每层图像使用不同的参数σ进行高斯模糊，使每层金字塔有多张高斯模糊过的图像；</p>
+<blockquote>
+<p>PS：降采样的过程中，金字塔上面一组的图像的第一张由其下面一组图像的倒数第三张降采样得到（简单理解就是因为上一组图像的最底层图像由下一组中尺度为2σ的图像进行因子为2的降采样得到）</p>
+</blockquote>
+<p><img src="/images/image-20230331191040936.png" srcset="/img/loading.gif" lazyload alt="高斯尺度空间"></p>
+<p>从上面的高斯金字塔可以看出，高斯金字塔有多组，每组有多层，一组中的多个层之间的尺度是不一样的（即使用的高斯参数σ是不同的），相邻两层之间的尺度相差一个比例因子k；</p>
+<p><img src="/images/image-20230331192056885.png" srcset="/img/loading.gif" lazyload></p>
+<p>假如高斯金字塔的每组有S层，则</p>
+<p><img src="/images/image-20230331191401633.png" srcset="/img/loading.gif" lazyload></p>
+<p>高斯金字塔的组数一般为</p>
+<p><img src="/images/image-20230331191802797.png" srcset="/img/loading.gif" lazyload></p>
+<p>其中o表示高斯金字塔的组数，m，n分别是图像的行和列，系数a可以是0-log<del>2</del>min(m,n)中的任意值，与具体需要的金字塔的顶层图像的大小有关，一般取值为3；</p>
+<p>高斯模糊参数σ由下面的关系式得到</p>
+<p><img src="/images/image-20230331192652294.png" srcset="/img/loading.gif" lazyload></p>
+<p>其中o为所在的组，s为所在的层，σ<del>0</del>为初始的尺度，S为每组的层数；</p>
+<p>同一组内相邻层之间的图像尺度关系为</p>
+<p><img src="/images/image-20230331192847962.png" srcset="/img/loading.gif" lazyload></p>
+<p>相邻组之间的尺度关系为</p>
+<p><img src="/images/image-20230331192910771.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="5-3-2-DoG空间极值检测"><a href="#5-3-2-DoG空间极值检测" class="headerlink" title="5.3.2 DoG空间极值检测"></a>5.3.2 DoG空间极值检测</h4><p>为了寻找尺度空间的极值点，每个像素点要和其图像域（同一尺度空间）和尺度域（相邻的尺度空间）的所有相邻点进行比较，当其大于（或者小于）所有相邻点时，这个点就是极值点。如图所示，中间的检测点要和其所在图像的3×3邻域8个像素点，以及其相邻的上下两层的3×3领域18个像素点，共26个像素点进行比较（非最大化抑制）；</p>
+<p><img src="/images/image-20230331193221425.png" srcset="/img/loading.gif" lazyload></p>
+<p>因为每组图像的第一层和最后一层无法进行比较取得极值，为了满足尺度变换的连续性，需要在每一组图像的顶层继续使用高斯模糊生成3幅图像，因此高斯金字塔每组有S+3层图像，DoG金字塔每组有S+2层图像；</p>
+<blockquote>
+<p>尺度变换连续性：</p>
+<p><img src="/images/image-20230331193658622.png" srcset="/img/loading.gif" lazyload></p>
+</blockquote>
+<h4 id="5-3-3-过滤特征点"><a href="#5-3-3-过滤特征点" class="headerlink" title="5.3.3 过滤特征点"></a>5.3.3 过滤特征点</h4><p>通过比较检测得到的DoG局部极值点是在离散空间搜索得到，由于离散空间是对连续空间采样得到的结果，因此离散空间上得到的极值点不一定是真正意义上的极值点，需要将不满足条件的极值点剔除；要剔除掉的不符合要求的点主要有两种：</p>
+<ol>
+<li>低对比度的特征点</li>
+<li>不稳定的边缘响应点</li>
+</ol>
+<p>一般通过尺度空间DoG函数进行曲线拟合寻找极值点，这一步的本质是去掉DoG局部曲率非常不对称的点；</p>
+<blockquote>
+<p>剔除低对比度的特征点</p>
+</blockquote>
+<p>候选特征点x，其偏移量定义为Δx，其对比度为D(x)的绝对值∣D(x)∣，对D(x)应用泰勒展开式</p>
+<p><img src="/images/image-20230408223749755.png" srcset="/img/loading.gif" lazyload></p>
+<p>由于x是D(x)的极值点，所以对上式求导并令其为0，得到</p>
+<p><img src="/images/image-20230408223808777.png" srcset="/img/loading.gif" lazyload></p>
+<p>然后再把求得的Δx代入到D(x)的泰勒展开式中</p>
+<p><img src="/images/image-20230408223828378.png" srcset="/img/loading.gif" lazyload></p>
+<p>设对比度的阈值为T，若∣D(x^)∣≥T，则该特征点保留，否则剔除该特征点；</p>
+<blockquote>
+<p>删除不稳定的边缘响应点</p>
+</blockquote>
+<p>在边缘梯度的方向上主曲率值比较大，而沿着边缘方向则主曲率值较小。候选特征点的DoG函数D(x)的主曲率与2×2Hessian矩阵H的特征值成正比</p>
+<p><img src="/images/image-20230408224006249.png" srcset="/img/loading.gif" lazyload></p>
+<p>其中，D<del>xx</del>,D<del>xy</del>,D<del>yy</del>是候选点邻域对应位置的差分求得的。为了避免求具体的值，可以使用H特征值得比例。设α&#x3D;λmax为H的最大特征值，β&#x3D;λmin为H的最小特征值，则</p>
+<p><img src="/images/image-20230408224040630.png" srcset="/img/loading.gif" lazyload></p>
+<p>其中，Tr(H)为矩阵H的迹，Det(H)为矩阵H的行列式。</p>
+<p>设γ&#x3D;α&#x2F;β表示最大特征值和最小特征值的比值，则</p>
+<p><img src="/images/image-20230408224100191.png" srcset="/img/loading.gif" lazyload></p>
+<p>上式的结果与两个特征值的比例有关，和具体的大小无关，当两个特征值想等时其值最小，并且随着γ的增大而增大。因此为了检测主曲率是否在某个阈值Tγ下，只需检测</p>
+<p><img src="/images/image-20230408224116504.png" srcset="/img/loading.gif" lazyload></p>
+<p>如果上式成立，则剔除该特征点，否则保留特征点；</p>
+<blockquote>
+<p>过滤特征点之后SIFI算法还有求取特征点的主方向、生成特征点描述等步骤，但是因为难度较大暂时先放一放，感兴趣参考[<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/95c4890c486b">转]SIFT特征原理详解及实现 - 简书 (jianshu.com)</a>自学；</p>
+</blockquote>
+<h3 id="5-4-SIFI延展"><a href="#5-4-SIFI延展" class="headerlink" title="5.4 SIFI延展"></a>5.4 SIFI延展</h3><p>经过前面的介绍可以知道，经过SIFI算法可以利用DoG将图像中的特征点提取出来，解决了尺度的问题，接下来还存在方向、光照和视角的问题，本节介绍SIFI算法如何解决这些问题；</p>
+<h4 id="5-4-1-视角变化"><a href="#5-4-1-视角变化" class="headerlink" title="5.4.1 视角变化"></a>5.4.1 视角变化</h4><p>当视角改变时，即使是同一个圆，其中的内容也有很大的差异，因此需要对其进行处理；</p>
+<p>具体做法就是借助M矩阵：</p>
+<ol>
+<li>先确定一个圆</li>
+<li>将圆内的所有像素拿出来计算M矩阵</li>
+<li>比较计算出来的λ<del>1</del>、λ<del>2</del></li>
+<li>将较小的λ的方向进行缩小</li>
+<li>再将上一步缩小后的区域（椭圆）内的像素拿出来计算M矩阵</li>
+<li>重复上述步骤，逐步迭代。直至λ<del>1</del>和λ<del>2</del> 近似相等，说明区域边缘的梯度变化近似一致</li>
+<li>将椭圆转换到一样大小的圆中</li>
+</ol>
+<p><img src="/images/image-20230409000344662.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="5-4-2-方向变化"><a href="#5-4-2-方向变化" class="headerlink" title="5.4.2 方向变化"></a>5.4.2 方向变化</h4><p>通过仿射自适应变换后，内容基本一致，但方向不同，对应的像素差异较大，无法识别；</p>
+<p>使用梯度方向法对圆的方向进行调整：</p>
+<ol>
+<li>计算圆内每个像素的梯度强度和方向</li>
+<li>将梯度方向量化成八份，给对应的直方图投票，票数就是梯度的大小</li>
+<li>统计完之后选择票数最高的方向作为圆内像素整体的梯度方向，将方向转换到0°，将整个圆进行相同的旋转</li>
+</ol>
+<h4 id="5-4-3-光照变换"><a href="#5-4-3-光照变换" class="headerlink" title="5.4.3 光照变换"></a>5.4.3 光照变换</h4><p>将圆均分成16格，每个格代表一个区域，统计每个区域的方向量化梯度（两化成八个角度，长度代表梯度大小），每个区域中由一个“8位”向量表示，将16个区域的向量拉直就得到一个8*16&#x3D;128的向量来描述这个圆内的内容，最后比较每个圆的128个数来判断两个圆内容的相似程度</p>
+<h2 id="6-纹理表示"><a href="#6-纹理表示" class="headerlink" title="6.纹理表示"></a>6.纹理表示</h2><p>参考链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/moonoa/article/details/107590894?spm=1001.2014.3001.5502">纹理表示(Texture)_使用高斯偏导核,对图像_Wang Yuexin的博客-CSDN博客</a>；</p>
+<hr>
+<p>纹理是指一些基元以某种方式组合起来的，看起来很乱但存在一定内部规律的，物体上的花纹或线条，纹理主要分为规则的纹理和不规则的纹理</p>
+<p><img src="/images/image-20230409202615406.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="6-1-纹理描述"><a href="#6-1-纹理描述" class="headerlink" title="6.1 纹理描述"></a>6.1 纹理描述</h3><p>因为纹理是由某些重复的局部模块组成的，所以纹理描述主要分为两个部分：</p>
+<ol>
+<li>找到纹理的局部模块</li>
+<li>描述每个局部模块的统计信息</li>
+</ol>
+<p>对纹理模块的提取主要使用的是前面介绍的高斯核，这里拓展一下多元高斯的概念，不同的协方差矩阵Σ对应了不同高斯核形状</p>
+<p><img src="/images/image-20230409203000952.png" srcset="/img/loading.gif" lazyload></p>
+<p>经过不同的变化得到的filter模板如下，形成了filter bank</p>
+<p><img src="/images/image-20230409204135135.png" srcset="/img/loading.gif" lazyload></p>
+<p>filter bank中需要添加的filter主要包括检测edges、bars、spots这几类纹理模块的功能，同时这些filter可以检测满足不同比例和方向的纹理模块的要求；</p>
+<p>拥有filter bank之后，就可以按照如下步骤对图像进行纹理提取和分类：</p>
+<ol>
+<li>使用高斯偏导核，对图像进行卷积，x方向的偏导得到的是竖直纹理，y方向的偏导得到的是水平纹理（其他方向的偏导得到对应的纹理）；</li>
+<li>统计各个方向的纹理数量，在图中表示出来，不同的区域映射的是不同的纹理特性；</li>
+<li>对统计结果进行K均值聚类即可对图像的纹理类别进行区分；<img src="/images/image-20230409205536037.png" srcset="/img/loading.gif" lazyload></li>
+<li>不同窗口内的点的距离显示了窗口之间的纹理的区别；<img src="/images/image-20230409205734573.png" srcset="/img/loading.gif" lazyload></li>
+</ol>
+<h3 id="6-2-纹理匹配"><a href="#6-2-纹理匹配" class="headerlink" title="6.2 纹理匹配"></a>6.2 纹理匹配</h3><p>将对应的卷积核的响应结果求均值，将所得结果组成一个7维度向量，每个向量对应一个纹理，可以将响应结果与纹理进行匹配</p>
+<p><img src="/images/image-20230409210909630.png" srcset="/img/loading.gif" lazyload></p>
+<p>实际运用中将采取的纹理与数据库中的纹理进行对比，实现纹理检索与分类</p>
+<p><img src="/images/image-20230409211159450.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="7-图像分割"><a href="#7-图像分割" class="headerlink" title="7.图像分割"></a>7.图像分割</h2><p>参考链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/moonoa/article/details/107712114?spm=1001.2014.3001.5502">(11条消息) 图像分割(Segmentation)——K-Means, 最小割, 归一化图割_原始 k-means 分割_Wang Yuexin的博客-CSDN博客</a>；</p>
+<hr>
+<p>图像分割指的是将图片相似的部分分割成相同的块，也就是将图像中相似的像素组合在一起</p>
+<p><img src="/images/image-20230413211629393.png" srcset="/img/loading.gif" lazyload></p>
+<p>图像分割的结果可能有过分割（分割的过于细致）和欠分割（分割的不够细致），这两种情况都不是我们想要的，因此需要有一个适当的图像分割算法；</p>
+<h3 id="7-1-Gestalt理论"><a href="#7-1-Gestalt理论" class="headerlink" title="7.1 Gestalt理论"></a>7.1 Gestalt理论</h3><p>分割的依据 – Gestalt理论，相似性、连通、平行…</p>
+<p>Gestalt理论是解释图像分割的底层理论，即将同一个群组中的图像汇聚在一起的时候，这些图像根据相互之间的关系可以产生新的属性</p>
+<p><img src="/images/image-20230413212713503.png" srcset="/img/loading.gif" lazyload></p>
+<p>Gestalt一些常见的分组情况如下，代表了在什么样的情况下群组可以自动汇聚，什么样的情况下群组无法自动汇聚（即能够一眼辨别出的群组类型&#x2F;高效群组类型）</p>
+<p><img src="/images/image-20230413212457140.png" srcset="/img/loading.gif" lazyload></p>
+<p>一个低效的群组可能导致识别的困难，而一个高效的群组可以很轻易的识别，区分一个群组是否高效主要就是看其是否符合上述几类Gestalt分组</p>
+<p><img src="/images/image-20230413212648039.png" srcset="/img/loading.gif" lazyload></p>
+<p>Gestalt理论作为图像分割任务的指导理论，以下介绍的几种图像分割算法都是基于该理论；</p>
+<h3 id="7-2-K-Means聚类"><a href="#7-2-K-Means聚类" class="headerlink" title="7.2 K-Means聚类"></a>7.2 K-Means聚类</h3><p>主要思想：将分割的任务转换为聚类的任务 – 相似的像素属于同一个事物</p>
+<p>像素表达：每个像素使用一个多维向量表示，如三维向量(R,G,B)或五维向量(R,G,B,X,Y)。不同的像素表达方式会导致分割的结果不同，三维向量对应语义分割，五维向量对应实例分割</p>
+<p>K-Means聚类算法：</p>
+<ul>
+<li><p>首先输入k的值，即希望将数据集经过聚类得到的k个分组；</p>
+</li>
+<li><p>从数据集中随机选择k个数据点作为初始大哥（质心，Centroid）；</p>
+</li>
+<li><p>对集合中每一个小弟，计算与每一个大哥的距离（一般选择欧氏距离），离哪个大哥距离近，就跟定哪个大哥；</p>
+</li>
+<li><p>这时每一个大哥手下都聚集了一票小弟，这时候召开代表大会，每一群选出新的大哥（其实是通过算法选出新的质心）；</p>
+<ul>
+<li><p>如果新大哥和老大哥之间的距离小于某一个设置的阈值（表示重新计算的质心的位置变化不大，趋于稳定，或者说收敛），可以认为我们进行的聚类已经达到期望的结果，算法终止；</p>
+</li>
+<li><p>如果新大哥和老大哥距离变化很大，需要迭代3~5步骤；</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>优点：</p>
+<ul>
+<li>非常简单直观的方法；</li>
+<li>可能收敛到局部最优值；</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>内存需求较大；</li>
+<li>需要指定合理的超参数k；</li>
+<li>对初始化的结果非常敏感；</li>
+<li>对外点很敏感；</li>
+<li>只能检测圆&#x2F;球形群组；</li>
+</ul>
+<h3 id="7-3-Mean-shift聚类"><a href="#7-3-Mean-shift聚类" class="headerlink" title="7.3 Mean-shift聚类"></a>7.3 Mean-shift聚类</h3><p>主要思想：可以认为就是寻找密度中心的问题，Mean Shift算法将像素的密度峰值作为初始值，在特征空间中寻找密度的模态或局部最大值；</p>
+<p>密度中心：随机选取像素点，向密度较大的区域漂移，迭代直到search window不再漂移</p>
+<p><img src="/images/image-20230413214223219.png" srcset="/img/loading.gif" lazyload></p>
+<p>为什么密度中心可以分割图像呢？因为像素点的所有轨迹都会通向具有相同模态的区域</p>
+<p><img src="/images/image-20230413214415735.png" srcset="/img/loading.gif" lazyload></p>
+<p>优点：</p>
+<ul>
+<li>不只是可以检测圆&#x2F;球形cluster；</li>
+<li>只需要指定一个参数，即检测窗口的大小（检测窗口过小可能卡在局部最优值，太大了导致最终只会出现一个类）；</li>
+<li>对外点有鲁棒性；</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>分割结果及其依赖窗口大小；</li>
+<li>计算较复杂（一个一个像素的聚类），解决方法是在路径上window中的点一起进入一个类；</li>
+<li>对于高维特征表现不是很好（漂移的方向不确定）；</li>
+</ul>
+<h3 id="7-4-Images-as-graphs"><a href="#7-4-Images-as-graphs" class="headerlink" title="7.4 Images as graphs"></a>7.4 Images as graphs</h3><p>主要思想：</p>
+<ul>
+<li>节点代表像素；</li>
+<li>边代表每对像素之间的联系；</li>
+<li>每条边都根据两个节点的亲和力或相似性进行加权；</li>
+<li>找到一条边删除，将像素之间的联系切断 – 对切断的边的权值求和使其最小；</li>
+</ul>
+<p><img src="/images/image-20230413214926928.png" srcset="/img/loading.gif" lazyload></p>
+<p>边上的权值的定义如下：</p>
+<p><img src="/images/image-20230413215131130.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20230413215207549.png" srcset="/img/loading.gif" lazyload></p>
+<p>拥有了带权图之后，只需要选择一个合适的边切割方法即可；</p>
+<p>最小割的思想是将权值最小的边去掉</p>
+<p><img src="/images/image-20230413215357415.png" srcset="/img/loading.gif" lazyload></p>
+<p>但是最小割倾向于将像素点单独切割出来，这将导致分割出很多“小块”，因此一般不选择最小割，而是选择归一化图割，归一化图割的核心思想如下</p>
+<p><img src="/images/image-20230413215531306.png" srcset="/img/loading.gif" lazyload></p>
+<p>如何具体的实现归一化图割呢？主要流程如下</p>
+<p><img src="/images/image-20230413215715187.png" srcset="/img/loading.gif" lazyload></p>
+<p>优点：</p>
+<ul>
+<li>可以定义任何的方式来表示像素点；</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>运算量非常大；</li>
+<li>归一化图割更倾向于将图像分割成大小相等的部分，不适用于某些分割任务；</li>
+</ul>
+<h2 id="8-图像识别"><a href="#8-图像识别" class="headerlink" title="8.图像识别"></a>8.图像识别</h2><h3 id="8-1-概述"><a href="#8-1-概述" class="headerlink" title="8.1 概述"></a>8.1 概述</h3><h4 id="8-1-1-图像识别的分类"><a href="#8-1-1-图像识别的分类" class="headerlink" title="8.1.1 图像识别的分类"></a>8.1.1 图像识别的分类</h4><p>图像识别任务Recognition主要分为<code>图像分类</code>和<code>图像检测</code>：</p>
+<ul>
+<li>图像分类：为图像指定标签或类别的任务。例如，猫的图像可以被归类为“猫”，或者汽车的图像可以归类为“汽车”；</li>
+<li>图像检测：识别和定位图像中的对象。这通常涉及在感兴趣的对象周围绘制边界框。例如，可以分析街道场景的图像，以检测和定位场景中的所有汽车；</li>
+</ul>
+<hr>
+<blockquote>
+<p>刚好我的项目中有这两个项目，感兴趣可以参考：<a href="https://gintoki-jpg.github.io/2023/04/28/%E9%A1%B9%E7%9B%AE_%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB%E7%B3%BB%E7%BB%9F/">图像分类</a>，<a href="https://gintoki-jpg.github.io/2023/04/24/%E9%A1%B9%E7%9B%AE_%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F/">目标检测</a>；</p>
+</blockquote>
+<hr>
+<p>对于图像检测来说，包括以下子任务：</p>
+<ul>
+<li><p>对象检测：对象检测包括识别图像中对象的位置和类别。它通常包括围绕对象绘制边界框，并为其指定标签或类别；</p>
+</li>
+<li><p>语义分割：语义分割包括根据图像中的每个像素所属对象的类别对其进行分类。换句话说，语义分割根据图像中每个像素所代表的对象为其分配标签。</p>
+</li>
+<li><p>实例分割：实例分割更进一步，识别和描绘图像中的单个对象，并为每个实例分配单独的标签或标识符。换句话说，实例分割不仅涉及检测图像中的对象，还涉及区分同一对象类的不同实例。实例分割是图像检测的一种更细粒度的版本，它通过识别和分离对象的单个实例来超越简单的对象检测；</p>
+</li>
+</ul>
+<p>除了图像分类和图像检测这两个基本的任务以外，图像识别领域也有更高级的任务，比如事件识别和行为识别。</p>
+<p>事件识别和行为识别不仅仅识别图像中的对象，还包括分析对象或个人之间的时间关系和交互。事件识别涉及识别视频或图像序列中发生的特定动作或事件，而行为识别侧重于识别和表征一段时间内的行为模式。</p>
+<p>虽然事件识别和行为识别与图像分类和图像检测有关，但它们涉及对视觉数据进行更复杂和细致的分析。它们通常需要使用机器学习算法，这些算法可以随着时间的推移处理和分析视频或图像序列，而不仅仅是单个图像。因此，事件识别和行为识别被认为是视觉识别领域中更高级的任务。</p>
+<p><img src="/images/image-20230429084529393.png" srcset="/img/loading.gif" lazyload></p>
+<p>因此，根据不同的目标和使用的方法，图像识别算法最终可分为如下四种：</p>
+<ul>
+<li>图像或视频的分类；</li>
+<li>物体检测和定位；</li>
+<li>估计语义和几何属性；</li>
+<li>分析人类行为事件；</li>
+</ul>
+<h4 id="8-1-2-图像识别面临的问题"><a href="#8-1-2-图像识别面临的问题" class="headerlink" title="8.1.2 图像识别面临的问题"></a>8.1.2 图像识别面临的问题</h4><p>图像识别面临很多问题：需要识别的种类太多、视角变化影响、光照影响、尺寸变化影响、形变影响（如蹲着的猫和站立的猫，解决方法就是喂大量数据）、遮挡（解决方法是提取局部特征进行识别）、背景杂波、intra-class variationin 等。</p>
+<h4 id="8-1-3-图像识别的步骤"><a href="#8-1-3-图像识别的步骤" class="headerlink" title="8.1.3 图像识别的步骤"></a>8.1.3 图像识别的步骤</h4><p>图像识别一般包含三个环节，其中第一步又包含图像表达和选择分类策略。第二步学习就是机器学习课程讲解的知识点，涉及学习批量、泛化、监督级别等，这里不再赘述。</p>
+<p><img src="/images/image-20230429085325301.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="1-图像表达和分类策略"><a href="#1-图像表达和分类策略" class="headerlink" title="(1)图像表达和分类策略"></a>(1)图像表达和分类策略</h5><p>（1）图像表达的方式有很多，但无论使用哪种，应当实现的基本目标为图像表达对视角、光照、尺寸、遮挡、杂波、形变有Invariance的特性。</p>
+<p>（2）常用的分类策略可分为产生式和判别式。举例说明两者之间的区别，比如当前有任务“识别张三”：</p>
+<ul>
+<li>产生式的目标是画出张三，画的越像识别率越高（不需要李四的存在） – 了解内部规律并建模</li>
+<li>判别式不需要知道张三和李四长什么样，只需要知道张三和李四之间的差异即可 – 找到内外部的差异并建模</li>
+</ul>
+<p><img src="/images/image-20230429085909265.png" srcset="/img/loading.gif" lazyload alt="产生式模型"></p>
+<p><img src="/images/image-20230429090003543.png" srcset="/img/loading.gif" lazyload></p>
+<p>用更加官方的话来说，“判别式建模的是后验概率，产生式建模的是先验概率和似然概率”，什么是先验概率，什么又是后验概率和似然概率呢？（实际上就是贝叶斯公式里的各部分）</p>
+<p><img src="/images/image-20230429090207628.png" srcset="/img/loading.gif" lazyload></p>
+<p>常见的判别式模型有SVM、神经网络、Boosting等，常见的生成式模型有朴素贝叶斯、层次贝叶斯等。</p>
+<h5 id="2-Recognition"><a href="#2-Recognition" class="headerlink" title="(2)Recognition"></a>(2)Recognition</h5><p>在确定了图像表达方式、分类策略以及学习方式后，最后就是Recognition，前面也说过识别主要分为分类和检测，分类非常的简单只需要对<code>整图</code>进行类别判断即可；检测稍难，不仅要从整图检测(detection)出物体，还需要识别(recognition)<code>窗口</code>中物体的类别。</p>
+<p><img src="/images/image-20230525201913582.png" srcset="/img/loading.gif" lazyload></p>
+<p>检测任务具有滑动窗口问题。检测任务的本质就是判断图像中的每个窗口是否是待检测目标（检测任务实际上也是一个分类任务，只是在一个窗口内的分类）这就要求评判每个窗口的速度尽量快，进而实现实时检测。</p>
+<p><img src="/images/image-20230429090735416.png" srcset="/img/loading.gif" lazyload></p>
+<p>滑动窗口的另一个问题是，可能有多个检测窗口都输出真值，需要使用非最大化抑制得到一个检测框。</p>
+<p><img src="/images/image-20230429090800744.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="8-2-图像分类"><a href="#8-2-图像分类" class="headerlink" title="8.2 图像分类"></a>8.2 图像分类</h3><p>随着计算机与互联网技术以及数字图像获取技术的快速发展,海量的数字图像出现在互联网上及人们周边的生活中。依靠传统的人工方式对图像进行分类、组织和管理非常耗时耗力，所以希望能够通过计算机对图像中的目标内容进行自动地分析处理，从而将图像数据快速、规范、自动地进行组织、归类和管理。</p>
+<p>早期的图像分类主要依赖于文本特征，采用人工方式为图像标注文本，使用的是基于文本的图像分类模式。由于图像标注需要人为地辨识并为其选定关键字，故其分类的效果不是非常理想，且耗时严重。随着计算机技术和数字化图像技术的发展，图像库的规模越来越大，人工标注的方式对图像进行分类已不可能，人们开始逐渐将研究的重点转移到基于图像内容分析的自动分类研究上。</p>
+<p>基于内容的图像分类技术不需要进行人工标注的语义信息，而是直接对图像所包含的信息进行处理和分析，利用图像底层视觉特征来进行图像分类。图像分类技术研究是一个集中了机器学习、模式识别、计算机视觉和图像处理等多个研究领域的交叉研究方向。</p>
+<p>图像分类任务的常用方法包括：</p>
+<ul>
+<li>传统机器学习方法：如分类器、决策树、随机森林等。<ul>
+<li>逻辑回归：用于二分类问题，可以使用sigmoid等激活函数进行参数学习。</li>
+<li>支持向量机：用于多分类问题，需要正则化，并可以使用核等技巧进行超参数优化。</li>
+</ul>
+</li>
+<li>深度学习模型：其中最常用的是卷积神经网络，如卷积神经网络（CNN）、循环神经网络（RNN）等。</li>
+</ul>
+<p>本次实验要求使用支持向量机对图像进行分类，下面是使用支持向量机实现图像分类的一般步骤：</p>
+<ol>
+<li>数据预处理：将图像转换为二维数组，并对每个像素进行标准化处理，以消除像素之间的尺度差异。</li>
+<li>构建SVM分类器：使用支持向量机算法构建SVM分类器，通常使用径向基函数（RBF）或多项式核（Polynomial Kernel）等核函数。</li>
+<li>训练SVM分类器：使用训练数据训练SVM分类器，通常使用交叉验证等方法进行模型选择和参数优化。</li>
+<li>使用SVM分类器进行预测：使用训练好的SVM分类器对新的图像进行分类预测。</li>
+</ol>
+<p>图像分类常用的是深度学习的模型（毕竟诸如CNN这种能够自动提取图像的局部特征）。但是，这并不妨碍SVM是一个优秀的算法，大量的实践都证明它对于小批量数据集的分类、预测都能够得到较好的效果。</p>
+<h4 id="8-2-1-词袋模型概述"><a href="#8-2-1-词袋模型概述" class="headerlink" title="8.2.1 词袋模型概述"></a>8.2.1 词袋模型概述</h4><p>参考链接（这一节看文本很难形成直观上的理解，推荐搭配视频）：</p>
+<ul>
+<li><p>视频：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1nz4y197Qv?p=11&vd_source=276d55048634a5b508b1b53a1ecd56b3">09.识别&amp;词袋模型.1080P_哔哩哔哩_bilibili</a>（这个视频只能作为最基本的入门来看，很多描述不准确）；</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wxl845235800/p/10564121.html">视觉单词模型、词袋模型BoW - ostartech - 博客园 (cnblogs.com)</a>；</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/baidu_28563321/article/details/46348439">(6条消息) 计算机视觉课程作业 基于词袋模型的图像分类算法_蒋_X_X的博客-CSDN博客</a>；</p>
+</li>
+</ul>
+<hr>
+<p>词袋模型BoW在NL和CV领域都有提到，这里我们主要介绍词袋模型在CV领域的使用即BoVW。</p>
+<p>词袋模型最初用于文本分类中，然后逐步引入到了图像分类任务中。在文本分类中，文本被视为一些不考虑先后顺序的单词集合。而在图像分类中，图像被视为是一些与位置无关的<code>局部区域</code>的集合（一袋拼图），因此这些图像中的局部区域就等同于文本中的单词。在不同的图像中，局部区域的分布是不同的（一袋“马”的拼图肯定和一袋“牛”的拼图不同）。因此，可以利用提取的局部区域的分布对图像进行识别。</p>
+<blockquote>
+<p>注意这里的“局部区域”，一般指的是具有代表性的图像区域，也就是图像特征，一般使用SIFT提取器提取（当然直接将图像均分为局部区域也可以，但这种做法得到的拼图过多影响后续处理）</p>
+</blockquote>
+<p>图像分类和文本分类的不同点在于，在文本分类的词袋模型算法中，字典是已存在的，不需要通过学习获得；而在图像分类中，词袋模型算法需要通过监督或非监督的学习来获得视觉词典。造成这种差异的原因是，图像中的视觉特征不像自然语言中的单词那样定义明确和被理解。因此，有必要学习一种能够有效地表示图像中特征的视觉词典。</p>
+<p><code>视觉词袋（BoVW，Bag of Visual Words）模型</code>，是“词袋”（BoW，Bag of Words）模型从自然语言处理与分析领域向图像处理与分析领域的一次自然推广。对于任意一幅图像，BoVW模型提取该图像中的基本元素，并统计该图像中这些基本元素出现的频率，用直方图的形式来表示。通常使用“图像局部特征”来类比BoW模型中的单词，如SIFT、SURF、HOG等特征，所以也被称之为<code>视觉单词模型</code>。</p>
+<p>图像BoVW模型表示的直观示意图如图所示</p>
+<p><img src="/images/image-20230429100507214.png" srcset="/img/loading.gif" lazyload></p>
+<p>利用BoVW模型表示图像，获得图像的全局直方图表示，主要有四个关键步骤：</p>
+<p>Step 1：图像局部特征提取（Image Local Features Extrication）。根据具体应用考虑，综合考虑特征的独特性、提取算法复杂性、效果好坏等选择特征。利用局部特征提取算法，从图像中提取局部特征。 – SIFT特征提取器</p>
+<p>Step 2：视觉词典构造（Visual Dictionary Construction）。利用上一步得到的特征向量集，抽取其中有代表性的向量，作为单词，形成视觉词典。一般是从图像库中选取一部分来自不同场景或类别的图像来组成训练图像集，并提取其局部特征，然后对训练图像的所有局部特征向量通过适当的去冗余处理得到一些有代表性的特征向量，将其定义为视觉单词。通常所采用的处理方法是对训练图像的所有局部特征向量进行聚类分析，将聚类中心定义为视觉单词。所有视觉单词组成视觉词典，用于图像的直方图表示。 – K-means聚类</p>
+<p>Step 3：特征向量量化(Feature Vector Quantization)。BoVW模型采用向量量化技术实现，向量量化结果是将图像的局部特征向量量化为视觉单词中与其距离最相似的视觉单词。向量量化过程实际上是一个搜索过程，通常采用最近邻搜索算法，搜索出与图像局部特征向量最为匹配的视觉单词。 – KNN最近邻聚类</p>
+<p>Step 4：用视觉单词直方图表示图像，也称为量化编码集成(Pooling)。一幅图像的所有局部特征向量被量化后，可统计出视觉词典中每个视觉单词在该图像中出现的频数，得到一个关于视觉单词的直方图，其本质是上一步所得量化编码的全局统计结果，是按视觉单词索引顺序组成的一个数值向量（各个元素的值还可以根据一定的规则进行加权）。该向量即为图像的最终表示形式。</p>
+<p>上述步骤很抽象，下面举一个例子来帮助理解：</p>
+<p>现在我们有如下三张原始图像</p>
+<p><img src="/images/image-20230429100908612.png" srcset="/img/loading.gif" lazyload alt="原始图像"></p>
+<p>第一步是做局部特征提取，假设使用SIFT特征提取器提取到了如下这些特征（可以认为是拼图，我们将三张原始图像的拼图都放在一个袋子中，这就是我们的“词袋”）</p>
+<p><img src="/images/image-20230429101118048.png" srcset="/img/loading.gif" lazyload alt="词袋"></p>
+<p>第二步是视觉词典构造，也就是从上述那么多特征中选取k个单词来构成视觉词典，这里的k由人为规定（一般需要先验知识）。使用K-means聚类算法将词袋中的拼图聚为k个类，k个类别中心的拼图就是k个单词（假设我们令k&#x3D;4）</p>
+<p><img src="/images/image-20230429101431211.png" srcset="/img/loading.gif" lazyload alt="视觉词典"></p>
+<p>第三步和第四步通常合并进行，即对词袋中的每个拼图都使用最近邻算法，寻找与其最近的在视觉词典中的单词（我们认为这两张图像属于同一个单词），找到之后对直方图中该单词的频数+1。因为我们有三张原始图像，所以对应有三个直方图，每个直方图的横轴为视觉词典中的单词，纵轴为该单词出现的频数，因此对原始三张图像的直方图表示如下</p>
+<p><img src="/images/image-20230429101848165.png" srcset="/img/loading.gif" lazyload alt="直方图表示"></p>
+<hr>
+<blockquote>
+<p>Q：K-means聚类和KNN最近邻有什么区别？</p>
+</blockquote>
+<p>A：回答参考<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/31580379">KNN和K-mean有什么不同？ - 知乎 (zhihu.com)</a>；</p>
+<ul>
+<li>KNN<ul>
+<li>分类算法</li>
+<li>监督学习</li>
+<li>数据集是带Label的数据</li>
+<li>没有明显的训练过程，基于Memory-based learning</li>
+<li>K值含义 - 对于一个样本X，要给它分类，首先从数据集中，在X附近找离它最近的K个数据点，将它划分为归属于类别最多的一类</li>
+</ul>
+</li>
+<li>K-means<ul>
+<li>聚类算法</li>
+<li>非监督学习</li>
+<li>数据集是无Label，杂乱无章的数据</li>
+<li>有明显的训练过程</li>
+<li>K值含义- K是事先设定的数字，将数据集分为K个簇，需要依靠人的先验知识</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="8-2-2-词袋模型-SVM图像分类"><a href="#8-2-2-词袋模型-SVM图像分类" class="headerlink" title="8.2.2 词袋模型+SVM图像分类"></a>8.2.2 词袋模型+SVM图像分类</h4><p>词袋模型的概念介绍完毕，下面通过“词袋模型+SVM图像分类”任务来介绍其中涉及的知识点（这是一个最基本的词袋模型的运用），即SIFT特征提取器、K-means算法、KNN算法以及最终进行图像分类需要使用的SVM模型（以下知识点都是之前学习过程中自己总结的，如果有看不懂的也可以自行Google）</p>
+<p>完整的项目链接在<a href="https://gintoki-jpg.github.io/2023/04/28/%E9%A1%B9%E7%9B%AE_%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB%E7%B3%BB%E7%BB%9F/">图像分类</a>，涉及的知识点链接都在下面：</p>
+<ul>
+<li><p>[SIFT特征提取器](# 5.3 SIFT算法)；</p>
+</li>
+<li><p><a href="https://gintoki-jpg.github.io/2022/08/08/%E4%B8%93%E4%B8%9A_%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/#2-8-K-means%E8%81%9A%E7%B1%BB">K-means聚类</a>；</p>
+</li>
+<li><p><a href="https://gintoki-jpg.github.io/2022/08/08/%E4%B8%93%E4%B8%9A_%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/#2-3-KNN%E7%AE%97%E6%B3%95">KNN算法</a>；</p>
+</li>
+<li><p><a href="https://gintoki-jpg.github.io/2022/08/08/%E4%B8%93%E4%B8%9A_%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/#2-7-%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA">SVM支持向量机</a>；</p>
+</li>
+</ul>
+<p>要实现基于词袋模型的图像分类，大致分为如下四步：</p>
+<ol>
+<li>特征提取与描述子生成：一般选择SIFT特征提取器，SIFT特征具有放缩、旋转、光照不变性，同时兼有对几何畸变，图像几何变形的一定程度的鲁棒性；</li>
+<li>词袋生成：词袋生成基于描述子数据的基础上，生成一系列的向量数据，最常见就是首先通过K-Means实现对描述子数据的聚类分析，一般会分成K个聚类、得到每个聚类的中心数据，就生成了K单词，根据每个描述子到这些聚类中心的距离，决定了它属于哪个聚类，这样就生成了图像的直方图表示数据。</li>
+<li>SVM分类训练与模型生成：使用SVM进行数据的分类训练，得到输出模型；</li>
+<li>模型使用预测：加载预训练好的模型，使用模型在测试集上进行数据分类预测；</li>
+</ol>
+<p><img src="/images/image-20230525164957239.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="8-3-图像检测"><a href="#8-3-图像检测" class="headerlink" title="8.3 图像检测"></a>8.3 图像检测</h3><p>参考资料：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/matrix_space/article/details/53840740">(7条消息) 机器学习: Viola-Jones 人脸检测算法解析(一)_vio-jones算法_Matrix_11的博客-CSDN博客</a>；</li>
+<li>[(7条消息) 机器学习: Viola-Jones 人脸检测算法解析(二)_violajones算法_Matrix_11的博客-CSDN博客](<a target="_blank" rel="noopener" href="https://blog.csdn.net/matrix_space/article/details/53892765?ops_request_misc=&amp;request_id=&amp;biz_id=102&amp;utm_term=Viola-Jones">https://blog.csdn.net/matrix_space/article/details/53892765?ops_request_misc=&amp;request_id=&amp;biz_id=102&amp;utm_term=Viola-Jones</a> 人脸检测算法解析&amp;utm_medium&#x3D;distribute.pc_search_result.none-task-blog-2<del>all</del>sobaiduweb~default-1-53892765.142^v88^insert_down38v5,239^v2^insert_chatgpt&amp;spm&#x3D;1018.2226.3001.4187)；</li>
+<li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1419615">HOG特征详解与行人检测-腾讯云开发者社区-腾讯云 (tencent.com)</a>；</li>
+</ul>
+<h4 id="8-3-1-人脸检测"><a href="#8-3-1-人脸检测" class="headerlink" title="8.3.1 人脸检测"></a>8.3.1 人脸检测</h4><p>在人脸检测邻域，Viola-Jones算法非常经典。Viola-Jones算法在2001年的CVPR上提出，因为其高效而快速的检测即使到现在也依然被广泛使用。VJ算法包含以下几个重要的部分：</p>
+<ol>
+<li>利用 Haar 特征描述人脸的共有属性；</li>
+<li>建立了一种称为积分图像的特征，并且基于积分图像，可以快速获取几种不同的矩形特征；</li>
+<li>利用 Adaboost 算法进行训练；</li>
+<li>建立层级分类器；</li>
+</ol>
+<h5 id="1-Harr特征"><a href="#1-Harr特征" class="headerlink" title="(1)Harr特征"></a>(1)Harr特征</h5><p>一般来说，人脸会有一些基本的共性，比如眼睛区域会比脸颊区域要暗很多、鼻子一般属于脸部的高光区域因而鼻子会比周围的脸颊要亮很多、一张正脸图像，眼睛，眉毛，鼻子，嘴巴等的相对位置是有规律可循的。Haar特征考虑的是某一特定像素点相邻的矩形区域的特征，这需要将整个矩形区域内的像素相加然后再做减法运算。一般的，有以下几种Harr特征算子</p>
+<p><img src="/images/image-20230525202931622.png" srcset="/img/loading.gif" lazyload></p>
+<p>普通的特征都是针对单一像素，Harr特征是针对矩形区域，因此计算时需要先将每个矩形区域的像素进行求和，然后再使用上面的算子进行计算</p>
+<h5 id="2-积分图像"><a href="#2-积分图像" class="headerlink" title="(2)积分图像"></a>(2)积分图像</h5><p>为了计算Harr特征，需要先对矩形区域内的所有像素求和。而一张图像中的像素形成的矩形区域形状、大小不定，因此如果使用常规的对每个矩形区域内的像素进行遍历求和的方法会导致很大的运算量。下面引入这样一种数据结构，称为积分图像。积分图像的原理非常简单，即对积分图像中的任何一点，该点的积分图像值等于该点在原图中的点左上角的所有像素值之和，表达式如下</p>
+<p><img src="/images/image-20230525204712833.png" srcset="/img/loading.gif" lazyload></p>
+<p>积分图像与原图之间满足如下关系</p>
+<p><img src="/images/image-20230525204801412.png" srcset="/img/loading.gif" lazyload></p>
+<p>其中I表示积分图像，f表示原图，x,y表示像素点的坐标。因此，一张图像的积分图像记录了这张图像上每一个像素点其左上角所有像素的和。如果把一张图像的左上角看做坐标原点，那么上面的表达式就是原点到该像素点之间的所有像素点的离散求和，这可以看成是一种积分，所以这也是积分图像名称的由来。利用积分图像，可以非常快速的计算一张图像上任意一个矩形区域内的像素和</p>
+<p><img src="/images/image-20230525205220890.png" srcset="/img/loading.gif" lazyload></p>
+<p>这意味着，原图中任意一个矩形区域的像素和，都可以由上述运算法则求解。</p>
+<p>在VJ人脸检测中，主要使用了三种不同的矩形特征（Harr特征中的其中三个），分别是二邻接，三邻接，四邻接矩形，矩形的Value计算公式为</p>
+<p><img src="/images/image-20230525211433397.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20230525205709327.png" srcset="/img/loading.gif" lazyload></p>
+<p>因为一个矩阵需要使用四个点来计算&#x2F;表示，进而二邻接矩形需要六个点表示，三邻接矩形需要八个点，而四邻接矩形需要九个点表示。</p>
+<p>下面来计算给定一张图像，能够得到多少个矩形特征。</p>
+<p>VJ算法中使用的图像大小都是<code>24*24</code>的图像大小。考虑水平方向和垂直方向二邻接矩形有两种情况1×2和2×1，三邻接矩形也有两种情况1×3和3×1，而四邻接矩形只有一种情况2×2。</p>
+<p>下面列出每种矩阵可能的size：</p>
+<ul>
+<li>二邻接矩阵：<img src="/images/image-20230525210735111.png" srcset="/img/loading.gif" lazyload></li>
+<li>三邻接矩阵：<img src="/images/image-20230525210805819.png" srcset="/img/loading.gif" lazyload></li>
+<li>四邻接矩阵：<img src="/images/image-20230525210831095.png" srcset="/img/loading.gif" lazyload></li>
+</ul>
+<p>根据卷积定理，一个大小为<code>W*H</code>的图像与大小为<code>m*n</code>的filter做卷积，新生成的图像大小为<code>(W-m+1)*(H-n+1)</code>，这意味着新图像有多少个像素，则对应原图有多少个<code>m*n</code>大小的矩形。</p>
+<p>计算过程省略，最终一个<code>24*24</code>大小的图像会产生162336个矩形特征，这个维度远远高于图像本身的维度，因此不可能将这些特征全部使用，需要使用Boost来做特征选择与训练。</p>
+<h5 id="3-Boost训练"><a href="#3-Boost训练" class="headerlink" title="(3)Boost训练"></a>(3)Boost训练</h5><p>前面已经说过，VJ人脸检测算法使用的特征就是基于积分图像的矩形特征，也称为Harr特征。一张图像生成的Harr特征集远高于图像维度，下面介绍使用Boost做特征选择和分类器训练。</p>
+<p>Boost可以同时进行特征选择与分类器训练，简单来说，Boost就是将一系列的”弱”分类器通过线性组合，构成一个”强”分类器</p>
+<p><img src="/images/image-20230525220003853.png" srcset="/img/loading.gif" lazyload></p>
+<p>其中h(x)就是一个强分类器</p>
+<p><img src="/images/image-20230525220054527.png" srcset="/img/loading.gif" lazyload></p>
+<p>而h<del>j</del>(x)就是“弱”分类器，h<del>j</del>(x)本质上是一个简单的阈值函数</p>
+<p><img src="/images/image-20230525220211292.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>规定：给定N个训练样本(x^i^,y^i^)，其中含有m个正样本，l个负样本。如果x^i^是人脸图像则y^i^&#x3D;1，否则y^i^&#x3D;0。</p>
+</blockquote>
+<p>基于Boost的训练算法具体流程如下：</p>
+<p><img src="/images/image-20230525220830778.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>θ<del>j</del>门限是在第1步确定的，简单理解就是选择什么样的θ能够使得该弱分类器效果最好（正确率最高）；</li>
+<li>β是一个小于1的数，权重更新会导致权重越来越小，这意味着搞不定的样本的权值不变，搞定的权值的样本减小（变相增大搞不定的样本的权值）；</li>
+<li>α权重决定了最终该弱分类器在整个Boosting组合中的重要程度，与β成反比，与分类错误率ε成正比；</li>
+<li>上述步骤2，3，4会一直循环，直到生成的强分类器的性能达到要求，此时选择的弱分类器就是前面162336个矩形特征中被选中的特征（即此处的特征和弱分类器是等价的）；</li>
+</ul>
+<h5 id="4-层级分类器"><a href="#4-层级分类器" class="headerlink" title="(4)层级分类器"></a>(4)层级分类器</h5><p>在一张正常的图像中，包含人脸的区域只占整张图像中很小的一部分，如果所有的局部区域都要遍历所有特征的话，这个运算量非常巨大，也非常耗时，所以为了节省运算时间，应该把更多的检测放在潜在的正样本区域上。所以有了层级分类器的概念，层级分类器就是为了将任务简化，一开始用少量的特征将大部分的negative 区域剔除，后面再利用复杂的特征将 false positive 区域剔除。</p>
+<p>在层级分类器架构中，每一层级含有一个“强”分类器（也就是上一步中Boosting学习得到的强分类器），同时所有的矩形特征被分成几组，每一组都包含部分矩形特征，这些矩形特征用在层级分类器的不同阶段。层级分类器的每一阶段都会判别输入的区域是不是人脸，如果肯定不是，那么这个区域会被立即舍弃掉，只有那些被判别为可能是人脸的区域才会被传入下一阶段用更为复杂的分类器进一步的判别。其流程图如下所示:</p>
+<p><img src="/images/image-20230525222059747.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>处于cascade层级分类器前端的分类器分类速度较快，可以拒绝大部分负样本并且检测出几乎所有的正样本（正样本一定要通过，负样本在可接受范围内可通过一定数量）；</li>
+<li>处于cascade层级分类器后端的分类器分类速度较慢，但是大多数区域样本几乎无法到达；</li>
+</ul>
+<p>每个层级的矩形特征都比较简单。下面的两种特征可以达到100%的检测率，但是也会产生很多的 false positive，一般来说是 50%的FP rate。但是这两种特征对 negative 区域的识别非常高效，所以层级分类器的第一层基本都是用这两种特征加上一个”强”分类器先将大量的negative 区域剔除。对于 false positive 的处理，有赖于后面阶段更多的特征及分类器。</p>
+<p><img src="/images/image-20230525222852635.png" srcset="/img/loading.gif" lazyload></p>
+<p>层级分类器总的识别率D或false positive F是每一层的分类器的识别率d和false positive f的乘积</p>
+<p><img src="/images/image-20230525222957256.png" srcset="/img/loading.gif" lazyload></p>
+<p>一个层级分类器，应该综合考虑以下几个因素：</p>
+<ul>
+<li>层级分类器的层次，即需要多少个分类器；</li>
+<li>每一层分类器需要测试的特征数n<del>i</del>；</li>
+<li>每一层分类器的阈值；</li>
+</ul>
+<h4 id="8-3-2-行人检测"><a href="#8-3-2-行人检测" class="headerlink" title="8.3.2 行人检测"></a>8.3.2 行人检测</h4><h5 id="1-HOG概述"><a href="#1-HOG概述" class="headerlink" title="(1)HOG概述"></a>(1)HOG概述</h5><p>HOG特征全称方向梯度直方图特征，在对象检测与模式匹配中是一种常见的特征提取算法，是一种基于本地像素块进行特征直方图提取的一种算法，对象局部的变形与光照影响有很好的稳定性，最初是用HOG特征来来识别人像，通过HOG特征提取+SVM训练，可以得到很好的效果。HOG特征提取的大致流程如下</p>
+<p><img src="/images/image-20230525225326527.png" srcset="/img/loading.gif" lazyload></p>
+<p>1.灰度化：对HOG特征提取来说第一步是对输入的彩色图像转换为灰度图像，图像灰度化的方法有很多，不同灰度化方法之间有一些微小的差异，从彩色到灰度的图像转换可以表示如下</p>
+<p><img src="/images/image-20230525225421591.png" srcset="/img/loading.gif" lazyload></p>
+<p>2.计算图像梯度：计算图像的X方向梯度dx与Y方向梯度dy，根据梯度计算mag与角度，计算梯度时候可以先高斯模糊一下(可选)，然后使用sobel或者其它一阶导数算子计算梯度值dx、dy、mag、angle</p>
+<p><img src="/images/image-20230525225516084.png" srcset="/img/loading.gif" lazyload></p>
+<p>3.Cell分割与Block对于图像来说，分成8x8像素块，每个块称为一个Cell，每个2x2大小的Cell称为一个Block，每个Cell根据角度与权重建立直方图，每20度为一个BIN，每个Cell得到9个值、每个Block得到36个值(4x9)，图像如下</p>
+<p><img src="/images/image-20230525225600363.png" srcset="/img/loading.gif" lazyload></p>
+<p>每个Block为单位进行L2数据归一化，作用是抵消光照&#x2F;迁移影响，L2的归一化的公式如下</p>
+<p><img src="/images/image-20230525225620678.png" srcset="/img/loading.gif" lazyload></p>
+<p>4.生成描述子：对于窗口64x128范围大小的像素块，可以得到8x16个Cell， 使用Block在窗口移动，得到输出的向量总数为7x15x36&#x3D;3780特征向量，每次Block移动步长是八个像素单位，一个Cell大小</p>
+<p><img src="/images/image-20230525225647957.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="2-HOG-SVM行人检测"><a href="#2-HOG-SVM行人检测" class="headerlink" title="(2)HOG+SVM行人检测"></a>(2)HOG+SVM行人检测</h5><p>基于HOG特征和SVM分类器的行人检测的基本流程如下</p>
+<p><img src="/images/image-20230525225858138.png" srcset="/img/loading.gif" lazyload></p>
+<p>训练过程中正样本为图片中包含有目标区域(行人)的boundingbox，尺寸统一为检测窗口的大小即64×12864×128，负样本不需要统一尺寸，只需比检测窗口大，且图片中不包含检测目标，可任意截取图片中64×12864×128大小的区域提取HOG特征作为负样本的特征向量，并与正样本图片中boundingbox区域提取出的HOG特征向量一起训练，得到SVM的分类模型。</p>
+<p>检测过程中采用滑动窗口法，检测窗口尺寸固定不变，对待检测图片进行尺度缩放，在每一层的图像上，用固定大小的滑动窗口提取HOG特征，并根据训练好的分类模型判断检测窗口是否为目标(行人)。因此HOG + SVM进行行人检测的过程实际上就是对图像的检测窗口提取HOG特征进行分类判决的过程。</p>
+<h3 id="8-4-物体追踪"><a href="#8-4-物体追踪" class="headerlink" title="8.4 物体追踪"></a>8.4 物体追踪</h3><p>因为时间原因可能不能学到这部分知识点，但是相对来说这个知识点网上的参考资料挺多的，之后有时间了可以结合资料自学</p>
+<h2 id="9-三维重建"><a href="#9-三维重建" class="headerlink" title="9.三维重建"></a>9.三维重建</h2><p>（这一章开始其实视频就讲的不是很好了，一方面课程难度增大，另一方面可能老师备课不是特别充足，推荐先看一遍文本知识熟悉概念再看视频）</p>
+<h3 id="9-1-摄像机几何"><a href="#9-1-摄像机几何" class="headerlink" title="9.1 摄像机几何"></a>9.1 摄像机几何</h3><p>参考资料：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_46283220/article/details/123582960">(6条消息) 摄像机几何成像模型_dotJunz的博客-CSDN博客</a>；</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_29931565/article/details/121236411">(9条消息) 【三维重建】三维重建学习笔记（1）—— 摄像机几何_Quentin_HIT的博客-CSDN博客</a>；</li>
+<li><a target="_blank" rel="noopener" href="https://superzlw.github.io/posts/26.html">相机模型与标定 | SuperZLW’s Blog</a>；</li>
+</ul>
+<hr>
+<p>摄像机几何全称为摄像机几何成像模型，其意义在于使用数学公式描述了三维空间中一点与二维图像中一点的关系。摄像机几何主要涉及四个坐标系，这也是整个三维重建部分最基础、最核心的部分。</p>
+<h4 id="9-1-1-四大坐标系"><a href="#9-1-1-四大坐标系" class="headerlink" title="9.1.1 四大坐标系"></a>9.1.1 四大坐标系</h4><p>四大坐标系包括世界坐标系、相机坐标系、图像坐标系和像素坐标系，通过建立它们之间的位置关系可以实现二维平面上一点与三维空间中一点的坐标的互相转换。</p>
+<p><img src="/images/image-20230526165459425.png" srcset="/img/loading.gif" lazyload></p>
+<table>
+<thead>
+<tr>
+<th>坐标系</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>世界坐标系</td>
+<td>世界坐标系是建立在真实世界中的坐标系，单位为米。</td>
+</tr>
+<tr>
+<td>摄像机坐标系</td>
+<td>以相机设备的光心O<del>c</del>作为摄像机坐标的原点位置，单位为米。其横、纵坐标分别与图像坐标系的横、纵坐标平行，但是摄像机坐标系的Z轴为摄像机的光轴。</td>
+</tr>
+<tr>
+<td>图像物理坐标系</td>
+<td>图像物理坐标系以图像中心（或像平面与摄像机光轴的交点）作为原点位置，单位为毫米。横坐标与纵坐标分别平行于摄像机坐标系的横坐标与纵坐标，描述了像素的实际位置。</td>
+</tr>
+<tr>
+<td>图像像素坐标系</td>
+<td>图像像素坐标系以图像左上角的像素点O<del>o</del>作为原点，单位为像素，其横纵坐标与图像物理坐标系的横纵坐标分别平行。</td>
+</tr>
+</tbody></table>
+<h5 id="1-摄像机坐标系-amp-图像物理坐标系"><a href="#1-摄像机坐标系-amp-图像物理坐标系" class="headerlink" title="(1)摄像机坐标系&amp;图像物理坐标系"></a>(1)摄像机坐标系&amp;图像物理坐标系</h5><p>这是最简单的以“小孔成像”为原理的针孔摄像机的的原理</p>
+<p><img src="/images/image-20230526170751731.png" srcset="/img/loading.gif" lazyload></p>
+<p>从3D到2D的转换过程中会遗失角度以及距离的信息。</p>
+<p>假设P的三维坐标为[x,y,z]，其在物理坐标系中对应的坐标为[x’,y’]，则两个坐标之间有如下关系（相似三角形）</p>
+<p><img src="/images/image-20230527092340090.png" srcset="/img/loading.gif" lazyload></p>
+<p>等价于</p>
+<p><img src="/images/image-20230527092426847.png" srcset="/img/loading.gif" lazyload></p>
+<p>将上述欧式坐标关系式转换为齐次坐标关系式如下</p>
+<p><img src="/images/image-20230527092613608.png" srcset="/img/loading.gif" lazyload></p>
+<p>上述等式的右边常常写作如下形式</p>
+<p><img src="/images/image-20230527092653310.png" srcset="/img/loading.gif" lazyload></p>
+<p>看起来仅仅只是将常数z提取出来，实际上表达的意思多了一层：对二维图像物理坐标系中的一个点坐标，其对应的三维坐标有无数种可能，只要保证在投影线上即可（这也是引入齐次坐标的一个意义）</p>
+<h5 id="2-摄像机坐标系-amp-像素坐标系"><a href="#2-摄像机坐标系-amp-像素坐标系" class="headerlink" title="(2)摄像机坐标系&amp;像素坐标系"></a>(2)摄像机坐标系&amp;像素坐标系</h5><p>一般来说在摄像机中存储的都是数字图像，因此需要将像平面（图像物理坐标系）转换到像素坐标系，也就是三维空间中的物体直接通过小孔投影到像素坐标系中（此处的像素坐标系的原点取的是图像左下角）。从像平面到像素平面的转换需要既需要考虑原点之间的偏置，也需要考虑单位之间的变换以及摄像机偏斜（摄像机内置参数，主要为α、β、θ、c<del>x</del>、c<del>y</del>）。为了保证变换的线性性质，引入齐次坐标（简单理解就是在欧式坐标的基础上增加一个维度，齐次坐标变为欧式坐标直接减少最后一个维度同时其他维度除以该维度的值），在下面的介绍中，没有特殊说明以外，默认使用的都是齐次坐标。</p>
+<p><img src="/images/image-20230526170942589.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="3-世界坐标系-amp-像素坐标系"><a href="#3-世界坐标系-amp-像素坐标系" class="headerlink" title="(3)世界坐标系&amp;像素坐标系"></a>(3)世界坐标系&amp;像素坐标系</h5><p>不同摄像机坐标系对于真实世界中三维物体的描述都不同，因此更好的方式是在真实世界中选定一个世界坐标系来描述真实物体。摄像机坐标系和世界坐标系的变换关系为旋转R(绕x,y,z轴旋转)和平移T(绕x,y,z轴移动)（R和T称为摄像机外参数）</p>
+<p><img src="/images/image-20230526171602344.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="9-1-2-坐标系转换"><a href="#9-1-2-坐标系转换" class="headerlink" title="9.1.2 坐标系转换"></a>9.1.2 坐标系转换</h4><p>若已知摄像机的内参数和外参数（实际情况是这些参数一般都未知，这就是之后相机标定解决的问题），将空间内任意一点P从世界坐标下的描述变为像素坐标下的描述，一共需要经过三次坐标变换，坐标系之间的转换关系如下所示</p>
+<p><img src="/images/image-20230526172907470.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="1-世界坐标系-gt-摄像机坐标系"><a href="#1-世界坐标系-gt-摄像机坐标系" class="headerlink" title="(1)世界坐标系-&gt;摄像机坐标系"></a>(1)世界坐标系-&gt;摄像机坐标系</h5><p>刚体变换是指在变换过程中物体不会出现形变，只进行旋转变换和平移变换。坐标转换关系如下</p>
+<p><img src="/images/image-20230526173115753.png" srcset="/img/loading.gif" lazyload></p>
+<p>其中(X<del>W</del>,Y<del>W</del>,Z<del>W</del>)为P点在世界坐标系中的坐标，(X<del>C</del>,Y<del>C</del>,Z<del>C</del>)是P点在摄像机坐标系中的坐标，R是<code>3*3</code>的旋转矩阵，T是<code>3*1</code>的平移矩阵。上述式子转换为矩阵形式如下</p>
+<p><img src="/images/image-20230526173437261.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="2-摄像机坐标系-gt-物理坐标系"><a href="#2-摄像机坐标系-gt-物理坐标系" class="headerlink" title="(2)摄像机坐标系-&gt;物理坐标系"></a>(2)摄像机坐标系-&gt;物理坐标系</h5><p>摄像机坐标系与图像坐标系之间的转换关系使用透视投影来描述。一般规定图像坐标系的原点是成像平面与摄像机光轴之间的交点，且其x,y轴与摄像机坐标系的X,Y轴平行。由理想的针孔成像原理可以得到如下坐标转换关系式（相似三角形）</p>
+<p><img src="/images/image-20230526194814495.png" srcset="/img/loading.gif" lazyload></p>
+<p>上述式子中的f是摄像机的焦距，是一个固定的参数，由摄像机自身决定。上述式子写为矩阵的形式如下</p>
+<p><img src="/images/image-20230526194944942.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="3-物理坐标系-gt-像素坐标系"><a href="#3-物理坐标系-gt-像素坐标系" class="headerlink" title="(3)物理坐标系-&gt;像素坐标系"></a>(3)物理坐标系-&gt;像素坐标系</h5><p>假设在像素坐标系中有一个点p，其在x轴和y轴方向上的尺寸分别为d<del>x</del>和d<del>y</del>，则图像物理坐标系和图像像素坐标系之间的转换关系式如下</p>
+<p><img src="/images/image-20230526195218610.png" srcset="/img/loading.gif" lazyload></p>
+<p>上述式子中的d<del>x</del>和d<del>y</del>分别表示一个像素在x方向和y方向表示多少毫米。上述式子写为矩阵形式如下</p>
+<p><img src="/images/image-20230526195344448.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="4-世界坐标系-gt-像素坐标系"><a href="#4-世界坐标系-gt-像素坐标系" class="headerlink" title="(4)世界坐标系-&gt;像素坐标系"></a>(4)世界坐标系-&gt;像素坐标系</h5><p>联立上述三个转换式子中的三个矩阵表达式，可以将世界坐标系中任意一点P转换到像素坐标系中，转换关系式如下</p>
+<p><img src="/images/image-20230526195527538.png" srcset="/img/loading.gif" lazyload></p>
+<p>其中M<del>1</del>为摄像机的内参数矩阵(也称为标定矩阵)，M<del>2</del>为摄像机的外参数矩阵，由旋转矩阵R和平移矩阵T构成。M<del>1</del>和M<del>2</del>组成的矩阵统称为投影矩阵，通过投影矩阵，可以直接将一个齐次的世界坐标系坐标投影到二维齐次像素坐标系坐标。</p>
+<h4 id="9-1-3-畸变"><a href="#9-1-3-畸变" class="headerlink" title="9.1.3 畸变"></a>9.1.3 畸变</h4><p>畸变是指对直线投影的一种偏移，简单理解就是一条三维空间中的直线投影到二维平面上发生了弯曲，这就称为畸变（更准确的说应该是光学畸变，是由于摄像机的镜头导致）</p>
+<p>畸变一般分为径向畸变和切向畸变：</p>
+<ul>
+<li>径向畸变来自于摄像机使用的透镜；</li>
+<li>切向畸变来自整个摄像机的组装；</li>
+</ul>
+<p>无论是哪种畸变，都属于相机本身的固有特性，与摄像机的内部参数一样，在进行摄像机标定之后即可正常使用。当然还存在其他畸变，但是效果没有径向畸变和切向畸变显著，因此很少被关注。</p>
+<h5 id="1-径向畸变"><a href="#1-径向畸变" class="headerlink" title="(1)径向畸变"></a>(1)径向畸变</h5><p>径向畸变包括枕形畸变和桶形畸变，实际的透镜总是会在成像仪的边缘产生显著的畸变。</p>
+<p><img src="/images/image-20230526204920027.png" srcset="/img/loading.gif" lazyload></p>
+<p>其中桶形畸变一般发生在使用广角镜头或使用变焦镜头的广角端时，枕形畸变则是使用长焦镜头或使用变焦镜头的长焦端时发生。</p>
+<p>如下图，光线在原理透镜中心的地方比靠近中心的地方更加弯曲。对于常用的普通透镜来说，这种现象更加严重。筒形畸变在便宜的网络摄像机中非常厉害，但在高端摄像机中不明显，因为这些透镜系统做了很多消除径向畸变的工作。</p>
+<p><img src="/images/image-20230526202447144.png" srcset="/img/loading.gif" lazyload></p>
+<p>对于径向畸变，成像仪中心（光学中心）的畸变为0，随着向边缘移动，畸变越来越严重。</p>
+<p>使用数学形式表示径向畸变，首先假定归一化平面上有一点p，其坐标为[x,y]^T^，对应的极坐标形式为[r,θ]^T^，其中r表示该点与坐标原点的距离，θ表示与水平轴的夹角。径向畸变就是r发生了变化，畸变后的坐标表示为</p>
+<p><img src="/images/image-20230527103212866.png" srcset="/img/loading.gif" lazyload></p>
+<p>此处的k<del>1</del>,k<del>2</del>和k<del>3</del>就是径向畸变参数。</p>
+<h5 id="2-切向畸变"><a href="#2-切向畸变" class="headerlink" title="(2)切向畸变"></a>(2)切向畸变</h5><p>切向畸变是由于透镜制造上的缺陷或摄像机组装上的问题使得透镜本身与图像平面不平行而产生</p>
+<p><img src="/images/image-20230527103532203.png" srcset="/img/loading.gif" lazyload></p>
+<p>切向畸变可分为薄透镜畸变和离心畸变</p>
+<p><img src="/images/image-20230526202928511.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20230527103613410.png" srcset="/img/loading.gif" lazyload></p>
+<p>其中的p<del>1</del>,p<del>2</del>就是切向畸变参数。</p>
+<blockquote>
+<p>综合径向畸变和切向畸变的公式，最终可以得到5个畸变参数</p>
+<p><img src="/images/image-20230526205505089.png" srcset="/img/loading.gif" lazyload></p>
+</blockquote>
+<h3 id="9-2-摄像机标定"><a href="#9-2-摄像机标定" class="headerlink" title="9.2 摄像机标定"></a>9.2 摄像机标定</h3><p>参考链接：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/lql0716/article/details/71973318?locationNum=8&fps=1%EF%BC%89">(6条消息) 相机标定（Camera calibration）原理、步骤_AI人工智能科学的博客-CSDN博客</a>；</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/honyniu/article/details/51004397">(9条消息) 相机标定(Camera calibration)_camera_calibration_无比机智的永哥的博客-CSDN博客</a>；</li>
+<li><a target="_blank" rel="noopener" href="https://superzlw.github.io/posts/26.html">相机模型与标定 | SuperZLW’s Blog</a>；</li>
+</ul>
+<hr>
+<blockquote>
+<p>相机标定就是根据某些方法确定出相机的内参数和畸变参数（实际上在这个标定的过程中是可以获取到摄像机的外部参数的如相机的位置和姿态）</p>
+</blockquote>
+<p>摄像机标定的过程可以描述为通过标定板，得到n对世界坐标三维点X<del>i</del>和图像坐标二维点x<del>i</del>，这些三维点到二维点的转换都可以通过相机内参、相机外参以及畸变参数经过一系列的矩阵变换得到。</p>
+<p><img src="/images/image-20230526210852528.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>摄像机标定的意义在于，因为每个镜头的畸变程度不同，通过相机标定可以求解相机的内部参数和畸变参数以此来矫正这种镜头畸变</p>
+</blockquote>
+<p>摄像机标定的步骤主要如下：</p>
+<p>1、打印一张棋盘格，把它贴在一个平面上，作为标定物。<br>2、通过调整标定物或摄像机的方向，为标定物拍摄一些不同方向的照片。<br>3、从照片中提取棋盘格角点。<br>4、估算理想<code>无畸变</code>的情况下，五个内参和六个外参。<br>5、应用最小二乘法估算实际存在径向畸变下的畸变系数。<br>6、极大似然法，优化估计，提升估计精度。</p>
+<p>摄像机标定的过程实际上就是使用线性方法求解方程式，主要分为不考虑畸变和考虑畸变两种情况考虑</p>
+<h4 id="9-2-1-不考虑畸变"><a href="#9-2-1-不考虑畸变" class="headerlink" title="9.2.1 不考虑畸变"></a>9.2.1 不考虑畸变</h4><p>假设现有三维坐标点X<del>i</del>以及其对应的二维图像物理坐标点x<del>i</del>，两种坐标的表达形式都是使用齐次坐标表示的。目标是估计投影矩阵P&#x3D;M<del>1</del>M<del>2</del>，由于三维坐标点和二维坐标点的共线性，有如下关系成立</p>
+<p><img src="/images/image-20230527094308230.png" srcset="/img/loading.gif" lazyload></p>
+<p>写作矩阵形式即</p>
+<p><img src="/images/image-20230527094326175.png" srcset="/img/loading.gif" lazyload></p>
+<p>此处的p^T^<del>j</del>表示矩阵P的第j行，共线使用叉积表示即</p>
+<p><img src="/images/image-20230527094431809.png" srcset="/img/loading.gif" lazyload></p>
+<p>写作矩阵乘积的形式为</p>
+<p><img src="/images/image-20230527094601254.png" srcset="/img/loading.gif" lazyload></p>
+<p>投影矩阵实际的参数是12个，但是因为尺度任意，因此只需要求解11个自由度。1对3D-2D的对应点可以提供2个线性等式（因为矩阵形式的秩为2），为了求解投影矩阵，需要至少6对3D-2D的对应点。如果数据点多于6对，可以增强结果的鲁棒性。</p>
+<p>假设现在我们已经拥有多个数据对，根据上述方法可以写作如下形式</p>
+<p><img src="/images/image-20230527095025089.png" srcset="/img/loading.gif" lazyload></p>
+<p>将上述式子简单记作</p>
+<p><img src="/images/image-20230527095059871.png" srcset="/img/loading.gif" lazyload></p>
+<p>很明显，p&#x3D;0是方程的一个解，但是该解不是我们想要的，因此需要增加约束||p||&#x3D;1，因此上述式子的完整约束形式为（齐次最小二乘形式）</p>
+<p><img src="/images/image-20230527095310428.png" srcset="/img/loading.gif" lazyload></p>
+<p>要求解上述式子，基本的解法步骤如下</p>
+<p><img src="/images/image-20230527095341532.png" srcset="/img/loading.gif" lazyload></p>
+<p>上面最后一步意思是要求解的p就是A^T^A最小特征值对应的特征向量，而要找A^T^A的最小特征值，就需要计算A的最右边的奇异向量（具体原因参考<a target="_blank" rel="noopener" href="https://superzlw.github.io/posts/26.html">相机模型与标定 | SuperZLW’s Blog</a>）</p>
+<blockquote>
+<p>相机标定只要求内参，而求解出的投影矩阵既包含内参又包括外参，因此求解出投影矩阵P之后还需要继续向下求解，也就是通过投影矩阵求解标定矩阵</p>
+</blockquote>
+<p>求解出的投影矩阵P是一个<code>3*4</code>的矩阵，将它按照如下方式分解：</p>
+<p><img src="/images/image-20230527100906960.png" srcset="/img/loading.gif" lazyload></p>
+<p>此处的矩阵M是一个<code>3*3</code>的矩阵，m是一个<code>3*1</code>的矩阵。进一步的将M进行QR分解为一个上三角矩阵K和一个正交矩阵R，此处的K就是要求的标定矩阵，R是外参旋转矩阵。</p>
+<p>最后，只需要通过SVD找到c作为P的零空间，即完成不考虑畸变的标定。</p>
+<h4 id="9-2-2-考虑畸变"><a href="#9-2-2-考虑畸变" class="headerlink" title="9.2.2 考虑畸变"></a>9.2.2 考虑畸变</h4><p>不考虑畸变的情况只是特殊情况，一般现实中是不能忽略畸变参数的。</p>
+<p>考虑前面介绍的径向畸变和切向畸变，一个畸变后的坐标应该是如下形式</p>
+<p><img src="/images/image-20230527103725704.png" srcset="/img/loading.gif" lazyload></p>
+<p>畸变无法直接求解，可以考虑使用优化的思想，目标函数使用最小化重投影误差，也就是将空间坐标点按照估计的投影方程投影到图像上，得到像素估计值，使该值与实际观测值之间的误差最小。</p>
+<p>其中变量初始值设置为：畸变参数为0，其余参数参考无畸变情况下的标定结果。</p>
+<p>需要优化的变量不只是畸变参数，还有其他内参。</p>
+<h3 id="9-3-三维重建基础"><a href="#9-3-三维重建基础" class="headerlink" title="9.3 三维重建基础"></a>9.3 三维重建基础</h3><p>参考资料：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_29931565/article/details/121236484">(9条消息) 【三维重建】三维重建学习笔记（4）—— 三维重建基础与极几何_Quentin_HIT的博客-CSDN博客</a>；</li>
+<li><a target="_blank" rel="noopener" href="https://superzlw.github.io/posts/28.html">三维重建基础与极几何 | SuperZLW’s Blog</a>；</li>
+</ul>
+<hr>
+<p>三维重建既可以使用单视图也可以使用多视图，但是使用单视图需要有场景的先验信息如点的对应关系、线面几何以及深度等。因此一般情况下，基于多视图的三维重建的适用范围优于单视图，下面主要介绍的是基于两视图的情况以及其包含的几何关系。</p>
+<p>三维重建的几个关键问题：</p>
+<ul>
+<li>摄像机几何：从一张或多张图像中求解摄像机的内、外参数（摄像机标定）</li>
+<li>场景几何：通过二张或多幅图寻找3D场景坐标（三角测量或多几何视图）</li>
+<li>对应关系：已知一个图像中的p点，如何在另外一个图像中找到p’点（极几何约束）</li>
+</ul>
+<h4 id="9-3-1-三角测量"><a href="#9-3-1-三角测量" class="headerlink" title="9.3.1 三角测量"></a>9.3.1 三角测量</h4><blockquote>
+<p>三维重建的基础可以看作是一个三角化问题（当然也可以看作是一个多几何视图问题）</p>
+</blockquote>
+<p>三角测量的目标在于，给定一个三维点在两个或多个投影矩阵M已知的图像中的投影，期望通过投影找到该点的坐标。</p>
+<p>以两张图像的投影为例，如下图（其中x<del>1</del>和x<del>2</del>分别为X在两个投影面上的投影点）</p>
+<p><img src="/images/image-20230526224114933.png" srcset="/img/loading.gif" lazyload></p>
+<p>因为投影矩阵M已知，因此O<del>1</del>x<del>1</del>和O<del>2</del>x<del>2</del>都可以求解出来，进而很容易求解出该空间三维点（两个直线的交点）。然而这种情况的前提是两条直线能够相交，而实际上由于噪音和数值误差，这个条件一般都无法满足，既更一般的情况如下</p>
+<p><img src="/images/image-20230526224349577.png" srcset="/img/loading.gif" lazyload></p>
+<p>基于上述情况，一个基本的思想是找到连接两条直线的最短线段，该线段的中点就是三维点X。具体操作为：</p>
+<ol>
+<li>寻找线段的方向(即同时垂直于两条射线)；</li>
+<li>构造两个平面，每个平面都包含该线段以及一条射线；</li>
+<li>将该平面与其它射线相交以产生线段的端点；</li>
+<li>找到中点；</li>
+</ol>
+<p>现在已知的条件是x<del>1</del>,x<del>2</del>和内参数矩阵K<del>1</del>,K<del>2</del>和旋转平移矩阵R,T。利用上述思想求解点X主要有两种方法，线性法和非线性法。</p>
+<h5 id="1-线性法"><a href="#1-线性法" class="headerlink" title="(1)线性法"></a>(1)线性法</h5><p>线性法的精度不高但是容易求解，只需要求解一个齐次线性方程组，使用SVD分解即可解出</p>
+<p><img src="/images/image-20230526230631782.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>对于多余两个视图的情况，只需要多列几个方程并求解即可</p>
+</blockquote>
+<h5 id="2-非线性法"><a href="#2-非线性法" class="headerlink" title="(2)非线性法"></a>(2)非线性法</h5><p><img src="/images/image-20230526230208930.png" srcset="/img/loading.gif" lazyload></p>
+<p>非线性法的基本思想是希望能够找到一个X以最小化如下式子（其中P<del>1</del>和P<del>2</del>分别是两个摄像机的投影矩阵）</p>
+<p><img src="/images/image-20230526230154429.png" srcset="/img/loading.gif" lazyload></p>
+<p>也就是说找到的三维点投影到图像上的点，要与真实观测点的投影点的距离最小，即最小化</p>
+<p><img src="/images/image-20230526230503343.png" srcset="/img/loading.gif" lazyload></p>
+<p>如果将世界坐标系的原点设置在O<del>1</del>处，则两个投影矩阵可以表示为</p>
+<p><img src="/images/image-20230526230558679.png" srcset="/img/loading.gif" lazyload></p>
+<p>只需要通过迭代求解即可，一般使用高斯牛顿法或L-M法求解，此处不过多介绍，感兴趣可自行Google。</p>
+<h4 id="9-3-2-极几何约束"><a href="#9-3-2-极几何约束" class="headerlink" title="9.3.2 极几何约束"></a>9.3.2 极几何约束</h4><blockquote>
+<p>极几何描述了同一场景或物体的两个视点图像间的几何关系</p>
+</blockquote>
+<h5 id="1-极几何概念"><a href="#1-极几何概念" class="headerlink" title="(1)极几何概念"></a>(1)极几何概念</h5><p>在介绍极几何约束之前先介绍几个基本的极几何概念</p>
+<p><img src="/images/image-20230526232036132.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>极平面(Epipolar plane)：三点确定一个平面，这三点分别是三维点P和两个相机的中心点O<del>1</del>,O<del>2</del>；</li>
+<li>基线(baseline)：O<del>1</del>与O<del>2</del>的连线；</li>
+<li>极线(epipolar lines)：极平面和像平面的交线，即p<del>1</del>e<del>1</del>和p<del>2</del>e<del>2</del>；</li>
+<li>极点(Epipole)：基线O<del>1</del>O<del>2</del>与像平面的交点，即e<del>1</del>,e<del>2</del>（可以在可见区域以外）</li>
+</ul>
+<p>关于极几何有几个比较重要的性质</p>
+<p><img src="/images/image-20230526232708829.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>极平面相较于基线O<del>1</del>O<del>2</del>；</li>
+<li>极线相交于极点e和e’；</li>
+</ul>
+<blockquote>
+<p>这两个性质显而易见，比较简单</p>
+</blockquote>
+<p><img src="/images/image-20230526232422783.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>p<del>1</del>对应的点落在极线p<del>2</del>e<del>2</del>上；</li>
+<li>p<del>2</del>对应的点落在极线p<del>1</del>e<del>1</del>上；</li>
+</ul>
+<blockquote>
+<p>这两个性质表明，寻找像点在另一个平面的对应点，不需要整图寻找，只需要在极线上找即可</p>
+</blockquote>
+<p>这里有几个极几何的特例</p>
+<p>（1）平行视图</p>
+<p><img src="/images/image-20230526235101582.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20230526233809240.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>两个图像平行；</li>
+<li>基线平行于图像平面，两极点位于无穷远处；</li>
+<li>极线平行于图像坐标轴的其中一条轴；</li>
+</ul>
+<p>（2）前后平移</p>
+<p><img src="/images/image-20230526235134696.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20230526234417844.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>两幅图极点位置相同，极点称为展开焦点；</li>
+</ul>
+<hr>
+<p>现在的问题是，需要知道一个图中的点与另一幅图中的点的对应关系，也就是极几何约束的目的</p>
+<p><img src="/images/image-20230527090831797.png" srcset="/img/loading.gif" lazyload></p>
+<p>从上图可以得到以下关系（如下三个关系都是等价的，只是表示方式不同）</p>
+<p><img src="/images/image-20230527091147212.png" srcset="/img/loading.gif" lazyload></p>
+<p>主要分为两种情况考虑：本质矩阵情况和基础矩阵情况</p>
+<blockquote>
+<p>极几何约束本质上可以归纳为两个矩阵，也就是本质矩阵和基础矩阵 – 本质矩阵和基础矩阵是cv领域中用于描述两个摄像机之间的几何关系的矩阵：</p>
+<ul>
+<li>基础矩阵是在单目视觉中描述两个图像之间的几何关系的矩阵。它表示了在一个图像中的点与另一个图像中的点之间的对应关系。基础矩阵可以通过至少七对对应点的坐标计算得到。</li>
+<li>本质矩阵是在双目视觉中描述两个摄像机之间的几何关系的矩阵。它包含了相机的内部参数和相对运动的信息。本质矩阵可以通过基础矩阵和相机的内部参数来计算得到。</li>
+</ul>
+</blockquote>
+<h5 id="2-本质矩阵"><a href="#2-本质矩阵" class="headerlink" title="(2)本质矩阵"></a>(2)本质矩阵</h5><p>本质矩阵对规范化相机拍摄的两个视点图像间的极几何关系进行代数描述。下面首先对本质矩阵进行推导，原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_29931565/article/details/121236484">(10条消息) 【三维重建】三维重建学习笔记（4）—— 三维重建基础与极几何_Quentin_HIT的博客-CSDN博客</a>。</p>
+<p><img src="/images/image-20230527105015879.png" srcset="/img/loading.gif" lazyload></p>
+<p>关于本质矩阵有如下性质</p>
+<p><img src="/images/image-20230527105826957.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="3-基础矩阵"><a href="#3-基础矩阵" class="headerlink" title="(3)基础矩阵"></a>(3)基础矩阵</h5><p>一般情况下我们的相机都不是规范化的相机，而是普通的一般化相机，不适用于上面的情况，这时候就引出了与本质矩阵相对的“基础矩阵”。基础矩阵对一般的透视摄像机拍摄的两个视点的图像间的极几何关系进行代数描述。基础矩阵的推导思想是将透视摄像机变换到规范摄像机</p>
+<p><img src="/images/image-20230527110025598.png" srcset="/img/loading.gif" lazyload></p>
+<p>基础矩阵有与本质矩阵类似的如下性质</p>
+<p><img src="/images/image-20230527110045688.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>基础矩阵只和内参数相关，本质矩阵不仅和外参数相关，和内参数也相关</p>
+</blockquote>
+<h4 id="9-3-3-基础矩阵估计"><a href="#9-3-3-基础矩阵估计" class="headerlink" title="9.3.3 基础矩阵估计"></a>9.3.3 基础矩阵估计</h4><p>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_29931565/article/details/121236484">(10条消息) 【三维重建】三维重建学习笔记（4）—— 三维重建基础与极几何_Quentin_HIT的博客-CSDN博客</a>；</p>
+<hr>
+<p>基础矩阵可以通过本质矩阵和相机内部参数来计算得到，因此此处仅介绍基础矩阵的估计方法。</p>
+<h5 id="1-八点算法"><a href="#1-八点算法" class="headerlink" title="(1)八点算法"></a>(1)八点算法</h5><p>基础矩阵有7个自由度，理论上只需要7个点就可以求解，但是这样求解非常负责且得到的解是非线性解，因此一般使用8个点求解，俗称“八点估算法”</p>
+<p><img src="/images/image-20230527111444571.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="2-归一化八点法"><a href="#2-归一化八点法" class="headerlink" title="(2)归一化八点法"></a>(2)归一化八点法</h5><p><img src="/images/image-20230527111538750.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="9-4-运动结构恢复"><a href="#9-4-运动结构恢复" class="headerlink" title="9.4 运动结构恢复"></a>9.4 运动结构恢复</h3><p>参考链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_29931565/article/details/121236500">(12条消息) 【三维重建】三维重建学习笔记（5）—— 双目立体视觉系统_三维重建三角化_Quentin_HIT的博客-CSDN博客</a>（这哥们总结的公式特别到位）；</p>
+<hr>
+<blockquote>
+<p>Q：运动恢复结构和摄像机标定的关系？</p>
+</blockquote>
+<p>A：</p>
+<p>摄像机标定是指通过对相机的内部和外部参数进行估计，以及确定图像中的特定点在现实世界中的位置，从而建立图像坐标与物理坐标之间的关系。相机的内部参数包括焦距、主点坐标等，而外部参数则包括相机的位置和姿态。通过标定，可以将图像中的像素坐标转换为三维物理坐标，从而实现图像测量、物体重建等应用。</p>
+<p>运动结构恢复是指从一系列图像中恢复相机和场景的三维运动和结构信息。通过对图像序列中的像素点的运动进行分析，可以估计相机的运动轨迹，并且根据这些信息还原出场景中的三维结构。常用的运动结构恢复方法包括<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_29931565/article/details/121236500">多视图几何</a>和[三角测量](# 9.3.1 三角测量)等（简单理解运动结构恢复就是将三角测量应用在实际的三维重建任务中，三角测量是运动恢复结构的基础，与其他方式结合形成有效的方法）。</p>
+<p>这两个问题之间存在密切的关系。在进行运动结构恢复之前，通常需要进行摄像机标定，以获得准确的相机内部和外部参数。标定结果对于恢复准确的相机运动和场景结构至关重要。另外，标定和运动结构恢复的过程中所使用的数学模型和算法也有一定的重叠，比如使用相似的投影模型、优化方法等。</p>
+<p>总之，摄像机标定提供了相机的内部和外部参数，为运动结构恢复提供了必要的输入信息；而运动结构恢复则利用标定结果，从图像序列中恢复相机和场景的三维运动和结构信息。</p>
+<hr>
+<blockquote>
+<p>运动结构恢复问题：通过三维场景的多张图像，恢复出该场景的三维结构信息以及每张图片对应的摄相机参数。</p>
+</blockquote>
+<p>在三角测量中我们知道如果已知摄影机的投影矩阵以及摄影机在两个投影面上的投影点，可以直接恢复出三维空间中的对应点。但是一般情况下不会知道投影矩阵，这就是运动恢复结构需要解决的问题。</p>
+<p>使用数学的描述公式来定义运动恢复结构问题如下</p>
+<p><img src="/images/image-20230529155237883.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20230529155318101.png" srcset="/img/loading.gif" lazyload></p>
+<p>在已知上述条件的情况下，需要求解以下问题</p>
+<p><img src="/images/image-20230529160617028.png" srcset="/img/loading.gif" lazyload></p>
+<p>第一个需要求解的问题通常被称为“运动”，第二个需要求解的问题通常被称为“结构”，结合起来被称为“运动恢复结构”的问题。主要有三种典型的运动恢复结构问题，对应不一样的摄像机或不一样的先验信息</p>
+<p><img src="/images/image-20230529162440076.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<ul>
+<li><p>欧式结构恢复的内参数之所以可知很可能就是因为事先使用标定板进行过标定，知道摄像机的内参数；</p>
+</li>
+<li><p>仿射相机是指当物体距离摄像机很远时，且物体的深度变化不大时，可以认为物体在同一个平面上 – 简单</p>
+</li>
+<li><p>透视相机需要考虑物体任何细微的差距 – 复杂但是结果更有精度</p>
+</li>
+</ul>
+</blockquote>
+<h4 id="9-4-1-欧式结构恢复"><a href="#9-4-1-欧式结构恢复" class="headerlink" title="9.4.1 欧式结构恢复"></a>9.4.1 欧式结构恢复</h4><p>欧式结构恢复（Euclidean Structure Recovery）是计算机视觉领域中用于恢复三维场景的一种方法。它旨在从多个图像中估计场景中物体的真实三维位置，并将其表示为欧几里得空间中的点。</p>
+<p>在欧式结构恢复中，假设相机运动为刚性运动，即相机在拍摄图像时没有发生形变或非刚性变换。此假设使得可以通过简单的几何推导和三角测量来恢复场景中物体的几何结构。</p>
+<p>具体而言，欧式结构恢复的过程通常涉及以下步骤：</p>
+<ol>
+<li>特征提取与匹配：从多个图像中提取特征点，并进行特征点匹配，以确定在不同图像中对应的特征点。</li>
+<li>相机标定：对相机进行内部参数标定，以估计相机的焦距、主点坐标和畸变等参数。</li>
+<li>运动估计：利用特征点的匹配关系，通过对应关系恢复相机之间的运动，如相机的平移向量和旋转矩阵。</li>
+<li>三角测量：根据已知的相机参数和特征点的对应关系，通过三角测量方法计算出特征点在三维空间中的坐标。</li>
+<li>去除误匹配：根据几何约束和重投影误差等方法，筛选和去除由于误匹配引起的错误特征点。</li>
+</ol>
+<p>通过以上步骤，欧式结构恢复可以得到场景中物体的三维坐标。这些坐标表示了物体在欧几里得空间中的位置关系，通常以三维点云的形式表示。</p>
+<h5 id="1-欧式结构恢复问题"><a href="#1-欧式结构恢复问题" class="headerlink" title="(1)欧式结构恢复问题"></a>(1)欧式结构恢复问题</h5><p>问题的数学描述形式如下</p>
+<p><img src="/images/image-20230529163247445.png" srcset="/img/loading.gif" lazyload></p>
+<p>在两视图的情况下</p>
+<p><img src="/images/image-20230529162733439.png" srcset="/img/loading.gif" lazyload></p>
+<p>问题描述和求解参数如下</p>
+<p><img src="/images/image-20230529163110301.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="2-本质矩阵分解"><a href="#2-本质矩阵分解" class="headerlink" title="(2)本质矩阵分解"></a>(2)本质矩阵分解</h5><p><img src="/images/image-20230529163141244.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="3-歧义问题"><a href="#3-歧义问题" class="headerlink" title="(3)歧义问题"></a>(3)歧义问题</h5><p><img src="/images/image-20230529163211176.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="9-4-2-仿射结构恢复"><a href="#9-4-2-仿射结构恢复" class="headerlink" title="9.4.2 仿射结构恢复"></a>9.4.2 仿射结构恢复</h4><h5 id="1-仿射摄像机模型"><a href="#1-仿射摄像机模型" class="headerlink" title="(1)仿射摄像机模型"></a>(1)仿射摄像机模型</h5><p><img src="/images/image-20230529163425802.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="2-仿射结构恢复问题"><a href="#2-仿射结构恢复问题" class="headerlink" title="(2)仿射结构恢复问题"></a>(2)仿射结构恢复问题</h5><p><img src="/images/image-20230529163523265.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="3-因式分解法"><a href="#3-因式分解法" class="headerlink" title="(3)因式分解法"></a>(3)因式分解法</h5><p><img src="/images/image-20230529163549160.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="4-歧义问题"><a href="#4-歧义问题" class="headerlink" title="(4)歧义问题"></a>(4)歧义问题</h5><p><img src="/images/image-20230529163610971.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="9-4-3-透视结构恢复"><a href="#9-4-3-透视结构恢复" class="headerlink" title="9.4.3 透视结构恢复"></a>9.4.3 透视结构恢复</h4><h5 id="1-透视结构恢复问题"><a href="#1-透视结构恢复问题" class="headerlink" title="(1)透视结构恢复问题"></a>(1)透视结构恢复问题</h5><p><img src="/images/image-20230529163815213.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="2-代数方法"><a href="#2-代数方法" class="headerlink" title="(2)代数方法"></a>(2)代数方法</h5><p>两视图求解</p>
+<p><img src="/images/image-20230529163903801.png" srcset="/img/loading.gif" lazyload></p>
+<p>N视图求解</p>
+<p><img src="/images/image-20230529163938647.png" srcset="/img/loading.gif" lazyload></p>
+<p>捆绑调整</p>
+<p><img src="/images/image-20230529163958729.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="3-歧义问题-1"><a href="#3-歧义问题-1" class="headerlink" title="(3)歧义问题"></a>(3)歧义问题</h5><p><img src="/images/image-20230529164023932.png" srcset="/img/loading.gif" lazyload></p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E4%B8%93%E4%B8%9A%E8%AF%BE/" class="category-chain-item">专业课</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">#机器学习</a>
+      
+        <a href="/tags/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89%E6%8A%80%E6%9C%AF/">#机器视觉技术</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>机器视觉</div>
+      <div>https://gintoki-jpg.github.io/2023/02/27/专业_机器视觉/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>杨再俨</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年2月27日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/03/01/%E5%B7%A5%E5%85%B7_pytorch/" title="PyTorch">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">PyTorch</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/02/27/%E4%B8%93%E4%B8%9A_%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86_%E5%88%9D%E7%BA%A7/" title="自然语言处理_初级">
+                        <span class="hidden-mobile">自然语言处理_初级</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+</div>
+
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

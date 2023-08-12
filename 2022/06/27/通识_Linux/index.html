@@ -1,0 +1,1060 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/logo.png">
+  <link rel="icon" href="/img/bg/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="杨再俨">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Linux，全称GNU&#x2F;Linux，是一种免费使用和自由传播的类UNIX操作系统。它主要受到Minix和Unix思想的启发，是一个基于POSIX的多用户、多任务、支持多线程和多CPU的操作系统。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux">
+<meta property="og:url" content="https://gintoki-jpg.github.io/2022/06/27/%E9%80%9A%E8%AF%86_Linux/index.html">
+<meta property="og:site_name" content="Tintoki_blog">
+<meta property="og:description" content="Linux，全称GNU&#x2F;Linux，是一种免费使用和自由传播的类UNIX操作系统。它主要受到Minix和Unix思想的启发，是一个基于POSIX的多用户、多任务、支持多线程和多CPU的操作系统。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/linux.png">
+<meta property="article:published_time" content="2022-06-27T03:35:00.000Z">
+<meta property="article:modified_time" content="2023-02-23T02:30:00.738Z">
+<meta property="article:author" content="YangZaiyan">
+<meta property="article:tag" content="操作系统">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gintoki-jpg.github.io/img/bg/linux.png">
+  
+  
+  
+  <title>Linux - Tintoki_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"gintoki-jpg.github.io","root":"/","version":"1.9.1","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tintoki_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/bg1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">Linux</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-06-27 11:35" pubdate>
+          2022年6月27日 中午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          13k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          106 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Linux</h1>
+            
+            <div class="markdown-body">
+              
+              <p>语雀文章链接：<a target="_blank" rel="noopener" href="https://www.yuque.com/tintoki/znb576/sik6ux">https://www.yuque.com/tintoki/znb576/sik6ux</a></p>
+<blockquote>
+<p>链接中的文章讲的更偏向于理论，这里我们实际操作Linux系统做一个学习总结；</p>
+</blockquote>
+<p>2022&#x2F;7&#x2F;25 9:27 因为之前学Linux就是跟着视频直接硬学没怎么动手实践所以这段时间再看Linux会觉得很生疏，这里参考<a target="_blank" rel="noopener" href="http://c.biancheng.net/linux_tutorial/10/">Linux系统简介 (biancheng.net)</a>的教程再简单复习巩固一遍Linux</p>
+<p>2022&#x2F;7&#x2F;26 9:31 刚刚稍微把中文网的Shell编程看了一下，说实话也全都是介绍怎么调用API之类的或者一些常规命令，但是这种方式反而是我最反感的方式（亲测学完就忘，现在打算的是找书自己来看）</p>
+<p>2022&#x2F;7&#x2F;27 11:10 差不多简单的把《Ubuntu Linux 从入门到精通》看了一下，反正结合实际的操作系统而不是全部的命令讲解的话这本教材还是可以的，然后Linux基本上也算是入门了，要学习Linux高级的话就得静下心来把这本书上的概念全部搞懂才行；</p>
+<h1 id="Linux操作系统（一）"><a href="#Linux操作系统（一）" class="headerlink" title="Linux操作系统（一）"></a>Linux操作系统（一）</h1><h2 id="1-Linux概述"><a href="#1-Linux概述" class="headerlink" title="1.Linux概述"></a>1.Linux概述</h2><p>作为服务器部署，绝大多数 Linux 并不安装或并不启用图形环境（UNIX&#x2F;Linux 系统不依赖图形环境，依然可以通过命令行完成 100% 的功能，而且因为不使用图形环境还会节省大量的系统资源）</p>
+<h2 id="2-Ubuntu-Vmware"><a href="#2-Ubuntu-Vmware" class="headerlink" title="2.Ubuntu+Vmware"></a>2.Ubuntu+Vmware</h2><p>2022&#x2F;7&#x2F;25 11:31 安装Ubuntu22.4成功但是在配置中文还有安装VMTools的时候暴毙了，所以这里直接选择删除，安装较低版本的Ubuntu（第一次重装失败，注意重装失败直接把Ubuntu的磁盘文件删除了就行了，VMware软件本身是没有任何问题的不要去乱动）</p>
+<p>2022&#x2F;10&#x2F;2 18:43 本来今天准备安装一下16.04的32单核版本，结果按照教程来又出问题了，真的是让人头大；然而只能怪自己做笔记没认真，所以我们把一些需要修改的地方重新改了一下；</p>
+<h3 id="2-0-VMware的安装"><a href="#2-0-VMware的安装" class="headerlink" title="2.0 VMware的安装"></a>2.0 VMware的安装</h3><p>因为VMware的安装特别简单所以这里就不花时间介绍怎么安装它，主要介绍以下怎么在VMware上把Ubuntu装好，同时汉化以及配置共享文件等；</p>
+<p>需要注意的是VM之前我应该是关过一些自动启用项所以在服务中重新启动，这四个都得启动才能保证虚拟机的正常工作!!!（这四个服务究竟代表什么参考<a target="_blank" rel="noopener" href="http://t.zoukankan.com/Zlcode-p-10602978.html%EF%BC%8C%E6%8D%AE%E8%AF%B4%E8%BF%98%E6%9C%89%E4%B8%80%E4%B8%AA%E6%9C%8D%E5%8A%A1%E6%98%AFworkstation">http://t.zoukankan.com/Zlcode-p-10602978.html，据说还有一个服务是workstation</a> server，资料说安装了VMTools才有，但是我的电脑上始终没有，但是不影响正常使用）</p>
+<p><img src="/images/image-20220725102232783.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-1-Ubuntu的安装"><a href="#2-1-Ubuntu的安装" class="headerlink" title="2.1 Ubuntu的安装"></a>2.1 Ubuntu的安装</h3><blockquote>
+<p>Ubuntu镜像下载网站<a target="_blank" rel="noopener" href="https://blog.csdn.net/kt1776133839/article/details/123115649">(30条消息) ubuntu 16.04 镜像下载_Famiglistimott的博客-CSDN博客_ubuntu16镜像下载</a></p>
+</blockquote>
+<ul>
+<li>2022VMware安装最新版本Ubuntu参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_67266585/article/details/125345624">(20条消息) VMware虚拟机安装Ubuntu 2022最新版详细图文安装教程(VMware虚拟机安装+Ubuntu下载+VMware虚拟机配置运行)_额 无语的博客-CSDN博客_虚拟机vmware安装ubuntu</a>（个人认为不要安装最新的Ubuntu，在之后的配置环节会报很多错，真的把人都给整傻，最好是安装和B站尚硅谷一样的版本也就是第二个教程的版本，接下来就是一些通用配置；）</li>
+<li>Ubuntu16.04参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_23930465/article/details/119566033">(21条消息) ubuntu-16.04安装教程_耶穆穆谏默的博客-CSDN博客_ubuntu16.04安装</a>（这个16.04的版本应该是版本本身的问题，在安装的过程中卡了几次，但是最后使用重启大法都解决了，还有就是注意这个博客中间把网络设置之类的修改了，不要跟着它做，选择默认即可）<ul>
+<li>关于安装过程中(并不是安装完成后)界面显示不全的问题，解决方法参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/Passerby_Wang/article/details/124075121">(30条消息) VMware虚拟机安装Ubuntu时页面显示不全的解决方法_Passerby_Wang的博客-CSDN博客_安装ubuntu时界面超过了屏幕</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="2-2-设置中文和中文输入法"><a href="#2-2-设置中文和中文输入法" class="headerlink" title="2.2 设置中文和中文输入法"></a>2.2 设置中文和中文输入法</h3><p>设置中文是简单的，VM新版本安装Ubuntu16的时候会自动出现中文选项，需要勾选，然后进入系统后把汉语放在最上面，重启系统就OK；</p>
+<p>当然上面只是系统认识中文，不能输入中文，需要输入中文的，在桌面打开终端输入<code>sudo apt-get install ibus-pinyin</code>安装拼音输入法，回到文本输入添加拼音，把之前的汉语输入法删了，修改切换输入法快捷键，大功告成！</p>
+<p><img src="/images/image-20221002185500687.png" srcset="/img/loading.gif" lazyload></p>
+<p>至于快捷键切换，不能像Windows下直接shift切换，比较推荐的快捷键组合是ctrl+space或者ctrl+shift+space；</p>
+<h3 id="2-3-设置全屏"><a href="#2-3-设置全屏" class="headerlink" title="2.3 设置全屏"></a>2.3 设置全屏</h3><p>VM中的初始Ubuntu是很小的，看起来特别难受，这里设置全屏（借助VMtools）<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_47272824/article/details/120353408">(21条消息) Ubuntu怎么设置全屏_微风-cd的博客-CSDN博客_ubuntu全屏</a>安装完VMTools之后可以进行一系列的便捷操作如直接两个客户机之间的复制粘贴、文件拖拽等（注意是否在虚拟机设置里面开启虚拟机隔离），非常方便（VMTools因为版本兼容问题所以对于高版本的Ubuntu可能会报错）</p>
+<blockquote>
+<p>VMtools不知道有什么问题，32bit的系统每次装了过一会就自己掉了，真无语（也有可能是32bit单核对VMtools不够友好）；</p>
+</blockquote>
+<p>还有一个方法就是直接修改屏幕的分辨率（个人推荐1680*1050），然后ctrl+alt+enter进入大屏；</p>
+<h3 id="2-4-修改源"><a href="#2-4-修改源" class="headerlink" title="2.4 修改源"></a>2.4 修改源</h3><p>不知道是否是因为设置了中文的原因，下载的源在设置之前就已经是中国的服务器了，如果个人喜欢其他镜像也可以手动修改</p>
+<p>文章参考：<a target="_blank" rel="noopener" href="https://www.jb51.net/os/Ubuntu/505978.html">ubuntu怎么选择最快的更新源? ubuntu更改最快的更新源的图文教程_Ubuntu&#x2F;Debian_操作系统_脚本之家 (jb51.net)</a></p>
+<blockquote>
+<p>PS：实际上手动修改源是有必要的，就算是它默认的China源下载东西也很慢，最好改成阿里云的；</p>
+</blockquote>
+<h3 id="2-5-设置root用户"><a href="#2-5-设置root用户" class="headerlink" title="2.5 设置root用户"></a>2.5 设置root用户</h3><p>Ubuntu在安装之后默认没有root用户权限（因为root用户默认没有被设置密码），所以我们使用su命令会直接抛出认证失败；</p>
+<p>使用su切换root的原因：一次设置，之后就再也不用sudo这么麻烦了，可以直接使用su命令切换为root用户然后使用各种高权限命令</p>
+<p><img src="/images/image-20220725142741023.png" srcset="/img/loading.gif" lazyload></p>
+<p>参考尚硅谷教程修改</p>
+<h3 id="2-6-设置共享文件夹"><a href="#2-6-设置共享文件夹" class="headerlink" title="2.6 设置共享文件夹"></a>2.6 设置共享文件夹</h3><p>有时候我们需要直接复制粘贴Windows下的一些命令以及共享两个系统之间的文件，需要设置；</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_31785559/article/details/125479579">(21条消息) 解决Vmware虚拟机安装Vmware Tools后仍然无法复制、粘贴和拖拽文件的问题_Svran7的博客-CSDN博客_vmwaretools安装成功但无法复制</a></p>
+<p>这个教程的后面设置桌面共享文件的快捷方式我应该是设置失败了，其他的一切正常，可以在share_folder中共享文件</p>
+<h3 id="2-7-Ubuntu问题"><a href="#2-7-Ubuntu问题" class="headerlink" title="2.7 Ubuntu问题"></a>2.7 Ubuntu问题</h3><h4 id="2-7-1-挂起"><a href="#2-7-1-挂起" class="headerlink" title="2.7.1 挂起"></a>2.7.1 挂起</h4><p>Ubuntu的挂起功能（本质上就是电脑休眠），这个功能好像是因为显卡的问题所以会导致挂起之后无论怎么操作都无法再唤醒，所以尽量少用这个功能吧…</p>
+<p>参考文章<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41722833/article/details/119184210">(21条消息) ubuntu20.04挂起&#x2F;休眠后无法唤醒，只能强制重启_koigh的博客-CSDN博客_ubuntu挂起后怎么唤醒</a></p>
+<h4 id="2-7-2-物理驱动"><a href="#2-7-2-物理驱动" class="headerlink" title="2.7.2 物理驱动"></a>2.7.2 物理驱动</h4><p>根据教程最后我把CD的配置修改为了物理驱动，然后第一次重启的时候提出了一个警示，之后的重启就没有这些警示了，还不影响正常使用所以就先不管这个（主要我也不懂物理驱动和iso的区别），可以参照<a target="_blank" rel="noopener" href="https://blog.csdn.net/zygood_/article/details/123011990">(21条消息) VMware虚拟机提示：无法连接虚拟设备ide1:0，因为主机上没有相应的设备。_OpenAll_Zzz的博客-CSDN博客_无法连接虚拟设备ide1:0</a>，实际上修改为物理光驱之后就可以不用链接iso快速启动；</p>
+<h2 id="3-Ubuntu-Hyper-v"><a href="#3-Ubuntu-Hyper-v" class="headerlink" title="3.Ubuntu+Hyper-v"></a>3.Ubuntu+Hyper-v</h2><p>我说一下为什么要用这个，因为我今天(2022&#x2F;10&#x2F;29)使用Vmware的时候就开始持续转圈进不去系统（很有可能是因为使用的Vmware没有花米吧，然后不知道什么奇怪的操作更新啥的就导致无法正常运行了…），然后浪费了我大量时间（网上也没有这方面问题的解决方法），加上我并不是很想重装Vmware（这个破软件实在给我整的伤心了），所以选择白手起家开始学习Hyper-v+Ubuntu的使用（至于为什么我这么钟情于使用Ubuntu，是因为我的操作系统作业依赖于Linux环境啊！！！）；</p>
+<blockquote>
+<p>关于虚拟机的使用，请养成一个良好的习惯就是备份到主机，不要像我一样因为一些奇怪的问题不能正常开机，甚至连之前存在里面的学习资料都用不了了（幸运的是我至少把作业要交的那部分给备份了，否则我还得重新写一遍！）</p>
+</blockquote>
+<h3 id="3-1-Hyper-v概述"><a href="#3-1-Hyper-v概述" class="headerlink" title="3.1 Hyper-v概述"></a>3.1 Hyper-v概述</h3><p>Hyper-v是什么？与Vmware有什么区别？是免费的吗？文章参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/427870520">微软亲儿子Hyper-V与虚拟化巨头VMware Workstation性能大比拼 - 知乎 (zhihu.com)</a></p>
+<p>1：Hyper-V为Windows10自带，不需要下载安装，开启后重启即可，而Vmware需要下载安装；</p>
+<p>2：Hyper-V虚拟硬盘采用vhdx格式，宿主机可直接读取虚拟机文件，而Vmware需要自行映射；</p>
+<p>3：Hyper-V内存动态分配，当虚拟机处于后台运行时，自动降低内存使用率，而Vmware则是固定内存；</p>
+<p>4：Hyper-V挂起虚拟机比较快，且可在不考虑虚拟系统运行的情况下直接关机，而Vmware挂起虚拟机较慢，需要等到虚拟内存释放掉才能关机；</p>
+<p>5：Hyper-V开启后宿主机性能稍下降，而Vmware则不会；</p>
+<p>6：Hyper-V只能显示固定大小（Linux），而Vmware在安装vm-tools之后可以跟随窗口动态调整大小；</p>
+<p>7：Hyper-V默认不能连接外网，且只有虚拟交换机的网络方案，Vmware默认NAT网络模式能连接外网，且有三种网络模式；</p>
+<p>8：Hyper-V USB外设不能直接连接虚拟机，而Vmware可以；</p>
+<p>9：Hyper-V 支持的操作系统更少，对Windows支持更好，对Linux支持较差，如果要使用Linux虚拟机（如Ubuntu），不推荐Hyper-V，而Vmware支持更多的操作系统；</p>
+<p>10：Hyper-V默认是用CPU来模拟显示，性能较低，但可以通过手段对GPU进行虚拟化，而VMware安装完Vmware-tool后直接可以利用GPU提升显示性能；</p>
+<h3 id="3-1-Hyper-v安装"><a href="#3-1-Hyper-v安装" class="headerlink" title="3.1 Hyper-v安装"></a>3.1 Hyper-v安装</h3><p>尽管Win10默认安装了Hyper-v，但是我使用的Win11并没有安装该服务，所以需要手动安装</p>
+<p>文章参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Johnston_man/article/details/124808923">(2条消息) Windows11家庭中文版没有hyper-v_Johnston_man的博客-CSDN博客_win11没有hyperv</a></p>
+<h3 id="3-3-Ubunutu安装"><a href="#3-3-Ubunutu安装" class="headerlink" title="3.3 Ubunutu安装"></a>3.3 Ubunutu安装</h3><p>文章参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43452542/article/details/123248655">(2条消息) Hyper-V安装Ubuntu_CCCCChristopher的博客-CSDN博客_hyper-v安装ubuntu</a>（文字和图片结合，仅有前半部分安装映像文件）</p>
+<p>实际上因为我们前面已经配置过Ubunutu，所以之后的配置和前面相同，开启虚拟机并配置完成后等待安装即可（不知道是单核还是什么缘故，最近16.04给我的感觉就是非常卡）；</p>
+<p><img src="/images/image-20221029141731499.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<p>2022&#x2F;10&#x2F;29 16:47 说一个我很无语的事情，本来今天上午Vmware根本就完全打不开之前安装的两个Ubuntu，结果下午在安装18.04版本的时候告知我找不到操作系统，所以我破罐子破摔重新启动了16.04，结果发现不仅可以良好运行，甚至比之前还要流畅。关于为什么我放弃使用Hyper-v，是因为这个虚拟真的太…甚至比Vm要差，特别是桌面版本的Ubuntu，我鼠标卡的都看不清，除此之外我也不知道怎么简单的将本机的代码拖进去，思前想后最终还是决定使用Vm；</p>
+<hr>
+<h2 id="4-Ubuntu的使用"><a href="#4-Ubuntu的使用" class="headerlink" title="4.Ubuntu的使用"></a>4.Ubuntu的使用</h2><p>网上的资料太多了，大量资料都不够官方，关于Ubuntu的常用指南可以参考右上角菜单栏的Ubuntu帮助</p>
+<p><img src="/images/image-20230223102738662.png" srcset="/img/loading.gif" lazyload></p>
+<p>合理运用Ubuntu的帮助文档可以帮助你更快掌握其使用</p>
+<p><img src="/images/image-20230223102952951.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="Shell脚本（二）"><a href="#Shell脚本（二）" class="headerlink" title="Shell脚本（二）"></a>Shell脚本（二）</h1><p>本章主要参考<a target="_blank" rel="noopener" href="http://c.biancheng.net/shell/">Shell脚本：Linux Shell脚本学习指南（超详细） (biancheng.net)</a>学习Linux下的Shell脚本（当然学了Linux的Shell脚本就基本上很容易理解Windows的Shell了）</p>
+<h2 id="——Shell入门——"><a href="#——Shell入门——" class="headerlink" title="——Shell入门——"></a>——Shell入门——</h2><h2 id="1-Shell简介"><a href="#1-Shell简介" class="headerlink" title="1.Shell简介"></a>1.Shell简介</h2><ul>
+<li><p>shell是一个连接用户和Linux内核的程序，也是一门管理Linux系统的脚本语言（作为初学者我们简单认为shell就是shell script）；</p>
+</li>
+<li><p>Shell命令行解释器为用户提供了一个向Linux内核发送请求以运行程序的<code>界面系统程序</code>；</p>
+</li>
+<li><p>Shell脚本语言是一门编程语言，尽管无法媲美C++或者JAVA编程语言，但作为解释性语言，拥有其特定的优势；</p>
+</li>
+</ul>
+<p>下图是Unix&#x2F;Linux系统结构，可以看出Shell在其中的作用</p>
+<p><img src="/images/image-20220725164012538.png" srcset="/img/loading.gif" lazyload></p>
+<p>无论是Windows的图形界面还是Linux的命令行，其目的都是让用户控制计算机，而真正能够控制计算机的只有操作系统内核，命令行或图形化界面只是充当了用户和内核之间的中介；</p>
+<p>其实我们之前学Linux的时候以及在Windows里面使用Shell装一些东西的时候，都使用到了<code>Shell命令</code>，而Shell命令的集合以及一些逻辑就集合成为了Shell编程语言（我个人认为学Linux就应该先学习Shell，不然就会像我一样，学完了Linux基本上啥也记不住，因为Linux就是需要Shell来操作的！！！）</p>
+<ul>
+<li>关于Shell和Linux命令的关系我们可以参考<a target="_blank" rel="noopener" href="http://blog.itpub.net/69952527/viewspace-2845420/">shell与Linux命令有什么区别？它们之间有联系吗？_ITPUB博客</a></li>
+<li>终端、控制台和Shell之间的关系<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000016129862">命令行界面 (CLI)、终端 (Terminal)、Shell、TTY，傻傻分不清楚？ - SegmentFault 思否</a></li>
+<li>DOS命令和Linux命令汇总<a target="_blank" rel="noopener" href="https://docs.huihoo.com/gnu_linux/ch-doslinux.html">DOS 和 Linux 常用命令的对比 (huihoo.com)</a></li>
+</ul>
+<p>可以看到，Shell可以管理的Linux服务相当多</p>
+<p><img src="/images/image-20220725170029581.png" srcset="/img/loading.gif" lazyload></p>
+<p>Shell 脚本很适合处理纯文本类型的数据，而 Linux 中几乎所有的配置文件、日志文件（如 NFS、Rsync、Httpd、Nginx、MySQL 等），以及绝大多数的启动文件都是纯文本类型的文件，因此使用Shell来实现Linux系统的自动管理是非常方便的；</p>
+<p>相较于现在大火的Python脚本语言，Shell 脚本的优势在于处理偏操作系统底层的业务，例如，Linux 内部的很多应用（有的是应用的一部分）都是使用 Shell 脚本开发的，因为有 1000 多个 Linux 系统命令为它作支撑</p>
+<h2 id="2-运行-x2F-调试脚本"><a href="#2-运行-x2F-调试脚本" class="headerlink" title="2.运行&#x2F;调试脚本"></a>2.运行&#x2F;调试脚本</h2><p>这里主要介绍两种运行Linux中编写好的Shell脚本文件的方式：</p>
+<ul>
+<li><p>如果需要在新进程中运行 Shell 脚本，使用<code>bash filename</code>这种写法；</p>
+</li>
+<li><p>如果在当前进程中运行 Shell 脚本，使用<code>. filename</code>这种写法</p>
+</li>
+</ul>
+<p><img src="/images/image-20220726091602897.png" srcset="/img/loading.gif" lazyload></p>
+<p>假如我们在开发过程中遇到脚本出现问题需要调试脚本（不是直接执行该脚本），可以使用sh命令</p>
+<p><img src="/images/image-20220727110833699.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="3-基本命令"><a href="#3-基本命令" class="headerlink" title="3.基本命令"></a>3.基本命令</h2><h3 id="3-1-pwd"><a href="#3-1-pwd" class="headerlink" title="3.1 pwd"></a>3.1 pwd</h3><p>pwd命令打印当前工作目录，默认情况下Ubuntu只会显示当前目录名而非整个路径，要判定当前的目录在文件系统内的确切位置选择ped命令；</p>
+<p><img src="/images/image-20220726185429824.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-2-cd"><a href="#3-2-cd" class="headerlink" title="3.2 cd"></a>3.2 cd</h3><p>cd命令用于改变当前所处目录，路径名可以是绝对路径也可以是相对路径；</p>
+<ul>
+<li>cd ..向上移动一级目录</li>
+<li>cd ..&#x2F;..向上移动两级目录</li>
+</ul>
+<h3 id="3-3-ls"><a href="#3-3-ls" class="headerlink" title="3.3 ls"></a>3.3 ls</h3><p>使用ls查看当前目录下的内容，ls命令可以添加大量选项</p>
+<h3 id="3-4-locate"><a href="#3-4-locate" class="headerlink" title="3.4 locate"></a>3.4 locate</h3><p>如果直到某个文件或文件的名称可以使用locate搜寻，这将得到每一个包括搜寻条件的目录或文件</p>
+<p><img src="/images/image-20220726190012998.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-5-clear-amp-reset"><a href="#3-5-clear-amp-reset" class="headerlink" title="3.5 clear&amp;reset"></a>3.5 clear&amp;reset</h3><p>clear：清屏，清除当前页的显示，实质上是把终端显示向后翻了一页，没有真正的清屏，向前翻还可以看见历史内容【常用】</p>
+<p>reset：清屏，清除显示区所有内容且历史输入也被清除了，这个是真正的清屏，清的非常彻底【用的少】</p>
+<p><img src="/images/image-20220726190335722.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="4-Shell技巧"><a href="#4-Shell技巧" class="headerlink" title="4.Shell技巧"></a>4.Shell技巧</h2><h3 id="4-1-Tab补齐"><a href="#4-1-Tab补齐" class="headerlink" title="4.1 Tab补齐"></a>4.1 Tab补齐</h3><p>对于一些长文件名这个功能很有效，注意区分路径的大小写（d&lt; tab &gt;和D&lt; tab &gt;可能分别补全为drivers和Document），当目录下有相同前缀名的文件&#x2F;目录时可能就会补全错误，同时如果tab没有自动补全说明没有该前缀文件；</p>
+<h3 id="4-2-命令行快捷键"><a href="#4-2-命令行快捷键" class="headerlink" title="4.2 命令行快捷键"></a>4.2 命令行快捷键</h3><p>上下键可以分别向后&#x2F;向前遍历最近在当前终端输入的命令（至于windows下可能会遍历出其他shell的命令这个原理我不是很懂）</p>
+<p><img src="/images/image-20220726191123898.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="5-Shell变量"><a href="#5-Shell变量" class="headerlink" title="5.Shell变量"></a>5.Shell变量</h2><h3 id="5-1-echo"><a href="#5-1-echo" class="headerlink" title="5.1 echo"></a>5.1 echo</h3><p>echo用于显示变量的内容，为了区分变量，需要在其前面加上($)，但是注意在设置变量值的时候直接用名称不要加符号；</p>
+<p><img src="/images/image-20220726192906891.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="5-2-env-amp-set"><a href="#5-2-env-amp-set" class="headerlink" title="5.2 env&amp;set"></a>5.2 env&amp;set</h3><p>env主要用于将目前系统中的主要变量读出来，而set可以将目前系统中所有的变量数据都读出来（系统默认变量+用户设定的变量）</p>
+<h3 id="5-3-export"><a href="#5-3-export" class="headerlink" title="5.3 export"></a>5.3 export</h3><p>当多个文件相互依赖&#x2F;引用的时候，在第一个文件中使用export将一般自定义变量环境变量，这样可以省去将不同文件中的相同变量重复设定变量名的麻烦</p>
+<h3 id="5-4-unset"><a href="#5-4-unset" class="headerlink" title="5.4 unset"></a>5.4 unset</h3><p>该命令直接将变量的内容抹除</p>
+<p><img src="/images/image-20220726193850673.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="——Shell基础——"><a href="#——Shell基础——" class="headerlink" title="——Shell基础——"></a>——Shell基础——</h2><h2 id="6-变量"><a href="#6-变量" class="headerlink" title="6.变量"></a>6.变量</h2><p>声明变量使用declare命令</p>
+<p><img src="/images/image-20220727110522426.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="Linux读书笔记（三）"><a href="#Linux读书笔记（三）" class="headerlink" title="Linux读书笔记（三）"></a>Linux读书笔记（三）</h1><p>本来是想读《鸟哥的Linux私房菜》，但是读了一下发现是真的不太适合（因为我已经有了一点基础了所以看这个书讲得太细会犯困），然后因为用Ubuntu比较习惯，所以选择了《Ubuntu Linux从入门到精通》</p>
+<p>因为雨雀里面的内容主要都是针对CenOS的操作，而且直接命令行的方式来教授真的很难装进脑子，所以这里使用Ubuntu图形化界面辅佐命令行重新学习一边Linux操作系统相关概念</p>
+<h2 id="1-Ubuntu入门"><a href="#1-Ubuntu入门" class="headerlink" title="1.Ubuntu入门"></a>1.Ubuntu入门</h2><h3 id="1-1-Unix概述"><a href="#1-1-Unix概述" class="headerlink" title="1.1 Unix概述"></a>1.1 Unix概述</h3><p>Unix是一个强大的多用户、多任务操作系统，支持多种处理器架构。由于Uhix具有技术成熟，可靠性高、网络和数据库功能强，伸缩性突出和开放性好等特色，可满足各行各业的实际需要，特别能满足企业重要业务的需要，可以说它已经成为主要的工作站平台和重要的企业操作平台。</p>
+<h3 id="1-2-Linux概述"><a href="#1-2-Linux概述" class="headerlink" title="1.2 Linux概述"></a>1.2 Linux概述</h3><p>Linux是参考Unix开发并发展起来的一个<code>类Unix操作系统</code>，Linux操作系统是自由软件和开放源代码发展中最著名的例子。</p>
+<ul>
+<li>Linux 可指操作系统的内核（严格来讲Linux这个词本身只表示<code>Linux内核</code>，但在实际应用上人们已经习惯了用Linux来形容整个基于Linux内核，并且搭配了各种人机界面，应用和服务软件的操作系统（也被称为GNU&#x2F;Linux也就是Linux内核加GNU外围软件，即下面将要介绍的概念））；</li>
+<li>Linux可指<code>Linux操作系统</code>，这时，Linux是指一种计算机操作系统；基于上述组件的Linux软件（操作系统属于系统软件，Linux操作系统也被称为GNU&#x2F;Linux）被称为<code>Linux发行版</code>。一般来讲，一个Linux发行套件包含大量的软件，比如软件开发工具、数据库、Web服务器（例如Apache），X-Window桌面环境（比如GNOME和KDE）和办公套件（比如OpenOffice.org）等；</li>
+</ul>
+<h3 id="1-3-Debian概述"><a href="#1-3-Debian概述" class="headerlink" title="1.3 Debian概述"></a>1.3 Debian概述</h3><p>Ubuntu的诞生离不开Debian，而Debian也是一个GNU&#x2F;Linux操作系统；</p>
+<p>Debian系统的特点主要有：</p>
+<ul>
+<li>灵活的升级方式：dpkg软件包管理工具搭配apt-get可以轻松管理Debian上的软件；</li>
+<li>开发人员免费解答；</li>
+<li>安装简单；</li>
+</ul>
+<p>…</p>
+<h3 id="1-4-Ubuntu概述"><a href="#1-4-Ubuntu概述" class="headerlink" title="1.4 Ubuntu概述"></a>1.4 Ubuntu概述</h3><p>Ubuntu上的所有软件几乎都是免费的，Ubuntu将这些软件分为四部分（称为“组件”）以反映不同的许可证和可用的支持级别：</p>
+<ul>
+<li>main组件：符合Ubuntu版权要求的自由软件；</li>
+<li>restricted组件；</li>
+<li>universe组件；</li>
+<li>multiverse组件；</li>
+</ul>
+<p>Ubuntu默认的桌面环境采用GNOME X-Window —— 一个Unix和Linux主流桌面套件和开发平台；</p>
+<h2 id="2-Ubuntu体验"><a href="#2-Ubuntu体验" class="headerlink" title="2.Ubuntu体验"></a>2.Ubuntu体验</h2><h3 id="2-1-Ubuntu终端模式"><a href="#2-1-Ubuntu终端模式" class="headerlink" title="2.1 Ubuntu终端模式"></a>2.1 Ubuntu终端模式</h3><p>要进入Ubuntu终端模式主要有两种方式：</p>
+<ul>
+<li>窗口模式下启动<code>终端</code>窗口组件</li>
+<li>全Shell环境：使用ctrl +alt +F1~F6Q切换六个控制台，使用ctrl+alt+F7回到窗口模式<ul>
+<li>六个控制台可以同时登陆一个账户（tintoki）；</li>
+<li>tty可以简单理解为控制台，只要电脑不关机或者没有手动使用’exit’命令，加上图形窗口一共七个进程都不会挂，会一直保持当前状态；</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/image-20220726153501545.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20220726153408308.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-2-root用户与sudo命令"><a href="#2-2-root用户与sudo命令" class="headerlink" title="2.2 root用户与sudo命令"></a>2.2 root用户与sudo命令</h3><p>sudo为superuser do“超级用户的工作”的简写；</p>
+<p>默认情况下Ubuntu的root用户是停用的，一切与系统相关的指令都需要在其之前加上sudo，并输入密码确认（sudo的密码默认是系统安装过程中创建的第一个用户账号对应的密码），短时间内sudo会记住用户输入过的密码；</p>
+<p>普通用户切换root用户权限使用使用’su root’命令或’sudo -i’命令（这两个命令的密码我不知道是不是一样的，因为我设置的tintoki和root密码相同没法区分），root用户切换为普通用户使用’exit’命令</p>
+<p><img src="/images/image-20220726154831102.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="3-X-Window介绍"><a href="#3-X-Window介绍" class="headerlink" title="3.X-Window介绍"></a>3.X-Window介绍</h2><p>X-Window是类Unix系统中<code>图形操作界面标准用语</code>（因为微软抢先注册了Windows这个标准，所以所有类Unix系统中只能用X-Window称呼），GNOME和KDE只是Linux系统中提供图形操作界面的两种<code>解决方案</code>，它们都使用X-Window这个<code>标准</code>来显示图形界面。Ubuntu系统，默认使用的是Gnome桌面环境；</p>
+<p>X-Window是一个<code>计算机图形/视窗系统</code>，是一种用于Unix系统的标准GUI（图形化用户界面）；</p>
+<h3 id="3-1-集成式桌面环境KDE"><a href="#3-1-集成式桌面环境KDE" class="headerlink" title="3.1 集成式桌面环境KDE"></a>3.1 集成式桌面环境KDE</h3><p>相较于微软如出一辙的图形界面，Linux用户可以随时改变图形界面，这就是所谓的“集成式桌面环境”，现在主要的两个是Gnome和KDE；</p>
+<p>X-Window仅能负责桌面管理的工作，这些功能只是集成式桌面环境的一部分，集成式桌面环境更重要的作用是充当应用程序的统一界面；</p>
+<p>KDE是最早用于Linux的GUI，是一个用于Unix工作站的网络透明的现代化桌面环境；</p>
+<h3 id="3-2-集成式桌面环境Gnome"><a href="#3-2-集成式桌面环境Gnome" class="headerlink" title="3.2 集成式桌面环境Gnome"></a>3.2 集成式桌面环境Gnome</h3><p>Gnome作为KDE的替代品，属于GNU计划的一部分；</p>
+<h2 id="4-软件包管理工具"><a href="#4-软件包管理工具" class="headerlink" title="4.软件包管理工具"></a>4.软件包管理工具</h2><p>在Ubuntu中，应用程序的添加或删除一般是通过软件包管理器进行的。通过将软件的安装文件处理成为Ubuntu优化的预配置软件包，软件包管理器工具可以容易地安装和删除这些应用程序。根据用户交互方式的不同，Ubuntu主要有如下几种包管理工具：</p>
+<p><img src="/images/image-20220726165452812.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>Ubuntu中一次只能运行一个软件包管理应用程序，也就是不能在添加程序的同时还想更新Ubuntu</p>
+</blockquote>
+<h2 id="5-Vi-x2F-Vim编辑器"><a href="#5-Vi-x2F-Vim编辑器" class="headerlink" title="5.Vi&#x2F;Vim编辑器"></a>5.Vi&#x2F;Vim编辑器</h2><p>至于为什么要学习Vi&#x2F;Vim文本编辑器，我们可以参考<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/305779588?sort=created">为什么很多程序员爱用 Vim？ - 知乎 (zhihu.com)</a>给出的答案，相较于用鼠标+键盘的敲代码模式，使用vim只需要键盘就能完成所有工作（某些情况下如shell中编程我们也只能用vim不能用notepad这种普通文本编辑器）；</p>
+<p>因为Vim是Vi的加强版，所以我们下面介绍的都是Vim文本文本编辑器；</p>
+<p>现代编辑器基本上都是全屏编辑器（也就是全屏文档都可以通过移动光标来编辑），相对于打字机年代的行编辑器（这种编辑器的资料现在都基本上找不到了），Vim当然也是一种全屏编辑器；</p>
+<p>Linux中的vim编辑器重要性类似于Windows下的记事本（其实Linux中也有类似于记事本的内置文本编辑器gedit）；</p>
+<h3 id="5-1-工作模式"><a href="#5-1-工作模式" class="headerlink" title="5.1 工作模式"></a>5.1 工作模式</h3><p>Vim有三种工作模式：</p>
+<ul>
+<li>一般模式：Vi处理文件时，一进入该文件，就是一般模式了。在这个模式中输入的<code>任何字符</code>皆被视为指令。可以使用方向键来移动光标，可以使用“删除字符”或“删除整行”来处理文件内容，也可以使用“复制”、“粘贴”来处理文件数据。</li>
+<li>文本写入模式：在一般模式中可以进行删除、复制、粘贴等操作，却无法进行编辑操作。要等到按下i.l.o.O.a，A.r.R等字母之后才会进入编辑模式。在文本写入模式下，键盘成了用户的打字机。Vi显示用户的输入。按键不被解释为命令执行，只是作为文本写入到用户的文件中。注意，通常在Linux中，按下上述字母时，画面的左下方会出现”INSERT或REPLACE”的字样，才可以输入任何字符到文件中。如果要回到一般模式，则必须要按下Esc键才可退出编辑模式。</li>
+<li>命令行命令模式：在一般模式中，输入：或&#x2F;或？就可以将光标移到最下面的一行，在这个模式中，可以搜索数据，而且读取、存盘、大量删除字符、退出vim、显示行号等操作都是在此模式中实现的。</li>
+</ul>
+<p><img src="/images/image-20220726202704887.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="5-1-1-一般模式"><a href="#5-1-1-一般模式" class="headerlink" title="5.1.1 一般模式"></a>5.1.1 一般模式</h4><p>使用’vim Filename’打开一个文件直接进入一般模式</p>
+<p><img src="/images/image-20220726203142798.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="5-1-2-文本写入模式"><a href="#5-1-2-文本写入模式" class="headerlink" title="5.1.2 文本写入模式"></a>5.1.2 文本写入模式</h4><p>使用不同的字符进入文本写入模式稍有区别</p>
+<p><img src="/images/image-20220726210702486.png" srcset="/img/loading.gif" lazyload></p>
+<p>这个模式下除了Esc外其他键都会被视作一般的输入键</p>
+<p><img src="/images/image-20220726203804847.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="5-1-3-命令行模式"><a href="#5-1-3-命令行模式" class="headerlink" title="5.1.3 命令行模式"></a>5.1.3 命令行模式</h4><p>该模式下：</p>
+<ul>
+<li><p>wq表示保存并退出</p>
+</li>
+<li><p>q表示不保存退出，适用于打开文件看了一眼没有做任何修改</p>
+</li>
+<li><p>q!表示强制退出</p>
+</li>
+</ul>
+<p><img src="/images/image-20220726204507069.png" srcset="/img/loading.gif" lazyload></p>
+<p>其他常用命令</p>
+<p><img src="/images/image-20220726210820198.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="5-2-常用指令（一般模式）"><a href="#5-2-常用指令（一般模式）" class="headerlink" title="5.2 常用指令（一般模式）"></a>5.2 常用指令（一般模式）</h3><p>需要注意vim编辑器中鼠标几乎没有任何作用</p>
+<h4 id="5-2-1-光标移动"><a href="#5-2-1-光标移动" class="headerlink" title="5.2.1 光标移动"></a>5.2.1 光标移动</h4><blockquote>
+<p>下面介绍的光标移动快捷键都在一般模式下使用</p>
+</blockquote>
+<ul>
+<li><p>常规使用上下左右方向键使得光标向对应位置移动一个字符；可以结合数字键实现快速移动，如同时按下 5下箭头 则光标快速向下移动五个字符；</p>
+</li>
+<li><p>ctrl+移动键可以以字符之间的空格为分隔符移动光标；</p>
+</li>
+<li><p>当然也支持整屏整页地移动</p>
+</li>
+</ul>
+<p><img src="/images/image-20220726205048139.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>其他特殊定位服务</li>
+</ul>
+<p><img src="/images/image-20220726205126239.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="5-2-2-删除指令"><a href="#5-2-2-删除指令" class="headerlink" title="5.2.2 删除指令"></a>5.2.2 删除指令</h4><blockquote>
+<p>一般模式下</p>
+</blockquote>
+<ul>
+<li>第一个快捷键实际上在键盘上是同时依次按下d + shift + $</li>
+</ul>
+<p><img src="/images/image-20220726205336671.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="5-2-3-复制、粘贴"><a href="#5-2-3-复制、粘贴" class="headerlink" title="5.2.3 复制、粘贴"></a>5.2.3 复制、粘贴</h4><p>vim的复制指令是y，粘贴指令是p，但是因为仅仅用这两个指令受限太大了（比如我现在还不知道怎么复制一段选中的文本（因为我不知道怎么选中一段文本，尝试用鼠标是没用的 —— 块选择之后会介绍）），所以增加了一些更快捷的键组合</p>
+<blockquote>
+<p>一般模式下</p>
+</blockquote>
+<p><img src="/images/image-20220726205719523.png" srcset="/img/loading.gif" lazyload></p>
+<p>Linux下的复制还涉及缓冲区的概念，感兴趣可自行查阅；</p>
+<h4 id="5-2-4-重复、取消操作"><a href="#5-2-4-重复、取消操作" class="headerlink" title="5.2.4 重复、取消操作"></a>5.2.4 重复、取消操作</h4><p>. 表示重复上一次的编辑操作（当然也是在一般模式下，这里的编辑操作不包括移动光标和冒号:命令），重复多少次都可以</p>
+<p><img src="/images/image-20220726210427191.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="5-2-5-查找、替换"><a href="#5-2-5-查找、替换" class="headerlink" title="5.2.5 查找、替换"></a>5.2.5 查找、替换</h4><p>vim的查找是与正则表达式有关的</p>
+<p><img src="/images/image-20220726210552541.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="5-3-高级操作"><a href="#5-3-高级操作" class="headerlink" title="5.3 高级操作"></a>5.3 高级操作</h3><h4 id="5-3-1-块选择"><a href="#5-3-1-块选择" class="headerlink" title="5.3.1 块选择"></a>5.3.1 块选择</h4><p>之前介绍复制的时候说过只能复制一个字符（光标所在字符）的话未免太不方便了，当我们需要操作块时参考如下方式（Esc退出块选择）</p>
+<p><img src="/images/image-20220726211219596.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>举例</li>
+</ul>
+<blockquote>
+<p>就算开启了块选择也不要尝试使用鼠标去选择块，这种操作是徒劳的</p>
+</blockquote>
+<p><img src="/images/image-20220726211726664.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="5-3-2-排版"><a href="#5-3-2-排版" class="headerlink" title="5.3.2 排版"></a>5.3.2 排版</h4><ul>
+<li>一般模式下的排版</li>
+</ul>
+<p><img src="/images/image-20220726212114948.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20220726212128878.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<ul>
+<li>:set shiftwidth?可查看目前shiftwidth设置的值；</li>
+<li>:set shiftwidth &#x3D; n可重设为n个字符</li>
+</ul>
+</blockquote>
+<p><img src="/images/image-20220726212542713.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>命令行模式下的排版</li>
+</ul>
+<p><img src="/images/image-20220726212628246.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>所谓居中，靠左，靠右，是参考textwidth（tw）的设定。如果没有设定tw.则默认为80，就是以80个字符的总宽度为标准来放置。当然也可以像sw一样马上重设默认值。</p>
+</blockquote>
+<h4 id="5-3-3-多文件交互"><a href="#5-3-3-多文件交互" class="headerlink" title="5.3.3 多文件交互"></a>5.3.3 多文件交互</h4><p>假如要将一个文件中的内容复制到另一个文件中，可以选择 vim 后面接多个文件同时打开，用如下快捷键切换编辑</p>
+<p><img src="/images/image-20220726213026171.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="5-3-4-多窗口"><a href="#5-3-4-多窗口" class="headerlink" title="5.3.4 多窗口"></a>5.3.4 多窗口</h4><p>假如要对照两份文件，使用上面的多文件交互就不太可行了，</p>
+<blockquote>
+<p>命令行模式下输入’:sp{filename}’其中filename可有可无（没有的话就出现两个窗口显示同一个文件）</p>
+</blockquote>
+<p><img src="/images/image-20220726213440865.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20220726213517733.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="6-文件系统"><a href="#6-文件系统" class="headerlink" title="6.文件系统"></a>6.文件系统</h2><p>Ubuntu的基本目录结构如下</p>
+<p><img src="/images/image-20220727085910453.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>相对路径有四种符号表示法：</p>
+<ul>
+<li>.表示当前目录</li>
+<li>..表示上级目录</li>
+<li>~表示用户主目录</li>
+<li>-表示上一个使用的目录</li>
+</ul>
+</blockquote>
+<h3 id="6-1-常用命令"><a href="#6-1-常用命令" class="headerlink" title="6.1 常用命令"></a>6.1 常用命令</h3><p>cd：改变目录位置</p>
+<p>pwd：显示当前目录的绝对路径</p>
+<p>ls：显示当前目录下的文件名称、属性等</p>
+<p><img src="/images/image-20220727090638423.png" srcset="/img/loading.gif" lazyload></p>
+<p>cp：复制文件或目录</p>
+<p><img src="/images/image-20220727090708165.png" srcset="/img/loading.gif" lazyload></p>
+<p>mv：移动文件或目录</p>
+<p><img src="/images/image-20220727090756689.png" srcset="/img/loading.gif" lazyload></p>
+<p>rm：删除文件或目录</p>
+<p><img src="/images/image-20220727090940592.png" srcset="/img/loading.gif" lazyload></p>
+<p>mkdir：创建目录</p>
+<p><img src="/images/image-20220727091120739.png" srcset="/img/loading.gif" lazyload></p>
+<p>rmdir：删除目录</p>
+<p><img src="/images/image-20220727091210156.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="6-2-链接文件"><a href="#6-2-链接文件" class="headerlink" title="6.2 链接文件"></a>6.2 链接文件</h3><p>尽管这一节并没有讲关于编译的知识，但是仍然是涉及链接的知识点，注意此处的链接和编译系统中的链接是两个不同的概念；</p>
+<h4 id="6-2-1-inode"><a href="#6-2-1-inode" class="headerlink" title="6.2.1 inode"></a>6.2.1 inode</h4><p>首先需要知道每个文件系统（简单来说每个硬盘分区就是一个文件系统）都被分为两部分：</p>
+<ul>
+<li><p>Block：存储数据</p>
+</li>
+<li><p>inode：索引节点，用于保存Block存储的数据的信息如文件大小、读写权限等</p>
+</li>
+</ul>
+<p>操作系统能够通过inode值快速找到相对应的文件（因为inode为每个文件建立了信息索引值）</p>
+<p><img src="/images/image-20220727092116284.png" srcset="/img/loading.gif" lazyload></p>
+<p>在Linux中inode值相同的文件是硬链接文件（一个inode值可以对应多个文件）</p>
+<h4 id="6-2-2-硬链接和软链接"><a href="#6-2-2-硬链接和软链接" class="headerlink" title="6.2.2 硬链接和软链接"></a>6.2.2 硬链接和软链接</h4><p>软链接相当于windows中的快捷方式：</p>
+<ul>
+<li>软链接又称为符号链接，指向的是路径；</li>
+<li>路径可以是另一个文件或者目录，也可以是不同文件系统的文件；</li>
+</ul>
+<p>硬链接类似于Windows中的复制，但是与复制不同的是硬链接的文件之间存在同步机制 —— 一处的文件被修改会实时同步到另一处，一处的文件被删除不会影响另一处的文件：</p>
+<ul>
+<li><p>硬链接指向的是inode节点，相当于另一个文件（拥有不一样的名字、相同内容的文件）；</p>
+</li>
+<li><p>不允许给目录创建硬链接（只能给文件创建硬链接）；</p>
+</li>
+<li><p>只有在同一文件系统中的文件之间才能创建链接；</p>
+</li>
+</ul>
+<p>软链接和硬链接异同：</p>
+<ul>
+<li><p>相同点：文件都会同步改变，都可以使用rm工具来删除；</p>
+</li>
+<li><p>不同点：软链接指向源文件地址，不占用资源；硬链接复制文件，占用资源倍增；</p>
+</li>
+</ul>
+<h3 id="6-3-查看文件内容"><a href="#6-3-查看文件内容" class="headerlink" title="6.3 查看文件内容"></a>6.3 查看文件内容</h3><p>Linux提供了不同的查看文件的命令（本节内容在书P250页）</p>
+<p><img src="/images/image-20220727093345415.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="6-4-文件权限"><a href="#6-4-文件权限" class="headerlink" title="6.4 文件权限"></a>6.4 文件权限</h3><p>Linux的每个文件和目录都有访问许可权限，文件或目录的访问权限分为可读、可写和可执行三种</p>
+<p>有三种不同类型的用户可以对文件或目录进行访问：</p>
+<ul>
+<li>文件所有者</li>
+<li>同组用户</li>
+<li>其他用户</li>
+</ul>
+<p>因此组合可得到文件或目录的权限位有9位，3位一组，共三组：</p>
+<ul>
+<li>属主权限位</li>
+<li>用户组权限位</li>
+<li>其他用户权限位</li>
+</ul>
+<p><img src="/images/image-20220727095151200.png" srcset="/img/loading.gif" lazyload></p>
+<p>如果权限位不可读、不可写、不可执行则使用-表示</p>
+<h3 id="6-5-文件归档和压缩"><a href="#6-5-文件归档和压缩" class="headerlink" title="6.5 文件归档和压缩"></a>6.5 文件归档和压缩</h3><ul>
+<li>归档文件：文件和目录的集合，该集合被存储在一个文件中，也就是归档文件（这个概念在Windows下不常使用），文件大小等于集合的大小并未压缩；<ul>
+<li>常见归档类型有tar.gz tar zip jar war等；</li>
+<li>关于Shell归档指令可查阅书籍P277；</li>
+</ul>
+</li>
+<li>压缩文件：文件和目录的集合，且该集合同样被存储在一个文件中，但采用了压缩技术处理；<ul>
+<li>使用不同的压缩工具会产生不同的压缩文件后缀名；</li>
+<li>关于Shell压缩指令可查阅书籍P273；</li>
+</ul>
+</li>
+</ul>
+<h2 id="7-进程管理"><a href="#7-进程管理" class="headerlink" title="7.进程管理"></a>7.进程管理</h2><p>Linux是一个多用户多任务的操作系统：</p>
+<ul>
+<li>多用户是指多个用户可以在同一时间使用计算机系统；</li>
+<li>多任务是指可以同时执行多个任务，可以在未执行完成一个任务时又同时执行另一个任务；</li>
+</ul>
+<p>关于进程的知识点可以参考操作系统的教程，Linux系统有三种不同类型的进程：</p>
+<ul>
+<li>交互进程：由一个Shell启动的进程。交互进程既可以在前台运行，也可以在后台运行。</li>
+<li>批处理进程：这种进程和终端没有联系，是一个进程序列。</li>
+<li>守护进程：Linux系统启动时启动的进程，并在后台运行。</li>
+</ul>
+<p>一个正在执行的进程称为一个作业，而一个作业可以包含多个进程（尤其是使用了管道和复位向命令），大多数情况下用户在同一时间只运行一个作业，但使用作业控制用户可以同时运行多个作业并可以在这些作业之间进行切换；</p>
+<ul>
+<li>进程：系统进行资源分配和调用的基本单位（低级调度），进程的概念用于几乎所有的多道程序系统中；</li>
+<li>作业：是用户需要计算机完成的某项任务，是要求计算机所做工作的集合（高级调度），作业的概念用于批处理系统；</li>
+</ul>
+<h3 id="7-1-前后台工作管理"><a href="#7-1-前后台工作管理" class="headerlink" title="7.1 前后台工作管理"></a>7.1 前后台工作管理</h3><p>每个进程都可以两种方式存在：前台进程（Foreground）和后台进程（Background）</p>
+<ul>
+<li>前台也就是用户当前窗口看见正在执行的进程；</li>
+<li>后台进程则是当前窗口看不见，但是在系统中实际运行的程序。</li>
+</ul>
+<p>如果用户使用命令终端来进行工作，而又不喜欢同时开启多个命令终端窗口，这个时候就需要使用到前后台工作管理的一些命令，详情可见书P360</p>
+<p><img src="/images/image-20220727103916321.png" srcset="/img/loading.gif" lazyload></p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%87%AA%E5%AD%A6%E8%AF%BE%E7%A8%8B/" class="category-chain-item">自学课程</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">#操作系统</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Linux</div>
+      <div>https://gintoki-jpg.github.io/2022/06/27/通识_Linux/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>杨再俨</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年6月27日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/06/27/%E9%80%9A%E8%AF%86_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" title="计算机操作系统">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">计算机操作系统</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/06/27/%E5%90%8E%E7%AB%AF_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" title="网络编程">
+                        <span class="hidden-mobile">网络编程</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+</div>
+
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

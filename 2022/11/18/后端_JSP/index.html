@@ -1,0 +1,941 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/logo.png">
+  <link rel="icon" href="/img/bg/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="杨再俨">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="JSP是第二代Java Web开发技术，是Servlet的升级版。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JSP">
+<meta property="og:url" content="https://gintoki-jpg.github.io/2022/11/18/%E5%90%8E%E7%AB%AF_JSP/index.html">
+<meta property="og:site_name" content="Tintoki_blog">
+<meta property="og:description" content="JSP是第二代Java Web开发技术，是Servlet的升级版。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/JAVA.png">
+<meta property="article:published_time" content="2022-11-18T00:11:00.000Z">
+<meta property="article:modified_time" content="2022-11-21T15:29:59.081Z">
+<meta property="article:author" content="YangZaiyan">
+<meta property="article:tag" content="后端开发">
+<meta property="article:tag" content="JAVA架构">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gintoki-jpg.github.io/img/bg/JAVA.png">
+  
+  
+  
+  <title>JSP - Tintoki_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"gintoki-jpg.github.io","root":"/","version":"1.9.1","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tintoki_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/bg1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">JSP</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-11-18 08:11" pubdate>
+          2022年11月18日 早上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          8.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          69 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">JSP</h1>
+            
+            <div class="markdown-body">
+              
+              <p>文章参考：<a target="_blank" rel="noopener" href="http://c.biancheng.net/jsp2/">http://c.biancheng.net/jsp2/</a></p>
+<h1 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h1><p>JSP 是 Java Server Pages 的缩写，是一种动态网页开发技术，动态网页是指跟静态网页相对的一种网页编程技术：</p>
+<ul>
+<li>静态网页，随着 HTML 代码的生成，页面的内容和显示基本上不会发生变化，除非修改页面代码；</li>
+<li>动态网页显示的内容可以随着时间、环境或者数据库操作的结果而发生改变；</li>
+</ul>
+<p>JSP 本质是一个 Java 类（Servlet），我们可以在 JSP 页面中嵌入 Java 代码，即：<code>JSP = HTML + Java</code>；</p>
+<p>基本原理：请求 JSP 时，<code>服务器内部</code>会经历一次动态资源（JSP）到静态资源（HTML）的转化，服务器会自动把 JSP 中的 HTML 片段和数据拼接成静态资源响应给浏览器。即JSP 运行在服务器端，最终发给客户端的是已经转换好的 HTML 静态页面；</p>
+<p>JSP 的功能与 CGI 相似，但相对于 CGI 来说，JSP 具有很多优势。</p>
+<ul>
+<li>JSP 性能更加优越。因为 JSP 可以直接在 HTML 页面中嵌入动态元素，而不需要单独的引入 CGI 文件；</li>
+<li>JSP 会在服务器调用之前进行编译，而不是像 CGI&#x2F;Perl 必须先加载解释器和目标脚本；</li>
+<li>JSP 基于 Java Servlet API，因此，JSP 可以使用各种强大的企业级 Java API，包括 JDBC、JNDI、EJB 和 JAXP 等；</li>
+<li>JSP 页面可以和处理业务逻辑的 Servlet 一起使用；</li>
+</ul>
+<p>JSP 是 Java EE 不可或缺的一部分，是一个完整的企业级应用平台，这意味着 JSP 可以用最简单的方式来实现最复杂的应用；</p>
+<h2 id="1-JSP概述"><a href="#1-JSP概述" class="headerlink" title="1.JSP概述"></a>1.JSP概述</h2><p>JSP技术全称为Java Server Pages，是一种动态网页开发技术；</p>
+<p>JSP运行在服务器端，返回给客户端的通常都是一个HTML文件，因此只需要客户端有浏览器就能查看JSP页面；</p>
+<p>JSP文件是指在传统的HTML文件中插入Java代码和JSP标签，JSP文件的后缀名为.jsp：</p>
+<ul>
+<li>JSP 使用 JSP 标签在 HTML 网页中插入 Java 代码，标签通常以<code>&lt;%</code>开头，以<code>%&gt;</code>结束。JSP 标签有多种功能，比如访问数据库和 JavaBean 组件等，还可以在不同的网页之间传递和共享信息；</li>
+</ul>
+<p>JSP和Servlet的关系：</p>
+<ul>
+<li>JSP 是 Servlet 的扩展，可以在 JSP 中使用 Servlet 的所有功能。另外，JSP 还提供了一些其他功能，例如 EL 表达式、自定义标签等；</li>
+<li>JSP 依赖于 Servlet，用户访问 JSP 页面时，JSP 代码会被翻译成 Servlet 代码，最终，以字符串的形式向外输出 HTML 代码。所以，JSP 只是在 Servlet 的基础上做了进一步封装；</li>
+</ul>
+<p>JSP 具有以下特点：</p>
+<ul>
+<li>JSP 具有 Servlet 的所有优点，例如 JSP 文件跨平台，即一次编写，处处运行（本质上是Java的优点）；</li>
+<li>JSP 比 CGI 性能更加优越，因为 JSP 可以直接在 HTML 中嵌入标签，而 CGI 需要单独引用 CGI 文件；</li>
+<li>JSP 比 Servlet 更易于维护，JSP 将业务逻辑与网页设计分离，使其更加灵活（Servlet在一定程度上是将业务逻辑和网页设计交互混合，但是也不是直观上的将Servlet类和HTML完全写在一起）；</li>
+<li>使用 JSP，Web 开发人员可以更注重于网页设计，Java 开发人员可以更注重于逻辑处理；</li>
+</ul>
+<h3 id="1-1-JSP起源"><a href="#1-1-JSP起源" class="headerlink" title="1.1 JSP起源"></a>1.1 JSP起源</h3><p>在Servlet刚推出的时候，当时的Java Web体系结构中只有Servlet，所以接收用户请求、处理业务逻辑、<code>生成 HTML 代码</code>等都在 Servlet 中完成。Servlet 不能像 PHP、ASP 等语言镶嵌 HTML 代码，因此输出 HTML 比较困难，且部署过程复杂；</p>
+<p>因此，Sun在之后推出了JSP，在生成 HTML 代码方面 JSP 比 Servlet 方便许多，而且不需要特殊部署，只需要复制到服务器下面即可运行。简而言之，JSP 就是为了简化 Servlet 工作而出现的替代；</p>
+<p>JSP 包括很多技术，包括 Java Bean、自定义标签（Custom Tags）、EL 表达式（Expression Language）、JSTL 标准标签类库（Java Standard Tag Library）等。这些强大成熟的技术使得 JSP 在视图层（View）具有很大的优势；</p>
+<h3 id="1-2-JSP-amp-Servlet"><a href="#1-2-JSP-amp-Servlet" class="headerlink" title="1.2 JSP&amp;Servlet"></a>1.2 JSP&amp;Servlet</h3><p>JSP与Servlet的相同点在于两者都用于生成动态网页；</p>
+<p>不同点主要如下（这个表格是理解JSP和Servlet的重点！！！）</p>
+<p><img src="/images/image-20221118083513713.png" srcset="/img/loading.gif" lazyload></p>
+<p>JSP相对Servlet主要有如下优点：</p>
+<ul>
+<li><p>易于维护：相对于 Servlet 来说，JSP 更易于管理。在 JSP 中，我们可以轻松地将业务逻辑与网页设计分开，而在 Servlet 技术中，它们是混合在一起的。</p>
+</li>
+<li><p>快速开发：无需重新编译和部署，JSP 页面被修改后，不需要重新编译和部署项目。而 Servlet 被修改后，需要重新编译和部署。</p>
+</li>
+<li><p>代码简洁：在 JSP 中，我们可以使用 EL、JSTL、自定义标签、隐式对象等，能够有效的减少代码。</p>
+</li>
+</ul>
+<h2 id="2-JSP生命周期"><a href="#2-JSP生命周期" class="headerlink" title="2.JSP生命周期"></a>2.JSP生命周期</h2><p>JSP 生命周期定义了 JSP 从创建到销毁的整个过程。这类似于 Servlet 生命周期，不同的是，JSP 需要先被编译成 Servlet；</p>
+<p>JSP 生命周期阶段如下：</p>
+<ol>
+<li>编译<ul>
+<li>当浏览器请求 JSP 时，JSP 容器会首先检查是否需要编译页面。如果该页面从未被编译过，或者自上次编译以来对其进行了修改，则编译该页面。编译过程主要包括三个步骤：<ul>
+<li>解析 JSP：JSP 容器(本质上JSP容器就是Servlet容器)解析 JSP 文件，查看是否有语法错误；</li>
+<li>翻译 JSP：JSP 容器把 JSP 文件翻译为 Servlet 类；</li>
+<li>编译 Servlet；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>初始化（容器调用 jspInit() 方法）<ul>
+<li>当容器加载 JSP 时，它将在处理任何请求之前调用 jspInit() 方法。如果需要自定义 JSP 的初始化内容，可以重写 jspInit() 方法；</li>
+<li>一般情况下，程序只初始化一次。与 Servlet init 方法一样，我们通常在 jspInit() 方法中初始化数据库连接、打开文件；</li>
+</ul>
+</li>
+<li>执行（容器调用 _jspService() 方法）<ul>
+<li>此阶段表示了 JSP 生命周期中所有与请求相关的交互行为，直到被销毁；</li>
+<li>JSP 页面完成初始化后，JSP 将会调用 _jspService() 方法，该方法以 HttpServletRequest 对象和 HttpServletResponse 对象作为方法参数，根据 request 来生成相应的 response，并且它还负责生成对 HTTP 方法的响应，即 GET、POST、DELETE 等；</li>
+</ul>
+</li>
+<li>销毁（容器调用 jspDestroy() 方法）<ul>
+<li>JSP 生命周期的销毁阶段表示从容器中删除 JSP；</li>
+<li>jspDestroy() 方法等效于 Servlet 中的 destroy() 方法。如果需要自定义 JSP 的销毁内容，可以重写 jspDestroy() 方法；</li>
+<li>通常在 jspDestroy() 方法中释放数据库连接、关闭打开的文件；</li>
+</ul>
+</li>
+</ol>
+<p><img src="/images/image-20221118084233407.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="二、JSP基础"><a href="#二、JSP基础" class="headerlink" title="二、JSP基础"></a>二、JSP基础</h1><h2 id="1-创建JSP"><a href="#1-创建JSP" class="headerlink" title="1.创建JSP"></a>1.创建JSP</h2><p>在学习之前可以先简单创建一个JSP程序来体验一下，参考教程：</p>
+<ul>
+<li>手动创建JSP程序：<a target="_blank" rel="noopener" href="http://c.biancheng.net/jsp2/first-jsp.html">第一个JSP程序 (biancheng.net)</a>；</li>
+<li>Eclipse创建JSP程序：<a target="_blank" rel="noopener" href="http://c.biancheng.net/jsp2/eclipse-jsp.html">Eclipse创建JSP项目（图解） (biancheng.net)</a>；</li>
+</ul>
+<h3 id="1-1-JSP注释"><a href="#1-1-JSP注释" class="headerlink" title="1.1 JSP注释"></a>1.1 JSP注释</h3><p>在 JSP 中可以使用以下 4 种注释，在 JSP 规范中，它们都属于 JSP 中的注释，但语法规则和运行效果都各不相同：</p>
+<ul>
+<li>HTML 注释：由于 JSP 文件中可以包含 HTML 标记，所以 HTML 中的注释同样可以在 JSP 文件中使用。 HTML 注释中的内容是不会在客户端浏览器中显示的，但可以通过 HTML 源代码看到这些注释内容；</li>
+</ul>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jsp">&lt;!-- 注释内容 --&gt;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>带有 JSP 表达式的注释：包含该注释语句的 JSP 页面被请求后，服务器能够自动识别并执行注释中的 JSP 表达式，对于注释中的其他内容则不做任何操作；</li>
+</ul>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jsp">&lt;!--HTML 注释内容&lt;%=JSP 表达式%&gt;--&gt;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>隐藏注释：上面介绍的两种注释并不安全（会被客户端通过HTML源代码看到），隐藏注释的内容，不会显示在客户端的任何位置（包括 HTML 源代码），安全性较高；</li>
+</ul>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jsp">&lt;%--注释内容--%&gt;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>脚本程序（Scriptlet）中的注释：脚本程序中包含的是一段 Java 代码，所以在脚本程序中的注释与在 Java 中的注释是相同的，脚本程序中包括下面 3 种注释方法</p>
+<ul>
+<li>单行注释:符号“&#x2F;&#x2F;”后面的内容为注释的内容，服务器对该内容不进行任何操作。由于脚本程序的代码在客户端通过查看源代码是不可见的，因此在脚本程序中通过该方法注释的内容也是不可见的；</li>
+</ul>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jsp"><span class="hljs-comment">//注释内容</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>多行注释：多行注释的符号必须成对出现，在它们之间的注释内容可以换行。与单行注释一样，注释的所有内容，服务器都不会做任何处理，即使被注释的内容是 JSP 表达式或其他脚本程序也不例外；</li>
+</ul>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs jsp"><span class="hljs-comment">/*</span><br><span class="hljs-comment">注释内容1</span><br><span class="hljs-comment">注释内容2</span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>多行注释的开始标记和结束标记可以不在同一个脚本程序中同时出现；</p>
+</blockquote>
+<ul>
+<li>文档注释：文档注释的内容会被 Javadoc 文档工具在生成文档时读取，文档是对代码结构和功能的描述。与多行注释一样，被注释的所有内容，服务器不会做任何处理</li>
+</ul>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs jsp"><span class="hljs-comment">/**</span><br><span class="hljs-comment">提示信息1</span><br><span class="hljs-comment">提示信息2</span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="2-JSP脚本"><a href="#2-JSP脚本" class="headerlink" title="2.JSP脚本"></a>2.JSP脚本</h2><p>文章参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Pursuit_li/article/details/127597440">(1条消息) jsp脚本_Pursuit_li的博客-CSDN博客_什么是jsp脚本</a>；</p>
+<p>在JSP中可以借助JSP脚本写入Java代码，JSP脚本也被称为<code>Java脚本</code>（惊不惊喜，这就是学习的意义，在学习的过程中将以前未知或者难以理解的知识点融会贯通），本质上就是Java代码片段；</p>
+<blockquote>
+<p>注意，JavaScript不是Java语言的脚本形式，两者是两套完全不同的语言架构；</p>
+<p>关于Java Servlet、Java Script(JS)和Java Server Pages(JSP)的区别参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/a2806005024/article/details/28265503">(1条消息) JS和JSP的区别_电子科技大学的博客-CSDN博客_js和jsp</a>；</p>
+</blockquote>
+<p>JSP与HTML和Java脚本之间的关系如下：</p>
+<p><img src="/images/image-20221118112251775-16687418354712.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>注：任何文本、HTML 标签和 JSP 元素（声明，表达式等）都必须在脚本程序之外；</p>
+</blockquote>
+<hr>
+<p>JSP脚本可以包括任意数量的Java语句、变量、方法和表达式，JSP脚本会将包含的内容插入到Servlet的service()方法中；</p>
+<p>JSP脚本指的是使用“&lt;%%&gt;”括起来的jsp页面中的java脚本 —— 所有能在java程序中执行的代码，都可以通过jsp脚本执行；</p>
+<p>JSP脚本最基本的三种类型如下（注意无论是什么样的脚本最后在HTML源码或者客户端浏览器都不会显示，注意和注释区分）：</p>
+<ul>
+<li>&lt;%…%&gt;：Java语句，也就是普通脚本；</li>
+<li>&lt;%&#x3D;…%&gt;：Java表达式脚本，是产生输出功能的脚本，<code>不能以分号结尾</code>；</li>
+<li>&lt;%!…%&gt;：Java定义类成员，也称为声明脚本，用于定义全局变量和方法；</li>
+</ul>
+<p>JSP普通脚本的语法如下</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jsp">&lt;% Java语句 %&gt;<br></code></pre></td></tr></table></figure>
+
+<p>等价于</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs jsp">&lt;jsp:scriptlet&gt;<br>    Java语句<br>&lt;/jsp:scriptlet&gt;<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-1-声明脚本"><a href="#2-1-声明脚本" class="headerlink" title="2.1 声明脚本"></a>2.1 声明脚本</h3><p>JSP 声明脚本用于声明一个或多个变量、方法，以供后面的 Java 代码使用 —— 必须先对变量和方法进行声明，之后才能使用；</p>
+<p>JSP声明脚本的语法如下</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jsp">&lt;%! 声明语句 %&gt;<br></code></pre></td></tr></table></figure>
+
+<p>等价于</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs jsp">&lt;jsp:declaration&gt;<br>    声明语句<br>&lt;/jsp:declaration&gt;<br></code></pre></td></tr></table></figure>
+
+<p>需要注意的是，JSP普通脚本只能声明变量不能声明方法，但是JSP声明语句既可以声明语句也可以声明方法：</p>
+<ul>
+<li>JSP 普通脚本会把包含的内容转译插入到 Servlet 的 service() 方法中，也就是 <code>&lt;% %&gt;</code> 中定义的变量是局部变量，这也是 JSP 脚本不能声明方法的原因，因为 Java 不允许方法中嵌套方法；</li>
+<li>JSP 声明会把包含的内容添加到 Servlet 类中（在任何方法之外），也就是 <code>&lt;%! %&gt;</code> 中定义的变量是成员变量，方法是成员方法；</li>
+</ul>
+<h3 id="2-2-表达式脚本"><a href="#2-2-表达式脚本" class="headerlink" title="2.2 表达式脚本"></a>2.2 表达式脚本</h3><p>JSP 表达式可以把变量或者表达式输出到网页上，不需要 out.print() 就能输出数据，通常用于打印变量和方法的值；</p>
+<p>JSP表达式脚本的语法如下</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jsp">&lt;%= 表达式 %&gt;<br></code></pre></td></tr></table></figure>
+
+<p>等价于</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs jsp">&lt;jsp:expression&gt;<br>    表达式<br>&lt;/jsp:expression&gt;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>可以将 &lt;%&#x3D;表达式 %&gt; 理解为 &lt;% out.println(表达式) %&gt; 的简写方式，JSP 表达式不能以分号结尾；</p>
+</blockquote>
+<h2 id="3-JSP动态标签"><a href="#3-JSP动态标签" class="headerlink" title="3.JSP动态标签"></a>3.JSP动态标签</h2><h3 id="3-1-JSP指令"><a href="#3-1-JSP指令" class="headerlink" title="3.1 JSP指令"></a>3.1 JSP指令</h3><p>JSP指令属于动态标签的一种，这里我们先介绍一些JSP指令；</p>
+<p>JSP指令用于告诉Web服务器如何处理JSP页面的请求和响应，服务器会根据JSP指令来编译JSP生成Java文件；</p>
+<p>JSP指令不会产生任何可见输出，在生成的Java文件中不存在JSP指令；</p>
+<p>JSP指令以<code>&lt;%@</code>开始，以<code>%&gt;</code>结束，语法如下</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jsp">&lt;%@ <span class="hljs-type">directive</span> <span class="hljs-variable">attribute</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;value&quot;</span> [attribute2 = <span class="hljs-string">&quot;value2&quot;</span> ...]%&gt;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：<code>[ ]</code>中的内容是可选的，<code>@</code> 符号和指令名称之间，以及最后一个属性和结束<code>％&gt;</code>之间的空格是可选的；</p>
+</blockquote>
+<p>指令主要分为如下三种类型</p>
+<p><img src="/images/image-20221121223259981.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="3-1-1-JSP-page指令"><a href="#3-1-1-JSP-page指令" class="headerlink" title="3.1.1 JSP page指令"></a>3.1.1 JSP page指令</h4><p>JSP page 指令用来定义当前页面的相关属性，page 指令可以在 JSP 页面的任意位置编写，通常放在 JSP 页面的顶部；</p>
+<p>page 指令的语法如下</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jsp">&lt;%@ <span class="hljs-type">page</span> <span class="hljs-variable">attribute</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;value&quot;</span> %&gt;<br></code></pre></td></tr></table></figure>
+
+<p>下表是与 page 指令相关的属性</p>
+<p><img src="/images/image-20221121223605316.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>以上属性除了 import 可以声明多个外，其它属性都只能出现一次</p>
+</blockquote>
+<h4 id="3-1-2-JSP-include指令"><a href="#3-1-2-JSP-include指令" class="headerlink" title="3.1.2 JSP include指令"></a>3.1.2 JSP include指令</h4><p>include 指令用于在 JSP 页面引入其它内容，可以是 JSP 文件、html 文件和文本文件等，相当于把文件的内容复制到 JSP 页面。引入的文件和 JSP 页面同时编译运行，可以在页面的任何位置编写 include 指令；</p>
+<p>使用 include 指令有以下优点：</p>
+<ul>
+<li>增加代码的可重用性</li>
+<li>使 JSP 页面的代码结构清晰易懂</li>
+<li>维护简单</li>
+</ul>
+<p>include 的语法如下</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jsp">&lt;%@ include file=<span class="hljs-string">&quot;URL&quot;</span> %&gt;  <br></code></pre></td></tr></table></figure>
+
+<p>其中，file 指定需要引入文件的相对路径；</p>
+<h4 id="3-1-3-JSP-taglib指令"><a href="#3-1-3-JSP-taglib指令" class="headerlink" title="3.1.3 JSP taglib指令"></a>3.1.3 JSP taglib指令</h4><p>在 JSP 中，我们可以使用 taglib 指令声明并引入标签库。Java API 允许在页面中自定义标签，标签库就是自定义标签的集合；</p>
+<p>taglib 指令的语法如下</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jsp">&lt;%@ taglib uri=<span class="hljs-string">&quot;tagliburl&quot;</span> prefix=<span class="hljs-string">&quot;tagPre&quot;</span> %&gt;<br></code></pre></td></tr></table></figure>
+
+<p>其中，uri 指定自定义标签库的存放位置；prefix 指定标签库的前缀。为了区分不同的标签库，在页面中使用标签库以对应的 prefix 开头；</p>
+<h3 id="3-2-JSP动作"><a href="#3-2-JSP动作" class="headerlink" title="3.2 JSP动作"></a>3.2 JSP动作</h3><p>JSP 动作使用 XML 语法格式的标签来控制服务器的行为，利用 JSP 动作可以动态地插入文件、重用 JavaBean 组件、把用户重定向到另一个页面、为 Java 插件生成 HTML 代码等；</p>
+<p>JSP 动作与 JSP 指令的不同之处如下：</p>
+<ul>
+<li>JSP 指令在<code>翻译阶段执行</code>，从而设置整个 JSP 页面的属性。JSP 页面被执行时首先进入翻译阶段，程序会先查找页面中的 JSP 指令，并将它们转换成 Servlet。所以，JSP 指令是在页面转换时期被编译执行的，且编译一次；</li>
+<li>JSP 动作在<code>请求处理阶段执行</code>，它们只有执行时才实现自己的功能。通常用户每请求一次，动作标识就会执行一次；</li>
+</ul>
+<p>JSP动作语法如下</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jsp">&lt;jsp:<span class="hljs-type">action_name</span> <span class="hljs-variable">attribute</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;value&quot;</span> /&gt;<br></code></pre></td></tr></table></figure>
+
+<p>或</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jsp">&lt;jsp:action_name attribute=<span class="hljs-string">&quot;value&quot;</span>&gt;&lt;/jsp:action_name&gt;<br></code></pre></td></tr></table></figure>
+
+<p>action_name 表示 JSP 动作名称，attribute 表示相应 JSP 动作的属性名称，常用的 JSP 动作如下表所示</p>
+<p><img src="/images/image-20221121224434867.png" srcset="/img/loading.gif" lazyload></p>
+<p>关于上述几个JSP动作，这里不再赘述，详情参考<a target="_blank" rel="noopener" href="http://c.biancheng.net/jsp2/action.html">JSP动作 (biancheng.net)</a>；</p>
+<h2 id="4-内置对象"><a href="#4-内置对象" class="headerlink" title="4.内置对象"></a>4.内置对象</h2><p>为了简化页面的开发过程，JSP 提供了一些内置对象；</p>
+<p>JSP 内置对象又称为隐式对象，它们由容器实现和管理。在 JSP 页面中，这些内置对象不需要预先声明，也不需要进行实例化，我们可以直接在脚本和表达式中使用；</p>
+<blockquote>
+<p>注意：JSP 内置对象只能在脚本和表达式中使用，在声明中不能使用；</p>
+</blockquote>
+<p>JSP 中定义了 9 个内置对象，它们分别是：request、response、session、application、out、pagecontext、config、page 和 exception，这些对象在客户端和服务器端交互的过程中分别完成不同的功能</p>
+<p><img src="/images/image-20221121224752896.png" srcset="/img/loading.gif" lazyload></p>
+<p>JSP 的内置对象主要有以下特点：</p>
+<ul>
+<li>由 JSP 规范提供，不用编写者实例化；</li>
+<li>通过 Web 容器实现和管理；</li>
+<li>所有 JSP 页面均可使用；</li>
+<li>只有在脚本元素的表达式或代码段中才能使用；</li>
+</ul>
+<p>在 JSP 九大内置对象中，包含四个域对象，它们分别是：pageContext（page 域对象）、request（request 域对象）、session（session 域对象）、以及 application（application 域对象）；JSP 中的 4 个域对象都能通过以下 3 个方法，对属性进行保存、获取和移除操作</p>
+<p><img src="/images/image-20221121224856302.png" srcset="/img/loading.gif" lazyload></p>
+<p>JSP 中的 4 个域对象的作用域各不相同</p>
+<p><img src="/images/image-20221121224931983.png" srcset="/img/loading.gif" lazyload></p>
+<p>关于上述九个内置对象这里我们不再赘述，详情参考<a target="_blank" rel="noopener" href="http://c.biancheng.net/jsp2/builtin-object.html">JSP九大内置对象一览表 (biancheng.net)</a>；</p>
+<h1 id="三、JSTL标签库"><a href="#三、JSTL标签库" class="headerlink" title="三、JSTL标签库"></a>三、JSTL标签库</h1><blockquote>
+<p>注意，JSP自定义标签和动态标签是JSP自己的标签，不是由第三方提供，所以使用JSP动态标签时无需使用taglib指令“导包”；</p>
+<p>JSTL标签库可以看作是第三方提供的库；</p>
+<p>无论是自定义的JSP标签，还是JSP自己的动态标签，还有第三方的标签，最终都会对应一组方法的调用；</p>
+</blockquote>
+<p>JSTL也称为JSP Standard Tag Library，即JSP标准标签库，是JSP标签的集合，封装了JSP应用的通用核心功能；</p>
+<p>JSP 标签是一组与 HTML 标签相似，但又比 HTML 标签强大的功能标签。JSTL 用来简化 JSP 开发，可以使我们不用嵌入 Java 代码就能够开发出复杂的 JSP 页面；</p>
+<p>JSTL 包含 5 类标签库：core 标签库、fmt 标签库、fn 标签库、XML 标签库和 SQL 标签库。这 5 类标签库基本覆盖了 Web 开发中的所涉及的技术展示；</p>
+<p>使用 taglib 指令导入标签库描述符文件，例如要使用 JSTL 核心标签库，需要在 JSP 页面的上方增加如下指令</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jsp">&lt;%@ taglib uri=<span class="hljs-string">&quot;http://java.sun.com/jsp/jstl/core&quot;</span> prefix=<span class="hljs-string">&quot;c&quot;</span> %&gt;<br></code></pre></td></tr></table></figure>
+
+<p>taglib 指令通过 uri 属性引入某个标签库的配置文件，JSP 页面中通过 prefix 属性指定的前缀即可访问该标签库中的某个标签功能，如 <code>&lt;c:out&gt;</code>；</p>
+<h2 id="1-core-标签库"><a href="#1-core-标签库" class="headerlink" title="1.core 标签库"></a>1.core 标签库</h2><p>JSTL 核心（core）标签是最常用的 JSTL 标签，导入核心标签库的语法如下</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jsp">&lt;%@ taglib uri=<span class="hljs-string">&quot;http://java.sun.com/jsp/jstl/core&quot;</span> prefix=<span class="hljs-string">&quot;c&quot;</span> %&gt;<br></code></pre></td></tr></table></figure>
+
+<p><img src="/images/image-20221121231207409.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="2-fmt-标签库"><a href="#2-fmt-标签库" class="headerlink" title="2.fmt 标签库"></a>2.fmt 标签库</h2><p>JSTL 格式化（fmt）标签可以通过很简单的方式转换数字、日期，导入格式化标签库的语法如下</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jsp">&lt;%@ taglib uri=<span class="hljs-string">&quot;http://java.sun.com/jsp/jstl/fmt&quot;</span> prefix=<span class="hljs-string">&quot;fmt&quot;</span> %&gt;<br></code></pre></td></tr></table></figure>
+
+<p><img src="/images/image-20221121231305975.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="3-SQL-标签库"><a href="#3-SQL-标签库" class="headerlink" title="3.SQL 标签库"></a>3.SQL 标签库</h2><p>JSTL SQL 标签提供了许多操作数据库（MySQL、Oracle、SQL Server 等）的标签。虽然在大型的网站中不建议使用这种标签库，但在小型网站中经常会用到。导入 SQL 标签库的语法如下</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jsp">&lt;%@ taglib uri=<span class="hljs-string">&quot;http://java.sun.com/jsp/jstl/sql&quot;</span> prefix=<span class="hljs-string">&quot;sql&quot;</span> %&gt;<br></code></pre></td></tr></table></figure>
+
+<p><img src="/images/image-20221121231358746.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="4-fn-标签库"><a href="#4-fn-标签库" class="headerlink" title="4.fn 标签库"></a>4.fn 标签库</h2><p>JSTL 函数（fn）标签大部分是通用的字符串处理函数，导入函数标签库的语法如下</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jsp">&lt;%@ taglib uri=<span class="hljs-string">&quot;http://java.sun.com/jsp/jstl/functions&quot;</span> prefix=<span class="hljs-string">&quot;fn&quot;</span> %&gt;<br></code></pre></td></tr></table></figure>
+
+<p><img src="/images/image-20221121231458540.png" srcset="/img/loading.gif" lazyload></p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%87%AA%E5%AD%A6%E8%AF%BE%E7%A8%8B/" class="category-chain-item">自学课程</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/">#后端开发</a>
+      
+        <a href="/tags/JAVA%E6%9E%B6%E6%9E%84/">#JAVA架构</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>JSP</div>
+      <div>https://gintoki-jpg.github.io/2022/11/18/后端_JSP/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>杨再俨</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年11月18日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/11/23/%E5%90%8E%E7%AB%AF_Spring/" title="Spring">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Spring</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/11/16/%E5%90%8E%E7%AB%AF_Servlet/" title="Servlet">
+                        <span class="hidden-mobile">Servlet</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+</div>
+
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

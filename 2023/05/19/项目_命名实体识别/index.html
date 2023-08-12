@@ -1,0 +1,940 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/logo.png">
+  <link rel="icon" href="/img/bg/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="杨再俨">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="自然语言处理课程实践操作；">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初级项目_命名实体识别">
+<meta property="og:url" content="https://gintoki-jpg.github.io/2023/05/19/%E9%A1%B9%E7%9B%AE_%E5%91%BD%E5%90%8D%E5%AE%9E%E4%BD%93%E8%AF%86%E5%88%AB/index.html">
+<meta property="og:site_name" content="Tintoki_blog">
+<meta property="og:description" content="自然语言处理课程实践操作；">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/project.png">
+<meta property="article:published_time" content="2023-05-19T07:01:00.000Z">
+<meta property="article:modified_time" content="2023-05-22T09:13:14.718Z">
+<meta property="article:author" content="YangZaiyan">
+<meta property="article:tag" content="自然语言处理">
+<meta property="article:tag" content="命名实体识别">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gintoki-jpg.github.io/img/bg/project.png">
+  
+  
+  
+  <title>初级项目_命名实体识别 - Tintoki_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"gintoki-jpg.github.io","root":"/","version":"1.9.1","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tintoki_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/bg1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">初级项目_命名实体识别</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-05-19 15:01" pubdate>
+          2023年5月19日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          28k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          237 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">初级项目_命名实体识别</h1>
+            
+            <div class="markdown-body">
+              
+              <p>2023&#x2F;5&#x2F;19 15:04 先简单说一下，自然语言处理这个课程作业和先前知识图谱的课程作业几乎是相同的，但是知识图谱的那次作业的时间距离已经过去了两个月，而且我今天在查看的时候发现当时做的笔记不是特别的好。因此趁着这次完成自然语言处理作业的时间来对命名实体识别这一任务做一个复盘和深化理解。关于参考，网上找来找去实际上也就那么几份参考代码，因此现在暂时使用的还是之前知识图谱参考的代码（毕竟别人是手动进行实现的，环境为电脑上的tf1环境，具体训练模型的时候记得丢到Kaggle上进行训练）；关于参考代码中的数据集，github作者提供的三个数据集实际上和我们需要处理的数据都相差较大，而知识图谱那次作业中数据处理作为参考是相当可以的（毕竟那是我经过精挑细选之后确定的方案）；</p>
+<p>2023&#x2F;5&#x2F;20 14:40 调整了很久也没有调好之前的参考模型，直接重开 – tmd找不到其他代码，重开都没法重开啊（硬着头皮用原来那个项目）；</p>
+<p>2023&#x2F;5&#x2F;20 21:36 人家代码一点问题都没有，是你自己没有搞清楚标注的情况，稀里糊涂的使用别人的代码，这才造成了无限循环的情况；</p>
+<p>2023&#x2F;5&#x2F;22 10:02 说实话我都没想过这次这个作业可以花费这么长时间，本来觉得这是知识图谱做过的作业，可能可以节约很多时间直接运行完毕就行了，没想到正是因为是知识图谱做过的作业，导致我过度依赖之前做作业时候的笔记以及思想，进而丢失了自己对于不同任务的理解，因此在一些很显而易见的错误问题上折腾了非常多的时间。另一方面，对于资料的整理需要更加细心，越细心的对于资料的整理能够在未来为你带来越多的便利。好在现在几乎一切都解决完毕，只需要最终将训练好的模型下载下来并进行对test文本进行标注即可；</p>
+<p>2023&#x2F;5&#x2F;22 11:26 写完实验报告之后，检查一下这次作业涉及的所有资料，然后把需要上交的资料打包上交；</p>
+<hr>
+<h1 id="一、背景介绍"><a href="#一、背景介绍" class="headerlink" title="一、背景介绍"></a>一、背景介绍</h1><h2 id="1-NER概述"><a href="#1-NER概述" class="headerlink" title="1.NER概述"></a>1.NER概述</h2><p>知识抽取是实现自动化构建大规模知识图谱的重要技术，其目的在于从不同来源、不同结构的数据中进行知识提取并存入知识图谱中（详情参考<a href="https://gintoki-jpg.github.io/2023/02/27/%E4%B8%93%E4%B8%9A_%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/#%E4%B8%89%E3%80%81%E7%9F%A5%E8%AF%86%E6%8A%BD%E5%8F%96">知识图谱 - Tintoki_blog (gintoki-jpg.github.io)</a>）；知识抽取同样属于NLP的研究领域，指自动化地从文本中发现和抽取相关信息，并将多个文本碎片中的信息进行合并，将非结构化数据转换为结构化数据；</p>
+<p>非结构化数据的知识抽取包括命名实体识别、关系抽取及事件抽取，本项目主要针对其中的命名实体识别；</p>
+<p>命名实体识别是指从文本中检测出命名实体，并将其分类到预定义的类别中，例如人物、组织、<code>地点</code>、<code>时间</code>等；一般情况下，命名实体识别是知识抽取其他任务的基础；</p>
+<p>想要从文本中进行实体抽取，首先需要从文本中识别和定位实体，然后再将识别的实体分类到预定义的类别中去 – 这也是本项目需要实现的，即实体的识别和抽取；</p>
+<p>实体抽取的方法分为三类：基于规则的方法、基于统计模型的方法和基于深度学习的方法，因为规定使用深度学习，所以我们这里仅介绍该类方法，另外两类可参考<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/HJxOZOainC5Dk8SgSbkA9Q">小知识 | 知识图谱：知识抽取之命名实体 (qq.com)</a>；</p>
+<h3 id="1-1-基于深度学习的方法"><a href="#1-1-基于深度学习的方法" class="headerlink" title="1.1 基于深度学习的方法"></a>1.1 基于深度学习的方法</h3><p>与传统统计模型相比，基于深度学习的方法直接以文本中词的向量为输入，通过神经网络实现端到端的命名实体识别，不再依赖人工定义的特征；</p>
+<p>目前，用于命名实体识别的神经网络主要有卷积神经网络（ConvolutionalNeural Network, CNN）、循环神经网络（Recurrent Neural Network, RNN）以及引入注意力机制（AttentionMechanism）的神经网络；一般地，不同的神经网络结构在命名实体识别过程中扮演编码器的角色，它们基于初始输入以及词的上下文信息，得到每个词的新向量表示；最后再通过CRF模型输出对每个词的标注结果；</p>
+<p>一些比较经典的用于实体识别抽取的模型有</p>
+<blockquote>
+<p>LSTM-CRF命名实体识别模型</p>
+</blockquote>
+<p>该模型使用了长短时记忆神经网络（Long Shot-Term Memory NeuralNetwork, LSTM）与CRF相结合进行命名实体识别。</p>
+<p><img src="/images/image-20230321110527074.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>LSTM-CNNs-CRF序列标注模型框架</p>
+</blockquote>
+<p>该模型与 LSTM-CRF 模型十分相似，不同之处是在Embedding 层中加入了每个词的字符级向量表示。</p>
+<p><img src="/images/image-20230321110627720.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>基于注意力机制的词向量和字符级向量组合方法</p>
+</blockquote>
+<p>注意力机制可以帮助扩展基本的编码器-解码器模型结构，让模型能够获取输入序列中与下一个目标词相关的信息。</p>
+<p>基于注意力机制的词向量和字符级向量组合方法认为除了将词作为句子基本元素学习得到的特征向量，命名实体识别还需要词中的字符级信息。因此，该方法除了使用双向 LSTM 得到词的特征向量，还基于双向LSTM计算词的字符级特征向量。</p>
+<p><img src="/images/image-20230321110734229.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="2-中文命名实体识别"><a href="#2-中文命名实体识别" class="headerlink" title="2.中文命名实体识别"></a>2.中文命名实体识别</h2><h3 id="2-1-中文分词"><a href="#2-1-中文分词" class="headerlink" title="2.1 中文分词"></a>2.1 中文分词</h3><p>中文命名实体抽取需要先了解基于字标注的中文分词，简单的中文分词我们知道形式如下</p>
+<p><img src="/images/image-20230322100321728.png" srcset="/img/loading.gif" lazyload></p>
+<p>基于字标注的中文分词结果如下</p>
+<p><img src="/images/image-20230322100158614.png" srcset="/img/loading.gif" lazyload></p>
+<p>基于字标注的意思就是给每个字都进行标注，上述标注的类型主要有四种</p>
+<p><img src="/images/image-20230322100307385.png" srcset="/img/loading.gif" lazyload></p>
+<p>词首即一个词的开始，词尾即一个词的结束，词中表示词中间的词，假如该词只有一个字则用单字表示；</p>
+<hr>
+<p>注意，序列标注任务首先需要确定的就是，定义标注策略，即使用什么样的格式对序列进行标注。常见的序列标注有</p>
+<ul>
+<li>BIO格式：B表示一个命名实体的开始，I表示一个命名实体的其他部分，O表示一个非命名实体单元；</li>
+<li>BMEWO格式：B表示命名实体的开始，M表示中间部分，E表示结束，O表示非命名实体单元，W表示整个单词是一个命名实体（上面例子中的标注使用的就是没有W的BMEOW格式标注）；</li>
+</ul>
+<p>不同的标注策略对后续任务的影响不同，需要注意使用不同的标注策略时，相应的处理方法也需要改变。</p>
+<h3 id="2-2-数据处理"><a href="#2-2-数据处理" class="headerlink" title="2.2 数据处理"></a>2.2 数据处理</h3><p>实体识别和中文分词类似，就是将不属于实体的字用O标注，把实体用BME规则标注，最后按照BME规则将实体提取出来即可；</p>
+<p>下面是一个实体识别的例子</p>
+<p><img src="/images/image-20230322100707320.png" srcset="/img/loading.gif" lazyload></p>
+<p>每个实体用都用大括号括了起来，并标明实体类别（标注方式并不需要严格遵守这样的键值格式，只要能将实体识别并提取出来即可）</p>
+<p>因为下面的例子都是基于玻森数据提供的命名实体识别数据，与我们项目本身提供的数据集可能存在一些差别，所以先简单介绍一下玻森数据集，主要包含以下6个实体类别</p>
+<p><img src="/images/image-20230322102205675.png" srcset="/img/loading.gif" lazyload></p>
+<p>数据处理首先要做的就是把原始数据按照BMEO的规则变成字标注的形式便于模型训练，上述文本按字标注后的结果如下（可以看出这不仅仅只是简单的字标注分词，同时结合了实体类别）</p>
+<p><img src="/images/image-20230322101210992.png" srcset="/img/loading.gif" lazyload></p>
+<p>接着习惯性的，按照标点符号将一个长句子分为多个短句子（逗号、句号、双引号等），结果如下</p>
+<p><img src="/images/image-20230322101310498.png" srcset="/img/loading.gif" lazyload></p>
+<p>与先前新闻文本分类相同，因为无法直接将文本类型的数据放入模型训练，因此需要先建立一个word2id词典，将每个汉字转换成id（最直观的做法就是按照数据集中中汉字出现的次数进行排序后赋id，id从1开始）</p>
+<p><img src="/images/image-20230322101727857.png" srcset="/img/loading.gif" lazyload></p>
+<p>将汉字转换为id后，再建立一个tag2id词典，将每个字标注的类型转换成id（这里的id从1开始，顺序可以自定义，因为3*6+1所以一共19个tag对应的id）</p>
+<p><img src="/images/image-20230322101922047.png" srcset="/img/loading.gif" lazyload></p>
+<p>拥有了word2id和tsg2id之后，就可以将先前按照标点切分的短句以一一对应的顺序将汉字和每个字的标签转换为id，分别存放在两个数组中，将该数组保存在同一个pkl文件中，这样模型使用时候就可以直接读取，不用每次都处理数据了；</p>
+<p>这里习惯把每一句话都转换成一样的长度（这与先前新闻文本分类是一个道理），这个长度可以自定义（最好统计后再确定），比它长的就把后面舍弃，比它短的就在后面补零。</p>
+<p>比如下面是长度为10的文本对应的word2id和tag2id，将这两个数组保存在同一个pkl文件中，作为训练模型时的输入数据</p>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs dns">[<span class="hljs-number">132,45,0</span>,<span class="hljs-number">456,432</span>,<span class="hljs-number">8,654,3</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>]<br>[<span class="hljs-number">1,2,2,2</span>,<span class="hljs-number">3,4,5,5</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>]<br></code></pre></td></tr></table></figure>
+
+<hr>
+<blockquote>
+<p>Q：为什么这里是按照字的粒度而不是词的粒度划分？词向量和字向量的区别在哪里？</p>
+</blockquote>
+<p>A：词向量和字向量都是自然语言处理中常用的表示文本的方式，但它们的表示粒度不同。</p>
+<p>词向量（Word Embedding）是将每个单词表示为一个向量（因此使用词向量之前需要进行分词），这个向量通常是一个固定长度的实数向量，每个维度代表着该单词在不同语义维度上的分布情况。词向量的好处是能够捕捉到单词之间的语义关系，例如在词向量空间中，语义相近的单词的向量距离较近。常用的词向量算法有word2vec、GloVe等。</p>
+<p>字向量（Character Embedding）则是将每个字母或字符表示为一个向量。相比于词向量，字向量的表示粒度更细，可以更好地捕捉词语的构成和形态等信息，特别适用于中文和其他一些没有明确词汇边界的语言。常用的字向量算法有FastText、CharCNN等。</p>
+<p>因此，词向量适用于处理基于单词的任务，如文本分类、情感分析、机器翻译等，而字向量适用于处理基于字符的任务，如中文分词、命名实体识别等。</p>
+<p>综上，对于本次任务使用字向量更合适。</p>
+<hr>
+<h2 id="3-BiLSTM-CRF介绍"><a href="#3-BiLSTM-CRF介绍" class="headerlink" title="3.BiLSTM-CRF介绍"></a>3.BiLSTM-CRF介绍</h2><p>参考链接：<a target="_blank" rel="noopener" href="https://www.51cto.com/article/618288.html">彻底了解 BiLSTM 和 CRF 算法-pytorch bilstm crf (51cto.com)</a>；</p>
+<p>BiLSTM-CRF是一种序列标注模型，常用于自然语言处理领域的命名实体识别、词性标注等任务。其全称为Bidirectional Long Short-Term Memory - Conditional Random Field，结合了双向长短时记忆网络（Bidirectional LSTM）和条件随机场（CRF）两个模型的优点，能够克服单向LSTM模型无法处理双向上下文信息的问题，同时能够利用CRF模型的全局标注优化策略来提高模型的准确性。</p>
+<p>BiLSTM模型是一种递归神经网络，它可以学习长文本序列中的特征，具有前向和后向两个方向的传播。与传统的单向LSTM模型相比，它能够捕捉到上下文中的更多信息，有利于提高模型的准确性。而CRF模型则是一种概率图模型，能够通过考虑全局标注的约束条件来优化模型的输出结果，进一步提高模型的准确性。</p>
+<p>在BiLSTM-CRF模型中，BiLSTM用于学习上下文特征，将上下文特征序列作为CRF的输入，CRF则用于学习标签之间的转移概率，从而能够更好地对标注序列进行建模，从而实现更准确的序列标注任务。</p>
+<p>为什么不单独使用 BiLSTM 进行标注？BiLSTM 可以预测出每一个字属于不同标签的概率，然后使用 Softmax 得到概率最大的标签，作为该位置的预测值。这样在预测的时候会忽略了标签之间的关联性，例如 BiLSTM 在作分词任务时，将某句话的第一个词预测为动词，紧接着的第二个动词同样被预测为动词，而实际上动词后面不能直接跟动词，因此 BiLSTM 没有考虑标签间联系。此时需要 在 BiLSTM 的输出层加上一个 CRF，使得模型可以考虑类标之间的相关性，标签之间的相关性就是 CRF 中的转移矩阵，表示从一个状态转移到另一个状态的概率。</p>
+<p>参考如下分词任务，每个字对应的标签可以是s,b,m,e四种中的任意一个。给定一个句子“什么是地摊经济”，其正确的分词方式应该是“什么&#x2F;是&#x2F;地摊&#x2F;经济”，对应的分词标签应该是“be&#x2F;s&#x2F;be&#x2F;be”</p>
+<p><img src="/images/image-20230327151516118.png" srcset="/img/loading.gif" lazyload alt="单独使用BiLSTM进行分词"></p>
+<p>单独使用BiLSTM时，BiLSTM 可以预测出每一个字属于不同标签的概率，然后使用 Softmax 得到概率最大的标签，作为该位置的预测值。但是单独使用BiLSTM进行预测会忽略标签之间的关联性，上图中BiLSTM将“什”预测为“s”，“么”预测为“e”，但是从语法角度来说，“s”标签的字后面是不会出现“e”标签的字的。如果在使用BiLSTM进行预测的同时加入这种考虑标签之间联系的信息，得到的效果必然会比单独使用BiLSTM要好。因此将BiLSTM的特征抽取及拟合能力与CRF模型的全局标注优化策略结合<img src="/images/image-20230327151551209.png" srcset="/img/loading.gif" lazyload alt="BiLSTM+CRF分词"></p>
+<p>对于前两个字“什么”，其标签为“se”的概率为<code>0.8*0.7*0=0</code>（具体为什么在下面的CRF状态转移矩阵中会介绍），而标签为“be”的概率为<code>0.6*0.5*0.7=0.21</code>，因此最终输出概率最大的预测标签为“be”。</p>
+<p>可以看到，BiLSTM+CRF 考虑的是整个类标路径的概率而不仅仅是单个类标的概率。在最终所有的路径中，标签“besbebe”的概率最大，这对应BiLSTM-CRF的预测结果为“besbebe”。</p>
+<h3 id="3-1-CRF特征函数"><a href="#3-1-CRF特征函数" class="headerlink" title="3.1 CRF特征函数"></a>3.1 CRF特征函数</h3><p>CRF包含两种特征函数，<code>第一个特征函数</code>是<code>状态特征函数</code>，也称为发射概率，表示字 x 对应标签 y 的概率</p>
+<p><img src="/images/image-20230327151813217.png" srcset="/img/loading.gif" lazyload alt="状态特征函数"></p>
+<p>在 BiLSTM+CRF 中，这一个特征函数 (发射概率) 直接使用 LSTM 的输出计算得到，LSTM 可以计算出每一时刻位置对应不同标签的概率（如’什’对应“s”“b”“m”“e”标签的概率分别为0.8，0.6，0.4和0.4）</p>
+<p>CRF 的<code>第二个特征函数</code>是<code>状态转移特征函数</code>，表示从一个状态 y1 转移到另一个状态 y2 的概率</p>
+<p><img src="/images/image-20230327152018689.png" srcset="/img/loading.gif" lazyload></p>
+<p>CRF 的状态转移特征函数可以用一个状态转移矩阵表示，在训练时需要调整状态转移矩阵的元素值，前面例子分词任务中的CRF转移矩阵就可以表示为</p>
+<p><img src="/images/image-20230327152128542.png" srcset="/img/loading.gif" lazyload></p>
+<p>这个转移矩阵就是让模型能够考虑标签之间的相关性的关键，表示从一个状态转移到另一个状态的概率。</p>
+<h3 id="3-2-BiLSTM-CRF架构"><a href="#3-2-BiLSTM-CRF架构" class="headerlink" title="3.2 BiLSTM-CRF架构"></a>3.2 BiLSTM-CRF架构</h3><p>一个最基本的BILSTM-CRF网络模型框架如下</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">class</span> <span class="hljs-title class_">BiLSTM_CRF</span>(nn.Module): <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, vocab_size, tag2idx, embedding_dim, hidden_dim</span>): <br>        self.word_embeds = nn.Embedding(vocab_size, embedding_dim) <br>        self.lstm = nn.LSTM(embedding_dim, hidden_dim // <span class="hljs-number">2</span>, <br>                            num_layers=<span class="hljs-number">1</span>, bidirectional=<span class="hljs-literal">True</span>) <br> <br>        <span class="hljs-comment"># 对应 CRF 的发射概率，即每一个位置对应不同类标的概率 </span><br>        self.hidden2tag = nn.Linear(hidden_dim, self.tagset_size) <br>         <br>        <span class="hljs-comment"># 转移矩阵，维度等于标签数量，表示从一个标签转移到另一标签的概率 </span><br>        self.transitions = nn.Parameter( <br>            torch.randn(<span class="hljs-built_in">len</span>(tag2idx), <span class="hljs-built_in">len</span>(tag2idx))<br></code></pre></td></tr></table></figure>
+
+<p>其结构可以表示为</p>
+<p><img src="/images/image-20230327152543214.png" srcset="/img/loading.gif" lazyload></p>
+<p>给定一个句子x，其标签序列为y的概率使用如下公式计算</p>
+<p><img src="/images/image-20230327152708422.png" srcset="/img/loading.gif" lazyload></p>
+<p>公式中的Z(x)表示所有标签序列打分的指数和，假如序列的长度为i，标签的个数为k，则序列的数量为k^i^，这无法直接计算，需要使用前向算法进行计算</p>
+<p>公式中的score需要使用下面的式子计算，其中的Emit对应发射概率，即LSTM的输出概率，Trans对应了转移概率即CRF状态转移矩阵中对应的数值</p>
+<p><img src="/images/image-20230327152829490.png" srcset="/img/loading.gif" lazyload></p>
+<p>BILSTM-CRF采用最大似然法进行训练，其对应的损失函数如下</p>
+<p><img src="/images/image-20230327153018210.png" srcset="/img/loading.gif" lazyload></p>
+<p>公式中的logZ(x)需要使用前向算法计算，这里不再赘述，详情参考<a target="_blank" rel="noopener" href="https://www.51cto.com/article/618288.html">彻底了解 BiLSTM 和 CRF 算法-pytorch bilstm crf (51cto.com)</a>损失函数的计算；</p>
+<h3 id="3-3-viterbi算法"><a href="#3-3-viterbi算法" class="headerlink" title="3.3 viterbi算法"></a>3.3 viterbi算法</h3><p>训练好模型后，预测过程需要用 viterbi 算法对序列进行解码，一些使用的符号意义如下</p>
+<p><img src="/images/image-20230327153721315.png" srcset="/img/loading.gif" lazyload></p>
+<p>基于上述符号，viterbi算法的递推公式如下</p>
+<p><img src="/images/image-20230327153808391.png" srcset="/img/loading.gif" lazyload></p>
+<p>基于上述递推式计算得到的δ<del>i</del>(j)和ψ<del>i</del>(j)向前标注序列</p>
+<p><img src="/images/image-20230327153906280.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="二、算法设计"><a href="#二、算法设计" class="headerlink" title="二、算法设计"></a>二、算法设计</h1><h2 id="1-数据预处理"><a href="#1-数据预处理" class="headerlink" title="1.数据预处理"></a>1.数据预处理</h2><p>整个项目可以认为分为数据预处理部分和训练模型、测试模型三部分。我单独将数据预处理部分作为一个notebook的形式来写一方面是为了直观的分析、理解每一步做了什么，另一方面notebook的形式便于发现和解决在处理数据过程中出现的问题。</p>
+<p>首先数据预处理的目标是将四个原始文件train.txt，train_TAG.txt和dev.txt-dev，TAG.txt对应结合，然后按照标点符号进行分句处理。处理完成的效果是文本中的每一行是一个短句，短句的形式如下（字之间以空格分开）</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">记<span class="hljs-regexp">/O 者/</span>O <span class="hljs-number">2</span><span class="hljs-regexp">/O 日/</span>O 从<span class="hljs-regexp">/O 国/</span>O 家<span class="hljs-regexp">/O 防/</span>O 汛<span class="hljs-regexp">/O 抗/</span>O 旱<span class="hljs-regexp">/O 总/</span>O 指<span class="hljs-regexp">/O 挥/</span>O 部<span class="hljs-regexp">/O 办/</span>O 公<span class="hljs-regexp">/O 室/</span>O 获<span class="hljs-regexp">/O 悉/</span>O<br></code></pre></td></tr></table></figure>
+
+<p>处理数据的第一步应该先将文本文件及其对应的标注文件结合，因为这一步处理训练集文件和测试集文件的方式相同，因此这里只给出处理训练集文件的代码（数据预处理这部分如果只给出处理训练集的代码默认处理测试集的方式相同）</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;./data/train.txt&quot;</span>, <span class="hljs-string">&quot;r&quot;</span>,encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> f1, <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;./data/train_TAG.txt&quot;</span>, <span class="hljs-string">&quot;r&quot;</span>,encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> f2, <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;./data/train_combined_file.txt&quot;</span>, <span class="hljs-string">&quot;w&quot;</span>,encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> output_file:<br>    <span class="hljs-comment"># 读取两个文件的内容</span><br>    file1_content = f1.read().split()<br>    file2_content = f2.read().split()<br>    <span class="hljs-comment"># 在两个文件内容上循环</span><br>    <span class="hljs-keyword">for</span> word, annotation <span class="hljs-keyword">in</span> <span class="hljs-built_in">zip</span>(file1_content, file2_content):<br>        <span class="hljs-comment"># 将对应的词和标注进行结合，形成一个新的字符串</span><br>        combined_line = word + <span class="hljs-string">&quot;/&quot;</span> + annotation + <span class="hljs-string">&quot; &quot;</span><br>        <span class="hljs-comment"># 写入文件，这里写入之后文件中只会有一行，后面我们会进行分句处理不用担心</span><br>        output_file.write(combined_line)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Combination complete&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<p>得到的train_combined_file.txt文件内容部分如下</p>
+<p><img src="/images/image-20230522103043846.png" srcset="/img/loading.gif" lazyload></p>
+<p>下一步将按照常见的标点符号对长句进行切分，在此之前需要先进行标点符号清洗的工作。</p>
+<p>为什么需要清洗某些标点符号？比如在双引号存在<code>“你好，我是小明”</code>这种情况下，按照逗号切分句子，会出现<code>“你好</code>，<code>我是小明”</code>这种切分错误。即这种情况下短句<code>“你好</code>在丢入模型训练的时候，最开始的双引号因为没有对应的结束双引号，会在一定程度上给模型带来干扰。因此这种类似的符号需要先清理掉。但是清理这种符号也不能随便清除，如书名号这种，因为这种符号一般用于《鲁滨逊漂流记》这种用于表示书名，书名号中间的内容不会有分隔符号如逗号、句号不会影响分句。而另一种需要清除的符号是类似<code>‘ 卡 拉 什 尼 科 夫 &#39;</code> 或 <code>[ 新 闻 网</code>这种本来应该成对出现但是只出现了一个的符号。最后，类似<code>[/B_LOC</code> 这种，作为BIO标注的一部分，这种符号是有意义的，不能删除！！！</p>
+<p>因此最终确定要删除的符号有</p>
+<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs inform7">“”&#x27;<span class="hljs-string">&quot;‘’<span class="hljs-subst">[]</span>【】</span><br></code></pre></td></tr></table></figure>
+
+<p>清理train_combined_file.txt中的“无用”符号及其标签和空格代码如下</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;./data/train_combined_file.txt&#x27;</span>,<span class="hljs-string">&#x27;r&#x27;</span>,encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> input_file,<span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;./data/train_clean.txt&#x27;</span>,<span class="hljs-string">&#x27;w&#x27;</span>,encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> output_file:<br>    texts = input_file.read()<br>    special_symbols = <span class="hljs-string">&#x27;“”\&#x27;&quot;‘’[]【】&#x27;</span><br>    pattern = <span class="hljs-string">&#x27;[&#x27;</span> + re.escape(special_symbols) + <span class="hljs-string">&#x27;][^/ ]*/O &#x27;</span><br>    clean_text = re.sub(pattern, <span class="hljs-string">&#x27;&#x27;</span>, texts)<br>    output_file.write(clean_text)<br></code></pre></td></tr></table></figure>
+
+<p>清理完成后就可以按照常见的分短句标点符号对长文本进行切分</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;./data/train_clean.txt&#x27;</span>,<span class="hljs-string">&#x27;r&#x27;</span>,encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> inp:<br>    texts = inp.read()<br>sentences = re.split(<span class="hljs-string">&#x27;[？?！!。；;：:,，]/[O]&#x27;</span>.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>,texts).decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>), texts) <span class="hljs-comment"># 分句处理</span><br>output_data = codecs.<span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;./data/train_wordtagsplit.txt&#x27;</span>,<span class="hljs-string">&#x27;w&#x27;</span>,<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br><span class="hljs-keyword">for</span> sentence <span class="hljs-keyword">in</span> sentences:<br>    <span class="hljs-keyword">if</span> sentence != <span class="hljs-string">&quot; &quot;</span>:<br>        output_data.write(sentence.strip()+<span class="hljs-string">&#x27;\n&#x27;</span>)<br>output_data.close()<br></code></pre></td></tr></table></figure>
+
+<p>切分完毕的train_wordtagsplit.txt文件形式如下</p>
+<p><img src="/images/image-20230522104013775.png" srcset="/img/loading.gif" lazyload></p>
+<p>因为作为模型训练时候的数据，直接使用txt文本不是好的选择，因此最后一步我们将训练集和测试集的数据借助pickle工具打包在Data.pkl文件中。</p>
+<p>下面这段代码的目的是将文本数据转换为计算机可以处理的数字表示形式，以便后续进行机器学习或深度学习模型的训练和预测，整体逻辑比较简单。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># data文件夹下的dev_wordtagsplit.txt和train_wordtagsplit.txt就是分句之后的文件，现在需要做的就是分别导入训练集和测试机，打包在pkl文件中</span><br><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">import</span> pickle<br><span class="hljs-keyword">from</span> sklearn.model_selection <span class="hljs-keyword">import</span> train_test_split<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">data2pkl</span>():<br>    datas_train = <span class="hljs-built_in">list</span>()<br>    labels_train = <span class="hljs-built_in">list</span>()<br>    datas_test = <span class="hljs-built_in">list</span>()<br>    labels_test = <span class="hljs-built_in">list</span>()<br>    tags = <span class="hljs-built_in">set</span>()<br>    <span class="hljs-comment"># 读取训练集数据</span><br>    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;./data/train_wordtagsplit.txt&#x27;</span>, <span class="hljs-string">&#x27;r&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> train_file:<br>        <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> train_file.readlines():<br>            line = line.strip().split() <span class="hljs-comment"># 按照空格切分</span><br>            linedata = []<br>            linelabel = []<br>            numNotO = <span class="hljs-number">0</span> <span class="hljs-comment"># 统计非O标签的个数</span><br>            <span class="hljs-keyword">for</span> word <span class="hljs-keyword">in</span> line:<br>                word, label = word.split(<span class="hljs-string">&#x27;/&#x27;</span>) <span class="hljs-comment"># 按照/切分单词和标签</span><br>                linedata.append(word)<br>                linelabel.append(label)<br>                tags.add(label) <span class="hljs-comment"># 将标签加入到tags集合中</span><br>                <span class="hljs-keyword">if</span> label != <span class="hljs-string">&#x27;O&#x27;</span>: <span class="hljs-comment"># 如果标签不是O，那么numNotO加1</span><br>                    numNotO += <span class="hljs-number">1</span><br>            <span class="hljs-keyword">if</span> numNotO != <span class="hljs-number">0</span>:<br>                datas_train.append(linedata) <span class="hljs-comment"># 将单词序列加入到datas_train中</span><br>                labels_train.append(linelabel) <span class="hljs-comment"># 将标签序列加入到labels_train中</span><br>    <span class="hljs-comment"># 读取测试集数据，处理方式和训练集一样</span><br>    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;./data/dev_wordtagsplit.txt&#x27;</span>, <span class="hljs-string">&#x27;r&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> test_file:<br>        <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> test_file.readlines():<br>            line = line.strip().split()<br>            linedata = []<br>            linelabel = []<br>            numNotO = <span class="hljs-number">0</span><br>            <span class="hljs-keyword">for</span> word <span class="hljs-keyword">in</span> line:<br>                word, label = word.split(<span class="hljs-string">&#x27;/&#x27;</span>)<br>                linedata.append(word)<br>                linelabel.append(label)<br>                tags.add(label)<br>                <span class="hljs-keyword">if</span> label != <span class="hljs-string">&#x27;O&#x27;</span>:<br>                    numNotO += <span class="hljs-number">1</span><br>            <span class="hljs-keyword">if</span> numNotO != <span class="hljs-number">0</span>:<br>                datas_test.append(linedata)<br>                labels_test.append(linelabel)<br>    <span class="hljs-comment"># 统计所有单词的频率，并创建单词和标签与其对应ID的映射关系</span><br>    all_words = [word <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> datas_train + datas_test <span class="hljs-keyword">for</span> word <span class="hljs-keyword">in</span> line] <span class="hljs-comment"># 将训练集和测试集的单词序列合并</span><br>    sr_allwords = pd.Series(all_words) <span class="hljs-comment"># 将单词序列转换为pandas的Series类型</span><br>    sr_allwords = sr_allwords.value_counts() <span class="hljs-comment"># 统计每个单词出现的次数</span><br>    set_words = sr_allwords.index <span class="hljs-comment"># 单词集合</span><br>    set_ids = <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, <span class="hljs-built_in">len</span>(set_words) + <span class="hljs-number">1</span>) <span class="hljs-comment"># 单词集合的索引</span><br>    tags = [i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> tags]<br>    tag_ids = <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(tags)) <span class="hljs-comment"># 标签集合的索引</span><br>    word2id = pd.Series(set_ids, index=set_words) <span class="hljs-comment"># 单词和单词ID的映射关系</span><br>    id2word = pd.Series(set_words, index=set_ids) <span class="hljs-comment"># 单词ID和单词的映射关系</span><br>    tag2id = pd.Series(tag_ids, index=tags) <span class="hljs-comment"># 标签和标签ID的映射关系</span><br>    id2tag = pd.Series(tags, index=tag_ids) <span class="hljs-comment"># 标签ID和标签的映射关系</span><br>    <span class="hljs-comment"># 为未知单词分配一个特殊的ID，并设置了最大长度max_len</span><br>    word2id[<span class="hljs-string">&quot;unknown&quot;</span>] = <span class="hljs-built_in">len</span>(word2id) + <span class="hljs-number">1</span><br>    max_len = <span class="hljs-number">60</span><br>    <span class="hljs-comment"># 对数据进行填充和截断操作，使其长度一致</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">X_padding</span>(<span class="hljs-params">words</span>):<br>        ids = <span class="hljs-built_in">list</span>(word2id[words])<br>        <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(ids) &gt;= max_len:<br>            <span class="hljs-keyword">return</span> ids[:max_len]<br>        ids.extend([<span class="hljs-number">0</span>] * (max_len - <span class="hljs-built_in">len</span>(ids)))<br>        <span class="hljs-keyword">return</span> ids<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">y_padding</span>(<span class="hljs-params">tags</span>):<br>        ids = <span class="hljs-built_in">list</span>(tag2id[tags])<br>        <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(ids) &gt;= max_len:<br>            <span class="hljs-keyword">return</span> ids[:max_len]<br>        ids.extend([<span class="hljs-number">0</span>] * (max_len - <span class="hljs-built_in">len</span>(ids)))<br>        <span class="hljs-keyword">return</span> ids<br>    <span class="hljs-comment"># 创建训练数据和测试数据的DataFrame，并分别对其进行填充和截断操作，将单词和标签转换为对应的ID序列</span><br>    df_data_train = pd.DataFrame(&#123;<span class="hljs-string">&#x27;words&#x27;</span>: datas_train, <span class="hljs-string">&#x27;tags&#x27;</span>: labels_train&#125;, index=<span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(datas_train)))<br>    df_data_train[<span class="hljs-string">&#x27;x&#x27;</span>] = df_data_train[<span class="hljs-string">&#x27;words&#x27;</span>].apply(X_padding) <span class="hljs-comment"># 将单词序列转换为ID序列</span><br>    df_data_train[<span class="hljs-string">&#x27;y&#x27;</span>] = df_data_train[<span class="hljs-string">&#x27;tags&#x27;</span>].apply(y_padding) <span class="hljs-comment"># 将标签序列转换为ID序列</span><br>    df_data_test = pd.DataFrame(&#123;<span class="hljs-string">&#x27;words&#x27;</span>: datas_test, <span class="hljs-string">&#x27;tags&#x27;</span>: labels_test&#125;, index=<span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(datas_test)))<br>    df_data_test[<span class="hljs-string">&#x27;x&#x27;</span>] = df_data_test[<span class="hljs-string">&#x27;words&#x27;</span>].apply(X_padding) <span class="hljs-comment"># 将单词序列转换为ID序列</span><br>    df_data_test[<span class="hljs-string">&#x27;y&#x27;</span>] = df_data_test[<span class="hljs-string">&#x27;tags&#x27;</span>].apply(y_padding) <span class="hljs-comment"># 将标签序列转换为ID序列</span><br>    <span class="hljs-comment"># 将数据转换为NumPy数组</span><br>    x_train = np.asarray(<span class="hljs-built_in">list</span>(df_data_train[<span class="hljs-string">&#x27;x&#x27;</span>].values)) <span class="hljs-comment"># 将训练集的单词ID序列转换为NumPy数组</span><br>    y_train = np.asarray(<span class="hljs-built_in">list</span>(df_data_train[<span class="hljs-string">&#x27;y&#x27;</span>].values)) <span class="hljs-comment"># 将训练集的标签ID序列转换为NumPy数组</span><br>    x_test = np.asarray(<span class="hljs-built_in">list</span>(df_data_test[<span class="hljs-string">&#x27;x&#x27;</span>].values)) <span class="hljs-comment"># 将测试集的单词ID序列转换为NumPy数组</span><br>    y_test = np.asarray(<span class="hljs-built_in">list</span>(df_data_test[<span class="hljs-string">&#x27;y&#x27;</span>].values)) <span class="hljs-comment"># 将测试集的标签ID序列转换为NumPy数组</span><br>    <span class="hljs-comment"># 将训练数据集划分为训练集和验证集</span><br>    x_train, x_valid, y_train, y_valid = train_test_split(x_train, y_train, test_size=<span class="hljs-number">0.2</span>, random_state=<span class="hljs-number">43</span>)<br>    <span class="hljs-comment"># 保存数据</span><br>    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;./data/Data.pkl&#x27;</span>, <span class="hljs-string">&#x27;wb&#x27;</span>) <span class="hljs-keyword">as</span> outp:<br>        pickle.dump(word2id, outp)<br>        pickle.dump(id2word, outp)<br>        pickle.dump(tag2id, outp)<br>        pickle.dump(id2tag, outp)<br>        pickle.dump(x_train, outp)<br>        pickle.dump(y_train, outp)<br>        pickle.dump(x_test, outp)<br>        pickle.dump(y_test, outp)<br>        pickle.dump(x_valid, outp)<br>        pickle.dump(y_valid, outp)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;** Finished saving the data.&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<p>pkl文件中的内容如下，这里使用变量的形式展示出来</p>
+<p><img src="/images/image-20230522110545630.png" srcset="/img/loading.gif" lazyload alt="image-20230522110545630"></p>
+<p>这里重点说一下tag2id(9,)，这个变量是对训练文本和测试文本中所有标签的统计（也就是常说的标注集），可以看到一共有9个标签。使用的序列标注策略是最经典的BIO序列标注，这一点在后面设计训练程序和测试程序的时候尤其需要注意。标注集中的PER表示人名实体，LOC表示位置实体，ORG表示机构实体，T表示时间实体，O表示非命名实体。</p>
+<p><img src="/images/image-20230522110628524.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="2-BiLSTM-CRF"><a href="#2-BiLSTM-CRF" class="headerlink" title="2.BiLSTM-CRF"></a>2.BiLSTM-CRF</h2><p>经过数据预处理过后，得到模型的训练文件Data.pkl，接下来就是构建模型并训练模型。</p>
+<h3 id="2-1-model模块"><a href="#2-1-model模块" class="headerlink" title="2.1 model模块"></a>2.1 model模块</h3><p>该模块中定义了一个名为BiLSTM_CRF的类，主要借助tensorflow来完成整个模型的搭建。该类表示一个包含双向LSTM层和CRF层的神经网络模型，主要用于序列标注任务。模型接受输入数据和标签，通过训练优化器进而对参数进行更新，使得模型能够预测输入数据的正确标签序列。本模块主要分为以下几个部分：</p>
+<p>1.类初始化：在类的初始化方法中，将配置信息和dropout参数作为输入。配置信息包括学习率、批大小、词嵌入大小、词嵌入维度、句子长度和标签数量等。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs py">self.lr = config[<span class="hljs-string">&quot;lr&quot;</span>]<br>self.batch_size = config[<span class="hljs-string">&quot;batch_size&quot;</span>]<br>self.embedding_size = config[<span class="hljs-string">&quot;embedding_size&quot;</span>]<br>self.embedding_dim = config[<span class="hljs-string">&quot;embedding_dim&quot;</span>]<br>self.sen_len = config[<span class="hljs-string">&quot;sen_len&quot;</span>]<br>self.tag_size = config[<span class="hljs-string">&quot;tag_size&quot;</span>]<br>self.dropout_keep = dropout_keep<br></code></pre></td></tr></table></figure>
+
+<p>2.占位符定义：定义输入数据、标签和词嵌入的占位符。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs py">self.input_data = tf.placeholder(tf.int32, shape=[self.batch_size, self.sen_len], name=<span class="hljs-string">&quot;input_data&quot;</span>) <span class="hljs-comment"># 输入句子的占位符</span><br>self.labels = tf.placeholder(tf.int32, shape=[self.batch_size, self.sen_len], name=<span class="hljs-string">&quot;labels&quot;</span>) <span class="hljs-comment"># 与输入句子对应的标签的占位符</span><br>self.embedding_placeholder = tf.placeholder(tf.float32, shape=[self.embedding_size, self.embedding_dim],<br>                                                    name=<span class="hljs-string">&quot;embedding_placeholder&quot;</span>) <span class="hljs-comment"># 词嵌入的占位符</span><br></code></pre></td></tr></table></figure>
+
+<p>3.构建网络：使用_build_net方法在bilstm_crf变量作用域内定义网络结构。首先创建词嵌入变量word_embeddings，并使用tf.nn.embedding_lookup将输入数据嵌入到词嵌入空间中。然后对输入嵌入进行dropout处理。接着创建双向LSTM单元，使用tf.nn.bidirectional_dynamic_rnn对输入嵌入进行双向动态RNN处理。将前向和后向LSTM单元的输出拼接起来得到BiLSTM的输出。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs py">word_embeddings = tf.get_variable(<span class="hljs-string">&quot;word_embeddings&quot;</span>, [self.embedding_size, self.embedding_dim]) <span class="hljs-comment"># 词嵌入变量（可训练），可以使用随机初始化或预训练的嵌入（此处直接规定不使用预训练的词向量）</span><br>input_embedded = tf.nn.embedding_lookup(word_embeddings, self.input_data) <span class="hljs-comment"># 将输入句子嵌入到词嵌入空间中（即输入嵌入）</span><br>input_embedded = tf.nn.dropout(input_embedded, self.dropout_keep) <span class="hljs-comment"># 对输入嵌入进行droupout处理，使用dropout防止过拟合</span><br><span class="hljs-comment"># 创建具有指定嵌入维度和隐藏单元数量的双向LSTM单元（lstm_fw_cell和lstm_bw_cell）</span><br>lstm_fw_cell = tf.nn.rnn_cell.LSTMCell(self.embedding_dim, forget_bias=<span class="hljs-number">1.0</span>, state_is_tuple=<span class="hljs-literal">True</span>)<br>lstm_bw_cell = tf.nn.rnn_cell.LSTMCell(self.embedding_dim, forget_bias=<span class="hljs-number">1.0</span>, state_is_tuple=<span class="hljs-literal">True</span>)<br><span class="hljs-comment"># 使用LSTM单元对输入嵌入进行双向动态RNN(tf.nn.bidirectional_dynamic_rnn)处理</span><br>(output_fw, output_bw), states = tf.nn.bidirectional_dynamic_rnn(lstm_fw_cell,<br>                                                                         lstm_bw_cell,<br>                                                                         input_embedded,<br>                                                                         dtype=tf.float32,<br>                                                                         time_major=<span class="hljs-literal">False</span>,<br>                                                                         scope=<span class="hljs-literal">None</span>)<br><span class="hljs-comment"># 将前向和后向LSTM单元的输出拼接起来，创建最终的BiLSTM输出(bilstm_out)</span><br>bilstm_out = tf.concat([output_fw, output_bw], axis=<span class="hljs-number">2</span>)<br></code></pre></td></tr></table></figure>
+
+<p>4.构建CRF层：在CRF层中，创建可训练的变量W和b，用于对BiLSTM的输出进行线性变换。对BiLSTM的输出进行tanh激活函数处理，并使用矩阵乘法和加法操作进行变换。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 创建可训练的变量W和b，用于对BiLSTM输出进行线性变换</span><br>W = tf.get_variable(name=<span class="hljs-string">&quot;W&quot;</span>, shape=[self.batch_size, <span class="hljs-number">2</span> * self.embedding_dim, self.tag_size],<br>                            dtype=tf.float32)<br>b = tf.get_variable(name=<span class="hljs-string">&quot;b&quot;</span>, shape=[self.batch_size, self.sen_len, self.tag_size], dtype=tf.float32,<br>                            initializer=tf.zeros_initializer())<br><span class="hljs-comment"># 将BiLSTM输出经过tanh激活函数，并使用tf.matmul和加法操作进行变换</span><br>bilstm_out = tf.tanh(tf.matmul(bilstm_out, W) + b)<br></code></pre></td></tr></table></figure>
+
+<p>5.CRF损失：使用tf.contrib.crf.crf_log_likelihood函数计算给定输入序列和转移参数的标签的对数似然。这里使用CRF来捕捉标签之间的依赖关系。然后使用tf.reduce_mean对负对数似然进行平均，得到损失。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 使用tf.contrib.crf.crf_log_likelihood函数计算给定输入序列和转移参数的标签的对数似然</span><br>log_likelihood, self.transition_params = tf.contrib.crf.crf_log_likelihood(bilstm_out, self.labels,<br>                                                                                   tf.tile(np.array([self.sen_len]),<br>                                                                                           np.array([self.batch_size])))<br><span class="hljs-comment"># 使用tf.reduce_mean对负对数似然进行平均，得到损失</span><br>self.loss = tf.reduce_mean(-log_likelihood)<br></code></pre></td></tr></table></figure>
+
+<p>6.解码和推断：进行解码和推断。使用tf.contrib.crf.crf_decode函数对BiLSTM的输出进行解码，得到最可能的标签序列。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 使用tf.reduce_mean对负对数似然进行平均，得到损失</span><br>self.viterbi_sequence, viterbi_score = tf.contrib.crf.crf_decode(bilstm_out, self.transition_params,<br>                                                                         tf.tile(np.array([self.sen_len]),<br>                                                                                 np.array([self.batch_size])))<br></code></pre></td></tr></table></figure>
+
+<p>7.优化器：创建优化器，使用Adam优化器进行模型训练，最小化损失。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs py">optimizer = tf.train.AdamOptimizer(self.lr) <span class="hljs-comment"># 使用指定的学习率(lr)创建Adam优化器</span><br>self.train_op = optimizer.minimize(self.loss) <span class="hljs-comment"># 使用指定的学习率(lr)创建Adam优化器</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="2-2-batch模块"><a href="#2-2-batch模块" class="headerlink" title="2.2 batch模块"></a>2.2 batch模块</h3><p>该模块主要定义了一个批量生成器（BatchGenerator）类，用于生成批量的训练数据。批量生成器类提供了一种方便的生成批量训练数据的方法，它根据指定的batch_size生成相应大小的数据批次，并在每个epoch结束时对数据进行可选的打乱。下面介绍主要的类方法（一些返回数据属性的方法因为比较简单这里略过）</p>
+<p>在类的初始化方法中，接受输入数据x和标签y以及一个可选的shuffle参数。如果输入数据x和标签y不是ndarray类型，则将它们转换为ndarray类型。将x和y保存为类的属性，并初始化一些变量（如epochs、index和num_examples）来跟踪数据的状态。如果shuffle参数为True，则对数据进行打乱。使用np.random.permutation函数生成一个新的索引顺序，并将x和y按照这个新的索引顺序重新排列。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, x, y, shuffle=<span class="hljs-literal">False</span></span>):<br>	<span class="hljs-keyword">if</span> <span class="hljs-built_in">type</span>(x) != np.ndarray: <span class="hljs-comment"># 如果x不是ndarray类型，转换为ndarray类型</span><br>		x = np.asarray(x)<br>	<span class="hljs-keyword">if</span> <span class="hljs-built_in">type</span>(y) != np.ndarray: <span class="hljs-comment"># 如果y不是ndarray类型，转换为ndarray类型</span><br>		y = np.asarray(y)<br>	self.x = x<br>	self.y = y<br>	self.shuffle = shuffle<br>	self.epochs = <span class="hljs-number">0</span><br>	self.index = <span class="hljs-number">0</span><br>	self.num_examples = self.x.shape[<span class="hljs-number">0</span>] <span class="hljs-comment"># 样本数</span><br>	<span class="hljs-keyword">if</span> self.shuffle: <span class="hljs-comment"># 如果shuffle为True，打乱数据</span><br>		new_index = np.random.permutation(self.num_examples)<br>		self.x = self.x[new_index]<br>		self.y = self.y[new_index]<br></code></pre></td></tr></table></figure>
+
+<p><code>next_batch</code>方法用于生成批量的训练数据。它接受一个batch_size参数，表示每个批次的样本数量。方法首先确定起始位置start，并将索引index增加batch_size来确定结束位置end。如果结束位置超过了样本数，表示一个epoch结束，epochs计数加1。如果shuffle参数为True，再次对数据进行打乱。然后重新设置起始位置为0，并将索引index重新设置为batch_size。同时，使用断言来确保batch_size小于等于样本数。最后，返回从起始位置到结束位置的x和y数据作为一个批次的训练数据。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">next_batch</span>(<span class="hljs-params">self, batch_size</span>): <span class="hljs-comment"># 生成batch数据</span><br>	start = self.index <span class="hljs-comment"># 起始位置</span><br>	self.index += batch_size <span class="hljs-comment"># 结束位置</span><br>	<span class="hljs-keyword">if</span> self.index &gt; self.num_examples: <span class="hljs-comment"># 如果结束位置大于样本数，表示一个epoch结束</span><br>		self.epochs += <span class="hljs-number">1</span><br>		<span class="hljs-keyword">if</span> self.shuffle: <span class="hljs-comment"># 如果shuffle为True，打乱数据</span><br>			new_index = np.random.permutation(self.num_examples)<br>			self.x = self.x[new_index]<br>			self.y = self.y[new_index]<br>		start = <span class="hljs-number">0</span> <span class="hljs-comment"># 重新开始</span><br>		self.index = batch_size <span class="hljs-comment"># 重新结束位置</span><br>		<span class="hljs-keyword">assert</span> batch_size &lt;= self.num_examples <span class="hljs-comment"># 断言batch_size小于样本数</span><br>	end = self.index <span class="hljs-comment"># 结束位置</span><br>	<span class="hljs-keyword">return</span> self.x[start:end], self.y[start:end] <span class="hljs-comment"># 返回batch数据</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="2-3-train模块"><a href="#2-3-train模块" class="headerlink" title="2.3 train模块"></a>2.3 train模块</h3><p>该模块用于训练和评估BiLSTM-CRF模型，该模块主要负责训练模型、保存模型、评估模型性能并绘制损失和测试集性能的曲线图。</p>
+<p>初始化阶段，根据训练数据和测试数据的样本数以及批次大小，计算训练和测试数据的批次数量（batch_num和batch_num_test）。然后创建两个空列表training_loss和development_performance，用于保存训练过程中的损失和测试集的性能。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs py">batch_num = data_train.y.shape[<span class="hljs-number">0</span>] // batch_size <span class="hljs-comment"># 训练集的batch数量</span><br>batch_num_test = data_test.y.shape[<span class="hljs-number">0</span>] // batch_size <span class="hljs-comment"># 测试集的batch数量</span><br>training_loss = [] <span class="hljs-comment"># 训练集的loss</span><br>development_performance = [] <span class="hljs-comment"># 测试集的准确率</span><br></code></pre></td></tr></table></figure>
+
+<p>使用嵌套的循环进行训练。外层循环遍历每个epoch，内层循环遍历每个训练批次。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs py">x_batch, y_batch = data_train.next_batch(batch_size) <span class="hljs-comment"># 获取一个batch的数据</span><br>feed_dict = &#123;model.input_data: x_batch, model.labels: y_batch&#125; <span class="hljs-comment"># 构造feed_dict</span><br>pre, _, loss = sess.run([model.viterbi_sequence, model.train_op, model.loss], feed_dict) <span class="hljs-comment"># 运行session</span><br>train_acc = calculate_accuracy(y_batch, pre) <span class="hljs-comment"># 计算训练集的准确率</span><br>training_loss.append(loss) <span class="hljs-comment"># 记录训练集的loss</span><br><span class="hljs-keyword">if</span> batch % <span class="hljs-number">1000</span> == <span class="hljs-number">0</span>:  <span class="hljs-comment"># 每隔1000个batch输出一次训练集的准确率</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;batch:&quot;</span>, batch, <span class="hljs-string">&quot; ====&gt; train acc:&quot;</span>, train_acc)<br></code></pre></td></tr></table></figure>
+
+<p>注意，因为训练batch较多，因此选择每隔1000个batch打印一次训练集的准确率。同时因为模型在后期每个epoch提升的性能较缓慢（后面会作解释），因此选择每隔3个epoch保存一次模型</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 保存模型</span><br><span class="hljs-keyword">if</span> epoch % <span class="hljs-number">3</span> == <span class="hljs-number">0</span>:  <span class="hljs-comment"># 每隔3个epoch保存一次模型（不要每轮都保存模型，没有太大意义，性能提升不是特别大）</span><br>	<span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> os.path.exists(<span class="hljs-string">&quot;./model&quot;</span>):  <span class="hljs-comment"># 如果不存在该文件夹，则创建</span><br>		os.makedirs(<span class="hljs-string">&quot;./model&quot;</span>)<br>	path_name = <span class="hljs-string">&quot;./model/model&quot;</span> + <span class="hljs-built_in">str</span>(epoch) + <span class="hljs-string">&quot;.ckpt&quot;</span>  <span class="hljs-comment"># 模型保存路径</span><br>	<span class="hljs-comment"># print(path_name)</span><br>	saver.save(sess, path_name) <span class="hljs-comment"># 保存模型</span><br>	<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;model has been saved in&quot;</span>, path_name)<br></code></pre></td></tr></table></figure>
+
+<p>在每个epoch结束后，使用测试数据进行评估。遍历每个测试批次，获取到x_batch和y_batch后，使用sess.run()方法运行模型的viterbi_sequence节点，得到预测序列pre。然后，使用calculate()函数根据预测序列和标签序列计算实体识别的指标，并将结果存储在entityres和entityall列表中。接着调用calculate_metrics()函数计算实体识别的精确率precision、召回率recall和F1值f1_score，并将F1值添加到development_performance列表中。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs py">entityres = []<br>entityall = []<br><span class="hljs-keyword">for</span> batch <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(batch_num_test):<br>	x_batch, y_batch = data_test.next_batch(batch_size) <span class="hljs-comment"># 获取一个batch的数据</span><br>	feed_dict = &#123;model.input_data: x_batch, model.labels: y_batch&#125; <span class="hljs-comment"># 构造feed_dict</span><br>	pre = sess.run([model.viterbi_sequence], feed_dict) <span class="hljs-comment"># 运行session</span><br>	pre = pre[<span class="hljs-number">0</span>] <span class="hljs-comment"># 获取预测结果</span><br>	entityres = calculate(x_batch, pre, id2word, id2tag, entityres) <span class="hljs-comment"># 计算预测出的实体</span><br>	entityall = calculate(x_batch, y_batch, id2word, id2tag, entityall) <span class="hljs-comment"># 计算真实实体</span><br>precision, recall, f1_score = calculate_metrics(entityres, entityall) <span class="hljs-comment"># 计算精确率、召回率和F1值</span><br>development_performance.append(f1_score) <span class="hljs-comment"># 记录测试集的F1值</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;precision:&quot;</span>, precision)  <span class="hljs-comment"># 输出精确率（注意是精确率不是准确率）：精确率针对预测结果而言，是在被所有预测为正的样本中实际为正样本的概率</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;recall:&quot;</span>, recall)  <span class="hljs-comment"># 输出召回率：召回率针对原样本而言，是在所有正样本中被预测为正样本的概率</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;F1:&quot;</span>, f1_score)  <span class="hljs-comment"># 输出F1值：F1值是精确率和召回率的调和平均数，F1值越高，模型的性能越好</span><br></code></pre></td></tr></table></figure>
+
+<p>最后，在训练结束后，绘制训练损失曲线图以及development_performance曲线图。</p>
+<p>其中训练损失曲线图中，横坐标为epoch，纵坐标为训练损失值。development_performance曲线图中，横坐标为epoch，纵坐标为F1值。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs py">os.makedirs(<span class="hljs-string">&quot;images&quot;</span>, exist_ok=<span class="hljs-literal">True</span>)<br><span class="hljs-comment"># 绘制训练集的loss曲线</span><br>plt.figure()<br>plt.plot(<span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(training_loss)), training_loss)<br>plt.xlabel(<span class="hljs-string">&quot;Epoch&quot;</span>)<br>plt.ylabel(<span class="hljs-string">&quot;Training Loss&quot;</span>)<br>plt.title(<span class="hljs-string">&quot;Training Loss Curve&quot;</span>)<br>plt.savefig(<span class="hljs-string">&quot;./images/training_loss_curve.png&quot;</span>)  <span class="hljs-comment"># Save the plot as an image</span><br><span class="hljs-comment"># plt.show()</span><br><br><span class="hljs-comment"># 绘制测试集的F1值曲线</span><br>plt.figure()<br>plt.plot(<span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(development_performance)), development_performance)<br>plt.xlabel(<span class="hljs-string">&quot;Epoch&quot;</span>)<br>plt.ylabel(<span class="hljs-string">&quot;F1 Score (Non-&#x27;O&#x27; Label)&quot;</span>)<br>plt.title(<span class="hljs-string">&quot;Development Set Performance Curve&quot;</span>)<br>plt.savefig(<span class="hljs-string">&quot;./images/development_performance_curve.png&quot;</span>)  <span class="hljs-comment"># Save the plot as an image</span><br><span class="hljs-comment"># plt.show()</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="2-4-test模块"><a href="#2-4-test模块" class="headerlink" title="2.4 test模块"></a>2.4 test模块</h3><p>模型训练完毕后，通过test模块调用模型来对输入文本进行序列标注。简单来说，test模块就是一个用于文本标注的模块，主要定义了文本标注函数annotate_text。该函数的作用是读取输入文件中的文本行，将其按照常见标点符号分割为短句，并使用给定的模型和映射来对短句进行标注，然后将标注结果写入输出文件。</p>
+<p>该函数首先打开文件并按行读取内容，然后循环遍历读取的每一行，对每一行的文本都应用删除首尾及其行内空格、应用正则表达式按照常见标点符号对文本进行分割（将长句分割为短句，短句的长度需要小于max_len）。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs py">line = line.replace(<span class="hljs-string">&#x27; &#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>) <span class="hljs-comment"># 去除句子中的空格</span><br>line = line.strip() <span class="hljs-comment"># 去除句子首尾空格</span><br>text = line.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>).decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-comment"># 确保文本的一致编码和解码</span><br><span class="hljs-comment"># 从用户那里获取输入的文本，同时使用正则表达式按照分句符号将长句分割为短句 -- 后果是作为分句的标点符号不会被标注（所以如果不进行分句会有什么后果？会导致程序根本跑不起来，太长了）</span><br>text = re.split(<span class="hljs-string">u&#x27;[？?！!。；;：:,，]&#x27;</span>, text) <span class="hljs-comment"># 更细致的划分，避免出现如 ,/B_LOC这种i情况</span><br><span class="hljs-comment"># text = re.split(u&#x27;[？?！!。；;：:]&#x27;, text) # 减少了短句的数量，目的是为了解决超长文本的问题</span><br></code></pre></td></tr></table></figure>
+
+<p>接着对分句后的短句依次进行处理。将每个句子中的单词转换为对应的id，并将转换后的句子添加到text_id列表中。如果单词不在word2id映射中，将其替换为”unknown”对应的id。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs py">text_id = []<br><span class="hljs-keyword">for</span> sen <span class="hljs-keyword">in</span> text:<br>	words = <span class="hljs-built_in">list</span>(sen)<br>	word_id = []<br>	<span class="hljs-keyword">for</span> word <span class="hljs-keyword">in</span> sen:<br>		<span class="hljs-keyword">if</span> word <span class="hljs-keyword">in</span> word2id:<br>			word_id.append(word2id[word])<br>		<span class="hljs-keyword">else</span>:<br>			word_id.append(word2id[<span class="hljs-string">&quot;unknown&quot;</span>])<br>	<span class="hljs-comment"># 将单词id列表追加到text-id列表中</span><br>	text_id.append(padding(word_id))<br></code></pre></td></tr></table></figure>
+
+<p>处理完成文本的所有句子后，使用0填充将text_id填充到batch_size的长度（保证输入在批处理中具有一致大小）</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs py">zero_padding = []<br>zero_padding.extend([<span class="hljs-number">0</span>] * max_len)<br>text_id.extend([zero_padding] * (batch_size - <span class="hljs-built_in">len</span>(text_id)))<br></code></pre></td></tr></table></figure>
+
+<p>然后创建一个feed_dict字典，将model.input_data占位符映射到text_id列表。然后使用sess.run()运行模型，其中model.viterbi_sequence用于获取目标，pre变量存储输入文本的预测实体标签。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs py">feed_dict = &#123;model.input_data: text_id&#125;<br>pre = sess.run([model.viterbi_sequence], feed_dict)<br></code></pre></td></tr></table></figure>
+
+<p>get_BIO函数是整个test模块的核心，主要通过遍历每个句子中的每个字来组合其预测标签，然后将其加入BIO_list列表中，最后返回整个句子的BIO_list列表。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_BIO</span>(<span class="hljs-params">x, y, id2tag</span>):<br>    <span class="hljs-comment"># 通过两个嵌套的循环遍历每个句子和每个句子中的每个单词（中文中的单词就是字）</span><br>    BIO_list = []<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(x)):<br>        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(x[i])):<br>            <span class="hljs-comment"># 如果当前单词的索引超过了预测标签的长度，或者预测标签为0（表示无效标签），则跳过该单词</span><br>            <span class="hljs-keyword">if</span> j &gt;= <span class="hljs-built_in">len</span>(y[i]):<br>                <span class="hljs-keyword">continue</span><br>            <span class="hljs-comment"># if y[i][j] == 0: # 如果这句不删除会导致文本某些字被吞掉</span><br>            <span class="hljs-comment">#     continue</span><br>            <span class="hljs-comment"># 将x[i][j]和对应的idtag[y[i][j]]绑定在一起</span><br>            <span class="hljs-comment"># print (x[i][j],id2tag[y[i][j]])</span><br>            BIO_list.append(<span class="hljs-built_in">str</span>(x[i][j])+<span class="hljs-string">&#x27;/&#x27;</span>+<span class="hljs-built_in">str</span>(id2tag[y[i][j]]))<br>    <span class="hljs-keyword">return</span> BIO_list<br></code></pre></td></tr></table></figure>
+
+<p>拿到返回的列表后，调用translate_BIO函数对列表进行翻译。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">translate_BIO</span>(<span class="hljs-params">list_labels,text</span>): <span class="hljs-comment"># 这个版本的translate有问题，因为遇见一句话中相同词汇的时候会导致标签相同</span><br>    <span class="hljs-comment"># 分字</span><br>    characters = text.split()<br>    new_text = []<br>    <span class="hljs-keyword">for</span> char <span class="hljs-keyword">in</span> characters:<br>        found = <span class="hljs-literal">False</span><br>        <span class="hljs-keyword">for</span> label <span class="hljs-keyword">in</span> list_labels:<br>            <span class="hljs-keyword">if</span> char == label.split(<span class="hljs-string">&#x27;/&#x27;</span>)[<span class="hljs-number">0</span>]:<br>                new_text.append(label.split(<span class="hljs-string">&#x27;/&#x27;</span>)[<span class="hljs-number">1</span>])<br>                found = <span class="hljs-literal">True</span><br>                <span class="hljs-comment"># 这里还需要做的事情就是把list_labels中的label删除，避免重复（因为是从左到右遍历所以删除也是从左到右删除）</span><br>                list_labels.remove(label)<br>                <span class="hljs-keyword">break</span><br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> found:<br>            new_text.append(<span class="hljs-string">&#x27;O&#x27;</span>)<br>    new_text = <span class="hljs-string">&#x27; &#x27;</span>.join(new_text)<br>    <span class="hljs-comment"># print(new_text)</span><br>    <span class="hljs-keyword">return</span> new_text<br></code></pre></td></tr></table></figure>
+
+<p>此处举一个例子对上述translate_BIO函数做解释，假设输入如下list_lables和text</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">list_labels</span> = [<span class="hljs-string">&#x27;记/O&#x27;</span>, <span class="hljs-string">&#x27;者/O&#x27;</span>, <span class="hljs-string">&#x27;1/B_T&#x27;</span>, <span class="hljs-string">&#x27;月/I_T&#x27;</span>, <span class="hljs-string">&#x27;1/I_T&#x27;</span>, <span class="hljs-string">&#x27;5/I_T&#x27;</span>, <span class="hljs-string">&#x27;日/I_T&#x27;</span>]<br><span class="hljs-attr">text</span> = <span class="hljs-string">&quot;记 者 ， 1 月 1 5 日&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>通过遍历text，首先会找”记”在list_lables中是否有对应，发现第一个’记&#x2F;O’对应，因此分离出’O’同时删除’记&#x2F;O’。以此类推，如果在list_lables中没有找到对应，这是因为先前使用文本中的标点符号进行了切分导致标点符号缺失，因此缺失的都是标点符号，而标点符号对应的标签都是’O’，因此直接补’O’即可。最后，之所以要删除已经匹配好的列表中的元素，是为了避免从左到右匹配的时候出现干扰，比如上述例子中的’1&#x2F;B_T’和’1&#x2F;I_T’就完全不一样，但是仅仅使用’1’去匹配是分不清楚两者的，所有需要每次删除以避免重复。</p>
+<h1 id="三、实验结果"><a href="#三、实验结果" class="headerlink" title="三、实验结果"></a>三、实验结果</h1><h2 id="1-实验说明"><a href="#1-实验说明" class="headerlink" title="1.实验说明"></a>1.实验说明</h2><p>序列标注的标签集是训练集中所有不同的标签组成的集合，经过统计，本项目的标注集如下</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>标签</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>O</td>
+</tr>
+<tr>
+<td>1</td>
+<td>B_T</td>
+</tr>
+<tr>
+<td>2</td>
+<td>I_T</td>
+</tr>
+<tr>
+<td>3</td>
+<td>B_LOC</td>
+</tr>
+<tr>
+<td>4</td>
+<td>I_LOC</td>
+</tr>
+<tr>
+<td>5</td>
+<td>B_PER</td>
+</tr>
+<tr>
+<td>6</td>
+<td>I_PER</td>
+</tr>
+<tr>
+<td>7</td>
+<td>B_ORG</td>
+</tr>
+<tr>
+<td>8</td>
+<td>I_ORG</td>
+</tr>
+</tbody></table>
+<p>BiLSTM-CRF的训练既可以使用预训练的词向量，也可以不使用，进而模型会从头开始学习词嵌入。通常，使用预训练的词向量通常会获得更好的结果，因为它们捕捉了从大型文本语料库中学习的单词之间的语义关系。但是在本次实验中，考虑到训练语料足够大，我并没有选择使用预训练的词向量。模型的自行学习使用词向量维数为100维，词典大小为word2id的大小加1，在本实验中词典大小为5681。</p>
+<p>关于BiLSTM-CRF网络结构，默认dropout是1即不使用dropout，但是在训练模式下使用的dropout为0.5。BiLSTM中使用的是双向LSTM单元（lstm_fw_cell和lstm_bw_cell），其指定嵌入维度均为100。网络使用的激活函数是tanh激活函数，同时对结果使用了tf.matmul和加法操作进行变换。模型的损失是对负对数似然进行平均得到。模型的优化器使用的是Adam优化器。</p>
+<p>关于训练超参数的选择，因为直接在原始训练语料Data.pkl上训练需要大量时间，因此我根据手中训练集和测试集文本数量按比例创建了一个mini_data.pkl，用于选择超参数。max_len规定为60，即短句的最大长度，该长度在数据预处理的时候规定，此处需要保持一致，之后使用test模块对短句进行序列标注的时候的文本最大长度同样是60。batch_size指定为128，实际上最开始指定的batch_size为32，之后设置batch_size为64，在同样的条件下，32最终的F1值达到0.8332585723845312而64的F1值只有0.8106183469465986。但是无论是哪个batch_size，在test模块中对文本进行处理的时候都会遇到一个报错为tensor的shape不匹配，出现该报错的原因是在test.txt中有一个超长文本，通过常见标点符号划分为长度小于60的短句后，短句的数量多达92，因此无论是batch_size为32还是64的BiLSTM-CRF模型都无法接受这个超长的输入，无奈最终选择了batch_size为128，该模型最终的F1值为0.8186130795409343，相对来说还行。关于学习率，先后尝试了使用0.0001和0.002，但是最终的效果都没有学习率为0.001好，因此最终确定的学习率为0.001。最后是epoch训练轮次的选择，先后尝试了12轮和19轮，如下分别是两个轮次的最后训练输出</p>
+<p><img src="/images/image-20230522170556344.png" srcset="/img/loading.gif" lazyload></p>
+<p>可以看到随着训练epoch的增加最终的F1值略有提升，但实际上在19个epoch的训练过程中已经出现了过拟合的现象，并且随着epoch为19的训练时间几乎是epoch为12的2倍。因为保存模型是保存的3的整数倍的epoch的模型，综上所述，最终选择的epoch为13。</p>
+<p>以下给出在max_len为60，batch_size为128，学习率为0.001，epoch为13的情况下的模型训练输出</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-string">----------------epoch:</span>  <span class="hljs-number">0</span> <span class="hljs-string">----------------</span><br><span class="hljs-attr">batch:</span> <span class="hljs-number">0</span>  <span class="hljs-string">====&gt;</span> <span class="hljs-attr">train acc:</span> <span class="hljs-number">0.1234375</span><br><span class="hljs-attr">batch:</span> <span class="hljs-number">1000</span>  <span class="hljs-string">====&gt;</span> <span class="hljs-attr">train acc:</span> <span class="hljs-number">0.94375</span><br><span class="hljs-attr">batch:</span> <span class="hljs-number">2000</span>  <span class="hljs-string">====&gt;</span> <span class="hljs-attr">train acc:</span> <span class="hljs-number">0.948046875</span><br><span class="hljs-string">model</span> <span class="hljs-string">has</span> <span class="hljs-string">been</span> <span class="hljs-string">saved</span> <span class="hljs-string">in</span> <span class="hljs-string">./model/model0.ckpt</span><br><span class="hljs-attr">precision:</span> <span class="hljs-number">0.7157447577729573</span><br><span class="hljs-attr">recall:</span> <span class="hljs-number">0.4394866458550121</span><br><span class="hljs-attr">F1:</span> <span class="hljs-number">0.5445839887906061</span><br><span class="hljs-string">----------------epoch:</span>  <span class="hljs-number">1</span> <span class="hljs-string">----------------</span><br><span class="hljs-attr">batch:</span> <span class="hljs-number">0</span>  <span class="hljs-string">====&gt;</span> <span class="hljs-attr">train acc:</span> <span class="hljs-number">0.971484375</span><br><span class="hljs-attr">batch:</span> <span class="hljs-number">1000</span>  <span class="hljs-string">====&gt;</span> <span class="hljs-attr">train acc:</span> <span class="hljs-number">0.9828125</span><br><span class="hljs-attr">batch:</span> <span class="hljs-number">2000</span>  <span class="hljs-string">====&gt;</span> <span class="hljs-attr">train acc:</span> <span class="hljs-number">0.9838541666666667</span><br><span class="hljs-attr">precision:</span> <span class="hljs-number">0.809712874642909</span><br><span class="hljs-attr">recall:</span> <span class="hljs-number">0.696066597294485</span><br><span class="hljs-attr">F1:</span> <span class="hljs-number">0.748601101213125</span><br><span class="hljs-string">----------------epoch:</span>  <span class="hljs-number">2</span> <span class="hljs-string">----------------</span><br><span class="hljs-attr">batch:</span> <span class="hljs-number">0</span>  <span class="hljs-string">====&gt;</span> <span class="hljs-attr">train acc:</span> <span class="hljs-number">0.9846354166666667</span><br><span class="hljs-attr">batch:</span> <span class="hljs-number">1000</span>  <span class="hljs-string">====&gt;</span> <span class="hljs-attr">train acc:</span> <span class="hljs-number">0.984375</span><br><span class="hljs-attr">batch:</span> <span class="hljs-number">2000</span>  <span class="hljs-string">====&gt;</span> <span class="hljs-attr">train acc:</span> <span class="hljs-number">0.9828125</span><br><span class="hljs-attr">precision:</span> <span class="hljs-number">0.8331244778613199</span><br><span class="hljs-attr">recall:</span> <span class="hljs-number">0.7194866458550121</span><br><span class="hljs-attr">F1:</span> <span class="hljs-number">0.7721469040120906</span><br><span class="hljs-string">----------------epoch:</span>  <span class="hljs-number">3</span> <span class="hljs-string">----------------</span><br><span class="hljs-attr">batch:</span> <span class="hljs-number">0</span>  <span class="hljs-string">====&gt;</span> <span class="hljs-attr">train acc:</span> <span class="hljs-number">0.9845052083333333</span><br><span class="hljs-attr">batch:</span> <span class="hljs-number">1000</span>  <span class="hljs-string">====&gt;</span> <span class="hljs-attr">train acc:</span> <span class="hljs-number">0.9822916666666667</span><br><span class="hljs-attr">batch:</span> <span class="hljs-number">2000</span>  <span class="hljs-string">====&gt;</span> <span class="hljs-attr">train acc:</span> <span class="hljs-number">0.98046875</span><br><span class="hljs-string">model</span> <span class="hljs-string">has</span> <span class="hljs-string">been</span> <span class="hljs-string">saved</span> <span class="hljs-string">in</span> <span class="hljs-string">./model/model3.ckpt</span><br><span class="hljs-attr">precision:</span> <span class="hljs-number">0.8412386491497758</span><br><span class="hljs-attr">recall:</span> <span class="hljs-number">0.7364967048213666</span><br><span class="hljs-attr">F1:</span> <span class="hljs-number">0.7853908977925076</span><br><span class="hljs-string">----------------epoch:</span>  <span class="hljs-number">4</span> <span class="hljs-string">----------------</span><br><span class="hljs-attr">batch:</span> <span class="hljs-number">0</span>  <span class="hljs-string">====&gt;</span> <span class="hljs-attr">train acc:</span> <span class="hljs-number">0.9854166666666667</span><br><span class="hljs-attr">batch:</span> <span class="hljs-number">1000</span>  <span class="hljs-string">====&gt;</span> <span class="hljs-attr">train acc:</span> <span class="hljs-number">0.9833333333333333</span><br><span class="hljs-attr">batch:</span> <span class="hljs-number">2000</span>  <span class="hljs-string">====&gt;</span> <span class="hljs-attr">train acc:</span> <span class="hljs-number">0.984375</span><br><span class="hljs-attr">precision:</span> <span class="hljs-number">0.8491786171676127</span><br><span class="hljs-attr">recall:</span> <span class="hljs-number">0.7451682275407562</span><br><span class="hljs-attr">F1:</span> <span class="hljs-number">0.7937807599651202</span><br><span class="hljs-string">----------------epoch:</span>  <span class="hljs-number">5</span> <span class="hljs-string">----------------</span><br><span class="hljs-attr">batch:</span> <span class="hljs-number">0</span>  <span class="hljs-string">====&gt;</span> <span class="hljs-attr">train acc:</span> <span class="hljs-number">0.9890625</span><br><span class="hljs-attr">batch:</span> <span class="hljs-number">1000</span>  <span class="hljs-string">====&gt;</span> <span class="hljs-attr">train acc:</span> <span class="hljs-number">0.9848958333333333</span><br><span class="hljs-attr">batch:</span> <span class="hljs-number">2000</span>  <span class="hljs-string">====&gt;</span> <span class="hljs-attr">train acc:</span> <span class="hljs-number">0.9880208333333333</span><br><span class="hljs-attr">precision:</span> <span class="hljs-number">0.8541725468059084</span><br><span class="hljs-attr">recall:</span> <span class="hljs-number">0.75579604578564</span><br><span class="hljs-attr">F1:</span> <span class="hljs-number">0.8019786674911115</span><br><span class="hljs-string">----------------epoch:</span>  <span class="hljs-number">6</span> <span class="hljs-string">----------------</span><br><span class="hljs-attr">batch:</span> <span class="hljs-number">0</span>  <span class="hljs-string">====&gt;</span> <span class="hljs-attr">train acc:</span> <span class="hljs-number">0.9861979166666667</span><br><span class="hljs-attr">batch:</span> <span class="hljs-number">1000</span>  <span class="hljs-string">====&gt;</span> <span class="hljs-attr">train acc:</span> <span class="hljs-number">0.9859375</span><br><span class="hljs-attr">batch:</span> <span class="hljs-number">2000</span>  <span class="hljs-string">====&gt;</span> <span class="hljs-attr">train acc:</span> <span class="hljs-number">0.9859375</span><br><span class="hljs-string">model</span> <span class="hljs-string">has</span> <span class="hljs-string">been</span> <span class="hljs-string">saved</span> <span class="hljs-string">in</span> <span class="hljs-string">./model/model6.ckpt</span><br><span class="hljs-attr">precision:</span> <span class="hljs-number">0.8552825820086087</span><br><span class="hljs-attr">recall:</span> <span class="hljs-number">0.7636489767603191</span><br><span class="hljs-attr">F1:</span> <span class="hljs-number">0.8068724895182806</span><br><span class="hljs-string">----------------epoch:</span>  <span class="hljs-number">7</span> <span class="hljs-string">----------------</span><br><span class="hljs-attr">batch:</span> <span class="hljs-number">0</span>  <span class="hljs-string">====&gt;</span> <span class="hljs-attr">train acc:</span> <span class="hljs-number">0.9846354166666667</span><br><span class="hljs-attr">batch:</span> <span class="hljs-number">1000</span>  <span class="hljs-string">====&gt;</span> <span class="hljs-attr">train acc:</span> <span class="hljs-number">0.987890625</span><br><span class="hljs-attr">batch:</span> <span class="hljs-number">2000</span>  <span class="hljs-string">====&gt;</span> <span class="hljs-attr">train acc:</span> <span class="hljs-number">0.98515625</span><br><span class="hljs-attr">precision:</span> <span class="hljs-number">0.8605358935742972</span><br><span class="hljs-attr">recall:</span> <span class="hljs-number">0.7610683315990288</span><br><span class="hljs-attr">F1:</span> <span class="hljs-number">0.8077514927955588</span><br><span class="hljs-string">----------------epoch:</span>  <span class="hljs-number">8</span> <span class="hljs-string">----------------</span><br><span class="hljs-attr">batch:</span> <span class="hljs-number">0</span>  <span class="hljs-string">====&gt;</span> <span class="hljs-attr">train acc:</span> <span class="hljs-number">0.9889322916666666</span><br><span class="hljs-attr">batch:</span> <span class="hljs-number">1000</span>  <span class="hljs-string">====&gt;</span> <span class="hljs-attr">train acc:</span> <span class="hljs-number">0.9893229166666667</span><br><span class="hljs-attr">batch:</span> <span class="hljs-number">2000</span>  <span class="hljs-string">====&gt;</span> <span class="hljs-attr">train acc:</span> <span class="hljs-number">0.9876302083333334</span><br><span class="hljs-attr">precision:</span> <span class="hljs-number">0.864353064842561</span><br><span class="hljs-attr">recall:</span> <span class="hljs-number">0.7643843218869233</span><br><span class="hljs-attr">F1:</span> <span class="hljs-number">0.8113007495545378</span><br><span class="hljs-string">----------------epoch:</span>  <span class="hljs-number">9</span> <span class="hljs-string">----------------</span><br><span class="hljs-attr">batch:</span> <span class="hljs-number">0</span>  <span class="hljs-string">====&gt;</span> <span class="hljs-attr">train acc:</span> <span class="hljs-number">0.990234375</span><br><span class="hljs-attr">batch:</span> <span class="hljs-number">1000</span>  <span class="hljs-string">====&gt;</span> <span class="hljs-attr">train acc:</span> <span class="hljs-number">0.9846354166666667</span><br><span class="hljs-attr">batch:</span> <span class="hljs-number">2000</span>  <span class="hljs-string">====&gt;</span> <span class="hljs-attr">train acc:</span> <span class="hljs-number">0.988671875</span><br><span class="hljs-string">model</span> <span class="hljs-string">has</span> <span class="hljs-string">been</span> <span class="hljs-string">saved</span> <span class="hljs-string">in</span> <span class="hljs-string">./model/model9.ckpt</span><br><span class="hljs-attr">precision:</span> <span class="hljs-number">0.8669116723206433</span><br><span class="hljs-attr">recall:</span> <span class="hljs-number">0.7658411377037808</span><br><span class="hljs-attr">F1:</span> <span class="hljs-number">0.8132481749136261</span><br><span class="hljs-string">----------------epoch:</span>  <span class="hljs-number">10</span> <span class="hljs-string">----------------</span><br><span class="hljs-attr">batch:</span> <span class="hljs-number">0</span>  <span class="hljs-string">====&gt;</span> <span class="hljs-attr">train acc:</span> <span class="hljs-number">0.9893229166666667</span><br><span class="hljs-attr">batch:</span> <span class="hljs-number">1000</span>  <span class="hljs-string">====&gt;</span> <span class="hljs-attr">train acc:</span> <span class="hljs-number">0.9865885416666667</span><br><span class="hljs-attr">batch:</span> <span class="hljs-number">2000</span>  <span class="hljs-string">====&gt;</span> <span class="hljs-attr">train acc:</span> <span class="hljs-number">0.98515625</span><br><span class="hljs-attr">precision:</span> <span class="hljs-number">0.8678451967863954</span><br><span class="hljs-attr">recall:</span> <span class="hljs-number">0.7703503295178633</span><br><span class="hljs-attr">F1:</span> <span class="hljs-number">0.8161966292547757</span><br><span class="hljs-string">----------------epoch:</span>  <span class="hljs-number">11</span> <span class="hljs-string">----------------</span><br><span class="hljs-attr">batch:</span> <span class="hljs-number">0</span>  <span class="hljs-string">====&gt;</span> <span class="hljs-attr">train acc:</span> <span class="hljs-number">0.9873697916666667</span><br><span class="hljs-attr">batch:</span> <span class="hljs-number">1000</span>  <span class="hljs-string">====&gt;</span> <span class="hljs-attr">train acc:</span> <span class="hljs-number">0.9899739583333333</span><br><span class="hljs-attr">batch:</span> <span class="hljs-number">2000</span>  <span class="hljs-string">====&gt;</span> <span class="hljs-attr">train acc:</span> <span class="hljs-number">0.9875</span><br><span class="hljs-attr">precision:</span> <span class="hljs-number">0.8681785636459858</span><br><span class="hljs-attr">recall:</span> <span class="hljs-number">0.7738744363510233</span><br><span class="hljs-attr">F1:</span> <span class="hljs-number">0.8183185275929608</span><br><span class="hljs-string">----------------epoch:</span>  <span class="hljs-number">12</span> <span class="hljs-string">----------------</span><br><span class="hljs-attr">batch:</span> <span class="hljs-number">0</span>  <span class="hljs-string">====&gt;</span> <span class="hljs-attr">train acc:</span> <span class="hljs-number">0.987109375</span><br><span class="hljs-attr">batch:</span> <span class="hljs-number">1000</span>  <span class="hljs-string">====&gt;</span> <span class="hljs-attr">train acc:</span> <span class="hljs-number">0.9881510416666667</span><br><span class="hljs-attr">batch:</span> <span class="hljs-number">2000</span>  <span class="hljs-string">====&gt;</span> <span class="hljs-attr">train acc:</span> <span class="hljs-number">0.989453125</span><br><span class="hljs-string">model</span> <span class="hljs-string">has</span> <span class="hljs-string">been</span> <span class="hljs-string">saved</span> <span class="hljs-string">in</span> <span class="hljs-string">./model/model12.ckpt</span><br><span class="hljs-attr">precision:</span> <span class="hljs-number">0.8725796573438653</span><br><span class="hljs-attr">recall:</span> <span class="hljs-number">0.7709330558446064</span><br><span class="hljs-attr">F1:</span> <span class="hljs-number">0.8186130795409343</span><br></code></pre></td></tr></table></figure>
+
+<p>最后是训练损失图像和发展集性能随时间变化的曲线</p>
+<p><img src="/images/image-20230522171138105.png" srcset="/img/loading.gif" lazyload></p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E8%B7%B5/" class="category-chain-item">课程实践</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/">#自然语言处理</a>
+      
+        <a href="/tags/%E5%91%BD%E5%90%8D%E5%AE%9E%E4%BD%93%E8%AF%86%E5%88%AB/">#命名实体识别</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>初级项目_命名实体识别</div>
+      <div>https://gintoki-jpg.github.io/2023/05/19/项目_命名实体识别/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>杨再俨</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年5月19日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/05/29/%E9%A1%B9%E7%9B%AE_%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" title="初级项目_强化学习算法">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">初级项目_强化学习算法</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/05/06/%E9%A1%B9%E7%9B%AE_%E6%B1%89%E8%AF%AD%E5%AD%90%E8%AF%8D%E5%90%91%E9%87%8F/" title="初级项目_汉语子词向量">
+                        <span class="hidden-mobile">初级项目_汉语子词向量</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+</div>
+
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

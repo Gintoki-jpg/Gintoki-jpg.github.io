@@ -1,0 +1,1044 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/logo.png">
+  <link rel="icon" href="/img/bg/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="杨再俨">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="自然语言处理课程实践；">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初级项目_中文分词">
+<meta property="og:url" content="https://gintoki-jpg.github.io/2023/04/10/%E9%A1%B9%E7%9B%AE_%E4%B8%AD%E6%96%87%E5%88%86%E8%AF%8D/index.html">
+<meta property="og:site_name" content="Tintoki_blog">
+<meta property="og:description" content="自然语言处理课程实践；">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/project.png">
+<meta property="article:published_time" content="2023-04-10T00:33:00.000Z">
+<meta property="article:modified_time" content="2023-04-27T03:36:36.234Z">
+<meta property="article:author" content="YangZaiyan">
+<meta property="article:tag" content="自然语言处理">
+<meta property="article:tag" content="BPE算法">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gintoki-jpg.github.io/img/bg/project.png">
+  
+  
+  
+  <title>初级项目_中文分词 - Tintoki_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"gintoki-jpg.github.io","root":"/","version":"1.9.1","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tintoki_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/bg1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">初级项目_中文分词</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-04-10 08:33" pubdate>
+          2023年4月10日 早上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          22k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          183 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">初级项目_中文分词</h1>
+            
+            <div class="markdown-body">
+              
+              <p>参考链接（搜索关键词“BPE编程作业”）：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/EvanWu146/NLPtest_BPE_token_learner">EvanWu146&#x2F;NLPtest_BPE_token_learner: 基于BPE算法的汉字训练分词和测试 (github.com)</a>；</li>
+</ul>
+<h2 id="1-BPE算法原理"><a href="#1-BPE算法原理" class="headerlink" title="1.BPE算法原理"></a>1.BPE算法原理</h2><p>参考链接：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/zhaohongfei_358/article/details/123379481">(11条消息) 简介NLP中的Tokenization（基于Word,Subword 和 Character）_iioSnail的博客-CSDN博客</a>；</li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/448147465">BPE 算法原理及使用指南【深入浅出】 - 知乎 (zhihu.com)</a>；</li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/191648421">NLP三大Subword模型详解：BPE、WordPiece、ULM - 知乎 (zhihu.com)</a>；</li>
+<li>优化处理：<a target="_blank" rel="noopener" href="https://www.less-bug.com/posts/using-bpe-principle-for-chinese-word-segmentation-plate/">使用 BPE 原理进行汉语字词切分（重制版） (less-bug.com)</a>；</li>
+<li>分词结果的评价指标：<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1540110">NLP入门(2)-分词结果评价及实战 - 腾讯云开发者社区-腾讯云 (tencent.com)</a>；</li>
+</ul>
+<hr>
+<p>基本概念：</p>
+<ul>
+<li>Word：一个单词，例如hello</li>
+<li>Character：一个字母，例如a</li>
+<li>Subword：<ol>
+<li>若使用单词进行编码，由于单词多且杂，容易导致OOV问题，而且不太好编码</li>
+<li>若使用字母进行编码，又太少，容易丢失语义；所以人们发明了subword，将一个word分成多个subword，同时兼顾了1，2两个问题。</li>
+</ol>
+</li>
+<li>OOV：Out of Vocabulary，意思是有些单词在词典中查询不到，例如一些根据词根现造的词，或者拼写错误的词等。</li>
+<li>Tokenization：将一段文本分成若干个元素，一个元素称为一个Token，而 token 是之后要被编码成向量然后送往模型的基本单位。</li>
+<li>Token：Token可以是一个单词、一个字母、甚至是“半个单词”</li>
+</ul>
+<p>在介绍BPE算法之前，需要从分词说起，分词是文本预处理中尤其重要的一步，一个完整的分词流程如下：</p>
+<p><img src="/images/image-20230413085841158.png" srcset="/img/loading.gif" lazyload></p>
+<p>其中，执行分词的算法模型称为分词器StringTokenizer，被划分好的词称为Tokens(token不等于word，token可以是一个单词、一个字母甚至半个单词)，整个过程称为Tokenization；</p>
+<p>将划分好的token用向量表示（因为只有向量才能被输入到算法模型中），分词的目的就是让这些向量蕴含更多的信息；</p>
+<p>但是因为一篇文本的词太多，为了方便算法模型的训练，往往选择频率最高的若干词汇组成一个词表Vocabulary；</p>
+<h3 id="1-1-古典分词方法"><a href="#1-1-古典分词方法" class="headerlink" title="1.1 古典分词方法"></a>1.1 古典分词方法</h3><p>古典分词方法主要包含以下几种：按照空格分词、按照标点符号、按照语法规则分词</p>
+<p><img src="/images/image-20230413090429298.png" srcset="/img/loading.gif" lazyload></p>
+<p>古典分词的思想非常简单且word是具有语义的，但是存在如下缺点：</p>
+<ul>
+<li>对于未出现在词表Vocabulary中的词，模型会将其标记为未知符号Unkown，加重OOV的问题；</li>
+<li>词表Vocabulary中的低频词&#x2F;稀疏词在模型的训练过程中无法得到有效的训练，且难以处理拼写错误的单词；</li>
+<li>古典分词一方面会增加训练冗余(look,looks,looked)，一方面造成词典特别大；</li>
+</ul>
+<h3 id="1-2-单字符方法"><a href="#1-2-单字符方法" class="headerlink" title="1.2 单字符方法"></a>1.2 单字符方法</h3><p>该方法称为Character embedding，与之前在项目中基于字的embedding的思想是一致的，即直接将所有的文本分割成字母和符号；</p>
+<p><img src="/images/image-20230413091658012.png" srcset="/img/loading.gif" lazyload></p>
+<p>单字符的方法不存在OOV(out of vocabulary)和词典过大(因为字符的总量固定，对英语来说只有26个字符)的问题，同时可以解决单词的拼写错误问题，但缺点是</p>
+<ul>
+<li>不具备语义（但中文的一个character可能具备语义，可以考虑对中文使用Character-based Tokenization避免直接分词） – 关于语义的问题，一方面在分词阶段，一方面在向量化的阶段，都需要考虑；</li>
+<li>划分粒度太细，导致训练的花费成果较高；</li>
+</ul>
+<h3 id="1-3-Subword算法"><a href="#1-3-Subword算法" class="headerlink" title="1.3 Subword算法"></a>1.3 Subword算法</h3><p>Subword算法是一种基于子词的分词方法，是BERT算法下一种分词的算法；</p>
+<p>Subword算法的目的是将一个词切成更小的子词，即通过一个大小适当的vocabulary来解决分词的问题，同时尽可能将分词结果中的token数目降低（可以认为是前面两种方法的折中）；</p>
+<p>Subword的基本思想类似英语中的词根词缀拼词</p>
+<p><img src="/images/image-20230413092335692.png" srcset="/img/loading.gif" lazyload></p>
+<p>这些较小的token可以用于构造不同的词，这种方式不仅可以降低词表的大小、减少了OOV的问题（模型甚至可以理解从未见过的单词），也可以对形式相近的词作更好的处理；</p>
+<p>Subword的一般原则：</p>
+<ol>
+<li>频率非常高的词不进行拆分；</li>
+<li>将罕见的词拆成小的有意义的词；</li>
+<li>对于后缀，一般会增加一个特殊标记，例如将tokenization 实际会拆成 token 和 ization<code>&lt;/w&gt;</code> ，使用<code>&lt;/w&gt;</code>标记ization是一个后缀；</li>
+</ol>
+<p>目前主要由三种主流的Subword算法，分别是Byte Pair Encoding (BPE)、WordPiece 和 Unigram Language Model</p>
+<h4 id="1-3-1-字节对编码BPE"><a href="#1-3-1-字节对编码BPE" class="headerlink" title="1.3.1 字节对编码BPE"></a>1.3.1 字节对编码BPE</h4><p>字节对编码（BPE, Byte Pair Encoder），又称 digram coding 双字母组合编码，本质上是一种数据压缩算法，用于在固定大小的词表中实现可变长度的子词；</p>
+<p>BPE 首先将词分成单个字符，然后依次用新字符替换频率最高的一对字符，直到循环次数结束</p>
+<p><img src="/images/image-20230413101733595.png" srcset="/img/loading.gif" lazyload alt="BPE算法示例"></p>
+<p>上述过程中：</p>
+<ul>
+<li>循环结束的标志是相邻两字符出现的次数都是1次或vocabulary中的token数达到设定量；</li>
+<li>BPE压缩过后，只需要一个压缩过后的数据加上一个字典就能表示原数据；</li>
+</ul>
+<p>下面详细介绍BPE的算法过程</p>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs arcade"><span class="hljs-number">1.</span>准备语料库，确定期望的vocabulary大小等参数<br><span class="hljs-number">2.</span>将语料库中所有单词拆分为单个字符，用所有单个字符建立最初的vocabulary，通常在词后缀的末尾添加停止符 &lt;<span class="hljs-regexp">/w&gt;，并统计每个字符的频数，初始阶段的 subword/</span>token 的粒度是字符<br><span class="hljs-number">3.</span>在语料库种统计相邻字符的频数，挑选出频次最高的相邻符号对合并，使用新字符对其进行替换，将新字符加入词表并更新词表中字符的频数<br><span class="hljs-number">4.</span>循环上述的操作，直到vocabulary中token数达到设定量 或下一个词对的最高频数为<span class="hljs-number">1</span>（如果达到设定量则直接停止丢弃其他未处理语料）<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：</p>
+<ul>
+<li>统计字符的频数是为了判断词表中的字符是否需要删除（当频数为0时）以减小词表的大小，统计相邻字符的频数是为了进行合并以压缩语料；</li>
+<li>停止符 <code>&lt;/w&gt;</code>的意义在于标明该token是词后缀，如<code>st</code>不加<code>&lt;/w&gt;</code>则可以出现在词首，如<code>st ar</code>，但是<code>st&lt;/w&gt;</code>表示该token只能出现在词尾，如<code>we st&lt;/w&gt;</code>；</li>
+<li>新字符仍然可以参与后续的merge，BPE算法的本质就是一种贪心算法；</li>
+</ul>
+</blockquote>
+<p>利用上述算法思想来解决一个完整的例子，假设我们拥有这样一句话作为语料库</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">FloydHub is the fastest way to <span class="hljs-keyword">build, </span>train <span class="hljs-keyword">and </span>deploy deep learning models. <span class="hljs-keyword">Build </span>deep learning models in the <span class="hljs-keyword">cloud. </span>Train deep learning models<br></code></pre></td></tr></table></figure>
+
+<p>预处理：拆分、加停止符、统计单词的频率（为了下面统计字符的频率做准备）</p>
+<p><img src="/images/image-20230413104454403.png" srcset="/img/loading.gif" lazyload></p>
+<p>根据上面的结果建立初步vocabulary（原始vocabulary以char为粒度）</p>
+<p><img src="/images/image-20230413104635640.png" srcset="/img/loading.gif" lazyload></p>
+<p>因为在所有的pair组合中<code>de</code>出现的频次是最高的，所以使用<code>de</code>将<code>d</code>和<code>e</code>替换并更新vocabulary</p>
+<p>每次merge后的vocabulary带下可能有如下3种变化：</p>
+<ul>
+<li>+1，表明加入合并后的新子词，同时原来的2个子词还保留（2个字词分开出现在语料中）；</li>
+<li>+0，表明加入合并后的新子词，同时原来的2个子词中一个保留，一个被消解（一个子词完全随着另一个子词的出现而紧跟着出现）；</li>
+<li>-1，表明加入合并后的新子词，同时原来的2个子词都被消解（2个字词同时连续出现）；</li>
+</ul>
+<p><img src="/images/image-20230413105045561.png" srcset="/img/loading.gif" lazyload></p>
+<p>继续迭代直到达到预设的 subwords 词表大小或下一个最高频的字节对出现频率为 1</p>
+<blockquote>
+<p>随着合并的次数增加，词表大小通常先增加后减小。迭代次数太小，大部分还是字母，没什么意义；迭代次数多，又重新变回了原来那几个词。所以词表大小要取一个中间值；</p>
+</blockquote>
+<hr>
+<p>在得到Subword词表后，针对每一个单词，可以采用如下的方式来进行编码：</p>
+<ol>
+<li>将词典中的所有子词按照长度由大到小进行排序（排序方式多种多样）；</li>
+<li>对于单词w，依次遍历排好序的词典。查看当前子词是否是该单词的子字符串，如果是，则输出当前子词，并对剩余单词字符串继续匹配；</li>
+<li>如果遍历完字典后，仍然有子字符串没有匹配，则将剩余字符串替换为特殊符号输出，如<code>&lt;unk&gt;</code>；</li>
+<li>单词的表示即为上述所有输出子词；</li>
+</ol>
+<p>解码过程比较简单，如果相邻子词间没有中止符，则将两子词直接拼接，否则两子词之间添加分隔符；</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs 1c"><span class="hljs-meta"># 编码序列</span><br>[<span class="hljs-string">&quot;the&lt;/w&gt;&quot;</span>, <span class="hljs-string">&quot;high&quot;</span>, <span class="hljs-string">&quot;est&lt;/w&gt;&quot;</span>, <span class="hljs-string">&quot;moun&quot;</span>, <span class="hljs-string">&quot;tain&lt;/w&gt;&quot;</span>]<br><br><span class="hljs-meta"># 解码序列</span><br><span class="hljs-string">&quot;the&lt;/w&gt; highest&lt;/w&gt; mountain&lt;/w&gt;&quot;</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<blockquote>
+<p>总结：</p>
+<ul>
+<li><p>BPE的缺点在于对于同一个句子可能会产生不同的 Subword 序列，这就可能导致最终分词的结果不同（这也是为什么不同的代码对中文分词产生的效果都不同）；</p>
+</li>
+<li><p>对于中文一般不会选择使用BPE编码，因为BPE是一种分词的思想，中文可以直接分字然后向量化或者使用其他更好的方式进行分词</p>
+</li>
+</ul>
+</blockquote>
+<h3 id="1-4-评价指标"><a href="#1-4-评价指标" class="headerlink" title="1.4 评价指标"></a>1.4 评价指标</h3><p>对于分词结果的评价，主要参考五个指标，分别是精确率、召回率、F1值、OOV Recall Rate和IV Recall Rate。</p>
+<p>对于二分类问题，真实的样本标签有两类，模型预测的类别有两类，根据二者的类别组合可以划分为四组</p>
+<p><img src="/images/image-20230427082227560.png" srcset="/img/loading.gif" lazyload></p>
+<p>上表即为混淆矩阵，其中，行表示预测的label值，列表示真实label值。TP，FP，FN，TN分别表示如下意思：</p>
+<ul>
+<li>TP（true positive）：表示样本的真实类别为正，最后预测得到的结果也为正；</li>
+<li>FP（false positive）：表示样本的真实类别为负，最后预测得到的结果却为正；</li>
+<li>FN（false negative）：表示样本的真实类别为正，最后预测得到的结果却为负；</li>
+<li>TN（true negative）：表示样本的真实类别为负，最后预测得到的结果也为负；</li>
+</ul>
+<p>综上，TP和TN是预测准确的样本，而FP和FN为预测错误的样本。基于上述混淆矩阵，可以得到如下评价指标：</p>
+<p><img src="/images/image-20230427082440034.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>精确率：预测结果中，预测为正样本的样本中，正确预测为正样本的概率；</li>
+<li>召回率：在原始样本的正样本中，最后被正确预测为正样本的概率；</li>
+</ul>
+<p><img src="/images/image-20230427082455074.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>F1值：为了折中精确率和召回率的结果，引入了F1值，计算公式如上；</li>
+</ul>
+<p>但是分词问题并不等价于分类问题，计算上述指标之前需要先做转换。</p>
+<p>假设对于一段文本，每个单词在文本中所对应的位置为[a,b]，那么标准答案中，所有单词的区间构成一个集合A，而对于某一种切分规则，得到的分词结果的区间构成一个集合B。</p>
+<p>则集合A是所有的正确样本，即A 为TP 和 FN的并集，而B是分词器认为的正确样本，即TP和FP的并集，那么 TP 即为 A和B的交集</p>
+<p><img src="/images/image-20230427082723043.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="1-4-1-常规指标"><a href="#1-4-1-常规指标" class="headerlink" title="1.4.1 常规指标"></a>1.4.1 常规指标</h4><p>使用上述方法进行转换后就可以计算各个评价指标</p>
+<p><img src="/images/image-20230427082803999.png" srcset="/img/loading.gif" lazyload></p>
+<p>举一个简单的例子来看真实的处理情况</p>
+<p><img src="/images/image-20230427082918801.png" srcset="/img/loading.gif" lazyload></p>
+<p>因此精确率和召回率都是3&#x2F;5，召回率也是3&#x2F;5；</p>
+<h4 id="1-4-2-特殊指标"><a href="#1-4-2-特殊指标" class="headerlink" title="1.4.2 特殊指标"></a>1.4.2 特殊指标</h4><ul>
+<li>OOV Recall Rate：OOV是指未登录词，即未出现在词典中的词。OOV Recall Rate指的就是分词方法能够将未登录词找出来的能力（这意味着我们需要一个标准的词典），其计算方法如下：<ul>
+<li>首先计算正确分词结果中所有未登陆词的个数，作为分母</li>
+<li>计算基于某种分词方法得到的分词结果中分词正确部分中未登陆词的个数，作为分子（不是基于某种分词方法得到的分词结果中未登陆词的个数，而是分词正确的那部分中未登陆词的个数）</li>
+<li>分子分母相除，得到OOV Recall Rate</li>
+</ul>
+</li>
+<li>IV Recall Rate：IV指的是登陆词，相应的IV Recall Rate指的是词典中的词汇被正确召回的概率，其计算方法如下：<ul>
+<li>首先计算所有正确分词结果中所有登陆词的个数，作为分母</li>
+<li>计算基于某种分词方法得到的分词结果分词正确部分中登陆词的个数，作为分子（这里同样是正确分词部分，而非所有的分词结果）</li>
+<li>分子分母相除，得到IV Recall Rate</li>
+</ul>
+</li>
+</ul>
+<p>很明显的一点是基于词典匹配进行切分的分词方法是基于子词词典进行的，这意味着它发现新词的能力几乎为0（新词不包含新字），因此OOV这个指标在基于词典的分词中可以不使用。</p>
+<h2 id="2-任务陈述"><a href="#2-任务陈述" class="headerlink" title="2.任务陈述"></a>2.任务陈述</h2><p>实验要求采用BPE算法对中文文本进行分词处理，整个任务主要分为两个部分：</p>
+<ul>
+<li>第一个部分是训练部分，即程序通过输入的中文文本train_BPE.txt学习并输出model.pkl文件，该文件就是子词词表（约束子词词表大小为10000）；</li>
+<li>第二个部分是分词部分，即程序通过得到的model.pkl文件，对输入的测试语料test_BPE.txt文件进行中文分词并输出分词结果test_BPE_result.txt；</li>
+</ul>
+<p>下面是期望的输入和输出：</p>
+<p>train_BPE.txt</p>
+<p><img src="/images/image-20230414151638851.png" srcset="/img/loading.gif" lazyload></p>
+<p>model.pkl</p>
+<p><img src="/images/image-20230414150615093.png" srcset="/img/loading.gif" lazyload alt="model.pkl"></p>
+<p>test_BPE.txt</p>
+<p><img src="/images/image-20230414151725376.png" srcset="/img/loading.gif" lazyload></p>
+<p>test_BPE_result.txt</p>
+<p><img src="/images/image-20230414151801262.png" srcset="/img/loading.gif" lazyload></p>
+<p>限制和约束：</p>
+<ul>
+<li>所有提供的数据均为Unicode(UTF-8)编码，故输出文本也务必采用UTF-8编码；</li>
+<li>子词词表大小为10000；</li>
+</ul>
+<h2 id="3-算法设计"><a href="#3-算法设计" class="headerlink" title="3.算法设计"></a>3.算法设计</h2><p>整个算法主要分为两个部分，第一个部分是获取输入训练集并输出词表，第二部分是获取词表和测试数据并输出分词结果，在具体的实现中将其分别在train_BPE.py和test_BPE.py文件中创建两个类BPE_token_train和BPE_token_test，分别在两个类中实现算法的两个部分。utils.py文件主要包含了读取数据、更新数据等工具类函数，main.py是主函数，分别依次执行算法的第一部分和第二部分。</p>
+<p><img src="/images/image-20230414152442161.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-1-utils-py"><a href="#3-1-utils-py" class="headerlink" title="3.1 utils.py"></a>3.1 utils.py</h3><p>该文件作为工具类函数的汇总文件，主要包含常用的获取数据、初始化数据、更新数据等函数。</p>
+<h4 id="3-1-1-读取数据模块"><a href="#3-1-1-读取数据模块" class="headerlink" title="3.1.1 读取数据模块"></a>3.1.1 读取数据模块</h4><p>读取数据主要在三个地方：读入训练文本train_BPE.txt、读入词表mpdel.pkl以及读取测试文本test_BPE.txt，借助python内置的pickle库和文件库可以轻松的读取这些文件内部的数据。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_data</span>(<span class="hljs-params">file</span>):<br>    <span class="hljs-comment"># 从给定的文件名中获取训练数据集，使用readlines方法读入data中</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;Loading data from %s&#x27;</span> % file)<br>    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(file, <span class="hljs-string">&#x27;r&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>        line_list = f.readlines()<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;Data loading is completed.&#x27;</span>)<br>    <span class="hljs-keyword">return</span> line_list<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_vocabulary</span>(<span class="hljs-params">file</span>):<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;Loading vocabulary from %s&#x27;</span> % file)<br>    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(file, <span class="hljs-string">&#x27;rb&#x27;</span>) <span class="hljs-keyword">as</span> f: <span class="hljs-comment"># 读取模型文件</span><br>        vocab = pickle.load(f) <span class="hljs-comment"># 读取词典</span><br>        vocabulary = [v[<span class="hljs-number">0</span>] <span class="hljs-keyword">for</span> v <span class="hljs-keyword">in</span> vocab] <span class="hljs-comment"># 词表</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;Vocabulary loading is completed.&#x27;</span>)<br>    <span class="hljs-keyword">return</span> vocabulary<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_test_data</span>(<span class="hljs-params">file</span>):<br>    <span class="hljs-comment"># 从给定的文件名中获取测试数据集，使用readlines方法读入data中</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;Loading test data from %s&#x27;</span> % file)<br>    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(file, <span class="hljs-string">&#x27;r&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>        line_list = f.readlines()<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;Data loading is completed.&#x27;</span>)<br>    <span class="hljs-keyword">return</span> line_list<br></code></pre></td></tr></table></figure>
+
+<p>整个程序主要维护三个重要的数据结构，一个是book，一个是book_freq，另一个是vocabulary，book是经过处理的输入文本语料库（原始语料中存在大量重复的文本，需要进行处理以提高数据质量），book_freq统计了相应的频数（比如原始语料库中“【空军】”出现了6次，则book对应“【空军】”，book_freq对应的就是6），vocabulary是BPE算法依赖book和book_freq生成的词单元词典。</p>
+<h4 id="3-1-2-初始化模块"><a href="#3-1-2-初始化模块" class="headerlink" title="3.1.2 初始化模块"></a>3.1.2 初始化模块</h4><p>开始训练之前需要初始化这三个数据结构，初始化book和book_freq的函数如下，该函数接受三个参数：line_list、book和book_freq，其中line_list是一个字符串列表，每个字符串表示输入语料库中的一行文本（带换行符<code>&#39;\n&#39;</code>）</p>
+<p><img src="/images/image-20230414163429529.png" srcset="/img/loading.gif" lazyload alt="line_list"></p>
+<p>init_book函数首先删除行末尾的换行符，然后将行中的所有字符连接到一个字符串中（即x）并在每个字符串的末尾添加一个特殊的标记<code>“&lt;/w&gt;”</code>，以标记行末尾；</p>
+<p>接着函数检查x是否存在于temp_book中（具体方法就是利用temp_book中的key去检查去value，如果value&gt;1表示该key已经存在于book中），如果已存在则在book_freq中增加其相应的频数，反之则将该字单元添加到book中并在book_freq中将其对应频数设置为1。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">init_book</span>(<span class="hljs-params">line_list,book,book_freq</span>):<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;Initializing book...&#x27;</span>)<br>    temp_book = collections.defaultdict(<span class="hljs-built_in">int</span>)  <span class="hljs-comment"># 临时词典</span><br>    <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> tqdm(<span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(line_list))):<br>        sentence = line_list[line][:-<span class="hljs-number">1</span>] <span class="hljs-comment"># 去掉每行的换行符</span><br>        x = <span class="hljs-string">&#x27;&#x27;</span>.join(<span class="hljs-built_in">list</span>(sentence.strip())) + <span class="hljs-string">&#x27; &lt;/w&gt;&#x27;</span>  <span class="hljs-comment"># 在行末尾添加一个特殊的符号&lt;/w&gt;</span><br>        temp_book[x] += <span class="hljs-number">1</span> <span class="hljs-comment"># 对应词频加1</span><br>        <span class="hljs-keyword">if</span> temp_book[x] == <span class="hljs-number">1</span>: <span class="hljs-comment"># 如果是新单词，加入词典</span><br>            book.append(x)<br>            book_freq.append(<span class="hljs-number">1</span>)<br>        <span class="hljs-keyword">elif</span> temp_book[x] &gt; <span class="hljs-number">1</span>: <span class="hljs-comment"># 如果不是新单词，词频加1</span><br>            j = book.index(x)<br>            book_freq[j] += <span class="hljs-number">1</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Initialization of book is completed.&quot;</span>)  <span class="hljs-comment"># 初始化语料行完成</span><br>    <span class="hljs-keyword">return</span> book,book_freq<br></code></pre></td></tr></table></figure>
+
+<p>函数返回book和book_freq列表，作为BPE算法的起点，用于创建和更新vocabulary，函数返回的初始化book和book_freq分别如下</p>
+<p><img src="/images/image-20230414163208531.png" srcset="/img/loading.gif" lazyload alt="book"></p>
+<p><img src="/images/image-20230414163228254.png" srcset="/img/loading.gif" lazyload alt="book_freq"></p>
+<p>对于vocabulary也需要进行初始化创建，借助前面函数返回的book和book_freq列表，通过循环book列表中的每行以及book_freq中对应的频数，将book中每一行的字符串都拆分为单个汉字并统计其出现的频数（具体做法，如果book中的第一行是“人民网”，对应的book_freq中的频数为2，而book中的第二行是“人民”，对应的频数为3，则“人”、“民”、“网”在vocabulary中分别的频数为3，3，2）。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">init_vocabulary</span>(<span class="hljs-params">book,book_freq,vocabulary</span>):<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Initializing vocabulary...&quot;</span>) <span class="hljs-comment"># 初始化词汇词典</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> tqdm(<span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(book))):<br>        words = book[i].split()  <span class="hljs-comment"># 将每行的字符串分割成单个汉字</span><br>        <span class="hljs-keyword">for</span> word <span class="hljs-keyword">in</span> words:<br>            vocabulary[word] += book_freq[i]<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Initialization of vocabulary is completed.&quot;</span>)  <span class="hljs-comment"># 初始化词汇词典完成</span><br>    <span class="hljs-keyword">return</span> vocabulary<br></code></pre></td></tr></table></figure>
+
+<p>函数返回初始化过后的vocabulary，这是一个键值对的字典，键表示语料中单个的汉字，值表示该汉字在语料中出现了多少次</p>
+<p><img src="/images/image-20230414163313811.png" srcset="/img/loading.gif" lazyload alt="vocabulary"></p>
+<p>初始化之后的vocabulary大小为4734</p>
+<p><img src="/images/image-20230414171345115.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="3-1-3-更新模块"><a href="#3-1-3-更新模块" class="headerlink" title="3.1.3 更新模块"></a>3.1.3 更新模块</h4><p>根据前面所介绍的BPE算法的基本原理，拥有了基本的book、book_freq以及vocabulary之后，需要不断的迭代合并更新直到达到预设的subwords词表大小或下一个最高频的字节对出现频率为1，因此更新book、book_freq以及vocabulary是BPE算法的核心。</p>
+<p>在介绍更新之前，额外介绍一个工具函数get_book_pairs，其代码如下</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_book_pairs</span>(<span class="hljs-params">book,book_freq</span>):<br>    pairs = collections.defaultdict(<span class="hljs-built_in">int</span>)  <span class="hljs-comment"># 词对词典，key是词对，value是词频</span><br>    pairs_index = collections.defaultdict(<span class="hljs-built_in">list</span>)  <span class="hljs-comment"># 词对索引词典，key是词对，value是词对在book中的索引</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(book)):<br>        words = book[i].split()<br>        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(words) - <span class="hljs-number">1</span>):<br>            pairs[words[j], words[j + <span class="hljs-number">1</span>]] += book_freq[i]  <span class="hljs-comment"># 词对词频</span><br>            pairs_index[words[j], words[j + <span class="hljs-number">1</span>]].append(i)  <span class="hljs-comment"># 词对索引（所在行号）</span><br>    <span class="hljs-keyword">return</span> pairs,pairs_index<br></code></pre></td></tr></table></figure>
+
+<p>该函数的主要目的是根据book和book_freq构造pairs和pairs_index这两个字典，其中pairs的键是汉字对，值是汉字对出现的频数，pairs_index的键是汉字对，值是该汉字对对应的句子在book中的索引。在之后的更新pairs的过程中可以可以直接利用索引寻找其所来源的语料行，不需要将全部语料遍历一遍。</p>
+<p>下面给出pairs和pairs_index字典的结构</p>
+<p><img src="/images/image-20230414215504393.png" srcset="/img/loading.gif" lazyload alt="pairs"></p>
+<p><img src="/images/image-20230414215545061.png" srcset="/img/loading.gif" lazyload alt="pairs_index"></p>
+<p>更新模块主要包含更新book语料行以及更新pairs和pairs_index字典，首先更新pairs和pairs_index字典，该函数传入的参数为pairs,pairs_index,book，以及出现频率最高的单词对best（best通过max(pairs, key&#x3D;pairs.get)方法取较大者得到）。</p>
+<p>该方法首先从pairs_index字典中获取出现best对的所有行的索引</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">index = pairs_index[best]<br></code></pre></td></tr></table></figure>
+
+<p>接着对每一行将其单独拆分为汉字进行循环</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">words = book[i].split()<br></code></pre></td></tr></table></figure>
+
+<p>如果正在检查的当前词对与best对相同，则该方法按如下方式修改pairs以及pairs_index：</p>
+<ul>
+<li>如果词对不是该行中的第一个或最后一个词对，则该方法将最佳的第一个词与前一个词组合以形成新词对，并将最佳的第二个词与后一个词结合以形成另一个新词对。这些新词对的频率在pairs字典中递增，并且当前行的索引被附加到pairs_index字典中对应的值，同时两本词典中的旧单词对均需要被删除。</li>
+</ul>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs prolog">if <span class="hljs-number">0</span> &lt; j &lt; len(words)<span class="hljs-number">-1</span>: # 如果该词对不是首尾词对<br>	pairs[words[j<span class="hljs-number">-1</span>], <span class="hljs-string">&#x27;&#x27;</span>.join([words[j], best[<span class="hljs-number">0</span>]])] += <span class="hljs-number">1</span> # 修改词对词典<br>	pairs_index[words[j - <span class="hljs-number">1</span>], <span class="hljs-string">&#x27;&#x27;</span>.join([words[j], best[<span class="hljs-number">0</span>]])].append(i) # 修改词对索引词典<br>	pairs[<span class="hljs-string">&#x27;&#x27;</span>.join([words[j], best[<span class="hljs-number">1</span>]]), words[j+<span class="hljs-number">2</span>]] += <span class="hljs-number">1</span> # 修改词对词典<br>	pairs_index[<span class="hljs-string">&#x27;&#x27;</span>.join([words[j], best[<span class="hljs-number">1</span>]]), words[j+<span class="hljs-number">2</span>]].append(i) # 修改词对索引词典<br>	del pairs[words[j<span class="hljs-number">-1</span>], words[j]] # 删除词对词典中的词对<br>	del pairs_index[words[j<span class="hljs-number">-1</span>], words[j]] # 删除词对索引词典中的词对<br>	del pairs[words[j], words[j+<span class="hljs-number">2</span>]] # 删除词对词典中的词对<br>	del pairs_index[words[j], words[j+<span class="hljs-number">2</span>]] # 删除词对索引词典中的词对<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>如果词对是行中的第一个词对，则该方法将最佳的第二个词与下一个词组合以形成新的词对。这个新词对的频率在pairs字典中递增，并且当前行的索引被附加到其在pairs_index字典中的值，同时旧词对从两本词典中删除。</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">elif</span> j == <span class="hljs-number">0</span>:<br>	pairs[<span class="hljs-string">&#x27;&#x27;</span>.join([words[j], best[<span class="hljs-number">1</span>]]), words[j + <span class="hljs-number">2</span>]] += <span class="hljs-number">1</span><br>	pairs_index[<span class="hljs-string">&#x27;&#x27;</span>.join([words[j], best[<span class="hljs-number">1</span>]]), words[j + <span class="hljs-number">2</span>]].append(i)<br>	<span class="hljs-keyword">del</span> pairs[words[j], words[j + <span class="hljs-number">2</span>]]<br>	<span class="hljs-keyword">del</span> pairs_index[words[j], words[j + <span class="hljs-number">2</span>]]<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>如果词对是行中的最后一个词对，则该方法将最佳的第一个词与前一个词组合以形成新的词对。这个新词对的频率在pairs字典中递增，并且当前行的索引被附加到其在pairs_index字典中的值，同时旧词对从两本词典中删除。</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">else</span>:<br>	pairs[words[j - <span class="hljs-number">1</span>], <span class="hljs-string">&#x27;&#x27;</span>.join([words[j], best[<span class="hljs-number">0</span>]])] += <span class="hljs-number">1</span><br>	pairs_index[words[j - <span class="hljs-number">1</span>], <span class="hljs-string">&#x27;&#x27;</span>.join([words[j], best[<span class="hljs-number">0</span>]])].append(i)<br>	<span class="hljs-keyword">del</span> pairs[words[j - <span class="hljs-number">1</span>], words[j]]<br>	<span class="hljs-keyword">del</span> pairs_index[words[j - <span class="hljs-number">1</span>], words[j]]<br></code></pre></td></tr></table></figure>
+
+<p>最后，函数从pairs和pairs_best中删除best对并返回更新后的pairs和pairs_index字典。</p>
+<p>在修改完pairs以及pairs_index后，需要对book语料行进行更新。参数为新增的词对，借助book_freq可以快速定位到change所在语料行，进行分词更新</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">update_book</span>(<span class="hljs-params">book,pairs_index,change</span>):<br>    word = re.escape(<span class="hljs-string">&#x27; &#x27;</span>.join(change))<br>    <span class="hljs-keyword">for</span> l <span class="hljs-keyword">in</span> pairs_index[change]:<br>        book[l] = re.sub(word, <span class="hljs-string">&#x27;&#x27;</span>.join(change), book[l])<br></code></pre></td></tr></table></figure>
+
+<p>借助pycharm的debug我们可以跟踪前几步的更新过程来理解上述代码</p>
+<p><img src="/images/image-20230414215747286.png" srcset="/img/loading.gif" lazyload alt="第一次更新"><img src="/images/image-20230414215853717-168148079925419.png" srcset="/img/loading.gif" lazyload><img src="/images/image-20230414215934644-168148079925420-168148080291823.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20230414220040894.png" srcset="/img/loading.gif" lazyload><img src="/images/image-20230414220104108.png" srcset="/img/loading.gif" lazyload><img src="/images/image-20230414223817582.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-2-train-BPE-py"><a href="#3-2-train-BPE-py" class="headerlink" title="3.2 train_BPE.py"></a>3.2 train_BPE.py</h3><p>该文件是完成分词第一部分任务的文件，获取输入文件train_BPE.txt，输出模型文件model.pkl，主要定义了一个BPE_token_train类来实现该任务。</p>
+<p>BPE_token_train类主要有以下属性</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self,<span class="hljs-built_in">len</span></span>):<br>	self.file = <span class="hljs-string">&#x27;train_BPE.txt&#x27;</span>  <span class="hljs-comment"># 语料文件</span><br>	self.vocabulary = collections.defaultdict(<span class="hljs-built_in">int</span>)  <span class="hljs-comment"># vocabulary,key是词，value是词频</span><br>	self.book = []<br>	self.line_list = []<br>	self.book_freq = []<br>	self.max_len = <span class="hljs-built_in">len</span>  <span class="hljs-comment"># 词典最大长度</span><br></code></pre></td></tr></table></figure>
+
+<p>book、vocabulary以及book_freq在前面我们已经介绍过，而file是训练语料的路径，line_list列表用于接受从训练语料中读取得到的data，后续将用于book和book_freq的初始化，mac_len指定了词典的最大的长度，这意味着当词典的长度大于max_len的时候程序结束并输出model.pkl文件。</p>
+<p>BPE_token_train的train方法流程如下：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs py">self.line_list = get_data(self.file)<br>init_book(self.line_list,self.book,self.book_freq)<br>init_vocabulary(self.book,self.book_freq,self.vocabulary)<br>pairs,pairs_index = get_book_pairs(self.book,self.book_freq)<br></code></pre></td></tr></table></figure>
+
+<ol>
+<li><p>使用line_list接受来自训练语料train_BPE.txt的data；</p>
+</li>
+<li><p>初始化book和book_freq；</p>
+</li>
+<li><p>初始化vocabulary；</p>
+</li>
+<li><p>初始化pairs和pairs_index；</p>
+</li>
+<li><p>进入主循环，循环终止条件为词典长度大于max_len</p>
+<ul>
+<li><p>在每次循环的迭代中，选择book中频数最高的一对词对；</p>
+</li>
+<li><p>使用best词对更新book；</p>
+</li>
+<li><p>使用best词对更新pairs和pairs_index字典；</p>
+</li>
+<li><p>将best词对加入vocabulary中；</p>
+</li>
+</ul>
+</li>
+</ol>
+ <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">while</span> <span class="hljs-built_in">len</span>(self.vocabulary) &lt; self.max_len:<br>	k = <span class="hljs-built_in">len</span>(self.vocabulary)<br>	best = <span class="hljs-built_in">max</span>(pairs, key=pairs.get)<br>	update_book(self.book,pairs_index,best)<br>	pairs, pairs_index = update_book_pairs(pairs,pairs_index,self.book,best)<br>	self.vocabulary[<span class="hljs-string">&#x27;&#x27;</span>.join(best)] += <span class="hljs-number">1</span><br>	<span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(self.vocabulary) &gt; k:<br>		pbar.update(<span class="hljs-number">1</span>)<br></code></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>退出主循环之后使用内置sort函数对vocubulary排序，排序后的结果存储在一个元组列表sorted_tokens_tuple（优先按照长度排序，齐次按照频数排序）<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs py">sorted_tokens_tuple = <span class="hljs-built_in">sorted</span>(self.vocabulary.items(),key=<span class="hljs-keyword">lambda</span> item: (<span class="hljs-built_in">len</span>(item[<span class="hljs-number">0</span>]), item[<span class="hljs-number">1</span>]),reverse=<span class="hljs-literal">True</span>)<br>````<br><span class="hljs-number">7.</span> 最后将该元组列表写入model.pkl文件中结束第一部分<br><br>```py<br>F = <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;model.pkl&#x27;</span>, <span class="hljs-string">&#x27;wb&#x27;</span>)  <span class="hljs-comment"># 打开模型文件</span><br>pickle.dump(sorted_tokens_tuple, F)  <span class="hljs-comment"># 将词典写入模型文件</span><br>F.close()  <span class="hljs-comment"># 关闭模型文件</span><br></code></pre></td></tr></table></figure></li>
+</ol>
+<p>执行完train()方法后将得到长度为10000的vocabulary如下</p>
+<p><img src="/images/image-20230414224011498.png" srcset="/img/loading.gif" lazyload></p>
+<p>因为在迭代的过程中会同时更新book和book_pair，可以看到最后book中的单字已经根据besi对的原则组合在一起</p>
+<p><img src="/images/image-20230414224146526.png" srcset="/img/loading.gif" lazyload></p>
+<p>待写入的sorted_tokens_tuple在根据长度和频数的排序后结果如下</p>
+<p><img src="/images/image-20230414224549257.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-3-test-BPE-py"><a href="#3-3-test-BPE-py" class="headerlink" title="3.3 test_BPE.py"></a>3.3 test_BPE.py</h3><p>这是完成BPE中文文本分词第二部分的文件，主要实现了一个BPE_token_test类，该类利用其test方法对测试文件test_BPE.txt进行分词。</p>
+<p>BPE_token_test类主要有以下两个属性</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs py">self.vocabulary = []  <span class="hljs-comment"># 词表</span><br>self.line_list = []  <span class="hljs-comment"># 测试语料行</span><br></code></pre></td></tr></table></figure>
+
+<p>其中vocabulary就是从model.pkl文件中读取出来的第一部分经过训练得到的词表，line_list列表中保存的是来自测试语料test_BPE.txt文件中的data，可以看到从model.pkl文件中读出来的vocabulary就是在上个部分中的sorted_tokens_tuple去除频数的结果。</p>
+<p><img src="/images/image-20230414224850327.png" srcset="/img/loading.gif" lazyload></p>
+<p>在test方法中使用了try…except…finally异常处理结构，目的是避免出现异常导致测试文件无法关闭或被意外修改。如果在测试过程中发生任何异常，except块将捕获它们并打印错误消息。无论是否捕捉到异常，finally块都将始终执行，并且在打开输出文件时将关闭该文件。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs py">self.vocabulary = get_vocabulary(<span class="hljs-string">&#x27;model.pkl&#x27;</span>)<br>self.line_list = get_test_data(<span class="hljs-string">&#x27;test_BPE.txt&#x27;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;Start testing...&#x27;</span>)<br>f = <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;test_BPE_result.txt&#x27;</span>, <span class="hljs-string">&#x27;w&#x27;</span>)<br><span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> tqdm(<span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(self.line_list))):<br>	corpus = self.line_list[line]<br>	<span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> self.vocabulary:<br>		<span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(j) &gt; <span class="hljs-number">1</span>:<br>			corpus = re.sub(re.escape(<span class="hljs-string">&#x27; &#x27;</span>.join((j[<span class="hljs-number">0</span>],j[<span class="hljs-number">1</span>:]))),j,corpus)<br>f.write(<span class="hljs-built_in">str</span>(corpus)[:-<span class="hljs-number">2</span>] + <span class="hljs-string">&#x27; &lt;/w&gt;&#x27;</span> + <span class="hljs-string">&#x27;\n&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<p>test()方法在line_list列表中（也就是测试语料）的每一行上循环，并通过相应的词对替换语料行中与vocabulary词典的词对匹配的词对，这也称为BPE的解码，得到的解码行将被写入test_BPE_result.txt的新文件中，同时在解码行的最后加入<code>&lt;\w&gt;</code>以标识边界。</p>
+<h3 id="3-4-Compare-Com-ipynb"><a href="#3-4-Compare-Com-ipynb" class="headerlink" title="3.4 Compare_Com.ipynb"></a>3.4 Compare_Com.ipynb</h3><p>对于分词结果的评价，前面已经介绍过，这里我们在notebook环境中分模块实现评价指标的计算。</p>
+<p>因为并没有找到一个标准的分词答案，所以我选择了现在比较流行的中文分词库jieba的分词结果作为参考答案，使用jieba对测试数据进行分词前需要先将原始测试数据中的空格去除</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 去除原始测试语料的空格</span><br>input_file = <span class="hljs-string">&#x27;test_BPE.txt&#x27;</span><br>middle_file = <span class="hljs-string">&#x27;middle.txt&#x27;</span><br><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(input_file, <span class="hljs-string">&#x27;r&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> input_file, <span class="hljs-built_in">open</span>(middle_file, <span class="hljs-string">&#x27;w&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> output_file:<br>    <span class="hljs-comment"># Iterate over each line in the input file</span><br>    <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> input_file:<br>        <span class="hljs-comment"># Remove all spaces from the line</span><br>        line_without_spaces = line.replace(<span class="hljs-string">&#x27; &#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>)<br>        <span class="hljs-comment"># Write the modified line to the output file</span><br>        output_file.write(line_without_spaces)<br></code></pre></td></tr></table></figure>
+
+<p>去除空格后便可以直接使用jieba库对文本逐行进行分词处理，并将处理过后的结果存储在standard.txt文件中作为标准答案，文件部分内容如下</p>
+<p><img src="/images/image-20230427104619511.png" srcset="/img/loading.gif" lazyload></p>
+<p>直观上看jieba的分词效果的确更符合汉语的使用习惯，因此使用该分词结果作为标准答案有一定道理。</p>
+<p>前面分词得到的文本文件中在结尾处为了标识结束因此添加了<code>&lt;/w&gt;</code>标志，但是在jieba分词的结果中并没有，因此我们需要对其进行处理，将BPE分词结果中的后缀<code>&lt;/w&gt;</code>删除</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 去除BPE分词结果中的&lt;/w&gt;结束标签</span><br>input_file = <span class="hljs-string">&#x27;BPE_v2.txt&#x27;</span><br>middle_file = <span class="hljs-string">&#x27;BPE_v2_new.txt&#x27;</span><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(input_file, <span class="hljs-string">&#x27;r&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> input_file, <span class="hljs-built_in">open</span>(middle_file, <span class="hljs-string">&#x27;w&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> output_file:<br>    <span class="hljs-comment"># Iterate over each line in the input file</span><br>    <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> input_file:<br>        <span class="hljs-comment"># Remove all spaces from the line</span><br>        line_clean = line.replace(<span class="hljs-string">&#x27;&lt;/w&gt;&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>)<br>        <span class="hljs-comment"># Write the modified line to the output file</span><br>        output_file.write(line_clean)<br></code></pre></td></tr></table></figure>
+
+<p>jieba分词文本和BPE分词文本均准备好之后，就可以开始进行指标计算的数据准备工作了。</p>
+<p>在计算分词指标的时候我们需要用到标准词典，这个词典的作用在于计算IV（为什么不计算OOV在前面已经说过），这里我们还是借助jieba分词对原始测试数据进行提取，得到标准词典</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 基准词典提取</span><br>words = []<br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;middle.txt&#x27;</span>, <span class="hljs-string">&#x27;r&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> f_in:<br>    <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> f_in:<br>        words = words + <span class="hljs-built_in">list</span>(jieba.cut(line))<br>word_dict = &#123;&#125;<br><span class="hljs-keyword">for</span> word <span class="hljs-keyword">in</span> words:<br>    <span class="hljs-keyword">if</span> word <span class="hljs-keyword">in</span> word_dict:<br>        word_dict[word] += <span class="hljs-number">1</span><br>    <span class="hljs-keyword">else</span>:<br>        word_dict[word] = <span class="hljs-number">1</span>        <br>sorted_word_dict = <span class="hljs-built_in">sorted</span>(word_dict.items(), key=<span class="hljs-keyword">lambda</span> x: x[<span class="hljs-number">1</span>], reverse=<span class="hljs-literal">True</span>) <span class="hljs-comment"># each tuple contains a word and its frequency count</span><br><span class="hljs-built_in">print</span>(sorted_word_dict)<br></code></pre></td></tr></table></figure>
+
+<p>上述代码返回的词典是一个tuple类型的值，第一个数值表示词典中词的值，第二个数值表示该词出现的频数，部分词典内容如下</p>
+<p><img src="/images/image-20230427105530276.png" srcset="/img/loading.gif" lazyload></p>
+<p>接着定义区间转换函数，也就是将已经分词了的一句话中的词转换为对应的区间，这一步是必须的，因为这不是分类问题无法直接计算Presicion等指标。</p>
+<p>其基本思想也非常简单，即利用空格作为判断依据，从左往右给对应的词赋予区间即可。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 区间转换函数</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">to_region_set</span>(<span class="hljs-params">segment_str</span>):<br>    <span class="hljs-comment"># input : 就读 于 中国人民大学</span><br>    <span class="hljs-comment"># return：[(0,1),(2,2),(3,8)] 闭区间</span><br>    region =[]<br>    start = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">for</span> word <span class="hljs-keyword">in</span> segment_str.split(<span class="hljs-string">&quot; &quot;</span>):<br>        end = start + <span class="hljs-built_in">len</span>(word)<br>        region.append((start,end-<span class="hljs-number">1</span>))<br>        start = end<br>    <span class="hljs-keyword">return</span> region<br></code></pre></td></tr></table></figure>
+
+<p>最后是计算指标的prf函数，其输入是标准答案、预测答案以及标准词典，代码中有详细的解释这里就不再赘述</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">prf</span>(<span class="hljs-params">gt:<span class="hljs-built_in">list</span>,pred:<span class="hljs-built_in">list</span>,dic</span>):<br>    A_size = <span class="hljs-number">0</span> <span class="hljs-comment"># 基准集合大小</span><br>    B_size = <span class="hljs-number">0</span> <span class="hljs-comment"># 预测集合大小</span><br>    A_cap_B_size = <span class="hljs-number">0</span> <span class="hljs-comment"># 基准集合和预测集合的交集大小</span><br>    IV = <span class="hljs-number">0</span> <span class="hljs-comment"># IV分母</span><br>    IV_R = <span class="hljs-number">0</span> <span class="hljs-comment"># IV分子</span><br>    <span class="hljs-keyword">for</span> g,p <span class="hljs-keyword">in</span> <span class="hljs-built_in">list</span>(<span class="hljs-built_in">zip</span>(gt,pred)): <span class="hljs-comment"># 使用 zip 函数并行迭代每个基准文本和预测文本的对</span><br>        <span class="hljs-comment"># 对于每个对，使用辅助函数 to_region_set 创建基准文本和预测文本的区域元组（起始点，结束点）的集合</span><br>        A,B = <span class="hljs-built_in">set</span>(to_region_set(g)),<span class="hljs-built_in">set</span>(to_region_set(p)) <br>        A_size += <span class="hljs-built_in">len</span>(A) <span class="hljs-comment"># 计算基准集合大小</span><br>        B_size += <span class="hljs-built_in">len</span>(B) <span class="hljs-comment"># 计算预测集合大小</span><br>        A_cap_B_size += <span class="hljs-built_in">len</span>(A &amp; B) <span class="hljs-comment"># 基准集合和预测集合交集的大小</span><br>        org_text = g.replace(<span class="hljs-string">&quot; &quot;</span>, <span class="hljs-string">&quot;&quot;</span>) <span class="hljs-comment"># 还原回分词前的文档</span><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;org_text:&quot;</span>,org_text)<br>        <span class="hljs-keyword">for</span>(start,end) <span class="hljs-keyword">in</span> A:<br>            word = org_text[start:end+<span class="hljs-number">1</span>]<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;word in A:&quot;</span>,word)<br>            <span class="hljs-keyword">if</span> word <span class="hljs-keyword">in</span> dic:<br>                IV += <span class="hljs-number">1</span> <span class="hljs-comment"># 基准集合中的IV单词数量</span><br>        <span class="hljs-keyword">for</span>(start,end) <span class="hljs-keyword">in</span> A &amp; B: <span class="hljs-comment"># 对于基准集合和预测集合的交集，该函数计算IV单词的数量</span><br>            word = org_text[start:end+<span class="hljs-number">1</span>]<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;word in A&amp;B:&quot;</span>,word)<br>            <span class="hljs-keyword">if</span> word <span class="hljs-keyword">in</span> dic:<br>                IV_R += <span class="hljs-number">1</span><br>    <br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;A:&quot;</span>,A_size,<span class="hljs-string">&quot;B:&quot;</span>,B_size,<span class="hljs-string">&quot;A_cap_B_size&quot;</span>,A_cap_B_size)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;IV:&quot;</span>,IV,<span class="hljs-string">&quot;IV_R&quot;</span>,IV_R)<br><br>    <br>    precision = A_cap_B_size / B_size<br>    recall = A_cap_B_size / A_size<br>    F1 = <span class="hljs-number">2</span> * precision * recall / (precision + recall)<br><br>    IV_Recall_Rate = IV_R / IV<br>    <span class="hljs-comment"># 将计算的值作为元组 (精确度，召回率，F1分数，IV召回率) 返回</span><br>    <span class="hljs-keyword">return</span> precision,recall,F1,IV_Recall_Rate<br></code></pre></td></tr></table></figure>
+
+<p>中间的print是为了让我们更加直观的理解评价过程中的计算原理，比如对于这样一段文本</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">“记者<span class="hljs-number">1</span>月<span class="hljs-number">15</span>日从上海铁路局淮南西站获悉,淮南铁路预计春运期间发送旅客<span class="hljs-number">33.3</span>万人。预计客流最高峰日为<span class="hljs-number">2</span>月<span class="hljs-number">6</span>日,将发送旅客<span class="hljs-number">1.8</span>万人,淮南东开往广州南及北京方向的高铁、淮南站开往沪杭甬方向的列车将是热门车次。”<br></code></pre></td></tr></table></figure>
+
+<p>基准集合记录了jieba对于文本的分词结果，预测集合记录了BPE对于文本的分词结果，下面是基准集合中的内容</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><code class="hljs less"><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: 将<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: 铁路<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: ,<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: 月<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: 日<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: 日<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: 开往<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: 站<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: <span class="hljs-number">6</span><br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: 开往<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: 从<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: 沪杭甬<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: 车次<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: 发送<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: 列车<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: 热门<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: 万人<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: 旅客<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: 高铁<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: 旅客<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: 月<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: 淮南<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: 春运期间<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: 东<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: 发送<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: <span class="hljs-number">1</span><br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: <span class="hljs-number">2</span><br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: 方向<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: ,<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: 的<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: 。<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: <span class="hljs-number">15</span><br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: 最高峰<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: <br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: 预计<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: 南及<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: 淮南<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: <span class="hljs-number">33.3</span><br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: 客流<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: 北京<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: 淮南<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: 记者<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: 获悉<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: 日为<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: 万人<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: <span class="hljs-number">1.8</span><br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: 的<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: 上海铁路局<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: 淮南<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: ,<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: 方向<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: 将<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: 预计<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: 。<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: 、<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: 广州<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: 西站<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span>: 是<br></code></pre></td></tr></table></figure>
+
+<p>A&amp;B表示基准集合和预测集合的交集，也就是BPE分词和jieba分词对于同一段文本做出的相同的分词结果，我们认为这是正确分词的结果</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs less"><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span><span class="hljs-selector-tag">&amp;</span><span class="hljs-selector-tag">B</span>: 铁路<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span><span class="hljs-selector-tag">&amp;</span><span class="hljs-selector-tag">B</span>: ,<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span><span class="hljs-selector-tag">&amp;</span><span class="hljs-selector-tag">B</span>: 站<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span><span class="hljs-selector-tag">&amp;</span><span class="hljs-selector-tag">B</span>: 从<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span><span class="hljs-selector-tag">&amp;</span><span class="hljs-selector-tag">B</span>: 列车<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span><span class="hljs-selector-tag">&amp;</span><span class="hljs-selector-tag">B</span>: 旅客<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span><span class="hljs-selector-tag">&amp;</span><span class="hljs-selector-tag">B</span>: 旅客<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span><span class="hljs-selector-tag">&amp;</span><span class="hljs-selector-tag">B</span>: 东<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span><span class="hljs-selector-tag">&amp;</span><span class="hljs-selector-tag">B</span>: 方向<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span><span class="hljs-selector-tag">&amp;</span><span class="hljs-selector-tag">B</span>: ,<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span><span class="hljs-selector-tag">&amp;</span><span class="hljs-selector-tag">B</span>: 。<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span><span class="hljs-selector-tag">&amp;</span><span class="hljs-selector-tag">B</span>: 最高峰<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span><span class="hljs-selector-tag">&amp;</span><span class="hljs-selector-tag">B</span>: 预计<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span><span class="hljs-selector-tag">&amp;</span><span class="hljs-selector-tag">B</span>: 北京<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span><span class="hljs-selector-tag">&amp;</span><span class="hljs-selector-tag">B</span>: 客流<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span><span class="hljs-selector-tag">&amp;</span><span class="hljs-selector-tag">B</span>: 记者<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span><span class="hljs-selector-tag">&amp;</span><span class="hljs-selector-tag">B</span>: 获悉<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span><span class="hljs-selector-tag">&amp;</span><span class="hljs-selector-tag">B</span>: 的<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span><span class="hljs-selector-tag">&amp;</span><span class="hljs-selector-tag">B</span>: ,<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span><span class="hljs-selector-tag">&amp;</span><span class="hljs-selector-tag">B</span>: 方向<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span><span class="hljs-selector-tag">&amp;</span><span class="hljs-selector-tag">B</span>: 将<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span><span class="hljs-selector-tag">&amp;</span><span class="hljs-selector-tag">B</span>: 预计<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span><span class="hljs-selector-tag">&amp;</span><span class="hljs-selector-tag">B</span>: 。<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span><span class="hljs-selector-tag">&amp;</span><span class="hljs-selector-tag">B</span>: 、<br><span class="hljs-selector-tag">word</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">A</span><span class="hljs-selector-tag">&amp;</span><span class="hljs-selector-tag">B</span>: 广州<br></code></pre></td></tr></table></figure>
+
+<p>IV值的计算方式如下：</p>
+<ul>
+<li>首先计算所有正确分词结果中所有登陆词的个数，作为分母</li>
+<li>计算基于某种分词方法得到的分词结果分词正确部分中登陆词的个数，作为分子（这里同样是正确分词部分，而非所有的分词结果）</li>
+<li>分子分母相除，得到IV Recall Rate</li>
+</ul>
+<p>即借助BPE正确分词结果&#x2F;jieba分词结果。</p>
+<p>评价指标的相关函数已经定义完毕，接下来需要将手中的数据格式进行一定的转换以输入prf函数。</p>
+<p>将以行为单位将标准答案和BPE分词文本分别加入gt_list和pred_list中，同时将前面tuple类型的词典中的第一个元素提取出来作为标准词典</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs py">gt_list = []<br>pred_list = []   <br><span class="hljs-comment"># dict_set = sorted_word_dict # 此处不能直接等于，一个是list一个是tuple</span><br>dict_set = [x <span class="hljs-keyword">for</span> x,_ <span class="hljs-keyword">in</span> sorted_word_dict]<br><br><span class="hljs-comment"># count = 0</span><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;standard.txt&#x27;</span>, <span class="hljs-string">&#x27;r&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> f_true, <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;BPE_v2_new.txt&#x27;</span>, <span class="hljs-string">&#x27;r&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> f_pre:<br>    <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> f_true:<br><span class="hljs-comment">#         gt_list += line</span><br><span class="hljs-comment">#         print(str(count)+&#x27;:&#x27;+line)</span><br>        gt_list.append(line)<br><span class="hljs-comment">#         count += 1</span><br>    <span class="hljs-keyword">for</span> line_p <span class="hljs-keyword">in</span> f_pre:<br>        pred_list.append(line_p)<br></code></pre></td></tr></table></figure>
+
+<p>由此我们得到了prf函数的三个输入分别如下</p>
+<p><img src="/images/image-20230427111103385.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20230427111126429.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20230427111146397.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="4-结果测评"><a href="#4-结果测评" class="headerlink" title="4.结果测评"></a>4.结果测评</h2><h3 id="4-1-原始结果"><a href="#4-1-原始结果" class="headerlink" title="4.1 原始结果"></a>4.1 原始结果</h3><p>实验要求输出结果为子词词表和子词切割结果，其中子词词表一行一个，单个字符之间不用空格；子词切割结果和语料格式一样用空格分隔，子词合并。</p>
+<p>下面是子词词表的结果，一共10000个子词（仅展示部分）</p>
+<p><img src="/images/image-20230421194701225.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20230421194802886.png" srcset="/img/loading.gif" lazyload></p>
+<p>可以看到子词词表中有很多标点符号，这其实并不是我们想要的结果。一般来说中英文标点一般来说不是词汇的组成部分，因此标点出现在子词词表中不合理，我们将在之后进行处理。</p>
+<p>依据上面的子词词表切分得到的结果如下（仅展示部分），切分效果一般，某些较明显的词汇并未合并。</p>
+<p><img src="/images/image-20230421195046873.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="4-2-优化处理"><a href="#4-2-优化处理" class="headerlink" title="4.2 优化处理"></a>4.2 优化处理</h3><p>中英文标点一般来说不是词汇的组成部分，因此可以将训练数据中的标点符号全部替换为’#’</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">replace_punctuation</span>(<span class="hljs-params">text</span>):<br>    <span class="hljs-comment"># Replace all punctuation</span><br>    puncs = [<span class="hljs-string">&#x27;。&#x27;</span>, <span class="hljs-string">&#x27;，&#x27;</span>, <span class="hljs-string">&#x27;？&#x27;</span>, <span class="hljs-string">&#x27;！&#x27;</span>, <span class="hljs-string">&#x27;；&#x27;</span>, <span class="hljs-string">&#x27;：&#x27;</span>, <span class="hljs-string">&#x27;、&#x27;</span>, <span class="hljs-string">&#x27;（&#x27;</span>, <span class="hljs-string">&#x27;）&#x27;</span>, <span class="hljs-string">&#x27;「&#x27;</span>,<br>            <span class="hljs-string">&#x27;」&#x27;</span>, <span class="hljs-string">&#x27;“&#x27;</span>, <span class="hljs-string">&#x27;”&#x27;</span>, <span class="hljs-string">&#x27;‘&#x27;</span>, <span class="hljs-string">&#x27;’&#x27;</span>, <span class="hljs-string">&#x27;《&#x27;</span>, <span class="hljs-string">&#x27;》&#x27;</span>, <span class="hljs-string">&#x27;【&#x27;</span>, <span class="hljs-string">&#x27;】&#x27;</span>, <span class="hljs-string">&#x27;…&#x27;</span>, <span class="hljs-string">&#x27;—&#x27;</span>, <span class="hljs-string">&#x27;～&#x27;</span>, <span class="hljs-string">&#x27;　&#x27;</span>,<br>            <span class="hljs-string">&#x27;,&#x27;</span>, <span class="hljs-string">&#x27;?&#x27;</span>, <span class="hljs-string">&#x27;!&#x27;</span>, <span class="hljs-string">&#x27;;&#x27;</span>, <span class="hljs-string">&#x27;:&#x27;</span>,<br>            <span class="hljs-string">&#x27;(&#x27;</span>, <span class="hljs-string">&#x27;)&#x27;</span>, <span class="hljs-string">&#x27;&quot;&#x27;</span>, <span class="hljs-string">&#x27;&quot;&#x27;</span>, <span class="hljs-string">&#x27;\&#x27;&#x27;</span>, <span class="hljs-string">&#x27;\&#x27;&#x27;</span>, <span class="hljs-string">&#x27;&lt;&#x27;</span>, <span class="hljs-string">&#x27;&gt;&#x27;</span>, <span class="hljs-string">&#x27;[&#x27;</span>, <span class="hljs-string">&#x27;]&#x27;</span>, <span class="hljs-string">&#x27;...&#x27;</span>, <span class="hljs-string">&#x27;~&#x27;</span>]<br>    <span class="hljs-keyword">for</span> char <span class="hljs-keyword">in</span> puncs:<br>        text = text.replace(char, <span class="hljs-string">&quot;#&quot;</span>)<br>    <span class="hljs-keyword">return</span> text<br></code></pre></td></tr></table></figure>
+
+<p>注意某些标点符号不能删除，可能导致分词不准确，比如’%’或’.’。对标点符号处理过后得到的子词词表如下</p>
+<p><img src="/images/image-20230421214208796.png" srcset="/img/loading.gif" lazyload></p>
+<p>与之前的结果相比，明显可以看到减少了无意义的标点符号的组合，应用该词表进行匹配时，因为test文本中几乎不会出现’#’符号与其他字的组合，所以词表中与’#’组合的字以及标点符号都会被作为未知单字处理，这些组合一般也符合单字的划分，比如’的#’、’而#’等。使用上述优化过的词表对test文本进行划分得到如下文本</p>
+<p><img src="/images/image-20230421214148015.png" srcset="/img/loading.gif" lazyload></p>
+<p>可以看到，与之前的结果相比，本次划分结果不仅将行结束符<code>&lt;/w&gt;</code>与文本划分，同时也将标点符号与文本划分，对于数字如’5.6%’也进行了合理的划分。</p>
+<h3 id="4-3-评价指标"><a href="#4-3-评价指标" class="headerlink" title="4.3 评价指标"></a>4.3 评价指标</h3><p>借助前面的Compare_Com.ipynb可以对分词的结果做评测，具体函数定义在前面已经介绍过，这里我们直接看结果</p>
+<p><img src="/images/image-20230427111620956.png" srcset="/img/loading.gif" lazyload><img src="/images/image-20230427111347754.png" srcset="/img/loading.gif" lazyload></p>
+<p>第一个是使用原始结果即BPE_v1.txt与标准答案进行比对的结果，第二个是在进行了优化处理过后的BPE_v2.txt与标准答案及逆行比对的结果。可以看到相对于不做任何处理的BPE算法来说，在处理了标点符号之后的分词效果有了明显的提升（尽管提升过后的效果也并不是非常好）。关于指标为什么不是特别好看，一方面因为使用jieba分词的答案作为标准答案其实本身就认为jieba的分词效果比BPE好，同时前面也介绍过BPE常用于英文分词，中文对其有一定的挑战。同时我们的算法还有可以进一步优化的地方，比如数据去重、并行优化计算、增加数据集大小等，这些都是影响最终BPE分词结果的因素。</p>
+<p>综上所述，jieba库是专门为中文文本分词而设计，该库经过大量的中文文本数据训练，可以有效地对中文文本进行分词，特别是在处理习惯用语和罕见单词方面。相比之下，BPE是一种用于文本分词的通用算法，需要预定义数量的子单词，并且可能未经过针对中文语言细微差别的优化，无法有效地捕捉语言的重要语言特征。此外，BPE用于中文文本分词的性能取决于用于训练的具体参数，例如合并次数或词汇表大小。因此，单独使用BPE算法解决中文分词问题不是一个推荐的选择。</p>
+<h2 id="5-实验总结"><a href="#5-实验总结" class="headerlink" title="5.实验总结"></a>5.实验总结</h2><p>BPE字节对编码是NLP中常用的文本分割算法，尽管BPE算法对于英文文本的分词效果更好（因为中文文本缺乏明确的分隔符，只能先划分为单个的字），但在具体进行实验测试后，发现BPE算法还是在一定程度上解决中文文本分词任务。并且经查资料得知，BPE算法与其他两种流行的分割算法即MM最大匹配和条件随机场CRF在进行一个文本分割任务时表现较好，这也表明BPE算法在中文文本分词任务上的潜力。</p>
+<p>在本次实验中我们通过编写BPE算法来实现从训练语料中学习得到一个vocabulary词表，对中文来说也就是在训练语料中出现频率较高的词对组成的词典，接着根据这个学习得到的vocabulary对测试语料进行分词处理，具体做法就是逐行比对，如果相邻字组成的词对恰好出现在vocabulary中，则将其组合，最后遍历完所有的测试预料行就得到了最终分词结果。</p>
+<p>实验中的难点在于如何将BPE算法思想转换为伪代码或具体的实现，并且大多数BPE算法都是用于解决英文文本分词的，而英文与中文的区别在于英文单词有明确的界限，同时英文单词的个数是固定的即26个，这意味着不能使用常规的BPE算法套用在中文分词任务上，因为BPE算法主要分为编码和解码两部分，对于中文来说不妨直接按照单字初始化词表（因为中文常用字也不过几千个），然后按照文本中词对出现的频率更新词表，最终得到长度为10000的词表，在解码过程中直接按照词表进行“查字典”式的组合替换即可。</p>
+<p>分词任务是NLP邻域中最基础也最核心的任务，通过完成本次实验让我对NLP邻域的兴趣更进一步，同时也加强了编写代码以及调试代码的能力。</p>
+<h2 id="6-参考文献"><a href="#6-参考文献" class="headerlink" title="6.参考文献"></a>6.参考文献</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/zhaohongfei_358/article/details/123379481">(11条消息) 简介NLP中的Tokenization（基于Word,Subword 和 Character）_iioSnail的博客-CSDN博客</a>；</li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/448147465">BPE 算法原理及使用指南【深入浅出】 - 知乎 (zhihu.com)</a>；</li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/191648421">NLP三大Subword模型详解：BPE、WordPiece、ULM - 知乎 (zhihu.com)</a>；</li>
+<li><a target="_blank" rel="noopener" href="https://www.less-bug.com/posts/using-bpe-principle-for-chinese-word-segmentation-plate/">使用 BPE 原理进行汉语字词切分（重制版） (less-bug.com)</a>；</li>
+<li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1540110">NLP入门(2)-分词结果评价及实战 - 腾讯云开发者社区-腾讯云 (tencent.com)</a>；</li>
+</ul>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E8%B7%B5/" class="category-chain-item">课程实践</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/">#自然语言处理</a>
+      
+        <a href="/tags/BPE%E7%AE%97%E6%B3%95/">#BPE算法</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>初级项目_中文分词</div>
+      <div>https://gintoki-jpg.github.io/2023/04/10/项目_中文分词/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>杨再俨</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年4月10日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/04/10/%E8%80%83%E7%A0%94_%E8%8B%B1%E8%AF%AD%E4%B8%80_%E8%AF%AD%E6%B3%95/" title="考研_英语一_语法">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">考研_英语一_语法</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/03/29/%E4%B8%93%E4%B8%9A_%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86_%E4%B8%AD%E7%BA%A7/" title="自然语言处理_中级">
+                        <span class="hidden-mobile">自然语言处理_中级</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+</div>
+
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

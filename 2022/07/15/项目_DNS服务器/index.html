@@ -1,0 +1,860 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/logo.png">
+  <link rel="icon" href="/img/bg/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="杨再俨">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="主要分析实现一个本地DNS服务器，PC可通过该服务器连接到因特网">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初级项目_本地DNS服务器">
+<meta property="og:url" content="https://gintoki-jpg.github.io/2022/07/15/%E9%A1%B9%E7%9B%AE_DNS%E6%9C%8D%E5%8A%A1%E5%99%A8/index.html">
+<meta property="og:site_name" content="Tintoki_blog">
+<meta property="og:description" content="主要分析实现一个本地DNS服务器，PC可通过该服务器连接到因特网">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/project.png">
+<meta property="article:published_time" content="2022-07-15T01:25:00.000Z">
+<meta property="article:modified_time" content="2023-06-25T13:12:03.319Z">
+<meta property="article:author" content="YangZaiyan">
+<meta property="article:tag" content="计算机网络">
+<meta property="article:tag" content="课程实验">
+<meta property="article:tag" content="C语言项目">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gintoki-jpg.github.io/img/bg/project.png">
+  
+  
+  
+  <title>初级项目_本地DNS服务器 - Tintoki_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"gintoki-jpg.github.io","root":"/","version":"1.9.1","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tintoki_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/bg1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">初级项目_本地DNS服务器</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-07-15 09:25" pubdate>
+          2022年7月15日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          28k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          237 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">初级项目_本地DNS服务器</h1>
+            
+            <div class="markdown-body">
+              
+              <p>资料参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/zhujiqian/p/15312435.html">通过Wireshark抓包分析谈谈DNS域名解析的那些事儿 - 朱季谦 - 博客园 (cnblogs.com)</a></p>
+<p>源码链接：<a target="_blank" rel="noopener" href="https://github.com/Gintoki-jpg/Local_DNS_Server">Gintoki-jpg&#x2F;Local_DNS_Server: 大二下学期根据老师要求实现一个简易DNS服务器，了解并掌握相关知识点 (github.com)</a></p>
+<h1 id="一、实验准备"><a href="#一、实验准备" class="headerlink" title="一、实验准备"></a>一、实验准备</h1><h2 id="1-DNS简介"><a href="#1-DNS简介" class="headerlink" title="1.DNS简介"></a>1.DNS简介</h2><h3 id="1-1-DNS服务器"><a href="#1-1-DNS服务器" class="headerlink" title="1.1 DNS服务器"></a>1.1 DNS服务器</h3><blockquote>
+<p>DNS，全称Domain Name System，即域名系统，它提供的作用是将域名和IP地址相互映射。最通俗的理解，它就像是Java里key-value形式的Map，key是域名，value是对应映射的IP地址，通过map.get(域名)，可得到域名对应的IP地址。</p>
+</blockquote>
+<p>DNS服务器也是类似域名空间树一样的树结构，依次分为<code>根域名服务器</code>（知道所有的顶级域名服务器的域名和IP，最重要，它要是瘫痪，整个DNS就完蛋），然后是<code>顶级域名服务器</code>（管理二级域名），其次是<code>权限域名服务器</code>（负责区的域名服务器），最后是<code>本地域名服务器</code>（也叫默认域名服务器），本地域名服务器离主机很近（书上说不超过几个路由器），速度很快，其实本地域名服务器本质不属于域名服务器架构。</p>
+<p><img src="/images/image-20220715093849860.png" srcset="/img/loading.gif" lazyload></p>
+<p>DNS实际上是由一个分层的DNS服务器实现的<code>分布式数据库</code>和一个让主机能够查询分布式数据库的<code>应用层协议</code>组成。因此，要了解DNS的工作原理，需要从以上两个方面入手：</p>
+<ul>
+<li>在实际工作中，DNS服务器是带缓存的。即DNS服务器在每次收到DNS请求时，都会先查询自身数据库包括缓存中有无要查询的主机名的ip，若有且没有过期，则直接响应该ip，否则才会按流程进行查询；而服务器在每次收到响应信息后，都会将响应信息缓存起来；</li>
+<li>若在最近的DNS服务器上，无法解析到域名对应的IP地址时，那么最近的DNS服务器就会类似充当一个中介角色，帮助客户端去其他DNS服务器寻找，看看哪台DNS服务器上可以找到该域名对应的IP；</li>
+<li>任何一台DNS服务器，都存储了根域名的IP地址，<code>根域名服务器不做解析</code>，更像是一位指路人；</li>
+</ul>
+<h3 id="1-2-查询方式"><a href="#1-2-查询方式" class="headerlink" title="1.2 查询方式"></a>1.2 查询方式</h3><p>下面是DNS常用的两种查询方式，具体选择哪个可以自己决定：</p>
+<p>DNS递归查询：如果主机所询问的本地域名服务器不知道被查询的域名的IP地址，那么本地域名服务器就以DNS客户端的身份（递归思想），向根域名服务器继续发出查询报文(替主机查询)，不让主机自己进行查询。递归查询返回的结果或者是IP，或者报错。这是从上到下的递归查询过程</p>
+<p><img src="/images/image-20220715093514735.png" srcset="/img/loading.gif" lazyload></p>
+<p>DNS迭代+递归查询：当根域名服务器收到本地域名服务器的查询请求，要么给出ip，要么通知本地域名服务器下一步应该去请求哪一个顶级域名服务器查询（并告知本地域名服务器自己知道的顶级域名的IP），让本地域名服务器继续查询，而不是替他查询。同理，顶级域名服务器无法返回IP的时候，也会通知本地域名服务器下一步向谁查询（查询哪一个权限域名服务器）……这是一个迭代过程。</p>
+<p><img src="/images/image-20220715093554184.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-3-DNS报文格式"><a href="#1-3-DNS报文格式" class="headerlink" title="1.3 DNS报文格式"></a>1.3 DNS报文格式</h3><p>DNS请求与响应的格式是一致的，其整体分为Header、Question、Answer、Authority、Additional5部分</p>
+<p><img src="/images/image-20220715102848012.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们也可以将DNS简单分为基础结构部分(Header)、问题部分(Question)、资源记录部分(3A)</p>
+<blockquote>
+<p>a)Header部分</p>
+</blockquote>
+<p><img src="/images/image-20220715103216834.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>b)Question部分</p>
+</blockquote>
+<p>Question部分的每一个实体的格式如下</p>
+<p><img src="/images/image-20220715103319394.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>c)Answer、Authority、Additional部分</p>
+</blockquote>
+<p>Answer、Authority、Additional部分格式一致，每部分都由若干实体组成，每个实体即为一条RR</p>
+<p><img src="/images/image-20220715103848730.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-4-ID映射表"><a href="#1-4-ID映射表" class="headerlink" title="1.4 ID映射表"></a>1.4 ID映射表</h3><p>程序需要考虑如下两个问题：</p>
+<ul>
+<li>多客户端并发：允许多个客户端（可能会位于不同的多个计算机）的并发查询，即：允许第一个查询尚未得到答案前就启动处理另外一个客户端查询请求（DNS报头中ID字段的作用）</li>
+<li>超时处理：由于UDP的不可靠性，考虑求助外部DNS服务器（中继）却不能得到应答或者收到迟到应答的情形</li>
+</ul>
+<p>对于第一个问题，UDP本身支持并发，所以只需要实现ID转换的功能即可</p>
+<p><img src="/images/image-20230625210843439.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们只需要借助ID转换表即可实现上述功能</p>
+<p><img src="/images/image-20220715104112468.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="2-域名解析的步骤"><a href="#2-域名解析的步骤" class="headerlink" title="2.域名解析的步骤"></a>2.域名解析的步骤</h2><ol>
+<li>首先，会根据域名从浏览器缓存当中获取，若能获取到，直接返回对应的IP地址；若获取失败，会尝试获取操作系统本地的域名解析系统，即在hosts文件检查是否有对应的域名映射，若能找到，直接获取其映射的IP地址返回（在hosts文件里存储的域名与IP地址映射，一般都是针对IP比较稳定且经常用的，例如工作当中的一些线上开发环境或者测试环境等域名，如果是IP变化比较频繁或者是根本就不知道IP是啥的，这类情况就无法通过hosts文件进行配置获取，只能通过<code>网络访问DNS服务器</code>去获取）</li>
+<li>通过网络访问DNS服务器的方式获取IP首先会先去本地区域的DNS服务器找（即PC网络设置中配置的DNS服务器）；</li>
+<li>理论上，若在最近的DNS服务器上，无法解析到域名对应的IP地址时，那么最近的DNS服务器就会类似充当一个中介角色，帮助客户端去其他DNS服务器寻找，看看哪台DNS服务器上可以找到该域名对应的IP；</li>
+</ol>
+<h2 id="3-实验要求"><a href="#3-实验要求" class="headerlink" title="3.实验要求"></a>3.实验要求</h2><p>设计一个DNS服务器程序，读入“域名-IP地址”对照表，当客户端查询域名对应的IP地址时，用域名检索该对照表，实现下列三种情况：</p>
+<ul>
+<li><p>检索结果为普通IP地址，则向客户返回这个地址（即DNS服务器功能）</p>
+</li>
+<li><p>检索结果为IP地址0.0.0.0，则向客户端返回“域名不存在”的报错消息（即不良网站拦截功能）</p>
+</li>
+<li><p>表中未检到该域名，则向实际的本地DNS服务器发出查询，并将结果返给客户端（即DNS中继功能）</p>
+</li>
+</ul>
+<blockquote>
+<p>注意：应考虑多个计算机上的客户端同时查询的情况，需要进行消息ID的转换</p>
+</blockquote>
+<h1 id="二、代码剖析"><a href="#二、代码剖析" class="headerlink" title="二、代码剖析"></a>二、代码剖析</h1><p>这部分直接分析c代码，头文件放在最后说或者直接忽略，主要掌握每个函数的作用以及DNS服务器整体的运作流程；</p>
+<p>参考资料<a target="_blank" rel="noopener" href="https://blog.csdn.net/bingqingsuimeng/article/details/73497189">(18条消息) MAKEWORD(2,2)使用_bingqingsuimeng的博客-CSDN博客</a></p>
+<p>首先是main函数入口，主要进行了服务器初始化操作以及启动服务器持续监听</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;handle_message.h&quot;</span></span><br><br><span class="hljs-comment">//条件编译实现linux和win下的编译</span><br><span class="hljs-meta">#<span class="hljs-keyword">ifdef</span> _WIN32</span><br><span class="hljs-keyword">extern</span> SOCKET my_socket;  <span class="hljs-comment">// 套接字外部引用声明</span><br><span class="hljs-meta">#<span class="hljs-keyword">elif</span> __linux__</span><br><span class="hljs-keyword">extern</span> <span class="hljs-type">int</span> my_socket;<br><span class="hljs-meta">#<span class="hljs-keyword">endif</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc, <span class="hljs-type">char</span>* argv[])</span><br>&#123;<br>	<span class="hljs-comment">// 处理shell命令，初始化调试信息、外部DNS服务器IP地址以及配置文件路径</span><br>	handle_arguments(argc, argv);<br>	<span class="hljs-comment">// 创建dns_table表</span><br>	initTable();<br>	<span class="hljs-comment">// 读取配置文件dnsrelay.txt，存入内存中的url-ip映射表中</span><br>	insert_to_inter();<br>	<span class="hljs-comment">// 初始化id表</span><br>	initialize_id_table();<br><span class="hljs-meta">#<span class="hljs-keyword">ifdef</span> _WIN32</span><br>	<span class="hljs-comment">//声明结构体，WSAData功能是存放windows socket初始化信息</span><br>	<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">WSAData</span> <span class="hljs-title">wsaData</span>;</span><br>	<span class="hljs-comment">// 调用WSAStartup函数，启用SOCKET的动态链接库，连接应用程序与winsock.dll；</span><br>    <span class="hljs-comment">//第一个参数是WINSOCK版本号,第二个参数是指向WSADATA的指针.该函数返回一个INT型值,通过检查这个值来确定初始化是否成功；</span><br>    <span class="hljs-comment">//wsaData用来存储系统传回的关于WINSOCK的资料；</span><br>	WSAStartup(MAKEWORD(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>), &amp;wsaData);<br><span class="hljs-meta">#<span class="hljs-keyword">endif</span></span><br>	<span class="hljs-comment">// 初始化套接字</span><br>	initialize_socket();<br>	<span class="hljs-comment">// 声明缓冲区,这个缓冲区通于缓存来自客户端和来自外部服务器的报文</span><br>	<span class="hljs-type">char</span> buf[BUFFER_SIZE];<br>	<span class="hljs-comment">// 初始化一个常用地址结构体SOCKADDR_IN(注意通用地址结构体为sockaddr)</span><br>	<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">sockaddr_in</span> <span class="hljs-title">tmp_sockaddr</span>;</span><br>	<span class="hljs-comment">// 声明报文的长度length</span><br>	<span class="hljs-type">int</span> length;<br>	<span class="hljs-comment">// 常用地址结构体长度</span><br>	<span class="hljs-type">int</span> sockaddr_in_size = <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> sockaddr_in);<br>	<span class="hljs-comment">// 无限循环实现服务器持续监听</span><br>	<span class="hljs-keyword">while</span> (<span class="hljs-number">1</span>)<br>	&#123;<br>		<span class="hljs-comment">// 清空本地服务器的缓冲区</span><br>		<span class="hljs-built_in">memset</span>(buf, <span class="hljs-string">&#x27;\0&#x27;</span>, BUFFER_SIZE);<br>		length = <span class="hljs-number">-1</span>;  <span class="hljs-comment">// 重置数据报长度</span><br><br>		<span class="hljs-comment">// 服务器将会一致阻塞直到收到数据</span><br>		<span class="hljs-comment">// 将recvfrom函数的返回值用length接收</span><br>        length = recvfrom(my_socket, buf, <span class="hljs-keyword">sizeof</span>(buf), <span class="hljs-number">0</span>, (<span class="hljs-keyword">struct</span> sockaddr*)&amp;tmp_sockaddr, &amp;sockaddr_in_size);<br>        <span class="hljs-comment">//recvfrom()函数：接收一个数据报，将数据存至buf中，并保存源地址</span><br>        <span class="hljs-comment">/*</span><br><span class="hljs-comment">            local_socket：已连接的本地套接口</span><br><span class="hljs-comment">            buf:接收数据缓冲区</span><br><span class="hljs-comment">            sizeof(buf)：接收缓冲区大小</span><br><span class="hljs-comment">            0：标志位flag，表示调用操作方式，默认设为0</span><br><span class="hljs-comment">            client:捕获到的数据发送源地址（Socket地址）</span><br><span class="hljs-comment">            sockaddr_in_size:地址长度</span><br><span class="hljs-comment">            返回值：recvLength：成功接收到的数据的字符数（长度），接收失败返回SOCKET_ERROR(-1)</span><br><span class="hljs-comment">        */</span><br>		<br>		<span class="hljs-keyword">if</span> (length &gt; <span class="hljs-number">0</span>)<span class="hljs-comment">// 数据报的长度是正数表正确收到了数据</span><br>		&#123;<br>			<span class="hljs-comment">// 若该数据报的源地址端口号为UDP 53可以确定这是来自DNS服务器的数据报</span><br>			<span class="hljs-keyword">if</span> (tmp_sockaddr.sin_port == htons(<span class="hljs-number">53</span>))<br>			&#123;<br>				<span class="hljs-comment">// 接收外部服务器报文并进行处理</span><br>				handle_server_message(buf, length, tmp_sockaddr);<br>			&#125;<br>			<span class="hljs-comment">//否则认为这是本地客户端（Shell、浏览器解析器等）发送的报文（客户端的端口号是随机分配的）</span><br>			<span class="hljs-keyword">else</span><br>			&#123;<br>				<span class="hljs-comment">// 接收本地客户端报文并进行处理</span><br>				handle_client_message(buf, length, tmp_sockaddr);<br>			&#125;<br>		&#125;<br>	&#125;<br>	<span class="hljs-comment">//回收内存</span><br>	deleteTable();<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<p>C程序按照从上到下的默认顺序进行编译，所以我们参照编译器的思维方式逐个分析main函数中使用到的函数层层深入</p>
+<h2 id="1-handle-arguments"><a href="#1-handle-arguments" class="headerlink" title="1.-handle_arguments()"></a>1.-handle_arguments()</h2><p>处理⽤户shell窗口输⼊，根据参数配置本地DNS服务器</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//传入参数分别是argument count以及argument vector，即命令行参数个数和存放命令行字符串参数的指针数组</span><br><span class="hljs-comment">//argv[0] 指向程序运行的全路径名，argv[1] 指向在DOS命令行中执行程序名后的第一个字符串，argv[2] 指向执行程序名后的第二个字符串，argv[argc]为NULL</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">handle_arguments</span><span class="hljs-params">(<span class="hljs-type">int</span> argc, <span class="hljs-type">char</span>* argv[])</span><br>&#123;<br>	<span class="hljs-type">int</span> is_assigned = <span class="hljs-number">0</span>;  <span class="hljs-comment">// 默认用户使用默认DNS配置</span><br>	<span class="hljs-keyword">if</span> (argc &gt; <span class="hljs-number">1</span> &amp;&amp; argv[<span class="hljs-number">1</span>][<span class="hljs-number">0</span>] == <span class="hljs-string">&#x27;-&#x27;</span>)<br>	&#123;<br>		<span class="hljs-keyword">if</span> (argv[<span class="hljs-number">1</span>][<span class="hljs-number">1</span>] == <span class="hljs-string">&#x27;d&#x27;</span>)<br>		&#123;<br>                debug_level = <span class="hljs-number">1</span>;  <span class="hljs-comment">// 调试等级：1      </span><br>		&#125;<br>		<span class="hljs-keyword">if</span> (argv[<span class="hljs-number">1</span>][<span class="hljs-number">2</span>] == <span class="hljs-string">&#x27;d&#x27;</span>)<br>		&#123;<br>			debug_level = <span class="hljs-number">2</span>;  <span class="hljs-comment">// 调试等级：2      </span><br>		&#125;<br>		<span class="hljs-comment">// 若参数数量大于2，即用户还指定了外部DNS服务器的IP地址  </span><br>		<span class="hljs-keyword">if</span> (argc &gt; <span class="hljs-number">2</span>)<br>		&#123;<br>			is_assigned = <span class="hljs-number">1</span>;  <span class="hljs-comment">// 标记用户进行了设置，并未使用默认DNS</span><br>            <span class="hljs-comment">//strcpy() 函数用来复制字符串，strncpy()用来复制字符串的前n个字符，成功执行后返回目标数组指针 dest</span><br>			<span class="hljs-built_in">strcpy</span>(server_ip, argv[<span class="hljs-number">2</span>]);  <span class="hljs-comment">// 使用指定外部DNS服务器IP地址</span><br>			<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;指定DNS服务器的IP地址：  %s\n&quot;</span>, server_ip);<br>			<span class="hljs-keyword">if</span> (argc == <span class="hljs-number">4</span>)  <span class="hljs-comment">// 不仅指定了外部DNS服务器的IP地址，还指定了配置文件的路径</span><br>			&#123;<br>				<span class="hljs-built_in">strcpy</span>(file_path, argv[<span class="hljs-number">3</span>]);<br>			&#125;<br>		&#125;<br>	&#125;<br><br>	<span class="hljs-keyword">if</span> (!is_assigned)  <span class="hljs-comment">// 未指定外部服务器，则使用默认服务器</span><br>	&#123;<br>		<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;使用默认DNS服务器IP地址：  %s \n&quot;</span>, server_ip);<br>	&#125;<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;debug=%d\n&quot;</span>, debug_level);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="2-initTable"><a href="#2-initTable" class="headerlink" title="2.+initTable()"></a>2.+initTable()</h2><p>初始化“域名-IP 地址”对照表table内存以及cache高速缓存</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">initTable</span><span class="hljs-params">()</span> &#123;<br>	<span class="hljs-comment">// 为table表头分配空间</span><br>	table = (Node*)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(Node));<br>	<span class="hljs-built_in">memset</span>(table, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(Node));<br>	INIT_LIST_HEAD(&amp;table-&gt;<span class="hljs-built_in">list</span>);<br><br>	<span class="hljs-comment">// 为cache表头分配空间</span><br>	cache = (Node*)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(Node));<br>	<span class="hljs-built_in">memset</span>(cache, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(Node));<br>	INIT_LIST_HEAD(&amp;cache-&gt;<span class="hljs-built_in">list</span>);<br><br>	<span class="hljs-comment">// 为字典树表头分配空间</span><br>	tableTrie = (TrieNode*)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(TrieNode));<br>	<span class="hljs-built_in">memset</span>(tableTrie, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(TrieNode));<br>	cacheTrie = (TrieNode*)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(TrieNode));<br>	<span class="hljs-built_in">memset</span>(cacheTrie, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(TrieNode));<br>	lastFlashTime = time(<span class="hljs-literal">NULL</span>);<br><br>	cache_size = <span class="hljs-number">0</span>;<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;初始化“域名-IP 地址”对照表完成。\n&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="3-insert-to-inter"><a href="#3-insert-to-inter" class="headerlink" title="3.+insert_to_inter()"></a>3.+insert_to_inter()</h2><p>启动DNS服务器时，读取txt文件中的url-ip映射数据，并将这些数据加入到table中</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">insert_to_inter</span><span class="hljs-params">()</span><br>&#123;<br>	FILE* file;<br>	<span class="hljs-keyword">if</span> ((file = fopen(file_path, <span class="hljs-string">&quot;r&quot;</span>)) == <span class="hljs-literal">NULL</span>)                 <span class="hljs-comment">//从file_path读取文件失败</span><br>	&#123;<br>		<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;读取配置文件失败\n&quot;</span>);<br>		<span class="hljs-keyword">return</span>;<br>	&#125;<br><br>	<span class="hljs-type">char</span> url[<span class="hljs-number">100</span>] = <span class="hljs-string">&quot;&quot;</span>, ip[<span class="hljs-number">16</span>] = <span class="hljs-string">&quot;&quot;</span>;<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;加载配置文件成功,结果如下:\n&quot;</span>);<br>	<span class="hljs-keyword">while</span> (<span class="hljs-built_in">fscanf</span>(file, <span class="hljs-string">&quot;%s %s&quot;</span>, ip, url) &gt; <span class="hljs-number">0</span>)<br>	&#123;<br>		<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;&lt;域名: %s, IP地址 : %s&gt;\n&quot;</span>, url, ip);<br>		addDataToTable(url, ip, <span class="hljs-number">0</span>);  <span class="hljs-comment">// 添加到DNS_table中</span><br>	&#125;<br>	fclose(file);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="4-initialize-id-table"><a href="#4-initialize-id-table" class="headerlink" title="4.*initialize_id_table()"></a>4.*initialize_id_table()</h2><p>初始化ID表，这部分和内存机制没什么关系，与报文处理相关；</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">initialize_id_table</span><span class="hljs-params">()</span><br>&#123;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; ID_TABLE_SIZE; i++)<br>	&#123;<span class="hljs-comment">//因为ID映射表是一个结构体，所以需要递归索引进行初始化</span><br>		ID_table[i].client_id = <span class="hljs-number">0</span>;<br>		ID_table[i].finished = <span class="hljs-number">1</span>;<br>		ID_table[i].survival_time = <span class="hljs-number">0</span>;<br>		<span class="hljs-built_in">memset</span>(&amp;(ID_table[i].client_addr), <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> sockaddr_in));<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>前面介绍过，ID表的图示如下（这只是其中一个结构体，本质上ID表是一个结构体数组）</p>
+<p><img src="/images/image-20220715153315009.png" srcset="/img/loading.gif" lazyload></p>
+<p>ID表的结构定义如下</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span></span><br><span class="hljs-class">&#123;</span><br>	<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span> client_id;  <span class="hljs-comment">// 客户端发给本地DNS服务器的请求报文中的ID          </span><br>	<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">sockaddr_in</span> <span class="hljs-title">client_addr</span>;</span>  <span class="hljs-comment">// 客户端地址结构体</span><br>	<span class="hljs-type">int</span> survival_time;  <span class="hljs-comment">// id表存活时间</span><br>	<span class="hljs-type">int</span> finished;  <span class="hljs-comment">// 本次查询请求是否完成</span><br>&#125;id_table;  <span class="hljs-comment">// id表(结构体)</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="5-initialize-socket"><a href="#5-initialize-socket" class="headerlink" title="5.-initialize_socket()"></a>5.-initialize_socket()</h2><p>标准的socket网络编程步骤</p>
+<p>初始化之前先声明两个常用地址结构体，网络编程中IP地址和端口号等都是封装在一个结构体当中的；</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">sockaddr_in</span> <span class="hljs-title">client_addr</span>;</span>  <span class="hljs-comment">// 客户端套接字地址结构体                </span><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">sockaddr_in</span> <span class="hljs-title">server_addr</span>;</span>  <span class="hljs-comment">// 服务器套接字地址结构体 </span><br></code></pre></td></tr></table></figure>
+
+<p>初始化操作实际就是进行一些绑定</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">initialize_socket</span><span class="hljs-params">()</span><br>&#123;<br>	my_socket = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);<br>	<span class="hljs-comment">//若创建套接字失败，则退出程序</span><br>	<span class="hljs-keyword">if</span> (my_socket &lt; <span class="hljs-number">0</span>)<br>	&#123;<br>		<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;socket连接建立失败！\n&quot;</span>);<br>		<span class="hljs-built_in">exit</span>(<span class="hljs-number">1</span>);<br>	&#125;<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;socket连接建立成功！\n&quot;</span>);<br><br>	client_addr.sin_family = AF_INET;            <span class="hljs-comment">//IPv4</span><br>	client_addr.sin_addr.s_addr = INADDR_ANY;    <span class="hljs-comment">//客户端随机选取网卡的ip地址</span><br>	client_addr.sin_port = htons(<span class="hljs-number">53</span>);            <span class="hljs-comment">//作为客户端绑定到53端口，注意这里不是指PC发消息的客户端（浏览器解析器），那个我们没办法指定，而是本地DNS作为客户端时使用的端口</span><br><br>	server_addr.sin_family = AF_INET;<br>	server_addr.sin_addr.s_addr = inet_addr(server_ip);<span class="hljs-comment">//绑定到外部服务器ip即之前我们指定的192.168.3.1，否则用默认的</span><br>	server_addr.sin_port = htons(<span class="hljs-number">53</span>);<br><br>	<span class="hljs-comment">/*bian()预处理：本地端口号，通用端口号，允许复用 */</span><br>	<span class="hljs-type">int</span> reuse = <span class="hljs-number">0</span>;<br>	setsockopt(my_socket, SOL_SOCKET, SO_REUSEADDR, (<span class="hljs-type">const</span> <span class="hljs-type">char</span>*)&amp;reuse, <span class="hljs-keyword">sizeof</span>(reuse));<br><br>	<span class="hljs-comment">//将端口号与socket关联</span><br>	<span class="hljs-keyword">if</span> (bind(my_socket, (<span class="hljs-keyword">struct</span> sockaddr*)&amp;client_addr, <span class="hljs-keyword">sizeof</span>(client_addr)) &lt; <span class="hljs-number">0</span>)<br>	&#123;<br>		<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;socket端口绑定失败！\n&quot;</span>);<br>		<span class="hljs-built_in">exit</span>(<span class="hljs-number">1</span>);<br>	&#125;<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;socket端口绑定成功！\n&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="6-handle-server-message"><a href="#6-handle-server-message" class="headerlink" title="6.*handle_server_message()"></a>6.*handle_server_message()</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">handle_server_message</span><span class="hljs-params">(<span class="hljs-type">char</span>* buf, <span class="hljs-type">int</span> length, <span class="hljs-keyword">struct</span> sockaddr_in server_addr)</span><br>&#123;<br>	count_s++;  <span class="hljs-comment">// 外部DNS响应与本地客户端请求对应                                   </span><br>	<span class="hljs-type">char</span> url[<span class="hljs-number">200</span>];  <span class="hljs-comment">// 声明用于保存url的数组                              </span><br>	<span class="hljs-keyword">if</span> (debug_level)<br>	&#123;<br>		print_debug_time();<br>		<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n#%d:收到来自外部服务器的响应&quot;</span>, count_s);<br>		<span class="hljs-keyword">if</span> (debug_level == <span class="hljs-number">2</span>) &#123;<br>			<span class="hljs-comment">// 显示完整响应报文</span><br>			show_message(buf, length);<br>		&#125;<br>	&#125;<br><br>	<span class="hljs-comment">// 1.解析第一部分，Header头部</span><br>	<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span> ID;<br>	<span class="hljs-comment">// 从接收报文(buf区中)中获取ID号</span><br>	<span class="hljs-built_in">memcpy</span>(&amp;ID, buf, <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>));<br>	<span class="hljs-type">int</span> cur_id = ID - <span class="hljs-number">1</span>;<br><br>	<span class="hljs-comment">//从ID映射表查找原来的ID号</span><br>	<span class="hljs-comment">// ID映射表中的old_id字段就是原来本地客户端的id号</span><br>	<span class="hljs-built_in">memcpy</span>(buf, &amp;ID_table[cur_id].client_id, <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>));<br>	<span class="hljs-comment">// 将id映射表中的状态改了，表明该次向外部服务器发送的请求成功</span><br>	ID_table[cur_id].finished = <span class="hljs-number">1</span>;<br>	<span class="hljs-comment">// 获取old_id映射表中的client_addr字段，也就是本地客户端的地址结构体，后续与它进行通信</span><br>	<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">sockaddr_in</span> <span class="hljs-title">client_temp</span> =</span> ID_table[cur_id].client_addr;<br>	<span class="hljs-comment">// QDCOUNT字段在第四个字节开始第六个字节结束,表示Question实体的数量,buf仅仅是缓冲数组的首地址</span><br>	<span class="hljs-type">int</span> num_query = ntohs(*((<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>*)(buf + <span class="hljs-number">4</span>)));<br>	<span class="hljs-comment">// ANCOUNT字段在第六个字节开始第八个字节结束，表示Answer实体的数量</span><br>	<span class="hljs-type">int</span> num_response = ntohs(*((<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>*)(buf + <span class="hljs-number">6</span>)));<br>	<span class="hljs-comment">// 移动指针,令p指向Question实体(12个字节的Header后面就是Question)</span><br>	<span class="hljs-type">char</span>* p = buf + <span class="hljs-number">12</span>;<br><br>	<span class="hljs-comment">// 2.解析第二部分，Question</span><br>	<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; num_query; i++)<br>		<span class="hljs-comment">// 将QUESTION的num_query个实体的url全部转换为正常的url</span><br>	&#123;<br>		<span class="hljs-comment">// 将字符计数法表示的的域名转换为正常形式的域名</span><br>		url_transform(p, url);<br><br>		<span class="hljs-keyword">while</span> (*p &gt; <span class="hljs-number">0</span>)<br>		&#123;<br>			p += (*p) + <span class="hljs-number">1</span>;   <span class="hljs-comment">// 直到*p=0即指向字符串结尾\0                                         </span><br>		&#125;<br>		p += <span class="hljs-number">5</span>;  <span class="hljs-comment">// p=p+sizeof(char)*5（1字节\0，2字节QTYPE，2字节QCLASS）,p指向下一个QUESTION实体                                                     </span><br><br>	&#125;<br><br>	<span class="hljs-keyword">if</span> (num_response &gt; <span class="hljs-number">0</span> &amp;&amp; debug_level == <span class="hljs-number">2</span>)<br>	&#123;<br>		<span class="hljs-comment">// 这个url就是我们需要查询的url</span><br>		<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n#%d:外部DNS服务器查询&lt;URL:%s&gt;成功，解析结果如下:&quot;</span>, count_s, url);<br>	&#125;<br>	<span class="hljs-keyword">if</span> (num_response == <span class="hljs-number">0</span> &amp;&amp; debug_level == <span class="hljs-number">2</span>)<br>	&#123;<br>		<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n#%d:外部DNS服务器查询&lt;URL:%s&gt;失败&quot;</span>, count_s, url);<br>	&#125;<br><br>	<span class="hljs-comment">// 3.解析第三部分，分析来自外部DNS服务器的ANSWER,其中ANSWER|AUTHORITY|ADDITIONAL的实体均为RR(这里只分析ANSWER)</span><br>	<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; num_response; ++i)<br>	&#123;<br>		<span class="hljs-comment">// 分析所有的ANSWER</span><br>		<span class="hljs-comment">// NAME字段使用指针偏移表示，只占两个字节(规定)</span><br>		<span class="hljs-keyword">if</span> ((<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>)*p == <span class="hljs-number">0xc0</span>)<br>		&#123;<br>			p += <span class="hljs-number">2</span>;<br>		&#125;<br>		<span class="hljs-keyword">else</span><br>		&#123;<br>			<span class="hljs-keyword">while</span> (*p &gt; <span class="hljs-number">0</span>)<br>			&#123;<br>				p += (*p) + <span class="hljs-number">1</span>;<br>			&#125;<br>			++p;<br>		&#125;<br><br>		<span class="hljs-comment">// 获取ANSWER资源记录域(RR)的各个字段(不需要获取NAME，因为NAME就是前面获取的url)</span><br>		<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span> type = ntohs(*(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>*)p);  <span class="hljs-comment">// TYPE字段           </span><br>		p += <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>);<br>		<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span> _class = ntohs(*(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>*)p);  <span class="hljs-comment">// CLASS字段         </span><br>		p += <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>);<br>		<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span> ttl_high_byte = ntohs(*(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>*)p);  <span class="hljs-comment">// TTL高位字节</span><br>		p += <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>);<br>		<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span> ttl_low_byte = ntohs(*(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>*)p);  <span class="hljs-comment">// TTL低位字节</span><br>		p += <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>);<br>		<span class="hljs-comment">// 将TTL高位和低位合并为int类型数据</span><br>		<span class="hljs-type">int</span> ttl = (((<span class="hljs-type">int</span>)ttl_high_byte) &lt;&lt; <span class="hljs-number">16</span>) | ttl_low_byte;<br>		<span class="hljs-comment">// 前面几个字段(TYPE CLASS TTL)的长度，此处令人混淆，并不代表DATALENGTH</span><br>		<span class="hljs-type">int</span> rdlength = ntohs(*(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>*)p);<br>		<span class="hljs-comment">// TYPE A的资源数据Value是4字节的IP地址,即RDATA字段的字节数为4，现在p指向DATA字段</span><br>		p += <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>);<br>		<span class="hljs-comment">// 调试等级为2输出冗余信息</span><br>		<span class="hljs-keyword">if</span> (debug_level == <span class="hljs-number">2</span>)<br>		&#123;<br>			<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n#%d:收到的响应报文属性 TYPE: %d,  CLASS: %d,  TTL: %d&quot;</span>, count_s, type, _class, ttl);<br>		&#125;<br>		<span class="hljs-type">char</span> ip[<span class="hljs-number">16</span>];<br>		<span class="hljs-type">int</span> ip1, ip2, ip3, ip4;  <span class="hljs-comment">// 因为每个ip字段占一个字节，所以我们需要用四个ip段来接收，最后拼接</span><br><br>		<span class="hljs-comment">// TYPE=1表示TYPE A，TYPE=5表示TYPE CNAME</span><br>		<span class="hljs-keyword">if</span> (type == <span class="hljs-number">1</span>)<br>		&#123;<br>			ip1 = (<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>)*p++;<br>			ip2 = (<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>)*p++;<br>			ip3 = (<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>)*p++;<br>			ip4 = (<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>)*p++;<br>			<span class="hljs-built_in">sprintf</span>(ip, <span class="hljs-string">&quot;%d.%d.%d.%d&quot;</span>, ip1, ip2, ip3, ip4);<br><br>			<span class="hljs-keyword">if</span> (debug_level == <span class="hljs-number">2</span>)<br>			&#123;<br>				<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n#%d:IPV4： %d.%d.%d.%d&quot;</span>, count_s, ip1, ip2, ip3, ip4);<br>			&#125;<br><br>			addDataToTable(url, ip, <span class="hljs-number">1</span>);<br>			<span class="hljs-keyword">break</span>;<br>		&#125;<br>		<span class="hljs-comment">// 若TYPE不为A则直接跳过获取DATAip的步骤</span><br>		<span class="hljs-keyword">else</span><br>		&#123;<br>			p += rdlength;<br>		&#125;<br>	&#125;<br>	<span class="hljs-comment">// 将报文发送给客户端</span><br>	length = sendto(my_socket, buf, length, <span class="hljs-number">0</span>, (<span class="hljs-keyword">struct</span> sockaddr*)&amp;client_temp, <span class="hljs-keyword">sizeof</span>(client_temp));<br>	<span class="hljs-comment">// 响应消息</span><br>	<span class="hljs-keyword">if</span> (debug_level == <span class="hljs-number">2</span>)<br>	&#123;<br>		<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n#%d:成功向本地客户端转发响应&quot;</span>, count_s);<br>	&#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="7-handle-client-message"><a href="#7-handle-client-message" class="headerlink" title="7.*handle_client_message()"></a>7.*handle_client_message()</h2><p>下面这两个部分应该是核心代码部分了，所以会分篇幅详细介绍，这里先简单展示一下相关代码</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">handle_client_message</span><span class="hljs-params">(<span class="hljs-type">char</span>* buf, <span class="hljs-type">int</span> length, <span class="hljs-keyword">struct</span> sockaddr_in client_addr)</span><br>&#123;<br><br>	<span class="hljs-type">char</span> old_url[<span class="hljs-number">200</span>];  <span class="hljs-comment">// 转换前的url</span><br>	<span class="hljs-type">char</span> new_url[<span class="hljs-number">200</span>];  <span class="hljs-comment">// 转换后的url</span><br>	<span class="hljs-type">char</span> ip[<span class="hljs-number">100</span>];<br>	<span class="hljs-type">char</span> inter_result[<span class="hljs-number">200</span>];<br>	<span class="hljs-type">char</span> cache_result[<span class="hljs-number">200</span>];<br>	<span class="hljs-type">char</span> sendbuf[BUFFER_SIZE];<br>	<span class="hljs-type">int</span> pos = <span class="hljs-number">0</span>;<br>	<span class="hljs-type">char</span> res_rec[<span class="hljs-number">16</span>];<br>	<span class="hljs-type">int</span> point = <span class="hljs-number">0</span>;<br>	count_c++;<br><br>	<span class="hljs-keyword">if</span> (debug_level)<br>	&#123;<br>		print_debug_time();<br>		<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n#%d:收到来自本地客户端的请求&quot;</span>, count_c);<br>		<span class="hljs-keyword">if</span> (debug_level == <span class="hljs-number">2</span>) &#123;<br>			show_message(buf, length);  <span class="hljs-comment">// 显示完整报文</span><br>		&#125;<br>	&#125;<br><br>	<span class="hljs-comment">// 从请求报文的QNAME中获得url,HEADER长度为12字节，故直接访问buf数组的第12个元素即QNAME字段</span><br>	<span class="hljs-built_in">memcpy</span>(old_url, &amp;(buf[<span class="hljs-number">12</span>]), length);<br>	<span class="hljs-comment">// 将请求报文中的字符串格式的url转换成普通模式的url</span><br>	url_transform(old_url, new_url);<br><br><br>	<span class="hljs-comment">// 这一步是判断客户端发来的是IPV6报文还是IPV4报文，请求IPV6的报文只能中继给外部的服务器处理</span><br>	<span class="hljs-keyword">while</span> (*(buf + <span class="hljs-number">12</span> + point))  <span class="hljs-comment">// QNAME以0X00为结束符</span><br>	&#123;<br>		point++;<br>	&#125;<br>	point++;  <span class="hljs-comment">// 跳过长度为i的QNAME，现在buf+12+i代表的就是QTYPE                                </span><br>	<span class="hljs-type">int</span> getResult;<br>	<span class="hljs-type">char</span>* temip = ip;<br>	getResult = getData(new_url, &amp;temip);<br>	<span class="hljs-comment">// 若QTYPE字段非空    </span><br>	<span class="hljs-keyword">if</span> (buf + <span class="hljs-number">12</span> + point != <span class="hljs-literal">NULL</span>)<br>	&#123;<br>		<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span> type = ntohs(*(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>*)(buf + <span class="hljs-number">12</span> + point));  <span class="hljs-comment">// 获取TYPE字段</span><br><br>		<span class="hljs-keyword">if</span> (type == <span class="hljs-number">28</span> &amp;&amp; <span class="hljs-built_in">strcmp</span>(ip, <span class="hljs-string">&quot;0.0.0.0&quot;</span>) != <span class="hljs-number">0</span>)<br>		&#123;<br>			<span class="hljs-keyword">if</span> (debug_level == <span class="hljs-number">2</span>) &#123;<br>				<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n#%d:客户端发出的IPV6请求，将向外部服务器寻求帮助&quot;</span>, count_c, new_url);<br>			&#125;<br>			<span class="hljs-comment">// 声明ID标识符(用于处理和id有关的信息)</span><br>			<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span> ID;<br>			<span class="hljs-comment">// 获取客户端的id(因为是第一个信息直接获取buf即可)</span><br>			<span class="hljs-built_in">memcpy</span>(&amp;ID, buf, <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>));<br>			<span class="hljs-comment">// 将原id存入id映射表并获得新的id(为了后续服务器代理功能准备-这个顺序就该放在后面)</span><br>			<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span> new_id = id_transform(ID, client_addr, <span class="hljs-number">0</span>);<br><br>			<span class="hljs-keyword">if</span> (new_id == <span class="hljs-number">0</span>)<br>			&#123;<br>				<span class="hljs-keyword">if</span> (debug_level == <span class="hljs-number">2</span>)<br>				&#123;<br>					<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n#%d:向外部服务器发送请求失败，本地ID转换表已满！&quot;</span>, count_c);<br>				&#125;<br>			&#125;<br>			<span class="hljs-comment">// 假设请求到了新的id，注意这个id是位置+1得到的</span><br>			<span class="hljs-keyword">else</span><br>			&#123;<br>				<span class="hljs-built_in">memcpy</span>(buf, &amp;new_id, <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>));  <span class="hljs-comment">// 将新id加入缓冲区               </span><br>				length = sendto(my_socket, buf, length, <span class="hljs-number">0</span>, (<span class="hljs-keyword">struct</span> sockaddr*)&amp;server_addr, <span class="hljs-keyword">sizeof</span>(server_addr));<br>				<span class="hljs-comment">// 将域名查询请求发送至外部dns服务器</span><br>				<span class="hljs-keyword">if</span> (debug_level == <span class="hljs-number">2</span>)<br>				&#123;<br>					<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n#%d:成功向外部服务器发送请求&quot;</span>, count_c);<br><br>				&#125;<br>			&#125;<br>			<span class="hljs-keyword">return</span>;<br>		&#125;<br><br>	&#125;<br><br>	<span class="hljs-comment">// 从本地(dns_table或者chache)中查询是否有该记录</span><br>	<span class="hljs-comment">// 若域名在dns_table、cache中均无法找到，需要向外部dns服务器请求帮助</span><br>	<span class="hljs-keyword">if</span> (getResult == <span class="hljs-number">0</span>)<br>	&#123;<br>		<span class="hljs-keyword">if</span> (debug_level == <span class="hljs-number">2</span>) &#123;<br>			<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n#%d:本地服务器查询&lt;URL:%s&gt;失败，即将向外部服务器发送请求&quot;</span>, count_c, new_url);<br>		&#125;<br>		<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span> ID;<br>		<span class="hljs-built_in">memcpy</span>(&amp;ID, buf, <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>));<br>		<span class="hljs-comment">// 将原客户端id进行转换得到新本地服务器id</span><br>		<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span> new_id = id_transform(ID, client_addr, <span class="hljs-number">0</span>);<br>		<span class="hljs-comment">// 假如id转换失败则报错并退出</span><br>		<span class="hljs-keyword">if</span> (new_id == <span class="hljs-number">0</span>)<br>		&#123;<br>			<span class="hljs-keyword">if</span> (debug_level == <span class="hljs-number">2</span>)<br>			&#123;<br>				<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n#%d:向外部服务器发送请求失败，本地ID转换表已满！&quot;</span>, count_c);<br>			&#125;<br>		&#125;<br>		<span class="hljs-comment">// 将域名查询请求发送至外部dns服务器</span><br>		<span class="hljs-keyword">else</span><br>		&#123;<br>			<span class="hljs-built_in">memcpy</span>(buf, &amp;new_id, <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>));<br>			length = sendto(my_socket, buf, length, <span class="hljs-number">0</span>, (<span class="hljs-keyword">struct</span> sockaddr*)&amp;server_addr, <span class="hljs-keyword">sizeof</span>(server_addr));<br>			<span class="hljs-keyword">if</span> (debug_level == <span class="hljs-number">2</span>)<br>			&#123;<br>				<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n#%d:成功向外部服务器发送请求,需要查询的域名为&lt;URL:%s&gt;&quot;</span>, count_c, new_url);<br>			&#125;<br>		&#125;<br>	&#125;<br>	<span class="hljs-comment">// 若在本地查询到了域名和ip的映射</span><br>	<span class="hljs-keyword">else</span><br>	&#123;<br>		<span class="hljs-comment">// 如果是从dns_table中查到</span><br>		<span class="hljs-keyword">if</span> (getResult == <span class="hljs-number">1</span>)<br>		&#123;<br>			count_s++;<br>			<span class="hljs-keyword">if</span> (debug_level == <span class="hljs-number">2</span>) &#123;<br>				<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n#%d:从内存中查到&lt;URL:%s&gt;对应的IP，结果如下:\n&quot;</span>, count_c, new_url);<br>				<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;&lt;URL: %s , IP: %s&gt;&quot;</span>, new_url, ip);<br><br>			&#125;<br>		&#125;<br>		<span class="hljs-comment">// 如果是从cache中查到</span><br>		<span class="hljs-keyword">else</span><br>		&#123;<br>			count_s++;  <span class="hljs-comment">// 为了保持请求和响应同步</span><br><br>			<span class="hljs-keyword">if</span> (debug_level == <span class="hljs-number">2</span>)<br>			&#123;<br>				<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n#%d:从cache中查到&lt;URL:%s&gt;对应的IP，结果如下:\n&quot;</span>, count_c, new_url);<br>				<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;&lt;URL: %s , IP: %s&gt;&quot;</span>, new_url, ip);<br><br>			&#125;<br>		&#125;<br><br>		<span class="hljs-keyword">if</span> (debug_level == <span class="hljs-number">2</span>)<br>		&#123;<br>			<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n#%d:构造并发送响应报文&quot;</span>, count_c);<br><br>		&#125;<br>		<span class="hljs-built_in">memcpy</span>(sendbuf, buf, length);  <span class="hljs-comment">// 构造响应报文       </span><br>		<span class="hljs-comment">// 1.构造头部</span><br>		<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span> num;<br>		<span class="hljs-keyword">if</span> (<span class="hljs-built_in">strcmp</span>(ip, <span class="hljs-string">&quot;0.0.0.0&quot;</span>) == <span class="hljs-number">0</span>)  <span class="hljs-comment">// 判断此ip是否应该被墙</span><br>		&#123;<br>			num = htons(<span class="hljs-number">0x8183</span>);<br>			<span class="hljs-built_in">memcpy</span>(&amp;sendbuf[<span class="hljs-number">2</span>], &amp;num, <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>));<br>		&#125;<br>		<span class="hljs-keyword">else</span><br>		&#123;<br>			num = htons(<span class="hljs-number">0x8180</span>);<br>			<span class="hljs-built_in">memcpy</span>(&amp;sendbuf[<span class="hljs-number">2</span>], &amp;num, <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>));<br>		&#125;<br><br>		<span class="hljs-keyword">if</span> (<span class="hljs-built_in">strcmp</span>(ip, <span class="hljs-string">&quot;0.0.0.0&quot;</span>) == <span class="hljs-number">0</span>)  <span class="hljs-comment">// 此ip是否合法</span><br>		&#123;<br><br>			num = htons(<span class="hljs-number">0x0</span>);  <span class="hljs-comment">// 假如非法直接不回答</span><br>		&#125;<br>		<span class="hljs-keyword">else</span><br>		&#123;<br>			num = htons(<span class="hljs-number">0x1</span>);  <span class="hljs-comment">// 合法则回答数为1</span><br>		&#125;<br>		<span class="hljs-built_in">memcpy</span>(&amp;sendbuf[<span class="hljs-number">6</span>], &amp;num, <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>));<br>		<span class="hljs-comment">// 2.构造RR资源记录</span><br>		<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span> name = htons(<span class="hljs-number">0xc00c</span>);<br>		<span class="hljs-built_in">memcpy</span>(res_rec, &amp;name, <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>));<br>		pos += <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>);<br><br>		<span class="hljs-comment">// TYPE字段</span><br>		<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span> type = htons(<span class="hljs-number">0x0001</span>);<br>		<span class="hljs-built_in">memcpy</span>(res_rec + pos, &amp;type, <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>));<br>		pos += <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>);<br><br>		<span class="hljs-comment">// CLASS字段</span><br>		<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span> _class = htons(<span class="hljs-number">0x0001</span>);<br>		<span class="hljs-built_in">memcpy</span>(res_rec + pos, &amp;_class, <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>));<br>		pos += <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>);<br><br>		<span class="hljs-comment">// TTL字段</span><br>		<span class="hljs-type">unsigned</span> <span class="hljs-type">long</span> ttl = htonl(<span class="hljs-number">0x00000080</span>);<br>		<span class="hljs-built_in">memcpy</span>(res_rec + pos, &amp;ttl, <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">long</span>));<br>		pos += <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">long</span>);<br><br>		<span class="hljs-comment">// RDLENGTH字段</span><br>		<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span> RDlength = htons(<span class="hljs-number">0x0004</span>);<br>		<span class="hljs-built_in">memcpy</span>(res_rec + pos, &amp;RDlength, <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>));<br>		pos += <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>);<br><br>		<span class="hljs-comment">// RDATA字段</span><br>		<span class="hljs-type">unsigned</span> <span class="hljs-type">long</span> IP = (<span class="hljs-type">unsigned</span> <span class="hljs-type">long</span>)inet_addr(ip);<br>		<span class="hljs-built_in">memcpy</span>(res_rec + pos, &amp;IP, <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">long</span>));<br>		pos += <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">long</span>);<br>		pos += length;<br><br>		<span class="hljs-comment">// 将HEADER和RR共同组成的DNS响应报文存入sendbuf准备发送(此处不考虑QUESTION部分)</span><br>		<span class="hljs-built_in">memcpy</span>(sendbuf + length, res_rec, <span class="hljs-keyword">sizeof</span>(res_rec));<br>		<span class="hljs-comment">// 将构造好的报文段发给客户端</span><br>		length = sendto(my_socket, sendbuf, pos, <span class="hljs-number">0</span>, (<span class="hljs-keyword">struct</span> sockaddr*)&amp;client_addr, <span class="hljs-keyword">sizeof</span>(client_addr));<br>		<span class="hljs-keyword">if</span> (length &lt; <span class="hljs-number">0</span> &amp;&amp; debug_level == <span class="hljs-number">2</span>)<br>		&#123;<br>			<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n#%d:向客户端发送响应失败&quot;</span>, count_c);<br>		&#125;<br>		<span class="hljs-keyword">if</span> (debug_level == <span class="hljs-number">2</span>)<br>		&#123;<br>			<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n#%d:成功向本地客户端发送响应&quot;</span>, count_c);<br>		&#125;<br><br>	&#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="三、核心部分详解"><a href="#三、核心部分详解" class="headerlink" title="三、核心部分详解"></a>三、核心部分详解</h1><h2 id="1-处理来自服务器的消息"><a href="#1-处理来自服务器的消息" class="headerlink" title="1.处理来自服务器的消息"></a>1.处理来自服务器的消息</h2><blockquote>
+<p>疑问：是否添加了相关的函数能够缓存来自外部服务器的响应的URL-IP映射？</p>
+<p>有的，addDataToTable(url, ip, 1);</p>
+</blockquote>
+<h3 id="1-1-解析Header头部"><a href="#1-1-解析Header头部" class="headerlink" title="1.1 解析Header头部"></a>1.1 解析Header头部</h3><p><img src="/images/image-20230625210927726.png" srcset="/img/loading.gif" lazyload></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">unsigned</span> <span class="hljs-type">short</span> ID;<br><span class="hljs-comment">// 从接收报文(buf区中)中获取ID号，因为ID是前16bit故直接获取即可</span><br><span class="hljs-comment">//void *memcpy(void *str1, const void *str2, size_t n) 从存储区 str2 复制（并非覆盖） n 个字节到存储区 str1</span><br><span class="hljs-built_in">memcpy</span>(&amp;ID, buf, <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>));<br><span class="hljs-comment">//ID逆转换</span><br><span class="hljs-type">int</span> cur_id = ID - <span class="hljs-number">1</span>;<br><br><span class="hljs-comment">//从ID映射表查找原来的ID号</span><br><span class="hljs-comment">// ID映射表中的old_id/client_id字段就是原来本地客户端的id号，我们将该id存放在buf区中</span><br><span class="hljs-built_in">memcpy</span>(buf, &amp;ID_table[cur_id].client_id, <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>));<br><span class="hljs-comment">// 将id映射表中的状态改了，表明该次向外部服务器发送的请求成功</span><br>ID_table[cur_id].finished = <span class="hljs-number">1</span>;<br><span class="hljs-comment">// 获取old_id映射表中的client_addr字段，也就是本地客户端的地址结构体，后续将与它进行通信</span><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">sockaddr_in</span> <span class="hljs-title">client_temp</span> =</span> ID_table[cur_id].client_addr;<br><br><span class="hljs-comment">// QDCOUNT字段在第四个字节开始第六个字节结束,表示Question实体的数量,buf是缓冲数组的首地址</span><br><span class="hljs-type">int</span> num_query = ntohs(*((<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>*)(buf + <span class="hljs-number">4</span>)));<br><span class="hljs-comment">// ANCOUNT字段在第六个字节开始第八个字节结束，表示Answer实体的数量</span><br><span class="hljs-type">int</span> num_response = ntohs(*((<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>*)(buf + <span class="hljs-number">6</span>)));<br><span class="hljs-comment">// 移动指针,令p指向Question实体(12个字节的Header后面就是Question)</span><br><span class="hljs-type">char</span>* p = buf + <span class="hljs-number">12</span>;<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="1-2-解析Question实体"><a href="#1-2-解析Question实体" class="headerlink" title="1.2 解析Question实体"></a>1.2 解析Question实体</h3><p><img src="/images/image-20230625210948205.png" srcset="/img/loading.gif" lazyload></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// 将QUESTION的num_query个实体的url全部转换为正常的url</span><br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; num_query; i++)<br>&#123;<br>	<span class="hljs-comment">// 将字符计数法表示的的域名转换为正常形式的域名</span><br>	url_transform(p, url);<br>    <br>    <span class="hljs-keyword">while</span> (*p &gt; <span class="hljs-number">0</span>)			  <br>		&#123;<br>			p += (*p) + <span class="hljs-number">1</span>;   <span class="hljs-comment">// 直到*p=0即指向字符串结尾\0                                         </span><br>		&#125;<br>		p += <span class="hljs-number">5</span>;  			<span class="hljs-comment">// p=p+sizeof(char)*5（1字节&quot;\0&quot;，2字节QTYPE，2字节QCLASS）,即移动p使其指向下一个QUESTION实体（一般只存在一个QUESTION实体）                       </span><br>	&#125;<br><br><span class="hljs-keyword">if</span> (num_response &gt; <span class="hljs-number">0</span> &amp;&amp; debug_level == <span class="hljs-number">2</span>)<br>	&#123;<br>		<span class="hljs-comment">// 这个url就是我们需要查询的url</span><br>		<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n#%d:外部DNS服务器查询&lt;URL:%s&gt;成功，解析结果如下:&quot;</span>, count_s, url);<br>	&#125;<br>	<br><span class="hljs-keyword">if</span> (num_response == <span class="hljs-number">0</span> &amp;&amp; debug_level == <span class="hljs-number">2</span>)<br>	&#123;<br>		<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n#%d:外部DNS服务器查询&lt;URL:%s&gt;失败&quot;</span>, count_s, url);<br>	&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="1-2-1-URL转换函数"><a href="#1-2-1-URL转换函数" class="headerlink" title="1.2.1 URL转换函数"></a>1.2.1 URL转换函数</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs c"><br><span class="hljs-comment">//url转换函数，调用一次该函数将一个QNAME转换为一个URL</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">url_transform</span><span class="hljs-params">(<span class="hljs-type">char</span>* str, <span class="hljs-type">char</span>* result)</span><br>&#123;<br>	<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>, j = <span class="hljs-number">0</span>, k = <span class="hljs-number">0</span>, len = <span class="hljs-built_in">strlen</span>(str);<br>	<span class="hljs-keyword">while</span> (i &lt; len)<br>	&#123;<br>		<span class="hljs-keyword">if</span> (str[i] &gt; <span class="hljs-number">0</span> &amp;&amp; str[i] &lt;= <span class="hljs-number">63</span>)                 <span class="hljs-comment">//ASCLL1-63表特殊符号以及数字1~9，即直接跳过十六进制前缀0x以及0找到长度标识，记作j</span><br>		&#123;<br>			<span class="hljs-keyword">for</span> (j = str[i], i++; j &gt; <span class="hljs-number">0</span>; j--, i++, k++) <span class="hljs-comment">//将字符计数法中的url提取出来放入result中，同时移动str、result数组下标</span><br>			&#123;<br>				result[k] = str[i];					<span class="hljs-comment">//result[0]=str[2],result[1]=str[3],result[2]=str[4]</span><br>			&#125;<br>		&#125;<br>		<span class="hljs-keyword">if</span> (str[i] != <span class="hljs-number">0</span>)                                <span class="hljs-comment">//上一轮循环结束，得到字符串api，若str[5]不是0（也就是&quot;.&quot;），在result数组中添加&quot;.&quot;作为分隔符</span><br>		&#123;<br>			result[k] = <span class="hljs-string">&#x27;.&#x27;</span>;<br>			k++;<br>		&#125;<br>	&#125;<br>	result[k] = <span class="hljs-string">&#x27;\0&#x27;</span>;                                   <span class="hljs-comment">//给转换完成的url添加结束符构成完整的字符串，我们得到最终URL&quot;api.sina.com.cn\0&quot;</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="1-3-解析ANSWER实体"><a href="#1-3-解析ANSWER实体" class="headerlink" title="1.3 解析ANSWER实体"></a>1.3 解析ANSWER实体</h3><p>分析来自外部DNS服务器的ANSWER,其中ANSWER|AUTHORITY|ADDITIONAL的实体均为RR(这里规定只分析ANSWER即可，因为AUTHORITY是权威&#x2F;域服务器的记录，ADDITIONAL是可以被使用的附加有用信息，这些现阶段来说没用)</p>
+<p><img src="/images/image-20230625211005157.png" srcset="/img/loading.gif" lazyload></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// 分析所有的ANSWER	</span><br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; num_response; ++i)<br>&#123;<br>	<span class="hljs-comment">//此处移动P指针使其指向TYPE字段</span><br>	<span class="hljs-keyword">if</span> ((<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>)*p == <span class="hljs-number">0xc0</span>)<span class="hljs-comment">// NAME字段通常使用指针偏移表示，只占两个字节(规定)；</span><br>	&#123;<br>		p += <span class="hljs-number">2</span>;<br>	&#125;<br>	<span class="hljs-keyword">else</span><br>	&#123;<br>		<span class="hljs-keyword">while</span> (*p &gt; <span class="hljs-number">0</span>)<br>		&#123;<br>			p += (*p) + <span class="hljs-number">1</span>;<span class="hljs-comment">//移动P指针直到指向&quot;\0&quot;</span><br>		&#125;<br>		++p;			<span class="hljs-comment">//&quot;\0&quot;占一个字节</span><br>	&#125;<br><br>	<span class="hljs-comment">// 获取ANSWER资源记录域(RR)的各个字段(不需要重复获取NAME，因为NAME就是前面获取的url)</span><br>	<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span> type = ntohs(*(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>*)p);  <span class="hljs-comment">// TYPE字段           </span><br>	p += <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>);					<span class="hljs-comment">//P指针移动两个字节到CLASS字段</span><br>	<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span> _class = ntohs(*(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>*)p);  <span class="hljs-comment">// CLASS字段         </span><br>	p += <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>);<br>	<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span> ttl_high_byte = ntohs(*(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>*)p);  <span class="hljs-comment">// TTL高位字节</span><br>	p += <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>);<br>	<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span> ttl_low_byte = ntohs(*(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>*)p);  <span class="hljs-comment">// TTL低位字节</span><br>	p += <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>);<br>	<span class="hljs-comment">// 将TTL高位和低位通过位运算合并为int类型数据</span><br>	<span class="hljs-type">int</span> ttl = (((<span class="hljs-type">int</span>)ttl_high_byte) &lt;&lt; <span class="hljs-number">16</span>) | ttl_low_byte;<br>	<span class="hljs-comment">// 现在P指向RDLENGTH字段，rdlength就是RDATA的字节数</span><br>	<span class="hljs-type">int</span> rdlength = ntohs(*(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>*)p);<br>	<span class="hljs-comment">// TYPE A对应的资源数据RDATA是4字节的IP地址,即RDATA字段的字节数为4，现在p指向DATA字段</span><br>	p += <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>);<br>	<span class="hljs-comment">// 调试等级为2输出冗余信息</span><br>	<span class="hljs-keyword">if</span> (debug_level == <span class="hljs-number">2</span>)<br>	&#123;<br>		<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n#%d:收到的响应报文属性 TYPE: %d,  CLASS: %d,  TTL: %d&quot;</span>, count_s, type, _class, ttl);<br>	&#125;<br>	<span class="hljs-type">char</span> ip[<span class="hljs-number">16</span>];<br>	<span class="hljs-type">int</span> ip1, ip2, ip3, ip4;  <span class="hljs-comment">// 因为每个ip字段占一个字节，所以我们需要用四个ip段来接收，最后拼接</span><br><br>	<span class="hljs-comment">// TYPE=1表示TYPE A，TYPE=5表示TYPE CNAME，这里只分析TYPE=A的情况</span><br>	<span class="hljs-keyword">if</span> (type == <span class="hljs-number">1</span>)<br>	&#123;<br>		ip1 = (<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>)*p++;<span class="hljs-comment">//p是char类型，依次移动一个字节向下读取</span><br>		ip2 = (<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>)*p++;<br>		ip3 = (<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>)*p++;<br>		ip4 = (<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>)*p++;<br>		<span class="hljs-built_in">sprintf</span>(ip, <span class="hljs-string">&quot;%d.%d.%d.%d&quot;</span>, ip1, ip2, ip3, ip4);<br><br>		<span class="hljs-keyword">if</span> (debug_level == <span class="hljs-number">2</span>)<br>		&#123;<br>			<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n#%d:IPV4： %d.%d.%d.%d&quot;</span>, count_s, ip1, ip2, ip3, ip4);<br>		&#125;<br><br>		addDataToTable(url, ip, <span class="hljs-number">1</span>);<br>		<span class="hljs-keyword">break</span>;<br>	&#125;<br>	<span class="hljs-comment">// 若TYPE不为A则直接跳过获取RDATA中ip的步骤</span><br>	<span class="hljs-keyword">else</span><br>	&#123;<br>		p += rdlength;<span class="hljs-comment">//根据rdlength标识的长度直接跳过RDATA字段</span><br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="1-4-转发报文"><a href="#1-4-转发报文" class="headerlink" title="1.4 转发报文"></a>1.4 转发报文</h3><p>本地DNS服务器需要将收到的来自外部服务器的响应<code>转发</code>给对应的DNS客户端（代理作用的体现）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// 将报文发送给客户端</span><br>	<span class="hljs-comment">//sendto()函数：发送一个数据报，数据在buf中，需要提供地址</span><br>    <span class="hljs-comment">/*</span><br><span class="hljs-comment">        local_socket：外部服务器套接字</span><br><span class="hljs-comment">        buf：发送数据缓冲区</span><br><span class="hljs-comment">        sizeof(buf)：接收缓冲区大小</span><br><span class="hljs-comment">        0：标志位flag，表示调用操作方式，默认设为0</span><br><span class="hljs-comment">        client：目标数据发送源地址</span><br><span class="hljs-comment">        sizeof(client)：地址大小</span><br><span class="hljs-comment">        返回值：length：成功接收到的数据的字符数（长度），接收失败返回SOCKET_ERROR(-1)</span><br><span class="hljs-comment">    */</span><br>	length = sendto(my_socket, buf, length, <span class="hljs-number">0</span>, (<span class="hljs-keyword">struct</span> sockaddr*)&amp;client_temp, <span class="hljs-keyword">sizeof</span>(client_temp));<br>	<span class="hljs-comment">// 响应消息</span><br>	<span class="hljs-keyword">if</span> (debug_level == <span class="hljs-number">2</span>)<br>	&#123;<br>		<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n#%d:成功向本地客户端转发响应&quot;</span>, count_s);<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-处理来自客户端的消息"><a href="#2-处理来自客户端的消息" class="headerlink" title="2.处理来自客户端的消息"></a>2.处理来自客户端的消息</h2><p>这里我们还是忽略一些变量的定义，主要抽象的介绍以下本地DNS服务器如何处理来自客户端（Shell、浏览器）的请求</p>
+<h3 id="2-1-解析Question实体"><a href="#2-1-解析Question实体" class="headerlink" title="2.1 解析Question实体"></a>2.1 解析Question实体</h3><p><img src="/images/image-20230625211025879.png" srcset="/img/loading.gif" lazyload></p>
+<p>下面直接略过请求的Header（没什么意义），获取Question中有价值的信息</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// 1.从请求报文的QNAME中获得url,HEADER长度为12字节，故直接访问buf数组的第12个元素即QNAME字段</span><br><span class="hljs-built_in">memcpy</span>(old_url, &amp;(buf[<span class="hljs-number">12</span>]), length);<br><span class="hljs-comment">// 2.将请求报文中的字符串格式的url转换成普通模式的url</span><br>url_transform(old_url, new_url);<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-2-判断报文类型"><a href="#2-2-判断报文类型" class="headerlink" title="2.2 判断报文类型"></a>2.2 判断报文类型</h3><p>判断客户端发来的是IPV6报文还是IPV4报文，请求IPV6的报文只能中继给外部的服务器处理（咱们的DNS只做了处理IPV4的功能）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">while</span> (*(buf + <span class="hljs-number">12</span> + point))  <span class="hljs-comment">// QNAME以0X00为结束符</span><br>&#123;<br>	point++;<br>&#125;<br>point++;  <span class="hljs-comment">// QNAME长度为point，则buf+12+point指向的就是QTYPE</span><br><span class="hljs-type">int</span> getResult;<br><span class="hljs-type">char</span>* temip = ip;<br><span class="hljs-comment">//调用接口函数获取ip（这个函数必须在这个时候调，因为接下来就涉及判断是否是&quot;0.0.0.0&quot;）</span><br>getResult = getData(new_url, &amp;temip);<br><span class="hljs-comment">// 若QTYPE字段非空</span><br><span class="hljs-keyword">if</span> (buf + <span class="hljs-number">12</span> + point != <span class="hljs-literal">NULL</span>)<br>&#123;<br>	<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span> type = ntohs(*(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>*)(buf + <span class="hljs-number">12</span> + point));  <span class="hljs-comment">// 获取TYPE字段</span><br>	<span class="hljs-comment">//type=28表明这是IPV6的请求，同时如果这个URL没有被屏蔽</span><br>	<span class="hljs-keyword">if</span> (type == <span class="hljs-number">28</span> &amp;&amp; <span class="hljs-built_in">strcmp</span>(ip, <span class="hljs-string">&quot;0.0.0.0&quot;</span>) != <span class="hljs-number">0</span>)<br>	&#123;<br>		<span class="hljs-keyword">if</span> (debug_level == <span class="hljs-number">2</span>) &#123;<br>			<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n#%d:客户端发出的IPV6请求，将向外部服务器寻求帮助&quot;</span>, count_c, new_url);<br>		&#125;<br>		<span class="hljs-comment">// 声明ID标识符(用于处理和id有关的信息)</span><br>		<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span> ID;<br>		<span class="hljs-comment">// 获取客户端的id(ID位于BUF的前两个字节)</span><br>		<span class="hljs-built_in">memcpy</span>(&amp;ID, buf, <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>));<br>		<span class="hljs-comment">// 将原id存入id映射表并获得新的id(为了后续服务器代理功能准备)</span><br>		<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span> new_id = id_transform(ID, client_addr, <span class="hljs-number">0</span>);<br>		<span class="hljs-comment">//假如返回新id失败说明ID表满了</span><br>		<span class="hljs-keyword">if</span> (new_id == <span class="hljs-number">0</span>)<br>		&#123;<br>			<span class="hljs-keyword">if</span> (debug_level == <span class="hljs-number">2</span>)<br>			&#123;<br>				<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n#%d:向外部服务器发送请求失败，本地ID转换表已满！&quot;</span>, count_c);<br>			&#125;<br>		&#125;<br>		<span class="hljs-comment">// 假设请求到了新的id，注意这个id是位置+1得到的，这样处理是根据讲义来的（原理不是很清楚）</span><br>		<span class="hljs-keyword">else</span><br>		&#123;	<span class="hljs-comment">//代理功能的体现</span><br>			<span class="hljs-built_in">memcpy</span>(buf, &amp;new_id, <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>));  <span class="hljs-comment">// 将新id加入缓冲区</span><br>			length = sendto(my_socket, buf, length, <span class="hljs-number">0</span>, (<span class="hljs-keyword">struct</span> sockaddr*)&amp;server_addr, <span class="hljs-keyword">sizeof</span>(server_addr));<br>			<span class="hljs-comment">// 将域名查询请求发送至外部dns服务器</span><br>			<span class="hljs-keyword">if</span> (debug_level == <span class="hljs-number">2</span>)<br>			&#123;<br>				<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n#%d:成功向外部服务器发送请求&quot;</span>, count_c);<br><br>			&#125;<br>		&#125;<br>		<span class="hljs-keyword">return</span>;<br>	&#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-2-1-ID转换函数"><a href="#2-2-1-ID转换函数" class="headerlink" title="2.2.1 ID转换函数"></a>2.2.1 ID转换函数</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//ID转换函数</span><br><span class="hljs-type">unsigned</span> <span class="hljs-type">short</span> <span class="hljs-title function_">id_transform</span><span class="hljs-params">(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span> ID, <span class="hljs-keyword">struct</span> sockaddr_in client_addr, <span class="hljs-type">int</span> finished)</span><br>&#123;<br>	<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i != ID_TABLE_SIZE; ++i)<span class="hljs-comment">//只有当id转换表没有满的时候才能存入客户端id</span><br>	&#123;<br>		<span class="hljs-comment">//存入客户端的之前，需要先找到一个合适的位置(假如找不到合适的位置就一直循环就行了慢慢找，因为ID表不满所以肯定找得到一个空位)</span><br>		<span class="hljs-keyword">if</span> ((ID_table[i].survival_time &gt; <span class="hljs-number">0</span> &amp;&amp; ID_table[i].survival_time &lt; time(<span class="hljs-literal">NULL</span>))<br>			|| ID_table[i].finished == <span class="hljs-number">1</span>)                 <span class="hljs-comment">//合适的位置：指超时失效或者已完成的位置</span><br>		&#123;<br>			<span class="hljs-keyword">if</span> (ID_table[i].client_id != i + <span class="hljs-number">1</span>)                <span class="hljs-comment">//确保新旧ID不同，所以+1处理</span><br>			&#123;<br>				ID_table[i].client_id = ID;                  <span class="hljs-comment">//保存ID</span><br>				ID_table[i].client_addr = client_addr;      <span class="hljs-comment">//保存客户端套接字</span><br>				ID_table[i].finished = finished;            <span class="hljs-comment">//标记该客户端的请求是否查询已经完成</span><br>				ID_table[i].survival_time = time(<span class="hljs-literal">NULL</span>) + <span class="hljs-number">5</span>; <span class="hljs-comment">//生存时间设置为5秒</span><br>				<span class="hljs-keyword">break</span>;<br>			&#125;<br>		&#125;<br>	&#125;<br>	<span class="hljs-keyword">if</span> (i == ID_TABLE_SIZE)                                 <span class="hljs-comment">//登记失败，当前id转换表已满</span><br>	&#123;<br>		<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>	&#125;<br>	<span class="hljs-keyword">return</span> (<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>)i + <span class="hljs-number">1</span>;                         <span class="hljs-comment">//返回ID号，注意这个ID号是+1处理的(讲义规定)</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-3-本地查询"><a href="#2-3-本地查询" class="headerlink" title="2.3 本地查询"></a>2.3 本地查询</h3><p>本地查询是指在Cache或Table中查找需要的URL-IP映射</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// 从本地(dns_table或者chache)中查询是否有该记录</span><br>	<span class="hljs-comment">// 1.若域名在dns_table、cache中均无法找到，需要向外部dns服务器请求帮助，这一步和上面IPV6的处理是一样的</span><br>	<span class="hljs-keyword">if</span> (getResult == <span class="hljs-number">0</span>)<br>	&#123;<br>		<span class="hljs-keyword">if</span> (debug_level == <span class="hljs-number">2</span>) &#123;<br>			<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n#%d:本地服务器查询&lt;URL:%s&gt;失败，即将向外部服务器发送请求&quot;</span>, count_c, new_url);<br>		&#125;<br>		<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span> ID;<br>		<span class="hljs-built_in">memcpy</span>(&amp;ID, buf, <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>));<br>		<span class="hljs-comment">// 将原客户端id进行转换得到新本地服务器id</span><br>		<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span> new_id = id_transform(ID, client_addr, <span class="hljs-number">0</span>);<br>		<span class="hljs-comment">// 假如id转换失败则报错并退出</span><br>		<span class="hljs-keyword">if</span> (new_id == <span class="hljs-number">0</span>)<br>		&#123;<br>			<span class="hljs-keyword">if</span> (debug_level == <span class="hljs-number">2</span>)<br>			&#123;<br>				<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n#%d:向外部服务器发送请求失败，本地ID转换表已满！&quot;</span>, count_c);<br>			&#125;<br>		&#125;<br>		<span class="hljs-comment">// 将域名查询请求发送至外部dns服务器</span><br>		<span class="hljs-keyword">else</span><br>		&#123;<br>			<span class="hljs-built_in">memcpy</span>(buf, &amp;new_id, <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>));<br>			length = sendto(my_socket, buf, length, <span class="hljs-number">0</span>, (<span class="hljs-keyword">struct</span> sockaddr*)&amp;server_addr, <span class="hljs-keyword">sizeof</span>(server_addr));<br>			<span class="hljs-keyword">if</span> (debug_level == <span class="hljs-number">2</span>)<br>			&#123;<br>				<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n#%d:成功向外部服务器发送请求,需要查询的域名为&lt;URL:%s&gt;&quot;</span>, count_c, new_url);<br>			&#125;<br>		&#125;<br>	&#125;<br>	<span class="hljs-comment">// 2.若在本地查询到了域名和ip的映射</span><br>	<span class="hljs-keyword">else</span><br>	&#123;<br>		<span class="hljs-comment">// 2.1 如果是从dns_table中查到（函数中已经封装好了将table中查到的数据加入到cache中的流程）</span><br>		<span class="hljs-keyword">if</span> (getResult == <span class="hljs-number">1</span>)<br>		&#123;<br>			count_s++;<br>			<span class="hljs-keyword">if</span> (debug_level == <span class="hljs-number">2</span>) &#123;<br>				<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n#%d:从内存中查到&lt;URL:%s&gt;对应的IP，结果如下:\n&quot;</span>, count_c, new_url);<br>				<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;&lt;URL: %s , IP: %s&gt;&quot;</span>, new_url, ip);<br><br>			&#125;<br>		&#125;<br>		<span class="hljs-comment">// 2.2 如果是从cache中查到</span><br>		<span class="hljs-keyword">else</span><br>		&#123;<br>			count_s++;  <span class="hljs-comment">// 为了保持请求和响应同步</span><br><br>			<span class="hljs-keyword">if</span> (debug_level == <span class="hljs-number">2</span>)<br>			&#123;<br>				<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n#%d:从cache中查到&lt;URL:%s&gt;对应的IP，结果如下:\n&quot;</span>, count_c, new_url);<br>				<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;&lt;URL: %s , IP: %s&gt;&quot;</span>, new_url, ip);<br><br>			&#125;<br>		&#125;<br><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-4-构造响应报文"><a href="#2-4-构造响应报文" class="headerlink" title="2.4 *构造响应报文"></a>2.4 *构造响应报文</h3><p><img src="/images/image-20230625211049886.png" srcset="/img/loading.gif" lazyload></p>
+<p>Header首部包含事物ID、标志等字段</p>
+<p><img src="/images/image-20220716094656547.png" srcset="/img/loading.gif" lazyload></p>
+<p>其中标志字段又分为如下若干字段</p>
+<p><img src="/images/image-20220716094638080.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>QR：响应报文值为1</p>
+<p>……</p>
+<p>rcode（Reply code）：返回码字段，表示响应的差错状态。</p>
+<ul>
+<li><p>当值为 0 时，表示没有错误；</p>
+</li>
+<li><p>当值为 1 时，表示报文格式错误（Format error），服务器不能理解请求的报文；</p>
+</li>
+<li><p>当值为 2 时，表示域名服务器失败（Server failure），因为服务器的原因导致没办法处理这个请求；</p>
+</li>
+<li><p>当值为 3 时，表示名字错误（Name Error），只有对授权域名解析服务器有意义，指出解析的域名不存在；</p>
+</li>
+<li><p>当值为 4 时，表示查询类型不支持（Not Implemented），即域名服务器不支持查询类型；</p>
+</li>
+<li><p>当值为 5 时，表示拒绝（Refused），一般是服务器由于设置的策略拒绝给出应答，如服务器不希望对某些请求者给出应答；</p>
+</li>
+</ul>
+</blockquote>
+<p><img src="/images/image-20230625211112517.png" srcset="/img/loading.gif" lazyload></p>
+<p>当然这一步是基于若在本地查询到URL-IP映射，要是本地查不到就参照1所述中转外部DNS的响应即可</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><code class="hljs c">		<span class="hljs-built_in">memcpy</span>(sendbuf, buf, length);  <span class="hljs-comment">// 构造响应报文，先创建一个发送缓冲区缓存要发送的数据</span><br>		<span class="hljs-comment">// 1.构造头部Header</span><br>		<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span> num;<br>		<span class="hljs-comment">// 1.1 判断此ip是否应该被墙</span><br>		<span class="hljs-comment">//DNS报文的报头中存在一个RCODE响应码（Response coded）字段，仅用于响应报文。当其值为0时代表，代表没有差错。当其值为3时，表示名字差错。从权威名字服务器返回，表示在查询中指定域名不存在。即我们需要将返回客户端的报文中该字段值修改为3。</span><br>		<span class="hljs-keyword">if</span> (<span class="hljs-built_in">strcmp</span>(ip, <span class="hljs-string">&quot;0.0.0.0&quot;</span>) == <span class="hljs-number">0</span>)  <br>		&#123;<br>			num = htons(<span class="hljs-number">0x8183</span>);<span class="hljs-comment">//0x8180转为二进制为Flag=1000 0001 1000 0000</span><br>			<span class="hljs-built_in">memcpy</span>(&amp;sendbuf[<span class="hljs-number">2</span>], &amp;num, <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>));<span class="hljs-comment">//sendbuf[] char数组一个元素占一个字节，short数组一个元素占两个字节以此类推</span><br>		&#125;<br>		<span class="hljs-keyword">else</span><br>		&#123;<br>			num = htons(<span class="hljs-number">0x8180</span>);<br>			<span class="hljs-built_in">memcpy</span>(&amp;sendbuf[<span class="hljs-number">2</span>], &amp;num, <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>));<br>		&#125;<br>		<span class="hljs-comment">// 1.2 确定回答ANSWER数量</span><br>		<span class="hljs-keyword">if</span> (<span class="hljs-built_in">strcmp</span>(ip, <span class="hljs-string">&quot;0.0.0.0&quot;</span>) == <span class="hljs-number">0</span>)  <span class="hljs-comment">// 此ip是否合法</span><br>		&#123;<br><br>			num = htons(<span class="hljs-number">0x0</span>);  <span class="hljs-comment">// 假如非法直接不回答</span><br>		&#125;<br>		<span class="hljs-keyword">else</span><br>		&#123;<br>			num = htons(<span class="hljs-number">0x1</span>);  <span class="hljs-comment">// 合法则回答数ANCOUNT为1，十六进制表示</span><br>		&#125;<br>		<span class="hljs-built_in">memcpy</span>(&amp;sendbuf[<span class="hljs-number">6</span>], &amp;num, <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>));<br>		<br>		<span class="hljs-comment">// 2.构造RR资源记录，用res_rec字符数组暂存，结合pos指针移动实现定向存储</span><br>		<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span> name = htons(<span class="hljs-number">0xc00c</span>);<span class="hljs-comment">//固定写法，c0即1100 0000前两bit固定为1是偏移指针的标志写法，0000 1100表示字符串在整个DNS包中偏移量，Answer中的NAME在Qname中出现过</span><br>		<span class="hljs-built_in">memcpy</span>(res_rec, &amp;name, <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>));<br>		pos += <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>);<br><br>		<span class="hljs-comment">// TYPE字段</span><br>		<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span> type = htons(<span class="hljs-number">0x0001</span>);<span class="hljs-comment">//type=1也就是type=A</span><br>		<span class="hljs-built_in">memcpy</span>(res_rec + pos, &amp;type, <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>));<br>		pos += <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>);<br><br>		<span class="hljs-comment">// CLASS字段</span><br>		<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span> _class = htons(<span class="hljs-number">0x0001</span>);<span class="hljs-comment">//CLASS=1也就是CLASS=IN因特网</span><br>		<span class="hljs-built_in">memcpy</span>(res_rec + pos, &amp;_class, <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>));<br>		pos += <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>);<br><br>		<span class="hljs-comment">// TTL字段</span><br>		<span class="hljs-type">unsigned</span> <span class="hljs-type">long</span> ttl = htonl(<span class="hljs-number">0x00000080</span>);<span class="hljs-comment">//这里设置TTL生存时间</span><br>		<span class="hljs-built_in">memcpy</span>(res_rec + pos, &amp;ttl, <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">long</span>));<br>		pos += <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">long</span>);<span class="hljs-comment">//ttl为long类型，占四字节</span><br><br>		<span class="hljs-comment">// RDLENGTH字段</span><br>		<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span> RDlength = htons(<span class="hljs-number">0x0004</span>);<span class="hljs-comment">//RDATA是4字节IP地址，所以RDATA长度为4</span><br>		<span class="hljs-built_in">memcpy</span>(res_rec + pos, &amp;RDlength, <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>));<br>		pos += <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>);<br><br>		<span class="hljs-comment">// RDATA字段</span><br>		<span class="hljs-type">unsigned</span> <span class="hljs-type">long</span> IP = (<span class="hljs-type">unsigned</span> <span class="hljs-type">long</span>)inet_addr(ip);<span class="hljs-comment">//inet_addr将一个点分十进制的IP转换成一个长整型（32bit）数</span><br>		<span class="hljs-built_in">memcpy</span>(res_rec + pos, &amp;IP, <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">long</span>));<br>		pos += <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">long</span>);<br>		pos += length;<br><br>		<span class="hljs-comment">// 3.将HEADER和RR共同组成的DNS响应报文存入sendbuf准备发送（QUESTION部分是直接拿的buf以前的内容来填充的）</span><br>		<span class="hljs-built_in">memcpy</span>(sendbuf + length, res_rec, <span class="hljs-keyword">sizeof</span>(res_rec));<span class="hljs-comment">//sendbuf+length不是很懂，大概是防止内存不够，sendbuf+len(RR)更加准确</span><br>		<br>		<span class="hljs-comment">// 4.将构造好的报文段发给客户端</span><br>		<span class="hljs-comment">//sendto()函数：发送一个数据报，数据在buf中，需要提供地址</span><br>   		 <span class="hljs-comment">/*</span><br><span class="hljs-comment">        local_socket：外部服务器套接字</span><br><span class="hljs-comment">        buf：发送数据缓冲区</span><br><span class="hljs-comment">        sizeof(buf)：接收缓冲区大小</span><br><span class="hljs-comment">        0：标志位flag，表示调用操作方式，默认设为0</span><br><span class="hljs-comment">        client：目标数据发送源地址</span><br><span class="hljs-comment">        sizeof(client)：地址大小</span><br><span class="hljs-comment">        返回值：length：成功接收到的数据的字符数（长度），接收失败返回SOCKET_ERROR(-1)</span><br><span class="hljs-comment">   		 */</span><br>		length = sendto(my_socket, sendbuf, pos, <span class="hljs-number">0</span>, (<span class="hljs-keyword">struct</span> sockaddr*)&amp;client_addr, <span class="hljs-keyword">sizeof</span>(client_addr));<br>		<span class="hljs-keyword">if</span> (length &lt; <span class="hljs-number">0</span> &amp;&amp; debug_level == <span class="hljs-number">2</span>)<br>		&#123;<br>			<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n#%d:向客户端发送响应失败&quot;</span>, count_c);<br>		&#125;<br>		<span class="hljs-keyword">if</span> (debug_level == <span class="hljs-number">2</span>)<br>		&#123;<br>			<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n#%d:成功向本地客户端发送响应&quot;</span>, count_c);<br>		&#125;<br><br>	&#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="四、演示过程"><a href="#四、演示过程" class="headerlink" title="四、演示过程"></a>四、演示过程</h1><p>2022&#x2F;7&#x2F;22 14:28 刚刚在演示的时候显示socket绑定失败，猜测原因大概是端口号被占用，所以重启电脑之后重新启动了一次发现绑定成功，使用的是D:\My_code\C++\项目集合\DNS服务器演讲版\bin\Debug下的dnsrelay.exe作为演示服务器</p>
+<h2 id="1-启动"><a href="#1-启动" class="headerlink" title="1.启动"></a>1.启动</h2><p><img src="/images/image-20220722143104138.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="2-测试"><a href="#2-测试" class="headerlink" title="2.测试"></a>2.测试</h2><h3 id="2-1-中继功能"><a href="#2-1-中继功能" class="headerlink" title="2.1 中继功能"></a>2.1 中继功能</h3><p>在配置⽂件中不存在<code>www.baidu.com</code>对应的IP地址，故服务器进⾏中继并将从外部收到的响应报⽂ 转发给客户端</p>
+<p><img src="/images/image-20220722143338188.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-2-屏蔽功能"><a href="#2-2-屏蔽功能" class="headerlink" title="2.2 屏蔽功能"></a>2.2 屏蔽功能</h3><p>在配置⽂件中我们将008.cn域名对应的IP地址屏蔽，故尽管能在本地DNS服务器中查询到该域名对 应的IP，但是在构造响应报⽂进⾏响应时会进⾏屏蔽处理</p>
+<p><img src="/images/image-20220722143451203.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-3-服务器功能"><a href="#2-3-服务器功能" class="headerlink" title="2.3 服务器功能"></a>2.3 服务器功能</h3><p>在配置⽂件中添加了sohu对应的IP地址为61.135.181.175，当客户端请求该域名对应的IP地址时服 务器可以成功进⾏响应</p>
+<p><img src="/images/image-20220722143617984.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="3-说明"><a href="#3-说明" class="headerlink" title="3.说明"></a>3.说明</h2><p>从上面的测试我们可以看出基本功能是能够全部正常实现的，但是我们仔细查看返回值可能还会有一点懵逼不知道是怎么回事，这里简单做一下说明</p>
+<p><img src="/images/image-20220722150650129.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20220722150822147.png" srcset="/img/loading.gif" lazyload></p>
+<p>nslookup会分别发送ipv4和ipv6的请求报文，假如都当作ipv4来处理则导致最后返回的结果都是ipv4的</p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/" class="category-chain-item">项目开发</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">#计算机网络</a>
+      
+        <a href="/tags/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E9%AA%8C/">#课程实验</a>
+      
+        <a href="/tags/C%E8%AF%AD%E8%A8%80%E9%A1%B9%E7%9B%AE/">#C语言项目</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>初级项目_本地DNS服务器</div>
+      <div>https://gintoki-jpg.github.io/2022/07/15/项目_DNS服务器/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>杨再俨</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年7月15日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/07/19/%E5%90%8E%E7%AB%AF_JAVA/" title="JAVA">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">JAVA</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/07/10/%E5%B7%A5%E5%85%B7_MySQL%E4%B8%AD%E7%BA%A7/" title="MySQL中级">
+                        <span class="hidden-mobile">MySQL中级</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+</div>
+
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

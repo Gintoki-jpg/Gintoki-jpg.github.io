@@ -1,0 +1,827 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/logo.png">
+  <link rel="icon" href="/img/bg/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="杨再俨">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="主要利用基础的C&#x2F;C++知识，从零开始写一个JSO库。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初级项目_JSON库">
+<meta property="og:url" content="https://gintoki-jpg.github.io/2022/07/27/%E9%A1%B9%E7%9B%AE_JSON%E5%BA%93/index.html">
+<meta property="og:site_name" content="Tintoki_blog">
+<meta property="og:description" content="主要利用基础的C&#x2F;C++知识，从零开始写一个JSO库。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/project.png">
+<meta property="article:published_time" content="2022-07-27T07:49:00.000Z">
+<meta property="article:modified_time" content="2022-10-20T00:21:31.233Z">
+<meta property="article:author" content="YangZaiyan">
+<meta property="article:tag" content="C语言项目">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gintoki-jpg.github.io/img/bg/project.png">
+  
+  
+  
+  <title>初级项目_JSON库 - Tintoki_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"gintoki-jpg.github.io","root":"/","version":"1.9.1","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tintoki_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/bg1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">初级项目_JSON库</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-07-27 15:49" pubdate>
+          2022年7月27日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          20k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          164 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">初级项目_JSON库</h1>
+            
+            <div class="markdown-body">
+              
+              <p>项目参考<a target="_blank" rel="noopener" href="https://github.com/miloyip/json-tutorial">https://github.com/miloyip/json-tutorial</a></p>
+<p><a target="_blank" rel="noopener" href="https://sourceforge.net/projects/cjson/">https://sourceforge.net/projects/cjson/</a></p>
+<h1 id="一、实现"><a href="#一、实现" class="headerlink" title="一、实现"></a>一、实现</h1><p>首先我们要明白什么是JSON库，在了解JSON库之前就需要JSON是什么，这里我们引用网络爬虫那一篇里关于JSON的介绍</p>
+<h2 id="1-JSON数据格式"><a href="#1-JSON数据格式" class="headerlink" title="1.JSON数据格式"></a>1.JSON数据格式</h2><blockquote>
+<p>JSON，全称为 JavaScript Object Notation, 也就是 JavaScript 对象标记，它通过对象和数组的组合来表示数据，构造简洁但是结构化程度非常高，是一种轻量级的<code>数据交换格式</code>；</p>
+</blockquote>
+<h3 id="1-1-JSON数据"><a href="#1-1-JSON数据" class="headerlink" title="1.1 JSON数据"></a>1.1 JSON数据</h3><p>JSON数据可能的数据类型为如下6种：</p>
+<ul>
+<li>null: 表示为 null</li>
+<li>boolean: 表示为 true 或 false</li>
+<li>number: 一般的浮点数表示方式，如 3.14</li>
+<li>string: 表示为 “…”</li>
+</ul>
+<blockquote>
+<p>千万注意 JSON 字符串类型的数据表示需要使用双引号而非单引号（这点与其他编程语言不同）！</p>
+</blockquote>
+<ul>
+<li>array: 表示为 [ … ]</li>
+<li>object: 表示为 { … }</li>
+</ul>
+<p>以上六种数据类型中最常用的是数组和对象（因为JSON数据本质上就是一个序列化的对象或数组，至于字符串等类型只是其组成部分）：</p>
+<ul>
+<li><p><code>对象</code>：它在 JavaScript 中是使用花括号 {} 包裹起来的内容，数据结构为 {key1：value1, key2：value2, …} 的键值对结构，<code>键名只能使用字符串，键值可以是以上任何数据类型</code>；</p>
+</li>
+<li><p><code>数组</code>：数组在 JavaScript 中是方括号 [] 包裹起来的内容，数据结构为 [“java”, “javascript”, “vb”, …] 的索引结构，<code>数组值的类型可以是以上任意类型</code>；</p>
+</li>
+</ul>
+<p>一个 JSON 数据可以写为如下形式（由于最外层是中括号，所以最终该JSON数据的类型是列表类型）：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs JSON"><span class="hljs-punctuation">[</span><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Bob&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;gender&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;male&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;birthday&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;1992-10-18&quot;</span><br><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span> <span class="hljs-punctuation">&#123;</span><br>     <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Selina&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;gender&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;female&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;birthday&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;1995-10-18&quot;</span><br><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">]</span><br></code></pre></td></tr></table></figure>
+
+<p>尽管JSON源自JS语言，但它只是一种数据格式，可用于任何编程语言（JSON、XML、YAML这方面具有相似性）；</p>
+<h3 id="1-2-JSON库"><a href="#1-2-JSON库" class="headerlink" title="1.2 JSON库"></a>1.2 JSON库</h3><blockquote>
+<p>我们可以调用 JSON 库的 loads 方法将文本字符串转为 JSON 数据，可以通过 dumps() 方法将 JSON 数据转为文本字符串；</p>
+</blockquote>
+<h4 id="1-2-1-JSON文本转换为JSON数据"><a href="#1-2-1-JSON文本转换为JSON数据" class="headerlink" title="1.2.1 JSON文本转换为JSON数据"></a>1.2.1 JSON文本转换为JSON数据</h4><p>如果从 JSON 文本中读取内容，例如这里有一个 data.json 文本文件，其内容是之前定义过的 <code>JSON 字符串</code>（一定注意JSON文本文件中保存的就是普通的<code>字符串</code>！！！因为这种字符串可以转换为JSON数据所以我们称为JSON字符串或JSON文本），我们可以先将文本文件内容读出，然后再利用 loads 方法转化</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs JSON">#data.json<br><br><span class="hljs-punctuation">[</span><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Bob&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;gender&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;male&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;birthday&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;1992-10-18&quot;</span><br><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Selina&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;gender&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;female&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;birthday&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;1995-10-18&quot;</span><br><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">]</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> json<br><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;data.json&#x27;</span>, <span class="hljs-string">&#x27;r&#x27;</span>) <span class="hljs-keyword">as</span> file:<br>    <span class="hljs-built_in">str</span> = file.read()<br>    data = json.loads(<span class="hljs-built_in">str</span>)<span class="hljs-comment">#这里使用 loads 方法将字符串转为 JSON 对象</span><br>    <span class="hljs-built_in">print</span>(data)<br></code></pre></td></tr></table></figure>
+
+<p>运行结果如下</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">[&#123;<span class="hljs-string">&#x27;name&#x27;</span>: <span class="hljs-string">&#x27;Bob&#x27;</span>, <span class="hljs-string">&#x27;gender&#x27;</span>: <span class="hljs-string">&#x27;male&#x27;</span>, <span class="hljs-string">&#x27;birthday&#x27;</span>: <span class="hljs-string">&#x27;1992-10-18&#x27;</span>&#125;, &#123;<span class="hljs-string">&#x27;name&#x27;</span>: <span class="hljs-string">&#x27;Selina&#x27;</span>, <span class="hljs-string">&#x27;gender&#x27;</span>: <span class="hljs-string">&#x27;female&#x27;</span>, <span class="hljs-string">&#x27;birthday&#x27;</span>: <span class="hljs-string">&#x27;1995-10-18&#x27;</span>&#125;]<br></code></pre></td></tr></table></figure>
+
+<h4 id="1-2-2-JSON数据转换为JSON文本"><a href="#1-2-2-JSON数据转换为JSON文本" class="headerlink" title="1.2.2 JSON数据转换为JSON文本"></a>1.2.2 JSON数据转换为JSON文本</h4><p>一般我们将JSON数据转换为JSON文本是为了保存相关信息，对于保存JSON文本有两种方法：</p>
+<ul>
+<li>一种是先转换为JSON文本再调用文件的write()方法写入文本，保存为<code>普通文本字符串格式</code>；</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;data.json&#x27;</span>, <span class="hljs-string">&#x27;w&#x27;</span>) <span class="hljs-keyword">as</span> file:<br>    file.write(json.dumps(data))<br></code></pre></td></tr></table></figure>
+
+<p><img src="/images/image-20220727183147295.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>另一种是先将JSON数据转换为文本字符串，再将文本字符串转调整为<code>JSON树状格式</code>保存（增加参数indent表示缩进字符个数使调整为JSON格式），本质上还是普通文本字符串只是缩进更美观；</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;data.json&#x27;</span>, <span class="hljs-string">&#x27;w&#x27;</span>) <span class="hljs-keyword">as</span> file:<br>    file.write(json.dumps(data, indent=<span class="hljs-number">2</span>))<br></code></pre></td></tr></table></figure>
+
+<p><img src="/images/image-20220727183115778.png" srcset="/img/loading.gif" lazyload></p>
+<p>当写入文本中有中文时，需要指定参数 ensure_ascii 为 False，另外还要规定文件输出的编码</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;data.json&#x27;</span>, <span class="hljs-string">&#x27;w&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> file:<br>    file.write(json.dumps(data, indent=<span class="hljs-number">2</span>, ensure_ascii=<span class="hljs-literal">False</span>))<br></code></pre></td></tr></table></figure>
+
+<p>我们从上面也可以看到，Python中处理JSON文本就借助了Python中的JSON库，当然我们这里要实现的是以C&#x2F;C++来实现一个JSON库，我们的JSON库主要完成三个需求：</p>
+<ol>
+<li>把 <code>JSON 文本</code>解析为一个<code>JSON数据</code>（parse）；</li>
+<li>提供接口访问该数据结构（access）；</li>
+<li>把JSON数据转换成 JSON 文本（stringify）；</li>
+</ol>
+<h2 id="2-Parse部分"><a href="#2-Parse部分" class="headerlink" title="2.Parse部分"></a>2.Parse部分</h2><p>本部分主要介绍如何将JSON文本转换为JSON数据</p>
+<figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs xl">输入 -&gt; 输出<br>字符串类型：<span class="hljs-string">&quot;\&quot;</span>H<span class="hljs-function"><span class="hljs-title">ello</span>\&quot; -&gt;</span> <span class="hljs-string">&quot;Hello&quot;</span><br>数值类型：<span class="hljs-string">&quot;123.31&quot;</span> -&gt; <span class="hljs-number">123.31</span><br>空值：<span class="hljs-string">&quot;null&quot;</span> -&gt; null<br>布尔值：<span class="hljs-string">&quot;false&quot;</span> -&gt; <span class="hljs-literal">false</span><br>布尔值：<span class="hljs-string">&quot;true&quot;</span> -&gt;<span class="hljs-literal">true</span><br>数组：<span class="hljs-string">&quot;[123]&quot;</span> -&gt; [<span class="hljs-number">123</span>]<br>对象：<span class="hljs-string">&quot;&#123;&quot;</span><span class="hljs-function"><span class="hljs-title">hello</span>&quot;:123&#125;&quot; -&gt;</span> &#123;<span class="hljs-string">&quot;hello&quot;</span>:<span class="hljs-number">123</span>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>需要注意的有几点：</p>
+<ul>
+<li>我们在测试的时候输入的都是JSON文本（这是符合实际生产要求的，因为我们从.json文件中取出来的也是json文本），也就是带双引号的json数据，而转换过后的JSON数据只有字符串类型是带双引号的；</li>
+<li>至于为什么测试JSON字符串的时候需要加上转义的双引号，因为我们在测试的时候，最外层的双引号模拟的是.json文件，双引号内部的数据才是.json文件中的内容，内部的转义双引号模拟的是.json文件中的json字符串；</li>
+<li>可能很多人分不清json文本和json数据的区别，我们可以简单理解为，json文本是加了双引号的json数据；</li>
+</ul>
+<h3 id="2-1-数据结构"><a href="#2-1-数据结构" class="headerlink" title="2.1 数据结构"></a>2.1 数据结构</h3><h4 id="2-1-1-节点类型"><a href="#2-1-1-节点类型" class="headerlink" title="2.1.1 节点类型"></a>2.1.1 节点类型</h4><p>JSON 中有 6 种数据类型，如果把 true 和 false 当作两个类型就是 7 种，为此声明一个lept_type枚举类型</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">enum</span> &#123;</span> LEPT_NULL, LEPT_FALSE, LEPT_TRUE, LEPT_NUMBER, LEPT_STRING, LEPT_ARRAY, LEPT_OBJECT &#125; lept_type;<br></code></pre></td></tr></table></figure>
+
+<h4 id="2-1-2-节点结构"><a href="#2-1-2-节点结构" class="headerlink" title="2.1.2 节点结构"></a>2.1.2 节点结构</h4><p>JSON数据是树结构，每个节点使用lept_value结构体表示，我们称它为一个JSON数据值</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">lept_value</span> &#123;</span><br>    <span class="hljs-class"><span class="hljs-keyword">union</span> &#123;</span><br>        <span class="hljs-class"><span class="hljs-keyword">struct</span> &#123;</span> lept_member* m; <span class="hljs-type">size_t</span> size; &#125;o;   <span class="hljs-comment">/* object: members, member count */</span><br>        <span class="hljs-class"><span class="hljs-keyword">struct</span> &#123;</span> lept_value* e; <span class="hljs-type">size_t</span> size; &#125;a;    <span class="hljs-comment">/* array:  elements, element count */</span><br>        <span class="hljs-class"><span class="hljs-keyword">struct</span> &#123;</span> <span class="hljs-type">char</span>* s; <span class="hljs-type">size_t</span> len; &#125;s;           <span class="hljs-comment">/* string: null-terminated string, string length */</span><br>        <span class="hljs-type">double</span> n;                                   <span class="hljs-comment">/* number */</span><br>    &#125;u;<br>    lept_type type;								 <span class="hljs-comment">/*JSON节点类型，七选一*/</span><br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h4 id="2-1-3-对象成员"><a href="#2-1-3-对象成员" class="headerlink" title="2.1.3 对象成员"></a>2.1.3 对象成员</h4><p>JSON对象由对象成员构成，对象成员就是键值对，其中键只能是字符串类型，值可以是七种类型中的任何一种；</p>
+<p>这里我们使用lept_value结构体来保存对象成员的<code>值</code>，但是对象成员的<code>键</code>我们舍弃使用lept_value因为不需要type这个字段；</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">lept_member</span> &#123;</span><br>    <span class="hljs-type">char</span>* k; <span class="hljs-type">size_t</span> klen;   <span class="hljs-comment">/* member key string, key string length */</span><br>    lept_value v;           <span class="hljs-comment">/* member value */</span><br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h4 id="2-1-4-Debug标识"><a href="#2-1-4-Debug标识" class="headerlink" title="2.1.4 Debug标识"></a>2.1.4 Debug标识</h4><p>借助枚举常量的方式定义一些必要的Debug标识，lept_parse()函数的返回值是这些枚举值其中之一</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">enum</span> &#123;</span><br>    LEPT_PARSE_OK = <span class="hljs-number">0</span>,						<span class="hljs-comment">//lept_parse()解析正常</span><br>    LEPT_PARSE_EXPECT_VALUE,				<span class="hljs-comment">//json字符串只含空白如&quot;&quot;</span><br>    LEPT_PARSE_INVALID_VALUE,				<span class="hljs-comment">//非法json字符串（无法解析）比如&quot;nul&quot; &quot;?&quot;</span><br>    LEPT_PARSE_ROOT_NOT_SINGULAR,			<span class="hljs-comment">//json字符串中一个值与另一个值之间使用空格&quot;null k&quot;，或者整数以0开头&quot;0123&quot;</span><br>    LEPT_PARSE_NUMBER_TOO_BIG,				<span class="hljs-comment">//json值为超出double表示范围的Number</span><br>    LEPT_PARSE_MISS_QUOTATION_MARK,			<span class="hljs-comment">//json值为字符串时，只存在开始双引号没有结束双引号如&quot;string</span><br>    LEPT_PARSE_INVALID_STRING_ESCAPE,		<span class="hljs-comment">//不合法的转义序列如 \&#x27;</span><br>    LEPT_PARSE_INVALID_STRING_CHAR,			<span class="hljs-comment">//不合法的字符 %x00 至 %x1F</span><br>    LEPT_PARSE_INVALID_UNICODE_HEX,			<span class="hljs-comment">// \u 后不是 4 位十六进位数字</span><br>    LEPT_PARSE_INVALID_UNICODE_SURROGATE,	<span class="hljs-comment">//只有高代理项而欠缺低代理项，或是低代理项不在合法码点范围</span><br>    LEPT_PARSE_MISS_COMMA_OR_SQUARE_BRACKET,<span class="hljs-comment">//json值为数组时，只存在开始中括号没有结束中括号如[123,21</span><br>    LEPT_PARSE_MISS_KEY,				   <span class="hljs-comment">//json值为对象时缺少键</span><br>    LEPT_PARSE_MISS_COLON,				   <span class="hljs-comment">//json值为对象时缺少值</span><br>    LEPT_PARSE_MISS_COMMA_OR_CURLY_BRACKET	<span class="hljs-comment">//json值为对象时，只存在开始大括号不存在结束大括号如&#123;&quot;123:123</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="2-1-5-缓冲结构"><a href="#2-1-5-缓冲结构" class="headerlink" title="2.1.5 缓冲结构"></a>2.1.5 缓冲结构</h4><p>在JSON解析的时候，我们需要一个合适的缓冲区结构体来存储临时的解析结果（特别是像字符串、数组、对象这种很长的数据类型）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> &#123;</span><br>    <span class="hljs-type">const</span> <span class="hljs-type">char</span>* json;<br>    <span class="hljs-type">char</span>* <span class="hljs-built_in">stack</span>;<br>    <span class="hljs-type">size_t</span> size, top;<br>&#125;lept_context;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-2-解析器"><a href="#2-2-解析器" class="headerlink" title="2.2 解析器"></a>2.2 解析器</h3><p>我们分别按照从简单数据类型到复合数据类型的方式介绍（复合数据类型的解析器采用的是简单类型解析器的递归调用）</p>
+<h4 id="2-2-1-解析器外部接口"><a href="#2-2-1-解析器外部接口" class="headerlink" title="2.2.1 解析器外部接口"></a>2.2.1 解析器外部接口</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">lept_parse</span><span class="hljs-params">(lept_value* v, <span class="hljs-type">const</span> <span class="hljs-type">char</span>* json)</span> &#123;<br>    lept_context c;<br>    <span class="hljs-type">int</span> ret;<br>    assert(v != <span class="hljs-literal">NULL</span>);<br>    c.json = json;<br>    c.<span class="hljs-built_in">stack</span> = <span class="hljs-literal">NULL</span>;<br>    c.size = c.top = <span class="hljs-number">0</span>;<br>    lept_init(v);<br>    lept_parse_whitespace(&amp;c);<br>    <span class="hljs-keyword">if</span> ((ret = lept_parse_value(&amp;c, v)) == LEPT_PARSE_OK) &#123;<br>        lept_parse_whitespace(&amp;c);<br>        <span class="hljs-keyword">if</span> (*c.json != <span class="hljs-string">&#x27;\0&#x27;</span>) &#123;<br>            v-&gt;type = LEPT_NULL;<br>            ret = LEPT_PARSE_ROOT_NOT_SINGULAR;<br>        &#125;<br>    &#125;<br>    assert(c.top == <span class="hljs-number">0</span>);<br>    <span class="hljs-built_in">free</span>(c.<span class="hljs-built_in">stack</span>);<br>    <span class="hljs-keyword">return</span> ret;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="2-2-2-解析器核心"><a href="#2-2-2-解析器核心" class="headerlink" title="2.2.2 解析器核心"></a>2.2.2 解析器核心</h4><p>这部分负责选择将JSON文本交给哪个解析器进行解析</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">lept_parse_value</span><span class="hljs-params">(lept_context* c, lept_value* v)</span> &#123;<br>    <span class="hljs-keyword">switch</span> (*c-&gt;json) &#123;<br>        <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;t&#x27;</span>:  <span class="hljs-keyword">return</span> lept_parse_literal(c, v, <span class="hljs-string">&quot;true&quot;</span>, LEPT_TRUE);<br>        <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;f&#x27;</span>:  <span class="hljs-keyword">return</span> lept_parse_literal(c, v, <span class="hljs-string">&quot;false&quot;</span>, LEPT_FALSE);<br>        <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;n&#x27;</span>:  <span class="hljs-keyword">return</span> lept_parse_literal(c, v, <span class="hljs-string">&quot;null&quot;</span>, LEPT_NULL);<br>        <span class="hljs-keyword">default</span>:   <span class="hljs-keyword">return</span> lept_parse_number(c, v);<br>        <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;&quot;&#x27;</span>:  <span class="hljs-keyword">return</span> lept_parse_string(c, v);<br>        <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;[&#x27;</span>:  <span class="hljs-keyword">return</span> lept_parse_array(c, v);<br>        <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;&#123;&#x27;</span>:  <span class="hljs-keyword">return</span> lept_parse_object(c, v);<br>        <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;\0&#x27;</span>: <span class="hljs-keyword">return</span> LEPT_PARSE_EXPECT_VALUE;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h5 id="（1）literal解析器"><a href="#（1）literal解析器" class="headerlink" title="（1）literal解析器"></a>（1）literal解析器</h5><p>该解析器处理 “null” “true” “false” 的JSON文本；</p>
+<p>注意之前提出的一个问题：为什么不能直接使用memcmp()这种函数比较是否是null true false而使用指针挨着比较每个字符呢？</p>
+<p>实际上我们使用memcmp()也能解决这个问题，作者应该是为了让我们更加熟练的使用指针所以使用了指针的方法；</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">lept_parse_literal</span><span class="hljs-params">(lept_context* c, lept_value* v, <span class="hljs-type">const</span> <span class="hljs-type">char</span>* literal, lept_type type)</span> &#123;<br>    <span class="hljs-type">size_t</span> i;<br>    EXPECT(c, literal[<span class="hljs-number">0</span>]);<br>    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; literal[i + <span class="hljs-number">1</span>]; i++)<br>        <span class="hljs-keyword">if</span> (c-&gt;json[i] != literal[i + <span class="hljs-number">1</span>])<br>            <span class="hljs-keyword">return</span> LEPT_PARSE_INVALID_VALUE;<br>    c-&gt;json += i;<br>    v-&gt;type = type;<br>    <span class="hljs-keyword">return</span> LEPT_PARSE_OK;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//使用memcmp()</span><br><span class="hljs-type">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">lept_parse_true</span><span class="hljs-params">(lept_context* c, lept_value* v)</span> &#123;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">memcmp</span>(c-&gt;json,<span class="hljs-string">&quot;true&quot;</span>,<span class="hljs-number">4</span>)!=<span class="hljs-number">0</span>)<br>    &#123;<br>        <span class="hljs-keyword">return</span> LEPT_PARSE_INVALID_VALUE;<br>    &#125;<br>    c-&gt;json += <span class="hljs-number">4</span>;<br>    v-&gt;type = LEPT_TRUE;<br>    <span class="hljs-keyword">return</span> LEPT_PARSE_OK;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h5 id="（2）number解析器"><a href="#（2）number解析器" class="headerlink" title="（2）number解析器"></a>（2）number解析器</h5><p>该解析器处理json值为数字的JSON文本；</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//完整解析数字的方案应该是先检查数字是否合法，接着再使用strtod()函数进行转换，然后判断数值是否过大</span><br><span class="hljs-comment">//将数字字符串转换为double便于存储在节点的double成员中，借助标准库strtod()，如果不借助这个库纯手写也不是不行</span><br><span class="hljs-comment">/*</span><br><span class="hljs-comment">    double strtod(const char *nptr,char **endptr);</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">    strtod()会扫描参数nptr字符串，跳过前面的空格字符，直到遇上数字或正负符号才开始做转换，</span><br><span class="hljs-comment">    到出现非数字或字符串结束时(&#x27;\0&#x27;)才结束转换，并将结果返回。若endptr不为NULL，则会将遇到不合条件而终止的nptr中的字符指针由endptr传回。</span><br><span class="hljs-comment">    参数nptr字符串可包含正负号、小数点或E(e)来表示指数部分。</span><br><span class="hljs-comment">*/</span><br><span class="hljs-type">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">lept_parse_number</span><span class="hljs-params">(lept_context* c, lept_value* v)</span> &#123;<br>    <span class="hljs-comment">//1.首先需要校验数字是否合法，使用指针p表示当前的解析字符位置</span><br>    <span class="hljs-type">const</span> <span class="hljs-type">char</span>* p = c-&gt;json;<br>    <span class="hljs-comment">//2.假如当前有负号或者0（会判断是否是独0）则直接跳过，除了这两种情况则第一个字符必选是1~9</span><br>    <span class="hljs-keyword">if</span> (*p == <span class="hljs-string">&#x27;-&#x27;</span>) p++;<br>    <span class="hljs-keyword">if</span> (*p == <span class="hljs-string">&#x27;0&#x27;</span>) p++;<br>    <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">if</span> (!ISDIGIT1TO9(*p)) <span class="hljs-keyword">return</span> LEPT_PARSE_INVALID_VALUE;<br>        <span class="hljs-keyword">for</span> (p++; ISDIGIT(*p); p++);<br>    &#125;<br>    <span class="hljs-comment">//3.如果出现小数点，跳过小数点检查其至少有一个digit（数字0~9）</span><br>    <span class="hljs-keyword">if</span> (*p == <span class="hljs-string">&#x27;.&#x27;</span>) &#123;<br>        p++;<br>        <span class="hljs-keyword">if</span> (!ISDIGIT(*p)) <span class="hljs-keyword">return</span> LEPT_PARSE_INVALID_VALUE;<br>        <span class="hljs-keyword">for</span> (p++; ISDIGIT(*p); p++);<br>    &#125;<br>    <span class="hljs-comment">//4.如果出现指数（大小写的e），跳过出现的正负号，之后至少有一个digit（数字0~9），与小数相同逻辑</span><br>    <span class="hljs-keyword">if</span> (*p == <span class="hljs-string">&#x27;e&#x27;</span> || *p == <span class="hljs-string">&#x27;E&#x27;</span>) &#123;<br>        p++;<br>        <span class="hljs-keyword">if</span> (*p == <span class="hljs-string">&#x27;+&#x27;</span> || *p == <span class="hljs-string">&#x27;-&#x27;</span>) p++;<br>        <span class="hljs-keyword">if</span> (!ISDIGIT(*p)) <span class="hljs-keyword">return</span> LEPT_PARSE_INVALID_VALUE;<br>        <span class="hljs-keyword">for</span> (p++; ISDIGIT(*p); p++);<br>    &#125;<br>    <span class="hljs-comment">//5.检查完代码之后，就可以正常进行转换了，因为此时代码是合法的一定能转化为正确的浮点数故不需要指针接收终止指针</span><br>    errno = <span class="hljs-number">0</span>;<br>    v-&gt;n = strtod(c-&gt;json, <span class="hljs-literal">NULL</span>);<br>    <span class="hljs-comment">//6.假如最后的数值过大</span><br>    <span class="hljs-keyword">if</span> (errno == ERANGE &amp;&amp; (v-&gt;n == HUGE_VAL || v-&gt;n == -HUGE_VAL))<br>        <span class="hljs-keyword">return</span> LEPT_PARSE_NUMBER_TOO_BIG;<br>    <span class="hljs-comment">//7.假如一切正常则返回OK并赋值和类型</span><br>    v-&gt;type = LEPT_NUMBER;<br>    c-&gt;json = p;<span class="hljs-comment">//虽然不知道为什么每次处理完毕都需要将其指向最后，但这应该是指针使用习惯</span><br>    <span class="hljs-keyword">return</span> LEPT_PARSE_OK;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h5 id="（3）string解析器"><a href="#（3）string解析器" class="headerlink" title="（3）string解析器"></a>（3）string解析器</h5><p>处理json值为字符串的JSON文本</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//解析字符串：只需要先备份栈顶，然后把解析到的字符压栈，最后计算出长度并一次性把所有字符弹出，再设置至值里便可以</span><br><span class="hljs-type">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">lept_parse_string</span><span class="hljs-params">(lept_context* c, lept_value* v)</span> &#123;<br>    <span class="hljs-type">size_t</span> head = c-&gt;top, len;<br>    <span class="hljs-type">const</span> <span class="hljs-type">char</span>* p;<br>    EXPECT(c, <span class="hljs-string">&#x27;\&quot;&#x27;</span>);<br>    p = c-&gt;json;<br>    <span class="hljs-keyword">for</span> (;;) &#123;<br>        <span class="hljs-type">char</span> ch = *p++;<br>        <span class="hljs-comment">//1.处理转义序列</span><br>        <span class="hljs-keyword">switch</span> (ch) &#123;<br>            <span class="hljs-comment">//1.1 结束字符</span><br>            <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;\&quot;&#x27;</span>:<br>                len = c-&gt;top - head;<br>                lept_set_string(v, (<span class="hljs-type">const</span> <span class="hljs-type">char</span>*)lept_context_pop(c, len), len);<br>                c-&gt;json = p;<br>                <span class="hljs-keyword">return</span> LEPT_PARSE_OK;<br>            <span class="hljs-comment">//1.2 转义字符</span><br>            <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;\\&#x27;</span>:<br>                <span class="hljs-keyword">switch</span> (*p++) &#123;<br>                    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;\&quot;&#x27;</span>: PUTC(c, <span class="hljs-string">&#x27;\&quot;&#x27;</span>); <span class="hljs-keyword">break</span>;<br>                    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;\\&#x27;</span>: PUTC(c, <span class="hljs-string">&#x27;\\&#x27;</span>); <span class="hljs-keyword">break</span>;<br>                    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;/&#x27;</span>:  PUTC(c, <span class="hljs-string">&#x27;/&#x27;</span> ); <span class="hljs-keyword">break</span>;<br>                    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;b&#x27;</span>:  PUTC(c, <span class="hljs-string">&#x27;\b&#x27;</span>); <span class="hljs-keyword">break</span>;<br>                    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;f&#x27;</span>:  PUTC(c, <span class="hljs-string">&#x27;\f&#x27;</span>); <span class="hljs-keyword">break</span>;<br>                    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;n&#x27;</span>:  PUTC(c, <span class="hljs-string">&#x27;\n&#x27;</span>); <span class="hljs-keyword">break</span>;<br>                    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;r&#x27;</span>:  PUTC(c, <span class="hljs-string">&#x27;\r&#x27;</span>); <span class="hljs-keyword">break</span>;<br>                    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;t&#x27;</span>:  PUTC(c, <span class="hljs-string">&#x27;\t&#x27;</span>); <span class="hljs-keyword">break</span>;<br>                    <span class="hljs-keyword">default</span>:<br>                        c-&gt;top = head;<br>                        <span class="hljs-keyword">return</span> LEPT_PARSE_INVALID_STRING_ESCAPE;<br>                &#125;<br>                <span class="hljs-keyword">break</span>;<br>            <span class="hljs-comment">//1.3 字符串末尾，也就是说碰到这个就算整个字符串结束，正常的json字符串是&quot;\&quot;HELLO\&quot;\0&quot;,这种情况是&quot;\&quot;HELLO\0&quot;缺少了结束双引号</span><br>            <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;\0&#x27;</span>:<br>                c-&gt;top = head;<br>                <span class="hljs-keyword">return</span> LEPT_PARSE_MISS_QUOTATION_MARK;<br>            <span class="hljs-comment">//2.处理正常字符</span><br>            <span class="hljs-keyword">default</span>:<br>                <span class="hljs-comment">//处理不合法的字符</span><br>                <span class="hljs-keyword">if</span> ((<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>)ch &lt; <span class="hljs-number">0x20</span>) &#123;<br>                    c-&gt;top = head;<br>                    <span class="hljs-keyword">return</span> LEPT_PARSE_INVALID_STRING_CHAR;<br>                &#125;<br>                <span class="hljs-comment">//将合法字符压栈</span><br>                PUTC(c, ch);<br>        &#125;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<h5 id="（4）array解析器"><a href="#（4）array解析器" class="headerlink" title="（4）array解析器"></a>（4）array解析器</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">lept_parse_array</span><span class="hljs-params">(lept_context* c, lept_value* v)</span> &#123;<br>    <span class="hljs-type">size_t</span> i, size = <span class="hljs-number">0</span>;<br>    <span class="hljs-type">int</span> ret;<br>    EXPECT(c, <span class="hljs-string">&#x27;[&#x27;</span>);<br>    lept_parse_whitespace(c);<br>    <span class="hljs-comment">//1.允许解析空数组[]格式</span><br>    <span class="hljs-keyword">if</span> (*c-&gt;json == <span class="hljs-string">&#x27;]&#x27;</span>) &#123;<br>        c-&gt;json++;<br>        v-&gt;type = LEPT_ARRAY;<br>        v-&gt;u.a.size = <span class="hljs-number">0</span>;<br>        v-&gt;u.a.e = <span class="hljs-literal">NULL</span>;<br>        <span class="hljs-keyword">return</span> LEPT_PARSE_OK;<br>    &#125;<br>    <span class="hljs-comment">//2.假如不是空数组，借助for循环依次解析，c是缓冲区lept_context，e是最终lept_value，我们所说的临时lept_value出现在递归时定义的lept_parse_value</span><br>    <span class="hljs-keyword">for</span> (;;) &#123;<br>        lept_value e;<br>        lept_init(&amp;e);<br>        <span class="hljs-comment">//2.1 利用lept_parse_value递归的思想，先解析一小部分的数组值存入临时lept_value中</span><br>        <span class="hljs-keyword">if</span> ((ret = lept_parse_value(c, &amp;e)) != LEPT_PARSE_OK)<br>            <span class="hljs-keyword">break</span>;<span class="hljs-comment">//只有当解析数组其中一部分的时候报错才会break退出整个数组的解析</span><br>        <span class="hljs-comment">//将递归解析得到的临时lept_value压入永久的lept_value中</span><br>        <span class="hljs-built_in">memcpy</span>(lept_context_push(c, <span class="hljs-keyword">sizeof</span>(lept_value)), &amp;e, <span class="hljs-keyword">sizeof</span>(lept_value));<br>        <span class="hljs-comment">/*</span><br><span class="hljs-comment">        void *memcpy(void *destin, void *source, unsigned n);</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">        @destin-- 指向用于存储复制内容的目标数组，类型强制转换为 void* 指针；</span><br><span class="hljs-comment">        @source-- 指向要复制的数据源，类型强制转换为 void* 指针；</span><br><span class="hljs-comment">        @n-- 要被复制的字节数；</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">        该函数返回一个指向目标存储区destin的指针</span><br><span class="hljs-comment">        */</span><br>        size++;<br>        lept_parse_whitespace(c);<br>        <span class="hljs-comment">//2.2 如果遇见,说明接下来还有需要处理的数组值，于是借助for循环继续处理</span><br>        <span class="hljs-comment">//注意，以下三种情况必然会出现一种</span><br>        <span class="hljs-keyword">if</span> (*c-&gt;json == <span class="hljs-string">&#x27;,&#x27;</span>) &#123;<br>            c-&gt;json++;<br>            lept_parse_whitespace(c);<br>        &#125;<br>        <span class="hljs-comment">//2.3 如果遇到结束]则终止并处理成功</span><br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (*c-&gt;json == <span class="hljs-string">&#x27;]&#x27;</span>) &#123;<br>            c-&gt;json++;<br>            v-&gt;type = LEPT_ARRAY;<br>            v-&gt;u.a.size = size;<br>            size *= <span class="hljs-keyword">sizeof</span>(lept_value);<br>            <span class="hljs-built_in">memcpy</span>(v-&gt;u.a.e = (lept_value*)<span class="hljs-built_in">malloc</span>(size), lept_context_pop(c, size), size);<br>            <span class="hljs-keyword">return</span> LEPT_PARSE_OK;<br>        &#125;<br>        <span class="hljs-comment">//2.4 不存在结束]提醒报错（如果是缺少[就不会进入处理array的函数，根据case的规则极大可能进入default处理number接着报错）</span><br>        <span class="hljs-keyword">else</span> &#123;<br>            ret = LEPT_PARSE_MISS_COMMA_OR_SQUARE_BRACKET;<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-comment">//3.数组解析完毕后，进行内存清理工作</span><br>    <span class="hljs-comment">/* Pop and free values on the stack */</span><br>    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; size; i++)<br>        lept_free((lept_value*)lept_context_pop(c, <span class="hljs-keyword">sizeof</span>(lept_value)));<br>    <span class="hljs-keyword">return</span> ret;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<h5 id="（5）object解析器"><a href="#（5）object解析器" class="headerlink" title="（5）object解析器"></a>（5）object解析器</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//知道如何lept_parse_array则解析对象几乎是相同的，只是每个迭代需要多处理一个字符串类型的键和冒号</span><br><span class="hljs-type">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">lept_parse_object</span><span class="hljs-params">(lept_context* c, lept_value* v)</span> &#123;<br>    <span class="hljs-type">size_t</span> i, size;<br>    lept_member m;<br>    <span class="hljs-type">int</span> ret;<br>    EXPECT(c, <span class="hljs-string">&#x27;&#123;&#x27;</span>);<br>    lept_parse_whitespace(c);<br>    <span class="hljs-comment">//1.允许空对象也就是&#123;&#125;存在</span><br>    <span class="hljs-keyword">if</span> (*c-&gt;json == <span class="hljs-string">&#x27;&#125;&#x27;</span>) &#123;<br>        c-&gt;json++;<br>        v-&gt;type = LEPT_OBJECT;<br>        v-&gt;u.o.m = <span class="hljs-number">0</span>;<br>        v-&gt;u.o.size = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">return</span> LEPT_PARSE_OK;<br>    &#125;<br>    m.k = <span class="hljs-literal">NULL</span>;<br>    size = <span class="hljs-number">0</span>;<br>    <span class="hljs-comment">//2.for循环依次遍历处理&#123;...&#125;对象</span><br>    <span class="hljs-keyword">for</span> (;;) &#123;<br>        <span class="hljs-type">char</span>* str;<br>        lept_init(&amp;m.v);<br>        <span class="hljs-comment">//2.1 假如空键也就是 &quot;&quot;这是不允许的，抛出异常</span><br>        <span class="hljs-comment">/* parse key */</span><br>        <span class="hljs-keyword">if</span> (*c-&gt;json != <span class="hljs-string">&#x27;&quot;&#x27;</span>) &#123;<br>            ret = LEPT_PARSE_MISS_KEY;<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>        <span class="hljs-comment">//2.2 第一部分利用重构的lept_parse_string_raw解析键的字符串</span><br>        <span class="hljs-keyword">if</span> ((ret = lept_parse_string_raw(c, &amp;str, &amp;m.klen)) != LEPT_PARSE_OK)<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-comment">//若字符串解析成功则将结果存储在临时栈中（因为现在这个对象成员只是对象组成的一部分，很可能还会接着处理其他对象成员）</span><br>        <span class="hljs-built_in">memcpy</span>(m.k = (<span class="hljs-type">char</span>*)<span class="hljs-built_in">malloc</span>(m.klen + <span class="hljs-number">1</span>), str, m.klen);<br>        m.k[m.klen] = <span class="hljs-string">&#x27;\0&#x27;</span>;<br>        <span class="hljs-comment">/* parse ws colon ws */</span><br>        lept_parse_whitespace(c);<br>        <span class="hljs-comment">//2.3 第二步是解析冒号，当然冒号的前后可以存在空白字符</span><br>        <span class="hljs-keyword">if</span> (*c-&gt;json != <span class="hljs-string">&#x27;:&#x27;</span>) &#123;<br>            ret = LEPT_PARSE_MISS_COLON;<span class="hljs-comment">//假如根本不存在冒号则抛出异常</span><br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>        c-&gt;json++;<br>        lept_parse_whitespace(c);<br>        <span class="hljs-comment">//2.4 第三部分是解析对象成员的值，这部分和数组一样递归调用lept_parse_value</span><br>        <span class="hljs-comment">/* parse value */</span><br>        <span class="hljs-keyword">if</span> ((ret = lept_parse_value(c, &amp;m.v)) != LEPT_PARSE_OK)<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-comment">//解析成功则将结果写入临时lept_number的value字段，接着将整个临时lept_number压入栈</span><br>        <span class="hljs-built_in">memcpy</span>(lept_context_push(c, <span class="hljs-keyword">sizeof</span>(lept_member)), &amp;m, <span class="hljs-keyword">sizeof</span>(lept_member));<br>        size++;<br>        <span class="hljs-comment">//成功解析并且写入键值之后将m.k设置为空指针，将拥有权转移给栈</span><br>        m.k = <span class="hljs-literal">NULL</span>; <span class="hljs-comment">/* ownership is transferred to member on stack */</span><br>        <span class="hljs-comment">/* parse ws [comma | right-curly-brace] ws */</span><br>        lept_parse_whitespace(c);<br><br>        <span class="hljs-comment">//2.5 下面三种情况必然出现其一，逗号则接着for循环解析，&#125;表示整个对象解析完毕，否则就是没有&#125;抛出异常</span><br>        <span class="hljs-keyword">if</span> (*c-&gt;json == <span class="hljs-string">&#x27;,&#x27;</span>) &#123;<br>            c-&gt;json++;<br>            lept_parse_whitespace(c);<br>        &#125;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (*c-&gt;json == <span class="hljs-string">&#x27;&#125;&#x27;</span>) &#123;<br>            <span class="hljs-type">size_t</span> s = <span class="hljs-keyword">sizeof</span>(lept_member) * size;<br>            c-&gt;json++;<br>            v-&gt;type = LEPT_OBJECT;<br>            v-&gt;u.o.size = size;<br>            <span class="hljs-comment">//解析完毕（这里指的是整个对象都被解析完毕），我们将栈上的成员复制到结果中</span><br>            <span class="hljs-built_in">memcpy</span>(v-&gt;u.o.m = (lept_member*)<span class="hljs-built_in">malloc</span>(s), lept_context_pop(c, s), s);<br>            <span class="hljs-keyword">return</span> LEPT_PARSE_OK;<br>        &#125;<br>        <span class="hljs-keyword">else</span> &#123;<br>            ret = LEPT_PARSE_MISS_COMMA_OR_CURLY_BRACKET;<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-comment">//for循环中出现任何问题导致break则会进行下面这一步，释放临时的key字符串和栈上的成员</span><br>    <span class="hljs-comment">/* Pop and free members on the stack */</span><br>    <span class="hljs-built_in">free</span>(m.k);<br>    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; size; i++) &#123;<br>        lept_member* m = (lept_member*)lept_context_pop(c, <span class="hljs-keyword">sizeof</span>(lept_member));<br>        <span class="hljs-built_in">free</span>(m-&gt;k);<br>        lept_free(&amp;m-&gt;v);<br>    &#125;<br>    v-&gt;type = LEPT_NULL;<br>    <span class="hljs-keyword">return</span> ret;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="3-Stringify部分"><a href="#3-Stringify部分" class="headerlink" title="3.Stringify部分"></a>3.Stringify部分</h2><h3 id="3-1-数据结构"><a href="#3-1-数据结构" class="headerlink" title="3.1 数据结构"></a>3.1 数据结构</h3><h4 id="3-1-1-缓冲结构"><a href="#3-1-1-缓冲结构" class="headerlink" title="3.1.1 缓冲结构"></a>3.1.1 缓冲结构</h4><p>这里使用的缓冲结构与解析器使用的缓冲结构是一样的</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> &#123;</span><br>    <span class="hljs-type">const</span> <span class="hljs-type">char</span>* json;<br>    <span class="hljs-type">char</span>* <span class="hljs-built_in">stack</span>;<br>    <span class="hljs-type">size_t</span> size, top;<br>&#125;lept_context;<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-2-生成器"><a href="#3-2-生成器" class="headerlink" title="3.2 生成器"></a>3.2 生成器</h3><h4 id="3-2-1-生成器外部接口"><a href="#3-2-1-生成器外部接口" class="headerlink" title="3.2.1 生成器外部接口"></a>3.2.1 生成器外部接口</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">char</span>* <span class="hljs-title function_">lept_stringify</span><span class="hljs-params">(<span class="hljs-type">const</span> lept_value* v, <span class="hljs-type">size_t</span>* length)</span> &#123;<br>    lept_context c;<br>    assert(v != <span class="hljs-literal">NULL</span>);<br>    <span class="hljs-comment">//这里我们再次使用了解析器中用过的lept_context缓冲结构体存储临时的生成结果</span><br>    c.<span class="hljs-built_in">stack</span> = (<span class="hljs-type">char</span>*)<span class="hljs-built_in">malloc</span>(c.size = LEPT_PARSE_STRINGIFY_INIT_SIZE);<br>    c.top = <span class="hljs-number">0</span>;<br>    lept_stringify_value(&amp;c, v);<br>    <span class="hljs-comment">//当传入length参数不为0时，就能获得生成的JSON文本的长度，当然使用strlen()也是可以的，但这将耗费一定性能消耗</span><br>    <span class="hljs-keyword">if</span> (length)<br>        *length = c.top;<br>    <span class="hljs-comment">//生成根节点的值之后，还需要手动加入一个空字符作结尾，因为生成的是字符串！</span><br>    PUTC(&amp;c, <span class="hljs-string">&#x27;\0&#x27;</span>);<br>    <span class="hljs-keyword">return</span> c.<span class="hljs-built_in">stack</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="3-2-2-生成器核心"><a href="#3-2-2-生成器核心" class="headerlink" title="3.2.2 生成器核心"></a>3.2.2 生成器核心</h4><p>我们根据节点类型来辨别需要生成的JSON字符串；</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">static</span> <span class="hljs-type">void</span> <span class="hljs-title function_">lept_stringify_value</span><span class="hljs-params">(lept_context* c, <span class="hljs-type">const</span> lept_value* v)</span> &#123;<br>    <span class="hljs-type">size_t</span> i;<br>    <span class="hljs-keyword">switch</span> (v-&gt;type) &#123;<br>        <span class="hljs-comment">//生成&quot;null&quot;&quot;false&quot;&quot;true&quot;可以直接借助PUTS宏输出对应的字符串即可，无需额外写函数</span><br>        <span class="hljs-keyword">case</span> LEPT_NULL:   PUTS(c, <span class="hljs-string">&quot;null&quot;</span>,  <span class="hljs-number">4</span>); <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> LEPT_FALSE:  PUTS(c, <span class="hljs-string">&quot;false&quot;</span>, <span class="hljs-number">5</span>); <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> LEPT_TRUE:   PUTS(c, <span class="hljs-string">&quot;true&quot;</span>,  <span class="hljs-number">4</span>); <span class="hljs-keyword">break</span>;<br>        <span class="hljs-comment">//生成数字文本，首先使用 sprintf(&quot;%.17g&quot;, ...) 来把浮点数转换成文本，&quot;%.17g&quot; 足够把双精度浮点转换成可还原的文本</span><br>        <span class="hljs-comment">//在生成的时候直接写进 c 里的堆栈，然后再按实际长度调用 c-&gt;top</span><br>        <span class="hljs-keyword">case</span> LEPT_NUMBER: c-&gt;top -= <span class="hljs-number">32</span> - <span class="hljs-built_in">sprintf</span>(lept_context_push(c, <span class="hljs-number">32</span>), <span class="hljs-string">&quot;%.17g&quot;</span>, v-&gt;u.n); <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> LEPT_STRING: lept_stringify_string(c, v-&gt;u.s.s, v-&gt;u.s.len); <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> LEPT_ARRAY:<br>            PUTC(c, <span class="hljs-string">&#x27;[&#x27;</span>);<br>            <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; v-&gt;u.a.size; i++) &#123;<br>                <span class="hljs-keyword">if</span> (i &gt; <span class="hljs-number">0</span>)<br>                    PUTC(c, <span class="hljs-string">&#x27;,&#x27;</span>);<br>                lept_stringify_value(c, &amp;v-&gt;u.a.e[i]);<br>            &#125;<br>            PUTC(c, <span class="hljs-string">&#x27;]&#x27;</span>);<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> LEPT_OBJECT:<br>            PUTC(c, <span class="hljs-string">&#x27;&#123;&#x27;</span>);<br>            <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; v-&gt;u.o.size; i++) &#123;<br>                <span class="hljs-keyword">if</span> (i &gt; <span class="hljs-number">0</span>)<br>                    PUTC(c, <span class="hljs-string">&#x27;,&#x27;</span>);<br>                lept_stringify_string(c, v-&gt;u.o.m[i].k, v-&gt;u.o.m[i].klen);<br>                PUTC(c, <span class="hljs-string">&#x27;:&#x27;</span>);<br>                lept_stringify_value(c, &amp;v-&gt;u.o.m[i].v);<br>            &#125;<br>            PUTC(c, <span class="hljs-string">&#x27;&#125;&#x27;</span>);<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">default</span>: assert(<span class="hljs-number">0</span> &amp;&amp; <span class="hljs-string">&quot;invalid type&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h5 id="（1）string生成器"><a href="#（1）string生成器" class="headerlink" title="（1）string生成器"></a>（1）string生成器</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">static</span> <span class="hljs-type">void</span> <span class="hljs-title function_">lept_stringify_string</span><span class="hljs-params">(lept_context* c, <span class="hljs-type">const</span> <span class="hljs-type">char</span>* s, <span class="hljs-type">size_t</span> len)</span> &#123;<br>    <span class="hljs-type">static</span> <span class="hljs-type">const</span> <span class="hljs-type">char</span> hex_digits[] = &#123; <span class="hljs-string">&#x27;0&#x27;</span>, <span class="hljs-string">&#x27;1&#x27;</span>, <span class="hljs-string">&#x27;2&#x27;</span>, <span class="hljs-string">&#x27;3&#x27;</span>, <span class="hljs-string">&#x27;4&#x27;</span>, <span class="hljs-string">&#x27;5&#x27;</span>, <span class="hljs-string">&#x27;6&#x27;</span>, <span class="hljs-string">&#x27;7&#x27;</span>, <span class="hljs-string">&#x27;8&#x27;</span>, <span class="hljs-string">&#x27;9&#x27;</span>, <span class="hljs-string">&#x27;A&#x27;</span>, <span class="hljs-string">&#x27;B&#x27;</span>, <span class="hljs-string">&#x27;C&#x27;</span>, <span class="hljs-string">&#x27;D&#x27;</span>, <span class="hljs-string">&#x27;E&#x27;</span>, <span class="hljs-string">&#x27;F&#x27;</span> &#125;;<br>    <span class="hljs-type">size_t</span> i, size;<br>    <span class="hljs-type">char</span>* head, *p;<br>    assert(s != <span class="hljs-literal">NULL</span>);<br>    <span class="hljs-comment">//预先分配足够的内存</span><br>    p = head = lept_context_push(c, size = len * <span class="hljs-number">6</span> + <span class="hljs-number">2</span>); <span class="hljs-comment">/* &quot;\u00xx...&quot; */</span><br>    *p++ = <span class="hljs-string">&#x27;&quot;&#x27;</span>;<br>    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; len; i++) &#123;<br>        <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> ch = (<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>)s[i];<br>        <span class="hljs-comment">//生成字符串的时候我们首先需要对某些转义进行处理，也就是将转义字符分别拆开逐个存入栈中</span><br>        <span class="hljs-keyword">switch</span> (ch) &#123;<br>            <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;\&quot;&#x27;</span>: *p++ = <span class="hljs-string">&#x27;\\&#x27;</span>; *p++ = <span class="hljs-string">&#x27;\&quot;&#x27;</span>; <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;\\&#x27;</span>: *p++ = <span class="hljs-string">&#x27;\\&#x27;</span>; *p++ = <span class="hljs-string">&#x27;\\&#x27;</span>; <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;\b&#x27;</span>: *p++ = <span class="hljs-string">&#x27;\\&#x27;</span>; *p++ = <span class="hljs-string">&#x27;b&#x27;</span>;  <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;\f&#x27;</span>: *p++ = <span class="hljs-string">&#x27;\\&#x27;</span>; *p++ = <span class="hljs-string">&#x27;f&#x27;</span>;  <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;\n&#x27;</span>: *p++ = <span class="hljs-string">&#x27;\\&#x27;</span>; *p++ = <span class="hljs-string">&#x27;n&#x27;</span>;  <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;\r&#x27;</span>: *p++ = <span class="hljs-string">&#x27;\\&#x27;</span>; *p++ = <span class="hljs-string">&#x27;r&#x27;</span>;  <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;\t&#x27;</span>: *p++ = <span class="hljs-string">&#x27;\\&#x27;</span>; *p++ = <span class="hljs-string">&#x27;t&#x27;</span>;  <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">default</span>:<br>                <span class="hljs-keyword">if</span> (ch &lt; <span class="hljs-number">0x20</span>) &#123;<br>                    <span class="hljs-comment">//自行编写十六进位输出</span><br>                    *p++ = <span class="hljs-string">&#x27;\\&#x27;</span>; *p++ = <span class="hljs-string">&#x27;u&#x27;</span>; *p++ = <span class="hljs-string">&#x27;0&#x27;</span>; *p++ = <span class="hljs-string">&#x27;0&#x27;</span>;<br>                    *p++ = hex_digits[ch &gt;&gt; <span class="hljs-number">4</span>];<br>                    *p++ = hex_digits[ch &amp; <span class="hljs-number">15</span>];<br>                &#125;<br>                <span class="hljs-keyword">else</span><br>                    *p++ = s[i];<br>        &#125;<br>    &#125;<br>    *p++ = <span class="hljs-string">&#x27;&quot;&#x27;</span>;<br>    c-&gt;top -= size - (p - head);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h5 id="（2）数组生成器"><a href="#（2）数组生成器" class="headerlink" title="（2）数组生成器"></a>（2）数组生成器</h5><p>生成数组只需要输出[]，中间部分使用递归调用lept_stringify_value()</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">case</span> LEPT_ARRAY:<br>PUTC(c, <span class="hljs-string">&#x27;[&#x27;</span>);<br><span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; v-&gt;u.a.size; i++) &#123;<br>    <span class="hljs-comment">//注意只在第一个数组元素之后添加,分隔符</span><br>	<span class="hljs-keyword">if</span> (i &gt; <span class="hljs-number">0</span>)<br> 		PUTC(c, <span class="hljs-string">&#x27;,&#x27;</span>);<br>	lept_stringify_value(c, &amp;v-&gt;u.a.e[i]);<br>&#125;<br>PUTC(c, <span class="hljs-string">&#x27;]&#x27;</span>);<br><span class="hljs-keyword">break</span>;<br>        <br></code></pre></td></tr></table></figure>
+
+<h5 id="（3）对象生成器"><a href="#（3）对象生成器" class="headerlink" title="（3）对象生成器"></a>（3）对象生成器</h5><p>生成对象主要分为两步，生成键（使用lept_stringify_string()递归调用）以及生成值（使用lept_stringify_value()），在键值之间需要添加:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">case</span> LEPT_OBJECT:<br>PUTC(c, <span class="hljs-string">&#x27;&#123;&#x27;</span>);<br><span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; v-&gt;u.o.size; i++) &#123;<br>	<span class="hljs-keyword">if</span> (i &gt; <span class="hljs-number">0</span>)<br>		PUTC(c, <span class="hljs-string">&#x27;,&#x27;</span>);<br> 	lept_stringify_string(c, v-&gt;u.o.m[i].k, v-&gt;u.o.m[i].klen);<br>	PUTC(c, <span class="hljs-string">&#x27;:&#x27;</span>);<br>	lept_stringify_value(c, &amp;v-&gt;u.o.m[i].v);<br>&#125;<br>PUTC(c, <span class="hljs-string">&#x27;&#125;&#x27;</span>);<br><span class="hljs-keyword">break</span>;<br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="二、附录"><a href="#二、附录" class="headerlink" title="二、附录"></a>二、附录</h1><h2 id="1-单元测试"><a href="#1-单元测试" class="headerlink" title="1.单元测试"></a>1.单元测试</h2><p>我们日常在写练习题的时候一般都是以printf&#x2F;cout输出结果观察是否正确，但是随着软件项目越来越复杂这样做会非常低效，我们经常采用的一种方式是单元测试；</p>
+<p>常用的单元测试框架有 xUnit 系列，如 C++ 的 <a target="_blank" rel="noopener" href="https://github.com/google/googletest">Google Test</a>、C# 的 <a target="_blank" rel="noopener" href="https://www.nunit.org/">NUnit</a>。简单起见，本项目编写了一个极简单的单元测试方式。</p>
+<p>一般来说，软件开发是以周期进行的。例如，加入一个功能，再写关于该功能的单元测试。但也有另一种软件开发方法论，称为测试驱动开发（test-driven development, TDD），它的主要循环步骤是：</p>
+<ol>
+<li>加入一个测试。</li>
+<li>运行所有测试，新的测试应该会失败。</li>
+<li>编写实现代码。</li>
+<li>运行所有测试，若有测试失败回到3。</li>
+<li>重构代码。</li>
+<li>回到 1。</li>
+</ol>
+<p>TDD 是先写测试，再实现功能（单元测试是先加入功能再写测试）。好处是实现只会刚好满足测试，而不会写了一些不需要的代码，或是没有被测试的代码。</p>
+<p>但无论我们是采用 TDD，或是先实现后测试，都应尽量加入足够覆盖率的单元测试。</p>
+<p>回到 leptjson 项目，<code>test.c</code> 包含了一个极简的单元测试框架：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;leptjson.h&quot;</span></span><br><br><span class="hljs-type">static</span> <span class="hljs-type">int</span> main_ret = <span class="hljs-number">0</span>;<br><span class="hljs-type">static</span> <span class="hljs-type">int</span> test_count = <span class="hljs-number">0</span>;<br><span class="hljs-type">static</span> <span class="hljs-type">int</span> test_pass = <span class="hljs-number">0</span>;<br><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> EXPECT_EQ_BASE(equality, expect, actual, format) \</span><br><span class="hljs-meta">    do &#123;\</span><br><span class="hljs-meta">        test_count++;\</span><br><span class="hljs-meta">        <span class="hljs-keyword">if</span> (equality)\</span><br><span class="hljs-meta">            test_pass++;\</span><br><span class="hljs-meta">        <span class="hljs-keyword">else</span> &#123;\</span><br><span class="hljs-meta">            fprintf(stderr, <span class="hljs-string">&quot;%s:%d: expect: &quot;</span> format <span class="hljs-string">&quot; actual: &quot;</span> format <span class="hljs-string">&quot;\n&quot;</span>, __FILE__, __LINE__, expect, actual);\</span><br><span class="hljs-meta">            main_ret = 1;\</span><br><span class="hljs-meta">        &#125;\</span><br><span class="hljs-meta">    &#125; while(0)</span><br><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> EXPECT_EQ_INT(expect, actual) EXPECT_EQ_BASE((expect) == (actual), expect, actual, <span class="hljs-string">&quot;%d&quot;</span>)</span><br><br><span class="hljs-type">static</span> <span class="hljs-type">void</span> <span class="hljs-title function_">test_parse_null</span><span class="hljs-params">()</span> &#123;<br>    lept_value v;<br>    v.type = LEPT_TRUE;<br>    EXPECT_EQ_INT(LEPT_PARSE_OK, lept_parse(&amp;v, <span class="hljs-string">&quot;null&quot;</span>));<br>    EXPECT_EQ_INT(LEPT_NULL, lept_get_type(&amp;v));<br>&#125;<br><br><span class="hljs-comment">/* ... */</span><br><br><span class="hljs-type">static</span> <span class="hljs-type">void</span> <span class="hljs-title function_">test_parse</span><span class="hljs-params">()</span> &#123;<br>    test_parse_null();<br>    <span class="hljs-comment">/* ... */</span><br>&#125;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    test_parse();<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d/%d (%3.2f%%) passed\n&quot;</span>, test_pass, test_count, test_pass * <span class="hljs-number">100.0</span> / test_count);<br>    <span class="hljs-keyword">return</span> main_ret;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>现时只提供了一个 <code>EXPECT_EQ_INT(expect, actual)</code> 的宏，每次使用这个宏时，如果 expect !&#x3D; actual（预期值不等于实际值），便会输出错误信息。<br>若按照 TDD 的步骤，我们先写一个测试，如上面的 <code>test_parse_null()</code>，而 <code>lept_parse()</code> 只返回 <code>LEPT_PARSE_OK</code>：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">/Users/mi</span>loyip<span class="hljs-regexp">/github/</span>json-tutorial<span class="hljs-regexp">/tutorial01/</span>test.c:<span class="hljs-number">27</span>: expect: <span class="hljs-number">0</span> actual: <span class="hljs-number">1</span><br><span class="hljs-number">1</span>/<span class="hljs-number">2</span> (<span class="hljs-number">50.00</span>%) passed<br></code></pre></td></tr></table></figure>
+
+<p>第一个返回 <code>LEPT_PARSE_OK</code>，所以是通过的。第二个测试因为 <code>lept_parse()</code> 没有把 <code>v.type</code> 改成 <code>LEPT_NULL</code>，造成失败。我们再实现 <code>lept_parse()</code> 令到它能通过测试。</p>
+<p>然而，完全按照 TDD 的步骤来开发，是会减慢开发进程。所以我个人会在这两种极端的工作方式取平衡。通常会在设计 API 后，先写部分测试代码，再写满足那些测试的实现。</p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/" class="category-chain-item">项目开发</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/C%E8%AF%AD%E8%A8%80%E9%A1%B9%E7%9B%AE/">#C语言项目</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>初级项目_JSON库</div>
+      <div>https://gintoki-jpg.github.io/2022/07/27/项目_JSON库/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>杨再俨</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年7月27日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/07/30/CPP_STL%E4%B8%AD%E7%BA%A7/" title="STL中级">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">STL中级</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/07/19/%E5%90%8E%E7%AB%AF_JAVA/" title="JAVA">
+                        <span class="hidden-mobile">JAVA</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+</div>
+
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

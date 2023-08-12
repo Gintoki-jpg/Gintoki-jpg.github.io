@@ -1,0 +1,1217 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/logo.png">
+  <link rel="icon" href="/img/bg/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="杨再俨">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="知识图谱课程实践；">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初级项目_灾情知识图谱">
+<meta property="og:url" content="https://gintoki-jpg.github.io/2023/04/23/%E9%A1%B9%E7%9B%AE_%E7%81%BE%E6%83%85%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/index.html">
+<meta property="og:site_name" content="Tintoki_blog">
+<meta property="og:description" content="知识图谱课程实践；">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/project.png">
+<meta property="article:published_time" content="2023-04-23T11:54:00.000Z">
+<meta property="article:modified_time" content="2023-05-27T07:03:13.902Z">
+<meta property="article:author" content="YangZaiyan">
+<meta property="article:tag" content="知识图谱">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gintoki-jpg.github.io/img/bg/project.png">
+  
+  
+  
+  <title>初级项目_灾情知识图谱 - Tintoki_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"gintoki-jpg.github.io","root":"/","version":"1.9.1","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tintoki_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/bg1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">初级项目_灾情知识图谱</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-04-23 19:54" pubdate>
+          2023年4月23日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          37k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          305 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">初级项目_灾情知识图谱</h1>
+            
+            <div class="markdown-body">
+              
+              <p>2023&#x2F;4&#x2F;25 21:53 基本上看了相关的教程，明白了如何使用Neo4j图数据库来创建一个知识图谱，但是对于老师给的暴雨洪涝语料知识而言，现在还没有很好的办法进行处理，并且因为老师给的描述比较模糊，所以其实整个作业的流程也不是特别清晰，这个等放一段时间之后看能不能有所顿悟；</p>
+<p>2023&#x2F;5&#x2F;10 14:26 距离作业截止还有二十天，现在开始要着手构建了，先把老师发的论文看了，该论文有一定的介绍性功能，作为主要参考（因为其他地方实在找不到参考了）；</p>
+<p>2023&#x2F;5&#x2F;10 20:58 无论如何一定要先找一个类似的可以用得上的项目作为参考，纯看论文讲的头头是道实际上没什么用（有些代码根本跑不起来，不要浪费时间去白跑）；</p>
+<p>2023&#x2F;5&#x2F;11 9:04 很遗憾的是根本就找不到参考的代码，这次只能靠论文来作为参考了；</p>
+<p>2023&#x2F;5&#x2F;11 16:58 看完唐宇迪的视频之后豁然开朗了（这几个小时真的不亏），知识图谱整个构建过程中最难的就是知识抽取模块，而知识抽取中的实体抽取和关系抽取要么使用之前用过的BiLSTM-CRF，要么使用更强的Bert预训练模型，无论哪种模型都需要大量的训练数据来支持，因此一个必要的构建标注的训练数据的代码尤其重要，而唐宇迪介绍的项目中恰好有这个构建标注的代码。回到正文，为什么说看了视频之后豁然开朗呢？因为我们完全不需要自己去微调预训练模型之类的对陌生的数据进行提取…我们仅仅只是做一个作业而已（又不是真的要做一个专业领域的可用的知识图谱，那是研究生论文级别的），老师都已经把所有的实体以及对应的关系的文本给我们了（相当于，老师给了我们标注好的训练数据，我们可以不用这个训练数据去训练模型，我们直接使用这个数据去构建知识图谱），只需要写一个简单的正则表达式或者提取代码就可以形成三元组形式的txt文本。因此接下来的任务只需要分析老师给的语料数据，将其处理成目标txt格式即可（看什么论文或者作业要求都是扯淡的，只是做一个期末作业不是研究生课程OK）；</p>
+<p>2023&#x2F;5&#x2F;11 19:48 很遗憾，你把这个事情想得太简单了，老师给的数据只有实体标注，而且这个实体标注的质量非常差，也就是说你还是需要自己创建一个数据集（不管是创建这个数据集来直接制造知识图谱还是训练模型）。我越来越怀疑这个作业的目的性了，是否别有用心（毕竟人工标注的成本非常高）？所以现在数据集的创建是我们面临的最大的问题，要么询问老师这个怎么解决，要么就只能等同学的数据集；</p>
+<p>2023&#x2F;5&#x2F;11 23:53 刚刚突然想到一个非常有用的提取数据的方式（并且证实了是有一定可行性的） – 将文本输入给chatgpt让它帮你完成（实体，关系，实体）三元组的抽取，当然我也询问了它具体使用的是什么方法，它告知我使用的是 “Open Information Extraction” (Open IE)算法，这个算法在github上是开源的（<a target="_blank" rel="noopener" href="https://github.com/philipperemy/stanford-openie-python">philipperemy&#x2F;stanford-openie-python: Stanford Open Information Extraction made simple! (github.com)</a>），而且这个算法的中文教程说实话也不少，有时间可以看看；</p>
+<p>2023&#x2F;5&#x2F;12 10:45 有可能是训练语料的问题，Open IE在中文数据上的表现非常的差劲，这里推荐几个中文工具<a target="_blank" rel="noopener" href="https://github.com/hankcs/HanLP">hankcs&#x2F;HanLP</a> – 这些东西都没法用，甚至连chatgpt的api也没法用（请求次数限制）；现在唯一的解决方式就是通过使用chagpt生成一定数量的训练数据，然后将该训练数据放入模型进行训练，最后利用模型自动提取剩余文本的三元组（个人认为这是最low的方法，但是我也想不到其他的方法了）；</p>
+<p>2023&#x2F;5&#x2F;16 8:36 不要使用深度网络或者正则表达式去提取三元组，因为根本没有训练数据，需要做的是直接从纯净无参考的文本中借助外部程序进行实体识别和关系抽取，对句子进行依存句法分析，查找主语-动词-宾语结构，其中主语和宾语是实体，动词表示它们之间的关系，当然还有其他模式，这一切都是基于依存句法分析（关于工具的选择，不要去用那些参考比较少的，尽量选择参考较多的）。</p>
+<p>2023&#x2F;5&#x2F;16 21:32 现在唯一行得通的就只有依存分析+关系抽取这一条路了，至少现在看来这条路“好像”行得通，网上也有很多代码和参考。今天尝试了使用百度的DDParser进行依存分析效果的确不错，但是找到的参考代码都是基于LTP的（为什么要找参考代码是因为我就算进行了依存分析也不知道怎么提取三元组…），所以可能之后还是需要重新用一用LTP。最后我想说的是，之所以作业那么久没做出来还是因为自己一根筋，关系抽取又不只是只有神经网络这一种方式，提前做好课前准备挺有必要的。今天的状态稍微有点差可能不太能看进去了，明天继续；</p>
+<p>2023&#x2F;5&#x2F;17 14:15 非常幸运的是，参考老刘的项目使用DDparser居然直接就跑通程序了，而且提取效果也还行（至少比我自己手动提取还要好），鉴于环境配置和时间的原因，这里我就不再尝试ltp版本和jieba版本，现在需要做的就是看看老刘另一个自动化构建知识图谱那个项目看看有没有可以拿来做参考的东西，没有的话我们就直接开始对项目下手了。至于其他两个参考项目我并没有尝试，我也不想尝试了（毕竟ltp的配置实在是太麻烦了，而且相对于我花了半天时间熟悉的DDParser以及环境完美配置好的优势，ltp的项目对我来说不是必须的） – 看完了，除了DDParser的项目其他都不采用，一方面是没有那么多时间去配置环境，另一方面也不太符合我们作业的要求。现在只需要将三元组提取出来然后再进行知识融合等操作（文本预处理那块不知道是否可以参考之前的方式）；</p>
+<p>2023&#x2F;5&#x2F;18 11:18 现在基本上已经把所有的预处理过程处理完毕了，neo4j这个软件真的非常的难用（最终成功的是中文的社区版），而且因为对cyber语句的不熟所以也不太会用，暂时先使用gpt看看能不能熟悉neo4j的基本使用，实在不会再看教程吧 – 这个知识图谱构建好了就别乱改了，理解之后直接写报告，不要再瞎折腾；</p>
+<p>2023&#x2F;5&#x2F;24 9:41 之前听老师说了之后，发现自己构建的三元组还是有一定不足的。首先就是三元组的实体和关系数量太多，尽管对实体进行了对齐和清理等操作，但是从可视化的方面来说，实体对齐之后的实体应该是老师在实体语料中给出标注的实体的子集。另一方面，关系的类型应该限定，否则会出现很多没有意义的比如纯数字的关系（毕竟使用依存句法分析进行提取也不能保证完全的准确），因此接下来还需要对知识图谱进行改进的地方在于对提取出来的三元组进行优化；</p>
+<p>2023&#x2F;5&#x2F;25 17:03 现在已经把实体和关系对齐做完了，接下来就是手动处理文件中的不合理的内容（删除或调整），然后生成知识图谱之后写实验报告。实验报告中需要新增的内容无非就是三元组清理过程中的第三步和第四步，其中第三步使用的近义词计算工具可以好好分析一下它的原理。写实验报告的时候多看看notebook，因为当时写代码的时候的全部思想都随手写在notebook上了；</p>
+<hr>
+<h1 id="一、背景知识"><a href="#一、背景知识" class="headerlink" title="一、背景知识"></a>一、背景知识</h1><h2 id="1-Neo4j图数据库"><a href="#1-Neo4j图数据库" class="headerlink" title="1.Neo4j图数据库"></a>1.Neo4j图数据库</h2><p>参考链接：</p>
+<ul>
+<li><p>前置知识点：</p>
+<ul>
+<li>知识图谱创建完整流程：<ul>
+<li><p>概述<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1UY411D7Bf?p=1&vd_source=276d55048634a5b508b1b53a1ecd56b3">知识图谱_哔哩哔哩_bilibili</a>；</p>
+</li>
+<li><p>唐宇迪：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1xM411z7Vv/?spm_id_from=333.788.recommend_more_video.1&vd_source=276d55048634a5b508b1b53a1ecd56b3">【完全自学知识图谱】半天我居然就学会了知识抽取实战及三大Neo4j数据库、医药问答系统、电影推荐系统基于知识图谱构建实战（人工智能AI&#x2F;深度学习实战）_哔哩哔哩_bilibili</a>；</p>
+</li>
+</ul>
+</li>
+<li>Neo4j教程(W3School)：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/chen8023miss/p/11977349.html">Neo4j构建一个简单知识图谱 - 农夫三拳有點疼 - 博客园 (cnblogs.com)</a>；</li>
+<li>Neo4j官方用户手册(汉译英)：<a target="_blank" rel="noopener" href="https://github.com/Candysad/neo4j">Candysad&#x2F;neo4j: neo4j notes in Chinese (github.com)</a>；</li>
+<li>Neo4j桌面版使用教程：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/516336587">Neo4j桌面版使用说明 - 知乎 (zhihu.com)</a>（社区版无法批量导入csv数据）；</li>
+</ul>
+</li>
+<li><p>环境配置(在我的电脑上我下载的是英文的桌面版和中文的社区版)：</p>
+<ul>
+<li><p>Neo4j英文版：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://codeantenna.com/a/j17xe3wJXc">篇一：Neo4j图形数据库的安装与环境配置（普通版与Desktop版） - CodeAntenna</a>；</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/jing_zhong/article/details/112557084">(2条消息) Windows 10 64位系统下Neo4j安装教程（2021.1.13）_在windows环境中安装neo4j_jing_zhong的博客-CSDN博客</a>；</li>
+</ul>
+</li>
+<li><p>Neo4j中文版：</p>
+<ul>
+<li>Neo4j中文版下载地址：<a target="_blank" rel="noopener" href="https://we-yun.com/blog.html">博客 - 微云数聚 (we-yun.com)</a>；</li>
+<li>Neo4j中文版部署指南：<a target="_blank" rel="noopener" href="https://we-yun.com/doc/neo4j-chs-doc/#_%E9%83%A8%E7%BD%B2%E8%BF%90%E8%A1%8C">Neo4j 5.x 简体中文版指南 (we-yun.com)</a>；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>问题解决：</p>
+<ul>
+<li><p>neo4j中文版简单启动：<a target="_blank" rel="noopener" href="https://we-yun.com/doc/neo4j-chs-doc/#_%E9%83%A8%E7%BD%B2%E8%BF%90%E8%A1%8C">Neo4j 5.x 简体中文版指南 (we-yun.com)</a>（登陆密码之前修改过，然后不记得了，但是浏览器自动保存有）；</p>
+</li>
+<li><p>使用<code>neo4j console</code>启动失败：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/yibeimingyue/p/14577543.html">neo4j启动失败的解决方案 - 一杯明月 - 博客园 (cnblogs.com)</a>，直接重装最新版本的Neo4j 5.x版本；</p>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>notes:</p>
+<ol>
+<li>如果电脑安装了社区版和桌面版，尽量同时间只启动并使用一个即可；</li>
+<li>安装了桌面版Neo4j后，尽量不要update，因为更新后会将安装目录自动改到C盘，所以建议直接卸载后安装最新版本到D盘中；</li>
+</ol>
+</blockquote>
+<hr>
+<p>Neo4j 是一个图形数据库，就像传统的关系数据库中的 Oracel 和 MySQL一样，用来持久化数据。Neo4j 是最近几年发展起来的新技术，属于 NoSQL 数据库中的一种。</p>
+<p>知识图谱是一种基于图的数据结构，由节点和边组成。其中节点即实体，由一个全局唯一的 ID 标示，关系（也称属性）用于连接两个节点。通俗地讲，知识图谱就是把所有不同种类的信息连接在一起而得到一个关系网络，提供了从“关系”的角度去分析问题的能力。</p>
+<p>而 Neo4j 作为一种经过特别优化的图形数据库，有以下优势：</p>
+<ul>
+<li>数据存储：不像传统数据库整条记录来存储数据，Neo4j 以图的结构存储，可以存储图的节点、属性和边。属性、节点都是分开存储的，属性与节点的关系构成边，这将大大有助于提高数据库的性能。</li>
+<li>数据读写：在 Neo4j 中，存储节点时使用了 <code>Index-free Adjacency</code> 技术，即每个节点都有指向其邻居节点的指针，可以让我们在时间复杂度为 O(1) 的情况下找到邻居节点。另外，按照官方的说法，在 Neo4j 中边是最重要的，是 <code>First-class Entities</code>，所以单独存储，更有利于在图遍历时提高速度，也可以很方便地以任何方向进行遍历。</li>
+<li>资源丰富：Neo4j 作为较早的一批图形数据库之一，其文档和各种技术博客较多。</li>
+<li>同类对比：Flockdb 安装过程中依赖太多，安装复杂；Orientdb，Arangodb 与 Neo4j 做对比，从易用性来说都差不多，但是从稳定性来说，neo4j 是最好的。</li>
+</ul>
+<p>综合上述以及因素，Neo4j 是做知识图谱比较简单、灵活、易用的图形数据库。</p>
+<h2 id="2-知识图谱技术"><a href="#2-知识图谱技术" class="headerlink" title="2.知识图谱技术"></a>2.知识图谱技术</h2><p>构建一个知识图谱的完整流程主要分为以下几个步骤</p>
+<h3 id="2-1-知识抽取"><a href="#2-1-知识抽取" class="headerlink" title="2.1 知识抽取"></a>2.1 知识抽取</h3><blockquote>
+<p>知识抽取的目的是从非结构化的文本中提取出结构化的三元组数据</p>
+</blockquote>
+<p>知识抽取主要分为：</p>
+<ul>
+<li>实体抽取：实体抽取也称为命名实体识别，主要有基于规则和词典的方法、基于机器学习的模型预测方法（前面做过的实体抽取项目）</li>
+<li>关系抽取：关系抽取主要用于判断实体之间的关联关系，主要分为<ul>
+<li>限定领域关系抽取：即根据预设好的关系集合，判断给定实体是否满足某一个关系（类似分类任务，F(实体1,实体2,文本)-&gt;关系），对这种有监督的分类任务的训练方式进行细分<ul>
+<li>pipeline方式：先对文本中的实体进行抽取，接着再将抽取出的实体和文本作为输入进行关系抽取；</li>
+<li>联合训练方式：直接将文本中的实体和关系同时抽取出来；</li>
+</ul>
+</li>
+<li>开放领域关系抽取：主要是基于序列标注对模型进行训练，使模型具备自动识别并提取关系的能力</li>
+</ul>
+</li>
+<li>属性抽取：实体的属性可以看作是实体与属性值之间的一种关系，因此可以将大部分属性抽取的任务转换为关系抽取的任务；</li>
+</ul>
+<p>一个三元组的txt文档形式如下（知识抽取这部分的目标就是构建一个txt文档，该文档中的文本形式如图所示）</p>
+<p><img src="/images/image-20230511101024966.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>图中这些三元组不能直接用于Neo4j数据库，还需要将其分为“实体-关系-实体”和“实体-属性-属性值”，因为这两种类型的三元组在建立Neo4j的时候使用的语句是不一样的；</li>
+<li>直接从网上扒下来的三元组很可能面临上述需要三元组类型拆分的问题，而事实上若我们手动构建三元组，在构建的时候就对三元组的类型进行区分，则无需额外进行拆分；</li>
+</ul>
+<h3 id="2-2-知识融合"><a href="#2-2-知识融合" class="headerlink" title="2.2 知识融合"></a>2.2 知识融合</h3><blockquote>
+<p>知识融合的目的是清洗三元组以提升数据质量</p>
+</blockquote>
+<p>由于知识图谱中的知识来源广泛，存在知识质量良莠不齐、来自不同数据源的知识重复、知识间的关联不够明确等问题，所以必须要进行知识的融合。</p>
+<p>知识融合主要分为：</p>
+<ul>
+<li>实体对齐：将不同来源的知识认定为真实世界中的同一实体（如“万里长城”和“长城”是同一个实体），主要做法是根据不同实体包含的属性之间的相似度来判断是否是同一实体；</li>
+<li>实体消歧：将同一名称但指代不同事物的实体区分（比如“苹果”既可能是科技公司，也可能是一种水果），主要方式是结合其上下文相关信息来判断，或者根据其特定的属性来判断（“创始人”这个属性几乎就只能指代“苹果”公司）</li>
+<li>属性对齐：不同数据源对实体的属性记录可能使用不同的词语（比如对“出生日期”、“生日”这些属性实际指代的是同一种属性），一般方式是使用文本相似度来计算，或者借助属性值是否相等、相似来判断；</li>
+</ul>
+<h3 id="2-3-知识推理"><a href="#2-3-知识推理" class="headerlink" title="2.3 知识推理"></a>2.3 知识推理</h3><blockquote>
+<p>知识推理的目的是挖掘或补全数据</p>
+</blockquote>
+<p>在已有的知识库（三元组、图谱）基础上进一步挖掘隐含的知识，从而丰富、扩展知识库。</p>
+<p>一般方式是使用“规则+句法”，如下</p>
+<p><img src="/images/image-20230423220750750.png" srcset="/img/loading.gif" lazyload></p>
+<p>当然也可以基于模型，要么是给出两个实体来推断其关系，要么是给出一个实体一个属性判断另一个实体，或者是直接给出一个三元组判断该三元组是否成立</p>
+<h3 id="2-4-知识表示"><a href="#2-4-知识表示" class="headerlink" title="2.4 知识表示"></a>2.4 知识表示</h3><blockquote>
+<p>知识表示的目的是将数据进行向量化表示，方便后续应用</p>
+</blockquote>
+<p>将知识图谱中的实体，关系，属性等转化为向量，进而利用向量间的计算关系，反映实体间的关联性。</p>
+<h2 id="3-知识抽取详解"><a href="#3-知识抽取详解" class="headerlink" title="3.知识抽取详解"></a>3.知识抽取详解</h2><p>参考链接：</p>
+<ul>
+<li><p>前置知识点：</p>
+<ul>
+<li>关系抽取：<a href="https://gintoki-jpg.github.io/2023/03/29/%E4%B8%93%E4%B8%9A_%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86_%E4%B8%AD%E7%BA%A7/#3-%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96">自然语言处理_中级 - Tintoki_blog (gintoki-jpg.github.io)</a>；</li>
+<li>依存句法分析：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/HfzNvOI2TExorGQVtomrnQ">图文并茂带你了解依存句法分析 (qq.com)</a>；</li>
+<li>开放知识抽取概述：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/WSOQS5DP1CJM_mrkq88sSw">开放知识图谱构建必读：封闭域VS开放知识抽取与4大类开放抽取常用方法概述 (qq.com)</a>；</li>
+<li>基于依存分析的关系抽取（论文）：<a target="_blank" rel="noopener" href="https://www.docin.com/p-1715877509.html">基于依存分析的开放式中文实体关系抽取方法 - 豆丁网 (docin.com)</a>；</li>
+</ul>
+</li>
+<li><p>工具：</p>
+<ul>
+<li><p>DDParser依存分析：<a target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_36226553/article/details/115370888">(5条消息) 百度DDParser的依存分析_Dawn_www的博客-CSDN博客</a>；</p>
+</li>
+<li><p>LTP自然语言处理：<a target="_blank" rel="noopener" href="https://github.com/HIT-SCIR/ltp">HIT-SCIR&#x2F;ltp: Language Technology Platform (github.com)</a>；</p>
+</li>
+</ul>
+</li>
+<li><p>参考代码（有时间就全看，没时间就选部分看，基本所有基于依存分析的项目都在这里）：</p>
+<ul>
+<li>开放知识抽取项目合集：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/_nHJ5kanBbxMiyNRYQ_TQA">开放知识抽取实践：开放三元组抽取与文档图谱化开源工具概述 (qq.com)</a>；</li>
+<li>基于LTP的依存分析抽取事实三元组：<a target="_blank" rel="noopener" href="https://github.com/twjiang/fact_triple_extraction">twjiang&#x2F;fact_triple_extraction: 使用句法依存分析抽取事实三元组 (github.com)</a>；</li>
+<li>基于LTP的自然语言处理服务器：<a target="_blank" rel="noopener" href="https://github.com/chapzq77/LTP_Python_Interface">chapzq77&#x2F;LTP_Python_Interface: 根据自己搭的 LTP 服务器，实现：分词、词性标注、命名实体识别、依存句法分析、语义角色标、命名实体的抽取：人名，地名，机构名、三元组的抽取：主谓宾，动宾关系，介宾关系，（实体1，关系，实体2） (github.com)</a>；</li>
+<li>数据转化为csv格式：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/d4e524a7ba30?utm_campaign=maleskine&utm_content=note&utm_medium=seo_notes&utm_source=recommendation">Neo4j基本使用及导入三元组 - 简书 (jianshu.com)</a>；</li>
+<li>neo4j导入命令：<a target="_blank" rel="noopener" href="https://newsn.net/say/neo4j-import-csv.html">neo4j如何批量初始化数据库？neo4j-admin导入csv数据 (newsn.net)</a>；</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="3-1-开放知识抽取"><a href="#3-1-开放知识抽取" class="headerlink" title="3.1 开放知识抽取"></a>3.1 开放知识抽取</h3><blockquote>
+<p>知识图谱的构建核心，实际上就是对三元组的构建，当我们拥有处理完成的三元组后，将其放入Neo4j图数据库就可以形成基本的可视化的知识图谱。因此本节我们详细介绍如何从非结构化的文本中提取出(实体,关系,实体)三元组。</p>
+</blockquote>
+<p>我们的原始数据形式（即未标注的暴雨洪涝灾情文本）如下，知识抽取的任务就是从正文文本中抽取出（实体,关系,实体）形式的三元组。</p>
+<p><img src="/images/image-20230511190458837.png" srcset="/img/loading.gif" lazyload></p>
+<p>一般的能够很好的建模及其应用的知识抽取都是限定知识抽取，原因也很简单，对于任何一个抽取任务(实体识别ner，实体关系抽取re以及事件抽取ee)，其问题的确定性越高则其优化目标越可能被明确。</p>
+<p>在限定领域下的实体识别ner，实体关系抽取任务re，以及事件抽取任务ee，都是在预定义schema的范畴下进行的，先定义好实体类型，实体关系&#x2F;属性类型，以及事件要素，然后采用基于规则、基于模型的方法来进行训练预测。然而这个过程不够灵活，并且定义规范的schema并不是一件容易的事情。因此越来越多的场景会需要我们针对给定的随意文本，抽取出其中的知识元组，也就是开放知识抽取。</p>
+<p>开放抽取最大的价值在于海量、起量快，在没有约束的情况下，可以快速生成大量有意义的知识，但没有约束也就成为这种方法在后期处理上较难问题的根源（如果按照限定schema进行抽取，则可以直接使用抽取得到的结果）。</p>
+<p>开放知识抽取领域有以OpenIE为代表的多个系统，从技术发展的脉络来看，主要包括基于规则(无监督)的和基于模型(有监督)的几种方法。其中基于规则的方法可细分为基于词性模板、基于依存句法模式；基于模型的可细分为基于序列标注、基于seq2seq生成、基于span的分类。</p>
+<p>总的来说，开放抽取的流程，可以理解为给定一个句子，从原文中抽取符合要求的spo的成分，然后再根据要求，对so进行实体标签分类，对p进行关系标准化或者聚类，从而完成规范管理，这与限定域抽取的顺序是有一定颠倒的（如果不进行后续的标准化工作，其效果将大打折扣）</p>
+<p>本项目中我们使用的是无监督基于规则的开放知识抽取，因为对于有监督而言问题的关键还是标注数据的获取规模较小（我们手里并没有很好的气象文本标注数据）。</p>
+<p>无监督基于规则的开放信息抽取，优点在于不需要标注数据，只需要利用语法或者句法规则识别出特定的成分，筛选出高质量的三元组。无监督基于规则的代表系统有textrunner和srandfordioe，感兴趣可自行Google查看（因不同的系统其详细处理方式不同，故不再详细展开）。</p>
+<h3 id="3-2-基于深度学习"><a href="#3-2-基于深度学习" class="headerlink" title="3.2 基于深度学习"></a>3.2 基于深度学习</h3><blockquote>
+<p>这是一开始我尝试使用的方式，但后来经过尝试后发现效果并不好，因此并没有采用该方法。</p>
+</blockquote>
+<p>基于深度学习的三元组提取是指，假设我们拥有一个已经训练好（或微调好）的领域实体-关系抽取模型，它能够完成的任务应该是输入一句话（如“据报道称，新冠肺炎患者经常会发热、咳嗽，少部分患者会胸闷、乏力，其病因包括: 1.自身免疫系统缺陷\n2.人传人”），输出如下形式的内容（即三元组(实体,关系,客体)）</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs prolog">[<br> &#123;<br>  <span class="hljs-string">&quot;text&quot;</span>: <span class="hljs-string">&quot;据报道称，新冠肺炎患者经常会发热、咳嗽，少部分患者会胸闷、乏力，其病因包括: 1.自身免疫系统缺陷\n2.人传人&quot;</span>,<br>  <span class="hljs-string">&quot;triples&quot;</span>: [<br>   [<br>    <span class="hljs-string">&quot;新冠肺炎&quot;</span>,<br>    <span class="hljs-string">&quot;主治&quot;</span>,<br>    <span class="hljs-string">&quot;肺炎&quot;</span><br>   ],<br>   [<br>    <span class="hljs-string">&quot;新冠肺炎&quot;</span>,<br>    <span class="hljs-string">&quot;主治&quot;</span>,<br>    <span class="hljs-string">&quot;发热&quot;</span><br>   ],<br>   [<br>    <span class="hljs-string">&quot;新冠肺炎&quot;</span>,<br>    <span class="hljs-string">&quot;主治&quot;</span>,<br>    <span class="hljs-string">&quot;咳嗽&quot;</span><br>   ],<br>   [<br>    <span class="hljs-string">&quot;新冠肺炎&quot;</span>,<br>    <span class="hljs-string">&quot;主治&quot;</span>,<br>    <span class="hljs-string">&quot;胸闷&quot;</span><br>   ],<br>   [<br>    <span class="hljs-string">&quot;新冠肺炎&quot;</span>,<br>    <span class="hljs-string">&quot;主治&quot;</span>,<br>    <span class="hljs-string">&quot;乏力&quot;</span><br>   ],<br>   [<br>    <span class="hljs-string">&quot;新冠肺炎&quot;</span>,<br>    <span class="hljs-string">&quot;注意事项&quot;</span>,<br>    <span class="hljs-string">&quot;自身免疫系统缺陷&quot;</span><br>   ],<br>   [<br>    <span class="hljs-string">&quot;新冠肺炎&quot;</span>,<br>    <span class="hljs-string">&quot;注意事项&quot;</span>,<br>    <span class="hljs-string">&quot;人传人&quot;</span><br>   ]<br>  ]<br> &#125;<br>]<br></code></pre></td></tr></table></figure>
+
+<p>一般我们都使用的是BilSTM-CRF或Bert预训练模型来进行实体识别与抽取任务以及实体关系的联合抽取，无论使用哪种模型，都需要训练数据。要求的训练数据形式要求也是三元组形式，大致如下</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs prolog">[<br> &#123;<br>  <span class="hljs-string">&quot;text&quot;</span>: <span class="hljs-string">&quot;13的三体综合征的临床表现是13-三体综合征主要特征为严重智能低下、特殊面容、手足及生殖器畸形，并可伴有严重的致死性畸形&quot;</span>,<br>  <span class="hljs-string">&quot;spo_list&quot;</span>: [<br>   [<br>    <span class="hljs-string">&quot;13-三体综合征&quot;</span>,<br>    <span class="hljs-string">&quot;临床表现&quot;</span>,<br>    <span class="hljs-string">&quot;特殊面容&quot;</span><br>   ],<br>   [<br>    <span class="hljs-string">&quot;13-三体综合征&quot;</span>,<br>    <span class="hljs-string">&quot;临床表现&quot;</span>,<br>    <span class="hljs-string">&quot;严重的致死性畸形&quot;</span><br>   ]<br>  ]<br> &#125;<br>]<br></code></pre></td></tr></table></figure>
+
+<p>简单来说，基于深度学习的三元组抽取就是基于带标注的语料库利用机器学习或深度学习的相关模型实现实体（如时间、地点、经济损失等）和关系（发生于、发生在等）的抽取。</p>
+<p>这需要进行手动标注和划分得到训练数据（针对专业领域的知识图谱的三元组除了手动处理数据外没有更好的方法，因为网上根本就没有现成的训练数据）。我们拥有的是部分带实体标注（注意并非关系标注）的数据，主要分为位置实体、承载体实体、人口面积实体、时间实体四类实体，大致形式如下（位置实体），但是这种类型的文本对于当前我们要进行的任务来说没有什么意义。</p>
+<p><img src="/images/image-20230511192409347.png" srcset="/img/loading.gif" lazyload></p>
+<p>前面说手动标注和划分训练数据不现实，那么是否可以使用现成的模型进行训练数据的提取呢？这里尝试使用斯坦福大学的OpenIe进行（实体，关系，实体）三元组的提取，其OpenIe服务器的启动命令（如果是中文的话需要额外增加配置命令并下载中文包）</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs perl"><span class="hljs-keyword">for</span> /l %i in (<span class="hljs-number">9000</span>,<span class="hljs-number">1</span>,<span class="hljs-number">9100</span>) <span class="hljs-keyword">do</span> @(echo %i &amp; netstat -aon | findstr /R /C:<span class="hljs-string">&quot;%i.*LISTENING&quot;</span> &gt;nul || (java -mx4g -cp <span class="hljs-string">&quot;*&quot;</span> edu.stanford.nlp.pipeline.StanfordCoreNLPServer -port %i -timeout <span class="hljs-number">15000</span> -threads <span class="hljs-number">5</span> -maxCharLength <span class="hljs-number">100000</span> &amp; <span class="hljs-keyword">goto</span> :<span class="hljs-keyword">eof</span>))<br></code></pre></td></tr></table></figure>
+
+<p>经过实测这个工具的效果不是很好（可以说相当差劲，这也证实不进行微调直接应用在专业领域的模型表现明显差强人意）。经过实测，使用其他的一些比如中文的处理工具hanlp、tlp等直接提取三元组的效果也不好，要么就是请求次数有限制，要么是结果太差完全不能使用。</p>
+<h3 id="3-3-基于规则"><a href="#3-3-基于规则" class="headerlink" title="3.3 基于规则"></a>3.3 基于规则</h3><p>因此我们需要切换处理思路。现在的目标是要构建专业领域的知识图谱，基于深度学习需要先手动提取训练数据（三元组），对模型进行微调后得到可用于专业领域三元组提取的模型。但是因为根本没有用于训练的三元组数据，手动提取的方式也几乎不可能（一方面是数据量要求太大，人工提取完全不可能，另一方面对于这种专业领域的三元组提取也存在知识的界限），因此使用深度学习模型进行三元组的提取的方案被否决。</p>
+<p>除了基于机器学习的方式，还有一种最基本的方法就是基于规则。注意此处所说的基于规则并不是传统的基于正则表达式或自定义的规则模式，因为对于我们手里的气象文本来说无论是使用正则表达式还是自定义的规则模式的效果都很差。这里使用的方式是先对句子进行依存句法分析（推荐借助现成工具实现），得到句子成分之间的关系之后，我们可以提取其中的如“主谓宾”或其他依赖关系作为（实体,关系,实体）三元组的成分。</p>
+<h4 id="3-3-1-依存句法分析"><a href="#3-3-1-依存句法分析" class="headerlink" title="3.3.1 依存句法分析"></a>3.3.1 依存句法分析</h4><p>句法分析的基本任务是确定句子的句法结构或句子中词汇之间的依赖关系，句法分析一般不是语言分析任务的最终目标，但是它往往是实现最终目标的重要环节。句法分析主要分为句法结构分析和依存关系分析（也称依存句法分析）。</p>
+<p>相比于 CFG(上下文无关文法)，依存关系语法更关注与词语间关系、高度词汇化，能更好的应用于问答系统与关系抽取等场景。另外，这种语法对就这种词语的顺序要求相对比较低，所以在处理一些语法复杂、次序排列更灵活的语言时，依存关系语法比 CFG 更有优势。</p>
+<p>依存文法分析考虑的是句子中单词与单词之间的依存关系，而这种依存关系其实就是语法，例如主谓、动宾、形容词修饰名词等。因为构建语法树的时候选择根节点是随机的，所以选择不同的根节点可能得到不同的树结构，依存句法分析的任务就是在所有可能的树结构中选择出最合适的结构，一般依存句法分析的将原来的句子使用箭头标注出关系</p>
+<p><img src="/images/image-20230406085439103-16842049799336.png" srcset="/img/loading.gif" lazyload></p>
+<p>（图中增加了一个根节点“ROOT”，使得completed也有依赖对象）</p>
+<p>另一种Dependency Structure的表现形式是树状结构</p>
+<p><img src="/images/image-20230406085520830-16842049624452.png" srcset="/img/loading.gif" lazyload></p>
+<p>总的来说，依存句法分析旨在通过分析句子中词语之间的依存关系来确定句子的句法结构，其中依存句法分析标注关系集合（此处展示的是DDParser对应的集合，注意不同工具的集合可能不同）如下图所示</p>
+<p><img src="/images/image-20230516105018475.png" srcset="/img/loading.gif" lazyload alt="依存句法分析标注关系集合"></p>
+<p>在依存句法分析中，考虑某些最有可能形成（实体,关系,实体）三元组的组成成分：</p>
+<ul>
+<li>名词和名词短语（实体）：名词和名词词组通常代表句子中的实体。它们可以是专有名词（人名、地名、组织），也可以是通用名词（物体、概念等）；</li>
+<li>动词和动词短语（关系）：动词和动词词组通常表示实体之间的关系或动作。它们描述了实体正在做什么，或者它们是如何相互关联的；</li>
+<li>至于介词和介词短语、形容词和形容词短语、副词和副词短语等作为实体或关系的修饰，可以不考虑以此降低文本分析的复杂度；</li>
+</ul>
+<hr>
+<blockquote>
+<p>Q：成分句法分析和依存句法分析的区别是什么？</p>
+</blockquote>
+<p>A：成分句法分析相当于考虑广义上的嵌套关系命名实体识别，依存句法分析相当于文本结构化任务中与命名实体识别配合的实体关系抽取任务。</p>
+<p><img src="/images/image-20230517094017934.png" srcset="/img/loading.gif" lazyload></p>
+<p>成分句法分析考虑的是，某两个相邻词汇是否能够接在一起构成成分，而依存句法分析考虑的是两个词汇之间的关系。</p>
+<p>依存分析不考虑两个词汇是否一定相邻：</p>
+<ul>
+<li>book与flight并不直接相邻，但是flight是book的宾语，book是flight的主语，使用有向箭头来表示这种依存关系，其中箭头的起点称为head，终点称为dependent。</li>
+</ul>
+<p><img src="/images/image-20230517094637931.png" srcset="/img/loading.gif" lazyload></p>
+<p>更具体的说，依存分析就是将一个句子变成一个有向图：</p>
+<ul>
+<li>图中的每个节点是一个词汇，每条边是一种关系；</li>
+<li>除了根节点（在实际的句子中该根节点不代表任何词汇），每个节点词汇只有一个入度的边，但是每个词汇都可以指向多个其他词汇；</li>
+<li>依存分析得到的有向图是一个树状结构，其中的每个词汇都有唯一的一条路径回溯到根节点；</li>
+</ul>
+<p>依存分析树的构建非常简单，只需要丢给第一个二分类器两个词汇和上下文，该二分类器会首先判断两个词汇之间是否存在依存关系，若存在则第二个多分类器会输出其关系的类别；</p>
+<p>对于一个有N个word的句子，整个依存分析模型的输入是ROOT加上N个词汇组成的句子，分析的过程就是取出(N+1)^2^个单词对，逐个丢入分类器进行关系分类；</p>
+<p>依存分析有很多方法来完成，这里因为篇幅的原因故不再赘述，感兴趣可自行Google。</p>
+<hr>
+<h4 id="3-3-2-DDParser工具"><a href="#3-3-2-DDParser工具" class="headerlink" title="3.3.2  DDParser工具"></a>3.3.2  DDParser工具</h4><p>我们选择的依存句法分析工具是百度的DDParser，其Github项目地址为：<a target="_blank" rel="noopener" href="https://github.com/baidu/DDParser%E3%80%82%E9%80%89%E6%8B%A9%E8%AF%A5%E5%B7%A5%E5%85%B7%E7%9A%84%E5%8E%9F%E5%9B%A0%E4%B8%80%E6%96%B9%E9%9D%A2%E6%98%AF%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E8%BE%83%E7%AE%80%E5%8D%95%EF%BC%9B%E5%8F%A6%E4%B8%80%E6%96%B9%E9%9D%A2%E7%99%BE%E5%BA%A6%E4%BD%9C%E4%B8%BA%E6%9C%80%E5%A4%A7%E7%9A%84%E4%B8%AD%E6%96%87%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%EF%BC%8C%E5%85%B6%E5%AF%B9%E4%B8%AD%E6%96%87%E8%AF%AD%E6%96%99%E7%9A%84%E5%A4%84%E7%90%86%E4%BC%9A%E6%9B%B4%E5%8A%A0%E5%90%88%E7%90%86%E3%80%82%E9%85%8D%E7%BD%AE%E5%A5%BD%E7%8E%AF%E5%A2%83%E4%B9%8B%E5%90%8E%EF%BC%8C%E4%BD%BF%E7%94%A8DDParser%E6%9D%A5%E8%BF%9B%E8%A1%8C%E6%B5%8B%E8%AF%95">https://github.com/baidu/DDParser。选择该工具的原因一方面是配置环境较简单；另一方面百度作为最大的中文搜索引擎，其对中文语料的处理会更加合理。配置好环境之后，使用DDParser来进行测试</a></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd<br><span class="hljs-comment"># 依存句法分析</span><br><span class="hljs-keyword">from</span> ddparser <span class="hljs-keyword">import</span> DDParser<br>ddp = DDParser(use_pos=<span class="hljs-literal">True</span>)<br><span class="hljs-built_in">str</span> = <span class="hljs-string">&#x27;清华大学研究核能的教授有哪些&#x27;</span><br>result = ddp.parse(<span class="hljs-built_in">str</span>)<br><span class="hljs-comment"># 格式化输出</span><br>col = (<span class="hljs-string">&#x27;FROM&#x27;</span>,<span class="hljs-string">&#x27;POSTAG&#x27;</span>,<span class="hljs-string">&#x27;HEAD&#x27;</span>,<span class="hljs-string">&#x27;DEPREL&#x27;</span>,)<br>row = []<br><span class="hljs-keyword">for</span> res <span class="hljs-keyword">in</span> result:<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(res[<span class="hljs-string">&#x27;word&#x27;</span>])):<br>        data = &#123;<span class="hljs-string">&quot;FROM&quot;</span>:res[<span class="hljs-string">&#x27;word&#x27;</span>][i], <span class="hljs-string">&quot;POSTAG&quot;</span>:res[<span class="hljs-string">&#x27;postag&#x27;</span>][i], <span class="hljs-string">&quot;HEAD&quot;</span>:res[<span class="hljs-string">&#x27;head&#x27;</span>][i], <span class="hljs-string">&quot;DEPREL&quot;</span>:res[<span class="hljs-string">&#x27;deprel&#x27;</span>][i]&#125;<br>        row.append(data)<br> <br>df = pd.DataFrame(row,columns=col)<br>df.fillna(<span class="hljs-string">&#x27;_&#x27;</span>,inplace = <span class="hljs-literal">True</span>) <span class="hljs-comment"># 缺省值</span><br>df.index = df.index + <span class="hljs-number">1</span>  <span class="hljs-comment"># 把索引号加1视为ID，一定不能直接另索引号为ID，0是虚拟ROOT节点不能占用</span><br><span class="hljs-built_in">print</span>(df)<br></code></pre></td></tr></table></figure>
+
+<p>得到的格式化输出如下（可以看到效果还不错，第一列是ID列，ID为0可以认为是虚拟的ROOT根节点）</p>
+<p><img src="/images/image-20230516111747929.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>DEPREL列<ul>
+<li>FORM：当前词语或标点</li>
+<li>POSTAG：当前词语或标点的词性（POSTAG是细粒度词性标注，使用的是百度的LAC，参考链接：<a target="_blank" rel="noopener" href="https://github.com/baidu/lac%EF%BC%8C%E5%AF%B9%E5%BA%94%E7%9A%84%E8%AF%8D%E6%80%A7%E5%92%8C%E4%B8%93%E6%9C%89%E7%B1%BB%E5%88%AB%E6%A0%87%E7%AD%BE%E5%A6%82%E4%B8%8B%E8%A1%A8%EF%BC%89">https://github.com/baidu/lac，对应的词性和专有类别标签如下表）</a></li>
+<li>HEAD：当前词语或标点的中心词id</li>
+<li>DEPREL：当前词语或标点与中心词的依存关系</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>标签</th>
+<th>含义</th>
+<th>标签</th>
+<th>含义</th>
+<th>标签</th>
+<th>含义</th>
+<th>标签</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>n</td>
+<td>普通名词</td>
+<td>f</td>
+<td>方位名词</td>
+<td>s</td>
+<td>处所名词</td>
+<td>nw</td>
+<td>作品名</td>
+</tr>
+<tr>
+<td>nz</td>
+<td>其他专名</td>
+<td>v</td>
+<td>普通动词</td>
+<td>vd</td>
+<td>动副词</td>
+<td>vn</td>
+<td>名动词</td>
+</tr>
+<tr>
+<td>a</td>
+<td>形容词</td>
+<td>ad</td>
+<td>副形词</td>
+<td>an</td>
+<td>名形词</td>
+<td>d</td>
+<td>副词</td>
+</tr>
+<tr>
+<td>m</td>
+<td>数量词</td>
+<td>q</td>
+<td>量词</td>
+<td>r</td>
+<td>代词</td>
+<td>p</td>
+<td>介词</td>
+</tr>
+<tr>
+<td>c</td>
+<td>连词</td>
+<td>u</td>
+<td>助词</td>
+<td>xc</td>
+<td>其他虚词</td>
+<td>w</td>
+<td>标点符号</td>
+</tr>
+<tr>
+<td>PER</td>
+<td>人名</td>
+<td>LOC</td>
+<td>地名</td>
+<td>ORG</td>
+<td>机构名</td>
+<td>TIME</td>
+<td>时间</td>
+</tr>
+</tbody></table>
+<p>其对应的可视化图形如下（因为长文本输出的CoNLL非常难直接看出关系，所以可视化非常有必要，在线可视化工具：<a target="_blank" rel="noopener" href="http://spyysalo.github.io/conllu.js/%EF%BC%8C%E6%B3%A8%E6%84%8F%E9%9C%80%E8%A6%81%E5%9C%A8%E8%BE%93%E5%85%A5%E6%A1%86%E4%B8%AD%E8%BE%93%E5%85%A5%E5%AE%8C%E6%95%B4%E7%9A%84CoNLL%E6%A0%BC%E5%BC%8F%E6%96%87%E6%9C%AC">http://spyysalo.github.io/conllu.js/，注意需要在输入框中输入完整的CoNLL格式文本</a>)</p>
+<p><img src="/images/image-20230516111618317.png" srcset="/img/loading.gif" lazyload></p>
+<p>通过给出的依存句法分析标注关系集合可以进行对应：</p>
+<ul>
+<li>“有”是整句话的核心；</li>
+<li>“教授”和“有”之间存在主谓关系，“教授”是主语，“有”是谓语；</li>
+<li>“有”与“哪些”之间存在动宾关系；</li>
+<li>“清华大学”、“研究”与“核能”之间存在定中关系，可以认为是“清华大学核能”或“研究核能”；</li>
+<li>“核能”与“教授”之间存在定中关系；</li>
+<li>“核能”的虚词成分是“的”；</li>
+</ul>
+<p>从上述分析结果可以提取出如下三元组：</p>
+<ul>
+<li><p>（清华大学，研究，核能）</p>
+</li>
+<li><p>（教授，研究，核能）</p>
+</li>
+<li><p>（教授，有，哪些）</p>
+</li>
+</ul>
+<p>现在回到我们要分析的气象文本来，这里拿气象文本中的一个句子做分析</p>
+<p>“甘肃省民政厅副厅长徐亚荣说，据初步统计，“8.12”特大暴雨洪涝灾害造成8个市州的农作物受灾面积7.71万公顷，其中成灾5.99万公顷、绝收1.15万公顷，毁坏耕地0.66万公顷”</p>
+<p>这是一个非常长的句子，直接使用LLM(大语言模型)提取三元组得到的结果并不稳定（毕竟是生成式模型）。我们先手动提取三元组，然后观察三元组中的实体-关系-实体之间有什么关系。介于研究领域的特殊性，规定实体仅限于“地点”、“承载体”、“人口面积”和“时间”；规定关系包含但不仅限于“发生于”</p>
+<ul>
+<li>（暴雨洪涝，造成，农作物受灾）</li>
+<li>（农作物，受灾面积，7.71万公顷）</li>
+<li>（市州，成灾，5.99万公顷）</li>
+<li>（市州，绝收，1.15万公顷）</li>
+<li>（市州，毁坏耕地，0.66万公顷）</li>
+</ul>
+<p>当然上述三元组是根据我们主观意识来进行抽取的，似乎并不存在什么明显的规律。我们来看依存句法分析的结果</p>
+<p><img src="/images/image-20230516203619425.png" srcset="/img/loading.gif" lazyload></p>
+<p>可以看到因为这个句子非常的长，这就导致生成的依存图很复杂。实际上在进行依赖分析以提取三元组之前，删除如形容词和副词等修饰词是一种常见的预处理方法，通过删除这些修饰语，可以更专注于句子中的核心实体和关系（当然删除修饰语可能会导致一些信息的丢失，需要根据具体的任务进行微调）。</p>
+<h1 id="二、程序设计"><a href="#二、程序设计" class="headerlink" title="二、程序设计"></a>二、程序设计</h1><h2 id="1-需求分析"><a href="#1-需求分析" class="headerlink" title="1.需求分析"></a>1.需求分析</h2><p>搜索与推荐是从海量信息中提取感兴趣内容的两种技术手段：</p>
+<ul>
+<li>相对于主动检索的方式，推荐是一种被动接收的过程，省略了用户主动检索带来的各种问题；</li>
+<li>但是推荐系统中的稀疏性问题依然严重降低了推荐系统的准确度；</li>
+</ul>
+<p>知识图谱因为具有强大的知识互联能力，将知识图谱应用在推荐算法中无疑可以极大的提升推荐系统的性能。</p>
+<p>知识图谱一般根据覆盖范围和应用场景大致分为通用知识图谱和领域知识图谱：</p>
+<ul>
+<li>通用知识图谱依赖常识知识，具有涵盖范围广、实体与实体间关系数量大的特点；</li>
+<li>领域知识图谱虽然在规模上比通用知识图谱小，但在内容上专业性更强；</li>
+</ul>
+<p>本次项目要求基于已有的语料库（亦或使用爬虫爬取）构建气象灾情知识图谱。在已有的数据集基础上，对数据集进行处理，通过知识抽取、知识融合等技术将三元组信息存入Neo4j图数据库中，完成知识图谱的构建，并进行可视化展示。</p>
+<h2 id="2-总体设计"><a href="#2-总体设计" class="headerlink" title="2.总体设计"></a>2.总体设计</h2><h3 id="2-1-数据预处理"><a href="#2-1-数据预处理" class="headerlink" title="2.1 数据预处理"></a>2.1 数据预处理</h3><p>整个项目使用的语料数据是老师给的未标注的暴雨洪涝灾情文本，文本的基本形式如下</p>
+<p><img src="/images/image-20230518150417505.png" srcset="/img/loading.gif" lazyload></p>
+<p>文本的第二行和第三行对于提取暴雨洪涝灾情三元组没有意义，因此需要删除。因为标题和正文内容的处理方式略有不同，因此分开介绍。</p>
+<p>处理正文内容首先要提取出正文内容，简单认为所有语料的正文内容都是从第四行开始，利用python的<code>readlines</code>方法和<code>if not in</code>判断语句可以删除前面几行。因为正文内容一般都比较长，因此还需要借助句号对内容进行分割，将得到的句子存储在目标文件中，每个文件各占一行。如下是预处理正文内容的代码</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">text_ext</span>():<br>    target_file = <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;middle_data.txt&#x27;</span>, <span class="hljs-string">&#x27;w&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-comment"># 中间文件</span><br>    datapath = <span class="hljs-string">&#x27;./original_data&#x27;</span><br>    dirs = os.listdir(datapath)<br>    <span class="hljs-keyword">for</span> <span class="hljs-built_in">dir</span> <span class="hljs-keyword">in</span> dirs:<br>        fname = datapath + <span class="hljs-string">&#x27;\\&#x27;</span> + <span class="hljs-built_in">dir</span><br>        <span class="hljs-comment"># print(fname)</span><br>        <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(fname, <span class="hljs-string">&#x27;r&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> src_file:<br>            lines = src_file.readlines()<br>            dirtyid = [<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>] <span class="hljs-comment"># 删除1,2，3行</span><br>            str_new = <span class="hljs-string">&#x27;&#x27;</span><br>            <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(lines)):<br>                <span class="hljs-keyword">if</span> x <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> dirtyid:<br>                    str_new = str_new + lines[x].rstrip(<span class="hljs-string">&#x27;\n&#x27;</span>) <span class="hljs-comment"># 删除换行符</span><br>            <span class="hljs-comment"># print(str_new)</span><br>            <span class="hljs-comment"># str_new是一个非常长的文本，接下来需要删除其中的空格，然后按照句号将其分为句子</span><br>            no_spaces = re.sub(<span class="hljs-string">r&quot;\s+&quot;</span>, <span class="hljs-string">&quot;&quot;</span>, str_new)<br>            <span class="hljs-comment"># print(no_spaces)</span><br>            sentences = no_spaces.split(<span class="hljs-string">&#x27;。&#x27;</span>) <span class="hljs-comment"># 以句号为分隔符，将文本分为句子</span><br>            <span class="hljs-keyword">for</span> sentence <span class="hljs-keyword">in</span> sentences:<br>                target_file.write(sentence + <span class="hljs-string">&#x27;\n&#x27;</span>) <span class="hljs-comment"># 将句子写入到目标文件中，每个句子占一行</span><br>    target_file.close()<br></code></pre></td></tr></table></figure>
+
+<p>正文内容经预处理过后得到的文本形式如下</p>
+<p><img src="/images/image-20230518151236779.png" srcset="/img/loading.gif" lazyload alt="text_data.txt"></p>
+<p>对标题的预处理相对简单，直接提取文本首行内容即可，使用的方法和第一次作业“新闻文本分类”使用的方法相同。将提取到的新闻标题写入目标文件中</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">title_ext</span>():<br>    target_file=<span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;./data/title_data.txt&#x27;</span>,<span class="hljs-string">&#x27;w&#x27;</span>,encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>)                                          <span class="hljs-comment">#汇总结果文件</span><br>    <span class="hljs-comment">#提取data文件夹中所有文件的第一行</span><br>    datapath = <span class="hljs-string">&#x27;./original_data&#x27;</span><br>    dirs = os.listdir(datapath)           <span class="hljs-comment">#dirs得到所有txt文件名</span><br>    <span class="hljs-keyword">for</span> <span class="hljs-built_in">dir</span> <span class="hljs-keyword">in</span> dirs:<br>        fname = datapath+<span class="hljs-string">&#x27;\\&#x27;</span>+<span class="hljs-built_in">dir</span><br>        <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(fname,<span class="hljs-string">&#x27;r&#x27;</span>,encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>)<span class="hljs-keyword">as</span> src_file:<br>            lines =src_file.readlines()<br>            first_line = lines[<span class="hljs-number">0</span>] <span class="hljs-comment"># 取第一行</span><br>            <span class="hljs-built_in">print</span>(first_line)<br>            target_file.write(first_line)                                         <br>    target_file.close()<br></code></pre></td></tr></table></figure>
+
+<p>提取到的新闻标题内容如下</p>
+<p><img src="/images/image-20230518152259352.png" srcset="/img/loading.gif" lazyload alt="title.txt"></p>
+<h3 id="2-2-三元组提取"><a href="#2-2-三元组提取" class="headerlink" title="2.2 三元组提取"></a>2.2 三元组提取</h3><p>前面简单的介绍了百度的DDParser工具对句法进行分析，下面我们将利用对句子的分析结果从中提取出三元组。</p>
+<p>尽管前面简单的使用句号对长文本进行了分句，但实际上某些划分后的文本长度仍然较长，原因是文本的句子划分并不只是靠句号，其他诸如问号、换行符等都可以作为划分句子的标准，因此需要进一步的进行划分，这里使用正则表达式来实现</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">split_sents</span>(<span class="hljs-params">self, content</span>):<br>        <span class="hljs-keyword">return</span> [sentence <span class="hljs-keyword">for</span> sentence <span class="hljs-keyword">in</span> re.split(<span class="hljs-string">r&#x27;[？?！!。；;：:\n\r]&#x27;</span>, content) <span class="hljs-keyword">if</span> sentence]<br></code></pre></td></tr></table></figure>
+
+<p>该方法接受一个名为content的参数，该参数是一个字符串，表示待处理的文本内容。该方法的目的是将字符串进行拆分，将其作为列表返回。</p>
+<ul>
+<li><p>re.split()方法：按照能够匹配的子串将字符串分割后返回列表 – 此模式表示一个字符集，该字符集包括各种标点符号和换行字符，这些标点符号和字符通常用于中文和英文的句子结尾，当函数遇到这些字符时进行拆分</p>
+</li>
+<li><p>通过列表推导式，迭代从上一步获得的列表中的每个元素句子，将列表中的空字符串去除，确保最后的结果只包含非空语句</p>
+</li>
+<li><p>最后返回一个语句列表，其中包含了所有的句子</p>
+<p>总的来说，该方法根据常见的标点符号和换行符将给定的文本内容拆分为单独的句子，删除了空字符串，最后返回结果列表。</p>
+</li>
+</ul>
+<p>下面的build_parse_child_dict()方法执行句法分析，主要输入参数如下：</p>
+<ul>
+<li><p>words:单词列表</p>
+</li>
+<li><p>postags:词性标签</p>
+</li>
+<li><p>rel_id:依存关系id</p>
+</li>
+<li><p>relation:依存关系</p>
+</li>
+</ul>
+<p>该方法处理所提供的单词、词性和依赖性信息，以生成两个列表：child_dict_list和format_parse_list，前者以字典的形式表示每个单词的子依赖性，后者为每个单词提供格式化信息。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">build_parse_child_dict</span>(<span class="hljs-params">self, words, postags, rel_id, relation</span>):<br>        child_dict_list = [] <span class="hljs-comment"># 保存句法依存儿子节点的字典</span><br>        format_parse_list = [] <span class="hljs-comment"># 保存格式化后的依存关系</span><br>        <span class="hljs-keyword">for</span> index <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(words)):<br>            child_dict = <span class="hljs-built_in">dict</span>() <span class="hljs-comment"># 空字典child_dict</span><br>            <span class="hljs-keyword">for</span> arc_index <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(rel_id)): <span class="hljs-comment"># 使用arc_index变量迭代rel_id列表的索引</span><br>                <span class="hljs-keyword">if</span> rel_id[arc_index] == index+<span class="hljs-number">1</span>:   <span class="hljs-comment"># 检查arc_index处的rel_id值是否等于index+1，如果是，则表示依赖关系对应于索引处的当前单词。然后，代码相应地更新child_dict</span><br>                    <span class="hljs-keyword">if</span> rel_id[arc_index] <span class="hljs-keyword">in</span> child_dict: <span class="hljs-comment"># 如果当前的rel_id值已经作为关键字存在于child_dict中，则arc_index会附加到相应的索引列表中</span><br>                        child_dict[relation[arc_index]].append(arc_index)<br>                    <span class="hljs-keyword">else</span>: <span class="hljs-comment"># 否则，将创建一个新键，并将其值初始化为包含arc_index的空列表</span><br>                        child_dict[relation[arc_index]] = []<br>                        child_dict[relation[arc_index]].append(arc_index)<br>            child_dict_list.append(child_dict) <span class="hljs-comment"># 在处理了当前单词的所有依赖关系后，child_dict被附加到child_dict_list</span><br>        heads = [<span class="hljs-string">&#x27;Root&#x27;</span> <span class="hljs-keyword">if</span> <span class="hljs-built_in">id</span> == <span class="hljs-number">0</span> <span class="hljs-keyword">else</span> words[<span class="hljs-built_in">id</span> - <span class="hljs-number">1</span>] <span class="hljs-keyword">for</span> <span class="hljs-built_in">id</span> <span class="hljs-keyword">in</span> rel_id]  <span class="hljs-comment"># 将每个依赖关系id与其对应的单词匹配，若id为0则为根节点</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(words)):<br>            <span class="hljs-comment"># [&#x27;ATT&#x27;, &#x27;李克强&#x27;, 0, &#x27;nh&#x27;, &#x27;总理&#x27;, 1, &#x27;n&#x27;]</span><br>            a = [relation[i], words[i], i, postags[i], heads[i], rel_id[i]-<span class="hljs-number">1</span>, postags[rel_id[i]-<span class="hljs-number">1</span>]] <span class="hljs-comment"># 为每个单词创建解析信息的格式化表示</span><br>            format_parse_list.append(a)<br>        <span class="hljs-comment"># child_dict_list包含每个单词的依赖关系，format_parse_list包含每个单词的格式化解析信息</span><br>        <span class="hljs-keyword">return</span> child_dict_list, format_parse_list<br></code></pre></td></tr></table></figure>
+
+<p>我们举一个例子来理解，假设函数的输入如下</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">words</span> = [<span class="hljs-string">&#x27;I&#x27;</span>, <span class="hljs-string">&#x27;ate&#x27;</span>, <span class="hljs-string">&#x27;an&#x27;</span>, <span class="hljs-string">&#x27;apple&#x27;</span>]<br><span class="hljs-attr">postags</span> = [<span class="hljs-string">&#x27;PRON&#x27;</span>, <span class="hljs-string">&#x27;VERB&#x27;</span>, <span class="hljs-string">&#x27;DET&#x27;</span>, <span class="hljs-string">&#x27;NOUN&#x27;</span>]<br><span class="hljs-attr">rel_id</span> = [<span class="hljs-number">2</span>, <span class="hljs-number">0</span>, <span class="hljs-number">4</span>, <span class="hljs-number">2</span>]<br><span class="hljs-attr">relation</span> = [<span class="hljs-string">&#x27;nsubj&#x27;</span>, <span class="hljs-string">&#x27;root&#x27;</span>, <span class="hljs-string">&#x27;det&#x27;</span>, <span class="hljs-string">&#x27;obj&#x27;</span>]<br></code></pre></td></tr></table></figure>
+
+<p>函数首先会初始化两个空列表，child_dict_list和format_parse_list。</p>
+<p>接着在第一个循环中使用索引变量对单词列表的索引进行迭代，在每个循环中都会为每个单词创建一个新的空字典child_dict。</p>
+<p>第二个循环使用arc_index变量对rel_id列表的索引进行迭代。它检查arc_index处的rel_id值是否等于index+1（因为rel_id索引从1开始）。如果它们匹配，则意味着依赖关系对应于索引处的当前单词。然后进行判断，如果rel_id值已经作为child_dict中的键存在，则arc_index将被附加到相应的索引列表中。否则，将创建一个新键，并将其值初始化为包含arc_index的空列表。此步骤为每个单词建立子依赖关系。在我们的例子中，child_dict_list将会是如下形式</p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs scheme">[<br>    &#123;&#125;,<br>    &#123;<span class="hljs-symbol">&#x27;nsubj</span><span class="hljs-symbol">&#x27;:</span> [<span class="hljs-name">0</span>]&#125;,<br>    &#123;<span class="hljs-symbol">&#x27;det</span><span class="hljs-symbol">&#x27;:</span> [<span class="hljs-name">2</span>]&#125;,<br>    &#123;<span class="hljs-symbol">&#x27;obj</span><span class="hljs-symbol">&#x27;:</span> [<span class="hljs-name">3</span>]&#125;<br>]<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>索引0处的字典为空，因为单词“I”没有依赖项。</p>
+</li>
+<li><p>索引1处的字典（对应于“ate”）有一个依赖项，关系“nsubj”指向索引0处的单词（“I”）。</p>
+</li>
+<li><p>索引2处的字典（对应于“an”）有一个依赖项，关系“det”指向索引2处（“an”）的单词。</p>
+</li>
+<li><p>索引3处的字典（对应于“apple”）有一个依赖项，关系“obj”指向索引3处（“apple”）的单词。</p>
+</li>
+</ul>
+<p>接下来构建一个heads列表，该列表将每个依赖关系id与其对应的单词进行匹配，例子中的heads将是[“ate”、“Root”、“apple”、“ate”]。</p>
+<p>接着进入下一个for循环，该循环会对每个单词创建一个格式化的表示，这将结合各种信息，我们的例子中得到的format_parse_list将是</p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs scheme">[<br>    [<span class="hljs-symbol">&#x27;nsubj</span>&#x27;, <span class="hljs-symbol">&#x27;I</span>&#x27;, <span class="hljs-number">0</span>, <span class="hljs-symbol">&#x27;PRON</span>&#x27;, <span class="hljs-symbol">&#x27;ate</span>&#x27;, <span class="hljs-number">1</span>, <span class="hljs-symbol">&#x27;VERB</span>&#x27;],<br>    [<span class="hljs-symbol">&#x27;root</span>&#x27;, <span class="hljs-symbol">&#x27;ate</span>&#x27;, <span class="hljs-number">1</span>, <span class="hljs-symbol">&#x27;VERB</span>&#x27;, <span class="hljs-symbol">&#x27;Root</span>&#x27;, <span class="hljs-number">0</span>, <span class="hljs-symbol">&#x27;PRON</span>&#x27;],<br>    [<span class="hljs-symbol">&#x27;det</span>&#x27;, <span class="hljs-symbol">&#x27;an</span>&#x27;, <span class="hljs-number">2</span>, <span class="hljs-symbol">&#x27;DET</span>&#x27;, <span class="hljs-symbol">&#x27;apple</span>&#x27;, <span class="hljs-number">3</span>, <span class="hljs-symbol">&#x27;NOUN</span>&#x27;],<br>    [<span class="hljs-symbol">&#x27;obj</span>&#x27;, <span class="hljs-symbol">&#x27;apple</span>&#x27;, <span class="hljs-number">3</span>, <span class="hljs-symbol">&#x27;NOUN</span>&#x27;, <span class="hljs-symbol">&#x27;ate</span>&#x27;, <span class="hljs-number">1</span>, <span class="hljs-symbol">&#x27;VERB</span>&#x27;]<br>]<br></code></pre></td></tr></table></figure>
+
+<p>每个子列表表示一个单词的格式化信息。比如第一个子列表对应具有“nsubj”关系的单词“I”，它的索引为0，词性标签为“PRON”，它的head word是“ate”，head word的词性为“VERB”。</p>
+<p>build_parse_child_dict()方法只是一个辅助方法，主要用于辅助构造解析树，而build_parse_child_dict()方法的参数需要使用DDParser对句子进行依存分析得到</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">parser_main</span>(<span class="hljs-params">self, sentence</span>):<br>        res = self.parser.parse(sentence, )[<span class="hljs-number">0</span>] <span class="hljs-comment"># 调用DDParser的parse方法，对句子进行依存句法分析</span><br>        <span class="hljs-comment"># 分别将解析的结果提取出来</span><br>        words = res[<span class="hljs-string">&quot;word&quot;</span>]<br>        postags = res[<span class="hljs-string">&quot;postag&quot;</span>]<br>        rel_id = res[<span class="hljs-string">&quot;head&quot;</span>]<br>        relation = res[<span class="hljs-string">&quot;deprel&quot;</span>]<br>        <span class="hljs-comment"># 根据提取的信息构建解析树结构，并返回两个值：child_dict_list 和 format_parse_list</span><br>        child_dict_list, format_parse_list = self.build_parse_child_dict(words, postags, rel_id, relation) <span class="hljs-comment"># 调用build_parse_child_dict方法，为句子中的每个词语维护一个保存句法依存儿子节点的字典</span><br>        <span class="hljs-keyword">return</span> words, postags, child_dict_list, format_parse_list <span class="hljs-comment"># 该方法返回解析后的词语、词性标注、以子字典列表形式表示的解析树（child_dict_list）以及格式化的解析列表（format_parse_list）</span><br></code></pre></td></tr></table></figure>
+
+<p>merge_ATT方法，该方法对解析树中的依存关系进行了合并操作。它识别出连续的 ‘ATT’ 或 ‘ADV’ 依存关系，并将相应的词合并为一个单词。合并后的词被添加到 <code>ATTs</code> 列表中，并且每个合并序列中最后一个词的索引被添加到 <code>retain_nodes</code> 集合中。该方法最终返回输入的 <code>words</code> 列表的修改版本、原始的 <code>postags</code> 列表、修改后的 <code>format_parse_list</code> 列表以及 <code>retain_nodes</code> 集合。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">merge_ATT</span>(<span class="hljs-params">self, words, postags, format_parse_list</span>):<br>        words_ = words <span class="hljs-comment"># 浅拷贝</span><br>        retain_nodes = <span class="hljs-built_in">set</span>()<br>        ATTs = []<br>        ATT = []<br>        format_parse_list_ = []<br>        <span class="hljs-keyword">for</span> parse <span class="hljs-keyword">in</span> format_parse_list: <span class="hljs-comment"># 遍历format_parse_list集合，每个parse都是一个包含特定依存关系信息的列表</span><br>            dep = parse[<span class="hljs-number">0</span>]<br>            <span class="hljs-keyword">if</span> dep <span class="hljs-keyword">in</span> [<span class="hljs-string">&#x27;ATT&#x27;</span>, <span class="hljs-string">&#x27;ADV&#x27;</span>]: <span class="hljs-comment"># 如果依存关系是ATT或ADV，则将其添加到ATT列表中</span><br>                ATT += [parse[<span class="hljs-number">2</span>], parse[<span class="hljs-number">5</span>]]<br>            <span class="hljs-keyword">else</span>: <span class="hljs-comment"># 如果依存类型不是 &#x27;ATT&#x27; 或 &#x27;ADV&#x27;，代码会检查 ATT 列表是否为空</span><br>                <span class="hljs-keyword">if</span> ATT: <span class="hljs-comment"># 如果ATT列表不为空，则将其合并为一个字符串，并将其添加到ATTs列表中</span><br>                    body = <span class="hljs-string">&#x27;&#x27;</span>.join([words[i] <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">sorted</span>(<span class="hljs-built_in">set</span>(ATT))])<br>                    ATTs.append(body) <span class="hljs-comment"># 将 ATT 列表中索引对应的词连接起来形成一个单词（body），并将其添加到 ATTs 列表中</span><br>                    retain_nodes.add(<span class="hljs-built_in">sorted</span>(<span class="hljs-built_in">set</span>(ATT))[-<span class="hljs-number">1</span>]) <span class="hljs-comment"># 将 ATT 列表中最后一个索引添加到retain_nodes集合中</span><br>                    words_[<span class="hljs-built_in">sorted</span>(<span class="hljs-built_in">set</span>(ATT))[-<span class="hljs-number">1</span>]] = body <span class="hljs-comment"># 将 ATT 列表中最后一个索引对应的词替换为body</span><br>                <span class="hljs-keyword">else</span>:<br>                    retain_nodes.add(parse[<span class="hljs-number">2</span>]) <span class="hljs-comment"># 如果 ATT 列表为空，意味着序列中没有 &#x27;ATT&#x27; 或 &#x27;ADV&#x27; 依存关系，此时只需将当前 parse 的索引添加到 retain_nodes 集合中即可</span><br>                ATT = []<br>        <span class="hljs-keyword">for</span> indx, parse <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(format_parse_list):<br>            <span class="hljs-keyword">if</span> indx <span class="hljs-keyword">in</span> retain_nodes: <span class="hljs-comment"># 检查当前索引（indx）是否存在于 retain_nodes 集合中</span><br>                parse_ = [parse[<span class="hljs-number">0</span>], words_[indx], indx, postags[indx], words_[parse[<span class="hljs-number">5</span>]], parse[<span class="hljs-number">5</span>], postags[parse[<span class="hljs-number">5</span>]]] <span class="hljs-comment"># 如果存在，则将该索引对应的词替换为words_[indx]</span><br>                format_parse_list_.append(parse_) <span class="hljs-comment"># 将该parse_添加到format_parse_list_中</span><br>        <span class="hljs-keyword">return</span> words_, postags, format_parse_list_, retain_nodes<br></code></pre></td></tr></table></figure>
+
+<p>到这里可能我们会有一个疑问，为什么需要合并如“ATT”(定语修饰语)和“ADV”(状语修饰语)呢？实际上是为了将多个词汇合并为一个单词，从而更加有效的捕捉它们之间的关系。这里我们可以举个例子，原始句子为“The big red apple on the table is delicious.”，则“big”、“red”和“on the table”作为ATT修饰“apple”，解析树将为每个修饰语建立单独的依存关系，很明显这是一个碎片化的表示，如果将这三个成分合并为一个成分，即“big red on the table”，作为“apple”的ATT修饰，在保留基本信息的同时简化了结构，提高了解析树的可读性。</p>
+<p>接下来的extract方法根据词性标注（postags）、依存解析（child_dict_list）和其他语言信息从给定的句子中提取语义三元组（主语-动词-宾语关系）。该方法旨在通过利用词性标注和依存解析信息从句子中提取主谓宾和主谓补关系，提取的三元组提供了关于句子的语义结构和关系的见解。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">extract</span>(<span class="hljs-params">self, words, postags, child_dict_list, arcs, retain_nodes</span>):<br>        svos = [] <span class="hljs-comment"># 用于保存抽取出的三元组</span><br>        <span class="hljs-keyword">for</span> index <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(postags)): <span class="hljs-comment"># 遍历句子中的每个词</span><br>            <span class="hljs-keyword">if</span> index <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> retain_nodes: <span class="hljs-comment"># 如果该词不在retain_nodes集合中，则跳过该词 -- 只考虑对句子中的特定节点进行提取</span><br>                <span class="hljs-keyword">continue</span><br>            <span class="hljs-comment"># 检查给定索引处的当前词语是否具有非空的词性标注（postags[index]）。如果不为空，则根据句法结构提取语义三元组</span><br>            <span class="hljs-keyword">if</span> postags[index]:<br>                child_dict = child_dict_list[index] <span class="hljs-comment"># 获取当前词语的依存解析信息</span><br>                <span class="hljs-comment"># 查找主谓宾（SVO）三元组，通过检查是否存在主语（SBV）和宾语（VOB）作为子节点来确定</span><br>                <span class="hljs-keyword">if</span> <span class="hljs-string">&#x27;SBV&#x27;</span> <span class="hljs-keyword">in</span> child_dict <span class="hljs-keyword">and</span> <span class="hljs-string">&#x27;VOB&#x27;</span> <span class="hljs-keyword">in</span> child_dict:<br>                    r = words[index] <span class="hljs-comment"># 提取谓语(动词)</span><br>                    e1 = words[child_dict[<span class="hljs-string">&#x27;SBV&#x27;</span>][<span class="hljs-number">0</span>]] <span class="hljs-comment"># 提取主语</span><br>                    e2 = words[child_dict[<span class="hljs-string">&#x27;VOB&#x27;</span>][<span class="hljs-number">0</span>]] <span class="hljs-comment"># 提取宾语</span><br>                    <span class="hljs-keyword">if</span> e1.replace(<span class="hljs-string">&#x27; &#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>) <span class="hljs-keyword">and</span> e2.replace(<span class="hljs-string">&#x27; &#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>): <br>                        svos.append([e1, r, e2]) <span class="hljs-comment"># 提取的主语（e1）、动词（r）和宾语（e2）以语义三元组[e1, r, e2]的形式添加到svos列表中，分别表示主语、动词和宾语</span><br><br>                <span class="hljs-comment"># 通过查找主语（SBV）和补语（CMP）关系来检查主谓补（SVC）三元组是否存在</span><br>                <span class="hljs-keyword">if</span> <span class="hljs-string">&#x27;SBV&#x27;</span> <span class="hljs-keyword">in</span> child_dict <span class="hljs-keyword">and</span> <span class="hljs-string">&#x27;CMP&#x27;</span> <span class="hljs-keyword">in</span> child_dict:<br>                    e1 = words[child_dict[<span class="hljs-string">&#x27;SBV&#x27;</span>][<span class="hljs-number">0</span>]] <span class="hljs-comment"># 提取主语</span><br>                    cmp_index = child_dict[<span class="hljs-string">&#x27;CMP&#x27;</span>][<span class="hljs-number">0</span>] <span class="hljs-comment"># 提取补语</span><br>                    r = words[index] + words[cmp_index] <span class="hljs-comment"># 将谓词和补语连接起来形成动词(谓词)</span><br>                    <span class="hljs-keyword">if</span> <span class="hljs-string">&#x27;POB&#x27;</span> <span class="hljs-keyword">in</span> child_dict_list[cmp_index]: <span class="hljs-comment"># 检查补语的子节点是否存在介宾关系（POB）</span><br>                        e2 = words[child_dict_list[cmp_index][<span class="hljs-string">&#x27;POB&#x27;</span>][<span class="hljs-number">0</span>]] <span class="hljs-comment"># 如果存在介宾关系，则提取介宾关系对应的宾语</span><br>                        <span class="hljs-keyword">if</span> e1.replace(<span class="hljs-string">&#x27; &#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>) <span class="hljs-keyword">and</span> e2.replace(<span class="hljs-string">&#x27; &#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>):<br>                            svos.append([e1, r, e2]) <span class="hljs-comment"># 提取的主语（e1）、谓词（r）和宾语（e2）以语义三元组[e1, r, e2]的形式添加到svos列表中</span><br>        <span class="hljs-keyword">return</span> svos<br></code></pre></td></tr></table></figure>
+
+<p>extract方法侧重使用特定的句法模式（主语-动词-宾语和主语-动词-补语）来提取三元组，我们这里介绍一种同样是基于词性标注和依存解析等语言信息提取语义三元组的方法ruler2。ruler2方法可以看作是extract方法的拓展，通过考虑其他模式（如带有形容词修饰的主语-动词宾语）来拓展提取定语后置和介词短语的主动补语（即介宾关系的主谓动补关系），它结合了额外的模式来捕捉句子中更加广泛的语义关系。ruler2的大部分逻辑和extract是相同的，代码注释如下</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">ruler2</span>(<span class="hljs-params">self, words, postags, child_dict_list, arcs</span>):<br>        svos = [] <span class="hljs-comment"># 用于保存抽取出的三元组</span><br>        <span class="hljs-keyword">for</span> index <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(postags)): <span class="hljs-comment"># 遍历句子中的每个词</span><br>            tmp = <span class="hljs-number">1</span><br>            <span class="hljs-keyword">if</span> tmp == <span class="hljs-number">1</span>: <span class="hljs-comment"># 这个条件总是为真，因此这个条件是多余的...</span><br>                <span class="hljs-keyword">if</span> postags[index]: <span class="hljs-comment"># 如果语义角色标注（postags[index]）不为空，则使用语义角色标注的结果进行三元组抽取</span><br>                    child_dict = child_dict_list[index]<br>                    <span class="hljs-keyword">if</span> <span class="hljs-string">&#x27;SBV&#x27;</span> <span class="hljs-keyword">in</span> child_dict <span class="hljs-keyword">and</span> <span class="hljs-string">&#x27;VOB&#x27;</span> <span class="hljs-keyword">in</span> child_dict: <span class="hljs-comment"># 查找主谓宾（SVO）三元组，通过检查是否存在主语（SBV）和宾语（VOB）作为子节点来确定</span><br>                        r = words[index] <span class="hljs-comment"># 提取谓语(动词)</span><br>                        e1 = self.complete_e(words, postags, child_dict_list, child_dict[<span class="hljs-string">&#x27;SBV&#x27;</span>][<span class="hljs-number">0</span>]) <span class="hljs-comment"># 提取主语</span><br>                        e2 = self.complete_e(words, postags, child_dict_list, child_dict[<span class="hljs-string">&#x27;VOB&#x27;</span>][<span class="hljs-number">0</span>]) <span class="hljs-comment"># 提取宾语</span><br>                        <span class="hljs-keyword">if</span> e1.replace(<span class="hljs-string">&#x27; &#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>) <span class="hljs-keyword">and</span> e2.replace(<span class="hljs-string">&#x27; &#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>): <br>                            svos.append([e1, r, e2]) <span class="hljs-comment"># 提取的主语（e1）、动词（r）和宾语（e2）以语义三元组[e1, r, e2]的形式添加到svos列表中，分别表示主语、动词和宾语</span><br><br>                    relation = arcs[index][<span class="hljs-number">0</span>]<br>                    head = arcs[index][<span class="hljs-number">2</span>]<br>                    <span class="hljs-keyword">if</span> relation == <span class="hljs-string">&#x27;ATT&#x27;</span>: <span class="hljs-comment"># 检查当前词语的依存关系（relation）是否为“ATT”（定语后置），并且检查该词语的头部词语索引（head）</span><br>                        <span class="hljs-keyword">if</span> <span class="hljs-string">&#x27;VOB&#x27;</span> <span class="hljs-keyword">in</span> child_dict: <span class="hljs-comment"># 进一步检查是否存在宾语（VOB）作为子节点</span><br>                            <span class="hljs-comment"># 若存在，则使用complete_e方法来获取完整的实体词语，并构建谓词（r）</span><br>                            e1 = self.complete_e(words, postags, child_dict_list, head - <span class="hljs-number">1</span>) <br>                            r = words[index]<br>                            e2 = self.complete_e(words, postags, child_dict_list, child_dict[<span class="hljs-string">&#x27;VOB&#x27;</span>][<span class="hljs-number">0</span>])<br>                            <span class="hljs-comment"># 构建一个临时字符串（temp_string），由谓词和宾语拼接而成。然后检查主语是否以该临时字符串开头，如果是，则从主语中移除该临时字符串的部分</span><br>                            temp_string = r + e2<br>                            <span class="hljs-keyword">if</span> temp_string == e1[:<span class="hljs-built_in">len</span>(temp_string)]:<br>                                e1 = e1[<span class="hljs-built_in">len</span>(temp_string):]<br>                            <span class="hljs-comment"># 检查临时字符串是否不在主语中，如果是，则将主语、谓词和宾语以语义三元组的形式添加到svos列表中</span><br>                            <span class="hljs-keyword">if</span> temp_string <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> e1:<br>                                <span class="hljs-keyword">if</span> e1.replace(<span class="hljs-string">&#x27; &#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>) <span class="hljs-keyword">and</span> e2.replace(<span class="hljs-string">&#x27; &#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>):<br>                                    svos.append([e1, r, e2])<br><br><br>                    <span class="hljs-keyword">if</span> <span class="hljs-string">&#x27;SBV&#x27;</span> <span class="hljs-keyword">in</span> child_dict <span class="hljs-keyword">and</span> <span class="hljs-string">&#x27;CMP&#x27;</span> <span class="hljs-keyword">in</span> child_dict: <span class="hljs-comment"># 通过查找主语（SBV）和补语（CMP）关系来检查主谓补（SVC）三元组是否存在</span><br>                        e1 = self.complete_e(words, postags, child_dict_list, child_dict[<span class="hljs-string">&#x27;SBV&#x27;</span>][<span class="hljs-number">0</span>]) <span class="hljs-comment"># 提取主语</span><br>                        cmp_index = child_dict[<span class="hljs-string">&#x27;CMP&#x27;</span>][<span class="hljs-number">0</span>] <span class="hljs-comment"># 提取补语</span><br>                        r = words[index] + words[cmp_index] <span class="hljs-comment"># 将谓词和补语连接起来形成动词(谓词)</span><br>                        <span class="hljs-keyword">if</span> <span class="hljs-string">&#x27;POB&#x27;</span> <span class="hljs-keyword">in</span> child_dict_list[cmp_index]: <span class="hljs-comment"># 检查补语的子节点是否存在介宾关系（POB）</span><br>                            e2 = self.complete_e(words, postags, child_dict_list, child_dict_list[cmp_index][<span class="hljs-string">&#x27;POB&#x27;</span>][<span class="hljs-number">0</span>]) <span class="hljs-comment"># 如果存在介宾关系，则提取介宾关系对应的宾语</span><br>                            <span class="hljs-keyword">if</span> e1.replace(<span class="hljs-string">&#x27; &#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>) <span class="hljs-keyword">and</span> e2.replace(<span class="hljs-string">&#x27; &#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>):<br>                                svos.append([e1, r, e2]) <span class="hljs-comment"># 提取的主语（e1）、谓词（r）和宾语（e2）以语义三元组[e1, r, e2]的形式添加到svos列表中</span><br>        <span class="hljs-keyword">return</span> svos<br></code></pre></td></tr></table></figure>
+
+<p>在ruler2方法中，使用到的一个重要的方法是complete_e，该方法根据句子中的词语信息、词性标注和依存解析结果，生成一个完整的实体词语，代码的注释如下</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">complete_e</span>(<span class="hljs-params">self, words, postags, child_dict_list, word_index</span>):<br>        child_dict = child_dict_list[word_index] <span class="hljs-comment"># 获取词语索引对应的子节点字典</span><br>        prefix = <span class="hljs-string">&#x27;&#x27;</span> <span class="hljs-comment"># 存储前缀</span><br>        <span class="hljs-comment"># 如果 child_dict 中存在 &#x27;ATT&#x27;（定语）关系，则通过循环遍历所有定语关系的子节点，使用递归调用 complete_e 方法获取每个子节点的完整实体词语，并将其添加到 prefix 中</span><br>        <span class="hljs-keyword">if</span> <span class="hljs-string">&#x27;ATT&#x27;</span> <span class="hljs-keyword">in</span> child_dict:<br>            <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(child_dict[<span class="hljs-string">&#x27;ATT&#x27;</span>])):<br>                prefix += self.complete_e(words, postags, child_dict_list, child_dict[<span class="hljs-string">&#x27;ATT&#x27;</span>][i])<br>        postfix = <span class="hljs-string">&#x27;&#x27;</span> <span class="hljs-comment"># 存储后缀</span><br>        <span class="hljs-comment"># 如果 postags[word_index] 为 &#x27;v&#x27;（动词）</span><br>        <span class="hljs-keyword">if</span> postags[word_index] == <span class="hljs-string">&#x27;v&#x27;</span>:<br>            <span class="hljs-keyword">if</span> <span class="hljs-string">&#x27;VOB&#x27;</span> <span class="hljs-keyword">in</span> child_dict: <span class="hljs-comment"># 如果 child_dict 中存在 &#x27;VOB&#x27;（动宾关系），则通过递归调用 complete_e 方法获取宾语的完整实体词语，并将其添加到 postfix 中</span><br>                postfix += self.complete_e(words, postags, child_dict_list, child_dict[<span class="hljs-string">&#x27;VOB&#x27;</span>][<span class="hljs-number">0</span>])<br>            <span class="hljs-keyword">if</span> <span class="hljs-string">&#x27;SBV&#x27;</span> <span class="hljs-keyword">in</span> child_dict: <span class="hljs-comment"># 如果 child_dict 中存在 &#x27;SBV&#x27;（主谓关系），则通过递归调用 complete_e 方法获取主语的完整实体词语，并将其与 prefix 进行拼接</span><br>                prefix = self.complete_e(words, postags, child_dict_list, child_dict[<span class="hljs-string">&#x27;SBV&#x27;</span>][<span class="hljs-number">0</span>]) + prefix<br>        <span class="hljs-comment"># 返回拼接后的字符串，由 prefix、words[word_index] 和 postfix 组成，表示完整的实体词语</span><br>        <span class="hljs-keyword">return</span> prefix + words[word_index] + postfix<br></code></pre></td></tr></table></figure>
+
+<p>这里简单举一个例子来理解complete_e方法的工作原理，假设有这样一个句子”John eats an apple.”，输入complete_e的参数分别为：</p>
+<ul>
+<li>words: [“John”, “eats”, “an”, “apple”]</li>
+<li>postags: [“NNP”, “VBZ”, “DT”, “NN”]（[“专有名词”, “动词原形”, “限定词”, “名词”]）</li>
+<li>child_dict_list: [{}, {}, {}, {}]（在此示例中为空）</li>
+<li>word_index: 1（”eats”的索引）</li>
+</ul>
+<p>从单词”eats”开始调用complete_e方法，由于”eats”没有”ATT”（定语）关系，因此prefix的循环不执行。接着由于”eats”是一个动词，因此需要检查child_dict中是否存在”VOB”（动宾关系）关系。在这个例子中”eats”不存在”VOB”关系，因此postfix为空字符串。同样的，”eats”不存在”SVB”(主谓)关系，因此prefix也是空字符串。最后，该方法返回prefix、words[word_index]和postfix的拼接。在这个例子中，它返回”eats”。这表明在调用complete_e方法处理句子”John eats an apple.”中的单词”eats”时，因为”eats”没有额外的修饰词或依赖关系，因此简单的返回”eats”作为完整实体。</p>
+<p>以上就是基于依存分析提取文本中的三元组主要使用的函数，当实例化SVOParser类后，调用triples_main方法对正文文本和标题文本的每一行进行三元组提取，将得到的三元组进行合并（代码比较简单这里就不再展示，详情参见代码文件），最终形成如下形式的原始三元组文件</p>
+<p><img src="/images/image-20230518211605464.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-3-三元组清理"><a href="#2-3-三元组清理" class="headerlink" title="2.3 三元组清理"></a>2.3 三元组清理</h3><p>参考链接：</p>
+<p>近义词工具包：<a target="_blank" rel="noopener" href="https://github.com/chatopera/Synonyms">chatopera&#x2F;Synonyms</a>；</p>
+<p>训练并使用自己的Word2Vec：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://qingbang.gitee.io/2020/06/20/Word2Vec%E8%AF%8D%E5%90%91%E9%87%8F%E7%9A%84%E8%AE%AD%E7%BB%83%E4%B8%8E%E4%BD%BF%E7%94%A8/#0-%E6%95%B0%E6%8D%AE%E6%8F%8F%E8%BF%B0%E5%8F%8A%E5%BC%80%E6%BA%90%E4%BB%A3%E7%A0%81">词向量训练_1</a>；</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/liaoningxinmin/article/details/122857848">词向量训练_2</a>；</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/chatopera/Synonyms/issues?page=1&q=is:issue+is:open">替换synonyms的词向量</a>；</li>
+</ul>
+<hr>
+<p>基本的三元组已经提取完成，但是可以看到存在很多相似的三元组以及一些无用的三元组（比如实体是标点符号）。因此这部分我们主要进行的就是对三元组进行清洗，得到质量较高、可用于构建知识图谱的三元组。</p>
+<p>经过对原始三元组的查看，基本确定要清洗的三元组类型如下：</p>
+<ul>
+<li><p>两个完全相同的三元组 [‘东北局部地区’, ‘遭受’, ‘洪涝灾害’] 和 [‘东北局部地区’, ‘遭受’, ‘洪涝灾害’] – 去重</p>
+</li>
+<li><p>头实体或尾实体是单个字符(包括标点符号)的三元组，如[‘已’, ‘致’, ‘85人死亡’]、[‘,’, ‘致’, ‘85人死亡’]、[‘18人’, ‘死’, ‘4’] – 在中文中要表示一个实体几乎是不可能只用一个字的</p>
+</li>
+<li><p>头实体或尾实体以“等”开头（这是我们文本的特殊性导致的一个问题），这种三元组不用删除，只需要删除头实体的“等”即可，如[‘等湘省份’, ‘遭受’, ‘洪涝灾害’] – 规范化</p>
+</li>
+<li><p>头实体或尾实体是以数字开头的（同样是文本特殊性导致），如[‘1.6亿’, ‘投入’, ‘5万人’]，这种三元组不具备语义 – 语义角度，灾情文本中两个数字实体之间几乎不会有什么有用的关系（头实体和尾实体都是数字开头），亦或头实体或尾实体以数字开头，往往并不是我们需要的“唯一”实体</p>
+</li>
+<li><p>头实体或尾实体以“你”、“我”、“他”人称代词开头，不符合作为唯一实体的要求</p>
+</li>
+<li><p>头实体等于尾实体，自己与自己存在关系，从常理上讲行不通</p>
+</li>
+<li><p>头实体或尾实体意义接近，可以认为是两个相同的三元组如 [‘两部门’, ‘启动’, ‘四级应急响应’] 和[‘两部门’, ‘启动’, ‘Ⅳ级应急响应’] – 可以用jaccard距离或余弦相似度来判断</p>
+</li>
+</ul>
+<h4 id="2-3-1-重复三元组"><a href="#2-3-1-重复三元组" class="headerlink" title="2.3.1 重复三元组"></a>2.3.1 重复三元组</h4><p>首先删除重复的三元组，这里借助了集合元素唯一的特性，很方便的得到了去重之后的三元组</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs py">triplets = [] <br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;./data/triples_data.txt&#x27;</span>, <span class="hljs-string">&#x27;r&#x27;</span>) <span class="hljs-keyword">as</span> file:<br>    triplets = [line.strip() <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> file]<br>unique_triplets = <span class="hljs-built_in">set</span>()<br><span class="hljs-keyword">for</span> triplet <span class="hljs-keyword">in</span> triplets:<br>    unique_triplets.add(triplet)<br>unique_triplets = <span class="hljs-built_in">list</span>(unique_triplets)<br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;./data/unique_triples_data.txt&#x27;</span>, <span class="hljs-string">&#x27;w&#x27;</span>) <span class="hljs-keyword">as</span> file:<br>    file.write(<span class="hljs-string">&#x27;\n&#x27;</span>.join(unique_triplets))<br></code></pre></td></tr></table></figure>
+
+<h4 id="2-3-2-非法三元组"><a href="#2-3-2-非法三元组" class="headerlink" title="2.3.2 非法三元组"></a>2.3.2 非法三元组</h4><p>接下来删除其他不符合条件的三元组（这里不包括实体相似的三元组，这将放在之后处理），这里使用的逻辑也非常简单，直接利用if语句进行判断即可。</p>
+<p>需要注意的是因为我们的三元组尽管看起来像列表，实际上是以字符串的形式在文本中存储的，因此借助ast.literal_eval()函数将字符串转换为列表，进而可以访问三元组中的实体或者关系。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;./data/unique_triples_data.txt&#x27;</span>, <span class="hljs-string">&#x27;r&#x27;</span>) <span class="hljs-keyword">as</span> file_in,<span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;./data/clear_triples_data.txt&#x27;</span>, <span class="hljs-string">&#x27;w&#x27;</span>) <span class="hljs-keyword">as</span> file_out:<br>    <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> file_in:<br>        triplet_str = line.strip()<br>        <span class="hljs-comment"># print(triplet_str)</span><br>        triplet_list = ast.literal_eval(triplet_str)<br>        head_entity = triplet_list[<span class="hljs-number">0</span>]<br>        relationship = triplet_list[<span class="hljs-number">1</span>]<br>        tail_entity = triplet_list[<span class="hljs-number">2</span>]<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> (<span class="hljs-built_in">len</span>(head_entity) ==<span class="hljs-number">1</span> <span class="hljs-keyword">or</span> <span class="hljs-built_in">len</span>(tail_entity) ==<span class="hljs-number">1</span> <span class="hljs-keyword">or</span> head_entity[<span class="hljs-number">0</span>].isdigit() <span class="hljs-keyword">or</span> tail_entity[<span class="hljs-number">0</span>].isdigit() <span class="hljs-keyword">or</span> head_entity == tail_entity <span class="hljs-keyword">or</span> \<br>                    head_entity[<span class="hljs-number">0</span>]==<span class="hljs-string">&quot;我&quot;</span> <span class="hljs-keyword">or</span> tail_entity[<span class="hljs-number">0</span>]==<span class="hljs-string">&quot;我&quot;</span> <span class="hljs-keyword">or</span> head_entity[<span class="hljs-number">0</span>]==<span class="hljs-string">&quot;你&quot;</span> <span class="hljs-keyword">or</span> tail_entity[<span class="hljs-number">0</span>]==<span class="hljs-string">&quot;你&quot;</span> <span class="hljs-keyword">or</span> head_entity[<span class="hljs-number">0</span>]==<span class="hljs-string">&quot;他&quot;</span> <span class="hljs-keyword">or</span> tail_entity[<span class="hljs-number">0</span>]==<span class="hljs-string">&quot;他&quot;</span>):<br>            <span class="hljs-comment"># print(triplet_list)</span><br>            <span class="hljs-keyword">if</span> head_entity[<span class="hljs-number">0</span>] == <span class="hljs-string">&quot;等&quot;</span>:<br>                head_entity = head_entity.replace(<span class="hljs-string">&quot;等&quot;</span>,<span class="hljs-string">&quot;&quot;</span>)<br>            <span class="hljs-keyword">if</span> tail_entity[<span class="hljs-number">0</span>] == <span class="hljs-string">&quot;等&quot;</span>:<br>                tail_entity = tail_entity.replace(<span class="hljs-string">&quot;等&quot;</span>,<span class="hljs-string">&quot;&quot;</span>)<br>            <span class="hljs-comment"># print(head_entity,relationship,tail_entity)</span><br>            file_out.write(<span class="hljs-built_in">str</span>(head_entity)+<span class="hljs-string">&#x27;\t&#x27;</span>+<span class="hljs-built_in">str</span>(relationship)+<span class="hljs-string">&#x27;\t&#x27;</span>+<span class="hljs-built_in">str</span>(tail_entity)+<span class="hljs-string">&#x27;\n&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<h4 id="2-3-3-实体-amp-关系限定"><a href="#2-3-3-实体-amp-关系限定" class="headerlink" title="2.3.3 实体&amp;关系限定"></a>2.3.3 实体&amp;关系限定</h4><p>额外的，还需要限定关系的类型数量以及实体的类型数量。一开始想要基于语料库中已有的实体标签和三元组中存在的实体的交集作为实体，这种效果不会很好，原因是语料中的实体如“人”、“房屋”、“农作物”，这还仅仅只是承载体，如果要算上人口面积（诸如“死亡失踪101人&#x2F;ADP”，“转移安置18.9万人次&#x2F;ATP”）、时间标签（如“7月份&#x2F;DS”，“7月21日&#x2F;DO”）等，因为本身的标注实体的效果就不好，如果再和我们使用依存分析得到的结果进行一个“负负得正”的操作，最后得到的效果会很差。同时，也不能为了减少实体就刻意的去直接删除某些实体，这是不负责任的表现，比如“江西省”和“江西减灾委”就是两个实体，不能将其作为同一个实体。对于关系也是如此，如果仅仅只想限制关系的数量仅限于“发生在”、“有”这种，不仅不现实，而且会极大的减少三元组的数量。不能从集合的角度来处理实体和关系的话，可以从词嵌入即更高层次的技术来处理。</p>
+<p>因为实体和关系现在都可以看作是单独的中文词语，因此处理词语特别是同义词、近义词，比如“出现”、“出现在”、“出现于”这三种关系实际上都是同一种关系，将其融合以减少关系的数量 – 可以使用一种被称为同义词规范化的技术，选择使用最短的同义词或使用频率最频繁的同义词甚至随机的同义词作为规范形式。</p>
+<p>注意因为这里需要使用到词嵌入，与后面直接使用TF-IDF向量计算余弦相似度做区分。后面的处理过程没有使用词嵌入是因为这两个步骤处理的视角不同。此处需要考虑为词嵌入是因为考虑到语义方面的不同（这需要深层次的对语言的理解，词嵌入是一个不错的选择）；而删除相似三元组是仅仅只需要将汉字看作是普通的集合中的元素，只需要比对集合中元素的个数即可。</p>
+<p>现在的任务是寻找并清理中文近义词、同义词，要么使用现成的库（可能在专业邻域的效果不是特别好），要么自己训练word2vec（利用专业邻域文本），此处我们选择借助gensim库和手中已有的语料先训练一个专业领域的word2vec模型。具体代码文件参考word2vec.ipynb。主要步骤分为：</p>
+<ol>
+<li>创建语料文件：将text_data.txt和title_data.txt合并成一个文件，命名为data.txt；</li>
+<li>格式转换：将txt文件转化为csv文件便于之后的语料预处理；</li>
+<li>语料预处理：去除无用字符、分词、过滤通用词；</li>
+<li>词向量训练：借助gensim.models.word2vec中的LineSentence训练属于自己的词向量，训练完毕后将词向量和模型保存；</li>
+</ol>
+<p>训练好的词向量模型可以用于词语的相似性计算，比如我们想要计算“暴雨”和“洪涝”这两个词之间的相似性，可以使用以下代码</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 计算相似度</span><br>model = Word2Vec.load(<span class="hljs-string">&#x27;./model/corpus.model&#x27;</span>)<br>word_vectors = model.wv<br>similarity_score = word_vectors.similarity(<span class="hljs-string">&#x27;暴雨&#x27;</span>, <span class="hljs-string">&#x27;洪涝&#x27;</span>) <span class="hljs-comment"># 注意：这里的词语必须在语料中出现过，否则会报错</span><br><span class="hljs-built_in">print</span>(similarity_score)<br></code></pre></td></tr></table></figure>
+
+<p>返回的similarity_score是0.8775766，可以看到效果还是很好的。需要注意进行比较的两个词必须在语料中出现过，否则函数会返回错误。</p>
+<p>这里我们不直接使用这个训练好的词向量进行相似性的计算，我们将二进制的模型打包成gz格式的文件，替换掉synonyms库（这是github上的一个中文近义词开源项目）中原本的通用词向量文件。使用synonyms库的好处在于可以处理没有出现在语料库中的词语。</p>
+<p><img src="/images/image-20230527143949038.png" srcset="/img/loading.gif" lazyload></p>
+<p>接下来使用synonyms库提供的compare方法同样可以计算两个词语之间的相似性</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs py">word1 = <span class="hljs-string">&quot;暴雨&quot;</span><br>word2 = <span class="hljs-string">&quot;洪涝&quot;</span><br>r = synonyms.compare(word1, word2, seg=<span class="hljs-literal">False</span>)<br><span class="hljs-built_in">print</span>(r)<br></code></pre></td></tr></table></figure>
+
+<p>接下来定义替换相似词语的函数，其基本的思想非常简单，就是设置一个相似性门限和unique_words列表。输入的word单词与unique_words列表中的每一个单词进行相似性的计算，如果计算出的相似度similarity大于max_similarity，则记录该similarity以及对应的unique_word。当比较完unique_words列表中的所有单词后，如果最终的max_similarity大于设置的门限，则表示输入的word在unique_words列表中有相似的词语，该词语就是max_similarity对应的unique_word；如果最终的max_similarity小于门限，则表示输入的word在unique_words列表中没有相似的词语，因此该word作为unique_words的新元素被加入。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">replace_similar_words</span>(<span class="hljs-params">word,unique_words,threshold=<span class="hljs-number">0.7</span></span>):<br>    <span class="hljs-keyword">if</span> unique_words == []:<br>        unique_words.append(word)<br>        <span class="hljs-keyword">return</span> word<br>    <span class="hljs-keyword">else</span>:<br>        max_similarity = <span class="hljs-number">0</span><br>        unique_str = <span class="hljs-string">&#x27;&#x27;</span><br>        <span class="hljs-keyword">for</span> unique_word <span class="hljs-keyword">in</span> unique_words:<br>            similarity = synonyms.compare(word, unique_word, seg=<span class="hljs-literal">False</span>)<br>            <span class="hljs-keyword">if</span> similarity &gt; max_similarity:<br>                max_similarity = similarity <span class="hljs-comment"># 保存最大相似度</span><br>                unique_str = unique_word <span class="hljs-comment"># 保存最大相似度对应的词</span><br>        <span class="hljs-keyword">if</span> max_similarity &gt;= threshold:<br>            <span class="hljs-keyword">return</span> unique_str <span class="hljs-comment"># 返回最大相似度对应的词</span><br>        <span class="hljs-keyword">else</span>:<br>            unique_words.append(word)<br>            <span class="hljs-keyword">return</span> word<br></code></pre></td></tr></table></figure>
+
+<p>有了替换相似性单词的函数，接下来只需要分别遍历txt文件，提取第一列、第二列、第三列的词语，分别进行replace_similar_words操作，然后再将每一列对应的每一行的词语拼接即可。执行完毕后得到synonyms_triples_data.txt文件。</p>
+<h4 id="2-3-4-相似三元组"><a href="#2-3-4-相似三元组" class="headerlink" title="2.3.4 相似三元组"></a>2.3.4 相似三元组</h4><p>最后是删除相似三元组的操作，这里既可以使用经典的余弦相似度，也可以使用易于理解的jaccard算法。经过测试，余弦相似度的效果更好，因此这里选择使用余弦相似度进行相似文本的清理。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs py">triplets = []<br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;./data/synonyms_triples_data.txt&#x27;</span>, <span class="hljs-string">&#x27;r&#x27;</span>) <span class="hljs-keyword">as</span> file:<br>    triplets = [line.strip() <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> file]<br>unique_and_similar_triplets = []<br><span class="hljs-comment"># 将每个三元组与现有的唯一三元组进行比较</span><br><span class="hljs-keyword">for</span> triplet <span class="hljs-keyword">in</span> tqdm(triplets):<br>    is_duplicate = <span class="hljs-literal">False</span><br>    <span class="hljs-keyword">for</span> unique_triplet <span class="hljs-keyword">in</span> unique_and_similar_triplets:<br>        <span class="hljs-comment"># 将三元组转换为TF-IDF向量</span><br>        vectorizer = TfidfVectorizer()<br>        tfidf_matrix = vectorizer.fit_transform([triplet, unique_triplet])<br>        <span class="hljs-comment"># 计算余弦相似度</span><br>        similarity = cosine_similarity(tfidf_matrix[<span class="hljs-number">0</span>], tfidf_matrix[<span class="hljs-number">1</span>])[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>]<br>        <span class="hljs-comment"># 相似性阈值（根据需要进行调整）</span><br>        threshold = <span class="hljs-number">0.8</span><br>        <span class="hljs-keyword">if</span> similarity &gt;= threshold:<br>            is_duplicate = <span class="hljs-literal">True</span><br>            <span class="hljs-keyword">break</span><br>    <span class="hljs-comment"># 跳过相似的三元组</span><br>    <span class="hljs-keyword">if</span> is_duplicate:<br>        <span class="hljs-keyword">continue</span><br>    <span class="hljs-comment"># 添加唯一的三元组 </span><br>    unique_and_similar_triplets.append(triplet)<br><span class="hljs-comment"># 写入文件</span><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;./data/final_triplets_data.txt&#x27;</span>, <span class="hljs-string">&#x27;w&#x27;</span>) <span class="hljs-keyword">as</span> file:<br>    file.write(<span class="hljs-string">&#x27;\n&#x27;</span>.join(unique_and_similar_triplets))<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;finished...&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<p>因为上述代码的基本思想是将每个三元组于现有的唯一的三元组进行比较，因此该部分代码在三元组数量较大的时候（实测当三元组数量为3000时需要花费1.5h）将耗费大量时间运行。因此当需要处理的三元组数量较大时可以事先进行切分，比如1000个三元组一组执行上述代码。</p>
+<p>经过清洗的三元组如下，可以看到相较于清洗之前的三元组来说，清洗之后的三元组质量更高。</p>
+<p><img src="/images/image-20230518215924007.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-4-三元组转化-amp-知识图谱"><a href="#2-4-三元组转化-amp-知识图谱" class="headerlink" title="2.4 三元组转化&amp;知识图谱"></a>2.4 三元组转化&amp;知识图谱</h3><p>拥有了用于构建知识图谱的三元组之后，接下来构建知识图谱的流程就相对简单，主要流程如下：</p>
+<p>1.识别唯一实体：因为我们的三元组已经是主谓宾的结构，因此可以直接从三元组的主语和宾语位置提取所有唯一的实体，这些实体将成为知识图中的节点</p>
+<p>2.创建节点：在知识图谱中为每个识别出的唯一实体创建一个节点，为每个节点分配一个唯一的标识符或标签</p>
+<p>3.创建关系：将三元组中的谓词映射到知识图谱中的关系上 – 对于每个三元组，根据谓词在相应的主语和宾语节点之间创建一个关系</p>
+<p>（注意，知识图谱与其他数据结构不同的地方就在于两个实体之间是可以存在多种不同的关系的，而传统的图或关系数据库模型中，实体之间的关系通常局限于一种类型）</p>
+<p>这里我们使用的数据库是图数据库neo4j，如果要手动一个个导入三元组是不现实的，因此我们借助neo4j提供的admin-import工具导入。但是admin-import工具只能导入csv格式的文件，因此在导入之前还需要对三元组格式进行转化，将txt文本格式的三元组转化为csv格式。以下是转化代码</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 读取三元组文件</span><br>h_r_t_name = [<span class="hljs-string">&quot;:START_ID&quot;</span>, <span class="hljs-string">&quot;role&quot;</span>, <span class="hljs-string">&quot;:END_ID&quot;</span>]<br>h_r_t = pd.read_table(<span class="hljs-string">&quot;./data/clear_triples_data.txt&quot;</span>, decimal=<span class="hljs-string">&quot;\t&quot;</span>, names=h_r_t_name)<br><span class="hljs-built_in">print</span>(h_r_t.info())<br><span class="hljs-built_in">print</span>(h_r_t.head())<br><br><span class="hljs-comment"># 去除重复实体</span><br>entity = <span class="hljs-built_in">set</span>()<br>entity_h = h_r_t[<span class="hljs-string">&#x27;:START_ID&#x27;</span>].tolist()<br>entity_t = h_r_t[<span class="hljs-string">&#x27;:END_ID&#x27;</span>].tolist()<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> entity_h:<br>    entity.add(i)<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> entity_t:<br>    entity.add(i)<br><span class="hljs-built_in">print</span>(entity)<br><span class="hljs-comment"># 保存节点文件</span><br>csvf_entity = <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;./data/entity.csv&quot;</span>, <span class="hljs-string">&quot;w&quot;</span>, newline=<span class="hljs-string">&#x27;&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br>w_entity = csv.writer(csvf_entity)<br><span class="hljs-comment"># 实体ID，要求唯一，名称，LABEL标签，可自己不同设定对应的标签</span><br>w_entity.writerow((<span class="hljs-string">&quot;entity:ID&quot;</span>, <span class="hljs-string">&quot;name&quot;</span>, <span class="hljs-string">&quot;:LABEL&quot;</span>))<br>entity = <span class="hljs-built_in">list</span>(entity)<br>entity_dict = &#123;&#125;<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(entity)):<br>    w_entity.writerow((<span class="hljs-string">&quot;e&quot;</span> + <span class="hljs-built_in">str</span>(i), entity[i], <span class="hljs-string">&quot;my_entity&quot;</span>))<br>    entity_dict[entity[i]] = <span class="hljs-string">&quot;e&quot;</span>+<span class="hljs-built_in">str</span>(i)<br>csvf_entity.close()<br><span class="hljs-comment"># 生成关系文件，起始实体ID，终点实体ID，要求与实体文件中ID对应，:TYPE即为关系</span><br>h_r_t[<span class="hljs-string">&#x27;:START_ID&#x27;</span>] = h_r_t[<span class="hljs-string">&#x27;:START_ID&#x27;</span>].<span class="hljs-built_in">map</span>(entity_dict)<br>h_r_t[<span class="hljs-string">&#x27;:END_ID&#x27;</span>] = h_r_t[<span class="hljs-string">&#x27;:END_ID&#x27;</span>].<span class="hljs-built_in">map</span>(entity_dict)<br>h_r_t[<span class="hljs-string">&quot;:TYPE&quot;</span>] = h_r_t[<span class="hljs-string">&#x27;role&#x27;</span>]<br>h_r_t.pop(<span class="hljs-string">&#x27;role&#x27;</span>)<br>h_r_t.to_csv(<span class="hljs-string">&quot;./data/roles.csv&quot;</span>, index=<span class="hljs-literal">False</span>)<br></code></pre></td></tr></table></figure>
+
+<p>上述程序运行后将会得到entity.csv文件和roles.csv文件，这两个csv文件实际上就是neo4j的三元组数据的另一种组成形式，通过组合这两个文件来组成初始化图数据库的数据。</p>
+<p>entity.csv是实体文件，这个文件记录了实体的名称以及编号和标签数据。需要注意文件的表头需要固定</p>
+<ul>
+<li>entity:ID：实体id编号，自己生成的不重复数据编号；</li>
+<li>name：实体名称；</li>
+<li>:LABEL：标签，若存在多个标签则使用英文分号’;’分割；</li>
+</ul>
+<p><img src="/images/image-20230518221141544.png" srcset="/img/loading.gif" lazyload></p>
+<p>roles.csv文件是关系描述文件，其必须包含的表头如下</p>
+<ul>
+<li>:START_ID：对应于entity.csv中的entity:ID；</li>
+<li>:TYPE：关系文字；</li>
+<li>:END_ID：对应于entity.csv中的entity:ID；</li>
+</ul>
+<p><img src="/images/image-20230518221450560.png" srcset="/img/loading.gif" lazyload></p>
+<p>拥有上述两个csv文件后，在批量导入之前先将data目录下的databases和transactions中有关neo4j和system的文件夹全部删除（否则会报错数据库已存在，注意不要误删别的文件！），还需要注意的是桌面版的neo4j不能批量导入（至少我没找到办法），因此推荐使用社区版的neo4j。neo4j批量导入csv文件命令如下(该命令意思是将csv文件的内容全部导入到neo4j数据库中)，需要在neo4j-admin文件所在的位置（在我的电脑是’D:\Download_software\My_Neo4j_zh\neo4j-chs-community-5.7.0-windows\bin’）下在终端使用如下命令（注意将yourpath替换为自己的路径）</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">neo4j-<span class="hljs-keyword">admin</span> <span class="hljs-keyword">database</span> <span class="hljs-keyword">import</span> <span class="hljs-keyword">full</span> <span class="hljs-comment">--nodes=yourpath/entity.csv --relationships=yourpath/roles.csv neo4j</span><br></code></pre></td></tr></table></figure>
+
+<p>我的电脑中的nodes和relationships中的路径均为’D:&#x2F;My_code&#x2F;Pycharm&#x2F;大三下文档&#x2F;KGTriples&#x2F;data’，因此完整的命令为</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gradle">neo4j-admin database <span class="hljs-keyword">import</span> full --nodes=D:<span class="hljs-regexp">/My_code/</span>Pycharm<span class="hljs-regexp">/大三下文档/</span>KGTriples<span class="hljs-regexp">/data/</span>entity.csv --relationships=D:<span class="hljs-regexp">/My_code/</span>Pycharm<span class="hljs-regexp">/大三下文档/</span>KGTriples<span class="hljs-regexp">/data/</span>roles.csv neo4j<br></code></pre></td></tr></table></figure>
+
+<p>出现如下输出表示导入成功</p>
+<p><img src="/images/image-20230527140954570.png" srcset="/img/loading.gif" lazyload></p>
+<p>导入完毕后，在相同目录下使用命令启动neo4j服务</p>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs arcade">neo4j <span class="hljs-built_in">console</span><br></code></pre></td></tr></table></figure>
+
+<p>出现如下形式的输出表示服务启动成功，此时在浏览器网址栏输入<a target="_blank" rel="noopener" href="http://localhost:7474/%E5%8D%B3%E5%8F%AF%E8%BF%9B%E5%85%A5neo4j%E5%86%85%E7%BD%AE%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96%E7%95%8C%E9%9D%A2%EF%BC%88%E9%A6%96%E6%AC%A1%E7%99%BB%E5%BD%95%E5%BA%94%E8%AF%A5%E9%9C%80%E8%A6%81%E8%B4%A6%E5%8F%B7%E5%92%8C%E5%AF%86%E7%A0%81%EF%BC%8C%E9%BB%98%E8%AE%A4%E9%83%BD%E6%98%AFneo4j%EF%BC%8C%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A0%81%E5%90%8E%E8%AF%B7%E8%AE%B0%E4%BD%8F%E5%AF%86%E7%A0%81%EF%BC%8C%E5%BF%98%E8%AE%B0%E5%AF%86%E7%A0%81%E5%8F%AF%E8%83%BD%E9%9C%80%E8%A6%81%E5%88%A0%E9%99%A4%E6%95%B4%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%89">http://localhost:7474/即可进入neo4j内置的可视化界面（首次登录应该需要账号和密码，默认都是neo4j，修改密码后请记住密码，忘记密码可能需要删除整个数据库）</a></p>
+<p><img src="/images/image-20230518222656177.png" srcset="/img/loading.gif" lazyload></p>
+<p>Neo4j Browser提供了一个专用的图形可视化界面，使用户可以以图形形式查看节点、关系和属性。它支持各种功能，如缩放、平移、扩展和折叠节点，以及直接在界面中运行Cypher查询。Neo4j Browser中的可视化是基于存储在Neo4j中的图形数据自动生成的，使其成为探索和分析知识图的方便工具，而不需要额外的转换。相较于并不是专为知识图可视化进行设计的ECharts和Django，Neo4j Browser在使用Neo4j作为底层数据库时是知识图可视化的一个更精简的选项。</p>
+<p>这里我们展示部分以“洪涝灾害”为中心的知识图（整个图太大了展示不完）</p>
+<p><img src="/images/image-20230518223103634.png" srcset="/img/loading.gif" lazyload></p>
+<p>可以看到以洪涝灾害为中心，与其他的实体之间以不同的关系进行联系。除了上述以某个实体作为中心进行展示以外，也可以以关系网的形式进行展示</p>
+<p><img src="/images/image-20230518223247159.png" srcset="/img/loading.gif" lazyload></p>
+<p>通过关系网，可以进行诸如“娄底遭洪涝灾害，导致受灾”这样简单的知识推理过程。最后我们使用一个gif来简单展示一下neo4j图数据库的魅力</p>
+<p><img src="/images/show.gif" srcset="/img/loading.gif" lazyload alt="show"></p>
+<h1 id="三、实验总结"><a href="#三、实验总结" class="headerlink" title="三、实验总结"></a>三、实验总结</h1><p>本次作业的基本要求是构建面向暴雨洪涝灾情的知识图谱。一开始拿到老师给的语料的时候我是不知道应该如何处理的，经过大致的了解后，我确定了基本的工作流程，最重要也是最基础的一个步骤就是获取到三元组。然而获取三元组的过程并不容易，一开始我花费大量时间，尝试使用机器学习模型进行三元组的自动提取。但是使用通用的机器学习模型在中文语料上的效果非常差劲，因此考虑是否可以针对专业领域对模型进行微调，进而使用微调过后的模型进行三元组的自动提取。然而当我兴致勃勃的将预训练模型下载并准备微调的时候才发现我压根就没有能够用于训练的三元组，这非常类似于“鸡生蛋，蛋生鸡”的问题。因此在一段时间内我陷入了迷茫，当我思考是否真的只能使用手动提取这种最原始的方式的时候，我的脑海里突然迸发出自然语言处理领域研究方法的发展过程：基于规则-&gt;基于统计-&gt;基于机器学习，既然基于机器学习不行，那么是否可以使用类似基于正则表达式匹配的方式？后来经过实验发现正则表达式的表达能力相对较弱，在后续查询资料的过程中我发现了将依存分析和三元组提取结合的方法，这无疑是为我确定了崭新的方向。因此在这之后我依次使用了现有的多种自然语言处理工具如LTP、DDParser、OpenIE等，并最终确定使用百度的DDParser工具。对句子进行依存分析后，不能简单的提取“主谓宾”作为三元组，还需要考虑其他因素，通过阅读大佬的论文和方法使我明白了基于依存分析提取三元组并不比训练模型轻松，当然最后凭借不懈的努力我成功的完成了三元组提取、三元组清洗以及知识图谱构建等全部流程。这也启发我在之后的学习过程中遇到困难应当多方位思考，从不同的角度寻找解决问题的方法。</p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/" class="category-chain-item">项目开发</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/">#知识图谱</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>初级项目_灾情知识图谱</div>
+      <div>https://gintoki-jpg.github.io/2023/04/23/项目_灾情知识图谱/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>杨再俨</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年4月23日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/04/24/%E9%A1%B9%E7%9B%AE_%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F/" title="中级项目_目标检测系统">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">中级项目_目标检测系统</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/04/20/%E9%A1%B9%E7%9B%AE_%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6/" title="中级项目_模拟自动驾驶">
+                        <span class="hidden-mobile">中级项目_模拟自动驾驶</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+</div>
+
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

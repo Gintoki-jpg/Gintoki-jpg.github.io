@@ -1,0 +1,967 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/logo.png">
+  <link rel="icon" href="/img/bg/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="杨再俨">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="知识图谱课程实践操作；">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初级项目_新闻文本分类">
+<meta property="og:url" content="https://gintoki-jpg.github.io/2023/03/19/%E9%A1%B9%E7%9B%AE_%E6%96%B0%E9%97%BB%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB/index.html">
+<meta property="og:site_name" content="Tintoki_blog">
+<meta property="og:description" content="知识图谱课程实践操作；">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/project.png">
+<meta property="article:published_time" content="2023-03-19T14:28:00.000Z">
+<meta property="article:modified_time" content="2023-04-19T02:52:49.861Z">
+<meta property="article:author" content="YangZaiyan">
+<meta property="article:tag" content="自然语言处理">
+<meta property="article:tag" content="知识图谱">
+<meta property="article:tag" content="文本分类">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gintoki-jpg.github.io/img/bg/project.png">
+  
+  
+  
+  <title>初级项目_新闻文本分类 - Tintoki_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"gintoki-jpg.github.io","root":"/","version":"1.9.1","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tintoki_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/bg1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">初级项目_新闻文本分类</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-03-19 22:28" pubdate>
+          2023年3月19日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          17k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          140 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">初级项目_新闻文本分类</h1>
+            
+            <div class="markdown-body">
+              
+              <hr>
+<p>项目基本要求</p>
+<p>内容：基于给定的中文语料库，利用RNN（循环神经网络）模型，编程实现中文气象灾情文本的分类（暴雨洪涝、冰雹、城市内涝、大风、干旱、雷电、台风共计7个类别）</p>
+<p>完成目标：<br>（1）了解文本分类的流程和RNN的基本用法<br>（2）了解训练&#x2F;验证&#x2F;测试的数据集分割以及超参数调整<br>注意：可以尝试一些优化项，比如不同的损失函数或者正则化等等。</p>
+<p>作业要求：<br>（1）提交实验报告，以学号-姓名-XXX实验命名：实验报告应包括数据集情况、模型介绍、超参调整、实验结果分析等内容。<br>（2）提交源代码：源代码请附加Readme文件说明使用的主要包的版本，以及其他可能影响代码运行的事项。</p>
+<p>以上内容打包成一个压缩包以学号-姓名-作业 X 命名提交到云空间</p>
+<hr>
+<p>2023&#x2F;3&#x2F;19 22:32 第一次做这个项目，一开始连要做什么都没搞清楚，拿到老师给的语料库也是懵逼的（因为老师给的语料库像是直接用爬虫爬取的并没有经过文本清洗等步骤），索性一开始就找到了一个比较靠谱的RNN模型，但是训练效果非常的差（一开始以为是模型的问题，实际上模型没有任何问题，相反是训练数据的问题，这也应证了数据是整个机器学习最重要的部分），后来使用最简单暴力的方式使得训练的准确率到达了百分之八十多，但是没有其他办法可以进行数据的增加或者提纯了，因为前段时间做这个项目并没有好好记录导致思路方面出现很多混乱的地方，这里我们从头开始好好梳理并做好资料准备等，完成该项目；</p>
+<hr>
+<p>参考链接：</p>
+<ul>
+<li>新闻分类综述：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/1PkRgJJ_bK5F9wZ3LK2uxQ">干货 | 日采100W新闻数据，如何实现新闻自动分类 (qq.com)</a>；</li>
+<li>基本操作：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1kP411u7WL?p=1&vd_source=276d55048634a5b508b1b53a1ecd56b3">44. RNN网络架构解读_哔哩哔哩_bilibili</a>+配到解读<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/526376136">NLP自然语言处理-新浪新闻文本分类（CNN、RNN、Transformer）笔记 - 知乎 (zhihu.com)</a>；</li>
+</ul>
+<h1 id="一、背景"><a href="#一、背景" class="headerlink" title="一、背景"></a>一、背景</h1><p>在进行个性化新闻推荐之前，有一个非常重要的步骤就是对新闻内容进行分类；</p>
+<p>新闻行业发展之初，分类是由人工处理的，但伴随着互联网和计算机行业的发展，人工处理局限性开始显露：</p>
+<ul>
+<li><p>数据量激增：新闻数据来源众多，可能一分钟就有成千上万条新的数据产生；</p>
+</li>
+<li><p>人工成本高：数据量激增的情况下，需要付出更多的人力成本；</p>
+</li>
+<li><p>分类效率低：新闻数据时效性要求高，人工处理速度慢，效率低下；</p>
+</li>
+</ul>
+<p>使用计算机可以很好的避免这些问题，下面将讨论如何利用计算机技术来实现新闻数据的自动分类；</p>
+<h3 id="1-1-发展历程"><a href="#1-1-发展历程" class="headerlink" title="1.1 发展历程"></a>1.1 发展历程</h3><p>文本分类技术发展的历程主要分为如下四个阶段</p>
+<p><img src="/images/image-20230321183955121.png" srcset="/img/loading.gif" lazyload></p>
+<p>初始阶段新闻数据有限，计算机也未大范围使用，因此这个阶段均为人海战术，即使用人工对新闻进行分类；</p>
+<p>90年代开始，伴随着互联网的发展，数据的体量快速积累，同时获取难度显著降低，以及计算机性能的快速提升，统计机器学习进入了一个快速发展的时代。此时的自然语言处理从语言学领域逐渐过度成为一个交叉学科，并且其中的统计数学占比越来越高，早期的一些算法如 TF-IDF 等开始展现出更大的价值；</p>
+<p>近 10 年以来，随着 GPU 运算带来的并行算力提升，<code>深度学习</code>得到了长足发展，诸如 LSTM 在内的一批早在 90 年代提出的网络结构被广泛采用，在不少领域取得了<code>统计机器学习</code>所无法企及的效果。此时以CNN和RNN为基础的大量神经网络模型的提出快速丰富了深度学习在各场景下的应用，如LSTM、TextCNN、RCNN、HAN 等；</p>
+<p>近两年，以 BERT 为首的一批基于 Transformer 的预训练语言模型开始逐步占领自然语言处理的主流，其主要目的在于<code>充分利用海量的无标注文本数据学习语言的基本规律</code>，在各场景中实现使用少量的标注数据就可以得到更好的效果；</p>
+<h3 id="1-2-特征工程"><a href="#1-2-特征工程" class="headerlink" title="1.2 特征工程"></a>1.2 特征工程</h3><p>获取新闻数据后，在对数据进行分类之前还需要进行特征工程，即依次经过数据清洗、特征筛选和特征向量化三个环节；</p>
+<ul>
+<li><p>数据清洗：过滤和筛除一些与新闻无关的符号或特殊字段，去除重复内容，提升文本质量，减轻系统负荷；</p>
+</li>
+<li><p>特征筛选：根据业务需求，针对性地对关键词、新闻标题、新闻首尾段落等文本进行提取；</p>
+</li>
+<li><p>特征向量化：将每篇新闻的特征汇总为一个固定长度的向量，以便分类算法进行运算；</p>
+</li>
+</ul>
+<p>由于新闻的文本内容较长，直接使用全文作为任务的输入难以实现较好的分类效果，数据清洗和特征筛选是自然语言处理任务中常规的预处理流程（目前而言NLP的模型和算法选择相对有限，因此数据预处理成为关键因素，这一点在之后实际模型的训练过程中也会体现）；</p>
+<h4 id="1-2-1-数据清洗"><a href="#1-2-1-数据清洗" class="headerlink" title="1.2.1 数据清洗"></a>1.2.1 数据清洗</h4><p>数据清洗主要用于提升文本质量，统一和对齐各个数据渠道的文本格式（有利于之后的特征筛选等步骤），具体而言其内容包括：</p>
+<ul>
+<li><p>滤除或统一替换特殊符号，如 html 标签，emoji 表情等；</p>
+</li>
+<li><p>去除与新闻类别无关的特殊前缀、小尾巴等文本（如网站名）；</p>
+</li>
+<li><p>去重，减少运算量，同时避免重复文本影响聚类算法的聚类中心，对于海量长文本的去重可以参考 SimHash算法；</p>
+</li>
+</ul>
+<p>除了清洗无意义的文本数据以外，一般的文本分类流程中还需要进行分词和去除停用词等操作（具体还是要根据具体任务进行选择，不是所有的任务都需要分词和去除停用词的，如果得到的语料库非常干净可以完全不需要这些处理）：</p>
+<ul>
+<li>分词：由于中文不像英文那样具有天然的分隔符，所以一般情况下，中文自然语言处理的第一步就是要对语料进行分词处理；</li>
+<li>去除停用词：停用词（Stop Words）经常出现在文档中，却没有具体的实际意义。在中文文档中如“啊”、“在”、“的”之类。这些词也可称作虚词，包含副词、冠词、代词等，在文档中使用十分广泛，但却难以对文档分类提供帮助。因此，在研究文本分类等数据挖掘问题时，经常会将它们预先剔除，既可以减少存储空间、降低计算成本，又可以防止它们干扰分类器的性能；</li>
+</ul>
+<h4 id="1-2-2-特征筛选"><a href="#1-2-2-特征筛选" class="headerlink" title="1.2.2 特征筛选"></a>1.2.2 特征筛选</h4><p><img src="/images/image-20230321184904236.png" srcset="/img/loading.gif" lazyload></p>
+<p>特征筛选则是根据业务需求，针对性地对特定内容进行提取，以得到后续模型或算法聚焦与关注的特征（比如之后的RNN文本分类聚焦的就是新闻标题），对于新闻数据，通常可以分为以下几种：</p>
+<ul>
+<li>文本特征<ul>
+<li>关键词抽取：根据统计规则提取信息量较高的若干关键词，常用的实现可以参考<ul>
+<li>基于 TextRank 的关键词提取</li>
+<li>基于 TF-IDF 的关键词提取</li>
+</ul>
+</li>
+<li>新闻标题：新闻标题是信息量最集中的文本片段，大多数新闻分类都会使用到该信息；</li>
+<li>新闻的首尾段落：因为新闻的成文较为规范，首尾段落往往会包含新闻的主要内容，但是需要注意某些网站的首尾段落可能包含一些固定模板，在前置数据清洗流程中要注意进行相应的处理；</li>
+<li>抽取式摘要算法：抽取式摘要算法可以理解为对新闻内容进行语句的重要性排序，从文章中抽出一些重要的句子，从而代表整篇文章的主要内容，语句的重要性排序同样是基于上述的关键词抽取、新闻标题、新闻的首末段落等步骤来实现的；</li>
+</ul>
+</li>
+<li>结构化特征（非文本）：<ul>
+<li>发布时间: 发布时间是判断新闻归属分类的重要参考依据；</li>
+<li>发布媒体、渠道等</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-2-3-特征向量化"><a href="#1-2-3-特征向量化" class="headerlink" title="1.2.3 特征向量化"></a>1.2.3 特征向量化</h4><p>经过数据清洗和特征筛选对每篇新闻处理后，得到了其最具代表性的<code>文本特征</code>和<code>结构化特征</code>，这部分特征的质量可以通过简单的人工验证来进行有效性判断，即人可以在不阅读原文的情况下，仅通过这部分特征判断出该新闻的归属类别；</p>
+<p>直接将上述特征文本应用于运算还不行，因为系统进行运算需要数值类型的结构化数据，因此需要将特征文本转换为数值结构化向量，使用固定长度的数值向量来表示；</p>
+<p>因此特征向量化的工作就是将每篇新闻的特征汇总为一个固定长度的向量，便于分类算法进行运算 – 这个过程被称为embedding；</p>
+<p>如果特征工程实施得当，那么在特征空间中，两个特征向量的坐标越接近，意味着两个特征向量的内容相似度越高，越可能属于同个分类；</p>
+<blockquote>
+<p>文本特征向量化 – 词向量</p>
+</blockquote>
+<p>词向量是自然语言处理中的一项基础工作，通过一个简单的神经网络训练得到，这个训练任务在训练中让拥有类似用法（上下文语境）的词对应相近的向量，进而使用这些向量来表征对应的字或词。这种做法基于语言学中的“情景语境”理论，该理论认为一个词的语义与其上下文语境是紧密关联的。常用的词向量类型有 Word2Vec，GloVe 等，根据不同的任务其性能略有差异；</p>
+<p>文本特征向量化也称为文本编码，表示词向量将文本统一成为可以进行计算的一个语义特征向量，以下两种方式可以将文本编码拓展得到文本段落的编码；</p>
+<ul>
+<li>字、词向量求和编码：简称词向量，对于短句（如新闻标题）或关键词特征，我们可以直接使用字、词向量进行求和，整合多个字、词的特征向量；</li>
+<li>模型编码：对于较长的文本，逐字（词）将词向量输入模型（如 Bi-LSTM, TextCNN 等），辅以注意力机制，可以更好的为输入的字词分配合理的权重，进而更好的保留长文本的主要特征；</li>
+</ul>
+<blockquote>
+<p>非文本特征</p>
+</blockquote>
+<p>非文本特征的向量化通常比较简单，如果需要输入模型进行计算，可以直接将数值化表示的特征拼接至文本特征向量；否则也可以不与文本特征向量进行整合，而是通过其他后续逻辑进行处理；</p>
+<h3 id="1-3-新闻分类"><a href="#1-3-新闻分类" class="headerlink" title="1.3 新闻分类"></a>1.3 新闻分类</h3><p><img src="/images/image-20230321190808650.png" srcset="/img/loading.gif" lazyload></p>
+<p>在完成文本特征构建之后，分类任务就变得非常简单了，一般的做法可以是将特征向量传入一个简单的全连接-softmax 神经网络，或者使用传统的分类算法，如支持向量机（SVM）等；</p>
+<h2 id="2-TextRNN"><a href="#2-TextRNN" class="headerlink" title="2.TextRNN"></a>2.TextRNN</h2><p>文章参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/beilizhang/article/details/109005461">(12条消息) 总结textRNN_cqu_shuai的博客-CSDN博客</a>；</p>
+<p>TextRNN指的是利用RNN循环神经网络解决文本分类问题，基于RNN的文本分类模型非常灵活，有多种多样的结构。另外，普通RNN在处理较长文本时会出现梯度消失问题，因此实际上常用LSTM或GRU；</p>
+<p>下面展示几种常用的TextRNN结构</p>
+<blockquote>
+<p>第一种结构</p>
+</blockquote>
+<p><img src="/images/image-20230321193922523.png" srcset="/img/loading.gif" lazyload></p>
+<p>1.单词的embedding可以是随机初始化，也可以使用预训练模型的embedding（如Word2vec、GloVe），后者效果较好。</p>
+<p>2.最后拼接初始时间步和最终时间步的隐藏状态作为全连接层输入。</p>
+<blockquote>
+<p>第二种结构</p>
+</blockquote>
+<p><img src="/images/image-20230321194006875.png" srcset="/img/loading.gif" lazyload></p>
+<p>与之前结构不同的是，在双向LSTM的基础上又堆叠了一个单向的LSTM。把双向LSTM在每一个时间步长上的两个隐藏状态进行拼接，作为上层单向LSTM每一个时间步长上的一个输入，最后取上层单向LSTM最后一个时间步长上的隐藏状态，再经过一个softmax层得到分类结果。</p>
+<h2 id="3-词向量模型"><a href="#3-词向量模型" class="headerlink" title="3.词向量模型"></a>3.词向量模型</h2><p>词向量模型相较于其他算法有两点好处：</p>
+<ul>
+<li>考虑了词之间的顺序关系；</li>
+<li>考虑了近义词在空间上的表达应当一致；</li>
+</ul>
+<p>将文本转换为向量可以计算文本相似度，通常数据的维度越高能提供的信息就越多，从而计算结果的可靠性就更值得信赖，谷歌中词向量维度范围在50~300维度；</p>
+<p>词向量模型将词转换为向量，假设现在已经拥有一份训练好的词向量，其中每一个词都表示50维度的向量，在热度图中表示如下</p>
+<p><img src="/images/image-20230321205028261.png" srcset="/img/loading.gif" lazyload></p>
+<p>可以发现，相似的词在特征表达中比较相似，这也表明使用这样的词向量表达特征是有意义的；</p>
+<p>如何通过神经网络训练得到词向量模型呢？首先要明确神经网络的输入是词序列，输出是预测的词的概率（实际上就是一个多分类任务）；</p>
+<p><img src="/images/image-20230321205700070.png" srcset="/img/loading.gif" lazyload></p>
+<p>因为文本类型的词无法直接输入神经网络，所以在输入之前需要先作embedding转换为词向量，简单来说就是在词表中查找其对应的向量表示；</p>
+<hr>
+<blockquote>
+<p>Q：embedding这张词表是怎么来的？需要我们自己训练吗？</p>
+</blockquote>
+<p>A：embedding词表是通过随机初始化之后，经过神经网络的训练，神经网络的前向传播计算loss function，反向传播通过error更新权重参数矩阵，同时也会更新词表中的向量，当神经网络训练到收敛的时候，就得到标准的embedding词表 – 评价词表的好坏的策略就是，计算机如何表达当前的词可以使得预测的下一个词更加准确；</p>
+<p>在普通的领域中我们不需要自己训练embedding词表，可以直接使用Google或者腾讯训练好的embedding词表（因为不同的训练数据中词的含义几乎是相同的）；</p>
+<hr>
+<p>将输入数据转换为向量后，选择不同架构的模型来进行训练，经典的架构有</p>
+<blockquote>
+<p>CBOW</p>
+</blockquote>
+<p>输入是上下文，输出是中间的词</p>
+<p><img src="/images/image-20230321210856305.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>Skipgram</p>
+</blockquote>
+<p>输入是上下文，输出是上下文</p>
+<p><img src="/images/image-20230321210957354.png" srcset="/img/loading.gif" lazyload></p>
+<p>前面说过通过神经网络训练得到词向量模型可以看作是一个多酚类任务，但是当词的个数较多的时候，类别也随之较多，对于神经网络来说计算量极大；</p>
+<p>我们将上述多分类任务改进为二分类任务，即将输入改为上下文和待预测词，输出为正确率，为了避免训练集中出现全1的情况，需要加入一些负样本（数量大概为5个）</p>
+<p><img src="/images/image-20230321211711710.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="4-正则表达式"><a href="#4-正则表达式" class="headerlink" title="4.正则表达式"></a>4.正则表达式</h2><p>参考资料：<a target="_blank" rel="noopener" href="https://baijiahao.baidu.com/s?id=1729448496304092321&wfr=spider&for=pc">5分钟学会 Python 正则表达式 (baidu.com)</a>；</p>
+<p>因为老师所给的语料库有问题（没有明显的界限，按照一般的方式不能直接对实体进行提取），所以我们不能直接使用这个语料，需要利用正则表达式进行提取，因此这里恶补一下正则表达式的基础；</p>
+<blockquote>
+<p>findall()函数</p>
+</blockquote>
+<p>使用方式</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> re<br><span class="hljs-comment"># 解析提取的对象</span><br>text_ = xxx <br>res = re.findall(匹配规则,text_)<br></code></pre></td></tr></table></figure>
+
+<p>注意两点：匹配结果返回的是一个列表，<code>findall</code> 函数会把所有匹配上规则的字符串找出来</p>
+<blockquote>
+<p>匹配规则</p>
+</blockquote>
+<p>正则表达式中最重要的就是匹配规则，匹配规则本质上是一串字符串，用一系列的符号组合来表示各式各样的规则，而每个符号的含义都是事先确定好的。通过这样的规则，来实现对原始文本进行提取或过滤；</p>
+<p>常见的符号及其含义如下</p>
+<p><img src="/images/image-20230322222200702.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>非贪婪匹配</p>
+</blockquote>
+<p>正则表达式的默认匹配都是贪婪的，这意味着如果加上如’*’或’+’这种可以表示任意长度字符的符号，会默认匹配出尽可能长的字符串，假如加上’?’就只是找从左到右最先匹配上的字符串，属于非贪婪的</p>
+<p>举个例子就好理解</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> re<br>src_text = <span class="hljs-string">&#x27;&#x27;&#x27;I love you.&#x27;&#x27;&#x27;</span><br>rule_ = <span class="hljs-string">&#x27;.+o&#x27;</span> <br>res_text = re.findall(rule_, src_text)<br><span class="hljs-comment">#返回结果是：[&#x27;I love yo&#x27;]</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> re<br>src_text = <span class="hljs-string">&#x27;&#x27;&#x27;I love you.&#x27;&#x27;&#x27;</span><br>rule_ = <span class="hljs-string">&#x27;.+?o&#x27;</span> <br>res_text = re.findall(rule_, src_text)<br><span class="hljs-comment">#返回结果是：[&#x27;I lo&#x27;, &#x27;ve yo&#x27;]</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>常用组合 .*?</p>
+</blockquote>
+<p>这三个符号的组合，表示：重复0次或任意次的任意字符的非贪婪匹配。这个组合能匹配的内容很多，很常用</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> re<br>src_text = <span class="hljs-string">&#x27;&#x27;&#x27;I love you.&#x27;&#x27;&#x27;</span><br>rule_ = <span class="hljs-string">&#x27;\s.*?\s&#x27;</span> <br>res_text = re.findall(rule_, src_text)<br><span class="hljs-comment">#返回结果是：[&#x27; love &#x27;]</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>获取式匹配</p>
+</blockquote>
+<p>获取式匹配实际上就是匹配并获取括号内的表达式，比如当匹配规则含有不带()的表达式以及带()的表达式，则只返回带()表达式匹配的部分</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> re<br>src_text = <span class="hljs-string">&#x27;&#x27;&#x27;I love you.&#x27;&#x27;&#x27;</span><br>rule_ = <span class="hljs-string">&#x27;\s.*?\s(.*?)u&#x27;</span> <br>res_text = re.findall(rule_, src_text)<br><span class="hljs-comment">#返回结果是：[&#x27;yo&#x27;]，尽管前面没有括号()的表达式匹配的内容则没有返回出来，但也是有进行匹配的</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="二、气象文本分类"><a href="#二、气象文本分类" class="headerlink" title="二、气象文本分类"></a>二、气象文本分类</h1><h2 id="1-数据集介绍"><a href="#1-数据集介绍" class="headerlink" title="1.数据集介绍"></a>1.数据集介绍</h2><h3 id="1-1-文本预处理"><a href="#1-1-文本预处理" class="headerlink" title="1.1 文本预处理"></a>1.1 文本预处理</h3><p>训练数据集使用的是基于所给的语料库，对其标题进行提取作为文本特征进行训练；</p>
+<p>原始数据如下</p>
+<p><img src="/images/image-20230321213606278.png" srcset="/img/loading.gif" lazyload></p>
+<p>经过观察可以发现，针对气象文本分类，较为有用的特征分别是新闻标题和新闻摘要，因为没有合适的新闻摘要提取方式（此前分别尝试了textrank4zh和snownlp用于提取新闻摘要，但效果都非常差），因此这里我们只选择了新闻标题作为数据进行训练；</p>
+<p>如何从语料库中提取新闻标题？经观察发现所有的新闻标题都位于文本首行，因此我们编写如下程序自动提取语料库文本中的标题并添加类别标签，类别标签0-6分别对应：<code>flood hail waterlogging gale drought thunderbolt typhoon</code></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment">#对data目录中的每个文本分别进行特征提取，并将摘要和类别标签放入新文档中</span><br>target_file=<span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;typhoon.txt&#x27;</span>,<span class="hljs-string">&#x27;w&#x27;</span>,encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>)                                          <span class="hljs-comment">#汇总结果文件 </span><br><span class="hljs-comment">#提取data文件夹中所有文件的第一行</span><br>datapath = <span class="hljs-string">&#x27;D:\My_document\大三下文档\知识图谱\作业\第一次作业\实验1-语料\台风&#x27;</span>   <br>dirs = os.listdir(datapath)           <span class="hljs-comment">#dirs得到所有txt文件名</span><br><span class="hljs-keyword">for</span> <span class="hljs-built_in">dir</span> <span class="hljs-keyword">in</span> dirs:<br>    fname = datapath+<span class="hljs-string">&#x27;\\&#x27;</span>+<span class="hljs-built_in">dir</span><br>    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(fname,<span class="hljs-string">&#x27;r&#x27;</span>,encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>)<span class="hljs-keyword">as</span> src_file:<br>        lines =src_file.readlines()<br>        first_line = lines[<span class="hljs-number">0</span>] <span class="hljs-comment"># 取第一行</span><br>        <span class="hljs-built_in">print</span>(first_line) <br>        handle_sentence = remove_punctuation(first_line)<br>        target_file.write(handle_sentence+<span class="hljs-string">&#x27;\t&#x27;</span>+<span class="hljs-string">&#x27;6&#x27;</span>+<span class="hljs-string">&#x27;\n&#x27;</span>)                                          <span class="hljs-comment">#类别标签</span><br>target_file.close()<br></code></pre></td></tr></table></figure>
+
+<p>通过上述程序提取得到的数据形式如下（前面为文本内容，后面为其所属类别）</p>
+<p><img src="/images/image-20230321214558996.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<blockquote>
+<p>Q：为什么没有对数据进行分词和去除停用词处理？</p>
+</blockquote>
+<p>A：针对上述我们提取得到的数据，在之后的训练过程中使用的是基于字的embedding，因此无需分词；经观察可知上述数据并未有多少停用词（新闻标题本身就精简），因此无需这一步骤，若实在有必要去除停用词可以参考以下代码，其中的stopwords.txt可以在Github或网上直接搜索“停用词表”得到</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment">#删除停用词</span><br>stopwordlist=[]<br>fencilist=[]<br>resultlist=[]<br> <br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;stopwords.txt&quot;</span>,<span class="hljs-string">&#x27;r&#x27;</span>,encoding=<span class="hljs-string">&quot;UTF-8&quot;</span>) <span class="hljs-keyword">as</span> f:<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> f:<br>        stopwordlist.append(i)<br>        <br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;1.txt&quot;</span>,<span class="hljs-string">&#x27;r&#x27;</span>,encoding=<span class="hljs-string">&quot;UTF-8&quot;</span>) <span class="hljs-keyword">as</span> test:<br>    <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> test:<br>        fencilist.append(line.strip())<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> fencilist:<br>    <span class="hljs-keyword">if</span>(i <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> stopwordlist):<br>        resultlist.append(i)<br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;result.txt&quot;</span>,<span class="hljs-string">&#x27;w&#x27;</span>,encoding=<span class="hljs-string">&quot;UTF-8&quot;</span>) <span class="hljs-keyword">as</span> xx:<br>    <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> resultlist:<br>        xx.write(x+<span class="hljs-string">&#x27;\n&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<p>当然也可以直接调用gensim库中的函数</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">from</span> gensim.parsing.preprocessing <span class="hljs-keyword">import</span> remove_stopwords<br><br>text = <span class="hljs-number">1.</span>txt<br>filtered_sentence = remove_stopwords(text)<br><br><span class="hljs-built_in">print</span>(filtered_sentence)<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="1-2-数据集划分"><a href="#1-2-数据集划分" class="headerlink" title="1.2 数据集划分"></a>1.2 数据集划分</h3><p>经上述预处理得到的数据如下</p>
+<p><img src="/images/image-20230321215459860.png" srcset="/img/loading.gif" lazyload></p>
+<p>因为数据量本身不大，所以按照训练集:验证集:测试集&#x3D;18:1:1的比例划分（参考THUCNews数据集划分标准），划分数据集的代码如下</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">from</span> __future__ <span class="hljs-keyword">import</span> print_function<br><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">import</span> random<br><span class="hljs-keyword">from</span> shutil <span class="hljs-keyword">import</span> copy2<br><span class="hljs-keyword">import</span> sys<br><span class="hljs-keyword">import</span> math<br><br><span class="hljs-comment">#接下来的思想就是将七个文档分别按照比例拆分后追加到同一个文档中</span><br><span class="hljs-comment">#按行读取名为orginal.txt的txt文件，存入data</span><br>data = []<br><span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;D:/My_code/jupyter notebook/大三下作业/knowledge graph/src_data/typhoon.txt&quot;</span>,<span class="hljs-string">&quot;r&quot;</span>,encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>): <br>    data.append(line)  <span class="hljs-comment">#设置文件对象并读取每一行文件，注意文件对象每次需要手动修改</span><br>    <span class="hljs-keyword">continue</span><br><br><span class="hljs-comment"># 创建一个txt文件生成函数，文件名为name + &#x27;.txt&#x27;,并向文件写入msg</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">text_create</span>(<span class="hljs-params">name,msg</span>):<br>    desktop_path = <span class="hljs-string">&quot;D:/My_code/jupyter notebook/大三下作业/knowledge graph/target_data/&quot;</span>  <span class="hljs-comment"># 新创建的txt文件的存放路径</span><br>    full_path = desktop_path + name + <span class="hljs-string">&#x27;.txt&#x27;</span>  <br>    file = <span class="hljs-built_in">open</span>(full_path, <span class="hljs-string">&#x27;a&#x27;</span>) <span class="hljs-comment">#注意是追加模式</span><br>    file.write(msg)   <span class="hljs-comment">#msg也就是需要追加写入的内容</span><br>    file.close()<br><br><span class="hljs-comment">#向下取整避免文本不够</span><br>train_stop = math.floor(<span class="hljs-built_in">len</span>(data)*<span class="hljs-number">0.9</span>)<br>dev_stop = math.floor(<span class="hljs-built_in">len</span>(data)*<span class="hljs-number">0.05</span>)<br>test_stop = math.floor(<span class="hljs-built_in">len</span>(data)*<span class="hljs-number">0.05</span>)<br><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(data)):<br>    <span class="hljs-keyword">if</span> i &lt;= train_stop:<br>        text_create(<span class="hljs-string">&quot;train&quot;</span>,data[i])<br>    <span class="hljs-keyword">if</span> train_stop &lt; i &lt;= train_stop+dev_stop:<br>        text_create(<span class="hljs-string">&quot;dev&quot;</span>,data[i])<br>    <span class="hljs-keyword">if</span> train_stop+dev_stop &lt; i :<br>        text_create(<span class="hljs-string">&quot;test&quot;</span>,data[i])<br></code></pre></td></tr></table></figure>
+
+<p>为了拟合真实的数据分布，我们需要将划分好的训练集、测试集以及训练集中的数据进行打乱形成如下所示的形式</p>
+<p><img src="/images/image-20230321215911324.png" srcset="/img/loading.gif" lazyload></p>
+<p>对数据进行shuffle的代码如下</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> random<br> <br>out_file = <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;./target_data/dev_shuffle.txt&#x27;</span>,<span class="hljs-string">&#x27;w&#x27;</span>,encoding=<span class="hljs-string">&#x27;gbk&#x27;</span>)  <span class="hljs-comment">#输出文件位置</span><br> <br>lines = []<br> <br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;./target_data/dev.txt&#x27;</span>, <span class="hljs-string">&#x27;r&#x27;</span>,encoding=<span class="hljs-string">&#x27;gbk&#x27;</span>) <span class="hljs-keyword">as</span> f:   <span class="hljs-comment">#需要打乱的原文件位置</span><br>    <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> f:  <br>        lines.append(line)<br>random.shuffle(lines)<br> <br><span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> lines:<br>    out_file.write(line)<br> <br>out_file.close()<br></code></pre></td></tr></table></figure>
+
+<p>至此，我们得到了训练所需的最终的数据集，其中训练集有23,018条数据，验证集有1,275条数据，测试集有1,278条数据，文本长度均在20到30之间，一共7个类别，分别是flood(暴雨洪涝) hail(冰雹) waterlogging(城市内涝) gale(大风) drought(干旱) thunderbolt(雷电) typhoon(台风)；</p>
+<p><img src="/images/image-20230321220535919.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="2-项目配置"><a href="#2-项目配置" class="headerlink" title="2.项目配置"></a>2.项目配置</h2><p>在将文本数据放入RNN神经网络之前需要先将其转换为词向量，同时需要对网络参数、全局参数等进行设置；</p>
+<h3 id="2-1-项目介绍"><a href="#2-1-项目介绍" class="headerlink" title="2.1 项目介绍"></a>2.1 项目介绍</h3><p>本次实验使用的网络模型为TextRNN，使用的预训练词向量模型为搜狗新闻的embedding词表，同时使用了预训练得到的char索引表；</p>
+<h3 id="2-2-参数配置"><a href="#2-2-参数配置" class="headerlink" title="2.2 参数配置"></a>2.2 参数配置</h3><p>配置训练数据的路径、模型保存路径以及网络模型架构、模型训练的超参数等</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 全局参数配置</span><br>self.model_name = <span class="hljs-string">&#x27;TextRNN&#x27;</span><br>self.train_path = <span class="hljs-string">&#x27;data/train.txt&#x27;</span>                                <span class="hljs-comment"># 训练集</span><br>self.dev_path = <span class="hljs-string">&#x27;data/dev.txt&#x27;</span>                                    <span class="hljs-comment"># 验证集</span><br>self.test_path = <span class="hljs-string">&#x27;data/test.txt&#x27;</span>                                  <span class="hljs-comment"># 测试集</span><br>self.class_list = [x.strip() <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;data/class.txt&#x27;</span>).readlines()]  <span class="hljs-comment"># 类别名单</span><br>self.save_path = <span class="hljs-string">&#x27;model/&#x27;</span> + self.model_name + <span class="hljs-string">&#x27;.ckpt&#x27;</span>               <span class="hljs-comment"># 模型训练结果</span><br>self.device = torch.device(<span class="hljs-string">&#x27;cuda&#x27;</span> <span class="hljs-keyword">if</span> torch.cuda.is_available() <span class="hljs-keyword">else</span> <span class="hljs-string">&#x27;cpu&#x27;</span>)    <span class="hljs-comment"># 设备</span><br>self.vocab_path = <span class="hljs-string">&#x27;data/vocab.pkl&#x27;</span>                                <span class="hljs-comment"># 词表</span><br>self.log_path = <span class="hljs-string">&#x27;log/&#x27;</span> + self.model_name<br>self.embedding_pretrained = torch.tensor(np.load(<span class="hljs-string">&#x27;data/embedding_SougouNews.npz&#x27;</span>)[<span class="hljs-string">&#x27;embeddings&#x27;</span>].astype(<span class="hljs-string">&#x27;float32&#x27;</span>))<br><span class="hljs-comment"># 网络模型参数配置</span><br>self.dropout = <span class="hljs-number">0.5</span>                                              <span class="hljs-comment"># 随机失活</span><br>self.require_improvement = <span class="hljs-number">1000</span>                                 <span class="hljs-comment"># 若超过1000batch效果还没提升，则提前结束训练</span><br>self.num_classes = <span class="hljs-built_in">len</span>(self.class_list)                         <span class="hljs-comment"># 类别数</span><br>self.num_epochs = <span class="hljs-number">10</span>                                             <span class="hljs-comment"># epoch数</span><br>self.batch_size = <span class="hljs-number">128</span>                                           <span class="hljs-comment"># mini-batch大小</span><br>self.pad_size = <span class="hljs-number">32</span>                                              <span class="hljs-comment"># 每句话处理成的长度(短填长切)</span><br>self.learning_rate = <span class="hljs-number">1e-3</span>                                       <span class="hljs-comment"># 学习率</span><br>self.embed = <span class="hljs-number">300</span>                                                <span class="hljs-comment"># 字向量维度</span><br>self.hidden_size = <span class="hljs-number">128</span>                                          <span class="hljs-comment"># lstm隐藏层</span><br>self.num_layers = <span class="hljs-number">2</span>                                             <span class="hljs-comment"># lstm层数</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="2-3-数据读取"><a href="#2-3-数据读取" class="headerlink" title="2.3 数据读取"></a>2.3 数据读取</h3><p>根据配置文件中配置的路径将训练集、验证集和测试集数据读取，并对每条数据分别进行切分、分字、填充&#x2F;截断和索引操作；</p>
+<p>根据vocab.pkl将每个char转换为对应的索引，便于之后在embedding词表按照索引找到对应的词向量；</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs py">vocab_dic = &#123;&#125;<br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(file_path, <span class="hljs-string">&#x27;r&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>    <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> tqdm(f):<br>        lin = line.strip()<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> lin:<br>            <span class="hljs-keyword">continue</span><br>        content = lin.split(<span class="hljs-string">&#x27;\t&#x27;</span>)[<span class="hljs-number">0</span>]<br>        <span class="hljs-keyword">for</span> word <span class="hljs-keyword">in</span> content:<br>            vocab_dic[word] = vocab_dic.get(word, <span class="hljs-number">0</span>) + <span class="hljs-number">1</span><br>    vocab_list = <span class="hljs-built_in">sorted</span>([_ <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> vocab_dic.items() <span class="hljs-keyword">if</span> _[<span class="hljs-number">1</span>] &gt;= min_freq], key=<span class="hljs-keyword">lambda</span> x: x[<span class="hljs-number">1</span>], reverse=<span class="hljs-literal">True</span>)[:max_size]<br>    vocab_dic = &#123;word_count[<span class="hljs-number">0</span>]: idx <span class="hljs-keyword">for</span> idx, word_count <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(vocab_list)&#125;<br>    vocab_dic.update(&#123;UNK: <span class="hljs-built_in">len</span>(vocab_dic), PAD: <span class="hljs-built_in">len</span>(vocab_dic) + <span class="hljs-number">1</span>&#125;) <br><span class="hljs-keyword">return</span> vocab_dic<br></code></pre></td></tr></table></figure>
+
+<p>读入txt文本，按照’\t’分隔符将每行的数据分为content和label，content为文本内容，因为需要限制文本的字数，设置的pad_size为32即大于该长度的文本将被截断，小于该长度的文本将被填充未知字，未知字在后面转换为embedding的时候会被转换为相同的词向量；</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs py">contents = []<br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(path, <span class="hljs-string">&#x27;r&#x27;</span>, encoding=<span class="hljs-string">&#x27;gbk&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>	<span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> tqdm(f):<br>		lin = line.strip()<br>		<span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> lin:<br>			<span class="hljs-keyword">continue</span><br>		content, label = lin.split(<span class="hljs-string">&#x27;\t&#x27;</span>)<br>		words_line = []<br>		token = tokenizer(content)<br>		seq_len = <span class="hljs-built_in">len</span>(token)<br>		<span class="hljs-keyword">if</span> pad_size:<br>			<span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(token) &lt; pad_size:<br>				token.extend([vocab.get(PAD)] * (pad_size - <span class="hljs-built_in">len</span>(token)))<br>			<span class="hljs-keyword">else</span>:<br>				token = token[:pad_size]<br>				seq_len = pad_size<br>		<span class="hljs-keyword">for</span> word <span class="hljs-keyword">in</span> token:<br>			words_line.append(vocab.get(word, vocab.get(UNK)))<br>		contents.append((words_line, <span class="hljs-built_in">int</span>(label), seq_len))  <span class="hljs-comment"># (words, label, seq_len)</span><br><span class="hljs-keyword">return</span> contents<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-4-模型构建"><a href="#2-4-模型构建" class="headerlink" title="2.4 模型构建"></a>2.4 模型构建</h3><p>定义初始化模型的函数，直接调用nn模块中的函数定义embedding层、lstm层以及fc全连接层</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-built_in">super</span>(Model, self).__init__()<br>self.embedding = nn.Embedding.from_pretrained(config.embedding_pretrained, freeze=<span class="hljs-literal">False</span>)<br>self.lstm = nn.LSTM(config.embed, config.hidden_size, config.num_layers, bidirectional=<span class="hljs-literal">True</span>, batch_first=<span class="hljs-literal">True</span>, dropout=config.dropout)<br>self.fc = nn.Linear(config.hidden_size * <span class="hljs-number">2</span>, config.num_classes)<br></code></pre></td></tr></table></figure>
+
+<p>借用上述定义的函数定义前向传播</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs py">out = self.embedding(x[<span class="hljs-number">0</span>])  <span class="hljs-comment"># x[0]是句子</span><br>out, _ = self.lstm(out)<br>out = torch.mean(out, <span class="hljs-number">1</span>)<br>out = self.fc(out)<br><span class="hljs-keyword">return</span> out<br></code></pre></td></tr></table></figure>
+
+<h2 id="3-训练-x2F-测试"><a href="#3-训练-x2F-测试" class="headerlink" title="3.训练&#x2F;测试"></a>3.训练&#x2F;测试</h2><p>这里训练RNN的方法和传统训练神经网络的方法类似，传入训练参数即训练网络、训练数据、验证数据、测试数据</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs py">model.train()   <span class="hljs-comment"># 调用train函数开始训练</span><br>optimizer = torch.optim.Adam(model.parameters(), lr=config.learning_rate)  <span class="hljs-comment"># 定义优化器，此处的优化器为Adam，可以更改为其他优化器</span><br>total_batch = <span class="hljs-number">0</span>  <span class="hljs-comment"># 记录进行到多少batch</span><br>dev_best_loss = <span class="hljs-built_in">float</span>(<span class="hljs-string">&#x27;inf&#x27;</span>)   <span class="hljs-comment"># 定义loss，初始为无穷，在训练过程中迭代更新</span><br>last_improve = <span class="hljs-number">0</span>  <span class="hljs-comment"># 记录上次验证集loss下降的batch数</span><br>flag = <span class="hljs-literal">False</span>  <span class="hljs-comment"># 记录是否很久没有效果提升</span><br></code></pre></td></tr></table></figure>
+
+<p>项目设置了一共10个epoch，每个epoch对多个batch进行训练</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">for</span> epoch <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(config.num_epochs):<br>	<span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;Epoch [&#123;&#125;/&#123;&#125;]&#x27;</span>.<span class="hljs-built_in">format</span>(epoch + <span class="hljs-number">1</span>, config.num_epochs))<br>	<span class="hljs-keyword">for</span> i, (trains, labels) <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(train_iter):<br>		outputs = model(trains) <span class="hljs-comment"># 输出output</span><br>		model.zero_grad()<br>		loss = F.cross_entropy(outputs, labels)  <span class="hljs-comment"># 误差loss</span><br>		loss.backward()	<span class="hljs-comment"># 误差反向传播</span><br>		optimizer.step() <span class="hljs-comment"># 优化器及逆行优化</span><br>		<span class="hljs-keyword">if</span> total_batch % <span class="hljs-number">100</span> == <span class="hljs-number">0</span>: <span class="hljs-comment"># 每多少轮输出在训练集和验证集上的效果</span><br>			true = labels.data.cpu()	<span class="hljs-comment"># 真实结果，即labels</span><br>			predic = torch.<span class="hljs-built_in">max</span>(outputs.data, <span class="hljs-number">1</span>)[<span class="hljs-number">1</span>].cpu() <span class="hljs-comment"># 预测结果</span><br>			train_acc = metrics.accuracy_score(true, predic) <span class="hljs-comment"># 训练集的准确率</span><br>			dev_acc, dev_loss = evaluate(model, dev_iter, config) <span class="hljs-comment"># 测试集的准确率和loss</span><br>			<span class="hljs-keyword">if</span> dev_loss &lt; dev_best_loss:  <span class="hljs-comment"># 如果在测试集上的loss小于之前记录的最小loss，则更新并保存此次的model</span><br>				dev_best_loss = dev_loss<br>				torch.save(model.state_dict(), config.save_path)<br>				improve = <span class="hljs-string">&#x27;*&#x27;</span><br>				last_improve = total_batch<br>			<span class="hljs-keyword">else</span>:<br>				improve = <span class="hljs-string">&#x27;&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<p>当验证集的loss长时间未更新时，表示模型几乎收敛，可以提前结束训练</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">if</span> total_batch - last_improve &gt; config.require_improvement:<br>	flag = <span class="hljs-literal">True</span><br>	<span class="hljs-keyword">break</span><br></code></pre></td></tr></table></figure>
+
+<p>训练完成的模型将用于测试，测试阶段需要设置model.eval，即评估模式，在评估模式下，batchNorm层，dropout层等用于优化训练而添加的网络层会被关闭，从而使得评估时不会发生偏移；</p>
+<p>测试需要先导入训练好的模型，接着调用evaluate对参数进行评估</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs py">model.load_state_dict(torch.load(config.save_path))<br>model.<span class="hljs-built_in">eval</span>()<br>start_time = time.time()<br>test_acc, test_loss, test_report, test_confusion = evaluate(model, test_iter, config, test=<span class="hljs-literal">True</span>)<br></code></pre></td></tr></table></figure>
+
+<p>evaluate是训练模块和测试模块用于评估真实labels和预测labels之间的差异的函数，特别的，当测试模块调用evaluate函数时，会额外输出所有类别的预测结果以及混淆矩阵</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs py">report = metrics.classification_report(labels_all, predict_all, target_names=config.class_list, digits=<span class="hljs-number">4</span>)<br>confusion = metrics.confusion_matrix(labels_all, predict_all)<br><span class="hljs-keyword">return</span> acc, loss_total / <span class="hljs-built_in">len</span>(data_iter), report, confusion<br></code></pre></td></tr></table></figure>
+
+<h2 id="4-实验结果"><a href="#4-实验结果" class="headerlink" title="4.实验结果"></a>4.实验结果</h2><p>先简单介绍一下实验结果中的一些评价指标；</p>
+<p>混淆矩阵confusion matrix，相对来说是最直观的一个评价指标，用n行n列的矩阵形式来表示；混淆矩阵的每一列代表了预测类别，每一列的总数表示预测为该类别的数据的数目；每一行代表了数据的真实归属类别，每一行的数据总数表示该类别的数据实例的数目，每一列中的数值表示真实数据被预测为该类的数目；</p>
+<p>精确率(Presicion)表示正确预测为正类的占全部预测为正类的的比例，精确率针对预测结果而言，表示的是预测为正类的样本中有多少是真正的正类样本；</p>
+<p>召回率(Recall)表示正确预测为正类的占全部实际为正类的的比例，召回率针对原始样本而言，表示的是全体样本中的所有正类样本有多少被预测正确了；</p>
+<p>对于精确率和召唤率，其实就是分母不同，一个分母是预测为正类的样本数，另一个是原始样本中所有的正类样本数；</p>
+<p>f1分数同时兼顾了分类模型的精确率和召回率，可以看作是精确率和召回率的调和平均，其取值范围为[0,1]；</p>
+<p>宏平均(macro avg)指的是对每个类别的 精准、召回和F1 加和求平均；</p>
+<p>加权平均(weighted avg)是对宏平均的一种改进，考虑了每个类别样本数量在总样本中占比；</p>
+<h3 id="4-1-失败案例"><a href="#4-1-失败案例" class="headerlink" title="4.1 失败案例"></a>4.1 失败案例</h3><p>一开始我们对数据的清洗工作做的不够好，导致训练效果非常差，使用的训练数据部分如下</p>
+<p><img src="/images/image-20230326094152442.png" srcset="/img/loading.gif" lazyload></p>
+<p>即借助snownlp库以及textrank4zh库分别对新闻正文提取摘要作为训练数据，但问题在于提取的新闻摘要并不能很好的概括新闻内容，这将导致模型的训练结果非常差，同时大部分摘要的文本长度非常长，如果使用这类文本进行训练会给模型带来极大的运算量；</p>
+<p>使用上述训练数据进行训练的结果如下，分别进行了两次实验，两次实验的数据集大小不同，但得到的实验结果都非常差经，下图是第一次训练的结果</p>
+<p><img src="/images/image-20230326094827939.png" srcset="/img/loading.gif" lazyload></p>
+<p>混淆矩阵表明训练结果全部被分为同一类，在网上查询相关资料后认为是训练数据量不够，因此增加了数据量（具体做法就是对部分新闻内容的重要句子提取两次，将这两个句子都作为训练数据），增加数据量后的结果如下</p>
+<p><img src="/images/image-20230326095211468.png" srcset="/img/loading.gif" lazyload></p>
+<p>可以看到混淆矩阵中显示仍然是将大量的数据都分类为第五类，增加数据量并不能解决问题，经过反思后确认是数据集本身存在问题，模型并不能学到很好的效果（即使是给它大量数据），经过整理最终得到的训练数据部分如下</p>
+<p><img src="/images/image-20230326095509802.png" srcset="/img/loading.gif" lazyload></p>
+<p>使用形如上述的数据进行训练得到了非常好的结果</p>
+<p><img src="/images/image-20230326095653840.png" srcset="/img/loading.gif" lazyload></p>
+<p>最终对测试集中的数据进行分类的结果几乎正确，但因为训练数据集的大小不是特别大，因此有过拟合的现象存在；</p>
+<h3 id="4-2-单向LSTM"><a href="#4-2-单向LSTM" class="headerlink" title="4.2 单向LSTM"></a>4.2 单向LSTM</h3><p>双向LSTM和单向LSTM的主要区别在于双向LSTM不仅考察了前面的信息，也考察了后面的信息，在某些任务中双向LSTM表现要比单向LSTM要好，我们调整了网络结构，最终使用单向LSTM对新闻文本进行分类</p>
+<p><img src="/images/image-20230326101245555.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们这个实验结果并不能很好的表明单向LSTM和双向LSTM的优劣（猜测还是数据量太小了），但有一点很容易看出来，这是双向LSTM的训练时间</p>
+<p><img src="/images/image-20230326101506832.png" srcset="/img/loading.gif" lazyload></p>
+<p>这是单向LSTM的训练时间</p>
+<p><img src="/images/image-20230326101541418.png" srcset="/img/loading.gif" lazyload></p>
+<p>因为双向LSTM的输入序列第一个是输入序列的原样本，第二个是输入序列的反转样本，这就导致训练时间较长；</p>
+<h3 id="4-3-正则化"><a href="#4-3-正则化" class="headerlink" title="4.3 正则化"></a>4.3 正则化</h3><p>dropout作为防止神经网络过拟合的正则化器，其效果有目共睹，我们设置了dropout为0即关闭dropout正则化器，得到了如下实验结果</p>
+<p><img src="/images/image-20230326102242869.png" srcset="/img/loading.gif" lazyload></p>
+<p>可以看到关闭dropout之后的结果略好于开启dropout，这表明减少了正则化参数之后对最终结果有一定提升作用，这也表明dropout不一定有用，需要根据实际任务进行选择；</p>
+<h3 id="4-4-多层LSTM"><a href="#4-4-多层LSTM" class="headerlink" title="4.4 多层LSTM"></a>4.4 多层LSTM</h3><p>因为双向LSTM的特性，为了减少训练时间所以一开始只设置了2层的LSTM层，尝试增加LSTM的层数是否能提高训练效果</p>
+<p><img src="/images/image-20230326103148031.png" srcset="/img/loading.gif" lazyload></p>
+<p>结果出乎意料，直观的感受应该是增加了网络层数是可以提升训练效果的，但是效果并不好，其中一个原因是因为数据量太小导致过拟合的现象</p>
+<p><img src="/images/image-20230326103435760.png" srcset="/img/loading.gif" lazyload></p>
+<p>当模型的学习能力足够强的时候能够在训练数据集上得到很好的效果，但是因为其泛化能力不够所以在验证集和测试集的效果略差，解决过拟合的主要方法有降低模型复杂度（将模型层数降为2层）、增加训练集数据、数据增强以及正则化等；</p>
+<h3 id="4-5-word训练"><a href="#4-5-word训练" class="headerlink" title="4.5 word训练"></a>4.5 word训练</h3><p>前面都是基于字char的训练，考虑基于词word进行训练，对字来说其可能性较小，而词的组合非常多，如果直接使用字的embedding对word进行训练会得到下面的结果</p>
+<p><img src="/images/image-20230326105329289.png" srcset="/img/loading.gif" lazyload></p>
+<p>效果非常差，需要自行训练词的embedding表或使用现有的词嵌入表对word进行转换；</p>
+<h3 id="4-6-结果可视化"><a href="#4-6-结果可视化" class="headerlink" title="4.6 结果可视化"></a>4.6 结果可视化</h3><p>利用tensorboard工具可以对训练结果进行可视化表现，使用</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">tensorboard --logdir=xxxx<br></code></pre></td></tr></table></figure>
+
+<p>对文件夹中的日志文件进行可视化，在浏览器中打开<a target="_blank" rel="noopener" href="http://localhost:6006/%E5%8F%AF%E8%AE%BF%E9%97%AEtensorboard%E7%9A%84%E9%A1%B5%E9%9D%A2%EF%BC%88%E8%BF%99%E9%87%8C%E5%B1%95%E7%A4%BA%E7%9A%84%E6%98%AF%E4%BD%BF%E7%94%A83%E5%B1%82LSTM%E5%AF%B9%E5%BA%94%E7%9A%84%E9%AA%8C%E8%AF%81%E9%9B%86%E5%92%8C%E6%B5%8B%E8%AF%95%E9%9B%86%E7%9A%84%E5%87%86%E7%A1%AE%E7%8E%87%E5%9B%BE%E5%83%8F%EF%BC%89">http://localhost:6006/可访问tensorboard的页面（这里展示的是使用3层LSTM对应的验证集和测试集的准确率图像）</a></p>
+<p><img src="/images/image-20230326105909173.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20230326105925719.png" srcset="/img/loading.gif" lazyload></p>
+<p>可以看到在训练集上的准确率在step为1k的时候就接近99%，更是在step为1.1k的时候准确律达到1，这是典型的过拟合现象；</p>
+<h2 id="5-实验总结"><a href="#5-实验总结" class="headerlink" title="5.实验总结"></a>5.实验总结</h2><p>本次实验基于给定的中文语料库，利用RNN循环神经网络对中文气象灾情文本进行了分类，在完整该实验的过程中我学习到了文本分类的基本流程以及RNN的基本工作原理，同时了解了数据集划分的标准以及手动对模型的超参数进行调整以观察实验现象；在这个过程中我遇到了许多问题，在查阅了大量资料后成功解决，在一次次的尝试过后得到了较为干净的数据集，并通过将代码上传至Kaggle利用其GPU进行模型训练，同时了解并手动调整模型超参数进行多次实验得到不同的实验结果，对实验结果进行分析，了解不同实验结果背后的原因，进一步掌握机器学习的基本方法。</p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E8%B7%B5/" class="category-chain-item">课程实践</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/">#自然语言处理</a>
+      
+        <a href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/">#知识图谱</a>
+      
+        <a href="/tags/%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB/">#文本分类</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>初级项目_新闻文本分类</div>
+      <div>https://gintoki-jpg.github.io/2023/03/19/项目_新闻文本分类/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>杨再俨</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年3月19日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/03/21/%E9%A1%B9%E7%9B%AE_%E5%AE%9E%E4%BD%93%E6%8A%BD%E5%8F%96/" title="初级项目_实体抽取">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">初级项目_实体抽取</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/03/16/%E9%A1%B9%E7%9B%AE_%E7%94%B5%E5%BD%B1%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" title="初级项目_电影知识图谱">
+                        <span class="hidden-mobile">初级项目_电影知识图谱</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+</div>
+
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

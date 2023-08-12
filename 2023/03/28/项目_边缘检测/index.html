@@ -1,0 +1,829 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/logo.png">
+  <link rel="icon" href="/img/bg/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="杨再俨">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="机器视觉课程实践；">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初级项目_边缘检测">
+<meta property="og:url" content="https://gintoki-jpg.github.io/2023/03/28/%E9%A1%B9%E7%9B%AE_%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/index.html">
+<meta property="og:site_name" content="Tintoki_blog">
+<meta property="og:description" content="机器视觉课程实践；">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/project.png">
+<meta property="article:published_time" content="2023-03-28T11:29:00.000Z">
+<meta property="article:modified_time" content="2023-04-19T11:41:45.317Z">
+<meta property="article:author" content="YangZaiyan">
+<meta property="article:tag" content="机器视觉技术">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gintoki-jpg.github.io/img/bg/project.png">
+  
+  
+  
+  <title>初级项目_边缘检测 - Tintoki_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"gintoki-jpg.github.io","root":"/","version":"1.9.1","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tintoki_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/bg1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">初级项目_边缘检测</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-03-28 19:29" pubdate>
+          2023年3月28日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          7.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          64 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">初级项目_边缘检测</h1>
+            
+            <div class="markdown-body">
+              
+              <p>任务：编写一个钱币定位系统，其不仅能够检测出输入图像中各个钱币的边缘，同时，还能给出各个钱币的圆心坐标与半径。</p>
+<p>代码撰写说明：</p>
+<ul>
+<li><p>代码可以使用C++或者python语言进行编写，推荐使用python；</p>
+</li>
+<li><p>可直接调用Opencv的Canny与HoughCircle算法完成系统设计；</p>
+</li>
+</ul>
+<p>设计文档要求：介绍算法整体流程，各个函数的功能说明，函数的输入参数说明，给出最终拟合结果图，分析各个参数对于最终定位结果的影响。</p>
+<hr>
+<p>参考链接：</p>
+<ul>
+<li><p>前置知识：<a href="https://gintoki-jpg.github.io/2023/02/27/%E4%B8%93%E4%B8%9A_%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/#2-%E8%BE%B9%E7%BC%98">机器视觉 - Tintoki_blog (gintoki-jpg.github.io)</a>；</p>
+</li>
+<li><p>代码实现：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Bluebro/article/details/127781074">(2条消息) python使用Canny算法和HoughCiecle算法实现圆的检测与定位_hough检测 python_李问号的博客-CSDN博客</a>；</p>
+</li>
+</ul>
+<h1 id="一、实验原理"><a href="#一、实验原理" class="headerlink" title="一、实验原理"></a>一、实验原理</h1><h2 id="1-Canny算法"><a href="#1-Canny算法" class="headerlink" title="1.Canny算法"></a>1.Canny算法</h2><p>Canny边缘提取算法是一个经典的边缘提取算法，主要贡献是双门限和非最大化抑制思想，一个完整的Canny算法实现步骤依次为：</p>
+<ol>
+<li>先使用高斯偏导滤波器进行偏导滤波；</li>
+<li>计算每个点的梯度；</li>
+<li>进行非最大化抑制；</li>
+<li>双门限法；</li>
+</ol>
+<p>边缘和图像其他部分的区别主要在于边缘部分的信号是突变的，那么数学中应该如何找信号突变？ –- 这转化为导数操作，即对信号求导，找到其极值点，但二维空间中的偏导数计算公式计算较难，计算机视觉中的近似导数公式如下</p>
+<p><img src="/images/image-20230304103142623-16800712434502.png" srcset="/img/loading.gif" lazyload></p>
+<p>上述公式表明了边缘提取任务可以使用卷积来计算，即对x方向的偏导数和对y方向的偏导数分别用在x方向的卷积核和y方向的卷积核来计算；</p>
+<p>对于有噪声的原始信号，直接用卷积核求偏导会出现问题，需要先使用高斯平滑核进行平滑去噪；高斯偏导核是高斯平滑核的一种变形，即对高斯平滑核求偏导；</p>
+<p>尽管高斯偏导核可以进行一定程度的平滑，但还是会提取一些无关紧要的噪声，因为某些区域的幅值较小可能是由于噪声引起的，因此设置一个门限将低于该门限的边缘去除。门限设置过高会导致原本某些边会被去除，但是门限设置的过低又会导致某些假边存在（噪声边），双门限法的思想在于，先用高门限将粗狂的边检测出来 – 这些边是噪声的可能性较低，接着降低门限使得较弱的边显现，只选择与粗狂边有连接的边保留；</p>
+<p>边缘提取的另一个问题在于直接提取得到的边是粗边，这是由于信号缓慢增强因此求导后的值也是缓慢变换而非峰值，因此设置的门限以内的值都被认为是边，解决方法是对于粗边上的每一个像素点，与其梯度方向的前后点的梯度比较，保留值较大者，这就是非最大化抑制；</p>
+<h2 id="2-Hough变换"><a href="#2-Hough变换" class="headerlink" title="2.Hough变换"></a>2.Hough变换</h2><p>仅靠边缘提取不能对物体进行整体的描述，提取完边缘后如何使用数学模型来描述边缘？这就需要使用拟合，Hough变换是一种常用的拟合方式，其基本思想为：</p>
+<ul>
+<li>霍夫变换同样是使用图像上的所有点为直线模型投票，选择票数最高的模型进行输出；</li>
+<li>噪声点不会有一致性的答案；</li>
+<li>即使中间的某些点被遮挡也能拟合一个好的模型；</li>
+</ul>
+<p>霍夫变换的原理是图像空间中的一个点对应参数空间的一条直线，那么图像空间中的两个点对应参数空间中的两条直线，参数空间中这两条直线的交点对应的参数实际就是图像空间中两点确定的直线的参数；</p>
+<p>当图像空间中的点足够多的时候，参数空间中会存在多条直线，这些直线的交点（理解为得分最高的grid）就是图像空间中拟合的直线模型的参数；</p>
+<p>使用Hough变换需要注意以下几点：</p>
+<ul>
+<li>选取合适大小的grid，即对参数空间进行适当的离散化；</li>
+<li>投票的时候采取“软投票”策略：即不仅仅只对中心网格投票，也适当的按照一定比例给网格周围的grid投票；</li>
+<li>Canny算子<ul>
+<li>只采用检测出的边上的点进行投票；</li>
+<li>因为在Candy算子中得到点时就知道了梯度方向，相应的边缘方向的范围就大概确认了，故可以缩小θ的范围，从而解决了噪声的影响，也简化了计算；</li>
+</ul>
+</li>
+</ul>
+<p>一个简单的Hough变换的算法代码如下</p>
+<p><img src="/images/image-20230329144116458.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们的任务是在边缘图上利用Hough变换计算圆心和半径，圆拟合的基本思想为：给圆上一点和半径r，可以在参数空间对应两个点（圆心位置为圆周点加减半径，方向由梯度方向确定），圆心必定是投票数最高的地方，此时的(x,y,r)就是圆心坐标和圆半径</p>
+<p><img src="/images/image-20230329144300670.png" srcset="/img/loading.gif" lazyload></p>
+<p>因为在实际的求解中并不知道圆周上每一点(x,y)以及半径，所以需要穷举所有的r（大于0小于图像长度），遍历圆上每一点进行投票；</p>
+<h1 id="二、程序设计"><a href="#二、程序设计" class="headerlink" title="二、程序设计"></a>二、程序设计</h1><h2 id="1-算法流程"><a href="#1-算法流程" class="headerlink" title="1.算法流程"></a>1.算法流程</h2><p>本次试验的目的是编写一个钱币定位系统，其不仅能够检测出输入图像中各个钱币的边缘，同时，还能给出各个钱币的圆心坐标与半径；</p>
+<p>我们将该任务初步分为两个部分，第一个部分是检测输出图像中各个钱币的边缘（更通俗的说是检测图像中各个圆的边缘），第二部分是给出检测出的圆的圆心坐标和半径；</p>
+<p>第一部分需要使用Canny边缘检测算法和Hough圆检测算法，其流程可描述为：</p>
+<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs brainfuck"><span class="hljs-comment">读取图像</span> <span class="hljs-literal">--</span>&gt; <span class="hljs-comment">图像预处理（灰度化、滤波处理（采用高斯滤波））</span><span class="hljs-literal">--</span>&gt; <span class="hljs-comment">边缘检测（Canny算法）</span> <span class="hljs-literal">--</span>&gt; <span class="hljs-comment">Hough圆检测</span> <span class="hljs-literal">--</span>&gt; <span class="hljs-comment">在图像中标出圆形区域</span><br></code></pre></td></tr></table></figure>
+
+<p>第二部分输出检测出的圆的圆心坐标和半径，经过了解得知可以将第二个任务包含到第一个任务中（因为cv2.HoughCircles()函数返回的是一个三维数组，其中每个元素包含三个值，即圆心的x坐标、y坐标和半径，可以通过遍历这个数组来获取所有检测到的圆的圆心坐标和半径），因此我们的最终算法流程如下：</p>
+<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs brainfuck"><span class="hljs-comment">读取图像</span> <span class="hljs-literal">--</span>&gt; <span class="hljs-comment">图像预处理（灰度化、滤波处理（采用高斯滤波））</span><span class="hljs-literal">--</span>&gt; <span class="hljs-comment">边缘检测（Canny算法）</span> <span class="hljs-literal">--</span>&gt; <span class="hljs-comment">Hough圆检测</span> <span class="hljs-literal">--</span>&gt; <span class="hljs-comment">输出检测到的圆的信息（例如圆心坐标和半径）</span><span class="hljs-literal">--</span>&gt; <span class="hljs-comment">在图像中标出圆形区域</span><br></code></pre></td></tr></table></figure>
+
+<p>整体算法流程描述为：初始读入待检测图像，将其转换为灰度图并使用高斯滤波核进行滤波处理以减少噪声影响，接着使用Canny算法对图像进行边缘检测，找出图像中的所有边缘，接着在提取出边缘的基础上使用Hough圆检测算法检测图像中的圆并输出已检测出的圆心坐标和半径，并在原图中标示出圆形区域；</p>
+<h2 id="2-函数说明"><a href="#2-函数说明" class="headerlink" title="2.函数说明"></a>2.函数说明</h2><p>在实现过程中除了Canny算法和Hough算法以外还使用了大量opencv库中的函数，如imread、imwrite等，这些函数的使用方式参考这篇文章：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41185868/article/details/79675875">(6条消息) Py之cv2：cv2(OpenCV，opencv-python)库的简介、安装、使用方法(常见函数、图像基本运算等)最强详细攻略_cv2是什么库_一个处女座的程序猿的博客-CSDN博客</a>；</p>
+<h3 id="2-1-Canny边缘提取"><a href="#2-1-Canny边缘提取" class="headerlink" title="2.1 Canny边缘提取"></a>2.1 Canny边缘提取</h3><p>直接调用Opencv库分别实现Canny边缘检测和Hough圆检测，首先导入必要的库以及待检测图像</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> cv2<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><br>image_path=<span class="hljs-string">&#x27;D:\My_code\jupyter notebook\Data_Pictures\coin.jpg&#x27;</span><br>save_path=<span class="hljs-string">&#x27;D:/My_code/jupyter notebook/Data_Pictures/&#x27;</span><br><span class="hljs-comment"># 读入图像</span><br>image_origin=cv2.imread(image_path)<br></code></pre></td></tr></table></figure>
+
+<p>接着利用opencv库中的Canny算法实现边缘提取，Canny算法的参数列表如下</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">cv2.Canny(image, threshold1, threshold2[, edges[, apertureSize[, L2gradient]]])<br></code></pre></td></tr></table></figure>
+
+<p>其参数意义分别为</p>
+<ul>
+<li>image：输入图像，需要是单通道的灰度图像。</li>
+<li>threshold1：边缘检测的低阈值。</li>
+<li>threshold2：边缘检测的高阈值。</li>
+<li>edges：输出的边缘图像。</li>
+<li>apertureSize：Sobel算子的大小，一般默认为3。</li>
+<li>L2gradient：指定计算梯度大小的方法，如果为True，则使用L2范数，否则使用L1范数。</li>
+</ul>
+<p>在调用Canny算法之前需要对原始图像做一些预处理（转换为灰度图、高斯模糊）并计算Canny检测中的双门限的上下限阈值（当然也可以直接设置）</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment">#该函数的输入是一张彩色图像，输出是一张二值化边缘图像</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">canny_edge_detection</span>(<span class="hljs-params">image_origin, save_path, sigma=<span class="hljs-number">0.33</span></span>):<br>    <span class="hljs-comment"># 将图像转换为灰度</span><br>    image_gray = cv2.cvtColor(image_origin, cv2.COLOR_BGR2GRAY)<br>    <span class="hljs-comment"># 应用高斯模糊以减少噪声</span><br>    image_blurred = cv2.GaussianBlur(image_gray, (<span class="hljs-number">3</span>, <span class="hljs-number">3</span>), <span class="hljs-number">0</span>)<br>    <span class="hljs-comment"># 计算单通道像素强度的中值</span><br>    v = np.median(image_blurred)<br>    <span class="hljs-comment"># 计算Canny边缘检测的下限和上限阈值</span><br>    thr_lower = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">max</span>(<span class="hljs-number">0</span>, (<span class="hljs-number">1.0</span> - sigma) * v))<br>    thr_upper = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">min</span>(<span class="hljs-number">255</span>, (<span class="hljs-number">1.0</span> + sigma) * v))<br>    <span class="hljs-comment"># Canny边缘检测</span><br>    edges = cv2.Canny(image_blurred, thr_lower, thr_upper)<br>    <span class="hljs-comment">#保存边缘图像</span><br>    cv2.imwrite(save_path+<span class="hljs-string">&quot;canny_coin.jpg&quot;</span>, edges)  <br>    <span class="hljs-comment"># 输出edges</span><br>    <span class="hljs-keyword">return</span> edges <br></code></pre></td></tr></table></figure>
+
+<p>上述canny_edge_detection函数实现了对输入图像的边缘检测，输入为图像image_origin、保存路径save_path和高斯方差sigma，输出为二值化边缘图像edges（作为Hough检测函数的输入），edges图像的保存路径为savepath；</p>
+<h3 id="2-2-Hough圆检测"><a href="#2-2-Hough圆检测" class="headerlink" title="2.2 Hough圆检测"></a>2.2 Hough圆检测</h3><p>当拥有了edges也就是Canny算法检测出边缘之后，就可以直接调用opencv库中的cv2.HoughCircles算法实现圆的检测，HoughCircles算法的参数列表如下</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">circles = cv2.HoughCircles(image, method, dp, minDist, circles=<span class="hljs-literal">None</span>, param1=<span class="hljs-literal">None</span>, param2=<span class="hljs-literal">None</span>, minRadius=<span class="hljs-literal">None</span>, maxRadius=<span class="hljs-literal">None</span>)<br></code></pre></td></tr></table></figure>
+
+<p>其参数意义分别为</p>
+<ul>
+<li>image：8位，单通道图像，用于检测圆形目标。一般来说，可以使用cv2.imread()函数加载图像。</li>
+<li>method：定义霍夫变换的检测方法，常用的有两种方法：<ul>
+<li>cv2.HOUGH_GRADIENT：使用基于图像梯度的方法进行霍夫变换，一般使用这种方法。</li>
+<li>cv2.HOUGH_STANDARD：标准霍夫变换。</li>
+</ul>
+</li>
+<li>dp：累加器图像的分辨率与输入图像分辨率的比例。在OpenCV中，dp的值必须是大于1的整数。</li>
+<li>minDist：检测到的圆心之间的最小距离。如果设置为0，则OpenCV函数将返回大量的圆心。如果设置为过大的值，则可能会遗漏一些圆心。</li>
+<li>circles：用于存储检测到的圆形的输出向量。每个向量包含三个浮点数：x坐标，y坐标和半径。</li>
+<li>param1：用于确定Canny边缘检测阈值的参数。这个参数对于不同的图像可能有不同的值。一般情况下，param1的值是高斯滤波后的灰度图像的阈值上限。如果不确定该参数的值，可以试着将其设置为500或更大的值，然后逐渐减小，直到满足要求。</li>
+<li>param2：用于确定霍夫变换累加器阈值的参数。累加器中的值大于此阈值时才认为是检测到的圆形。这个值越小，则检测到的圆形越多。反之，这个值越大，则检测到的圆形越少。</li>
+<li>minRadius：要检测的最小圆半径。</li>
+<li>maxRadius：要检测的最大圆半径。</li>
+</ul>
+<p>检测出圆之后为了能够直观上观察到检测的边缘和原图的关系，因此最后输出圆的相关信息，并在原始图像上绘制检测结果，实现代码如下</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 该函数的输入是使用Canny算法提取得到的边缘、最小半径和最大半径，在找到圆后，将其绘制在原始图像上并返回包含检测圆的图像</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">detect_circles</span>(<span class="hljs-params">edges, save_path, min_radius=<span class="hljs-number">10</span>, max_radius=<span class="hljs-number">100</span></span>):<br>    <span class="hljs-comment"># 直接调用Hough圆检测算法</span><br>    circles = cv2.HoughCircles(edges, cv2.HOUGH_GRADIENT, dp=<span class="hljs-number">1</span>, minDist=<span class="hljs-number">50</span>,<br>                               param1=<span class="hljs-number">100</span>, param2=<span class="hljs-number">30</span>, minRadius=min_radius, maxRadius=max_radius)<br>    <br>    <span class="hljs-comment"># 在原始图像上绘制检测结果</span><br>    <span class="hljs-keyword">if</span> circles <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span>:<br>        circles = np.<span class="hljs-built_in">round</span>(circles[<span class="hljs-number">0</span>, :]).astype(<span class="hljs-string">&quot;int&quot;</span>)<br>        <span class="hljs-keyword">for</span> (x, y, r) <span class="hljs-keyword">in</span> circles:<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;圆心坐标：(&#123;&#125;, &#123;&#125;)，半径：&#123;&#125;&quot;</span>.<span class="hljs-built_in">format</span>(x, y, r))<br>            cv2.circle(image_origin, (x, y), r, (<span class="hljs-number">0</span>, <span class="hljs-number">255</span>, <span class="hljs-number">0</span>), <span class="hljs-number">2</span>)<br>    <span class="hljs-comment"># 保存图像</span><br>    cv2.imwrite(save_path+<span class="hljs-string">&quot;hough_coin.jpg&quot;</span>, image_origin)<br>    <br>    <span class="hljs-keyword">return</span> image_origin<br></code></pre></td></tr></table></figure>
+
+<p>上述detect_circles函数实现了在基于Canny算法提取出图像边缘的前提下对图像进行圆检测，输入为edges边缘图、输出图像保存路径save_path和默认最小检测半径、默认最大检测半径，输出为检测出的圆心坐标和圆半径，并返回包含检测圆的图像；</p>
+<h2 id="3-实验结果"><a href="#3-实验结果" class="headerlink" title="3.实验结果"></a>3.实验结果</h2><h3 id="3-1-图像检测"><a href="#3-1-图像检测" class="headerlink" title="3.1 图像检测"></a>3.1 图像检测</h3><p>原始图像如下（这里为了检测算法的有效性一开始并没有给出很多硬币，之后会检测多硬币的情况）</p>
+<p><img src="/images/image-20230401222336046.png" srcset="/img/loading.gif" lazyload></p>
+<p>使用Canny算法提取得到的边缘图edges如下</p>
+<p><img src="/images/image-20230401222452571.png" srcset="/img/loading.gif" lazyload></p>
+<p>对边缘图使用Hough圆检测算法得到检测圆</p>
+<p><img src="/images/image-20230401222534031.png" srcset="/img/loading.gif" lazyload></p>
+<p>可以看到，在只有一个硬币的简单情况下算法成功的检测并提取出了图像中的圆，同时Hough算法给出了上述圆的圆心坐标和半径如下</p>
+<p><img src="/images/image-20230401222658159.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-2-对比试验"><a href="#3-2-对比试验" class="headerlink" title="3.2 对比试验"></a>3.2 对比试验</h3><p>在最开始设计算法的时候，并没有考虑对图像进行高斯平滑，而是将其转换为灰度图后直接利用Canny算法提取边缘，同时使用的双门限的上下限都是直接指定的，这就导致提取得到的边缘图有好有坏，下面给出不同上下限的Canny边缘提取得到的edges边缘图；</p>
+<p>这是原始代码提取得到的边缘图，也就是先使用高斯平滑再通过单通道像素强度中值计算得到边缘检测的下限和上限阈值作为Canny算法的输入，最终输出的edges边缘图</p>
+<p><img src="/images/image-20230401222452571-16803600680355.png" srcset="/img/loading.gif" lazyload></p>
+<p>一般来说在调用Canny算法时，都会先进行高斯平滑处理，然后再进行边缘检测，以避免出现噪声干扰或边缘不连续等问题，下面这幅图是未使用高斯平滑得到的边缘图</p>
+<p><img src="/images/image-20230401224236534.png" srcset="/img/loading.gif" lazyload></p>
+<p>但是在上面这幅图中明显观察到不使用高斯平滑的效果更好，主要原因一方面是图像并不存在什么噪声，因此使用高斯模糊反而破坏了图像中的某些细节问题；另一方面待检测的边较细，高斯模糊处理后反而是一种负优化，导致边缘检测的效果变差；</p>
+<p>接着我们分别指定不同的门限，分别是[50,200]，[100，200]，[150,200]，[200,250]</p>
+<p><img src="/images/image-20230401230031287.png" srcset="/img/loading.gif" lazyload></p>
+<p>可以看到当下限指定较小的时候无法有效的过滤掉无关的边缘，当上限指定较大的时候会将完整的边缘信息破坏，因此需要一个合适的方法对计算双门限的上下限；</p>
+<p>由之前的介绍已经知道下限阈值用于定义图像可能的边缘，上限阈值用于定义真实的边缘，计算下限阈值的时候通常使用Otsu算法或经验式，代码实现中我们使用的是经验式的方式</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">v = np.median(img)<br>low_threshold = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">max</span>(<span class="hljs-number">0</span>, (<span class="hljs-number">1.0</span> - sigma) * v))<br></code></pre></td></tr></table></figure>
+
+<p>其中img是输入的图像，v是图像的中值，sigma是一个参数用于控制下限阈值的大小，公式中的(1.0 - sigma) * v表示将中值v乘以一个小于1的系数(1.0 - sigma)，从而得到一个较小的阈值，将该阈值与0进行比较取较大值，确保下限阈值不小于0，最后使用int对下限阈值取整得到最终下限阈值；</p>
+<p>参考上述下限阈值的计算方式，可以给出上限阈值的计算方式</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">upper_threshold = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">min</span>(<span class="hljs-number">255</span>, (<span class="hljs-number">1.0</span> + sigma) * v))<br></code></pre></td></tr></table></figure>
+
+<p>然而使用这种方式计算得到的上限阈值通常会偏大，这可能导致更多的噪声点被误认为是边缘点，因此如果需要减少噪声干扰，一般使用的上限阈值计算方式都是根据下限阈值进行倍数缩放</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">high_threshold = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">min</span>(<span class="hljs-number">255</span>, low_threshold * ratio))<br></code></pre></td></tr></table></figure>
+
+<p>其中ratio是倍数因子，通常取值为3~4之间，但上限阈值的最大值只能是255；</p>
+<p>下图是ratio取值为3的结果</p>
+<p><img src="/images/image-20230401231747565.png" srcset="/img/loading.gif" lazyload></p>
+<p>可以看出效果并不是特别好，这也表明理论和实践是存在一定差异的，需要根据具体的图像和需求来进行决定选择使用哪种计算方式；</p>
+<h3 id="3-3-多个硬币"><a href="#3-3-多个硬币" class="headerlink" title="3.3 多个硬币"></a>3.3 多个硬币</h3><p>下面使用编写好的代码对含有多个硬币的图像进行检测，原始图像如下</p>
+<p><img src="/images/image-20230401233100204.png" srcset="/img/loading.gif" lazyload></p>
+<p>使用Canny边缘提取算法过后得到的边缘图如下</p>
+<p><img src="/images/image-20230401233126021.png" srcset="/img/loading.gif" lazyload></p>
+<p>最后调用Hough圆检测得到如下结果和输出</p>
+<p><img src="/images/image-20230401233156995.png" srcset="/img/loading.gif" lazyload><img src="/images/image-20230401233210918.png" srcset="/img/loading.gif" lazyload></p>
+<p>结果很让人意外，理论上只有四个圆，但是Hough检测出了七个圆，仔细观察不难发现它是将Canny提取的边缘图中的第一个硬币中的曲线误投票为圆（尽管以人类的角度很难认为是圆），那么是否存在优化方法呢？</p>
+<p>Hough函数的参数中有两个非常重要的参数：</p>
+<ul>
+<li>param1：用于确定Canny边缘检测阈值的参数。这个参数对于不同的图像可能有不同的值。一般情况下，param1的值是高斯滤波后的灰度图像的阈值上限。如果不确定该参数的值，可以试着将其设置为500或更大的值，然后逐渐减小，直到满足要求。</li>
+<li>param2：用于确定霍夫变换累加器阈值的参数。累加器中的值大于此阈值时才认为是检测到的圆形。这个值越小，则检测到的圆形越多。反之，这个值越大，则检测到的圆形越少。</li>
+</ul>
+<p>不妨调整参数param2的大小，使得刚好能够检测出四个圆（从60依次减小观察结果）</p>
+<p><img src="/images/image-20230401234025716-168036377696317.png" srcset="/img/loading.gif" lazyload alt="param2=60"><img src="/images/image-20230401234127343-168036377696318.png" srcset="/img/loading.gif" lazyload alt="param2=45"><img src="/images/image-20230401234314038.png" srcset="/img/loading.gif" lazyload alt="param2=35"></p>
+<p>当param2取值为35的时候能够刚好检测出四个硬币同时给出其圆心坐标和半径</p>
+<p><img src="/images/image-20230401234404257.png" srcset="/img/loading.gif" lazyload></p>
+<p>这四个圆的结果与之前的结果基本相同（略有差异可能是因为硬币本身摆放的角度对检测有一定干扰），验证了Hough圆检测算法的有效性；</p>
+<h2 id="4-实验总结"><a href="#4-实验总结" class="headerlink" title="4.实验总结"></a>4.实验总结</h2><p>本次实验借助Opencv库中的函数实现了Canny算法和Hough算法进行边缘提取和圆检测的任务，同时给出了检测圆的圆心坐标和圆半径。</p>
+<p>Canny算法主要包含了高斯滤波、梯度计算、非最大化抑制和双门限处理，本次实验借助Opencv库中的cv2.Canny()函数来实现Canny算法，并根据实际需求调整阈值参数以获得最佳的边缘检测效果。</p>
+<p>Hough算法的主要思想是将图像中的形状转化为参数空间中的曲线，在参数空间中检测出形状的参数，本次实验借助Opencv库中的cv2.HoughCircles()函数实现圆检测，同时调整了相应的参数以获得最佳检测效果。</p>
+<p>通过本次实验，将Canny算法和Hough算法结合可以实现图像的多个圆形边缘检测，同时不同的变量计算方式、不同的参数值也会影响最终的检测结果，这启发我们应当根据具体任务进行具体的分析和多次调整使得算法取得最佳检测效果。</p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E8%B7%B5/" class="category-chain-item">课程实践</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89%E6%8A%80%E6%9C%AF/">#机器视觉技术</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>初级项目_边缘检测</div>
+      <div>https://gintoki-jpg.github.io/2023/03/28/项目_边缘检测/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>杨再俨</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年3月28日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/03/28/%E8%80%83%E7%A0%94_%E6%95%B0%E5%AD%A6%E4%B8%80_%E7%BA%BF%E4%BB%A3/" title="考研_数学一_线性代数">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">考研_数学一_线性代数</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/03/21/%E9%A1%B9%E7%9B%AE_%E5%AE%9E%E4%BD%93%E6%8A%BD%E5%8F%96/" title="初级项目_实体抽取">
+                        <span class="hidden-mobile">初级项目_实体抽取</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+</div>
+
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

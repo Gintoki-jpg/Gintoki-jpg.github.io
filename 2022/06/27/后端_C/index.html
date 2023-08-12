@@ -1,0 +1,1254 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/logo.png">
+  <link rel="icon" href="/img/bg/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="杨再俨">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="C语言是一门面向过程的、抽象化的通用程序设计语言，广泛应用于底层开发。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C语言">
+<meta property="og:url" content="https://gintoki-jpg.github.io/2022/06/27/%E5%90%8E%E7%AB%AF_C/index.html">
+<meta property="og:site_name" content="Tintoki_blog">
+<meta property="og:description" content="C语言是一门面向过程的、抽象化的通用程序设计语言，广泛应用于底层开发。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/C.png">
+<meta property="article:published_time" content="2022-06-27T03:31:00.000Z">
+<meta property="article:modified_time" content="2023-06-27T15:39:53.207Z">
+<meta property="article:author" content="YangZaiyan">
+<meta property="article:tag" content="后端开发">
+<meta property="article:tag" content="编程语言">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gintoki-jpg.github.io/img/bg/C.png">
+  
+  
+  
+  <title>C语言 - Tintoki_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"gintoki-jpg.github.io","root":"/","version":"1.9.1","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tintoki_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/bg1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">C语言</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-06-27 11:31" pubdate>
+          2022年6月27日 中午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          25k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          206 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">C语言</h1>
+            
+            <div class="markdown-body">
+              
+              <p>语雀文章链接：<a target="_blank" rel="noopener" href="https://www.yuque.com/tintoki/znb576/wg5k4y">https://www.yuque.com/tintoki/znb576/wg5k4y</a></p>
+<h1 id="一、C语言入门"><a href="#一、C语言入门" class="headerlink" title="一、C语言入门"></a>一、C语言入门</h1><p>先说一下，本来之前是在中文网上简单学过一下C相关，因为和C++差距不是很大所以当时没有放在心上，但是最近在使用C做项目的时候，发现C使用最多的就是指针（C语言没什么高级特性，除了指针真的就没什么难点了），而恰好我对指针这一章其实理解的也不算透彻，故参考书籍《C和指针》做如下阅读笔记。</p>
+<p>注意笔记里面我只会记录一些比较重要的概念，那些基本的、与C++重合的几乎不会出现；</p>
+<p>2022&#x2F;7&#x2F;28 22:19 简单看了一下这本书，看到第二部分不太看得进去了，个人认为关于C指针这部分的内容应该不是光看书就能看懂的，实际上还是需要我们动手去练习才行，在做项目的过程中不断巩固指针相关的知识；</p>
+<p>2022&#x2F;10&#x2F;31 15:38 这段时间稍微有点空，所以我打算把语雀上之前整理的知识点（参考的是<a target="_blank" rel="noopener" href="http://www.freecplus.net/">C语言技术网 - 首页 (freecplus.net)</a>）整合一下，也方便之后索引查找；</p>
+<hr>
+<h2 id="0-规范"><a href="#0-规范" class="headerlink" title="0.规范"></a>0.规范</h2><blockquote>
+<p>C语言代码的多行书写</p>
+</blockquote>
+<p>在我们之前学习的过程中，编写的程序的功能很简单，一句代码很短，但是在实际开发中，函数参数往往很长很多，一句代码可能会很长，需要用多行才能书写。</p>
+<p>如果我们在一行代码的行尾放置一个反斜杠，c语言编译器会忽略行尾的换行符，而把下一行的内容也算作是本行的内容。这里反斜杠起到了续行的作用</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-built_in">strcpy</span>(str,<span class="hljs-string">&quot;aaaaaaaaaa\</span><br><span class="hljs-string">bbbbbbbbb&quot;</span>);<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>main函数的参数</p>
+</blockquote>
+<p>main函数有三个参数，argc、argv和envp，它的标准写法如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc,<span class="hljs-type">char</span> *argv[],<span class="hljs-type">char</span> *envp[])</span><br><span class="hljs-comment">/*</span><br><span class="hljs-comment">int argc，存放了命令行参数的个数。</span><br><span class="hljs-comment">char *argv[]，是个字符串的数组，每个元素都是一个字符指针，指向一个字符串，即命令行中的每一个参数。</span><br><span class="hljs-comment">char *envp[]，也是一个字符串的数组，这个数组的每一个元素是指向一个环境变量的字符指针(envp数组存放了当前程序运行环境的参数)。</span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
+
+<p>注意事项：</p>
+<p>1）argc的值是参数个数加1，因为程序名称是程序的第一个参数，即argv[0]，在上面的示例中，argv[0]是.&#x2F;book101。</p>
+<p>2）main函数的参数，不管是书写的整数还是浮点数，全部被认为是字符串。</p>
+<p>3）参数的命名argc和argv是程序员的约定，您也可以用argd或args，但是不建议这么做。</p>
+<h2 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1.基本概念"></a>1.基本概念</h2><blockquote>
+<p>主要记录一些零碎的C的概念；</p>
+</blockquote>
+<h3 id="1-1-注释"><a href="#1-1-注释" class="headerlink" title="1.1 注释"></a>1.1 注释</h3><p>C中的注释与C++相同是块注释&#x2F;**&#x2F;或者行注释&#x2F;&#x2F;，然而当代码中已经存在块注释时（行注释不影响）使用块注释去禁用代码会出问题，如果想要注释掉包含块注释部分的代码可以使用条件预处理命令</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">if</span> 0</span><br>  <span class="hljs-type">const</span> <span class="hljs-type">double</span> pi = <span class="hljs-number">3.1415926536</span>;   <span class="hljs-comment">/* pi是一个常量      */</span><br>  area = pi * r * r ;  <span class="hljs-comment">/* 计算面积     */</span><br><span class="hljs-meta">#<span class="hljs-keyword">endif</span></span><br></code></pre></td></tr></table></figure>
+
+<h3 id="1-2-链接属性"><a href="#1-2-链接属性" class="headerlink" title="1.2 链接属性"></a>1.2 链接属性</h3><p>除了作用域以外，标识符的链接属性非常重要，我们知道作用域是指限制变量在程序的一定区域才能够被访问，而链接属性是指源文件被编译之后得到的目标文件中出现的相同标识符代表的意义；</p>
+<p>连接属性可分为三种：</p>
+<ul>
+<li>external（外部）：external链接属性的标识符不论声明多少次、位于几个源文件中都表示同一个实体；</li>
+<li>internal（内部）：属于intemal链接属性的标识符在同一个源文件内的所有声明中都指同一个实体，但位于不同源文件的多个声明则分属不同的实体；</li>
+<li>none（无）：没有链接属性的标识符总是被当作单独的个体，即该标识符的多个声明会被当作多个独立不同的实体；</li>
+</ul>
+<p>标识符的作用域与其链接属性相关，但这两个属性并不相同；</p>
+<blockquote>
+<p>关键字extern和static用于在声明中修改标识符的链接属性；</p>
+</blockquote>
+<ul>
+<li><p>static使得external的标识符变为源文件私有，这可以防止被其他源文件调用；（static在不同的上下文中充当了不同的角色）</p>
+<ul>
+<li>当它用于函数定义时，或用于代码块之外的变量声明时，static关键字用于修改标识符的链接属性，从external 改为internal，但标识符的存储类型和作用域不受影响。用这种方式声明的函数或变量只能在声明它们的源文件中访问；</li>
+<li>当它用于代码块内部的变量声明时，static关键字用于修改变量的存储类型，从自动变量修改为静态变量，但变量的链接属性和作用域不受影响。用这种方式声明的变量在程序执行之前创建，并在程序的整个执行期间一直存在，而不是每次在代码块开始执行时创建，在代码块执行完毕后销毁；</li>
+</ul>
+</li>
+<li><p>extern使得该标识符可以在其他任何位置访问该实体；</p>
+</li>
+</ul>
+<h3 id="1-3-指针简介"><a href="#1-3-指针简介" class="headerlink" title="1.3 指针简介"></a>1.3 指针简介</h3><p>我们知道C语言中只有4种基本数据类型：</p>
+<ul>
+<li>整型</li>
+<li>浮点型</li>
+<li>指针</li>
+<li>聚合类型（数组、结构等）</li>
+</ul>
+<p>其他所有的类型都是从这4种基本类型的某种组合派生而来，下面我们将详细介绍指针；</p>
+<p>高级语言所提供的特性之一就是通过变量名而非地址来访问内存，注意变量名与内存之间的关联并不是硬件提供的，由编译器为我们实现，而硬件仍然通过地址访问内存；</p>
+<h4 id="1-3-1-NULL指针"><a href="#1-3-1-NULL指针" class="headerlink" title="1.3.1 NULL指针"></a>1.3.1 NULL指针</h4><p>NULL指针作为一个特殊的指针变量，表示不指向任何地址；</p>
+<p>因为NULL指针未指向任何地址，所以对NULL指针进行解引用(*)是违法的，只能对非NULL指针进行解引用操作；</p>
+<blockquote>
+<p>如果已经知道指针将被初始化执行什么地址，就将其初始化为该地址，否则可以将该指针初始化为NULL；</p>
+</blockquote>
+<h3 id="1-4-字符串变量"><a href="#1-4-字符串变量" class="headerlink" title="1.4 字符串变量"></a>1.4 字符串变量</h3><p>在C语言中，没有“字符串”这个数据类型，而是用字符数组来存放字符串，并提供了丰富的库函数来操作字符串。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">char</span> name[<span class="hljs-number">21</span>];   <span class="hljs-comment">// 定义一个可以存放20字符的字符串。</span><br></code></pre></td></tr></table></figure>
+
+<p>注意几个细节：</p>
+<p>1）如果要定义一个存放20个英文的字符串，数组的长度应该是20+1，因为字符串末位以空字符结束</p>
+<p>2）中文的汉字和标点符号需要两个字符（两个char存放一个中文）宽度来存放（GBK编码）。</p>
+<p>例如name[21]可以存放20个英文字符，或10个中文字符。</p>
+<p>3）字符串不是C语言的基本数据类型，不能用“&#x3D;”赋值，不能用“&gt;”和“&lt;”比较大小，不能用“+”拼接，不能用&#x3D;&#x3D;和!&#x3D;判断两个字符串是否相同，要用函数。</p>
+<p>4）字符串的初始化不建议采用把第一个元素的值置为0的方式（strname[0]&#x3D;0），这样会导致后面全都是垃圾值</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//字符串变量的初始化</span><br><span class="hljs-comment">//对字符串变量来说，初始化就是把内容清空，本质上也是赋0值。</span><br><span class="hljs-type">char</span> name[<span class="hljs-number">21</span>];  <span class="hljs-comment">// 定义一个可以存放20字符的字符串</span><br><span class="hljs-built_in">memset</span>(name,<span class="hljs-number">0</span>,<span class="hljs-keyword">sizeof</span>(name));   <span class="hljs-comment">// 清空字符串name中的内容 ！！不能用&quot;=0&quot;来初始化</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//字符串变量的赋值</span><br><span class="hljs-built_in">strcpy</span>(name,<span class="hljs-string">&quot;西施&quot;</span>);   <br><span class="hljs-comment">// 对字符串变量赋值&quot;西施&quot; ！！不能用&quot;=&quot;</span><br><span class="hljs-comment">// 本质上strcpy的参数应该是两个char类型的指针，但是因为字符串本身就是数组，而数组名就是指针</span><br><span class="hljs-comment">//所以可以直接写字符串的变量名或直接写字符串就行</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="1-5-C的输入和输出"><a href="#1-5-C的输入和输出" class="headerlink" title="1.5 C的输入和输出"></a>1.5 C的输入和输出</h3><p>在C语言中，有三个函数可以从键盘获得用户输入。</p>
+<ul>
+<li><code>getchar</code>：输入单个字符，保存到字符变量中。</li>
+<li><code>gets</code>：输入一行数据，保存到字符串变量中。</li>
+<li><code>scanf</code>：格式化输入函数，一次可以输入多个数据，保存到多个变量中。</li>
+</ul>
+<p>在C语言中，有三个函数可以把数据输出到屏幕。</p>
+<ul>
+<li><code>putchar</code>：输出单个字符。</li>
+<li><code>puts</code>：输出字符串。</li>
+<li><code>printf</code>：格式化输出函数，可输出常量、变量等。</li>
+</ul>
+<h4 id="1-5-1-printf输出"><a href="#1-5-1-printf输出" class="headerlink" title="1.5.1 printf输出"></a>1.5.1 printf输出</h4><ul>
+<li>函数格式</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//printf函数是格式化输出函数, 用于向屏幕输出数据</span><br> <span class="hljs-built_in">printf</span>(格式化字符串,参数列表);<br></code></pre></td></tr></table></figure>
+
+<p>输出描述性文字</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;我心匪席，不可卷也，我心匪石，不可转也。\n&quot;</span>);<br><span class="hljs-comment">//把输出的文字用双引号包含起来，文字中的\n表示换行，多个\n可以换多行。</span><br></code></pre></td></tr></table></figure>
+
+<p>输出整数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;我年龄是%d岁。\n&quot;</span>,<span class="hljs-number">18</span>);<br><br><span class="hljs-type">int</span> age=<span class="hljs-number">18</span>;<br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;我年龄是%d岁。\n&quot;</span>,age);<br><span class="hljs-comment">//输出整数型常量或变量用%d表示，在参数中列出待输出的整数常量或变量。</span><br></code></pre></td></tr></table></figure>
+
+<p>输出字符</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;我姓别是：%c。\n&quot;</span>,<span class="hljs-string">&#x27;x&#x27;</span>);        <span class="hljs-comment">// 姓别：x-男；y-女</span><br><br><span class="hljs-type">char</span> xb=<span class="hljs-string">&#x27;x&#x27;</span>;<br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;我姓别是：%c。\n&quot;</span>,xb);<br><span class="hljs-comment">//输出字符型常量或变量用%c表示，在参数中列出待输出的字符常量或变量</span><br></code></pre></td></tr></table></figure>
+
+<p>输出浮点数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;我体重是%lf公斤。\n&quot;</span>,<span class="hljs-number">62.5</span>);<br><br><span class="hljs-type">double</span> weight=<span class="hljs-number">62.5</span>;<br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;我体重是%lf公斤。\n&quot;</span>, weight);<br><span class="hljs-comment">//输出的浮点型常量或变量用%lf表示，在参数中列出待输出的浮点型常量或变量。</span><br></code></pre></td></tr></table></figure>
+
+<p>输出字符串</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;我的姓名是%s。\n&quot;</span>,<span class="hljs-string">&quot;西施&quot;</span>);<br><br><span class="hljs-type">char</span> name[<span class="hljs-number">21</span>];<br><span class="hljs-built_in">memset</span>(name,<span class="hljs-number">0</span>,<span class="hljs-keyword">sizeof</span>(name));<br><span class="hljs-built_in">strcpy</span>(name, <span class="hljs-string">&quot;西施&quot;</span>);<br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;我的姓名是%s。\n&quot;</span>,name);<br><span class="hljs-comment">//输出字符串常量或变量用%s表示，在参数中列出待输出的字符串常量或变量</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意，printf函数第一个参数（格式化字符串）的格式与后面的参数列表（常量或变量的列表）要一一对应，一个萝卜一个坑的填进去，不能多，不能少，顺序也不能错，否则会产生意外的结果。</p>
+</blockquote>
+<p>当然我们上面介绍的并不是全部的printf，如输出指针地址等，这些需要使用的时候自行Google即可；</p>
+<h4 id="1-5-2-scanf输入"><a href="#1-5-2-scanf输入" class="headerlink" title="1.5.2 scanf输入"></a>1.5.2 scanf输入</h4><ul>
+<li>格式</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">/*scanf函数是格式化输入函数，用于接受从键盘输入的数据，</span><br><span class="hljs-comment">用户输入数据完成后，按回车键（Enter）结束输入。*/</span><br> <span class="hljs-built_in">scanf</span>(格式化字符串,参数列表);<br><span class="hljs-comment">//不要在scanf的格式化字符串的最后加\n</span><br></code></pre></td></tr></table></figure>
+
+<p>输入整数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;age);     <span class="hljs-comment">// 在变量名前要加符号&amp;，先不要问原因，以后再介绍</span><br><span class="hljs-comment">//输入整数的格式用%d表示，在参数中列出整数型变量名，用于保存输入的数据</span><br></code></pre></td></tr></table></figure>
+
+<p>输入字符</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%c&quot;</span>,&amp;xb);     <span class="hljs-comment">// 在变量名前要加符号&amp;</span><br><span class="hljs-comment">//输入字符的格式用%c表示，在参数中列出字符型变量名，用于保存输入的数据</span><br></code></pre></td></tr></table></figure>
+
+<p>输入浮点数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%lf&quot;</span>,&amp;weight);     <span class="hljs-comment">// 在变量名前要加符号&amp;。</span><br><span class="hljs-comment">//输入浮点数的格式用%lf表示，在参数中列出浮点型变量名，用于保存输入的数据</span><br></code></pre></td></tr></table></figure>
+
+<p>输入字符串</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%s&quot;</span>,name);     <span class="hljs-comment">// 注意了，字符串变量名前可以不加符号&amp;，不要问原因，以后再介绍。</span><br><span class="hljs-comment">//输入字符串的格式用%s表示，在参数中列出字符串变量名，用于保存输入的数据</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意，scanf函数第一个参数（格式化字符串）的格式与后面的参数列表（变量的列表）要一一对应，一个萝卜一个坑的填进去，不能多，不能少，顺序也不能错，否则会产生意外的结果</p>
+</blockquote>
+<h2 id="2-变量"><a href="#2-变量" class="headerlink" title="2.变量"></a>2.变量</h2><h3 id="2-1-变量的作用域"><a href="#2-1-变量的作用域" class="headerlink" title="2.1 变量的作用域"></a>2.1 变量的作用域</h3><p>作用域是程序中定义的变量存在（或生效）的区域，超过该区域变量就不能被访问。C语言中有四种地方可以定义变量。</p>
+<p>1）在所有函数外部定义的是全局变量。</p>
+<p>2）在头文件中定义的是全局变量。</p>
+<p>3）在函数或语句块内部定义的是局部变量。</p>
+<p>4）函数的参数是该函数的局部变量。</p>
+<h4 id="2-1-1-全局变量"><a href="#2-1-1-全局变量" class="headerlink" title="2.1.1 全局变量"></a>2.1.1 全局变量</h4><p>全局变量是定义在函数外部，通常是在程序的顶部（其它地方也可以）。</p>
+<p>全局变量在整个程序生命周期内都是有效的，在定义位置之后的任意函数中都能访问。</p>
+<p>全局变量在主程序退出时由系统收回内存空间</p>
+<h4 id="2-1-2-局部变量"><a href="#2-1-2-局部变量" class="headerlink" title="2.1.2 局部变量"></a>2.1.2 局部变量</h4><p>在某个函数或语句块的内部声明的变量称为局部变量，它们只能在该函数或语句块内部的语句使用。</p>
+<p>局部变量在函数或语句块外部是不可用的。</p>
+<p>局部变量在函数返回或语句块结束时由系统收回内存空间。</p>
+<blockquote>
+<p>PS：局部变量和全局变量的名称可以相同，在某函数或语句块内部，如果局部变量名与全局变量名相同，就会屏蔽全局变量而使用局部变量。</p>
+</blockquote>
+<h3 id="2-2-数据类型"><a href="#2-2-数据类型" class="headerlink" title="2.2 数据类型"></a>2.2 数据类型</h3><p>C语言许多程序员使用 typedef 关键字来给数据类型定义一个别名，别名一般有两个特点：1）名称更短；2）更符合程序员的习惯。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> <span class="hljs-type">size_t</span>;<br><span class="hljs-type">size_t</span> ii; <span class="hljs-comment">//等同于 unsigned int ii;</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="2-2-1-整数"><a href="#2-2-1-整数" class="headerlink" title="2.2.1 整数"></a>2.2.1 整数</h4><p>C中的数字（整数只是数字的一部分而已）默认就是十进制的，表示一个十进制数字不需要任何特殊的格式。但是，表示一个二进制、八进制或者十六进制数字就不一样了，为了和十进制数字区分开来，必须采用某种特殊的写法，具体来说，就是在数字前面加上特定的字符，也就是加前缀</p>
+<ul>
+<li>二进制由 0 和 1 两个数字组成，书写时必须以0b或0B（不区分大小写）开头（并不是所有的编译器都支持二进制数字，只有一部分编译器支持，并且跟编译器的版本有关系）</li>
+</ul>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs maxima">int c = <span class="hljs-number">0B100001</span>;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>八进制由 0~7 八个数字组成，书写时必须以0开头（注意是数字 0，不是字母 o）（在C语言中，不要在十进制数前加0，会被计算机误认为是八进制数）</li>
+</ul>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf">int c <span class="hljs-operator">=</span> <span class="hljs-number">0177777</span><span class="hljs-comment">; </span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>十六进制由数字 0<del>9、字母 A</del>F 或 a~f（不区分大小写）组成，书写时必须以0x或0X（不区分大小写）开头</li>
+</ul>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf">int c <span class="hljs-operator">=</span> <span class="hljs-number">0</span>xffff<span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="2-2-2-字符"><a href="#2-2-2-字符" class="headerlink" title="2.2.2 字符"></a>2.2.2 字符</h4><p>字符就是整数，字符和整数没有本质的区别。可以给 char 变量一个字符，也可以给它一个整数；反过来，可以给 int 变量一个整数，也可以给它一个字符</p>
+<p>char 变量在内存中存储的是字符对应的 ASCII 码值。如果以 %c 输出，会根据 ASCII 码表转换成对应的字符，如果以 %d 输出，那么还是整数。int 变量在内存中存储的是整数本身，如果以 %c 输出时，也会根据 ASCII 码表转换成对应的字符。</p>
+<p>char类型占内存一个字节，signed char取值范围是-128-127，unsigned char取值范围是0-255。描述再准确一些，在char的取值范围内（0-255），字符和整数没有本质区别。</p>
+<p>字符肯定是整数，0-255范围内的整数是字符，大于255的整数不是字符。</p>
+<h4 id="2-2-3-字符串"><a href="#2-2-3-字符串" class="headerlink" title="2.2.3 字符串"></a>2.2.3 字符串</h4><blockquote>
+<p>字符串初始化</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"> <span class="hljs-built_in">memset</span>(strname,<span class="hljs-number">0</span>,<span class="hljs-keyword">sizeof</span>(strname));  <span class="hljs-comment">// 把全部的元素置为0</span><br><span class="hljs-comment">//不要使用strname[0]=0;初始化字符串</span><br><span class="hljs-comment">//不够规范，并且存有隐患，在实际开发中，一般采用memset的函数初始化字符串</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>字符串长度</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">size_t</span>  <span class="hljs-title function_">strlen</span><span class="hljs-params">( <span class="hljs-type">const</span> <span class="hljs-type">char</span>*  str)</span>;<br><span class="hljs-comment">/*</span><br><span class="hljs-comment">功能：计算字符串的有效长度，不包含0。</span><br><span class="hljs-comment">返回值：返回字符串的字符数 。</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">1.strlen 函数计算的是字符串的实际长度，遇到第一个0结束。</span><br><span class="hljs-comment">函数返回值一定是size_t类型，是无符号的整数，即typedef unsigned int size_t。</span><br><span class="hljs-comment">如果您只定义字符串没有初始化，求它的长度是没意义的，它会从首地址一直找下去，遇到0停止</span><br><span class="hljs-comment">2.sizeof返回的是变量所占的内存数，不是实际内容的长度</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>字符串赋值</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">char</span> *<span class="hljs-title function_">strcpy</span><span class="hljs-params">(<span class="hljs-type">char</span>* dest, <span class="hljs-type">const</span> <span class="hljs-type">char</span>* src)</span>;<br><span class="hljs-comment">/*</span><br><span class="hljs-comment">功 能: 将参数src字符串拷贝至参数dest所指的地址。</span><br><span class="hljs-comment">返回值: 返回参数dest的字符串起始地址。</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">1.复制完字符串后，在dest后追加0。</span><br><span class="hljs-comment">2.如果参数dest所指的内存空间不够大，可能会造成缓冲溢出的错误情况。</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">char</span> * <span class="hljs-title function_">strncpy</span><span class="hljs-params">(<span class="hljs-type">char</span>* dest,<span class="hljs-type">const</span> <span class="hljs-type">char</span>* src, <span class="hljs-type">const</span> <span class="hljs-type">size_t</span> n)</span>;<br><span class="hljs-comment">/*</span><br><span class="hljs-comment">功能：把src前n字符的内容复制到dest中</span><br><span class="hljs-comment">返回值：dest字符串起始地址。</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">1.如果src字符串长度小于n，则拷贝完字符串后，在dest后追加0，直到n个。</span><br><span class="hljs-comment">2.如果src的长度大于等于n，就截取src的前n个字符，不会在dest后追加。(注意并不是不追加结尾空字符)</span><br><span class="hljs-comment">3.dest必须有足够的空间放置n个字符，否则可能会造成缓冲溢出的错误情况。</span><br><span class="hljs-comment"></span><br><span class="hljs-comment"></span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>字符串拼接</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">char</span> *<span class="hljs-title function_">strcat</span><span class="hljs-params">(<span class="hljs-type">char</span>* dest,<span class="hljs-type">const</span> <span class="hljs-type">char</span>* src)</span>;<br><span class="hljs-comment">/*</span><br><span class="hljs-comment">功能：将src字符串拼接到dest所指的字符串尾部。</span><br><span class="hljs-comment">返回值：返回dest字符串起始地址。</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">1.dest最后原有的结尾字符0会被覆盖掉，并在连接后的字符串的尾部再增加一个0。</span><br><span class="hljs-comment">2.dest要有足够的空间来容纳要拼接的字符串，否则可能会造成缓冲溢出的错误情况。</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">char</span> *<span class="hljs-title function_">strncat</span> <span class="hljs-params">(<span class="hljs-type">char</span>* dest,<span class="hljs-type">const</span> <span class="hljs-type">char</span>* src, <span class="hljs-type">const</span> <span class="hljs-type">size_t</span> n)</span>;<br><span class="hljs-comment">/*</span><br><span class="hljs-comment">功能：将src字符串的前n个字符拼接到dest所指的字符串尾部。</span><br><span class="hljs-comment">返回值：返回dest字符串的起始地址。</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">1.如果n大于等于字符串src的长度，那么将src全部追加到dest的尾部，</span><br><span class="hljs-comment">如果n小于字符串src的长度，只追加src的前n个字符。</span><br><span class="hljs-comment">2.strncat会将dest字符串最后的0覆盖掉，字符追加完成后，再追加0。</span><br><span class="hljs-comment">dest要有足够的空间来容纳要拼接的字符串，否则可能会造成缓冲溢出的错误情况。</span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>字符串比较</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">strcmp</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">char</span> *str1, <span class="hljs-type">const</span> <span class="hljs-type">char</span> *str2 )</span>;<br><span class="hljs-comment">/*</span><br><span class="hljs-comment">功能：比较str1和str2的大小。</span><br><span class="hljs-comment">返回值：相等返回0，str1大于str2返回1，str1小于str2返回-1；</span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">strncmp</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">char</span> *str1,<span class="hljs-type">const</span> <span class="hljs-type">char</span> *str2 ,<span class="hljs-type">const</span> <span class="hljs-type">size_t</span> n)</span>;<br><span class="hljs-comment">/*</span><br><span class="hljs-comment">功能：比较str1和str2前n个字符的大小（判断前n个字符是否相等）。</span><br><span class="hljs-comment">返回值：相等返回0，str1大于str2返回1，str1小于str2返回-1；</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">1.两个字符串比较的方法是比较字符的ASCII码的大小，从两个字符串的第一个字符开始，如果分不出大小，</span><br><span class="hljs-comment">就比较第二个字符，如果全部的字符都分不出大小，就返回0，表示两个字符串相等。</span><br><span class="hljs-comment">2.在实际开发中，程序员一般只关心字符串是否相等，不关心哪个字符串更大或更小。</span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>字符查找</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">char</span> *<span class="hljs-title function_">strchr</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">char</span> *s,<span class="hljs-type">const</span> <span class="hljs-type">int</span> c)</span>;<br><span class="hljs-comment">/*</span><br><span class="hljs-comment">返回一个指向在字符串s中第一个出现c的位置，如果找不到，返回0。</span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">char</span> *<span class="hljs-title function_">strrchr</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">char</span> *s,<span class="hljs-type">const</span> <span class="hljs-type">int</span> c)</span>;<br><span class="hljs-comment">/*</span><br><span class="hljs-comment">返回一个指向在字符串s中最后一个出现c的位置，如果找不到，返回0。</span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">char</span> *<span class="hljs-title function_">strstr</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">char</span>* str,<span class="hljs-type">const</span> <span class="hljs-type">char</span>* substr)</span>;<br><span class="hljs-comment">/*</span><br><span class="hljs-comment">功能：检索子串在字符串中首次出现的位置。</span><br><span class="hljs-comment">返回值：返回字符串str中第一次出现子串substr的地址；如果没有检索到子串，则返回0。</span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="3-数组"><a href="#3-数组" class="headerlink" title="3.数组"></a>3.数组</h2><ul>
+<li>语法</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"> 数据类型 数组名[数组长度]; <span class="hljs-comment">// double money[20];</span><br><span class="hljs-comment">//数组（array）是一组数据类型相同的变量，可以存放一组数据</span><br></code></pre></td></tr></table></figure>
+
+<p>数组的初始化</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> no[<span class="hljs-number">10</span>];<br><span class="hljs-built_in">memset</span>(no,<span class="hljs-number">0</span>,<span class="hljs-keyword">sizeof</span>(no));<br><span class="hljs-comment">//第一个参数是数组名，第二个参数填0，第三个参数是数组占用的内存总空间，用sizeof(变量名)获取</span><br></code></pre></td></tr></table></figure>
+
+<p>字符串就是一个以空字符’\0’结束的字符数组，是一个特别的字符数组，这是约定也是规则。（空字符’\0’也可以直接写成0。）</p>
+<p><img src="/images/image-20221031161417249.png" srcset="/img/loading.gif" lazyload></p>
+<p>如果字符串不用0结束，会出现乱码，且每次执行程序的结果都随机不可知；如果字符串以0结束了，但是后面的内容并不是0，则后面的内容将被丢弃</p>
+<h2 id="4-函数"><a href="#4-函数" class="headerlink" title="4.函数"></a>4.函数</h2><p>C的函数主要分为自定义函数和库函数：</p>
+<blockquote>
+<p>自定义函数</p>
+</blockquote>
+<p>如果自定义函数只在调用者程序中使用，可以在调用者程序中声明和定义，声明一般为调用者程序的上部，定义一般在调用者程序的下部，这并不是C语言的规定，而是为了让程序更方便阅读，程序员约定的写法。</p>
+<p>如果自定义函数是一个通用的功能模块，可以在公共的头文件中声明，在公共的程序文件中定义。如果某程序需要调用公共的函数，在调用者程序中用#include指令包含公共的头文件，编译的时候把调用者程序和公共的程序文件一起编译。</p>
+<p><code>#include &lt;&gt;</code> 用于包含系统提供的头文件，编译的时候，gcc在系统的头文件目录中寻找头文件。</p>
+<p><code>#include &quot;&quot;</code> 用于包含程序员自定义的头文件，编译的时候，gcc先在当前目录中寻找头文件，如果找不到，再到系统的头文件目录中寻找。</p>
+<blockquote>
+<p>库函数</p>
+</blockquote>
+<p>C语言标准库函数的声明的头文件存放在&#x2F;usr&#x2F;include目录中</p>
+<h2 id="5-指针"><a href="#5-指针" class="headerlink" title="5.指针"></a>5.指针</h2><p>关于地址：</p>
+<ul>
+<li><p>不管是整型、浮点型、字符型，还是其他的数据类型的内存变量，它的地址都是一个十六进制数，可以理解为内存单元的编号</p>
+</li>
+<li><p>C语言采用运算符&amp;来获取变量的地址</p>
+</li>
+<li><p>在printf函数中，输出内存地址的格式控制符是%p，地址采用十六进制的数字显示</p>
+</li>
+</ul>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs lisp">printf(<span class="hljs-string">&quot;变量ii的地址是：%p\n&quot;</span>,<span class="hljs-symbol">&amp;ii</span>)<span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure>
+
+<p>关于指针：</p>
+<ul>
+<li>指针是一种特别变量，全称是指针变量，专用于存放其它变量在内存中的地址编号</li>
+<li>把指针指向具体的内存变量的地址，就是对指针赋值</li>
+<li>调用scanf函数的时候，需要在变量前面加符号&amp;，其实就是把变量的地址传给scanf函数，scanf函数根据传进去的地址直接操作内存，改变内存中的值</li>
+<li>指针也是一种内存变量，是内存变量就要占用内存空间，在C语言中，任何类型的指针占用8字节的内存</li>
+</ul>
+<p>数组&amp;指针：</p>
+<ul>
+<li>在C语言中，数组占用的内存空间是连续的，数组名是数组元素的首地址，也是数组的地址</li>
+<li>数组名、对数组取地址和数组元素的首地址是同一回事（都表示数组的地址，因此可以认为数组名就是一个指针）</li>
+<li>地址可以用加（+）和减（-）来运算，加1表示下一个存储单元的地址（不是数学意义上的加1），减1表示上一个存储单元的地址，一般情况下，地址的运算适用于数组，对单个变量的地址运算没有意义</li>
+<li>在C语言中，数组名是数组元素的首地址，字符串是字符数组，所以在获取字符串的地址的时候，不需要用&amp;取地址</li>
+</ul>
+<h2 id="6-结构体"><a href="#6-结构体" class="headerlink" title="6.结构体"></a>6.结构体</h2><blockquote>
+<p>结构体初始化</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-built_in">memset</span>(&amp;queen,<span class="hljs-number">0</span>,<span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> st_girl));<br><span class="hljs-comment">/*</span><br><span class="hljs-comment">功能：将queen所指向的内存块中的每个字节的内容都设置为第二个参数指定的ASCLL值，块的大小由第三个参数指定</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">1.采用memset函数初始化结构体，全部成员变量的值清零。</span><br><span class="hljs-comment">2.注意结构体变量名并不能与指针等价，只能使用&amp;取址</span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>结构体赋值</p>
+</blockquote>
+<p>在C语言中，结构体的成员如果是基本数据类型（int、char、double）可以用&#x3D;号赋值，如果是字符串，字符串不是基本数据类型，可以用strcpy函数赋值，如果要把结构体变量的值赋给另一个结构体变量，有两种方法：</p>
+<p>1）一种是把结构体变量成员的值逐个赋值给另一个结构体变量的成员，这种方法太笨，没人使用；</p>
+<p>2）另一种方法是内存拷贝，C语言提供了memcpy（memory copy的简写）实现内存拷贝功能</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> *<span class="hljs-title function_">memcpy</span><span class="hljs-params">(<span class="hljs-type">void</span> *dest, <span class="hljs-type">const</span> <span class="hljs-type">void</span> *src, <span class="hljs-type">size_t</span> n)</span>;<br><span class="hljs-comment">/*</span><br><span class="hljs-comment">@src: 源内存变量的起始地址。</span><br><span class="hljs-comment">@dest: 目的内存变量的起始地址。</span><br><span class="hljs-comment">@n: 需要复制内容的字节数。</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">函数返回指向dest的地址，函数的返回值意义不大，程序员一般不关心这个返回值。</span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>strcpy&amp;memcpy</p>
+</blockquote>
+<p>这两个函数从功能和实现原理上完本不同，甚至不应该放在一起比较</p>
+<p>1）复制的内容不同，strcpy只能复制字符串，而memcpy可以复制任意内容，例如字符数组、整型、结构体、类等。</p>
+<p>2）用途不同，通常在复制字符串时用strcpy，而需要复制其他类型数据时则一般用memcpy。</p>
+<p>3）复制的方法不同，strcpy不需要指定长度，它遇到被复制字符的串结尾符0才结束，memcpy则是根据其第3个参数决定复制的长度。</p>
+<h1 id="二、C语言进阶"><a href="#二、C语言进阶" class="headerlink" title="二、C语言进阶"></a>二、C语言进阶</h1><h2 id="1-文件操作"><a href="#1-文件操作" class="headerlink" title="1.文件操作"></a>1.文件操作</h2><p>对计算机来说，一切皆数据。数据的存放方式有很多种，如内存、文件、数据库等，文件是极其重要的一种</p>
+<p>根据文件中数据组织形式的不同，可以把文件分为文本文件和二进制文件，C语言源代码是文本文件，编译后的可执行程序是二进制文件</p>
+<h3 id="1-1-文本数据-amp-二进制数据"><a href="#1-1-文本数据-amp-二进制数据" class="headerlink" title="1.1 文本数据&amp;二进制数据"></a>1.1 文本数据&amp;二进制数据</h3><p>文本数据由字符串组成，存放了每个字符的 ASCII 码值(假如采用的是ASCLL编码的话)，每个字符占一个字节，每个字节存放一个字符；</p>
+<p><img src="/images/image-20221031162045277.png" srcset="/img/loading.gif" lazyload></p>
+<p>二进制数据是字节序列，数字123的二进制表示是01111011；</p>
+<p>例如数字 123，如果用文本格式存放，数据内容是’1’、’2’、’3’ 三个字符，占三个字节；如果用二进制格式形式存储，字符、短整型、短整型、长整型都可以存储123</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-number">01111011</span>；<span class="hljs-comment">//字符型一个字节</span><br><span class="hljs-number">00000000</span> <span class="hljs-number">01111011</span>；<span class="hljs-comment">//短整型2个字节</span><br><span class="hljs-number">00000000</span> <span class="hljs-number">00000000</span> <span class="hljs-number">00000000</span> <span class="hljs-number">01111011</span>；<span class="hljs-comment">//整型4个字节</span><br><span class="hljs-number">00000000</span> <span class="hljs-number">00000000</span> <span class="hljs-number">00000000</span> <span class="hljs-number">00000000</span> <span class="hljs-number">00000000</span> <span class="hljs-number">00000000</span> <span class="hljs-number">00000000</span> <span class="hljs-number">01111011</span>；<span class="hljs-comment">//长整型8个字节</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="1-2-文本文件-amp-二进制文件"><a href="#1-2-文本文件-amp-二进制文件" class="headerlink" title="1.2 文本文件&amp;二进制文件"></a>1.2 文本文件&amp;二进制文件</h3><p>按文本格式存放数据的文件称为文本文件或ASCII文件，文件可以用vi和记事本打开，看到的都是ASCII字符。</p>
+<p>按二进制格式存放数据的文件称为二进制文件，如果用vi打开二进制文件，看到的是乱码，没有意义。</p>
+<p>两者的区别：</p>
+<ul>
+<li><p>二进制文件中存储的数据是二进制数据即01串，文本文件中存储的数据是字符串</p>
+</li>
+<li><p>文本文件只能存储char型字符变量。二进制文件可以存储char&#x2F;int&#x2F;short&#x2F;long&#x2F;float&#x2F;……各种变量值</p>
+</li>
+<li><p>文本文件每条数据通常是固定长度的。以ASCII为例，每条数据(每个字符)都是1个字节。进制文件每条数据不固定。如short占两个字节，int占四个字节，float占8个字节</p>
+</li>
+<li><p>文本文件编辑器（记事本等文本编辑器内部自带解码工具）就可以读写。比如记事本、NotePad++、Vim等。二进制文件需要特别的解码器。比如bmp文件需要图像查看器，rmvb需要播放器</p>
+</li>
+<li><p>二进制文件是把内存中的数据按其在内存中的存储形式原样输出到磁盘上存放，也就是说存放的是数据的原形式，因此二进制文件的读写速度非常快，但是可读性差；文本文件是把数据的终端形式的二进制数据输出到磁盘上存放，也就是说存放的是数据的终端形式，文本文件会选择一种编码方式（ASLL或者Unicode），在读写时先将数据按照选择的编码方式转为对应的编码，再将这个编码写进文件中，故读写速度较慢但可读性好</p>
+</li>
+</ul>
+<h3 id="1-3-文件的打开和关闭"><a href="#1-3-文件的打开和关闭" class="headerlink" title="1.3 文件的打开和关闭"></a>1.3 文件的打开和关闭</h3><p>C 语言对文件进行操作之前必须先“打开”文件，操作（读和写）完成后，再“关闭”文件。</p>
+<blockquote>
+<p>文件指针</p>
+</blockquote>
+<p>操作文件的时候，C语言为文件分配一个信息区，该信息区包含文件描述信息、缓冲区位置、缓冲区大小、文件读写到的位置等基本信息，这些信息用一个结构体来存放（struct _IO_FILE），这个结构体有一个别名FILE（typedef struct _IO_FILE FILE），FILE结构体和对文件操作的库函数是在 stdio.h 头文件中声明的。</p>
+<p>FILE结构体指针习惯称为文件指针（结构体属于自定义数据类型，因此有结构体变量）</p>
+<p>打开文件的时候，fopen函数中会动态分配一个FILE结构体大小的内存空间，并把FILE结构体内存的地址作为函数的返回值，程序用FILE结构体指针存放这个地址。关闭文件的时候，fclose函数除了关闭文件，还会释放FILE结构体占用的内存空间。</p>
+<blockquote>
+<p>打开文件</p>
+</blockquote>
+<p>使用 C语言提供的库函数fopen来创建一个新的文件或者打开一个已存的文件，调用fopen函数成功后，返回一个文件指针（ FILE *）</p>
+<p>在Linux平台下，打开文本文件和二进制文件的方式没有区别</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c">FILE *<span class="hljs-title function_">fopen</span><span class="hljs-params">( <span class="hljs-type">const</span> <span class="hljs-type">char</span> * filename, <span class="hljs-type">const</span> <span class="hljs-type">char</span> * mode )</span>;<br><span class="hljs-comment">/*</span><br><span class="hljs-comment">@filename 是字符串，表示需要打开的文件名，可以包含目录名，如果不包含路径就表示程序运行的当前目录。</span><br><span class="hljs-comment">实际开发中，采用文件的全路径。</span><br><span class="hljs-comment">@mode也是字符串，表示打开文件的方式（模式），打开方式可以是下列值中的一个</span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="/images/image-20221031162339501.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>关闭文件</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">fclose</span><span class="hljs-params">(FILE *fp)</span>;<br><span class="hljs-comment">/*</span><br><span class="hljs-comment">@fp为fopen函数返回的文件指针</span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<p>1）调用fopen打开文件的时候，一定要判断返回值，如果文件不存在、或没有权限、或磁盘空间满了，都有可能造成打开文件失败。</p>
+<p>2）文件指针是调用fopen的时候，系统动态分配了内存空间，函数返回或程序退出之前，必须用fclose关闭文件指针，释放内存，否则后果严重。</p>
+<p>3）如果文件指针是空指针或野指针，用fclose关闭它相当于操作空指针或野指针，后果严重。</p>
+<h3 id="1-4-文件读写"><a href="#1-4-文件读写" class="headerlink" title="1.4 文件读写"></a>1.4 文件读写</h3><h4 id="1-4-1-文本文件的读写"><a href="#1-4-1-文本文件的读写" class="headerlink" title="1.4.1 文本文件的读写"></a>1.4.1 文本文件的读写</h4><blockquote>
+<p>向文件中写入数据</p>
+</blockquote>
+<p>使用fprintf函数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">fprintf</span><span class="hljs-params">(FILE *fp, 格式化字符串，参数列表)</span>;<span class="hljs-comment">//函数声明</span><br><br><span class="hljs-comment">/*</span><br><span class="hljs-comment">fprintf函数的用法与printf相同，只是多了第一个参数文件指针，表示把数据输出到文件。</span><br><span class="hljs-comment">程序员不必关心fprintf函数的返回值</span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">for</span> (ii=<span class="hljs-number">0</span>;ii&lt;<span class="hljs-number">3</span>;ii++) <span class="hljs-comment">// 往文件中写入3行</span><br>  &#123;<br>    <span class="hljs-built_in">fprintf</span>(fp,<span class="hljs-string">&quot;这是第%d个出场的超女。\n&quot;</span>,ii+<span class="hljs-number">1</span>);<br>  &#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>从文件中读取数据</p>
+</blockquote>
+<p>使用gets函数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">char</span> *<span class="hljs-title function_">fgets</span><span class="hljs-params">(<span class="hljs-type">char</span> *buf, <span class="hljs-type">int</span> size, FILE *fp)</span>;<br><span class="hljs-comment">/*</span><br><span class="hljs-comment">fgets的功能是从文件中读取一行。</span><br><span class="hljs-comment">@buf是一个字符串(缓冲区)，用于保存从文件中读到的数据。</span><br><span class="hljs-comment">@size是打算读取内容的长度。</span><br><span class="hljs-comment">@fp是待读取文件的文件指针。</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">1.如果文件中将要读取的这一行的内容的长度小于size，fgets函数就读取一行，</span><br><span class="hljs-comment">如果这一行的内容大于等于size，fgets函数就读取size-1字节的内容</span><br><span class="hljs-comment">（在读取到 size-1 个字符之前如果出现了换行，或者读到了文件末尾，则此次读取结束）</span><br><span class="hljs-comment">2.调用fgets函数如果成功的读取到内容，函数返回buf，如果读取错误或文件已结束，返回空，即0。</span><br><span class="hljs-comment">如果fgets返回空，可以认为是文件结束而不是发生了错误，因为发生错误的情况极少出现。</span><br><span class="hljs-comment">3.不管 size 的值多大，fgets函只读取一行数据，不能跨行。</span><br><span class="hljs-comment">在实际开发中，可以将 size 的值设置地足够大，确保每次都能读取到一行完整的数据。</span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// 逐行读取文件的内容，输出到屏幕</span><br>  <span class="hljs-keyword">while</span> (<span class="hljs-number">1</span>)<br>  &#123;<br>    <span class="hljs-built_in">memset</span>(strbuf,<span class="hljs-number">0</span>,<span class="hljs-keyword">sizeof</span>(strbuf));<br>    <span class="hljs-keyword">if</span> (fgets(strbuf,<span class="hljs-number">301</span>,fp)==<span class="hljs-number">0</span>) <span class="hljs-keyword">break</span>;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%s&quot;</span>,strbuf);<br>  &#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="1-4-2-二进制文件的读写"><a href="#1-4-2-二进制文件的读写" class="headerlink" title="1.4.2 二进制文件的读写"></a>1.4.2 二进制文件的读写</h4><p>二进制文件没有行的概念，没有字符串的概念。</p>
+<p>我们把内存中的数据结构直接写入二进制文件，读取的时候，也是从文件中读取数据结构的大小一块数据，直接保存到数据结构中。注意，这里所说的数据结构不只是结构体，是任意数据类型（当然我们最常用的还是结构体）。</p>
+<blockquote>
+<p>向文件中写入数据</p>
+</blockquote>
+<p>使用fwrite函数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">size_t</span> <span class="hljs-title function_">fwrite</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">void</span> *ptr, <span class="hljs-type">size_t</span> size, <span class="hljs-type">size_t</span> nmemb, FILE *stream)</span>;<br><span class="hljs-comment">/*</span><br><span class="hljs-comment">功能:fwrite函数用来向文件中写入数据块</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">@ptr：为内存区块的指针，存放了要写入的数据的地址，它可以是数组、变量、结构体等。</span><br><span class="hljs-comment">@size：固定填1。</span><br><span class="hljs-comment">@nmemb：表示打算写入数据的字节数。</span><br><span class="hljs-comment">@fp：表示文件指针。</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">函数的返回值是本次成功写入数据的字节数，一般情况下，程序员不必关心fwrite函数的返回值。</span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">st_girl</span></span><br><span class="hljs-class">&#123;</span><br>  <span class="hljs-type">char</span> name[<span class="hljs-number">50</span>];     <span class="hljs-comment">// 姓名</span><br>  <span class="hljs-type">int</span>  age;          <span class="hljs-comment">// 年龄</span><br>  <span class="hljs-type">int</span>  height;       <span class="hljs-comment">// 身高，单位：厘米cm</span><br>  <span class="hljs-type">char</span> sc[<span class="hljs-number">30</span>];       <span class="hljs-comment">// 身材，火辣；普通；飞机场。</span><br>  <span class="hljs-type">char</span> yz[<span class="hljs-number">30</span>];       <span class="hljs-comment">// 颜值，漂亮；一般；歪瓜裂枣。</span><br>&#125;;<span class="hljs-comment">//数据结构声明</span><br><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">st_girl</span> <span class="hljs-title">stgirl</span>;</span>  <span class="hljs-comment">// 定义超女数据结构变量</span><br>FILE *fp=<span class="hljs-number">0</span>;     <span class="hljs-comment">// 定义文件指针变量fp</span><br><br><span class="hljs-comment">//向数据结构变量中填入信息</span><br><span class="hljs-built_in">strcpy</span>(stgirl.name,<span class="hljs-string">&quot;西施&quot;</span>); <br>stgirl.age=<span class="hljs-number">18</span>; <br>stgirl.height=<span class="hljs-number">170</span>;<br><span class="hljs-built_in">strcpy</span>(stgirl.sc,<span class="hljs-string">&quot;火辣&quot;</span>); <br><span class="hljs-built_in">strcpy</span>(stgirl.yz,<span class="hljs-string">&quot;漂亮&quot;</span>);<br><br><span class="hljs-comment">//向文件中写入数据结构变量</span><br>fwrite(&amp;stgirl,<span class="hljs-number">1</span>,<span class="hljs-keyword">sizeof</span>(stgirl),fp);<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>从文件中读取数据</p>
+</blockquote>
+<p>使用fread函数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">size_t</span> <span class="hljs-title function_">fread</span><span class="hljs-params">(<span class="hljs-type">void</span> *ptr, <span class="hljs-type">size_t</span> size, <span class="hljs-type">size_t</span> nmemb, FILE *fp)</span>;<br><span class="hljs-comment">/*</span><br><span class="hljs-comment">@ptr：用于存放从文件中读取数据的变量地址，它可以是数组、变量、结构体等。</span><br><span class="hljs-comment">@size：固定填1。</span><br><span class="hljs-comment">@nmemb：表示打算读取的数据的字节数。</span><br><span class="hljs-comment">@fp：表示文件指针。</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">如果成功的读取到内容，函数返回读取到的内容的字节数，如果读取错误或文件已结束，返回空，即0。</span><br><span class="hljs-comment">如果fread返回空，可以认为是文件结束而不是发生了错误，因为发生错误的情况极少出现</span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">while</span> (<span class="hljs-number">1</span>)<br>  &#123;<br>    <span class="hljs-comment">// 从文件中读取数据，存入超女数据结构变量中</span><br>    <span class="hljs-keyword">if</span> (fread(&amp;stgirl,<span class="hljs-number">1</span>,<span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> st_girl),fp)==<span class="hljs-number">0</span>) <span class="hljs-keyword">break</span>;<br>    <span class="hljs-comment">// 显示超女数据结构变量的值</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;name=%s,age=%d,height=%d,sc=%s,yz=%s\n&quot;</span>,\<br>          stgirl.name,stgirl.age,stgirl.height,stgirl.sc,stgirl.yz);<br>  &#125;<br></code></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<ul>
+<li>fwrite和fread函数也可以写入和读取文本文件，但是没有换行的概念，不管是换行符或其它的特殊字符，无区别对待</li>
+<li>一般来说，二进制文件有约定的数据格式，程序必须按约定的格式写入&#x2F;读取数据，book115.c写入的是超女结构体，book117.c就要用超女结构体来存放读取到的数据（首先就需要定义相同的超女结构体）。这道理就像图片查看软件无法打开音频文件，音频播放软件也无法打开图片文件，因为音频文件和图片文件的格式不同</li>
+</ul>
+<h3 id="1-5-文件定位"><a href="#1-5-文件定位" class="headerlink" title="1.5 文件定位"></a>1.5 文件定位</h3><p>在文件内部有一个位置指针（注意不是文件指针），用来指向文件当前读写的位置。在文件打开时，如果打开方式是r和w，位置指针指向文件的第一个字节，如果打开方式是a，位置指针指向文件的尾部。每当从文件里读取n个字节或文件里写入n个字节后，位置指针也会向后移动n个字节。</p>
+<p>文件位置指针与C语言中的指针不是一回事。位置指针仅仅是一个标志，表示文件读写到的位置，不是变量的地址。文件每读写一次，位置指针就会移动一次，它不需要您在程序中定义和赋值，而是由系统自动设置，对程序员来说是隐藏的。</p>
+<p>在实际开发中，偶尔需要移动位置指针，实现对指定位置数据的读写。我们把移动位置指针称为文件定位。</p>
+<p>C语言提供了ftell、rewind和fseek三个库函数来实现文件定位功能。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">long</span> <span class="hljs-title function_">ftell</span><span class="hljs-params">(FILE *fp)</span>;<br><span class="hljs-comment">//ftell函数用来返回当前文件 位置指针 的值，这个值是当前位置相对于文件开始位置的字节数</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">rewind</span> <span class="hljs-params">( FILE *fp )</span>;<br><span class="hljs-comment">//rewind函数用来将位置指针移动到文件开头</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">fseek</span> <span class="hljs-params">( FILE *fp, <span class="hljs-type">long</span> offset, <span class="hljs-type">int</span> origin )</span>;<br><span class="hljs-comment">//fseek() 用来将位置指针移动到任意位置</span><br><span class="hljs-comment">/*</span><br><span class="hljs-comment">@fp 为文件指针，也就是被移动的文件。</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">@offset 为偏移量，也就是要移动的字节数。</span><br><span class="hljs-comment">之所以为 long 类型，是希望移动的范围更大，能处理的文件更大。</span><br><span class="hljs-comment">offset 为正时，向后移动；offset 为负时，向前移动。</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">@origin 为起始位置，也就是从何处开始计算偏移量。</span><br><span class="hljs-comment">C语言规定的起始位置有三种，分别为：0-文件开头；1-当前位置；2-文件末尾。</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="三、C工具"><a href="#三、C工具" class="headerlink" title="三、C工具"></a>三、C工具</h1><h2 id="1-编译器简介"><a href="#1-编译器简介" class="headerlink" title="1.编译器简介"></a>1.编译器简介</h2><p>C语言的代码对于CPU来说是无法识别的，CPU只能识别一些特定的二进制形式的指令，这时候就需要一个中间的工具用于将C语言代码转化为CPU能够识别的二进制指令（直观上来说就是将.c程序转换为.exe可执行文件），该工具我们称为<code>编译器</code>（实际上这个名称很容易引起混淆，实际上编译器只负责编译为汇编代码，汇编器接着将汇编代码转换为二进制指令，然而我们为了方便将编译器和汇编器常整合到一起称为编译器）；</p>
+<p>C语言的编译器有很多种，不同的平台下有不同的编译器，例如：</p>
+<ul>
+<li>Windows 下常用的是微软编译器（cl.exr），它被集成在 Visual Studio 或 Visual C++ 中，一般不单独使用；</li>
+<li>Linux 下常用的是 GUN 组织开发的GCC，很多 Linux 发行版都自带 GCC；</li>
+<li>Mac 下常用的是 LLVM&#x2F;Clang，它被集成在 Xcode 中（Xcode 以前集成的是 GCC，后来由于 GCC 的不配合才改为 LLVM&#x2F;Clang，LLVM&#x2F;Clang 的性能比 GCC 更加强大）。</li>
+</ul>
+<h2 id="2-集成开发环境"><a href="#2-集成开发环境" class="headerlink" title="2.集成开发环境"></a>2.集成开发环境</h2><p>当然除了编译器（GCC）是必须的工具外，在实际开发过程中我们还需要一些辅助工具如代码编辑器（notepad++、sublime text）、项目管理工具、调试器（GDB）等，这些工具被打包在一起发布被称为集成开发环境</p>
+<p>关于使用IDE创建项目的时候选择空项目还是控制台项目等可以参考<a target="_blank" rel="noopener" href="https://ask.csdn.net/questions/187683">(21条消息) Visual studio 中win32控制台应用程序和空项目有什么却别？-微软技术-CSDN问答</a>，最本质的区别就是除了空项目，其他类型的项目会自动配置一些必要的环境，空项目不包含任何默认的库，链接器等页都使用的默认值；</p>
+<p>下面是一些常用的C语言开发环境</p>
+<ol>
+<li><p>Windows下环境</p>
+<ul>
+<li><p>MinGW：MinGW 是一个在 Windows 平台下的 GCC（GNU Compiler Collection）环境，可以通过官网下载安装包并进行安装。安装完成后需要将 MinGW 的 bin 目录添加到系统环境变量 PATH 中，以便于在命令行中运行 gcc 和 g++ 命令。</p>
+</li>
+<li><p>Visual Studio：Visual Studio 是一个非常流行的开发环境，可以用于 C 语言的编写。需要下载安装 Visual Studio，并在安装时选择 C++ 的工作负载。安装完成后可以在 Visual Studio 中创建 C++ 项目进行编程。</p>
+</li>
+</ul>
+</li>
+<li><p>Linux下环境</p>
+<ul>
+<li>GCC：GCC 是一个开源的编译器，可以通过包管理器进行安装。在 Ubuntu 中，可以使用命令 sudo apt-get install build-essential 安装 GCC。安装完成后可以在命令行中使用 gcc 命令进行编译。</li>
+<li>Code::Blocks：Code::Blocks 是一个跨平台的开发环境，可以用于 C 语言的编写。可以通过包管理器进行安装，或者从官网下载安装包进行安装。安装完成后可以创建 C 语言项目并进行编程。</li>
+</ul>
+</li>
+</ol>
+<h2 id="3-GCC编译器"><a href="#3-GCC编译器" class="headerlink" title="3.GCC编译器"></a>3.GCC编译器</h2><p>GCC编译器是Linux系统下常用的C&#x2F;C++编译器，然而GCC又并不仅仅只是一个C语言编译器；</p>
+<p>早期GCC全称为GNU C Compile，也就是在GNU计划中诞生的C语言编译器，而随着不断的更新迭代，GCC已经能够编译C++、Go语言等，而GCC的全称也被解释为 GNU Compiler Collection（GNU 编译器套件）；</p>
+<p>GCC编译器通常以<code>gcc</code>命令的形式在Linux终端中使用，该命令带有多个可选项（当然你要使用Linux下的集成IDE来编译文件就不需要使用这些晦涩的终端命令）</p>
+<p>GCC编译器是由许多组件组成的，下载安装GCC一般会得到以下组件</p>
+<p><img src="/images/image-20220724161956889.png" srcset="/img/loading.gif" lazyload></p>
+<p>当然GCC工作离不开Linux系统中其他一些软件工具，这些软件工具与GCC协同工作完成编译；</p>
+<h3 id="3-1-gcc和g"><a href="#3-1-gcc和g" class="headerlink" title="3.1 gcc和g++"></a>3.1 gcc和g++</h3><p>之前我们在学习过程中也看到过这两个命令，并不是很清楚有什么区别，只是简单的认为gcc指令用于编译C语言，g++指令用于编译C++语言（然而实际上gcc指令也可以编译C++，g++指令也可以编译C语言）</p>
+<p>实际上，只要是 GCC 支持编译的程序代码，都可以使用 gcc 命令完成编译。可以这样理解，<code>gcc 是 GCC 编译器的通用编译指令</code>，根据程序文件的后缀名，gcc 指令可以自行判断出当前程序所用编程语言的类别（没有后缀名的文件使用-x选项手动指定文件类型即可）：</p>
+<p><img src="/images/image-20220724164859727.png" srcset="/img/loading.gif" lazyload></p>
+<p>如果使用 g++ 指令，则无论目标文件的后缀名是什么，该指令都<code>一律按照编译 C++ 代码的方式编译</code>该文件（因为C语言某些地方与C++不兼容，所以误用g++的话很容易导致编译报错）；</p>
+<p>并且C++的特性原因，它经常用到一些标准库中现有的函数或类对象，这意味着需要在编译完成后使用链接，然而仅仅使用<code>gcc</code>指令不会自动链接标准库文件（比如标准库中的iostream、string类对象就无法使用），实在要使用gcc命令则还需要手动加上<code>-lstdc++ -shared-libgcc</code> 选项（使用gcc编译C语言的时候对于一些简单的系统库不需要手动指定链接如studio.h）；</p>
+<h3 id="3-2-分步编译"><a href="#3-2-分步编译" class="headerlink" title="3.2 分步编译"></a>3.2 分步编译</h3><p>C语言由源代码生成可执行程序的过程如下：</p>
+<p>C源程序－&gt;编译预处理－&gt;编译－&gt;优化程序－&gt;汇编程序－&gt;链接程序－&gt;可执行文件；</p>
+<p>我们直接使用<code>gcc</code>指令会直接得到可执行文件，然而对于想要学习编译原理的人来说这显然不合适，所以需要用到分步编译，实现分步编译非常简单，只需要在gcc指令添加特定的指令选项即可</p>
+<p><img src="/images/image-20220724165331927.png" srcset="/img/loading.gif" lazyload></p>
+<p>无论是 C 还是 C++ 程序，其从源代码转变为可执行代码的过程，具体可分为 4 个过程，分别为预处理（Preprocessing）、编译（Compilation）、汇编（Assembly）和链接（Linking）</p>
+<h4 id="3-2-1-预处理"><a href="#3-2-1-预处理" class="headerlink" title="3.2.1 预处理"></a>3.2.1 预处理</h4><blockquote>
+<p>预处理操作，主要是处理那些源文件和头文件中以 # 开头的命令（比如 #include、#define、#ifdef 等），并删除程序中所有的注释 &#x2F;&#x2F; 和 &#x2F;* … *&#x2F;</p>
+</blockquote>
+<p>编译预处理阶段，读取C源程序，对其中的预处理指令（以#开头的指令如#include）和特殊符号进行处理。或者说是扫描源代码，对其进行初步的转换，产生新的源代码提供给编译器。编译预处理(简称预处理)过程先于编译器对源代码进行处理(即编译)，读入源代码，检查包含预处理指令的语句和宏定义，并对源代码进行转换。预处理过程还会删除程序中的注释和多余的空白字符</p>
+<p>在C语言的程序中包括各种以符号#开头的编译指令，这些指令称为预处理命令。预处理命令属于C语言编译器，而不是C语言的组成部分，通过预处理命令可扩展C语言程序设计的环境。预处理指令是以#号开头的代码行，#号必须是该行除了任何空白字符外的第一个字符。#后是指令关键字，在关键字和#号之间允许存在任意个数的空白字符，整行语句构成了一条预处理指令，该指令将在编译器进行编译之前对源代码做某些转换。</p>
+<p>预处理指令主要有以下三种：</p>
+<p>​	1）包含文件：将源文件中以#include格式包含的文件复制到编译的源文件中，可以是头文件，也可以是其它的程序文件。</p>
+<p>​	2）宏定义指令：#define指令定义一个宏，#undef指令删除一个宏定义。</p>
+<p>​	3）条件编译：根据#ifdef和#ifndef后面的条件决定需要编译的代码。</p>
+<p>默认情况下 gcc -E 指令只会将预处理操作的结果输出到屏幕上，并不会自动保存到某个文件。因此该指令往往会和 -o 选项连用，将结果导入到指令的文件中</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">gcc -E demo.c -o demo.i<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>Linux 系统中通常用 “.i” 作为 C 语言程序预处理后所得文件的后缀名；</li>
+</ul>
+<h5 id="1-包含文件"><a href="#1-包含文件" class="headerlink" title="(1)包含文件"></a>(1)包含文件</h5><p>当一个C语言程序由多个文件模块组成时，主模块中一般包含main函数和一些当前程序专用的函数。程序从main函数开始执行，在执行过程中，可调用当前文件中的函数，也可调用其他文件模块中的函数。</p>
+<p>如果在本模块中要调用其他文件模块中的函数，首先必须在主模块中声明该函数原型。一般都是采用文件包含的方法，包含其他文件模块的头文件（头文件中定义了函数原型）。</p>
+<p>文件包含中指定的文件名既可以用引号括起来，也可以用尖括号括起来</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&quot;&quot;</span></span><br></code></pre></td></tr></table></figure>
+
+<p>如果使用尖括号&lt;&gt;括起文件名，则编译程序将到C语言开发环境中设置好的 include文件中去找指定的文件（&#x2F;usr&#x2F;include）。因为C语言的标准头文件都存放在&#x2F;usr&#x2F;include文件夹中，所以一般对标准头文件采用尖括号；对程序员自己编写的文件，则使用双引号。</p>
+<p>如果自己编写的文件不是存放在当前工作文件夹，可以在#include命令后面加在文件路径。</p>
+<p>#include命令的作用是把指定的文件模块内容插入到#include所在的位置（并不是一定插入到文件首部），当程序编译时，系统会把所有#include指定的文件一起编译生成可执行代码。</p>
+<p>#include包含文件，可以是 “.h”,表示C语言程序的头文件，也可以是“.c”,表示包含普通C语言源程序。</p>
+<h5 id="2-宏定义指令"><a href="#2-宏定义指令" class="headerlink" title="(2)宏定义指令"></a>(2)宏定义指令</h5><p>使用#define命令并不是真正的定义符号常量，而是定义一个可以替换的宏。被定义为宏的标识符称为“宏名”。在编译预处理过程时，对程序中所有出现的“宏名”，都用宏定义中的字符串去代换，这称为“宏替换”或“宏展开”。</p>
+<p>在C语言中，宏分为有参数和无参数两种</p>
+<blockquote>
+<p>无参数的宏</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">define</span> 宏名  字符串</span><br><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> PI 3.141592<span class="hljs-comment">//实际使用</span></span><br><span class="hljs-comment">/*</span><br><span class="hljs-comment"># 表示这是一条预处理命令(凡是以“#”开始的均为预处理命令)。</span><br><span class="hljs-comment">define 关键字“define”为宏定义命令。</span><br><span class="hljs-comment">宏名 是一个标识符，必须符合C语言标识符的规定，一般以大写字母标识宏名。</span><br><span class="hljs-comment">字符串 可以是常数，表达式，格式串等。在前面使用的符号常量的定义就是一个无参数宏定义。</span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
+
+<p>无参数的宏注意：</p>
+<ul>
+<li>预处理命令语句后面一般不会添加分号，如果在#define最后有分号，在宏替换时分号也将替换到源代码中去。在宏名和字符串之间可以有任意个空格。</li>
+<li>宏定义是宏名来表示一个字符串，在宏展开时又以该字符串取代宏名。这只是一种简单的代换，字符串中可以含任何字符，可以是常数，也可以是表达式，编译预处理时不会对它进行语法检查，如有错误，只能在编译已被宏展开后的源程序时发现。</li>
+<li>宏定义允许嵌套，在宏定义的字符串中可以使用已经定义的宏名。在宏展开时由预处理程序层层替换。建议不要这么做，会把程序复杂化</li>
+<li>习惯上宏名用大写字母表示，以方便与变量区别。但也可以用小写字母</li>
+</ul>
+<blockquote>
+<p>带参数的宏</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">define</span> 宏名(形参表) 字符串</span><br><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> MAX(x,y) ((x)&gt;(y)?(x):(y))<span class="hljs-comment">//在执行预编译指令后得到的文件中可看到原文件中的MAX(34，59)变成了((34)&gt;(59)?(34):(59))</span></span><br><br><span class="hljs-comment">/*</span><br><span class="hljs-comment">#define命令定义宏时，还可以为宏设置参数。与函数中的参数类似，在宏定义中的参数为形式参数，</span><br><span class="hljs-comment">在宏调用中的参数称为实际参数。</span><br><span class="hljs-comment">对带参数的宏，在调用中，不仅要宏展开，还要用实参去代换形参</span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
+
+<p>带参数的宏注意：</p>
+<ul>
+<li>在定义带参数的宏时，宏名和形参表之间不能有空格出现，否则，就将宏定义成为无参数形式，而导致程序出错</li>
+</ul>
+<h5 id="3-条件编译"><a href="#3-条件编译" class="headerlink" title="(3)条件编译"></a>(3)条件编译</h5><ul>
+<li>#ifdef条件编译格式</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">ifdef</span> 标识符</span><br>  程序段 <span class="hljs-number">1</span><br><span class="hljs-meta">#<span class="hljs-keyword">else</span></span><br>  程序段 <span class="hljs-number">2</span><br><span class="hljs-meta">#<span class="hljs-keyword">endif</span></span><br><span class="hljs-comment">/*</span><br><span class="hljs-comment">1.其意义是，如果#ifdef后面的标识符已被定义过，则对“程序段1”进行编译；</span><br><span class="hljs-comment">如果没有定义标识符，则编译“程序段2”。</span><br><span class="hljs-comment">一般不使用#else及后面的“程序2”</span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">define</span> LINUX</span><br> <br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span><br>&#123;<br>  <span class="hljs-meta">#<span class="hljs-keyword">ifdef</span> LINUX</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;这是Linux操作系统。\n&quot;</span>);<br>  <span class="hljs-meta">#<span class="hljs-keyword">else</span></span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;未知的操作系统。\n&quot;</span>);<br>  <span class="hljs-meta">#<span class="hljs-keyword">endif</span></span><br>&#125;<br><br><span class="hljs-comment">//执行预编译指令后得到的新文件中内容如下</span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span><br>&#123;<br>  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;这是Linux操作系统。\n&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>#ifndef条件编译格式</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">ifndef</span> 标识符</span><br>  程序段 <span class="hljs-number">1</span><br><span class="hljs-meta">#<span class="hljs-keyword">else</span></span><br>  程序段 <span class="hljs-number">2</span> <br><span class="hljs-meta">#<span class="hljs-keyword">endif</span></span><br><span class="hljs-comment">/*      </span><br><span class="hljs-comment">#ifndef的意义与#ifdef相反</span><br><span class="hljs-comment">1.如果未定义标识符，则编译“程序段1”；否则编译“程序段2”</span><br><span class="hljs-comment">2.在实际开发中，程序员用#ifndef来防止头文件被重复包含</span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="3-2-2-编译"><a href="#3-2-2-编译" class="headerlink" title="3.2.2 编译"></a>3.2.2 编译</h4><blockquote>
+<p>编译，简单理解就是将预处理得到的程序代码，经过一系列的词法分析、语法分析、语义分析以及优化，加工为当前机器支持的汇编代码</p>
+</blockquote>
+<p>通过给 gcc 指令添加 -S（注意是大写）选项，即可令 GCC 编译器仅将指定文件加工至编译阶段，并生成对应的汇编代码文件，默认情况下，编译操作会自行新建一个文件名和指定文件相同、后缀名为 .s 的文件，并将编译的结果保存在该文件中</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">gcc -S demo.i<br></code></pre></td></tr></table></figure>
+
+<h4 id="3-2-3-汇编"><a href="#3-2-3-汇编" class="headerlink" title="3.2.3 汇编"></a>3.2.3 汇编</h4><blockquote>
+<p>汇编操作将汇编代码文件转换为目标文件（也就是二进制文件&#x2F;机器指令，但是没有经过链接所以无法直接运行）</p>
+</blockquote>
+<p>通过为 gcc 指令添加 -c 选项（注意是小写字母 c），即可让 GCC 编译器将指定文件加工至汇编阶段，并生成相应的目标文件（.o）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">gcc -c demo.s<br></code></pre></td></tr></table></figure>
+
+<h4 id="3-2-4-链接"><a href="#3-2-4-链接" class="headerlink" title="3.2.4 链接"></a>3.2.4 链接</h4><blockquote>
+<p>链接器把多个二进制的目标文件（object file）链接成一个单独的可执行文件。在链接过程中，它必须把符号（变量名、函数名等一些列标识符）用对应的数据的内存地址（变量地址、函数地址等）替代，以完成程序中多个模块的外部引用。链接器也必须将程序中所用到的所有C标准库函数加入其中。对于链接器而言，链接库不过是一个具有许多目标文件的集合，它们在一个文件中以方便处理。</p>
+</blockquote>
+<p>GCC 的<code>-l</code>选项（小写的 L）可以让我们<code>手动添加链接库</code>（GCC 会自动在标准库目录中搜索文件，例如 &#x2F;usr&#x2F;lib，如果想链接其它目录中的库，就得特别指明），这一步类似我们在IDE中添加库文件路径</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">gcc main.c -o main.out -lm<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-3-多文件编译"><a href="#3-3-多文件编译" class="headerlink" title="3.3 多文件编译"></a>3.3 多文件编译</h3><p>我们知道一个项目中不止一个源文件需要编译（头文件不用单独编译），为了处理这种需求我们可以参考<a target="_blank" rel="noopener" href="http://c.biancheng.net/view/7992.html">gcc指令一次处理多个文件 (biancheng.net)</a>（当然这种方式是最低效的，之后我们会介绍MakeFile来处理这种情况）</p>
+<h3 id="3-4-关于链接"><a href="#3-4-关于链接" class="headerlink" title="3.4 关于链接"></a>3.4 关于链接</h3><p>C&#x2F;C++的库文件用于程序的链接阶段，因而编译器在实现链接的时候采用<code>动态链接方式链接动态库</code>或<code>静态链接方式链接静态库</code>；</p>
+<p>有关来链接这部分其实挺复杂的，因为有些时候就算使用了g++指令有些库还是不能自动被添加进来（某些标准库、非标准库或者自定义的库、第三方库），而使用gcc指令就更需要手动指定需要链接的库文件是什么，在确定链接的库文件之后还要区分是采用动态链接还是静态链接，这些都是链接过程中的难题；</p>
+<ul>
+<li>对C语言，编译的时候 gcc 只会默认链接一些基本的C语言标准库，很多源文件依赖的标准库都需要手动链接；</li>
+</ul>
+<h4 id="3-4-1-静态库"><a href="#3-4-1-静态库" class="headerlink" title="3.4.1 静态库"></a>3.4.1 静态库</h4><blockquote>
+<p>先声明一点，这上面和之后讲的内容虽然是基于Linux系统下的，但是同样适用于Windows，之所以我们在Windows下没这些概念就是因为IDE用多了把人给用傻了；</p>
+</blockquote>
+<p>静态链接库实现链接操作的方式很简单，即程序文件中哪里用到了库文件中的功能模块，GCC 编译器就会将该模板代码<code>直接复制</code>到程序文件的适当位置，最终生成可执行文件：</p>
+<ul>
+<li>优势是生成的可执行文件不再需要任何静态库文件的支持就可以独立运行（可移植性强）；</li>
+<li>劣势是如果程序文件中多次调用库中的同一功能模块，则该模块代码势必就会被复制多次，生成的可执行文件中会包含多段完全相同的代码，造成代码的冗余；</li>
+</ul>
+<blockquote>
+<p>Linux 发行版系统中，静态链接库文件的后缀名通常用 .a 表示；在 Windows 系统中，静态链接库文件的后缀名为 .lib</p>
+</blockquote>
+<h4 id="3-4-2-动态库"><a href="#3-4-2-动态库" class="headerlink" title="3.4.2 动态库"></a>3.4.2 动态库</h4><p>动态链接库（Windows），又称为共享链接库（Linux），和静态链接库不同，采用动态链接库实现链接操作时，程序文件中哪里需要库文件的功能模块，GCC 编译器不会直接将该功能模块的代码拷贝到文件中，而是将<code>功能模块的位置信息</code>记录到文件中，直接生成可执行文件。显然，这样生成的可执行文件是无法独立运行的。采用动态链接库生成的可执行文件运行时，GCC 编译器会将对应的动态链接库一同加载在内存中，由于可执行文件中事先记录了所需功能模块的位置信息，所以在现有动态链接库的支持下，也可以成功运行：</p>
+<ul>
+<li>优势是由于可执行文件中记录的是功能模块的地址，真正的实现代码会在程序运行时被载入内存，这意味着，即便功能模块被调用多次，使用的都是同一份实现代码（这也是将动态链接库称为共享链接库的原因）；</li>
+<li>劣势是此方式生成的可执行文件无法独立运行，必须借助相应的库文件（可移植性差）；</li>
+</ul>
+<blockquote>
+<p>Linux 发行版系统中，动态链接库的后缀名通常用 .so 表示；在 Windows 系统中，动态链接库的后缀名为 .dll</p>
+</blockquote>
+<p>总结：GCC 编译器生成可执行文件时（自动链接），默认情况下会优先使用动态链接库实现链接操作，除非当前系统环境中没有程序文件所需要的动态链接库，GCC 编译器才会选择相应的静态链接库</p>
+<h2 id="4-MakeFile"><a href="#4-MakeFile" class="headerlink" title="4.MakeFile"></a>4.MakeFile</h2><p>Makefile 文件描述了 Linux 系统下 C&#x2F;C++ 工程的编译规则，它用来<code>自动化编译 C/C++ 项目</code>。Makefile 文件定义了一系列规则，指明了源文件的编译顺序、依赖关系、是否需要重新编译等</p>
+<p>，一旦写编写好 Makefile 文件，只需要一个 make 命令，整个工程就开始自动编译，不再需要手动执行 GCC 命令；</p>
+<ul>
+<li>MakeFile可以简化链接操作，把要链接的库文件放在 Makefile 中，制定相应的规则和对应的链接顺序，只需要执行 make 命令，工程就会自动编译省略参数选项和命令；</li>
+<li>MakeFile可以支持多线程并发操作，会极大的缩短编译时间，并且当修改了源文件之后，编译整个工程的时候，make 命令只会编译修改过的文件，没有修改的文件不用重新编译；</li>
+</ul>
+<h3 id="4-1-书写规则"><a href="#4-1-书写规则" class="headerlink" title="4.1 书写规则"></a>4.1 书写规则</h3><p>MakeFile描述文件编译的规则，主要由两部分组成：</p>
+<ul>
+<li>依赖的关系</li>
+<li>执行的命令</li>
+</ul>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs makefile">targets : prerequisites<br>    command				<br><span class="hljs-comment">#@target 			规则的目标，可以是 Object File（一般称它为中间文件），也可以是可执行文件，还可以是一个标签；</span><br><span class="hljs-comment">#@prerequisites 		 依赖文件，要生成 targets 需要的文件或者是目标。可以是多个，也可以没有</span><br><span class="hljs-comment">#@make 				需要执行的命令（任意的 shell 命令）。可以有多条命令，每一条命令占一行。</span><br></code></pre></td></tr></table></figure>
+
+<p>具体实例可以查看<a target="_blank" rel="noopener" href="http://c.biancheng.net/view/7113.html">Makefile文件中包含哪些规则？ (biancheng.net)</a></p>
+<h3 id="4-2-使用MakeFile"><a href="#4-2-使用MakeFile" class="headerlink" title="4.2 使用MakeFile"></a>4.2 使用MakeFile</h3><p>编写好MakeFile文件后在shell中执行make命令，当然执行make命令也可以加上一些参数保证程序的正常执行<a target="_blank" rel="noopener" href="http://c.biancheng.net/view/7126.html">make命令参数和选项大汇总 (biancheng.net)</a>；</p>
+<blockquote>
+<p>Linux下没有后缀名这一说，实在要有后缀名也是makefile.linux、hello.tar（Linux中，带有扩展名的文件只能代表程序的关联，没什么意义），后缀名是给Windows用的；</p>
+<p>windows系统通常是用后缀名来区分不同类型的文件的，而linux文件后缀名无关要紧，linux通过文件内的属性来区分文件；</p>
+</blockquote>
+<h3 id="4-3-工作流程"><a href="#4-3-工作流程" class="headerlink" title="4.3 工作流程"></a>4.3 工作流程</h3><p>参考<a target="_blank" rel="noopener" href="http://c.biancheng.net/view/7091.html">Makefile的工作流程 (biancheng.net)</a></p>
+<h2 id="5-CMake工具"><a href="#5-CMake工具" class="headerlink" title="5.CMake工具"></a>5.CMake工具</h2><p>CMake介绍文档：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Torres_10/article/details/80371425">CMake是什么？有什么用？_cmake是干什么的_AndrewZhou924的博客-CSDN博客</a>；</p>
+<p>CMake下载和cl.exe都借助Build Tools完成，不要单独安装两个不同渠道的，容易导致出现问题；</p>
+<hr>
+<ul>
+<li>CMake是一个跨平台的编译(Build)工具，可以用简单的语句来描述所有平台的编译过程；</li>
+<li>Makefile可以看作是整个工程的编译规则，定义了一系列的规则来指定，哪些文件需要先编译，哪些文件需要后编译，哪些文件需要重新编译，甚至于进行更复杂的功能操作（详细介绍参考：[Makefile文件](# 4.MakeFile)。现代的 IDE 提供了更高级别的构建功能，使开发者能够更方便地管理项目的构建过程，而无需手动编写 Makefile<ul>
+<li>在某些特定的项目中，使用非常定制的构建过程或依赖管理系统时，手动编写 Makefile 可能更灵活和可控；</li>
+<li>一些开发者可能更喜欢手动管理构建过程，以便更好地了解和掌控项目的构建细节；</li>
+</ul>
+</li>
+<li>make是一个命令工具，是一个解释makefile中指令的命令工具，一般来说，大多数的IDE都有这个命令；</li>
+</ul>
+<p>举个实际的例子帮助理解为什么需要CMake。假如我们有一个深度学习框架的部分工程列表，里面有超过40个互相调用的工程共同组成，一些用于生成库文件，一些用于实现逻辑功能。他们之间的调用关系复杂而严格，如果需要在这样复杂的框架下进行二次开发，显然只拥有源码是远远不够的，还需要清楚的明白这几十个项目之间的复杂关系，在没有原作者的帮助下进行这项工作几乎是不可能的。即使是原作者给出了相关的结构文档，对新手来说建立工程的过程依旧是漫长而艰辛的，因此CMake的作用就凸显出来了。原作者只需要生成一份CMakeLists.txt文档，框架的使用者们只需要在下载源码的同时下载作者提供的CMakeLists.txt，就可以利用CMake，在“原作者的帮助下”进行工程的搭建（python在调用的时候才编译，不需要任何makefile）</p>
+<p>Cmake是用来makefile的一个工具：读入所有源文件之后，自动生成makefile。</p>
+<p><img src="/images/image-20230627193826938.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="5-1-CMake配置"><a href="#5-1-CMake配置" class="headerlink" title="5.1 CMake配置"></a>5.1 CMake配置</h3><p>Cmake没办法离开C编译器独立使用，而C&#x2F;C++编译器主要分为两个流派（在Windows系统上）：</p>
+<ul>
+<li><code>gcc</code>（GNU Compiler Collection）是开源的编译器工具集，由 GNU 项目开发和维护。它主要用于编译和构建 C、C++、Objective-C 和其他语言的源代码。<code>gcc</code> 是一个跨平台的编译器，可以在多个操作系统上使用，包括 Linux、macOS 和 Windows。在 Linux 和 macOS 上，<code>gcc</code> 通常是默认的 C&#x2F;C++ 编译器（安装Codeblocks的过程中会顺便安装MinGW，该软件包中会包含GCC编译器）</li>
+<li><code>cl</code>（Microsoft C&#x2F;C++ Compiler）是 Microsoft Visual C++ 编译器，属于 Microsoft Visual Studio 的一部分。它是一个专为 Windows 平台开发的编译器工具链。<code>cl</code> 提供了对 Windows 平台特定功能和扩展的支持，并与 Visual Studio 的开发工具和环境集成（一般安装Visual Studio的同时就默认安装了cl.exe编译器，如果想要单独下载安装cl.exe也是可以的。Microsoft 提供了一个称为<a target="_blank" rel="noopener" href="https://visualstudio.microsoft.com/zh-hans/visual-cpp-build-tools/">Build Tools for Visual Studio</a>的独立安装程序，它包含了编译器、链接器和其他构建工具，可以让你在没有完整 Visual Studio 的情况下进行 C++ 编译）</li>
+</ul>
+<p>尽管这两个编译器都可以构建C和C++代码，但对于Cmake来说，它只会使用CMakeLists.txt指定的编译器而非本地拥有的编译器；</p>
+<p>分别安装GCC编译器和cl.exe，其中gcc被包含在codeblocks下载的MinGW文件夹中。因为不想重新安装VS，所以这里参考Visual C++独立版安装：<a target="_blank" rel="noopener" href="https://blog.csdn.net/cnds123/article/details/122045854">Microsoft C++ 生成&#x2F;构建工具（Build Tools）</a>，通过VS Installer（vs_BuildTools.exe安装在D盘下便于寻找）安装Build_Tools（D盘的空间不够了暂时安装在C盘）。安装完成后如下（其实我感觉还是把VS下载下来了…）</p>
+<p><img src="/images/image-20230627213331343.png" srcset="/img/loading.gif" lazyload></p>
+<p>下面分别配置gcc和cl.exe的路径为环境变量并分别验证是否配置成功（因为cl.exe可能会经常改变，所以一般不固定设置为环境变量）</p>
+<p><img src="/images/image-20230627220419488.png" srcset="/img/loading.gif" lazyload></p>
+<p>在Developer Command Prompt for VS 2022中(管理员权限)使用如下命令进行cmake操作</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf">cmake -DCMAKE_C_COMPILER<span class="hljs-operator">=</span><span class="hljs-string">&quot;C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.36.32532/bin/Hostx64/x64/cl.exe&quot;</span> ..<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%87%AA%E5%AD%A6%E8%AF%BE%E7%A8%8B/" class="category-chain-item">自学课程</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/">#后端开发</a>
+      
+        <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">#编程语言</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>C语言</div>
+      <div>https://gintoki-jpg.github.io/2022/06/27/后端_C/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>杨再俨</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年6月27日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/06/27/%E5%90%8E%E7%AB%AF_CPP%E5%88%9D%E7%BA%A7/" title="CPP初级">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">CPP初级</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/06/27/%E5%B7%A5%E5%85%B7_Git/" title="Git">
+                        <span class="hidden-mobile">Git</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+</div>
+
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

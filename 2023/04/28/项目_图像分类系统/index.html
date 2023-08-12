@@ -1,0 +1,909 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/logo.png">
+  <link rel="icon" href="/img/bg/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="杨再俨">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="机器视觉课程实践；">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初级项目_图像分类">
+<meta property="og:url" content="https://gintoki-jpg.github.io/2023/04/28/%E9%A1%B9%E7%9B%AE_%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:site_name" content="Tintoki_blog">
+<meta property="og:description" content="机器视觉课程实践；">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/project.png">
+<meta property="article:published_time" content="2023-04-28T02:38:00.000Z">
+<meta property="article:modified_time" content="2023-05-06T08:38:42.325Z">
+<meta property="article:author" content="YangZaiyan">
+<meta property="article:tag" content="机器视觉技术">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gintoki-jpg.github.io/img/bg/project.png">
+  
+  
+  
+  <title>初级项目_图像分类 - Tintoki_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"gintoki-jpg.github.io","root":"/","version":"1.9.1","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tintoki_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/bg1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">初级项目_图像分类</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-04-28 10:38" pubdate>
+          2023年4月28日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          19k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          156 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">初级项目_图像分类</h1>
+            
+            <div class="markdown-body">
+              
+              <p>任务：编写一个图像分类系统，能够对输入图像进行类别预测。具体的说，利用数据库的2250张训练样本进行训练；对测试集中的2235张样本进行预测。</p>
+<p>数据库说明：scene_categories数据集包含15个类别（文件夹名就是类别名），每个类中编号前150号的样本作为训练样本，15个类一共2250张训练样本；剩下的样本构成测试集合。</p>
+<p>设计文档撰写说明：介绍算法整体流程，各个函数的功能说明，函数的输入参数说明，给出最终的混淆矩阵，分析实验中各个环节和各个参数对最终性能的影响。</p>
+<hr>
+<p>参考链接（Google搜索“词袋模型+SVM图像分类”）：</p>
+<ul>
+<li><p>概述：<a target="_blank" rel="noopener" href="https://blog.csdn.net/baidu_28563321/article/details/46348439">(6条消息) 计算机视觉课程作业 基于词袋模型的图像分类算法_蒋_X_X的博客-CSDN博客</a>；</p>
+</li>
+<li><p>算法：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43902773/article/details/117414196">(6条消息) 利用词袋模型和SVM进行图片分类 实验报告_svm图像分类开题报告_回锅肉炒肉的博客-CSDN博客</a>（这个参考的人肯定很多，容易被查重）；</li>
+</ul>
+</li>
+<li><p>流程：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/XWgWbBK4l8SkFPbd_o27Cg">【图像处理】图像分类 (qq.com)</a>；</li>
+<li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1165870">使用OpenCV与sklearn实现基于词袋模型(Bag of Word)的图像分类预测与搜索 - 腾讯云开发者社区-腾讯云 (tencent.com)</a>；</li>
+<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/iuIYsGS0V1ikQsQ7a4RMog">实战案例——利用SVM完成简单的图片分类任务 (qq.com)</a>；</li>
+</ul>
+</li>
+<li><p>调参：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_39571749/article/details/111534937">(8条消息) sklearn svm 调参_sklearn中的SVM_weixin_39571749的博客-CSDN博客</a>；</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>2023&#x2F;4&#x2F;28 11:20 能找到的参考非常少，先暂时看这个参考，理解之后再找别的也来得及；</p>
+<p>2023&#x2F;4&#x2F;28 21:17 这个代码重要的部分基本都缺失了，但是行文结构以及后面的混淆矩阵可视化等可以借鉴参考，还是需要找一个可以正常运行的代码；</p>
+<p>2023&#x2F;4&#x2F;28 21:58 有没有想过一个问题就是为什么你找不到代码？一方面是检索有问题，还有一方面就是你根本就没做好功课所以做不来是很正常的一件事，可以先看视频把基础打牢（至少知道流程）之后再完成代码；</p>
+<p>2023&#x2F;4&#x2F;29 20:17 经过调试现在代码已经能够运行了，接下来需要代码部分做的就是<code>将调用的库函数变成手动实现、使用网格搜索、K折交叉验证等进行超参寻优</code>，然后把报告写了就行，参考的文档就是“概述”和“算法”；</p>
+<p>2023&#x2F;5&#x2F;6 0:13 今天完成了对于代码的创新部分，也就是自定义了一些函数，现在还剩下最后的调整参数，当作第三部分即可；</p>
+<hr>
+<h1 id="一、实验背景"><a href="#一、实验背景" class="headerlink" title="一、实验背景"></a>一、实验背景</h1><h2 id="1-分类概述"><a href="#1-分类概述" class="headerlink" title="1.分类概述"></a>1.分类概述</h2><p>随着计算机与互联网技术以及数字图像获取技术的快速发展,海量的数字图像出现在互联网上及人们周边的生活中。依靠传统的人工方式对图像进行分类、组织和管理非常耗时耗力，所以希望能够通过计算机对图像中的目标内容进行自动地分析处理，从而将图像数据快速、规范、自动地进行组织、归类和管理。</p>
+<p>早期的图像分类主要依赖于文本特征，采用人工方式为图像标注文本，使用的是基于文本的图像分类模式。由于图像标注需要人为地辨识并为其选定关键字，故其分类的效果不是非常理想，且耗时严重。随着计算机技术和数字化图像技术的发展，图像库的规模越来越大，人工标注的方式对图像进行分类已不可能，人们开始逐渐将研究的重点转移到基于图像内容分析的自动分类研究上。</p>
+<p>基于内容的图像分类技术不需要进行人工标注的语义信息，而是直接对图像所包含的信息进行处理和分析，利用图像底层视觉特征来进行图像分类。图像分类技术研究是一个集中了机器学习、模式识别、计算机视觉和图像处理等多个研究领域的交叉研究方向。</p>
+<p>图像分类任务的常用方法包括：</p>
+<ul>
+<li><p>传统机器学习方法：如分类器、决策树、随机森林等。</p>
+<ul>
+<li><p>逻辑回归：用于二分类问题，可以使用sigmoid等激活函数进行参数学习。</p>
+</li>
+<li><p>支持向量机：用于多分类问题，需要正则化，并可以使用核等技巧进行超参数优化。</p>
+</li>
+</ul>
+</li>
+<li><p>深度学习模型：其中最常用的是卷积神经网络，如卷积神经网络（CNN）、循环神经网络（RNN）等。</p>
+</li>
+</ul>
+<p>本次实验要求使用支持向量机对图像进行分类，下面是使用支持向量机实现图像分类的一般步骤：</p>
+<ol>
+<li>数据预处理：将图像转换为二维数组，并对每个像素进行标准化处理，以消除像素之间的尺度差异。</li>
+<li>构建SVM分类器：使用支持向量机算法构建SVM分类器，通常使用径向基函数（RBF）或多项式核（Polynomial Kernel）等核函数。</li>
+<li>训练SVM分类器：使用训练数据训练SVM分类器，通常使用交叉验证等方法进行模型选择和参数优化。</li>
+<li>使用SVM分类器进行预测：使用训练好的SVM分类器对新的图像进行分类预测。</li>
+</ol>
+<p>图像分类常用的是深度学习的模型（毕竟诸如CNN这种能够自动提取图像的局部特征）。但是，这并不妨碍SVM是一个优秀的算法，大量的实践都证明它对于小批量数据集的分类、预测都能够得到较好的效果。</p>
+<h2 id="2-任务描述"><a href="#2-任务描述" class="headerlink" title="2.任务描述"></a>2.任务描述</h2><p>我们手里的scene_categories数据集包含15个类别（文件夹名就是类别名），每个类中编号前150号的样本作为训练样本，则15个类一共2250张训练样本，剩下的样本构成测试集合。</p>
+<p>图片文件的组织方式为：15-Scene文件夹作为根目录，文件夹下包括15个类别的文件夹，每个文件夹下面用于存储具体的照片文件。</p>
+<p>主目录(15-Scene)</p>
+<p><img src="/images/image-20230429203058841.png" srcset="/img/loading.gif" lazyload></p>
+<p>子目录（14）</p>
+<p><img src="/images/image-20230429203133941.png" srcset="/img/loading.gif" lazyload></p>
+<p>实验的目的是，利用SVM训练一个分类器，当我们输入一张图片时，返回图片的所属类别（本次实验中图像的类别就是其子目录的文件名，从00一直到14共15个类别）。</p>
+<p>要实现基于词袋模型的图像分类，大致分为如下四步：</p>
+<ol>
+<li>特征提取与描述子生成：一般选择SIFT特征提取器，SIFT特征具有放缩、旋转、光照不变性，同时兼有对几何畸变，图像几何变形的一定程度的鲁棒性；</li>
+<li>词袋生成：词袋生成基于描述子数据的基础上，生成一系列的向量数据，最常见就是首先通过K-Means实现对描述子数据的聚类分析，一般会分成K个聚类、得到每个聚类的中心数据，就生成了K单词，根据每个描述子到这些聚类中心的距离，决定了它属于哪个聚类，这样就生成了图像的直方图表示数据。</li>
+<li>SVM分类训练与模型生成：使用SVM进行数据的分类训练，得到输出模型；</li>
+<li>模型使用预测：加载预训练好的模型，使用模型在测试集上进行数据分类预测；</li>
+</ol>
+<p><img src="/images/image-20230429205605411.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="3-词袋模型"><a href="#3-词袋模型" class="headerlink" title="3.词袋模型"></a>3.词袋模型</h2><p>词袋模型BoW在NL和CV领域都有提到，这里我们主要介绍词袋模型在CV领域的使用即BoVW。</p>
+<p>词袋模型最初用于文本分类中，然后逐步引入到了图像分类任务中。在文本分类中，文本被视为一些不考虑先后顺序的单词集合。而在图像分类中，图像被视为是一些与位置无关的<code>局部区域</code>的集合（一袋拼图），因此这些图像中的局部区域就等同于文本中的单词。在不同的图像中，局部区域的分布是不同的（一袋“马”的拼图肯定和一袋“牛”的拼图不同）。因此，可以利用提取的局部区域的分布对图像进行识别。</p>
+<blockquote>
+<p>注意这里的“局部区域”，一般指的是具有代表性的图像区域，也就是图像特征，一般使用SIFT提取器提取（当然直接将图像均分为局部区域也可以，但这种做法得到的拼图过多影响后续处理）</p>
+</blockquote>
+<p>图像分类和文本分类的不同点在于，在文本分类的词袋模型算法中，字典是已存在的，不需要通过学习获得；而在图像分类中，词袋模型算法需要通过监督或非监督的学习来获得视觉词典。造成这种差异的原因是，图像中的视觉特征不像自然语言中的单词那样定义明确和被理解。因此，有必要学习一种能够有效地表示图像中特征的视觉词典。</p>
+<p><code>视觉词袋（BoVW，Bag of Visual Words）模型</code>，是“词袋”（BoW，Bag of Words）模型从自然语言处理与分析领域向图像处理与分析领域的一次自然推广。对于任意一幅图像，BoVW模型提取该图像中的基本元素，并统计该图像中这些基本元素出现的频率，用直方图的形式来表示。通常使用“图像局部特征”来类比BoW模型中的单词，如SIFT、SURF、HOG等特征，所以也被称之为<code>视觉单词模型</code>。</p>
+<p>图像BoVW模型表示的直观示意图如图所示</p>
+<p><img src="/images/image-20230506102306277.png" srcset="/img/loading.gif" lazyload></p>
+<p>利用BoVW模型表示图像，获得图像的全局直方图表示，主要有四个关键步骤：</p>
+<p>Step 1：图像局部特征提取（Image Local Features Extrication）。根据具体应用考虑，综合考虑特征的独特性、提取算法复杂性、效果好坏等选择特征。利用局部特征提取算法，从图像中提取局部特征。 – SIFT特征提取器</p>
+<p>Step 2：视觉词典构造（Visual Dictionary Construction）。利用上一步得到的特征向量集，抽取其中有代表性的向量，作为单词，形成视觉词典。一般是从图像库中选取一部分来自不同场景或类别的图像来组成训练图像集，并提取其局部特征，然后对训练图像的所有局部特征向量通过适当的去冗余处理得到一些有代表性的特征向量，将其定义为视觉单词。通常所采用的处理方法是对训练图像的所有局部特征向量进行聚类分析，将聚类中心定义为视觉单词。所有视觉单词组成视觉词典，用于图像的直方图表示。 – K-means聚类</p>
+<p>Step 3：特征向量量化(Feature Vector Quantization)。BoVW模型采用向量量化技术实现，向量量化结果是将图像的局部特征向量量化为视觉单词中与其距离最相似的视觉单词。向量量化过程实际上是一个搜索过程，通常采用最近邻搜索算法，搜索出与图像局部特征向量最为匹配的视觉单词。 – KNN最近邻聚类</p>
+<p>Step 4：用视觉单词直方图表示图像，也称为量化编码集成(Pooling)。一幅图像的所有局部特征向量被量化后，可统计出视觉词典中每个视觉单词在该图像中出现的频数，得到一个关于视觉单词的直方图，其本质是上一步所得量化编码的全局统计结果，是按视觉单词索引顺序组成的一个数值向量（各个元素的值还可以根据一定的规则进行加权）。该向量即为图像的最终表示形式。</p>
+<h1 id="二、程序设计"><a href="#二、程序设计" class="headerlink" title="二、程序设计"></a>二、程序设计</h1><p>本项目是基于词袋模型的图像分类，涉及到的知识点有SIFT特征提取、K-means聚类以及SVM支持向量机等，本部分将分模块对整个程序进行介绍。</p>
+<h2 id="1-流程说明"><a href="#1-流程说明" class="headerlink" title="1.流程说明"></a>1.流程说明</h2><p>“词袋模型+SVM图像分类”的整个程序的流程主要分为以下几部分：</p>
+<ol>
+<li>加载并处理数据</li>
+<li>生成词袋模型<ul>
+<li>SIFT局部特征提取</li>
+<li>K-Means聚类构造视觉词典</li>
+<li>KNN最近邻算法进行特征向量量化</li>
+<li>量化编码集成得到BOW词袋</li>
+</ul>
+</li>
+<li>训练SVM并进行预测评估</li>
+</ol>
+<h2 id="2-类介绍"><a href="#2-类介绍" class="headerlink" title="2.类介绍"></a>2.类介绍</h2><p>自定义类主要帮助理解程序和处理数据，包括BOWKMeansTrainer类（用于创建聚类器）、FLANN 的匹配器类、BOW 图像描述符提取器类、SVM多分类器。</p>
+<h3 id="2-1-BOWKMeansTrainer"><a href="#2-1-BOWKMeansTrainer" class="headerlink" title="2.1 BOWKMeansTrainer"></a>2.1 BOWKMeansTrainer</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># BOWKMeansTrainer类，用于创建聚类器</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">BOWKMeansTrainer</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, k, criteria=(<span class="hljs-params">cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, <span class="hljs-number">10</span>, <span class="hljs-number">0.01</span></span>), attempts=<span class="hljs-number">10</span>, flags=cv2.KMEANS_PP_CENTERS</span>):<br>        self.k = k <span class="hljs-comment"># 聚类数</span><br>        self.criteria = criteria <span class="hljs-comment"># 终止条件</span><br>        self.attempts = attempts <span class="hljs-comment"># 重复试验次数</span><br>        self.flags = flags <span class="hljs-comment"># 初始中心选择方法</span><br>        self.descriptors = [] <span class="hljs-comment"># 描述符</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">add</span>(<span class="hljs-params">self, descriptors</span>):<br>        self.descriptors.extend(descriptors) <span class="hljs-comment"># 将描述符添加到列表中</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">cluster</span>(<span class="hljs-params">self</span>):<br>        descriptors = np.float32(self.descriptors) <span class="hljs-comment"># 将描述符转换为 float32 类型</span><br>        compactness, labels, centers = cv2.kmeans(descriptors, self.k, <span class="hljs-literal">None</span>, self.criteria, self.attempts, self.flags)<br><br>        <span class="hljs-keyword">return</span> centers<br></code></pre></td></tr></table></figure>
+
+<p>BOWKMeansTrainer类使用k均值算法来创建视觉词袋模型BoVW：</p>
+<ul>
+<li>init方法使用参数初始化类，如k（簇的数量）、criteria（停止迭代的终止标准）、attempts（使用不同的初始质心执行算法的次数）和flags（用于选择初始中心的算法）</li>
+<li>add方法用于将描述符添加到descriptors描述符列表中</li>
+<li>cluster聚类方法将描述符转换为float32类型，然后调用kmeans方法进行聚类并返回聚类中心</li>
+</ul>
+<p>这里我们直接使用的是opencv库中的kmeans函数，关于kmeans的手动实现代码如下</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">kmeans</span>(<span class="hljs-params">data, K, criteria, attempts</span>):<br>    <span class="hljs-comment"># 初始化聚类中心</span><br>    centers = np.float32(data[np.random.choice(<span class="hljs-built_in">len</span>(data), K, replace=<span class="hljs-literal">False</span>)])<br>    <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(attempts):<br>        <span class="hljs-comment"># 计算每个数据点到各聚类中心的距离</span><br>        distances = np.linalg.norm(data[:, np.newaxis, :] - centers, axis=<span class="hljs-number">2</span>)<br>        <span class="hljs-comment"># 根据距离计算每个数据点所属的聚类</span><br>        labels = np.argmin(distances, axis=<span class="hljs-number">1</span>)<br><br>        <span class="hljs-comment"># 更新聚类中心</span><br>        new_centers = np.array([data[labels == k].mean(axis=<span class="hljs-number">0</span>) <span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(K)])<br><br>        <span class="hljs-comment"># 计算聚类中心的移动距离</span><br>        criteria_diff = np.linalg.norm(new_centers - centers)<br><br>        <span class="hljs-comment"># 判断是否满足迭代终止条件</span><br>        <span class="hljs-keyword">if</span> criteria_diff &lt; criteria:<br>            <span class="hljs-keyword">break</span><br>        centers = new_centers<br>    <span class="hljs-comment"># 计算累计误差</span><br>    distances = np.linalg.norm(data[:, np.newaxis, :] - centers, axis=<span class="hljs-number">2</span>)<br>    errors = np.<span class="hljs-built_in">min</span>(distances, axis=<span class="hljs-number">1</span>)<br>    total_error = np.<span class="hljs-built_in">sum</span>(errors)<br>    <span class="hljs-comment"># 返回聚类中心、标签和累计误差</span><br>    <span class="hljs-keyword">return</span> centers, labels, total_error<br></code></pre></td></tr></table></figure>
+
+<p>k-means迭代算法会消耗大量内存，这将导致电脑非常的卡并显示内存不足，而使用cv2提供的kmeans不会出现这种情况。</p>
+<h3 id="2-2-FlannBasedMatcher"><a href="#2-2-FlannBasedMatcher" class="headerlink" title="2.2 FlannBasedMatcher"></a>2.2 FlannBasedMatcher</h3><p>介绍词袋模型的时候说过，可以使用KNN最近邻聚类算法进行特征向量量化，简单理解就是将图像的局部特征向量量化为视觉单词中与其距离最相似的视觉单词，即采用最近邻搜索算法，搜索出与图像局部特征向量最为匹配的视觉单词。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># FLANN 的匹配器类</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">FlannBasedMatcher</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, flann_params</span>):<br>        self.flann_params = flann_params<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">match</span>(<span class="hljs-params">self, descriptors1, descriptors2</span>):<br>        flann = cv2.FlannBasedMatcher(self.flann_params, &#123;&#125;) <span class="hljs-comment"># 创建 FLANN 匹配器</span><br>        matches = flann.knnMatch(descriptors1, descriptors2, k=<span class="hljs-number">2</span>) <span class="hljs-comment"># 使用 KNN 算法进行匹配</span><br>        good_matches = [] <span class="hljs-comment"># 保存匹配结果</span><br>        <span class="hljs-keyword">for</span> m, n <span class="hljs-keyword">in</span> matches: <span class="hljs-comment"># 通过 Lowe&#x27;s ratio test 过滤匹配结果</span><br>            <span class="hljs-keyword">if</span> m.distance &lt; <span class="hljs-number">0.7</span> * n.distance: <span class="hljs-comment"># 阈值处理</span><br>                good_matches.append(m)<br>        <span class="hljs-keyword">return</span> good_matches<br></code></pre></td></tr></table></figure>
+
+<p>FlannBasedMatcher类用于在高维空间中执行快速近似最近邻搜索：</p>
+<ul>
+<li>init方法将flan_params作为参数，并将其设置为实例变量；</li>
+<li>match方法接受参数descriptors1和descriptors2并创建一个以self.flann_params和一个空字典为参数的cv2.FlannBasedMatcher对象。然后，使用flann对象的knnMatch方法来匹配作为参数传递的两个图像的描述符。使用knnMatch方法返回一个列表，其中每个内部列表包含两个匹配项。然后该方法根据阈值距离过滤匹配，只保留被认为是“良好匹配”的匹配。最后，返回匹配的列表。</li>
+</ul>
+<h3 id="2-3-BOWImgDescriptorExtractor"><a href="#2-3-BOWImgDescriptorExtractor" class="headerlink" title="2.3 BOWImgDescriptorExtractor"></a>2.3 BOWImgDescriptorExtractor</h3><p>BOWImgDescriptorExtractor类用于从图像中提取单词袋（BOW）描述符，主要思想就是使用SIFT特征提取器提取关键点的描述符，然后使用FLANN将描述符分配给最近的视觉单词，最后得到的BOW描述符就是表示图像内容的视觉单词的直方图（实际上就是整个BOW构建的流程）。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># BOW 图像描述符提取器类</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">BOWImgDescriptorExtractor</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, sift, flann</span>):<br>        self.sift = sift <span class="hljs-comment"># SIFT 特征提取器</span><br>        self.flann = flann <span class="hljs-comment"># FLANN 匹配器</span><br>        self.centers = <span class="hljs-literal">None</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">setVocabulary</span>(<span class="hljs-params">self, centers</span>): <span class="hljs-comment"># 设置视觉词典</span><br>        self.centers = centers<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">compute</span>(<span class="hljs-params">self, img, keypoints</span>): <span class="hljs-comment"># 计算图像的 BOW 描述符</span><br>        <span class="hljs-keyword">if</span> self.centers <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:<br>            <span class="hljs-keyword">raise</span> ValueError(<span class="hljs-string">&quot;You need to set vocabulary first!&quot;</span>)<br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-comment"># 特征提取器提取图像的 SIFT 特征</span><br>            keypoints, descriptors = self.sift.compute(img, keypoints)<br><br>            <span class="hljs-comment"># 使用FLANN 匹配器进行匹配</span><br>            matches = self.flann.<span class="hljs-keyword">match</span>(descriptors, self.centers) <br>            bow_descriptor = np.zeros(<span class="hljs-built_in">len</span>(self.centers)) <span class="hljs-comment"># 生成直方图</span><br>            <span class="hljs-keyword">for</span> <span class="hljs-keyword">match</span> <span class="hljs-keyword">in</span> matches:<br>                bow_descriptor[<span class="hljs-keyword">match</span>.trainIdx] += <span class="hljs-number">1</span><br><br>            <span class="hljs-comment"># 归一化</span><br>            norm = np.linalg.norm(bow_descriptor)<br>            <span class="hljs-keyword">if</span> norm != <span class="hljs-number">0</span>:<br>                bow_descriptor /= norm<br><br>            <span class="hljs-keyword">return</span> bow_descriptor<br></code></pre></td></tr></table></figure>
+
+<p>BOWImgDescriptorExtractor类接受参数sift(sift类对象)和flann(flann类对象)：</p>
+<ul>
+<li>setVocabulary方法用于为单词袋模型设置vocabulary；</li>
+<li>compute方法接受参数img和keypoints，即一组关键点。先使用sift方法提取图像的关键点，接着使用flann将每个描述符分配给最近的视觉单词，并通过计算分配给每个视觉单词的描述符数量来生成BOW，最后BOW描述符被归一化并返回；</li>
+</ul>
+<h3 id="2-4-MultiClassSVM"><a href="#2-4-MultiClassSVM" class="headerlink" title="2.4 MultiClassSVM"></a>2.4 MultiClassSVM</h3><p>MultiClassSVM类是一个多分类SVM的简单实现，主要包含fit拟合方法和predict预测方法。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, C=<span class="hljs-number">1.0</span>, lr=<span class="hljs-number">0.01</span>, num_iters=<span class="hljs-number">1000</span>, tol=<span class="hljs-number">1e-4</span></span>):<br>	self.C = C <span class="hljs-comment"># 惩罚系数</span><br>	self.lr = lr <span class="hljs-comment"># 学习率</span><br>	self.num_iters = num_iters <span class="hljs-comment"># 迭代次数</span><br>	self.tol = tol <span class="hljs-comment"># 容忍度</span><br>	self.weights = <span class="hljs-literal">None</span> <span class="hljs-comment"># 权重</span><br>	self.bias = <span class="hljs-literal">None</span> <span class="hljs-comment"># 偏置</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>self.C参数控制最大化裕度和最小化分类误差之间的权衡；</li>
+<li>self.lr参数控制梯度下降优化的学习速率；</li>
+<li>self.tool参数控制优化算法的收敛容差；</li>
+<li>最终训练的权重和偏差分别存储在self-weights和self-bias中；</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">fit</span>(<span class="hljs-params">self, X, y</span>):<br>       num_samples, num_features = X.shape <span class="hljs-comment"># 样本数，特征数</span><br>       num_classes = <span class="hljs-built_in">len</span>(np.unique(y)) <span class="hljs-comment"># 类别数</span><br>       self.weights = np.zeros((num_classes, num_features)) <span class="hljs-comment"># 初始化权重</span><br>       self.bias = np.zeros((<span class="hljs-number">1</span>, num_classes)) <span class="hljs-comment"># 初始化偏置</span><br>       <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(num_classes):<br>           y_copy = np.where(y == i, <span class="hljs-number">1</span>, -<span class="hljs-number">1</span>) <span class="hljs-comment"># y_copy变量用于计算误差，并基于错误分类的样本更新权重和偏差</span><br>           w = np.zeros(num_features)<br>           b = <span class="hljs-number">0</span><br>           <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(self.num_iters):<br>               <span class="hljs-comment"># 梯度下降</span><br>               error = <span class="hljs-number">1</span> - y_copy * (np.dot(X, w) - b) <span class="hljs-comment"># 计算误差</span><br>               dw = np.zeros(num_features) <span class="hljs-comment"># 初始化权重</span><br>               <span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(num_samples):<br>                   <span class="hljs-keyword">if</span> error[k] &gt; <span class="hljs-number">0</span>: <span class="hljs-comment"># 如果误差大于0，更新权重</span><br>                       dw += self.C * y_copy[k] * X[k] <br>               w_old = np.copy(w) <span class="hljs-comment"># 保存旧权重</span><br>               w -= self.lr * (w - dw) <span class="hljs-comment"># 更新权重</span><br>               db = np.<span class="hljs-built_in">sum</span>(self.C * y_copy * error &lt; <span class="hljs-number">1</span>) <span class="hljs-comment"># 更新偏置</span><br>               b -= self.lr * db <br>               <span class="hljs-comment"># 如果权重变化小于容忍度，停止迭代</span><br>               <span class="hljs-keyword">if</span> np.<span class="hljs-built_in">sum</span>(np.<span class="hljs-built_in">abs</span>(w - w_old)) &lt; self.tol:<br>                   <span class="hljs-keyword">break</span><br>           self.weights[i] = w<br>           self.bias[<span class="hljs-number">0</span>][i] = b<br></code></pre></td></tr></table></figure>
+
+<p>前面提到过，SVM本身作为二分类器，如果要使其执行多分类任务，需要一些方法，这里使用的是One-vs-All也就是一对多的方法。</p>
+<p>fit方法在num_classes上进行迭代，并使用one-vs-all方法为每个类创建一个二分类问题。在循环内，fit方法将权重和偏差初始化为零，并执行梯度下降以优化SVM目标函数。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">predict</span>(<span class="hljs-params">self, X</span>):<br>    	<span class="hljs-comment"># 计算样本数</span><br>        num_samples = X.shape[<span class="hljs-number">0</span>]<br>        <span class="hljs-comment"># 初始化class_scores数组，用0填充</span><br>        class_scores = np.zeros((num_samples, <span class="hljs-built_in">len</span>(self.weights)))<br>        <span class="hljs-comment"># 迭代self.weights和self.bias[0]的每个元素。每次迭代都使用X和w的点积减去b以计算每个类的分数，并将结果存储在class_scores数组中</span><br>        <span class="hljs-keyword">for</span> i, (w, b) <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(<span class="hljs-built_in">zip</span>(self.weights, self.bias[<span class="hljs-number">0</span>])):<br>            class_scores[:, i] = np.dot(X, w) - b<br>        <span class="hljs-comment"># 使用np.argmax为每个样本找到最高分数的索引，并将其存储在pred数组中</span><br>        pred = np.argmax(class_scores, axis=<span class="hljs-number">1</span>)<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(num_samples):<br>            <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(self.weights)):<br>                <span class="hljs-comment"># 检查预测类的分数是否大于或等于1，如果大于或等于，则转到下一个样本</span><br>                <span class="hljs-keyword">if</span> class_scores[i, j] &gt;= <span class="hljs-number">1</span>:<br>                    <span class="hljs-keyword">continue</span><br>                <span class="hljs-comment"># 如果预测的类与j的当前迭代相同，那么将继续进行下一次迭代</span><br>                <span class="hljs-keyword">if</span> j == pred[i]:<br>                    <span class="hljs-keyword">continue</span><br>                <span class="hljs-comment"># 如果预测类的得分与j的当前迭代的得分之间的差小于1，则将样本的预测设置为j</span><br>                <span class="hljs-keyword">if</span> class_scores[i, pred[i]] - class_scores[i, j] &lt; <span class="hljs-number">1</span>:<br>                    pred[i] = j<br>                    <span class="hljs-keyword">break</span><br>        <span class="hljs-keyword">return</span> pred<br></code></pre></td></tr></table></figure>
+
+<p>该预测方法与实际上sklearn的svm库中的预测方法相比简单的多，但是也比仅仅选择输出最高分那种行为要稍微好点，主要体现在细化了对接近决策边界的样本的预测。</p>
+<p>predict方法返回一个pred数组，该数组包含了每个样本的预测类的索引。</p>
+<h2 id="3-模块介绍"><a href="#3-模块介绍" class="headerlink" title="3.模块介绍"></a>3.模块介绍</h2><p>在main.py中展示了程序整体流程以及各个模块的功能介绍</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 数据处理</span><br>categories, train_data, test_data, train_labels, test_labels = utils.load_data(img_path)  <br><span class="hljs-comment"># 提取SIFT特征</span><br>sift, train_descriptors = utils.extract_sift_features(train_data)<br><span class="hljs-comment"># 生成视觉词典</span><br>codebook = utils.generate_codebook(train_descriptors)<br><span class="hljs-comment"># 生成词袋</span><br>bow,features = utils.bow_features(codebook, sift, train_data)<br><span class="hljs-comment"># 训练 SVM 分类器</span><br>svm = utils.train_svm(features, train_labels)<br><span class="hljs-comment"># 测试模型</span><br>utils.test_model(svm,test_data,test_labels,bow,sift)  <br></code></pre></td></tr></table></figure>
+
+<h3 id="3-1-数据加载"><a href="#3-1-数据加载" class="headerlink" title="3.1 数据加载"></a>3.1 数据加载</h3><p>数据集分析：scene_categories数据集包含15个类别（文件夹名就是类别名），其中每个类中编号前150号的样本作为训练样本，则15个类一共2250张训练样本；剩下的样本构成测试集合，也就是剩余的2235张图像作为测试图像。</p>
+<p>如何划分得到训练集和数据集是主要问题.基本思想很简单，依次遍历十五个目录，选取每个目录的前150张图像作为训练数据，同时将其文件名作为目录名，然后按照同样的方法将剩余的文件加入测试集中即可，核心代码如下（利用双层循环依次遍历子目录中的每个文件）</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">load_data</span>(<span class="hljs-params">data_path</span>):<br>    categories = os.listdir(data_path) <span class="hljs-comment"># 获取所有类别</span><br>    train_data = [] <span class="hljs-comment"># 训练数据集</span><br>    train_labels = [] <span class="hljs-comment"># 训练标签集</span><br>    test_data = [] <span class="hljs-comment"># 测试数据集</span><br>    test_labels = [] <span class="hljs-comment"># 测试标签集</span><br><br>    <span class="hljs-comment"># 遍历一个目录及其子目录中的所有文件和文件夹</span><br>    <span class="hljs-comment"># os.walk()函数返回一个三元组(dirpath, dirnames, filenames)</span><br>    <span class="hljs-comment"># 其中dirpath是当前遍历到的文件夹路径，dirnames是该文件夹下所有子文件夹的名称列表，filenames是该文件夹下所有文件的名称列表</span><br>    <span class="hljs-keyword">for</span> path, dirs, files <span class="hljs-keyword">in</span> os.walk(data_path):<br>        <span class="hljs-keyword">for</span> i, file <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(files):  <span class="hljs-comment"># 循环遍历当前子目录中的每个文件，并为其分配一个唯一的索引 i</span><br>            <span class="hljs-keyword">if</span> (i &lt; <span class="hljs-number">150</span>):  <span class="hljs-comment"># 当前文件是否应包含在训练集（前 150 个文件）或测试集（剩余文件）中</span><br>                train_data.append(os.path.join(path, file))  <span class="hljs-comment"># 将当前文件的路径添加到训练数据集中</span><br>            <span class="hljs-keyword">else</span>:<br>                test_data.append(os.path.join(path, file))<br>        <span class="hljs-comment"># 检查当前子目录是否包含任何文件（即图像)</span><br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">len</span>(files) &gt; <span class="hljs-number">0</span>):<br>            <span class="hljs-comment"># 将类别（即子目录名称）添加到适当的列表中，每个类别标签重复适当次数（150 次用于训练集，其余次数用于测试集）</span><br>            train_labels.extend([path.split(<span class="hljs-string">&#x27;\\&#x27;</span>)[-<span class="hljs-number">1</span>]] * <span class="hljs-number">150</span>)<br>            test_labels.extend([path.split(<span class="hljs-string">&#x27;\\&#x27;</span>)[-<span class="hljs-number">1</span>]] * (<span class="hljs-built_in">len</span>(files) - <span class="hljs-number">150</span>))<br>    categories = categories<br>    train_data = train_data<br>    test_data = test_data<br>    train_labels = train_labels<br>    test_labels = test_labels<br><br>    <span class="hljs-keyword">return</span> categories, train_data, test_data, train_labels, test_labels<br></code></pre></td></tr></table></figure>
+
+<p>数据加载模块将数据库中的所有文件加载并划分为训练集和测试集，同时保留了对应的标签以及所有类别。</p>
+<p>其中的categories保存所有的类别</p>
+<p><img src="/images/image-20230506145404843.png" srcset="/img/loading.gif" lazyload></p>
+<p>train_data是一个列表，保留了所有训练图像的路径，查看列表中第一个图像的路径如下</p>
+<p><img src="/images/image-20230506145538878.png" srcset="/img/loading.gif" lazyload></p>
+<p>train_labels是一个列表（长度为训练集的长度即2250），保留了训练图像的对应的标签（标签以字符串的形式存储）</p>
+<p><img src="/images/image-20230506145634289.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-2-SIFT特征提取"><a href="#3-2-SIFT特征提取" class="headerlink" title="3.2 SIFT特征提取"></a>3.2 SIFT特征提取</h3><p>SIFT特征提取算法因为专利保护等原因我们很难获取它的源码，但是SIFT特征提取在CV领域是一个非常重要的算法，因此理解它非常有必要。</p>
+<p>SIFT全称为Scale Invariant Feature Transform尺度不变特征变换，SIFT特征对于旋转、尺度缩放、亮度变化等保持不变性，是一种非常稳定的局部特征；</p>
+<p>SIFT特征检测的步骤主要分为如下四个步骤：</p>
+<ul>
+<li>尺度空间的极值检测：搜索所有尺度空间上的图像，通过高斯微分函数来识别潜在的对尺度和选择不变的兴趣点；</li>
+<li>特征点定位：在每个候选的位置上，通过一个拟合精细模型来确定位置尺度，关键点的选取依据他们的稳定程度；</li>
+<li>特征方向赋值：基于图像局部的梯度方向，分配给每个关键点位置一个或多个方向，后续的所有操作都是对于关键点的方向、尺度和位置进行变换，从而提供这些特征的不变性；</li>
+<li>特征点描述：在每个特征点周围的邻域内，在选定的尺度上测量图像的局部梯度，这些梯度被变换成一种表示，这种表示允许比较大的局部形状的变形和光照变换；</li>
+</ul>
+<p>因为SIFT算法的实现难度较大，所以本项目中我们借助opencv的库中的SIFT算法来实现对图像关键点的特征描述符的提取任务。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">extract_sift_features</span>(<span class="hljs-params">data_path</span>):<br>    <span class="hljs-comment"># 创建 SIFT 特征提取器</span><br>    sift = cv2.SIFT_create()<br>    <span class="hljs-comment"># 特征描述符</span><br>    descriptors = []<br>    <span class="hljs-comment"># 遍历训路径中的所有图像</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;提取图像特征中...&#x27;</span>)<br>    <span class="hljs-keyword">for</span> img_path <span class="hljs-keyword">in</span> tqdm(data_path):<br>        img = cv2.imread(img_path)  <span class="hljs-comment"># 加载图像</span><br>        feature = sift.detect(img)  <span class="hljs-comment"># 检测图像中的关键点</span><br>        feature, descriptor = sift.compute(img, feature)  <span class="hljs-comment"># 计算每个关键点的特征描述符，并将它们存储在 descriptor 变量中</span><br>        descriptors.append(descriptor)  <span class="hljs-comment"># 将 descriptor 变量中存储的特征描述符添加到 descriptors 列表中</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;图像特征提取完成&#x27;</span>)<br>    <span class="hljs-keyword">return</span> sift, descriptors<br></code></pre></td></tr></table></figure>
+
+<p>基本流程为创建sift实例后，对训练集中的所有图像使用detect方法提取其中的关键点（简单来说就是有特征的点，比如人的两个耳朵、鼻子等这些像素区域），提取完关键点后在这些关键点上生成特征描述符（这个描述符可以认为就是一种对图像区域的高维表示），依次对训练集中的每个图像的进行上述行为，最后我们得到了一个descriptors特征描述符列表，其形式如下，长度为训练集长度2250</p>
+<p><img src="/images/image-20230506150432686.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-3-词典生成"><a href="#3-3-词典生成" class="headerlink" title="3.3 词典生成"></a>3.3 词典生成</h3><p>前面已经提到过，图像分类和文本分类的不同点在于，在文本分类的词袋模型算法中，字典是已存在的，不需要通过学习获得；而在图像分类中，词袋模型算法需要通过监督或非监督的学习来获得视觉词典。造成这种差异的原因是，图像中的视觉特征不像自然语言中的单词那样定义明确和被理解。因此，有必要学习一种能够有效地表示图像中特征的视觉词典。</p>
+<p>如何学习得到一个视觉词典呢？一个非常直观的想法就是将前面提取到的所有特征描述符都放在一起，然后使用诸如k-means聚类的方法对其进行聚类，当我们指定了类别k的时候，聚类结束就会得到最终的k个类，我们只需要选取这k个类对应的特征描述符作为词典中的单词即可（因为k-means就是一种寻找相似性的算法，本质上每个聚类中心都是有代表性的，可以代表其周围一定范围内的点的某些特征）。</p>
+<p>需要注意的是，使用k-means聚类算法进行词典生成的时候需要有一定的先验知识，也就是指定词典的大小最好在特征描述符的1&#x2F;10~1&#x2F;100，词典过大会导致粒度太细，比如人的左鼻孔和右鼻孔分别作为两个单词，这完全没必要；词典过小会导致粒度过大，比如人的鼻子和狗的鼻子作为同一个单词，会造成分类的错误。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">generate_codebook</span>(<span class="hljs-params">descriptor_list, n_clusters=<span class="hljs-number">50</span></span>):<br>    kmeans_trainer = BOWKMeansTrainer(n_clusters) <span class="hljs-comment"># 创建 BOW KMeans 聚类器</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;生成视觉词典中...&#x27;</span>)<br>    <span class="hljs-keyword">for</span> descriptor <span class="hljs-keyword">in</span> tqdm(descriptor_list): <span class="hljs-comment">#  # 将每个特征描述符添加到 k-means 聚类器对象中</span><br>        kmeans_trainer.add(descriptor)<br>    <span class="hljs-comment"># 使用 k-means 聚类器对象对特征描述符执行 k-means 聚类，并返回结果词汇表（即聚类中心）</span><br>    codebook = kmeans_trainer.cluster()<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;视觉词典生成完成&#x27;</span>)<br>    <span class="hljs-keyword">return</span> codebook<br></code></pre></td></tr></table></figure>
+
+<p>词典生成完毕后可以查看其形式，voc的长度根据聚类的中心数目而定，比如n_clusters&#x3D;250则len(voc)为250。voc是一个包含列表的列表</p>
+<p><img src="/images/image-20230506153934698.png" srcset="/img/loading.gif" lazyload></p>
+<p>其每一个元素都是128维的向量</p>
+<p><img src="/images/image-20230506154017138.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-4-词袋生成"><a href="#3-4-词袋生成" class="headerlink" title="3.4 词袋生成"></a>3.4 词袋生成</h3><p>拥有了词典之后就可以生成词袋了，BOW的核心实际上就是根据词典中的单词来表示图像。可以认为，词典中的单词都是之前2250个SIFT特征描述符中筛选出的k个描述符，那么接下来我们要做的事情就是计算其他2250-k个SIFT描述符与这k个描述符的距离，选取最近的那个描述符作为它的表示（比如人的“鼻子”是词典中的一个单词，那么计算得到“左鼻孔”和“右鼻孔”离“鼻子”这个单词最近，那么就将“左鼻孔”和“右鼻孔”统统用“鼻子”这个单词来表示）。要实现上述行为有一个很直观的算法可以使用，那就是knn最近邻算法，在flann库中集成了这一算法，可以帮助我们很快的实现匹配器。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">bow_features</span>(<span class="hljs-params">voc,sift,train_data</span>):<br>    flann_params = <span class="hljs-built_in">dict</span>(algorithm=<span class="hljs-number">1</span>, tree=<span class="hljs-number">5</span>)  <span class="hljs-comment"># FLANN 匹配器参数</span><br>    flann = cv2.FlannBasedMatcher(flann_params) <span class="hljs-comment"># 创建 FLANN 匹配器</span><br>    bow = cv2.BOWImgDescriptorExtractor(sift, flann) <span class="hljs-comment"># 创建 BOW 图像描述符提取器（使用自定义的类则在之后需要处理数据维度）</span><br>    <span class="hljs-comment"># 将从 k-means 聚类中获得的词汇表设置为 BOW 描述符提取器的词汇表</span><br>    bow.setVocabulary(voc)<br>    <span class="hljs-comment"># 创建一个空列表来存储训练图像的 BOW 特征</span><br>    train_features = []<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;生成词袋中...&#x27;</span>)<br>    <span class="hljs-keyword">for</span> img_path <span class="hljs-keyword">in</span> tqdm(train_data): <span class="hljs-comment"># 遍历训练图像</span><br>        img = cv2.imread(img_path)<br>        <span class="hljs-comment"># 使用 BOW 描述符提取器和 SIFT 特征提取器提取当前图像的 BOW 特征，并将生成的特征向量添加到 train_features 列表中</span><br>        train_features.extend(bow.compute(img, sift.detect(img)))<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;词袋生成完成&#x27;</span>)<br>    <span class="hljs-keyword">return</span> bow,train_features<br></code></pre></td></tr></table></figure>
+
+<p>基本的流程就是利用我们已经获得的voc词汇表，逐个遍历训练集中的图像，因为前面使用的sift特征描述符生成的词典，所以这里我们还是需要借助sift特征提取器对图像进行特征提取，提取完毕特征后借助BOW 图像描述符提取器中flann提供的匹配功能提取得到当前图像的BOW特征，并将生成的特征向量添加到 train_features 列表中。</p>
+<p>最终经过处理，我们会得到训练集中2250个图像的BOW表示，每个图像都被表示成一个250维度（词典大小）的向量，该向量就是之后将输入SVM中进行训练的数据</p>
+<p><img src="/images/image-20230506154350845.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-5-模型训练"><a href="#3-5-模型训练" class="headerlink" title="3.5 模型训练"></a>3.5 模型训练</h3><p>前面我们已经自定义了一个多分类的SVM的类，其具有fit和predict方法，我们只需要实例化一个svm对象后调用其fit方法进行训练拟合即可</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">train_svm</span>(<span class="hljs-params">traindata,train_labels</span>):<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;训练模型...&#x27;</span>)<br>    traindata_np = np.array(traindata)  <span class="hljs-comment"># 将训练数据列表转换为 NumPy 数组</span><br>    train_labels_np = np.array([<span class="hljs-built_in">int</span>(label) <span class="hljs-keyword">for</span> label <span class="hljs-keyword">in</span> train_labels])  <span class="hljs-comment"># 将训练标签列表转换为 NumPy 数组</span><br>    <span class="hljs-comment"># 初始化线性支持向量机对象</span><br>    SVM = MultiClassSVM()<br>    <span class="hljs-comment"># 模型训练，并将训练好的模型保存在 SVMmodel 变量中</span><br>    SVMmodel = SVM.fit(traindata_np, train_labels_np)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;模型训练完成&#x27;</span>)<br>    <span class="hljs-keyword">return</span> SVM<br></code></pre></td></tr></table></figure>
+
+<p>需要注意的是因为fit方法的输入需要是numpy类型的数组，所以在训练之前额外对训练数据和数据标签进行转换</p>
+<h3 id="3-6-模型测试"><a href="#3-6-模型测试" class="headerlink" title="3.6 模型测试"></a>3.6 模型测试</h3><p>模型训练完毕后，调用svm对象的predict方法对甚于的2235张图像进行预测，注意此处的输入仍然是图像的bow特征，即图像的词袋表示</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">test_model</span>(<span class="hljs-params">SVMmodel,test_data,test_labels,bow,sift</span>):<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;测试模型...&#x27;</span>)<br>    predict_table = [] <span class="hljs-comment"># 预测结果</span><br>    <span class="hljs-keyword">for</span> img_path <span class="hljs-keyword">in</span> tqdm(test_data):<br>        img = cv2.imread(img_path)<br>        data = bow.compute(img, sift.detect(img))<br>        result = SVMmodel.predict(data)<br>        predict_table.append(result)<br>    <span class="hljs-comment"># 转换类型保证类型相同</span><br>    test_labels_str = []<br>    <span class="hljs-keyword">for</span> label <span class="hljs-keyword">in</span> predict_table:<br>        test_labels_str.append(<span class="hljs-built_in">str</span>(label[<span class="hljs-number">0</span>]))<br>    two_digit_list = [<span class="hljs-string">&#x27;&#123;:02d&#125;&#x27;</span>.<span class="hljs-built_in">format</span>(<span class="hljs-built_in">int</span>(num)) <span class="hljs-keyword">for</span> num <span class="hljs-keyword">in</span> test_labels_str]<br>    <span class="hljs-comment"># 使用 sklearn.metrics.classification_report() 生成分类报告</span><br>    report = classification_report(test_labels, two_digit_list)<br>    <span class="hljs-comment"># 打印分类报告</span><br>    <span class="hljs-built_in">print</span>(report)<br></code></pre></td></tr></table></figure>
+
+<p>predict方法返回的数据格式如下</p>
+<p><img src="/images/image-20230506155015198.png" srcset="/img/loading.gif" lazyload></p>
+<p>这与我们期望的字符串类型的标签相差较大，需要进行转换处理，即先将其转换成str类型的结果，然后对于一位数执行补0操作，最后的预测结果和标准结果如下</p>
+<p><img src="/images/image-20230506155152120.png" srcset="/img/loading.gif" lazyload></p>
+<p>该结果从直观上难以辨别分类效果的好坏，因此使用混淆矩阵对结果进行表示</p>
+<p><img src="/images/image-20230506155255419.png" srcset="/img/loading.gif" lazyload></p>
+<p>可以看到预测效果非常的差，甚至不如随即猜测都有50%的准确率，一方面是因为手动实现的SVM在fit拟合的次数不足，另一方面，我们的predict方法过于简单，因此造成了最终预测结果较差的情况。</p>
+<h1 id="三、实验总结"><a href="#三、实验总结" class="headerlink" title="三、实验总结"></a>三、实验总结</h1><p>上面通过自行创建的多分类SVM进行训练和预测，得到的效果不尽人意（甚至在14以及02都出现了全0的情况…也就是说预测结果中根本没有这两个标签），我们思考在同等条件下使用现成库中打包好的svm是否能够得到较好的结果？</p>
+<p>scikit-learn中SVM的算法库分为两类，一类是分类的算法库，包括SVC， NuSVC，和LinearSVC 3个类。另一类是回归算法库，包括SVR， NuSVR，和LinearSVR 3个类。对于SVC， NuSVC，和LinearSVC 3个分类的类，SVC和 NuSVC差不多，区别仅仅在于对损失的度量方式不同，而LinearSVC是线性分类，也就是不支持各种低维到高维的核函数，仅仅支持线性核函数，对线性不可分的数据不能使用。</p>
+<p>选择类进行分类任务的时候，如果有经验知道数据是线性可以拟合的，那么使用LinearSVC去分类，不需要调参以及选择各种核函数以及对应参数。如果对数据分布没有什么经验，一般使用SVC去分类或者SVR去回归，这就需要选择核函数以及对核函数调参。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">class</span> <span class="hljs-title class_">sklearn</span>.svm.LinearSVC(penalty=<span class="hljs-string">&#x27;l2&#x27;</span>, loss=<span class="hljs-string">&#x27;squared_hinge&#x27;</span>, dual=<span class="hljs-literal">True</span>, tol=<span class="hljs-number">0.0001</span>, C=<span class="hljs-number">1.0</span>, multi_class=<span class="hljs-string">&#x27;ovr&#x27;</span>, fit_intercept=<span class="hljs-literal">True</span>, intercept_scaling=<span class="hljs-number">1</span>, class_weight=<span class="hljs-literal">None</span>, verbose=<span class="hljs-number">0</span>, random_state=<span class="hljs-literal">None</span>, max_iter=<span class="hljs-number">1000</span>)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>C：目标函数的惩罚系数C，用来平衡分类间隔margin和错分样本的，default C &#x3D; 1.0； 一般来说，如果噪音点较多时，C需要小一些。</p>
+</li>
+<li><p>loss ：指定损失函数 .有‘hinge’和‘squared_hinge’两种可选，前者又称L1损失，后者称为L2损失，默认是是’squared_hinge’，其中hinge是SVM的标准损失，squared_hinge是hinge的平方。</p>
+</li>
+<li><p>penalty ： 仅仅对线性拟合有意义，可以选择‘l1’即L1正则化 或者 ‘l2’即L2正则化。默认是L2正则化，如果我们需要产生稀疏话的系数的时候，可以选L1正则化,这和线性回归里面的Lasso回归类似。</p>
+</li>
+<li><p>dual ：选择算法来解决对偶或原始优化问题。如果我们的样本量比特征数多，此时采用对偶形式计算量较大，推荐dual设置为False，即采用原始形式优化</p>
+</li>
+<li><p>tol ：(default &#x3D; 1e - 3): svm结束标准的精度;</p>
+</li>
+<li><p>multi_class：如果y输出类别包含多类，用来确定多类策略， ovr表示一对多，“crammer_singer”优化所有类别的一个共同的目标 .’crammer_singer’是一种改良版的’ovr’，说是改良，但是没有比’ovr‘好，一般在应用中都不建议使用。如果选择“crammer_singer”，损失、惩罚和优化将会被被忽略。 ‘ovr’的分类原则是将待分类中的某一类当作正类，其他全部归为负类，通过这样求取得到每个类别作为正类时的正确率，取正确率最高的那个类别为正类；‘crammer_singer’ 是直接针对目标函数设置多个参数值，最后进行优化，得到不同类别的参数值大小。</p>
+</li>
+<li><p>class_weight ：指定样本各类别的的权重，主要是为了防止训练集某些类别的样本过多，导致训练的决策过于偏向这些类别。这里可以自己指定各个样本的权重，或者用“balanced”，如果使用“balanced”，则算法会自己计算权重，样本量少的类别所对应的样本权重会高。当然，如果你的样本类别分布没有明显的偏倚，则可以不管这个参数，选择默认的”None”</p>
+</li>
+<li><p>verbose：跟多线程有关</p>
+</li>
+</ul>
+<p>一般的，在特征数非常多的情况下，或者样本数远小于特征数的时候，使用线性核，效果已经很好，并且只需要选择惩罚系数C即可。一般能用线性核解决问题我们尽量使用线性核（毕竟不需要额外的调参就能快速的解决问题）。</p>
+<p>综上，我们使用sklearn.svm.LinearSVC来进行对比实验，整个代码的结构保持不变，只需要在模型训练阶段将自定义的多分类SVM替换为opencv的线性svm即可</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">SVMtrain</span>(<span class="hljs-params">traindata</span>):<br>    <span class="hljs-comment"># 初始化线性支持向量机（Linear SVM）对象</span><br>    SVM = LinearSVC() <br>    <span class="hljs-comment"># 模型训练，并将训练好的模型保存在 SVMmodel 变量中</span><br>    SVMmodel = SVM.fit(traindata, train_labels)<br>    <span class="hljs-keyword">return</span> SVM<br></code></pre></td></tr></table></figure>
+
+<p>训练完毕后调用svm的predict方法进行预测，并使用classification_report方法生成混淆矩阵</p>
+<p><img src="/images/image-20230506160534487.png" srcset="/img/loading.gif" lazyload></p>
+<p>在相同的条件下，opencv库中的线性svm的效果略好于自定义的多分类svm，并且在训练时间上相比，opencv库的训练时间远小于自定义的svm（猜测是因为迭代条件的区别）。</p>
+<p>当然这个结果也不是非常的好，更进一步的，我们可以尝试调整惩罚因子、重新选择核函数、调整词典大小等方式进行参数调整以提高模型的准确率（更直接的方式是换一个分类器不要使用SVM）。</p>
+<p>下面我展示的是调整词典大小为500之后的训练结果，可以看到效果并没有明显的提升…</p>
+<p><img src="/images/image-20230506163700719.png" srcset="/img/loading.gif" lazyload></p>
+<p>SVM在大规模的多分类问题上并不是很适用，一方面随着类和数据点的增加，它的计算成本会随之增加（因为SVM试图找到将数据分为不同类的最优超平面，而对于多类问题，这涉及到解决多个优化问题），另一方面支持向量机对和函数及其参数的选择及其敏感，在大规模的数据集上调整参数是一件非常困难的事情。</p>
+<p>最后，本次实验使用支持向量机，根据图像内容对图像进行分类。在图像的表示过程中，使用了词袋模型，即图像被视为视觉单词的集合，这些单词的直方图被用作分类的特征向量。尽管最终分类的结果不是很好，但是在实验过程中通过查阅资料、上手实操等使得我掌握了SIFT特征提取、词汇字典生成、词袋模型表示、SVM构建等相关知识点，整体来说收获很大。</p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E8%B7%B5/" class="category-chain-item">课程实践</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89%E6%8A%80%E6%9C%AF/">#机器视觉技术</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>初级项目_图像分类</div>
+      <div>https://gintoki-jpg.github.io/2023/04/28/项目_图像分类系统/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>杨再俨</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年4月28日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/05/06/%E9%A1%B9%E7%9B%AE_%E6%B1%89%E8%AF%AD%E5%AD%90%E8%AF%8D%E5%90%91%E9%87%8F/" title="初级项目_汉语子词向量">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">初级项目_汉语子词向量</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/04/25/%E9%A1%B9%E7%9B%AE_%E4%BA%BA%E6%9C%BA%E5%AF%B9%E8%AF%9D%E7%B3%BB%E7%BB%9F/" title="中级项目_人机对话系统">
+                        <span class="hidden-mobile">中级项目_人机对话系统</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+</div>
+
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

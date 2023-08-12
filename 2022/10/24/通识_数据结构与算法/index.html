@@ -1,0 +1,1139 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/logo.png">
+  <link rel="icon" href="/img/bg/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="杨再俨">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="数据结构是计算机存储、组织数据的方式。数据结构是指相互之间存在一种或多种特定关系的数据元素的集合。通常情况下，精心选择的数据结构可以带来更高的运行或者存储效率。数据结构往往同高效的检索算法和索引技术有关。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构与算法">
+<meta property="og:url" content="https://gintoki-jpg.github.io/2022/10/24/%E9%80%9A%E8%AF%86_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:site_name" content="Tintoki_blog">
+<meta property="og:description" content="数据结构是计算机存储、组织数据的方式。数据结构是指相互之间存在一种或多种特定关系的数据元素的集合。通常情况下，精心选择的数据结构可以带来更高的运行或者存储效率。数据结构往往同高效的检索算法和索引技术有关。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/num.png">
+<meta property="article:published_time" content="2022-10-24T06:35:00.000Z">
+<meta property="article:modified_time" content="2023-08-03T03:01:50.440Z">
+<meta property="article:author" content="YangZaiyan">
+<meta property="article:tag" content="课程学习">
+<meta property="article:tag" content="考研">
+<meta property="article:tag" content="计算机基础">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gintoki-jpg.github.io/img/bg/num.png">
+  
+  
+  
+  <title>数据结构与算法 - Tintoki_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"gintoki-jpg.github.io","root":"/","version":"1.9.1","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tintoki_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/bg1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">数据结构与算法</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-10-24 14:35" pubdate>
+          2022年10月24日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          19k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          159 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">数据结构与算法</h1>
+            
+            <div class="markdown-body">
+              
+              <hr>
+<p>2022&#x2F;10&#x2F;24 14:35 数据结构的基本的知识点可以参考我的<a target="_blank" rel="noopener" href="https://www.yuque.com/tintoki/pufkgq/rc4ltz">语雀笔记</a>，语雀上面的知识点介绍的特别浅（当时是根据王道视频课和《大话数据结构》等教材整理的，但那会毕竟刚开始写博客写的比较差）；这篇文章主要做一个进阶学习，参考书籍是程洁的《大话数据结构》，在原有笔记的基础上增加、补充了一些缺失的概念（这篇博客可以看作是对语雀的补充和拓展）；</p>
+<hr>
+<h1 id="第一章-绪论"><a href="#第一章-绪论" class="headerlink" title="第一章 绪论"></a>第一章 绪论</h1><p>首先声明，这篇博客主要代码都是C语言（因为参考书用的就是C语言），部分拓展知识点可能会使用到C++代码，这里我们先复习一下C语言中常用的结构体定义</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">S</span>&#123;</span><span class="hljs-type">int</span> i;&#125; a,b; <br><span class="hljs-comment">/*</span><br><span class="hljs-comment">定义结构 S和  S的变量a,b</span><br><span class="hljs-comment">*/</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">S</span>&#123;</span><span class="hljs-type">int</span> i;&#125; a,b;  <br><span class="hljs-comment">/*</span><br><span class="hljs-comment">这里除了定义结构S,  又起了别名a和b,  a和b位置的标识符就都是别名而不是变量</span><br><span class="hljs-comment">a和b也像类型一样用来定义结构变量</span><br><span class="hljs-comment">因为起了别名 所以不起结构名也没问题 typedef struct &#123;int i;&#125; a</span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="1-数据和数据结构"><a href="#1-数据和数据结构" class="headerlink" title="1.数据和数据结构"></a>1.数据和数据结构</h2><ul>
+<li><p>数据：是描述客观事物的符号，是计算机中可以操作的对象，是能被计算机识别并输入给计算机处理的符号集合。数据不仅仅只包括整型等数值类型，还包括字符以及声音等非数值类型。</p>
+</li>
+<li><p>数据元素：是组成数据的、有一定意义的基本单位，在计算机中通常作为整体处理。数据元素也被称为记录</p>
+</li>
+<li><p>数据项：一个数据元素可以由若干个数据项组成，数据项是数据不可分割的最小单位</p>
+</li>
+<li><p>数据对象：是性质相同的数据元素的集合，是数据的子集。我们常称数据对象为数据（在不产生混淆的前提下）</p>
+</li>
+<li><p>结构：指各个组成部分相互搭配和排列的方式</p>
+</li>
+<li><p>数据结构：是一种相互之间存在一种或多种特定关系的数据元素的集合。我们把数据结构分为逻辑结构和物理结构</p>
+<ul>
+<li><p>逻辑结构：指数据对象中数据元素之间的相互关系，可分为以下四种</p>
+<ul>
+<li>集合结构：集合结构中的数据元素除了属于同一个集合外，没有任何关系</li>
+<li>线性结构：线性结构中的数据元素之间是一对一的关系</li>
+<li>树形结构：树型结构中的数据元素之间存在一种一对多的层次关系</li>
+<li>图形结构：图形结构的数据元素是多对多的关系</li>
+</ul>
+</li>
+<li><p>物理结构：也称为存储结构，是指数据的逻辑结构在计算机中的存储形式，通俗来讲就是如何把数据元素存储到计算机的存储器中（存储器是针对内存而言，对于外存来说通常用文件结构来描述数据组织）。数据元素的存储结构形式有两种：顺序存储和链式存储</p>
+<ul>
+<li>顺序存储结构：是把数据元素放在地址连续的存储单元中，其数据间的逻辑关系和物理关系是一致的</li>
+<li>链式存储结构：是把数据元素存储在任意的存储单元中，这组存储单元可以是连续的也可以是不连续的，数据元素的存储关系并不能反映其逻辑关系</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-数据类型和抽象数据类型"><a href="#2-数据类型和抽象数据类型" class="headerlink" title="2.数据类型和抽象数据类型"></a>2.数据类型和抽象数据类型</h2><ul>
+<li><p>数据类型：是指一组性质相同的值的集合以及定义在此集合上的一些操作的总称，在C语言中按照取值不同数据结构可以分为两类</p>
+<ul>
+<li>原子结构：不可再分的基本类型，包括整型、字符型等</li>
+<li>结构类型：由若干类型组合而成，可以分解，如整型数组、结构体等</li>
+</ul>
+</li>
+<li><p>抽象：是指“抽取出事物具有的普遍性的本质”这一行为，它隐藏了繁杂的细节，只保留实现目标必须的信息。对已有的数据类型进行抽象就可以得到抽象数据类型</p>
+</li>
+<li><p>抽象数据类型（ADT）：是指一个数学模型以及定义在该模型上的一组操作。一个抽象数据类型定义了：一个数据对象、数据对象中各数据元素之间的关系以及对数据元素的操作。ADT体现了程序设计中对问题的分解、抽象和信息隐藏的特性</p>
+</li>
+</ul>
+<p>抽象数据类型的标准格式如下</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c">ADT 抽象数据类型名<br>Data <br>    数据元素之间逻辑关系的定义<br>Operation<br>    操作<span class="hljs-number">1</span><br>    操作<span class="hljs-number">2</span><br>    操作<span class="hljs-number">3</span><br>    ......<br>endADT<br></code></pre></td></tr></table></figure>
+
+<h2 id="3-算法和算法复杂度"><a href="#3-算法和算法复杂度" class="headerlink" title="3.算法和算法复杂度"></a>3.算法和算法复杂度</h2><ul>
+<li><p>算法：是“解决特定问题求解步骤的描述”，简单来说就是算法描述了解决问题的方法。在计算机中表现为指令的有限序列，并且每条指令表示一个或多个操作。算法具有以下五个基本特征：</p>
+<ul>
+<li>输入&amp;输出：算法具有零个或多个输入，至少有一个或多个输出</li>
+<li>有穷性：算法在执行有限的步骤之后会自动结束而不会出现无限死循环，且每一个步骤在可接受的时间内完成</li>
+<li>确定性：算法的每一个步骤都具有确定的含义，不会出现二义性</li>
+<li>可行性：算法的每一步都能够通过执行有限次数完成</li>
+</ul>
+</li>
+<li><p>函数的渐进增长：给定两个函数f(n)和g(n)，如果存在一个整数N，使得对于所有的n&gt;N，f(n)总是大于g(n)，则称f(n)的渐进增长快于g(n)</p>
+</li>
+<li><p>算法的时间复杂度：进行算法分析时，语句总的执行次数f(n)是关于问题规模的n的函数，随着问题规模n的增大，算法执行时间的增长率和f(n)的增长率相同，称作算法的渐进时间复杂度，简称为时间复杂度。记作T(n)&#x3D;O(f(n))，我们称之为大O记法，由f(n)推到得到T(n)的方法如下</p>
+<ul>
+<li><p>用常数1取代语句执行次数中所有的加法常数（这是为了避免如常数阶一样根本没有最高阶）</p>
+</li>
+<li><p>只保留最高阶的项</p>
+</li>
+<li><p>如果最高阶的项存在且不是1，则将常数项除去</p>
+</li>
+</ul>
+</li>
+<li><p>常见的时间复杂度大小关系如下：</p>
+</li>
+</ul>
+<blockquote>
+<p>O(1)&lt;O(logn)&lt;O(n)&lt;O(nlogn)&lt;O(n^2^)&lt;O(n^3^)&lt;O(2^n^)&lt;O(n!)&lt;O(n^n^)</p>
+</blockquote>
+<h1 id="第二章-线性表"><a href="#第二章-线性表" class="headerlink" title="第二章 线性表"></a>第二章 线性表</h1><h2 id="1-线性表的定义"><a href="#1-线性表的定义" class="headerlink" title="1.线性表的定义"></a>1.线性表的定义</h2><blockquote>
+<p>线性表：零个或多个数据元素的有限序列</p>
+</blockquote>
+<ul>
+<li>元素之间存在顺序，这里的顺序是指若元素存在多个则第一个元素无前驱，最后一个元素无后继，其他每个元素都有且仅有一个前驱和后继；</li>
+<li>线性表强调有限，即元素的个数有限；</li>
+</ul>
+<h2 id="2-线性表的ADT"><a href="#2-线性表的ADT" class="headerlink" title="2.线性表的ADT"></a>2.线性表的ADT</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c">ADT 线性表/List<br>Data<br>    线性表的数据对象集合为&#123;a1,a2,a3...&#125;，每个元素类型均为DataType。数据元素之间的关系是一对一的关系<br>Operation<br>    <span class="hljs-title function_">InitList</span><span class="hljs-params">(*L)</span>:初始化线性表，建立一个空的线性表L（即线性表元素个数为0，空表）<br>    <span class="hljs-title function_">ListEmpty</span><span class="hljs-params">(L)</span>:若线性表为空返回1，否则返回0<br>    <span class="hljs-title function_">ClearList</span><span class="hljs-params">(*L)</span>:将线性表清空<br>    <span class="hljs-title function_">GetElem</span><span class="hljs-params">(L,i,*e)</span>:将线性表中的第i个位置元素值返回给e<br>    <span class="hljs-title function_">LocateElem</span><span class="hljs-params">(L,e)</span>:在线性表L中查找值为e的元素，查找成功则返回给元素在表中的序号，否则返回0<br>    <span class="hljs-title function_">ListInsert</span><span class="hljs-params">(*L,i,e)</span>:在线性表L中的第i个位置插入新元素e<br>    <span class="hljs-title function_">ListDelete</span><span class="hljs-params">(*L,I,*e)</span>:删除线性表L中第i个位置的元素并用e返回该值<br>    <span class="hljs-title function_">ListLength</span><span class="hljs-params">(L)</span>:返回线性表L的元素个数<br>endADT<br></code></pre></td></tr></table></figure>
+
+<p>关于线性表更复杂的操作，可以由上述基本操作的组合来实现</p>
+<h2 id="3-线性表的物理结构"><a href="#3-线性表的物理结构" class="headerlink" title="3.线性表的物理结构"></a>3.线性表的物理结构</h2><h3 id="3-1-顺序存储结构"><a href="#3-1-顺序存储结构" class="headerlink" title="3.1 顺序存储结构"></a>3.1 顺序存储结构</h3><p>线性表的顺序存储结构，指的是用一段地址连续的存储单元依次存储线性表的数据元素</p>
+<ul>
+<li>可以使用C语言的一维数组来实现线性表的顺序存储结构，把第一个元素存储在下标为0的位置中，接着把线性表相邻的元素存储在数组中相邻的位置</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">define</span> MAXSIZE 20 <span class="hljs-comment">//定义存储空间大小</span></span><br><span class="hljs-keyword">typedef</span> <span class="hljs-type">int</span> Elemtype;<span class="hljs-comment">//根据实际情况确定数据元素的类型</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span></span><br><span class="hljs-class">&#123;</span><span class="hljs-comment">//匿名结构体，只能使用一次</span><br>    ElemType data[MAXSIZE];<span class="hljs-comment">//data数据组存储线性表的元素,它的存储位置就是存储空间的起始位置</span><br>    <span class="hljs-type">int</span> length;<span class="hljs-comment">//线性表当前长度   线性表长度！=数组长度，随着增删线性表长度会动态改变</span><br>&#125;SqList;<br></code></pre></td></tr></table></figure>
+
+<p>(1)顺序表的时间复杂度：</p>
+<ul>
+<li>对每个线性表位置的存入或取出数据对于计算机来说都是相等的时间，即存取时间性能为O(1)，我们将具有这一特点的存储结构称为随机存取结构</li>
+<li>线性表的顺序存储结构在存取数据不管对哪个位置时间复杂度都是O(1)，插入或删除时时间复杂度都是O(n)</li>
+</ul>
+<p>(2)顺序表的特点：</p>
+<ul>
+<li>无需为表示表中元素之间的逻辑关系增加额外的存储空间</li>
+<li>可以快速的存取表中任意位置的元素</li>
+<li>插入和删除需要移动大量元素</li>
+<li>当线性表长度变化较大时难以确定存储空间（数组）的容量</li>
+<li>造成存储空间的“碎片化”（因为链表的存储空间是随机选取某一块连续空间）</li>
+</ul>
+<h3 id="3-2-链式存储结构"><a href="#3-2-链式存储结构" class="headerlink" title="3.2 链式存储结构"></a>3.2 链式存储结构</h3><h4 id="3-2-1-单链表"><a href="#3-2-1-单链表" class="headerlink" title="3.2.1 单链表"></a>3.2.1 单链表</h4><p>头指针和头结点：</p>
+<ul>
+<li>头指针指向链表的第一个结点，若存在头结点则指向头结点，若不存在头结点则指向第一个结点</li>
+<li>常用头指针冠以链表的名字，头指针是链表的必要元素</li>
+<li>头结点不一定是链表必须要的元素（引入头结点为了方便单链表的特殊操作,保证在表头插入或者删除第一个结点与其他结点操作相同.保持了单链表操作的统一性）</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Node</span></span><br><span class="hljs-class">&#123;</span><br>    ElemType data;<span class="hljs-comment">//数据域</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Node</span> *<span class="hljs-title">next</span>;</span><span class="hljs-comment">//指针域，指向Node结构体的指针next</span><br>&#125;Node;<span class="hljs-comment">//在定义Node结构体类型的同时声明一个Node类型的变量Node</span><br><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Node</span> *<span class="hljs-title">LinkList</span>;</span><span class="hljs-comment">//声明指向Node结构体的指针LinkList，也就是头指针，赋值为头结点/第一个结点的地址</span><br></code></pre></td></tr></table></figure>
+
+<p>单链表的时间复杂度：</p>
+<ul>
+<li>查找、存取的时间复杂度为O(n)</li>
+<li>插入删除的时间复杂度为O(1)</li>
+</ul>
+<h4 id="3-2-2-静态链表"><a href="#3-2-2-静态链表" class="headerlink" title="3.2.2 静态链表"></a>3.2.2 静态链表</h4><p>当语言没有指针功能如Basic，就只能使用数组来代替指针描述单链表，称为静态链表</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">define</span> MAXSIZE 1000<span class="hljs-comment">//假设链表最大长度为1000</span></span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span></span><br><span class="hljs-class">&#123;</span><br>    Elemtype data;<span class="hljs-comment">//数据域</span><br>    <span class="hljs-type">int</span> cur;<span class="hljs-comment">//游标cursor，0表示无指向</span><br>&#125;Component,StaticLinkList[MAXSIZE];<span class="hljs-comment">//这里声明了两个结构体变量，分别是数组内容和静态链表数组</span><br></code></pre></td></tr></table></figure>
+
+<p>静态链表的特点：</p>
+<ul>
+<li><p>在插入和删除式只需要修改游标不需要移动元素，改进了顺序表中插入和删除操作需要移动大量元素的缺点</p>
+</li>
+<li><p>失去了顺序表随机存取的特性，且与顺序表一样具有空间无法拓展的缺点</p>
+</li>
+</ul>
+<h4 id="3-2-3-循环链表"><a href="#3-2-3-循环链表" class="headerlink" title="3.2.3 循环链表"></a>3.2.3 循环链表</h4><p>将单链表的终端结点的指针端由空指针指向头结点，使得单链表形成一个环，也称为单循环链表</p>
+<h4 id="3-2-4-双向链表"><a href="#3-2-4-双向链表" class="headerlink" title="3.2.4 双向链表"></a>3.2.4 双向链表</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">DulNode</span></span><br><span class="hljs-class">&#123;</span><br>    ElemType data;<span class="hljs-comment">//数据域</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">DulNode</span> *<span class="hljs-title">prior</span>;</span><span class="hljs-comment">//前向指针</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">DulNode</span> *<span class="hljs-title">next</span>;</span><span class="hljs-comment">//后向指针</span><br>&#125;DulNode,*DuLinkList;<span class="hljs-comment">//声明了两个结构体变量，匿名结构体类型的结点和指向匿名结构体类型的指针（头指针）</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="第三章-栈"><a href="#第三章-栈" class="headerlink" title="第三章 栈"></a>第三章 栈</h1><h2 id="1-栈的定义"><a href="#1-栈的定义" class="headerlink" title="1.栈的定义"></a>1.栈的定义</h2><blockquote>
+<p>栈：限定仅在表尾进行插入和删除操作的线性表</p>
+</blockquote>
+<ul>
+<li>把允许插入和删除的一端称为栈顶，另一端称为栈底，不含任何元素的栈称为空栈</li>
+<li>栈对线性表的插入和删除的位置进行了限制，但是没有对元素进出的时间进行限制，只要保证式栈顶元素出栈即可</li>
+</ul>
+<h2 id="2-栈的ADT"><a href="#2-栈的ADT" class="headerlink" title="2.栈的ADT"></a>2.栈的ADT</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c">ADT 栈（<span class="hljs-built_in">stack</span>）<br>Data <br>    元素具有相同类型，相邻元素具有前驱和后继的关系<br>Operation<br>    <span class="hljs-title function_">InitStack</span><span class="hljs-params">(*S)</span>:初始化栈，即建立一个空栈S<br>    <span class="hljs-title function_">DestroyStack</span><span class="hljs-params">(*S)</span>:若栈存在则销毁它<br>    <span class="hljs-title function_">ClearStack</span><span class="hljs-params">(*S)</span>:将栈清空<br>    <span class="hljs-title function_">StackEmpty</span><span class="hljs-params">(*S)</span>:若栈为空则返回1，否则返回0<br>    <span class="hljs-title function_">GetTop</span><span class="hljs-params">(S,*e)</span>:若栈存在且非空则用e返回S的栈顶元素<br>    <span class="hljs-title function_">Push</span><span class="hljs-params">(*S,e)</span>:若S存在，插入新元素e到S中使其成为栈顶元素<br>    <span class="hljs-title function_">Pop</span><span class="hljs-params">(*S,*e)</span>:删除S中的栈顶元素并用e返回它的值<br>    <span class="hljs-title function_">StackLength</span><span class="hljs-params">(S)</span>:返回栈S的元素个数<br>endADT<br></code></pre></td></tr></table></figure>
+
+<h2 id="3-栈的物理结构"><a href="#3-栈的物理结构" class="headerlink" title="3.栈的物理结构"></a>3.栈的物理结构</h2><h3 id="3-1-顺序存储结构-1"><a href="#3-1-顺序存储结构-1" class="headerlink" title="3.1 顺序存储结构"></a>3.1 顺序存储结构</h3><p>对于栈这种线性表，使用数组来实现就必须考虑选择哪段作为栈顶和栈底——选取下标为0的一端作为栈底，这样整个数组的受元素的变化影响最小</p>
+<h4 id="3-1-1-顺序栈"><a href="#3-1-1-顺序栈" class="headerlink" title="3.1.1 顺序栈"></a>3.1.1 顺序栈</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-type">int</span> SElemType;<span class="hljs-comment">//栈中元素的数据类型，我们可以使用这种方式将其设置为int</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span></span><br><span class="hljs-class">&#123;</span><br>    SElemType data[MAXSIZE];<span class="hljs-comment">//data数组，也就是创建顺序栈</span><br>    <span class="hljs-type">int</span> top;<span class="hljs-comment">//top变量用于指示栈顶元素在数组中的位置，空栈的top=-1</span><br>&#125;SqStack;<br></code></pre></td></tr></table></figure>
+
+<h4 id="3-1-2-共享栈"><a href="#3-1-2-共享栈" class="headerlink" title="3.1.2 共享栈"></a>3.1.2 共享栈</h4><p>对于只有一个栈，我们只能选择一个合适的栈大小避免出现元素溢出的情况；对于两个相同类型的栈，我们可以使用共享栈的方式最大限度利用两个栈的空间——栈顶相连，令其中一个栈底下标为0，另外一个栈底下标为n-1。</p>
+<p>当栈空时即top1&#x3D;-1或者top2&#x3D;n；当栈满时即top1+1&#x3D;top2</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span></span><br><span class="hljs-class">&#123;</span><br>    SElemType data[MAXSIZE];<br>    <span class="hljs-type">int</span> top1;<span class="hljs-comment">//栈1的栈顶指针</span><br>    <span class="hljs-type">int</span> top2;<span class="hljs-comment">//栈2的栈顶指针</span><br>&#125;SqDoubleStack;<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-2-链式存储结构-1"><a href="#3-2-链式存储结构-1" class="headerlink" title="3.2 链式存储结构"></a>3.2 链式存储结构</h3><ul>
+<li>将单链表的头指针和栈顶指针合并</li>
+<li>对于链栈来说通常不需要头结点（因为链表在插入删除时有头部和其他部位的操作差别,引入头结点来统一操作,使对链表第一个位置上的操作和其他位置上的操作相同,不用特殊处理。而链栈只在头部插入删除,所以不必要用头结点）</li>
+<li>链栈为空表示为top&#x3D;NULL</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">StackNode</span></span><br><span class="hljs-class">&#123;</span><span class="hljs-comment">//链栈结点的结构体</span><br>    SElemType data;<span class="hljs-comment">//数据域，元素的数据类型都是相同的，至此还没有出现过一个结构中数据类型不同的情况</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">AtackNode</span> *<span class="hljs-title">next</span>;</span><span class="hljs-comment">//指针域</span><br>&#125;StackNode,*LinkStackPtr;<span class="hljs-comment">//声明结点变量和指向StackNode结构体类型的指针LinkStackPtr</span><br><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">LinkStack</span></span><br><span class="hljs-class">&#123;</span><span class="hljs-comment">//链栈结构体</span><br>    LinkStackPtr top;<span class="hljs-comment">//声明头指针</span><br>    <span class="hljs-type">int</span> count;<span class="hljs-comment">//统计栈内元素</span><br>&#125;LinkStack;<span class="hljs-comment">//声明链栈LinkStack，其实只有top指针的话就可以不用定义这个结构体了</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="第四章-队列"><a href="#第四章-队列" class="headerlink" title="第四章 队列"></a>第四章 队列</h1><h2 id="1-队列的定义"><a href="#1-队列的定义" class="headerlink" title="1.队列的定义"></a>1.队列的定义</h2><blockquote>
+<p>队列：只允许在一端进行插入操作，而在另一端进行删除的线性表</p>
+</blockquote>
+<ul>
+<li>队列是一种先进先出的线性表，允许插入的一端称为队尾，允许删除的一端称为队头</li>
+</ul>
+<h2 id="2-队列的ADT"><a href="#2-队列的ADT" class="headerlink" title="2.队列的ADT"></a>2.队列的ADT</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c">ADT 队列（Queue）<br>Data <br>    元素具有相同类型，相邻元素具有前驱和后继关系<br>Operation<br>    <span class="hljs-title function_">InitQueue</span><span class="hljs-params">(*Q)</span>:初始化操作，建立一个空队列<br>    <span class="hljs-title function_">DestroyQueue</span><span class="hljs-params">(*Q)</span>:若队列Q存在则销毁它<br>    <span class="hljs-title function_">ClearQueue</span><span class="hljs-params">(*Q)</span>:将队列Q清空<br>    <span class="hljs-title function_">QueueEmpty</span><span class="hljs-params">(*Q)</span>:若队列为空则返回1否则返回0<br>    <span class="hljs-title function_">GetHead</span><span class="hljs-params">(Q,*e)</span>:若队列存在且非空，用e返回队列Q的队头元素<br>    <span class="hljs-title function_">EnQueue</span><span class="hljs-params">(*Q,e)</span>:若队列Q存在，插入新元素e到队列Q中并使其成为队尾元素<br>    <span class="hljs-title function_">DeQueue</span><span class="hljs-params">(*Q,*e)</span>:删除队列Q中的队头元素，并用e返回其值<br>    <span class="hljs-title function_">QueueLength</span><span class="hljs-params">(Q)</span>:返回队列Q的元素个数<br>endADT<br></code></pre></td></tr></table></figure>
+
+<h2 id="3-队列的物理结构"><a href="#3-队列的物理结构" class="headerlink" title="3.队列的物理结构"></a>3.队列的物理结构</h2><h3 id="3-1-顺序存储结构-2"><a href="#3-1-顺序存储结构-2" class="headerlink" title="3.1 顺序存储结构"></a>3.1 顺序存储结构</h3><p>实现队列的顺序存储结构和实现顺序表的方式完全相同（故此处不展示其代码），数组下标为0的一端是队头</p>
+<ul>
+<li>入队列就是在队尾追加一个元素，不需要移动任何元素，时间复杂度为O(1)</li>
+<li>出队列是使队头元素出队（下标为0的队列元素），这意味着需要将队列中所有的元素向前移动以保证数组下标为0的位置不为空，时间复杂度为O(n)；假如去除限制条件——队头一定要在下标为0的位置</li>
+</ul>
+<h4 id="3-1-1-循环队列"><a href="#3-1-1-循环队列" class="headerlink" title="3.1.1 循环队列"></a>3.1.1 循环队列</h4><ul>
+<li><p>引入两个指针（称为指针实际上不准确，指针指向的是内存地址，这个指向的是数组位置），front指向队头元素，rear指向队尾元素的下一个位置（而不是队尾元素）</p>
+</li>
+<li><p>把头尾相接的顺序存储结构称为循环队列</p>
+</li>
+<li><p>当<code>front==rear</code>如何区分队列是空还是满</p>
+</li>
+<li><ul>
+<li>设置标志变量flag，当<code>flag==rear且flag=0</code>时队列为空，当<code>flag==rear且flag=1</code>时队列满</li>
+<li>当队列空时条件为<code>front==rear</code>，当队列满时我们认为实际上队列还剩一个元素空间；判断队列满的条件为<code>(rear+1)%QueueSize==front</code></li>
+</ul>
+</li>
+<li><p>通用计算队列长度公式<code>(rear-front+QueueSize)%QueueSize</code></p>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-type">int</span> QElemType;<span class="hljs-comment">//此处定义队列元素类型为int</span><br><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> </span><br><span class="hljs-class">&#123;</span><br>    QElemType data[MAXSIZE];<br>    <span class="hljs-type">int</span> front;<br>    <span class="hljs-type">int</span> rear;<br>&#125;sqQueue;<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-2-链式存储结构-2"><a href="#3-2-链式存储结构-2" class="headerlink" title="3.2 链式存储结构"></a>3.2 链式存储结构</h3><p>队列的链式存储结构实际上就是单链表，只不过它只能尾进头出；为了操作方便，将队头指针指向链队列的头结点，队尾指针指向终端结点；空队列时front和rear都指向头结点</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-type">int</span> QElemType;<br><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">QNode</span></span><br><span class="hljs-class">&#123;</span><span class="hljs-comment">//结点结构</span><br>    QElemType data;<span class="hljs-comment">//数据域</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">QNode</span> *<span class="hljs-title">next</span>;</span><span class="hljs-comment">//指针域</span><br>&#125;QNode,*QueuePtr;<br><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span></span><br><span class="hljs-class">&#123;</span><span class="hljs-comment">//队列的链表结构</span><br>    QueuePtr front,rear;<br>&#125;LinkQueue;<br></code></pre></td></tr></table></figure>
+
+<h1 id="第五章-串"><a href="#第五章-串" class="headerlink" title="第五章 串"></a>第五章 串</h1><h2 id="1-串的定义"><a href="#1-串的定义" class="headerlink" title="1.串的定义"></a>1.串的定义</h2><blockquote>
+<p>串：是由零个和多个字符组成的有限序列，又称为字符串</p>
+</blockquote>
+<ul>
+<li>一般将串记为s&#x3D;”a1a2a3…an”(n&gt;&#x3D;0)，其中s是串的名称，双引号括起来的字符序列是串的值，值可以是字母、数字或其他字符，i就是该字符在串中的位置，n称为串的长度</li>
+<li>串的逻辑结构和线性表很相似，但是串中的元素都是字符。线性表更关注的是单个元素的操作，而串中更多的是针对子串（而不是单个字符）的操作</li>
+</ul>
+<h2 id="2-串的ADT"><a href="#2-串的ADT" class="headerlink" title="2.串的ADT"></a>2.串的ADT</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c">ADT 串（<span class="hljs-built_in">string</span>）<br>Data <br>    串中的元素仅由一个字符组成，相邻元素之间具有前驱和后继的关系<br>Operation<br>    <span class="hljs-title function_">StrAssign</span><span class="hljs-params">(T,*chars)</span>:生成一个值等于字符串常量chars的串T——这个地方指针的使用我不是很理解<br>    <span class="hljs-title function_">StrCopy</span><span class="hljs-params">(T,S)</span>:若串S存在，则将串S复制得到串T<br>    <span class="hljs-title function_">ClearString</span><span class="hljs-params">(S)</span>：若串S存在，则将S清空<br>    <span class="hljs-title function_">StringEmpty</span><span class="hljs-params">(S)</span>:若串S为空则返回1，否则返回0<br>    <span class="hljs-title function_">StrLength</span><span class="hljs-params">(S)</span>:返回串S的元素个数，即串的长度<br>    <span class="hljs-title function_">StrCompare</span><span class="hljs-params">(S,T)</span>:比较两个串的大小<br>    <span class="hljs-title function_">Concat</span><span class="hljs-params">(T,S1,S2)</span>：用T返回由S1和S2联接得到的新串<br>    <span class="hljs-title function_">SubString</span><span class="hljs-params">(Sub,S,pos,len)</span>:Sub返回串S的第pos个字符起长度为len的子串<br>    <span class="hljs-title function_">Index</span><span class="hljs-params">(S,T,pos)</span>:若主串S中存在和串T值相同的子串，则返回它在主串S中第pos个字符后第一次出现的位置<br>    <span class="hljs-title function_">Replace</span><span class="hljs-params">(S,T,V)</span>:用V替换主串S中出现的所有与T相等的不重叠的子串<br>    <span class="hljs-title function_">StrInsert</span><span class="hljs-params">(S,pos,T)</span>:在串S的第pos个字符之前插入串T<br>    <span class="hljs-title function_">StrDelete</span><span class="hljs-params">(S,pos,len)</span>:从串S中删除第pos个字符起长度为len的子串<br>endADT<br></code></pre></td></tr></table></figure>
+
+<h2 id="3-串的物理结构"><a href="#3-串的物理结构" class="headerlink" title="3.串的物理结构"></a>3.串的物理结构</h2><h3 id="3-1-顺序存储结构-3"><a href="#3-1-顺序存储结构-3" class="headerlink" title="3.1 顺序存储结构"></a>3.1 顺序存储结构</h3><p>用一组地址连续的存储单元来存储串中的字符序列，一般使用定长数组来定义</p>
+<h3 id="3-2-链式存储结构-3"><a href="#3-2-链式存储结构-3" class="headerlink" title="3.2 链式存储结构"></a>3.2 链式存储结构</h3><p>串的链式存储结构与线性表类似，但是因为串结构的特殊性（结构中的每个元素数据是一个字符），假如使用一个结点存储一个字符会造成很大的浪费，故考虑一个结点存放多个字符。</p>
+<h2 id="4-模式匹配算法"><a href="#4-模式匹配算法" class="headerlink" title="4.模式匹配算法"></a>4.模式匹配算法</h2><h3 id="4-1-朴素模式匹配算法"><a href="#4-1-朴素模式匹配算法" class="headerlink" title="4.1 朴素模式匹配算法"></a>4.1 朴素模式匹配算法</h3><p>通常将子串的定位操作称为串的模式匹配，朴素的模式匹配算法就是将主串和模式串的字符一个个对比，如果不同则模式串向后移动一位，递归进行上述操作。</p>
+<h3 id="4-2-KMP模式匹配算法"><a href="#4-2-KMP模式匹配算法" class="headerlink" title="4.2 KMP模式匹配算法"></a>4.2 KMP模式匹配算法</h3><p>KMP的主要思想是：当出现字符串不匹配时，可以知道一部分之前已经匹配的文本内容，可以利用这些信息避免从头再去做匹配了，因此记录已经匹配的文本内容是KMP的重点也是next数组需要做的事；</p>
+<p>i值表示当前主串的第i个字符正在进行匹配，j值表示当前模式串的第j个字符正在进行匹配</p>
+<p>next数组表示假如此时匹配失败，则当前模式串需要从第next[j]个字符开始重新匹配；主串的i值在此过程中保持不变，匹配到哪个字符就保持，待会还是从主串的这个字符开始进行匹配</p>
+<p><img src="/images/KMP%E7%B2%BE%E8%AE%B21-16667449314288.gif" srcset="/img/loading.gif" lazyload></p>
+<p>把模式串各个位置的指针跳转位置定义为一个数组next，next数组的长度就是模式串的长度</p>
+<ul>
+<li>j&#x3D;1时对应的变化值为<code>next[0]=0</code></li>
+<li>j&#x3D;i时，写出模式串的第1个到第i个字符串<ul>
+<li>若该字符串中前缀字符串x与后缀字符串相等y，则<code>next[i]=len(x)</code></li>
+<li>若该字符串中没有和前缀字符串相等的后缀，则<code>next[i]=0</code></li>
+</ul>
+</li>
+</ul>
+<p>然而next数组并不是最好的解决办法，我们使用nextval数组对其进行改进（详见书本p144）</p>
+<blockquote>
+<p>很多人可能看了上面的简介还是觉得云里雾里，所以这里我们分模块讲解KMP，参考链接<a target="_blank" rel="noopener" href="https://programmercarl.com/0028.%E5%AE%9E%E7%8E%B0strStr.html#%E5%85%B6%E4%BB%96%E8%AF%AD%E8%A8%80%E7%89%88%E6%9C%AC">代码随想录 (programmercarl.com)</a>；</p>
+</blockquote>
+<h4 id="4-2-1-前缀表的作用"><a href="#4-2-1-前缀表的作用" class="headerlink" title="4.2.1 前缀表的作用"></a>4.2.1 前缀表的作用</h4><p>next数组实际就是一个前缀表；</p>
+<p>前缀表是用来回退的，它记录了模式串与主串(文本串)不匹配的时候，模式串应该从哪里开始重新匹配；</p>
+<p>下面我们举个例子，在文本串：aabaabaafa 中查找是否出现过一个模式串：aabaaf；</p>
+<p><img src="/images/KMP%E7%B2%BE%E8%AE%B21.gif" srcset="/img/loading.gif" lazyload></p>
+<p>第一次匹配的时候文本串中第六个字符b 和 模式串的第六个字符f，不匹配了。如果暴力匹配，会发现不匹配，此时就要从头匹配；</p>
+<p>如果使用前缀表，就不会从头匹配，而是从上次已经匹配的内容开始匹配，找到了模式串中第三个字符b继续开始匹配；</p>
+<blockquote>
+<p>前缀表：记录下标为i之前（包括i）的模式串中有多大长度的相同前后缀</p>
+</blockquote>
+<h4 id="4-2-2-最长相等前后缀"><a href="#4-2-2-最长相等前后缀" class="headerlink" title="4.2.2 最长相等前后缀"></a>4.2.2 最长相等前后缀</h4><p>字符串的前缀是指不包含最后一个字符的所有以第一个字符开头的连续子串；</p>
+<p>字符串的后缀是指不包含第一个字符的所有以最后一个字符结尾的连续子串；</p>
+<p>字符串a的最长相等前后缀为0，字符串aa的最长相等前后缀为1，字符串aaa的最长相等前后缀为2…(前缀表要求的就是相同长度的前后缀)</p>
+<h4 id="4-2-3-计算前缀表"><a href="#4-2-3-计算前缀表" class="headerlink" title="4.2.3 计算前缀表"></a>4.2.3 计算前缀表</h4><p>前缀表的计算非常简单，只需要记住一句话“长度为i的子串，其最长相同前后缀的长度就是对应前缀表位置i-1的元素”</p>
+<p>例如长度为前4个字符的子串<code>aaba</code>，最长相同前后缀的长度为1，长度为前5个字符的子串<code>aabaa</code>，最长相同前后缀的长度为2，长度为前6个字符的子串<code>aabaaf</code>，最长相同前后缀的长度为0…</p>
+<p><img src="/images/image-20221026083204177.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="4-2-4-前缀表的使用"><a href="#4-2-4-前缀表的使用" class="headerlink" title="4.2.4 前缀表的使用"></a>4.2.4 前缀表的使用</h4><p>有了前缀表，我们就可以借助前缀表判断当字符不匹配的时候指针应该移动的位置</p>
+<p><img src="/images/KMP%E7%B2%BE%E8%AE%B22.gif" srcset="/img/loading.gif" lazyload></p>
+<p>我们要看不匹配的模式串的位置的前一个字符的前缀表的数值是多少，本例中f的前一个字符的前缀表的数值是2，所以将模式串的指针移动到下标为2的位置继续匹配而不需要回溯文本串和模式串；</p>
+<h4 id="4-2-5-next数组和前缀表"><a href="#4-2-5-next数组和前缀表" class="headerlink" title="4.2.5 next数组和前缀表"></a>4.2.5 next数组和前缀表</h4><p>实际上next数组就是前缀表，但是next数组是前缀表的具体实现，这意味着next数组可能需要在前缀表的元素统一减1（当然不变或者统一加1都是可以的）</p>
+<p><img src="/images/KMP%E7%B2%BE%E8%AE%B24.gif" srcset="/img/loading.gif" lazyload></p>
+<p>前缀表减1实现next数组</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">getNext</span><span class="hljs-params">(<span class="hljs-type">int</span>* next, <span class="hljs-type">const</span> string&amp; s)</span> </span>&#123;<br>    <span class="hljs-comment">//1.初始化两个指针i和j，其中j指向前缀末尾位置，i指向后缀末尾位子，同时对next数组进行初始化赋值</span><br>    <span class="hljs-type">int</span> j = <span class="hljs-number">-1</span>;<br>    next[<span class="hljs-number">0</span>] = <span class="hljs-number">-1</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt; s.<span class="hljs-built_in">size</span>(); i++) &#123;      <span class="hljs-comment">//注意i从1开始</span><br>        <span class="hljs-keyword">while</span> (j &gt;= <span class="hljs-number">0</span> &amp;&amp; s[i] != s[j + <span class="hljs-number">1</span>]) &#123; <span class="hljs-comment">//2.处理前后缀不相同的情况，如果 s[i] 与 s[j+1]不相同，也就是遇到前后缀末尾不相同的情况，就要向前回退</span><br>            j = next[j];                     <span class="hljs-comment">//向前回退，这里也用了next数组，有点类似于利用已经构造好的next数组来构造next数组</span><br>        &#125;<br>        <span class="hljs-keyword">if</span> (s[i] == s[j + <span class="hljs-number">1</span>]) &#123;              <span class="hljs-comment">//3.处理前后缀相同的情况，如果 s[i] 与 s[j + 1] 相同，那么就同时向后移动i 和j 说明找到了相同的前后缀，同时还要将j（前缀的长度）赋给next[i], 因为next[i]要记录相同前后缀的长度</span><br>            j++;<br>        &#125;<br>        next[i] = j; <span class="hljs-comment">// 将j（前缀的长度）赋给next[i]</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>前缀表实现next数组</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">getNext</span><span class="hljs-params">(<span class="hljs-type">int</span>* next, <span class="hljs-type">const</span> string&amp; s)</span> </span>&#123;<br>        <span class="hljs-type">int</span> j = <span class="hljs-number">0</span>;<br>        next[<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt; s.<span class="hljs-built_in">size</span>(); i++) &#123;<br>            <span class="hljs-keyword">while</span> (j &gt; <span class="hljs-number">0</span> &amp;&amp; s[i] != s[j]) &#123; <span class="hljs-comment">// j要保证大于0，因为下面有取j-1作为数组下标的操作</span><br>                j = next[j - <span class="hljs-number">1</span>];            <span class="hljs-comment">// 注意这里，是要找前一位的对应的回退位置了</span><br>            &#125;<br>            <span class="hljs-keyword">if</span> (s[i] == s[j]) &#123;             <br>                j++;<br>            &#125;<br>            next[i] = j;<br>        &#125;<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+<p>当然具体选择哪种实现就是使用者自己的习惯问题，需要注意的是不同的next数组对应的匹配代码也是有差距的，个人习惯更偏向于直接使用前缀表实现匹配</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">getNext</span><span class="hljs-params">(<span class="hljs-type">int</span>* next, <span class="hljs-type">const</span> string&amp; s)</span> </span>&#123;<br>        <span class="hljs-type">int</span> j = <span class="hljs-number">0</span>;<br>        next[<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt; s.<span class="hljs-built_in">size</span>(); i++) &#123;<br>            <span class="hljs-keyword">while</span> (j &gt; <span class="hljs-number">0</span> &amp;&amp; s[i] != s[j]) &#123;<br>                j = next[j - <span class="hljs-number">1</span>];<br>            &#125;<br>            <span class="hljs-keyword">if</span> (s[i] == s[j]) &#123;<br>                j++;<br>            &#125;<br>            next[i] = j;<br>        &#125;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">strStr</span><span class="hljs-params">(string haystack, string needle)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (needle.<span class="hljs-built_in">size</span>() == <span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>        &#125;<br>        <span class="hljs-type">int</span> next[needle.<span class="hljs-built_in">size</span>()];<br>        <span class="hljs-built_in">getNext</span>(next, needle);<br>        <span class="hljs-type">int</span> j = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; haystack.<span class="hljs-built_in">size</span>(); i++) &#123;<br>            <span class="hljs-keyword">while</span>(j &gt; <span class="hljs-number">0</span> &amp;&amp; haystack[i] != needle[j]) &#123;<br>                j = next[j - <span class="hljs-number">1</span>];<br>            &#125;<br>            <span class="hljs-keyword">if</span> (haystack[i] == needle[j]) &#123;<br>                j++;<br>            &#125;<br>            <span class="hljs-keyword">if</span> (j == needle.<span class="hljs-built_in">size</span>() ) &#123;<br>                <span class="hljs-keyword">return</span> (i - needle.<span class="hljs-built_in">size</span>() + <span class="hljs-number">1</span>);<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="第六章-树"><a href="#第六章-树" class="headerlink" title="第六章 树"></a>第六章 树</h1><h2 id="1-树的定义"><a href="#1-树的定义" class="headerlink" title="1.树的定义"></a>1.树的定义</h2><blockquote>
+<p>树是n(n&gt;&#x3D;0)个结点的有限集。n&#x3D;0时称为空树。</p>
+</blockquote>
+<ul>
+<li><p>n&gt;0时，子树的个数没有限制但是子树不能相交</p>
+</li>
+<li><p>树的结点包含一个数据元素以及若干指向其子树的分支，结点拥有的子树的分支数称为结点的度，树的度是指树的结点的度的最大值</p>
+</li>
+<li><p>结点的分类</p>
+</li>
+<li><ul>
+<li>度为0的结点称为叶结点</li>
+<li>度不为0的结点称为分支结点</li>
+</ul>
+</li>
+<li><p>结点的层次从根开始定义，根为第一层，根的孩子为第二层…树中结点的最大层次称为树的深度或高度</p>
+</li>
+<li><p>有序树是指子树从左至右有次序不能互换，否则为无序树</p>
+</li>
+<li><p>森林是互不相交的树的集合（注意不是子树相交形成树）</p>
+</li>
+</ul>
+<h2 id="2-树的ADT"><a href="#2-树的ADT" class="headerlink" title="2.树的ADT"></a>2.树的ADT</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c">ADT 树（tree）<br>Data <br>    树是由一个根节点和若干子树构成，树中结点具有相同的数据类型以及层次关系<br>Operation<br>    <span class="hljs-title function_">InitTree</span><span class="hljs-params">(*T)</span>:构造空树<br>    <span class="hljs-title function_">CreateTree</span><span class="hljs-params">(*T,definition)</span>:按照definition给出的树的定义来构造树<br>    <span class="hljs-title function_">Value</span><span class="hljs-params">(T,cur_e)</span>:cur_e是树T中的一个结点，返回此结点的值<br>    <span class="hljs-title function_">Assign</span><span class="hljs-params">(T,cur_e,value)</span>:给树T的结点cur_e赋值为value<br>    <span class="hljs-title function_">InsertChild</span><span class="hljs-params">(*T,*p,i,c)</span>:插入子树c作为树T中p指向的结点的第i棵子树，注意i只能是p的度+1<br>    <span class="hljs-title function_">DeleteChild</span><span class="hljs-params">(*T,*p,i)</span>:删除树T中p所指向的结点的第i棵子树，注意i只能是p的度<br></code></pre></td></tr></table></figure>
+
+<h2 id="3-树的物理结构"><a href="#3-树的物理结构" class="headerlink" title="3.树的物理结构"></a>3.树的物理结构</h2><p>简单的顺序存储结构不能满足树的实现要求（但顺序结构确实也能适用于图和树），结合顺序存储和链式存储的特点（借鉴静态链表、单链表等），可以得到下面三种表示方法</p>
+<h3 id="3-1-双亲表示法"><a href="#3-1-双亲表示法" class="headerlink" title="3.1 双亲表示法"></a>3.1 双亲表示法</h3><p>静态链表</p>
+<p>这样的存储结构，可以根据结点的parent指针很容易的找到它的双亲结点，所用时间复杂度为O(1)；然而要找到孩子结点则需要遍历该结构，或者增加结点最左边孩子（firstchild）域；假如需要找到兄弟结点则可以在此基础上增加一个右兄弟域</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">define</span> MAX_TREE_SIZE 100</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-type">int</span> TElemType;<span class="hljs-comment">//树结点的数据类型，暂定为整型</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">PTNode</span>//结点结构</span><br><span class="hljs-class">&#123;</span><br>    TElemType data;<span class="hljs-comment">//数据域</span><br>    <span class="hljs-type">int</span> parent;<span class="hljs-comment">//双亲指针域，存储该结点的双亲在数组中的下标</span><br>&#125;PTNode；<br><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span>//树结构</span><br><span class="hljs-class">&#123;</span><br>    PTNode  nodes[MAX_TREE_SIZE];<span class="hljs-comment">//结点数组</span><br>    <span class="hljs-type">int</span> r,n;<span class="hljs-comment">//根的位置和结点的数量</span><br>&#125;PTree;<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-2-孩子表示法"><a href="#3-2-孩子表示法" class="headerlink" title="3.2 孩子表示法"></a>3.2 孩子表示法</h3><p>顺序表和单链表的组合（书本p160）</p>
+<p>这种结构对于查找孩子和兄弟都很方便，但是对于查找双亲只能遍历；可以考虑把双亲表示法和孩子表示法综合（书本p161）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">define</span> MAX_TREE_SIZE 100</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">CTNode</span>//孩子结点</span><br><span class="hljs-class">&#123;</span><br>    <span class="hljs-type">int</span> child;<span class="hljs-comment">//数据域，存储该结点在表头数组中的下标</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">CTNode</span> *<span class="hljs-title">next</span>;</span><span class="hljs-comment">//指针域，存储指向该结点的下一个孩子结点的指针</span><br>&#125;*ChildPtr;<br><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span>//表头结构</span><br><span class="hljs-class">&#123;</span><br>    TElemType data;<span class="hljs-comment">//数据域，存储该结点的数据信息</span><br>    ChildPtr firstchild;<span class="hljs-comment">//头指针域，存储该结点的孩子链表的头指针</span><br>&#125;CTBox;<br><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span>//树结构</span><br><span class="hljs-class">&#123;</span><br>    CTBox nodes[MAX_TREE_SIZE];<span class="hljs-comment">//结点数组</span><br>    <span class="hljs-type">int</span> r,n;<span class="hljs-comment">//根的位置和结点数量</span><br><br>&#125;CTree;<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-3-孩子兄弟表示法"><a href="#3-3-孩子兄弟表示法" class="headerlink" title="3.3 孩子兄弟表示法"></a>3.3 孩子兄弟表示法</h3><p>单链表（书本p162）</p>
+<p>这种表示法的最大好处就是将复杂的树变为了一棵二叉树，就可以充分的利用二叉树的特性和算法来进行处理了</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">CSNode</span></span><br><span class="hljs-class">&#123;</span><br>    TElemType data;<span class="hljs-comment">//数据域</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">CSNode</span> *<span class="hljs-title">firstchild</span>,*<span class="hljs-title">rightsib</span>;</span><span class="hljs-comment">//firstchild存储该结点的第一个孩子结点的存储地址，rightsib存储该节点的右兄弟结点的存储地址</span><br>&#125;CSNode,*CSTree;<br></code></pre></td></tr></table></figure>
+
+<h2 id="4-二叉树"><a href="#4-二叉树" class="headerlink" title="4.二叉树"></a>4.二叉树</h2><h3 id="4-1-二叉树的特点"><a href="#4-1-二叉树的特点" class="headerlink" title="4.1 二叉树的特点"></a>4.1 二叉树的特点</h3><ul>
+<li>每个结点最多有两棵子树（可以没有子树或者有一棵子树），所以二叉树中不存在度大于2的结点</li>
+<li>左子树和右子树是有顺序的，次数不能颠倒</li>
+<li>即使树中只有一棵子树，也要区分是左子树还是右子树（相当于左手和右手不能一概而论）</li>
+</ul>
+<h3 id="4-2-二叉树的性质"><a href="#4-2-二叉树的性质" class="headerlink" title="4.2 二叉树的性质"></a>4.2 二叉树的性质</h3><ol>
+<li>在二叉树的第i层上至多有2^(i-1)个结点</li>
+</ol>
+<p>…（详见书本p169）</p>
+<h3 id="4-3-二叉树的物理结构"><a href="#4-3-二叉树的物理结构" class="headerlink" title="4.3 二叉树的物理结构"></a>4.3 二叉树的物理结构</h3><h4 id="4-3-1-顺序存储结构"><a href="#4-3-1-顺序存储结构" class="headerlink" title="4.3.1 顺序存储结构"></a>4.3.1 顺序存储结构</h4><p>前面提到的树无法使用简单的顺序存储结构实现，但是二叉树是一种特殊的树，所以可以使用顺序结构来实现</p>
+<p>对于完全二叉树来说，因为其层序编号可以反映逻辑关系，所以可以直接使用一维数组存储二叉树中的结点；对于一般的二叉树，同样可以采用对其进行编号的方式，不存在的结点在数组中存入NULL即可。</p>
+<p>考虑到对于一棵斜树如果采用顺序存储的话会导致浪费的空间过多，所以顺序存储结构一般只用于完全二叉树。</p>
+<h4 id="4-3-2-链式存储结构"><a href="#4-3-2-链式存储结构" class="headerlink" title="4.3.2 链式存储结构"></a>4.3.2 链式存储结构</h4><p>使用顺序存储结构的适用性不强，我们考虑使用链式存储结构。二叉链表具有一个数据域和两个指针域，分别存放左孩子和右孩子的指针</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">BiTNode</span></span><br><span class="hljs-class">&#123;</span><br>    TElemType data;<span class="hljs-comment">//结点数据</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">BiTnode</span> *<span class="hljs-title">lchild</span>,*<span class="hljs-title">rchild</span>;</span><span class="hljs-comment">//左右孩子指针</span><br>&#125;BiTNode,*BiTree;<span class="hljs-comment">//声明结点变量和头指针</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="4-4-二叉树的遍历"><a href="#4-4-二叉树的遍历" class="headerlink" title="4.4 二叉树的遍历"></a>4.4 二叉树的遍历</h3><p>(1)前序遍历：先访问根节点，然后前序遍历左子树，接着前序遍历右子树（遍历树，访问结点）</p>
+<p>(2)中序遍历：先中序遍历根节点的左子树，然后访问根节点，最后中序遍历右子树</p>
+<p>(3)后序遍历：先后序遍历根节点的左子树，然后后序遍历根节点的右子树，最后访问根节点（其实用结点比较准确）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">PostOrderTraverse</span><span class="hljs-params">(BiTree T)</span><br>&#123;<br>    <span class="hljs-keyword">if</span>(T==<span class="hljs-literal">NULL</span>)<br>    &#123;<span class="hljs-keyword">return</span>;&#125;<br>    PostOrderTraverse(T-&gt;lchild);<br>    PostOrderTraverse(T-&gt;rchild);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%c&quot;</span>,T-&gt;data);<span class="hljs-comment">//显示结点数据，这一步可以更改为其他对结点的操作</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>(4)层序遍历：从上到下，从左至右逐个对结点进行访问</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">LevelOreder</span><span class="hljs-params">(BiTree T)</span>&#123;<br>    <br>    LinkQueue Q;<br>    InitQueue(Q);  <span class="hljs-comment">//初始化队列</span><br>    <br>    EnQueue(Q,T); <span class="hljs-comment">//根节点入列</span><br>    BiTree p;<br>    <span class="hljs-keyword">while</span>(!isEmpty(Q))&#123;<br>        DeQueue(Q,p);	<span class="hljs-comment">//出一个结点访问一个</span><br>        visit(p);<br>        <span class="hljs-keyword">if</span>(p-&gt;lchild != null)&#123;<br>            EnQueue(Q,p-&gt;lchild);	<span class="hljs-comment">//左子树存在则入列</span><br>        &#125;<br>        <span class="hljs-keyword">if</span>(p-&gt;rchild != null)&#123;<br>            EnQueue(Q,p-&gt;rchild);   <span class="hljs-comment">//右子树存在则入列</span><br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="4-5-树、森林和二叉树的转换"><a href="#4-5-树、森林和二叉树的转换" class="headerlink" title="4.5 树、森林和二叉树的转换"></a>4.5 树、森林和二叉树的转换</h3><p>(1)树转化为二叉树</p>
+<ul>
+<li>在所有的兄弟结点之间加一条线</li>
+<li>对树中每一个结点，只保留它与第一个孩子结点的连线，删除它与其他孩子结点之间的连线</li>
+<li>旋转整棵树使之层次分明</li>
+</ul>
+<p>(2)森林转化为二叉树</p>
+<ul>
+<li>先把每棵树转化为二叉树</li>
+<li>将森林中的每一棵树都理解为兄弟，于是可以按照兄弟的处理办法来操作已经转化好的二叉树。保持第一棵二叉树不动，依次把后面的每一棵二叉树的根节点作为前一棵二叉树根节点的右孩子，连线即可</li>
+</ul>
+<p>(3)二叉树转化为树</p>
+<ul>
+<li>若某结点的左孩子节点存在，则将该结点与其“左孩子的所有右后代”都作为该节点的孩子进行连线</li>
+<li>删除原二叉树中所有结点与其右孩子的连线</li>
+</ul>
+<p>(4)二叉树转化为森林</p>
+<ul>
+<li>只要二叉树的根结点有右孩子则就是森林</li>
+<li>从根结点开始若右孩子存在则去除根节点与右孩子的连线，依次递归</li>
+<li>再将分离得到的二叉树都转化为树即可</li>
+</ul>
+<h2 id="5-哈夫曼树"><a href="#5-哈夫曼树" class="headerlink" title="5.哈夫曼树"></a>5.哈夫曼树</h2><p>哈夫曼树和哈夫曼编码都是二叉树的应用，常用于数据压缩的编码解码</p>
+<p>构建方法：书本p204页</p>
+<h1 id="第七章-图"><a href="#第七章-图" class="headerlink" title="第七章 图"></a>第七章 图</h1><h2 id="1-图的定义"><a href="#1-图的定义" class="headerlink" title="1.图的定义"></a>1.图的定义</h2><blockquote>
+<p>图是由顶点的有穷非空集合和顶点之间的边的集合组成，通常表示为G(V,E)，V是图G中顶点的集合，E是图G中边的集合</p>
+</blockquote>
+<ul>
+<li>线性表中的数据元素称为元素，树中的数据元素称为结点，图中的数据元素称为顶点Vertex</li>
+<li>线性表中可以没有数据元素（空表），树中可以没有结点（空树），但是在图结构中不允许没有顶点</li>
+<li>图中任意两个顶点之间都可能有关系，顶点之间的逻辑关系用边来表示，顶点集不能为空，但是边集可以为空</li>
+</ul>
+<p>（更多详细有关图的介绍可以参考离散数学中的笔记）</p>
+<h2 id="2-图的ADT"><a href="#2-图的ADT" class="headerlink" title="2.图的ADT"></a>2.图的ADT</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs c">ADT 图（graph）<br>Data <br>    顶点的非空有穷集合和边的集合<br>Operation 	<br>    <span class="hljs-title function_">CreateGraph</span><span class="hljs-params">(*G,V,VR)</span>:按照顶点集和边弧集VR的定义构造图G<br>    <span class="hljs-title function_">LocateVex</span><span class="hljs-params">(G,u)</span>:若图G中存在顶点u则返回u在图中的位置<br>    <span class="hljs-title function_">GetVex</span><span class="hljs-params">(G,u)</span>:若图G中存在顶点u则返回u的值<br>    <span class="hljs-title function_">DeleteVex</span><span class="hljs-params">(*G,v)</span>:删除图G中顶点v以及其相关的弧<br>    <span class="hljs-title function_">DeleteArc</span><span class="hljs-params">(*G,v,w)</span>:删除图中的有向弧&lt;v,w&gt;，若G是无向图则还需要删除其对称弧&lt;w,v&gt;<br>    <span class="hljs-title function_">DFSTraverse</span><span class="hljs-params">(G)</span>:深度优先遍历<br>    <span class="hljs-title function_">HFSTraverse</span><span class="hljs-params">(G)</span>:广度优先遍历<br>endADT<br></code></pre></td></tr></table></figure>
+
+<h2 id="3-图的物理结构"><a href="#3-图的物理结构" class="headerlink" title="3.图的物理结构"></a>3.图的物理结构</h2><p>因为图中任意两个顶点之间都可能存在联系，所以无法用数据元素在内存中的物理位置来表示元素之间的关系，即图不可能用简单的顺序存储结构表示；而使用多重链表也会导致因为度数不同而浪费空间</p>
+<h3 id="3-1-邻接矩阵"><a href="#3-1-邻接矩阵" class="headerlink" title="3.1 邻接矩阵"></a>3.1 邻接矩阵</h3><p>图是由顶点和边两部分组成，合在一起存储较为困难，能否分为两个结构来分别存储呢？</p>
+<p>顶点部分主次大小，所以使用一个一维数组来存储；</p>
+<p>边是顶点与顶点之间的关系，无法用一维搞定，所以考虑使用二维数组来存储；</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-type">char</span> VertexType;<span class="hljs-comment">//顶点类型</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-type">int</span> EdgeType;<span class="hljs-comment">//边上的权值类型</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> MAXVEX 100;<span class="hljs-comment">//最大顶点数</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> INFINITY 65535;<span class="hljs-comment">//用65535表示无穷</span></span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span></span><br><span class="hljs-class">&#123;</span><br>    VertexType vexs[MAXVEX];<span class="hljs-comment">//一维顶点数组</span><br>    EdgeType arc[MAXVEX][MAXVEX];<span class="hljs-comment">//邻接矩阵二维数组</span><br>    <span class="hljs-type">int</span> numVertexes,numEdges;<span class="hljs-comment">//图中当前的顶点数和边数</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-2-邻接表"><a href="#3-2-邻接表" class="headerlink" title="3.2 邻接表"></a>3.2 邻接表</h3><p>邻接矩阵是不错的图存储结构，但是对于边数相对顶点较少的图（稀疏图），这种结构会浪费大量存储空间；</p>
+<p>借鉴树结构中的孩子表示法将数组和链表相结合的存储方法，我们在图中得到邻接表</p>
+<ul>
+<li>图中顶点用一个一维数组存储（使用单链表来存储当然也可以），同时在该顶点数组中每个数据元素还需要存储指向第一个邻接点的指针以便于查找该顶点的边信息</li>
+<li>图中每个顶点vi的所有邻接点构成一个线性表，因为邻接点的个数不定所以用单链表存储（有向图则使用弧尾作为顶点来存储边表）</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-type">char</span> VertexType;<span class="hljs-comment">//顶点类型</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-type">int</span> EdgeType;<span class="hljs-comment">//边上的权值类型由用户定义</span><br><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">EdgeNode</span></span><br><span class="hljs-class">&#123;</span><span class="hljs-comment">//边表结点</span><br>    <span class="hljs-type">int</span> adjvex;<span class="hljs-comment">//邻接点域，存储该顶点对应的一维顶点表中的下标</span><br>    EdgeType weight;<span class="hljs-comment">//权值，非网图可以不需要</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">EdgeNode</span> *<span class="hljs-title">next</span>;</span><span class="hljs-comment">//指针域，指向顶点的下一个邻接点（而不是邻接点的下一个邻接点）</span><br>&#125;EdgeNode;<br><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">VertexNode</span></span><br><span class="hljs-class">&#123;</span><span class="hljs-comment">//顶点表结点</span><br>    VertexType data;<span class="hljs-comment">//顶点域，存储顶点信息</span><br>    EdgeNode *firstedge;<span class="hljs-comment">//边表头指针，指向边表的第一个结点，即该结点的第一个邻接点</span><br>&#125;VertexNode,AdjList[MAXVEX];<br><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span></span><br><span class="hljs-class">&#123;</span><br>    AdjList adjList;<span class="hljs-comment">//邻接表</span><br>    <span class="hljs-type">int</span> numVertexes,numEdges;<span class="hljs-comment">//图中当前顶点数和边数</span><br>&#125;GraphAdjList;<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-3-十字链表"><a href="#3-3-十字链表" class="headerlink" title="3.3 十字链表"></a>3.3 十字链表</h3><p>对于有向图来说邻接表是有缺陷的，如果关心出度问题则要了解入度只能遍历整个图，同理，使用逆邻接表就只能遍历才能了解到出度情况</p>
+<ul>
+<li>重新定义顶点表的结点结构</li>
+<li>重新定义边表的顶点结构（详见书本p233）</li>
+</ul>
+<p><img src="/images/image-20221025104817925.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-4-邻接多重表"><a href="#3-4-邻接多重表" class="headerlink" title="3.4 邻接多重表"></a>3.4 邻接多重表</h3><p>十字链表是针对有向图的优化，对于无向图是否需要有优化的地方呢？</p>
+<p>假如在无向图中关注的是顶点则邻接表是个不错的选择，但是如果我们关注边的操作即意味着需要找到这条边的两个边表结点进行操作，比如说需要删除边(v0,v2)则需要对邻接表结构中的边表的相应结点进行删除</p>
+<p><img src="/images/image-20221025104908200.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="4-图的遍历"><a href="#4-图的遍历" class="headerlink" title="4.图的遍历"></a>4.图的遍历</h2><p>（详见p237）</p>
+<h3 id="4-1-深度优先遍历"><a href="#4-1-深度优先遍历" class="headerlink" title="4.1 深度优先遍历"></a>4.1 深度优先遍历</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">bool</span> visited[MAX_VERTEX_NUM] <span class="hljs-comment">//访问标记数组</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">DFSTraverse</span><span class="hljs-params">(Graph G)</span>&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> v = <span class="hljs-number">0</span>; v &lt; G.vexnum ; v++)&#123;<br>        visited[v] = <span class="hljs-literal">false</span> ;  <span class="hljs-comment">//初始化标记数组</span><br>    &#125;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> v = <span class="hljs-number">0</span>; v &lt; G.vexnum ; v++)&#123;  <span class="hljs-comment">//保证图中的每个联通分量都能被访问</span><br>        <span class="hljs-keyword">if</span>(!visited[v])<br>            DFS(G,v);<br>    &#125;<br><br>&#125;<br><br><span class="hljs-type">void</span> <span class="hljs-title function_">DFS</span><span class="hljs-params">(Graph G,<span class="hljs-type">int</span> v)</span>&#123;	<span class="hljs-comment">//G表示要遍历的图，v表示从哪个顶点开始</span><br>    <br>    visit(v);<br>    visited[v] = <span class="hljs-literal">true</span>;<br>    <span class="hljs-keyword">for</span>(w=FirstNeighbor(G,v);w&gt;=<span class="hljs-number">0</span>;w=NextNeighbor(G,v,w))&#123;<br>           <br>        <span class="hljs-keyword">if</span>(!visited[w])  <span class="hljs-comment">//如果没有被访问过</span><br>            DFS(G,w);<br>        <br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="4-1-1-复杂度分析"><a href="#4-1-1-复杂度分析" class="headerlink" title="4.1.1 复杂度分析"></a>4.1.1 复杂度分析</h4><ul>
+<li>邻接矩阵：O( |v|2)    &#x2F;&#x2F;一共需要访问v个结点，而访问v个结点都需要O(v)的时间</li>
+<li>邻接表：O（ |v| + |E| )  &#x2F;&#x2F;访问v个顶点要O(v)的时间，访问各个邻接点要O(E)的时间</li>
+</ul>
+<h4 id="4-1-2-深度优先生成树"><a href="#4-1-2-深度优先生成树" class="headerlink" title="4.1.2 深度优先生成树"></a>4.1.2 深度优先生成树</h4><ul>
+<li>由深度优先遍历确定</li>
+<li>生成树不唯一</li>
+<li>深度优先遍历非联通图，优先得到生成森林</li>
+</ul>
+<p><img src="/images/image-20221025105512207.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="4-2-广度优先遍历"><a href="#4-2-广度优先遍历" class="headerlink" title="4.2 广度优先遍历"></a>4.2 广度优先遍历</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">bool</span> visited[MAX_VERTEX_NUM];<br><span class="hljs-type">void</span> <span class="hljs-title function_">BFSTraverse</span><span class="hljs-params">(Graph G)</span>&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> v = <span class="hljs-number">0</span>; v &lt; G.vexnum ; v++)&#123;<br>        visited[v] = <span class="hljs-literal">false</span> ;  <span class="hljs-comment">//初始化标记数组</span><br>    &#125;<br>    InitQueue(Q);<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> v = <span class="hljs-number">0</span>; v &lt; G.vexnum ; v++)&#123;  <span class="hljs-comment">//保证图中的每个联通分量都能被访问</span><br>        <span class="hljs-keyword">if</span>(!visited[v])<br>            BFS(G,v);<br>    &#125;<br><br>&#125;<br><br><span class="hljs-type">void</span> <span class="hljs-title function_">BFS</span><span class="hljs-params">(Graph G,<span class="hljs-type">int</span> v)</span>&#123;<br>    visit(v);<br>    visited[v] = <span class="hljs-literal">false</span>;	<span class="hljs-comment">//访问第一个结点</span><br>    <br>    EnQueue(Q,v);	<span class="hljs-comment">//第一个结点入队列</span><br>    <br>    <span class="hljs-keyword">while</span>(!isEmpty(Q))&#123;	  <span class="hljs-comment">//若队列不为空则循环</span><br>        DeQueue(Q,v);<br>        <span class="hljs-keyword">for</span>(w = FirstNeighbor(G,v);w&gt;=<span class="hljs-number">0</span>;w = NextNeighbor(G,v,w))&#123;<br>            <span class="hljs-keyword">if</span>(!visited[w])&#123;<br>                visit(w);<br>                visited[w] = <span class="hljs-literal">false</span>;<br>                EnQueue(G,w)<br>             &#125;        <br>        &#125;<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="4-2-1-复杂度分析"><a href="#4-2-1-复杂度分析" class="headerlink" title="4.2.1 复杂度分析"></a>4.2.1 复杂度分析</h4><ul>
+<li>邻接矩阵：O( |v|2)    </li>
+<li>邻接表：O（ |v| + |E| )</li>
+</ul>
+<h4 id="4-2-2-广度优先生成树"><a href="#4-2-2-广度优先生成树" class="headerlink" title="4.2.2 广度优先生成树"></a>4.2.2 广度优先生成树</h4><ul>
+<li>由广度优先遍历确定</li>
+<li>由于邻接表存储图不一致，由此确定的生成树不一致</li>
+<li>遍历非联通图可以得到广度优先生成森林</li>
+</ul>
+<blockquote>
+<p>其实这种就是无效笔记，做了和没做一样根本起不到提示的作用</p>
+</blockquote>
+<p><img src="/images/image-20221025105234751.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="5-最小生成树"><a href="#5-最小生成树" class="headerlink" title="5.最小生成树"></a>5.最小生成树</h2><p>将构造连通图的最小代价生成树称为最小生成树（详见p245）</p>
+<p>最小生成树的几个特性:</p>
+<ul>
+<li><ul>
+<li>最小生成可能由多个,但权值之和只有一个</li>
+<li>边 &#x3D; 顶点数 - 1</li>
+<li>如果一个联通图本身是树,其最小生成树就是其本身</li>
+<li>只有联通图才能生成树,非联通图只能生成森林</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-1-Prim算法"><a href="#5-1-Prim算法" class="headerlink" title="5.1 Prim算法"></a>5.1 Prim算法</h3><p>从某个点开始，每次将代价最小的顶点纳入生成树，生成树不唯一，时间复杂度：O(v^2^)</p>
+<p><img src="/images/image-20221025105650825.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="5-2-Kruskal算法"><a href="#5-2-Kruskal算法" class="headerlink" title="5.2 Kruskal算法"></a>5.2 Kruskal算法</h3><p>每次选择权值最小的边，使两头联通，原本已经联通的就不用选，时间复杂度: O(ElogE)</p>
+<p><img src="/images/image-20221025105737928.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="6-最短路径"><a href="#6-最短路径" class="headerlink" title="6.最短路径"></a>6.最短路径</h2><p>对于网图来说，最短路径是指两顶点之间经过的边权值之和最少的路径，我们称起点为源点，最后一个顶点为终点（详见p257）</p>
+<h3 id="6-1-Dijistra算法"><a href="#6-1-Dijistra算法" class="headerlink" title="6.1 Dijistra算法"></a>6.1 Dijistra算法</h3><p><img src="/images/image-20221025105831020.png" srcset="/img/loading.gif" lazyload></p>
+<p>注意: 不适用于带负权图，时间复杂度为 O(v^2^)</p>
+<h3 id="6-2-Floyd算法"><a href="#6-2-Floyd算法" class="headerlink" title="6.2 Floyd算法"></a>6.2 Floyd算法</h3><p>注意: 适用于于负权图，但不适用于带有”负权回路”的图，时间复杂度为 O(v^3^)</p>
+<h3 id="6-3-广度优先遍历-无权图"><a href="#6-3-广度优先遍历-无权图" class="headerlink" title="6.3 广度优先遍历(无权图)"></a>6.3 广度优先遍历(无权图)</h3><p><img src="/images/image-20221025110028078.png" srcset="/img/loading.gif" lazyload></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">BFS_MIN_Distance</span><span class="hljs-params">(Graph G,<span class="hljs-type">int</span> u)</span>&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span> ; i&lt;G.vexnum ; i++)&#123;<br>        d[i] = INF;   <span class="hljs-comment">//d表示最短路径长度</span><br>        path [i] = <span class="hljs-number">-1</span>;   <span class="hljs-comment">//path表示最短路径从哪里来,初始为-1  </span><br>    &#125;<br>    d[u] = <span class="hljs-number">0</span>;<br>    visited[u] = <span class="hljs-literal">true</span>;<br>    Enqueue(Q,u);<br>    <br>    <span class="hljs-keyword">while</span>(!isEmpty(Q))&#123;<br>        Dequeue(Q,u);<br>        <span class="hljs-keyword">for</span>(w=FirstNeighbor(G,w) ; w&gt;=<span class="hljs-number">0</span> ; w=NextNeighbor(G,u,w))&#123;<br>            <span class="hljs-keyword">if</span>(!visited[w])&#123;<br>                d[w] = d[u] + <span class="hljs-number">1</span>;	<span class="hljs-comment">//路径长度+1</span><br>                path[w] = u;		个<br>                visited[w] = <span class="hljs-literal">true</span>;<br>                Enqueue(Q,w);<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="7-有向无环图-DAG图"><a href="#7-有向无环图-DAG图" class="headerlink" title="7.有向无环图(DAG图)"></a>7.有向无环图(DAG图)</h2><p><img src="/images/image-20221025110153338.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="8-拓扑排序"><a href="#8-拓扑排序" class="headerlink" title="8.拓扑排序"></a>8.拓扑排序</h2><p>AOV网:顶点表示活动，边上没有权值</p>
+<ul>
+<li>拓扑排序的方法:</li>
+</ul>
+<ol>
+<li><ol>
+<li>从AOV网中选择一个没有前驱的顶点输出</li>
+<li>从网中删除改顶点和所有以它为起点的有向边</li>
+<li>重复1和2直到AOV网为空，或者当前网中不存在前驱(即非连通图)</li>
+</ol>
+</li>
+</ol>
+<ul>
+<li>拓扑排序的性质:</li>
+</ul>
+<ol>
+<li><ol>
+<li>不唯一</li>
+<li>若图中有环，则不存在拓扑排序</li>
+</ol>
+</li>
+</ol>
+<ul>
+<li>拓扑排序的算法:</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">bool</span> <span class="hljs-title function_">TopologicalSort</span><span class="hljs-params">(Graph G)</span>&#123;<br>    InitStack(S);<br>    <br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; G.vexnum ; i++)&#123;<br>        <span class="hljs-keyword">if</span>(indegree[i] == <span class="hljs-number">0</span>)&#123;  <span class="hljs-comment">//indegree记录入度为0的结点</span><br>            Push(S,i)			<span class="hljs-comment">//将入度为0的结点入栈</span><br>        &#125;<br>    &#125;<br>    <br>    <span class="hljs-type">int</span> count = <span class="hljs-number">0</span>;<span class="hljs-comment">//记录已经输出的定点数</span><br>    <span class="hljs-keyword">while</span>(!isEmpty(S))&#123;<br>        Pop(S,i);<br>        print[count++] = i; <span class="hljs-comment">//输出i结点</span><br>        <span class="hljs-keyword">for</span>(p=G.vertices;p;p=p-&gt;nextarc)&#123;<br>            v = p-&gt;adjvex;<br>            <span class="hljs-keyword">if</span>(!--indegree[v])&#123;<span class="hljs-comment">//入度-1后变为0</span><br>                Push(S,v);<br>            &#125; <br>        &#125;<br>    &#125;<span class="hljs-comment">//while</span><br>    <br>    <span class="hljs-keyword">if</span>(count &lt; G.vexnum)<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    <span class="hljs-keyword">else</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="9-关键路径"><a href="#9-关键路径" class="headerlink" title="9.关键路径"></a>9.关键路径</h2><p>AOE网:用边表示活动的网络,用顶点表示事件</p>
+<p>求关键路径步骤:</p>
+<ol>
+<li>求所有事件的最早发生时间(ve) : 即求源点到目的顶点的最长路径</li>
+<li>求所有时间的最迟发生时间(vl) : 不推迟整个工程的情况下,该事件最迟应该发生的时间</li>
+<li>求所有活动的最早发生时间(e)  : 活动弧的起点最早应该发生的时间</li>
+<li>求所有活动的最迟发生时间(l)  :  活动弧的终点所表示的事件的最迟时间与该活动所需的时间差.</li>
+<li>求d &#x3D; l - e , d &#x3D; 0即关键活动</li>
+</ol>
+<p><img src="/images/image-20221025110309123.png" srcset="/img/loading.gif" lazyload></p>
+<p>关键活动,关键路径的特性:</p>
+<ol>
+<li>关键活动耗时增加,整个工程工期增加</li>
+<li>缩短关键活动时间,缩短整个工程时间</li>
+<li>当缩短到一定程度,关键活动可能变成非关键活动</li>
+</ol>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E9%80%9A%E8%AF%86%E8%AF%BE%E7%A8%8B/" class="category-chain-item">通识课程</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/">#课程学习</a>
+      
+        <a href="/tags/%E8%80%83%E7%A0%94/">#考研</a>
+      
+        <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">#计算机基础</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>数据结构与算法</div>
+      <div>https://gintoki-jpg.github.io/2022/10/24/通识_数据结构与算法/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>杨再俨</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年10月24日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/11/01/%E9%A1%B9%E7%9B%AE_%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90%E5%99%A8/" title="初级项目_语法分析器">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">初级项目_语法分析器</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/10/13/%E5%B7%A5%E5%85%B7_tensorflow/" title="Tensorflow">
+                        <span class="hidden-mobile">Tensorflow</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+</div>
+
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

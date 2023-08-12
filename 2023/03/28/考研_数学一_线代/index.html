@@ -1,0 +1,1376 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/logo.png">
+  <link rel="icon" href="/img/bg/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="杨再俨">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="24考研数学一线性代数复习总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="考研_数学一_线性代数">
+<meta property="og:url" content="https://gintoki-jpg.github.io/2023/03/28/%E8%80%83%E7%A0%94_%E6%95%B0%E5%AD%A6%E4%B8%80_%E7%BA%BF%E4%BB%A3/index.html">
+<meta property="og:site_name" content="Tintoki_blog">
+<meta property="og:description" content="24考研数学一线性代数复习总结">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/study.jpg">
+<meta property="article:published_time" content="2023-03-28T14:22:00.000Z">
+<meta property="article:modified_time" content="2023-08-07T10:57:59.832Z">
+<meta property="article:author" content="YangZaiyan">
+<meta property="article:tag" content="线性代数">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gintoki-jpg.github.io/img/bg/study.jpg">
+  
+  
+  
+  <title>考研_数学一_线性代数 - Tintoki_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"gintoki-jpg.github.io","root":"/","version":"1.9.1","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tintoki_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/bg1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">考研_数学一_线性代数</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-03-28 22:22" pubdate>
+          2023年3月28日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          14k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          119 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">考研_数学一_线性代数</h1>
+            
+            <div class="markdown-body">
+              
+              <hr>
+<p>2023&#x2F;3&#x2F;28 22:23 今天开始复习线性代数的基础知识，先看宋浩的视频结合同济版的教材做笔记（不需要把教材的笔记额外整理到这篇博客，太浪费时间了，这篇博客主要用于记录李永乐线性代数的讲义的知识点），有了基础知识之后再看李永乐教材+刷题（刷题现阶段其实也不是特别重要，主要刷题还是把重心放在高数上）；</p>
+<p>2023&#x2F;4&#x2F;6 12:13 宋浩的视频抓不到重点而且花费很大量的时间，所以决定直接选择看张宇的线代，也就是说现在数学一的所有教程都暂时跟张宇；</p>
+<p>2023&#x2F;4&#x2F;15 15:09 张宇的教材纯看可能确实缺少了一些知识点，但是宋浩的视频真的太拖沓了，所以整理完前面学习过的部分后直接跟张宇的视频课；</p>
+<p>2023&#x2F;6&#x2F;7 15:17 现已将线性代数第一轮复习完毕，截止目前，高数、线代以及概率论第一轮复习完毕。整体来说知识点部分没什么难点，接下来需要做的就是刷题，不断的背公式和巩固基础的知识点，一直到能够解题不看手册的水平，此时便可以进行强化阶段(巩固知识点这部分预计持续到八月份，八月开始之后就需要进入强化阶段，这是最晚最晚的时间规划了，毕竟还没开始刷真题…)。刷题的话别听什么乱七八糟的推荐了，我个人认为只需要把张宇教科书上的题目刷好就OK，尽量还是买点草稿纸什么的，纸质刷题更有手感；</p>
+<p>2023&#x2F;8&#x2F;7 18:57 至此，高数、概论以及线代三本书的基础全部复习完毕，准备开启强化阶段；</p>
+<hr>
+<h1 id="第一讲-行列式"><a href="#第一讲-行列式" class="headerlink" title="第一讲 行列式"></a>第一讲 行列式</h1><h2 id="1-行列式的定义"><a href="#1-行列式的定义" class="headerlink" title="1.行列式的定义"></a>1.行列式的定义</h2><p>二阶行列式的几何意义：二阶行列式是由两个二维向量组成，其运算规则的结果（叉乘结果）为以这个两个向量为邻边的平行四边形的面积</p>
+<p><img src="/images/image-20230415142630649.png" srcset="/img/loading.gif" lazyload></p>
+<p>根据线性代数可以作“线性推广”的特点，三阶行列式可以定义为由三个三维向量组成，其运算结果为以这三个向量为邻边的平行六面体的体积（若D<del>3</del>不为0意味着体积不为0，则这三个向量是线性无关的，否则是线性相关的）</p>
+<p><img src="/images/image-20230415142837380.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>据此可以给出n阶行列式的本质定义</p>
+<p><img src="/images/image-20230415142937302.png" srcset="/img/loading.gif" lazyload></p>
+</blockquote>
+<h2 id="2-行列式的性质"><a href="#2-行列式的性质" class="headerlink" title="2.行列式的性质"></a>2.行列式的性质</h2><p>（这些性质必须记忆，下面七个性质全部可以用上面的行列式的几何背景直观得到）</p>
+<p><img src="/images/image-20230415145605259.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>性质1更准确的说法是“行列式与它的转置行列式相等”，该性质表明在行列式中行与列有同等地位，对行成立的性质对列也成立；</p>
+</blockquote>
+<p><img src="/images/image-20230415143255250.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20230415143430934.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<ul>
+<li>性质5可以简单用逆序数改变导致的符号改变来解释（一个排列中任意两个元素对换，排列改变奇偶性）</li>
+<li>性质7主要用于在计算行列式的过程中对行列式进行化简，将其化简为上三角行列式（不要化简为下三角行列式，很容易出错）<ul>
+<li>化简上三角行列式的步骤非常简单，使用第一行第一个数消去其正下方所有的数、使用第二行第二个数消去其正下方所有的数…以此类推可以得到上三角行列式（化上三角行列式既可以使用行变换也可以使用列变换）</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h2 id="3-逆序数"><a href="#3-逆序数" class="headerlink" title="3.逆序数"></a>3.逆序数</h2><blockquote>
+<p>排列与逆序</p>
+</blockquote>
+<p><img src="/images/image-20230415143712416.png" srcset="/img/loading.gif" lazyload></p>
+<p>根据逆序数，可以给出n阶行列式的第二种定义（也就是行列式按行展开）</p>
+<p><img src="/images/image-20230415143806005.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<ul>
+<li>此处的∑求和符号是指对所有n个列的下标进行排序求和（更简单的理解就是从每行中选取一个元素，要求该元素与所选元素不同列）</li>
+<li>除了按行展开，n阶行列式也可以按照列展开或混合展开，只需要记住其展开的符号是由行和列的逆序数求和决定；</li>
+<li>此处的按行展开和按列展开与下面将要介绍的行列式展开定理有区别，这个更多的被称为n阶行列式的定义；</li>
+</ul>
+</blockquote>
+<p>使用行列式按行展开的定义对2，3阶行列式进行定义与教材中一致</p>
+<p><img src="/images/image-20230611082006931.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="4-行列式展开定理"><a href="#4-行列式展开定理" class="headerlink" title="4.行列式展开定理"></a>4.行列式展开定理</h2><p>行列式展开定理主要是为了解决行列式的阶数大于3阶的行列式的定义问题（无论是几何意义还是按行展开都比较麻烦）</p>
+<blockquote>
+<p>余子式</p>
+</blockquote>
+<p><img src="/images/image-20230415144108720.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>代数余子式</p>
+</blockquote>
+<p><img src="/images/image-20230415144127690.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>行列式展开定理</p>
+</blockquote>
+<p><img src="/images/image-20230415144259125.png" srcset="/img/loading.gif" lazyload></p>
+<p>注意此处是行列式的某行(列)的元素分别乘以其相应的代数余子式，如果乘以的是另一行(列)的代数余子式求和，结果为0（这也被称为异乘变零定理，证明过于复杂自行Google）</p>
+<p><img src="/images/image-20230415144427537.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="5-重要行列式"><a href="#5-重要行列式" class="headerlink" title="5.重要行列式"></a>5.重要行列式</h2><blockquote>
+<p>（1）主对角线行列式（上&#x2F;下三角行列式）</p>
+</blockquote>
+<p><img src="/images/image-20230415144535952.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>（2）副对角线行列式</p>
+</blockquote>
+<p><img src="/images/image-20230415144601694.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>（3）拉普拉斯展开式（此处不要求C是一个方阵，因为根本用不到C）</p>
+</blockquote>
+<p><img src="/images/image-20230415144650772.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>（4）范德蒙行列式</p>
+</blockquote>
+<p><img src="/images/image-20230415144730981.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="第二讲-矩阵"><a href="#第二讲-矩阵" class="headerlink" title="第二讲 矩阵"></a>第二讲 矩阵</h1><h2 id="1-矩阵的定义"><a href="#1-矩阵的定义" class="headerlink" title="1.矩阵的定义"></a>1.矩阵的定义</h2><blockquote>
+<p>矩阵的定义：</p>
+<p><img src="/images/image-20230415151840001.png" srcset="/img/loading.gif" lazyload></p>
+<p>注意：本质上矩阵是一张数表，行列式是一个数；行列式的行数一定等于列数，但矩阵不必；</p>
+</blockquote>
+<p>在学习矩阵的过程中可以持有以下两个观点：</p>
+<ul>
+<li>矩阵可以看作是由若干行(列)向量拼接成的（因此只有一行的矩阵也被称为行矩阵、行向量）；</li>
+<li>矩阵本身无法像行列式一样计算，但其若干行(列)向量之间仍然可能存在某种关系，这种关系反映了矩阵的本质 – 矩阵的秩；</li>
+</ul>
+<blockquote>
+<p>矩阵的秩的定义：</p>
+<p><img src="/images/image-20230415151558248.png" srcset="/img/loading.gif" lazyload></p>
+<p>简单来说矩阵秩的本质就是组成该矩阵的线性无关的向量个数；</p>
+</blockquote>
+<h2 id="2-矩阵的运算"><a href="#2-矩阵的运算" class="headerlink" title="2.矩阵的运算"></a>2.矩阵的运算</h2><h3 id="2-1-基本运算"><a href="#2-1-基本运算" class="headerlink" title="2.1 基本运算"></a>2.1 基本运算</h3><h4 id="2-1-1-矩阵相等"><a href="#2-1-1-矩阵相等" class="headerlink" title="2.1.1 矩阵相等"></a>2.1.1 矩阵相等</h4><p><img src="/images/image-20230415152055713.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>矩阵相等的前提是同型，因此两个0矩阵不一定是相等的；</li>
+</ul>
+<h4 id="2-1-2-矩阵加法"><a href="#2-1-2-矩阵加法" class="headerlink" title="2.1.2 矩阵加法"></a>2.1.2 矩阵加法</h4><p><img src="/images/image-20230415152141854.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-1-3-矩阵数乘"><a href="#2-1-3-矩阵数乘" class="headerlink" title="2.1.3 矩阵数乘"></a>2.1.3 矩阵数乘</h4><p><img src="/images/image-20230415152217952.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>这意味着矩阵A的每个元素都要乘以k，<code>与行列式中的倍乘有区别，与之后的矩阵初等行变换中的倍乘也有区别</code>；<br>$$<br>矩阵数乘！&#x3D;矩阵倍乘&#x3D;行列式倍乘<br>$$</p>
+</blockquote>
+<p>矩阵的加法运算和数乘运算统称为矩阵的线性运算，满足以下的运算规律</p>
+<p><img src="/images/image-20230415152504816.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-1-4-矩阵的行列式"><a href="#2-1-4-矩阵的行列式" class="headerlink" title="2.1.4 矩阵的行列式"></a>2.1.4 矩阵的行列式</h4><p>当使用n阶方阵A计算行列式时，记为|A|</p>
+<p><img src="/images/image-20230415152650405.png" srcset="/img/loading.gif" lazyload></p>
+<p>关于矩阵行列式有这样一个重要的结论</p>
+<blockquote>
+<p>两个矩阵相乘的矩阵的行列式等于两个行列式的乘积</p>
+<p><img src="/images/image-20230415154837753.png" srcset="/img/loading.gif" lazyload></p>
+</blockquote>
+<h4 id="2-1-5-矩阵的乘法"><a href="#2-1-5-矩阵的乘法" class="headerlink" title="2.1.5 矩阵的乘法"></a>2.1.5 矩阵的乘法</h4><p><img src="/images/image-20230415153103795.png" srcset="/img/loading.gif" lazyload></p>
+<p>矩阵的乘法满足下列运算律</p>
+<p><img src="/images/image-20230415153248529.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<ul>
+<li>矩阵的乘法一般不满足交换律，即AB!&#x3D;BA；</li>
+<li>两个非零矩阵的乘积同样可能为零矩阵；</li>
+<li>[A,B]一般表示矩阵拼接，(AB)或(A*B)一般表示矩阵乘积；</li>
+</ul>
+</blockquote>
+<h4 id="2-1-6-矩阵的幂"><a href="#2-1-6-矩阵的幂" class="headerlink" title="2.1.6 矩阵的幂"></a>2.1.6 矩阵的幂</h4><p><img src="/images/image-20230415154639779.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20230415154736419.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-1-7-正交化"><a href="#2-1-7-正交化" class="headerlink" title="2.1.7 正交化"></a>2.1.7 正交化</h4><h5 id="1-向量的内积与正交"><a href="#1-向量的内积与正交" class="headerlink" title="(1)向量的内积与正交"></a>(1)向量的内积与正交</h5><p>下面这几个概念都是相对向量定义的；</p>
+<p>a)内积：</p>
+<p><img src="/images/image-20230415153807133.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>内积的结果是一个数，外积的结果是一个向量，内积也称为数量积、点积，外积也称为向量积、叉积，关于叉积参考<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%90%91%E9%87%8F%E7%A7%AF/4601007?fr=aladdin">向量积_百度百科 (baidu.com)</a>；</p>
+</blockquote>
+<p>b)正交：</p>
+<p><img src="/images/image-20230415153830644.png" srcset="/img/loading.gif" lazyload></p>
+<p>c)模：</p>
+<p><img src="/images/image-20230415153854577.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>注意，如果题干让求解与两个向量正交的单位向量，求解出的结果应该有两个分别表示不同方向的单位正交向量</p>
+</blockquote>
+<h5 id="2-施密特正交化"><a href="#2-施密特正交化" class="headerlink" title="(2)施密特正交化*"></a>(2)施密特正交化*</h5><ul>
+<li>标准正交向量组：<img src="/images/image-20230415154324788.png" srcset="/img/loading.gif" lazyload></li>
+</ul>
+<p>其中的标准指的是该组中的向量都是单位向量，正交表示任意两个不同向量之间的点积都是0（点积的几何意义）</p>
+<ul>
+<li><code>施密特正交化</code>（详细的推导查看<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/136627868">如何理解施密特（Schmidt）正交化 - 知乎 (zhihu.com)</a>）：</li>
+</ul>
+<p><img src="/images/image-20230415154459950.png" srcset="/img/loading.gif" lazyload></p>
+<p>该正交化方法的原理非常简单，从几何意义上理解，假如原本的两个向量不垂直，则分别找原本向量和在该向量的垂线方向上的向量即可得到正交的两个向量</p>
+<p>施密特正交化方法本质上就是一种将任意坐标系(任意线性无关的向量作为基)变为直角坐标系(相互正交的向量作为基)的方法，更直接的说，施密特正交化就是找出原来线性无关的向量张成的向量空间中相互正交的基向量</p>
+<h3 id="2-2-矩阵的转置"><a href="#2-2-矩阵的转置" class="headerlink" title="2.2 矩阵的转置"></a>2.2 矩阵的转置</h3><p><img src="/images/image-20230415153547285.png" srcset="/img/loading.gif" lazyload></p>
+<p>转置矩阵满足下列运算规律</p>
+<p><img src="/images/image-20230415153636860.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="3-特殊矩阵"><a href="#3-特殊矩阵" class="headerlink" title="3.特殊矩阵"></a>3.特殊矩阵</h2><p><img src="/images/image-20230415154943992.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20230415154955731.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20230415155014450.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-1-分块矩阵"><a href="#3-1-分块矩阵" class="headerlink" title="3.1 分块矩阵"></a>3.1 分块矩阵</h3><p><img src="/images/image-20230614221159251.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="3-1-1-分块矩阵的行列式"><a href="#3-1-1-分块矩阵的行列式" class="headerlink" title="3.1.1 分块矩阵的行列式"></a>3.1.1 分块矩阵的行列式</h4><p>参考链接：<a target="_blank" rel="noopener" href="https://ccjou.wordpress.com/2013/06/07/%E5%88%86%E5%A1%8A%E7%9F%A9%E9%99%A3%E7%9A%84%E8%A1%8C%E5%88%97%E5%BC%8F/">分块矩阵的行列式 | 线代启示录 (wordpress.com)</a>；</p>
+<p>（这部分不是考研的考点，但是在解某些提的过程中可能会使用到一小部分的内容）</p>
+<h4 id="3-1-2-分块矩阵的逆"><a href="#3-1-2-分块矩阵的逆" class="headerlink" title="3.1.2 分块矩阵的逆"></a>3.1.2 分块矩阵的逆</h4><p>特殊的分块矩阵的求逆形式如下</p>
+<ul>
+<li><p>对角线矩阵的逆<br><img src="/images/image-20230614222013391.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>副对角线分块矩阵的逆的推广</p>
+</li>
+</ul>
+<p><img src="/images/image-20230709221823756.png" srcset="/img/loading.gif" lazyload></p>
+<p>完整的分块矩阵求逆公式如下（详情参考<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/47760591">分块矩阵怎么求逆？ - 知乎 (zhihu.com)</a>），这个公式不用背，需要使用的时候掌握推导方法即可</p>
+<p><img src="/images/image-20230614221111142.png" srcset="/img/loading.gif" lazyload></p>
+<p>这里举一个例子说明如何推导分块矩阵的逆</p>
+<p><img src="/images/image-20230614223650339.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="4-矩阵的逆"><a href="#4-矩阵的逆" class="headerlink" title="4.矩阵的逆"></a>4.矩阵的逆</h2><h3 id="4-1-逆矩阵的定义"><a href="#4-1-逆矩阵的定义" class="headerlink" title="4.1 逆矩阵的定义"></a>4.1 逆矩阵的定义</h3><p>矩阵不存在除法，只存在逆矩阵的说法，注意尽管逆矩阵被写作A^-1^，但是矩阵永远不能放在分母！！！</p>
+<blockquote>
+<p>定义：</p>
+<p><img src="/images/image-20230415163631013.png" srcset="/img/loading.gif" lazyload></p>
+</blockquote>
+<p>矩阵A可逆的充要条件是|A|！&#x3D;0（因为在求解逆矩阵的时候|A|会作为分母），如果|A|!&#x3D;0则有（公式中的A*是伴随矩阵）</p>
+<p><img src="/images/image-20230415163841626.png" srcset="/img/loading.gif" lazyload></p>
+<p>上述满足|A|!&#x3D;0的矩阵A也被称为满秩、非奇异、非退化矩阵</p>
+<h3 id="4-2-逆矩阵的性质"><a href="#4-2-逆矩阵的性质" class="headerlink" title="4.2 逆矩阵的性质"></a>4.2 逆矩阵的性质</h3><p><img src="/images/image-20230415164040490.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>可逆矩阵是唯一的，这与上三角行列式不唯一不同！！！</p>
+</blockquote>
+<h3 id="4-3-逆矩阵的求解"><a href="#4-3-逆矩阵的求解" class="headerlink" title="4.3 逆矩阵的求解"></a>4.3 逆矩阵的求解</h3><p>求矩阵A的逆矩阵A^-1^主要有两种方式，第一种是伴随矩阵法，也就是先根据定义求出伴随矩阵A*然后再使用定义公式求解A^-1^，但这种方法往往运算量过大不采用；</p>
+<blockquote>
+<p>注意：考研题型可能会强制要求使用伴随矩阵对逆矩阵进行求解，那么需要注意以下几点</p>
+<p><img src="/images/image-20230614201732707.png" srcset="/img/loading.gif" lazyload></p>
+</blockquote>
+<p>另一种方法是初等变换法，即左右分别是[A E]，当A矩阵变换为单位矩阵的时候E矩阵就是对应的逆矩阵A^-1^；</p>
+<h4 id="4-3-1-伴随矩阵"><a href="#4-3-1-伴随矩阵" class="headerlink" title="4.3.1 伴随矩阵"></a>4.3.1 伴随矩阵</h4><blockquote>
+<p>定义：</p>
+<p><img src="/images/image-20230415164611793.png" srcset="/img/loading.gif" lazyload></p>
+<p>尤其需要注意伴随矩阵是由原矩阵的代数余子式组成，并且其排列是按照代数余子式第一个下标表示列第二个下标表示行进行排列（与矩阵排列的下标相反）</p>
+</blockquote>
+<p>A的伴随矩阵和A满足关系<code>A*A=AA*=|A|E</code> – 任何一个方阵都存在相应的伴随矩阵；</p>
+<p>伴随矩阵主要有以下几个重要性质（这些性质全都可以由上面的基本关系推出）:</p>
+<p><img src="/images/image-20230415165011636.png" srcset="/img/loading.gif" lazyload></p>
+<p>一般情况下伴随矩阵较难求解，因此不考虑使用伴随矩阵求解矩阵的逆；</p>
+<h4 id="4-3-2-初等变换"><a href="#4-3-2-初等变换" class="headerlink" title="4.3.2 初等变换"></a>4.3.2 初等变换</h4><p>矩阵的初等行(列)变换的定义如下</p>
+<p><img src="/images/image-20230415165236820.png" srcset="/img/loading.gif" lazyload></p>
+<p>由单位矩阵E经过<code>一次</code>初等变换得到的矩阵被称为初等矩阵</p>
+<p><img src="/images/image-20230415165340351.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20230415165350805.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20230415165403061.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>尤其注意E<del>ij</del>(k)分别表示行变换和列变换时对应的前后顺序（因为初等矩阵的特殊性，可以只记一个变换避免混淆）！！！；</p>
+</blockquote>
+<p>初等矩阵主要有如下重要性质</p>
+<p><img src="/images/image-20230415165524634.png" srcset="/img/loading.gif" lazyload></p>
+<p>使用初等变换求逆矩阵需要注意要么全部使用初等行变换，要么全部使用初等列变化（不能既使用行变换也使用列变换，推荐永远选择使用初等行变换）</p>
+<p><img src="/images/image-20230415165710112.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>使用初等行变换求逆矩阵的注意事项如下</p>
+<p><img src="/images/image-20230614213406590.png" srcset="/img/loading.gif" lazyload></p>
+</blockquote>
+<h2 id="5-等价矩阵"><a href="#5-等价矩阵" class="headerlink" title="5.等价矩阵"></a>5.等价矩阵</h2><p>如果矩阵A,B同型，且存在可逆矩阵P和Q使得PAQ&#x3D;B(这意味着A经过初等变换可以得到B)，则称矩阵A和矩阵B是等价的(注意是等价不是相等)，记作</p>
+<p><img src="/images/image-20230415171554445.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>Tips：矩阵等价是指两个矩阵具有相同的秩。当两个矩阵具有相同的秩时，它们可以通过一系列基本的行变换或列变换相互转化。</p>
+</blockquote>
+<p>另一个概念是等价标准型，了解即可</p>
+<p><img src="/images/image-20230415171647105.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="6-矩阵的秩"><a href="#6-矩阵的秩" class="headerlink" title="6.矩阵的秩"></a>6.矩阵的秩</h2><blockquote>
+<p>矩阵子式和余子式的定义如下(详细定义参考<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%9F%A9%E9%98%B5%E7%9A%84%E7%A7%A9/6285316">矩阵的秩_百度百科 (baidu.com)</a>)：</p>
+<ul>
+<li>子式：任取矩阵的k行和k列，将位于这些行和这些列的交点上的元素按照原来次序组成的k阶方阵的<code>行列式</code>称为矩阵的一个k阶子式（因此矩阵的子式不唯一）；</li>
+<li>余子式：将矩阵的某些行与列去掉之后所余下的<code>行列式</code>；</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>定义：设A是<code>m*n</code>的矩阵，若存在k阶子式不为0，而任意k+1阶子式全为0，则称矩阵A的秩r(A)&#x3D;k，且若A为n阶方阵，则</p>
+<p><img src="/images/image-20230515101609696.png" srcset="/img/loading.gif" lazyload></p>
+</blockquote>
+<p>有关矩阵的秩有如下几个性质：</p>
+<p><img src="/images/image-20230515101825105.png" srcset="/img/loading.gif" lazyload></p>
+<p>3.矩阵的行秩&#x3D;列秩&#x3D;秩（该性质在判断抽象型非齐次方程组是否有解时很好用）</p>
+<p>4.矩阵的秩为0的充要条件是该矩阵为0矩阵，换句话说非0矩阵不可能化简推出秩为0</p>
+<h1 id="第三讲-向量组"><a href="#第三讲-向量组" class="headerlink" title="第三讲 向量组"></a>第三讲 向量组</h1><blockquote>
+<p>向量组和矩阵是完全等价的概念，即一个向量组(a<del>1</del>,a<del>2</del>…a<del>n</del>)等价于一个矩阵，向量组中的每个向量对应矩阵的列向量；</p>
+<p>因此，讨论向量组的线性相关性实际上也就是在讨论矩阵的线性相关性。（说白了线性代数就是一个环环相扣，章节之间联系非常紧密的学科）</p>
+</blockquote>
+<h2 id="1-线性相关性"><a href="#1-线性相关性" class="headerlink" title="1.线性相关性"></a>1.线性相关性</h2><blockquote>
+<p>线性相关性的引出：矩阵的若干行(列)都是向量，它们之间存在某种联系，这种联系实际就是线性无关向量的个数(矩阵的秩)。线性无关可以认为向量都是独立的，线性相关可以认为可以被表示的向量是多余的</p>
+</blockquote>
+<h3 id="1-1-基本概念"><a href="#1-1-基本概念" class="headerlink" title="1.1 基本概念"></a>1.1 基本概念</h3><p>先介绍几个最核心的概念：</p>
+<ul>
+<li>线性组合：</li>
+</ul>
+<p><img src="/images/image-20230531095303645.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>线性表示(表出)：</li>
+</ul>
+<p><img src="/images/image-20230531095403512.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>线性相关：</li>
+</ul>
+<p><img src="/images/image-20230531095450445.png" srcset="/img/loading.gif" lazyload></p>
+<p>直观的理解向量组的线性相关（七大定理中的定理1），即至少有一个向量是多余的（也就是系数不为0的向量），这些向量可以被其他向量表示，信息不独立；线性无关反之就是信息不独立，不能被其他向量表示；</p>
+<blockquote>
+<p>线性相关主要有以下重要性质：</p>
+<ul>
+<li><code>含有零向量或成比例的向量组必定线性相关</code>；</li>
+<li>向量组要么线性相关要么线性无关，非黑即白；、<ul>
+<li>向量组线性相关的另一种表示方法是a<del>1</del>&#x3D;k<del>2</del>a<del>2</del>+…+k<del>s</del>a<del>s</del>，这种表示方法不限制k<del>i</del>的取值，全部取0也是可以的（无论是哪种写法，都不可能直接看出极大无关组，需要额外求解）；</li>
+<li>向量组线性无关的另一种等价形式是矩阵对应的行列式不为0（因为矩阵对应的行列式不为0所以只有当系数k<del>i</del>全为0时才能满足结果为0）；</li>
+</ul>
+</li>
+<li>若向量组只有一个向量α，则α&#x3D;0时线性相关，α!&#x3D;0时线性无关；</li>
+</ul>
+</blockquote>
+<h3 id="1-2-七大定理"><a href="#1-2-七大定理" class="headerlink" title="1.2 七大定理"></a>1.2 七大定理</h3><p>因为向量组不是线性相关的就是线性不相关的，所以也可以使用如下七大定理判断向量组的线性不相关性。（而实际上真正常用的定理也就是定理1、定理3、定理6和定理7）</p>
+<blockquote>
+<p>（1）定理1和线性相关性的定义是等价的，也就是说定理1可以直接当作定义使用（以下定理的证明都基于线性相关的定义，比较简单此处不再证明）</p>
+</blockquote>
+<p><img src="/images/image-20230531100139615.png" srcset="/img/loading.gif" lazyload></p>
+<p>其逆否命题：向量组线性不相关的充要条件是向量组中的任何一个向量都不能由其它任意n-1个向量线性表示；</p>
+<blockquote>
+<p>（2）定理2应该是七大定理中最简单的…</p>
+</blockquote>
+<p><img src="/images/image-20230531100650594.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>（3）*<code>以少表多，多的相关</code></p>
+</blockquote>
+<p><img src="/images/image-20230531100745445.png" srcset="/img/loading.gif" lazyload></p>
+<p>需要注意的点是向量组β的相关性与向量组α的相关性没有联系，只要向量组α可以表示向量组β且α的向量个数小于β的个数，则向量组β一定线性相关。</p>
+<p>定理3可以从两方面理解：</p>
+<ul>
+<li>从直观上理解，因为“高维空间可以表示低维空间，反之不行”。此处需要引入向量组的秩的定义，简单来说就是向量组中最大的不相关的向量的个数，也就是向量组能够张成的空间的维度（这与向量组中向量的维度无关，只与向量组中线性无关的向量个数有关）。向量组α的秩小于等于s（其实如果要严谨的话，这里向量组α的秩不仅要小于等于其向量个数，也要小于等于其向量的维度，但是因为向量组β的线性相关性与向量组α无关，所以可以不考虑这一点），这意味着向量组α张成的空间的维度n小于等于s维；因为向量组β能够被向量组α表示，换句话说就是向量组β的所有向量都能够在向量组α张成的n维空间上表示，但是在n维空间上有t条向量，因为t&gt;s&gt;&#x3D;n，所以这t条向量一定是线性相关的（举个例子，二维平面上有三条向量，则这三条向量必定线性相关，其中一条向量可以被其他两条向量表示；而如果这t条向量中有零向量则根本不用判断，向量组一定是线性相关的）</li>
+<li>从证明的角度，因为“未知数个数大于方程个数则必有非零解(解空间)”，所以必定存在不全为0的l<del>1</del>,l<del>2</del>,l<del>3</del>使得方程成立<img src="/images/image-20230531102229497.png" srcset="/img/loading.gif" lazyload></li>
+</ul>
+<p>其逆否命题：如果向量组β可以被向量组α线性表示，但向量组β线性无关，则向量组β的向量个数一定小于等于向量组α的向量个数；</p>
+<blockquote>
+<p>（4）定理4可以看作是定理3的一个基本条件，因为向量组的秩（最大线性无关的向量个数）一定是小于等于其向量的维度</p>
+</blockquote>
+<p><img src="/images/image-20230531103100074.png" srcset="/img/loading.gif" lazyload></p>
+<p>这里需要注意的是，向量组α的向量个数m对应了方程未知数的个数，每个向量α<del>i</del>的维数n对应了方程的个数 – 这里将向量组相关性与齐次线性方程组建立联系，主要有以下三种情况：</p>
+<ul>
+<li>n&lt;m，方程个数小于未知数个数，一定有非零解，有如下推导<ul>
+<li>任何n+1个n维向量都是线性相关的；</li>
+<li>在n维空间中，任何一个线性不相关的向量组最多包含n个向量；</li>
+</ul>
+</li>
+<li>n&#x3D;m，借助行列式判断向量之间的相关性，若行列式为0表示线性相关，否则表示线性无关；</li>
+<li>n&gt;m，使用定理6，7判断；</li>
+</ul>
+<p>其等价命题：m个n维向量线性无关的充分必要条件是其对应的齐次线性方程组只有零解</p>
+<blockquote>
+<p>（5）定理5是由定理4推导的，相对来说也比较简单</p>
+</blockquote>
+<p><img src="/images/image-20230531111306761.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>（6）</p>
+</blockquote>
+<p><img src="/images/image-20230531111447548.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>（7）</p>
+</blockquote>
+<p><img src="/images/image-20230531111600220.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="2-重要考点"><a href="#2-重要考点" class="headerlink" title="2.重要考点"></a>2.重要考点</h2><h3 id="2-1-极大线性无关组"><a href="#2-1-极大线性无关组" class="headerlink" title="2.1 极大线性无关组"></a>2.1 极大线性无关组</h3><blockquote>
+<p>定义</p>
+<p><img src="/images/image-20230620185237229.png" srcset="/img/loading.gif" lazyload></p>
+</blockquote>
+<h4 id="2-1-1-基本概念"><a href="#2-1-1-基本概念" class="headerlink" title="2.1.1 基本概念"></a>2.1.1 基本概念</h4><p>简单来说，极大线性无关组就是原向量组中的最简小组，其中的向量线性无关且可以表示向量组中任意的其他向量</p>
+<ul>
+<li>极大线性无关组可能不唯一，但是极大线性无关组中的向量个数唯一，即向量组的秩；</li>
+<li>只由一个零向量组成的向量组不存在极大线性无关组；</li>
+<li>一个线性无关的向量组的极大线性无关组就是该向量组本身（唯一）；</li>
+</ul>
+<blockquote>
+<p>向量组的秩与矩阵的秩是一样的，都表示其张成的向量空间的维数；</p>
+</blockquote>
+<h4 id="2-1-2-求解步骤"><a href="#2-1-2-求解步骤" class="headerlink" title="2.1.2 求解步骤"></a>2.1.2 求解步骤</h4><ol>
+<li>将列向量组成矩阵，作初等行变换化为行阶梯矩阵，确定r(A)；</li>
+<li>按列找出秩为r(A)的子矩阵，该子矩阵即为该行阶梯矩阵的极大无关组 – 简单说就是在每个阶梯找一列向量，r个阶梯找到的r列对应的向量组成的向量组就是极大无关组（至于是行阶梯矩阵的极大组还是原矩阵的极大组，取得哪个矩阵的列就是哪个矩阵对应的极大组，这很简单）；</li>
+</ol>
+<h4 id="2-1-3-行阶梯矩阵"><a href="#2-1-3-行阶梯矩阵" class="headerlink" title="2.1.3 行阶梯矩阵"></a>2.1.3 行阶梯矩阵</h4><p>形如</p>
+<p><img src="/images/image-20230605170515234.png" srcset="/img/loading.gif" lazyload></p>
+<p>的矩阵称为行阶梯矩阵，特点为：</p>
+<ul>
+<li><code>每个阶梯只有一行</code>；</li>
+<li>元素全为0的行（如果有的话），一定在矩阵最下面；</li>
+<li>最简行阶梯矩阵是各行第一个非零元素均为1且其所在列的其他元素都为0的行阶梯矩阵<img src="/images/image-20230624081529574.png" srcset="/img/loading.gif" lazyload></li>
+</ul>
+<h3 id="2-2-等价向量组"><a href="#2-2-等价向量组" class="headerlink" title="2.2 等价向量组"></a>2.2 等价向量组</h3><p>等价向量组是指两个向量组中的向量都可由对方的向量线性表示，常用的证明向量组等价的条件如下</p>
+<p><img src="/images/image-20230601204546737.png" srcset="/img/loading.gif" lazyload></p>
+<p>等价向量组主要有如下性质</p>
+<p><img src="/images/image-20230601204129432.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>向量组和它的极大线性无关组是等价向量组；</li>
+<li>注意向量组等价和矩阵等价是两个不同的概念<ul>
+<li>矩阵等价需要A,B同型的情况下r(A)&#x3D;r(B)；</li>
+<li>向量组等价需要两个向量组的向量都同维度（个数可以不相等）的情况下，r(Ⅰ)&#x3D;r(Ⅱ)&#x3D;r(Ⅰ|Ⅱ)<code>三秩相同</code>；</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-3-向量组的秩"><a href="#2-3-向量组的秩" class="headerlink" title="2.3 向量组的秩*"></a>2.3 向量组的秩*</h3><p>向量组的极大线性无关组所包含向量的个数称为向量组的秩</p>
+<ul>
+<li><p>向量组&#x2F;矩阵的秩的本质是<code>基向量的个数</code>（这个性质用于证明题）</p>
+</li>
+<li><p>等价向量组具有相同的秩，反之具有相同秩的向量组不一定等价（如墙角模型中的三个基向量）</p>
+</li>
+</ul>
+<h4 id="2-3-1-重要性质"><a href="#2-3-1-重要性质" class="headerlink" title="2.3.1 重要性质"></a>2.3.1 重要性质</h4><p><img src="/images/image-20230601205052003.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-3-2-重要公式"><a href="#2-3-2-重要公式" class="headerlink" title="2.3.2 重要公式"></a>2.3.2 重要公式</h4><p>下面这几个公式必须全部记忆，每一条的证明在练习册上都有对应，其证明方法也必须全部记忆，包含了几乎有关秩的证明的所有方法！！！</p>
+<p><img src="/images/image-20230601205209109.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>有关秩的不等式的证明一般都会使用到上述性质中的第三条</li>
+</ul>
+<h3 id="2-4-向量空间"><a href="#2-4-向量空间" class="headerlink" title="2.4 向量空间"></a>2.4 向量空间</h3><p>向量空间、基的基本概念（基并不要求其中的基向量是正交的，只需要线性无关即可）</p>
+<p><img src="/images/image-20230601205645554.png" srcset="/img/loading.gif" lazyload></p>
+<p>关于向量空间主要涉及基变换和坐标变换，这个B站有动画演示，下面直接给出关于基变换和坐标变换的定理</p>
+<p><img src="/images/image-20230601210005007.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="第四讲-线性方程组"><a href="#第四讲-线性方程组" class="headerlink" title="第四讲 线性方程组"></a>第四讲 线性方程组</h1><p>本章的主要目的就在于求解方程组。在此之前，给出本章和上一章之间的联系。</p>
+<p>实际上向量组和方程组就是一回事，从本质上说，方程组问题就是向量组问题，方程组和向量组是同一个问题的两种表现形式，解决方法相同。</p>
+<p><img src="/images/image-20230604223148727.png" srcset="/img/loading.gif" lazyload></p>
+<p>不难看出，方程组中的未知数x<del>i</del>…x<del>n</del>就是向量组中各成员的系数，而方程组的系数矩阵实际就是向量组中的列向量a<del>1</del>…a<del>n</del>拼成的矩阵</p>
+<p><img src="/images/image-20230604223606834.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>额外补充一点，上述问题还有另一种表现形式，即矩阵表现形式</p>
+<p><img src="/images/image-20230611112708752.png" srcset="/img/loading.gif" lazyload></p>
+<p>其中A就是系数矩阵，x是未知数组成的列向量。之所以要提到这个表现形式是因为“能够熟练的将线性组合表示成矩阵乘积的形式”是线性代数能力的体现。</p>
+</blockquote>
+<h2 id="1-具体型方程组"><a href="#1-具体型方程组" class="headerlink" title="1.具体型方程组"></a>1.具体型方程组</h2><h3 id="1-1-齐次线性方程组"><a href="#1-1-齐次线性方程组" class="headerlink" title="1.1 齐次线性方程组"></a>1.1 齐次线性方程组</h3><blockquote>
+<p>定义</p>
+<p><img src="/images/image-20230604223711291.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>齐次线性方程组的自由项均为0；</li>
+</ul>
+</blockquote>
+<p>齐次线性方程组有解的条件：</p>
+<ul>
+<li>系数矩阵A的秩为n，此时称之为列满秩，表示有n个向量均线性无关，根据线性无关的概念，方程组有唯一0解；</li>
+<li>系数矩阵A的秩小于n，此时矩阵A中的向量线性相关，方程组有无穷多个解（即形成一个解空间），需使用n-r个线性无关的解向量表示；</li>
+</ul>
+<p>解的性质：</p>
+<ul>
+<li><code>齐次线性方程组的解的线性组合同样是该方程组的解</code>；</li>
+</ul>
+<p>求解方法：</p>
+<ol>
+<li>将系数矩阵A作初等行变换（<code>仅能作初等行变换</code>）化为等价的阶梯型矩阵B；</li>
+<li>对矩阵B，按列找出一个秩为r的子矩阵（判断是否有解），被选择的r列作为约束向量，剩余的未被选择的n-r列作为自由向量；</li>
+<li>按基础解系的定义假设并求出线性无关的n-r个基础解向量ξ<del>i</del>，然后k<del>1</del>ξ<del>1</del>+…+k<del>n-r</del>ξ<del>n-r</del>作为方程组的通解（其中k<del>1</del>到k<del>n-r</del>为任意常数）；</li>
+</ol>
+<h3 id="1-2-非齐次线性方程组"><a href="#1-2-非齐次线性方程组" class="headerlink" title="1.2 非齐次线性方程组"></a>1.2 非齐次线性方程组</h3><blockquote>
+<p>定义</p>
+<p><img src="/images/image-20230604232501834.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>非齐次线性方程组的自由项不恒为0；</li>
+</ul>
+</blockquote>
+<p>非齐次线性方程组有解的条件：</p>
+<ul>
+<li>若系数矩阵A的秩与增广矩阵(A|B)的秩不同，则无解（因为这代表B不能被A线性表示）；</li>
+<li>若系数矩阵A的秩与增广矩阵(A|B)的秩相同（此时B可以被A线性表示）<ul>
+<li>若r&#x3D;n则列满秩，有唯一解；</li>
+<li>若r&lt;n有无数多解；</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>这里简单说一下如何快速判断A和(A|B)的秩，实际上将增广矩阵化为行阶梯形矩阵之后，系数矩阵A的秩只需要看虚线前面的阶梯即可，增广矩阵的秩看全部阶梯即可；</p>
+</blockquote>
+<p>求解方法：</p>
+<ol>
+<li>将增广矩阵作初等行变换化为行阶梯形矩阵；</li>
+<li>用解的条件判断是否有解，若无穷解则进行下面的步骤（无解和唯一解很好求解这里不赘述）“非齐次线性通解&#x3D;齐次线性通解+非齐次线性特解”<ul>
+<li>先求出对应的齐次线性方程的通解；</li>
+<li>再求出非齐次线性方程组的特解（该特解很好设，即令自由向量对应的系数均为0）；</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>关于非齐次线性方程组是否有解，补充一个及其重要的性质 – <code>若系数矩阵A的秩等于方程组方程的个数m，则该方程组一定有解</code>（利用行秩等于列秩以及线性无关的向量增加分量后仍然无关证明）；</p>
+</blockquote>
+<h2 id="2-抽象型方程组"><a href="#2-抽象型方程组" class="headerlink" title="2.抽象型方程组"></a>2.抽象型方程组</h2><p>抽象型与具体型的区别在于，抽象型并未具体告知系数矩阵中的全部系数。而实际解题过程中并不需要过分区分方程组究竟是抽象型还是具体型，抽象型是在具体型的基础上深化概念而弱化计算的一种题型。</p>
+<p>“系数矩阵为抽象矩阵”的方程组的四大基本功如下（抽象型一般更多是对概念的考察）：</p>
+<ul>
+<li>方程组有解的条件（说白了就是齐次线性方程组和非齐次线性方程组的解的条件的应用）；</li>
+<li>解的结构：<ul>
+<li>齐次线性方程组解为k*基础解系；</li>
+<li>非齐次线性方程组的通解&#x3D;对应齐次线性方程组的通解+非齐次线性方程组的一个特解；</li>
+</ul>
+</li>
+<li>齐次线性方程组的基础解系（满足三个条件：个数、解、线性无关，缺一不可）</li>
+<li>向量组和方程组的关系：向量组的系数就是方程组的解</li>
+</ul>
+<h2 id="3-方程组的公共解"><a href="#3-方程组的公共解" class="headerlink" title="3.方程组的公共解"></a>3.方程组的公共解</h2><p>公共解指的是两个方程组解集的交集，主要有三种解法（实际上这三种解法本质都是相同的，只是出发的角度不同）</p>
+<p><img src="/images/image-20230605162043566.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="4-同解方程组"><a href="#4-同解方程组" class="headerlink" title="4.同解方程组"></a>4.同解方程组</h2><p>同解方程组与公共解的区别在于同解方程组是指方程组的解集完全相同而非交集。主要的解题思路和上一章中的等价向量组的概念一一对应</p>
+<p><img src="/images/image-20230605162321398.png" srcset="/img/loading.gif" lazyload></p>
+<p>因为方法2和方法3都不是很符合直觉，所以一般情况下比较推荐使用方法1</p>
+<p>关于同解方程组，额外引出一个话题就是证明秩的等式和不等式：</p>
+<ul>
+<li>一般证明秩的不等式考虑使用向量组；</li>
+<li>证明秩的等式考虑使用方程组（主要思路就是证明两个方程组同解，因为同解所以两个方程组的基础解系等价，进而可以推出秩相同）；</li>
+</ul>
+<blockquote>
+<p>结论：对于任意的矩阵A<del>m*n</del>，秩的等式r(A)&#x3D;r(A^T^)&#x3D;r(AA^T^)&#x3D;r(A^T^A)均成立；</p>
+</blockquote>
+<h1 id="第五讲-特征值与特征向量"><a href="#第五讲-特征值与特征向量" class="headerlink" title="第五讲 特征值与特征向量"></a>第五讲 特征值与特征向量</h1><h2 id="1-特征值与特征向量"><a href="#1-特征值与特征向量" class="headerlink" title="1.特征值与特征向量"></a>1.特征值与特征向量</h2><p>特征值和特征向量的基本定义（虽然很基本，但实际上所有的解题方法都是基于此进行推导）</p>
+<p><img src="/images/image-20230605211456695.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<ul>
+<li>只有方阵才有特征值和特征向量、行列式以及二次型；</li>
+<li>ξ是非零向量！！！</li>
+</ul>
+</blockquote>
+<p>实际的意义为“矩阵对特征向量ξ的变化作用与λ对ξ的作用效果相同”，另一种理解的角度是“对特定的向量(特征向量)，对其进行方阵变换(A)；该方阵变换的效果等价于向量沿原直线方向进行伸缩变换，其中向量的方向仍沿原直线(可能反向)，向量的大小是原大小的λ倍数(λ为伸缩系数)”</p>
+<h3 id="1-1-具体型矩阵"><a href="#1-1-具体型矩阵" class="headerlink" title="1.1 具体型矩阵"></a>1.1 具体型矩阵</h3><p>具体型矩阵求解特征值和特征向量的原理非常简单，即先后根据特征方程求出所有的特征值，然后将特征值回代到定义式中求解所有的ξ。推导过程如下</p>
+<p><img src="/images/image-20230605212111688.png" srcset="/img/loading.gif" lazyload></p>
+<p>上述求解方法也称为“特征方程法”，简单来说分两步：</p>
+<ol>
+<li>先用特征方程|λE-A|&#x3D;0求解出特征值λ；</li>
+<li>接着求解齐次线性方程组(λE-A)x&#x3D;0，求出特征向量；</li>
+</ol>
+<h4 id="1-1-1-特征值求解"><a href="#1-1-1-特征值求解" class="headerlink" title="1.1.1 特征值求解"></a>1.1.1 特征值求解</h4><p>针对“特征方程法”的第一步求解特征值，下面详细介绍一种用于适用于大部分高次方程求解根的方法，这种方法也适用于求解特征值。一般情况下要根据行列式直接分解求出λ是一件比较困难的事情，因此可以先直接将行列式展开</p>
+<p><img src="/images/image-20230605212825819.png" srcset="/img/loading.gif" lazyload></p>
+<p>可以看到这是一个高次多项式方程（根据代数基本定理，一个n次多项式方程最多有n个根），一般情况下都需要将其分解为多个一次多项式的乘积求解。但实际很难直接分解，这里采用两步法求解k次多项式方程的根</p>
+<p><img src="/images/image-20230715085223831.png" srcset="/img/loading.gif" lazyload></p>
+<ol>
+<li>使用试根法求解λ<del>1</del>；<ul>
+<li>试根法主要有如下四种类型<img src="/images/image-20230605214032685.png" srcset="/img/loading.gif" lazyload></li>
+</ul>
+</li>
+<li>使用多项式的带余除法除以(λ-λ<del>1</del>)，将高次多项式方程降次（降次之后就很容易将特征多项式完全分解）；<ul>
+<li>多项式的带余除法与整数除法类似（被除数如果缺项要补位）<img src="/images/image-20230605214232411.png" srcset="/img/loading.gif" lazyload></li>
+</ul>
+</li>
+</ol>
+<h4 id="1-1-2-常用结论"><a href="#1-1-2-常用结论" class="headerlink" title="1.1.2 常用结论"></a>1.1.2 常用结论</h4><p>结论1：上、下三角以及对角矩阵的特征值就是对角线元素；</p>
+<p>结论2：k重特征值至多有k个线性无关的特征向量，但对应无数多个特征向量。该结论暗示就算是同一个特征值其特征向量也可能不唯一；</p>
+<p>结论3：同一个特征值对应的任意特征向量的线性组合仍是A属于该特征值的特征向量；</p>
+<p>结论4：同一个特征向量不能同时属于两个不同的特征值；</p>
+<p>结论5：n阶方阵有且仅有n个特征值，这n个特征值可能是实数也可能是复数</p>
+<h3 id="1-2-抽象型矩阵"><a href="#1-2-抽象型矩阵" class="headerlink" title="1.2 抽象型矩阵"></a>1.2 抽象型矩阵</h3><p>求解抽象型矩阵的特征值和特征向量实际上也不会涉及大量的计算，主要分为如下几种求解方法：</p>
+<ol>
+<li>利用表格<img src="/images/image-20230605214612359.png" srcset="/img/loading.gif" lazyload></li>
+<li>利用定义，|λE-A|&#x3D;0求解λ，(λE-A)x&#x3D;0求解特征向量<ul>
+<li>举个例子，如果已知|E+A|&#x3D;0则可以直接推出|-E-A|&#x3D;0，因此其特征值为-1；</li>
+<li>类似的，只要满足是(λE-A)x&#x3D;0特征方程的非零解，就一定是一个特征向量；</li>
+</ul>
+</li>
+<li>特殊性质<ul>
+<li>通用性质：<ul>
+<li>上、下三角矩阵与对角矩阵的特征值就是对角线元素；</li>
+<li>单位矩阵的特征值为1，特征向量为任意非0向量；零矩阵的特征值为0，特征向量为任意非0向量；</li>
+<li>A^T^的特征值与A相同，但是特征向量不同，需要使用定义(λE-A^T^)x&#x3D;0求解；</li>
+</ul>
+</li>
+<li>特征值的性质<img src="/images/image-20230605215251305.png" srcset="/img/loading.gif" lazyload></li>
+<li>特征向量的性质<img src="/images/image-20230605215447595.png" srcset="/img/loading.gif" lazyload></li>
+</ul>
+</li>
+</ol>
+<h2 id="2-相似理论"><a href="#2-相似理论" class="headerlink" title="2.相似理论"></a>2.相似理论</h2><blockquote>
+<p>Q：矩阵等价和矩阵相似是否有联系？</p>
+</blockquote>
+<p>A：参考链接：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/262978692">矩阵的等价，相似，合同 - 知乎 (zhihu.com)</a>；</p>
+<p>从考研出题的角度，可以认为矩阵等价和矩阵相似没有任何关系。矩阵等价主要关注矩阵的秩，而矩阵相似主要关注矩阵的特征值。</p>
+<ul>
+<li>矩阵等价是指两个矩阵具有相同的秩。当两个矩阵具有相同的秩时，它们可以通过一系列基本的行变换或列变换相互转化。</li>
+<li>矩阵相似是指存在一个可逆矩阵P，使得两个矩阵A和B之间满足B &#x3D; P^(-1)^AP。换句话说，两个相似的矩阵具有相同的特征值。</li>
+</ul>
+<p>矩阵相似的要求比矩阵等价的要求更加严格，即矩阵等价只需要秩相同，但矩阵相似需要秩、特征值等均相同，因此有如下结论：</p>
+<ul>
+<li>相似矩阵一定是等价矩阵，但矩阵未必为相似矩阵。</li>
+</ul>
+<p>两个矩阵的作用也不尽相同：</p>
+<ul>
+<li>等价矩阵主要用于研究线性方程组；</li>
+<li>相似矩阵主要用于研究“最好看”的矩阵 – 对角矩阵，进而用于求解其他问题；</li>
+</ul>
+<hr>
+<h3 id="2-1-相似矩阵"><a href="#2-1-相似矩阵" class="headerlink" title="2.1 相似矩阵"></a>2.1 相似矩阵</h3><blockquote>
+<p>定义（之所以初学相似矩阵会一直和等价矩阵混淆不清，很大一部分原因也是因为这两者的定义实在是太像了，矩阵的相似化本质上也是左行右列进行变换）</p>
+<p><img src="/images/image-20230606103404627.png" srcset="/img/loading.gif" lazyload></p>
+</blockquote>
+<p>相似矩阵有很多重要的性质，分别如下</p>
+<p><img src="/images/image-20230716092834407.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>注意：</p>
+<ul>
+<li>即使(1)中的性质全部成立，两个矩阵也不一定相似（(1)中的性质只是矩阵相似的必要条件）；</li>
+<li>若矩阵A和矩阵B相似，则tr(A)&#x3D;tr(B)（相似矩阵的迹相同）；</li>
+<li>矩阵相似，具有相同的特征方程和特征值但不一定具备相同的特征向量；</li>
+</ul>
+</blockquote>
+<h3 id="2-2-判断相似矩阵"><a href="#2-2-判断相似矩阵" class="headerlink" title="2.2 判断相似矩阵"></a>2.2 判断相似矩阵</h3><p>判断两个矩阵相似主要的手段是使用定义法和传递性，书上一共总结了三种方法</p>
+<p><img src="/images/image-20230606205723846.png" srcset="/img/loading.gif" lazyload></p>
+<p>还有几个很容易混淆的概念需要辨析：</p>
+<ul>
+<li>特征值相同是两个矩阵相似的必要条件(即两个矩阵相似必然可以推出特征值相同，特征值不同的两个矩阵一定不相似)，而特征值相同的矩阵不一定相似；<ul>
+<li>因为实对称矩阵一定可以进行相似对角化，因此有结论“实对称矩阵A和B相似的充要条件是A和B的特征值相同”（本质在下面一条介绍）；</li>
+</ul>
+</li>
+<li>两个矩阵相似和这两个矩阵是否能相似对角化没有直接关系（一个考察的是两个矩阵之间的关系，一个考察的是矩阵自身的性质），但是有间接联系（也是矩阵相似唯一的充要条件）<ul>
+<li>矩阵A和B相似的<code>充分必要条件</code>是，A和B相似于同一个对角矩阵lambda（证明方法很简单，因为A和B都可以相似对角化且特征值相同，因此与它们相似的对角阵是一样的，根据矩阵相似的传递性可以证明A和B也相似）；</li>
+<li>A相似于B并不能推出A相似于lambda相似于B（这是很显然的，因为很可能A相似于B但是A和B都不能相似对角化）</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-3-相似对角化"><a href="#2-3-相似对角化" class="headerlink" title="2.3 相似对角化"></a>2.3 相似对角化</h3><blockquote>
+<p>定义</p>
+<p><img src="/images/image-20230606104226025.png" srcset="/img/loading.gif" lazyload></p>
+</blockquote>
+<h4 id="2-3-1-相似对角化判断"><a href="#2-3-1-相似对角化判断" class="headerlink" title="2.3.1 相似对角化判断"></a>2.3.1 相似对角化判断</h4><p>判断矩阵可以相似对角化的条件主要有如下四个，前两个是充要条件，后两个是充分条件（即反推不成立）</p>
+<p><img src="/images/image-20230606104652301.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-3-2-相似对角化步骤"><a href="#2-3-2-相似对角化步骤" class="headerlink" title="2.3.2 相似对角化步骤"></a>2.3.2 相似对角化步骤</h4><p>将矩阵A相似对角化为对角矩阵的步骤主要如下：</p>
+<ol>
+<li>求A的特征值和特征向量；</li>
+<li>验证n阶矩阵A有n个线性无关的特征向量；</li>
+<li>若符合条件则矩阵P为特征向量的组合(此处的特征向量a<del>i</del>是列向量，矩阵P表示为[a<del>1</del>,a<del>2</del>,a<del>3</del>])，对角矩阵lambda为对应特征值作为主对角线元素的矩阵；</li>
+</ol>
+<hr>
+<blockquote>
+<p>Q：矩阵的非零特征值和矩阵的秩以及矩阵能否相似对角化是否存在关系？</p>
+</blockquote>
+<p>A：参考链接<a target="_blank" rel="noopener" href="http://www.gaosan.com/gaokao/415331.html">非零特征值的个数与秩有什么关系_高三网 (gaosan.com)</a>（这些定理了解即可，因为不是书上给的定理所以不要用）。这篇文章为我们介绍了非零特征值和零特征值这两种特征值之间的区别，角度比较新颖感兴趣可以拓展看看（毕竟考研根本就没有相关的题型会考这个知识点）。下面是我根据文章整理的一点感悟，对理解线代的知识有一定帮助但尽量不要用这个推论去判断矩阵是否可相似对角化，老老实实算出所有特征向量判断才是最推荐的方式</p>
+<p><img src="/images/image-20230807180635929.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<h3 id="2-4-正交对角化"><a href="#2-4-正交对角化" class="headerlink" title="2.4 正交对角化"></a>2.4 正交对角化</h3><p>在相似对角化中有结论“实对称矩阵必然可相似于对角矩阵”，实对称矩阵A指的是组成A的元素都是实数且A为对称矩阵(A^T^&#x3D;A)。关于实对称矩阵主要有如下结论</p>
+<p><img src="/images/image-20230606204733413.png" srcset="/img/loading.gif" lazyload></p>
+<p>使用<code>正交矩阵</code>对实对称矩阵A进行相似对角化的步骤如下：</p>
+<ul>
+<li>先求出A的所有特征值和对应的特征向量；</li>
+<li>将所有的特征向量进行正交化处理（使用斯密特正交化），然后将正交之后的向量进行单位化处理（分子为向量分量，分母为分量平方和开根号）；</li>
+<li>得到正交矩阵Q对应的对角矩阵λ；</li>
+</ul>
+<blockquote>
+<p>实际上使用可逆矩阵P(列向量仅线性无关)和正交矩阵Q(列向量为单位向量且相互正交)对A进行相似变化都是对图形进行改变，不同的是使用正交矩阵不会扭曲图像；</p>
+<p>题干若没有要求使用正交矩阵对矩阵A进行相似对角化则无需对特征向量进行施密特正交化，则求解出特征向量构成对应的可逆矩阵P即可（流程和普通矩阵相似对角化相同）</p>
+</blockquote>
+<h3 id="2-5-矩阵相似的应用"><a href="#2-5-矩阵相似的应用" class="headerlink" title="2.5 矩阵相似的应用"></a>2.5 矩阵相似的应用</h3><h4 id="2-5-1-反求参数"><a href="#2-5-1-反求参数" class="headerlink" title="2.5.1 反求参数"></a>2.5.1 反求参数</h4><p><img src="/images/image-20230606210456949.png" srcset="/img/loading.gif" lazyload></p>
+<p>补充常用的第四点：k<del>i</del>&#x3D;n-r(λ<del>i</del>E-A)，即重根的个数&#x3D;无关的特征向量个数&#x3D;k<del>i</del>。该等式的理论依据是，矩阵A可相似对角化的条件是每个k<del>i</del>重特征值λ<del>i</del>都有k<del>i</del>个线性无关的特征向量，等价于(λ<del>i</del>E-A)x&#x3D;0这个齐次线性方程组的解空间的维度为k<del>i</del>维。</p>
+<h4 id="2-5-2-反求矩阵A以及f-A"><a href="#2-5-2-反求矩阵A以及f-A" class="headerlink" title="2.5.2 反求矩阵A以及f(A)"></a>2.5.2 反求矩阵A以及f(A)</h4><p><img src="/images/image-20230606211032057.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="第六讲-二次型"><a href="#第六讲-二次型" class="headerlink" title="第六讲 二次型"></a>第六讲 二次型</h1><hr>
+<blockquote>
+<p>Q：概念辨析（在学习上一章相似理论的时候其实已经有疑惑了，但是那个时候大概糊弄一下还能学下去，但是这一章如果不搞明白线性代数这些最基本的概念，学习过程会变得很困难）</p>
+</blockquote>
+<p>A：参考链接：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/452504241">矩阵合同的本质是什么，在坐标系或者基中？ - 知乎 (zhihu.com)</a>；</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42743783/article/details/113958516">(16条消息) 矩阵的等价，相似，合同_b&#x3D;paq_落尘per的博客-CSDN博客</a>；</li>
+</ul>
+<p><img src="/images/image-20230606233540823.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<h2 id="1-二次型及二次型矩阵"><a href="#1-二次型及二次型矩阵" class="headerlink" title="1.二次型及二次型矩阵"></a>1.二次型及二次型矩阵</h2><blockquote>
+<p>定义</p>
+<p><img src="/images/image-20230607100336710.png" srcset="/img/loading.gif" lazyload></p>
+</blockquote>
+<p>二次型的通式表达式(也称完全展开式)非常麻烦，一般使用其矩阵表达式进行表示</p>
+<p><img src="/images/image-20230607100517233.png" srcset="/img/loading.gif" lazyload></p>
+<p>在二次型的矩阵表达式中，实对称矩阵A称为二次型f(x)的矩阵（简称二次型矩阵）</p>
+<ul>
+<li><p>二次型矩阵A可以认为是二次型的系数矩阵；</p>
+</li>
+<li><p>二次型矩阵A是一个对称矩阵，满足A^T^&#x3D;A（之所以这样规定是因为二次型的矩阵表示有很多，为了统一因此规定二次型矩阵必须是对称矩阵）；</p>
+</li>
+<li><p><code>二次型矩阵A的秩称为二次型f(x)的秩</code>；</p>
+</li>
+</ul>
+<p>将二次型表达成矩阵表达式是最基本的要求：</p>
+<ul>
+<li>矩阵A的主对角线元素a<del>ii</del>是平方项x<del>i</del>^2^的系数；</li>
+<li>矩阵A的其他元素a<del>ij</del>是混合项x<del>i</del>x<del>j</del>系数的1&#x2F;2；</li>
+</ul>
+<p>化二次型为标准型的几何意义就是找到一个合适的基，使得该基下的二次型（描述一个空间或流体几何性质的量）只含有平方项没有交叉项</p>
+<h2 id="2-矩阵合同"><a href="#2-矩阵合同" class="headerlink" title="2.矩阵合同"></a>2.矩阵合同</h2><p>矩阵合同和二次型合同可以认为是等价的，不过多区分</p>
+<h3 id="2-1-基本概念"><a href="#2-1-基本概念" class="headerlink" title="2.1 基本概念"></a>2.1 基本概念</h3><p>线性变换的定义：前面已经介绍过坐标变换公式y&#x3D;Cx(这里的y和x的位置决定了是从哪个坐标系变换到哪个坐标系)，该坐标代换公式指的是从坐标系(x<del>1</del>,x<del>2</del>…x<del>n</del>)到(y<del>1</del>,y<del>2</del>…y<del>n</del>)的变换，其中矩阵C是对应的线性变换（线性变换与矩阵等价，可以使用矩阵表示线性变换）。若矩阵C是可逆矩阵，则称该线性变换为可逆线性变换</p>
+<p>有了线性变换的定义，就可以对二次型进行线性变换</p>
+<p><img src="/images/image-20230607102038612.png" srcset="/img/loading.gif" lazyload></p>
+<p>上述二次型f(x)与g(y)的系数矩阵A和B有如下关系</p>
+<p><img src="/images/image-20230607102145830.png" srcset="/img/loading.gif" lazyload></p>
+<p>其中A和B都是n阶矩阵，C为可逆矩阵。称满足上述等式的矩阵A和B合同，对应的二次型f(x)与g(y)为合同二次型。</p>
+<blockquote>
+<p>从几何上也很好理解，矩阵A和B分别描述了二次型f(x)和g(y)表示的空间，该空间在不同坐标系(x和y)下的描述不同(A和B)，但实际上是同一个空间(f(x)&#x3D;g(x))。这两个不同坐标系之间的坐标变换就是可逆矩阵C(也称为过渡矩阵)；</p>
+</blockquote>
+<p>合同有如下三个基本性质(没有过多介绍的必要)</p>
+<p><img src="/images/image-20230607102754821.png" srcset="/img/loading.gif" lazyload></p>
+<p>关于合同，还有一些解题常用的性质：</p>
+<ul>
+<li>若矩阵A和B合同，则两矩阵的秩相同（可逆线性变换不会改变二次型的秩）；</li>
+<li>与对称矩阵合同的矩阵同样是对称矩阵（但这并不意味着变换矩阵C是对称矩阵）；</li>
+</ul>
+<h4 id="2-1-1-矩阵合同判断"><a href="#2-1-1-矩阵合同判断" class="headerlink" title="2.1.1 矩阵合同判断"></a>2.1.1 矩阵合同判断</h4><p>显然按照定义，判断与A合同的矩阵B需要找到满足条件的C使得“B&#x3D;C^T^AC”，这是不现实的，一般使用如下定理判断矩阵A和B是否合同</p>
+<p>“二次型&#x2F;实对称矩阵合同的充要条件是有相同的正负惯性指数，或秩相同且正(负)惯性指数相同”，该定理被称为[惯性定理](# 3.惯性定理)</p>
+<h3 id="2-2-二次型的标准型与规范型"><a href="#2-2-二次型的标准型与规范型" class="headerlink" title="2.2 二次型的标准型与规范型"></a>2.2 二次型的标准型与规范型</h3><p>合同变换(也就是坐标系变换)的目的在于找到一个“最佳”的坐标系状态，能够很好的描述二次型表示的空间。换句话说，当二次型中只有平方项没有交叉项时，此时的坐标系就是“最佳”状态。</p>
+<p><img src="/images/image-20230607103343593.png" srcset="/img/loading.gif" lazyload></p>
+<p>将二次型化为标准型或规范型主要有如下两种方法</p>
+<p><img src="/images/image-20230607103715134.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>配方法可以看作是使用可逆矩阵对A进行相似对角化，正交变换法可以看作是使用正交矩阵对A进行相似对角化；</p>
+</blockquote>
+<h4 id="2-2-1-配方法化标准型"><a href="#2-2-1-配方法化标准型" class="headerlink" title="2.2.1 配方法化标准型"></a>2.2.1 配方法化标准型</h4><p>配方法实际就是初中的知识点，简单思想就是一直配完全平方直到所有的x<del>i</del>都配方完成（可能涉及诸如(x<del>1</del>+x<del>2</del>+x<del>3</del>)^2^这种展开式，需要加强记忆）。下面给出例题进行理解</p>
+<p><img src="/images/image-20230607105749418.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>注意事项</p>
+<p><img src="/images/image-20230607110100598.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>关于第四点，尽管题目可以使用矩阵语言描述，但是在使用配方法化标准型的时候不会涉及二次型矩阵（因此没必要额外找出对应的二次矩阵A），只有使用正交变换的时候会涉及二次矩阵；</li>
+</ul>
+</blockquote>
+<p><img src="/images/image-20230607110206971.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>注意事项</p>
+<p><img src="/images/image-20230607110343124.png" srcset="/img/loading.gif" lazyload></p>
+</blockquote>
+<h4 id="2-2-2-正交变换化标准型"><a href="#2-2-2-正交变换化标准型" class="headerlink" title="2.2.2 正交变换化标准型"></a>2.2.2 正交变换化标准型</h4><p>正交变化化标准型，实际上就是使用正交矩阵将二次型的矩阵A进行相似对角化的过程，详情参考[实对称矩阵的相似对角化](# 2.3 实对称矩阵的相似对角化)（为什么正交变化可以？因为得到的对角矩阵λ就是标准型的系数矩阵）。</p>
+<p>使用正交变化化标准型的主要步骤如下（一般情况下题干没要求使用正交变换则使用配方法，因为正交变换太麻烦了）：</p>
+<ol>
+<li>加头：由二次型f写出对应的二次矩阵A</li>
+<li>求出A的所有特征值和对应的特征向量；</li>
+<li>将所有的特征向量进行正交化处理（使用斯密特正交化），然后将正交之后的向量进行单位化处理（分子为向量分量，分母为分量平方和开根号）；</li>
+<li>得到正交矩阵Q对应的对角矩阵λ – 对角矩阵是为了写出标准型，正交矩阵是为了写出对应的正交变换；</li>
+<li>加尾：令x&#x3D;Qy，写出f关于y的表达式（实际上就是特征值作为平方项的系数的多项式）</li>
+</ol>
+<p><img src="/images/image-20230607111347185.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>注意事项</p>
+<p><img src="/images/image-20230607111837229.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20230607111913573.png" srcset="/img/loading.gif" lazyload></p>
+</blockquote>
+<h2 id="3-惯性定理"><a href="#3-惯性定理" class="headerlink" title="3.惯性定理"></a>3.惯性定理</h2><p>惯性定理：使用配方法或正交变换法，化作的标准型或规范型可能是不同的，但是其正项个数和负项个数都是不变的，正项个数p称为正惯性指数，负项个数q称为负惯性指数。</p>
+<p><img src="/images/image-20230607104506548.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>条件2是主要用于判别两个矩阵是否合同，即判断两个矩阵的正负惯性指数是否相同；</p>
+</blockquote>
+<h2 id="4-正定二次型"><a href="#4-正定二次型" class="headerlink" title="4.正定二次型"></a>4.正定二次型</h2><blockquote>
+<p>定义</p>
+<p><img src="/images/image-20230607150004457.png" srcset="/img/loading.gif" lazyload></p>
+</blockquote>
+<h3 id="4-1-正定二次型的判别"><a href="#4-1-正定二次型的判别" class="headerlink" title="4.1 正定二次型的判别"></a>4.1 正定二次型的判别</h3><p>正定二次型的充要条件如下：</p>
+<p><img src="/images/image-20230607150320156.png" srcset="/img/loading.gif" lazyload></p>
+<p>正定二次型的必要条件如下：</p>
+<p><img src="/images/image-20230607150359901.png" srcset="/img/loading.gif" lazyload></p>
+<p>一般来说，考题主要分为两种考察方式，分别是判断具体型二次型的正定问题和判断抽象型二次型的正定问题：</p>
+<ul>
+<li>首先判断二次型矩阵A是否是对称矩阵(这一步主要是针对抽象型矩阵)；</li>
+<li>接着利用六大充要条件判断所给二次型是否正定<ul>
+<li>判断具体型二次型正定主要用顺序主子式均大于0；</li>
+<li>判断抽象型二次型正定主要用特征值均大于0；</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-2-正定二次型的性质"><a href="#4-2-正定二次型的性质" class="headerlink" title="4.2 正定二次型的性质"></a>4.2 正定二次型的性质</h3><ul>
+<li>A正定则可以推出A^T^、A^-1^以及A*正定</li>
+<li>A^T^以及A^-1^正定可以推出A正定，但A*正定不能推出A正定</li>
+</ul>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%80%83%E7%A0%94/" class="category-chain-item">考研</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/">#线性代数</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>考研_数学一_线性代数</div>
+      <div>https://gintoki-jpg.github.io/2023/03/28/考研_数学一_线代/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>杨再俨</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年3月28日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/03/29/%E4%B8%93%E4%B8%9A_%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86_%E4%B8%AD%E7%BA%A7/" title="自然语言处理_中级">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">自然语言处理_中级</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/03/28/%E9%A1%B9%E7%9B%AE_%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/" title="初级项目_边缘检测">
+                        <span class="hidden-mobile">初级项目_边缘检测</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+</div>
+
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

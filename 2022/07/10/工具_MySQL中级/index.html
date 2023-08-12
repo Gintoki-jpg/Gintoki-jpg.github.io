@@ -1,0 +1,1378 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/logo.png">
+  <link rel="icon" href="/img/bg/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="杨再俨">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="数据库系统是对数据进行存储、管理、处理和维护的软件系统，是现代计算机环境中的一个核心成分。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL中级">
+<meta property="og:url" content="https://gintoki-jpg.github.io/2022/07/10/%E5%B7%A5%E5%85%B7_MySQL%E4%B8%AD%E7%BA%A7/index.html">
+<meta property="og:site_name" content="Tintoki_blog">
+<meta property="og:description" content="数据库系统是对数据进行存储、管理、处理和维护的软件系统，是现代计算机环境中的一个核心成分。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/mysql.png">
+<meta property="article:published_time" content="2022-07-10T08:22:00.000Z">
+<meta property="article:modified_time" content="2023-03-01T07:59:58.934Z">
+<meta property="article:author" content="YangZaiyan">
+<meta property="article:tag" content="开发工具">
+<meta property="article:tag" content="数据分析">
+<meta property="article:tag" content="数据库">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gintoki-jpg.github.io/img/bg/mysql.png">
+  
+  
+  
+  <title>MySQL中级 - Tintoki_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"gintoki-jpg.github.io","root":"/","version":"1.9.1","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tintoki_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/bg1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">MySQL中级</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-07-10 16:22" pubdate>
+          2022年7月10日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          25k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          207 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">MySQL中级</h1>
+            
+            <div class="markdown-body">
+              
+              <p>本文是对《MySQL必知必会》以及《数据库系统概念》、《数据库系统原理》知识点的总结理解</p>
+<p>2022&#x2F;7&#x2F;10 20:43 简单看了一下黑皮书《数据库系统概念》，果然是不适合我们这种新手阅读的，所以现在抓转移战场至《数据库系统原理》</p>
+<p>2022&#x2F;7&#x2F;12 18:46 单纯的看书的话很容易被一些抽象的概念难住,但是注意看书有益于慢慢消化接收知识点,这里推荐难点直接搭配视频教程<a target="_blank" rel="noopener" href="https://www.icourse163.org/learn/RUC-488001?tid=1467057474#/learn/content?type=detail&id=1247425425&sm=1">数据库系统概论（基础篇）_中国大学MOOC(慕课) (icourse163.org)</a></p>
+<p>2022&#x2F;7&#x2F;18 16:52 《数据库系统原理》这本书基本上是读不下去了，里面涉及的知识点已经不能通过简单的看书去获取了，查询优化这一章就已经让人开始头晕眼花，现在决定先暂时放下看书和看视频的行为，转战《MySQL必知必会》动手实操；</p>
+<p>2022&#x2F;7&#x2F;21 21:04 稍微调整一下计划吧，暂且放下数据库的学习，这边一个月时间看能否从青训营学到大数据相关的知识；</p>
+<blockquote>
+<p>从现在开始，抛弃之前自己对数据库系统的一些错误的自我的理解或者幻想，所有的概念都以书上为主，如果觉得自己之前怎么理解的和书上的有偏差，请抛弃掉自己之前的想法因为网上大部份资料都是误人子弟的，那个时候因为完全没有基础所以会养成一些错误的概念体系！！！</p>
+<p>一切以现在学习的为准，不要总是拿以前好像在哪里看过，好像这个概念和以前记得不一样这种想法来困惑自己，以前的都是不准确的，直接用现在的知识点去更新覆盖以前的知识点；</p>
+</blockquote>
+<h1 id="——预备篇——"><a href="#——预备篇——" class="headerlink" title="——预备篇——"></a>——预备篇——</h1><h1 id="一、引言"><a href="#一、引言" class="headerlink" title="一、引言"></a>一、引言</h1><p>计算机应用领域有一类称为数据密集型应用的计算机应用（涉及的数据量大、数据持久化、数据共享），管理这些应用的数据的行为称为数据管理；</p>
+<p>早期数据管理都采用文件系统，数据按其内容、结构和用途组成若干命名的文件；However，使用文件系统进行数据管理有诸多缺点；</p>
+<p>后来出现的以统一管理和共享数据为主要特征的数据库系统取代了文件系统进行数据管理；</p>
+<blockquote>
+<p>目前，在一些功能非常明确并且无数据共享问题的简单应用系统中为了减少开销提高性能，仍然采用文件系统；</p>
+<p>而数据密集型应用系统中基本都使用数据库系统；</p>
+</blockquote>
+<p><code>数据库系统</code>中，数据被看作一个单位的共享资源，由<code>数据库管理系统</code>统一管理；</p>
+<h2 id="1-数据库系统"><a href="#1-数据库系统" class="headerlink" title="1.数据库系统"></a>1.数据库系统</h2><blockquote>
+<p>数据库管理系统由应用程序、数据库管理系统、数据库管理员和数据库组成；</p>
+<p>在不引起混淆的前提下常直接称数据库系统为数据库（然而事实上对于大部分人来说这都将引起混淆）</p>
+</blockquote>
+<p>数据库系统的简单结构如下</p>
+<p><img src="/images/image-20220710205713699.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><p>数据库是数据的汇集，它们以一定的组织形式存于存储介质上，一般是磁盘；</p>
+</li>
+<li><p>数据库管理系统（DBMS）是管理数据库的软件，它实现数据库系统的各种功能；</p>
+</li>
+<li><p>应用是指以数据库为基础的各种应用程序，应用程序必须通过DBMS访问数据库；</p>
+</li>
+<li><p>数据库既然是共享的，就需要有人进行数据库的规划、设计、协调、维护和管理等工作，负责这些工作的人员或集体称为数据库管理员（database administrator，简称DBA）；</p>
+</li>
+</ul>
+<p>我们可以看出DBMS是整个数据库系统的核心，现代DBMS应当具备下面7个功能：</p>
+<ol>
+<li>提供高级用户接口，DBMS应当隐藏如数据存储的物理形式等细节，通过DBMS，数据的物理形式和逻辑形式能够相互映射，用户只需要使用DBMS提供的<code>非过程数据库语言</code>（非过程语言是一种计算机<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80">程序设计语言</a>，是相对于过程语言而言的，其语言的组织不是围绕于<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%BF%87%E7%A8%8B/8386928">过程</a>的。它同过程语言的区别是非过程语言编写的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%A8%8B%E5%BA%8F/13831935">程序</a>可以不必遵循计算机执行的实际步骤，使人们无须关心问题的解法和计算过程的描述。在非过程语言中，只要指明输入记录、所要完成的加工以及输出形式，便能得到所要求的输出结果，其余工作全部由<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%B3%BB%E7%BB%9F/479832">系统</a>来完成。其主要优点是可减少<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%A8%8B%E5%BA%8F%E5%91%98/62748">程序员</a><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%BC%96%E7%A8%8B/139828">编程</a>的工作量。）即可访问数据库中的数据；</li>
+<li>查询处理和优化，因为用户使用非过程数据库语言查询数据库，故查询处理过程的拟定和优化由DBMS来完成；</li>
+<li>数据目录管理，数据库中保留的是持久和共享的数据，数据的定义应该独立于应用程序（避免程序运行完毕数据定义失效），长期保留在数据库中，这就构成了数据目录；DBMS在完成各种功能时都离不开数据目录；</li>
+<li>并发控制，为了解决现代DBMS允许多个用户并发访问数据库造成的冲突，需要具备并发控制机制；</li>
+<li>恢复功能，数据库不但在正常运行时要保持一致性，在故障情况下，甚至数据库本身遭到破坏时，也要恢复到一致状态。现代数据库一般都具有这样的恢复功能；</li>
+<li>完整性约束，最简单的约束就是数据类型说明（语法上的约束），而数据在语义上的约束称为完整性约束；</li>
+<li>访问控制，数据库是共享资源，但不是任何用户都可以不受限制地访问任何数据。DBMS应有控制用户访问权限的功能，这种功能叫访问控制。访问控制不但可以限制用户的访问范围，而且还可以限制用户进行的操作。例如，对于学生成绩这一数据，访问控制可以做如下的限制：允许所有教务人员读，但只允许其中的成绩登录人员写；</li>
+</ol>
+<h2 id="2-数据、数据模型和数据模式"><a href="#2-数据、数据模型和数据模式" class="headerlink" title="2.数据、数据模型和数据模式"></a>2.数据、数据模型和数据模式</h2><h3 id="2-1-数据"><a href="#2-1-数据" class="headerlink" title="2.1 数据"></a>2.1 数据</h3><p>数据是信息存在的一种形式，只有通过解释或处理才能成为有用的信息；</p>
+<p>例如，(小王，18，男)这样一条对事物描述的符号记录就是一条数据；</p>
+<h3 id="2-2-数据模型"><a href="#2-2-数据模型" class="headerlink" title="2.2 数据模型"></a>2.2 数据模型</h3><p>数据模型是用来描述数据的一组概念和定义（非常抽象的东西，“只可意会不可言传”，我们常常画图表示的都是使用数据模型给出的相关定义来描述某种数据的数据模式）。一般说来，数据的描述包括2个方面。<br>（1）数据的静态特性：它包括数据的基本结构、数据间的联系和数据中的约束；<br>（2）数据的动态特性：它指定义在数据上的操作；</p>
+<blockquote>
+<p>数据模型是实现DBMS的基础；</p>
+</blockquote>
+<p>在数据库中针对不同的使用对象和应用目的，采用多级数据模型，一般可以分为下面3级：</p>
+<ul>
+<li>概念数据模型</li>
+</ul>
+<p>概念数据模型是面向用户、面向现实世界的数据模型，是<code>与DBMS无关</code>的。它主要用来描述一个单位的概念化结构。采用概念数据模型，数据库设计人员可以在设计的开始阶段，把主要精力用于了解和描述现实世界上，而把涉及DBMS的一些技术性的问题推迟到设计阶段去考虑；</p>
+<ul>
+<li>逻辑数据模型</li>
+</ul>
+<p>逻辑数据模型是用户从数据库所看到的数据模型。它与DBMS有关，DBMS常根据其所用的逻辑数据模型来分类。</p>
+<p>关系数据模型是目前最常用的逻辑数据模型。在关系数据模型以前，层次、网状模型曾经是主要的逻辑数据模型，现在仍有这种DBMS在运行。个别DBMS提供多种逻辑数据模型，例如既支持网状，又支持关系数据模型。</p>
+<p>用<code>概念数据模型</code>表示的数据必须转化为<code>逻辑数据模型</code>表示的数据，才能在DBMS中实现。逻辑数据模型<code>既要面向用户，也要面向实现</code>。目前流行的逻辑数据模型是现阶段技术条件下的折衷。随着计算机处理能力的提高和价格的下降，逻辑数据模型将更多地面向用户。</p>
+<ul>
+<li>物理数据模型</li>
+</ul>
+<p>逻辑数据模型只反映数据的逻辑结构，例如文件、记录、字段等，而不反映数据的存储结构，例如物理块、指针、索引等。</p>
+<p>反映数据存储结构的数据模型称为物理数据模型。</p>
+<p>数据库的数据终须存储到介质上，每种逻辑数据模型在实现时，都有其对应的物理数据模型，物理数据模型不但与DBMS有关，而且还与操作系统和硬件有关。</p>
+<blockquote>
+<p>概念数据模型只用于数据库的设计，逻辑数据模型和物理数据模型用于DBMS的实现；</p>
+</blockquote>
+<h3 id="2-3-数据模式"><a href="#2-3-数据模式" class="headerlink" title="2.3 数据模式"></a>2.3 数据模式</h3><blockquote>
+<p>数据模型是描述数据的手段，数据模式是用给定的数据模型对具体数据的描述（可以将数据模型认为是程序设计语言，数据模式认为是使用程序设计语言书写的一段程序）</p>
+</blockquote>
+<p>对某一类数据的结构、联系和约束的描述称为数据模式；数据模式反映一个单位的各种事物的结构、属性、联系和约束；</p>
+<p>在同一个数据模式下，可以有很多实例；</p>
+<blockquote>
+<p>可以将数据模式理解为程序设计语言中的数据类型，实例理解为程序设计语言中的数据的值；</p>
+</blockquote>
+<p><img src="/images/image-20220710214134455.png" srcset="/img/loading.gif" lazyload></p>
+<p>因为DBMS中数据使用多级数据模型来描述，相应地也有多级数据模式</p>
+<p><img src="/images/image-20220710214558298.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>概念模式</li>
+</ul>
+<p>概念模式是用<code>逻辑数据模型</code>对一个单位的数据的描述。概念模式的设计是数据库设计的最基本任务。概念模式也称为逻辑模式（logical schema）。</p>
+<ul>
+<li>外模式</li>
+</ul>
+<p>外模式是用<code>逻辑数据模型</code>对<code>用户所用到的那部分数据</code>的描述。</p>
+<p>每个用户所感兴趣的数据不完全一样。另外，从保密的观点出发，也不宜让用户接触与己无关的数据。因此，每个用户的外模式不一定相同。</p>
+<p>外模式是概念模式的一部分或是从概念模式推导而来的。有了概念模式，设计外模式就比较省事了。</p>
+<ul>
+<li>内模式</li>
+</ul>
+<p>内模式是用<code>物理数据模型</code>对数据的描述。</p>
+<p>概念模式与内模式之间可以互相映射，这个映射由DBMS来完成。</p>
+<p>内模式对一般用户是透明的，但是它的设计直接影响数据库的性能。因此，不但数据库的设计者和维护者应对内模式有充分的了解，数据库的用户最好对内模式也要有所了解，以便更好地使用数据库。</p>
+<blockquote>
+<p>概念模式、外模式和内模式都存于数据目录中，是数据目录的最基本的内容。</p>
+<p>DBMS通过数据目录，管理和访问数据模式。</p>
+</blockquote>
+<h3 id="2-4-联系"><a href="#2-4-联系" class="headerlink" title="2.4 联系"></a>2.4 联系</h3><p>在介绍联系之前我们先介绍几个基本概念（这几个概念实际上时E-R模型中的概念，之后也会介绍）</p>
+<ul>
+<li>实体:客观存在并可以相互区别的事物称为实体,可以是具体的人、事、物或抽象的概念 —— 对应数据模式的实例;</li>
+<li>属性:实体所具有的某一特性称为属性,一个实体可以由若干个属性来刻画(属性这个概念应该是关系数据模型特有的概念);</li>
+<li>实体型:用实体名和属性名集合来抽象和刻画同类实体称为实体型 —— 对应数据模式;</li>
+<li>实体集:同一类型的实体的集合称为实体集 —— 对应数据模式的实例的集合;</li>
+</ul>
+<blockquote>
+<p>现实世界中事物内部以及事物之间的联系在信息世界中反映为实体型(数据模式)内部的联系和实体型(数据模式)之间的联系</p>
+</blockquote>
+<ul>
+<li>实体内部的联系:指的是组成<code>实体的各属性</code>之间的联系;</li>
+<li>实体之间的联系:通常是指不同<code>实体集</code>之间的联系,实体之间的联系有一对一,一对多和多对多等多种类型 ;</li>
+</ul>
+<h2 id="3-数据库应用"><a href="#3-数据库应用" class="headerlink" title="3.数据库应用"></a>3.数据库应用</h2><p>数据库应用就是选择合适的DBMS，设计、建立、维护和管理数据库系统，为用户服务—这也就是我们实际在工作中会面临的，同时也是B站教学教授的部分；而其他底层原理、数据库系统知识框架等只有通过我们阅读书籍才能获取(比如现在正在阅读的这本书)；</p>
+<p>数据库的生存周期主要包含以下阶段：</p>
+<ol>
+<li>数据库系统的规划：包括系统的应用范围和功能的确认、应用环境的分析、DBMS及其支撑环境的选择和配置、人员的配备和培训，以及投资估算和效益分析等活动；</li>
+<li>数据库设计：数据库设计实际上主要是数据的表示方法和存储结构的设计；</li>
+<li>数据库的建立；</li>
+<li>数据库的运行、管理和维护；</li>
+<li>数据库的扩充和重构；</li>
+</ol>
+<h1 id="二、数据模型"><a href="#二、数据模型" class="headerlink" title="二、数据模型"></a>二、数据模型</h1><blockquote>
+<p>这章概念超级多，而且很容易让人混淆，所以尽量尝试理解层次数据模型和网状数据模型的概念，一定要理解关系数据模型的概念；</p>
+</blockquote>
+<p>数据模型是数据库系统的核心和基础,数据模型是对现实世界数据特征的抽象,通俗来讲数据模型就是对现实世界的模拟,数据模型应该满足下面三个最基本的要求:</p>
+<ul>
+<li>能够较为真实的模拟世界;</li>
+<li>容易被人理解;</li>
+<li>便于在计算机上实现;</li>
+</ul>
+<p>下面给出了如何将现实世界中的客观对象转换为DBMS支持的数据模型:</p>
+<p><img src="/images/image-20220712164553205.png" srcset="/img/loading.gif" lazyload></p>
+<p>数据模型是严格定义的一组概念的集合,由三部分组成:</p>
+<ul>
+<li>数据结构—描述系统的静态特性—对应下面数据模型的基本概念和结构;<ul>
+<li>描述数据库的组成对象—对象的类型,内容和性质;</li>
+<li>描述对象之间的联系;</li>
+</ul>
+</li>
+<li>数据操作—描述系统的动态特性（我们下面介绍的数据模型统统省略这部分的知识点，具体实际操作时再涉及）;<ul>
+<li>查询;</li>
+<li>更新(包括插入\删除\修改);</li>
+</ul>
+</li>
+<li>完整性约束;<ul>
+<li>基本的通用的完整性约束条件;</li>
+<li>具体应用涉及的必须遵守的特定的语义约束条件;</li>
+</ul>
+</li>
+</ul>
+<h2 id="1-层次数据模型"><a href="#1-层次数据模型" class="headerlink" title="1.层次数据模型"></a>1.层次数据模型</h2><p>在现实世界中，有很多事物是按层次（hierarchy）组织起来的，例如，一个学校有若干系，一个系有若干班，一个班有若干学生。其他如动植物的分类、图书的编号、机关的组织，都是层次型的；</p>
+<p>层次数据模型的提出，首先是为了模拟这种按层次组织起来的事物;</p>
+<p>下面是层次数据模型的基本概念和结构（从上到下概念依次迭代深入）；</p>
+<h3 id="1-1-基本概念和结构"><a href="#1-1-基本概念和结构" class="headerlink" title="1.1 基本概念和结构"></a>1.1 基本概念和结构</h3><h4 id="（1）记录型"><a href="#（1）记录型" class="headerlink" title="（1）记录型"></a>（1）记录型</h4><p><code>记录</code>是用来描述某个事物或事物间关系的命名的数据单位，也是存储的数据单位。它包含若干<code>字段</code>。每个字段也是命名的，字段只能是简单的数据类型，例如整数、实数、字符串等。</p>
+<p>下面展示了系记录的数据模式（使用给定的层次数据模型对具体数据的描述）也就是记录型的定义</p>
+<p><img src="/images/image-20220711150958182.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="（2）双亲子女关系"><a href="#（2）双亲子女关系" class="headerlink" title="（2）双亲子女关系"></a>（2）双亲子女关系</h4><p>双亲子女关系是层次数据模型中最基本的数据关系relation，它代表两个记录<code>型之间</code>一对多（记为1：N）的关系，也称为PCR；</p>
+<p>例如一个系有多个班，就构成了如图2-3所示的双亲子女关系，在“1”方的记录型称为双亲记录，在“N”方的记录型称为子女记录；</p>
+<p><img src="/images/image-20220711151725161.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="（3）层次数据模式"><a href="#（3）层次数据模式" class="headerlink" title="（3）层次数据模式"></a>（3）层次数据模式</h4><p>利用PCR可以构成层次数据模式。</p>
+<p>图2-5是一个层次数据模式的例子，每个方框代表一个记录型，每条弧线代表一个PCR型。</p>
+<p><code>层次数据模式</code>应是一棵树。因此，在一个层次数据模式中，除根以外，所有的记录型都应有唯一的双亲，但可以有多个子女。一个层次数据模式可有多个实例，这些实例组成一个森林。</p>
+<p>图2-6是图2-5数据模式的一个实例。在层次数据模式和它的实例中，一个双亲可能有多个子女。层次数据模型规定：子女按从左到右的次序排序。</p>
+<p><img src="/images/image-20220711152139972.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20220711152203972.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="（4）虚拟记录"><a href="#（4）虚拟记录" class="headerlink" title="（4）虚拟记录"></a>（4）虚拟记录</h4><p>在现实世界中，很多数据不是层次型的。层次数据模型必须推广到模拟非层次型的数据才有普遍意义。</p>
+<p>下面是几种非层次型的关系：</p>
+<ul>
+<li>多对多关系，也称为M:N关系</li>
+</ul>
+<p><img src="/images/image-20220711152720658.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>一个子女有多个双亲</li>
+</ul>
+<p><img src="/images/image-20220711152811593.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><p>多元关系（注意与上面的多个双亲有区别）</p>
+<p><img src="/images/image-20220711152930152.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ul>
+<p>上面的三种关系其实都可以用PCR来表示，但是这将导致出现大量冗余数据，可以引入虚拟记录（用指针替代真实的记录）来解决，采用虚拟记录可以消除数据的冗余；</p>
+<p>比如用PCR+虚拟记录（也就是使用层次数据模型表示非层次型的数据）表示上述多元关系</p>
+<p><img src="/images/image-20220711153407641.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="（5）层次序列"><a href="#（5）层次序列" class="headerlink" title="（5）层次序列"></a>（5）层次序列</h4><p>由于存储器是线性的，层次数据必须变换成线性形式才能存储。</p>
+<p>层次数据模型规定用树的先序遍历（preorder traversal）的次序作为存储次序，即先遍历根，再从左至右遍历其子女。这样所生成的序列称为层次序列（hierarchical sequence）。</p>
+<p>在层次序列中，不同类型的记录混在一起，为了区分起见，每个记录要加一个类型标志。这些类型标志仅仅出现在物理模型中，在逻辑模型中可隐去这样的标志。</p>
+<h3 id="1-2-约束"><a href="#1-2-约束" class="headerlink" title="1.2 约束"></a>1.2 约束</h3><p>层次数据模型的约束因DBMS而异，有些语义上的约束由应用程序来检查，下面是一些与层次数据模型直接有关的约束：</p>
+<p>（1）除了根记录以外，任何其他记录不能离开其双亲记录而孤立地存在。这条约束有下列含义：在插入一个子女记录时，必须与一个双亲记录相联系，否则不能插入；在删除一个记录时，其子女记录也自动地被删除；</p>
+<p>（2）任何记录，不管其“虚实”，只允许有一个双亲记录，即层次数据模式及其实例总是树形；</p>
+<p>（3）虚拟记录的指针必须指向一个实际存在的记录。有虚拟记录指向的记录不得删除；</p>
+<p>（4）<code>虚拟记录不得为根记录</code>；</p>
+<h3 id="1-3-总结"><a href="#1-3-总结" class="headerlink" title="1.3 总结"></a>1.3 总结</h3><p>层次DBMS曾在20世纪60年代末至70年代初流行过。其中最有代表性的当推IBM公司的IMS，至今仍有单位在继续使用。</p>
+<p>对于层次数据，层次DBMS的效率是很高的；但对于非层次数据，由于使用虚拟记录，大量的指针会使效率下降。层次DBMS提供用户的数据模型和数据库语言比较低级，数据独立性也很差，使用层次数据库是不够方便的。随着关系DBMS的出现和发展，层次DBMS逐步退出历史舞台，现在已没有必要专门学习它。但是层次数据模型是数据库发展早期的数据模型之一，关系数据模型以及其他一些数据模型是在与这些数据模型比较中发展起来的。为了了解数据模型的发展和加深对关系数据模型的理解，对本节的层次数据模型和下一节的网状数据模型有所了解是必要的。</p>
+<h2 id="2-网状数据模型"><a href="#2-网状数据模型" class="headerlink" title="2.网状数据模型"></a>2.网状数据模型</h2><h3 id="2-1-基本概念和结构"><a href="#2-1-基本概念和结构" class="headerlink" title="2.1 基本概念和结构"></a>2.1 基本概念和结构</h3><h4 id="（1）记录型-1"><a href="#（1）记录型-1" class="headerlink" title="（1）记录型"></a>（1）记录型</h4><p>网状数据模型中也是以记录为数据的存储单位，记录包含若干数据项（此处数据项相当于字段，但是数据项不一定是简单的数据类型，也可能是多值的复合的数据）；</p>
+<ul>
+<li>简单的多值数据项称为向量；</li>
+<li>复合的多值数据项称为重复组；</li>
+</ul>
+<p>每个记录有一个唯一地标识它的数据库码（database key，简称DBK）。DBK可以看成记录的逻辑地址，可作记录的替身，或用来寻找记录；</p>
+<h4 id="（2）系"><a href="#（2）系" class="headerlink" title="（2）系"></a>（2）系</h4><p>在网状数据模型中，数据间的联系relation用系表示。系代表两个记录型之间的1：N联系，系是命名的，也有型、值之分。</p>
+<p>例如，一个班有若干学生，可用名叫“班级-学生”的系表示它们之间的联系。系可用一条孤线表示，箭头指向“N”方。“1”方的记录称<code>首记录（owner）</code>，“N”方的记录称为<code>属记录（member）</code>。属记录值不一定要求属于同一记录类型，例如一个银行账户可以作为首记录，而属记录是这个账户的一笔笔的账。这些账可以是存款的、提款的、转账的等等，它们分属于不同的记录型。如果一个系有多种类型的属记录，则称为多属系</p>
+<p><img src="/images/image-20220711155647587.png" srcset="/img/loading.gif" lazyload></p>
+<p>与层次数据模型不同，在网状数据模型中，一个记录型可以成为多个首记录型的属记录，也就是突破了数据模式必须为层次型的限制。</p>
+<p>因此，在模拟非层次数据时，网状数据模型不必采用增加记录复本或采用虚拟记录等别扭的办法。一个记录型可以作为几个系的首记录，也可以作为几个系的属记录，还可以既作为一个系的首记录，又可以作为另一个系的属记录。</p>
+<h4 id="（3）联系记录"><a href="#（3）联系记录" class="headerlink" title="（3）联系记录"></a>（3）联系记录</h4><blockquote>
+<p>一个记录型不能既作为一个系的首记录，又作为同一个系的属记录，即系不能直接用来表示一个记录型的自身的联系。</p>
+</blockquote>
+<p>但现实世界中存在这种记录型自身的联系，例如职工间的领导关系。网状数据模型为此引进了<code>联系记录（linking或dummy record）</code>的概念。联系记录用作自身联系的中间记录。</p>
+<p>图2-19表示职工间的领导关系。LINK是联系记录型，EMP是职工记录型。在EMP与LINK之间定义了两个系S，和S2。S1代表1：1联系，即一个EMP记录可以用一个LINK记录做它的替身去联系其他EMP记录，以避免同一记录型的自身联系；S2是以LINK为首记录和以EMP为属记录的1：N联系。通过S2可以表示LINK所代表的EMP记录所领导的其他职工。</p>
+<p><img src="/images/image-20220711160339323.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="（4）链式结构"><a href="#（4）链式结构" class="headerlink" title="（4）链式结构"></a>（4）链式结构</h4><p>系的典型实现方式是链式实现方式；</p>
+<p><img src="/images/image-20220711160845853.png" srcset="/img/loading.gif" lazyload></p>
+<p>图中O代表首记录值，S1、S2、S3为O的属记录值。它们通过三种指针相连：</p>
+<ul>
+<li><p>前向指针，从O出发按S1、S2、S3次序链接，最后返回O，指针总是指向“下”一个记录；</p>
+</li>
+<li><p>后向指针，链接次序与前向指针相反，指针总是指向“上”一个记录；</p>
+</li>
+<li><p>首记录指针，由属记录指向首记录；</p>
+</li>
+</ul>
+<p>在这三种指针中，前向指针是必备的，其他两种指针可以任选。</p>
+<h3 id="2-2-约束"><a href="#2-2-约束" class="headerlink" title="2.2 约束"></a>2.2 约束</h3><p><img src="/images/image-20220711161001200.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20220711161016341.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-3-总结"><a href="#2-3-总结" class="headerlink" title="2.3 总结"></a>2.3 总结</h3><p>网状数据模型对于层次和非层次结构的事物都能比较自然地模拟，这点要比层次数据模型强。</p>
+<p>在关系数据库以前，网状DBMS要比层次DBMS用得普遍。</p>
+<p>网状数据库可以看成导航式数据库的代表。</p>
+<h2 id="3-关系数据模型"><a href="#3-关系数据模型" class="headerlink" title="3.关系数据模型"></a>3.关系数据模型</h2><p>关系数据模型是以集合论中的<code>关系</code>概念为基础发展起来的数据模型；</p>
+<h3 id="3-1-基本概念和定义"><a href="#3-1-基本概念和定义" class="headerlink" title="3.1 基本概念和定义"></a>3.1 基本概念和定义</h3><h4 id="（1）属性和域"><a href="#（1）属性和域" class="headerlink" title="（1）属性和域"></a>（1）属性和域</h4><p>在现实世界中，要描述一个事物，常常取其若干特征来表示。这些特征称为<code>属性（attribute）</code>，例如大学生可用姓名、学号、性别、出生年份、籍贯、系别等属性来描述。</p>
+<p>每个属性对应一个值的集合（每个属性对应一个域），作为其可以取值的范围，称为该<code>属性的域（domain）</code>。例如，姓名的域是所有合法姓名的集合；学号的域是七位十进制数字所组成的字符串的集合；性别的域是{男，女}；出生年份和入学年份这两个属性的域是相同的，都是四位十进制整数的集合…</p>
+<p>在数据库中，某些属性值可能是未知的或在某些场合下是不适用的。例如，职工的住宅电话号码这个属性，对不装住宅电话的职工就不适用；对装了住宅电话但不愿公开其电话号码的职工或是正在申请安装住宅电话的职工，这个属性虽是适用的，但却是未知的。在此情况下，关系数据模型有条件地允许使用空缺符NULL。NULL虽然有时也称为<code>空值（null value）</code>，但严格地说，它不是值，而是一个标记，说明该属性值是空缺的。</p>
+<h4 id="（2）关系和元组"><a href="#（2）关系和元组" class="headerlink" title="（2）关系和元组"></a>（2）关系和元组</h4><p>一个对象可以用一个或多个关系来描述。关系就是定义在它的所有属性域上的映射(离散数学中关系就是两个集合笛卡尔积的子集,这里有同样适用)；</p>
+<p>下面是描述大学生的关系模式：</p>
+<p><img src="/images/image-20220712161034104.png" srcset="/img/loading.gif" lazyload></p>
+<p>其中一个元组如下：</p>
+<p><img src="/images/image-20220712161101337.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>一个关系包含若干元组，这些元组的集合称为关系所取的值；</p>
+</blockquote>
+<p>在关系数据模型中，关系与表这两个术语可以互相通用，因此属性又称为列，元组又称为行；</p>
+<h4 id="（3）键"><a href="#（3）键" class="headerlink" title="（3）键"></a>（3）键</h4><p>关系的每个元组是互不相同的，但是不同的元组在部分属性上的投影可能是相同的；</p>
+<blockquote>
+<p>如果关系的某一属性或属性组的值唯一地决定其他所有属性的值，也就是唯一地决定一个元组，而其任何真子集无此性质，则这个属性或属性组称为该关系的<code>候选键</code>（candidate key），或简称为<code>键</code>；</p>
+</blockquote>
+<p>例如，学号就是关系STUDENT的键，而属性组（学号，出生年份，入学年份）虽然也可决定其他属性的值，但不能算键，因为它的真子集（学号}也具有此性质，这种属性组称为超键（superkey）</p>
+<blockquote>
+<p>一个关系至少有一个候选键，也可能有多个候选键，一般从候选键中选一个作为<code>主键</code>（primary key），其他的候选键则称为<code>候补键</code>（alternate key）；</p>
+</blockquote>
+<p>主键的值可以用来识别和区分元组，它应该是唯一的，即每个元组的主键的值是不能相同的；</p>
+<blockquote>
+<p>某些关系中主键由所有的属性构成，称为<code>全键</code>；</p>
+</blockquote>
+<blockquote>
+<p>如果关系中的属性或属性组不是本关系的键，而是引用其他关系的键，则称为此关系的<code>外键</code>；</p>
+</blockquote>
+<h3 id="3-2-约束"><a href="#3-2-约束" class="headerlink" title="3.2 约束"></a>3.2 约束</h3><p>并不是每个合乎<code>语法</code>的元组都能成为R的元组，它还要受到<code>语义</code>的限制，数据的语义不但会限制属性的值，还会制约属性间的关系；</p>
+<p>语义施加在数据上的限制统称为完整性约束，关系数据模型完整性约束主要分为以下4类：</p>
+<blockquote>
+<p>（1）域完整性约束</p>
+</blockquote>
+<p>属性值应是域中的值，这是关系模式规定了的。除此之外，一个属性能否为NULL，这是由语义决定的，也是域完整性约束的主要内容。域完整性约束是最简单、最基本的约束。在当今的关系DBMS中，一般都有域完整性约束检查功能。</p>
+<blockquote>
+<p>（2）实体完整性约束</p>
+</blockquote>
+<p>每个关系应有一个主键，每个元组（相当丁一个实体）的主键的值应是唯一的。主键的值不能为NULL，否则无从区分和识别元组。</p>
+<blockquote>
+<p>（3）引用完整性约束</p>
+</blockquote>
+<p>实体完整性约束是一个关系内的约束。引用完整性约束是不同关系之间或同一关系的不同元组间的约束。</p>
+<blockquote>
+<p>（4）一般性完整性约束</p>
+</blockquote>
+<p>域完整性约束、实体完整性约束和引用完整性约束是关系数据模型的三个最基本、最普遍的完整性约束。其他的语义约束与数据的具体内容有关，数量很大，要说明、管理和检查这些约束，开销太大。目前，在有些DBMS中，允许用户对个别数据说明一些约束及违反约束时的处理过程，但迄今还没有一个关系DBMS产品，全面实现一般性完整性约束检查（这只是一个理想情况）。</p>
+<p>++++++++++++++++++++++++++++</p>
+<p>层次、网状和关系数据模型是数据库诞生以来广泛应用的三种数据模型，一般称之为传统数据模型。传统数据模型是文件系统中所用数据模型的继承和发展。</p>
+<p>由于传统数据模型有诸多不足(具体可以查阅资料)，从20世纪70年代后期开始，陆续出现了各种非传统数据模型。这些数据模型出现在关系数据模型之后，因此又称<code>后关系数据模型（post relational data model）</code>。</p>
+<p>这些数据模型种类很多，繁简不一，各有特点，但又有共同之处。下面将介绍一些应用较多，有代表性的非传统数据模型。</p>
+<p>+++++++++++++++++++++++++++++++++++++</p>
+<h2 id="4-E-R数据模型"><a href="#4-E-R数据模型" class="headerlink" title="4.E-R数据模型"></a>4.E-R数据模型</h2><p>实体联系数据模型也就是E-R数据模型，提出的目的主要有：</p>
+<p>（1）企图建立一个统一的数据模型，以概括3种传统数据模型；<br>（2）作为三种传统数据模型互相转换的中间模型；<br>（3）作为超脱DBMS的一种概念数据模型，以比较自然的方式模拟现实世界；</p>
+<h3 id="4-1-基本概念"><a href="#4-1-基本概念" class="headerlink" title="4.1 基本概念"></a>4.1 基本概念</h3><p>E-R数据模型面向现实世界，需要有效地自然地模拟现实世界，E-R数据模型的3个抽象概念：</p>
+<h4 id="（1）抽象概念"><a href="#（1）抽象概念" class="headerlink" title="（1）抽象概念"></a>（1）抽象概念</h4><blockquote>
+<p>a)实体</p>
+</blockquote>
+<ul>
+<li><p>凡是可以互相区别而可以被人们识别的事、物、概念等统统抽象为<code>实体</code>；</p>
+</li>
+<li><p>在一个单位中，具有共性的一类实体可以划分为一个<code>实体集（entity set）</code>，例如，学生小王、小李…都是实体，但是他们都是学生；</p>
+</li>
+<li><p>E-R数据模型中，也有型与值之分：实体集作为型来定义，而每个实体是它的实例或值（其实这个地方我个人觉得不严谨，实体集应该是实体的集合，是实例的集合，实体型才应该是型的定义）；</p>
+</li>
+</ul>
+<blockquote>
+<p>b)属性</p>
+</blockquote>
+<ul>
+<li><p>实体一般具有若干特征，称之为实体的<code>属性</code>，例如学生具有姓名、学号等属性；</p>
+</li>
+<li><p>每个属性都有其取值的范围，在E-R数据模型中称为<code>值集（value set）</code>,值集实际上相当于前面所述的域;</p>
+</li>
+<li><p>在同一实体集中，每个实体的属性及其域是相同的，但可能取不同的值;</p>
+</li>
+</ul>
+<p>在E-R数据模型中，属性可以是单域的简单属性，也可以是多域的组合属性。组合属性由简单属性和其他组合属性组成。组合属性中允许包含其他组合属性，这意味着属性可以是一个层次结构。</p>
+<p><img src="/images/image-20220714170459158.png" srcset="/img/loading.gif" lazyload></p>
+<p>图2-27表示通信地址这一属性的层次结构。组合属性可以作为一个属性来看待，也可以把组成它的分量看成属性，例如可以把某人的通信地址属性中的邮编看成是某人的属性。组合属性的每个分量都有其各自的值集。</p>
+<blockquote>
+<p>c)联系</p>
+</blockquote>
+<ul>
+<li><p>实体之间会有各种关系，例如学生实体与课程实体之间可有选课关系，人与人之间可能有领导关系、夫妻关系等。这种实体与实体间的关系抽象为<code>联系</code>；</p>
+</li>
+<li><p>联系可用实体所组成的元组表示，例如元组（e1，e2，…，en）表示实体e1，e2…en之间的一个联系。如果n&#x3D;2，则称为<code>二元联系</code>，如果n&gt;2，则称为<code>多元联系</code>；</p>
+</li>
+<li><p>同一类型的联系可能包含若干具体的联系，同一类型的联系所组成的集合称为<code>联系集（relationship set）</code>；</p>
+</li>
+</ul>
+<blockquote>
+<p>若不引起误解，实体集有时简称为实体，联系集有时简称为联系；</p>
+</blockquote>
+<h4 id="（2）E-R图"><a href="#（2）E-R图" class="headerlink" title="（2）E-R图"></a>（2）E-R图</h4><p>用E-R数据模型对一个单位的模拟称为一个单位的E-R数据模式，E-R数据模式可以用非常直观的E-R图表示；</p>
+<p><img src="/images/image-20220714194727684.png" srcset="/img/loading.gif" lazyload></p>
+<p>矩形框代表实体，双线矩形框代表弱实体，菱形框代表联系，联系与实体相连的弧上所注明的1、N、M、P等表示联系的基数比，如果弧为双线，则表示该实体全参与；如果弧为单线，则表示该实体部分参与；</p>
+<p>E-R模型提供的实体、属性和联系三个抽象概念可以自然的模拟现实世界，且E-R模型可以方便的转换为层次、网状、关系模型；</p>
+<p>E-R图目前广泛地用于数据库的概念设计。通过E-R图，计算机专业人员与非计算机专业人员可以进行交流和合作，以真实、合理地模拟一个单位，作为进一步设计数据库的基础—这就是B站当时讲的借助E-R图可以实现专业人员和客户（没有任何计算机基础）之间的沟通；</p>
+<h4 id="（3）总结"><a href="#（3）总结" class="headerlink" title="（3）总结"></a>（3）总结</h4><p>实体、属性和联系三个概念是有明确区分的，但是对于某个具体数据对象，究竞算它实体，还是属性或联系，则是相对的。这或多或少决定于应用背景和用户的观点甚至偏爱。事实上，实体这个概念是无所不包的，属性和联系都可以看成是实体。</p>
+<p>把数据区分为实体、属性和联系，不过更便于人们理解而已。</p>
+<h3 id="4-2-约束"><a href="#4-2-约束" class="headerlink" title="4.2 约束"></a>4.2 约束</h3><p>基数比约束和参与约束构成联系的语义约束，有时合称为结构约束；</p>
+<ul>
+<li>基数比约束就是前面介绍过的一对一联系、一对多联系和多对多联系，在E-R模型中明确地的表示了这些语义；</li>
+<li>参与度的一般形式可表示为(min,max)，若min&#x3D;0表示实体集中的实体并不一定每个都参与联系，min&gt;0表示每个实体必须参与联系；</li>
+</ul>
+<h2 id="5-EER数据模型"><a href="#5-EER数据模型" class="headerlink" title="5.EER数据模型"></a>5.EER数据模型</h2><h3 id="5-1-基本概念"><a href="#5-1-基本概念" class="headerlink" title="5.1 基本概念"></a>5.1 基本概念</h3><h4 id="（1）抽象概念-1"><a href="#（1）抽象概念-1" class="headerlink" title="（1）抽象概念"></a>（1）抽象概念</h4><p>扩充E-R数据模型在E-R模型基础上引入如下抽象概念：</p>
+<blockquote>
+<p>a)特殊化和普遍化</p>
+</blockquote>
+<p>一个实体集是具有某些共性的实体的集合，当然这些实体具备各自的特殊性，将一个实体集按照某一特性&#x2F;特征区分为几个实体子集，这是一个从普通到特殊的过程，称为<code>特殊化</code>；</p>
+<p>与特殊化相反的过程叫做<code>普遍化</code>，即把几个具有某些共性的实体集概括成一个更普遍的实体集；</p>
+<ul>
+<li>设有实体集E，如果F是E的某些真子集的集合，则称F是E的一个<code>特殊化</code>，E是这些真子集的<code>超实体集</code>，这些真子集称为E的<code>子实体集</code>；</li>
+<li>假如F是E的所有子集的集合，则称F是E的<code>全特殊化</code>，否则称F是E的<code>部分特殊化</code>；</li>
+<li>假如子实体集中任何两个子实体都完全不相交（教师和职工部分重叠，本科生和大专生一定不重叠），则称F是E的<code>不相交特殊化</code>，否则称F是E的<code>重叠特殊化</code>；</li>
+<li>普遍化是特殊化的逆过程，所以同样适用于上述概念；</li>
+<li>子实体集中的实体一定是超实体集中的实体，但超实体集合中的实体不一定是子实体集中的实体；</li>
+<li>子实体集继承超实体集的所有属性和联系，且子实体集还可以拥有自己特殊的属性和联系；</li>
+</ul>
+<p>特殊化和普遍化可用扩充的E-R图表示，图2-30是一个例子。</p>
+<p><img src="/images/image-20220714201150447.png" srcset="/img/loading.gif" lazyload></p>
+<p>图中，有U符号的线表示特殊化，圆圈中的d表示不相交特殊化，圆圈中的o表示重叠特殊化。超实体集与圆圈的连线若是双线，则表示全特殊化；若是单线，则表示部分特殊化。</p>
+<p>图2-30中，在职进修生既是教职工，又是学生，所以有两个超实体集，他继承两者的属性。</p>
+<blockquote>
+<p>b)聚集</p>
+</blockquote>
+<p>在基本E-R数据模型中，只有实体才能参与联系，不允许联系参与联系。</p>
+<p>在EER数据模型中，可以把联系看成<code>由参与联系的实体组合而成的新的实体</code>，其属性为参与联系的实体的属性和联系的属性的并，这种新的实体称为<code>参与联系的实体的聚集</code>。</p>
+<p>有了聚集这个抽象概念，联系也可以参与联系。图2-31是应用聚集的例子。</p>
+<p><img src="/images/image-20220714201934337.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>c)范畴</p>
+</blockquote>
+<p>在模拟现实世界时，有时要用到由不同类型的实体组成的同一实体集，例如车主这个实体集的成员可能是单位，也可能是个人。这种由不同类型实体组成的实体集不同于前面所定义的实体集，为了区分起见、特名之为范畴。</p>
+<p>设E1,E2…En是n个不同类型的实体集，范畴T的定义为</p>
+<p><img src="/images/image-20220714202253088.png" srcset="/img/loading.gif" lazyload></p>
+<p>E1,E2…En称为T的超实体集；</p>
+<p>范畴与具有<code>多超实体集的子实体集</code>在形式上有些相似，但意义完全不同。范畴是<code>超实体集并的子集</code>，而子实体集是<code>超实体集交的子集</code>；</p>
+<h2 id="6-面向对象数据模型"><a href="#6-面向对象数据模型" class="headerlink" title="6.面向对象数据模型"></a>6.面向对象数据模型</h2><p>与其根据不同的新需求，提出各种新的数据模型，还不如设计一种可扩充（extensible）的数据模型，由用户根据需要定义新的数据类型及相应的约束和操作。面向对象数据模型（object-oriented data model，简称O-O data model）就是一种可扩充的数据模型。</p>
+<h3 id="6-1-基本概念"><a href="#6-1-基本概念" class="headerlink" title="6.1 基本概念"></a>6.1 基本概念</h3><h4 id="（1）对象"><a href="#（1）对象" class="headerlink" title="（1）对象"></a>（1）对象</h4><blockquote>
+<p>a)在面向对象数据模型中，所有现实世界中的实体都模拟为对象，小至一个整数、字符串，大至一架飞机、一个公司，都可以看成<code>对象</code>；</p>
+</blockquote>
+<p>对于整型、字符串这种简单对象，其值本身就是其状态的完全描述，而相关操作在计算机系统中也明确定义，因此一般不会把这些简单对象当作对象使用而是仅仅当作值；</p>
+<blockquote>
+<p>b)一个对象包含若干<code>属性</code>，用以<code>描述对象的状态、组成和特性</code>。</p>
+</blockquote>
+<p>属性也是对象，它又可能包含其他对象作为其属性。这种递归引用对象的过程可以继续下去，从而组成各种复杂的对象，而且同一个对象可以被多个对象所引用。由对象组成对象的过程称为<code>聚集（aggregation）</code>；</p>
+<blockquote>
+<p>c)除了属性外，对象还包含若干<code>方法（method）</code>，用以<code>描述对象的行为特性（behavioral characteristics）</code>。</p>
+</blockquote>
+<p>方法又称为操作，它可以改变对象的状态，对对象进行各种数据库操作。方法的定义包含两个部分：一是方法的接口，说明方法的名称、参数和结果的类型，一般称之为调用说明（signature）；二是方法的实现部分，它是用程序设计语言编写的一个过程，以实现方法的功能。</p>
+<blockquote>
+<p>d)对象是<code>封装的（encapsulated）</code>，外界与对象的通信一般只能借助于<code>消息（message）</code>。消息传送给对象，调用对象的相应方法，进行相应的操作，再以消息形式返回操作的结果。外界只能通过消息请求对象完成一定的操作，是0-0数据模型的主要的特征之一。</p>
+</blockquote>
+<h4 id="（2）类和实例"><a href="#（2）类和实例" class="headerlink" title="（2）类和实例"></a>（2）类和实例</h4><p>(此处的概念和C++中的类概念几乎相同，比如类变量实际就是C++中的静态成员)</p>
+<p>常常将相似的对象归并为<code>类</code>，类中的每个对象称为<code>实例</code>；</p>
+<p>同一类对象的属性虽然一样但是属性的取值会因为实例而不同故属性又称为<code>实例变量</code>；</p>
+<p>在有些面向对象数据模型中，不但把实例看成是对象，而且类本身也被看成对象（有利于统一处理消息的传送）。类既然是对象，它们也可以组成类。这个由类组成的类叫<code>元类（metaclass）</code>，元类的实例是类。为了区别于一般对象，我们称其为类对象（class object），而普通类的实例我们称其为实例对象；</p>
+<h4 id="（3）类层次结构和继承"><a href="#（3）类层次结构和继承" class="headerlink" title="（3）类层次结构和继承"></a>（3）类层次结构和继承</h4><p>类的子集也可以定义为类，称之为<code>子类</code>，而该类就称为子类的<code>超类</code>，子类还可以进一步划分为子类，故如此形成一个层次结构；</p>
+<p>这种类之间的关系称为IS-A联系，也称为类属联系；</p>
+<blockquote>
+<p>一个对象只能是一个类的实例，但一个对象可以是它所有超类的<code>成员</code>—此处成员并不是C++中成员属性和成员方法统称为类的成员；</p>
+</blockquote>
+<p>子类除了继承所有超类中的属性和方法外，还可以用增加（定义新的属性和方法）或取代（重新定义超类的属性和方法）的方法定义子类中特殊的属性和方法；</p>
+<p>如果子类有多个超类则子类同时继承的这些超类的属性和方法称为<code>多继承</code>，这可能导致同名冲突的问题：</p>
+<ul>
+<li>如果在一个于类的几个直接超类中，有同名的属性和方法，这时子类究竞继承谁？解决这种同名冲突的方法，一般是在子类中规定超类的优先次序，例如以superclass子句中超类出现的先后为序，首先继承优先级最高的那个超类。在有些O-O数据模型中，由用户指定继承其中某一个超类;</li>
+<li>如果子类与其超类发生同名冲突，是继承超类的，还是承认子类自己定义的？几乎在所有0-0数据模型中，在此情况下，都以子类定义的为准，也就是子类的定义取代（override）其超类中的同名定义；</li>
+</ul>
+<h4 id="（4）对象的标识"><a href="#（4）对象的标识" class="headerlink" title="（4）对象的标识"></a>（4）对象的标识</h4><p>在O-O数据模型中，每个对象都有一个在系统内唯一的和不变的标识符，称为<code>对象标识符（object identifier，简称OID）</code>。OID一般由系统产生，用户不得修改。两个对象即使属性值和方法都一样，若OID不同，则仍被认为是两个相等而不同的对象。相等（equivalence）与同一（identity）是两个不同的概念；</p>
+<p>在这点上，O-O数据模型与关系数据模型不同。在关系数据模型中，如果两个元组的属性值完全相同，则被认为是同一元组；而在O-O数据模型中，对象的标识符是区别对象的唯一标志，而与对象的属性值无关。前者称为按值识别，后者称为按标识符识别。在原则上，对象标识符不应依赖于它的值。</p>
+<ul>
+<li>逻辑对象标识符：不依赖于对象的存储位置，也不含对象的地址（访问对象时需要将对象标识符映射为对象的地址，这将增加额外开销）</li>
+</ul>
+<blockquote>
+<p>逻辑对象标识符形式（类标识符，实例标识符）</p>
+<ul>
+<li>类标识符标识对象所属的类；</li>
+<li>实例标识符标识类中的对象；</li>
+</ul>
+</blockquote>
+<ul>
+<li>物理对象标识符：依赖于对象的位置或直接含有对象的地址；</li>
+</ul>
+<h2 id="7-基于逻辑的数据模型"><a href="#7-基于逻辑的数据模型" class="headerlink" title="7.基于逻辑的数据模型"></a>7.基于逻辑的数据模型</h2><p>（这部分和大一下学的离散数学有点关系，但可惜的是我基本已经忘得差不多了…下面先简单介绍一些基本概念，之后更深层次的概念就之后自己再摸索）</p>
+<blockquote>
+<ul>
+<li><code>谓词</code>是公式的基本组成部分，表示对象之间的关系。这些关系可以是在话语领域中允许的任何关系。<br>例如，在家庭关系的域，谓词可以是兄弟，父亲，母亲。在业务关系的情况下，谓词可以是员工，子公司，受控制的。也可以定义更复杂的谓词，例如这个父亲和这个母亲的儿子。</li>
+<li><code>量词</code>是一阶逻辑的特殊组成部分，它允许定义考虑与某些谓词有关的数字或数量的公式。它们在英语中也被称为不定形容词。这些包括形容词，例如any，some，all或none。</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><p>一个谓词可以与一个个体相关联，此种谓词称做<code>一元谓词</code>，它刻画了个体的性质。</p>
+</li>
+<li><p>一个谓词也可以与多个个体相关联，此种谓词称做<code>多元谓词</code>，它刻画了个体间的“关系”。</p>
+</li>
+</ul>
+<p> 例如，“张三是李四的老师”这句话，在命题逻辑中无法刻画张三与李四的关系，而在谓词逻辑中可以用二元谓词teacher（x，y）表示“x是y的老师”。而teacher（张三，李四）即刻画了张三和李四之间的关系。</p>
+</blockquote>
+<blockquote>
+<ul>
+<li><p>谓词中包含的个体数目称为<code>谓词的元数</code>。例如，P（x）是一元谓词，P（x，y）是二元谓词，而P（x1，x2，..，xn）则是n元谓词。</p>
+</li>
+<li><p>在谓词P（x1，x2，.，xn）中，若xi（i&#x3D; 1，2，n）都是个体常量、变元或函数，则称它为<code>一阶谓词</code>。如果某个x本身又是一个一阶谓词，则称它为二阶谓词，依此类推。后面我们所要用到的都是一阶谓词。在一个谓词中，个体变元的取值范围称为个体域。</p>
+</li>
+</ul>
+</blockquote>
+<p>一阶谓词逻辑比较早地用于<code>定理证明</code>和<code>逻辑程序设计语言</code>：直到20世纪70年代后期才作为一种数据模型提出，这就是所谓基于逻辑的数据模型（logic data model）。</p>
+<p>命题逻辑不允许对具有通用和可变内容的变量和函数进行推理，这意味着其抽象能力有限。这也意味着第一个逻辑计算系统无法解决其解位于命题空间是子空间的向量空间中的问题。此问题已被形式逻辑系统的发展克服。</p>
+<p>如今，一阶推理已成为机器学习系统符号推理的基本组成部分。现代专家系统都使用一阶或高阶逻辑，该逻辑允许以自动化方式进行抽象推理和推理。</p>
+<h3 id="7-1-基本概念"><a href="#7-1-基本概念" class="headerlink" title="7.1 基本概念"></a>7.1 基本概念</h3><h4 id="（1）一阶谓词"><a href="#（1）一阶谓词" class="headerlink" title="（1）一阶谓词"></a>（1）一阶谓词</h4><p><code>每个关系对应一个谓词</code>，例如关系R（X，Y，Z）对应谓词P（X，Y，Z）。设a、b、c分别是属性X、Y、Z的合法的值，该谓词的定义如下：</p>
+<p><img src="/images/image-20220716185953947.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><p>谓词所表示的关系有两种：一种实际存储在数据库中，这称为外延数据库（extensional database，简称EDB）关系；</p>
+</li>
+<li><p>另一种只有定义，而其元组并不存储在数据库中，在需要时可以导出，这称为内涵数据库（intensional database，简称为IDB）关系（DBMS中也有类似的功能，称为<code>视图</code>）；</p>
+</li>
+</ul>
+<p>满足谓词的一组变元的值称为谓词的实例，此时可以将数据库看作一组谓词实例的集合，可以称为<code>事实</code>；</p>
+<blockquote>
+<ul>
+<li>原子：一个谓词叫一个原子，其表示形式一般为P（x1，x2，…，xn）；</li>
+<li>项：x1、x2、xn，是谓词P的变元，称为项（term），项可以是常数、变量或者函数；</li>
+<li>句节：原子或原子的否定称为句节，由原子构成的句节为正句节，由否定原子构成的句节为负句节；</li>
+</ul>
+</blockquote>
+<h1 id="三、数据库语言"><a href="#三、数据库语言" class="headerlink" title="三、数据库语言"></a>三、数据库语言</h1><p>用户使用数据库，必须对数据库进行各式各样的操作，例如查询、增、删、改数据，定义、修改数据模式等。DBMS必须为<code>用户</code>提供<code>相应的命令和语言，这就构成了用户和数据库的接口</code>（也就是说数据库语言是给用户使用的，DBMS在此充当编译器或解释器，将数据库语言转换为<code>最基本</code>的数据库语言，这种最基本的数据库语言可以直接操作数据库）；</p>
+<p>为了给用户提供一个方便的应用数据库的环境，除了<code>数据库语言外</code>，DBMS一般还要为用户提供<code>多种工具</code>、<code>实用程序</code>和<code>图形接口</code>，在不少DBMS中，数据库的用户接口就程序量来说往往超过DBMS核心；</p>
+<p>DBMS所提供的语言一般局限于对数据库的操作，有别于计算完备的程序设计语言（这种语言一般只能用于操作数据库而不能用于编程），称为<code>数据库语言（database language）</code>；</p>
+<p>目前，<code>关系数据库</code>（层次和网状因为抽象层次太低所以它们使用的数据库语言一般是过程性的）都配有<code>非过程关系数据库语言</code>，其中最成功、应用最广的首推SQL语言。它已成为关系数据库语言的国际标准。采用非过程数据库语言，虽然免除了用户描述操作过程的麻烦，但是并非省去这项工作，而是转嫁给系统。系统须根据用户用非过程数据库语言所提出的查询要求，确定一个有效的操作过程，这就是将要在之后讨论的查询优化。</p>
+<blockquote>
+<p>数据库语言与高级程序设计语言结合使用</p>
+</blockquote>
+<p><img src="/images/image-20220716192054518.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="1-SQL概况"><a href="#1-SQL概况" class="headerlink" title="1.SQL概况"></a>1.SQL概况</h2><p>SQL按其功能可分为4大部分：<br>（1）数据定义语言（Data Definition Language，简称<code>DDL</code>），用于定义、撤消和修改数据模式；<br>（2）查询语言（Query Language，简称QL），用于查询数据；<br>（3）数据操纵语言（Data Manipulation Language，简称<code>DML</code>），用于增、删、改数据；<br>（4）数据控制语言（Data Control Language，简称<code>DCL</code>），用于数据访问权限的控制；</p>
+<h3 id="1-1-数据定义语言"><a href="#1-1-数据定义语言" class="headerlink" title="1.1 数据定义语言"></a>1.1 数据定义语言</h3><blockquote>
+<p><code>关系</code>又称为<code>表</code>，是关系型数据库的基本组成单位，SQL中的表分为两类：</p>
+<ul>
+<li>一种叫基表（base table），其数据显式地存储在数据库中；</li>
+<li>另一种叫视图（view）。视图是一种虚表，它仅有逻辑定义，可以根据其定义从其他表（包括视图）导出，但不作为一个表显式地存储在数据库中；</li>
+</ul>
+</blockquote>
+<p>各个厂家支持的SQL数据类型不完全一致，下面的数据类型一般都支持</p>
+<p><img src="/images/image-20220716202744876.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="2-嵌入式SQL"><a href="#2-嵌入式SQL" class="headerlink" title="2.嵌入式SQL"></a>2.嵌入式SQL</h2><p>SQL语言可以独立使用，这样使用的SQL称为<code>交互式SQL（interactive SQL，简称ISQL）</code>。但ISQL的功能仅限于数据库操作，缺少数据处理能力。而一个应用程序既要访问数据，又要处理数据，把SQL嵌入程序设计语言中，即宿主语言中。将两者的功能结合起来，是目前解决这个问题的现实途径。这样使用的SQL称为<code>嵌入式SQL（embedded SQL）</code>。</p>
+<p>嵌人式SQL必须解决下列4个问题：<br>（1）宿主语言编译器不可能识别和接受SQL语言，如何将嵌有SQL的宿主语言程序编译成可执行码，这是首先要解决的问题；<br>（2）宿主语言和DBMS之间如何传递数据和信息；<br>（3）数据库的查询结果一般是元组的集合，这些元组须逐个地赋值给宿主语言程序中的变量，供其处理，其间存在一个转换问题，<br>（4）两者的数据类型有时不完全对应或等价，须解决必要的数据类型转换问题。需要进行何种数据类型转换，与宿主语言和DBMS有关。</p>
+<p>各DBMS在实现嵌入式SQL时对不同的宿主语言所用的基本方法是一样的，只有细微之处有差别，下面以C语言为例介绍实现嵌入式SQL的一般方法；</p>
+<h3 id="2-1-宿主变量"><a href="#2-1-宿主变量" class="headerlink" title="2.1 宿主变量"></a>2.1 宿主变量</h3><ul>
+<li>为了区别C语句和SQL语句，SQL语句开始加EXEC SQL，结尾加分号”;”（当然C语言结尾也要加分号）</li>
+<li>C和SQL之间的数据的传输通过<code>宿主变量</code>，宿主变量是SQL中可引用的C语言变量，除了系统定义的宿主变量外，其他宿主变量都需要声明；</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs C">EXEC SQL BEGIN DECLARE SECTION;<span class="hljs-comment">//说明的开头行为</span><br><span class="hljs-type">char</span> SON[<span class="hljs-number">7</span>];<br><span class="hljs-type">char</span> CNO[<span class="hljs-number">6</span>];<br><span class="hljs-type">short</span> GRADEI;<br>EXEC SQL END DECLARE SECTION；<span class="hljs-comment">//说明的结束行为</span><br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>SQL中引用宿主变量时需要在前面加冒号”:”</li>
+<li>宿主变量按照宿主语言的数据类型和格式进行定义，如果与数据库中的数据类型不一致则通过数据库系统按照约定进行转换；</li>
+<li>往往会对宿主变量的数据类型加以限制，针对C语言不允许用户定义宿主变量为数组或结构（因为这种复合类型给转换带来巨大的麻烦）；</li>
+<li>宿主变量中有一个系统定义的全局变量SQLCA（SQL通信区），供应用程序与DBMS通信使用，使用格式如下</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs C">EXEC SQL INCLUDE SQLCA<span class="hljs-comment">//系统定义无需声明</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>宿主变量不能直接接收空缺字符NULL，此时需要在宿主变量后添加指示变量（也是宿主变量，一般为短整数），用于指示前面的宿主变量是否为NULL；</li>
+</ul>
+<h3 id="2-2-可执行语句"><a href="#2-2-可执行语句" class="headerlink" title="2.2 可执行语句"></a>2.2 可执行语句</h3><p>嵌入式SQL的说明部分不对数据库产生任何作用（因为仅仅只是声明了C语言和SQL之间的数据传输使用到的变量，并未执行任何有关数据库的行为）。下面介绍<code>作用于数据库的嵌入式SQL语句</code>，即<code>可执行语句</code>。这包括嵌人的DDL、QL、DML 及DCL语句。这些语句的格式与对应的ISQL语句基本一致，只不过因嵌入的需要（即因为我们现在要在C语言中使用SQL语句所以需要遵守一些规定）增加了少许语法成分。此外，可执行语句还包括<code>进入数据库系统的CONNECT语句</code>以及<code>控制事务结束的语句</code>。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//CONNECT语句格式</span><br>EXEC SQL CONNECT :uid IDENTIFIED BY :pwd;<br><span class="hljs-comment">//uid pwd是宿主变量，前者为用户标识符，后者为该用户的口令</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//嵌入式SQL的DDL和DML除了前面加EXEC SQL外与ISQL没两样</span><br>EXEC SQL INSERT INTO <span class="hljs-title function_">SC</span><span class="hljs-params">(SNO. CNO, GRADE)</span><br>    <span class="hljs-title function_">VALUES</span><span class="hljs-params">(: SNO.: CNO. : GRADE)</span>;<br><span class="hljs-comment">//插入的元组由三个宿主变量构成，宿主变量由宿主语言程序（C语言程序）赋值</span><br></code></pre></td></tr></table></figure>
+
+<p>如果查询结果超过一个元组，那就不可能一次性地给宿主变量赋值，需要在程序中开辟个区域、存放查询的结果，然后逐个地取出每个元组给宿主变量赋值。为了逐个地取出该区域中的元组，需要一个指示器，指示已取元组的位置；每取一个元组，指示器向前推进一个位置，好似一个游标。在嵌人式SQL术语中，存放查询结果的区域及其相应的数据结构称为<code>游标（cursor）</code>，但有时也称指示器为游标（作为指示器的游标在SQL初级简单介绍过），具体意义根据上下文加以判别。</p>
+<p>嵌入式SQL中的游标使用和ISQL中的游标使用步骤完全一样，只需要在方法前注意添加EXEC SQL；</p>
+<h3 id="2-3-嵌入式SQL的编译"><a href="#2-3-嵌入式SQL的编译" class="headerlink" title="2.3 嵌入式SQL的编译"></a>2.3 嵌入式SQL的编译</h3><p>关系DBMS除了提供SQL语言接口外，一般还提供一批用宿主语言编写的SQL函数，供应用程序调用DBMS的各种功能，这些函数组成SQL函数库（或者是动态链接库），SQL函数库是DBMS向应用程序提供的一种接口，称为调用级接口；</p>
+<p>预编译器将冠以EXEC SQL的语句编译成宿主语言对SQL函数的调用，从而把嵌有SQL的宿主语言源码变换成纯宿主语言源码，可以在编译后，链接外部SQL函数库形成可执行代码；</p>
+<p><img src="/images/image-20220716212204641.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="3-动态SQL"><a href="#3-动态SQL" class="headerlink" title="3.动态SQL"></a>3.动态SQL</h2><p>之前介绍的嵌入式SQL中，SQL语句须在编写应用程序时明确指明，这在有些场合不够方便。例如，在一个分析、统计学生情况的应用程序中，须嵌人查询有关学生记录的SQL语句。这种语句常常不能事先确定，而须由用户根据分析、统计的要求在程序运行时指定。因此，在嵌人式SQL 中，提供动态构造SQL语句的功能，是有实际需要的；</p>
+<p>动态SQL主要分为：</p>
+<ul>
+<li>直接执行的动态SQL；</li>
+<li>带动态参数的动态SQL；</li>
+<li>查询类动态SQL</li>
+</ul>
+<h2 id="4-存储过程"><a href="#4-存储过程" class="headerlink" title="4.存储过程"></a>4.存储过程</h2><p>存储过程即将常用的访问数据库的程序作为一个过程，编译后存储在数据库中并在数据目录中登录，供用户使用；</p>
+<ul>
+<li><p>方便用户：用户只须提供必要的参数，用过程调用语句即可访问数据库，而不必编写程序；</p>
+</li>
+<li><p>改善性能：存储过程以编译后的形式存于数据库中，在调用时，不必再进行语法分析以及查询处理和优化。客户方与数据库服务器之间只须传递参数和结果以及必要的消息，减少了通信量；</p>
+</li>
+<li><p>扩充功能：存储过程不仅可用SQL语句，还可以使用一些控制程序流程的语句，例如IF…THEN…ELSE、WHILE，CASE 等语句，并可调用以宿主语言编写的函数和过程；</p>
+</li>
+</ul>
+<h1 id="——系统篇——"><a href="#——系统篇——" class="headerlink" title="——系统篇——"></a>——系统篇——</h1><h1 id="一、数据库管理系统"><a href="#一、数据库管理系统" class="headerlink" title="一、数据库管理系统"></a>一、数据库管理系统</h1><h2 id="1-功能：处理数据库语言"><a href="#1-功能：处理数据库语言" class="headerlink" title="1.功能：处理数据库语言"></a>1.功能：处理数据库语言</h2><p>DBMS的<code>最基本的功能</code>是正确、安全、可靠地执行数据库语言语句。从这个意义上说，DBMS可以看成数据库语言的一个实现。与高级程序设计语言一样，DBMS也有编译和解释两种实现方法。</p>
+<p>图4-1表示一个解释执行的关系DBMS的结构（当然这里的编译和我们学习的C语言的编译是存在差别的），读者可以从中了解DBMS的一般工作原理和主要组成部分。</p>
+<p><img src="/images/image-20220717100536865.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>DBMS是建立在操作系统之上的软件系统，是操作系统的用户。计算机系统的硬件和各种资源由操作系统统管。DBMS若有分配内存、创建或撤消进程、访问磁盘等要求，必须通过系统调用（supervisor call，简称SVC）请求操作系统为其服务。</p>
+</blockquote>
+<h3 id="1-1-编译执行"><a href="#1-1-编译执行" class="headerlink" title="1.1 编译执行"></a>1.1 编译执行</h3><blockquote>
+<p>上述第四步，我们处理QL又可分为两种实现方式——解释和编译</p>
+</blockquote>
+<p><img src="/images/image-20220718154243924.png" srcset="/img/loading.gif" lazyload></p>
+<p>应用程序先经预编译处理，将其中嵌人的数据库查询语句分出，进行语法、词法分析和查询优化，生成一个可执行的访问模块（access module，简称AM），存于磁盘中。</p>
+<p>经预编译后，嵌入的“BEGIN TRAN…查询语句…END”被程序设计语言调用语句“CALL AM（参数）”所取代，这样，嵌有数据库查询语言的应用程序就变成了纯高级程序设计语言程序，可以经编译、链接后执行。</p>
+<h3 id="1-2-解释执行"><a href="#1-2-解释执行" class="headerlink" title="1.2 解释执行"></a>1.2 解释执行</h3><p>当DBMS接到应用程序送来的查询语句后，即创建相应的事务，解释执行查询语句，并在事务完成后返回查询结果。由于解释方式不保留可执行代码，如果重复执行该查询语句，须重复解释一次。</p>
+<p><img src="/images/image-20220718154120089.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>对于常用的例行事务，编译方式可以显著地提高数据库性能。对于那些不怎么重复使用的偶然查询，解释也不失为一种简单、实用的实现方式。</p>
+</blockquote>
+<h2 id="2-执行单位：事务"><a href="#2-执行单位：事务" class="headerlink" title="2.执行单位：事务"></a>2.执行单位：事务</h2><p>事务（transaction）是DBMS的<code>执行单位</code>，它由<code>有限的数据库操作序列</code>组成（这里可以把事务类比为计算机运行的最小功能单位-机器指令，由若干微操作组成）；</p>
+<p>不是任意数据库操作序列都能成为事务，一般要求事务具有下列4个性质：</p>
+<p>（1）原子性</p>
+<p>事务在执行时，应遵守“要么不做，要么全做”（nothing or all）的原则，即不允许事务部分地完成。即使因为故障而使事务未能完成，在恢复时也要消除其对数据库的影响（也就是撤销先前部分完成的操作）；</p>
+<p>（2）一致性</p>
+<p>组成一个事务的数据库操作系列的共同作用效果应该是使数据库从一个状态转变到另一个状态，同时数据库中的数据满足完整性约束（如果进行了拨款操作则还需要搭配修改余额操作才能构成一个事务）；</p>
+<p>同时COMMIT指令也提供了维护数据库一致性的帮助；</p>
+<p>（3）隔离性</p>
+<p>如果多个事务并发地执行，应像各个事务独立执行一样，并发控制就是为了保证事务间的隔离性；</p>
+<p>（4）持久性</p>
+<p>一个成功地执行的事务对数据库的影响应是持久的，即使数据库因故障而受到破坏，DBMS也应该能够恢复；</p>
+<h2 id="3-运行方式：进程"><a href="#3-运行方式：进程" class="headerlink" title="3.运行方式：进程"></a>3.运行方式：进程</h2><p>DBMS是作为操作系统的用户进程在其上运行的，多数DBMS将其主要功能组成一个DBMS核心进程（除了执行事务的主要部分-核心进程外，DBMS将其他操作组成几个后台服务进程），其进程结构方案常用的有如下两种：</p>
+<p>（1）多进程并发结构</p>
+<p>应用程序在运行时须创建相应的应用进程。每个应用进程在访问数据库时须创建一个DBMS核心进程。DBMS核心进程在完成应用进程所委托的访问数据库的任务后撤消。多个DBMS核心进程在操作系统调度下，并发地运行，实现多事务的并发执行；</p>
+<p>（2）多线程并发结构</p>
+<p>在单进程多线程结构的DBMS中，系统只创建一个DBMS进程。在DBMS进程中，有常驻的公共服务线程（ORACLE中的后台服务进程）和应用户的要求而创建的非常驻用户线程（DBMS核心进程），也就是把DBMS的并发执行从进程级改为线程级；</p>
+<h2 id="4-数据库系统结构"><a href="#4-数据库系统结构" class="headerlink" title="4.数据库系统结构"></a>4.数据库系统结构</h2><p>（这一节本来应该在前面介绍的，主要介绍随着计算机应用系统的的变化、计算机软硬件的发展，数据库系统的演变）</p>
+<h3 id="4-1-集中式数据库系统"><a href="#4-1-集中式数据库系统" class="headerlink" title="4.1 集中式数据库系统"></a>4.1 集中式数据库系统</h3><blockquote>
+<p>在这种结构中，不但数据是集中的（集中式数据库），数据的管理也是集中的（集中式DBMS），用户通过终端或远距离终端分时访问数据库；</p>
+</blockquote>
+<h3 id="4-2-C-x2F-S结构"><a href="#4-2-C-x2F-S结构" class="headerlink" title="4.2 C&#x2F;S结构"></a>4.2 C&#x2F;S结构</h3><p>客户&#x2F;服务器是一种特殊的分布式处理系统，在这个系统中，有一至多台称为<code>客户机</code>的计算机和一至多台称为<code>服务器</code>的计算机，它们通过网络相连；</p>
+<ul>
+<li><p><code>客户机</code>直接面向用户，接受并处理任务，并将任务中需要由服务器完成的部分委托服务器执行；</p>
+</li>
+<li><p><code>服务器</code>只接受客户机的委托，完成特定的任务，例如提供数据库服务的数据库服务器、提供图像处理服务的图像处理服务器等；</p>
+</li>
+</ul>
+<p>数据库是客户&#x2F;服务器系统的一个重要应用领域。一般由客户机处理数据库的接口部分，例如菜单管理、图形用户接口、嵌入数据库语言的预处理、编辑、报表生成、二维数据库语言接口等，而DBMS的核心部分则由服务器处理。甚至有些系统把查询处理和优化也放在客户机中，服务器只承担数据库的物理存取和事务管理。</p>
+<blockquote>
+<p>这种结构中，数据的管理是分布的，但是数据仍然是集中的（即使整个数据库管理系统中有多个数据库）；</p>
+</blockquote>
+<h3 id="4-3-分布式数据库系统"><a href="#4-3-分布式数据库系统" class="headerlink" title="4.3 分布式数据库系统"></a>4.3 分布式数据库系统</h3><p>集中式的数据库具有许多缺点，如可用性差、通信开销大、难以管理等（可以联想计网中的星型网络的缺点），因此出现了分布式数据库系统；</p>
+<p>主要有以下两种类型的实现方式：</p>
+<ul>
+<li>物理上分布，逻辑上集中的数据库系统：数据在物理上分布后（分布式数据库），由系统统一管理（集中式DBMS）使用户在逻辑上仍然认为他们使用的是集中式的数据库；</li>
+<li>物理上分布，逻辑上分布的数据库系统：这样的系统，结点拥有很高的自治性，又称“联邦式数据库系统”</li>
+</ul>
+<h2 id="5-数据管理：数据目录"><a href="#5-数据管理：数据目录" class="headerlink" title="5.数据管理：数据目录"></a>5.数据管理：数据目录</h2><blockquote>
+<p>数据目录是一组关于数据的数据（也称为元数据），元数据记录了数据库中大量、持久、共享的数据的定义和描述，由元数据组成的若干表称之为数据目录，为数据库管理系统管理和使用；</p>
+</blockquote>
+<ul>
+<li>数据目录只能由系统定义以及为系统所用，在初始化时由系统自动生成（数据目录本身不能使用数据库语言来定义，因为数据目录是数据库语言执行的先决条件）；</li>
+<li>数据目录是影响系统全局、以读为主的数据，对系统的效率影响很大；</li>
+</ul>
+<h1 id="二、数据库"><a href="#二、数据库" class="headerlink" title="二、数据库"></a>二、数据库</h1><blockquote>
+<p>数据库是大量、持久数据的集合；</p>
+</blockquote>
+<h2 id="1-数据库存储介质"><a href="#1-数据库存储介质" class="headerlink" title="1.数据库存储介质"></a>1.数据库存储介质</h2><p>磁盘：磁盘也就是计组中介绍过的以块为单位作为磁盘与内存交换数据；</p>
+<p>磁带：磁带可以脱机存放，从这个意义来说，磁带的存储量是没有限制的，而且脱机存放的磁带，不像联机的磁盘那样，会因设备故障或操作失误而破坏存储内容。因此，在数据库系统中，磁带一般用作后备存储器（backup storage），用来周期性地复制数据库的内容和状态，以便在数据库万一被破坏时，能够用磁带上的复本来恢复数据库。</p>
+<h2 id="2-记录的存储"><a href="#2-记录的存储" class="headerlink" title="2.记录的存储"></a>2.记录的存储</h2><blockquote>
+<p>记录是目前商用数据库的基本数据单元；</p>
+</blockquote>
+<h3 id="2-1-记录的物理结构"><a href="#2-1-记录的物理结构" class="headerlink" title="2.1 记录的物理结构"></a>2.1 记录的物理结构</h3><p>记录有定长和变长之分，定长记录是最基本、最常用的一种，变长记录只有少数DBMS能够支持；</p>
+<p>记录的物理存储结构主要有：</p>
+<ul>
+<li>定位法：每个字段按照其最大长度分配固定长度的位置，缺点是空间利用率不高，用定位法表示的记录是定长记录</li>
+</ul>
+<p><img src="/images/image-20220717191505693.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>相对法：各字段并不分配固定长的空间，而是使用特殊的字符隔开，用相对法表示的记录是变长的</li>
+</ul>
+<p><img src="/images/image-20220717191611829.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><p>计数法：每个字段开始都加上一个定长的字段，表示该字段的长度，使用计数法表示的记录是变长记录</p>
+<p><img src="/images/image-20220717191800663.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<ul>
+<li>确定了记录的物理结构之后，要存储在磁盘上则记录必须分配到物理块中，可根据记录是否存储在多个<code>物理块</code>中将其分为不跨块组织和跨块组织；</li>
+<li>早期DBMS不分配物理块，而是由操作系统分配数据库需要使用的物理块，这就导致逻辑上相邻的数据常被分散到磁盘的不同区域中导致，连续访问数据库中的数据性能下降；现代DBMS在初始化时向操作系统申请所需要的<code>磁盘空间</code>，然后由DBMS来分配这些磁盘空间（分配原则实际上根据文件结构来选择，文件结构将在下一节介绍）：<ul>
+<li>连续分配法：将同一个文件的物理块分配在磁盘的连续空间上；</li>
+<li>链接分配法：物理块不一定在磁盘的连续区域，物理块用指针链接；</li>
+<li>簇集分配法：将同一个文件分为若干簇集（物理上相邻的若干物理块），簇集以指针链接；</li>
+<li>索引分配法：通过索引，可以查到文件中任意一块的地址，增加了逻辑块号到物理块地址的映射的开销；</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h3 id="2-2-数据压缩"><a href="#2-2-数据压缩" class="headerlink" title="2.2 数据压缩"></a>2.2 数据压缩</h3><p>介绍一些简单的数据压缩技术，用压缩数据存储，在写入数据库时对数据进行压缩，在读出数据库时对数据进行复原；</p>
+<ul>
+<li>消零&#x2F;空格符法：可以使用一个特殊符号和一个表示零或空格符个数的数字表示一串零或一串空格符；</li>
+<li>串型代替法：对于反复出现的字符串可以使用一个省略符号代替，在转换时需要查询串型表；</li>
+</ul>
+<p><img src="/images/image-20220717193149551.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>索引法：对于重复出现的串型可以单独存储，需要使用这些串型的时候可以使用指针引用（当串型比指针长的多的时候才能体现其优势）；</li>
+</ul>
+<p><img src="/images/image-20220717193346449.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="3-文件"><a href="#3-文件" class="headerlink" title="3.文件"></a>3.文件</h2><blockquote>
+<p>传统的数据模型以记录为基础，记录的集合（一般是同类型的记录）构成文件—实际上对数据库的操作也就是对数据库中存储的文件的操作；</p>
+</blockquote>
+<h3 id="3-1-访问文件"><a href="#3-1-访问文件" class="headerlink" title="3.1 访问文件"></a>3.1 访问文件</h3><p>文件按照一定的结构（<code>文件结构</code>）组织和存储记录，对数据库的操作最终落实到对文件的操作，对文件中记录的访问大致分为以下五种：</p>
+<ul>
+<li><p>一般将访问15%以上的记录的查询都归为查询文件的全部或相当多的记录；</p>
+</li>
+<li><p>查询某一特定记录；</p>
+</li>
+<li><p>查询某些记录，介于前两者之间；</p>
+</li>
+<li><p>范围查询，即查询某属性值在给定范围内的记录；</p>
+</li>
+<li><p>记录的更新，更新记录时常引起记录位置的调整和其他相应（如索引）的修改；</p>
+</li>
+<li></li>
+</ul>
+<h3 id="3-2-文件结构"><a href="#3-2-文件结构" class="headerlink" title="3.2 文件结构"></a>3.2 文件结构</h3><p>文件结构以及其提供的存取路径直接影响数据访问的速度，且一种文件结构不可能对所有的数据访问（上面介绍的五种方式）都有效；</p>
+<p>文件结构的问题不仅仅在数据库系统中研究，早在文件系统中就已经出现，有些DBMS直接以操作系统的文件管理系统作为物理层基础，有些DBMS则独立设计其存储结构—数据库中的文件既继承了传统文件系统的某些技术，又有一些区别；</p>
+<p>常用的文件结构有以下三种：</p>
+<ul>
+<li>堆文件：在这种文件中，记录按其插入的先后次序存放，好像一堆货物一样，来了新的货物就堆在上面，所以叫堆文件；这种文件插入容易但删除、查找不方便，它提供的唯一存取路径就是顺序搜索&#x2F;顺序扫描，只用于小文件、访问文件的全部或相当多的记录；</li>
+<li>直接文件：在直接文件中，将记录的某一属性（一般为主键）用<code>散列函数</code>直接映射成记录的地址，被散列的属性称为散列键，这种文件用于按散列键访问是很快的；</li>
+<li>索引文件：文件的索引在原理上与字典上的索引是一样的，为了查找方便，根据应用的需要，可在记录的某一属性或某一属性组上建立索引。这种属性或属性组称为<code>索引键（index key）</code>。索引中每一项由两部分组成（可看成是一个<code>二元组</code>）：第一部分为索引键的值，第二部分为该值所对应的记录的地址或地址集。这样组成的二元组称为<code>索引项（index entry）</code>；</li>
+</ul>
+<blockquote>
+<p>索引与散列相同之处在于将键映射为对应的地址或地址集，不同之处在于有记录才会占用索引的空间（二元组），而散列所映射的空间是固定的无法随着文件大小变化而伸缩（散列函数）；</p>
+</blockquote>
+<h1 id="三、查询处理和优化"><a href="#三、查询处理和优化" class="headerlink" title="三、查询处理和优化"></a>三、查询处理和优化</h1><blockquote>
+<p>本章所讨论的优化都是在执行前进行的，这称为静态优化。静态优化只能利用统计数据估算代价，因此，优化有时不一定符合实际。另一种途径是在查询执行时优化，这称为动态优化。动态优化用实际运算结果估算代价，优化结果比较符合实际，但是每执行一次就要优化一次，不适用于编译实现，也增加了执行的时间。另外，在动态优化时，常常要等待一些中间结果出来后才能优化，优化后才能执行，从而增加了等待时间和数据的相关性，既减慢了执行速度，又不利于提高执行的并行性。由于上述原因，除了个别DBMS外，目前绝大多数DBMS都采用静态优化。</p>
+</blockquote>
+<p>前面我们简单介绍过数据库管理系统的编译流程，其中涉及针对数据库查询语言的处理和优化：</p>
+<p><img src="/images/image-20220718153054413.png" srcset="/img/loading.gif" lazyload></p>
+<p>通过授权检查以后，就可对语法树进行语义分析和处理。对DDL，QL，DML和DCL应分别作不同的处理。但其中的QL是最复杂和最基本的，这部分的功能常统称为<code>查询处理</code>。在查询处理时，还存在多种存取路径的选择问题，这就是所谓<code>查询优化</code>。</p>
+<p>查询优化有多种途径：</p>
+<ul>
+<li><p>一种途径是对查询语句进行变换，例如改变基本操作的次序，使查询语句执行起来更有效。这种查询优化方法仅涉及查询语句本身，而不涉及存取路径，称为<code>独立于存取路径的优化</code>，或<code>称代数优化</code>；</p>
+</li>
+<li><p>查询优化的另一途径是根据系统所提供的存取路径，选择合理的存取策略，例如选用顺序搜索或索引进行查询，这称为<code>依赖于存取路径的优化</code>，或称<code>物理优化</code>；</p>
+</li>
+<li><p>有些查询优化仅根据启发式规则，选择执行的策略，如先做选择、投影等一元操作，后做连接操作等，这叫<code>规则优化</code>；</p>
+</li>
+<li><p>也有些查询优化，除根据一些基本规则外，还对可供选择的执行策略进行代价估算，从中选用代价最小的执行策略，这叫<code>代价估算优化</code>；</p>
+</li>
+</ul>
+<h2 id="1-代数优化"><a href="#1-代数优化" class="headerlink" title="1.代数优化"></a>1.代数优化</h2><p>代数优化是对查询进行等效变换，以减少执行的开销。最常用的变换原则是尽量<code>减少查询过程中的中间结果的大小</code>。由于选择、投影等一元操作分别从水平方向或垂直方向减少关系的大小，而连接、并等二元操作不但操作本身的开销较大，而且产生大的中间结果，因此，在变换查询时，总是让选择和投影先做，再做连接等二元操作。在连接时，也是先做小关系之间的连接，再做大关系的连接。在有些DBMS中，还找出查询中的公共表达式，统一处理，以避免重复运算；也有些DBMS把嵌套查询尽可能地变为非嵌套查询。</p>
+<h2 id="2-规则优化"><a href="#2-规则优化" class="headerlink" title="2.规则优化"></a>2.规则优化</h2><p>代数优化不涉及存取路径。因此，对各种操作的执行策路无从选择，只能在操作的次序和组合上根据启发式规则做一些变换和调整。单靠代数优化是很粗糙的，优化效果也是很有限的。实践证明：合理选择存取路径，往往能收到显著的优化效果，应成为优化的重点。本节将讨论<code>依赖于存取路径的规则优化</code>，即结合存取路径的分析，讨论各种基本操作执行的策略及其选择原则。</p>
+<h3 id="2-1-选择操作"><a href="#2-1-选择操作" class="headerlink" title="2.1 选择操作"></a>2.1 选择操作</h3><p>选择操作的执行策略与<code>选择条件</code>、<code>可用的存取路径</code>以及<code>选取的元组数在整个关系中所占的比例</code>有关。</p>
+<p>选择条件有等值、范围和集合之分：</p>
+<ul>
+<li><p>等值条件即属性等于某给定值；</p>
+</li>
+<li><p>范围条件指属性值在给定范围，一般由&gt;、&lt;等比较符或between条件构成；</p>
+</li>
+<li><p>集合条件指用集合关系表示的条件，例如用IN，EXISTS，NOT EXISTS表示的条件，集合条件比较的一方往往是常数的集合或子查询块，检验这些条件一般没有专门的存取路径；</p>
+</li>
+<li><p>复合选择条件由简单选择条件通过AND，OR连接而成；</p>
+</li>
+</ul>
+<p>最原始的选择操作是直接对被选择的关系进行顺序扫描，逐个按照条件检验，选取那些满足条件的元组，这种方法不需要特殊的<code>存取路径</code>；</p>
+<p>存取路径用于优化选择操作，目前使用的最多的是以B+树或其变种为结构的各种索引，以及动态散列及其各种变种；</p>
+<h3 id="2-2-连接操作"><a href="#2-2-连接操作" class="headerlink" title="2.2 连接操作"></a>2.2 连接操作</h3><p>二元连接是最基本、使用最多的连接操作，多元连接以二元连接为基础，实现连接主要有以下四种方法：</p>
+<p>（1）嵌套循环法</p>
+<p>最原始的办法是取R的一个元组，与S的所有元组比较，凡满足连接条件的元组就进行连接并作为结果输出。然后再取R的下一个元组，与S的所有元组比较，直至R的所有元组与S的所有元组比较完为止；</p>
+<p>（2）存取路径法</p>
+<p>在嵌套循环法中，通过内关系多次顺序扫描寻找匹配元组。如果内关系有合适的存取路径（例如连接属性上的索引或散列），则可以考虑使用这些存取路径取代顺序扫描，以减少I&#x2F;次数；尤其当连接属性上有簇集索引或散列时，最为有利。</p>
+<p>（3）排序归并法</p>
+<p>两个关系按照属性排序，接着按序比较连接匹配对象；</p>
+<p>（4）散列连接法</p>
+<h3 id="2-3-投影操作"><a href="#2-3-投影操作" class="headerlink" title="2.3 投影操作"></a>2.3 投影操作</h3><p>投影操作一般与选择、连接等操作同时进行，不需要附加的1&#x2F;O开销。如果在投影的属性集合中，没有主键，则投影结果中可能出现重复元组。消除重复元组是比较费时的操作，一般须将投影结果按其所有属性排序，使重复元组连续存放，以便于发现和消除。散列也是消除重复元组的一种可行的方法。将投影结果按某一属性或多个属性散列成一个文件，当一个元组被散列到一个桶中时，可以检查是否与桶中已有元组重复。如果重复，则舍弃之。如果投影结果不太大，则这种散列可在内存中进行，省去散列的I&#x2F;O开销。</p>
+<h3 id="2-4-集合操作"><a href="#2-4-集合操作" class="headerlink" title="2.4 集合操作"></a>2.4 集合操作</h3><p>在数据库系统中，常用的集合操作有笛卡儿乘积、并、交、差等几种；</p>
+<h3 id="2-5-组合操作"><a href="#2-5-组合操作" class="headerlink" title="2.5 组合操作"></a>2.5 组合操作</h3><p>一个查询中往往包含多个操作，如果各个操作孤立地执行，势必为每个操作创建一个临时文件，存放中间结果，作为下操作的输人。这在时间和空间上都不经济。因此，在处理查询时，应尽可能把其中的操作组合起来同时进行；</p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%87%AA%E5%AD%A6%E8%AF%BE%E7%A8%8B/" class="category-chain-item">自学课程</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">#开发工具</a>
+      
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">#数据分析</a>
+      
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">#数据库</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>MySQL中级</div>
+      <div>https://gintoki-jpg.github.io/2022/07/10/工具_MySQL中级/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>杨再俨</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年7月10日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/07/15/%E9%A1%B9%E7%9B%AE_DNS%E6%9C%8D%E5%8A%A1%E5%99%A8/" title="初级项目_本地DNS服务器">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">初级项目_本地DNS服务器</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/07/08/CPP_STL%E5%88%9D%E7%BA%A7/" title="STL初级">
+                        <span class="hidden-mobile">STL初级</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+</div>
+
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

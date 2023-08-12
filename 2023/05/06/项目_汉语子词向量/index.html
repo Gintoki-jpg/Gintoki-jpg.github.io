@@ -1,0 +1,931 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/logo.png">
+  <link rel="icon" href="/img/bg/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="杨再俨">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="自然语言处理课程实践；">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初级项目_汉语子词向量">
+<meta property="og:url" content="https://gintoki-jpg.github.io/2023/05/06/%E9%A1%B9%E7%9B%AE_%E6%B1%89%E8%AF%AD%E5%AD%90%E8%AF%8D%E5%90%91%E9%87%8F/index.html">
+<meta property="og:site_name" content="Tintoki_blog">
+<meta property="og:description" content="自然语言处理课程实践；">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/project.png">
+<meta property="article:published_time" content="2023-05-06T08:48:00.000Z">
+<meta property="article:modified_time" content="2023-05-09T02:09:21.153Z">
+<meta property="article:author" content="YangZaiyan">
+<meta property="article:tag" content="NLP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gintoki-jpg.github.io/img/bg/project.png">
+  
+  
+  
+  <title>初级项目_汉语子词向量 - Tintoki_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"gintoki-jpg.github.io","root":"/","version":"1.9.1","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tintoki_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/bg1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">初级项目_汉语子词向量</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-05-06 16:48" pubdate>
+          2023年5月6日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          21k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          172 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">初级项目_汉语子词向量</h1>
+            
+            <div class="markdown-body">
+              
+              <p>任务：分别基于SVD分解以及基于SGNS两种方法构建汉语子词向量并进行评测。</p>
+<hr>
+<p>参考链接：</p>
+<ul>
+<li>前置知识点：<ul>
+<li>综述：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/showmeai/p/16206828.html">NLP教程(1) - 词向量、SVD分解与Word2Vec - ShowMeAI - 博客园 (cnblogs.com)</a>；</li>
+<li>SVD：<ul>
+<li>简述：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV16A411T7zX/?spm_id_from=333.337.search-card.all.click&vd_source=276d55048634a5b508b1b53a1ecd56b3">【学长小课堂】什么是奇异值分解SVD–SVD如何分解时空矩阵_哔哩哔哩_bilibili</a>；</li>
+<li>详述：<a target="_blank" rel="noopener" href="https://blog.csdn.net/lomodays207/article/details/88687126">(8条消息) 一文弄懂奇异值分解（SVD）原理及应用_grantpole的博客-CSDN博客</a>；</li>
+</ul>
+</li>
+<li>skip-gram：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/27234078">理解 Word2Vec 之 Skip-Gram 模型 - 知乎 (zhihu.com)</a>；</li>
+<li>负采样：<a target="_blank" rel="noopener" href="https://baozoulin.gitbook.io/neural-networks-and-deep-learning/di-wu-men-ke-xu-lie-mo-xing-sequence-models/di-wu-men-kexulie-mo-578b28-sequence-models/natural-language-processing-and-word-embeddings/27-fu-cai-yang-ff08-negative-sampling">2.7 负采样（Negative Sampling） - DeepLearning.ai深度学习课程笔记 (gitbook.io)</a>；</li>
+</ul>
+</li>
+<li>代码：<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/KLGR123/Chinese_Embedding">KLGR123&#x2F;Chinese_Embedding: 接单作业，实现中文 SVD 和 SGNS 的词向量。 (github.com)</a>；</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/EvanWu146/Generating-Chinese-subword-vector_using-SVD-and-SGNS-decomposition">EvanWu146&#x2F;Generating-Chinese-subword-vector_using-SVD-and-SGNS-decomposition: 分别基于 SVD 分解以及基于 SGNS 两种⽅法构建汉语⼦词向量并进⾏评测。 (github.com)</a>；</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>2023&#x2F;5&#x2F;6 16:50 现在一整个都是懵的状态，因为根本就不知道要做什么，这个实验的目的是什么，是否有什么前置知识点（SVD奇异值分解）。因此现在的首要任务是先知道我们这个实验要做什么，然后再细看文档。</p>
+<p>2023&#x2F;5&#x2F;6 20:14 现在理解了基本原理，也知道要做什么了，然后也找到了参考代码，推荐先用便于理解的notebook代码，行不通再看另一个；</p>
+<p>2023&#x2F;5&#x2F;6 22:48 第一份代码写的很好，但是因为没有相关的训练文件所以实际上我跑了一遍根本不知道在干什么（理解原理不动手实操没什么用…），现在尝试第二份代码，理解透彻后对第一份代码进行理解或直接使用第二份代码（因为第二份代码的语料什么的都已经准备好了，所以就算不使用第二份的代码仍然可以使用其语料）；</p>
+<p>2023&#x2F;5&#x2F;7 10:41 现在已经把代码、语料文件等统统完成，接下来只需要等待训练完成，了解实验原理、按照任务要求书写实验报告即可；</p>
+<hr>
+<h1 id="一、背景介绍"><a href="#一、背景介绍" class="headerlink" title="一、背景介绍"></a>一、背景介绍</h1><h2 id="1-SVD原理"><a href="#1-SVD原理" class="headerlink" title="1.SVD原理"></a>1.SVD原理</h2><p>SVD代表奇异值分解。它是一种矩阵分解技术，将一个矩阵分解为三个矩阵，有助于降低原始矩阵的维数并提取重要特征。</p>
+<p>在SVD中，矩阵a被分解为三个矩阵：U、∑和V^T^，其中U和V^T^是正交矩阵，∑是对角线上具有奇异值a的对角矩阵。奇异值是A^T^A或AA^T^的特征值的平方根。</p>
+<h3 id="1-1-特征值分解"><a href="#1-1-特征值分解" class="headerlink" title="1.1 特征值分解"></a>1.1 特征值分解</h3><p>若下面等式成立</p>
+<p><img src="/images/image-20230507110825464.png" srcset="/img/loading.gif" lazyload></p>
+<p>其中A是一个<code>n*n</code>的方阵，x是一个n维向量，则称λ是矩阵A的一个特征值，而x是矩阵A的特征值λ对应的特征向量。</p>
+<p>特征值和特征向量的意义在于<code>矩阵A的信息可以由其特征值和特征向量表示</code>。</p>
+<p>假如已知矩阵A的n个特征值<img src="/images/image-20230507111015951.png" srcset="/img/loading.gif" lazyload>以及这n个特征值对应的特征向量<img src="/images/image-20230507111050570.png" srcset="/img/loading.gif" lazyload>，则矩阵A可以被特征分解为下面的表示</p>
+<p><img src="/images/image-20230507111129309.png" srcset="/img/loading.gif" lazyload></p>
+<p>其中W是由n个特征向量组成的<code>n*n</code>的方阵，Σ为以这n个特征值为主对角线的<code>n*n</code>方阵。</p>
+<p>一般情况下，我们会将这n个特征向量进行标准化(具体方式这里不介绍)即满足<img src="/images/image-20230507111435518.png" srcset="/img/loading.gif" lazyload>，此时这n个标准化后的特征向量被称为标准正交基，此时的W方阵满足<img src="/images/image-20230507111704010.png" srcset="/img/loading.gif" lazyload>（在实数域上我们称其转置等于其逆的矩阵为正交矩阵)。因此矩阵A的特征分解表达式还可以写作</p>
+<p><img src="/images/image-20230507111854824.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>总结：矩阵的特征值表示的是该矩阵的重要程度，特征向量表示对应的特征值是什么</p>
+</blockquote>
+<h3 id="1-2-SVD分解"><a href="#1-2-SVD分解" class="headerlink" title="1.2 SVD分解"></a>1.2 SVD分解</h3><h4 id="1-2-1-概述"><a href="#1-2-1-概述" class="headerlink" title="1.2.1 概述"></a>1.2.1 概述</h4><p>特征值分解是一个提取矩阵特征很不错的方法，但是特征值分解的变换矩阵必须是方阵，而实际问题中的大部分矩阵并不是方阵，这就引出使用奇异值分解来描述普通矩阵的重要特征。</p>
+<p>奇异值分解是指将任意<code>m*n</code>矩阵A表示为如下形式</p>
+<p><img src="/images/image-20230507112733223.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>U是一个<code>m*m</code>的正交矩阵；</li>
+<li>Σ是一个<code>m*n</code>的矩阵，该矩阵除了主对角线上的元素外其余元素均为0，而主对角线上的每个元素都被称为奇异值；</li>
+<li>V是一个<code>n*n</code>的正交矩阵；</li>
+</ul>
+<p><img src="/images/image-20230507114905441.png" srcset="/img/loading.gif" lazyload alt="原始奇异值分解"></p>
+<p>因为Σ矩阵的后面几行可能是全部为0的（至少图中是这样），因此可以对上述形式进行缩减</p>
+<p><img src="/images/image-20230507114936492.png" srcset="/img/loading.gif" lazyload></p>
+<p>进一步的，对于Σ矩阵中的奇异值，因为它按照从大到小的顺序排列，而且奇异值的减少特别的快，在很多情况下，前10%甚至1%的奇异值的和就占了全部的奇异值之和的99%以上的比例。这意味着可以<code>用最大的k个的奇异值和对应的左右奇异向量来近似描述矩阵</code>，这就实现了在保留最多信息的同时进行数据的压缩。</p>
+<p><img src="/images/image-20230507115225268.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="1-2-2-求解"><a href="#1-2-2-求解" class="headerlink" title="1.2.2 求解"></a>1.2.2 求解</h4><p>奇异值分解的难点在于，求解分解后的U、Σ和V这三个矩阵，这里直接给出求解方法</p>
+<p><img src="/images/image-20230507113551402.png" srcset="/img/loading.gif" lazyload></p>
+<p>综上，求解一个原始矩阵M的SVD分解矩阵的步骤如下</p>
+<p><img src="/images/image-20230507113948376.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>可以借助工具<a target="_blank" rel="noopener" href="https://www.wolframalpha.com/">WolframAlpha</a>计算矩阵M的奇异值以及分解矩阵</p>
+</blockquote>
+<p><img src="/images/image-20230507114220652.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="2-SGNS算法"><a href="#2-SGNS算法" class="headerlink" title="2.SGNS算法"></a>2.SGNS算法</h2><p>带负采样的Skip-gram（SGNS）是一种流行的机器学习算法，用于生成单词嵌入，是原始的Skip-gram算法的变体。</p>
+<p>在SGNS中，该算法试图通过从词汇表中抽取反例来预测给定目标词周围的上下文单词。负样本是指没有出现在目标单词的上下文中的单词。该算法调整单词的数字表示（即嵌入），以最大化正确预测上下文单词的概率，并最小化预测负样本的概率。</p>
+<h3 id="2-1-Skip-gram模型"><a href="#2-1-Skip-gram模型" class="headerlink" title="2.1 Skip-gram模型"></a>2.1 Skip-gram模型</h3><p><img src="/images/image-20230507163128025.png" srcset="/img/loading.gif" lazyload></p>
+<p>Skip-Gram模型的基础形式非常简单，模型实际上分为两部分，第一部分为建立模型，第二部分是通过模型获取嵌入词向量。</p>
+<p>Skip-Gram的整个建模过程实际上与自编码器（auto-encoder）的思想很相似，即先基于训练数据构建一个神经网络，当这个模型训练好以后，我们并不会用这个训练好的模型处理新的任务，我们真正需要的是这个模型通过训练数据所学得的参数，例如隐层的权重矩阵 – 这些权重在Word2Vec中实际就是“word vectors”。基于训练数据建模的过程被称为“Fake Task”，意味着建模并不是最终的目的。</p>
+<p>当构建好一个完整的神经网络后，就需要对其进行训练，下面是训练步骤（假设训练语料为“The dog barked at the mailman”）：</p>
+<ol>
+<li>选择句中任一单词作为input word；</li>
+<li>定义The dog barked at the mailman参数，该参数表示基于input word为中心的窗口范围内的所有单词都将被选取，假如该参数为2则获取的词为[‘The’, ‘dog’，’barked’, ‘at’]；</li>
+<li>定义num_skips参数，表示从整个窗口中选取多少个不同的词作为训练样本，假如该参数为2时，将会得到两组 (input word, output word) 形式的训练数据，即 (‘dog’, ‘barked’)，(‘dog’, ‘the’)；</li>
+<li>神经网络基于这些训练数据将会输出一个概率分布，这个概率代表着我们的词典中的每个词是output word的可能性；</li>
+</ol>
+<p>假如有“The quick brown fox jumps over lazy dog”，且设置窗口大小为2，则可以获取到如下训练样本</p>
+<p><img src="/images/image-20230507164608413.png" srcset="/img/loading.gif" lazyload></p>
+<p>模型的输入如果为一个10000维的向量，那么输出也是一个10000维度（词汇表的大小）的向量，它包含了10000个概率，每一个概率代表着当前词是输入样本中output word的概率大小</p>
+<p><img src="/images/image-20230507164902870.png" srcset="/img/loading.gif" lazyload></p>
+<p>模型的输出概率表示词典中每个词有多大可能性与input word同时出现（如果向神经网络模型中输入一个单词“Soviet“，那么最终模型的输出概率中，像“Union”，“Russia”这种相关词的概率将远高于像“watermelon”，“kangaroo”非相关词的概率。因为“Union”，“Russia”在文本中拥有更大的可能在“Soviet”的窗口中出现）</p>
+<p>下面是一个例子，训练样本为 (input word: “ants”， output word: “car”) 的计算示意图</p>
+<p><img src="/images/image-20230507165202458.png" srcset="/img/loading.gif" lazyload></p>
+<p>经过神经网络隐层的计算，ants这个词会从一个1 x 10000的向量变成1 x 300的向量，再被输入到输出层。输出层是一个softmax回归分类器，它的每个结点将会输出一个0-1之间的值（概率），这些所有输出层神经元结点的概率之和为1。</p>
+<h3 id="2-2-负采样"><a href="#2-2-负采样" class="headerlink" title="2.2 负采样"></a>2.2 负采样</h3><p>训练一个神经网络意味着要输入训练样本并且不断调整神经元的权重，从而不断提高对目标的准确预测。每当神经网络经过一个训练样本的训练，它的权重就会进行一次调整。</p>
+<p>vocabulary的大小决定了Skip-Gram神经网络将会拥有大规模的权重矩阵，所有的这些权重需要通过数以亿计的训练样本来进行调整，这是非常消耗计算资源的，并且实际中训练起来会非常慢。</p>
+<p>负采样（negative sampling）解决了这个问题，它是用来提高训练速度并且改善所得到词向量的质量的一种方法。不同于原本每个训练样本更新所有的权重，负采样每次让一个训练样本仅仅更新一小部分的权重，这样就会降低梯度下降过程中的计算量。</p>
+<p>当用训练样本 ( input word: “fox”，output word: “quick”) 来训练神经网络时，“ fox”和“quick”都是经过one-hot编码的。如果vocabulary大小为10000时，在输出层期望对应“quick”单词的那个神经元结点输出1，其余9999个都应该输出0。在这里，这9999个期望输出为0的神经元结点所对应的单词称为 negative word 。当使用负采样时，将随机选择一小部分的 negative words （比如选5个 negative words ）来更新对应的权重，同时也会对 positive word 进行权重更新（在上面的例子中，这个单词指的是”quick“）。</p>
+<blockquote>
+<p>对于小规模数据集，选择5-20个negative words会比较好，对于大规模数据集可以仅选择2-5个negative words</p>
+</blockquote>
+<p>一个单词被选作negative sample的概率跟它出现的频次有关，出现频次越高的单词越容易被选作negative words。</p>
+<h2 id="3-词向量构建"><a href="#3-词向量构建" class="headerlink" title="3.词向量构建"></a>3.词向量构建</h2><p>词向量的重要性在其他文章中已经声明过很多次，一般来说构建词向量主要有两种方式 – 基于计数和基于迭代（因为本部分知识点较重要所以有必要复习一遍）</p>
+<h3 id="3-1-基于SVD降维的词向量"><a href="#3-1-基于SVD降维的词向量" class="headerlink" title="3.1 基于SVD降维的词向量"></a>3.1 基于SVD降维的词向量</h3><p>基于词共现矩阵X与SVD分解是构建词嵌入(即词向量)的一种方法：</p>
+<ol>
+<li>首先遍历一个很大的数据集，统计词的共现计数矩阵X</li>
+<li>然后对矩阵X进行SVD分解得到USV^T^</li>
+<li>使用U的行作为词典中所有词的词向量</li>
+</ol>
+<p>共现矩阵主要有以下几种：</p>
+<ul>
+<li>词-文档矩阵：依据是相关连的单词在同一个文档中会经常出现，因此遍历文档，当词i出现在文档j中，对X<del>ij</del>加1操作，得到的矩阵X规模与文档数量M成正比，即矩阵规模一般较大；</li>
+<li>基于滑窗：上面那种方法除了矩阵规模较大外，执行全文档的统计也很耗时，可以调整为对一个窗口内的文本进行统计，即计算每个单词在特定大小的窗口中出现的次数，得到共现矩阵X。下面这个示例的滑动窗口大小为2对文本进行共现矩阵的构建</li>
+</ul>
+<p><img src="/images/image-20230506192218875.png" srcset="/img/loading.gif" lazyload></p>
+<p>在得到了共现矩阵X后，对其执行SVD可以得到X&#x3D;USV^T^，此时需要观察奇异值（即矩阵S的对角线元素），根据方差百分比留下前k个元素，取子矩阵U<del>1:|V|,1:k</del>作为词嵌入矩阵（简单来说就是将巨⼤的共现矩阵进⾏ SVD 分解后，选取最重要的⼏个特征值，得到每个词的低维表示）</p>
+<p><img src="/images/image-20230506192739463.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20230506192811940.png" srcset="/img/loading.gif" lazyload></p>
+<p>基于SVD降维的词向量存在如下问题：</p>
+<ul>
+<li>矩阵的维度会经常发生改变(经常增加新的单词和语料库的大小会改变)；</li>
+<li>矩阵会非常的稀疏，因为很多词不会共现；</li>
+<li>矩阵维度一般会非常高；</li>
+<li>需要在共现矩阵X上加入一些技巧处理来解决词频的极剧的不平衡；</li>
+</ul>
+<p>并且基于SVD的计算复杂度很高，同时很难合并新单词或文档，当然用以下方法也可以在一定程度上解决上述问题：</p>
+<ul>
+<li>忽略功能词，例如“the”，“he”，“has”等等</li>
+<li>使用ramp window，即根据文档中单词之间的距离对共现计数进行加权</li>
+<li>使用皮尔逊相关系数并将负计数设置为0，而不是只使用原始计数</li>
+</ul>
+<blockquote>
+<p>我们所熟知的Word2Vec算法也是一种词向量的构建方法，与基于计数的共现矩阵不同，基于迭代的方式可以在控制复杂度的情况下有效地在大语料库上构建词向量</p>
+</blockquote>
+<h3 id="3-2-Word2Vec迭代算法"><a href="#3-2-Word2Vec迭代算法" class="headerlink" title="3.2 Word2Vec迭代算法"></a>3.2 Word2Vec迭代算法</h3><blockquote>
+<p>Word2Vec依赖于语言学中一个非常重要的假设「分布相似性」，即相似的词有相似的上下文</p>
+</blockquote>
+<p>Word2Vec是一个迭代模型，该模型能够根据文本进行迭代学习，并最终能够对给定上下文的单词的概率对词向量进行编码呈现。</p>
+<p>Word2Vec的基本思想是初始化一个模型，该模型的参数就是词向量，模型训练的任务是在每次模型的迭代过程中计算误差并基于优化算法调整模型参数（词向量）以减小损失函数，从而最终学习到词向量。</p>
+<blockquote>
+<p>这种基于迭代的方法一次只会捕获一个单词的共现情况，与共现矩阵捕获所有共现计数区别</p>
+</blockquote>
+<p>Word2Vec主要包含两个模型：</p>
+<ul>
+<li>continuous bag-of-words(CBOW)：CBOW方法是用周围词预测中心词，从而利用中心词的预测结果不断地调整周围词的向量。训练完成后，每个词都会作为中心词，对周围词的词向量进行调整，从而获得整个文本里所有词的词向量。CBOW对周围词的调整是统一的：求出的梯度的值会同样地作用到每个周围词的词向量当中去。所以CBOW预测行为的次数跟整个文本的词数几乎是相等的（每次预测行为才会进行一次反向传播，这也是最耗时的部分），复杂度是O(V)；</li>
+<li>skip-gram：Skip-Gram 是用中心词来预测周围的词。在 Skip-Gram 中，会利用周围的词的预测结果来不断地调整中心词的词向量，最终所有的文本遍历完毕之后，也就得到了文本所有词的词向量。所以 Skip-Gram 进行预测的次数是要多于CBOW 的：因为每个词在作为中心词时，都要使用周围词进行预测一次。这样相当于比CBOW的方法多进行了K次（K 为窗口大小），因此时间的复杂度为O(KV)，训练时间比CBOW 要长；</li>
+</ul>
+<p><img src="/images/image-20230506195520931.png" srcset="/img/loading.gif" lazyload></p>
+<p>Word2Vec模型主要包含两种训练方法：</p>
+<ul>
+<li>Negative sampling通过抽取负样本来定义目标</li>
+<li>hierarchical softmax通过使用一个有效的树结构来计算所有词的概率来定义目标</li>
+</ul>
+<h1 id="二、算法设计"><a href="#二、算法设计" class="headerlink" title="二、算法设计"></a>二、算法设计</h1><h2 id="1-SVD构建词向量"><a href="#1-SVD构建词向量" class="headerlink" title="1.SVD构建词向量"></a>1.SVD构建词向量</h2><p>基于SVD奇异值分解构建汉语子词向量的基本原理在前面已经介绍完毕，下面介绍如何进行算法设计。</p>
+<h3 id="1-1-数据集加载"><a href="#1-1-数据集加载" class="headerlink" title="1.1 数据集加载"></a>1.1 数据集加载</h3><p>首先是数据，本次实验主要用到了三个txt文件，分别是词表vocab.txt（来源于上⼀次构建的词表，以列表-字符串的形式存储，其长度为10000）</p>
+<p><img src="/images/image-20230507144133177.png" srcset="/img/loading.gif" lazyload alt="vocab.txt"></p>
+<p>语料文件original.txt，该文件是第一次实验中的训练集和测试集的交集，一共31200条数据，部分内容如下</p>
+<p><img src="/images/image-20230507144726735.png" srcset="/img/loading.gif" lazyload alt="original.txt"></p>
+<p>注意期望的语料应该是分词过后的语料，因此需要对original.txt使用jieba做分词处理，得到的corups.txt才是我们期望的语料</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 数据预处理（此处只需要使用jieba进行分词即可，语料库来自训练集和测试集的并集，一共31200条数据）</span><br>middle_file = <span class="hljs-string">&#x27;original.txt&#x27;</span><br>output_file = <span class="hljs-string">&#x27;corups.txt&#x27;</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">preprocess_text</span>():<br>    <span class="hljs-comment"># 使用jieba分词对原始测试语料进行分词，作为标准分词结果</span><br>    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(middle_file, <span class="hljs-string">&#x27;r&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> f_in, <span class="hljs-built_in">open</span>(output_file, <span class="hljs-string">&#x27;w&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> f_out:<br>        <span class="hljs-comment"># 遍历输入文件的每一行</span><br>        <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> f_in:<br>            <span class="hljs-comment"># 使用jieba进行分词处理</span><br>            seg_list = jieba.cut(line)<br>            <span class="hljs-comment"># 将分词后的句子写入到输出文件中</span><br>            f_out.write(<span class="hljs-string">&#x27; &#x27;</span>.join(seg_list))<br></code></pre></td></tr></table></figure>
+
+<p>分词后的预料内容如下</p>
+<p><img src="/images/image-20230507145952276.png" srcset="/img/loading.gif" lazyload alt="corups.txt"></p>
+<p>pku_sim_test.txt测试文件，该文件源自网络，共500行数据，每行数据都是一组词对</p>
+<p><img src="/images/image-20230507144751414.png" srcset="/img/loading.gif" lazyload alt="pku_sim_test.txt"></p>
+<p>准备好数据集后，依次构建函数读入词表、语料以及词对，下面三个函数非常简单也非常类似，借助python中的文件描述符对文件中的内容进行读取</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 词表来源于上⼀次构建的词表，以列表-字符串的形式存储</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_vocab</span>(): <span class="hljs-comment"># 获取词汇表</span><br>    vocab = [] <br>    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;vocab.txt&#x27;</span>, <span class="hljs-string">&#x27;r&#x27;</span>,encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>        <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> f.readlines():<br>            vocab.append(line.strip())<br>        vocab = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">set</span>(vocab)) <span class="hljs-comment"># 去重</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;The number of the vocabulary: &quot;</span>, <span class="hljs-built_in">len</span>(vocab))<br>    <span class="hljs-keyword">return</span> vocab<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 从 pku_sim_test.txt 文件中获得需要评测的词向量，每行用split方法（默认任何空格）分隔开两个词</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_word_vector</span>(): <span class="hljs-comment"># 获取词向量</span><br>    word_vec = []<br>    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;pku_sim_test.txt&#x27;</span>, <span class="hljs-string">&#x27;r&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>        lines = f.readlines()<br>    <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> lines:<br>        word_vec.append(line.split()) <br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;The length of the word vector: &quot;</span>, <span class="hljs-built_in">len</span>(word_vec))<br>    <span class="hljs-keyword">return</span> word_vec<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 获取训练数据，将内容⾏⽤ split()⽅法分词</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_text</span>(): <span class="hljs-comment"># 获取训练数据</span><br>    text = []<br>    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;corups.txt&#x27;</span>, <span class="hljs-string">&#x27;r&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>        raw_lines = f.readlines()<br>    <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> raw_lines: <br>        text.append(line.split())  <span class="hljs-comment"># 以空格分词</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;The length of the text lines: &quot;</span>, <span class="hljs-built_in">len</span>(text))<br>    <span class="hljs-keyword">return</span> text<br></code></pre></td></tr></table></figure>
+
+<p>接着，需要从处理好的text语料中获取子词向量，前面介绍的时候说过，直接基于全文档的共现矩阵将耗费大量时间，因此此处选择窗口大小为5的滑动窗口来获取词对组合</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 获取⼦词向量，从处理好的text语料⾏中以给定的窗⼝⼤⼩（默认为5）获取组合的词对</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_subword_vector</span>(<span class="hljs-params">text,window_size=<span class="hljs-number">5</span></span>): <span class="hljs-comment"># 获取子词向量</span><br>    subword_vec = []<br>    <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> text:<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(line)-window_size+<span class="hljs-number">1</span>): <br>            <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(i+<span class="hljs-number">1</span>,i+window_size+<span class="hljs-number">1</span>): <br>                <span class="hljs-keyword">if</span> j &lt;= <span class="hljs-built_in">len</span>(line) -<span class="hljs-number">1</span>: <span class="hljs-comment"># 防止越界</span><br>                    former = line[i] <br>                    latter = line[j] <br>                     <span class="hljs-comment"># 对于任意子词向量对中长度大于4的词，将会被裁剪</span><br>                    <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(former) &gt; <span class="hljs-number">4</span>: <br>                        former = former[-<span class="hljs-number">4</span>:]  <br>                    <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(latter) &gt; <span class="hljs-number">4</span>: <br>                        latter = latter[:<span class="hljs-number">4</span>]<br>                    subword_vec.append([former, latter]) <span class="hljs-comment"># 添加子词向量对</span><br>    <span class="hljs-comment"># 最后需要添加所有子词向量的逆向量</span><br>    temp = [x[::-<span class="hljs-number">1</span>] <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> subword_vec]<br>    subword_vec.extend(temp)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;The length of the subword vector: &quot;</span>, <span class="hljs-built_in">len</span>(subword_vec))<br>    <span class="hljs-keyword">return</span> subword_vec<br><br></code></pre></td></tr></table></figure>
+
+<p>上述代码的基本思想是基于三层循环，第一层遍历语料、第二层遍历句子、第三层遍历单词，目的是通过迭代文本的每一行，在固定大小的窗口内创建所有可能的词对。</p>
+<p>对于每一个词，函数会检查其长度是否大于4，如果是则将其截断，然后存储在subword_vec列表中（因为窗口大小固定为5）.最后将所有子词向量的逆向量全部添加到subword_vec列表中，完成subword_vec的构建。</p>
+<p>获取到的词对内容大致如下</p>
+<p><img src="/images/image-20230507151303278.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-2-共现矩阵构建"><a href="#1-2-共现矩阵构建" class="headerlink" title="1.2 共现矩阵构建"></a>1.2 共现矩阵构建</h3><p>拥有了subword_vec后就可以创建并计算基于滑窗的共现矩阵了，基本思想就是在整个subword_vec上遍历并对出现过的子词进行计数操作</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 共现矩阵构建</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">Co_matrix</span>(<span class="hljs-params">vocab, subword_vec</span>): <br>    M = np.zeros((<span class="hljs-built_in">len</span>(vocab), <span class="hljs-built_in">len</span>(vocab))) <span class="hljs-comment"># 构建词表⻓度的numpy全0⽅形矩阵</span><br>    df = pd.DataFrame(M, index=vocab, columns=vocab) <span class="hljs-comment"># 转换为dataframe形式</span><br>    <span class="hljs-built_in">print</span> (<span class="hljs-string">&quot;Co_matrix is building...&quot;</span>)<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> tqdm(<span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(subword_vec))): <span class="hljs-comment"># 利⽤dataframe的字符串索引功能，使⽤⼦词向量进⾏计数，记录⼦词向量在词表中的出现频率</span><br>            <span class="hljs-keyword">try</span>:<br>                df[subword_vec[i][<span class="hljs-number">0</span>]][subword_vec[i][<span class="hljs-number">1</span>]] += <span class="hljs-number">1</span> <span class="hljs-comment"># 计数</span><br>            <span class="hljs-keyword">except</span>:<br>                <span class="hljs-keyword">pass</span><br>    M = np.array(df) <span class="hljs-comment"># 将dataframe转为numpy矩阵形式</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;The shape of the co-occurrence matrix: &quot;</span>, M.shape)<br>    <span class="hljs-keyword">return</span> M<br></code></pre></td></tr></table></figure>
+
+<p>分别输出dataframe形式的df和numpy形式的M如下，这两个都是语料的共现矩阵，其中每个表格对应的数字就是该词对出现的次数（比如“一”“周年”为2表示“一周年”出现了两次）</p>
+<p><img src="/images/image-20230507130237112.png" srcset="/img/loading.gif" lazyload alt="df共现矩阵"></p>
+<p><img src="/images/image-20230507130556792.png" srcset="/img/loading.gif" lazyload alt="M共现矩阵"></p>
+<h3 id="1-3-奇异值分析"><a href="#1-3-奇异值分析" class="headerlink" title="1.3 奇异值分析"></a>1.3 奇异值分析</h3><p>下面的任务是，对矩阵M进行奇异值分解，在进行分解之前，我们需要对其奇异值矩阵进行分析以选取合适的奇异值。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 计算并输出矩阵M的奇异值</span><br>singular_values = np.linalg.svd(M, compute_uv=<span class="hljs-literal">False</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;singular_values: &quot;</span>, singular_values)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Number of singular values:&quot;</span>, <span class="hljs-built_in">len</span>(singular_values))<br></code></pre></td></tr></table></figure>
+
+<p>借助numpy的linalg.svd方法可以对M矩阵计算，得到大小为10000的奇异值列表</p>
+<p><img src="/images/image-20230507152132222.png" srcset="/img/loading.gif" lazyload></p>
+<p>借助numpy的count_nonzero方法对奇异值进行统计，最终得到9999个非0奇异值和1个0奇异值（也就是上面列表中最后的0值）</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 计算奇异值中非零奇异值的个数</span><br>non_zero_singular_values = np.count_nonzero(singular_values)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Number of non-zero singular values:&quot;</span>, non_zero_singular_values)<br></code></pre></td></tr></table></figure>
+
+<p>可以看到这10000个奇异值按照从大到小的顺序进行排列，降维的本质就是选取列表中前k个奇异值作为SVD分解的奇异值个数，因为前k个值包含的重要信息较多，所以降维后对数据的影响较小。</p>
+<p>那么应当如何选择合适的奇异值数量以用于SVD奇异值分解呢？</p>
+<p>一种常见的方法是使用基于奇异值捕获的方差百分比（一种使用奇异值分解降维后保留多少信息的度量）的启发式方法。通过对每个奇异值进行平方并除以所有奇异值的平方和，可以计算每个奇异值所捕获的方差百分比。然后绘制这些百分比的累积总和，并选择一个阈值来捕捉所需的方差。通过检查每个奇异值捕获的方差百分比，可以确定需要多少个主成分（因此需要多少个特征）才能在数据集中保留总方差的一定百分比。这可以帮助选择适当数量的特征进行进一步分析，或者确定降维是否有效。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 计算并绘制方差百分比</span><br>variance_percentages = (singular_values ** <span class="hljs-number">2</span>) / (singular_values ** <span class="hljs-number">2</span>).<span class="hljs-built_in">sum</span>()<br>cumulative_variance = np.cumsum(variance_percentages)<br>plt.plot(cumulative_variance)<br></code></pre></td></tr></table></figure>
+
+<p><img src="/images/image-20230507153045698.png" srcset="/img/loading.gif" lazyload></p>
+<p>从上面这幅图也可以看到，前几个奇异值的平方占比相当大，因此我们只需要选择一个门限（此处设置为0.9）进行筛选即可得到需要选择的前k个（此处的输出为3）奇异值</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 利用方差百分比进行奇异值的选择</span><br>threshold = <span class="hljs-number">0.90</span> <span class="hljs-comment"># 选择门限</span><br>num_singular_values = np.argmax(cumulative_variance &gt;= threshold) + <span class="hljs-number">1</span> <br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Number of singular values selected by variance_percentages:&quot;</span>, num_singular_values)<br></code></pre></td></tr></table></figure>
+
+<p><img src="/images/image-20230507153814847.png" srcset="/img/loading.gif" lazyload></p>
+<p>另一种方法是查看奇异值的累积和，并保留保留原始矩阵信息的一定百分比的奇异值的数量。例如，如果想保留90%的信息，则可以保留第一个“k”奇异值，使得第一个“k”奇异值的平方和除以所有奇异值的正方形和大于或等于0.9。而此处的积累和一般使用的是平方积累和而不是直接对奇异值求和，因为它提供了由奇异值捕获的数据的总方差的度量。奇异值的平方和也被称为矩阵“M*M.T”的迹，其中“M.T”表示矩阵“M”的转置。对奇异值进行平方强调较大奇异值的贡献，而淡化较小奇异值的影响。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 计算奇异值平方和</span><br>cumulative_sum = np.cumsum(singular_values**<span class="hljs-number">2</span>)<br><span class="hljs-comment"># 计算奇异值平方和的energy占比</span><br>energy_percentage = cumulative_sum / np.<span class="hljs-built_in">sum</span>(singular_values**<span class="hljs-number">2</span>)<br><span class="hljs-comment"># 利用energy占比进行奇异值的选择，此处的占比选择为0.90</span><br>num_singular_values = np.where(energy_percentage &gt;= <span class="hljs-number">0.90</span>)[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>] + <span class="hljs-number">1</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Number of singular values selected by energy_percentage:&quot;</span>, num_singular_values)<br></code></pre></td></tr></table></figure>
+
+<p><img src="/images/image-20230507153801939.png" srcset="/img/loading.gif" lazyload></p>
+<p>上面两种方法选择出的奇异值个数都为3，因此我们选择奇异值列表中的前3个奇异值[26545.73374919  8953.62252278  8152.45156942]，分别计算它们的和以及与全体奇异值求和的比值</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 对已选择的奇异值进行分析 ，此处选择前3个奇异值</span><br>selected_singular_values = singular_values[:<span class="hljs-number">3</span>]<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Selected 3 singular values:&quot;</span>, selected_singular_values)<br><span class="hljs-comment"># 计算已选择的奇异值之和</span><br>selected_sum = np.<span class="hljs-built_in">sum</span>(selected_singular_values)<br><span class="hljs-comment"># 计算所有奇异值的和</span><br>total_sum = np.<span class="hljs-built_in">sum</span>(singular_values)<br><span class="hljs-comment"># 计算已选择的奇异值之和与所有奇异值之和的比值</span><br>ratio = selected_sum / total_sum<br><span class="hljs-comment"># 输出结果</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Sum of selected singular values:&quot;</span>, selected_sum)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Sum of all singular values:&quot;</span>, total_sum)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Ratio of selected singular values to all singular values:&quot;</span>, ratio)<br></code></pre></td></tr></table></figure>
+
+<p><img src="/images/image-20230507153745840.png" srcset="/img/loading.gif" lazyload></p>
+<p>可能在这里有疑惑，明明前三个奇异值的累计和占比才百分之二十，为什么还要选择前三个？经过尝试，选取前1000个奇异值的累计和占比为82%，前2000个奇异值的累计和占比为91%，前3000个奇异值的累计和占比为98%，如果直接对奇异值求和来判断前k个奇异值的重要程度，并不能体现较大奇异值对矩阵的贡献。因此这里使用的是对前k个奇异值求平方后再求和，当这个和的占比大于90%时则选取这k个奇异值。</p>
+<p>下面是选取的前三个奇异值的平方和以及占全体奇异值平方和的比率</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 计算已选择的奇异值平方和</span><br>selected_sum = np.<span class="hljs-built_in">sum</span>(selected_singular_values**<span class="hljs-number">2</span>) <br><span class="hljs-comment"># 计算所有奇异值平方和</span><br>total_sum = np.<span class="hljs-built_in">sum</span>(singular_values**<span class="hljs-number">2</span>) <br><span class="hljs-comment"># 计算已选择的奇异值平方和与所有奇异值平方和的比值</span><br>ratio = selected_sum / total_sum <br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Sum of selected singular values:&quot;</span>, selected_sum)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Sum of all singular values:&quot;</span>, total_sum)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Ratio of selected singular values to all singular values:&quot;</span>, ratio)<br></code></pre></td></tr></table></figure>
+
+<p><img src="/images/image-20230507154646396.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-4-相似度计算"><a href="#1-4-相似度计算" class="headerlink" title="1.4 相似度计算"></a>1.4 相似度计算</h3><p>当确定选取的奇异值个数为3之后，借助sklearn.decomposition中的TruncatedSVD类，实例化一个svd对象后调用其fit_transform方法对矩阵M进行SVD降维。</p>
+<p>降维得到的result是一个<code>10000*3</code>的矩阵，其部分内容如下</p>
+<p><img src="/images/image-20230507155726422.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们将基于该result矩阵对测试词对进行相似度计算。相似度计算有如下要求：基于子词向量计算pku_sim_test.txt中同一行中两个子词的余弦相似度sim_svd，当pku_sim_test.txt中某一个词没有获得向量时(该词未出现在该语料中)，令其所在行的两个词之间的sim_svd&#x3D;0。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 相似度计算 </span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">similarity</span>(<span class="hljs-params">M,n_components,word_vec,vocab</span>): <br>    svd = TruncatedSVD(n_components) <span class="hljs-comment"># 选取的奇异值个数</span><br>    result = svd.fit_transform(M) <span class="hljs-comment"># SVD分解</span><br><br>    sim_svd = [] <span class="hljs-comment"># 相似度列表</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> tqdm(<span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(word_vec))): <span class="hljs-comment"># 对待评测的词向量求相似度</span><br>        <span class="hljs-keyword">if</span> word_vec[i][<span class="hljs-number">0</span>] <span class="hljs-keyword">in</span> vocab <span class="hljs-keyword">and</span> word_vec[i][<span class="hljs-number">1</span>] <span class="hljs-keyword">in</span> vocab: <span class="hljs-comment"># 判断词向量是否在词表⾥</span><br>            vec1 = result[vocab.index(word_vec[i][<span class="hljs-number">0</span>])] <span class="hljs-comment"># 获取词向量</span><br>            vec2 = result[vocab.index(word_vec[i][<span class="hljs-number">1</span>])]<br>            norm1 = np.linalg.norm(vec1) <span class="hljs-comment"># 计算L2范式</span><br>            norm2 = np.linalg.norm(vec2)<br>            frac1 = np.dot(vec1, vec2) <span class="hljs-comment"># 计算点积</span><br>            frac2 = norm1 * norm2<br>            <span class="hljs-keyword">if</span> frac2 != <span class="hljs-number">0</span>: <span class="hljs-comment"># 分母不为0</span><br>                sim = np.around(frac1 / frac2,<span class="hljs-number">4</span>) <span class="hljs-comment"># 计算余弦相似度，保留至4位小数</span><br>            <span class="hljs-keyword">else</span>:<br>                sim = <span class="hljs-number">0</span><br>            sim_svd.append(sim) <span class="hljs-comment"># 添加相似度</span><br>        <span class="hljs-keyword">else</span>:<br>            sim_svd.append(<span class="hljs-number">0</span>) <span class="hljs-comment"># 词向量不在词表⾥，相似度为0</span><br>    <span class="hljs-keyword">return</span> sim_svd<br></code></pre></td></tr></table></figure>
+
+<p>上述代码实现了对词对之间的余弦相似度的计算，其中sim_svd列表用于存储相似性得分。</p>
+<p>对于word_vec中的每个词对，首先会检查这两个词是否都出现在vocab词表中，若任一一个没有出现则令其相似性得分为0。如果均存在则从vocab中获取词向量并计算其L2范数、点积和余弦相似度（最终结果保留至4位小数）。sim_svd变量是一个长度为500的列表，将其写入模型文件中保存。</p>
+<p><img src="/images/image-20230507161431105.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="2-SGNS构建词向量"><a href="#2-SGNS构建词向量" class="headerlink" title="2.SGNS构建词向量"></a>2.SGNS构建词向量</h2><p>初始词向量来源与original.txt文本使用jieba分词得到的corups.txt</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 从 pku_sim_test.txt 文件中获得需要评测的词向量，每行用split方法（默认任何空格）分隔开两个词</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_word_vector</span>(): <span class="hljs-comment"># 获取词向量</span><br>    word_vec = []<br>    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;pku_sim_test.txt&#x27;</span>, <span class="hljs-string">&#x27;r&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>        lines = f.readlines()<br>    <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> lines:<br>        word_vec.append(line.split()) <br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;The length of the word vector: &quot;</span>, <span class="hljs-built_in">len</span>(word_vec))<br>    <span class="hljs-keyword">return</span> word_vec<br></code></pre></td></tr></table></figure>
+
+<p>借助gensim.models中的Word2Vec类可以轻松的初始化并训练一个Word2Vec模型</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 模型的构建和训练</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">train_model</span>():<br>    <span class="hljs-comment"># 构建并训练模型</span><br>    vec_sgns = Word2Vec(LineSentence(<span class="hljs-string">&#x27;corups.txt&#x27;</span>),<br>                     vector_size=<span class="hljs-number">100</span>, window=<span class="hljs-number">2</span>, sg=<span class="hljs-number">1</span>, hs=<span class="hljs-number">0</span>, min_count=<span class="hljs-number">1</span>,workers=multiprocessing.cpu_count()) <br>    <span class="hljs-keyword">return</span> vec_sgns<br></code></pre></td></tr></table></figure>
+
+<p>其参数如下</p>
+<ul>
+<li>LineSentence(‘corups.txt’)：模型的训练数据</li>
+<li>vector_size&#x3D;100：子词向量维度，即模型需要学习的词向量维度</li>
+<li>window&#x3D;2：窗口大小</li>
+<li>sg&#x3D;1：训练算法，此处表示使用skip-gram算法</li>
+<li>hs&#x3D;0：分层softmax使用的算法，此处表示不使用</li>
+<li>min_count&#x3D;1：一个单词必须出现在语料库中才能包含在词汇中的最小次数</li>
+<li>workers&#x3D;multiprocessing.cpu_count()：CPU核并行加速处理</li>
+</ul>
+<p>模型训练的日志输出如下</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs routeros">2023-05-07 17:17:48,492 - <span class="hljs-built_in">INFO</span> - collecting all words <span class="hljs-keyword">and</span> their counts<br>2023-05-07 17:17:48,495 - <span class="hljs-built_in">INFO</span> - PROGRESS: at sentence #0, processed 0 words, keeping 0 word types<br>2023-05-07 17:17:48,643 - <span class="hljs-built_in">INFO</span> - PROGRESS: at sentence #10000, processed 487389 words, keeping 40636 word types<br>2023-05-07 17:17:48,804 - <span class="hljs-built_in">INFO</span> - PROGRESS: at sentence #20000, processed 978125 words, keeping 61229 word types<br>2023-05-07 17:17:48,955 - <span class="hljs-built_in">INFO</span> - PROGRESS: at sentence #30000, processed 1457089 words, keeping 75563 word types<br>2023-05-07 17:17:48,978 - <span class="hljs-built_in">INFO</span> - collected 77491 word types <span class="hljs-keyword">from</span> a corpus of 1514653<span class="hljs-built_in"> raw </span>words <span class="hljs-keyword">and</span> 31200 sentences<br>2023-05-07 17:17:48,979 - <span class="hljs-built_in">INFO</span> - Creating a fresh vocabulary<br>2023-05-07 17:17:49,275 - <span class="hljs-built_in">INFO</span> - Word2Vec lifecycle event &#123;<span class="hljs-string">&#x27;msg&#x27;</span>: <span class="hljs-string">&#x27;effective_min_count=1 retains 77491 unique words (100.00% of original 77491, drops 0)&#x27;</span>, <span class="hljs-string">&#x27;datetime&#x27;</span>: <span class="hljs-string">&#x27;2023-05-07T17:17:49.275469&#x27;</span>, <span class="hljs-string">&#x27;gensim&#x27;</span>: <span class="hljs-string">&#x27;4.2.0&#x27;</span>, <span class="hljs-string">&#x27;python&#x27;</span>: <span class="hljs-string">&#x27;3.7.16 (default, Jan 17 2023, 16:06:28) [MSC v.1916 64 bit (AMD64)]&#x27;</span>, <span class="hljs-string">&#x27;platform&#x27;</span>: <span class="hljs-string">&#x27;Windows-10-10.0.22000-SP0&#x27;</span>, <span class="hljs-string">&#x27;event&#x27;</span>: <span class="hljs-string">&#x27;prepare_vocab&#x27;</span>&#125;<br>2023-05-07 17:17:49,276 - <span class="hljs-built_in">INFO</span> - Word2Vec lifecycle event &#123;<span class="hljs-string">&#x27;msg&#x27;</span>: <span class="hljs-string">&#x27;effective_min_count=1 leaves 1514653 word corpus (100.00% of original 1514653, drops 0)&#x27;</span>, <span class="hljs-string">&#x27;datetime&#x27;</span>: <span class="hljs-string">&#x27;2023-05-07T17:17:49.275469&#x27;</span>, <span class="hljs-string">&#x27;gensim&#x27;</span>: <span class="hljs-string">&#x27;4.2.0&#x27;</span>, <span class="hljs-string">&#x27;python&#x27;</span>: <span class="hljs-string">&#x27;3.7.16 (default, Jan 17 2023, 16:06:28) [MSC v.1916 64 bit (AMD64)]&#x27;</span>, <span class="hljs-string">&#x27;platform&#x27;</span>: <span class="hljs-string">&#x27;Windows-10-10.0.22000-SP0&#x27;</span>, <span class="hljs-string">&#x27;event&#x27;</span>: <span class="hljs-string">&#x27;prepare_vocab&#x27;</span>&#125;<br>2023-05-07 17:17:49,705 - <span class="hljs-built_in">INFO</span> - deleting the<span class="hljs-built_in"> raw </span>counts dictionary of 77491 items<br>2023-05-07 17:17:49,708 - <span class="hljs-built_in">INFO</span> - <span class="hljs-attribute">sample</span>=0.001 downsamples 24 most-common words<br>2023-05-07 17:17:49,709 - <span class="hljs-built_in">INFO</span> - Word2Vec lifecycle event &#123;<span class="hljs-string">&#x27;msg&#x27;</span>: <span class="hljs-string">&#x27;downsampling leaves estimated 1247291.7454936474 word corpus (82.3%% of prior 1514653)&#x27;</span>, <span class="hljs-string">&#x27;datetime&#x27;</span>: <span class="hljs-string">&#x27;2023-05-07T17:17:49.709479&#x27;</span>, <span class="hljs-string">&#x27;gensim&#x27;</span>: <span class="hljs-string">&#x27;4.2.0&#x27;</span>, <span class="hljs-string">&#x27;python&#x27;</span>: <span class="hljs-string">&#x27;3.7.16 (default, Jan 17 2023, 16:06:28) [MSC v.1916 64 bit (AMD64)]&#x27;</span>, <span class="hljs-string">&#x27;platform&#x27;</span>: <span class="hljs-string">&#x27;Windows-10-10.0.22000-SP0&#x27;</span>, <span class="hljs-string">&#x27;event&#x27;</span>: <span class="hljs-string">&#x27;prepare_vocab&#x27;</span>&#125;<br>2023-05-07 17:17:50,417 - <span class="hljs-built_in">INFO</span> - estimated required memory <span class="hljs-keyword">for</span> 77491 words <span class="hljs-keyword">and</span> 100 dimensions: 100738300 bytes<br>2023-05-07 17:17:50,418 - <span class="hljs-built_in">INFO</span> - resetting layer weights<br>2023-05-07 17:17:50,456 - <span class="hljs-built_in">INFO</span> - Word2Vec lifecycle event &#123;<span class="hljs-string">&#x27;update&#x27;</span>: <span class="hljs-literal">False</span>, <span class="hljs-string">&#x27;trim_rule&#x27;</span>: <span class="hljs-string">&#x27;None&#x27;</span>, <span class="hljs-string">&#x27;datetime&#x27;</span>: <span class="hljs-string">&#x27;2023-05-07T17:17:50.456679&#x27;</span>, <span class="hljs-string">&#x27;gensim&#x27;</span>: <span class="hljs-string">&#x27;4.2.0&#x27;</span>, <span class="hljs-string">&#x27;python&#x27;</span>: <span class="hljs-string">&#x27;3.7.16 (default, Jan 17 2023, 16:06:28) [MSC v.1916 64 bit (AMD64)]&#x27;</span>, <span class="hljs-string">&#x27;platform&#x27;</span>: <span class="hljs-string">&#x27;Windows-10-10.0.22000-SP0&#x27;</span>, <span class="hljs-string">&#x27;event&#x27;</span>: <span class="hljs-string">&#x27;build_vocab&#x27;</span>&#125;<br>2023-05-07 17:17:50,457 - <span class="hljs-built_in">INFO</span> - Word2Vec lifecycle event &#123;<span class="hljs-string">&#x27;msg&#x27;</span>: <span class="hljs-string">&#x27;training model with 12 workers on 77491 vocabulary and 100 features, using sg=1 hs=0 sample=0.001 negative=5 window=2 shrink_windows=True&#x27;</span>, <span class="hljs-string">&#x27;datetime&#x27;</span>: <span class="hljs-string">&#x27;2023-05-07T17:17:50.457677&#x27;</span>, <span class="hljs-string">&#x27;gensim&#x27;</span>: <span class="hljs-string">&#x27;4.2.0&#x27;</span>, <span class="hljs-string">&#x27;python&#x27;</span>: <span class="hljs-string">&#x27;3.7.16 (default, Jan 17 2023, 16:06:28) [MSC v.1916 64 bit (AMD64)]&#x27;</span>, <span class="hljs-string">&#x27;platform&#x27;</span>: <span class="hljs-string">&#x27;Windows-10-10.0.22000-SP0&#x27;</span>, <span class="hljs-string">&#x27;event&#x27;</span>: <span class="hljs-string">&#x27;train&#x27;</span>&#125;<br>2023-05-07 17:17:51,474 - <span class="hljs-built_in">INFO</span> - EPOCH 0 - PROGRESS: at 68.48% examples, 857957 words/s, in_qsize 0, out_qsize 0<br>2023-05-07 17:17:51,918 - <span class="hljs-built_in">INFO</span> - EPOCH 0: training on 1514653<span class="hljs-built_in"> raw </span>words (1247127 effective words) took 1.4s, 860987 effective words/s<br>2023-05-07 17:17:52,933 - <span class="hljs-built_in">INFO</span> - EPOCH 1 - PROGRESS: at 63.43% examples, 789137 words/s, in_qsize 0, out_qsize 0<br>2023-05-07 17:17:53,432 - <span class="hljs-built_in">INFO</span> - EPOCH 1: training on 1514653<span class="hljs-built_in"> raw </span>words (1247203 effective words) took 1.5s, 827498 effective words/s<br>2023-05-07 17:17:54,445 - <span class="hljs-built_in">INFO</span> - EPOCH 2 - PROGRESS: at 64.61% examples, 807510 words/s, in_qsize 0, out_qsize 0<br>2023-05-07 17:17:54,964 - <span class="hljs-built_in">INFO</span> - EPOCH 2: training on 1514653<span class="hljs-built_in"> raw </span>words (1246960 effective words) took 1.5s, 817830 effective words/s<br>2023-05-07 17:17:55,976 - <span class="hljs-built_in">INFO</span> - EPOCH 3 - PROGRESS: at 62.11% examples, 774566 words/s, in_qsize 0, out_qsize 0<br>2023-05-07 17:17:56,552 - <span class="hljs-built_in">INFO</span> - EPOCH 3: training on 1514653<span class="hljs-built_in"> raw </span>words (1247335 effective words) took 1.6s, 788682 effective words/s<br>2023-05-07 17:17:57,563 - <span class="hljs-built_in">INFO</span> - EPOCH 4 - PROGRESS: at 70.62% examples, 881039 words/s, in_qsize 0, out_qsize 0<br>2023-05-07 17:17:57,984 - <span class="hljs-built_in">INFO</span> - EPOCH 4: training on 1514653<span class="hljs-built_in"> raw </span>words (1247370 effective words) took 1.4s, 874250 effective words/s<br>2023-05-07 17:17:57,986 - <span class="hljs-built_in">INFO</span> - Word2Vec lifecycle event &#123;<span class="hljs-string">&#x27;msg&#x27;</span>: <span class="hljs-string">&#x27;training on 7573265 raw words (6235995 effective words) took 7.5s, 828414 effective words/s&#x27;</span>, <span class="hljs-string">&#x27;datetime&#x27;</span>: <span class="hljs-string">&#x27;2023-05-07T17:17:57.986499&#x27;</span>, <span class="hljs-string">&#x27;gensim&#x27;</span>: <span class="hljs-string">&#x27;4.2.0&#x27;</span>, <span class="hljs-string">&#x27;python&#x27;</span>: <span class="hljs-string">&#x27;3.7.16 (default, Jan 17 2023, 16:06:28) [MSC v.1916 64 bit (AMD64)]&#x27;</span>, <span class="hljs-string">&#x27;platform&#x27;</span>: <span class="hljs-string">&#x27;Windows-10-10.0.22000-SP0&#x27;</span>, <span class="hljs-string">&#x27;event&#x27;</span>: <span class="hljs-string">&#x27;train&#x27;</span>&#125;<br>2023-05-07 17:17:57,987 - <span class="hljs-built_in">INFO</span> - Word2Vec lifecycle event &#123;<span class="hljs-string">&#x27;params&#x27;</span>: <span class="hljs-string">&#x27;Word2Vec&lt;vocab=77491, vector_size=100, alpha=0.025&gt;&#x27;</span>, <span class="hljs-string">&#x27;datetime&#x27;</span>: <span class="hljs-string">&#x27;2023-05-07T17:17:57.987496&#x27;</span>, <span class="hljs-string">&#x27;gensim&#x27;</span>: <span class="hljs-string">&#x27;4.2.0&#x27;</span>, <span class="hljs-string">&#x27;python&#x27;</span>: <span class="hljs-string">&#x27;3.7.16 (default, Jan 17 2023, 16:06:28) [MSC v.1916 64 bit (AMD64)]&#x27;</span>, <span class="hljs-string">&#x27;platform&#x27;</span>: <span class="hljs-string">&#x27;Windows-10-10.0.22000-SP0&#x27;</span>, <span class="hljs-string">&#x27;event&#x27;</span>: <span class="hljs-string">&#x27;created&#x27;</span>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>模型一共进行了5轮训练，每次训练的batch大小为1514653个词，学习效率分别为</p>
+<ul>
+<li>EPOCH 0：860987 effective words&#x2F;s</li>
+<li>EPOCH 1：827498 effective words&#x2F;s</li>
+<li>EPOCH 2：817830 effective words&#x2F;s</li>
+<li>EPOCH 3：788682 effective words&#x2F;s</li>
+<li>EPOCH 4：874250 effective words&#x2F;s</li>
+</ul>
+<p>模型训练完毕后，对待评测的词向量，调⽤vec_sgns.wv.similarity(word[0], word[1])，求取相似度</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 相似度评估</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">similarity</span>(<span class="hljs-params">word_vec,vec_sgns</span>):<br>    sim_sgns = [] <span class="hljs-comment"># 相似度列表</span><br>    <span class="hljs-keyword">for</span> word <span class="hljs-keyword">in</span> tqdm(word_vec):<br>        <span class="hljs-keyword">try</span>:<br>            sim = np.around(vec_sgns.wv.similarity(word[<span class="hljs-number">0</span>], word[<span class="hljs-number">1</span>]), decimals=<span class="hljs-number">4</span>) <span class="hljs-comment"># 保留4位小数</span><br>            sim_sgns.append(sim)<br>        <span class="hljs-keyword">except</span>:<br>            sim_sgns.append(<span class="hljs-number">0</span>)<br>    <span class="hljs-keyword">return</span> sim_sgns<br></code></pre></td></tr></table></figure>
+
+<p>待评测的词向量word_vec与SVD中使用的相同，即词对的列表，similarity方法计算词对之间的相似度。当pku_sim_test.txt中某一个词没有获得向量时(该词未出现在该语料中)，令其所在行的两个词之间的sim_sgns&#x3D;0，即异常处理<code>sim_sgns.append(0)</code>，当词对均在语料中出现过则将相似度分数（保留4位小数）写入sim_sgns列表。sim_sgns变量是一个长度为500的列表，将其写入模型文件中保存。</p>
+<p><img src="/images/image-20230507173532033.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="3-结果输出"><a href="#3-结果输出" class="headerlink" title="3.结果输出"></a>3.结果输出</h2><p>按照实验要求，将两种方法的结果汇总输出，要求如下：</p>
+<ul>
+<li>输出文件命名方式：学号</li>
+<li>所有输出文本均采用Unicode(UTF-8)编码</li>
+<li>保持pku_sim_test.txt编码(utf-8)不变，保持原文行序不变；</li>
+<li>每行在行末加一个tab符之后写入该行两个词的sim_svd，再加一个tab符之后写入该行两个词的sim_sgns；</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 汇总相似度结果</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">summary_result</span>(<span class="hljs-params">word_vec</span>):<br>    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;2020212183.txt&#x27;</span>,<span class="hljs-string">&#x27;w&#x27;</span>,encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>        <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;sim_svd.txt&#x27;</span>, <span class="hljs-string">&#x27;r&#x27;</span>) <span class="hljs-keyword">as</span> f1:<br>            sim_svd = f1.readlines()<br>        <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;sim_sgns.txt&#x27;</span>, <span class="hljs-string">&#x27;r&#x27;</span>) <span class="hljs-keyword">as</span> f2:<br>            sim_sgns = f2.readlines()<br>        <span class="hljs-comment"># 去除换行符</span><br>        sim_svd = [<span class="hljs-built_in">float</span>(sim_svd[i].strip()) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(sim_svd))]<br>        sim_sgns = [<span class="hljs-built_in">float</span>(sim_sgns[i].strip()) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(sim_sgns))]<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">500</span>):<br>            f.write(<span class="hljs-built_in">str</span>(<span class="hljs-string">&#x27; &#x27;</span>.join(word_vec[i])) + <span class="hljs-string">&#x27;    &#x27;</span> + <span class="hljs-built_in">str</span>(sim_svd[i]) + <span class="hljs-string">&#x27;    &#x27;</span> + <span class="hljs-built_in">str</span>(sim_sgns[i]) + <span class="hljs-string">&#x27;\n&#x27;</span>) <br></code></pre></td></tr></table></figure>
+
+<p>最终的相似度输出文件部分内容如下，第一个数值表示两个词的sim_svd，第二个数值表示两个词的sim_sgns</p>
+<p><img src="/images/image-20230509100304212.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="三、实验总结"><a href="#三、实验总结" class="headerlink" title="三、实验总结"></a>三、实验总结</h1><p>本次实验分别基于SVD矩阵分解和SGNS两种方法对汉语子词构建向量，同时利用构建的向量评测词对之间的相似度。</p>
+<p>对SVD能够应用于自然语言处理我刚开始还是很意外的，后来在深入了解了SVD的原理后明白了SVD用于构建词向量的基本原理，同时也了解了另一种构建词向量的方式 – Word2Vec，这种方式包含两种不同的模型，其中一种就是本次实验需要使用的Skip gram模型，基于负采样的方案能够很快速的使得模型训练收敛。</p>
+<p>经过本次实验再次加深了我对自然语言处理课程知识点的掌握程度，同时辨析明确了很多易混概念，最重要的一点是将课程所学内容用代码实现出来，使所学内容能够真正应用到实际。</p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E8%B7%B5/" class="category-chain-item">课程实践</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/NLP/">#NLP</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>初级项目_汉语子词向量</div>
+      <div>https://gintoki-jpg.github.io/2023/05/06/项目_汉语子词向量/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>杨再俨</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年5月6日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/05/19/%E9%A1%B9%E7%9B%AE_%E5%91%BD%E5%90%8D%E5%AE%9E%E4%BD%93%E8%AF%86%E5%88%AB/" title="初级项目_命名实体识别">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">初级项目_命名实体识别</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/04/28/%E9%A1%B9%E7%9B%AE_%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB%E7%B3%BB%E7%BB%9F/" title="初级项目_图像分类">
+                        <span class="hidden-mobile">初级项目_图像分类</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+</div>
+
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

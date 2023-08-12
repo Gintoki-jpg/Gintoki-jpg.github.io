@@ -1,0 +1,804 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/logo.png">
+  <link rel="icon" href="/img/bg/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="杨再俨">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="DialogueINAB模型模拟了对话中对话者的态度和言语行为的互动过程。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="会话情感分析">
+<meta property="og:url" content="https://gintoki-jpg.github.io/2023/01/10/%E8%AE%BA%E6%96%87_%E4%BC%9A%E8%AF%9D%E6%83%85%E6%84%9F%E5%88%86%E6%9E%90/index.html">
+<meta property="og:site_name" content="Tintoki_blog">
+<meta property="og:description" content="DialogueINAB模型模拟了对话中对话者的态度和言语行为的互动过程。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/thesis.jpg">
+<meta property="article:published_time" content="2023-01-10T01:19:00.000Z">
+<meta property="article:modified_time" content="2023-01-11T06:10:47.679Z">
+<meta property="article:author" content="YangZaiyan">
+<meta property="article:tag" content="人工智能">
+<meta property="article:tag" content="论文">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gintoki-jpg.github.io/img/bg/thesis.jpg">
+  
+  
+  
+  <title>会话情感分析 - Tintoki_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"gintoki-jpg.github.io","root":"/","version":"1.9.1","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tintoki_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/bg1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">会话情感分析</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-01-10 09:19" pubdate>
+          2023年1月10日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          8.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          72 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">会话情感分析</h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="一、绪论"><a href="#一、绪论" class="headerlink" title="一、绪论"></a>一、绪论</h1><hr>
+<blockquote>
+<p>Q：什么是OCRID？有什么作用？</p>
+</blockquote>
+<p>A：ORCID（Open Researcher and Contributor ID），即开放研究者与贡献者身份识别码。ORCID会保留特定的ISNI（International Standard Name Identifier）识别码给学术研究者，并由独立机构管理。ORCID是一个独特的标识符，会记录个人所有的学术研究活动，包括个人参与创作的出版物、数据集、与研究机构的隶属关系以及资金支持等等，简单来说OCRID就是一个学术身份证</p>
+<blockquote>
+<p>Q：OCRID和ISNI有什么关系？以及与ISBN，ISSN，DOI的关系？</p>
+</blockquote>
+<p>A：</p>
+<p>ISBN（International Standard Book Number，国际标准书号）和ISSN（International Standard Serial Number，国际标准期刊号）解决了书刊的唯一标识问题；</p>
+<p>DOI解决了论文的唯一标识问题；</p>
+<p>条形码解决了实体产品的唯一标识问题；</p>
+<p>ISNI解决了参与者身份唯一标识问题；</p>
+<p>ORCID是在学术出版领域除ISNI外广泛使用的另一个作者识别码，ORCID也是由16位数字组成；</p>
+<p>虽然ISNI和ORCID在包含的资料、服务内容和使用族群等方面有所不同，但是两者的目标很相似，都是为了准确识别作者，使用统一身份认证手段解决“谁是谁”的问题，因此它们在功能上有所重叠并互相竞争，ISNI可以用于命名个人和机构，而ORCID仅用于个人。</p>
+<p>关于OCRID和ISNI的更多资料，可以参考<a target="_blank" rel="noopener" href="https://wap.sciencenet.cn/home.php?mod=space&do=blog&id=1055316">科学网—ORCID 和 ISNI 简介 - 林清莹的博文 (sciencenet.cn)</a>，简单来说OCRID适用于个人，ISNI适用于机构；</p>
+<hr>
+<h2 id="1-初识"><a href="#1-初识" class="headerlink" title="1.初识"></a>1.初识</h2><h3 id="1-1-论文概述"><a href="#1-1-论文概述" class="headerlink" title="1.1 论文概述"></a>1.1 论文概述</h3><p>（因为自己在论文这个领域几乎可以说是小白，所以对于格式啊什么的都是一窍不通，所以在开始之前还是先在网上做一些功课便于之后的快速上手）</p>
+<ul>
+<li>英文论文概述：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Aa411A7Rm/?spm_id_from=333.337.search-card.all.click&vd_source=276d55048634a5b508b1b53a1ecd56b3">「研究生必备」经济学博士生教你英文论文的检索|阅读|写作|发表，全是干货先收藏_哔哩哔哩_bilibili</a>；</li>
+</ul>
+<blockquote>
+<p>Q：如何找期刊？</p>
+</blockquote>
+<p>A：一般在学术期刊出版商如Springer、ELSEVIER、WILEY的数据库中查阅文献就足够</p>
+<blockquote>
+<p>Q：一般看什么期刊的文献？</p>
+</blockquote>
+<p>A：一般选择学校的期刊分类目录上靠前的一些期刊，除此之外阅读的一些高质量文献中的参考文献</p>
+<blockquote>
+<p>Q：Web of sicence和Elsevier有什么区别？</p>
+</blockquote>
+<p>解答之前建议先看这些文章</p>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/coberup/article/details/87713045">(4条消息) 关于ISI、SCI、EI、IEEE、Elsevier、Springer的区别_coberup的博客-CSDN博客_ei和elsevier有什么区别</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/465367153">Web of science 、EI、SCOPUS,这些文献检索常用的数据库你分得清吗？ - 知乎 (zhihu.com)</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45843356/article/details/122158882">(4条消息) SCI、Science、Web of Science、Nature的区别_一只没有恶意的史莱姆的博客-CSDN博客_sciencedirect和web of science区别</a></p>
+</li>
+</ul>
+<p>简单来说Elsevier不仅仅只是一个机构，也有自己的数据库，Web of sicence只是一个搜索引擎类似于Google，可以用来检索SCI、AHCI、SSCI等；</p>
+<blockquote>
+<p>Q：论文重点需要读什么？</p>
+</blockquote>
+<p>A：</p>
+<ol>
+<li>这篇文献是如何选择这个主题的，是什么启发作者进行这样一个研究；</li>
+<li>作者在引言部分提到的这个方向的研究gap是什么；</li>
+<li>文章的理论框架如何构建；</li>
+<li>文章的数据来源；</li>
+<li>模型和优化过程以及检验过程；</li>
+<li>作者对研究的未来展望，自己是否能够从这些方面进行一个突破；</li>
+</ol>
+<blockquote>
+<p>Q：投稿的注意点</p>
+</blockquote>
+<p>A：平时阅读文献注意积累期刊的名称，这样可以在其他期刊投稿不至于一直被拒绝；</p>
+<hr>
+<p>（实际上看完上面的那个视频感觉不懂得知识点更多了，现在急需一个手把手教小白的那种关于论文领域全方面知识点总结的文章 – 然而现实情况是根本不存在这样的视频或者文章，只能自己看到新的名词就去搜索这种最低效率的方式）</p>
+<h3 id="1-2-论文软件"><a href="#1-2-论文软件" class="headerlink" title="1.2 论文软件"></a>1.2 论文软件</h3><ul>
+<li>英文文献翻译软件：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1GY411P73T/?spm_id_from=333.788&vd_source=276d55048634a5b508b1b53a1ecd56b3">【科研必备】英文文献阅读神器: 知云 &amp; Xtranslator_哔哩哔哩_bilibili</a>；</li>
+</ul>
+<p>这里使用的Xtranslator的界面布局如下</p>
+<p><img src="/images/1657087642415-af83f31e-849f-46bc-8a7d-d3b7bea787b4.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-3-论文阅读"><a href="#1-3-论文阅读" class="headerlink" title="1.3 论文阅读"></a>1.3 论文阅读</h3><ul>
+<li>英文文献阅读方法：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1wg411j7KU/?spm_id_from=333.337.search-card.all.click&vd_source=276d55048634a5b508b1b53a1ecd56b3">港大学姐教你10分钟搞定英文论文阅读|学习经验分享_哔哩哔哩_bilibili</a>；</li>
+</ul>
+<blockquote>
+<p>读abstract需要抓住的几个关键点</p>
+</blockquote>
+<ul>
+<li>读懂abstract主要抓住以下几点：研究领域是什么、研究问题是什么、这个研究问题为什么困难、又为什么值得研究、这个问题已有的研究成果是怎样的、作者对于这个问题有什么看法、提出了什么解决思路</li>
+</ul>
+<blockquote>
+<p>introduction,related study以及reference需要了解点什么？</p>
+</blockquote>
+<ul>
+<li>introduction部分是更详细地说明研究背景等信息，可以看做是abstract的补充，通过这部分我们可以更细致地了解这个研究问题。introduction的最后一段落是对这个文章的结构的介绍，相当于一个纲要</li>
+<li>通过related work我们可以知道更多的这个问题的研究成果，并且给我们寻找该问题的其他论文提供信息；</li>
+<li>在reference里面找该问题&#x2F;该领域相关的论文名字；</li>
+</ul>
+<blockquote>
+<p>句子读不懂怎么办？</p>
+</blockquote>
+<ul>
+<li>对某研究领域一无所知的解决方案：拿该研究领域的一篇论文做精读作为了解这个领域的开端；</li>
+<li>不要给自己增加心理压力，觉得自己看不明白你不理解的名词作者一定会给你在论文里讲清楚（讲不清楚说明这不是一篇好文章）；</li>
+<li>遇到读不懂的语句，可以在心里做整句话的中文翻译多练习翻译的方式可以让英文语感提升、理解句子变得容易；</li>
+<li>要关注论文中符号的含义，因为这些符号将会被用在公式中；</li>
+</ul>
+<blockquote>
+<p>公式图表看不懂怎么办？</p>
+</blockquote>
+<ul>
+<li>论文抛出公式、图表之前一定会先进行文字描述！描述这个公式是干嘛用的，描述图表展示了什么信息一定要借助文字信息去理解公式和图表公式看起来复杂，大部分只是表示方式的原因，大部分公式都是简单公式换一下数学符号放上去（因为论文的公式必须不一样才能过审，所以大多数公式都是大同小异的）；</li>
+</ul>
+<blockquote>
+<p>总结</p>
+</blockquote>
+<p>1，读论文千万不要害怕自己读不懂<br>2.利用文字描述去理解公式、图标<br>3.通过abstract和introduction去了解这篇论文的背景<br>4.实在看不下去文章就去知乎CSDN等查看是否有人解读这个文章，看完解读后，自己再重新看一次英文论文<br>5.对于读已有领域背景的文章，阅读论文可以加速着重看method、experiment，evaluation部分</p>
+<h1 id="二、会话情感分析"><a href="#二、会话情感分析" class="headerlink" title="二、会话情感分析"></a>二、会话情感分析</h1><h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>机器可以配备通过对话识别人类情绪的能力，从而使他们在与自然人交谈时能够感同身受。聊天机器人和智能助理的出现使得人们更加关注情绪识别任务。大多数现有的方法主要<code>分别关注</code>说话者的<code>态度</code>和<code>行为</code>，<code>忽略了</code>他们在当前对话中对话者的<code>潜在态度</code>与其<code>随后的即时对话行为</code>之间的互动。在整个对话过程中，理解说话者情绪波动背后的基本原理是一项挑战。本文利用社会心理学中的<code>态度-行为理论</code>建立了一个神经网络模型，即态度与行为背后的对话互动网络（DialogueINAB），该模型模拟了对话中对话者的态度和言语行为的互动过程。我们的模型为从社会心理学角度识别对话中的情绪提供了新的见解。<code>DialogueINAB包括三个模块：感知、信息交互和情感分类器</code>。最初，DialogueINAB从对话文本中识别对话者的潜在态度和言语行为的特征。其次，通过使用跨模态变换器架构，该模型可以模拟对话者的潜在态度和言语行为之间的交互，并产生情感特征。最后，向情感分类器提供从会话中的情感识别模型生成的情感特征。我们通过在三个标准数据集（IEMOCAP、MELD和AVCE）上的大量实验证明了所提出方法的优越性。与六种公共基线方法相比，我们的模型在IEMOCAP和MELD数据集上将Weight-F1度量提高了3.56%和1.04%，在AVCE数据集上将MAE度量平均降低了3.3%。</p>
+<h2 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1.Introduction"></a>1.Introduction</h2><p>会话中的情绪识别任务旨在识别会话中每个话语中的情绪倾向。这项任务为机器建立移情功能提供了指导，即理解和分享人类的感受。情感识别中的许多优秀方法已应用于社会评论意见挖掘[1]、机器聊天[2]、情感安抚[3]等。此外，由于一些高质量开源对话数据集[4]、[5]、[6]的增加，情感识别受到了相当大的关注。</p>
+<p>目前的大部分研究[7]、[8]、[9]、[10]都<code>集中于挖掘每个对话者每一刻的发言状态</code>或<code>会话情境中每个话语的文本语义</code>。他们的努力取得了一些进展。然而，他们中的大多数人在<code>没有考虑到潜在互动</code>的情况下分别考察了上述两点，因此很难现实地模拟对话过程。此外，已经提出了诸如LSTM[11]和GRU[12]的RNN模型来存储和更新定时信息，但实际结果有时并不理想。一些研究人员[7]，[13]提出使用注意力机制来克服RNN模型在记忆长期对话文本信息方面的不足。注意力强制的新颖模型实现了在语义上连接上下文的优越能力。因此，可以有效地捕获准确的文本语义。不幸的是，在建模过程中，他们经常忽略对话者之间的依赖性及其话语。缺乏依赖性可能导致无法区分不同说话者的情绪特征。</p>
+<p>对话中每个对话者的单独话语序列包含对话者的潜在态度（中立、积极或消极）。对话者在多人对话中的话语可以被视为说话者对他人话语的即时反应。在社会心理学中，态度-行为关系理论[14]表明，态度和行为可以相互影响和促进。良好的行为会强化积极的态度，形成积极的反馈循环。同样，消极的态度可能导致不恰当的谈话行为，这反过来证实了对方的消极态度。受该理论启发，本研究<code>考虑了对话态度和对话行为之间的相互作用</code>，以便真实地重建对话场景，<code>而不是分别关注其中的每一个</code>。图1说明了对话者的对话态度和对话者的谈话行为之间的互动。本文将探讨在情感识别任务中形式化交互的方法。</p>
+<p><img src="/images/image-20230111110559588.png" srcset="/img/loading.gif" lazyload></p>
+<p>在本文中，我们设计了一个新的神经网络模型，该模型模拟了对话者的态度和行为之间的相互作用，以更准确地识别他们表达的情绪。我们的模型主要分为三个部分，感知模块、信息交互模块和情感分类器。</p>
+<ul>
+<li>在感知模块中，LSTM用于从对话文本中找到对话者的潜在态度表征和行为（即时言语）表征。此外，与每个话语相对应的说话者信息被用来补充说话者的态度表示和行为表示。</li>
+<li>在随后的信息交互模块中，将每个对话者的特征与其他发言者的特征区分开来变得更加容易。在信息交互模块中，我们介绍了一个负责交互的模块，由两个多模态变压器的编码器部分组成。该模块模拟态度（res.行为）期货对行为（res.态度）期货。</li>
+<li>最后，我们将两个转换后的特征组合起来，并将它们发送到情感分类器，以预测分配给话语的情感标签。</li>
+</ul>
+<p>为了评估我们提出的模型的性能，我们在三个标准基准数据集上进行了广泛的实验，即IEMOCAP[4]、AVCE[15]和MELD[5]数据集。结果一致表明，我们提出的模型比比较方法更准确，表明在对话过程中考虑对话态度和行为之间的互动有助于更好地识别对话中的情绪。这项工作的主要贡献总结如下。<br>(1)我们提出了一种新的神经网络模型DialogueINAB，它考虑了对话中人们的态度和行为之间的相互作用。从社会心理学的角度来看，DialogueINAB更真实地还原了对话过程，从而提高了对话中情绪识别任务的准确性。<br>(2)这项研究有助于对话者信息的建模技术，并为社会心理学理论在自然语言处理中的应用提供了更深入的见解。这项技术加强了每个特征和对应说话者之间的联系，使我们能够区分每个说话者的相关特征和其他说话者的相关特点。<br>(3)我们在三个标准基准数据集上进行了广泛的实验。与所有基线模型中的最佳性能相比，我们的模型在IEMOCAP数据集和MELD数据集上分别将分类度量Weight-F1提高了3.56%和1.04%。在AVCE数据集上，我们的模型将误差度量MAE平均降低3.3%。实验结果一致地证明了所提出模型的有效性和优越性。</p>
+<h2 id="2-Related-Work"><a href="#2-Related-Work" class="headerlink" title="2.Related Work"></a>2.Related Work</h2><p>越来越多的自然语言处理（NLP）文献表明，文本情感识别方法非常重要。文本情感识别旨在根据给定的源文本识别主观文本中呈现的情感倾向或类别[16]。早期的文本情感识别仅限于单个或孤立的句子[17]，[18]。然而，由于上下文文本（如评论、文档和对话）在应用场景中的应用越来越多，因此对上下文文本的情感分析受到了越来越多的关注。一些相关的子任务已经从文本情感识别中得到，包括内隐情感分析[19]，[20]，识别对话中的情感状态[9]，[21]等。</p>
+<p>最近的注意力集中在情绪识别的提供上，因为机器与人类共情的能力可以通过对话中的情绪识别算法来增强[22]。该技术在意见挖掘[23]、智能助理[24]和医疗保健[25]方面提供了相当大的潜力。此外，由于开源会话数据集的可用性，会话中的情绪识别（ERC）已越来越受欢迎。深度学习方法主要用于ERC，大致可分为以下两类。</p>
+<p>•文本语义模型。<br>文本语义分析是一种试图理解文本含义的NLP技术。所开发的模型在考虑上下文、句子的逻辑结构和语法角色的同时捕捉文本的本质。这些模型忽略了话语和对应说话者之间的依赖性，只关注会话中每个话语的文本语义。<br>已经发表了大量关于文本语义模型的文献。Poria等人（2017）[7]设计了c-LSTM模型，该模型在使用CNN编码每个话语后应用LSTM来提取上下文信息。Hazarika等人（2018）[26]使用端到端记忆网络来捕捉不同说话者话语的上下文特征。Jiao等人（2019）[27]开发了HiGRU框架，该框架将单词级别与话语级别GRU相结合，以提取文本语义更丰富的特征。Zhong等人（2019）[28]提出了KET模型，利用变压器架构通过引入外部知识库来丰富文本信息。Lu等人（2020）[29]提出了一种迭代情感交互模型，该模型依赖于迭代预测的情感标签来优化情感交互的对话建模。Zhu等人（2021）[30]提出了TODKAT模型，其中会话主题用于驱动文本表示，以吸收外部知识库中的信息。</p>
+<p>•扬声器敏感型。<br>与非会话文本相反，多方会话文本中的情感识别在建模说话者敏感性依赖方面面临着特殊的挑战。这些模型考虑了文本的语义以及话语和说话者之间的关系。关于说话人敏感模型的学术文献揭示了探索说话人敏感的重要性。Hazarika等人（2018）[8]，[31]提出了CMN和ICON模型。为了增强说话者对话语的感知，针对不同说话者的话语序列设计了不同的GRU。<br>Majumder等人（2019）[9]介绍了DialogueRNN，它通过使用全局状态GRU更新上下文语义信息，通过使用说话者GRU更新说话者状态，最后通过使用情感GRU预测情感标签。基于认知理论，Hu等人（2021）[10]开发了一个基于两个LSTM的情感原因推理模块，用于在上下文中建模语义和说话人状态。<br>基于图形的方法是另一种选择。这些方法旨在将情绪识别任务重新定义为每个话语节点的分类问题。Zhang等人的一项研究（2019）[32]发现，话语和说话者可以由图模型ConGCN中的不同类型的节点表示。这些节点形成异质图，该异质图将不同的发声节点与无向边缘连接起来，并使用有向边缘连接发声和说话者节点。Ghosal等人提出的DialogueGCN。（2019）[21]使用节点之间的边缘来隐式地表征说话者与其话语之间的关系。Ishiwatari等人（2020）[33]开发了RGAT模型，用于使用图形注意力神经网络解决ERC任务。Shen等人使用有向无环图（DAG）对话语进行编码。（2021）[34]开发了DAG-ERC模型，试图更好地模拟对话交流的内在结构。</p>
+<h2 id="3-Methodology"><a href="#3-Methodology" class="headerlink" title="3.Methodology"></a>3.Methodology</h2><h3 id="3-1-Problem-Definition"><a href="#3-1-Problem-Definition" class="headerlink" title="3.1 Problem Definition"></a>3.1 Problem Definition</h3><p>本文将对话定义为序列U＝{u1，u2，u3…un−1，um}，其中ui表示对话中的第i个话语。每个话语都被人为地标记为情感标签。引入具有t∈{1,2，…，n}的术语pt来表示会话U中的第t个说话者。设pt（ui）和t（ui）是两个符号，分别表示特定话语ui的对应说话者和说话者的数量。因此，P&#x3D;{pt（u1），pt（u2），pt（u3）…pt（um）}指对话中发言者的编号顺序。此外，术语Uk＝｛ui | t（i）＝k｝用于描述说话者pk在对话U中发出的一组话语。会话中的情绪识别任务（ERC）旨在预测每个话语ui的情绪标签yi。</p>
+<h3 id="3-2-Dialogue-text-preprocessing"><a href="#3-2-Dialogue-text-preprocessing" class="headerlink" title="3.2 Dialogue text preprocessing"></a>3.2 Dialogue text preprocessing</h3><p>文本预处理是准备对话文本数据的实践。在这项研究中，最大池卷积神经网络（CNN）被用于提取单个话语的文本特征，从而可以客观地进行后续的比较实验。会话文本处理方法只考虑每个话语的文本语义，而忽略其上下文。首先，GloVe（Pennington等人，2014）模型用于单独编码每个话语，并产生多个300维单词向量。第二，每个话语背后的单词向量被馈送到CNN以确定每个话语的特征。CNN包含三个卷积核，宽度分别为3、4和5。每个卷积核的输出信道被设置为50。第三，每个话语的特征被馈送到最大池和Relu激活层以进行进一步处理。激活的特征随后被发送到其输出尺寸为du＝100的全连接层。在文本处理的最后阶段，连接层的输出充当话语的终端表示。</p>
+<h3 id="3-3-DialogueINAB-model"><a href="#3-3-DialogueINAB-model" class="headerlink" title="3.3 DialogueINAB model"></a>3.3 DialogueINAB model</h3><p>本文提出了一种高精度的神经网络模型，即态度和行为背后的对话交互网络（DialogueINAB），以解决对话情绪识别问题。DialogueINAB主要包括三个组件：感知模块、交互模块和情感分类器。首先，本研究在感知模块中设置了三种不同的编码器，即语音态度编码器、语音行为编码器和会话参与者编码器。言语态度和行为编码器利用对话文本中的信息来识别对话者的潜在言语态度和即时言语行为。会话参与者编码器加密说话者编号序列，并将所得序列与态度表示序列和行为表示序列连接起来。特定的编码器可以增强说话特征和扬声器之间的连接。其次，建立了一个带有两个跨模态变换编码器的交互式影响模块，以模拟说话者的语音姿态和即时语音行为之间的交互。在此过程中，我们的模型将言语态度与即时言语行为相结合，并获得对话者的真实言语表达。最后，我们基于从前两个过程中提取的语音特征，通过情感分类器对每个话语进行情感识别。图2描述了我们提出的方法的总体框架。</p>
+<p><img src="/images/image-20230111111755630-16734075392564.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-4-Perception-module"><a href="#3-4-Perception-module" class="headerlink" title="3.4 Perception module"></a>3.4 Perception module</h3><p>Majumder等人2019提出的DialogueRNN[9]利用GRU加密说话者的历史话语序列，以挖掘当前说话者的状态。DialogueRNN的尝试比以前的工作取得了更好的结果。受这一想法的启发，我们利用单个说话者的历史话语序列来挖掘他或她的潜在发言态度。对话场景通常由多个说话者的即时话语组成。会话场景中说话者的话语代表了他对场景中其他人话语的即时反应。因此，说话者的行为信息被包括在吸收场景中其他人的话语信息的话语特征中。同时，为了在交互模块中区分会话中不同参与者的相关特征，我们设计了会话参与者表示模块，以补充说话者的态度特征和行为特征信息。</p>
+<h4 id="3-4-1-Attitude-representations-of-speakers"><a href="#3-4-1-Attitude-representations-of-speakers" class="headerlink" title="3.4.1 Attitude representations of speakers"></a>3.4.1 Attitude representations of speakers</h4><p>说话者的态度是一个重要的条件，它在很大程度上影响对话中的情绪识别。这项研究利用态度的特征为情绪识别提供了一些重要的见解。为了确定说话者当前的态度，我们不仅要考察说话者当前的话语，还要考察其历史话语和后续话语。我们确定姿态表示是一个时序信息编码问题，因为姿态随时间变化。长短期记忆（LSTM）模型可以捕捉文本信息之间的长期依赖关系。双向LSTM可以分别在两个方向上使用LSTM从历史和后续话语中吸收态度信息。因此，本研究采用BiLSTM，以通过对话者的话语来捕捉对话者的潜在态度。双向LSTM的输出被拼接以形成说话者的姿态表示。这些表征反映了说话者当前的发言态度，以及说话者在发言前后态度是否发生了变化的重要信息。</p>
+<h4 id="3-4-2-Behavior-representations-of-speakers"><a href="#3-4-2-Behavior-representations-of-speakers" class="headerlink" title="3.4.2 Behavior representations of speakers"></a>3.4.2 Behavior representations of speakers</h4><p>对话行为是说话者对他人话语的即时反应。当试图理解对话中一个说话者的行为时，我们还必须考虑对话中其他人所说的话语。因此，在对话中同时考虑说话者和其他人的话语有可能提高情绪识别任务的准确性。与态度编码器类似，我们使用BilSTM编码器对同一会话场景中的话语表示进行加密，以学习说话者的行为表示。</p>
+<p>图3说明了两人对话中说话者的态度编码器和说话者的行为编码器的结构细节。如图3（a）所示，两人对话序列被交替地划分为说话者1和2的话语序列。单独的话语序列被提供给BiLSTM用于编码，以便获得关于话语的上下文信息。说话者的编码结果包含了更多他们对对话的态度，因为其他说话者的话语没有被纳入到过程中。图3（b）显示了同一双人示例的行为编码器。对话使用BiLSTM直接编码。许多演讲者都参与了对话编码过程。因此，对话中的话语可以代表说话者受他人影响的行为。</p>
+<p><img src="/images/image-20230111131453466.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="3-4-3-Representation-of-conversational-participants"><a href="#3-4-3-Representation-of-conversational-participants" class="headerlink" title="3.4.3 Representation of conversational participants"></a>3.4.3 Representation of conversational participants</h4><p>对话通常涉及n个参与者</p>
+<h3 id="3-5-Interaction-module"><a href="#3-5-Interaction-module" class="headerlink" title="3.5 Interaction module"></a>3.5 Interaction module</h3><hr>
+<p>2023&#x2F;1&#x2F;11 13:17 说实话这论文真的体现出典型的国内论文的情况，可以作为新手论文的模板参考，但真的不适用于初学者阅读，并且因为现在专业知识并不是很强，所以读起来也是和初学操作系统一样非常的枯燥且昏昏欲睡，这里暂且放下一段时间之后再进行论文的学习；</p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E4%B8%93%E4%B8%9A%E8%AF%BE/" class="category-chain-item">专业课</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">#人工智能</a>
+      
+        <a href="/tags/%E8%AE%BA%E6%96%87/">#论文</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>会话情感分析</div>
+      <div>https://gintoki-jpg.github.io/2023/01/10/论文_会话情感分析/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>杨再俨</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年1月10日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/02/20/%E8%80%83%E7%A0%94_%E6%95%B0%E5%AD%A6%E4%B8%80_%E9%AB%98%E6%95%B0/" title="考研_数学一_高数">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">考研_数学一_高数</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/12/17/%E6%9C%9F%E6%9C%AB_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%8D%E4%B9%A0/" title="操作系统期末复习笔记">
+                        <span class="hidden-mobile">操作系统期末复习笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+</div>
+
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,788 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/logo.png">
+  <link rel="icon" href="/img/bg/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="杨再俨">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="这门课程开设在第五学期，本篇博客主要记录课程所学以及相关知识点。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="神经网络与深度学习">
+<meta property="og:url" content="https://gintoki-jpg.github.io/2022/09/05/%E4%B8%93%E4%B8%9A_%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:site_name" content="Tintoki_blog">
+<meta property="og:description" content="这门课程开设在第五学期，本篇博客主要记录课程所学以及相关知识点。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/AI.jpg">
+<meta property="article:published_time" content="2022-09-04T23:50:00.000Z">
+<meta property="article:modified_time" content="2023-03-01T14:53:47.893Z">
+<meta property="article:author" content="YangZaiyan">
+<meta property="article:tag" content="机器学习">
+<meta property="article:tag" content="人工智能">
+<meta property="article:tag" content="课程学习">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gintoki-jpg.github.io/img/bg/AI.jpg">
+  
+  
+  
+  <title>神经网络与深度学习 - Tintoki_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"gintoki-jpg.github.io","root":"/","version":"1.9.1","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tintoki_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/bg1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">神经网络与深度学习</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-09-05 07:50" pubdate>
+          2022年9月5日 早上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          29 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">神经网络与深度学习</h1>
+            
+            <div class="markdown-body">
+              
+              <hr>
+<p>2022&#x2F;9&#x2F;11 10:51 还是得说一下，这门课程属于专业课，可能对数学要求真的比较高，所以自己看书啥的感觉真的不是一般人能够看的下去的，这里还是比较推荐直接对着相应的章节啃B站讲解视频，至少现在为止是真的没有发现一本能够将我讲明白的这类的书籍；</p>
+<hr>
+<h1 id="绪论"><a href="#绪论" class="headerlink" title="绪论"></a>绪论</h1><blockquote>
+<p>Q1：深度学习和神经网络是什么关系？各有什么相同点和不同点？</p>
+</blockquote>
+<p>A：深度学习与神经网络既有交集也有各自的集合，深度学习如深度森林不属于神经网络，单层神经网络不属于深度学习</p>
+<hr>
+<p>绪论其实也讲不了啥，相应的前置知识点我之前的博客应该也介绍过，然后我就简单针对这门课程做一个说明，首先是本学期的课程内容：</p>
+<ul>
+<li>全连接神经网络</li>
+<li>卷积神经网络</li>
+<li>网络优化与正则化</li>
+<li>循环神经网络</li>
+<li>注意力机制</li>
+<li>自编码器与表示学习</li>
+<li>图神经网络</li>
+<li>生成模型（VAE&amp;GAN）</li>
+<li>强化学习</li>
+</ul>
+<p>然后因为这门课程其实不需要最终的期末考试…所以也就是注重平时作业的完成度即可；</p>
+<h1 id="第一章-全连接神经网络"><a href="#第一章-全连接神经网络" class="headerlink" title="第一章 全连接神经网络"></a>第一章 全连接神经网络</h1><p>文章参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/LXP-Never/p/9979207.html">全连接神经网络(DNN) - 凌逆战 - 博客园 (cnblogs.com)</a></p>
+<p>全连接神经网络也被称为多层感知机MLP、深度神经网络DNN，是一种连接方式较为简单的人工神经网络，属于前馈神经网络的一种；</p>
+<h2 id="1-网络结构"><a href="#1-网络结构" class="headerlink" title="1.网络结构"></a>1.网络结构</h2><p>DNN的网络结构不是固定的，一般包含一个输入层、隐藏层以及一个输出层，每一层神经网络有若干神经元，层与层之间神经元相互连接，层内神经元互不连接，而且下一层神经元连接上一层所有的神经元。</p>
+<p><img src="/images/image-20220927195612879.png" srcset="/img/loading.gif" lazyload></p>
+<p>DNN的优点在于几乎可以拟合任何函数，其非线性拟合能力非常强；缺点在于DNN不容易训练，需要大量数据以及较多技巧才能训练好一个深层网络；</p>
+<hr>
+<p>有关全连接神经网络的介绍我们在<a href="https://gintoki-jpg.github.io/2022/08/08/%E4%B8%93%E4%B8%9A_%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/#2-9-%E6%B7%B1%E5%BA%A6%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C">机器学习 - Tintoki_blog (gintoki-jpg.github.io)</a>中写的很详细，这里就不再赘述；</p>
+<h1 id="第二章-卷积神经网络"><a href="#第二章-卷积神经网络" class="headerlink" title="第二章 卷积神经网络"></a>第二章 卷积神经网络</h1><p>文章参考：</p>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="http://zh.d2l.ai/chapter_convolutional-neural-networks/index.html">6. 卷积神经网络 — 动手学深度学习 2.0.0-beta1 documentation (d2l.ai)</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://it.taocms.org/12/15599.htm">深入理解卷积神经网络(CNN)_ IT技术精华 (taocms.org)</a></p>
+</li>
+</ul>
+<p>视频参考：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1zF411V7xu/?p=2&spm_id_from=pageDriver&vd_source=276d55048634a5b508b1b53a1ecd56b3">2-卷积的作用_哔哩哔哩_bilibili</a></li>
+</ul>
+<p>卷积神经网络是一类强大的、为处理图像数据专门设计的神经网络；</p>
+<p>卷积神经网络需要的参数少于全连接架构的网络，而且卷积也很容易用GPU并行计算。因此卷积神经网络除了能够高效地采样从而获得精确的模型，还能够高效地计算；</p>
+<p>卷积神经网络将空间不变性(无论哪种方法找到目标物体，都应该和物体的位置无关)这一概念系统化，从而基于该模型使用较少的参数来学习有用的表示；同时在设计适合于计算机视觉的神经网络架构时需要考虑以下两点原则：</p>
+<ul>
+<li><em>平移不变性</em>（translation invariance）：不管检测对象出现在图像中的哪个位置，神经网络的前面几层应该对相同的图像区域具有相似的反应，即为“平移不变性”。</li>
+<li><em>局部性</em>（locality）：神经网络的前面几层应该只探索输入图像中的局部区域，而不过度在意图像中相隔较远区域的关系，这就是“局部性”原则。最终，可以聚合这些局部特征，以在整个图像级别进行预测。</li>
+</ul>
+<h2 id="1-卷积神经网络和传统网络"><a href="#1-卷积神经网络和传统网络" class="headerlink" title="1.卷积神经网络和传统网络"></a>1.卷积神经网络和传统网络</h2><p><img src="/images/image-20220927213429853.png" srcset="/img/loading.gif" lazyload></p>
+<p>卷积神经网络基本层次结构为：</p>
+<ul>
+<li>输入层：输入为三维28x28x1的数据；</li>
+<li>卷积层</li>
+<li>池化层</li>
+<li>全连接层：全连接神经网络有介绍；</li>
+</ul>
+<p><img src="/images/image-20220927214019915.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="2-卷积层"><a href="#2-卷积层" class="headerlink" title="2.卷积层"></a>2.卷积层</h2><p>卷积是进行特征提取的一种方式，卷积神经网络中同样是使用一组权重参数得到特征值</p>
+<p><img src="/images/image-20220927214407552.png" srcset="/img/loading.gif" lazyload></p>
+<p>假设上图左边是我们的一个灰度图（5x5x1），现在我们取3x3x1的区域用作卷积提取特征<br>$$<br>[[3,3,2],[0,0,1],[3,1,2]]*[[0,1,2],[2,2,0],[0,1,2]]<br>$$<br>前者是像素矩阵，后者是权重参数矩阵，我们经过一次卷积过后得到右边的特征图；</p>
+<p>我们知道彩色图像是nxnx3的，其中3代表有三个颜色通道RGB channel，在做卷积的时候每个颜色通道需要分别去做计算，将每个通道的计算结果相加得到最后的卷积结果；</p>
+<p>下面我们给出一个直观的计算图，注意此处使用的矩阵乘法是矩阵内积（结果是标量，实际就是对应数据相乘相加，不同于矩阵外积的结果是一个矩阵）</p>
+<p><img src="/images/image-20220927220720340.png" srcset="/img/loading.gif" lazyload></p>
+<p>上面之所以输出的是两个特征图，是因为我们使用了两个卷积核来提取特征</p>
+<hr>
+<blockquote>
+<p>Q：同一个卷积核，其权重参数矩阵能不能改变呢？</p>
+</blockquote>
+<p>A：注意一点卷积核也被称为权重参数矩阵，这是两个等价的概念，同一个卷积核是不能变的，不能说在移动的过程中改变其中某个矩阵参数；</p>
+<p>为什么不能？因为如果对于不同的区域使用不同的权重参数矩阵，这将导致所需的参数量变得非常大（而我们之所以选择CNN而不是DNN就是看重它的参数较少的特点）；</p>
+<p>卷积核不能修改的这个特性被称为卷积参数共享；</p>
+<hr>
+<p>卷积层涉及概念：</p>
+<ul>
+<li>假设输入的是一个7 * 7的二维神经元，我们定义3 * 3的一个<code>感受视野</code>，也就是隐藏层的神经元与输入层的3 * 3个神经元相连，可以类似看作隐藏层中的神经元具有一个固定大小的感受视野去感受上一层的部分特征，全连接神经网络中的隐藏层的神经元的感受视野足够大以至于可以看到上一层的所有特征，但是在卷积神经网络中隐藏层中的神经元的感受视野比较小，只能看到上一层的部分特征，上一层的其他特征可以通过平移感受视野来得到同一层的其他神经元；</li>
+<li>将感受视野中的权重矩阵称为<code>卷积核</code>；</li>
+<li>将感受视野中对输入的扫描间隔称为<code>步长</code>；</li>
+<li>将通过带有卷积核的感受视野扫描生成的下一层神经元矩阵称为一个<code>特征映射图</code> —— 在一个特征映射图上的神经元使用的卷积核是相同的，这些神经元共享卷积核中的权值和偏移；</li>
+<li>边缘填充：越往边界的点被利用的次数越少，越往中间的点被利用的次数越多，但是这就不公平了，我们的初衷是给的5 * 5的图像中的每个点都重要，那就使用边缘填充使其成为7 * 7的图像以弥补一些边缘信息缺失的问题（注意边缘填充的值最好用0，否则会导致最终结果受到影响）</li>
+</ul>
+<h2 id="3-池化层"><a href="#3-池化层" class="headerlink" title="3.池化层"></a>3.池化层</h2><p>在实际的训练中，我们并不需要对图像中的每一个细节都进行特征提取和训练，所以池化的作用就是更进一步的信息抽象和特征提取，当然也会减小数据的处理量；因此当得到的特征图比较大的时候，可以通过池化层对每一个特征图进行降维操作（实际上是压缩操作，但是特征图的数量也就是深度仍然不变）；</p>
+<p>池化层有一个池化视野来对特征图矩阵进行扫描，池化视野中的矩阵值计算一般有两种计算方式：</p>
+<ul>
+<li>最大池化：取池化视野矩阵中的最大值（值越大的代表这个值越重要，这个特征越好）；</li>
+<li>平均池化：取池化视野矩阵中的平均值</li>
+</ul>
+<p>总结池化层的优点：</p>
+<p>池化层优点有：</p>
+<ul>
+<li>不变性，更关注是否存在某些特征而不是特征具体的位置。可以看作加了一个很强的先验，让学到的特征要能容忍一些的变化。（实际上这个容忍能力是非常有限的）</li>
+<li>减少下一层输入大小，减少计算量和参数量。</li>
+<li>获得定长输出。（文本分类的时候输入是不定长的，可以通过池化获得定长输出）</li>
+<li>防止过拟合或有可能会带来欠拟合。</li>
+</ul>
+<h2 id="4-卷积神经网络的网络架构"><a href="#4-卷积神经网络的网络架构" class="headerlink" title="4.卷积神经网络的网络架构"></a>4.卷积神经网络的网络架构</h2><p>CNN由输入层、输出层以及多个隐藏层组成，隐藏层可分为卷积层、池化层、RELU层以及全连接层：</p>
+<ul>
+<li>输入层：CNN的输入为原始图像，三维（RGB）或二维的向量。</li>
+<li>卷积层：CNN的核心，卷积层由一组可学习的滤波器（filter）或内核（kernels）组成，它们具有小的感受野，每个卷积核具有kernel size，padding，stride等参数。从图像的左上角依次做内积操作，提取出图片的高层次特征。</li>
+<li>池化层：对conv后输出的feature map进行下采样操作，这样的好处有降低参数的数量，防止过拟合等作用。</li>
+<li>激活层：在CNN中使用relu激活函数，在网络中引入了非线性（卷积操作是把输入图像和卷积核进行相应的线性变换，需要引入激活层非线性函数对其进行非线性映射）。通过relu激活函数传递卷积运算的结果。因此，最终特征映射中的值不是简单的线性关系。</li>
+<li>全连接层：将输入的特征图转化成一维的一个向量（简单的说就是将特征表示整合成一个值，起到分类器的作用，具体实现就是把特征图拉长之后进行全连接计算），由此实现了端到端的学习过程（即：输入一张图像或一段语音，输出一个向量或信息）</li>
+<li>输出层：用于输出结果；</li>
+</ul>
+<p>除了上述必要的层次以外，还可以增加一些功能层：</p>
+<ul>
+<li>归一化层（Batch Normalization）：在CNN中对特征的归一化</li>
+<li>切分层：对某些（图片）数据的进行分区域的单独学习</li>
+<li>融合层：对独立进行特征学习的分支进行融合</li>
+</ul>
+<blockquote>
+<p>网络层数的定义：只有附带未知参数计算的层才能算数层数中，激活层和池化层不能计入网络层数</p>
+</blockquote>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E4%B8%93%E4%B8%9A%E8%AF%BE/" class="category-chain-item">专业课</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">#机器学习</a>
+      
+        <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">#人工智能</a>
+      
+        <a href="/tags/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/">#课程学习</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>神经网络与深度学习</div>
+      <div>https://gintoki-jpg.github.io/2022/09/05/专业_神经网络与深度学习/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>杨再俨</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年9月5日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/09/06/%E4%B8%93%E4%B8%9A_%E8%84%91%E4%B8%8E%E8%AE%A4%E7%9F%A5%E7%A7%91%E5%AD%A6/" title="脑与认知科学">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">脑与认知科学</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/08/23/%E9%A1%B9%E7%9B%AE_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" title="初级项目_计算机组成原理课程设计">
+                        <span class="hidden-mobile">初级项目_计算机组成原理课程设计</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+</div>
+
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

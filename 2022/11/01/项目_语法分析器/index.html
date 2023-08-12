@@ -1,0 +1,888 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/logo.png">
+  <link rel="icon" href="/img/bg/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="杨再俨">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="大三上编译原理实验项目；">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初级项目_语法分析器">
+<meta property="og:url" content="https://gintoki-jpg.github.io/2022/11/01/%E9%A1%B9%E7%9B%AE_%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90%E5%99%A8/index.html">
+<meta property="og:site_name" content="Tintoki_blog">
+<meta property="og:description" content="大三上编译原理实验项目；">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/project.png">
+<meta property="article:published_time" content="2022-11-01T13:49:00.000Z">
+<meta property="article:modified_time" content="2023-04-19T02:51:58.672Z">
+<meta property="article:author" content="YangZaiyan">
+<meta property="article:tag" content="编译原理">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gintoki-jpg.github.io/img/bg/project.png">
+  
+  
+  
+  <title>初级项目_语法分析器 - Tintoki_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"gintoki-jpg.github.io","root":"/","version":"1.9.1","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tintoki_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/bg1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">初级项目_语法分析器</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-11-01 21:49" pubdate>
+          2022年11月1日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          24k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          199 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">初级项目_语法分析器</h1>
+            
+            <div class="markdown-body">
+              
+              <p>源码以及相关参考资料已经上传至github：<a target="_blank" rel="noopener" href="https://github.com/Gintoki-jpg/lexer-parser">https://github.com/Gintoki-jpg/lexer-parser</a></p>
+<h1 id="绪论"><a href="#绪论" class="headerlink" title="绪论"></a>绪论</h1><blockquote>
+<p>实验题目：语法分析器</p>
+</blockquote>
+<blockquote>
+<p>实验内容：编写语法分析程序，实现对算术表达式的语法分析，要求所分析算数表达式由如下的文法G产生</p>
+</blockquote>
+<p>文法G的产生式如下：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs r">E→E <span class="hljs-operator">+</span> <span class="hljs-built_in">T</span> <span class="hljs-operator">|</span> E <span class="hljs-operator">-</span> <span class="hljs-built_in">T</span> <span class="hljs-operator">|</span> <span class="hljs-built_in">T</span><br><br><span class="hljs-built_in">T</span>→<span class="hljs-built_in">T</span> <span class="hljs-operator">*</span> <span class="hljs-built_in">F</span> <span class="hljs-operator">|</span> <span class="hljs-built_in">T</span> <span class="hljs-operator">/</span> <span class="hljs-built_in">F</span> <span class="hljs-operator">|</span> <span class="hljs-built_in">F</span><br><br><span class="hljs-built_in">F</span>→<span class="hljs-punctuation">(</span>E<span class="hljs-punctuation">)</span> <span class="hljs-operator">|</span> num<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>实验要求：在对输入的算术表达式进行分析的过程中，依次输出所采用的产生式；</p>
+</blockquote>
+<p>因为实际情况，我们并没有选择利用YACC自动生成语法分析程序</p>
+<ul>
+<li><p>自顶向下的分析：</p>
+<ul>
+<li><p>编程实现算法 4.2，为给定文法自动构造预测分析表；</p>
+<p><img src="/images/image-20221101224830093.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>编程实现算法 4.1，构造 LL(1) 预测分析程序；</p>
+</li>
+</ul>
+<p><img src="/images/image-20221101225021559.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>自底向上的分析：</p>
+<ul>
+<li><p>构造识别该文法所有活前缀的 DFA；</p>
+</li>
+<li><p>构造该文法的 LR 分析表；</p>
+</li>
+<li><p>编程实现算法 4.3，构造 LR 分析程序；</p>
+</li>
+</ul>
+<p><img src="/images/image-20221101225114540.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ul>
+<p>（可能很多人看不懂这个实验要求，实际上就是一共实现三个算法4.2，4.1和4.3）</p>
+<h1 id="一、自顶向下的分析"><a href="#一、自顶向下的分析" class="headerlink" title="一、自顶向下的分析"></a>一、自顶向下的分析</h1><h2 id="1-构造预测分析表"><a href="#1-构造预测分析表" class="headerlink" title="1.构造预测分析表"></a>1.构造预测分析表</h2><h3 id="1-1-概述"><a href="#1-1-概述" class="headerlink" title="1.1 概述"></a>1.1 概述</h3><p><img src="/images/image-20221118105726766.png" srcset="/img/loading.gif" lazyload></p>
+<p>在实现之前我们先回忆一下自顶向下和ll(1)语法相关知识点；</p>
+<p>ll(1)文法是构造不带回溯的自上而下的分析的必要条件，我们对ll(1)文法的定义如下</p>
+<p><img src="/images/image-20221118105746610.png" srcset="/img/loading.gif" lazyload></p>
+<p>如果不是ll(1)文法那就根本用不了自上而下的分析方法，需要我们之后用自下向上的分析方法解决；</p>
+<p>我们应当如何将一个普通的文法改造为ll(1)文法进行自上而下的分析呢？主要使用以下步骤：</p>
+<ol>
+<li>消除文法的左递归；</li>
+<li>提取左公共因子；</li>
+<li>计算产生式右部的First集合和产生式左部的Follow集合；</li>
+<li>如果原文法为ll(1)文法，使用LL1文法的分析进行自顶向下的不带回溯的分析；</li>
+</ol>
+<p>之所以必须使用ll(1)文法进行自上而下的分析，是因为在使用ll(1)文法对符号串进行自上而下的推导(匹配)的时候，可以明确唯一的选择产生式，也就对应了预测分析表中的唯一一个选项；</p>
+<p>给定一个ll(1)文法就能唯一构造一个预测分析表，下面我们介绍怎么根据所给的ll(1)文法来构造一个预测分析表，实际就是使用算法4.2，我们将算法4.2的伪代码转换为自然语言：</p>
+<blockquote>
+<p>构造文法G的分析表M[A,o]，确定每个产生式A-&gt;a在表中的位置：</p>
+<ul>
+<li><p>对每个终结符o属于FIRST(a) ，把A→a加至M[A，o]中；</p>
+</li>
+<li><p>若空串属于FIRST(a)，则对任何 b属于FOLLOW(A) 把A→a加至M[A，b]中；</p>
+</li>
+<li><p>对文法G的每个产生式A→a执行第1步和第2步；</p>
+</li>
+<li><p>把所有无定义的M[A，o]标上“出错标志”；</p>
+</li>
+</ul>
+</blockquote>
+<h3 id="1-2-程序实现"><a href="#1-2-程序实现" class="headerlink" title="1.2 程序实现"></a>1.2 程序实现</h3><p>构造预测分析表的流程图如下</p>
+<p><img src="/images/image-20221106220109797.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们需要手动计算一下相关的First集和Follow集</p>
+<p><img src="/images/image-20221106225440534.png" srcset="/img/loading.gif" lazyload></p>
+<p>根据上述规则构造的预测分析表如下，我们到时候也可以根据这个结果检查我们的程序是否编写正确</p>
+<p><img src="/images/image-20221106225535781.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="1-2-1-模块设计"><a href="#1-2-1-模块设计" class="headerlink" title="1.2.1 模块设计"></a>1.2.1 模块设计</h4><p>我们主要需要用到以下的类和容器：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Syntax_Analyzer</span>&#123;                               <span class="hljs-comment">//语法分析器类，这个类是整个程序的核心，包含了所有核心函数，所有语法分析需要进行的动作都只能通过它发起，类似一个接口;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">PREDICT_TABLE <span class="hljs-title">create_predict_table</span><span class="hljs-params">(GRAMMAR_TABLE G, FIRST_TABLE first_table, FOLLOW_TABLE follow_table)</span></span>;    <span class="hljs-comment">//创建一个预测分析表</span><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">print_predict_table</span><span class="hljs-params">(PREDICT_TABLE predict_table)</span></span>;                                                      <span class="hljs-comment">//输出预测分析表</span><br>    <span class="hljs-function">ANALYZE_TABLE <span class="hljs-title">create_analyze_table</span><span class="hljs-params">(string input_string, PREDICT_TABLE M)</span></span>;                                   <span class="hljs-comment">//根据预测分析表开始进行语法分析(ll(1)非递归预测分析)</span><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">print_analyze_table</span><span class="hljs-params">(ANALYZE_TABLE analyze_table)</span></span>;                                                      <span class="hljs-comment">//输出非递归预测分析的过程，即非递归预测分析对象</span><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">error</span><span class="hljs-params">(string error_string)</span>                                                                             <span class="hljs-comment">//输出错误字符串/错误信息</span></span><br><span class="hljs-function">    </span>&#123;<br>        cout &lt;&lt; error_string &lt;&lt; endl;<br>    &#125;;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">typedef</span> map&lt;string, vector&lt;string&gt;&gt; FIRST_TABLE;  <span class="hljs-comment">//First集合</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">typedef</span> map&lt;string, vector&lt;string&gt;&gt; FOLLOW_TABLE; <span class="hljs-comment">//Follow集合</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">typedef</span> vector&lt;vector&lt;string&gt;&gt; ANALYZE_TABLE;     <span class="hljs-comment">//ll(1)语法分析表，第二阶段输出分析过程的时候使用</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">GRAMMAR_TABLE</span>&#123;                                <span class="hljs-comment">//语法表，用于保存所给的文法的相关信息</span><br><span class="hljs-keyword">public</span>:<br>    map&lt;string, vector&lt;string&gt;&gt; production;        <span class="hljs-comment">//产生式</span><br>    vector&lt;string&gt; nonterminal;                     <span class="hljs-comment">//非终结符</span><br>    vector&lt;string&gt; terminator;                      <span class="hljs-comment">//终结符</span><br>    string start_symbol;                             <span class="hljs-comment">//起始符号</span><br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">PREDICT_TABLE</span>&#123;                                <span class="hljs-comment">//预测分析表，这是我们第一阶段需要构造的表</span><br><span class="hljs-keyword">public</span>:<br>    map&lt;string, map&lt;string, string&gt;&gt; table;      <span class="hljs-comment">//预测分析表</span><br>    vector&lt;string&gt; nonterminal;                   <span class="hljs-comment">//非终结符</span><br>    vector&lt;string&gt; terminator;                    <span class="hljs-comment">//终结符</span><br>    string start_symbol;                           <span class="hljs-comment">//起始符号</span><br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h4 id="1-2-2-函数封装"><a href="#1-2-2-函数封装" class="headerlink" title="1.2.2 函数封装"></a>1.2.2 函数封装</h4><h5 id="1-全局初始化函数"><a href="#1-全局初始化函数" class="headerlink" title="(1)全局初始化函数"></a>(1)全局初始化函数</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Syntax_Analyzer::global_init</span><span class="hljs-params">(GRAMMAR_TABLE &amp;G, FIRST_TABLE &amp;first_table, FOLLOW_TABLE &amp;follow_table)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-comment">//1.初始化每个非终结符能够产生的所有推导结果集合（即产生式集合）</span><br>    <span class="hljs-comment">//这里由于使用E&#x27;这种形式会变成双字符不利于后续处理，所以我们将E&#x27;变为了G，将T&#x27;变成了U</span><br>    vector&lt;string&gt; E_vector;<br>    E_vector.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;TG&quot;</span>);<br>    G.production.<span class="hljs-built_in">insert</span>(pair&lt;string, vector&lt;string&gt;&gt;(<span class="hljs-string">&quot;E&quot;</span>, E_vector));<br><br>    vector&lt;string&gt; G_vector;<br>    G_vector.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;+TG&quot;</span>);<br>    G_vector.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;-TG&quot;</span>);<br>    G_vector.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;ε&quot;</span>);<br>    G.production.<span class="hljs-built_in">insert</span>(pair&lt;string, vector&lt;string&gt;&gt;(<span class="hljs-string">&quot;G&quot;</span>, G_vector));<br><br>    vector&lt;string&gt; T_vector;<br>    T_vector.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;FU&quot;</span>);<br>    G.production.<span class="hljs-built_in">insert</span>(pair&lt;string, vector&lt;string&gt;&gt;(<span class="hljs-string">&quot;T&quot;</span>, T_vector));<br><br>    vector&lt;string&gt; U_vector;<br>    U_vector.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;*FU&quot;</span>);<br>    U_vector.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;/FU&quot;</span>);<br>    U_vector.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;ε&quot;</span>);<br>    G.production.<span class="hljs-built_in">insert</span>(pair&lt;string, vector&lt;string&gt;&gt;(<span class="hljs-string">&quot;U&quot;</span>, U_vector));<br><br>    vector&lt;string&gt; F_vector;<br>    F_vector.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;(E)&quot;</span>);<br>    F_vector.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;id&quot;</span>);<br>    G.production.<span class="hljs-built_in">insert</span>(pair&lt;string, vector&lt;string&gt;&gt;(<span class="hljs-string">&quot;F&quot;</span>, F_vector));<br>    <span class="hljs-comment">//2.初始化所有终结符和非终结符</span><br>    G.nonterminal.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;E&quot;</span>);<br>    G.nonterminal.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;G&quot;</span>);<br>    G.nonterminal.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;T&quot;</span>);<br>    G.nonterminal.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;U&quot;</span>);<br>    G.nonterminal.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;F&quot;</span>);<br>    G.terminator.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;+&quot;</span>);<br>    G.terminator.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;-&quot;</span>);<br>    G.terminator.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;*&quot;</span>);<br>    G.terminator.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;/&quot;</span>);<br>    G.terminator.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;(&quot;</span>);<br>    G.terminator.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;)&quot;</span>);<br>    G.terminator.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;id&quot;</span>);<br>    G.terminator.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;$&quot;</span>);<br>    G.start_symbol = <span class="hljs-string">&quot;E&quot;</span>;<br>    <span class="hljs-comment">//3.初始化每个非终结符对应的First集合与Follow集合</span><br>    vector&lt;string&gt; E_first_vector;<br>    E_first_vector.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;(&quot;</span>);<br>    E_first_vector.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;id&quot;</span>);<br>    first_table.<span class="hljs-built_in">insert</span>(pair&lt;string, vector&lt;string&gt;&gt;(<span class="hljs-string">&quot;E&quot;</span>, E_first_vector));<br><br>    vector&lt;string&gt; G_first_vector;<br>    G_first_vector.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;+&quot;</span>);<br>    G_first_vector.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;-&quot;</span>);<br>    G_first_vector.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;ε&quot;</span>);<br>    first_table.<span class="hljs-built_in">insert</span>(pair&lt;string, vector&lt;string&gt;&gt;(<span class="hljs-string">&quot;G&quot;</span>, G_first_vector));<br><br>    vector&lt;string&gt; T_first_vector;<br>    T_first_vector.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;(&quot;</span>);<br>    T_first_vector.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;id&quot;</span>);<br>    first_table.<span class="hljs-built_in">insert</span>(pair&lt;string, vector&lt;string&gt;&gt;(<span class="hljs-string">&quot;T&quot;</span>, T_first_vector));<br><br>    vector&lt;string&gt; U_first_vector;<br>    U_first_vector.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;*&quot;</span>);<br>    U_first_vector.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;/&quot;</span>);<br>    U_first_vector.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;ε&quot;</span>);<br>    first_table.<span class="hljs-built_in">insert</span>(pair&lt;string, vector&lt;string&gt;&gt;(<span class="hljs-string">&quot;U&quot;</span>, U_first_vector));<br><br>    vector&lt;string&gt; F_first_vector;<br>    F_first_vector.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;(&quot;</span>);<br>    F_first_vector.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;id&quot;</span>);<br>    first_table.<span class="hljs-built_in">insert</span>(pair&lt;string, vector&lt;string&gt;&gt;(<span class="hljs-string">&quot;F&quot;</span>, F_first_vector));<br><br>    vector&lt;string&gt; E_follow_vector;<br>    E_follow_vector.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;$&quot;</span>);<br>    E_follow_vector.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;)&quot;</span>);<br>    follow_table.<span class="hljs-built_in">insert</span>(pair&lt;string, vector&lt;string&gt;&gt;(<span class="hljs-string">&quot;E&quot;</span>, E_follow_vector));<br><br>    vector&lt;string&gt; G_follow_vector;<br>    G_follow_vector.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;$&quot;</span>);<br>    G_follow_vector.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;)&quot;</span>);<br>    follow_table.<span class="hljs-built_in">insert</span>(pair&lt;string, vector&lt;string&gt;&gt;(<span class="hljs-string">&quot;G&quot;</span>, G_follow_vector));<br><br>    vector&lt;string&gt; T_follow_vector;<br>    T_follow_vector.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;+&quot;</span>);<br>    T_follow_vector.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;-&quot;</span>);<br>    T_follow_vector.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;$&quot;</span>);<br>    T_follow_vector.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;)&quot;</span>);<br>    follow_table.<span class="hljs-built_in">insert</span>(pair&lt;string, vector&lt;string&gt;&gt;(<span class="hljs-string">&quot;T&quot;</span>, T_follow_vector));<br><br>    vector&lt;string&gt; U_follow_vector;<br>    U_follow_vector.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;+&quot;</span>);<br>    U_follow_vector.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;-&quot;</span>);<br>    U_follow_vector.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;$&quot;</span>);<br>    U_follow_vector.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;)&quot;</span>);<br>    follow_table.<span class="hljs-built_in">insert</span>(pair&lt;string, vector&lt;string&gt;&gt;(<span class="hljs-string">&quot;U&quot;</span>, U_follow_vector));<br><br>    vector&lt;string&gt; F_follow_vector;<br>    F_follow_vector.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;*&quot;</span>);<br>    F_follow_vector.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;/&quot;</span>);<br>    F_follow_vector.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;+&quot;</span>);<br>    F_follow_vector.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;-&quot;</span>);<br>    F_follow_vector.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;$&quot;</span>);<br>    F_follow_vector.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;)&quot;</span>);<br>    follow_table.<span class="hljs-built_in">insert</span>(pair&lt;string, vector&lt;string&gt;&gt;(<span class="hljs-string">&quot;F&quot;</span>, F_follow_vector));<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h5 id="2-创建预测分析表函数"><a href="#2-创建预测分析表函数" class="headerlink" title="(2)创建预测分析表函数"></a>(2)创建预测分析表函数</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function">PREDICT_TABLE <span class="hljs-title">Syntax_Analyzer::create_predict_table</span><span class="hljs-params">(GRAMMAR_TABLE G, FIRST_TABLE first_table, FOLLOW_TABLE follow_table)</span></span><br><span class="hljs-function"></span>&#123;<br>    PREDICT_TABLE M;<br>    <span class="hljs-comment">//加入所有非终结符</span><br>    M.table.<span class="hljs-built_in">insert</span>(pair&lt;string, map&lt;string, string&gt;&gt;(<span class="hljs-string">&quot;E&quot;</span>, <span class="hljs-built_in">map</span>&lt;string, string&gt;()));<br>    M.table.<span class="hljs-built_in">insert</span>(pair&lt;string, map&lt;string, string&gt;&gt;(<span class="hljs-string">&quot;G&quot;</span>, <span class="hljs-built_in">map</span>&lt;string, string&gt;()));<br>    M.table.<span class="hljs-built_in">insert</span>(pair&lt;string, map&lt;string, string&gt;&gt;(<span class="hljs-string">&quot;T&quot;</span>, <span class="hljs-built_in">map</span>&lt;string, string&gt;()));<br>    M.table.<span class="hljs-built_in">insert</span>(pair&lt;string, map&lt;string, string&gt;&gt;(<span class="hljs-string">&quot;U&quot;</span>, <span class="hljs-built_in">map</span>&lt;string, string&gt;()));<br>    M.table.<span class="hljs-built_in">insert</span>(pair&lt;string, map&lt;string, string&gt;&gt;(<span class="hljs-string">&quot;F&quot;</span>, <span class="hljs-built_in">map</span>&lt;string, string&gt;()));<br>    <span class="hljs-comment">//遍历G的production，根据first集合和follow集合填空</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> iter = G.production.<span class="hljs-built_in">begin</span>(); iter != G.production.<span class="hljs-built_in">end</span>(); iter++)<br>    &#123;<br>        string A = iter-&gt;first;<span class="hljs-comment">//iter指向的对象production是一个&lt;string, vector&lt;string&gt;&gt;，分别使用first和second迭代遍历string和vector对象</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> iter2 = iter-&gt;second.<span class="hljs-built_in">begin</span>(); iter2 != iter-&gt;second.<span class="hljs-built_in">end</span>(); iter2++)<br>        &#123;<br>            string alpha = *iter2;<br>            <span class="hljs-keyword">if</span> (alpha[<span class="hljs-number">0</span>] &gt;= <span class="hljs-string">&#x27;A&#x27;</span> &amp;&amp; alpha[<span class="hljs-number">0</span>] &lt;= <span class="hljs-string">&#x27;Z&#x27;</span>) <span class="hljs-comment">//如果vector中的元素的第一个字符是大写字母如&quot;FU&quot;</span><br>            &#123;<br>                vector&lt;string&gt; first_vector = first_table.<span class="hljs-built_in">find</span>(<span class="hljs-built_in">string</span>(<span class="hljs-number">1</span>, alpha[<span class="hljs-number">0</span>]))-&gt;second;    <span class="hljs-comment">//根据first集合构造预测分析表</span><br>                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> a = first_vector.<span class="hljs-built_in">begin</span>(); a != first_vector.<span class="hljs-built_in">end</span>(); a++)<br>                &#123;<br>                    <span class="hljs-keyword">if</span> (*a != <span class="hljs-string">&quot;ε&quot;</span>)<br>                    &#123;<br>                        M.table.<span class="hljs-built_in">find</span>(A)-&gt;second.<span class="hljs-built_in">insert</span>(<span class="hljs-built_in">pair</span>&lt;string, string&gt;(*a, alpha));<br>                    &#125;<br>                &#125;<br>                <span class="hljs-keyword">if</span> (<span class="hljs-built_in">find</span>(first_vector.<span class="hljs-built_in">begin</span>(), first_vector.<span class="hljs-built_in">end</span>(), <span class="hljs-string">&quot;ε&quot;</span>) != first_vector.<span class="hljs-built_in">end</span>()) <span class="hljs-comment">//假如ε属于first(产生式右部符号)</span><br>                &#123;<br>                    vector&lt;string&gt; follow_vector = follow_table.<span class="hljs-built_in">find</span>(A)-&gt;second;<br>                    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> b = follow_vector.<span class="hljs-built_in">begin</span>(); b != follow_vector.<span class="hljs-built_in">end</span>(); b++)<br>                    &#123;<br>                        <span class="hljs-keyword">if</span> (*b != <span class="hljs-string">&quot;ε&quot;</span>)<br>                        &#123;<br>                            M.table.<span class="hljs-built_in">find</span>(A)-&gt;second.<span class="hljs-built_in">insert</span>(<span class="hljs-built_in">pair</span>&lt;string, string&gt;(*b, alpha));<br>                        &#125;<br>                    &#125;<br>                &#125;<br>            &#125;<br>            <span class="hljs-keyword">else</span><br>            &#123;<br>                string alpha_first;<br>                <span class="hljs-keyword">if</span> (<span class="hljs-built_in">start_pattern</span>(alpha, <span class="hljs-string">&quot;id&quot;</span>))        <span class="hljs-comment">//如果产生式右部以id开头则将first赋值为id(之所以不与else合并是因为id是两个字符，不符合alpha[0]的要求)</span><br>                &#123;<br>                    alpha_first = <span class="hljs-string">&quot;id&quot;</span>;<br>                &#125;<br>                <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-built_in">start_pattern</span>(alpha, <span class="hljs-string">&quot;ε&quot;</span>))<br>                &#123;<br>                    alpha_first = <span class="hljs-string">&quot;ε&quot;</span>;<br>                &#125;<br>                <span class="hljs-keyword">else</span><br>                &#123;<br>                    alpha_first = alpha[<span class="hljs-number">0</span>];<br>                &#125;<br><br>                <span class="hljs-keyword">if</span> (alpha_first != <span class="hljs-string">&quot;ε&quot;</span>)<br>                &#123;<br>                    M.table.<span class="hljs-built_in">find</span>(A)-&gt;second.<span class="hljs-built_in">insert</span>(<span class="hljs-built_in">pair</span>&lt;string, string&gt;(alpha_first, alpha));<br>                &#125;<br>                <span class="hljs-keyword">if</span> (alpha_first == <span class="hljs-string">&quot;ε&quot;</span>)<br>                &#123;<br>                    vector&lt;string&gt; follow_vector = follow_table.<span class="hljs-built_in">find</span>(A)-&gt;second;<br>                    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> b = follow_vector.<span class="hljs-built_in">begin</span>(); b != follow_vector.<span class="hljs-built_in">end</span>(); b++)<br>                    &#123;<br>                        <span class="hljs-keyword">if</span> (*b != <span class="hljs-string">&quot;ε&quot;</span>)<br>                        &#123;<br>                            M.table.<span class="hljs-built_in">find</span>(A)-&gt;second.<span class="hljs-built_in">insert</span>(<span class="hljs-built_in">pair</span>&lt;string, string&gt;(*b, alpha));<br>                        &#125;<br>                    &#125;<br>                &#125;<br>            &#125;<br>        &#125;<br>    &#125;<br>    <span class="hljs-comment">//遍历G的非终结符，将上一步填充的对应产生式insert到M的table中，若没有对应的产生式则填入&quot;error&quot;</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> iter = G.nonterminal.<span class="hljs-built_in">begin</span>(); iter != G.nonterminal.<span class="hljs-built_in">end</span>(); iter++)<br>    &#123;<br>        string A = *iter;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> iter2 = G.terminator.<span class="hljs-built_in">begin</span>(); iter2 != G.terminator.<span class="hljs-built_in">end</span>(); iter2++)<br>        &#123;<br>            string a = *iter2;<br>            <span class="hljs-keyword">if</span> (M.table.<span class="hljs-built_in">find</span>(A)-&gt;second.<span class="hljs-built_in">find</span>(a) == M.table.<span class="hljs-built_in">find</span>(A)-&gt;second.<span class="hljs-built_in">end</span>())<br>            &#123;<br>                M.table.<span class="hljs-built_in">find</span>(A)-&gt;second.<span class="hljs-built_in">insert</span>(<span class="hljs-built_in">pair</span>&lt;string, string&gt;(a, <span class="hljs-string">&quot;error&quot;</span>));<br>            &#125;<br>        &#125;<br>    &#125;<br>    M.nonterminal = G.nonterminal;<br>    M.terminator = G.terminator;<br>    M.start_symbol = G.start_symbol;<br>    cout&lt;&lt;<span class="hljs-string">&quot;Predict table build successfully!&quot;</span>&lt;&lt;endl;<br>    <span class="hljs-keyword">return</span> M;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<h5 id="3-输出预测分析表函数"><a href="#3-输出预测分析表函数" class="headerlink" title="(3)输出预测分析表函数"></a>(3)输出预测分析表函数</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Syntax_Analyzer::print_predict_table</span><span class="hljs-params">(PREDICT_TABLE M)</span></span><br><span class="hljs-function"></span>&#123;<br>    cout &lt;&lt; <span class="hljs-string">&quot;\t\t\t\t&lt;====================Predict table====================&gt;&quot;</span> &lt;&lt; endl;<br>    cout &lt;&lt; <span class="hljs-string">&quot;\t&quot;</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> iter : M.table.<span class="hljs-built_in">begin</span>()-&gt;second)<br>    &#123;<br>        cout &lt;&lt; iter.first &lt;&lt; <span class="hljs-string">&quot;\t\t&quot;</span>;<br>    &#125;<br>    cout &lt;&lt; endl;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> iter = M.table.<span class="hljs-built_in">begin</span>(); iter != M.table.<span class="hljs-built_in">end</span>(); iter++)<br>    &#123;<br>        cout &lt;&lt; iter-&gt;first &lt;&lt; <span class="hljs-string">&quot;\t&quot;</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> iter2 = iter-&gt;second.<span class="hljs-built_in">begin</span>(); iter2 != iter-&gt;second.<span class="hljs-built_in">end</span>(); iter2++)<br>        &#123;<br>            string output_str;<br>            <span class="hljs-keyword">if</span> (iter2-&gt;second == <span class="hljs-string">&quot;error&quot;</span>)<br>            &#123;<br>                output_str = <span class="hljs-string">&quot;error&quot;</span>;<br>            &#125;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (iter2-&gt;second == <span class="hljs-string">&quot;ε&quot;</span>)<br>            &#123;<br>                output_str = iter-&gt;first + <span class="hljs-string">&quot;-&gt;&lt;epsilon&gt;&quot;</span>;<br>            &#125;<br>            <span class="hljs-keyword">else</span><br>            &#123;<br>                output_str = iter-&gt;first + <span class="hljs-string">&quot;-&gt;&quot;</span> + iter2-&gt;second;<br>            &#125;<br>            <span class="hljs-keyword">if</span> (output_str.<span class="hljs-built_in">length</span>() &gt;= <span class="hljs-number">8</span>)<br>            &#123;<br>                cout &lt;&lt; output_str &lt;&lt; <span class="hljs-string">&quot;\t&quot;</span>;<br>            &#125;<br>            <span class="hljs-keyword">else</span><br>            &#123;<br>                cout &lt;&lt; output_str &lt;&lt; <span class="hljs-string">&quot;\t\t&quot;</span>;<br>            &#125;<br>        &#125;<br>        cout &lt;&lt; endl;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="2-非递归预测分析"><a href="#2-非递归预测分析" class="headerlink" title="2.非递归预测分析"></a>2.非递归预测分析</h2><h3 id="2-1-概述"><a href="#2-1-概述" class="headerlink" title="2.1 概述"></a>2.1 概述</h3><p>假设我们已经有了预测分析表和待分析的符号串，下面需要做的就是根据算法4.1完成非递归预测分析</p>
+<p><img src="/images/image-20221101225021559-16677340933461.png" srcset="/img/loading.gif" lazyload></p>
+<p>下面我们简单举一个例子展示</p>
+<p><img src="/images/image-20221007120608949-16677343332533.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们的程序最终应当是具备如下形式的</p>
+<p><img src="/images/image-20221106212937566.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221106210233579.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-2-程序实现"><a href="#2-2-程序实现" class="headerlink" title="2.2 程序实现"></a>2.2 程序实现</h3><p>根据所给文法的预测分析表和输入字符串进行非递归预测分析的流程如下</p>
+<p><img src="/images/image-20221106220303837.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-2-1-模块设计"><a href="#2-2-1-模块设计" class="headerlink" title="2.2.1 模块设计"></a>2.2.1 模块设计</h4><p>在构建预测分析表的过程中我们已经将所有需要使用的模块均定义完毕，所以这里不再需要额外定义；</p>
+<h4 id="2-2-2-函数封装"><a href="#2-2-2-函数封装" class="headerlink" title="2.2.2 函数封装"></a>2.2.2 函数封装</h4><h5 id="1-创建非递归预测分析表函数"><a href="#1-创建非递归预测分析表函数" class="headerlink" title="(1)创建非递归预测分析表函数"></a>(1)创建非递归预测分析表函数</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function">ANALYZE_TABLE <span class="hljs-title">Syntax_Analyzer::create_analyze_table</span><span class="hljs-params">(string input_string, PREDICT_TABLE M)</span></span><br><span class="hljs-function"></span>&#123;<br>    ANALYZE_TABLE analyze_table;<br>    <span class="hljs-type">int</span> ip = <span class="hljs-number">0</span>;<br>    input_string += <span class="hljs-string">&quot;$&quot;</span>;                                                <span class="hljs-comment">//在输入符号串末尾加上结束符号$</span><br>    vector&lt;string&gt; stack;<br>    stack.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;$&quot;</span>);                                              <span class="hljs-comment">//stack用于存放推导过程中符号栈的变化，栈底以$填充</span><br>    stack.<span class="hljs-built_in">push_back</span>(M.start_symbol);                                   <span class="hljs-comment">//栈中填入文法起始符号作为开始标志</span><br>    <span class="hljs-keyword">while</span> (stack.<span class="hljs-built_in">size</span>() != <span class="hljs-number">1</span>)<br>    &#123;<br>        vector&lt;string&gt; analyze_table_item;<br>        analyze_table.<span class="hljs-built_in">push_back</span>(analyze_table_item);<br>        string stack_str = <span class="hljs-string">&quot;[\&quot;&quot;</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> iter = stack.<span class="hljs-built_in">begin</span>(); iter != stack.<span class="hljs-built_in">end</span>(); iter++)<br>        &#123;<br>            stack_str += *iter + <span class="hljs-string">&quot;\&quot;,\&quot;&quot;</span>;<br>        &#125;<br>        stack_str.<span class="hljs-built_in">erase</span>(stack_str.<span class="hljs-built_in">length</span>() - <span class="hljs-number">2</span>, <span class="hljs-number">2</span>);<br>        stack_str += <span class="hljs-string">&quot;]&quot;</span>;<br>        analyze_table.<span class="hljs-built_in">back</span>().<span class="hljs-built_in">push_back</span>(stack_str);<br>        string input_str = input_string.<span class="hljs-built_in">substr</span>(ip);<br>        analyze_table.<span class="hljs-built_in">back</span>().<span class="hljs-built_in">push_back</span>(input_str);                     <span class="hljs-comment">//格式化符号栈analyze_table</span><br>        string X = stack.<span class="hljs-built_in">back</span>();                                       <span class="hljs-comment">//从符号栈stack的第一个符号(栈顶元素)开始比对</span><br>        <span class="hljs-comment">//若栈顶元素等于终结符（find方法如果查找失败会返回end迭代器）</span><br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">find</span>(M.terminator.<span class="hljs-built_in">begin</span>(), M.terminator.<span class="hljs-built_in">end</span>(), X) != M.terminator.<span class="hljs-built_in">end</span>())<br>        &#123;<br>            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">start_pattern</span>(input_string.<span class="hljs-built_in">substr</span>(ip), X))<br>            &#123;<br>                ip += X.<span class="hljs-built_in">size</span>();<br>                stack.<span class="hljs-built_in">pop_back</span>();<br>            &#125;<br>            <span class="hljs-comment">//错误类型：输入符号与栈顶符号不匹配（终结符不匹配）</span><br>            <span class="hljs-keyword">else</span><br>            &#123;<br>                <span class="hljs-built_in">error</span>(<span class="hljs-string">&quot;Error:Input symbol does not match stack top symbol &quot;</span>+X+<span class="hljs-string">&quot;!&quot;</span>);<br>                <span class="hljs-keyword">return</span> analyze_table;<br>            &#125;<br>        &#125;<br>        <span class="hljs-comment">//若栈顶元素等于非终结符</span><br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-built_in">find</span>(M.nonterminal.<span class="hljs-built_in">begin</span>(), M.nonterminal.<span class="hljs-built_in">end</span>(), X) != M.nonterminal.<span class="hljs-built_in">end</span>())<br>        &#123;<br>            string input_string_first;<br>            <span class="hljs-keyword">if</span> (input_string[ip] == <span class="hljs-string">&#x27;i&#x27;</span> &amp;&amp; input_string[ip + <span class="hljs-number">1</span>] == <span class="hljs-string">&#x27;d&#x27;</span>)<br>            &#123;<br>                input_string_first = <span class="hljs-string">&quot;id&quot;</span>;<br>            &#125;<br>            <span class="hljs-keyword">else</span><br>            &#123;<br>                input_string_first = input_string.<span class="hljs-built_in">substr</span>(ip, <span class="hljs-number">1</span>);<br>            &#125;<br>            <span class="hljs-comment">//错误类型：预测分析表中根本就没有相应的产生式或者对应的非终结符</span><br>            <span class="hljs-keyword">if</span> (M.table.<span class="hljs-built_in">find</span>(X) == M.table.<span class="hljs-built_in">end</span>() || M.table.<span class="hljs-built_in">find</span>(X)-&gt;second.<span class="hljs-built_in">find</span>(input_string_first) == M.table.<span class="hljs-built_in">find</span>(X)-&gt;second.<span class="hljs-built_in">end</span>())<br>            &#123;<br>                <span class="hljs-built_in">error</span>(<span class="hljs-string">&quot;Error:There is no corresponding production of &quot;</span>+X+<span class="hljs-string">&quot; in the Predict table!&quot;</span>);<br>                <span class="hljs-keyword">return</span> analyze_table;<br>            &#125;<br>            string Y = M.table.<span class="hljs-built_in">find</span>(X)-&gt;second.<span class="hljs-built_in">find</span>(input_string_first)-&gt;second;<br>            <span class="hljs-comment">//错误类型：预测分析表中对应的值为error</span><br>            <span class="hljs-keyword">if</span> (Y == <span class="hljs-string">&quot;error&quot;</span>)<br>            &#123;<br>                <span class="hljs-built_in">error</span>(<span class="hljs-string">&quot;Error:The corresponding value of &quot;</span>+X+<span class="hljs-string">&quot; in the Predict table is error!&quot;</span>);<br>                <span class="hljs-keyword">return</span> analyze_table;<br>            &#125;<br>            <span class="hljs-keyword">else</span><br>            &#123;<br>                stack.<span class="hljs-built_in">pop_back</span>();<br>                <span class="hljs-keyword">if</span> (Y != <span class="hljs-string">&quot;ε&quot;</span>)<br>                &#123;<br>                    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> iter = Y.<span class="hljs-built_in">rbegin</span>(); iter != Y.<span class="hljs-built_in">rend</span>(); iter++)<br>                    &#123;<br>                        string first;<br>                        <span class="hljs-keyword">if</span> (*iter == <span class="hljs-string">&#x27;d&#x27;</span> &amp;&amp; *(iter + <span class="hljs-number">1</span>) == <span class="hljs-string">&#x27;i&#x27;</span>)<br>                        &#123;<br>                            first = <span class="hljs-string">&quot;id&quot;</span>;<br>                            iter += <span class="hljs-number">1</span>;<br>                        &#125;<br>                        <span class="hljs-keyword">else</span><br>                        &#123;<br>                            first = <span class="hljs-built_in">string</span>(<span class="hljs-number">1</span>, *iter);<br>                        &#125;<br>                        stack.<span class="hljs-built_in">push_back</span>(first);<br>                    &#125;<br>                    analyze_table.<span class="hljs-built_in">back</span>().<span class="hljs-built_in">push_back</span>(X + <span class="hljs-string">&quot;-&gt;&quot;</span> + Y);<br>                &#125;<br>                <span class="hljs-keyword">else</span><br>                &#123;<br>                    analyze_table.<span class="hljs-built_in">back</span>().<span class="hljs-built_in">push_back</span>(X + <span class="hljs-string">&quot;-&gt;&lt;epsilon&gt;&quot;</span>);<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-comment">//错误类型：栈顶元素既不是终结符也不是非终结符，属于非法符号</span><br>        <span class="hljs-keyword">else</span><br>        &#123;<br>            <span class="hljs-built_in">error</span>(<span class="hljs-string">&quot;Error:The top element of the stack &quot;</span>+X+<span class="hljs-string">&quot; is an illegal symbol!&quot;</span>);<br>            <span class="hljs-keyword">return</span> analyze_table;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (input_string[ip] == <span class="hljs-string">&#x27;$&#x27;</span>)                                        <span class="hljs-comment">//接受条件是最终输入符号串露出终结符号$(这里不需要再判断符号栈的栈底，因为只有符号栈size为1的时候才能退出while循环)</span><br>    &#123;<br>        cout &lt;&lt; <span class="hljs-string">&quot;Accepted the Inpute string!&quot;</span> &lt;&lt; endl;<br>        vector&lt;string&gt; analyze_table_item;<br>        analyze_table.<span class="hljs-built_in">push_back</span>(analyze_table_item);<br>        analyze_table.<span class="hljs-built_in">back</span>().<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;[\&quot;$\&quot;]&quot;</span>);                     <span class="hljs-comment">//accepted之后还需要输出最后一行，也就是符号栈为[&quot;$&quot;]，输入符号为$</span><br>        analyze_table.<span class="hljs-built_in">back</span>().<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;$&quot;</span>);<br>    &#125;<br>    <span class="hljs-comment">//错误类型：不接受，此时符号栈已经为空但输入符号仍不为空</span><br>    <span class="hljs-keyword">else</span><br>    &#123;<br>        <span class="hljs-built_in">error</span>(<span class="hljs-string">&quot;Error:The stack is empty but the input string isn&#x27;t!&quot;</span>);<br>    &#125;<br>    cout&lt;&lt;<span class="hljs-string">&quot;Analyze table build successfully!&quot;</span>&lt;&lt;endl;<br>    <span class="hljs-keyword">return</span> analyze_table;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h5 id="2-输出非递归预测分析表函数"><a href="#2-输出非递归预测分析表函数" class="headerlink" title="(2)输出非递归预测分析表函数"></a>(2)输出非递归预测分析表函数</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Syntax_Analyzer::print_analyze_table</span><span class="hljs-params">(ANALYZE_TABLE analyze_table)</span></span><br><span class="hljs-function"></span>&#123;<br>    cout &lt;&lt; <span class="hljs-string">&quot;\t\t\t\t&lt;====================Analyze table====================&gt;&quot;</span> &lt;&lt; endl;<br>    cout&lt;&lt;<span class="hljs-string">&quot;Stack\t\t\t\t\t\tInput String\t\t\tProduction&quot;</span>&lt;&lt;endl;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> iter = analyze_table.<span class="hljs-built_in">begin</span>(); iter != analyze_table.<span class="hljs-built_in">end</span>(); iter++)<br>    &#123;<br>        vector&lt;string&gt; analyze_table_item = *iter;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> iter2 = analyze_table_item.<span class="hljs-built_in">begin</span>(); iter2 != analyze_table_item.<span class="hljs-built_in">end</span>(); iter2++)<br>        &#123;<br>            cout &lt;&lt; *iter2;<br>            <span class="hljs-keyword">if</span> (iter2 == analyze_table_item.<span class="hljs-built_in">begin</span>())<br>            &#123;<br>                <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">6</span> - iter2-&gt;<span class="hljs-built_in">size</span>() / <span class="hljs-number">8</span>; i++)<br>                &#123;<br>                    cout &lt;&lt; <span class="hljs-string">&quot;\t&quot;</span>;<br>                &#125;<br>            &#125;<br>            <span class="hljs-keyword">else</span><br>            &#123;<br>                <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">4</span> - iter2-&gt;<span class="hljs-built_in">size</span>() / <span class="hljs-number">8</span>; i++)<br>                &#123;<br>                    cout &lt;&lt; <span class="hljs-string">&quot;\t&quot;</span>;<br>                &#125;<br>            &#125;<br>        &#125;<br>        cout &lt;&lt; endl;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="3-功能验证"><a href="#3-功能验证" class="headerlink" title="3.功能验证"></a>3.功能验证</h2><p>首先我们验证对于正确的字符串表达式是否能够成功接收</p>
+<p><img src="/images/image-20221106221104931.png" srcset="/img/loading.gif" lazyload></p>
+<p>接着验证各种抛出异常的情况，当然并不是所有的异常使用常规方法就可以验证出来的，我们这里给出的都是可以直接输入验证的</p>
+<blockquote>
+<p>预测分析表中对应的值为error</p>
+</blockquote>
+<p><img src="/images/image-20221106221153617.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>预测分析表中根本就没有相应的产生式</p>
+</blockquote>
+<p><img src="/images/image-20221106221222690.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>不接受，此时符号栈已经为空但输入符号仍不为空</p>
+</blockquote>
+<p><img src="/images/image-20221106221524013.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="二、自底向上的分析"><a href="#二、自底向上的分析" class="headerlink" title="二、自底向上的分析"></a>二、自底向上的分析</h1><p>首先我们得程序输出大致应该是如下形式的</p>
+<p><img src="/images/image-20221106222900839.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1.基本概念"></a>1.基本概念</h2><p>在进行构造之前我们先回顾必要的概念；</p>
+<h3 id="1-1-LR-1-项目"><a href="#1-1-LR-1-项目" class="headerlink" title="1.1 LR(1)项目"></a>1.1 LR(1)项目</h3><p>LR(0)的基础上才有SLR(1) —— SLR分析方法只用在分析表上，DFA与LR(0)相同；<br>LR(1)的基础上才有LALR(1) —— LR(1)的DFA合并同心项才能为LALR(1)；</p>
+<p>这四个文法的本质区别实际都只在一点 —— 构造的分析表中ACTION部分的归约动作的区别：</p>
+<ul>
+<li>LR(0) 状态有归约状态，整个状态都会进行该归约动作；</li>
+<li>SLR(1) 状态中针对FOLLOW集中有的终结符号会进行该归约动作；</li>
+<li>LR(1) 状态中针对展望符对应的总结符号进行该归约动作（一般为FOLLOW集的真子集）；</li>
+<li>LALR(1) 状态中也是针对展望符对应的总结符号进行该归约动作（一般为FOLLOW集的真子集）；</li>
+</ul>
+<p>理论上LR(1)的分析效果最好，但是实际开发中LR(1)的状态数会非常多，这是不合理的，所以出现了LALR(1)分析方法（相应的，LALR(1)分析法也存在一些问题）；</p>
+<p>在LR(0)分析的时候，我们并没有考虑下一个输入的字符。而对于LR(1)，我们就需要对每一个项目多考虑一项：下一个输入字符（也就是展望符，这是整个LR(1)的难点和核心）</p>
+<blockquote>
+<p>LR(1)项目定义：将一般形式为 [A→α·β, a]的项称为 LR(1) 项；</p>
+<p>其中A→αβ 是一个产生式，a 是一个终结符(这里将#视为一个特殊的终结符)，它表示在当前状态下，A后面必须紧跟的终结符，称为该项的展望符(lookahead)</p>
+</blockquote>
+<ul>
+<li><p>LR(1) 中的1指的是项的第二个分量的长度，也就是：往后多看一个字符</p>
+</li>
+<li><p>形如[A→α·β, a]且β ≠ ε的项中，展望符a没有任何作用（尽管没作用但是构造的过程中仍然要写） —— 当LR(1)中的点号不在项的最右侧，向前看符号没有任何意义；</p>
+</li>
+<li><p>形如[A→α·, a]的项在只有在下一个输入符号等于a时才可以按照A→α 进行归约：这样的a的集合总是FOLLOW(A)的子集，而且它通常是一个真子集 —— 当点号在最右端时，只有下一个输入的符号和向前看符号一致时，我们才归约这个产生式；</p>
+</li>
+</ul>
+<h3 id="1-2-LR-1-等价项目"><a href="#1-2-LR-1-等价项目" class="headerlink" title="1.2 LR(1)等价项目"></a>1.2 LR(1)等价项目</h3><p>有项目 [A-&gt;α·Bβ,a]，则该项目的<code>等价项目</code>形式如下 [B-&gt;·γ,b]，其中b∈FIRST(βa)；</p>
+<blockquote>
+<p>当β-&gt;+ ε时，称b&#x3D;a叫做继承的后继符，否则称b为自生的后继符；</p>
+</blockquote>
+<p>而仅仅只是利用上述规则还不足以求出所有情况的展望符，我们给出通用求解展望符的算法：</p>
+<ol>
+<li>项目[S’-&gt;·S,#]，这个最基本的项目的展望符固定为#</li>
+<li>由项目[A-&gt;α·Bβ,a]生成的项目[B-&gt;·γ,b]，其中b∈FIRST(βa)</li>
+<li>除了上述自动生成的展望符外，展望符还有两种传播方式：<ul>
+<li>项目[A-&gt;α·Bβ,a]中，β-&gt;+ ε时，该项目的a<code>纵向传播</code>到项目[B-&gt;·γ,b]</li>
+<li>项目[A-&gt;α·Bβ,a]中，展望符a无条件<code>横向传播</code>到项目[αB·β,a]</li>
+</ul>
+</li>
+</ol>
+<h3 id="1-3-LR-1-自动机"><a href="#1-3-LR-1-自动机" class="headerlink" title="1.3 LR(1)自动机"></a>1.3 LR(1)自动机</h3><p>假设我们有如下文法</p>
+<p><img src="/images/image-20221028102239978-166774762573217.png" srcset="/img/loading.gif" lazyload></p>
+<p>构造LR(1)自动机的步骤主要如下：</p>
+<ol>
+<li>拓展文法G得到G’；</li>
+<li>类似LR(0)分析的方法构造得到LR(1)自动机（与LR(0)不同的是多了展望符）</li>
+</ol>
+<p><img src="/images/image-20221028103039002-166774763813419.png" srcset="/img/loading.gif" lazyload></p>
+<p>由0)可以推导出I<del>0</del>式，因为I<del>0</del>式中的S是非终结符，所以又可以继续推出等价项目I<del>2</del>和I<del>3</del>。又I<del>2</del>式中圆点后面的L属于非终结符，继续推出I<del>4</del>、I<del>5</del>式【注意：I<del>4</del>、I<del>5</del>中的展望符是&#x3D;，因为I<del>2</del>式中L后面有终结符&#x3D;，求展望符就是这么简单】然后继续对左边橙色框中的式子进行相同算法的推导即可；</p>
+<blockquote>
+<p>注：如果除展望符外，两个LR(1)项目集是相同的，则称这两个LR(1)项目集是同心的</p>
+</blockquote>
+<h3 id="1-4-LR-1-分析表"><a href="#1-4-LR-1-分析表" class="headerlink" title="1.4 LR(1)分析表"></a>1.4 LR(1)分析表</h3><p>拥有自动机之后就可以得到分析表了，LR(1)与LR(0)分析表类似，只是在归约的某些地方做了更加严格的限制，我们先看一下课堂上讲的LR(1)和SLR(1)分析表的构造方法的对比</p>
+<p><img src="/images/image-20221028112348251-166774769783221.png" srcset="/img/loading.gif" lazyload></p>
+<p>根据上述规则，根据上面我们得到的LR(1)自动机可以构造得到下面的LR(1)分析表</p>
+<p><img src="/images/image-20221028104626323-166774771181423.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="2-程序实现"><a href="#2-程序实现" class="headerlink" title="2.程序实现"></a>2.程序实现</h2><p>整个LR(1)程序流程分析如下：</p>
+<ol>
+<li>全局初始化，加载LR(1)文法产生式以及对应的LR(1)分析表；（本质上这一步也可以直接使用暴力代入法进行初始化）<ul>
+<li>加载LR(1)分析表本质上是用于初始化ANALYSE_TABLE；</li>
+<li>加载LR(1)产生式本质上是用于初始化SyntaxAnalyzer的产生式；</li>
+</ul>
+</li>
+<li>调用translate将输入的字符串进行识别，将数字统一转换为id；</li>
+<li>调用SyntaxAnalyzer的分析程序进行分析，若分析成功则输出分析表；</li>
+</ol>
+<h3 id="2-1-模块设计"><a href="#2-1-模块设计" class="headerlink" title="2.1 模块设计"></a>2.1 模块设计</h3><p>本实验只需要定义如下容器和类：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">typedef</span> map&lt;string, map&lt;string, string&gt;&gt; PREDICT_TABLE;  <span class="hljs-comment">//LR语法分析表</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">typedef</span> vector&lt;pair&lt;string, string&gt;&gt; PRODUCTION;         <span class="hljs-comment">//LR产生式</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">SyntaxAnalyzer</span>&#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">global_init</span><span class="hljs-params">(PREDICT_TABLE M,PRODUCTION P)</span></span>;                                                                                          <span class="hljs-comment">//全局初始化</span><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">create_analyze_table</span><span class="hljs-params">(string str,PREDICT_TABLE M,PRODUCTION P)</span></span>;                                         <span class="hljs-comment">//创建语法分析表，实际就是开始进行LR(1)分析</span><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">print_analyze_table</span><span class="hljs-params">(vector&lt;string&gt; stack, vector&lt;string&gt; state_stack, string str, string action)</span></span>;  <span class="hljs-comment">//输出预测分析过程中的分析流程</span><br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">start_pattern</span><span class="hljs-params">(string str, string pattern)</span></span>;                                                             <span class="hljs-comment">//判断str是否以pattern开头</span><br>    <span class="hljs-function">string <span class="hljs-title">id_translate</span><span class="hljs-params">(string input_string)</span></span>;                                                                           <span class="hljs-comment">//将数字转换为&quot;id&quot;</span><br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-2-函数封装"><a href="#2-2-函数封装" class="headerlink" title="2.2 函数封装"></a>2.2 函数封装</h3><h4 id="2-2-1-初始化函数"><a href="#2-2-1-初始化函数" class="headerlink" title="2.2.1 初始化函数"></a>2.2.1 初始化函数</h4><p>首先是初始化预测表，传入参数是文件名称，没有输出，将值赋给PREDICT_TABLE</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">PREDICT_TABLE_init</span><span class="hljs-params">(string file_name)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-function">ifstream <span class="hljs-title">file</span><span class="hljs-params">(file_name)</span></span>;<br>    <span class="hljs-keyword">if</span> (!file.<span class="hljs-built_in">is_open</span>())<br>    &#123;<br>        cout &lt;&lt; <span class="hljs-string">&quot;Error: file &quot;</span> &lt;&lt; file_name &lt;&lt; <span class="hljs-string">&quot; not found&quot;</span> &lt;&lt; endl;<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    PREDICT_TABLE table;<br>    string line;<br>    vector&lt;string&gt; tokens;<br>    <span class="hljs-built_in">getline</span>(file, line);<br>    string word;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; line.<span class="hljs-built_in">size</span>(); i++)<br>    &#123;<br>        <span class="hljs-keyword">if</span> (line[i] == <span class="hljs-string">&#x27;,&#x27;</span> || line[i] == <span class="hljs-string">&#x27;\n&#x27;</span>)<br>        &#123;<br>            string str2 = <span class="hljs-string">&quot;state&quot;</span>;<br>            <span class="hljs-keyword">if</span> (word.<span class="hljs-built_in">size</span>() &gt; <span class="hljs-number">0</span> &amp;&amp; word.<span class="hljs-built_in">compare</span>(str2) != <span class="hljs-number">0</span>)<br>            &#123;<br>                tokens.<span class="hljs-built_in">push_back</span>(word);<br>                <span class="hljs-comment">//cout&lt;&lt;word&lt;&lt;endl;</span><br>                word.<span class="hljs-built_in">clear</span>();<br>            &#125;<br>            <span class="hljs-keyword">else</span><br>            &#123;<br>                word.<span class="hljs-built_in">clear</span>();<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">else</span><br>        &#123;<br>            word += line[i];<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">while</span> (<span class="hljs-built_in">getline</span>(file, line))<br>    &#123;<br>        string word;<br>        <span class="hljs-type">int</span> count = <span class="hljs-number">0</span>;<br>        string state;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; line.<span class="hljs-built_in">size</span>(); i++)<br>        &#123;<br>            <span class="hljs-keyword">if</span> (line[i] == <span class="hljs-string">&#x27;,&#x27;</span>)<br>            &#123;<br>                <span class="hljs-keyword">if</span> (count == <span class="hljs-number">0</span>)<br>                &#123;<br>                    table.<span class="hljs-built_in">insert</span>(<span class="hljs-built_in">make_pair</span>(word, <span class="hljs-built_in">map</span>&lt;string, string&gt;()));<br>                    state = word;<br>                    count++;<br>                &#125;<br>                <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (word != <span class="hljs-built_in">string</span>(<span class="hljs-string">&quot;0&quot;</span>))<br>                &#123;<br>                    table[state].<span class="hljs-built_in">insert</span>(<span class="hljs-built_in">make_pair</span>(tokens[count - <span class="hljs-number">1</span>], word));<br>                    count++;<br>                &#125;<br>                <span class="hljs-keyword">else</span><br>                &#123;<br>                    count++;<br>                &#125;<br>                word.<span class="hljs-built_in">clear</span>();<br>            &#125;<br>            <span class="hljs-keyword">else</span><br>            &#123;<br>                word += line[i];<br>            &#125;<br>        &#125;<br>    &#125;<br>    file.<span class="hljs-built_in">close</span>();<br>    M = table;<br>    cout&lt;&lt;<span class="hljs-string">&quot;PREDICT_TABLE_init success...&quot;</span>&lt;&lt;endl;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>然后是初始化产生式函数，只需要将产生式左部和产生式右部的字符串分别传入即可</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">PRODUCTION_init</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    vector&lt;pair&lt;string, string&gt;&gt; formula;<br>    formula.<span class="hljs-built_in">push_back</span>(<span class="hljs-built_in">make_pair</span>(<span class="hljs-string">&quot;E&quot;</span>,<span class="hljs-string">&quot;E+T&quot;</span>));<br>    formula.<span class="hljs-built_in">push_back</span>(<span class="hljs-built_in">make_pair</span>(<span class="hljs-string">&quot;E&quot;</span>,<span class="hljs-string">&quot;E-T&quot;</span>));<br>    formula.<span class="hljs-built_in">push_back</span>(<span class="hljs-built_in">make_pair</span>(<span class="hljs-string">&quot;E&quot;</span>,<span class="hljs-string">&quot;T&quot;</span>));<br>    formula.<span class="hljs-built_in">push_back</span>(<span class="hljs-built_in">make_pair</span>(<span class="hljs-string">&quot;T&quot;</span>,<span class="hljs-string">&quot;T*F&quot;</span>));<br>    formula.<span class="hljs-built_in">push_back</span>(<span class="hljs-built_in">make_pair</span>(<span class="hljs-string">&quot;T&quot;</span>,<span class="hljs-string">&quot;T/F&quot;</span>));<br>    formula.<span class="hljs-built_in">push_back</span>(<span class="hljs-built_in">make_pair</span>(<span class="hljs-string">&quot;T&quot;</span>,<span class="hljs-string">&quot;F&quot;</span>));<br>    formula.<span class="hljs-built_in">push_back</span>(<span class="hljs-built_in">make_pair</span>(<span class="hljs-string">&quot;F&quot;</span>,<span class="hljs-string">&quot;(E)&quot;</span>));<br>    formula.<span class="hljs-built_in">push_back</span>(<span class="hljs-built_in">make_pair</span>(<span class="hljs-string">&quot;F&quot;</span>,<span class="hljs-string">&quot;num&quot;</span>));<br>    P = formula;<br>    cout&lt;&lt;<span class="hljs-string">&quot;PRODUCTION_init success...&quot;</span>&lt;&lt;endl;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="2-2-2-创建预测分析表函数"><a href="#2-2-2-创建预测分析表函数" class="headerlink" title="2.2.2 创建预测分析表函数"></a>2.2.2 创建预测分析表函数</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">SyntaxAnalyzer::create_analyze_table</span><span class="hljs-params">(string str,PREDICT_TABLE M,PRODUCTION P)</span></span><br><span class="hljs-function"></span>&#123;<br>    cout&lt;&lt;<span class="hljs-string">&quot;\t\t\t\t\t\t&lt;=======================Analyze Table======================&gt;&quot;</span>&lt;&lt;endl;<br>    cout&lt;&lt;<span class="hljs-string">&quot;State stack\t\t\t\tSymbol stack\t\t\t\tRemaining string\t\tAction&quot;</span>&lt;&lt;endl;;<br>    <span class="hljs-type">int</span> ip = <span class="hljs-number">0</span>;<br>    vector&lt;string&gt; state_stack;<br>    vector&lt;string&gt; stack;<br>    state_stack.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;I0&quot;</span>);<br>    str.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&#x27;$&#x27;</span>);<br>    <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>)<br>    &#123;<br>        <span class="hljs-type">int</span> ipAdd = <span class="hljs-number">0</span>;<br>        string state = state_stack.<span class="hljs-built_in">back</span>();<br>        string a;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">start_pattern</span>(str.<span class="hljs-built_in">substr</span>(ip), <span class="hljs-string">&quot;num&quot;</span>))<br>        &#123;<br>            a = <span class="hljs-string">&quot;num&quot;</span>;<br>            ipAdd = <span class="hljs-number">3</span>;<br>        &#125;<br>        <span class="hljs-keyword">else</span><br>        &#123;<br>            a = str[ip];<br>            ipAdd = <span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-comment">//错误类型：状态Ii并未找到</span><br>        <span class="hljs-keyword">if</span> (M.<span class="hljs-built_in">find</span>(state) == M.<span class="hljs-built_in">end</span>())<br>        &#123;<br>            cout &lt;&lt; <span class="hljs-string">&quot;Error: state &quot;</span> &lt;&lt; state &lt;&lt; <span class="hljs-string">&quot; is not found&quot;</span> &lt;&lt; endl;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        <span class="hljs-comment">//错误类型：某状态对应的token异常(未找到)</span><br>        <span class="hljs-keyword">if</span> (M[state].<span class="hljs-built_in">find</span>(a) == M[state].<span class="hljs-built_in">end</span>())<br>        &#123;<br>            cout &lt;&lt; <span class="hljs-string">&quot;Error: Unexpected token &quot;</span> &lt;&lt; a &lt;&lt; <span class="hljs-string">&quot; in state &quot;</span> &lt;&lt; state &lt;&lt; endl;<br>            ip += ipAdd;<br>            <span class="hljs-keyword">continue</span>;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        string next_state = M[state][a];<br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">start_pattern</span>(next_state, <span class="hljs-string">&quot;s&quot;</span>) || <span class="hljs-built_in">start_pattern</span>(next_state, <span class="hljs-string">&quot;S&quot;</span>))<br>        &#123;<br>            <span class="hljs-built_in">print_analyze_table</span>(stack, state_stack, str.<span class="hljs-built_in">substr</span>(ip), <span class="hljs-string">&quot;Shift &quot;</span> + next_state);<br>            stack.<span class="hljs-built_in">push_back</span>(a);<br>            state_stack.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;I&quot;</span> + next_state.<span class="hljs-built_in">substr</span>(<span class="hljs-number">1</span>));<br>            ip += ipAdd;<br>        &#125;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-built_in">start_pattern</span>(next_state, <span class="hljs-string">&quot;r&quot;</span>))<br>        &#123;<br>            <span class="hljs-type">int</span> counti = <span class="hljs-number">0</span>;<br>            <span class="hljs-type">int</span> r = <span class="hljs-built_in">stoi</span>(next_state.<span class="hljs-built_in">substr</span>(<span class="hljs-number">1</span>));<br>            <span class="hljs-built_in">print_analyze_table</span>(stack, state_stack, str.<span class="hljs-built_in">substr</span>(ip), <span class="hljs-string">&quot;Reduce &quot;</span> + P[r - <span class="hljs-number">1</span>].first + <span class="hljs-string">&quot; -&gt; &quot;</span> + P[r - <span class="hljs-number">1</span>].second);<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; P[r - <span class="hljs-number">1</span>].second.<span class="hljs-built_in">size</span>(); i++)<br>            &#123;<br>                <span class="hljs-keyword">if</span> (P[r - <span class="hljs-number">1</span>].second[i] == <span class="hljs-string">&#x27;m&#x27;</span> &amp;&amp; i &gt; <span class="hljs-number">1</span> &amp;&amp; P[r - <span class="hljs-number">1</span>].second[i - <span class="hljs-number">1</span>] == <span class="hljs-string">&#x27;u&#x27;</span> &amp;&amp; P[r - <span class="hljs-number">1</span>].second[i - <span class="hljs-number">2</span>] == <span class="hljs-string">&#x27;n&#x27;</span>)<br>                &#123;<br>                    counti -= <span class="hljs-number">2</span>;<br>                &#125;<br>                counti++;<br>            &#125;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; counti; i++)<br>            &#123;<br>                stack.<span class="hljs-built_in">pop_back</span>();<br>                state_stack.<span class="hljs-built_in">pop_back</span>();<br>            &#125;<br>            stack.<span class="hljs-built_in">push_back</span>(P[r - <span class="hljs-number">1</span>].first);<br>            state_stack.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;I&quot;</span> + M[state_stack.<span class="hljs-built_in">back</span>()][P[r - <span class="hljs-number">1</span>].first]);<br>        &#125;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (next_state == <span class="hljs-built_in">string</span>(<span class="hljs-string">&quot;acc&quot;</span>))<br>        &#123;<br>            <span class="hljs-built_in">print_analyze_table</span>(stack, state_stack, str.<span class="hljs-built_in">substr</span>(ip), <span class="hljs-string">&quot;Accept&quot;</span>);<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        <span class="hljs-comment">//错误类型：分析表中没有对应的行为</span><br>        <span class="hljs-keyword">else</span><br>        &#123;<br>            cout &lt;&lt; <span class="hljs-string">&quot;Error: Undefined behavior &quot;</span> &lt;&lt; next_state &lt;&lt; endl;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="2-2-3-输出预测分析表函数"><a href="#2-2-3-输出预测分析表函数" class="headerlink" title="2.2.3 输出预测分析表函数"></a>2.2.3 输出预测分析表函数</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">SyntaxAnalyzer::print_analyze_table</span><span class="hljs-params">(vector&lt;string&gt; stack, vector&lt;string&gt; state_stack, string str, string action)</span></span>&#123;<br>        string ans;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> i : state_stack)<br>        &#123;<br>            ans += i + <span class="hljs-string">&quot; &quot;</span>;<br>        &#125;<br>        cout &lt;&lt; ans;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; (<span class="hljs-number">5</span> - ans.<span class="hljs-built_in">size</span>() / <span class="hljs-number">8</span>); i++)<br>        &#123;<br>            cout &lt;&lt; <span class="hljs-string">&quot;\t&quot;</span>;<br>        &#125;<br>        <span class="hljs-type">int</span> count_=<span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> i : stack)<br>        &#123;<br>            cout &lt;&lt; i &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br>            count_=count_+<span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; (<span class="hljs-number">5</span> - count_ / <span class="hljs-number">8</span>); i++)<br>        &#123;<br>            cout &lt;&lt; <span class="hljs-string">&quot;\t&quot;</span>;<br>        &#125;<br>        cout &lt;&lt; str;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; (<span class="hljs-number">4</span> - str.<span class="hljs-built_in">size</span>() / <span class="hljs-number">8</span>); i++)<br>        &#123;<br>            cout &lt;&lt; <span class="hljs-string">&quot;\t&quot;</span>;<br>        &#125;<br>        cout &lt;&lt; action ;<br>        cout &lt;&lt; endl;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h2 id="3-功能验证-1"><a href="#3-功能验证-1" class="headerlink" title="3.功能验证"></a>3.功能验证</h2><p>首先我们将文法对应的LR分析表存入对应文件中</p>
+<p><img src="/images/image-20221107165008354.png" srcset="/img/loading.gif" lazyload></p>
+<p>接着我们进行功能测试，首先是正确性测试</p>
+<p><img src="/images/image-20221107165058409.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>状态对应的token未找到(这里的！不是我们定义的运算符)，处理方法是直接skip接着往后进行分析</p>
+</blockquote>
+<p><img src="/images/image-20221107165203367.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>状态不存在，出现这种情况的原因是初始化PREDICT_TABLE的时候出现问题</p>
+</blockquote>
+<p><img src="/images/image-20221107165950489.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="三、总结"><a href="#三、总结" class="headerlink" title="三、总结"></a>三、总结</h1><p>本次实验主要分为三个步骤，根据所给的文法产生式自动构造预测分析表、根据输入字符串和构造的ll(1)预测分析表进行非递归的自上而下的分析、根据所给的输入字符串和所给的lr(1)预测分析表；</p>
+<p>难点主要在于对算法的理解和实现上，我们在学习和做题的过程中可能直接套用现成公式所以对于算法的感受并不强烈，但是在实现的过程中深刻的体会到了每一层循环以及每一个需要的数据结构的设计；我们之所以选择使用C++主要也是为了使用其标准库提供的STL库，可以轻松的实现我们需要的诸如栈、映射等结构；在构造预测分析表的过程中，我们要严格掌握first集以及follow集之间的关系，以及如何使用select集构造ll(1)预测分析表，缺点是我们编写的程序只能针对题干所给的文法产生式，拓展性不高，可以考虑在后期抽象函数得到通用的过程；在进行非递归预测分析的过程中需要考虑分析各种可能出现的错误情况并进行错误处理(我们直接选择return并终止预测分析程序)；在进行lr(1)预测分析设计的过程中遇到的最大的问题就是初始化的时候没有设置严格的变量作用域，导致初始化看似完成实际上并没有，所以lr(1)预测分析表实际上是空的，这就导致在后期不管如何修改测试条件都返回的是I0未定义，在经过严格的debug之后发现并解决了这个问题，最后成功的实现了程序；</p>
+<p>本次实验带给我最大的感受就是做题和实际开发过程并不完全一致，在将算法实际应用的时候还需要考虑和面对各种各样可能的问题，这也启发我们需要具备缜密的逻辑思维和分析能力。</p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E8%B7%B5/" class="category-chain-item">课程实践</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">#编译原理</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>初级项目_语法分析器</div>
+      <div>https://gintoki-jpg.github.io/2022/11/01/项目_语法分析器/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>杨再俨</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年11月1日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/11/08/%E9%A1%B9%E7%9B%AE_%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/" title="中级项目_推荐系统">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">中级项目_推荐系统</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/10/24/%E9%80%9A%E8%AF%86_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" title="数据结构与算法">
+                        <span class="hidden-mobile">数据结构与算法</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+</div>
+
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

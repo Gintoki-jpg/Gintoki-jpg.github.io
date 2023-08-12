@@ -1,0 +1,2907 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/logo.png">
+  <link rel="icon" href="/img/bg/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="杨再俨">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="编译原理是计算机专业的一门重要专业课，旨在介绍编译程序构造的一般原理和基本方法。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="编译原理">
+<meta property="og:url" content="https://gintoki-jpg.github.io/2022/09/09/%E9%80%9A%E8%AF%86_%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/index.html">
+<meta property="og:site_name" content="Tintoki_blog">
+<meta property="og:description" content="编译原理是计算机专业的一门重要专业课，旨在介绍编译程序构造的一般原理和基本方法。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/compile.jpg">
+<meta property="article:published_time" content="2022-09-09T01:50:00.000Z">
+<meta property="article:modified_time" content="2023-06-29T02:39:26.758Z">
+<meta property="article:author" content="YangZaiyan">
+<meta property="article:tag" content="课程学习">
+<meta property="article:tag" content="计算机基础">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gintoki-jpg.github.io/img/bg/compile.jpg">
+  
+  
+  
+  <title>编译原理 - Tintoki_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"gintoki-jpg.github.io","root":"/","version":"1.9.1","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tintoki_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/bg1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">编译原理</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-09-09 09:50" pubdate>
+          2022年9月9日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          64k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          537 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">编译原理</h1>
+            
+            <div class="markdown-body">
+              
+              <p>先解决一个困扰很久的问题：编译原理和汇编语言的区别？参考<a target="_blank" rel="noopener" href="https://zhidao.baidu.com/question/78670594.html">编译和汇编的区别是什么？_百度知道 (baidu.com)</a></p>
+<ul>
+<li><p>编译: 检查语法，生成汇编代码</p>
+</li>
+<li><p>汇编: 将汇编代码转换为机器码</p>
+</li>
+</ul>
+<p>其实在很多地方，都会把编译器的作用给放大，也就是说编译器能够直接编译并汇编语言，直接得到机器语言，参考<a href="https://gintoki-jpg.github.io/2022/06/27/%E5%90%8E%E7%AB%AF_C/#%E5%89%8D%E8%A8%80%EF%BC%88%E4%B8%80%EF%BC%89">C语言 - Tintoki_blog (gintoki-jpg.github.io)</a>-编译器简介；</p>
+<p>编译：将高级语言翻译成汇编语言或机器语言；从定义可以看出其实上面的说法没错，本门课程主要讲解的编译指的是将高级语言翻译成汇编语言，在汇编原理课程中主要讲解将汇编语言翻译为机器语言；</p>
+<hr>
+<p>2022&#x2F;9&#x2F;9 10:06 这门课程给我很强烈的熟悉感，但是有感觉有陌生的地方，熟悉是因为之前看过《程序员的自我修养》，拥有一个整体的概述，陌生是因为之前看的是纯粹的框架，编译原理这门课程是深入进去具体考虑形式语言之类对于词法分析、语法分析的作用等，所以还是需要看书，参考教材《编译原理与技术》第2版</p>
+<p>2022&#x2F;9&#x2F;9 10:13 期中考试三个题：词法分析一个题，语法分析两个题（自顶向下，自底向上）</p>
+<p>2022&#x2F;9&#x2F;11 9:27 老师和书上讲的几乎一摸一样，而且这书上的知识点更加成体系（很难得北邮的老师写得出这么好的书），这门课直接跟书学就OK，一定注意做好笔记；</p>
+<p>2022&#x2F;9&#x2F;16 10:52 坏了坏了，现在自己看书看不懂了，好像所有中文作者编书都是这样（把学生当天才），很多词语的混用直接当头一棒，对于初学者来说这些名词的胡乱使用真的非常不友好，我现在学到第三章看书就已经摸不着头脑了，现在也只能先停一停找找学习视频（或者是上课好好听一下讲），这门课程看到后面就感觉不能纯自学；</p>
+<p>2022&#x2F;9&#x2F;16 11:13 老师按照PPT上讲的和书上的是相辅相成的，PPT的顺序更加适合初学者阅读，但是书上的讲解更加严谨；补充说一句，这老师讲课是真的好，可以课前预习或者全程跟着，没必要找视频自学；</p>
+<p>2022&#x2F;9&#x2F;16 13:28 这个书和老师给的PPT有很大的问题，就是其中某些重要的知识点根本就没有，导致有些东西会看的很迷糊，这就只能靠自己百度索引了；</p>
+<p>2022&#x2F;9&#x2F;25 9:41 关于看书的事情，到现在为止我觉得看书可以暂时不看了，因为书上描述的过于冗余，而且和PPT上的行文方式不太一样（PPT上非常简洁），但是PPT可能单独看是不太能看懂的，所以这就要求我们上课的时候好好听，然后下课了及时总结；</p>
+<p>2022&#x2F;11&#x2F;4 16:14 现在上课听老师讲课的确是听不懂了，需要自己下课找视频或者资料自学，但是网络上的资料真的是各显神通，最终经过比对我们选择了使用这个视频作为复习和预习的参考<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1cW411B7DW?p=44&vd_source=276d55048634a5b508b1b53a1ecd56b3">44_bilibili_哔哩哔哩_bilibili</a>，之所以选择这个视频是因为它并不是完全按照PPT在念，有自己的思想并且是层层递进的；</p>
+<p>2022&#x2F;11&#x2F;4 17:28 关于上面那个视频，咱们还是避雷吧，讲的确实很好，我也认真听了能听进去，但是和我们要学的（特别是语法制导编译那一章）可以说毫不相关，我也不是很理解为什么同样是语法制导编译这个章节，不同的教学视频内容居然能够呈一个完美的不相交的情况；so，各位还是自己再找找适合自己的网课视频吧，编译原理真的不是一门好学的课程；</p>
+<p>2022&#x2F;11&#x2F;5 11:06 这里我说一下上面推荐那个视频其实人家讲的还是不错的，只是没有介绍前置知识点同时使用的名词不一样所以我们以为学到了假的语法制导翻译（缺点是每个视频跨度太大对于初学者来说不能形成知识图谱），但是课程学习还是推荐国科大的视频，因为它的PPT甚至都和我们课程使用的是一样的；</p>
+<p>2022&#x2F;11&#x2F;11 17:50 发现一个宝藏博主：<a target="_blank" rel="noopener" href="https://www.jianshu.com/u/aa4583fb8687">穷人黄六 - 简书 (jianshu.com)</a>，他讲的是真的好，期末复习可以做参考（这哥们的参考视频是哈工大的<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1hE411M75v?p=39&vd_source=276d55048634a5b508b1b53a1ecd56b3">9.1.1 5-5语法制导翻译方案SDT_哔哩哔哩_bilibili</a>，可以结合食用）；</p>
+<p>2022&#x2F;11&#x2F;18 10:28 发现了网易上面有个课程，不知道效果怎么样，但是纯看课程组织的形式觉得挺清晰的，待会中午回去听一下<a target="_blank" rel="noopener" href="https://mooc.study.163.com/learn/1000002001?tid=1000003000#/learn/content?type=detail&id=1000043009">编译原理 - 网易云课堂 (163.com)</a>，当务之急是好好理解语法制导翻译究竟是什么，先看视频然后再看百度的一些文章之类的吧，纯看文字真的很抽象造成花费大量时间仍然不能用脑子理解的局面；</p>
+<p>2022&#x2F;11&#x2F;19 16:40 网易那个课别看了，稍微刷了一下课程组织太糟糕了，而且介绍的很浅显，听了之后怎么做题甚至都不会…语义分析之后的课程看书或者继续和慕课<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV12741147J3/?spm_id_from=333.337.search-card.all.click">编译原理-国防科技大学_哔哩哔哩_bilibili</a>或者CSDN学习；</p>
+<hr>
+<h1 id="第一章-编译概述"><a href="#第一章-编译概述" class="headerlink" title="第一章 编译概述"></a>第一章 编译概述</h1><h2 id="1-翻译和解释"><a href="#1-翻译和解释" class="headerlink" title="1.翻译和解释"></a>1.翻译和解释</h2><h3 id="1-1-程序设计语言"><a href="#1-1-程序设计语言" class="headerlink" title="1.1 程序设计语言"></a>1.1 程序设计语言</h3><p>程序设计语言可以大致分为以下几种类型：机器语言-&gt;符号语言-&gt;汇编语言-&gt;高级语言</p>
+<p>面向用户的、面向问题的以及面向对象的语言等统称为高级语言，机器语言和汇编语言称为低级语言。相对于低级语言，高级语言具有以下优点：</p>
+<p>（1）更接近于自然语言、独立于机器。<br>程序设计人员不必了解计算机的硬件，对计算机了解甚少的用户也可以学习和使用。<br>一条高级语言的语句对应多条汇编指令或机器指令，编程效率高，所编程序可读性好，便于交流和维护，并且具有较好的移植性。</p>
+<p>（2）运行环境透明性。<br>程序员在编写程序时，不必对程序中出现的变量和常量分配具体的存储单元，不必了解如何将数据的外部表示形式转换成机器的内部表示形式等细节，也不必了解程序运行环境是如何建立和维护的，所有这些工作都由“编译程序”完成。</p>
+<p>（3）具有丰富的数据结构和控制结构，编程效率高。<br>高级语言通常都支持数组、记录等数据结构，支持循环、分支以及过程&#x2F;函数调用等控制结构。这些结构的使用改善了程序的风格，便于程序设计人员采用科学的方法（如结构化的方法、面向对象的方法）来开发程序，从而提高程序的规范性、可靠性，缩短了开发周期、降低了开发费用。</p>
+<h3 id="1-2-翻译程序"><a href="#1-2-翻译程序" class="headerlink" title="1.2 翻译程序"></a>1.2 翻译程序</h3><p>通常将源程序翻译成另外一种表示形式的翻译器&#x2F;编译程序称为编译器（即编译程序），而直接执行源程序给出运行结果的翻译器&#x2F;编译程序称为解释器（即解释程序）；</p>
+<p>编译程序扫描所输入的源程序，并将其转换为目标程序，编译程序可进一步划分为汇编程序和编译程序；</p>
+<p>通常，源程序是用高级语言(如C语言)或汇编语言编写的：</p>
+<p><img src="/images/image-20220909111019619.png" srcset="/img/loading.gif" lazyload></p>
+<p>如果源语言是汇编语言，目标语言是机器语言，则该编译程序称为“汇编程序”；如果源语言为高级语言，目标语言是某种机器的机器语言或汇编语言，则该编译程序称为“编译程序”，我们之后的编译程序都是基于图中上面的“编译程序”而言（即源语言为高级语言，目标语言是某种机器的机器语言或汇编语言），汇编程序将在汇编语言的课程中介绍；</p>
+<p><img src="/images/image-20220928223737257.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>补充说明一点，在大多数资料（包括本书）很多地方对于编译程序的限定其实非常松散：</p>
+<ul>
+<li>有些编译程序先产生汇编语言的目标代码进而由汇编程序生成可重定位的机器代码；</li>
+<li>有的编译程序生成可重定位的机器代码；</li>
+<li>有的编译程序直接生成可执行的机器代码；</li>
+</ul>
+<p>无论是哪种定义，编译的基本流程都遵守同样的规则，所以我们可以一同分析；</p>
+</blockquote>
+<h2 id="2-编译的阶段和任务"><a href="#2-编译的阶段和任务" class="headerlink" title="2.编译的阶段和任务"></a>2.编译的阶段和任务</h2><p>按照编译程序的执行过程和所完成的任务，可以把它分成前后两个阶段，即分析阶段和综合阶段：</p>
+<ul>
+<li><p>在分析阶段，编译程序根据源语言的定义检查源程序的结构是否符合语言规定，确定源程序所表示的对象和规定的操作，并将源程序以<code>某种中间形式</code>表示出来；</p>
+</li>
+<li><p>在综合阶段，编译程序根据分析阶段的分析结果构造出与源程序等价的目标程序；</p>
+</li>
+</ul>
+<p>编译程序需要定义一个<code>数据结构</code>来保存在分析过程中识别出来的<code>标识符及其有关信息</code>，为语义分析和代码生成提供支持，该数据结构即“符号表”；</p>
+<p>下面给出一个典型的编译过程的表示（尽管对于不同的高级语言其编译过程略有不同）</p>
+<p><img src="/images/image-20220909112538942.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-1-分析阶段"><a href="#2-1-分析阶段" class="headerlink" title="2.1 分析阶段"></a>2.1 分析阶段</h3><p>分析阶段的任务是<code>根据源语言的定义对源程序进行结构分析和语义分析，从而把源程序正文转换为某种中间表示形式</code>；</p>
+<p>分析阶段对源程序的结构进行静态分析，包括词法分析、语法分析和语义分析；</p>
+<h4 id="2-1-1-词法分析"><a href="#2-1-1-词法分析" class="headerlink" title="2.1.1 词法分析"></a>2.1.1 词法分析</h4><p>词法分析是一种线性分析；</p>
+<p>词法分析程序在扫描源程序的过程中，对构成源程序的字符串进行分解：</p>
+<ul>
+<li>识别出每个具有独立意义的字符串（即单词lexeme），将其转换为记号(token)加以输出，所有的记号组织成记号流；</li>
+<li>将需要存放的单词（变量名、函数名、语句标号等）保存在符号表中；<ul>
+<li>对于某些记号（不只是标识符）还需要增加一个“属性值”以示区别，并根据需要把<code>标识符</code>存入符号表</li>
+</ul>
+</li>
+</ul>
+<p>词法分析的工作依据是源语言的<code>构词规则</code>（即语法，也称为模式）；</p>
+<p>单词分隔符（如空格、制表符、回车换行符等）通常在词法分析时跳过，对于源程序中出现的注释，词法分析程序同样会直接跳过；</p>
+<h4 id="2-1-2-语法分析"><a href="#2-1-2-语法分析" class="headerlink" title="2.1.2 语法分析"></a>2.1.2 语法分析</h4><p>语法分析是一种层次结构的分析；</p>
+<p>语法分析根据源语言的语法结构把记号流按层次分组，以形成短语，<code>源程序的语法短语常使用分析树表示</code>，而语法树是分析树的浓缩表示；</p>
+<p>语法分析的工作依据是源语言的<code>语法规则</code>；</p>
+<h4 id="2-1-3-语义分析"><a href="#2-1-3-语义分析" class="headerlink" title="2.1.3 语义分析"></a>2.1.3 语义分析</h4><p>语义分析是对源程序的含义进行分析，以保证程序各部分能够有机地结合在一起，并为以后生成目标代码收集必要的信息（如数据对象的类型、目标地址等）：</p>
+<ul>
+<li>语义分析的一个重要任务是类型检查 ———— 按照源语言的类型机制，检查源程序中每个语法成分的类型是否合乎要求；</li>
+</ul>
+<p>语义分析的工作依据是源语言的<code>语义规则</code>；</p>
+<blockquote>
+<p>以上每个分析步骤中，编译程序都把源程序变换成便于下一个步骤处理的内部表示形式；</p>
+</blockquote>
+<h3 id="2-2-综合阶段"><a href="#2-2-综合阶段" class="headerlink" title="2.2 综合阶段"></a>2.2 综合阶段</h3><p>综合阶段的任务是根据源语言到目标语言的对应关系，对分析阶段所产生的中间表示形式进行加工处理，从而得到与源程序等价的目标程序；</p>
+<p>综合阶段包括中间代码生成、代码优化和目标代码生成；</p>
+<h4 id="2-2-1-中间代码生成"><a href="#2-2-1-中间代码生成" class="headerlink" title="2.2.1 中间代码生成"></a>2.2.1 中间代码生成</h4><p>编译程序通常需要把分析阶段产生的结果进一步转换成中间代码，中间代码应当具备两个重要的特点：易于产生和易于翻译成目标代码；</p>
+<p>中间代码所表示的操作比源程序语句所表示的操作更详细，因为这里不但要考虑在计算机上实现时用汇编指令表示的细节，还要考虑控制流、过程调用以及参数传递等各个细节；</p>
+<h4 id="2-2-2-代码优化"><a href="#2-2-2-代码优化" class="headerlink" title="2.2.2 代码优化"></a>2.2.2 代码优化</h4><p>代码优化就是对代码进行改进，使之占用的空间少、运行速度快：</p>
+<ul>
+<li><p>编译程序的代码优化工作首先是在<code>中间代码</code>上进行的，基于优化后的中间代码可以得到更好的目标代码；</p>
+</li>
+<li><p>其次，还可以根据目标机器的特点，对<code>目标代码</code>做进一步的优化；</p>
+</li>
+</ul>
+<h4 id="2-2-3-目标代码生成"><a href="#2-2-3-目标代码生成" class="headerlink" title="2.2.3 目标代码生成"></a>2.2.3 目标代码生成</h4><p>生成的目标代码通常是可重定位的机器代码或汇编语言代码；</p>
+<p>为了生成目标代码，需要对源程序中使用的每个变量指定存储单元，并且把每条中间代码语句一一翻译成等价的汇编语句或机器指令；</p>
+<h3 id="2-3-符号表管理"><a href="#2-3-符号表管理" class="headerlink" title="2.3 符号表管理"></a>2.3 符号表管理</h3><p>编译程序的一项重要工作是收集源程序中使用的标识符，并记录每个<code>标识符</code>（标识符属于token的一种）的相关信息：</p>
+<ul>
+<li>如源程序中使用的标识符是变量名、函数名、还是形参名等；<ul>
+<li>如果是变量名，它的类型是什么；</li>
+<li>如果是形参名，参数的传递方式是什么；</li>
+<li>如果是函数名，函数有几个参数，都是什么类型的，函数是否有返回值、返回值是什么类型的等；</li>
+</ul>
+</li>
+</ul>
+<p>编译程序使用符号表来记录<code>标识符</code>及其相关信息，符号表的结构应支持标识符的快速查找以及数据的快速存取；</p>
+<p>符号表由若干条记录组成，每个标识符在符号表中都对应一条记录，记录了各域中保存的标识符相应的属性：</p>
+<ul>
+<li>标识符的各个属性值是在编译的不同阶段收集并写入符号表的；</li>
+</ul>
+<p>编译程序的后续阶段通过不同的方式使用符号表中记录的信息：</p>
+<ul>
+<li>进行语义分析和中间代码生成时，需要根据标识符的类型来检查源程序是否以合法的方式使用它们，并为它们产生适当的操作；</li>
+<li>代码生成时，需要根据标识符的类型和存储分配信息来产生正确的目标语言指令；</li>
+</ul>
+<h3 id="2-4-错误处理"><a href="#2-4-错误处理" class="headerlink" title="2.4 错误处理"></a>2.4 错误处理</h3><p>错误检测和恢复是编译程序的一项很重要的任务，在编译的每个阶段都可能检测出源程序中存在的错误；</p>
+<p>发现错误之后应做<code>适当的处理</code>，使编译工作能够继续进行，以便对源程序中可能存在的其他错误进行检测。如果编译时，编译程序每发现一个错误后就停止编译，则调试程序的效率将非常低，这种情况绝不是用户所希望的；</p>
+<p>编译过程中，发现任何错误，都应该报告给错误处理程序，以产生适当的诊断信息帮助程序员判断错误出现的准确位置，并对源程序进行适当的恢复以保持程序的一致性；</p>
+<h2 id="3-其他概念"><a href="#3-其他概念" class="headerlink" title="3.其他概念"></a>3.其他概念</h2><h3 id="3-1-前端和后端"><a href="#3-1-前端和后端" class="headerlink" title="3.1 前端和后端"></a>3.1 前端和后端</h3><p>通常可以将编译程序划分为前端（front end）和后端（back end）两部分：</p>
+<ul>
+<li><p>前端主要由<code>与源语言有关而与目标机器无关</code>的部分组成，通常包括词法分析、语法分析、语义分析和中间代码生成、符号表的建立、中间代码的优化，以及相应的错误处理工作和符号表操作；</p>
+</li>
+<li><p>后端由编译程序中<code>与目标机器有关</code>的部分组成，这些部分<code>与源语言无关</code>而仅仅依赖于中间语言。后端包括目标代码的生成、目标代码的优化，以及相应的错误处理和符号表操作；</p>
+</li>
+</ul>
+<p>把编译程序划分成前端和后端的优点是便于编译程序的移植和构造：</p>
+<ul>
+<li>重写后端使得可以将该语言的编译程序移植到另一种类型的机器上；</li>
+<li>重写前端可以把一种新的程序设计语言编译成同一种中间语言；</li>
+</ul>
+<p>需要注意区分编译过程和编译程序结构</p>
+<p><img src="/images/image-20221214083151003.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-2-“遍”的概念"><a href="#3-2-“遍”的概念" class="headerlink" title="3.2 “遍”的概念"></a>3.2 “遍”的概念</h3><p>在<code>设计</code>编译程序时，还需要考虑编译分“遍”（pass）的问题；一“遍”指的是对<code>源程序</code>或<code>源程序的中间表示形式</code>从头到尾扫描一次，并在扫描过程中完成相应的加工处理，生成新的<code>中间表示形式</code>或<code>目标程序</code>；</p>
+<hr>
+<p>阶段（词法分析、语法分析…）和遍的概念是不同的：</p>
+<ul>
+<li><p>一遍可以由若干阶段组成；</p>
+</li>
+<li><p>一个阶段也可由若干遍来完成；</p>
+</li>
+</ul>
+<hr>
+<blockquote>
+<p>（1）一遍扫描的编译程序</p>
+</blockquote>
+<p>这种编译程序对源语言程序进行一遍扫描就能完成编译的各项任务（简单理解的话就是上面介绍过的分析阶段和综合阶段的六个步骤），其典型结构如下</p>
+<p><img src="/images/image-20220915212348934.png" srcset="/img/loading.gif" lazyload></p>
+<p>这种结构的编译程序的核心是<code>语法分析程序</code>，<code>没有中间代码的生成环节</code>；一遍编译程序的工作过程大致如下：</p>
+<p>（1）每当<code>语法分析程序</code>需要一个新的单词符号时，就调用<code>词法分析程序</code>。词法分析程序则从源程序中依次读入字符，并组合成单词符号，将其记号返回给语法分析程序；</p>
+<p>（2）每当<code>语法分析程序</code>识别出一个语法成分时，就调用<code>语义分析及代码生成程序</code>对该语法成分进行语义分析（主要是类型检查），并生成目标程序；</p>
+<p>（3）当<code>源程序</code>全部处理完后，转善后处理，即<code>整理目标程序</code>（如优化等），并结束编译；</p>
+<blockquote>
+<p>（2）多遍扫描的编译程序</p>
+</blockquote>
+<p>这种编译程序把编译的6个逻辑部分应该完成的工作分遍进行，每一遍完成一个或多个相连逻辑部分的工作，其结构如下</p>
+<p><img src="/images/image-20220915212956511.png" srcset="/img/loading.gif" lazyload></p>
+<p>多遍编译程序的工作过程如下：</p>
+<ul>
+<li><p><code>编译程序的主程序</code>调用<code>词法分析程序</code>，词法分析程序对源程序进行扫描，并将它转换为一种内部表示，称为<code>中间表示形式1</code>，同时产生有关的一些表；</p>
+</li>
+<li><p>然后，<code>主程序</code>调用<code>语法分析程序</code>，语法分析程序以中间表示形式1作为输入，进行语法分析，产生<code>中间表示形式2</code>以及相关表；</p>
+</li>
+</ul>
+<p>……</p>
+<ul>
+<li>最后，<code>主程序</code>调用<code>目标代码生成程序</code>，该程序把输入的<code>中间代码</code>转换为等价的<code>目标程序</code>；</li>
+</ul>
+<hr>
+<p>那么一遍编译程序和多遍编译程序应该如何选择呢？这要视计算机容量的大小、源语言的繁简、目标程序质量的高低等；</p>
+<blockquote>
+<p>分遍的好处：</p>
+</blockquote>
+<ul>
+<li>可以减少对主存容量的要求；</li>
+<li>可以使得编译程序结构清晰，各编译程序功能独立、单纯，相互联系简单；</li>
+<li>能够实现更充分的优化工作；</li>
+<li>通过分遍将编译程序的前端和后端分开，可以为编译程序的构造和移植创造条件；</li>
+</ul>
+<blockquote>
+<p>分遍的坏处：</p>
+</blockquote>
+<ul>
+<li>增加不少重复性的工作（因为每遍都有符号的输入和输出，这将降低编译的效率）；</li>
+</ul>
+<h2 id="4-编译程序的辅助"><a href="#4-编译程序的辅助" class="headerlink" title="4.编译程序的辅助"></a>4.编译程序的辅助</h2><p>要将源程序转换为可执行的代码，除了需要编译程序，还必须有其他程序配合，比如我们要设计如下一个语言处理系统</p>
+<p><img src="/images/image-20220915221513962.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="第二章-形式语言与自动机"><a href="#第二章-形式语言与自动机" class="headerlink" title="第二章 形式语言与自动机"></a>第二章 形式语言与自动机</h1><p>本章涉及形式语言，不是重点考核内容，只需要过一遍打基础即可。更多详细的关于形式语言与自动机的概念参考<a href="https://gintoki-jpg.github.io/2022/06/17/%E6%9C%9F%E6%9C%AB_%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%A4%8D%E4%B9%A0/">形式语言与自动机</a>（下面的介绍更多的只是一个概念上的简介，更偏向于将形式语言和自动机与编译原理这门课程联系起来）；</p>
+<hr>
+<p>在开始整个编译原理课程之前，首先应当了解被编译的源语言的此法规则、语法规则和语义规则，需要清楚使用什么样的方法来描述这些规则。</p>
+<p>通常，采用正规文法描述程序设计语言的词法规则，用上下文无关文法描述其语法规则，基于自动机理论实现对源程序的词法分析和语法分析。</p>
+<p>所谓文法就是描述语言的语法结构的形式规则，文法一般被定义为四元组，根据对产生式施加的限制不同，将文法分为四类，相应地按照语法规则构造出来的形式语言也分为四类</p>
+<p><img src="/images/image-20230626222659513.png" srcset="/img/loading.gif" lazyload></p>
+<p>其中最重要的就是上下文无关文法及其相应的形式语言。上下文无关文法所定义的语法单位是完全独立于这种语法单位可能出现的上下文环境的。对于现有的程序设计语言来说，许多语法单位的结构可以用上下文无关文法来描述。以后，如无特别说明，“文法”一词均指上下文无关文法。</p>
+<p>文法可以进行等价变换，文法变换主要是为了消除文法二义性和左递归等问题，需要的话还可以提取左公因子，使得改写过后的文法满足语法分析的需要。为什么要消除左递归？因为自顶向下的语法分析方法并不能处理左递归文法。</p>
+<h1 id="第三章-词法分析"><a href="#第三章-词法分析" class="headerlink" title="第三章 词法分析"></a>第三章 词法分析</h1><p>编译过程的第一步是进行词法分析（词法分析和形式语言关系非常密切），其主要任务是从左至右逐个字符地对源程序进行扫描，按照源语言的词法规则识别出一个个单词符号，产生用于语法分析的记号序列（特别地，需要将识别出来的标识符存入符号表中）；</p>
+<p>在词法分析过程中，还可以完成用户接口有关的一些任务，如跳过源程序中的注释和空格，把来自编译程序的错误信息和源程序联系起来，如记住单词在源程序中的行&#x2F;列位置，进而可以作为错误信息的一部分提示给用户。有些词法分析程序可以复制源程序，并把错误信息嵌入其中；</p>
+<hr>
+<p>单词符号（记号）的分类：</p>
+<ul>
+<li>关键字&#x2F;基本字：begin，for…</li>
+<li>标识符：用来表示各种名字，如变量名、数组名和过程名；</li>
+<li>常数：各种类型的常数；</li>
+<li>运算符</li>
+<li>分界符</li>
+</ul>
+<p>输出的单词符号的表示形式<code>(单词种别，单词自身的值)</code>（等价于（记号，属性））</p>
+<h2 id="1-词法分析程序和语法分析程序的关系"><a href="#1-词法分析程序和语法分析程序的关系" class="headerlink" title="1.词法分析程序和语法分析程序的关系"></a>1.词法分析程序和语法分析程序的关系</h2><p>词法分析程序与语法分析程序之间的关系可以是3种形式之一：</p>
+<ul>
+<li>词法分析程序作为独立的一遍：经过这一遍的加工，可以将以字符串表示的源程序转换成以记号序列表示的源程序；</li>
+</ul>
+<p><img src="/images/image-20221012200500254.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>词法分析程序作为语法分析程序的子程序：将词法分析程序和语法分析程序安排在同一遍中，词法分析程序作为语法分析程序的一个子程序，每当语法分析程序需要一个新的记号时就调用词法分析程序，每调用一次，词法分析程序就从源程序字符串中识别出一个具有独立意义的单词，并把相应的记号返回。这种方法不仅避免了中间文件，而且还省去了取送符号的工作，有利于提高编译程序的效率；</li>
+</ul>
+<p><img src="/images/image-20220916100235907.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>词法分析程序与语法分析程序作为协同程序：将两个程序以协同工作的方式安排在同一遍中，以生产者和消费者的关系同步运行（将它们安排成交替执行的协同程序）</li>
+</ul>
+<p>无论采取哪种方式，词法分析程序都是独立于语法分析程序的，这样的好处是：</p>
+<ul>
+<li>简化设计，程序结构清晰；</li>
+<li>改进编译程序的效率，利用专门的读字符和处理记号的技术加快编译速度；</li>
+<li>加强编译程序的可移植性（在词法分析程序中处理特殊的或者非标准的符号）；</li>
+</ul>
+<h2 id="2-词法分析程序的输入与输出"><a href="#2-词法分析程序的输入与输出" class="headerlink" title="2.词法分析程序的输入与输出"></a>2.词法分析程序的输入与输出</h2><h3 id="2-1-词法分析程序的输入"><a href="#2-1-词法分析程序的输入" class="headerlink" title="2.1 词法分析程序的输入"></a>2.1 词法分析程序的输入</h3><p>根据词法分析程序的实现方法不同，其源程序的输入方法也不同，词法分析程序的实现主要有以下三种：</p>
+<p>（1）利用词法分析程序生成器LEX，从基于正规表达式的规范说明自动生成词法分析程序。这种情况下，生成器将提供用于源程序字符串的读入和缓冲的若干子程序；</p>
+<p>（2）利用传统的系统程序设计语言（如Pascal、C语言等）来编写词法分析程序。这种情况下，需要利用该语言所提供的输入&#x2F;输出能力来处理源程序字符串的读入操作；</p>
+<p>（3）利用汇编语言编写词法分析程序，此时需要直接管理源程序字符串的读入；</p>
+<hr>
+<p>（本节主要参考<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/7c1036461d98">编译原理总结提炼 - 简书 (jianshu.com)</a>）</p>
+<p>最基本的词法分析器包含扫描器、预处理子程序、扫描缓冲区、输入缓冲区，其核心为扫描器，对于将一个扫描缓冲区分为左右两个大小相同的半区的，我们称为双缓冲区输入模式：</p>
+<ul>
+<li><p>输入缓冲区：源程序进入输入缓冲区；</p>
+</li>
+<li><p>预处理程序：取消注释、剔除无用的空白、回车、换行等；</p>
+</li>
+<li><p>扫描缓冲区：从输入缓冲区输入固定长度的字符串到另一个缓冲区（扫描缓冲区），词法分析可以直接在此缓冲区中进行符号识别；</p>
+</li>
+</ul>
+<p><img src="/images/image-20230626211231604.png" srcset="/img/loading.gif" lazyload></p>
+<p>主要概念说明：</p>
+<ul>
+<li>超前扫描：有时词法分析程序为了得到某一个单词符号的确切性质，只从该单词本身所含有的字符不能做出判定，需要超前扫描若干个字符之后才能做出确定的分析（如x&#x3D;(y++)+z，只有超前扫描才能确定运算符“+”和“++”）</li>
+<li>双缓冲区：扫描缓冲区的大小是有限的，有可能出现一个情况，就是从输入缓冲区预处理完的串装进扫描缓冲区时候，一次没有装完，末尾的某个单词被分开了，为了解决这个问题，就需要扫描缓冲区最好使用一个如下所示的一分为二的区域，设置双缓冲区</li>
+</ul>
+<p><img src="/images/webp-166330625414412.webp" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><p>起点指针 (lexeme Begin) ：用来指示正在扫描的单词的起点；</p>
+</li>
+<li><p>搜索指针 (forward) ：用于向前搜索，寻找单词的结束；</p>
+</li>
+</ul>
+<blockquote>
+<p>注意：假定每个半区可容N个字符，而这两个半区又是互补使用的，如果搜索指示器从单词起点出发搜索到半区边缘还没有达到单词终点，就会调用预处理程序，把后续的N个输入字符装进另一个半区，搜索指示器（搜索指针）进去那个半区再扫描就好了，这就不存在断掉的问题了，相当于是个循环链表；</p>
+<p>还有没有可能出现意外呢？当然可能，假如某个标志符或者常数的长度超过2N了，这神仙也没办法，所以应该在长度上加以一定的限制；</p>
+</blockquote>
+<h3 id="2-2-词法分析程序的输出"><a href="#2-2-词法分析程序的输出" class="headerlink" title="2.2 词法分析程序的输出"></a>2.2 词法分析程序的输出</h3><p>词法分析程序将源程序字符串转换为<code>记号序列</code>的形式，在此之前我们介绍几个特定概念：</p>
+<ul>
+<li>记号token：指的是某一类单词符号的<code>类别编码</code>，比如我们令标识符的记号为id，常数的记号为num等；</li>
+<li>模式pattern：指的是某一类单词符号的<code>构造规则</code>，比如标识符的模式是“由字母开头的字母数字串”</li>
+<li>单词lexeme：指的是某一类单词符号的一个<code>实例</code>，比如一个具体的标识符position就是一个单词</li>
+</ul>
+<p><img src="/images/image-20220916103138682.png" srcset="/img/loading.gif" lazyload></p>
+<p>大多数程序设计语言都包含如下记号：关键字、标识符、常数、运算符以及标点符号，在描述程序设计语言语法结构的上下文无关文法中记号是终结符；</p>
+<p>词法分析程序识别出一个记号之后，要把与之相关的信息作为它的<code>属性</code>保留下来：</p>
+<ul>
+<li>记号影响语法分析的决策；</li>
+<li>属性影响记号的翻译；</li>
+<li>对于标识符来说，记号的属性是它代表的单词在符号表中的入口指针；对于常数来说它的属性是它所表示的值；</li>
+</ul>
+<blockquote>
+<p>对关键字、运算符和标点符号来说，如果<code>每一个</code>关键字、运算符或标点符号作为单独的<code>一类</code>，则记号所代表的单词是唯一的，不再需要属性（但无论如何输出的单词符号的表示形式为(单词识别,单词自身的值)这样的二元组）</p>
+</blockquote>
+<ul>
+<li>若记号所代表的单词不唯一，如表3-1中的记号relop，则需要给出属性；</li>
+<li>若将所有的关键字归为一类，则对某一关键字的输出，除了类别编码外，还应该指出它在关键字表中的位置；</li>
+</ul>
+<p><img src="/images/image-20221012145504703.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="3-记号的描述和识别"><a href="#3-记号的描述和识别" class="headerlink" title="3.记号的描述和识别"></a>3.记号的描述和识别</h2><blockquote>
+<p>结论1：识别单词是按照记号的模式进行，一种记号的模式匹配一类单词的集合；</p>
+</blockquote>
+<p>正规表达式和正规文法是描述模式的重要工具，正规表达式和正规文法都可以用来描述程序设计语言中单词符号的结构，二者具有相同的表达能力：</p>
+<ul>
+<li>用正规表达式描述，清晰而简洁；</li>
+<li>用正规文法描述，则易于识别；</li>
+</ul>
+<p>通常，先用正规表达式来描述单词符号的结构，然后根据需要，把正规表达式转换为等价的正规文法，正规定义式为这种转换提供了条件（这部分实际就是上学期形式语言与自动机的内容，这部分书上讲的非常混乱不建议阅读）；</p>
+<h2 id="4-词法分析程序的设计与实现"><a href="#4-词法分析程序的设计与实现" class="headerlink" title="4.词法分析程序的设计与实现"></a>4.词法分析程序的设计与实现</h2><h3 id="4-1-词法分析程序的设计"><a href="#4-1-词法分析程序的设计" class="headerlink" title="4.1 词法分析程序的设计"></a>4.1 词法分析程序的设计</h3><p>实现一个词法分析程序的大致流程为给出描述该语言各种单词符号的词法规则，接着构造它的状态转换图，最后根据状态转换图构造词法分析程序</p>
+<p>主要步骤如下（书本P65详细实现了一个词法分析程序，可供参考）：</p>
+<ul>
+<li>首先给出描述该语言各种单词符号（记号）的词法规则</li>
+</ul>
+<p><img src="/images/image-20220916144219352.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>使用正规文法描述各种单词符号（记号），我们这里均使用的是右线性文法（下图仅展示部分不全）</li>
+</ul>
+<p><img src="/images/image-20220916144248119.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>接着构造其状态转换图：根据每种记号的文法构造出相应的状态转换图，让这些状态转换图共用一个初态，就可以得到词法分析程序的状态转换图</li>
+</ul>
+<p><img src="/images/image-20220916144404575.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>最后根据状态转换图构造词法分析程序：有了状态转换图，只要把语义动作进一步添加到状态转换图中，使每一个状态都对应一小段程序，就可以构造出相应的词法分析程序；</li>
+</ul>
+<p>“使每一个状态对应一小段程序”这句话是什么意思呢？我们举例说明：</p>
+<ul>
+<li><p>在开始状态，首先要读进一个字符。若读入的字符是一个空格（包括blank、tab、enter）就跳过它，继续读字符，直到读进一个非空字符为止。接下来的工作就是根据所读进的非空字符转相应的程序段进行处理；</p>
+</li>
+<li><p>在标识符状态，识别并组合出一个标识符之后，还必须加入一些动作，如查关键字表，以确定识别出的单词符号是关键字还是用户自定义标识符，并输出相应的记号；</p>
+</li>
+<li><p>在无符号数状态，可识别出各种常数，包括整数、小数和无符号数。在组合常数的同时，还要进行从字符串到数字的转换；</p>
+</li>
+<li><p>在“&lt;”状态，若读进的下一个字符是“&#x3D;”，则输出关系运算符“&lt;&#x3D;”；若读进的下个字符是“&gt;”，则输出关系运算符“&lt;&gt;”；否则输出关系运算符“&lt;”；</p>
+</li>
+<li><p>在“&#x2F;”状态，若读进的下一个字符是“ * ”，则进入注释处理状态，词法分析程序要做的工作是跳过注释，具体做法就是不断地读字符，直到遇到“ * &#x2F; ”为止，然后转开始状态，继续识别和分析下一个单词；若读进的下一个字符不是“*”，则输出斜杠“&#x2F;”；</p>
+</li>
+<li><p>在“:”状态，若读进的下一个字符是“&#x3D;”，则输出赋值号“:&#x3D;”；否则，输出冒号“:”；</p>
+</li>
+<li><p>在其他算术运算符和标点符号状态，只需输出其相应的记号即可；</p>
+</li>
+<li><p>若进入错误处理状态，表示词法分析程序从源程序中读入了一个不合法的字符。所谓不合法的字符是指该语言不包括以此字符开头的单词符号。词法分析程序发现不合法字符时，要做错误处理，其主要工作是显示或打印错误信息，并跳过这个字符，然后转开始状态继续识别和分析下一个单词符号；</p>
+</li>
+</ul>
+<blockquote>
+<p>注意一点，在词法分析过程中，为了判断是否已经读到单词符号的右端字符，有时需要向前多读入一个字符，比如在标识符状态和无符号数状态，因此词法分析程序在返回调用程序之前，应将向前指针后退一个字符；</p>
+</blockquote>
+<h3 id="4-2-词法分析程序的实现"><a href="#4-2-词法分析程序的实现" class="headerlink" title="4.2 词法分析程序的实现"></a>4.2 词法分析程序的实现</h3><h4 id="4-2-1-定义输出形式"><a href="#4-2-1-定义输出形式" class="headerlink" title="4.2.1 定义输出形式"></a>4.2.1 定义输出形式</h4><p>假设我们的词法分析程序使用的是下面的翻译表，那么在分离出一个单词之后，对识别出的记号以二元形式输出，记为&lt;记号，属性&gt;；（我们观察这个表还能发现这个语言只有3个关键字，分别是if、then和else，且这三个关键字各自是一类，因此相应记号就唯一的代表了一个关键字，不再需要属性标识）</p>
+<p><img src="/images/image-20221012151022245.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="4-2-2-定义全局变量和过程"><a href="#4-2-2-定义全局变量和过程" class="headerlink" title="4.2.2 定义全局变量和过程"></a>4.2.2 定义全局变量和过程</h4><p>词法分析程序的规模大小一般和状态转换图中的状态数和边数和成正比：</p>
+<ul>
+<li>对转换图中的每一个状态分别用一段程序实现<ul>
+<li>若某状态有若干条射出边，则程序段首先读入一个字符，根据读到的字符，程序控制转去执行下一个状态对应的语句序列</li>
+</ul>
+</li>
+</ul>
+<p>现在回到正题，程序中使用的一些全局变量和需要调用的函数&#x2F;过程如下（基于上述例子）：</p>
+<p><img src="/images/image-20221012153329352.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221012153349156.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<blockquote>
+<p>Q：过程和函数的区别？</p>
+</blockquote>
+<p>A：实际上程序的子程序分为两种，过程和函数，函数是有参数有返回值的（函数的定义就是从一个非空集合到另一个非空集合的映射），除了函数以外其他的子程序都被称为过程；（过程这个概念在数据库中使用的比较多，编程语言中应该是只有函数这一种子程序）</p>
+<hr>
+<h4 id="4-2-3-程序框架"><a href="#4-2-3-程序框架" class="headerlink" title="4.2.3 程序框架"></a>4.2.3 程序框架</h4><p>这里使用伪代码的方式给出大致的词法分析程序的主体框架</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><code class="hljs C">state=<span class="hljs-number">0</span>;															   <span class="hljs-comment">//初始状态，状态码设置为0</span><br>DO&#123;<br>    SWITCH(state)&#123;<br>        CASE <span class="hljs-number">0</span>:														    <span class="hljs-comment">//初始状态													</span><br>            token=<span class="hljs-string">&quot;;  												 	//token字符数组，存放当前正在识别的单词字符串，因为刚开始什么都没有所以只存储了开始的&quot;</span>符号<br>            get_char（）；												   <span class="hljs-comment">//get_char过程，每调用一次，根据向前指针forward的指示从输入缓冲区中读一个字符，并把它放入变量C中，然后移动forward，使之指向下一个字符</span><br>            get_nbc（）；												   <span class="hljs-comment">//get_nbc过程，每次调用时，检查C中的字符是否为空格，若是，则反复调用过程get_char，直到C中进人一个非空字符为止</span><br>            SWITCH（C）&#123;												    <span class="hljs-comment">//字符变量C，用于存放当前读入的字符</span><br>                 CASE<span class="hljs-number">&#x27;</span>a<span class="hljs-number">&#x27;</span>：state=<span class="hljs-number">1</span>；<span class="hljs-keyword">break</span>；<br>                 CASE<span class="hljs-number">&#x27;b</span><span class="hljs-number">&#x27;</span>：state=<span class="hljs-number">1</span>；<span class="hljs-keyword">break</span>；<br>                 ...<br>                 CASE<span class="hljs-number">&#x27;</span>z<span class="hljs-number">&#x27;</span>：state=<span class="hljs-number">1</span>；<span class="hljs-keyword">break</span>；									<span class="hljs-comment">//设置标识符的状态</span><br>                 CASE<span class="hljs-number">&#x27;0&#x27;</span>：state=<span class="hljs-number">2</span>；<span class="hljs-keyword">break</span>；<br>                 CASE<span class="hljs-number">&#x27;1&#x27;</span>：state=<span class="hljs-number">2</span>；<span class="hljs-keyword">break</span>；<br>                 ...<br>                 CASE<span class="hljs-number">&#x27;9&#x27;</span>：state=<span class="hljs-number">2</span>；<span class="hljs-keyword">break</span>；								    <span class="hljs-comment">//设置常数符状态</span><br>                 CASE<span class="hljs-number">&#x27;</span>&lt;<span class="hljs-string">&#x27;：state=8；break；									//设置&#x27;</span>&lt;<span class="hljs-string">&#x27;符状态</span><br><span class="hljs-string">                 CASE&#x27;</span>&gt;<span class="hljs-string">&#x27;：state=9；break；									//设置&#x27;</span>&gt;<span class="hljs-string">&#x27;符状态</span><br><span class="hljs-string">                 CASE&#x27;</span>:<span class="hljs-string">&#x27;：state=10；break；								//设置&#x27;</span>:<span class="hljs-string">&#x27;符状态</span><br><span class="hljs-string">                 CASE&#x27;</span>/<span class="hljs-string">&#x27;：state=11；break；								//设置&#x27;</span>/<span class="hljs-string">&#x27;符状态</span><br><span class="hljs-string">                 CASE&#x27;</span>=<span class="hljs-string">&#x27;：state=O；return（relop，EQ）；break；			  //返回&#x27;</span>=<span class="hljs-string">&#x27;的记号，并回到初始状态	</span><br><span class="hljs-string">                 CASE&#x27;</span>+<span class="hljs-string">&#x27;：state=0；return（&#x27;</span>+<span class="hljs-string">&#x27;，-）；break；				  //返回&#x27;</span>+<span class="hljs-string">&#x27;的记号</span><br><span class="hljs-string">                 CASE&#x27;</span>-<span class="hljs-string">&#x27;：state= O；return（&#x27;</span>-<span class="hljs-string">&#x27;，-）：break；				  //返回&#x27;</span>-<span class="hljs-string">&#x27;的记号</span><br><span class="hljs-string">                 CASE&#x27;</span>*<span class="hljs-string">&#x27;：state= O；return（&#x27;</span>*<span class="hljs-string">&#x27;，-）；break；				  //返回&#x27;</span>*<span class="hljs-string">&#x27;的记号</span><br><span class="hljs-string">                 CASE&#x27;</span>（<span class="hljs-string">&#x27;：state=0；return（&#x27;</span>（<span class="hljs-string">&#x27;，-）：break；   			//返回&#x27;</span>（<span class="hljs-string">&#x27;的记号</span><br><span class="hljs-string">                 CASE&#x27;</span>）<span class="hljs-string">&#x27;：state=0；return（&#x27;</span>）<span class="hljs-string">&#x27;，-）；break；				//返回&#x27;</span>）<span class="hljs-string">&#x27;的记号</span><br><span class="hljs-string">                 CASE&#x27;</span>；<span class="hljs-string">&#x27;：state=0；return（&#x27;</span>：<span class="hljs-string">&#x27;，-）：break；				//返回&#x27;</span>;<span class="hljs-string">&#x27;的记号</span><br><span class="hljs-string">                CASE&#x27;</span>\<span class="hljs-string">&#x27;&#x27;：state=0；return（&#x27;</span>\<span class="hljs-string">&#x27;&#x27;，-）；break；				  //返回&quot;的记号</span><br><span class="hljs-string">                 default：state=13；break；							   //设置错误状态</span><br><span class="hljs-string">            &#125;</span><br><span class="hljs-string">	   break；</span><br><span class="hljs-string">       CASE 1：														//标识符状态（注意这里标识符是有可能包含关键字的需要判断）</span><br><span class="hljs-string">           cat（）；												   //将C中的字符连接在token中的字符串后面</span><br><span class="hljs-string">           get_char（）；											   //get_char过程，每调用一次，根据向前指针forward的指示从输入缓冲区中读一个字符，并把它放入变量C中，然后移动forward，使之指向下一个字符</span><br><span class="hljs-string">           IF（letter（）|| digit（））								   //letter函数和digit函数，分别判断C中的字符是否是字符或数字，若是则返回ture</span><br><span class="hljs-string">           		state=1；											  //如果已经不是字符或数字，代表很有可能一个单词已经结束，此时对token中的单词进行判断</span><br><span class="hljs-string">           ELSE&#123;</span><br><span class="hljs-string">               retract（）；											    //前向指针forward后退一个字符</span><br><span class="hljs-string">               state=0；</span><br><span class="hljs-string">               iskey=reserve（）；											//根据token中的单词查询关键字表，若token中的是关键字则返回该关键字的记号，否则返回-1</span><br><span class="hljs-string">              IF（iskey！=-1）</span><br><span class="hljs-string">                   return（iskey，-）；							 		   //1.如果识别出的是关键字，则返回该关键字的记号（这里没有返回属性是因为只有三个关键字）</span><br><span class="hljs-string">              ELSE&#123;														//2.如果识别出的是用户自定义标识符，将识别出来的用户自定义标识符（即token中的单词）插人符号表，返回该单词在符号表中的位置指针，即返回该标识符在符号表的入口指针</span><br><span class="hljs-string">                identry=table_insert（）；									</span><br><span class="hljs-string">                return（ID，identry）；										//return二元组（ID,identry）</span><br><span class="hljs-string">               &#125;;</span><br><span class="hljs-string">           &#125;;</span><br><span class="hljs-string">	   break；</span><br><span class="hljs-string">       CASE 2：														  //常数状态</span><br><span class="hljs-string">           cat（）；</span><br><span class="hljs-string">		  get_char（）；</span><br><span class="hljs-string">           SWITCH（C）&#123;</span><br><span class="hljs-string">		  CASE&#x27;</span><span class="hljs-number">0&#x27;</span>：state= <span class="hljs-number">2</span>；<span class="hljs-keyword">break</span>；<br>           CASE<span class="hljs-number">&#x27;1&#x27;</span>：state= <span class="hljs-number">2</span>；<span class="hljs-keyword">break</span>；<br>		  ...<br>		  CASE<span class="hljs-number">&#x27;9&#x27;</span>：state= <span class="hljs-number">2</span>；<span class="hljs-keyword">break</span>；<br>          CASE<span class="hljs-number">&#x27;.&#x27;</span>：state=<span class="hljs-number">3</span>；<span class="hljs-keyword">break</span>；<br>          CASE<span class="hljs-number">&#x27;E&#x27;</span>：state=<span class="hljs-number">5</span>；<span class="hljs-keyword">break</span>；<br>          DEFAULT:													   <span class="hljs-comment">//如果token后面已经不跟着数字或者小数点或者E，则表示已经是一个整常数，此时可以进行处理</span><br>			retract（）；												<span class="hljs-comment">//前向指针forward后退一个字符</span><br>             state=<span class="hljs-number">0</span>；<br>             <span class="hljs-keyword">return</span>（NUM，SToI（token））；								<span class="hljs-comment">//返回整数</span><br>             <span class="hljs-keyword">break</span>；<br>       &#125;；<br>       <span class="hljs-keyword">break</span>；<br>      ...														       <span class="hljs-comment">//之后就是各种上面列举的状态的处理，我们就不再赘述   </span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="5-LEX软件"><a href="#5-LEX软件" class="headerlink" title="5.LEX软件"></a>5.LEX软件</h2><p>LEX全称为LEXical compiler的缩写，主要功能是根据LEX源程序生成一个C语言描述的词法分析程序：</p>
+<ul>
+<li>LEX源程序是词法分析程序的规格说明文件；</li>
+</ul>
+<p>使用LEX生成词法分析程序的流程图如下（Linux环境下）</p>
+<p><img src="/images/image-20220923100917659.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="5-1-LEX源程序结构"><a href="#5-1-LEX源程序结构" class="headerlink" title="5.1 LEX源程序结构"></a>5.1 LEX源程序结构</h3><p>一个LEX源程序由声明、翻译规则以及辅助过程三部分组成，各个部分间使用”%%”分隔：</p>
+<p><img src="/images/image-20221210164643829.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>声明部分：包括变量的声明、符号常量的声明以及正规定义（正规定义中定义的名字可以出现在翻译规则的正规表达式中），C语言声明语句一定要使用“%{}%”括起来；</li>
+<li>翻译规则部分：由正规表达式和相应动作组成的具有如下形式的语句序列；</li>
+</ul>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs mathematica"><span class="hljs-variable">P1</span> <span class="hljs-punctuation">&#123;</span>动作<span class="hljs-number">1</span><span class="hljs-punctuation">&#125;</span><br><span class="hljs-variable">P2</span> <span class="hljs-punctuation">&#123;</span>动作<span class="hljs-number">2</span><span class="hljs-punctuation">&#125;</span><br><br>其中<span class="hljs-built_in">Pi</span>是正规表达式，描述一种记号的模式；动作<span class="hljs-variable">i</span>是<span class="hljs-built_in">C</span>语言描述的程序段，表示当一个符号串匹配模式<span class="hljs-built_in">Pi</span>时词法分析程序执行的动作；<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>辅助过程是对翻译规则的补充：对于翻译规则部分中某些动作需要调用的过程或函数，若不是C语言的函数库则需要在此给出具体的定义；</li>
+</ul>
+<blockquote>
+<p>LEX源程序中翻译规则部分是必须的，声明部分和辅助过程部分可以没有</p>
+</blockquote>
+<h3 id="5-2-LEX使用指南"><a href="#5-2-LEX使用指南" class="headerlink" title="5.2 LEX使用指南"></a>5.2 LEX使用指南</h3><p>原文链接：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/wp5719/p/5528896.html">Lex使用指南 - 火雨(Nick) - 博客园 (cnblogs.com)</a></p>
+<h1 id="第四章-语法分析"><a href="#第四章-语法分析" class="headerlink" title="第四章 语法分析"></a>第四章 语法分析</h1><p>（实际上这章好像还是依赖形式语言，所以有时间还是建议回头复习一下形式语言）</p>
+<h2 id="1-语法分析简介"><a href="#1-语法分析简介" class="headerlink" title="1.语法分析简介"></a>1.语法分析简介</h2><p>语法分析的目的就是根据源语言的语法规则，从源程序记号序列中识别出各种语法成分同时进行语法检查，为语义分析和代码生成做准备；</p>
+<p>语法分析工作由语法分析程序完成；</p>
+<p><img src="/images/image-20220923111414520.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>需要注意的是语法分析有两个前提：</p>
+<ul>
+<li>采用正规式和有限自动机描述和识别语言的单词符号；</li>
+<li>用上下文无关文法来描述语法规则（关于上下文无关文法的解释参考<a href="https://gintoki-jpg.github.io/2022/06/17/%E6%9C%9F%E6%9C%AB_%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%A4%8D%E4%B9%A0/#1-1-%E4%B8%8A%E4%B8%8B%E6%96%87%E6%97%A0%E5%85%B3%E6%96%87%E6%B3%95CFG%E7%9A%84%E5%AE%9A%E4%B9%89">形式语言与自动机复习笔记)</a>）；</li>
+</ul>
+</blockquote>
+<p>常用的语法分析方法有自顶向下和自底向上两大类：</p>
+<p>（1）自顶向下的分析方法：语法分析程序从树根到树叶自顶向下地为输入的记号序列建立分析树。如LL1分析程序采用的就是自顶向下的分析方法；<br>（2）自底向上的分析方法：语法分析程序从树叶到树根自下而上地为输入的记号序列建立分析树。如LR分析程序采用的就是自底向上的分析方法；</p>
+<table>
+<thead>
+<tr>
+<th>自下而上</th>
+<th>自上而下</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>从输入串开始，逐步进行归约，直到文法的开始符号</td>
+<td>从文法的开始符号出发，反复使用各种产生式，寻找”匹配”的推导</td>
+</tr>
+<tr>
+<td>归约：根据文法的产生式规则，把串中出现的产生式的右部替换成左部符号</td>
+<td>推导：根据文法的产生式规则，把串中出现的产生式的左部符号替换成右部</td>
+</tr>
+<tr>
+<td>从树叶节点开始，构造分析树</td>
+<td>从树的根开始，构造分析树</td>
+</tr>
+<tr>
+<td>算符优先分析法、LR分析法</td>
+<td>递归下降分析法、LL1分析法(递归&#x2F;非递归)</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>无论采用的是哪种分析方法，语法分析程序对输入记号序列的扫描均是<code>自左向右</code>进行的，<code>每次读入一个记号</code>；</p>
+</blockquote>
+<hr>
+<p>通常用户要求编译程序在工作过程中能够识别出源程序中存在的错误并能确定错误出现的位置和性质，而源程序中出现的错误大多是语法错误；</p>
+<p>语法分析程序主要处理语法错误：如算数表达式的括号不匹配、缺少运算对象等，错误处理的基本目标为：</p>
+<ul>
+<li>能够清楚而准确地报告发现的错误，如错误的位置和性质；</li>
+<li>能够迅速地从错误中恢复过来，以便继续诊断后面可能存在的错误；</li>
+<li>错误处理功能不应该明显地影响编译程序对正确程序的处理效率；</li>
+</ul>
+<p>语法分析程序可以采用的错误恢复策略主要有如下：</p>
+<ul>
+<li>紧急恢复：一旦发现错误，分析程序每次抛弃一个输入记号，直到向前指针所指向的记号属于某个指定的同步记号集合为止。同步记号通常是定界符，如语句结束符分号、块结束标识END等，它们在源程序中的作用是清楚的；<ul>
+<li>由于常常跳过一段记号不做分析，这要求编译程序必须选择合适的同步记号；</li>
+</ul>
+</li>
+<li>短语级恢复：一旦发现错误，分析程序便对剩余输入做局部纠正，用可以使分析程序继续分析的符号串代替剩余输入串的前缀；<ul>
+<li>典型的局部纠正有用分号代替逗号、删除多余的分号、插入遗漏的分号等。但如果总是在当前输入串前面插入一些记号的话，这种策略就可能使分析陷入死循环，所以编译程序的设计者必须仔细选择替换串；</li>
+</ul>
+</li>
+<li>出错产生式：通过增加产生错误结构的产生式，扩充源语言的文法，然后根据扩充后的文法构造分析程序。如果分析程序在分析过程中使用了这些扩充的产生式，表示输入记号序列中的这个错误结构已经被识别，产生适当的错误诊断信息；</li>
+<li>全局纠正：使用全局纠正策略的分析程序在处理不正确的输入符号串时，作尽可能少的修改，即给定不正确的输入串x和文法G，获得串y的分析树，使把x变成y所需要的插入、删除和修改量最少；</li>
+</ul>
+<h2 id="2-自顶向下分析方法"><a href="#2-自顶向下分析方法" class="headerlink" title="2.自顶向下分析方法"></a>2.自顶向下分析方法</h2><p>前面已经说过，自上而下的分析实质上就是从文法的开始符号S推导出字符串w的过程</p>
+<p><img src="/images/image-20220925092008326.png" srcset="/img/loading.gif" lazyload></p>
+<p>在每一步的推导过程中我们需要思考如下两个问题：</p>
+<ol>
+<li>替换当前句型中的哪个非终结符；</li>
+<li>用该终结符的哪个候选式进行替换；</li>
+</ol>
+<p>关于第一个问题，我们规定了两种选择：</p>
+<ul>
+<li>最左推导：最左推导中，总是选择句型最左非终结符进行替换；</li>
+<li>最右推导：最右推导中，总是选择句型最右非终结符进行替换；</li>
+</ul>
+<blockquote>
+<ul>
+<li><p>我们称最左规约为规范规约，相应的最右推导称为规范推导；（不要问为什么，这就是规定没有为什么）</p>
+</li>
+<li><p><code>自顶向下的语法分析采用最左推导方式</code>；（是不是觉得很神奇？？最右推导是规范的但是我就是要用最左…）</p>
+</li>
+</ul>
+</blockquote>
+<p>无论是最左推导还是最右推导，它们的推导结果以及产生的分析树一定是唯一的（除非这个句子是有二义性的）</p>
+<p>解决了第一个问题就该解决第二个问题了，这个问题就引出自顶向下分析将要面临的两个困境：</p>
+<ul>
+<li>回溯问题：分析过程中，当一个非终结符用某一个候选匹配成功时，这种匹配可能是暂时的（很可能因为后面的非终结符匹配不成功而重新匹配-回溯）</li>
+<li>文法左递归问题：因为我们规定了使用最左推导，所以如果出现这样的产生式P-&gt;Pa，那就永远别想推导出一个终结符串了；</li>
+</ul>
+<h3 id="2-1-消除左递归"><a href="#2-1-消除左递归" class="headerlink" title="2.1 消除左递归"></a>2.1 消除左递归</h3><p>发现了问题就需要解决问题，我们先来消除文法的左递归（因为形式语言学过），再来消除回溯；</p>
+<p>关于消除左递归我们参考<a href="https://gintoki-jpg.github.io/2022/06/17/%E6%9C%9F%E6%9C%AB_%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%A4%8D%E4%B9%A0/#4-%E6%A0%BC%E9%9B%B7%E5%B7%B4%E8%B5%AB%E8%8C%83%E5%BC%8FGNF">形式语言与自动机复习笔记</a>，左递归分为直接左递归和间接左递归：</p>
+<ul>
+<li>引入带下标的变量A1、A2来替换原有变量，利用规则“产生式左部变量下标要小于右部第一个变量下标”来调整变量下标消除间接左递归（间接左递归不是课程考察的重点）；</li>
+<li>通过构造产生式组（实质上就是将左递归变为右递归）消除直接左递归；</li>
+</ul>
+<p><img src="/images/image-20220925093853000.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-2-消除回溯"><a href="#2-2-消除回溯" class="headerlink" title="2.2 消除回溯"></a>2.2 消除回溯</h3><p>引起回溯的原因是，在文法中某个非终结符A有多个候选式，需要使用A匹配当前的输入符号的时候，无法确定选用唯一的候选式只能逐一试探，这将引起回溯；</p>
+<p>为了消除回溯，必须保证对文法的任何非终结符，当要它去匹配输入串时，能够根据它所面临的输入符号准确地指派它的一个候选去执行任务，并且此候选的工作结果应是确信无疑的（这不是废话，引起回溯的原因就是选的式子不唯一）；</p>
+<p>解决回溯的关键：已知所有产生式以及当前匹配符号串，选择一个最好的产生式；</p>
+<p>消除回溯的方法是提取左公共因子，假定关于A的规则（产生式）是（其中β是含有其他终结符的句型）</p>
+<p><img src="/images/image-20220930102730035.png" srcset="/img/loading.gif" lazyload></p>
+<p>那么，可以将这些规则改写成</p>
+<p><img src="/images/image-20220930102805266.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-2-1-First集合"><a href="#2-2-1-First集合" class="headerlink" title="2.2.1 First集合"></a>2.2.1 First集合</h4><p><code>First集合的定义</code>：令G是一个不含左递归的文法，对G的所有非终结符的每个候选产生式α定义它的<code>终结首符集</code>FIRST(α)为FIRST(α)&#x3D;{a│α⇒∗ a…，其中a∈V<del>T</del> }，特别是，若α⇒∗ ε，则规定ε∈FIRST(α)。</p>
+<p>简单来说就是有产生式A-&gt;bB，且当前匹配到的符号串是cb指针指向b，那么就直接选这个产生式相对来说最好；特别地，如果产生式恰好产生的是空串则需要特别处理；</p>
+<p><img src="/images/image-20220930104459404.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>结论1：如果非终结符A的所有First集两两不相交，即A的任何两个不同候选产生式a<del>i</del>和a<del>j</del>，有FIRST(a<del>i</del>)∩FIRST(a<del>j</del>)＝空集（举个例子，First(a<del>1</del>)&#x3D;{b,c}，First(a<del>2</del>)&#x3D;{d,e}，则两个集合不相交），则当要求A匹配输入串时，A能根据它所面临的第一个输入符号a，准确地指派某一个候选去执行任务，这个候选就是那个终结首符集含a的α产生式</p>
+</blockquote>
+<p>所以现在我们需要做的就是如何将每个非终结符的所有First集变成两两不相交的，实际上前面的提取左公因子就已经保证了这一步；</p>
+<h4 id="2-2-2-Follow集合"><a href="#2-2-2-Follow集合" class="headerlink" title="2.2.2 Follow集合"></a>2.2.2 Follow集合</h4><p>上面说到的非终结符推出空串需要特殊处理，这里我们来详细介绍一下怎么特殊处理；</p>
+<p><img src="/images/image-20220930104602272.png" srcset="/img/loading.gif" lazyload></p>
+<p>当非终结符的产生式中有空串，则需要求这个非终结符的Follow集，便于在推导过程中是否应该选择空产生式；</p>
+<p>上面的例子中我们只需要关注E·以及T·的Follow集即可（因为只有它们两个的产生式中有空产生式） </p>
+<blockquote>
+<p>结论2：如果当前某非终结符A与当前输入符a不匹配时，若存在A→ε，可以通过检查a是否可以出现在A的后面，来决定是否使用产生式 A→ε（若文法中无 A→ε，则应报错（当然这是尝试了所有的匹配之后））</p>
+</blockquote>
+<p>我们再次举个例子来看Follow集的必要性</p>
+<p><img src="/images/image-20220930110756974.png" srcset="/img/loading.gif" lazyload></p>
+<p>因为能够跟在B后面的终结符只可能是c和a（“紧跟”这个词需要好好理解），所以第二个符号串我们不可能使用”B-&gt;空串”来匹配adBC得到目标符号串ade，而因为另外两个B的产生式也不匹配，所以语法分析器会直接返回符号串不匹配错误；</p>
+<hr>
+<p><code>Follow集合的定义</code>：假定S是文法G的开始符号，对于G的任何非终结符A，我们定义A的FOLLOW集合</p>
+<p>FOLLOW(A)&#x3D;{a│S⇒∗ …Aa…，其中a∈V<del>T</del> }，特别是，若S⇒∗ …A，则规定#∈FOLLOW(A) （也就是说如果从开始符号推出的A的后面没有终结符，则把#语法结束符号加入Follow(A)集）</p>
+<blockquote>
+<p>结论3：只要给定了文法，就能求出唯一不变的First集和Follow集；</p>
+</blockquote>
+<h4 id="2-2-3-First和Follow集合的构造"><a href="#2-2-3-First和Follow集合的构造" class="headerlink" title="2.2.3 First和Follow集合的构造"></a>2.2.3 First和Follow集合的构造</h4><p>文章参考：[编译原理求FIRST集、FOLLOW集和SELECT集 | 言曌博客 (liuyanzhao.com)](<a target="_blank" rel="noopener" href="http://liuyanzhao.com/8279.html#:~:text=First%E9%9B%86%E5%90%88%E9%A1%BE%E5%90%8D%E6%80%9D%E4%B9%89%E5%B0%B1%E6%98%AF%E6%B1%82,%E4%B8%80%E4%B8%AA%E6%96%87%E6%B3%95%E7%AC%A6%E5%8F%B7%E4%B8%B2%E6%89%80%E5%8F%AF%E8%83%BD%E6%8E%A8%E5%AF%BC%E5%87%BA%E7%9A%84%E7%AC%A6%E5%8F%B7%E4%B8%B2%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%BB%88%E7%BB%93%E7%AC%A6%E7%9A%84%E9%9B%86%E5%90%88">http://liuyanzhao.com/8279.html#:~:text=First集合顾名思义就是求,一个文法符号串所可能推导出的符号串的第一个终结符的集合</a> 。)</p>
+<p>我们总结一下计算First集合和Follow集合的方法；</p>
+<blockquote>
+<p>First集合：一个文法符号(串)可能推导出的所有符号串的第一个终结符的集合</p>
+</blockquote>
+<ul>
+<li><p><code>计算单个终结符号的First(a)</code>：单个终结符的Fistr集合就是它自己</p>
+</li>
+<li><p><code>计算文法符号X的First(X)</code>（即单个非终结符的First集合）</p>
+</li>
+</ul>
+<p><img src="/images/image-20221007100825921.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><code>计算文法符号串X1X2X3...Xn的First集合</code>（这里的Xi可以是终结符也可以是非终结符）</li>
+</ul>
+<p><img src="/images/image-20221007100943624.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>Follow集合：文法符号后面可能跟随的终结符的集合（Follow集不包括空串！！！）</p>
+</blockquote>
+<p>注意终结符的Follow集合没有定义，只有非终结符才会有Follow集合；Follow集合中的符号一定是终结符且不包含空串；</p>
+<ul>
+<li><code>计算非终结符A的Follow集合</code></li>
+</ul>
+<p><img src="/images/image-20221007101933933.png" srcset="/img/loading.gif" lazyload></p>
+<p>简单来说：</p>
+<ol>
+<li><p>开始符号的Follow集合初始为 { # }；</p>
+</li>
+<li><p>当有产生式A-&gt;…Ua…，则a属于Follow(U)；</p>
+</li>
+<li><p>当有产生式A-&gt;…UP：</p>
+<ul>
+<li><p>当P推导为空串的时候，Follow(A)属于Follow(U)；</p>
+</li>
+<li><p>当P推导不是空串的时候，First(P)属于Follow(U)；</p>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="2-2-4-Select集合"><a href="#2-2-4-Select集合" class="headerlink" title="2.2.4 Select集合"></a>2.2.4 Select集合</h4><p>Select集合直观上理解就是上面我们介绍过的产生式右边的符号串的First集合（特殊情况下，即产生式推出空的时候Select集合是产生式左边的非终结符的Follow集合）</p>
+<p><img src="/images/image-20221007102451793.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>Select集合：产生式左部的可能的推导结果的起始符号集合</p>
+</blockquote>
+<p>Select(A-&gt;B)就是求这个产生式中A可能推导出的结果(即B)起始符号集合（不包含空串，但是可能包含 #(结束符)），可分为如下情况：</p>
+<ul>
+<li>A-&gt;X（X为任意文法符号串，不仅限于非终结符或单个符号，X不能推导出空串），此时Select(A-&gt;X)&#x3D;First(X);</li>
+<li>A-&gt;X(X为任意文法符号串，不仅限于非终结符或单个符号，X能推导出空串)，此时不仅First(X)属于Select(A-&gt;X)，同时Follow(A)也属于Select(A-&gt;X)；</li>
+</ul>
+<blockquote>
+<p>Select集合的作用：构造预测分析表</p>
+</blockquote>
+<h3 id="2-3-LL1文法"><a href="#2-3-LL1文法" class="headerlink" title="2.3 LL1文法"></a>2.3 LL1文法</h3><p>LL1文法是构造不带回溯的自上而下分析的必要条件，实际上我们前面的步骤都是为了构造LL1文法；</p>
+<p>我们对LL1文法的定义如下</p>
+<p><img src="/images/image-20220930111807826.png" srcset="/img/loading.gif" lazyload></p>
+<p>对于第三点做一个解释，<code>并不是说所有的First集合和Follow集合都不能有交集，而是说当一个非终结符A可以推出空串的情况，才需要保证First(A)交Follow(A)=空集</code></p>
+<p>即B后面可能跟a，同时B也可以推出a，这就将导致我们在选择产生a的时候面临两个选择，这是需要避免的；</p>
+<hr>
+<blockquote>
+<p>Q：上面也没讲怎么避免First和Follow出现交集啊？如果我在求解过程中出现交集了咋办？？</p>
+</blockquote>
+<p>A：假如First和Follow集出现了交集，则这就不符合LL1文法，那就不能用自上而下的分析方法（我们之后会用自下而上的方法解决这个问题）；</p>
+<hr>
+<p>关于LL1名称的解释：</p>
+<ul>
+<li><p>L：从左到右扫描输入串；</p>
+</li>
+<li><p>L：最左推导；</p>
+</li>
+<li><p>1：每一步骤只向前查看一个符号；</p>
+</li>
+</ul>
+<p>那么当我们已经拥有一个LL1文法，就可以使用严谨的推导规则对输入串进行有效的无回溯的自顶向下的分析（之所以要避免First集和Follow集有交集，也是因为下面的if else只能选择其一）：</p>
+<p><img src="/images/image-20220930113253815.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>LL1文法具备一个非常强的性质：当且仅当文法为LL1时，该文法的预测分析表M不包含多重定义入口，简单来说LL1文法不是二义的；</p>
+</blockquote>
+<h3 id="2-4-预测分析表"><a href="#2-4-预测分析表" class="headerlink" title="2.4 预测分析表"></a>2.4 预测分析表</h3><p>现在我们来总结一下如何把一个普通的文法改造为LL1文法后进行自上而下的分析：</p>
+<ol>
+<li>消除文法的左递归；</li>
+<li>提取左公共因子；</li>
+<li>计算First集合和Follow集合；</li>
+<li>如果原文法为LL1文法，使用LL1文法的分析进行自顶向下的不带回溯的分析；</li>
+</ol>
+<p>之所以必须使用ll(1)文法进行自上而下的分析，是因为在使用ll(1)文法对符号串进行自上而下的推导(匹配)的时候，可以明确唯一的选择产生式，也就对应了预测分析表中的唯一一个选项；</p>
+<p>同时给定一个LL1文法就能唯一构造一个预测分析表；</p>
+<p><img src="/images/image-20221007104656275.png" srcset="/img/loading.gif" lazyload></p>
+<p>下面我们介绍如何构造一个预测分析表（基于下面的文法G(E)，注意预测分析表只和文法有关，和具体要匹配的符号串没有关系）</p>
+<p><img src="/images/image-20221007110627036.png" srcset="/img/loading.gif" lazyload></p>
+<p>构造文法G的分析表M[A,o]，确定每个产生式A-&gt;a在表中的位置：</p>
+<ul>
+<li><p>对每个终结符o属于FIRST(a) ，把A→a加至M[A,o]中；</p>
+</li>
+<li><p>若空串属于FIRST(a)，则对任何b属于FOLLOW(A) 把A→a加至M[A,b]中；</p>
+</li>
+<li><p>对文法G的每个产生式A→a执行第1步和第2步；</p>
+</li>
+<li><p>把所有无定义的M[A,o]标上“出错标志”；</p>
+</li>
+</ul>
+<p>下面给出预测分析表的构造伪代码</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">for</span><span class="hljs-params">(文法G的每一个产生式A-&gt;a)</span></span>&#123;<br>	<span class="hljs-built_in">for</span>(每个终结符号o属于<span class="hljs-built_in">First</span>(a))&#123;<br>		将A-&gt;a放入表项M<span class="hljs-selector-attr">[A,o]</span>中；<br>	&#125;<br>	<span class="hljs-built_in">if</span>(空串属于<span class="hljs-built_in">First</span>(a))&#123;<br>		<span class="hljs-built_in">for</span>(每个 b属于<span class="hljs-built_in">Follow</span>(A))&#123;<br>			把A-&gt;a放入表项M<span class="hljs-selector-attr">[A,b]</span>中；<br>		&#125;<br>	&#125;<br><span class="hljs-function"><span class="hljs-title">for</span><span class="hljs-params">(所有无定义的表项M[A,o])</span></span>&#123;<br>	标志错误标志<br>&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>根据上述构造步骤，首先根据所给文法构造每个非终结符的First集合和Follow集合(这里的First集合不是用来构造分析表的，而是用来计算Follow集合的)</p>
+<p><img src="/images/image-20221007112357197.png" srcset="/img/loading.gif" lazyload></p>
+<p>构造空白分析表，左侧为所有非终结符，上侧为所有终结符（不包括空串）</p>
+<p><img src="/images/image-20221007114036501.png" srcset="/img/loading.gif" lazyload></p>
+<p>然后按照规则依次把每个产生式填入分析表中（看规则可能觉得很难理解，实际上就是先看第一个产生式E-&gt;TE’，因此把这个产生式填在E行，First(TE’)列（即i列和(列），接着是第二个产生式，注意把多个产生式分开填写），将所有的产生式都填写完毕后就构造出了该文法的预测分析表</p>
+<p><img src="/images/image-20221007114513585.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-5-LL1的非递归预测分析"><a href="#2-5-LL1的非递归预测分析" class="headerlink" title="2.5 LL1的非递归预测分析"></a>2.5 LL1的非递归预测分析</h3><blockquote>
+<p>LL1的递归预测分析不是考试重点所以我们不介绍；</p>
+</blockquote>
+<p>非递归的预测分析程序模型如下</p>
+<p><img src="/images/image-20221007115509718.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><p>输入缓冲区：用于存放被分析的输入符号串，串尾结束符号#或者$；</p>
+</li>
+<li><p>分析栈：存放一系列的文法符号，使用符号#或$标识栈底，接着是文法的开始符号…</p>
+</li>
+<li><p>分析表：二维表M[A,a]，其中A是非终结符号，a是终结符号或#，分析表用于给出分析动作指引；</p>
+</li>
+<li><p>输出流：分析过程中采用的产生式序列；</p>
+</li>
+<li><p>预测分析控制程序：总控程序；</p>
+</li>
+</ul>
+<p>总控程序也被称为预测分析控制程序，是预测分析程序的核心部分，由分析表驱动，它总是根据栈顶符号X和当前输入符号a来决定分析程序应该采取的动作，有如下四种可能：</p>
+<p><img src="/images/image-20221007115142428.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>整个非递归预测分析程序的结构为</p>
+<ul>
+<li>输入：输入符号串w以及文法G的预测分析表M；</li>
+<li>输出：如果该符号串w属于文法G识别的语言，则输出符号串w的最左推导，否则报告错误；</li>
+</ul>
+</blockquote>
+<p>输入和输出的中间过程如下</p>
+<p><img src="/images/image-20221007120328399.png" srcset="/img/loading.gif" lazyload></p>
+<p>下面我们给出一道例题直观的感受一下自顶向下的非递归预测分析过程（题目中的i1、i2以及i3实际上都是终结符i，只是为了表明在匹配过程中始终用栈顶符号去匹配输入符号串的第一个符号）</p>
+<p><img src="/images/image-20221008085324989.png" srcset="/img/loading.gif" lazyload></p>
+<p>预测推导过程如下（非递归的预测分析过程），其中输出栏表示在分析符号串的过程中采用的产生式</p>
+<p><img src="/images/image-20221007120608949.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-5-1-错误处理程序"><a href="#2-5-1-错误处理程序" class="headerlink" title="2.5.1 错误处理程序"></a>2.5.1 错误处理程序</h4><blockquote>
+<p>这一节不作为考察重点；</p>
+</blockquote>
+<p>当出现如下两种情况表示源程序中出现语法错误：</p>
+<ol>
+<li>分析栈栈顶符号是终结符号，但是与当前输入符号不匹配；</li>
+<li>分析栈栈顶符号是非终结符号A，当前输入符号为a，但分析表中M[A,a]为空；</li>
+</ol>
+<p>一种“应急”处理方式是：</p>
+<ul>
+<li>情况1预测分析控制程序将栈顶的终结符号弹出；</li>
+<li>情况2预测分析符号移动指针跳过若干输入符号，直到可以继续分析为止；</li>
+</ul>
+<p>这需要一种新的分析表，额外有同步信息synch（对非终结符A，终结符号 b属于Follow(A)，如果表项M[A,b]为空，则填入synch）</p>
+<p><img src="/images/image-20221008091435818.png" srcset="/img/loading.gif" lazyload></p>
+<p>给出文法4.4的First集合和Follow集合</p>
+<p><img src="/images/image-20221008091714499.png" srcset="/img/loading.gif" lazyload></p>
+<p>下面是文法4.4带同步信息的预测分析表</p>
+<p><img src="/images/image-20221008091517012.png" srcset="/img/loading.gif" lazyload></p>
+<p>到此，综合处理步骤如下：</p>
+<ul>
+<li><p>如果栈顶符号是终结符号，但它与当前输入符号不匹配，则将此终结符号从栈顶弹出；</p>
+</li>
+<li><p>如果栈顶符号是非终结符号A，当前输入符号是a，预测分析控制程序在分析表中查表项M[A，a]：</p>
+<ul>
+<li>若它是空白，则移动向前指针，使它指向下一个符号；</li>
+<li>若它是synch，则从栈顶弹出A；</li>
+</ul>
+</li>
+</ul>
+<p>我们给出实例演示错误处理程序（这里的输出栏有点问题，应该除了第一行其他整体向下移动一行）</p>
+<p><img src="/images/image-20221008091951807.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221008092014096.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="3-自下向上分析方法"><a href="#3-自下向上分析方法" class="headerlink" title="3.自下向上分析方法"></a>3.自下向上分析方法</h2><p>自底向上分析方法试图自下而上的为输入符号串构造一棵分析树，即从树叶开始向上构造，直到树根；</p>
+<p>在采用自左向右扫描、自底向上分析的前提下，这种分析方法是从输入符号串开始，通过查找当前句型的“可归约串”，并使用规则把它归约为相应的非终结符号，得到一个新的句型，重复这种“查找可归约串-归约”的过程，直到最后归约到文法开始符号为止。自底向上分析方法的关键在于找出“可归约串”，然后，根据规则辨别将它归约为哪个非终结符号；</p>
+<p>常用的自底向上分析方法有优先分析法和<code>LR分析方法</code>：</p>
+<ul>
+<li>优先分析法又分为简单优先分析法和算符优先分析法：<ul>
+<li>简单优先分析法是按照文法符号（包括终结符号和非终结符号）之间的优先关系确定当前句型的“可归约串”，其分析过程实际上是一种规范归约，但这种方法分析效率低，且只适用于简单优先文法，使用价值不大；</li>
+<li>算符优先分析法是按照算符的优先关系和结合性质进行语法分析，适合分析表达式；</li>
+</ul>
+</li>
+<li>LR分析法（重点掌握）：规范归约，句柄作为可归约串；</li>
+</ul>
+<p>自下而上和自上而下的对比如下</p>
+<p><img src="/images/image-20221014095526445.png" srcset="/img/loading.gif" lazyload></p>
+<p>下面我们给出一个简单的自下而上的分析示例</p>
+<p><img src="/images/image-20221014095855465.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-1-基础概念"><a href="#3-1-基础概念" class="headerlink" title="3.1 基础概念"></a>3.1 基础概念</h3><h4 id="3-1-1-移进-归约"><a href="#3-1-1-移进-归约" class="headerlink" title="3.1.1 移进-归约"></a>3.1.1 移进-归约</h4><p>自下向上分析的基本思想是<code>&quot;移进-归约&quot;</code>：用一个寄存符号的先进后出栈，把输入符号一个一个地移进到栈里，当栈顶形成某个产生式的候选式时，即把栈顶的<code>这一部分</code>替换成(归约为)该产生式的左部符号；</p>
+<p>概念可能很抽象，我们给出一个示例帮助理解</p>
+<p><img src="/images/image-20221014100406465.png" srcset="/img/loading.gif" lazyload></p>
+<p>此时b作为栈顶可以进行归约，替换为A<img src="/images/image-20221014100427150.png" srcset="/img/loading.gif" lazyload></p>
+<p>此时bA部分可以进行归约，替换为A<img src="/images/image-20221014100444213.png" srcset="/img/loading.gif" lazyload></p>
+<p>…以此类推</p>
+<p>最终栈中部分aAcBe可以归约为开始符号S，归约成功<img src="/images/image-20221014101013260.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>移进-归约的核心问题是<code>识别可归约串</code></p>
+</blockquote>
+<p>连续出现的单词序列并不是可归约串，短语才是可归约串(praised the并不是一个可归约串，而the student才是一个可归约串)，当遇到连续单词序列而不是短语的时候是不能归约的，需要继续移进；</p>
+<p><img src="/images/image-20221014101602377.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<blockquote>
+<p>Q：语法树和分析树的区别？为什么大部分的教程都把这两个概念混用？</p>
+</blockquote>
+<p>分析树和语法树不是一种东西，习惯上，我们把前者叫做“具体语法树”或“分析树”，其能够体现具体的推导过程；后者叫做“抽象语法树”，其不体现过程，只关心最后的结果；</p>
+<p>为了明确区分，之后我们都是用英语表示，分析树就是语法树<code>paser tree</code>，语法树全称抽象语法树<code>AST</code>；</p>
+<ul>
+<li><p>paser tree</p>
+<ul>
+<li><p>根由开始符号标记，叶子由终结符，非终结符，或ε标记，内部节点由一个非终结符标记。父节点A-&gt;孩子节点XYZ…是一个产生式。若A→ε，则标记为A的结点可以仅有一个标记为ε的孩子；</p>
+</li>
+<li><p>叶子从左到右构成句型，若仅由终结符标记则构成一个句子；</p>
+</li>
+<li><p>最左推导与最右推导的paser tree可能不同（这意味着该文法G存在二义性）</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/image-20221105101622949.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>AST<ul>
+<li>根与内部节点由表达式中的操作符标记；叶子由表达式中的操作数标记；用于改变运算优先级和结合性的括弧，被隐含在AST的结构中；</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/image-20221105101640104.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>paser tree与AST的区别<ul>
+<li>paser tree的内部节点是非终结符，AST的内部节点是操作符（运算符），简单理解就是AST中省略了反映分析过程的非终结符；</li>
+<li>paser tree可以通过最左推导和最右推导构造得到，AST需要通过逆波兰表达式或者三元式来得到；</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="3-1-2-短语和句柄"><a href="#3-1-2-短语和句柄" class="headerlink" title="3.1.2 短语和句柄"></a>3.1.2 短语和句柄</h4><blockquote>
+<p>定义：令G是一个文法，S是文法的开始符号，假定αβδ是文法G的一个句型（其中α和δ都可以为空）:</p>
+<ul>
+<li><p>如果有S⇒∗ αAδ 且 A⇒+ β，则β称是句型αβδ相对于非终结符A的短语；</p>
+</li>
+<li><p>如果有A⇒β，则称β是句型αβδ相对于规则A-&gt;β的直接短语；</p>
+</li>
+</ul>
+</blockquote>
+<p>下面我们举例说明短语和直接短语（这个概念确实难以理解，需要多琢磨一下）</p>
+<blockquote>
+<p>在一个句型对应的分析树中（实际上这里是一个谬论，我们的目的就是根据可规约串(短语)构建分析树，但是这里却直接给出了分析树，这是为了方便我们理解短语和直接短语）:</p>
+<ul>
+<li>以某非终结符为根的两代以上的子树的所有末端结点从左到右排列就是相对于该非终结符的一个短语；</li>
+<li>如果子树只有两代，则该短语就是直接短语；</li>
+</ul>
+</blockquote>
+<p><img src="/images/image-20221014102326218.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<blockquote>
+<p>Q：关于上面所说的谬论</p>
+</blockquote>
+<p>A：因为在给出文法G和句型的情况下，我们直接构造出该句型的分析树，然后根据这个分析树来判断短语、直接短语和句柄；但是我们自下而上的要求是根据短语、直接短语和句型来归约分析树，这两个要求是互相矛盾的；所以现在的问题就是：<code>这个分析树到底是怎么被建立出来的？既然都有了句型的分析树为什么还要归约？这不是吃饱了没事做？</code>（关于这个我们后面会介绍，这其实不是谬论）</p>
+<ul>
+<li><p>每棵分析树的叶子结点从左到右排列构成一个<code>句型</code> </p>
+<ul>
+<li>一个句型的分析树中任一子树叶结点所组成的符号串都是该句型的<code>短语</code>；</li>
+<li>当子树中不包含其他更小的子树时，该子树叶结点所组成的字符串就是该句型的<code>直接（简单）短语</code>；</li>
+<li>一个句型的最左直接短语汇称为该句型的<code>句柄</code>（句柄的意义就在于栈中出现句柄必须要立刻处理）；</li>
+</ul>
+</li>
+<li><p>每棵分析树的子树的叶子结点从左到右排列构成一个<code>短语</code> </p>
+</li>
+<li><p>每棵分析树的简单子树（只有父子两层结点）的叶子结点从左到右排列构成一个<code>简单(直接)短语 </code></p>
+</li>
+</ul>
+<hr>
+<h3 id="3-2-算符优先分析法"><a href="#3-2-算符优先分析法" class="headerlink" title="3.2 算符优先分析法"></a>3.2 算符优先分析法</h3><p>这部分是自学内容，只是针对某一类特殊的文法（算符文法）进行分析，我们不具体介绍分析方法，只是介绍一下相关概念；</p>
+<p>算符文法的定义：一个文法，如果它的任一产生式的右部都不含两个相继(并列)的非终结符，即不含…QR…形式的产生式右部（Q、R代表任意非终结符），则我们称该文法为算符文法</p>
+<p>算符优先分析法主要是用于解决二义性的，因为对于某些特殊文法（算符文法）来说它就是有二义性，要么你选择改写产生式，要么引入优先级：</p>
+<ul>
+<li>如果规定算符的优先次序，并按这种规定进行归约，则归约过程是唯一的；</li>
+</ul>
+<p><img src="/images/image-20221014112805515.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-3-LR分析法"><a href="#3-3-LR分析法" class="headerlink" title="3.3 LR分析法"></a>3.3 LR分析法</h3><h4 id="3-3-1-LR分析器模型"><a href="#3-3-1-LR分析器模型" class="headerlink" title="3.3.1 LR分析器模型"></a>3.3.1 LR分析器模型</h4><blockquote>
+<p>LR分析器的名称含义：</p>
+<ul>
+<li>L：从左到右扫描输入串  </li>
+<li>R：自下而上进行规范归约</li>
+</ul>
+</blockquote>
+<p>算符优先分析的结果一般并不会等于规范规约的结果（注意这里不是因为二义性，是因为分析方法都不一样，所以说“分析树不一定完全一致”）</p>
+<p><img src="/images/image-20221014113835203.png" srcset="/img/loading.gif" lazyload></p>
+<p>先来介绍几个常用概念：</p>
+<ul>
+<li>规范规约：出现句柄就进行归约，规范规约是最左归约；</li>
+<li>规范句型：由规范推导（即规范推导）推出的句型被称为规范句型；</li>
+<li>对于一个文法，如果能够构造一张分析表，使得它的每个入口均是唯一确定的，则这个文法就称为LR文法；</li>
+<li>一个文法，如果能用一个每步顶多向前检查k个输入符号的LR分析器进行分析（简单来说就是向右查看输入串符号的个数），则这个文法就称为LR(k)文法（当k省略的时候默认k等于1）；</li>
+</ul>
+<blockquote>
+<p>LR分析法的本质就是规范规约，LR分析器的工作过程主要如下：</p>
+</blockquote>
+<p>(1)在总控程序的控制下，从左到右扫描输入串，根据分析栈和输入符号的情况，查分析表确定分析动作；</p>
+<p>(2)分析表是LR分析器的核心，根据文法构造，它包括动作表(Action)和状态转换表(Goto)两部分，总控程序根据分析表确定分析动作；</p>
+<p>(3)分析栈包括文法符号栈X[i]和相应的状态栈S[i]两部分，总控程序通过判断栈顶元素和当前输入符号查分析表确定下步分析动作 —— 符号栈和状态栈永远保持同步；</p>
+<p>具体工作流程可以参考视频：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1wb4y1B7dd/?p=2&spm_id_from=pageDriver&vd_source=276d55048634a5b508b1b53a1ecd56b3">2-LR分析器模型_哔哩哔哩_bilibili</a>（强推！！！）</p>
+<blockquote>
+<p>LR分析器的逻辑结构如下</p>
+</blockquote>
+<p><img src="/images/image-20221014214023264.png" srcset="/img/loading.gif" lazyload></p>
+<p>规范归约的关键是寻找句柄，LR法是根据已“移进”、“归约”的符号串及即将读入的符号串进行分析，以确定是否有句柄可归约；LR分析器的性质：</p>
+<ul>
+<li><p>栈内的符号串和扫描剩下的输入符号串构成了一个规范句型；</p>
+</li>
+<li><p>一旦栈的顶部出现可归约串(句柄)，则进行归约；</p>
+<ul>
+<li>栈内的符号串和扫描剩下的输入符号串构成了一个规范句型；</li>
+<li>栈内的如果出现句柄，句柄一定在栈的顶部；</li>
+<li>栈内永远不会出现句柄之后的符号；</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>下面我们简单举一个例子说明LR分析如何进行（假设已经知道产生式以及分析表）</p>
+<p><img src="/images/image-20221020163450667.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221020163510151.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="3-3-2-LR分析表"><a href="#3-3-2-LR分析表" class="headerlink" title="3.3.2 LR分析表"></a>3.3.2 LR分析表</h4><p>我们已经知道LR分析的关键是确定句柄，并不是直接识别句柄，而是构造一个DFA，识别规范归约过程中出现在栈中的符号串，该DFA的状态中包含有句柄是否形成的信息（终态表示句柄形成），所以我们可以说<code>一个LR分析器实质上是一个DFA</code>；至于这个DFA是如何构造的我们将在之后介绍（我们当然可以试探性的根据产生式构造DFA，但实际在做题过程中是有形式化的逻辑的）；</p>
+<p><img src="/images/image-20221014213245057.png" srcset="/img/loading.gif" lazyload></p>
+<p>得到了文法的DFA之后，我们可以根据该DFA构造该DFA的矩阵表示，也就是我们前面提到的LR分析表（现在我还不是很清楚这个分析表是如何构造的，我们只需要知道这个分析表中的字母代表什么意思即可）；</p>
+<p><img src="/images/image-20221014213922357.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>注意：不同的文法其分析表不同（因为DFA不同）；相同的文法采用不同的LR分析器（LR(0)、SLR(1)…）得到的分析表也不同，之后会具体介绍；</p>
+</blockquote>
+<h4 id="3-3-3-可归前缀和活前缀"><a href="#3-3-3-可归前缀和活前缀" class="headerlink" title="3.3.3 可归前缀和活前缀"></a>3.3.3 可归前缀和活前缀</h4><p>上面我们说到LR分析思想是构造一个DFA，识别<code>规范规约过程中出现在栈中的符号串</code>，我们将这一段称之为活前缀&#x2F;可行前缀；</p>
+<p>活前缀的特点：</p>
+<ol>
+<li>因为栈里的文法符号与剩余符号串一起构成了规范句型，那么栈中的文法符号串就是规范句型的前缀；</li>
+<li>活前缀不包含任何句柄之后的符号（因为当栈顶形成句柄马上就会被归约，句柄之后的符号根本来不及移入栈）</li>
+</ol>
+<blockquote>
+<p>活前缀的定义：规范句型的一个前缀，这种前缀不包含句柄之后的任何符号；</p>
+<p>可归前缀的定义：活前缀恰好包含句柄，也就意味着这是一个可以归约的前缀；</p>
+</blockquote>
+<h3 id="3-4-LR-0-分析"><a href="#3-4-LR-0-分析" class="headerlink" title="3.4 LR(0)分析"></a>3.4 LR(0)分析</h3><p>本节的目的就是构造识别文法所有活前缀的DFA，我们这里构造DFA并不是像前面一样试探的根据产生式推测性的构造，而是通过一个形式化的算法得到；</p>
+<p>在学习本节之前强烈建议温习一遍LR分析法的整个流程，参照视频<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1wb4y1B7dd/?p=2&spm_id_from=pageDriver&vd_source=276d55048634a5b508b1b53a1ecd56b3">2-LR分析器模型_哔哩哔哩_bilibili</a>（强推！！！）</p>
+<h4 id="3-4-1-基本概念"><a href="#3-4-1-基本概念" class="headerlink" title="3.4.1 基本概念"></a>3.4.1 基本概念</h4><p>首先我们需要介绍几个前置概念；</p>
+<h5 id="1-文法的拓展"><a href="#1-文法的拓展" class="headerlink" title="(1)文法的拓展"></a>(1)文法的拓展</h5><p>将文法G(S)拓展为G’(S’)，这实际上非常简单，只需要增加一条表达式S’-&gt;S，其意义在于当符号栈出现S’的时候我们可以判断整个分析过程结束（如果不扩展的话存在S-&gt;Sa这样的表达式不知道是否应当向下继续）</p>
+<p><img src="/images/image-20221020105933453.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>PS:即使原开始符号S不出现在任何产生式右部，为了统一起见仍然需要增加S’-&gt;S产生式进行拓展</p>
+</blockquote>
+<h5 id="2-LR-0-项目"><a href="#2-LR-0-项目" class="headerlink" title="(2)LR(0)项目"></a>(2)LR(0)项目</h5><p>在产生式右部加上·的每一条产生式我们称之为<code>LR(0)项目</code>；</p>
+<p>对于每一个DFA的状态来说，我们称之为<code>LR(0)项目集</code> —— 所有等价的项目组成的一个项目集，称为项目集闭包，每个项目集闭包对应自动机的一个状态 —— 当原点后面存在非终结符时，就有与之等价的项目；</p>
+<p>对于整个DFA来说，它是状态的集合，我们称之为<code>规范LR(0)项集族</code>；</p>
+<p><img src="/images/image-20221020110158097.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221020110257143.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>PS:对于空产生式A-&gt;空串，仅有项目A-&gt;·，并不存在什么A-&gt;·空集这种形式</p>
+</blockquote>
+<p>LR(0)项目主要有以下几个类别：</p>
+<ul>
+<li>移进项目：A-&gt;α·aβ（·后跟着终结符）</li>
+<li>待约项目：A-&gt;α·Bβ（·后跟着非终结符）</li>
+<li><code>归约项目</code>：A-&gt;α·（·已经移动到最右边）</li>
+<li><code>接受项目</code>：S’-&gt;S·（意味着此时可以将S归约到S’，整个分析结束）</li>
+</ul>
+<h5 id="3-闭包函数"><a href="#3-闭包函数" class="headerlink" title="(3)闭包函数"></a>(3)闭包函数</h5><p><img src="/images/image-20221020110425650.png" srcset="/img/loading.gif" lazyload></p>
+<p>在状态转移的过程中，如果出现了·右部是非终结符的情况，我们需要添加所有该非终结符的产生式，这个过程称之为闭包函数</p>
+<p>也就是说我们不仅得到状态I0读入a转移到I2的<code>核S-&gt;a·AcBe</code>以外，还需要对该核求一个闭包；</p>
+<blockquote>
+<p>核的定义：除了S’-&gt;·S以外，圆点不在产生式右部最左边的项目</p>
+</blockquote>
+<p>闭包函数的基本逻辑如下</p>
+<p><img src="/images/image-20221020115342046.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="4-状态转移函数"><a href="#4-状态转移函数" class="headerlink" title="(4)状态转移函数"></a>(4)状态转移函数</h5><p>状态转移函数GO的定义如下</p>
+<p><img src="/images/image-20221020115644668.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="3-4-2-LR-0-分析表"><a href="#3-4-2-LR-0-分析表" class="headerlink" title="3.4.2 LR(0)分析表"></a>3.4.2 LR(0)分析表</h4><p><img src="/images/image-20221020171739126.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221020171804008.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>结论：如果一个文法G的LR(0)分析表不含多重定义，则称G为LR(0)文法；</p>
+</blockquote>
+<h4 id="3-4-3-LR-0-冲突"><a href="#3-4-3-LR-0-冲突" class="headerlink" title="3.4.3 LR(0)冲突"></a>3.4.3 LR(0)冲突</h4><blockquote>
+<p>移进-归约冲突</p>
+</blockquote>
+<p>一个项目集中，移进和归约项目同时存在，即：</p>
+<ul>
+<li>A-&gt;α·aβ（点后面是终结符表示移进项目）</li>
+<li>B-&gt;γ·（点在产生式最右边是归约项目）</li>
+</ul>
+<p><img src="/images/image-20221020191343763.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>归约-归约冲突</p>
+</blockquote>
+<p>一个项目集中归约和归约项目同时存在，即：</p>
+<ul>
+<li>A-&gt;β·</li>
+<li>B-&gt;γ·</li>
+</ul>
+<blockquote>
+<p>结论：LR(0)文法是指文法G的拓展文法G’的活前缀识别自动机中的每个状态都不存在移进-归约冲突或归约-归约冲突；</p>
+</blockquote>
+<h3 id="3-5-SLR-1-分析"><a href="#3-5-SLR-1-分析" class="headerlink" title="3.5 SLR(1)分析"></a>3.5 SLR(1)分析</h3><p>实际上大多数程序设计语言的文法都不满足LR(0)文法的条件，这就意味着我们对其构造分析表总是会出现多重定义；</p>
+<p><img src="/images/image-20221020191708127.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们思考为什么会出现这样的问题：因为LR(0)分析表在构造的时候其归约项目并不查看下一个字符，直接进行归约，这就导致了可能发生的冲突；</p>
+<p>相应的解决办法就是修改LR(0)分析表的构造方式，即通过向前查看一个符号来检查LR(0)分析表中是否存在无效归约；</p>
+<p><img src="/images/image-20221020192335632.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>注意：</p>
+<ul>
+<li>待移进的终结符b一定不能在A和B的Follow集中；</li>
+<li>Follow(A)与Follow(B)相交应当是空集（如果不是空集则SLR解决不了这种冲突，需要使用更高级的分析方法）；</li>
+<li>实际上做题一般都只会有一个归约项目，所以只需要考虑待移进的终结符b不在Follow集当中（表现为两个集合相交为空）</li>
+</ul>
+</blockquote>
+<p>下面我们来看例题</p>
+<p><img src="/images/image-20221020193021769.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>结论：SLR文法(其中S是指simple)是指SLR分析表中不含多重定义的文法；</p>
+</blockquote>
+<p>当然SLR文法也不能解决所有的重定义问题，即针对非SLR文法，我们还可以使用更高级的分析方法，即下面要介绍的LR(1)和LALR分析方法；</p>
+<h3 id="3-6-LR-1-分析"><a href="#3-6-LR-1-分析" class="headerlink" title="3.6 LR(1)分析"></a>3.6 LR(1)分析</h3><p>举例说明SLR可能发生的冲突</p>
+<p><img src="/images/image-20221028103301459.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>对于状态I2，当我们采用SLR分析：当下一个输入符号为 &#x3D; 的时候，因为 &#x3D; 属于 R 的FOLLOW集，所以采用归约操作；但是我们又发现， &#x3D; 又是S–&gt;L . &#x3D;R 中圆点后的一个字符，按照规则应该采用移进操作；这就在造成了重定义的问题；</p>
+</blockquote>
+<p>SLR分析仍然可能存在语法冲突，因为SLR只是简单地考察下一个输入符号b是否属于与归约项目A→α相关联的FOLLOW(A)，但b∈FOLLOW(A)只是归约α的一个必要条件，而非充分条件；</p>
+<p>简单来说就是如果输入下一个字符是b，我们采用了归约操作，那么就一定可以说明b属于A的FOLLOW集。但我们不能说：如果b属于A的FOLLOW集，那么就一定可以对A采用归约操作</p>
+<p><img src="/images/image-20221028100658560.png" srcset="/img/loading.gif" lazyload></p>
+<p>从上图右边生成树可以我们得知，此时 L&#x3D;R 中的R后面跟着的终结符只能是 # ，不可能是 &#x3D; ，但是R的FOLLOW中却包含了 &#x3D; ，这明显是范围扩大了；</p>
+<p>又比如说下一行中的 * R，R下一个终结符只可以是 &#x3D; ，不会是 # ；</p>
+<p>综上，只凭FOLLOW集合判断是否采用归约是不合适的（如果使用FOLLOW相当于归约的条件放宽了），所以引入了LR(1)分析来解决这种问题；</p>
+<blockquote>
+<p>LR(1)的基本思想：对于产生式A-&gt;α的归约，在不同的使用位置，A会要求不同的后继符号；</p>
+</blockquote>
+<h4 id="3-6-1-基本概念"><a href="#3-6-1-基本概念" class="headerlink" title="3.6.1 基本概念"></a>3.6.1 基本概念</h4><h5 id="（1）LR-1-项目"><a href="#（1）LR-1-项目" class="headerlink" title="（1）LR(1)项目"></a>（1）LR(1)项目</h5><p>介绍LR(1)之前先说一下前面介绍过的LR(0)、SLR(1)以及下面要介绍的LR(1)、LALR之间的联系与区别</p>
+<p>LR(0)的基础上才有SLR(1) —— SLR分析方法只用在分析表上，DFA与LR(0)相同；<br>LR(1)的基础上才有LALR(1) —— LR(1)的DFA合并同心项才能为LALR(1)；</p>
+<p>这四个文法的本质区别实际都只在一点 —— 构造的分析表中ACTION部分的归约动作的区别：</p>
+<ul>
+<li>LR(0) 状态有归约状态，整个状态都会进行该归约动作；</li>
+<li>SLR(1) 状态中针对FOLLOW集中有的终结符号会进行该归约动作；</li>
+<li>LR(1) 状态中针对展望符对应的总结符号进行该归约动作（一般为FOLLOW集的真子集）；</li>
+<li>LALR(1) 状态中也是针对展望符对应的总结符号进行该归约动作（一般为FOLLOW集的真子集）；</li>
+</ul>
+<p>理论上LR(1)的分析效果最好，但是实际开发中LR(1)的状态数会非常多，这是不合理的，所以出现了LALR(1)分析方法（相应的，LALR(1)分析法也存在一些问题）；</p>
+<hr>
+<p>在LR(0)分析的时候，我们并没有考虑下一个输入的字符。而对于LR(1)，我们就需要对每一个项目多考虑一项：下一个输入字符（也就是展望符，这是整个LR(1)的难点和核心）</p>
+<blockquote>
+<p>LR(1)项目定义：将一般形式为 [A→α·β, a]的项称为 LR(1) 项；</p>
+<p>其中A→αβ 是一个产生式，a 是一个终结符(这里将#视为一个特殊的终结符)，它表示在当前状态下，A后面必须紧跟的终结符，称为该项的展望符(lookahead)</p>
+</blockquote>
+<ul>
+<li><p>LR(1) 中的1指的是项的第二个分量的长度，也就是：往后多看一个字符</p>
+</li>
+<li><p>形如[A→α·β, a]且β ≠ ε的项中，展望符a没有任何作用（尽管没作用但是构造的过程中仍然要写） —— 当LR(1)中的点号不在项的最右侧，向前看符号没有任何意义；</p>
+</li>
+<li><p>形如[A→α·, a]的项在只有在下一个输入符号等于a时才可以按照A→α 进行归约：这样的a的集合总是FOLLOW(A)的子集，而且它通常是一个真子集 —— 当点号在最右端时，只有下一个输入的符号和向前看符号一致时，我们才归约这个产生式；</p>
+</li>
+</ul>
+<h5 id="（2）LR-1-等价项目"><a href="#（2）LR-1-等价项目" class="headerlink" title="（2）LR(1)等价项目"></a>（2）LR(1)等价项目</h5><p>有项目 [A-&gt;α·Bβ,a]，则该项目的<code>等价项目</code>形式如下 [B-&gt;·γ,b]，其中b∈FIRST(βa)；</p>
+<blockquote>
+<p>当β-&gt;+ ε时，称b&#x3D;a叫做继承的后继符，否则称b为自生的后继符；</p>
+</blockquote>
+<p>而仅仅只是利用上述规则还不足以求出所有情况的展望符，我们给出通用求解展望符的算法：</p>
+<ol>
+<li>项目[S’-&gt;·S,#]，这个最基本的项目的展望符固定为#</li>
+<li>与项目[A-&gt;α·Bβ,a]等价的项目[B-&gt;·γ,b]，其中b∈FIRST(βa)</li>
+<li>除了上述自动生成的展望符外，展望符还有两种传播方式：<ul>
+<li>项目[A-&gt;α·Bβ,a]中，β-&gt;+ ε时，该项目的a<code>纵向传播</code>到项目[B-&gt;·γ,a]</li>
+<li>项目[A-&gt;α·Bβ,a]中，展望符a无条件<code>横向传播</code>到项目[A-&gt;αB·β,a]（本质上就是第二个情况）</li>
+</ul>
+</li>
+</ol>
+<h4 id="3-6-2-LR-1-自动机"><a href="#3-6-2-LR-1-自动机" class="headerlink" title="3.6.2 LR(1)自动机"></a>3.6.2 LR(1)自动机</h4><p>文章参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44225182/article/details/105597613">(1条消息) 编译原理学习笔记（十）~LR(1)分析_海轰Pro的博客-CSDN博客_lr(1)</a>；</p>
+<p>假设我们有如下文法</p>
+<p><img src="/images/image-20221028102239978.png" srcset="/img/loading.gif" lazyload></p>
+<p>构造LR(1)自动机的步骤主要如下：</p>
+<ol>
+<li>拓展文法G得到G’；</li>
+<li>类似LR(0)分析的方法构造得到LR(1)自动机（与LR(0)不同的是多了展望符）</li>
+</ol>
+<p><img src="/images/image-20221028103039002.png" srcset="/img/loading.gif" lazyload></p>
+<p>由0)可以推导出I0式，因为I0式中的S是非终结符，所以又可以继续推出等价项目I2和I3。又I2式中圆点后面的L属于非终结符，继续推出I4、I5式【注意：I4、I5中的展望符是&#x3D;，因为I2式中L后面有终结符&#x3D;，求展望符就是这么简单】然后继续对左边橙色框中的式子进行相同算法的推导即可；</p>
+<blockquote>
+<p>注：如果除展望符外，两个LR(1)项目集是相同的，则称这两个LR(1)项目集是同心的</p>
+</blockquote>
+<h4 id="3-6-3-LR-1-分析表"><a href="#3-6-3-LR-1-分析表" class="headerlink" title="3.6.3 LR(1)分析表"></a>3.6.3 LR(1)分析表</h4><p>拥有自动机之后就可以得到分析表了，LR(1)与LR(0)分析表类似，只是在归约的某些地方做了更加严格的限制，我们先看一下课堂上讲的LR(1)和SLR(1)分析表的构造方法的对比</p>
+<p><img src="/images/image-20221028112348251.png" srcset="/img/loading.gif" lazyload></p>
+<p>根据上述规则，根据上面我们得到的LR(1)自动机可以构造得到下面的LR(1)分析表</p>
+<p><img src="/images/image-20221028104626323.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>相应的，如果LR(1)分析表中没有语法冲突（具体什么冲突课堂上也没说…），则称给定的文法为LR(1)文法；</p>
+</blockquote>
+<h3 id="3-7-LALR-1-分析"><a href="#3-7-LALR-1-分析" class="headerlink" title="3.7 LALR(1)分析"></a>3.7 LALR(1)分析</h3><blockquote>
+<p>一般不会考察LALR(1)，了解即可</p>
+</blockquote>
+<p>在进行LR(1)分析的过程中，我们会发现存在一些同心项目，经过简化后的这些项目就被称为LALR分析，其基本思想如下：</p>
+<ul>
+<li>寻找具有相同核心的LR (1) 项集，并将这些项集合并为一个项集。 所谓项集的核心就是其第一分量的集合</li>
+<li>然后根据合并后得到的项集族构造语法分析表</li>
+</ul>
+<p>我们还是用之前的例子举例</p>
+<p><img src="/images/image-20221028113528996.png" srcset="/img/loading.gif" lazyload></p>
+<p>从上图我们可以发现：I4和I11、I8和I10、I7和I13、I5和I12都是同心的，那么我们就可以将这些同心的项目集合并，构成如下的自动机，再利用自动机构造分析表（分析表的构造方法和LR(1)相同）</p>
+<p><img src="/images/image-20221028113622852.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>注：</p>
+<ul>
+<li>合并同心项集，不会产生移进-归约冲突，但是会产生归约归约冲突；</li>
+<li>合并同心项集后，虽然不产生冲突，但可能会推迟错误的发现；</li>
+</ul>
+</blockquote>
+<h3 id="3-8-二义性文法的LR分析"><a href="#3-8-二义性文法的LR分析" class="headerlink" title="3.8 二义性文法的LR分析"></a>3.8 二义性文法的LR分析</h3><p>实际上所有的语言都有二义性（因为二义性文法更加简短和自然），注意任何二义性文法都不是LR的；</p>
+<p>解决二义性的方法也很多，最常用的就是优先级和结合性解决冲突；</p>
+<p>关于二义性和错误处理我们不在这里详细讨论，感兴趣可以参考链接<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1zW411t7YE?p=33&vd_source=276d55048634a5b508b1b53a1ecd56b3">4-15二义性文法的LR分析_哔哩哔哩_bilibili</a></p>
+<h1 id="第五章-语法制导翻译技术"><a href="#第五章-语法制导翻译技术" class="headerlink" title="第五章 语法制导翻译技术"></a>第五章 语法制导翻译技术</h1><hr>
+<p>在学习这一章开始之前，我必须吐槽一下国内的课程，几乎网上所有的课程（包括B站、慕课以及教科书）都只是泛泛的说语法制导翻译的定义是什么，而根本就没有任何的承上启下的说明，况且在课程概述的时候也根本没有提及过有这样的一个名词的存在，导致初学者（包括我）在学习完语法分析之后突然看到要学习的不是语义分析而是这样的一个意义不明确的名词的时候是感到迷茫和懵逼的，这也导致我从这一章开始编译原理的课程就跟不上老师了（上课根本听不懂老师在讲什么，因为你根本不知道这些玩意在整个编译的过程中有什么作用，没办法结合上下文来加深自己的理解，况且编译原理刚好又是这种极其抽象的课程），况且不仅仅是跟不上老师，我自己在网上搜寻了大量的参考资料还是只能听的半懂不懂的，根本不知道这章有什么用。更离谱的事情发生了，北邮的教材在语法制导翻译之后就是语义分析，当时我整个人是傻的，不是说语法制导翻译就是语义分析吗？这不是在和我开玩笑？而实际上当我们仔细看了看教材准备解决自己的疑惑的时候，教材的语义分析章节直接抛出更加令人疑惑的符号表等概念。所以我的初衷是决定好好的根据网上能够搜集到的所有资料将这些知识点能够做一个串联，让身为初学者的大家能够一步一步的明白我们学习的每一个知识点到底有什么用，接下来才应该是去学习和理解；</p>
+<hr>
+<p>我们往往会将语法分析作为程序的主程序，而在整个编译程序的前端过程当中我们还需要进行语义分析和中间代码的生成，大多数教材将语义分析和中间代码生成合并在一起（因为语义分析的结果经常直接表现为中间代码的形式）称之为<code>语义翻译</code>，而<code>语法制导翻译SDT(Syntax-Directed Translation scheme)</code>是在语法分析的基础上对于语义的理解（可以理解为在语法分析的同时进行语义分析并生成中间代码）</p>
+<blockquote>
+<p>语法制导翻译的定义：</p>
+<ul>
+<li>传统定义：语法制导翻译使用<code>上下文无关文法CFG</code>来引导对语言的翻译，是一种面向文法的翻译技术（简单理解语法制导翻译技术就是整合了语法分析、语义分析以及中间代码生成的一种手段）；</li>
+<li>简述：语法制导翻译SDT是在产生式右部中嵌入了程序片段(称为语义动作)的CFG，SDT可以看作是语法制导定义SDD的具体实施方案；</li>
+</ul>
+</blockquote>
+<p>这里简单回顾一下文法的分类（这是形式语言的范畴，编译原理不考察这里只做了解）</p>
+<p><img src="/images/image-20221206145153671.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们知道编译器<code>前端部分</code>的最终目的就是生成中间代码，中间代码是指不是机器语言但便于生成机器语言的、便于代码优化的一种语言，中间代码的形式主要有如下：</p>
+<ul>
+<li>逆波兰表达式</li>
+<li>树形表示法</li>
+<li>三元式</li>
+<li>四元式（最常用的形式）</li>
+</ul>
+<p>中间代码的生成有两种方法，一种就是本章将要介绍的<code>语法制导翻译</code>，另一种是<code>属性文法制导翻译</code>（我们不会介绍这个方法，注意该属性文法和语法制导翻译中的属性文法并不是同一个东西）；</p>
+<p>关于中间代码的论述我们之后还会详细介绍，本章的重点是语法制导翻译技术中的名词性概念和使用方法；</p>
+<p>至于为什么我们的课程组织是语法分析-&gt;语法制导翻译-&gt;语义分析-&gt;中间代码生成而不是语法分析-&gt;语义分析-&gt;中间代码-&gt;语法制导翻译，是因为语法制导翻译中的一些名词性概念是语义分析和中间代码生成的前置知识点，所以我们会先介绍语法制导翻译技术，接着将这个技术拆分开分别讲解语义分析和中间代码生成；</p>
+<h2 id="1-语法制导翻译技术概述"><a href="#1-语法制导翻译技术概述" class="headerlink" title="1.语法制导翻译技术概述"></a>1.语法制导翻译技术概述</h2><p>文章参考：<a target="_blank" rel="noopener" href="https://mooc.study.163.com/learn/1000002001?tid=1000003000#/learn/content?type=detail&id=1000043009">编译原理 - 网易云课堂 (163.com)</a>；</p>
+<blockquote>
+<p>语法制导翻译的基本思想（这两个思想贯穿整个语法制导翻译）：</p>
+<ul>
+<li>如何表示语义信息？<ul>
+<li>为CFG中的文法符号设置语义属性，用来表示语法成分对应的语义信息</li>
+</ul>
+</li>
+<li>如何计算语义属性？<ul>
+<li>文法符号的语义属性值是用与文法符号所在产生式（语法规则）相关联的语义规则计算得到：对于给定的输入串x，构建x的语法分析树，并利用与产生式（语法规则）相关联的语义规则来计算分析树中各结点对应的分析树语义属性值</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>语法制导翻译技术是指在语法分析的基础上边进行语法分析边翻译（<code>翻译</code>我们理解为一个过程，输入是源代码，输出是中间代码）：</p>
+<ul>
+<li>语法制导翻译时会根据文法产生式右部符号串的含义进行翻译，翻译的结果就是生成的相应中间代码（简单理解就是根据句子是什么意思将其翻译为相应的中间代码）</li>
+<li>语法制导翻译是使用语义子程序来翻译的，即语法分析程序在语法分析过程中调用该语义子程序来进行翻译<ul>
+<li>具体做法就是为每个产生式配置一个语义子程序，当语法分析进行归约或推导时，调用语义子程序完成一部分的翻译任务</li>
+</ul>
+</li>
+<li>语法分析过程结束时翻译工作同步结束</li>
+</ul>
+<p>语法制导翻译主要有两种形式：</p>
+<ul>
+<li>自上而下的语法制导翻译：LL语法制导翻译；</li>
+<li>自下而上的语法制导翻译：LR语法制导翻译；</li>
+</ul>
+<blockquote>
+<p>语法制导翻译全称为语法制导翻译技术，是一种技术而不是设计编译器的时候需要划分的一个阶段！！！（这也是为什么我们没有在阶段图中看到过它的原因）</p>
+</blockquote>
+<h3 id="1-1-语义子程序"><a href="#1-1-语义子程序" class="headerlink" title="1.1 语义子程序"></a>1.1 语义子程序</h3><p>参考视频：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1cW411B7DW/?p=44&vd_source=276d55048634a5b508b1b53a1ecd56b3">44_bilibili_哔哩哔哩_bilibili</a>；</p>
+<h4 id="1-1-1-作用"><a href="#1-1-1-作用" class="headerlink" title="1.1.1 作用"></a>1.1.1 作用</h4><p>语义子程序的作用：</p>
+<ul>
+<li>用于描述一个产生式对应的翻译工作（这些工作可能是改变某些变量的值、产生中间代码、发现并报告源程序的错误等），这些翻译工作很大程度上决定了会产生什么形式的中间代码<ul>
+<li>如果将语义子程序改成产生某种中间代码的动作，就能在语法分析制导下，随着分析的进展逐步生成中间代码；</li>
+<li>若把语义子程序改成产生某种机器的汇编语言指令，就能随着分析的进展逐步生成某机器的汇编语言代码；</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/image-20221104165851642.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="1-1-2-格式"><a href="#1-1-2-格式" class="headerlink" title="1.1.2 格式"></a>1.1.2 格式</h4><p>语义子程序的写法如下：</p>
+<ul>
+<li>语义子程序写在产生式后面的花括号内，形如</li>
+</ul>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">X</span>-&gt;α&#123;语义子程序<span class="hljs-number">1</span>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>注：在一个产生式中同一个文法符号可能出现多次，但他们代表的是不同的语义值，需要加上角标以区分（如E-&gt;E^1^+E^2^）；</p>
+<blockquote>
+<p>语义值：为了描述语义动作，需要为每个文法符号赋予不同的语义值：如类型、地址、代码值等（可以理解为每个文法符号的语义值就是它在符号表的入口，可能代表变量的类型、变量的地址或变量的值等）</p>
+</blockquote>
+<blockquote>
+<p>注意：只有非终结符才有语义值！！！</p>
+</blockquote>
+<h4 id="1-1-3-语义栈"><a href="#1-1-3-语义栈" class="headerlink" title="1.1.3 语义栈"></a>1.1.3 语义栈</h4><p>各个符号的语义值都存放在语义栈中：</p>
+<ul>
+<li>当产生式进行归约时，需对产生式右部符号的语义值进行综合，其结果作为左部符号的语义值保存到语义栈中；</li>
+</ul>
+<p>之前我们介绍的LR分析法当中下推栈包含了两部分：状态栈和符号栈，现在需要额外增加一个语义栈，同样的，<code>语义栈和状态栈、符号栈的变化是同步的</code></p>
+<p><img src="/images/image-20221104170108101.png" srcset="/img/loading.gif" lazyload></p>
+<p>因为将语义值存放在语义栈中，因此语义值可以使用栈顶指针TOP指出，因此我们可以将1.1.1中的语义子程序改写为如下更加直观的形式</p>
+<p><img src="/images/image-20221104170559371.png" srcset="/img/loading.gif" lazyload></p>
+<p>介绍完以上的知识点其实我们已经能够给出一个大致的语法制导翻译的计值过程了，与LR分析的流程图非常类似</p>
+<p>分析输入串(7+9)*5，已知分析表如下</p>
+<p><img src="/images/image-20221105125127665.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221104171142230.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>小结：上面的概述向我们全面展示完整的语法制导翻译技术的流程（语法分析+语义分析+中间代码生成），但实际上我们的语法制导翻译技术还涉及很多细节，同时现在市面上使用的教材中的一些名词性概念和概述中的并不完全一致，接下来的章节我们将详细介绍这些名词性概念和语法制导翻译技术的详细细节；</p>
+</blockquote>
+<h3 id="1-2-两个概念"><a href="#1-2-两个概念" class="headerlink" title="1.2 两个概念"></a>1.2 两个概念</h3><p>将语义规则和语法规则（即产生式）联系起来涉及两个概念：</p>
+<ul>
+<li>语法制导定义(Syntax-Directed Definitions,SDD)</li>
+<li>语法制导翻译方案(Syntax-Directed Translation Scheme,SDT)</li>
+</ul>
+<h4 id="1-2-1-语法制导定义SDD"><a href="#1-2-1-语法制导定义SDD" class="headerlink" title="1.2.1 语法制导定义SDD"></a>1.2.1 语法制导定义SDD</h4><p>SDD是对上下文无关文法CFG的推广，主要进行了如下两方面的拓展：</p>
+<ol>
+<li>将每个<code>文法符号</code>和一个<code>语义属性集合</code>相关联</li>
+<li>将每个<code>产生式</code>和一组<code>语义规则</code>相关联，这些规则用于计算该产生式中各文法符号的属性值</li>
+</ol>
+<p><img src="/images/image-20221206150042373.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>注：L与L1表示的是同一个符号，下标的出现是为了方便讨论区别L在不同地方的出现。如果X是一个文法符号，a是X的一个属性，则用X.a表示某个标号为X的属性a；</p>
+</blockquote>
+<h4 id="1-2-2-语法制导翻译方案SDT"><a href="#1-2-2-语法制导翻译方案SDT" class="headerlink" title="1.2.2 语法制导翻译方案SDT"></a>1.2.2 语法制导翻译方案SDT</h4><p>SDT是在产生式右部嵌入了程序片段的CFG，这些程序片段称为语义动作。按照惯例，语义动作放在花括号内</p>
+<p><img src="/images/image-20221206150213065.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>一个语义动作在产生式中的位置决定了这个动作的执行时间</p>
+</blockquote>
+<p>关于SDD和SDT我们在下面还会进行详细的说明，这里抛出来只是简单的做一个铺垫，SDD和SDT的关系可以表达如下</p>
+<table>
+<thead>
+<tr>
+<th>SDD</th>
+<th>SDT</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>是关于语言翻译的高层次规格说明</td>
+<td>可以看作是对SDD的一种补充，本质上还是SDD</td>
+</tr>
+<tr>
+<td>隐蔽了许多具体实现细节，使用户不必显式地说明翻译发生的顺序</td>
+<td>显式地指明了语义规则的计算顺序，以便说明某些实现细节</td>
+</tr>
+</tbody></table>
+<p>(这么来看其实SDD是要比SDT高级一些的，高级意味着更加易于理解，所以会先从SDD入手开始介绍)</p>
+<h2 id="2-属性文法-SDD"><a href="#2-属性文法-SDD" class="headerlink" title="2.属性文法(SDD)"></a>2.属性文法(SDD)</h2><p>学习视频：<a target="_blank" rel="noopener" href="https://www.icourse163.org/learn/NUDT-1003101005?tid=1468256483#/learn/content?type=detail&id=1250071246">编译原理_中国大学MOOC(慕课) (icourse163.org)</a></p>
+<h3 id="2-1-概述"><a href="#2-1-概述" class="headerlink" title="2.1 概述"></a>2.1 概述</h3><p>属性文法也称属性翻译文法，以上下文无关文法为基础，我们给上下文无关文法配备一些语义规则就得到了属性文法（属性文法就是上面介绍过的SDD，但是SDD和属性文法之间还是存在一定的区别，<code>通常将没有副作用的SDD称为属性文法，属性文法的规则仅仅通过其它属性值和常量来定义一个属性值</code>）；</p>
+<p><img src="/images/image-20221206154620601.png" srcset="/img/loading.gif" lazyload></p>
+<p>属性文法对上下文无关文法做了两个扩充，扩充了语义的描述机制：</p>
+<ul>
+<li>为每个文法符号（终结符或非终结符）配备了若干相关的值，这个值也称为<code>属性</code>，这些属性代表与文法符号相关的信息；当然属性文法中的属性除了能够存放具体的数值，还可以用来记录类型、代码序列、符号表内容等；</li>
+<li>为了描述属性如何计算，对于文法的每个产生式都配备了一组属性的<code>语义规则</code>，对属性进行计算和传递；这些语义规则说明了每一个语法规则或产生式所涉及的语法单位之间的语义关系，这种语义关系是通过属性计算来表达的；当然属性文法中语义规则除了这类数值计算规则以外，还可以用来描述更加广泛的属性处理功能如进行类型信息的传递、代码的拼接、符号表的访问和修改，凡是能够用程序实现的信息处理都可以成为语义规则；</li>
+</ul>
+<blockquote>
+<p>属性文法实际上描述的是某个程序设计语言的变量声明语句的语法和语义</p>
+</blockquote>
+<h4 id="2-1-1-属性"><a href="#2-1-1-属性" class="headerlink" title="2.1.1 属性"></a>2.1.1 属性</h4><p>属性包括综合属性和继承属性两类；</p>
+<h5 id="1-综合属性"><a href="#1-综合属性" class="headerlink" title="(1)综合属性"></a>(1)综合属性</h5><blockquote>
+<p>定义：某个属性是它的子结点属性计算得到的，那么这个属性就是综合属性；</p>
+<p>简述：语义规则中左部的非终结符对应的是产生式左部的非终结符，则该属性为综合属性；</p>
+</blockquote>
+<p>综合属性主要用来自下而上的传递信息；</p>
+<ul>
+<li>从语法规则的角度：属性文法当中总是根据产生式右部候选式的符号的属性来计算左部符号的非终结符（即被定义的符号的综合属性）的<code>综合属性</code></li>
+<li>从paser tree的角度：<code>综合属性</code>的计算都是根据子节点的属性和父节点自身的属性计算父节点的综合属性</li>
+</ul>
+<p><img src="/images/image-20221210164532476.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>注：终结符可以具有综合属性，终结符的综合属性值是由词法分析器提供的词法值，因此在SDD中没有计算终结符属性值的语义规则</p>
+</blockquote>
+<p>下面给出带综合属性的SDD</p>
+<p><img src="/images/image-20221206152112035.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="2-继承属性"><a href="#2-继承属性" class="headerlink" title="(2)继承属性"></a>(2)继承属性</h5><blockquote>
+<p>定义：某个属性是它的父结点或其兄弟结点计算得到的，那么这个属性就是继承属性；</p>
+<p>简述：语义规则中左部的非终结符对应的是产生式右部的非终结符，则该属性为继承属性；</p>
+</blockquote>
+<p>继承属性主要用来自上而下的传递信息；</p>
+<ul>
+<li><p>从语法规则的角度：<code>继承属性</code>的计算都是根据产生式右部候选式中的符号的属性和左部被定义符号的属性来计算语法规则右部候选式中的符号的继承属性；</p>
+</li>
+<li><p>从paser tree的角度：<code>继承属性</code>的计算总是根据父节点和兄弟节点的属性来计算子节点的继承属性；</p>
+</li>
+</ul>
+<p><img src="/images/image-20221206151744634.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>注：终结符没有继承属性，终结符从词法分析器处获得的属性值被归为综合属性值</p>
+</blockquote>
+<p>下面给出一个带继承属性的SDD</p>
+<p><img src="/images/image-20221206152203708.png" srcset="/img/loading.gif" lazyload></p>
+<p>如何根据所给的SDD判断文法符号的属性呢？我们拿上面的SDD举例；</p>
+<ul>
+<li><p>非终结符T只有一个属性type，可以看出type属性值都是由其子节点定义的，因此T.type是一个综合属性；</p>
+</li>
+<li><p>非终结符L只有一个属性inh，根据第一个产生式和第四个产生式的语义规则可以看出L的inh属性是由其兄弟节点或者父节点的属性值所定义，因此L.inh是一个继承属性；</p>
+</li>
+<li><p>终结符id的综合属性lexeme是由词法分析器提供的词法值；</p>
+</li>
+<li><p>addtype我们称为副作用，其功能是为id.lexeme在符号表中创造一条记录，并将其类型设置为L.inh；</p>
+</li>
+</ul>
+<p><img src="/images/image-20221207105725481.png" srcset="/img/loading.gif" lazyload></p>
+<p>总结：非终结符T用于生成一个类型关键字，非终结符L用于生成标记符序列，L.inh属性用于描述L生成的标记符序列标记符对应的类型；</p>
+<h5 id="3-属性依赖"><a href="#3-属性依赖" class="headerlink" title="(3)属性依赖"></a>(3)属性依赖</h5><blockquote>
+<p>所有的语义规则都可以写成对某些属性进行f函数变换，把变换结果设置为某个属性的值；</p>
+</blockquote>
+<p>在属性文法中，对应于每个产生式A-&gt;α，都有一套与之关联的语义规则，每条规则的形式都可以写成一个统一的模式</p>
+<p><img src="/images/image-20221104230641360.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>f是一个函数，接受若干输入参数；</li>
+<li>c<del>1</del>、c<del>2</del>等都是某些符号的某些属性；</li>
+<li>b是我们期望设置、计算的属性；</li>
+</ul>
+<p>我们说属性b<code>依赖</code>于属性c<del>1</del>、c<del>2</del>…这种依赖关系有两类：</p>
+<ul>
+<li>b是产生式左边被定义的非终结符的<code>综合属性</code>，而c<del>1</del>、c<del>2</del>是产生式右部中的某些符号的某些属性(包括综合属性和依赖属性)；</li>
+<li>b是产生式右边中的某个文法的符号的<code>继承属性</code>，c<del>1</del>、c<del>2</del>要么是左部符号的属性，要么是产生式右边的某个符号的属性</li>
+</ul>
+<blockquote>
+<p>结论1：终结符只有综合属性，由词法分析器提供</p>
+</blockquote>
+<p>因为终结符没有子节点，因此综合属性不能从子节点计算，只能由词法分析器提供；</p>
+<blockquote>
+<p>结论2：非终结符在属性文法中既可以有综合属性也可以有继承属性，文法开始符号的所有继承属性作为属性计算前的初始值，必须设置</p>
+</blockquote>
+<p>我们可以根据需要，既定义非终结符的综合属性，也可以定义它的继承属性；</p>
+<p>因为开始符号(从paser tree的角度来看)没有父节点，所以如果文法的开始符号有继承属性的话那么它所有的继承属性都应当事先给定，即必须初始化；</p>
+<blockquote>
+<p>结论3：一个符号的同一个属性不能既是综合属性又是继承属性，但实际上综合属性和继承属性除了计算方式不同以外使用方式上没有差异；</p>
+</blockquote>
+<h4 id="2-1-2-语义规则"><a href="#2-1-2-语义规则" class="headerlink" title="2.1.2 语义规则"></a>2.1.2 语义规则</h4><p>语义规则是属性文法对上下文无关文法所做的另一个扩充；</p>
+<hr>
+<blockquote>
+<p>Q：每个产生式应当配备什么样的语义规则？</p>
+</blockquote>
+<p>A：每个产生式配备的语义规则应该是说明该产生式中出现的语法符号的对应的属性的计算方法，以表达这个产生式所对应的语法结构的意义，这就是语义规则设计的目的；</p>
+<hr>
+<p>一般来说，程序设计语言的一个语法单位的语义是由构成该单位的各个部分决定的，所以语义规则就是描述该产生式中出现的语法符号的属性之间的相互关系，语义规则以函数计算的方式体现这种关系；</p>
+<ul>
+<li>对于出现在<code>产生式右边的符号的继承属性</code>和出现在<code>产生式左边的符号的综合属性</code>都必须提供计算规则，都必须由这个产生式的语义规则来提供计算方法；属性计算只能使用相应产生式中的文法符号的属性；这样描述的语义规则才是有意义的；</li>
+<li>对于出现在<code>产生式左部的符号的继承属性</code>和出现在<code>产生式右边符号的综合属性</code>的计算方法不应当由这个产生式的属性计算规则来描述，这些属性的计算应当由其他产生式的属性规则计算或者由属性计算器作为参数提前设置；</li>
+</ul>
+<blockquote>
+<p>总结：语义规则建立了属性之间的依赖关系，在对语法分析树节点的一个属性求值之前，必须首先求出这个属性值所依赖的所有属性值 —— SDD 为CFG中的文法符号设置语义属性。对于给定的输入串x，应用语义规则计算分析树中各结点对应的属性值，语义规则给出了SDD需要按照什么顺序计算属性值（这就是语义规则的作用）</p>
+</blockquote>
+<h4 id="2-1-3-带注释的分析树"><a href="#2-1-3-带注释的分析树" class="headerlink" title="2.1.3 带注释的分析树"></a>2.1.3 带注释的分析树</h4><p>为了适应翻译的需要，将语法规则中对语义无关紧要的具体规定去掉，将剩下的本质性东西称为抽象语法，而语法树(也被称为抽象语法树AST)是源代码的抽象语法结构的树状表现形式；</p>
+<p>语法树是分析树的抽象&#x2F;压缩形式，它去掉了分析树中语义无关的成分：</p>
+<ul>
+<li>语法树中每个内部节点表示一个运算符号，其子节点表示运算分量；</li>
+<li>在语法树中，运算符号和关键字都不在叶结点的位置出现，而是与分析树中作为这些叶结点的父节点对应；</li>
+</ul>
+<p>语法制导翻译既可以基于分析树，也可以基于语法树，这两种情况下都是将属性附加到树的节点上；</p>
+<hr>
+<p>本节对paser tree进行拓广，普通的paser tree描述了语法单位之间的构成关系，是一种层次结构，如下是一个变量声明语句的paser tree</p>
+<p><img src="/images/image-20221105092609331.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们对paser tree中的节点（即终结符和非终结符）都标注上对应的属性值，就得到了带注释的paser tree（准确来说应该是带属性注释的paser tree）</p>
+<p><img src="/images/image-20221105092810662.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>paser tree中，一个节点的综合属性的值由其子节点和它本身的属性值确定，因此对综合属性来说可以使用自底向上的方法在每一个节点处使用语义规则来计算出综合属性的值；</li>
+</ul>
+<blockquote>
+<p>结论1：假如一个属性文法中只有综合属性没有继承属性，这种属性文法我们称为<code>S属性文法</code>；</p>
+</blockquote>
+<ul>
+<li>paser tree中，一个节点的继承属性由其父节点、兄弟节点和本身的某些属性值来确定，因此对于继承属性来说，可以使用自下而上的方法在每一个节点处使用语义规则进行计算；使用继承属性来表示程序设计语言结构中的上下文依赖很方便；</li>
+</ul>
+<p>为表达式构造AST的过程与计算表达式的值类似：通过为每一个运算符号或运算分量建立相应的结点来为子表达式构造子树，运算符结点的子结点分别是与其各运算分量相应的子树的根；</p>
+<h3 id="2-2-属性计算"><a href="#2-2-属性计算" class="headerlink" title="2.2 属性计算"></a>2.2 属性计算</h3><p>(PS：这一节书上倒是讲的很细致，如果听不大懂的话就看看书仔细理解一下)</p>
+<p>语义规则可以完成很多计算，包括产生代码、在符号表中存放信息、给出错误信息、执行其他任何动作；所有这些处理都可以理解为信息的变换或翻译；因此<code>对输入串的翻译实际上就是根据语义规则进行计算</code>；</p>
+<p>在语法制导翻译中，语法分析和语义分析的结合方式是多种多样的，但都以语法分析来驱动语义分析，下面将介绍三种按照语义规则进行属性计算的方法；</p>
+<h4 id="2-2-1-依赖图"><a href="#2-2-1-依赖图" class="headerlink" title="2.2.1 依赖图"></a>2.2.1 依赖图</h4><p>依赖图方法是通过寻找属性之间的依赖关系来确定属性计算的先后顺序，选择相应的语义规则来完成属性计算（依赖图不是重点这里不做详细的描述，了解即可）；</p>
+<p>在一棵Paser tree中的节点的继承属性和综合属性之间的相互依赖关系可以由依赖图(有向图)来描述；</p>
+<blockquote>
+<p>构造属性依赖图：为每一个语法符号的每一个属性设置一个节点，如果属性b依赖于属性c，则从属性c的节点有一条有向边连到属性b的节点；</p>
+</blockquote>
+<p>（下图是一个非常简单的示意图，我们之后还会给出更复杂的示意图）</p>
+<p><img src="/images/image-20221105095537493.png" srcset="/img/loading.gif" lazyload></p>
+<p>将上述做法描述为算法就得到了依赖图的构造算法，这个算法分为两大步骤：</p>
+<ol>
+<li>建立依赖图节点；</li>
+<li>构造有向边；</li>
+</ol>
+<p><img src="/images/image-20221105095626855.png" srcset="/img/loading.gif" lazyload></p>
+<p>下面我们拿之前的例子直观的感受一下这两大步骤</p>
+<p>首先是建立依赖图节点</p>
+<p>（第四条产生式的第二条语义规则是产生一个副作用，也就是说在符号表中将id.lexeme所代表的标识符的类型设置为L.in所代表的类型。我们可以把它看成是产生式左部的L的一个虚综合属性规则。因此我们在依赖图中为L设置一个虚节点）</p>
+<p><img src="/images/image-20221105100022713.png" srcset="/img/loading.gif" lazyload></p>
+<p>接着根据语法规则构建有向边（虚线是语法图，实线是属性依赖图）</p>
+<p>（L的虚综合属性它用到了其子节点的lexeme属性和其自身的in属性看，因此在依赖图中分别从L的in属性节点和id的lexeme属性节点引出指向L虚属性节点的有向边）<img src="/images/image-20221105100327623.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>良定义的属性文法：如果属性文法不存在属性之间的循环依赖关系，则称该文法是良定义的；</p>
+</blockquote>
+<p>对于良定义的属性文法，属性依赖图的任何拓扑排序都给出了一个paser tree中节点的语义规则计算的有效顺序，也就给出了使用语义规则进行属性计算的有效顺序；</p>
+<p>现在我们总结使用依赖图的属性处理方法</p>
+<p><img src="/images/image-20221105100825252.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-2-2-树遍历"><a href="#2-2-2-树遍历" class="headerlink" title="2.2.2 树遍历"></a>2.2.2 树遍历</h4><p>树遍历的属性计算方法和依赖图有相同和不同之处：</p>
+<ul>
+<li>相同之处在于都是先通过语法分析为输入串建立paser tree，并认为树中已经存在开始符号的继承属性和终结符的综合属性；</li>
+<li>不同之处在于依赖图的方法是在paser tree的基础上先构造依赖图再按照拓扑顺序计算属性，而树遍历方法不需要构造依赖图，而是直接以某种秩序遍历paser tree，在遍历过程中计算所有能够计算出的属性，不能计算的属性留到之后再次遍历的时候进行计算，直到计算出所有的属性；<ul>
+<li>可以采取深度优先，从左到右的遍历顺序</li>
+</ul>
+</li>
+</ul>
+<p>树遍历算法采取的是递归这一典型的计算思维方法，正是基于递归，树遍历算法的设计较简单；该算法分为两个部分：</p>
+<ul>
+<li>主算法是一个循环，只要整个树中还有未被计算的属性，就反复调用计算函数，直到paser tree中所有的属性都被计算出来</li>
+</ul>
+<p><img src="/images/image-20221105103709503.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>结论1：如果属性文法是良定义的，通过反复遍历，一定能将所有的属性都计算出来；</p>
+</blockquote>
+<ul>
+<li>计算函数是该算法的主要部分，输入参数是一个paser tree的节点，功能是以输入参数为根的子树进行深度优先、从左到右的遍历，依次考察每个节点，将能够计算出的属性都计算出来</li>
+</ul>
+<p><img src="/images/image-20221105103911891.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-2-3-一遍扫描"><a href="#2-2-3-一遍扫描" class="headerlink" title="2.2.3 一遍扫描"></a>2.2.3 一遍扫描</h4><p>依赖图算法和树遍历算法都需要先对输入串进行一遍扫描（即进行语法分析建立paser tree），然后进行多遍扫描才能完成属性计算，多边扫描的方法效率较低 —— 虽然通过遍历分析树进行属性计算的方法有一定的通用性，但它是在语法分析遍之后进行的，不能体现语法制导方法的优势，在实际的编译程序中，语法制导的语义计算大都采取一遍的过程，即语法分析过程的同时完成相应的语义动作，这样属性的计算仅对应一个自顶向下或自底向上的过程，当然并非所有的属性文法都适合单遍处理的过程，下面主要讨论两种受限的属性文法 —— S属性文法和L属性文法；</p>
+<p>一遍扫描的处理方法在语法分析的同时计算属性值，一边进行语法分析一边计算属性，语法分析结束时paser tree构造完毕，所有节点的属性也计算完毕</p>
+<blockquote>
+<p>恭喜你终于学到这一节了，当然我很佩服你没有在学完第一节过渡到第二节的时候就放弃，现在我们开始形成一个完美的闭环；</p>
+<p>第一节中我们介绍的语义子程序实际就是上面出现过无数次的语义规则，语义值实际就是属性；第一节中描述的那种随着语法分析结束而结束的分析方法就是我们接下来会介绍的一遍扫描；</p>
+<p>很多人学到这里难免会有疑问，语义分析到底有什么用，和属性有什么关系？可以简单举个例子，对于句子”5*3+5”进行语义分析就得到了结果20(至于为什么不转换为机器语言再进行计算，可以将对算术表达式的计算看作编译的过程对代码的优化，使得机器语言更加简洁)，对声明语句”int a&#x3D;10”进行语义分析就将a成功存入符号表；</p>
+</blockquote>
+<p>一遍扫描的处理方法通常和所采用的语法分析方法相关，将属性计算穿插在语法分析的过程中进行，语法分析产生语法结构的顺序决定了属性计算的顺序；</p>
+<p>这也是语法制导翻译真正的思想：为文法中每个产生式配上一组语义规则，并且在语法分析的同时执行这些语义规则；</p>
+<p>语义规则被计算的时机和分析方法有关：</p>
+<ul>
+<li><p>自上而下分析，一个产生式匹配输入串成功时；</p>
+</li>
+<li><p>自下而上分析，一个产生式被用于进行归约时；</p>
+</li>
+</ul>
+<hr>
+<p>对于只具有综合属性的SDD，可以按照任何自底向上的顺序计算它们的值。对于同时具有继承属性和综合属性的SDD，不能保证存在一个顺序来对各个节点上的属性进行求值；</p>
+<p>从计算的角度看，给定一个SDD，很难确定是否存在某棵语法分析树，使得SDD的属性之间存在循环依赖关系；</p>
+<p>幸运的是，接下来介绍的两类SDD可以和自顶向下及自底向上的语法分析过程一起高效地实现</p>
+<ul>
+<li>S- 属性定义 (S-Attributed Definitions, S-SDD)</li>
+<li>L- 属性定义 (L-Attributed Definitions, L-SDD)</li>
+</ul>
+<h4 id="2-2-4-S-属性文法"><a href="#2-2-4-S-属性文法" class="headerlink" title="2.2.4 S-属性文法"></a>2.2.4 S-属性文法</h4><p>前面大部分内容介绍的都是如何使用语法制导定义来说明翻译，本节主要介绍通过改造LR分析程序来实现翻译；</p>
+<p>LR分析程序是使用一个栈来存放已经分析过的子树的信息，而根据定义5.1可知分析树中某节点的综合属性是由其子节点的属性值计算得到，这就意味着可以在分析输入符号串的同时自底向上的计算综合属性；</p>
+<p>要实现这种功能我们需要对LR分析器做一定的改造；</p>
+<hr>
+<h5 id="1-S属性定义的SDT实现-自底向上"><a href="#1-S属性定义的SDT实现-自底向上" class="headerlink" title="(1)S属性定义的SDT实现(自底向上)"></a>(1)S属性定义的SDT实现(自底向上)</h5><p>参考视频：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1hE411M75v?p=39&vd_source=276d55048634a5b508b1b53a1ecd56b3">9.1.1 5-5语法制导翻译方案SDT_哔哩哔哩_bilibili</a>；</p>
+<p>（标题取名为基于S-翻译模式的语义计算可能会更加易于理解，因为基于翻译模式的语义计算实际上就是和依赖图，树遍历并列的第三种语义计算方式，关于SDT的详细介绍我们放在下一节）</p>
+<p>S-属性文法是只含有综合属性的文法（只使用综合属性的SDD），综合属性只依赖于子节点和自身属性计算，所以可以在分析输入符号的同时由自下而上的分析器来计算属性</p>
+<blockquote>
+<p>结论：如果一个SDD是S属性的，可以按照语法分析树节点的任何自底向上顺序来计算它的各个属性值；</p>
+</blockquote>
+<ul>
+<li>为了计算属性，我们扩充了分析器，使得分析器不仅保存分析中形成的语法符号，同时还保存与栈中文法符号有关的<code>综合属性值</code>；<ul>
+<li>一个文法符号也可以支持多个综合属性，所以我们需要使栈记录变得足够大或者是在栈记录中存放指针</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/image-20221207141445136.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>将语义动作中的抽象定义式改写成具体的可执行的栈操作（这个栈操作有时候也被称为<code>代码行</code>、<code>执行代码</code>等，只要确定了SDT则代码行也相应的被确定）</li>
+</ul>
+<p><img src="/images/image-20221207142017892.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>每当进行归约的时候，新的语法符号的属性值由栈中正在归约的产生式右边的符号的属性值来计算；</li>
+</ul>
+<blockquote>
+<p>实际上我们在第一节中演示的语义子程序的分析过程就是典型的对S-属性文法的自上而下的分析过程；</p>
+</blockquote>
+<p>我们这里直接给出一个例题来理解S-属性文法的分析过程(句子中的n表示句末符)，视频参考[<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV12741147J3?p=138&vd_source=276d55048634a5b508b1b53a1ecd56b3">15.1.1]–S-属性文法_哔哩哔哩_bilibili</a>；</p>
+<p><img src="/images/image-20221105124619975.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221105124925724.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>我们知道自底向上实际上有多种分析方法，并且一般都是给出的分析表，如果题目中直接给出的自动机我们可以直接使用自动机进行分析，当然最保险的方法还是构造分析表之后再进行分析；</p>
+</blockquote>
+<h4 id="2-2-5-翻译模式-SDT"><a href="#2-2-5-翻译模式-SDT" class="headerlink" title="2.2.5 翻译模式(SDT)"></a>2.2.5 翻译模式(SDT)</h4><p>语义规则给出了属性计算的定义，但是没有给出属性计算的次序等实现细节，因此我们需要通过依赖图、树遍历等方法确定属性计算的顺序(之所以上面的一边扫描只用了一遍是因为对于S属性文法的分析是很简单的，但是对于L属性文法的分析必须严格在合适的位置选择合适的语义规则)；</p>
+<p>实际上我们可以在属性文法的基础上进一步给出每个产生式的语义计算规则具体实现的细节：包括产生式分析到什么时候执行哪个语义规则，这就是翻译模式(很多地方也称为<code>翻译方案</code>、<code>翻译动作</code>)的概念；</p>
+<p>翻译模式是对属性文法朝着具体实现的方向做的进一步改造，主要就是给出了使用语义规则进行计算的次序，将某些实现细节表示出来，翻译模式也就是前面介绍的语法制导翻译方案SDT；</p>
+<p>翻译模式的实现很简单，只需要将与文法符号相关的属性和语义规则用花括号{}括起来，插入到产生式右部合适的位置上；</p>
+<p><img src="/images/image-20221105132546738.png" srcset="/img/loading.gif" lazyload></p>
+<p>本节主要关注如何使用SDT来实现两类重要的SDD，因为在这两种情况下，SDT可在语法分析过程中实现：</p>
+<ul>
+<li>基本文法可以使用LR分析技术，且SDD是S属性的；</li>
+<li>基本文法可以使用LL分析技术，且SDD是L属性的；</li>
+</ul>
+<hr>
+<h5 id="1-S翻译模式"><a href="#1-S翻译模式" class="headerlink" title="(1)S翻译模式"></a>(1)S翻译模式</h5><p>对于S文法，可以使用如下规则将S-SDD转换为SDT：将每个语义动作都放在产生式的最后</p>
+<p><img src="/images/image-20221206162536966.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="2-L翻译模式"><a href="#2-L翻译模式" class="headerlink" title="(2)L翻译模式"></a>(2)L翻译模式</h5><p>对于L文法，我们可以给出一个基本的翻译模式的设计原则：设计L属性的翻译模式时，必须保证当某个动作引用一个属性时它必须是有定义的、可计算的；（即每个动作不引用尚未计算出的属性，这刚好是符合L-属性文法的特点的）</p>
+<ul>
+<li>当产生式中的属性都是综合属性时：<ul>
+<li>为每一个语义规则建立一个包含赋值的动作，并将该动作放在相应的产生式右边的末尾；（即关于综合属性计算的语义规则放在产生式右边的最后，这样做最安全）</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/image-20221210164453324.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><p>当产生式既有综合属性又有继承属性，则需要保证以下规则：</p>
+<ul>
+<li>产生式左边非终结符的综合属性只有在它所引用的所有属性都计算出来以后才能计算，计算这种属性的动作通常可放在产生式右端的末尾；</li>
+<li>产生式右边的符号的继承属性必须在这个符号之前的动作中计算出来(下面这个例子就不符合这条规则)；</li>
+</ul>
+<p><img src="/images/image-20221105134619238.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>一个动作{语义规则}不能引用这个动作{语义规则}右边的符号的综合属性（因为右边符号的综合属性要等到右边符号完全匹配完成之后才能得到）；</li>
+</ul>
+</li>
+</ul>
+<p>简单来说，上述将L-SDD转换为SDT的规则为：</p>
+<ul>
+<li><p>将计算某个非终结符号A的继承属性的动作插入到产生式右部中紧靠在A的本次出现之前的位置上</p>
+<ul>
+<li>因为产生式右端某个符号继承属性的计算必须位于该符号之前；</li>
+</ul>
+</li>
+<li><p>将计算一个产生式左部符号的综合属性的动作放置在这个产生式右部的最右端</p>
+<ul>
+<li>因为产生式左边非终结符的综合属性只有在它所引用的所有属性都计算出来以后才能计算</li>
+</ul>
+</li>
+</ul>
+<p>我们看下面这个例子</p>
+<ul>
+<li>第一条产生式的第一条语义规则是计算继承属性的，所以可以放在T’之前；第一条产生式的第二条语义规则用于计算综合属性，因此将其放在产生式最右端；</li>
+<li>…</li>
+</ul>
+<p><img src="/images/image-20221206162700523.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>注：子节点的继承属性不能使用父节点的综合属性，同时父节点的综合属性只能通过其子结点或其本身的属性值来定义，因此左部符号的综合属性动作放置到最右端是最合理的，并且对子节点的继承属性的计算并没有影响；</p>
+</blockquote>
+<h5 id="3-语义动作执行时机统一"><a href="#3-语义动作执行时机统一" class="headerlink" title="(3)语义动作执行时机统一"></a>(3)语义动作执行时机统一</h5><p>翻译模式的设计是与分析器综合考虑的</p>
+<ul>
+<li>如果翻译模式中有一些语义动作是嵌入在产生式中间的，那么就需要在产生式归约或推导的过程中得到一部分结果的时候就要执行语义动作；</li>
+<li>而对于那些出现在产生式末尾的动作，其执行实际就是当整个产生式进行归约或推导完成的时候执行；</li>
+</ul>
+<p>语义动作不同的执行时机给语法分析器的设计带来了困难，我们希望将这些语义动作的执行时机统一起来，于是考虑，如果我们能够从翻译模式中去掉那些嵌入在产生式中间的动作，使得所有的语义动作都出现在产生式末尾，那么执行语义动作的时间就统一了；</p>
+<p>下面我们介绍一种改造翻译模式的方法，它能够去掉嵌入在产生式中间的动作，使得所有嵌入的语义动作都出现在产生式的末尾；</p>
+<p><img src="/images/image-20221105152916118.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221105152856630.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="4-消除翻译模式中的左递归"><a href="#4-消除翻译模式中的左递归" class="headerlink" title="(4)消除翻译模式中的左递归"></a>(4)消除翻译模式中的左递归</h5><p>在自上而下的翻译过程中，语义动作是在处于相同位置上的符号被展开或者是被匹配的时候执行的；前面介绍过，为了构造不带回溯的自顶向下的语法分析，必须消除文法中的左递归，但是当我们增加了语义规则之后，消除左递归改变产生式后，原来产生式对应的语义规则该如何处理？</p>
+<p>下面我们介绍一种方法用于在消除一个翻译模式的基本文法的左递归的同时考虑属性计算，适合于带综合属性的翻译模式的改造；</p>
+<p>详细讲解可以参考链接<a target="_blank" rel="noopener" href="https://www.icourse163.org/learn/NUDT-1003101005?tid=1468256483#/learn/content?type=detail&id=1250071250&cid=1277970817&replay=true">编译原理_中国大学MOOC(慕课) (icourse163.org)</a>（说实话这小节挺难的，得手动跟着写一遍理解才行）</p>
+<p><img src="/images/image-20221105153952305.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>消除翻译模式中的左递归的一般方法</p>
+</blockquote>
+<p>一般的具有左递归的翻译模式都可以抽象为如下形式（每个文法符号都有一个综合属性，用小写字母表示，g和f是任意函数）</p>
+<p> <img src="/images/image-20221105154401019.png" srcset="/img/loading.gif" lazyload></p>
+<p>可以直接记忆结论，推导过程和证明过程实在是有点烧脑…</p>
+<p><img src="/images/image-20221105154910381.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>注意：带有左递归的翻译模式只能使用<code>自下而上</code>的翻译方法</p>
+</blockquote>
+<h4 id="2-2-6-L-属性文法"><a href="#2-2-6-L-属性文法" class="headerlink" title="2.2.6 L-属性文法"></a>2.2.6 L-属性文法</h4><p>一遍扫描属性计算方法是在语法分析的同时计算属性值，语法分析结束的时候，语法分析树的构造完成，所有节点的属性也计算完毕，同时完成语法分析和语义分析；</p>
+<p>S-属性文法由于只有综合属性，所以非常适合与一遍扫描的<code>自下而上</code>的语法分析结合进行，当一个产生式被用来进行归约的时候执行该产生式对应的语义规则；</p>
+<p>如果属性文法中既有综合属性又有继承属性该如何处理呢？是否也有一遍扫描的处理方法呢？</p>
+<blockquote>
+<p>L-属性文法适合一遍扫描的<code>自上而下</code>的分析；</p>
+</blockquote>
+<p>L-属性文法可以和自上而下的语法分析器配合，当使用一个产生式推导或者匹配输入串的时候，执行该产生式对应的语义规则；</p>
+<p>下面我们要介绍的这种属性计算方法主要是针对这类特殊的属性文法（L-属性文法）进行一遍扫描的处理：该方法按照深度优先遍历paser tree，计算所有属性值；通常与LL(1)分析法结合；</p>
+<blockquote>
+<p>L-属性文法是指对于文法的每个产生式对应的语义规则中的每个属性要么是综合属性，要么是继承属性：</p>
+<ul>
+<li>对综合属性没有要求；</li>
+<li>对于产生式右部符号的继承属性，该继承属性不能依赖于它右边的符号的属性，只能依赖于它左边的符号的<code>属性</code>或产生式左部符号的<code>继承属性</code>来计算；<ul>
+<li>产生式左部符号的<code>继承属性</code>：因为父节点的综合属性可以依赖于子节点的综合属性和继承属性，若子节点的继承属性再依赖于父节点的综合属性就会造成循环依赖；</li>
+<li>左边的符号的<code>属性</code>：若子节点可以同时依赖其左右两侧符号的属性就会造成循环依赖；</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>通过上面的定义我们可以知道S-属性文法一定是L-属性文法；</p>
+<hr>
+<p>这里给出几道例题对L-SDD进行判断，L属性定义对综合属性没有限制，它只限制继承属性，因此此SDD是否为L-SDD取决于继承属性所依赖的属性值；</p>
+<p>下图中，Q的继承属性的计算只能依赖于它左边的符号(这里体现为A)来计算，而划线处使用了其右部符号的属性来计算，因此该文法不属于L-属性文法；</p>
+<p><img src="/images/image-20221105130553793.png" srcset="/img/loading.gif" lazyload></p>
+<p>下图中，第一个T’.inh依赖的是它左边兄弟的值，因此它不违反LSDD对继承属性的限制，第二个T’.inh依赖于其父亲节点的继承属性和其兄弟节点的值，也不违反LSDD对继承属性的限制，所以此SDD是LSDD；</p>
+<p><img src="/images/image-20221206161355539.png" srcset="/img/loading.gif" lazyload></p>
+<p>下图中，Q的继承属性依赖了它右边兄弟节点的综合属性，因此违法了LSDD的继承属性的限制，因此此SDD不是LSDD；</p>
+<p><img src="/images/image-20221206161549921.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<p>如果一个L-SDD的基本文法可以使用LL分析技术，那么它的SDT 可以在LL或LR语法分析过程中实现</p>
+<h5 id="1-L属性定义的SDT实现-自顶向下"><a href="#1-L属性定义的SDT实现-自顶向下" class="headerlink" title="(1)L属性定义的SDT实现(自顶向下)"></a>(1)L属性定义的SDT实现(自顶向下)</h5><p>文章参考（注意只介绍了非递归预测分析，因为递归预测分析的LL在课堂上也没介绍，感兴趣参考<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1hE411M75v?p=41&vd_source=276d55048634a5b508b1b53a1ecd56b3">10.1.1 5-7在递归的预测分析过程中进行翻译_哔哩哔哩_bilibili</a>）：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/f261ae6ea5e7">编译器笔记24-语法制导翻译-在非递归的预测分析过程中进行翻译(自顶向下) - 简书 (jianshu.com)</a>（适用于一步一步跟着演算）</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42815609/article/details/107787217">【编译原理笔记09】语法制导翻译：语法制导翻译方案，在非递归的预测分析过程中进行翻译_枇杷鹭的博客-CSDN博客</a>（适用于后期总结提升）</li>
+</ul>
+<p>首先我们需要拓展语法分析栈，一个非终结符A的继承属性和综合属性的计算时机是不同的。其继承属性是在非终结符即将出现的时刻进行计算，而其综合属性必须在其子节点都分析完毕后才可以计算。因此我们将A的继承属性与综合属性存放在不同的记录当中：</p>
+<ol>
+<li><p>增加属性值（value）字段</p>
+</li>
+<li><p>将继承属性和综合属性存放在不同的记录中</p>
+<ul>
+<li>A的继承属性放在其本身的记录中，A的综合属性产生的时间不同，因此放在Asyn中；</li>
+</ul>
+</li>
+<li><p>增加动作记录action用来存放语义动作代码的指针</p>
+<ul>
+<li>不光是动作记录，分析栈中的每一个记录都对应着一段执行代码：</li>
+<li>综合记录出栈时，要将综合属性值复制给后面特定的语义动作；</li>
+<li>变量展开时（即变量本身的记录出栈时），如果其含有继承属性，则要将继承属性值复制给后面特定的语义动作；</li>
+</ul>
+</li>
+</ol>
+<p>经过拓展后的语法分析栈成为如下形式(需要注意的是与自底向上的语法分析区分，该分析过程没有状态栈)</p>
+<p><img src="/images/image-20221111165812671.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>PS：继承属性相对于综合属性在左边是有原因的，根据L-SDD的定义可知继承属性可能来自于其左边的文法符号的属性或其父节点的继承属性；</p>
+</blockquote>
+<p>除了拓展语法分析栈，我们还需要改写翻译模式SDT，改写后的SDT可以看做是特殊的上下文无关文法(CFG)，在此类文法中有三类符号 —— 终结符、非终结符和动作符号</p>
+<ul>
+<li>因为SDT中有六个语义动作，因此分别取名a<del>i</del>，用这些动作符号替代原来SDT中的语义动作；</li>
+</ul>
+<p><img src="/images/image-20221111171548240.png" srcset="/img/loading.gif" lazyload></p>
+<p>下面通过一个例子实际展示翻译过程（参考视频<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1hE411M75v?p=40&vd_source=276d55048634a5b508b1b53a1ecd56b3">9.2.1 5-6在非递归的预测分析过程中进行翻译_哔哩哔哩_bilibili</a>）：</p>
+<p><img src="/images/image-20221111171810403.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>(1)初始时刻，输入指针指向第一个输入符号3，因为采用的是自顶向下分析，因此分析栈栈顶在左侧，栈底在右侧（自底向上分析则相反）；</p>
+</blockquote>
+<ul>
+<li>初始时刻只有开始符号T，因为T没有继承属性所以T的本身字段初始记录是空的；</li>
+<li>因为T有综合属性所以T有记录Tsyn，用于存放T的综合属性val；</li>
+<li>此时栈顶是非终结符T，其表示当前句型最左非终结符；</li>
+</ul>
+<p><img src="/images/image-20221111171937957.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>(2)根据第一条产生式，将T替换成F{a<del>1</del>}T’{a<del>2</del>}；</p>
+</blockquote>
+<ul>
+<li>T出栈，但T的综合属性Tsyn不能出栈，因为T的综合属性val值要等T的子节点都分析完毕才能计算出来；</li>
+<li>T出栈后，F{a1}T’{a<del>2</del>}入栈，因F跟T’都具有综合属性，因此它们的综合属性与其本身属性一起进栈；</li>
+<li>T’具有继承属性，因此T’本身的记录将存放T’的继承属性inh；</li>
+<li>此时栈顶是非终结符F，其表示当前句型最左非终结符；</li>
+</ul>
+<p><img src="/images/image-20221111172144332.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>(3)根据第四条产生式将栈顶F替换成digit{a<del>6</del>}；</p>
+</blockquote>
+<ul>
+<li>digit是终结符只有词法分析器提供的综合属性值，因此digit的记录存放其综合属性值；</li>
+</ul>
+<p><img src="/images/image-20221207150338379.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>(4)digit与3匹配成功，digit可以出栈；</p>
+</blockquote>
+<ul>
+<li>digit后连接的语义动作{a6}将使用digit的属性值计算F的综合属性值，因此digit出栈前需要将其属性备份到{a6}的属性中，备份后digit即可出栈；</li>
+</ul>
+<p><img src="/images/image-20221207150405782.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>(5)digit出栈后指向下一个符号乘号，此时栈顶露出动作记录a6；</p>
+</blockquote>
+<ul>
+<li>a6记录中存放了指向用于计算F的综合属性值的语义代码的指针（红框已经将a6抽象定义式改写为可以执行的栈操作），a6的任务是利用其备份的digit的属性值计算F的综合属性值，并将结果存放在F的综合记录中；</li>
+</ul>
+<p><img src="/images/image-20221207150513620.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>a6的栈操作实际上是将3赋值给其栈之后的Fsyn对应的val，此时栈中Fsyn对应的val变为3；</li>
+</ul>
+<p><img src="/images/image-20221207150605123.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>动作记录出栈</li>
+</ul>
+<p><img src="/images/image-20221207150950306.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>(6)F的综合属性计算出来后，Fsyn理论上可以出栈；</p>
+</blockquote>
+<ul>
+<li>根据第一条产生式可知，F后面连接的a1将要使用F的综合属性计算T’的继承属性，因此Fsyn出栈前需要将其对应的综合属性值val备份到a1对应的字段中；</li>
+<li>备份后F的综合记录Fsyn就可以出栈了；</li>
+</ul>
+<p><img src="/images/image-20221207151055934.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>(7)此时{a<del>1</del>}露出栈顶</p>
+</blockquote>
+<ul>
+<li>a1是用于计算T’的继承属性值inh，因此T’的继承属性值变为3；</li>
+</ul>
+<p><img src="/images/image-20221207151331568.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>动作记录a1出栈，此后栈顶变为终结符T’；</li>
+</ul>
+<p><img src="/images/image-20221207151346490.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>(8)此时栈顶为T’，当前输入符号为*，因此选择第二个产生式进行替换；</p>
+</blockquote>
+<ul>
+<li>T’出栈 *F{a3}T1’{a4}进栈；</li>
+<li>因为语义动作a<del>3</del>需要使用T’的继承属性值来计算T<del>1</del>‘的继承属性值，因此需要 将T’的继承属性值备份到a3所在的动作记录中</li>
+</ul>
+<p><img src="/images/image-20221111173506991.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>(9)此时栈顶的终结符与当前的*匹配成功出栈，匹配成功后输入指针指向下一个输入符号5，栈顶符号出栈；</p>
+</blockquote>
+<p><img src="/images/image-20221207152033758.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>(10)F出栈digit{a6}进栈；</p>
+</blockquote>
+<p><img src="/images/image-20221207152140398.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>(11)栈顶与输入符5匹配成功digit出栈；</p>
+</blockquote>
+<ul>
+<li>digit后连接的语义动作{a6}将使用digit的属性值计算F的综合属性值，因此digit出栈前需要将其属性备份到{a6}的属性中，备份后digit即可出栈；</li>
+<li>之后输入指针指向$符号(字符串结束符)；</li>
+</ul>
+<p><img src="/images/image-20221207152440113.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>(12)a6用于计算F的综合属性；</p>
+</blockquote>
+<p><img src="/images/image-20221207152508948.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>计算完后Fsyn对应的值val为5，a6出栈；</li>
+</ul>
+<p><img src="/images/image-20221207152522994.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>(13)Fsyn出栈</p>
+</blockquote>
+<p>Fsyn出栈前将其值备份至a3中；</p>
+<p><img src="/images/image-20221207152728715.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>(14)执行a3对应的语义代码，用于计算T1’的继承属性值， 计算完成后a3出栈；</p>
+</blockquote>
+<ul>
+<li>这里有个小技巧就是完全不需要看代码段的栈操作，直接看a3的语义动作能够直接明白a3的语义；</li>
+</ul>
+<p><img src="/images/image-20221207153011246.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>(15)a3出栈后露出T1’而此时输入指针指向$，因此选用第三个产生式替换T1’即T1’出栈 a5进栈；</p>
+</blockquote>
+<ul>
+<li>因为a5要使用到其继承属性，因此T1’出栈前将其继承属性备份到a5的所在记录中；</li>
+<li>因为T1’出栈后a5将处于栈顶，因此栈顶的属性值字段是不需要改变的；</li>
+</ul>
+<p><img src="/images/image-20221207153134234.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>(16)执行a5对应的操作，将T1’的继承属性保存到T1’的综合属性中，然后a5出栈；</p>
+</blockquote>
+<p><img src="/images/image-20221207153219139.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>(17)栈顶变为T1’syn；</p>
+</blockquote>
+<ul>
+<li>将其综合属性值备份到a4的所在记录中，然后T1’syn出栈；</li>
+</ul>
+<p><img src="/images/image-20221207153327018.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>(18)执行a4对应的代码，其作用是用于计算T’的综合属性；</p>
+</blockquote>
+<ul>
+<li>计算完后T’的综合属性的值变为15，动作记录a4出栈，此时栈顶变为T’syn；</li>
+</ul>
+<p><img src="/images/image-20221207153411697.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>(19)T’syn出栈前将其综合属性备份至a2所对应的记录中，备份后T’syn出栈；</p>
+</blockquote>
+<p><img src="/images/image-20221207153456692.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>(20)接着执行a2对应的语义代码，其作用是用于计算T的综合属性值的；</p>
+</blockquote>
+<ul>
+<li>执行完a2的语义代码后T的综合属性就计算出来了即T.val &#x3D; 15，之后a2出栈；</li>
+</ul>
+<p><img src="/images/image-20221207153521174.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>总结</p>
+</blockquote>
+<p>只要分析栈中的记录存放了属性值，则这些记录都对应着一段执行代码</p>
+<ul>
+<li>综合记录出栈时，要将综合属性值复制给后面特定的语义动作；</li>
+<li>变量展开时（即变量本身的记录出栈时），如果其含有继承属性，则要将继承属性值复制给后面特定的语义动作；</li>
+</ul>
+<h5 id="2-L属性定义的SDT实现-自底向上"><a href="#2-L属性定义的SDT实现-自底向上" class="headerlink" title="(2)L属性定义的SDT实现(自底向上)"></a>(2)L属性定义的SDT实现(自底向上)</h5><p>文章参考：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/514a3969207f">编译器笔记26-语法制导翻译-L属性定义的自底向上翻译 - 简书 (jianshu.com)</a>；</p>
+<p>视频参考：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1hE411M75v?p=42&vd_source=276d55048634a5b508b1b53a1ecd56b3">10.2.1 5-8L-属性定义的自底向上翻译_哔哩哔哩_bilibili</a>；</p>
+<h2 id="3-小结"><a href="#3-小结" class="headerlink" title="3.小结"></a>3.小结</h2><p>本章的小结有些特殊，准确来说应该是对本章知识点的一个概述，我们在本章学了一堆看起来很抽象的知识点，这些知识点究竟和编译过程中的哪些行为对应？起到了什么作用？我们将详细介绍；</p>
+<p>整个编译程序的任务是将源程序转换成等价的目标程序，何为等价？即目标程序必须和源程序具有同样的语义，在前面的章节我们只是对源程序进行了词法分析和语法分析，本章我们在语法分析的基础上对源程序的语义进行了分析和处理，目的是<code>检查每个语法单位的静态语义，以验证语法结构正确的语法成分或程序是否具有正确的语义</code>，进而完成相应的翻译工作；</p>
+<p>本章介绍的语法制导翻译技术是目前大多数编译程序普遍采用的一种技术（语法分析+语义分析+中间代码生成），尽管它并非一种形式系统，但还是非常接近形式化。使用这种方法对上下文无关语言进行翻译的整体思路是：</p>
+<ol>
+<li>根据翻译目标的要求确定每个产生式所包含的语义，分析文法中每个符号的语义，并将这些语义以属性的形式附加到相应的文法符号上（也就是将语义和语言结构联系起来）；</li>
+<li>确定产生式的语义规则，即根据产生式的语义给出符号属性的求值规则，从而形成语法制导定义；</li>
+<li>在语法制导下进行翻译，即根据语法分析过程中所使用的产生式，执行与之相应的语义规则，完成符号属性值的计算，进而完成翻译；</li>
+</ol>
+<p>由此可见，翻译目标决定了产生式的含义、决定了文法符号应该具有的属性，也决定了产生式的语义规则；</p>
+<p>每条语义规则都可以表示为一个赋值语句、一个过程调用或一段程序代码；将这些语义规则插入到产生式右部适当的位置形成翻译模式，语义规则在产生式中出现的位置表明了它的执行时机；</p>
+<h1 id="第六章-语义分析"><a href="#第六章-语义分析" class="headerlink" title="第六章 语义分析"></a>第六章 语义分析</h1><p>语义分析是编译程序的一个重要任务，由语义分析程序完成，通过检查名字的定义和引用是否合法来检查程序中各语法成分的含义是否正确，目的是保证程序各部分能够有机地结合在一起；</p>
+<p>本章将利用前面介绍的语法制导翻译技术进行语义分析，并分析其具体过程；</p>
+<h2 id="1-语义分析概述"><a href="#1-语义分析概述" class="headerlink" title="1.语义分析概述"></a>1.语义分析概述</h2><p>程序的结构可由上下文无关文法来描述，通过语法分析可以检查程序中是否含有语法错误；</p>
+<p>为什么要进行语义分析？因为语法正确的程序并不一定都具有正确的含义，程序结构的含义与其上下文有关（上下文无关文法是不考虑上下文的，所以有必要在语法分析之后进行语义分析），语义分析程序应该能够诊断出源程序中存在的与上下文有关的错误；</p>
+<p>这里有人要杠了，为什么语法分析不针对上下文有关文法？回答参考<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/378230370">为什么编程语言都是上下文无关文法，不能采用上下文有关文法吗？ - 知乎 (zhihu.com)</a>，当然教材也给出了答案：为程序设计语言构造一个上下文有关文法，这在理论上是可行的，但实际上并没有这么做（至少目前没有），原因是为语言构造一个能够反映其上下文有关特性的文法并不是一件容易的事情，另外，上下文有关文法的分析程序不但很复杂，而且执行速度慢；</p>
+<p>目前常用的方法是利用语法制导翻译技术实现对源程序的语义分析，即根据源语言的语义设计专门的语义规则，扩充上下文无关文法的分析程序，在语法制导下完成语义分析；</p>
+<h3 id="1-1-语义分析的任务"><a href="#1-1-语义分析的任务" class="headerlink" title="1.1 语义分析的任务"></a>1.1 语义分析的任务</h3><p>语义分析程序通过将变量的定义与变量的引用联系起来，对源程序的含义进行检查，即检查每一个语法成分是否具有正确的语义，如检查每一个表达式是否具有正确的类型、检查每一个名字的引用是否正确等；</p>
+<p>通常为编译程序设计一个称作<code>符号表</code>的数据结构来保存上下文有关的信息。当分析声明语句时，收集所声明标识符的有关信息（如类型、存储位置、作用域等）并记录在符号表中，只要在编译期间控制处于声明该标识符的程序块中，就可以从符号表中查到它的记录，根据符号表中记录的信息检查对它的引用是否符合语言的上下文有关的特性，所以符号表的建立和管理是语义分析的一个主要任务；</p>
+<p>语义分析的另一个重要任务是<code>类型检查</code>，如对表达式&#x2F;赋值语句中出现的操作数进行类型一致性检查、检查if-then-else语句中出现在if和then之间的表达式是否为布尔表达式等；</p>
+<ul>
+<li>强类型语言（如Ada语言）要求表达式中的各个操作数、赋值语句左部变量和右部表达式的类型应该相同，所以，其编译程序必须对源程序进行类型检查，若发现类型不相同，则要求程序员进行显式转换；</li>
+<li>对于无此严格要求的语言（如C语言），编译程序也要进行类型检查，当发现类型不一致但可相互转换时，就要作相应的类型转换，如当表达式中同时存在整型和实型操作数时，一般要将整型转换为实型；</li>
+</ul>
+<h2 id="2-符号表"><a href="#2-符号表" class="headerlink" title="2.符号表"></a>2.符号表</h2><ul>
+<li>视频参考：[<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV12741147J3/?p=177&vd_source=276d55048634a5b508b1b53a1ecd56b3">20.1.1]–符号表的作用与组织_哔哩哔哩_bilibili</a>；</li>
+<li>文章参考：《编译原理与技术 第2版》6.2符号表（这个教材讲的是真的细节）；</li>
+</ul>
+<p>编译过程包括五个阶段，各个阶段都由对应的程序模块实现，各个模块都会和符号表管理模块打交道，本节将介绍符号表管理技术（在一定意义上本节讨论的内容是“词法分析”的继续，即如何使用符号表建立标识符与其属性值之间的联系）；</p>
+<p>符号表是编译程序使用的一个非常重要的数据结构。基于符号表中记录的信息，可以检查源程序上下文语义的正确性，可以辅助正确地生成代码。这些信息是语义分析程序在处理声明语句时获得，或根据标识符在源程序中出现的上下文间接地获得，并保存在符号表中的。如变量的名字和类型、函数的名字、形参类型和返回值类型等；</p>
+<p>符号表是一种动态数据结构。编译过程中，随着识别出的标识符的增加，符号表的表项数量也增加，但在某些情况下又在不断地删除。另外，编译程序对符号表的访问是非常频繁的，因为对于每一个标识符在源程序中的每一次出现都要访问符号表，这种频繁的交互使符号表的存取操作占用了编译期间的大部分时间，所以符号表的效率直接影响编译的效率。因此，高效的符号表组织和管理方法对编译程序是非常重要的；</p>
+<h3 id="2-1-符号表的作用与组织"><a href="#2-1-符号表的作用与组织" class="headerlink" title="2.1 符号表的作用与组织"></a>2.1 符号表的作用与组织</h3><h4 id="2-1-1-符号表的作用"><a href="#2-1-1-符号表的作用" class="headerlink" title="2.1.1 符号表的作用"></a>2.1.1 符号表的作用</h4><ul>
+<li><p>登记各类名字的信息：编译程序在工作过程中需要使用符号表来登记程序中出现的每个名字以及名字的各种属性信息，比如这些名字包括常量名、变量名或函数名等等；</p>
+</li>
+<li><p>编译各阶段都需要使用符号表：在编译的各个阶段，每当遇到一个名字都需要使用符号表，有可能需要增加、修改或使用其中的信息</p>
+<ul>
+<li>一致性检查和作用域分析<ul>
+<li>在语义分析阶段，符号表登记的内容将用于语义检查，如检查一个名字的使用和原先的说明是否一致；</li>
+<li>另一项重要的工作是对名字的作用域分析，也离不开符号表的支持；</li>
+</ul>
+</li>
+<li>辅助代码生成<ul>
+<li>在目标代码的生成阶段，对符号名进行地址分配的时候，符号表也是地址分配的依据，用来辅助目标代码的生成；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-1-2-符号表的组织"><a href="#2-1-2-符号表的组织" class="headerlink" title="2.1.2 符号表的组织"></a>2.1.2 符号表的组织</h4><p>整体上看一张符号表的每一项或者也称为一个入口，一般会包含两个栏目：</p>
+<ul>
+<li>名字栏：名字栏也称为主栏、关键字栏，用于项的填写和查找，一般通过匹配名字来进行；</li>
+<li>信息栏：可以包含许多子栏目，用于记录相应名字的各种属性；</li>
+</ul>
+<p>原则上编译时候可以使用一张统一的符号表，但是大多数编译程序都是按照名字的不同种属建立多张符号表，因为不同种属的名字的相应信息各不相同，信息栏的长度也各有差异，因此按照不同的种属建立不同的符号表在处理上会比较方便；</p>
+<hr>
+<p>在编译期间对符号表的操作大致可以分为五类：</p>
+<ul>
+<li>填入名称</li>
+<li>查找名字</li>
+<li>访问信息</li>
+<li>填写修改信息</li>
+<li>删除</li>
+</ul>
+<p>不同种类的表涉及的操作往往各不相同，上述操作只是一个基本的共同操作；</p>
+<hr>
+<p>对符号表进行操作的时机主要有两个：</p>
+<ul>
+<li>一个是编译程序在处理到名字的定义性出现的时候（如处理到了声明语句，就需要将名字的各种属性登记到符号表中）；</li>
+<li>一个是当处理到名字的使用性出现的时候，比如分析到表达式或者是语句当中出现了某个名字，就需要使用该名字到符号表中去访问它的某些信息；</li>
+</ul>
+<hr>
+<p>符号表最简单的组织方式是让各项各栏所处的存储空间的长度固定，这种项、栏长度固定的表格易于组织、填写和查找，但是预留栏目的长度必须满足最大需求；</p>
+<p>另一种选择是采取间接存储方式安排各栏的存储单元，符号表的栏目中只存放一些固定长度的指针，把标识符信息放在一片可长可短的存储区中；</p>
+<hr>
+<p>符号表的存放也有不同方案；</p>
+<p>对于一张可以容纳n项的符号表，我们把每一项都置于连续的k各单元中构成了一个k*n的表，这是一种比较固定的存放方式；</p>
+<p>第二种比较灵活，将整个符号表分为m个子表，每个子表都有n项，但是每个表的栏目不同，把这些子表合并起来就得到了符号表的全部内容，在编译程序的工作过程中每一遍使用的符号表的信息可能略有差别，为了合理使用存储空间，大多数都采取这种方式组织；</p>
+<h3 id="2-2-符号表的整理和查找"><a href="#2-2-符号表的整理和查找" class="headerlink" title="2.2 符号表的整理和查找"></a>2.2 符号表的整理和查找</h3><p>在编译过程中符号表的查找是非常频繁的；</p>
+<h4 id="2-2-1-线性查找"><a href="#2-2-1-线性查找" class="headerlink" title="2.2.1 线性查找"></a>2.2.1 线性查找</h4><p>按照关键字出现的顺序将各个名字填写到符号表中，其结构简单、省空间、填表快，但是查找很慢；</p>
+<h4 id="2-2-2-二分查找"><a href="#2-2-2-二分查找" class="headerlink" title="2.2.2 二分查找"></a>2.2.2 二分查找</h4><p>表格中的项按名字的“大小”(名字内部的二进制值)顺序整理排列，使用二分查找方式进行查找；</p>
+<h4 id="2-2-3-HASH杂凑"><a href="#2-2-3-HASH杂凑" class="headerlink" title="2.2.3 HASH杂凑"></a>2.2.3 HASH杂凑</h4><p>实现名字到表格项目位置的映射；</p>
+<h3 id="2-3-符号表的内容"><a href="#2-3-符号表的内容" class="headerlink" title="2.3 符号表的内容"></a>2.3 符号表的内容</h3><p>符号表的信息栏中登记了每个名字有关的信息；</p>
+<p><img src="/images/image-20221119172825002.png" srcset="/img/loading.gif" lazyload></p>
+<p>不同的程序设计语言对于名字性质的定义各不相同，这里使用一个简单的PL语言来介绍符号表的内容和使用；</p>
+<p>视频参考[<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV12741147J3?p=179&vd_source=276d55048634a5b508b1b53a1ecd56b3">20.2.1]–符号表的内容_哔哩哔哩_bilibili</a>；</p>
+<h4 id="2-3-1-名字表"><a href="#2-3-1-名字表" class="headerlink" title="2.3.1 名字表"></a>2.3.1 名字表</h4><p><img src="/images/image-20221119173241362.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-3-2-程序体表"><a href="#2-3-2-程序体表" class="headerlink" title="2.3.2 程序体表"></a>2.3.2 程序体表</h4><p><img src="/images/image-20221119173416725.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-3-3-层次显示表"><a href="#2-3-3-层次显示表" class="headerlink" title="2.3.3 层次显示表"></a>2.3.3 层次显示表</h4><p><img src="/images/image-20221119173512151.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-3-4-数组信息表"><a href="#2-3-4-数组信息表" class="headerlink" title="2.3.4 数组信息表"></a>2.3.4 数组信息表</h4><p><img src="/images/image-20221119173536824.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-3-5-中间代码表"><a href="#2-3-5-中间代码表" class="headerlink" title="2.3.5 中间代码表"></a>2.3.5 中间代码表</h4><p><img src="/images/image-20221119173616131.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-4-分析作用域"><a href="#2-4-分析作用域" class="headerlink" title="2.4 分析作用域"></a>2.4 分析作用域</h3><p>视频参考[<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV12741147J3?p=180&spm_id_from=pageDriver&vd_source=276d55048634a5b508b1b53a1ecd56b3">20.3.1]–名字的作用域分析_哔哩哔哩_bilibili</a>；</p>
+<p>本节学习符号表的使用，将利用符号表分析名字的作用域</p>
+<p><img src="/images/image-20221119173742626.png" srcset="/img/loading.gif" lazyload></p>
+<p>名字的作用域分析和程序的结构相关，有两种典型的程序体结构</p>
+<p><img src="/images/image-20221119173830259.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="3-运行环境"><a href="#3-运行环境" class="headerlink" title="3.运行环境"></a>3.运行环境</h2><p>这部分本来应该放在后面才介绍，但是按照老师的授课来说这部分也可以放在这里作为一个前置知识点；</p>
+<p>在讨论<code>为源程序中各语法成分生成目标代码之前</code>（现代编译器的流程一般都是“源代码-&gt;中间代码-&gt;目标代码”），需要先弄清楚程序<code>在运行过程中所需要的信息是怎样存储和访问的</code>，这就需要<code>把静态源程序正文与程序运行时刻的动作联系起来</code>；</p>
+<p>程序执行过程中对数据的操作是通过对相应存储单元的存取完成的，不论数据对象的存储空间是静态分配还是动态分配，编译程序都需要完成与存储组织和管理有关的工作，这是一个复杂而又十分重要的任务；</p>
+<p>本节主要讨论目标程序运行时的存储组织及管理技术；</p>
+<h3 id="3-1-运行时存储组织"><a href="#3-1-运行时存储组织" class="headerlink" title="3.1 运行时存储组织"></a>3.1 运行时存储组织</h3><p>程序运行时需要内存空间来存放它的指令序列、所处理的数据对象、以及它的运行环境信息等；同样的，编译程序需要从操作系统那里得到一个存储区域，以便被编译的程序在其中被编译、运行，那么这个存储空间如何使用、其中的各种信息如何组织等与程序设计语言的性质密切相关；</p>
+<p>不同语言间过程的特性差别较大，这个特性对程序执行所需的结构和运行环境的复杂程度有很大的影响（如在静态环境中所有的内存分配是在编译时进行的、基于栈的动态环境以及动态内存管理等）；</p>
+<blockquote>
+<p>过程：与程序执行密切相关的一个概念是过程；过程的使用始于编译方法，早期是由于可用内存有限而将一个程序分裂成多个小的可独立编译的块，每个过程都可单独编译；</p>
+</blockquote>
+<p>在程序设计时，通常会将一段多次使用的代码定义为一个过程，使用过程声明语句把一个标识符（称为过程名）和这段代码（称为过程体）联系起来，需要时直接使用过程名即可调用过程体。另外，可以根据是否有返回值进一步区分它为过程（无返回值）或是函数（有返回值）；</p>
+<p>即使对于明确区分过程和函数的语言（如Pascal），把函数看作过程也是完全可以的，同样，也可以把一个完整的程序看成是一个过程（但是我们基本上还是会将过程和函数区分开）；</p>
+<blockquote>
+<p>调用：当一个过程名出现在一个可执行语句中时，称此过程在该点被调用；</p>
+</blockquote>
+<p>过程调用即执行被调用过程的过程体，如果过程调用发生在表达式中（因为表达式中的过程调用需要有返回值，也就意味着一定是函数调用），则称作函数调用或函数引用，过程调用时将实参传递给被调用过程；</p>
+<blockquote>
+<p>活动：与描述过程定义的静态文本相对应的一个动态概念是活动，即一个过程的每一次执行称为它的一次活动；</p>
+</blockquote>
+<p>每一次过程调用都将激活一个活动，该活动可以存取分配给它使用的数据对象；</p>
+<h4 id="3-1-1-运行空间划分"><a href="#3-1-1-运行空间划分" class="headerlink" title="3.1.1 运行空间划分"></a>3.1.1 运行空间划分</h4><p>程序的运行空间指的是程序的逻辑或者虚拟地址空间，是编译程序为目标程序的运行向操作系统申请的一块存储区；根据不同的使用目的，该空间又被划分成不同的区域，用于保存生成的目标代码（即指令序列）、数据对象以及程序的运行环境等，一个典型的空间划分如下</p>
+<p><img src="/images/image-20221121083218490.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>结论：栈和堆空间的大小都随程序的运行而变化，所以使它们的增长方向相对；</p>
+</blockquote>
+<p>不同区域采用的存储分配策略是不同的；</p>
+<ul>
+<li><p>目标代码区：目标代码的长度及某些数据对象的大小在编译时可以确定，因此采用静态存储分配策略，由编译程序把它们放在一个静态确定的区域内；</p>
+</li>
+<li><p>静态数据区：对于静态分配的数据对象，编译程序甚至可以把它们的存储地址直接生成在指令中；</p>
+</li>
+<li><p>栈区：对于允许过程递归调用的语言，仅采用静态存储分配是不够的，还需要借助栈来管理过程的活动；发生过程调用时，当前活动的执行被中断，有关断点的现场信息（如返回地址、各寄存器的值、以及调用参数等）就需要保存于栈中；当控制从被调用过程返回时，则需要将计算结果返回给调用过程（若有返回值的话），并根据所保存的断点信息恢复调用过程的运行环境（如恢复有关寄存器的值、根据返回地址设置程序计数器等），这样，被中断的活动就可以从过程调用点之后继续执行。生存期包含在同一个活动中的那些数据对象，可以与该活动有关的其他信息一起存放在栈中，对它们所需栈空间的分配采用动态的栈式存储分配策略，即在目标程序运行过程中，通过执行调用序列来完成，所谓调用序列指的是编译程序为过程调用语句生成的将控制从调用过程转移到被调用过程的一段代码；</p>
+</li>
+<li><p>堆区：对于允许在程序控制之下对数据进行动态存储分配（在程序运行过程中创建和管理动态数据结构、允许动态地建立过程、允许动态地创建方法），需要采用动态的堆式存储分配策略；</p>
+</li>
+</ul>
+<h4 id="3-1-2-活动记录-amp-控制栈"><a href="#3-1-2-活动记录-amp-控制栈" class="headerlink" title="3.1.2 活动记录&amp;控制栈"></a>3.1.2 活动记录&amp;控制栈</h4><blockquote>
+<p>活动记录：在程序执行过程中，每个过程的每次活动都需要一个连续的存储空间，该存储空间被划分为若干个区域来保存活动相关的各种信息，并且该<code>存储空间</code>的组织形式对所有活动都是一样的，所以又称为活动记录（一个经典的活动记录包含如下各个域，但实践中并不是所有的语言、编译程序需要使用如下所有的域）；</p>
+</blockquote>
+<p><img src="/images/image-20221121084333780.png" srcset="/img/loading.gif" lazyload></p>
+<p>（1）返回值域：存放返回给调用过程的值。实践中常用寄存器保存返回值以提高效率。<br>（2）参数域：存放由调用过程提供给该活动的实参。实践中常用寄存器传递参数以提高效率。<br>（3）控制链域（可选项）：这是为跟踪活动踪迹而设计的一个指针域，也称为动态链域，用于本次活动结束时实现控制返回到调用过程。它总是指向本次活动的调用者的活动记录，即调用过程的最新活动的活动记录。像FORTRAN语言不需要控制链，因为它的所有空间都是静态分配的。<br>（4）访问链域（可选项）：这是为实现过程对非局部名字的访问而设计的一个指针域，也称为静态链域，该域的使用实现了名字的静态作用域规则。它总是指向该过程的直接外层过程的最新活动的活动记录。像FORTRAN和C语言不需要访问链，因为FORTRAN程序的所有空间都是静态分配的，C语言程序的所有非局部数据实际上都是全局的，也是静态分配的，它们的存储地址可以直接生成在指令中；而像Pascal、Ada等支持嵌套过程的语言，就需要访问链，<br>（5）机器状态域：存放本活动开始之前的活动现场信息，即调用过程在调用点的断点环境，其中包括返回地址和控制返回时必须恢复的寄存器的值。<br>（6）局部数据区：为本次活动的局部数据分配的空间，该数据区的布局在下面讨论。（7）临时数据区：为本次活动中产生的一些临时数据（如表达式计算的中间结果等）<br>分配的空间。</p>
+<p>通常，活动记录中各个域的位置是根据其所需空间大小的确定时间来安排的。原则是将大小能够较早确定的域放在活动记录的中间、较晚才能确定并且变化较多的域放在两端；</p>
+<blockquote>
+<p>控制栈：程序运行空间中用于保存活动记录的存储区域采用栈式存储管理，称为控制栈；</p>
+</blockquote>
+<p>程序运行过程中，控制栈中保存着当前所有活着的活动的活动记录，主程序的活动记录在栈底，被调用过程的活动记录压在调用过程的活动记录之上；当前正在执行的过程的活动记录在栈顶。由此可知，控制栈记录了程序执行的活动踪迹；</p>
+<h4 id="3-1-3-名字作用域-amp-名字绑定"><a href="#3-1-3-名字作用域-amp-名字绑定" class="headerlink" title="3.1.3 名字作用域&amp;名字绑定"></a>3.1.3 名字作用域&amp;名字绑定</h4><blockquote>
+<p>声明：声明是一个把信息与名字联系起来的语法结构，可以是显式的，也可以是隐式的；</p>
+</blockquote>
+<blockquote>
+<p>作用域：在一个程序的不同部分，可能有对相同名字的相互独立的声明，语言的作用域规则决定了当这样的名字在程序中被引用时应该使用哪一个声明，一个声明起作用的程序部分称为该声明的作用域；</p>
+</blockquote>
+<p>作用域是名字声明的一个性质，可以用“名字X的作用域”来描述。作用域规则有静态和动态之分，目前绝大多数语言采用静态作用域规则，即遵循最近嵌套原则，如Pascal、C等。拼写相同但作用域不同的名字被认为是不同的名字；</p>
+<blockquote>
+<p>名字绑定：名字绑定（binding）是指把名字映射到存储单元的过程，根据名字的类型不同，其存储单元可能是一个字节、一个字或者是若干连续字节的集合；</p>
+</blockquote>
+<p>在静态作用域规则下（静态作用域和静态存储分配策略是两个完全不同的概念），由于名字局部于其声明所在的过程，它的存储空间被安排在该过程的活动记录中。所以，不同的名字将被绑定到不同的存储单元。即使在一个程序中每个名字只被声明一次，程序运行过程中，同一个名字也可能映射到不同的存储空间（如递归过程中声明的名字）；</p>
+<blockquote>
+<p>名字的值：程序运行过程中，名字的值有左右之分，左值指的是它的存储空间的地址，右值指的是其存储空间的内容；</p>
+</blockquote>
+<p>赋值语句的执行仅改变名字的右值，而不改变其左值；</p>
+<p>需要指出的是，编译程序如何组织名字的存储空间，以及采用什么样的名字绑定方法等，主要取决于语言本身的性质；</p>
+<h3 id="3-2-存储分配策略"><a href="#3-2-存储分配策略" class="headerlink" title="3.2 存储分配策略"></a>3.2 存储分配策略</h3><p><img src="/images/image-20221210164305235.png" srcset="/img/loading.gif" lazyload></p>
+<p>图示的程序运行空间中，除了目标代码区（采用的静态存储分配策略）外其余三种数据空间采用的存储分配策略是不同的，分别是静态存储分配、栈式存储分配以及堆式存储分配；</p>
+<h4 id="3-2-1-静态存储分配"><a href="#3-2-1-静态存储分配" class="headerlink" title="3.2.1 静态存储分配"></a>3.2.1 静态存储分配</h4><p>对于源程序中声明的各种数据对象，如果在编译时能够确定它们所需存储空间的大小（如简单变量、常界数组和非变体记录等），则编译程序就可以在程序运行空间中给它们分配固定的存储位置，在把程序装入内存时完成所有名字的地址绑定，而且在程序运行过程中名字的左值保持固定不变，即总是使用这些存储单元作为它们的数据空间，这种存储分配方式称为静态存储分配；</p>
+<p>静态存储分配策略的使用对源语言的限制较多，主要有：所有数据对象的大小和它们在程序运行空间中的位置必须能够在编译时确定，不能建立动态数据结构；不允许过程递归调用；</p>
+<p>静态存储分配策略的实现比较简单。编译程序在处理源程序正文时，首先对每个变量均建立一个符号表表项，包括其名字、类型及存储地址等属性，当然也包括名字的作用域信息。由于每个变量所需存储空间的大小由其类型确定，并且在编译时是已知的，因此可以使用翻译方案处理声明语句，为变量分配存储地址；</p>
+<h4 id="3-2-2-栈式存储分配"><a href="#3-2-2-栈式存储分配" class="headerlink" title="3.2.2 栈式存储分配"></a>3.2.2 栈式存储分配</h4><p>栈式存储分配是基于控制栈的思想，把存储空间组织成栈的形式。活动记录在活动开始时人栈、在活动结束时出栈，过程中声明的局部变量的存储空间分配在相应的活动记录中。由于每次过程调用都激活一个新的活动，随着其活动记录的入栈，局部变量被绑定到新的存储单元；当活动结束时，随着活动记录的出栈，局部变量的存储空间被释放，局部变量的生存期也随之结束；</p>
+<p>调用序列和返回序列的功能分别是完成活动记录的入栈和出栈操作，实现控制的转移；</p>
+<blockquote>
+<p>调用序列：调用序列指的是目标程序中实现控制从调用过程进入被调用过程的一段代码；</p>
+</blockquote>
+<p>为完成活动记录的入栈，在调用序列中有调用过程和被调用过程各自需要完成的任务，例如，如果被调用过程有参数的话，则需要由调用过程准备实参、并把实参的值（右值或者左值）传递给被调用过程，即写入被调用过程的活动记录中（参数传递机制）；然后为被调用过程访问非局部名字建立环境、还要为控制返回做准备；而被调用过程则需要保存调用点的机器状态、初始化局部数据等；</p>
+<blockquote>
+<p>返回序列：返回序列指的是目标程序中实现控制从被调用过程返回到调用过程的一段代码；</p>
+</blockquote>
+<p>为实现活动记录的出栈，在返回序列中也有调用过程和被调用过程各自需要完成的任务，例如，如果被调用过程有返回值的话，返回值由被调用过程提供，写入自己的活动记录中，然后恢复调用点的运行环境，完成控制返回；而调用过程则需要自行取回返回值；</p>
+<h4 id="3-2-3-堆式存储分配"><a href="#3-2-3-堆式存储分配" class="headerlink" title="3.2.3 堆式存储分配"></a>3.2.3 堆式存储分配</h4><p>如果程序设计语言支持在活动结束后，其局部名字的空间可以保留，或者被调用过程的活动生存期可以超过调用过程的生存期，则栈式存储分配策略将无法处理，因为在这些情况下，活动记录的释放不遵循后进先出的原则，因此其存储空间不能组织成栈。由于堆式存储管理模式下，空间的释放可以按任意顺序进行，所以，针对这种情况可以采用堆式存储分配策略；</p>
+<h3 id="3-3-参数传递"><a href="#3-3-参数传递" class="headerlink" title="3.3 参数传递"></a>3.3 参数传递</h3><p>当一个过程调用另一个过程时，它们之间传递数据的常用方法有两种，一种是通过非局部名字，另一种是通过参数；</p>
+<p>参数传递机制对过程调用的语义有重大影响。不同语言之间的差别大体上与参数传递机制的种类及其影响范围有关，有些语言只提供一种基本的参数传递机制，有些语言提供两种或更多，本节讨论的参数传递机制主要分为四类：传值调用、引用调用、复制恢复以及传名调用（之所以有这么多种参数传递方法，是由于对表达式代表的含义的解释不同所产生的）；</p>
+<p>参数传递方法之间的主要区别在于实参代表的是右值、左值还是实参的名字本身（“左值”指的是存储单元的地址，“右值”指的是存储单元中的内容），因而也就出现了多种不同的参数传递方法。</p>
+<h4 id="3-3-1-传值调用"><a href="#3-3-1-传值调用" class="headerlink" title="3.3.1 传值调用"></a>3.3.1 传值调用</h4><blockquote>
+<p>定义：把实在参数的值传递给相应的形式参数</p>
+</blockquote>
+<p>传值调用（call-by-value）是最一般、也是最简单的参数传递方法。调用过程先计算出实参的值，然后将其右值传递给被调用过程。这意味着，在被调用过程执行时，参数值如同常数，于是可以将传值调用解释为：用相应的实参的值替代过程体中出现的所有形参；</p>
+<p>传值调用也是C++和Pascal 语言的内置机制，本质上，也是C语言和Java语言唯一的参数传递机制。在这些语言中，参数被看作是过程的局部变量，其初值由调用过程提供的实参给出。因此，在过程中，参数和局部变量一样可以被赋值，但其结果不影响过程体之外变量的值。实现这种传值调用的基本思想如下：<br>（1）把形参当作过程的局部名字看待，形参的存储单元分配在被调用过程的活动记录中（即参数域）；<br>（2）调用过程先对实参求值，发生过程调用时，由调用序列把实参的右值写人被调用过程活动记录的参数域中；</p>
+<blockquote>
+<p>注意：传值调用并不意味着参数的使用一定不会影响过程体外变量的值。例如，若参数的类型为指针，则参数的值就是一个存储地址，通过它可以改变过程体外部的存储空间的值;</p>
+</blockquote>
+<p>实现方式如下：</p>
+<ul>
+<li><p>调用程序预先把实在参数的值计算出来，并传递到被调用过程相应的形式单元中</p>
+</li>
+<li><p>被调用过程中，像引用局部数据一样引用形式参数直接访问对应的形式单元</p>
+</li>
+</ul>
+<p><img src="/images/image-20221214202917837.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221214203034436.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="3-3-2-引用调用-–-传地址"><a href="#3-3-2-引用调用-–-传地址" class="headerlink" title="3.3.2 引用调用 – 传地址"></a>3.3.2 引用调用 – 传地址</h4><blockquote>
+<p>定义：把实在参数的地址传递给相应的形式参数；</p>
+</blockquote>
+<p>引用调用（call-by-reference）也称为传地址调用，原则上要求实参必须是已经分配了存储空间的变量，调用过程把实参的存储单元地址传递给被调用过程的形参，或者说调用过程把一个指向实参存储单元的指针传递给被调用过程的相应形参。被调用过程执行时，通过形参间接地引用实参，因此，可以把形参看成是实参的别名，对形参的任何引用都是对相应实参的引用；</p>
+<p>实现引用调用的基本思想如下：<br>（1）调用过程对实参求值；<br>（2）如果实参是具有左值的名字或表达式，那么传递这个左值本身；<br>（3）如果实参是一个没有左值的表达式（如a+b或2等），则为它申请一临时数据空间，将计算出的表达式的值存人该单元，然后传递这个存储单元的地址；</p>
+<p>简单来说，实现传地址只需要以下两步：</p>
+<ul>
+<li>调用程序把实在参数(实参)的地址传递到被调用过程相应的形式单元中；</li>
+<li>被调用过程中，对形式参数(形参)的引用或赋值被处理成对形式单元的间接访问；</li>
+</ul>
+<p>假设有如下过程swap实现两个整型数值的交换</p>
+<p><img src="/images/image-20221214200841804.png" srcset="/img/loading.gif" lazyload></p>
+<p>在主程序中调用该过程的时候，具体实现如下</p>
+<p><img src="/images/image-20221214201551355.png" srcset="/img/loading.gif" lazyload></p>
+<p>下面再来看一道题</p>
+<p><img src="/images/image-20221214201613740.png" srcset="/img/loading.gif" lazyload></p>
+<p>解题过程如下，需要注意的就是所有的形参都是地址，所以一定会影响实参的值</p>
+<p><img src="/images/image-20221214201906001.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221214201938474.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221214202003629.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="3-3-3-复制恢复-–-得结果"><a href="#3-3-3-复制恢复-–-得结果" class="headerlink" title="3.3.3 复制恢复 – 得结果"></a>3.3.3 复制恢复 – 得结果</h4><blockquote>
+<p>定义：传地址的一种变形</p>
+</blockquote>
+<p>复制恢复（copy-restore）参数传递机制是传值调用和引用调用的一种混合形式，它综合了传值调用和引用调用两种方式的特点，也称为copy-in&#x2F;copy-out传递方式。实现思想如下：<br>（1）过程调用时，调用过程对实参求值，并将实参的右值传递给被调用过程，如同传值调用一样。与传值调用不同的是，这里要求在调用之前求出实参的左值；<br>（2）当控制返回时，被调用过程根据实参的左值把形参的当前右值复制到相应实参的存储空间中，该左值是在调用之前计算出来的，当然，只有具有左值的那些实参的值被复制出来；</p>
+<p>第（1）步是将实参的右值“复制入”被调用过程活动记录的参数域中相应形参的空间中，第（2）步是将形参的右值“复制出”，写人调用过程活动记录中相应实参的存储单元中。所以，这种方法有时也称为“复制入-复制出”传递方法。</p>
+<p>主要实现步骤可以分为以下三步：</p>
+<ul>
+<li><p>每个形参对应两个形式单元，第一个形式单元存放实参地址，第二个单元存放实参的值</p>
+</li>
+<li><p>在过程体中对形参的任何引用或赋值都看作对它的第二个单元的直接访问</p>
+</li>
+<li><p><code>过程完成返回前</code>，把第二个单元的内容存放到第一个单元所指的实参单元中</p>
+</li>
+</ul>
+<p>同样使用一个例题来帮助理解</p>
+<p><img src="/images/image-20221214202313201.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221214202519678.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221214202604020.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221214202644883.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221214202742527.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="3-3-4-传名调用"><a href="#3-3-4-传名调用" class="headerlink" title="3.3.4 传名调用"></a>3.3.4 传名调用</h4><blockquote>
+<p>定义：相当于把被调用过程的过程体抄到调用出现的地方，但把其中出现的形式参数都替换成相应的实参；</p>
+</blockquote>
+<p>传名调用（call-by-name）是Algol 60中定义的一种特殊的参数传递方式，计划用作种高级语言过程的内嵌（inline）机制。这种机制使得过程的语义可以简单地由文本替换形式描述，而不是作为对环境的一种请求。Algol 60中用复制规则对其进行了如下定义：<br>（1）把过程当作宏处理，即在调用出现的地方，用被调用过程的过程体替换调用语句，并用实参的名字替换相应的形参。这种文字替换称为宏扩展；<br>（2）被调用过程中的局部名字不能与调用过程中的名字重名，因此可以考虑在做宏扩展之前，对被调用过程中的每一个名字都系统地重新命名，即给以一个不同的新名字；<br>（3）为保持实参的完整性，可以用括号把实参的名字括起来；</p>
+<p>历史上对传名调用的解释是：实参作为函数在被调用过程执行时计算。也就是说，进入被调用过程之前不对实参求值，调用点上的实参名字本身可以看作是一个函数定义，在被调用过程中，每次遇到形参时就对相应实参函数进行求值。因此，在结果程序中，对应每一个这样的参数都需要编制单独的一个程序或过程，这种参数子程序称为trunk。每当过程体中用到相应的形参时，就调用这个程序。当调用时，若实参不是变量，则形参替换程序就计算实参，并送回此值所在的地址，过程体中每当引用形参时，就调用trunk，接着就利用所送回的地址去引用该值。因此，在传名调用机制下，实参总是在调用者的环境内求值；</p>
+<blockquote>
+<p>传名调用机制是其他延迟计算机制的基础；</p>
+</blockquote>
+<p>实现方法：</p>
+<ul>
+<li>在进入被调用过程的之前不对实在参数预先进行计值，而是让过程体中每当使用到相应的形式参数时才逐次对它实行计值（或计算地址）</li>
+<li>通常把实在参数处理成一个子程序（称为参数子程序），每当过程体中使用到相应的形式参数时就调用这个子程序</li>
+</ul>
+<p><img src="/images/image-20221214203454643.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221214203509164.png" srcset="/img/loading.gif" lazyload></p>
+<p>注意这个地方进行了一个简单的名称切换，这是为了区分局部变量的A和全局变量的A，当然如果子程序和主程序中的变量本身就不同则不需要考虑换名</p>
+<p><img src="/images/image-20221214203536229.png" srcset="/img/loading.gif" lazyload></p>
+<p>下面来看一道例题</p>
+<p><img src="/images/image-20221214203609447.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221214203919384.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="4-类型表达式-amp-类型等价"><a href="#4-类型表达式-amp-类型等价" class="headerlink" title="4.类型表达式&amp;类型等价"></a>4.类型表达式&amp;类型等价</h2><p>（这一节本来是想打算看书理解的，但是书上讲的太烂了，感觉像是纯粹按照某个英文教材翻译并且还没翻译正确的感觉，这节本质上也不是什么重点，所以简单写了写）</p>
+<ul>
+<li>强类型语言：强调最大程度的限制，要求执行严格的类型检查（显式声明类型、要求编译程序严格执行类型检查等）；</li>
+<li>弱类型语言：强调数据类型应用的灵活性，建议采用隐式类型，翻译时无需进行类型检查，在程序运行期间，系统对每一个值的类型进行拓展检查；</li>
+<li>无类型语言：没有类型系统的语言，也称为动态语言，这并不意味着一个无类型语言允许其程序破坏数据，只意味着所有安全检查都是在程序执行期间进行的；</li>
+</ul>
+<p>因为强类型语言的类型规则的严格性，确保了大多数存在数据被破坏的错误的程序在编译阶段被检测出；</p>
+<p>类型检查有静态类型检查和动态类型检查两类</p>
+<ul>
+<li>静态类型检查是指由编译程序完成的检查</li>
+<li>动态类型检查是指目标程序运行时完成的检查</li>
+</ul>
+<p>原则上，如果目标代码把每个元素的类型和该元素的值一起保存，那么任何检查都可以动态完成；</p>
+<p>这部分其他内容可以参考教材P194，这里不再赘述；</p>
+<h1 id="第七章-中间语言"><a href="#第七章-中间语言" class="headerlink" title="第七章 中间语言"></a>第七章 中间语言</h1><p>（原则上中间语言应该和语义分析放在一个章节，但是个人是真的不喜欢这种界限不清的感觉，所以组织的时候将其分开，并且老师授课的时候也是将它们分开进行授课的，所以blog的组织方式肯定是没有问题的）</p>
+<p>本章主要介绍如何利用前面学习的属性文法知识，对程序设计语言中常用的语句进行中间代码生成（语义分析在上一章），包括用属性文法来描述这些语句的语义并构造适合一遍扫描的翻译模式；</p>
+<h2 id="1-概述"><a href="#1-概述" class="headerlink" title="1.概述"></a>1.概述</h2><p>中间语言的特点：</p>
+<ul>
+<li><p>独立于机器</p>
+</li>
+<li><p>复杂性界于源语言和目标语言之间</p>
+</li>
+</ul>
+<p>中间语言的特点：</p>
+<ul>
+<li><p>使编译程序的结构在逻辑上更为简单明确</p>
+</li>
+<li><p>便于进行与机器无关的代码优化工作</p>
+</li>
+<li><p>易于移植</p>
+</li>
+</ul>
+<p>常见的中间语言形式主要有：</p>
+<ul>
+<li><p>后缀式，逆波兰表示</p>
+</li>
+<li><p>图表示：抽象语法树（AST）、有向无环图（DAG）</p>
+</li>
+<li><p>三地址代码</p>
+<ul>
+<li>三元式</li>
+<li>四元式</li>
+<li>间接三元式</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-中间语言形式"><a href="#2-中间语言形式" class="headerlink" title="2.中间语言形式"></a>2.中间语言形式</h2><h3 id="2-1-后缀式"><a href="#2-1-后缀式" class="headerlink" title="2.1 后缀式"></a>2.1 后缀式</h3><p>在后缀式的表示法中，所有的操作符都置于操作数的后面；</p>
+<p>一个表达式E的后缀式形式的严格的语法定义由下面三条规则组成</p>
+<p><img src="/images/image-20221126095419523.png" srcset="/img/loading.gif" lazyload></p>
+<p>从定义上来看，后缀式的表示法不需要用括号来标识操作符的优先级，只要知道每个算符的目数，对于后缀式，不论从哪一端进行扫描，都能对它进行无歧义地分解； </p>
+<p>后缀式的计算的实现也很简单，可以使用一个栈来实现后缀式的计算：自左至右扫描后缀式，每碰到运算量就把它推进栈。每碰到k目运算符就把它作用于栈顶的k个项，并用运算结果代替这k个项；</p>
+<p>下面介绍一个将中缀表达式翻译成后缀形式的属性文法</p>
+<p><img src="/images/image-20221126100057294.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>左部产生式是属性文法的基础文法部分即上下文无关文法，描述的是中缀表达式；</p>
+<p>右部语义规则为每个产生式配上相应的语义规则，说明对应的语法单位的语义；</p>
+<p>上述语义规则的定义实际和后缀式的定义是对应的；</p>
+</blockquote>
+<p>根据属性文法，我们还能进一步设计一个中缀表达式翻译成后缀表达式的翻译模式；</p>
+<p>首先考虑使用一个数组POST存放翻译后的后缀式：k为下标初值为1；对照上述属性文法，设计的翻译模式如下</p>
+<p><img src="/images/image-20221126100542607.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-2-图表示法"><a href="#2-2-图表示法" class="headerlink" title="2.2 图表示法"></a>2.2 图表示法</h3><p>前面学过的抽象语法树就是一种图表示法的中间语言，下面将介绍一种新的与抽象语法树类似的中间语言叫做有向无环图；</p>
+<p>在有向无环图中，表达式中的每一个子表达式都对应一个节点，与抽象语法树类似，一个内部节点都代表了一个操作符，其子节点代表操作树；父节点具有该运算符作用于其子节点对应的值之后的结果；在有向无环图中代表公共子表达式的节点可以具有多个父节点，这就是有向无环图与抽象语法树的区别，一个子节点可能有多个父节点故它是图不是树；</p>
+<p>下面结合例子对比抽象语法树和有向无环图，对于下面的赋值语句，其抽象语法树和有向无环图分别表示如下，可以注意到两者的差异：</p>
+<ol>
+<li>赋值语句中的两个子表达式在抽象语法树中都对应有两棵独立的子树，这两棵子树是一样的（因为两个子表达式一样），而在有向无环图中，这两棵子树被合并成了一个子树（也可以理解为消除了多余的子树），故加法节点的左右两棵子树都是乘法的结果；</li>
+<li>需要注意的是有向图中，由于缺省的是由父节点指向子节点，所以有向图中也可以省略箭头（带上箭头可以看到这里面是没有环的）；</li>
+<li>有向无环图的子树共享的方式可以帮助我们生成优化的代码；</li>
+</ol>
+<p>下面是一个将带中缀表达式的赋值语句翻译成抽象语法树的属性文法，其中关于表达式的定义部分前面已经介绍过，这里额外增加了赋值语句S这个语法单位的定义</p>
+<p><img src="/images/image-20221126103545667.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-3-三地址码"><a href="#2-3-三地址码" class="headerlink" title="2.3 三地址码"></a>2.3 三地址码</h3><p>三地址码的基本形式如下</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs avrasm"><span class="hljs-symbol">x:</span>=<span class="hljs-built_in">y</span> op <span class="hljs-built_in">z</span><br></code></pre></td></tr></table></figure>
+
+<p>其中x是结果，y是第一操作数，z是第二操作数；</p>
+<blockquote>
+<p>三地址代码可以看成是抽象语法树或有向无环图的一种线性表示</p>
+</blockquote>
+<p>下面是一个赋值语句翻译而成的抽象语法树，可以将其转换成一组等价的三地址代码，按照自底向上、从左到右的顺序，遍历树的各个节点，生成各运算对应的三地址代码</p>
+<p><img src="/images/image-20221126104241785.png" srcset="/img/loading.gif" lazyload></p>
+<p>当然也可以将该赋值语句的有向无环图的表现形式转换为等价的三地址代码</p>
+<p><img src="/images/image-20221126104454266.png" srcset="/img/loading.gif" lazyload></p>
+<p>三地址语句有多种形式可以表达不同的运算，主要有如下种类</p>
+<p><img src="/images/image-20221126104801564.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-3-1-四元式"><a href="#2-3-1-四元式" class="headerlink" title="2.3.1 四元式"></a>2.3.1 四元式</h4><p>三地址语句有多种实现形式，四元式就是其中一种；</p>
+<p>将每一条三地址语句，都表示为一个带有四个域的记录结构，分别为op,arg1,arg2和result；</p>
+<p>下面是严格对赋值语句翻译得到的四元式序列（顺序得到六条四元式的指令），需要注意的是第一操作数和第二操作数的顺序不能颠倒；</p>
+<p><img src="/images/image-20221126105046507.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-3-2-三元式"><a href="#2-3-2-三元式" class="headerlink" title="2.3.2 三元式"></a>2.3.2 三元式</h4><p>三元式也是一种对三地址语句的实现，可以将每一条三地址语句表示为一个带有三个域的记录结构，分别是op操作符、arg1第一操作数和arg2第二操作数，三元式的这种实现并没有保存结果的域，如果后面的三元式需要引用前面的计算结果（如引用前面的临时变量或中间结果的话），可以通过引用计算该值的语句的位置来实现</p>
+<p><img src="/images/image-20221126105443868.png" srcset="/img/loading.gif" lazyload></p>
+<p>对于比较复杂的三地址语句，一般都需要需要使用连续两条三元式来实现</p>
+<p><img src="/images/image-20221126105629842.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>三元式通过引用语句的位置来实现计算值的传递，这给优化带来了困难，因为假如需要增加&#x2F;删除语句或调整语句的顺序，都可能需要改变某些语句的位置下标，则引用了这些语句的语句也必须做相应的修改；</p>
+</blockquote>
+<h4 id="2-3-3-间接三元式"><a href="#2-3-3-间接三元式" class="headerlink" title="2.3.3 间接三元式"></a>2.3.3 间接三元式</h4><p>为了克服三元式出现的困难，出现了间接三元式的表达方式；</p>
+<p>间接三元式由两部分构成，第一部分是三元式表，第二部分是间接码表：</p>
+<ul>
+<li>三元式表用来存放三元式指令；</li>
+<li>间接码表是一张指示器表，按运算的先后次序列出有关三元式在三元式表中的位置；</li>
+</ul>
+<p>使用间接码表间接给优化器带来支持</p>
+<p><img src="/images/image-20221126110144409.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="3-声明语句的翻译"><a href="#3-声明语句的翻译" class="headerlink" title="3.声明语句的翻译"></a>3.声明语句的翻译</h2><p>（下面这几个翻译的部分说实话还是很重要的，但是不管是哈工大还是国科大的视频的讲解都不是很细致，主要还是因为课程组织很离谱，然后看PPT也基本是看不懂的，教材的话还是一样的问题，这些汉字合在一起根本就看不懂，所以下面几个部分我们都参考的是简书的内容）</p>
+<p>文章参考：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/6490767cfaef">编译器笔记28-中间代码生成-声明语句的翻译 - 简书 (jianshu.com)</a>；</p>
+<hr>
+<h3 id="3-1-类型表达式"><a href="#3-1-类型表达式" class="headerlink" title="3.1 类型表达式"></a>3.1 类型表达式</h3><p>参考视频：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1hE411M75v/?p=43&vd_source=276d55048634a5b508b1b53a1ecd56b3">11.1.1 6-1类型表达式_哔哩哔哩_bilibili</a>；</p>
+<p>类型也有结构，类型的结构使用类型表达式来表示；</p>
+<blockquote>
+<p>结论1：基本类型是类型表达式</p>
+</blockquote>
+<p><img src="/images/image-20221207161123731.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>结论2：可以为类型表达式命名，类型名也是类型表达式</p>
+</blockquote>
+<blockquote>
+<p>结论3：将类型构造符（typeconstructor）作用于类型表达式可以构成新的类型表达式</p>
+</blockquote>
+<h3 id="3-2-声明语句的翻译"><a href="#3-2-声明语句的翻译" class="headerlink" title="3.2 声明语句的翻译"></a>3.2 声明语句的翻译</h3><p>对于声明语句，语义分析的主要任务是</p>
+<ol>
+<li>收集标识符的类型等属性信息；<ul>
+<li>从类型表达式可以知道该类型在运行时刻所需要的存储单元数量，将其称为<code>类型的宽度</code>；</li>
+<li>关于类型表达式，实际上基本类型（int、bool、void等）就是类型表达式，也可以将类型构造符（如数组构造符、指针构造符、笛卡尔乘积构造符、函数构造符、记录构造符等）作用于类型表达式以构造成新的类型表达式；</li>
+</ul>
+</li>
+<li>为每一个名字分配一个相对地址；<ul>
+<li>在编译时，可以使用类型的宽度为每一个名字分配一个<code>相对地址</code>；</li>
+</ul>
+</li>
+</ol>
+<p>常常将名字的类型和相对地址等信息保存在符号表中（符号表在上面介绍过），变量声明语句的SDT如下</p>
+<p><img src="/images/image-20221202103823934.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们举两个例子来说明变量声明语句的语法制导翻译是如何进行的（这部分最好借助视频&amp;纸上演算逐步进行理解，纯看图不动手画难度很大，参考视频<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1hE411M75v?p=44&vd_source=276d55048634a5b508b1b53a1ecd56b3">11.2.1 6-2声明语句的翻译_哔哩哔哩_bilibili</a>，这里使用的是LL1的自顶向下的非递归分析，并不是采用画栈而是使用的作树的方式）</p>
+<p><img src="/images/image-20221202103952882.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221202104007746.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="4-赋值语句的翻译"><a href="#4-赋值语句的翻译" class="headerlink" title="4.赋值语句的翻译"></a>4.赋值语句的翻译</h2><p>赋值语句的基本文法如下</p>
+<p><img src="/images/image-20221206174109022.png" srcset="/img/loading.gif" lazyload></p>
+<p>一个表达式的值要通过一段三地址码来计算，因此赋值语句翻译的主要任务是生成对表达式求值的三地址码，下面源程序片段对应的三地址码为</p>
+<p><img src="/images/image-20221206174127137.png" srcset="/img/loading.gif" lazyload></p>
+<p>为了将赋值语句翻译成为三地址代码，需要频繁地进行符号表操作，例如：在符号表中查找名字id是否存在，根据id，entry访问符号表以获取名字的类型信息，若id是数组类型的，还需要根据id，entry获取数组相关的信息（如元素的类型、维数、各维的上下界等），若id是记录类型，还需要进一步获取记录中各域的信息等。在生成三地址代码的过程中，为了保存中间计算结果，通常要引入临时变量，这些临时变量也需要保存在符号表中。为此，需要设计如下函数：</p>
+<p><img src="/images/image-20221206174207514.png" srcset="/img/loading.gif" lazyload></p>
+<p>赋值语句的SDT如下</p>
+<p><img src="/images/image-20221206174339906.png" srcset="/img/loading.gif" lazyload></p>
+<p>对上述SDT进行改进可以得到增量翻译</p>
+<p><img src="/images/image-20221207164256846.png" srcset="/img/loading.gif" lazyload></p>
+<p>这里举一个例子来熟悉简单赋值语句的翻译，视频参考：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1hE411M75v?p=45&vd_source=276d55048634a5b508b1b53a1ecd56b3">12.1.1 6-3简单赋值语句的翻译_哔哩哔哩_bilibili</a>（这个SDT采用的是LR分析技术，且所有的语义动作都位于产生式右部的末尾，因此可以采用自底向上的方式来翻译）</p>
+<p><img src="/images/image-20221207164559157.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="4-1-数组引用的翻译"><a href="#4-1-数组引用的翻译" class="headerlink" title="4.1 数组引用的翻译"></a>4.1 数组引用的翻译</h3><p>数组引用的基本文法如下（这是对前面赋值语句的基本文法进行的拓展）</p>
+<p><img src="/images/image-20221206174628974.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>根据第三个产生式：引入了新的非终结符L，L表示的是一个数组元素；</li>
+<li>根据第二个产生式：数组元素本身就是一个表达式；</li>
+<li>根据第一个产生式：可以为数组元素赋值；</li>
+</ul>
+<p>将数组引用翻译成三地址码时要解决的主要问题是确定数组元素的存放地址，也就是数组元素的寻址；</p>
+<p><img src="/images/image-20221206174815769.png" srcset="/img/loading.gif" lazyload></p>
+<p>注：变量的偏移地址是指变量所在段的起始地址到该变量的字节距离</p>
+<p>例如，假设type(a) &#x3D; array(3, array(5, array(8, int))) ，一个整型变量占用4个字节，则</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs llvm"><span class="hljs-type">i1</span>*w<span class="hljs-number">1</span><span class="hljs-operator">=</span><span class="hljs-type">i1</span>*<span class="hljs-number">5</span>*<span class="hljs-number">8</span>*<span class="hljs-number">4</span><span class="hljs-operator">=</span><span class="hljs-type">i1</span>*<span class="hljs-number">160</span>  - <span class="hljs-number">160</span>是数组a[<span class="hljs-type">i1</span>]的宽度，a[<span class="hljs-type">i1</span>]是一个[<span class="hljs-number">5</span>*<span class="hljs-number">8</span>]的二维整型数组<br><span class="hljs-type">i2</span>*w<span class="hljs-number">2</span><span class="hljs-operator">=</span><span class="hljs-type">i2</span>*<span class="hljs-number">8</span>*<span class="hljs-number">4</span><span class="hljs-operator">=</span><span class="hljs-type">i2</span>*<span class="hljs-number">32</span>     - 数组a[<span class="hljs-type">i1</span>][<span class="hljs-type">i2</span>]是一个一维数组<br><span class="hljs-type">i3</span>*w<span class="hljs-number">3</span><span class="hljs-operator">=</span><span class="hljs-type">i3</span>*<span class="hljs-number">4</span><span class="hljs-operator">=</span><span class="hljs-type">i3</span>*<span class="hljs-number">4</span>        - a[<span class="hljs-type">i1</span>][<span class="hljs-type">i2</span>][<span class="hljs-type">i3</span>]是一个整型变量<br></code></pre></td></tr></table></figure>
+
+<p><img src="/images/image-20221206175024179.png" srcset="/img/loading.gif" lazyload></p>
+<p>下面给出一个带有数组引用的赋值语句的翻译的例子</p>
+<p><img src="/images/image-20221207165755504.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><p>a是一个包含n个整型变量的数组，要翻译的源程序片段为c&#x3D;a[i]，根据前面的地址计算公式可以计算得到a[i]的地址，进而得到其对应的三地址码；</p>
+</li>
+<li><p>这里用到了一个数组的名字a表示数组的基地址，数组的基地址加上数组的偏移地址就得到数组的实际地址t2</p>
+</li>
+</ul>
+<p>再来看一个二维数组的例子</p>
+<p><img src="/images/image-20221207170037984.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>数组引用的SDT</p>
+</blockquote>
+<p>在数组引用的翻译方案的设计过程中，关键的问题是如何将地址计算公式同数组引用的文法关联起来；</p>
+<p><img src="/images/image-20221206175203707.png" srcset="/img/loading.gif" lazyload></p>
+<p>对于例子中，前面对于简单赋值语句采用的是自底向上的翻译方法，这里同样可以延续这个流程，实际上很好理解，直接无脑自底向上构造即可；</p>
+<p>根据以上的分析可以得到数组引用的SDT</p>
+<p><img src="/images/image-20221207170837902.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="5-控制流语句的翻译"><a href="#5-控制流语句的翻译" class="headerlink" title="5.控制流语句的翻译"></a>5.控制流语句的翻译</h2><p>程序设计语言的控制流程一般分为三种：顺序结构、分支结构和循环结构</p>
+<p>控制流语句的基本文法如下</p>
+<p><img src="/images/image-20221206175236762.png" srcset="/img/loading.gif" lazyload></p>
+<p>注：此处的S用于生成可执行语句的序列，一个可执行语句可以是赋值语句，也可以是一个分支语句（以if语句为例），也可以是循环语句（以while语句为例），可执行语句序列可构成程序P</p>
+<p>控制流语句的代码结构如下（此处以if-then-else为例）</p>
+<p><img src="/images/image-20221206175320783.png" srcset="/img/loading.gif" lazyload></p>
+<p>注：布尔表达式B被翻译成由跳转指令构成的跳转代码</p>
+<blockquote>
+<p>控制流语句的SDT如下</p>
+</blockquote>
+<p><img src="/images/image-20221206175356436.png" srcset="/img/loading.gif" lazyload></p>
+<p>上图第三条产生式是赋值语句，赋值语句的翻译方案前面已经讲过这里不再赘述，下面将重点介绍分支语句和循环语句的翻译方案</p>
+<p>根据所给的代码结构可以编写相应的SDT</p>
+<p><img src="/images/image-20221206175416433.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221206175429308.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221206175445326.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>控制流语句的例子</p>
+</blockquote>
+<p>完整版的控制流语句的SDT如下（布尔表达式的SDT我们将在后面详细介绍）</p>
+<p><img src="/images/image-20221208082440539.png" srcset="/img/loading.gif" lazyload></p>
+<p>上述SDT中的基础文法并不是一个LL1文法，因此不能在自顶向下的语法分析过程中同时实现语义翻译，同时因为在产生式右部中内嵌有语义动作，因此使用自底向上的语法分析中进行语义翻译需要修改上述文法；</p>
+<p>详细流程参考<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1hE411M75v?p=49&vd_source=276d55048634a5b508b1b53a1ecd56b3">13.3.1 6-7控制流翻译的例子_哔哩哔哩_bilibili</a>；</p>
+<h3 id="5-1-布尔表达式的翻译"><a href="#5-1-布尔表达式的翻译" class="headerlink" title="5.1 布尔表达式的翻译"></a>5.1 布尔表达式的翻译</h3><p>（按数值表示的布尔表达式的翻译不是重点，这里只介绍作为条件控制的布尔表达式的翻译）</p>
+<p>基本思路如下</p>
+<p><img src="/images/image-20221214204415276.png" srcset="/img/loading.gif" lazyload></p>
+<p>按照上面所讲，可以将if-then-else翻译为如下三地址指令</p>
+<p><img src="/images/image-20221214204600792.png" srcset="/img/loading.gif" lazyload></p>
+<p>在分支语句和循环语句中都会用到布尔表达式，布尔表达式的基本文法如下</p>
+<ul>
+<li>将关系运算符作用于两个算术表达式就可以得到一个关系表达式，关系表达式本身可以构成一个布尔表达式；</li>
+<li>将逻辑运算符作用于布尔表达式可以得到一个新的布尔表达式；</li>
+</ul>
+<p><img src="/images/image-20221207173156712.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>在跳转代码中，逻辑运算符&amp;&amp; || 和 ! 被翻译成跳转指令，运算符本身不出现在代码中，布尔表达式的值是通过代码序列中的位置来表示的</p>
+</blockquote>
+<p>输入的程序片段如下，将其翻译为三地址码，可以看出并没有逻辑运算符&amp;&amp; || 和 !；</p>
+<ul>
+<li>布尔表达式被翻译成由跳转指令构成的跳转代码，用指令的标号标识一条三地址指令；</li>
+</ul>
+<p><img src="/images/image-20221207173222582.png" srcset="/img/loading.gif" lazyload></p>
+<p>下面给出布尔表达式的SDT（与或非是分开介绍的）</p>
+<blockquote>
+<p>语义函数newlabel，返回一个新的符号标号；</p>
+<p>对于一个布尔表达式E，设置两个继承属性；</p>
+<ul>
+<li><p>E.true是E为’真”时控制流转向的标号</p>
+</li>
+<li><p>E.false是E为’假’时控制流转向的标号</p>
+</li>
+</ul>
+<p>E.code记录E生成的三地址代码序列；</p>
+</blockquote>
+<p><img src="/images/image-20221207173259235.png" srcset="/img/loading.gif" lazyload></p>
+<p>or产生式的语义规则</p>
+<p><img src="/images/image-20221207173318935.png" srcset="/img/loading.gif" lazyload></p>
+<p>and产生式的语义规则</p>
+<p><img src="/images/image-20221207173332577.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="5-2-布尔表达式的回填"><a href="#5-2-布尔表达式的回填" class="headerlink" title="5.2 布尔表达式的回填"></a>5.2 布尔表达式的回填</h3><p>（这节内容在其他地方也被称为一遍扫描实现布尔表达式的回填）</p>
+<p>在为布尔表达式和控制流语句生成中间代码的时候，关键的问题是确定跳转指令的目标标号，在生成跳转指令的时候目标标号还不能确定，在前面介绍的翻译方案中，解决这一问题的方法就是将存放标号的地址作为继承属性传递到跳转指令生成的地方，但是这样做需要额外的处理（将标号和特定的地址绑定）；</p>
+<p>下面将介绍回填技术，回填技术的基本思想如下：生成一个跳转指令时，暂时不指定该跳转指令的目标标号。这样的指令都被放入由跳转指令组成的列表中，等到能够确定正确的目标标号时，才去填充这些指令的目标标号；</p>
+<p>为非终结符设置两个综合属性：</p>
+<ul>
+<li><p>B.truelist：指向一个包含跳转指令的列表，这些指令最终获得的目标标号就是当B为真时控制流应该转向的指令的标号；</p>
+</li>
+<li><p>B.falselist：指向一个包含跳转指令的列表，这些指令最终获得的目标标号就是当B为假时控制流应该转向的指令的标号；</p>
+</li>
+</ul>
+<p>为了处理跳转指令的列表，需要构造以下函数：</p>
+<ul>
+<li><p>makelist(i)：创建一个只包含i的列表，i是跳转指令的标号，函数返回指向新创建的列表的指针。（注：i对应的跳转指令一般没有包含目标标号，需要被回填）；</p>
+</li>
+<li><p>merge(p1, p2)：将p1和p2指向的列表进行合并，返回指向合并后的列表的指针；</p>
+</li>
+<li><p>backpatch(p, i)：回填函数，将i作为目标标号插入到p所指列表中的各指令中；</p>
+</li>
+</ul>
+<p>下面介绍布尔表达式的回填（relop是关系运算符）</p>
+<p><img src="/images/image-20221207180136036.png" srcset="/img/loading.gif" lazyload></p>
+<p>上述的布尔表达式将被翻译成两条跳转指令gen，两条跳转指令的标号都不填写因为这两条跳转指令的标号都在等待回填，因此我们要把它放到相应的列表中；</p>
+<ul>
+<li>第一条跳转指令的目标标号是B的真出口，因此我们把它放到B.truelist中。调用makelist函数生成一个只包含nextquad的列表，并把这个列表的指针赋值给truelist，这里的nextquad是指即将生成的下一条指令的标号，即gen(‘if’ E1.addr relop E2.addr’goto_’)这条指令的标号；</li>
+<li>第二条跳转指令的目标标号是B的假出口，因此把这条跳转指令存放到B.falselist中。因此我们调用makelist函数生成一个只包含nextquad+1这样一个标号的列表，nextquad+1标号就是gen(‘goto_’)这条指令的标号；</li>
+</ul>
+<p>接下来看下一条产生式</p>
+<p><img src="/images/image-20221207182607196.png" srcset="/img/loading.gif" lazyload></p>
+<p>当B定义为true时，此时可以确定布尔表达式的值为真，生成一条跳转到B的真出口的一条指令，由于此真出口的标号不能确定有待回填，我们把它放入到B.truelist中；</p>
+<p><img src="/images/image-20221207182551202.png" srcset="/img/loading.gif" lazyload></p>
+<p>当B定义为false时，此时可以确定布尔表达式的值为假，生成一条跳转到B的假出口的一条指令。由于此真出口的标号不能确定有待回填，我们把它放入到B.falselist中；</p>
+<p><img src="/images/image-20221207182707692.png" srcset="/img/loading.gif" lazyload></p>
+<p>对B的翻译与其对应的子表达式B1的翻译是相同的，因此B的属性值等于B1的属性值；</p>
+<p><img src="/images/image-20221207182753772.png" srcset="/img/loading.gif" lazyload></p>
+<p>B的值与B1的值正好相反，因此将两个非终结符的属性进行对调；</p>
+<p><img src="/images/image-20221207183244116.png" srcset="/img/loading.gif" lazyload></p>
+<p>B1.truelist中的这些指令都要跳转到B1的真出口，当B1为真的时候整个表达式的值就是为真的，因此B1的真出口就是B的真出口。要跳转到B1的真出口就是跳转到B的真出口，因此B1.truelist中的指令都要放到B.truelist中；</p>
+<p>B2.truelist的指令都要跳转到真出口，当B2为真时整个表达式的值也为真，因此B2的真出口就是B的真出口。要跳转到B2的真出口就是要跳转到B的真出口，因此B2.truelist中的指令都要放到B.truelist中；</p>
+<p>B1.falselist中的指令它们都是要跳转到B1的假出口，当B1的值为假的时候我们要进一步判断B2的值，因此B1的假出口就是B2的第一条指令，因此B1.falselist中的指令都要跳转到B2的第一条指令；</p>
+<p>B2.falselist中的指令都要跳转到B2的假出口，当B2的值为假的时候那么整个布尔表达式的值也是假的。因此B2的假出口就是B的假出口，要跳转到B2的假出口也就是要跳转到B的假出口。B2.falselist中的指令都要放置B.falselist中；</p>
+<p>根据此示意图可以看出，在分析B2之前，要用B2的第一条指令的标号来回填B1.falselist中的各条指令。我们可以记录下B2的第一条指令的标号，在归约时完成此回填动作。<code>为了记下B2第一条指令的标号我们在非终结符B2之前插入一个标记非终结符M。与M关联的语义动作它的任务就是记录下B2的第一条语义动作的标号</code>。我们给M设置一个综合属性quad， M.quad等于下一条指令的标号。因为我们把M放在B2之前，因此M.quad记录的是第二条指令的标号。根据翻译方案示意图，我们要用M.quad来回填B1.falselist中的各条指令，因此调用backpatch用M.quad回填B1.falselist中的各条属性。B.truelist是由B1.truelist和B2.truelist合并而成的，因此我们调用merge函数将B1.truelist和B2.truelist进行合并，将合并后的指针赋值给B.truelist；</p>
+<p><img src="/images/image-20221207183528980.png" srcset="/img/loading.gif" lazyload></p>
+<p>关于and的回填我们不再详细介绍，感兴趣看视频学习；</p>
+<hr>
+<p>下面举一个例子（上面看不懂也没关系，会做题就行）</p>
+<p>需要翻译的布尔表达式如下</p>
+<p><img src="/images/image-20221208083325073.png" srcset="/img/loading.gif" lazyload></p>
+<p>因为定义的都是综合属性，所以可以采用自底向上的分析；</p>
+<p>从左向右扫描输入串，将a&lt;b规约为文法符号B，根据B产生式的语义动作，makelist函数生成一个只包含下一条指令的列表，并把指针赋值给B.trulist；</p>
+<p>假设下一条指令从100开始，则B.trulist只包含标号100，B.falselist只包含标号101；</p>
+<p>接下来生成两条跳转指令，gen(‘if ’ E 1 .addr relop E 2 .addr ‘goto _’)中E1.address等于a，relop就是小于号，E2.address等于b，引号中的字符串按字面值传递，因此生成的100号指令和101号指令可以确定；</p>
+<blockquote>
+<p>注：下划线表示待回填的目标标号</p>
+</blockquote>
+<p><img src="/images/image-20221207183705413.png" srcset="/img/loading.gif" lazyload></p>
+<p>接下来读入下一个输入符号or，对应于对产生式B -&gt; B1 or M B2的运用；</p>
+<p>将栈顶中的空串归约成一个标记非终结符M（这句话的意思就是看到or和and无脑归约一个M即可），并执行M的语义动作；</p>
+<p>接着读入后面的输入符号，将c&lt;d规约为B，与上述分析方法相同，得到102和103的指令</p>
+<p><img src="/images/image-20221208083501962.png" srcset="/img/loading.gif" lazyload></p>
+<p>根据逻辑运算符的优先级，and优先级高于or的优先级，因此采用移入动作将and移入栈中（此时栈中已经存在B or B），对应于对and产生式的运用；</p>
+<p>读入关键字and之后，将栈顶的空串规约为M并执行M的语义动作，实际上就是计算下一条指令的标号；</p>
+<p>接着继续读入输入符号、归约、执行语义动作；</p>
+<p>接着就可以计算B and B（执行and产生式关联的语义动作）；</p>
+<p><img src="/images/image-20221208083524246.png" srcset="/img/loading.gif" lazyload></p>
+<p>接着执行栈顶的B or B</p>
+<p><img src="/images/image-20221208083538956.png" srcset="/img/loading.gif" lazyload></p>
+<p>上图是整个B对应的三地址码，其中有四条指令是等待回填的，在B的truelist中有两条指令100和104，当B的真出口确定以后我们将用B的真出口的标号回填这两条指令。同理B的faillist中有两条指令103和105，当B的假出口确定以后将会用B的假出口的标号回填此两条指令；</p>
+<h3 id="5-3-控制流语句的回填"><a href="#5-3-控制流语句的回填" class="headerlink" title="5.3 控制流语句的回填"></a>5.3 控制流语句的回填</h3><p>知识点部分参考<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/27b3d2e68c0c">编译器笔记35-中间代码生成-控制流语句的回填 - 简书 (jianshu.com)</a>，这里我们直接举例说明</p>
+<p><img src="/images/image-20221207183905360.png" srcset="/img/loading.gif" lazyload></p>
+<p>下面是上述输入的控制流语句对应的注释语法分析树，接下来看看是如何自底向上构造的</p>
+<p><img src="/images/image-20221208091614357.png" srcset="/img/loading.gif" lazyload></p>
+<p>从左向右读取输入，当读入while会运用产生式</p>
+<p><img src="/images/image-20221208091702928.png" srcset="/img/loading.gif" lazyload></p>
+<p>接着将a&lt;b规约为非终结符B，并执行B相关的语义动作，生成两条跳转指令；</p>
+<p>接着读入关键字do，栈顶归约出非终结符M2；</p>
+<p>接着读入if，对应如下产生式的使用</p>
+<p><img src="/images/image-20221208091927969.png" srcset="/img/loading.gif" lazyload></p>
+<p>将c&lt;5规约为布尔表达式B，执行其语义动作，生成两条跳转指令；</p>
+<p>接着读入输入符号then，将栈顶归约非终结符M1…</p>
+<p><img src="/images/image-20221208101844692.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="6-过程调用语句的翻译"><a href="#6-过程调用语句的翻译" class="headerlink" title="6.过程调用语句的翻译"></a>6.过程调用语句的翻译</h2><p>过程调用语句的基本文法如下</p>
+<p><img src="/images/image-20221207184502524.png" srcset="/img/loading.gif" lazyload></p>
+<p>过程调用语句的代码结构如下</p>
+<p><img src="/images/image-20221207184521823.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221207184558223.png" srcset="/img/loading.gif" lazyload></p>
+<p>过程调用语句的SDD如下</p>
+<p><img src="/images/image-20221207184616576.png" srcset="/img/loading.gif" lazyload></p>
+<p>可以简单看一下这个例子</p>
+<p><img src="/images/image-20221207184808277.png" srcset="/img/loading.gif" lazyload></p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E9%80%9A%E8%AF%86%E8%AF%BE%E7%A8%8B/" class="category-chain-item">通识课程</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/">#课程学习</a>
+      
+        <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">#计算机基础</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>编译原理</div>
+      <div>https://gintoki-jpg.github.io/2022/09/09/通识_编译原理/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>杨再俨</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年9月9日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/09/12/%E5%85%B6%E4%BB%96_%E5%85%AD%E7%BA%A7%E8%8B%B1%E8%AF%AD/" title="六级_冲刺">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">六级_冲刺</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/09/07/%E9%80%9A%E8%AF%86_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/" title="计算机系统">
+                        <span class="hidden-mobile">计算机系统</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+</div>
+
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

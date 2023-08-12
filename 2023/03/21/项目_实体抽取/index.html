@@ -1,0 +1,912 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/logo.png">
+  <link rel="icon" href="/img/bg/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="杨再俨">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="知识图谱课程实践操作；">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初级项目_实体抽取">
+<meta property="og:url" content="https://gintoki-jpg.github.io/2023/03/21/%E9%A1%B9%E7%9B%AE_%E5%AE%9E%E4%BD%93%E6%8A%BD%E5%8F%96/index.html">
+<meta property="og:site_name" content="Tintoki_blog">
+<meta property="og:description" content="知识图谱课程实践操作；">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/project.png">
+<meta property="article:published_time" content="2023-03-21T02:31:00.000Z">
+<meta property="article:modified_time" content="2023-04-19T02:52:37.661Z">
+<meta property="article:author" content="YangZaiyan">
+<meta property="article:tag" content="自然语言处理">
+<meta property="article:tag" content="知识图谱">
+<meta property="article:tag" content="实体抽取">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gintoki-jpg.github.io/img/bg/project.png">
+  
+  
+  
+  <title>初级项目_实体抽取 - Tintoki_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"gintoki-jpg.github.io","root":"/","version":"1.9.1","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tintoki_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/bg1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">初级项目_实体抽取</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-03-21 10:31" pubdate>
+          2023年3月21日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          25k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          212 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">初级项目_实体抽取</h1>
+            
+            <div class="markdown-body">
+              
+              <hr>
+<p>项目基本要求</p>
+<p>内容：基于给定的暴雨洪涝中文语料库，利用已人工标注的样本作为训练集和测试集，基于深度学习和预训练模型，编程实现暴雨洪涝中文文本中的发生时间和发生地点两类实体的识别和抽取。</p>
+<p>数据集：见附件</p>
+<p>完成目标：<br>（1）掌握实体识别的流程和相关模型的构建<br>（2）掌握训练&#x2F;验证&#x2F;测试的数据集分割以及超参数调整</p>
+<p>作业要求：<br>（1）提交实验报告<br>具体包括：数据集情况、模型介绍、参数设置、实验结果（评价指标包括查全率、查准率和F1）及结果分析等内容。<br>（2）提交源代码</p>
+<p>源代码请附加Readme文件说明使用的主要包的版本，以及其他可能影响代码运行的事项。</p>
+<blockquote>
+<p>PS：改代码并不是说换一换变量名称什么的就OK了，实际上需要修改的是使用的模型或者一些输出；</p>
+</blockquote>
+<hr>
+<p>参考链接：</p>
+<ul>
+<li>实体识别抽取综述：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/HJxOZOainC5Dk8SgSbkA9Q">小知识 | 知识图谱：知识抽取之命名实体 (qq.com)</a>；</li>
+<li>项目参考：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/DUxbiVUykVSCLeYxRYd-LA">零基础入门–中文命名实体识别 (qq.com)</a>；</li>
+</ul>
+<h1 id="一、背景"><a href="#一、背景" class="headerlink" title="一、背景"></a>一、背景</h1><h2 id="1-命名实体识别概述"><a href="#1-命名实体识别概述" class="headerlink" title="1.命名实体识别概述"></a>1.命名实体识别概述</h2><p>知识抽取是实现自动化构建大规模知识图谱的重要技术，其目的在于从不同来源、不同结构的数据中进行知识提取并存入知识图谱中（详情参考<a href="https://gintoki-jpg.github.io/2023/02/27/%E4%B8%93%E4%B8%9A_%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/#%E4%B8%89%E3%80%81%E7%9F%A5%E8%AF%86%E6%8A%BD%E5%8F%96">知识图谱 - Tintoki_blog (gintoki-jpg.github.io)</a>）；知识抽取同样属于NLP的研究领域，指自动化地从文本中发现和抽取相关信息，并将多个文本碎片中的信息进行合并，将非结构化数据转换为结构化数据；</p>
+<p>非结构化数据的知识抽取包括命名实体识别、关系抽取及事件抽取，本项目主要针对其中的命名实体识别；</p>
+<p>命名实体识别是指从文本中检测出命名实体，并将其分类到预定义的类别中，例如人物、组织、<code>地点</code>、<code>时间</code>等；一般情况下，命名实体识别是知识抽取其他任务的基础；</p>
+<p>想要从文本中进行实体抽取，首先需要从文本中识别和定位实体，然后再将识别的实体分类到预定义的类别中去 – 这也是本项目需要实现的，即实体的识别和抽取；</p>
+<p>实体抽取的方法分为三类：基于规则的方法、基于统计模型的方法和基于深度学习的方法，因为规定使用深度学习，所以我们这里仅介绍该类方法，另外两类可参考<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/HJxOZOainC5Dk8SgSbkA9Q">小知识 | 知识图谱：知识抽取之命名实体 (qq.com)</a>；</p>
+<h3 id="1-1-基于深度学习的方法"><a href="#1-1-基于深度学习的方法" class="headerlink" title="1.1 基于深度学习的方法"></a>1.1 基于深度学习的方法</h3><p>与传统统计模型相比，基于深度学习的方法直接以文本中词的向量为输入，通过神经网络实现端到端的命名实体识别，不再依赖人工定义的特征；</p>
+<p>目前，用于命名实体识别的神经网络主要有卷积神经网络（ConvolutionalNeural Network, CNN）、循环神经网络（Recurrent Neural Network, RNN）以及引入注意力机制（AttentionMechanism）的神经网络；一般地，不同的神经网络结构在命名实体识别过程中扮演编码器的角色，它们基于初始输入以及词的上下文信息，得到每个词的新向量表示；最后再通过CRF模型输出对每个词的标注结果；</p>
+<p>一些比较经典的用于实体识别抽取的模型有</p>
+<blockquote>
+<p>LSTM-CRF命名实体识别模型</p>
+</blockquote>
+<p>该模型使用了长短时记忆神经网络（Long Shot-Term Memory NeuralNetwork, LSTM）与CRF相结合进行命名实体识别。</p>
+<p><img src="/images/image-20230321110527074.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>LSTM-CNNs-CRF序列标注模型框架</p>
+</blockquote>
+<p>该模型与 LSTM-CRF 模型十分相似，不同之处是在Embedding 层中加入了每个词的字符级向量表示。</p>
+<p><img src="/images/image-20230321110627720.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>基于注意力机制的词向量和字符级向量组合方法</p>
+</blockquote>
+<p>注意力机制可以帮助扩展基本的编码器-解码器模型结构，让模型能够获取输入序列中与下一个目标词相关的信息。</p>
+<p>基于注意力机制的词向量和字符级向量组合方法认为除了将词作为句子基本元素学习得到的特征向量，命名实体识别还需要词中的字符级信息。因此，该方法除了使用双向 LSTM 得到词的特征向量，还基于双向LSTM计算词的字符级特征向量。</p>
+<p><img src="/images/image-20230321110734229.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="2-中文命名实体识别"><a href="#2-中文命名实体识别" class="headerlink" title="2.中文命名实体识别"></a>2.中文命名实体识别</h2><h3 id="2-1-中文分词"><a href="#2-1-中文分词" class="headerlink" title="2.1 中文分词"></a>2.1 中文分词</h3><p>中文命名实体抽取需要先了解基于字标注的中文分词，简单的中文分词我们知道形式如下</p>
+<p><img src="/images/image-20230322100321728.png" srcset="/img/loading.gif" lazyload></p>
+<p>基于字标注的中文分词结果如下</p>
+<p><img src="/images/image-20230322100158614.png" srcset="/img/loading.gif" lazyload></p>
+<p>基于字标注的意思就是给每个字都进行标注，上述标注的类型主要有四种</p>
+<p><img src="/images/image-20230322100307385.png" srcset="/img/loading.gif" lazyload></p>
+<p>词首即一个词的开始，词尾即一个词的结束，词中表示词中间的词，假如该词只有一个字则用单字表示；</p>
+<h3 id="2-2-数据处理"><a href="#2-2-数据处理" class="headerlink" title="2.2 数据处理"></a>2.2 数据处理</h3><p>实体识别和中文分词类似，就是将不属于实体的字用O标注，把实体用BME规则标注，最后按照BME规则将实体提取出来即可；</p>
+<p>下面是一个实体识别的例子</p>
+<p><img src="/images/image-20230322100707320.png" srcset="/img/loading.gif" lazyload></p>
+<p>每个实体用都用大括号括了起来，并标明实体类别（标注方式并不需要严格遵守这样的键值格式，只要能将实体识别并提取出来即可）</p>
+<p>因为下面的例子都是基于玻森数据提供的命名实体识别数据，与我们项目本身提供的数据集可能存在一些差别，所以先简单介绍一下玻森数据集，主要包含以下6个实体类别</p>
+<p><img src="/images/image-20230322102205675.png" srcset="/img/loading.gif" lazyload></p>
+<p>数据处理首先要做的就是把原始数据按照BMEO的规则变成字标注的形式便于模型训练，上述文本按字标注后的结果如下（可以看出这不仅仅只是简单的字标注分词，同时结合了实体类别）</p>
+<p><img src="/images/image-20230322101210992.png" srcset="/img/loading.gif" lazyload></p>
+<p>接着习惯性的，按照标点符号将一个长句子分为多个短句子（逗号、句号、双引号等），结果如下</p>
+<p><img src="/images/image-20230322101310498.png" srcset="/img/loading.gif" lazyload></p>
+<p>与先前新闻文本分类相同，因为无法直接将文本类型的数据放入模型训练，因此需要先建立一个word2id词典，将每个汉字转换成id（最直观的做法就是按照数据集中中汉字出现的次数进行排序后赋id，id从1开始）</p>
+<p><img src="/images/image-20230322101727857.png" srcset="/img/loading.gif" lazyload></p>
+<p>将汉字转换为id后，再建立一个tag2id词典，将每个字标注的类型转换成id（这里的id从1开始，顺序可以自定义，因为3*6+1所以一共19个tag对应的id）</p>
+<p><img src="/images/image-20230322101922047.png" srcset="/img/loading.gif" lazyload></p>
+<p>拥有了word2id和tsg2id之后，就可以将先前按照标点切分的短句以一一对应的顺序将汉字和每个字的标签转换为id，分别存放在两个数组中，将该数组保存在同一个pkl文件中，这样模型使用时候就可以直接读取，不用每次都处理数据了；</p>
+<p>这里习惯把每一句话都转换成一样的长度（这与先前新闻文本分类是一个道理），这个长度可以自定义（最好统计后再确定），比它长的就把后面舍弃，比它短的就在后面补零。</p>
+<p>比如下面是长度为10的文本对应的word2id和tag2id</p>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs dns">[<span class="hljs-number">132,45,0</span>,<span class="hljs-number">456,432</span>,<span class="hljs-number">8,654,3</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>]<br>[<span class="hljs-number">1,2,2,2</span>,<span class="hljs-number">3,4,5,5</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>]<br></code></pre></td></tr></table></figure>
+
+<hr>
+<blockquote>
+<p>Q：为什么这里是按照字的粒度而不是词的粒度划分？词向量和字向量的区别在哪里？</p>
+</blockquote>
+<p>A：词向量和字向量都是自然语言处理中常用的表示文本的方式，但它们的表示粒度不同。</p>
+<p>词向量（Word Embedding）是将每个单词表示为一个向量（因此使用词向量之前需要进行分词），这个向量通常是一个固定长度的实数向量，每个维度代表着该单词在不同语义维度上的分布情况。词向量的好处是能够捕捉到单词之间的语义关系，例如在词向量空间中，语义相近的单词的向量距离较近。常用的词向量算法有word2vec、GloVe等。</p>
+<p>字向量（Character Embedding）则是将每个字母或字符表示为一个向量。相比于词向量，字向量的表示粒度更细，可以更好地捕捉词语的构成和形态等信息，特别适用于中文和其他一些没有明确词汇边界的语言。常用的字向量算法有FastText、CharCNN等。</p>
+<p>因此，词向量适用于处理基于单词的任务，如文本分类、情感分析、机器翻译等，而字向量适用于处理基于字符的任务，如中文分词、命名实体识别等。</p>
+<p>综上，对于本次任务使用字向量更合适。</p>
+<hr>
+<h2 id="3-BiLSTM-CRF介绍"><a href="#3-BiLSTM-CRF介绍" class="headerlink" title="3.BiLSTM-CRF介绍"></a>3.BiLSTM-CRF介绍</h2><p>参考链接：<a target="_blank" rel="noopener" href="https://www.51cto.com/article/618288.html">彻底了解 BiLSTM 和 CRF 算法-pytorch bilstm crf (51cto.com)</a>；</p>
+<p>BiLSTM-CRF是一种序列标注模型，常用于自然语言处理领域的命名实体识别、词性标注等任务。其全称为Bidirectional Long Short-Term Memory - Conditional Random Field，结合了双向长短时记忆网络（Bidirectional LSTM）和条件随机场（CRF）两个模型的优点，能够克服单向LSTM模型无法处理双向上下文信息的问题，同时能够利用CRF模型的全局标注优化策略来提高模型的准确性。</p>
+<p>BiLSTM模型是一种递归神经网络，它可以学习长文本序列中的特征，具有前向和后向两个方向的传播。与传统的单向LSTM模型相比，它能够捕捉到上下文中的更多信息，有利于提高模型的准确性。而CRF模型则是一种概率图模型，能够通过考虑全局标注的约束条件来优化模型的输出结果，进一步提高模型的准确性。</p>
+<p>在BiLSTM-CRF模型中，BiLSTM用于学习上下文特征，将上下文特征序列作为CRF的输入，CRF则用于学习标签之间的转移概率，从而能够更好地对标注序列进行建模，从而实现更准确的序列标注任务。</p>
+<p>为什么不单独使用 BiLSTM 进行标注？BiLSTM 可以预测出每一个字属于不同标签的概率，然后使用 Softmax 得到概率最大的标签，作为该位置的预测值。这样在预测的时候会忽略了标签之间的关联性，例如 BiLSTM 在作分词任务时，将某句话的第一个词预测为动词，紧接着的第二个动词同样被预测为动词，而实际上动词后面不能直接跟动词，因此 BiLSTM 没有考虑标签间联系。此时需要 在 BiLSTM 的输出层加上一个 CRF，使得模型可以考虑类标之间的相关性，标签之间的相关性就是 CRF 中的转移矩阵，表示从一个状态转移到另一个状态的概率。</p>
+<p>参考如下分词任务</p>
+<p><img src="/images/image-20230327151516118.png" srcset="/img/loading.gif" lazyload alt="单独使用BiLSTM进行分词"></p>
+<p><img src="/images/image-20230327151551209.png" srcset="/img/loading.gif" lazyload alt="BiLSTM+CRF分词"></p>
+<p>综上，BiLSTM+CRF 考虑的是整个类标路径的概率而不仅仅是单个类标的概率。</p>
+<h3 id="3-1-CRF特征函数"><a href="#3-1-CRF特征函数" class="headerlink" title="3.1 CRF特征函数"></a>3.1 CRF特征函数</h3><p>CRF包含两种特征函数，第一种特征函数是状态特征函数，也称为发射概率，表示字 x 对应标签 y 的概率</p>
+<p><img src="/images/image-20230327151813217.png" srcset="/img/loading.gif" lazyload alt="状态特征函数"></p>
+<p>在 BiLSTM+CRF 中，这一个特征函数 (发射概率) 直接使用 LSTM 的输出计算得到，LSTM 可以计算出每一时刻位置对应不同标签的概率（如’什’对应sbme标签的概率分别为0.8，0.6，0.4和0.4）</p>
+<p>CRF 的第二个特征函数是状态转移特征函数，表示从一个状态 y1 转移到另一个状态 y2 的概率</p>
+<p><img src="/images/image-20230327152018689.png" srcset="/img/loading.gif" lazyload></p>
+<p>CRF 的状态转移特征函数可以用一个状态转移矩阵表示，在训练时需要调整状态转移矩阵的元素值，前面分词任务中的CRF转移矩阵就可以表示为</p>
+<p><img src="/images/image-20230327152128542.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-2-BiLSTM-CRF"><a href="#3-2-BiLSTM-CRF" class="headerlink" title="3.2 BiLSTM-CRF"></a>3.2 BiLSTM-CRF</h3><p>一个最基本的BILSTM-CRF网络模型框架如下</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">class</span> <span class="hljs-title class_">BiLSTM_CRF</span>(nn.Module): <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, vocab_size, tag2idx, embedding_dim, hidden_dim</span>): <br>        self.word_embeds = nn.Embedding(vocab_size, embedding_dim) <br>        self.lstm = nn.LSTM(embedding_dim, hidden_dim // <span class="hljs-number">2</span>, <br>                            num_layers=<span class="hljs-number">1</span>, bidirectional=<span class="hljs-literal">True</span>) <br> <br>        <span class="hljs-comment"># 对应 CRF 的发射概率，即每一个位置对应不同类标的概率 </span><br>        self.hidden2tag = nn.Linear(hidden_dim, self.tagset_size) <br>         <br>        <span class="hljs-comment"># 转移矩阵，维度等于标签数量，表示从一个标签转移到另一标签的概率 </span><br>        self.transitions = nn.Parameter( <br>            torch.randn(<span class="hljs-built_in">len</span>(tag2idx), <span class="hljs-built_in">len</span>(tag2idx))<br></code></pre></td></tr></table></figure>
+
+<p>其大致结构可以表示为</p>
+<p><img src="/images/image-20230327152543214.png" srcset="/img/loading.gif" lazyload></p>
+<p>给定一个句子x，其标签序列为y的概率使用如下公式计算</p>
+<p><img src="/images/image-20230327152708422.png" srcset="/img/loading.gif" lazyload></p>
+<p>公式中的Z(x)表示所有标签序列打分的指数和，假如序列的长度为i，标签的个数为k，则序列的数量为k^i^，这无法直接计算，需要使用前向算法进行计算</p>
+<p>公式中的score需要使用下面的式子计算，其中的Emit对应发射概率，即LSTM的输出概率，Trans对应了转移概率即CRF状态转移矩阵中对应的数值</p>
+<p><img src="/images/image-20230327152829490.png" srcset="/img/loading.gif" lazyload></p>
+<p>BILSTM-CRF采用最大似然法进行训练，其对应的损失函数如下</p>
+<p><img src="/images/image-20230327153018210.png" srcset="/img/loading.gif" lazyload></p>
+<p>公式中的logZ(x)需要使用前向算法计算，这里不做介绍，详情参考<a target="_blank" rel="noopener" href="https://www.51cto.com/article/618288.html">彻底了解 BiLSTM 和 CRF 算法-pytorch bilstm crf (51cto.com)</a>损失函数的计算；</p>
+<h3 id="3-3-viterbi算法"><a href="#3-3-viterbi算法" class="headerlink" title="3.3 viterbi算法"></a>3.3 viterbi算法</h3><p>训练好模型后，预测过程需要用 viterbi 算法对序列进行解码，一些使用的符号意义如下</p>
+<p><img src="/images/image-20230327153721315.png" srcset="/img/loading.gif" lazyload></p>
+<p>基于上述符号，viterbi算法的递推公式如下</p>
+<p><img src="/images/image-20230327153808391.png" srcset="/img/loading.gif" lazyload></p>
+<p>基于上述递推式计算得到的δ<del>i</del>(j)和ψ<del>i</del>(j)向前标注序列</p>
+<p><img src="/images/image-20230327153906280.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="二、实体识别"><a href="#二、实体识别" class="headerlink" title="二、实体识别"></a>二、实体识别</h1><h2 id="1-数据集介绍"><a href="#1-数据集介绍" class="headerlink" title="1.数据集介绍"></a>1.数据集介绍</h2><p>原始语料库如下</p>
+<p><img src="/images/image-20230327082834942.png" srcset="/img/loading.gif" lazyload></p>
+<p>实验任务是基于深度学习或预训练模型编程实现暴雨洪涝中文文本中的发生时间和发生地点两类实体的识别和抽取，这意味着需要将两类训练语料分别处理过后一起作为训练数据放入模型进行训练；</p>
+<p>首先需要对原始语料进行处理，基于时间标签的文本内容如下</p>
+<p><img src="/images/image-20230327083118059.png" srcset="/img/loading.gif" lazyload></p>
+<p>基于位置标签的文本内容如下</p>
+<p><img src="/images/image-20230327083148887.png" srcset="/img/loading.gif" lazyload></p>
+<p>观察可以发现，前几行对于训练来说毫无意义（因为标题、新闻发布时间以及新闻发布渠道对于文本时间和位置没有任何关系，同时这些内容也没有人工标注），为了减少网络的运算量也为了尽量保持数据集的整洁性，只需要获取正文内容即可，正文内容基本都是从第四行开始，因此对所有文本从第四行开始读取并将其融合为一行</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment">#对data目录中的每个文本分别进行正文提取，并将其放入数据集合中（时间和地点的训练数据可以放在一起，一行是一个新闻正文）</span><br>target_file=<span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;origin_data.txt&#x27;</span>,<span class="hljs-string">&#x27;a&#x27;</span>,encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>)                                      <span class="hljs-comment">#初始训练数据，注意是追加写，因为需要将时间和位置汇总，正确情况下一共有1929条数据</span><br><span class="hljs-comment">#提取data文件夹中所有文件的正文</span><br>datapath = <span class="hljs-string">&#x27;D:\My_document\大三下文档\知识图谱\作业\第二次作业\实验2语料\暴雨洪涝时间标签&#x27;</span>  <span class="hljs-comment">#时间标签文本</span><br><span class="hljs-comment"># datapath = &#x27;D:\My_document\大三下文档\知识图谱\作业\第二次作业\实验2语料\暴雨洪涝位置标签&#x27;   #位置标签文本</span><br>dirs = os.listdir(datapath)                                                                  <span class="hljs-comment">#dirs得到所有txt文件名</span><br><span class="hljs-comment"># for dir in dirs:</span><br><span class="hljs-comment">#     print(dir)</span><br><span class="hljs-keyword">for</span> <span class="hljs-built_in">dir</span> <span class="hljs-keyword">in</span> dirs:<br>    fname = datapath+<span class="hljs-string">&#x27;\\&#x27;</span>+<span class="hljs-built_in">dir</span><br><span class="hljs-comment">#     print(fname)</span><br>    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(fname,<span class="hljs-string">&#x27;r&#x27;</span>,encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>)<span class="hljs-keyword">as</span> src_file:<br>        lines = src_file.readlines()<br>        dirtyid = [<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>]<br>        str_new = <span class="hljs-string">&#x27;&#x27;</span><br>        <span class="hljs-comment"># 提取新闻正文</span><br>        <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(lines)):<br>            <span class="hljs-keyword">if</span> x <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> dirtyid:<br>                str_new=str_new+lines[x].rstrip(<span class="hljs-string">&#x27;\n&#x27;</span>)<br>        <span class="hljs-built_in">print</span>(str_new)<br>        target_file.write(str_new.replace(<span class="hljs-string">&#x27; &#x27;</span>,<span class="hljs-string">&#x27;@&#x27;</span>)+<span class="hljs-string">&#x27;\n&#x27;</span>)                                  <span class="hljs-comment"># 将空格替换成&#x27;@&#x27;，为了之后方便检测实体边界                                  </span><br>target_file.close()<br></code></pre></td></tr></table></figure>
+
+<p>处理过后的文本形式如下</p>
+<p><img src="/images/image-20230327084425745.png" srcset="/img/loading.gif" lazyload></p>
+<p>这样处理过后的文本一共有1929行，为了之后方便处理（因为原始的时间标签和位置标签都有些问题，直接处理1929条数据会不断报错），将这些数据以200行一个文本的形式区分</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 将原始数据按照200行一组进行分组 -- 位置标签和时间标签都有问题</span><br><span class="hljs-comment">###将txt文件按行数分成多个txt文件</span><br><span class="hljs-comment">#open_diff = open(&#x27;C:/Users/LitmoonHoney/Desktop/1.txt&#x27;, &#x27;r&#x27;) # 源文本文件</span><br><span class="hljs-comment">#encoding=utf-8意思是编码格式为UTF-8格式，可用于多种语言的字符，包括中文。上一行这种表达，txt文档有中文就报错</span><br>open_diff = <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;original_data.txt&#x27;</span>, <span class="hljs-string">&#x27;r&#x27;</span>,encoding=<span class="hljs-string">&#x27;UTF-8&#x27;</span>) <span class="hljs-comment"># 源文本文件</span><br>diff_line = open_diff.readlines()<br> <br>line_list = []<br><span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> diff_line:<br>    line_list.append(line)<br> <br>count = <span class="hljs-built_in">len</span>(line_list) <span class="hljs-comment"># 文件行数</span><br>n = <span class="hljs-number">200</span> <span class="hljs-comment">#按多少行来分割txt文件</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;源文件数据行数：&#x27;</span>,count) <br><span class="hljs-comment"># 切分diff</span><br>diff_match_split = [line_list[i:i+n] <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>,<span class="hljs-built_in">len</span>(line_list),n)]<span class="hljs-comment"># 每个文件的数据行数</span><br> <br><span class="hljs-comment"># 将切分的写入多个txt中</span><br><span class="hljs-keyword">for</span> i,j <span class="hljs-keyword">in</span> <span class="hljs-built_in">zip</span>(<span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>,<span class="hljs-built_in">int</span>(count/n+<span class="hljs-number">1</span>)),<span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>,<span class="hljs-built_in">int</span>(count/n+<span class="hljs-number">1</span>))): <span class="hljs-comment"># 写入txt，计算需要写入的文件数</span><br>    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;D:/My_code/jupyter notebook/大三下作业/EntityExt/test_data/%d.txt&#x27;</span>% (j+<span class="hljs-number">1</span>),<span class="hljs-string">&#x27;w+&#x27;</span>,encoding=<span class="hljs-string">&#x27;UTF-8&#x27;</span>) <span class="hljs-keyword">as</span> temp:<br>        <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> diff_match_split[i]:<br>            temp.write(line)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;拆分后文件的个数：&#x27;</span>,i+<span class="hljs-number">1</span>)<br></code></pre></td></tr></table></figure>
+
+<p>拆分后的文件形式如下</p>
+<p><img src="/../images/image-20230327085028345.png" srcset="/img/loading.gif" lazyload alt="LOC_data"></p>
+<p><img src="/../images/image-20230327085001164.png" srcset="/img/loading.gif" lazyload alt="Time_data"></p>
+<p>接下来就需要对每行的文本按照BEMO规则进行字标注，已知时间标签主要有DS DO TO TS，位置标签主要有LOC；</p>
+<p>一开始想法很简单，直接按照规则<code>@地名/LOC@</code>这种形式检测开始标志@和结束标志@即可提取出实体和对应标签，但实际上原始语料中还存在<code>@地名/LOC@地名/LOC@</code>这种形式，因为没有很好的办法从前往后对实体进行界定，所以打算手动对这些不规范的实体进行调整，但是经过实际尝试发现人工标注数据太耗费时间了，因此初次进行数据处理的办法失效；</p>
+<p>经过观察发现，文本中常见的几种标记方式主要有 <code>@四川/LOC@、@四川/LOC@西安/LOC@、@四川、@/LOC@、中国/LOC@ </code>这几种形式，实际上能够提取的合法实体形式应该是<code>四川/LOC</code>，既然从前往后界定实体边界失效，考虑从后往前（具体实现的时候就是将文本翻转），逐字符进行比对，开始标志为出现符号‘@’且其后紧跟字符’C’，读取实体名称，以字符‘@’或其他标点符号为结束标志（避免 <code>中国/LOC@</code> 这种没有结束标志的实体）；</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment">#将文本翻转过后进行提取并标注，最后再将文本翻转回来，需要注意LOC和时间的文本处理稍微有点区别</span><br><span class="hljs-comment"># input_data = codecs.open(&#x27;D:/My_code/jupyter notebook/大三下作业/EntityExt/clear_data.txt&#x27;,&#x27;r&#x27;,&#x27;utf-8&#x27;)</span><br>output_data = codecs.<span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;D:/My_code/jupyter notebook/大三下作业/EntityExt/complete_data/word2id_re_loc.txt&#x27;</span>,<span class="hljs-string">&#x27;a&#x27;</span>,encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>)        <span class="hljs-comment">#在测试的阶段可以不追加，但是实际阶段是追加在一起</span><br>datapath = <span class="hljs-string">&#x27;D:/My_code/jupyter notebook/大三下作业/EntityExt/LOC_data&#x27;</span>  <br>dirs = os.listdir(datapath)<br><br><span class="hljs-keyword">for</span> <span class="hljs-built_in">dir</span> <span class="hljs-keyword">in</span> dirs:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;当前处理文件路径：&#x27;</span>+datapath+<span class="hljs-string">&#x27;\\&#x27;</span>+<span class="hljs-built_in">dir</span>)<br>    input_data = codecs.<span class="hljs-built_in">open</span>(datapath+<span class="hljs-string">&#x27;\\&#x27;</span>+<span class="hljs-built_in">dir</span>,<span class="hljs-string">&#x27;r&#x27;</span>,<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br>    <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> input_data.readlines():<br>        line=line.strip()<br>        text_re=line[::-<span class="hljs-number">1</span>]<br>        i=<span class="hljs-number">0</span><br>        <span class="hljs-keyword">while</span> i &lt; <span class="hljs-built_in">len</span>(text_re):<br>            <span class="hljs-comment">#print(text_re[i])</span><br>            <span class="hljs-keyword">if</span> text_re[i] == <span class="hljs-string">&#x27;@&#x27;</span> <span class="hljs-keyword">and</span> text_re[i+<span class="hljs-number">1</span>] == <span class="hljs-string">&#x27;C&#x27;</span>:     <span class="hljs-comment"># 这种判断会出现问题即@四川/LOC@作为开头那么最后text_re+1会直接溢出，因此需要判断当前长度</span><br>        <span class="hljs-comment">#         print(&#x27;Find!&#x27;)</span><br>                i=i+<span class="hljs-number">5</span>  <span class="hljs-comment">#跳过 @COL/</span><br>                content=<span class="hljs-string">&#x27;&#x27;</span><br>                <br>                <span class="hljs-keyword">while</span> text_re[i] <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> punc:   <span class="hljs-comment"># 标点符号作为结束的标志而非仅仅是@，避免出现 中国/LOC@这种</span><br>                    content=content+text_re[i]  <span class="hljs-comment"># 最后结束的时候@不能+1跳过，因为很可能是@COL/@川四@COL/安西@形式交给条件判断即可，之后会按照标点切分为短句所以没影响</span><br>                    i=i+<span class="hljs-number">1</span><br>        <span class="hljs-comment">#         print(content)</span><br>                <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(content)!=<span class="hljs-number">0</span>:             <span class="hljs-comment"># 假如文本非空，避免出现@/LOC@这种情况，则进行字标注</span><br>                    output_data.write(<span class="hljs-string">&#x27; &#x27;</span>+<span class="hljs-string">&#x27;COL_E/&#x27;</span>+content[<span class="hljs-number">0</span>])<br>                    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> content[<span class="hljs-number">1</span>:<span class="hljs-built_in">len</span>(content)-<span class="hljs-number">1</span>]:<br>                        output_data.write(<span class="hljs-string">&#x27; &#x27;</span>+<span class="hljs-string">&#x27;COL_M/&#x27;</span>+j)<br>                    output_data.write(<span class="hljs-string">&#x27; &#x27;</span>+<span class="hljs-string">&#x27;COL_B/&#x27;</span>+content[-<span class="hljs-number">1</span>])<br><span class="hljs-comment">#                 if text_re[i] in punc_2:          # 假如是 @(内蒙古)@@克一河地区/LOC@ 这种形式，会在)停下，此时应当直接跳过该标点符号</span><br><span class="hljs-comment">#                     i=i+1</span><br>                <span class="hljs-keyword">if</span> i==<span class="hljs-built_in">len</span>(text_re)-<span class="hljs-number">1</span> <span class="hljs-keyword">and</span> text_re[i]==<span class="hljs-string">&#x27;@&#x27;</span>:      <span class="hljs-comment"># 假如此时@刚好是文章的开头，即i刚好循环到len()-1，则直接结束本次循环</span><br>                  i=i+<span class="hljs-number">1</span>                           <br>            <br>            <span class="hljs-keyword">else</span>:<br>                output_data.write(<span class="hljs-string">&#x27; O/&#x27;</span>+text_re[i])<br>                i=i+<span class="hljs-number">1</span><br>                <span class="hljs-keyword">if</span> i==<span class="hljs-built_in">len</span>(text_re)-<span class="hljs-number">1</span> <span class="hljs-keyword">and</span> text_re[i]==<span class="hljs-string">&#x27;@&#x27;</span>:      <span class="hljs-comment"># 假如此时@刚好是文章的开头，即i刚好循环到len()-1，则直接结束本次循环</span><br>                    output_data.write(<span class="hljs-string">&#x27;\n&#x27;</span>)<br>                    <span class="hljs-keyword">break</span>                                         <span class="hljs-comment"># 假如此时是 @(内蒙古)@@克一河地区/LOC@ 这种形式，需要在else中对@进行跳过</span><br>        output_data.write(<span class="hljs-string">&#x27;\n&#x27;</span>)<br>input_data.close()<br>output_data.close()<br></code></pre></td></tr></table></figure>
+
+<p>处理时间标签的代码形式和位置标签的代码类似，这里给出不同的部分</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 下面是处理时间文本的操作</span><br><span class="hljs-comment"># 时间标签主要有 DS DO TO TS</span><br><span class="hljs-comment"># 行数是正确的，只是不知道什么原因可能会多出一些空行，之后会处理掉没关系</span><br><span class="hljs-keyword">for</span> <span class="hljs-built_in">dir</span> <span class="hljs-keyword">in</span> dirs:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;当前处理文件路径：&#x27;</span>+datapath+<span class="hljs-string">&#x27;\\&#x27;</span>+<span class="hljs-built_in">dir</span>)<br>    input_data = codecs.<span class="hljs-built_in">open</span>(datapath+<span class="hljs-string">&#x27;\\&#x27;</span>+<span class="hljs-built_in">dir</span>,<span class="hljs-string">&#x27;r&#x27;</span>,<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br>    <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> input_data.readlines():<br>        line=line.strip()<br>        text_re=line[::-<span class="hljs-number">1</span>]<br>        i=<span class="hljs-number">0</span><br>        <span class="hljs-keyword">while</span> i &lt; <span class="hljs-built_in">len</span>(text_re):<br>            <span class="hljs-keyword">if</span> text_re[i] == <span class="hljs-string">&#x27;@&#x27;</span> <span class="hljs-keyword">and</span> text_re[i+<span class="hljs-number">1</span>] == <span class="hljs-string">&#x27;S&#x27;</span> <span class="hljs-keyword">and</span> text_re[i+<span class="hljs-number">2</span>] == <span class="hljs-string">&#x27;D&#x27;</span>:     <br>                i=i+<span class="hljs-number">4</span>  <span class="hljs-comment">#跳过 @SD/</span><br>                content=<span class="hljs-string">&#x27;&#x27;</span><br>                <br>                <span class="hljs-keyword">while</span> text_re[i] <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> punc:   <br>                    content=content+text_re[i]  <span class="hljs-comment"># 最后结束的时候@不能+1跳过</span><br>                    i=i+<span class="hljs-number">1</span><br>                <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(content)!=<span class="hljs-number">0</span>:             <span class="hljs-comment"># 假如文本非空，避免出现@/LOC@这种情况，则进行字标注</span><br>                    output_data.write(<span class="hljs-string">&#x27; &#x27;</span>+<span class="hljs-string">&#x27;SD_E/&#x27;</span>+content[<span class="hljs-number">0</span>])<br>                    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> content[<span class="hljs-number">1</span>:<span class="hljs-built_in">len</span>(content)-<span class="hljs-number">1</span>]:<br>                        output_data.write(<span class="hljs-string">&#x27; &#x27;</span>+<span class="hljs-string">&#x27;SD_M/&#x27;</span>+j)<br>                    output_data.write(<span class="hljs-string">&#x27; &#x27;</span>+<span class="hljs-string">&#x27;SD_B/&#x27;</span>+content[-<span class="hljs-number">1</span>])<br>                <span class="hljs-keyword">if</span> i==<span class="hljs-built_in">len</span>(text_re)-<span class="hljs-number">1</span> <span class="hljs-keyword">and</span> text_re[i]==<span class="hljs-string">&#x27;@&#x27;</span>:      <span class="hljs-comment"># 假如此时@刚好是文章的开头，即i刚好循环到len()-1，则直接结束本次循环</span><br>                  i=i+<span class="hljs-number">1</span>                           <br>            <span class="hljs-keyword">elif</span> text_re[i] == <span class="hljs-string">&#x27;@&#x27;</span> <span class="hljs-keyword">and</span> text_re[i+<span class="hljs-number">1</span>] == <span class="hljs-string">&#x27;O&#x27;</span> <span class="hljs-keyword">and</span> text_re[i+<span class="hljs-number">2</span>] == <span class="hljs-string">&#x27;D&#x27;</span>:     <br>                i=i+<span class="hljs-number">4</span>  <span class="hljs-comment">#跳过 @OD/</span><br>                content=<span class="hljs-string">&#x27;&#x27;</span><br>                <br>                <span class="hljs-keyword">while</span> text_re[i] <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> punc:   <br>                    content=content+text_re[i]  <span class="hljs-comment"># 最后结束的时候@不能+1跳过</span><br>                    i=i+<span class="hljs-number">1</span><br>                <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(content)!=<span class="hljs-number">0</span>:             <span class="hljs-comment"># 假如文本非空，避免出现@/LOC@这种情况，则进行字标注</span><br>                    output_data.write(<span class="hljs-string">&#x27; &#x27;</span>+<span class="hljs-string">&#x27;OD_E/&#x27;</span>+content[<span class="hljs-number">0</span>])<br>                    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> content[<span class="hljs-number">1</span>:<span class="hljs-built_in">len</span>(content)-<span class="hljs-number">1</span>]:<br>                        output_data.write(<span class="hljs-string">&#x27; &#x27;</span>+<span class="hljs-string">&#x27;OD_M/&#x27;</span>+j)<br>                    output_data.write(<span class="hljs-string">&#x27; &#x27;</span>+<span class="hljs-string">&#x27;OD_B/&#x27;</span>+content[-<span class="hljs-number">1</span>])<br>                <span class="hljs-keyword">if</span> i==<span class="hljs-built_in">len</span>(text_re)-<span class="hljs-number">1</span> <span class="hljs-keyword">and</span> text_re[i]==<span class="hljs-string">&#x27;@&#x27;</span>:      <span class="hljs-comment"># 假如此时@刚好是文章的开头，即i刚好循环到len()-1，则直接结束本次循环</span><br>                  i=i+<span class="hljs-number">1</span>   <br>            <span class="hljs-keyword">elif</span> text_re[i] == <span class="hljs-string">&#x27;@&#x27;</span> <span class="hljs-keyword">and</span> text_re[i+<span class="hljs-number">1</span>] == <span class="hljs-string">&#x27;S&#x27;</span> <span class="hljs-keyword">and</span> text_re[i+<span class="hljs-number">2</span>] == <span class="hljs-string">&#x27;T&#x27;</span>:     <br>                i=i+<span class="hljs-number">4</span>  <span class="hljs-comment">#跳过 @ST/</span><br>                content=<span class="hljs-string">&#x27;&#x27;</span><br>                <br>                <span class="hljs-keyword">while</span> text_re[i] <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> punc:   <br>                    content=content+text_re[i]  <span class="hljs-comment"># 最后结束的时候@不能+1跳过</span><br>                    i=i+<span class="hljs-number">1</span><br>                <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(content)!=<span class="hljs-number">0</span>:             <span class="hljs-comment"># 假如文本非空，避免出现@/LOC@这种情况，则进行字标注</span><br>                    output_data.write(<span class="hljs-string">&#x27; &#x27;</span>+<span class="hljs-string">&#x27;ST_E/&#x27;</span>+content[<span class="hljs-number">0</span>])<br>                    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> content[<span class="hljs-number">1</span>:<span class="hljs-built_in">len</span>(content)-<span class="hljs-number">1</span>]:<br>                        output_data.write(<span class="hljs-string">&#x27; &#x27;</span>+<span class="hljs-string">&#x27;ST_M/&#x27;</span>+j)<br>                    output_data.write(<span class="hljs-string">&#x27; &#x27;</span>+<span class="hljs-string">&#x27;ST_B/&#x27;</span>+content[-<span class="hljs-number">1</span>])<br>                <span class="hljs-keyword">if</span> i==<span class="hljs-built_in">len</span>(text_re)-<span class="hljs-number">1</span> <span class="hljs-keyword">and</span> text_re[i]==<span class="hljs-string">&#x27;@&#x27;</span>:      <span class="hljs-comment"># 假如此时@刚好是文章的开头，即i刚好循环到len()-1，则直接结束本次循环</span><br>                  i=i+<span class="hljs-number">1</span>   <br>            <span class="hljs-keyword">elif</span> text_re[i] == <span class="hljs-string">&#x27;@&#x27;</span> <span class="hljs-keyword">and</span> text_re[i+<span class="hljs-number">1</span>] == <span class="hljs-string">&#x27;O&#x27;</span> <span class="hljs-keyword">and</span> text_re[i+<span class="hljs-number">2</span>] == <span class="hljs-string">&#x27;T&#x27;</span>:     <br>                i=i+<span class="hljs-number">4</span>  <span class="hljs-comment">#跳过 @OT/</span><br>                content=<span class="hljs-string">&#x27;&#x27;</span><br>                <br>                <span class="hljs-keyword">while</span> text_re[i] <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> punc:   <br>                    content=content+text_re[i]  <span class="hljs-comment"># 最后结束的时候@不能+1跳过</span><br>                    i=i+<span class="hljs-number">1</span><br>                <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(content)!=<span class="hljs-number">0</span>:             <span class="hljs-comment"># 假如文本非空，避免出现@/LOC@这种情况，则进行字标注</span><br>                    output_data.write(<span class="hljs-string">&#x27; &#x27;</span>+<span class="hljs-string">&#x27;OT_E/&#x27;</span>+content[<span class="hljs-number">0</span>])<br>                    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> content[<span class="hljs-number">1</span>:<span class="hljs-built_in">len</span>(content)-<span class="hljs-number">1</span>]:<br>                        output_data.write(<span class="hljs-string">&#x27; &#x27;</span>+<span class="hljs-string">&#x27;OT_M/&#x27;</span>+j)<br>                    output_data.write(<span class="hljs-string">&#x27; &#x27;</span>+<span class="hljs-string">&#x27;OT_B/&#x27;</span>+content[-<span class="hljs-number">1</span>])<br>                <span class="hljs-keyword">if</span> i==<span class="hljs-built_in">len</span>(text_re)-<span class="hljs-number">1</span> <span class="hljs-keyword">and</span> text_re[i]==<span class="hljs-string">&#x27;@&#x27;</span>:      <span class="hljs-comment"># 假如此时@刚好是文章的开头，即i刚好循环到len()-1，则直接结束本次循环</span><br>                  i=i+<span class="hljs-number">1</span>   <br>            <span class="hljs-keyword">else</span>:<br>                output_data.write(<span class="hljs-string">&#x27; O/&#x27;</span>+text_re[i])<br>                i=i+<span class="hljs-number">1</span><br>                <span class="hljs-keyword">if</span> i==<span class="hljs-built_in">len</span>(text_re)-<span class="hljs-number">1</span> <span class="hljs-keyword">and</span> text_re[i]==<span class="hljs-string">&#x27;@&#x27;</span>:      <span class="hljs-comment"># 假如此时@刚好是文章的开头，即i刚好循环到len()-1，则直接结束本次循环</span><br>                    output_data.write(<span class="hljs-string">&#x27;\n&#x27;</span>)<br>                    <span class="hljs-keyword">break</span>                                         <span class="hljs-comment"># 假如此时是 @(内蒙古)@@克一河地区/LOC@ 这种形式，需要在else中对@进行跳过</span><br>        output_data.write(<span class="hljs-string">&#x27;\n&#x27;</span>)<br>input_data.close()<br>output_data.close()<br></code></pre></td></tr></table></figure>
+
+<p>处理过后的文本形式如下</p>
+<p><img src="/images/image-20230327090327528.png" srcset="/img/loading.gif" lazyload></p>
+<p>因为在进行训练的过程中需要考虑字的先后顺序，所以这种翻转的形式还需要翻转回来，利用如下代码</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment">#处理文本翻转，按照行进行</span><br>input_text = codecs.<span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;D:/My_code/jupyter notebook/大三下作业/EntityExt/complete_data/word2id_re_loc.txt&#x27;</span>,<span class="hljs-string">&#x27;r&#x27;</span>,<span class="hljs-string">&#x27;utf-8&#x27;</span>)        <br>output_text = codecs.<span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;D:/My_code/jupyter notebook/大三下作业/EntityExt/complete_data/word2id_loc.txt&#x27;</span>,<span class="hljs-string">&#x27;w&#x27;</span>,<span class="hljs-string">&#x27;utf-8&#x27;</span>) <br><span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> input_text.readlines():<br>    line=line.strip()<br>    text_re=line[::-<span class="hljs-number">1</span>]<br>    output_text.write(text_re)<br>    output_text.write(<span class="hljs-string">&#x27;\n&#x27;</span>)<br>input_text.close()<br>output_text.close()<br></code></pre></td></tr></table></figure>
+
+<p>将文本翻转得到如下形式</p>
+<p><img src="/images/image-20230327090506415.png" srcset="/img/loading.gif" lazyload></p>
+<p>接着将上述长句形式按照标点符号进行切分，便于切割后放入模型进行训练（长文本会极大的增加模型的训练量）</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment">#接着将长句按照标点符号切分为短句</span><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;D:/My_code/jupyter notebook/大三下作业/EntityExt/complete_data/word2id_new.txt&#x27;</span>,<span class="hljs-string">&#x27;rb&#x27;</span>) <span class="hljs-keyword">as</span> inp:<br>    texts = inp.read().decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br>sentences = re.split(<span class="hljs-string">&#x27;[，。！？、‘’“”（）]/[O]&#x27;</span>.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>,texts).decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>), texts)<br>output_data = codecs.<span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;D:/My_code/jupyter notebook/大三下作业/EntityExt/complete_data/wordtagsplit.txt&#x27;</span>,<span class="hljs-string">&#x27;w&#x27;</span>,<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br><span class="hljs-keyword">for</span> sentence <span class="hljs-keyword">in</span> sentences:<br>    <span class="hljs-keyword">if</span> sentence != <span class="hljs-string">&quot; &quot;</span>:<br>        output_data.write(sentence.strip()+<span class="hljs-string">&#x27;\n&#x27;</span>)<br>output_data.close()<br></code></pre></td></tr></table></figure>
+
+<p>处理过后的文本形式如下</p>
+<p><img src="/images/image-20230327090912303.png" srcset="/img/loading.gif" lazyload></p>
+<p>最后只需要将汉字对应的id（自定义）和上述已经标注好的规则标签对应存入句子数组中打包为pkl文件即可</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 分别将汉字对应的id和对应的tag转换为数组存入pkl文件中</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">data2pkl</span>():<br>    datas = <span class="hljs-built_in">list</span>()<br>    labels = <span class="hljs-built_in">list</span>()<br>    linedata=<span class="hljs-built_in">list</span>()<br>    linelabel=<span class="hljs-built_in">list</span>()<br>    tags = <span class="hljs-built_in">set</span>()<br><br>    input_data = codecs.<span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;D:/My_code/jupyter notebook/大三下作业/EntityExt/complete_data/wordtagsplit.txt&#x27;</span>,<span class="hljs-string">&#x27;r&#x27;</span>,<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br>    <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> input_data.readlines():<br>        line = line.split()<br>        linedata=[]<br>        linelabel=[]<br>        numNotO=<span class="hljs-number">0</span><br>        <span class="hljs-keyword">for</span> word <span class="hljs-keyword">in</span> line:<br>            word = word.split(<span class="hljs-string">&#x27;/&#x27;</span>)<br>            linedata.append(word[<span class="hljs-number">0</span>])<br>            linelabel.append(word[<span class="hljs-number">1</span>])<br>            tags.add(word[<span class="hljs-number">1</span>])<br>            <span class="hljs-keyword">if</span> word[<span class="hljs-number">1</span>]!=<span class="hljs-string">&#x27;O&#x27;</span>:<br>                numNotO+=<span class="hljs-number">1</span><br>        <span class="hljs-keyword">if</span> numNotO!=<span class="hljs-number">0</span>:<br>            datas.append(linedata)<br>            labels.append(linelabel)<br><br>    input_data.close()<br>    <span class="hljs-built_in">print</span>(<span class="hljs-built_in">len</span>(datas),tags)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-built_in">len</span>(labels))<br>    <span class="hljs-comment">#from compiler.ast import flatten</span><br>    all_words = flatten(datas)<br>    sr_allwords = pd.Series(all_words)<br>    sr_allwords = sr_allwords.value_counts()<br>    set_words = sr_allwords.index<br>    set_ids = <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, <span class="hljs-built_in">len</span>(set_words)+<span class="hljs-number">1</span>)<br><br><br>    tags = [i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> tags]<br>    tag_ids = <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(tags))<br>    word2id = pd.Series(set_ids, index=set_words)<br>    id2word = pd.Series(set_words, index=set_ids)<br>    tag2id = pd.Series(tag_ids, index=tags)<br>    id2tag = pd.Series(tags, index=tag_ids)<br><br>    word2id[<span class="hljs-string">&quot;unknow&quot;</span>] = <span class="hljs-built_in">len</span>(word2id)+<span class="hljs-number">1</span><br>    <span class="hljs-built_in">print</span>(word2id)<br>    max_len = <span class="hljs-number">60</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">X_padding</span>(<span class="hljs-params">words</span>):<br>        ids = <span class="hljs-built_in">list</span>(word2id[words])<br>        <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(ids) &gt;= max_len:  <br>            <span class="hljs-keyword">return</span> ids[:max_len]<br>        ids.extend([<span class="hljs-number">0</span>]*(max_len-<span class="hljs-built_in">len</span>(ids))) <br>        <span class="hljs-keyword">return</span> ids<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">y_padding</span>(<span class="hljs-params">tags</span>):<br>        ids = <span class="hljs-built_in">list</span>(tag2id[tags])<br>        <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(ids) &gt;= max_len: <br>            <span class="hljs-keyword">return</span> ids[:max_len]<br>        ids.extend([<span class="hljs-number">0</span>]*(max_len-<span class="hljs-built_in">len</span>(ids))) <br>        <span class="hljs-keyword">return</span> ids<br>    df_data = pd.DataFrame(&#123;<span class="hljs-string">&#x27;words&#x27;</span>: datas, <span class="hljs-string">&#x27;tags&#x27;</span>: labels&#125;, index=<span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(datas)))<br>    df_data[<span class="hljs-string">&#x27;x&#x27;</span>] = df_data[<span class="hljs-string">&#x27;words&#x27;</span>].apply(X_padding)<br>    df_data[<span class="hljs-string">&#x27;y&#x27;</span>] = df_data[<span class="hljs-string">&#x27;tags&#x27;</span>].apply(y_padding)<br>    x = np.asarray(<span class="hljs-built_in">list</span>(df_data[<span class="hljs-string">&#x27;x&#x27;</span>].values))<br>    y = np.asarray(<span class="hljs-built_in">list</span>(df_data[<span class="hljs-string">&#x27;y&#x27;</span>].values))<br>	<br>    <span class="hljs-comment">#调用sklearn的数据集划分函数，将原始数据集进行划分</span><br>    <span class="hljs-keyword">from</span> sklearn.model_selection <span class="hljs-keyword">import</span> train_test_split<br>    x_train,x_test, y_train, y_test = train_test_split(x, y, test_size=<span class="hljs-number">0.2</span>, random_state=<span class="hljs-number">43</span>)<br>    x_train, x_valid, y_train, y_valid = train_test_split(x_train, y_train,  test_size=<span class="hljs-number">0.2</span>, random_state=<span class="hljs-number">43</span>)<br></code></pre></td></tr></table></figure>
+
+<p>调用pickle函数将最终结果写入 TheNews.pkl 文件中</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> pickle<br><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;D:/My_code/jupyter notebook/大三下作业/EntityExt/complete_data/TheNews.pkl&#x27;</span>, <span class="hljs-string">&#x27;wb&#x27;</span>) <span class="hljs-keyword">as</span> outp:<br>	pickle.dump(word2id, outp)<br>	pickle.dump(id2word, outp)<br>	pickle.dump(tag2id, outp)<br>	pickle.dump(id2tag, outp)<br>	pickle.dump(x_train, outp)<br>	pickle.dump(y_train, outp)<br>	pickle.dump(x_test, outp)<br>	pickle.dump(y_test, outp)<br>	pickle.dump(x_valid, outp)<br>	pickle.dump(y_valid, outp)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;** Finished saving the data.&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<p>运行上述函数得到如下输出表示成功</p>
+<p><img src="/images/image-20230327091342079.png" srcset="/img/loading.gif" lazyload></p>
+<p>在之后的训练过程中可以直接调用pickle的load方法读取 TheNews.pkl 文件中的数据，经过划分后的训练集和测试集数量分别是7655和2393;</p>
+<h2 id="2-模块划分"><a href="#2-模块划分" class="headerlink" title="2.模块划分"></a>2.模块划分</h2><h3 id="2-1-模型介绍"><a href="#2-1-模型介绍" class="headerlink" title="2.1 模型介绍"></a>2.1 模型介绍</h3><p>这里主要介绍BiLSTM网络模型的搭建，也就是pycharm目录中的BiLSTMCRF.py文件；</p>
+<p>BiLSTM-CRF网络主要分为embedding层、双向LSTM层以及全连接层，最终是单层CRF；</p>
+<p>embedding层定义如下，如果使用了预训练词向量模型则调用vec.txt文件进行初始化</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs py">word_embeddings = tf.get_variable(<span class="hljs-string">&quot;word_embeddings&quot;</span>,[self.embedding_size, self.embedding_dim])<br><span class="hljs-keyword">if</span> self.pretrained:<br>	embeddings_init = word_embeddings.assign(self.embedding_pretrained)<br>input_embedded = tf.nn.embedding_lookup(word_embeddings, self.input_data)<br>input_embedded = tf.nn.dropout(input_embedded,self.dropout_keep)<br></code></pre></td></tr></table></figure>
+
+<p>接着是双向LSTM层，分为前向LSTM和反向LSTM，最终输出作为全连接层的输入</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs py">lstm_fw_cell = tf.nn.rnn_cell.LSTMCell(self.embedding_dim, forget_bias=<span class="hljs-number">1.0</span>, state_is_tuple=<span class="hljs-literal">True</span>)<br>lstm_bw_cell = tf.nn.rnn_cell.LSTMCell(self.embedding_dim, forget_bias=<span class="hljs-number">1.0</span>, state_is_tuple=<span class="hljs-literal">True</span>)<br>(output_fw, output_bw), states = tf.nn.bidirectional_dynamic_rnn(lstm_fw_cell, <br>                                                                         lstm_bw_cell, <br>                                                                         input_embedded,<br>                                                                         dtype=tf.float32,<br>                                                                         time_major=<span class="hljs-literal">False</span>,<br>                                                                         scope=<span class="hljs-literal">None</span>)<br><br>bilstm_out = tf.concat([output_fw, output_bw], axis=<span class="hljs-number">2</span>)<br></code></pre></td></tr></table></figure>
+
+<p>全连接层对LSTM层的输出进行加权求和，最后使用tanh函数作为激活函数加入非线性因素</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs py">W = tf.get_variable(name=<span class="hljs-string">&quot;W&quot;</span>, shape=[self.batch_size,<span class="hljs-number">2</span> * self.embedding_dim, self.tag_size],<br>                        dtype=tf.float32)<br>b = tf.get_variable(name=<span class="hljs-string">&quot;b&quot;</span>, shape=[self.batch_size, self.sen_len, self.tag_size], dtype=tf.float32,<br>                        initializer=tf.zeros_initializer())<br>bilstm_out = tf.tanh(tf.matmul(bilstm_out, W) + b)<br></code></pre></td></tr></table></figure>
+
+<p>CRF层用于计算loss、转移矩阵以及likelihood</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs py">log_likelihood, self.transition_params = tf.contrib.crf.crf_log_likelihood(bilstm_out, self.labels, tf.tile(np.array([self.sen_len]),np.array([self.batch_size])))<br>loss = tf.reduce_mean(-log_likelihood)<br></code></pre></td></tr></table></figure>
+
+<p>然后使用viterbi算法计算序列以及score</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">self.viterbi_sequence, viterbi_score = tf.contrib.crf.crf_decode(bilstm_out,self.transition_params,tf.tile(np.array([self.sen_len]),np.array([self.batch_size])))<br></code></pre></td></tr></table></figure>
+
+<p>最后一步选择Adam优化器优化损失函数</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs py">optimizer = tf.train.AdamOptimizer(self.lr)<br>self.train_op = optimizer.minimize(loss)<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-2-训练模块"><a href="#2-2-训练模块" class="headerlink" title="2.2 训练模块"></a>2.2 训练模块</h3><p>训练模块位于untils.py文件，与常规模型训练类似，通过一定数量的epochs来最小化训练数据上的损失函数；</p>
+<p>函数接受参数包括 model（表示序列标注模型）、sess（表示 TensorFlow 的 session 对象）、saver（表示 TensorFlow 中的 saver 对象，用于保存训练好的模型）、epochs（表示训练的轮数）、batch_size（表示每一批数据的大小）、data_train（表示训练数据）、data_test（表示测试数据）、id2word（表示将 id 转化为 word 的字典）、id2tag（表示将 id 转化为 tag 的字典）；</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs py">batch_num = <span class="hljs-built_in">int</span>(data_train.y.shape[<span class="hljs-number">0</span>] / batch_size)  <br>batch_num_test = <span class="hljs-built_in">int</span>(data_test.y.shape[<span class="hljs-number">0</span>] / batch_size)<br></code></pre></td></tr></table></figure>
+
+<p>上述代码表示计算了训练数据和测试数据中每一批数据的数量，并且存储在 batch_num 和 batch_num_test 变量中</p>
+<p>进入epoch循环之后每次循环中会对训练数据进行一次遍历。在每次循环中，会遍历训练数据中的每一批数据，并将其输入模型进行训练。训练时，会将当前批次的数据 x_batch 和 y_batch 分别作为模型的输入和标签，并将其通过 feed_dict 提供给 TensorFlow 计算图中的相应节点进行计算</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">for</span> batch <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(batch_num):<br>	x_batch, y_batch = data_train.next_batch(batch_size)<br>	feed_dict = &#123;model.input_data:x_batch, model.labels:y_batch&#125;<br>	pre,_ = sess.run([model.viterbi_sequence,model.train_op], feed_dict)<br>	acc = <span class="hljs-number">0</span><br>	<span class="hljs-keyword">if</span> batch%<span class="hljs-number">100</span>==<span class="hljs-number">0</span>:<br>		<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(y_batch)):<br>			<span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(y_batch[<span class="hljs-number">0</span>])):<br>				<span class="hljs-keyword">if</span> y_batch[i][j]==pre[i][j]:<br>				acc+=<span class="hljs-number">1</span><br>		<span class="hljs-built_in">print</span> (<span class="hljs-string">&quot;train acc:&quot;</span>,<span class="hljs-built_in">float</span>(acc)/(<span class="hljs-built_in">len</span>(y_batch)*<span class="hljs-built_in">len</span>(y_batch[<span class="hljs-number">0</span>])))<br></code></pre></td></tr></table></figure>
+
+<p>每训练完一定数量的批次后，计算当前的训练精度，并将其输出。具体来说，会遍历当前批次中的每一个样本，并且将预测的标签 pre 与真实的标签 y_batch 进行比较，计算准确率。如果当前批次的编号是 100 的倍数，就会将当前的准确率输出到控制台上；</p>
+<p>每训练完一轮后，会将训练好的模型保存到磁盘上。具体来说，每隔 3 轮会将当前训练的模型保存到名为 modelX.ckpt 的文件中，其中 X 表示当前的轮数。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">if</span> epoch%<span class="hljs-number">3</span>==<span class="hljs-number">0</span>:<br>	saver.save(sess, path_name)<br>	<span class="hljs-built_in">print</span> (<span class="hljs-string">&quot;model has been saved&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-3-测试模块"><a href="#2-3-测试模块" class="headerlink" title="2.3 测试模块"></a>2.3 测试模块</h3><p>test模块位于utils.py文件中，主要用于输入测试数据，对模型进行测试的函数。具体来说，它的输入包括一个已经训练好的模型(model)、一个已经启动的会话(sess)、一个词到id的映射表(word2id)、一个id到标签的映射表(id2tag)以及一个批处理大小(batch_size)。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">model,sess,word2id,id2tag,batch_size<br></code></pre></td></tr></table></figure>
+
+<p>函数的实现中，首先要求用户输入要测试的文本，并且将其按照标点符号进行切割</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs py">text = <span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;Enter your input: &quot;</span>).decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>);<br>text = re.split(<span class="hljs-string">u&#x27;[，。！？、‘’“”（）]&#x27;</span>, text) <br></code></pre></td></tr></table></figure>
+
+<p>然后，将文本中的每一个句子转换为一个包含词id的序列。如果某个词不在词表(word2id)中，则用”unknow”对应的id来代替</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs py">text_id=[]<br><span class="hljs-keyword">for</span> sen <span class="hljs-keyword">in</span> text:<br>	word_id=[]<br>	<span class="hljs-keyword">for</span> word <span class="hljs-keyword">in</span> sen:<br>		<span class="hljs-keyword">if</span> word <span class="hljs-keyword">in</span> word2id:<br>			word_id.append(word2id[word])<br>		<span class="hljs-keyword">else</span>:<br>			word_id.append(word2id[<span class="hljs-string">&quot;unknow&quot;</span>])<br>	text_id.append(padding(word_id))<br></code></pre></td></tr></table></figure>
+
+<p>对于每一个句子，如果长度不足(max_len)，则将其填充到相应的长度</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs py">zero_padding=[]<br>zero_padding.extend([<span class="hljs-number">0</span>]*max_len)<br>text_id.extend([zero_padding]*(batch_size-<span class="hljs-built_in">len</span>(text_id))) <br></code></pre></td></tr></table></figure>
+
+<p>接着，将所有的句子打包成一个批次，并将其输入到模型中，得到模型的预测结果，最后，将预测结果转换为对应的实体(entity)并进行输出</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs py">feed_dict = &#123;model.input_data:text_id&#125;<br>pre = sess.run([model.viterbi_sequence], feed_dict)<br>entity = get_entity(text,pre[<span class="hljs-number">0</span>],id2tag)<br><span class="hljs-built_in">print</span> (<span class="hljs-string">&#x27;result:&#x27;</span>)<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> entity:<br>	<span class="hljs-built_in">print</span>(i)<br></code></pre></td></tr></table></figure>
+
+<h2 id="3-实验结果"><a href="#3-实验结果" class="headerlink" title="3.实验结果"></a>3.实验结果</h2><p>调用</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">python main.py<br></code></pre></td></tr></table></figure>
+
+<p>开启训练，训练输出结果如下</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br></pre></td><td class="code"><pre><code class="hljs txt">train acc: 0.010416666666666666<br>train acc: 0.79375<br>train acc: 0.8916666666666667<br>./model/model0.ckpt<br>model has been saved<br>train acc: 0.9234375<br>train acc: 0.9432291666666667<br>train acc: 0.9375<br>./model/model1.ckpt<br>train acc: 0.9401041666666666<br>train acc: 0.9114583333333334<br>train acc: 0.9432291666666667<br>./model/model2.ckpt<br>train acc: 0.9390625<br>train acc: 0.9411458333333333<br>train acc: 0.9515625<br>./model/model3.ckpt<br>model has been saved<br>train acc: 0.928125<br>train acc: 0.9458333333333333<br>train acc: 0.9515625<br>./model/model4.ckpt<br>train acc: 0.94375<br>train acc: 0.9307291666666667<br>train acc: 0.946875<br>./model/model5.ckpt<br>train acc: 0.9348958333333334<br>train acc: 0.9411458333333333<br>train acc: 0.9614583333333333<br>./model/model6.ckpt<br>model has been saved<br>precision: 0.9846878680800942<br>recall: 0.27903871829105475<br>F1: 0.43485045513654097<br>train acc: 0.9572916666666667<br>train acc: 0.9666666666666667<br>train acc: 0.9661458333333334<br>./model/model7.ckpt<br>train acc: 0.965625<br>train acc: 0.9640625<br>train acc: 0.9708333333333333<br>./model/model8.ckpt<br>train acc: 0.9828125<br>train acc: 0.9671875<br>train acc: 0.98125<br>./model/model9.ckpt<br>model has been saved<br>precision: 0.8604553119730185<br>recall: 0.6812416555407209<br>F1: 0.7604321907600595<br>train acc: 0.9796875<br>train acc: 0.9786458333333333<br>train acc: 0.9864583333333333<br>./model/model10.ckpt<br>train acc: 0.978125<br>train acc: 0.9598958333333333<br>train acc: 0.9833333333333333<br>./model/model11.ckpt<br>train acc: 0.975<br>train acc: 0.978125<br>train acc: 0.9927083333333333<br>./model/model12.ckpt<br>model has been saved<br>precision: 0.9616963064295485<br>recall: 0.7039385847797063<br>F1: 0.8128733860088648<br>train acc: 0.9880208333333333<br>train acc: 0.9697916666666667<br>train acc: 0.9875<br>./model/model13.ckpt<br>train acc: 0.9744791666666667<br>train acc: 0.9848958333333333<br>train acc: 0.9755208333333333<br>./model/model14.ckpt<br>train acc: 0.9807291666666667<br>train acc: 0.9911458333333333<br>train acc: 0.9692708333333333<br>./model/model15.ckpt<br>model has been saved<br>precision: 0.889168765743073<br>recall: 0.7069425901201603<br>F1: 0.7876534027519525<br>train acc: 0.9723958333333333<br>train acc: 0.9890625<br>train acc: 0.9765625<br>./model/model16.ckpt<br>train acc: 0.9822916666666667<br>train acc: 0.9666666666666667<br>train acc: 0.9828125<br>./model/model17.ckpt<br>train acc: 0.9916666666666667<br>train acc: 0.9859375<br>train acc: 0.9895833333333334<br>./model/model18.ckpt<br>model has been saved<br>precision: 0.8612993224392188<br>recall: 0.7212950600801068<br>F1: 0.7851044504995459<br>train acc: 0.9817708333333334<br>train acc: 0.9729166666666667<br>train acc: 0.9791666666666666<br>./model/model19.ckpt<br>train acc: 0.978125<br>train acc: 0.9828125<br>train acc: 0.9932291666666667<br>./model/model20.ckpt<br>train acc: 0.9807291666666667<br>train acc: 0.9854166666666667<br>train acc: 0.9927083333333333<br>./model/model21.ckpt<br>model has been saved<br>precision: 0.8492553577915002<br>recall: 0.780373831775701<br>F1: 0.8133588450165247<br>train acc: 0.9859375<br>train acc: 0.9807291666666667<br>train acc: 0.9802083333333333<br>./model/model22.ckpt<br>train acc: 0.9828125<br>train acc: 0.9791666666666666<br>train acc: 0.9729166666666667<br>./model/model23.ckpt<br>train acc: 0.9869791666666666<br>train acc: 0.9671875<br>train acc: 0.990625<br>./model/model24.ckpt<br>model has been saved<br>precision: 0.8716715976331361<br>recall: 0.7867156208277704<br>F1: 0.8270175438596491<br>train acc: 0.9890625<br>train acc: 0.9947916666666666<br>train acc: 0.9869791666666666<br>./model/model25.ckpt<br>train acc: 0.9890625<br>train acc: 0.9848958333333333<br>train acc: 0.9901041666666667<br>./model/model26.ckpt<br>train acc: 0.9869791666666666<br>train acc: 0.9911458333333333<br>train acc: 0.9942708333333333<br>./model/model27.ckpt<br>model has been saved<br>precision: 0.8743248109470652<br>recall: 0.8104138851802403<br>F1: 0.841157110687684<br>train acc: 0.9880208333333333<br>train acc: 0.9916666666666667<br>train acc: 0.990625<br>./model/model28.ckpt<br>train acc: 0.9807291666666667<br>train acc: 0.9817708333333334<br>train acc: 0.9828125<br>./model/model29.ckpt<br>train acc: 0.9921875<br>train acc: 0.9885416666666667<br>train acc: 1.0<br>./model/model30.ckpt<br>model has been saved<br>precision: 0.8790931989924433<br>recall: 0.8154205607476636<br>F1: 0.8460606060606061<br></code></pre></td></tr></table></figure>
+
+<p>经过模型训练得到上述实验结果，主要评价指标为查全率、查准率以及F1分数：</p>
+<ul>
+<li>查全率（recall）：模型在测试集中能够正确预测出的正样本数量与测试集中所有正样本数量的比例为 X%。</li>
+<li>查准率（precision）：模型在测试集中预测为正样本的样本中，表示真正是正样本的数量与所有被预测为正样本的样本数量的比例为 Y%。</li>
+<li>F1分数（F1 score）：F1分数综合了查准率和查全率的指标，其计算公式为 2 * (precision * recall) &#x2F; (precision + recall)；</li>
+</ul>
+<p>其中，查全率衡量了模型能够识别出所有的正样本的能力，而查准率则衡量了模型在预测正样本时的准确性。F1分数是综合了这两个指标，用于综合评估模型的性能。在我们的实验中，我们得到了一个具有较高查全率和查准率的模型，最终其F1分数0.84，表明该模型在预测正样本时具有很好的准确性和召回率。</p>
+<p>观察实验结果可知BiLSTMCRF模型具备很快的收敛速度，但是也可以观察看到一方面是模型的学习能力过强，一方面因为模型的训练数据不足，在训练过程中出现了过拟合的现象，最终对训练得到的模型进行测试，输入命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">pthon main.py test<br></code></pre></td></tr></table></figure>
+
+<p>前面说过一方面模型学习能力太强，一方面我们的数据因为是自己清洗的所以可能并不是特别标准，同时数据量不够，这些原因都可能导致模型的泛化能力变弱，具体表现就是我们在测试的过程中会出现如下情况</p>
+<p><img src="/images/image-20230327202906805.png" srcset="/img/loading.gif" lazyload></p>
+<p>因此如果想要提高模型的泛化能力可以从以下几个方面入手（需要根据具体情况采取合适的方法才可能得到更好的结果）：</p>
+<ol>
+<li>更多的数据：收集更多的数据可以使模型接触到更多的变化和情况，提高模型的泛化能力。可以通过增加训练集数据、进行数据增强等方式来实现。</li>
+<li>正则化：正则化可以减少模型的复杂度，降低过拟合的风险，进而提高泛化能力。可以使用L1、L2正则化、dropout等方法。</li>
+<li>交叉验证：使用交叉验证可以评估模型的泛化能力，并帮助我们调整模型的参数，进而提高泛化能力。</li>
+<li>模型结构优化：可以通过增加或减少网络层数、调整每一层的神经元数、使用更优的激活函数等方法来调整模型结构，以提高泛化能力。</li>
+<li>集成学习：通过将多个模型进行集成，可以得到更好的结果，同时降低过拟合的风险，提高泛化能力。可以使用投票、堆叠等集成方法。</li>
+<li>对抗训练：对抗训练可以通过引入对抗样本，使得模型能够更好地抵御噪声、干扰等攻击，提高泛化能力。</li>
+<li>知识蒸馏：知识蒸馏可以通过将一个复杂的模型的知识迁移到一个简单的模型中，使得简单的模型也能够具有类似复杂模型的泛化能力。</li>
+</ol>
+<h2 id="4-实验总结"><a href="#4-实验总结" class="headerlink" title="4.实验总结"></a>4.实验总结</h2><p>本次实验要求基于给定的暴雨洪涝中文语料库，利用已人工标注的样本作为训练集和测试集，基于深度学习和预训练模型，编程实现暴雨洪涝中文文本中的发生时间和发生地点两类实体的识别和抽取。在完成实验的过程中我个人认为最难的一步在于数据的处理，吸收了上一次的经验教训后这次在数据处理的时间花费上不是很长，得到了在训练中能够得到较好结果的训练数据，但是本次实验中使用的数据集比较小，未来可以尝试更大的数据集进行实验。此外，除了BiLSTM-CRF还可以尝试其他的实体抽取模型，如基于注意力机制的模型。</p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E8%B7%B5/" class="category-chain-item">课程实践</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/">#自然语言处理</a>
+      
+        <a href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/">#知识图谱</a>
+      
+        <a href="/tags/%E5%AE%9E%E4%BD%93%E6%8A%BD%E5%8F%96/">#实体抽取</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>初级项目_实体抽取</div>
+      <div>https://gintoki-jpg.github.io/2023/03/21/项目_实体抽取/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>杨再俨</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年3月21日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/03/28/%E9%A1%B9%E7%9B%AE_%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/" title="初级项目_边缘检测">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">初级项目_边缘检测</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/03/19/%E9%A1%B9%E7%9B%AE_%E6%96%B0%E9%97%BB%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB/" title="初级项目_新闻文本分类">
+                        <span class="hidden-mobile">初级项目_新闻文本分类</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+</div>
+
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

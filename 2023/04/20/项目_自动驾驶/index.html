@@ -1,0 +1,936 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/logo.png">
+  <link rel="icon" href="/img/bg/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="杨再俨、王焕捷">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Kaggle自动驾驶项目实战；">
+<meta property="og:type" content="article">
+<meta property="og:title" content="中级项目_模拟自动驾驶">
+<meta property="og:url" content="https://gintoki-jpg.github.io/2023/04/20/%E9%A1%B9%E7%9B%AE_%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6/index.html">
+<meta property="og:site_name" content="Tintoki_blog">
+<meta property="og:description" content="Kaggle自动驾驶项目实战；">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/project.png">
+<meta property="article:published_time" content="2023-04-20T01:13:00.000Z">
+<meta property="article:modified_time" content="2023-05-23T01:11:53.626Z">
+<meta property="article:author" content="YangZaiyan">
+<meta property="article:tag" content="自动驾驶">
+<meta property="article:tag" content="Kaggle">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gintoki-jpg.github.io/img/bg/project.png">
+  
+  
+  
+  <title>中级项目_模拟自动驾驶 - Tintoki_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"gintoki-jpg.github.io","root":"/","version":"1.9.1","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tintoki_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/bg1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">中级项目_模拟自动驾驶</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-04-20 09:13" pubdate>
+          2023年4月20日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          14k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          121 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">中级项目_模拟自动驾驶</h1>
+            
+            <div class="markdown-body">
+              
+              <p>参考链接：</p>
+<ul>
+<li>综述：<a target="_blank" rel="noopener" href="https://www.kaggle.com/datasets/aslanahmedov/self-driving-carbehavioural-cloning">Self Driving Car | Kaggle</a> or <a target="_blank" rel="noopener" href="https://github.com/asikpalysik/self-driving-car">Asikpalysik&#x2F;Self-Driving-Car: Behavioural Cloning Complete Guide (github.com)</a>；</li>
+<li>代码：<a target="_blank" rel="noopener" href="https://www.kaggle.com/code/aslanahmedov/self-driving-car-behavioural-cloning">Self Driving Car - Behavioural Cloning | Kaggle</a>；</li>
+<li>中文：<ul>
+<li>环境搭建+数据收集：<a target="_blank" rel="noopener" href="https://blog.csdn.net/wjh19970930/article/details/124341493">(20条消息) Udacity 无人驾驶仿真环境搭建实现自动驾驶小车_冲啊皮卡丘的博客-CSDN博客</a>；</li>
+<li>Unity下载与安装：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/5n47CpP0DF1jRX2HMmXUkg">【Unity 2019】汉化版下载（附安装教程） (qq.com)</a>；</li>
+<li>模型+代码详细解析：<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_51607165/article/details/130149120">(20条消息) 基于Udacity模拟器的端到端自动驾驶决策_闲看庭前梦落花的博客-CSDN博客</a>；</li>
+</ul>
+</li>
+<li>其他技术资料：<ul>
+<li>端到端自动驾驶：<a target="_blank" rel="noopener" href="https://www.payititi.com/news/show-2314.html">AI赋能汽车理解决策能力，端到端自动驾驶是终极目标_数据要素产业_帕依提提-人工智能数据集开放平台 (payititi.com)</a>；</li>
+<li>英伟达端到端架构：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/25494561">|期刊分享|无人驾驶|英伟达端到端学习无人车 - 知乎 (zhihu.com)</a>；</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>2023&#x2F;4&#x2F;25 21:59 这整个过程都非常的顺利，基本上没遇到什么卡壳的难点，只需要把剩余的数据处理部分代码解释以及模型训练部分代码的修改完成，写完所有的报告这个项目就基本OK了；</p>
+<hr>
+<h1 id="一、项目介绍"><a href="#一、项目介绍" class="headerlink" title="一、项目介绍"></a>一、项目介绍</h1><h2 id="1-任务目标"><a href="#1-任务目标" class="headerlink" title="1.任务目标"></a>1.任务目标</h2><p>本项目的目的是基于Udacity提供的汽车模拟器环境通过深度神经网络训练的模型来实现完全自动驾驶。</p>
+<p>自动驾驶汽车在近十年来是一个非常热门的话题，但自动驾驶行业发展形式并没有想象中的那么好，近些年众多自动驾驶公司估值缩水、裁员倒闭，高级别自动驾驶技术迟迟难以商业化落地，且自动驾驶开放测试区域较少、相关政策制定不足、行车安全难以保障等问题在一定程度上阻碍了自动驾驶技术的发展。自动驾驶技术的发展现状引起了我们的关注，因此我们决定通过实际动手操作来掌握和了解自动驾驶技术。</p>
+<p>要在模拟器中实现自动驾驶，主要分为以下几个步骤：</p>
+<ul>
+<li>模拟器通过使用操纵杆或键盘在训练模式下驾驶汽车来收集数据，提供驾驶日志（.csv文件）和一组图像形式的所谓“好驾驶”行为输入数据。模拟器充当服务器，将这些图像和数据日志传输到Python客户端；</li>
+<li>Python客户端是使用深度神经网络构建的机器学习模型，本项目使用的CNN模型基于Keras（Tensorflow的高级API）进行开发，该模型被用于在数据集上进行训练；</li>
+<li>训练完模型后，模型会向服务器（模拟器）提供方向盘角度和油门，以自主驾驶模式驾驶汽车；</li>
+<li>这些模块或输入数据被传回服务器，并用于在模拟器中自主驾驶汽车，避免汽车从赛道上掉下来；</li>
+</ul>
+<p><img src="/images/image-20230421101926095.png" srcset="/img/loading.gif" lazyload></p>
+<p>总的来说，项目要求玩家仅通过摄像头采集得到的图像以及深度学习方式，教导汽车能够自主控制其油门、刹车和方向盘。</p>
+<h2 id="2-Udacity模拟器"><a href="#2-Udacity模拟器" class="headerlink" title="2.Udacity模拟器"></a>2.Udacity模拟器</h2><p>本项目使用的Udacity汽车模拟器全称为Udacity self-driving-car-sim（该模拟器的代码是开源的，参考<a target="_blank" rel="noopener" href="https://github.com/udacity/self-driving-car-sim">udacity&#x2F;self-driving-car-sim: A self-driving car simulator built with Unity (github.com)</a>，可以在基于Unity平台进行二次开发），主要用于自动驾驶模拟仿真实验。该模拟器环境通过Unity内置有车辆模型，该车辆可以通过顶部摄像头来感知周围地图以及角度等关键信息。进入游戏后可以选择“训练模式”或“自动驾驶模式”，“训练模式”需要我们手动驾驶汽车，通过控制车辆的转向、油门和刹车等来保证汽车在道路上安全行驶。在“训练模式”中，汽车在行驶过程中通过车顶的摄像头采集道路信息和车辆行驶信息，将采集的图像以及数据作为原始训练数据存储，在处理过后作为输入数据放入深度神经网络中对模型进行训练。当模型训练完毕后，我们可以将该模型植入自动驾驶汽车中，选择“自动驾驶模式”，汽车将在完全无人操作的情况下实现在道路上安全行驶。</p>
+<p><img src="/images/image-20230421084923946.png" srcset="/img/loading.gif" lazyload></p>
+<p>Udacity模拟器除了有两种模式外，还内置有两种不同的地图。第一个为晴天环形公路的简单地图，该地图路面平整无障碍物，且天气晴朗无阴影遮挡。该地图具有较少的弯曲轨迹且容易行驶，我们的数据采集和模型测试都是基于这张简单地图。</p>
+<p><img src="/images/image-20230421084847902.png" srcset="/img/loading.gif" lazyload></p>
+<p>第二个为盘山公路的复杂地图，该地图中路面跌宕起伏且急转弯较多，同时伴有阴影、逆光、视线遮挡等强干扰信息。这张地图就算是让玩家手动行驶也存在一定难度，因此在该地图上收集完美数据难度较大。</p>
+<p><img src="/images/image-20230421084733531.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="3-行为克隆"><a href="#3-行为克隆" class="headerlink" title="3.行为克隆"></a>3.行为克隆</h2><p>在本项目中使用的核心技术是行为克隆(Behavior Cloning)，行为克隆技术是机器学习和机器人领域常使用的一种方法，用于教授自动驾驶系统，如自动驾驶汽车，如何通过模仿人类的行为来执行特定任务。</p>
+<p>该过程包括从执行任务（本项目中为在“训练模式”下驾驶汽车）的人类那里收集数据，然后使用这些数据训练人工智能模型（通常是深度神经网络）来执行相同的任务。人工智能模型通过观察专家的行为并将其映射为在不同情况下可以采取的一系列行动来学习。在自动驾驶的背景下，行为克隆会记录人类驾驶员的驾驶行为，然后使用这些数据训练人工智能模型来识别和响应不同的驾驶场景。一旦模型经过训练，它就可以用来控制自动驾驶汽车，使其能够像人类驾驶员一样在道路上行驶。</p>
+<p>行为克隆的优点在于它是一种相对简单有效的训练自主系统的方法，因为它依赖于现有的数据，而不需要复杂的算法或传感器。然而行为克隆的局限性也很明显，该模型只能复制它训练过的行为，并且可能难以适应以前从未遇到过的新情况。一种可以想到的解决方式是通过测试不同的场景来识别潜在问题并完善自动驾驶汽车的安全性和可靠性，以确保自动驾驶系统能够处理道路上的各种情况。</p>
+<h2 id="4-端到端架构"><a href="#4-端到端架构" class="headerlink" title="4.端到端架构"></a>4.端到端架构</h2><p>自动驾驶本质上是一种类人驾驶，也就是计算机通过模拟人类的驾驶行为实现控制车辆，该功能的实现主要分为四个层次：感知、理解、决策和执行，通过各类传感器、电子控制单元(ECU)和执行器来实现。在实现自动驾驶的流程中：</p>
+<ul>
+<li><p>感知层主要依赖激光雷达和摄像头等传感器设备所采集的信息感知汽车周围环境，以硬件设备的精确度、可靠性为主要的衡量标准；</p>
+</li>
+<li><p>执行层通过汽车执行器，包括油门、转向和制动（刹车）等，实现车辆决策层输出的加速、转向和制动等决策，主要依靠机械技术实现；</p>
+</li>
+<li><p>AI技术主要应用于理解层和决策层，担任驾驶汽车“大脑”的角色；</p>
+</li>
+</ul>
+<p>车辆的道路行驶环境非常复杂，需要处理大量非结构化数据。深度学习算法能够高效的处理非结构化数据，并自动地从训练样本中学习特征，当训练样本足够大时，算法能够处理遇到的新的状况以应对复杂决策问题。深度学习在自动驾驶领域主要有两种不同的架构：</p>
+<ul>
+<li>端到端架构：一个深度神经网络模拟了人类所有的驾驶行为；</li>
+<li>问题拆解架构：每个深度神经网络仅模拟人类驾驶员的部分驾驶行为；</li>
+</ul>
+<p>端对端的架构不需要人工将问题进行拆解，只需要一个深度神经网络，在经过训练后，基于传感器的输入信息（如照片），直接对车辆的加减速和转向等进行控制。</p>
+<p>问题拆解的架构需要人工将问题进行拆解，分别训练多个DNN网络，实现诸如车辆识别、道路识别、交通信号灯识别等功能。然后基于各个DNN网络的输出，再对车辆的加减速和转向进行控制。</p>
+<p>端到端自动驾驶技术可以认为是自动驾驶技术的终极目标，通过端到端驾驶，整个过程无需人工设计的繁复规则，系统只需要将采集到的图像输入神经网络模型，模型便能直接输出车辆的具体控制。如果预测的控制结果不理想，驾驶员便会对车辆进行干预，形成反馈。在这一过程中，模型可以自适应地学习到相对较好的驾驶方法，而无需各种条条框框的干预、限制。</p>
+<p>我们使用的深度神经网络模型基于英伟达公司的无人驾驶系统DAVE-2，其训练系统如下，图像输入CNN网络计算出建议的转向操作，根据建议操作和期望操作的差计算出误差，利用后向传播算法训练网络</p>
+<p><img src="/images/image-20230421095919816.png" srcset="/img/loading.gif" lazyload></p>
+<p>一旦训练完成，仅仅利用中间相机拍摄的视频图像即可使网络输出转向操作，如下所示</p>
+<p><img src="/images/image-20230421100004813.png" srcset="/img/loading.gif" lazyload></p>
+<p>CNN是一种前馈神经网络计算系统，可用于从输入数据中学习。通过确定一组权重或过滤器值来实现学习，使网络可以根据训练数据来建模行为。初始化具有随机权重的CNN的期望输出和生成的输出将不同。这种差异（生成的误差）通过CNN的层进行反向传播，以调整神经元的权重，从而减少误差并使我们产生更接近期望输出的输出。</p>
+<p>CNN擅长从图像中捕获分层和空间数据。它利用过滤器查看具有定义的窗口大小的输入图像的区域，并将其映射到一些输出。然后，它通过一些定义的步幅将窗口滑动到其他区域，覆盖整个图像。每个卷积过滤器层因此按顺序逐层捕获此输入图像的属性，捕获细节，如图像中的线条，然后是形状，然后是以后的整个对象。CNN可以很好地适应馈送数据集图像并将其分类到它们各自的类别中。</p>
+<p>该端到端架构中的CNN网络模型如下，网络一共含9层，包括1个归一化层、5个卷积层和3个全连接层，网络输入为YUV格式的图像，网络输出为转向指令（归一化只进行一次，在训练过程中并不进行权值调整）</p>
+<p><img src="/images/image-20230421100324804.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="二、环境配置"><a href="#二、环境配置" class="headerlink" title="二、环境配置"></a>二、环境配置</h1><p>总的来说，本次项目主要需要以下环境：</p>
+<ul>
+<li>Unity+Udacity模拟器（收集数据、测试模型）</li>
+<li>Github仓库+Kaggle平台（上传数据、处理数据、训练模型）</li>
+<li>Conda虚拟环境+drive.py（提供接口、测试模型）</li>
+</ul>
+<h2 id="1-Unity-Udacity"><a href="#1-Unity-Udacity" class="headerlink" title="1.Unity+Udacity"></a>1.Unity+Udacity</h2><p>因为Udacity模拟器需要下载Unity才能运行，因此需要先下载安装Unity，Unity的下载安装自行Google（我使用的Ubity版本是2019）。</p>
+<p>安装好Unity之后，在<a target="_blank" rel="noopener" href="https://github.com/udacity/self-driving-car-sim">udacity&#x2F;self-driving-car-sim: A self-driving car simulator built with Unity (github.com)</a>下载Udacity模拟器，注意如果打算修改模拟器的源码则需要Clone和Unity版本兼容的源码，如果没有修改源码的打算则直接点击下方链接选择对应版本下载即可（我下载的是Version 1对应的Windows 64版本）</p>
+<p><img src="/images/image-20230421104230025.png" srcset="/img/loading.gif" lazyload></p>
+<p>下载完毕后解压文件即可得到一个.exe文件和一个文件夹，双击.exe文件，如果能够成功出现以下界面表示第一部分配置完成</p>
+<p><img src="/images/image-20230421104454736.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="2-Github-Kaggle"><a href="#2-Github-Kaggle" class="headerlink" title="2.Github+Kaggle"></a>2.Github+Kaggle</h2><p>Kaggle平台提供了如GPU P100等算力资源（注意这个GPU资源是有限的，每个月30h），同时Kaggle自带的环境几乎包含了当前python所有的库（这意味着我们无需手动创建虚拟环境、面临各种库的安装问题）。一方面我们可以直接在Kaggle的notebook中编写代码，另一方面Kaggle提供的GPU资源可以帮助我们更快的训练模型。</p>
+<p>使用Kaggle平台首先需要注册，具体方式自行Google，注册完毕后在主页新建notebook</p>
+<p><img src="/images/image-20230421104842267.png" srcset="/img/loading.gif" lazyload></p>
+<p>在notebook的右边会有一个Data列，我们所有的训练数据都只能从此处导入</p>
+<p><img src="/images/image-20230421105252446.png" srcset="/img/loading.gif" lazyload></p>
+<p>一个方式是直接将本地的训练数据上传，该方法只需要点击Add Data并按照指示上传ZIP文件即可，另一种方式就是在Cell中运行Git命令，从Github的仓库中拉取数据</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">!git clone https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/Gintoki-jpg/</span>AutoCar.git<br></code></pre></td></tr></table></figure>
+
+<p>两种方式各有好坏，可自行选择，我选择的是为训练数据单独创建一个Github仓库，每当需要的时候拉取该数据。</p>
+<p>如何创建Github仓库以及如何利用Git工具将本地的文件上传到新建的仓库中，网上有很多教程，这里不再赘述。</p>
+<p>如何调用Kaggle平台的GPU资源？主要有两种方式，一种是直接在notebook网页交互界面的右边Notebook options中选择要使用的Accelerator就行，这种方式不是很推荐，因为每次关闭网页后Cell中的变量以及输出等都会丢失需要重新运行才行。</p>
+<p><img src="/images/image-20230421161436958.png" srcset="/img/loading.gif" lazyload></p>
+<p>另一种是保存整个notebook（右上角save version），默认情况下整个notebook会在后台重新run一遍，run完成后即可查看notebook的运行结果和logs以及output等输出，该方式的输出等都会保存在Kaggle上，并不会随着网页的关闭消失。</p>
+<p><img src="/images/image-20230421161718623.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="3-Conda-drive-py"><a href="#3-Conda-drive-py" class="headerlink" title="3.Conda+drive.py"></a>3.Conda+drive.py</h2><p>Conda工具可以创建特定的虚拟环境，保证python环境之间互不干扰，现在一般流行的python发行版是Anaconda或miniconda（我选择的是miniconda，相对来说体积较小）。</p>
+<p>借助Conda工具新建一个环境，该环境中包含了如Flask框架、Tensorflow等对模拟运行及其重要的库，新建该环境既可以直接借助我给的environment.yml文件，也可以自己手动一个一个安装库，之所以强调每个库的版本是因为该项目中涉及的库的版本及其容易出现不兼容的情况，所以一定要按照对应的版本进行安装。</p>
+<p>自动安装的conda命令如下（因为机器版本或使用的Channel不同，所以自动安装极有可能失败，建议手动安装，environment.yml文件作为一个库版本的参考）</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">conda env <span class="hljs-keyword">create</span> -<span class="hljs-type">name</span> AutoCar -f environment.yml<br></code></pre></td></tr></table></figure>
+
+<p>手动安装的步骤如下，先创建一个python版本为3.8.12的名为AutoCar的虚拟环境</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">conda</span> create --name AutoCar python==<span class="hljs-number">3</span>.<span class="hljs-number">8</span>.<span class="hljs-number">12</span> -y<br></code></pre></td></tr></table></figure>
+
+<p>激活该环境并安装需要的库</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs applescript">conda <span class="hljs-built_in">activate</span> AutoCar<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">pip</span> install keras==<span class="hljs-number">2</span>.<span class="hljs-number">4</span>.<span class="hljs-number">3</span><br><br><span class="hljs-attribute">pip</span> install python-engineio==<span class="hljs-number">3</span>.<span class="hljs-number">13</span>.<span class="hljs-number">0</span><br><br><span class="hljs-attribute">pip</span> install python-socketio==<span class="hljs-number">4</span>.<span class="hljs-number">6</span>.<span class="hljs-number">1</span><br><br><span class="hljs-attribute">pip</span> install flask==<span class="hljs-number">2</span>.<span class="hljs-number">0</span>.<span class="hljs-number">2</span><br><br><span class="hljs-attribute">pip</span> install h5py==<span class="hljs-number">3</span>.<span class="hljs-number">6</span>.<span class="hljs-number">0</span><br><br><span class="hljs-attribute">pip</span> install opencv-python<br><br><span class="hljs-attribute">pip</span> install eventlet<br><br><span class="hljs-attribute">pip</span> install pillow<br><br><span class="hljs-attribute">pip</span> install tensorflow==<span class="hljs-number">2</span>.<span class="hljs-number">7</span>.<span class="hljs-number">0</span><br><br><span class="hljs-attribute">pip</span> install protobuf==<span class="hljs-number">3</span>.<span class="hljs-number">20</span>.*<br></code></pre></td></tr></table></figure>
+
+<p>创建好了conda环境后，还需要drive.py文件，该文件是一个驾驶小车的脚本文件，可以在<a target="_blank" rel="noopener" href="https://github.com/udacity/CarND-Behavioral-Cloning-P3">udacity&#x2F;CarND-Behavioral-Cloning-P3: Starting files for the Udacity CarND Behavioral Cloning Project (github.com)</a>获取，在“自动驾驶模式”下，drive.py文件将提供端口与模拟器进行交互。</p>
+<h1 id="三、数据获取"><a href="#三、数据获取" class="headerlink" title="三、数据获取"></a>三、数据获取</h1><p>在上述环境配置完毕后，就可以开始采集训练数据。</p>
+<p>Udacity模拟器具有自动创建图像数据集的功能，这使得采集数据的行为变得容易：</p>
+<ul>
+<li>在Simulator中，这辆车的传感器是三个前置摄像头，分别放置在左、中、右三个方向，对周围的环境进行拍摄录制，结果之后会以图片形式保存到电脑； </li>
+<li>捕获到图像流后，可以设置图像在磁盘上的保存位置，图像数据将保存在IMG文件夹中。图像集以复杂的方式进行标记，带有前缀 center、left 或 right，表示该图像是从哪个摄像头捕获的；</li>
+<li>除了图像数据集外，Simulator还会生成一个datalog.csv文件，该文件包含图像路径及其对应的方向盘转向角度、油门、制动和车速信息；</li>
+</ul>
+<p>选择“训练模式”和Track1（简单模式），进入游戏，点击右上角“Record”会弹出选择训练数据保存的位置，选择完毕后进入Recording状态，此时只需要使用方向键控制小车移动即可，推荐行驶三到四圈，结束后再次点击“Record”结束录制。为了确保得到的数据质量，在行驶过程中需要遵守以下几点：</p>
+<ul>
+<li>尽量保持车辆行驶在车道中央；</li>
+<li>直行时不要做多余的减速、打方向盘行为；</li>
+<li>在转弯过程中尽量保持丝滑连贯；</li>
+</ul>
+<p>结束采集后得到的数据如下</p>
+<p><img src="/images/image-20230421154412368.png" srcset="/img/loading.gif" lazyload></p>
+<p>IMG目录中保存了数据集中采集得到的图像</p>
+<p><img src="/images/image-20230421154507217.png" srcset="/img/loading.gif" lazyload></p>
+<p>driving_log.csv文件形式如下</p>
+<p><img src="/images/image-20230421154703106.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>A,B,C列：对应中心、右和左摄像头拍摄的数据集图像路径； </li>
+<li>D列：转向角度，值为0表示直行，正值为右转，负值为左转；</li>
+<li>E列：该时刻的油门或加速度 ；</li>
+<li>F列：该时刻的刹车或减速度 ；</li>
+<li>G列：车辆的速度。；</li>
+</ul>
+<h1 id="四、数据处理"><a href="#四、数据处理" class="headerlink" title="四、数据处理"></a>四、数据处理</h1><h2 id="1-上传数据到Kaggle"><a href="#1-上传数据到Kaggle" class="headerlink" title="1.上传数据到Kaggle"></a>1.上传数据到Kaggle</h2><p>为了利用Kaggle平台的计算资源，需要将采集得到的IMG和driving_log.csv文件上传到Kaggle中，在[环境配置](# 2.Github+Kaggle)中已经介绍了两种方式，这里我选择的是上传到Github中再使用Git命令获取</p>
+<p><img src="/images/image-20230421155201789.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="2-读取数据-csv-到内存之中"><a href="#2-读取数据-csv-到内存之中" class="headerlink" title="2.读取数据(csv)到内存之中"></a>2.读取数据(csv)到内存之中</h2><p>从git克隆了相关的数据进入kaggle之后，我们需要先将csv文件读取到内存之中。(因为csv文件之中包含了所有的数据的信息，比如同一时刻摄像头拍摄图像的位置、转动角度、加速度等等)。</p>
+<p>这一步我们使用pandas来完成对csv文件的读取，使用pandas数据格式的同时我们可以根据具体的情况来给不同的列设置不同的列名。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">columns = [<span class="hljs-string">&#x27;前摄像头&#x27;</span>, <span class="hljs-string">&#x27;左摄像头&#x27;</span>, <span class="hljs-string">&#x27;右摄像头&#x27;</span>, <span class="hljs-string">&#x27;转向角度&#x27;</span>, <span class="hljs-string">&#x27;油门或者加速度&#x27;</span>, <span class="hljs-string">&#x27;刹车或减速度&#x27;</span>, <span class="hljs-string">&#x27;速度&#x27;</span>]  <span class="hljs-comment"># 七列数据分别代表什么</span><br><br>data = pd.read_csv(os.path.join(datadir, <span class="hljs-string">&#x27;/kaggle/working/AutoCar/driving_log.csv&#x27;</span>), names = columns) <br></code></pre></td></tr></table></figure>
+
+<p>取数据的前100列输出得到以下的结果:</p>
+<p><img src="/images/image-20230522212903071.png" srcset="/img/loading.gif" lazyload></p>
+<p>从上面我们看到，data将csv文件之中的数据完美地读取到了内存之中。</p>
+<h2 id="3-将定位kaggle中的数据"><a href="#3-将定位kaggle中的数据" class="headerlink" title="3.将定位kaggle中的数据"></a>3.将定位kaggle中的数据</h2><p>在上面的csv文件中，第一、二、三列的数据是本地训练的绝对路径，我们如果想要使用kaggle来完成训练的话，那么我们除了将csv和IMG保存到kaggle上，我们还要把上面的绝对路劲改成kaggle上的相对路径。</p>
+<p>具体的步骤其实很简单，那就是将data的第一、二、三列数据切分，只保留它们的最后的那一部分即可。</p>
+<p>我们可以使用下面的这一步来完成。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">path_leaf</span>(<span class="hljs-params">path</span>):<br>    head, tail = ntpath.split(path)<br>    <span class="hljs-keyword">return</span> tail<br>data[<span class="hljs-string">&#x27;前摄像头&#x27;</span>] = data[<span class="hljs-string">&#x27;前摄像头&#x27;</span>].apply(path_leaf)<br>data[<span class="hljs-string">&#x27;左摄像头&#x27;</span>] = data[<span class="hljs-string">&#x27;左摄像头&#x27;</span>].apply(path_leaf)<br>data[<span class="hljs-string">&#x27;右摄像头&#x27;</span>] = data[<span class="hljs-string">&#x27;右摄像头&#x27;</span>].apply(path_leaf)<br></code></pre></td></tr></table></figure>
+
+<h2 id="4-减少数据量，使训练过程更简便"><a href="#4-减少数据量，使训练过程更简便" class="headerlink" title="4.减少数据量，使训练过程更简便"></a>4.减少数据量，使训练过程更简便</h2><p>原始数据量是我们”自己”在自己电脑上”驾驶“车行驶拍下的图片和各个参数。</p>
+<p>但是这些拍下的图片和参数其实很多，大部分都是三无数据(不转向的数据)，这些数据都是直行的数据，而自动驾驶在没有遇到指定的情况的时候也是直行。</p>
+<p>并且把这些无用数据全部扔进去训练其实很没有营养，所以我们需要减少一些数据量，但是却又不能影响这个模型。</p>
+<p><strong>那我们应该怎么去丢弃数据呢？</strong></p>
+<p>为了达成这个目标，这里我们先将所有的数据先可视化出来。先通过一个纵坐标为数据量，横坐标为转向角度的图将整个数据展现出来:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python">num_bins = <span class="hljs-number">25</span><br>samples_per_bin = <span class="hljs-number">400</span><br>hist, bins = np.histogram(data[<span class="hljs-string">&#x27;转向角度&#x27;</span>], num_bins)<br><br>center = (bins[:-<span class="hljs-number">1</span>]+ bins[<span class="hljs-number">1</span>:]) * <span class="hljs-number">0.5</span><br><br>plt.bar(center, hist, width=<span class="hljs-number">0.05</span>)<br><br>plt.plot((np.<span class="hljs-built_in">min</span>(data[<span class="hljs-string">&#x27;转向角度&#x27;</span>]), np.<span class="hljs-built_in">max</span>(data[<span class="hljs-string">&#x27;转向角度&#x27;</span>])), (samples_per_bin, samples_per_bin))  <span class="hljs-comment"># 画一条样本数在400处的线，后面会处理成区间的数据量最高400</span><br></code></pre></td></tr></table></figure>
+
+<p>我们这里设置了一个400位置的阈值，通过这个400位置的阈值或者直接直观地使用纵坐标我们都能看到，直行的数据确实占了绝大多数，所以我们将大部分直行数据丢弃就行了。</p>
+<p><img src="/images/image-20230522212933940.png" srcset="/img/loading.gif" lazyload></p>
+<p>而丢弃直行的数据当然也不是直接一大部分地丢弃的，我们需要随机丢弃。</p>
+<p>使用循环结构指定我们要删除的样本，通过循环获取bins区间的所有数据，然后打乱遍历获得的数据。</p>
+<p>将打乱之后的数据400之后的元素全部去掉(保留400)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python">remove_list = []<br><span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(num_bins):<br>    list_ = []<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(data[<span class="hljs-string">&#x27;转向角度&#x27;</span>])):<br>        <span class="hljs-keyword">if</span> data[<span class="hljs-string">&#x27;转向角度&#x27;</span>][i] &gt;= bins[j] <span class="hljs-keyword">and</span> data[<span class="hljs-string">&#x27;转向角度&#x27;</span>][i] &lt;= bins[j+<span class="hljs-number">1</span>]:<br>            list_.append(i)<br>    list_ = shuffle(list_)<br>    list_ = list_[samples_per_bin:]<br>    remove_list.extend(list_)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;去除的数据量有:&#123;&#125;个&#x27;</span>.<span class="hljs-built_in">format</span>(<span class="hljs-built_in">len</span>(remove_list)))<br></code></pre></td></tr></table></figure>
+
+<p><img src="/images/image-20230522212956806.png" srcset="/img/loading.gif" lazyload></p>
+<p>处理完之后我们再可视化一下:</p>
+<p><img src="/images/image-20230522213012292.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们可以发现，这个数据比前面的足足有2000个直行的数据好了很多。</p>
+<h2 id="5-将所有的摄像头及其特征进行处理得到特征数据"><a href="#5-将所有的摄像头及其特征进行处理得到特征数据" class="headerlink" title="5.将所有的摄像头及其特征进行处理得到特征数据"></a>5.将所有的摄像头及其特征进行处理得到特征数据</h2><p>通过上面的操作，我们得到了1001个较好的数据。</p>
+<p>这1001个数据集中，每一个数据都包含了前左右摄像头三个摄像头拍摄的图片以及它们的转向参数。</p>
+<p>那么，我们可以将每一个摄像头及其参数当做一个数据，既将每一个摄像头看成一个数据来得到特征数据。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(data)):<br>  indexed_data = data.iloc[i]<br>  <br>  <span class="hljs-comment"># 获取不同摄像机的图像</span><br>  center, left, right = indexed_data[<span class="hljs-number">0</span>], indexed_data[<span class="hljs-number">1</span>], indexed_data[<span class="hljs-number">2</span>]<br>  <br>  <span class="hljs-comment"># 下面这一段代码是将不同的摄像机的图像以及他们相关的转向角度联系起来，即将不同的摄像机统一处理，得到统一的数据</span><br>  image_path.append(os.path.join(datadir, center.strip()))<br>  steering.append(<span class="hljs-built_in">float</span>(indexed_data[<span class="hljs-number">3</span>]))<br>  <br>  <span class="hljs-comment"># 左摄像机及其转角，转角需要在正摄像机的基础上加上0.15</span><br>  image_path.append(os.path.join(datadir,left.strip()))<br>  steering.append(<span class="hljs-built_in">float</span>(indexed_data[<span class="hljs-number">3</span>])+<span class="hljs-number">0.15</span>)<br>  <br>  <span class="hljs-comment"># 右摄像机及其转角，转角需要在正摄像机的基础上减去0.15</span><br>  image_path.append(os.path.join(datadir,right.strip()))<br>  steering.append(<span class="hljs-built_in">float</span>(indexed_data[<span class="hljs-number">3</span>])-<span class="hljs-number">0.15</span>)<br></code></pre></td></tr></table></figure>
+
+<p>需要注意的是，对于左摄像头和右摄像头，我们需要进行特殊的处理。</p>
+<p><strong>因为我们把每一个摄像机都是看成一样的，所以我们在处理左和右摄像头的时候，我们其实也是在处理前摄像头。</strong></p>
+<p>例如我们在直行的时候，前摄像头拍摄的图像对应的转角是0°，而当前摄像头遇到左转弯(也就是前面有障碍的情况)的时候，前摄像头对应的转角是左转，也就是-0.xx°。</p>
+<p>而前摄像头直行的时候，右摄像头拍摄的其实就是前摄像头遇到左转弯的时候的类似情景，所以就得左转。</p>
+<p>上面说的可能有点抽象，可以观看下面的这个图解来理解一下这个原理。</p>
+<p>具体的情况如下面这些图所示:</p>
+<p><img src="/images/image-20230522213040298.png" srcset="/img/loading.gif" lazyload></p>
+<p>这是一个直行的车以及它的左、右摄像头。它右摄像头拍摄的图片对应于前摄像头，应该是下面这张图的样子:</p>
+<p><img src="/images/image-20230522213056786.png" srcset="/img/loading.gif" lazyload></p>
+<p>也就是左转的情况，所以对于右摄像头拍摄的图片，需要加上左转角，这样每一张图片才能够有我们需要的效果。</p>
+<h2 id="6-划分训练数据集和测试数据集"><a href="#6-划分训练数据集和测试数据集" class="headerlink" title="6.划分训练数据集和测试数据集"></a>6.划分训练数据集和测试数据集</h2><p>得到上面的特征数据之后，我们直接将特征数据进行划分就能够得到训练数据集合测试数据集。</p>
+<p>不过，我们可以使用sklearn之中经典的train_test_split算法来完成训练测试数据集的划分。</p>
+<p>具体代码如下所示:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">X_train, X_test, y_train, y_test = train_test_split(image_paths, steerings, test_size=<span class="hljs-number">0.2</span>, random_state=<span class="hljs-number">6</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;训练样本个数: &#123;&#125;\n验证样本个数: &#123;&#125;&#x27;</span>.<span class="hljs-built_in">format</span>(<span class="hljs-built_in">len</span>(X_train), <span class="hljs-built_in">len</span>(X_test)))<br></code></pre></td></tr></table></figure>
+
+<p>可视化如下所示:</p>
+<p><img src="/images/image-20230522213113372.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="7-通过CV2来完成泛化，既各种突发情况的模拟"><a href="#7-通过CV2来完成泛化，既各种突发情况的模拟" class="headerlink" title="7.通过CV2来完成泛化，既各种突发情况的模拟"></a>7.通过CV2来完成泛化，既各种突发情况的模拟</h2><p>我们只在一个赛道上模拟了驾驶的过程，但是自动驾驶肯定会遇到各种各样的道路和突发情况，那么我们应该怎么去解决这些问题呢。</p>
+<p>我们无法为每个可能的赛道训练自动驾驶汽车模型，因为数据量太大而无法处理</p>
+<p><strong>但是我们可以通过图像预处理来不同路况情况的处理，这里cv2给了我们很多图像处理的函数，我们可以使用这些库来完成不同赛道的模拟。</strong></p>
+<p>涉及的突然情况主要是四种:</p>
+<p>分别是<strong>裁剪天空的图像特征、图像错位情况、不同亮度的情况、镜像的情况(右转赛道)</strong></p>
+<p>具体的情况如下所示:</p>
+<h3 id="7-1-天空的图像特征"><a href="#7-1-天空的图像特征" class="headerlink" title="7.1 天空的图像特征"></a>7.1 天空的图像特征</h3><p>因为我们是将自动驾驶车的路面自动行驶，所以对我们来说，整个摄像机拍摄的图片其实是多余的，就是天空的那一部分没有太大的用处，所以我们可以直接将天空的图像直接裁剪掉，然后得到更精确的图像。</p>
+<p>具体的情况如下所示:</p>
+<p><img src="/images/image-20230522213133783.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="7-2-图像错位情况"><a href="#7-2-图像错位情况" class="headerlink" title="7.2 图像错位情况"></a>7.2 图像错位情况</h3><p>图像会被稍微地进行位移，有垂直位移和水平位移</p>
+<p><strong>我们需要对位移这样的特殊情况进行处理</strong></p>
+<p><img src="/images/image-20230522213149316.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="7-3-不同亮度的情况"><a href="#7-3-不同亮度的情况" class="headerlink" title="7.3 不同亮度的情况"></a>7.3 不同亮度的情况</h3><p>将模型推广到天气条件，如阳光明媚的白天或多云、低光条件，亮度增强可以证明非常有用。</p>
+<p><strong>以下是亮度增加的示例。</strong></p>
+<p><strong>类似地，也需要随机降低了其他情况下的亮度级别。</strong></p>
+<p><img src="/images/image-20230522213213151.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="7-4-镜像的情况"><a href="#7-4-镜像的情况" class="headerlink" title="7.4 镜像的情况"></a>7.4 镜像的情况</h3><p>因为我们训练的时候使用的赛道是一直向左转弯的赛道，所以原数据集的转角数据大多数都是负的。</p>
+<p>为了右转数据的准备，我们可以使用镜像来实现这个正值转角的数据的准备。</p>
+<h3 id="7-5-将上面的情况封装"><a href="#7-5-将上面的情况封装" class="headerlink" title="7.5 将上面的情况封装"></a>7.5 将上面的情况封装</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">random_augment</span>(<span class="hljs-params">image, steering_angle</span>):<br>    image = mpimg.imread(image)<br>    <span class="hljs-keyword">if</span> np.random.rand() &lt; <span class="hljs-number">0.5</span>:<br>        image = pan(image)<br>    <span class="hljs-keyword">if</span> np.random.rand() &lt; <span class="hljs-number">0.5</span>:<br>        image = zoom(image)<br>    <span class="hljs-keyword">if</span> np.random.rand() &lt; <span class="hljs-number">0.5</span>:<br>        image = img_random_brightness(image)<br>    <span class="hljs-keyword">if</span> np.random.rand() &lt; <span class="hljs-number">0.5</span>:<br>        image, steering_angle = img_random_flip(image, steering_angle)<br>    <br>    <span class="hljs-keyword">return</span> image, steering_angle<br></code></pre></td></tr></table></figure>
+
+<p>通过上面的函数，我们将所有的情况进行封装，以便后面进行调用。</p>
+<h2 id="8-将图像进行最后的预处理——高斯模糊、裁剪等等"><a href="#8-将图像进行最后的预处理——高斯模糊、裁剪等等" class="headerlink" title="8.将图像进行最后的预处理——高斯模糊、裁剪等等"></a>8.将图像进行最后的预处理——高斯模糊、裁剪等等</h2><p>最后进行了一些图像内部的处理。比如裁剪了图像以去除不必要的特征，将图像转换为YUV格式，使用高斯模糊，减小了图像大小以便更容易处理，并对数值进行了归一化。</p>
+<p><img src="/images/image-20230522213235537.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="9-数据封装"><a href="#9-数据封装" class="headerlink" title="9.数据封装"></a>9.数据封装</h2><p>接下来来完成批量的转换，istraining&#x3D;True的时候就转换训练集，反之就转换测试集。</p>
+<p>完成了上面的数据准备之后，我们可以直接进行数据读取的函数的准备了，数据读取函数的准备我们使用下面的函数来进行封装。</p>
+<hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">batch_generator</span>(<span class="hljs-params">image_paths, steering_ang, batch_size, istraining = <span class="hljs-literal">True</span></span>):<br>    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>        batch_img = []<br>        batch_steering = []<br><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(batch_size):<br>            random_index = random.randint(<span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(image_paths) - <span class="hljs-number">1</span>)<br><br>            <span class="hljs-keyword">if</span> istraining:<br>                im, steering = random_augment(image_paths[random_index], steering_ang[random_index])<br><br>            <span class="hljs-keyword">else</span>:<br>                im = mpimg.imread(image_paths[random_index])<br>                steering = steering_ang[random_index]<br><br>            im = img_preprocess(im)<br>            batch_img.append(im)<br>            batch_steering.append(steering)<br><br>    <span class="hljs-keyword">yield</span> (np.asarray(batch_img), np.asarray(batch_steering)) <br></code></pre></td></tr></table></figure>
+
+<p>这个地方使用了一个yield来生成迭代器，这样我们每一次使用next()函数进行调用的时候都能够得到下一个batch的图像和它转角的二元组。</p>
+<p>我们通过以下的代码来对上面的函数进行调用:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># batch为1，获取一个图像进行测试</span><br>x_train_gen, y_train_gen = <span class="hljs-built_in">next</span>(batch_generator(X_train, y_train, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>))<br>x_test_gen, y_test_gen = <span class="hljs-built_in">next</span>(batch_generator(X_test, y_test, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>))<br><br>fig, axs = plt.subplots(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, figsize=(<span class="hljs-number">15</span>, <span class="hljs-number">10</span>))<br>fig.tight_layout()<br><br>axs[<span class="hljs-number">0</span>].imshow(x_train_gen[<span class="hljs-number">0</span>])<br>axs[<span class="hljs-number">0</span>].set_title(<span class="hljs-string">&#x27;训练图像&#x27;</span>)<br><br>axs[<span class="hljs-number">1</span>].imshow(x_test_gen[<span class="hljs-number">0</span>])<br>axs[<span class="hljs-number">1</span>].set_title(<span class="hljs-string">&#x27;测试图像&#x27;</span>)<br><br>history = model.fit_generator(batch_generator(X_train, y_train, <span class="hljs-number">100</span>, <span class="hljs-number">1</span>),<br>                                  steps_per_epoch=<span class="hljs-number">512</span>, <br>                                  epochs=<span class="hljs-number">10</span>,<br>                                  validation_data=batch_generator(X_test, y_test, <span class="hljs-number">100</span>, <span class="hljs-number">0</span>),<br>                                  validation_steps=<span class="hljs-number">256</span>,<br>                                  verbose=<span class="hljs-number">1</span>,<br>                                  shuffle = <span class="hljs-number">1</span>)<br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="五、模型训练"><a href="#五、模型训练" class="headerlink" title="五、模型训练"></a>五、模型训练</h1><p>在[项目介绍](# 4.端到端架构)中提到过，本项目使用的网络结构基于英伟达的端到端模型，该模型是一个深度卷积网络，非常适用于监督式图像分类&#x2F;回归问题。</p>
+<p>原因如下:</p>
+<blockquote>
+<p>通过行为克隆，我们的数据集比我们使用过的任何数据集都要复杂得多。 </p>
+<p>我们正在处理具有(200,66)维的图像。 </p>
+<p>我们目前的数据集有2402张图像要训练，但MNSIT有大约6万张图像要训练。 </p>
+<p>我们的行为克隆代码必须返回适当的转向角度，这是一个回归类型的例子。 </p>
+<p>对于这些事情，我们需要一个更高级的模型，它是由nvidia提供的，被称为nvidia模型。</p>
+<p>网络的设计基于NVIDIA模型，该模型已被NVIDIA用于端到端自动驾驶测试。</p>
+</blockquote>
+<p>整个英伟达模型的网络结构如下所示:</p>
+<p><img src="/images/image-20230522213330809.png" srcset="/img/loading.gif" lazyload></p>
+<p>参考链接如下:</p>
+<p><a target="_blank" rel="noopener" href="https://developer.nvidia.com/zh-cn/blog/deep-learning-self-driving-cars/">https://developer.nvidia.com/zh-cn/blog/deep-learning-self-driving-cars/</a></p>
+<h2 id="1-网络体系结构"><a href="#1-网络体系结构" class="headerlink" title="1.网络体系结构"></a>1.网络体系结构</h2><p>这个架构通过训练权重来最小化网络输出的方向角度与真人驾驶时的汽车方向角度的均方误差。</p>
+<p>我们训练网络的权值，以使网络输出的转向命令与人类驾驶员的指令或偏离中心和旋转图像的调整后的转向指令之间的均方误差最小化。下图显示了网络体系结构，它由 9 个层组成，包括一个规范化层、 5 个卷积层和 3 个完全连接的层。将输入的图像分割成 YUV 。</p>
+<p><img src="/images/image-20230522213554204.png" srcset="/img/loading.gif" lazyload></p>
+<p>网络的第一层执行图像标准化。规范化器是硬编码的，在学习过程中不会进行调整。在网络中执行规范化允许标准化方案随网络架构改变，并通过 GPU 处理加速。</p>
+<p>卷积层的设计是为了进行特征提取，并通过一系列不同层结构的实验进行经验选择。然后，我们在前三个卷积层中使用跨步卷积，步长为 2 × 2 ，核为 5 × 5 ，最后两个卷积层使用核大小为 3 × 3 的非跨步卷积。</p>
+<p>我们跟随五个卷积层和三个完全连接的层，得到最终的输出控制值，即反向转弯半径。完全连接的层被设计成一个控制器来控制方向，但是我们注意到，通过端到端的训练系统，不可能在网络的哪些部分主要作为特征提取器，哪些部分作为控制器起作用。</p>
+<h2 id="2-模型定义"><a href="#2-模型定义" class="headerlink" title="2.模型定义"></a>2.模型定义</h2><p>通过上面的知识点，我们可以定义英伟达的端到端的自动驾驶的神经网络训练模型:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">nvidiaModel</span>():<br>    model = Sequential()<br>    model.add(Convolution2D(<span class="hljs-number">24</span>,(<span class="hljs-number">5</span>,<span class="hljs-number">5</span>),strides=(<span class="hljs-number">2</span>,<span class="hljs-number">2</span>),input_shape=(<span class="hljs-number">66</span>,<span class="hljs-number">200</span>,<span class="hljs-number">3</span>),activation=<span class="hljs-string">&quot;elu&quot;</span>))<br>    model.add(Convolution2D(<span class="hljs-number">36</span>,(<span class="hljs-number">5</span>,<span class="hljs-number">5</span>),strides=(<span class="hljs-number">2</span>,<span class="hljs-number">2</span>),activation=<span class="hljs-string">&quot;elu&quot;</span>))<br>    model.add(Convolution2D(<span class="hljs-number">48</span>,(<span class="hljs-number">5</span>,<span class="hljs-number">5</span>),strides=(<span class="hljs-number">2</span>,<span class="hljs-number">2</span>),activation=<span class="hljs-string">&quot;elu&quot;</span>)) <br>    model.add(Convolution2D(<span class="hljs-number">64</span>,(<span class="hljs-number">3</span>,<span class="hljs-number">3</span>),activation=<span class="hljs-string">&quot;elu&quot;</span>))   <br>    model.add(Convolution2D(<span class="hljs-number">64</span>,(<span class="hljs-number">3</span>,<span class="hljs-number">3</span>),activation=<span class="hljs-string">&quot;elu&quot;</span>))<br>    model.add(Dropout(<span class="hljs-number">0.5</span>))<br>    model.add(Flatten())<br>    model.add(Dense(<span class="hljs-number">100</span>,activation=<span class="hljs-string">&quot;elu&quot;</span>))<br>    model.add(Dropout(<span class="hljs-number">0.5</span>))<br>    model.add(Dense(<span class="hljs-number">50</span>,activation=<span class="hljs-string">&quot;elu&quot;</span>))<br>    model.add(Dropout(<span class="hljs-number">0.5</span>))<br>    model.add(Dense(<span class="hljs-number">10</span>,activation=<span class="hljs-string">&quot;elu&quot;</span>))<br>    model.add(Dropout(<span class="hljs-number">0.5</span>))<br>    model.add(Dense(<span class="hljs-number">1</span>))<br>    model.<span class="hljs-built_in">compile</span>(optimizer=Adam(lr=<span class="hljs-number">1e-3</span>),loss=<span class="hljs-string">&quot;mse&quot;</span>)<br>    <span class="hljs-keyword">return</span> model<br></code></pre></td></tr></table></figure>
+
+<p>输出网络结构如下所示:</p>
+<p><img src="/images/image-20230522213636183.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="3-开始训练"><a href="#3-开始训练" class="headerlink" title="3.开始训练"></a>3.开始训练</h2><p>定义完成之后我们就能够直接使用kaggle来进行训练，训练的情况可以直接通过下面的链接来进行查看（或者查看AutoCar文件夹下的ipynb文件）</p>
+<p><a target="_blank" rel="noopener" href="https://www.kaggle.com/code/ookanshouoo/unity">https://www.kaggle.com/code/ookanshouoo/unity</a></p>
+<p>训练的过程如下所示:</p>
+<p><img src="/images/image-20230522213800154.png" srcset="/img/loading.gif" lazyload></p>
+<p>训练时间如下所示:</p>
+<p><img src="/images/image-20230522213731641.png" srcset="/img/loading.gif" lazyload></p>
+<p>使用GPU P100一共花了2751s，这个速度还算理想。</p>
+<h1 id="六、模型测试"><a href="#六、模型测试" class="headerlink" title="六、模型测试"></a>六、模型测试</h1><p>在Kaggle中训练完毕后我们会得到一个h5模型文件，我们把这个文件下载到本地，保存到与drive.py文件同级的目录</p>
+<p><img src="/images/image-20230421162655172.png" srcset="/img/loading.gif" lazyload></p>
+<p>接着在drive.py文件目录下打开shell，进入之前借助conda创建好的AutoCar虚拟环境</p>
+<p><img src="/images/image-20230421162958149.png" srcset="/img/loading.gif" lazyload></p>
+<p>在该环境下使用命令运行drive.py脚本文件</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim"><span class="hljs-keyword">python</span> drive.<span class="hljs-keyword">py</span> model.h5<br></code></pre></td></tr></table></figure>
+
+<p>出现如下输出表示脚本启动成功</p>
+<p><img src="/images/image-20230421163433203.png" srcset="/img/loading.gif" lazyload></p>
+<p>接着在游戏中选择“自动驾驶模式”，等待连接完成后可以看到小车自动开始驾驶</p>
+<p><img src="/images/image-20230522224252650.png" srcset="/img/loading.gif" lazyload></p>
+<p>若要终止自动驾驶，在游戏中按下“ESC”，同时在终端中按下”Ctrl+C”停止脚本运行。</p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/" class="category-chain-item">项目开发</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6/">#自动驾驶</a>
+      
+        <a href="/tags/Kaggle/">#Kaggle</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>中级项目_模拟自动驾驶</div>
+      <div>https://gintoki-jpg.github.io/2023/04/20/项目_自动驾驶/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>杨再俨、王焕捷</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年4月20日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/04/23/%E9%A1%B9%E7%9B%AE_%E7%81%BE%E6%83%85%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" title="初级项目_灾情知识图谱">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">初级项目_灾情知识图谱</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/04/19/%E9%A1%B9%E7%9B%AE_%E8%99%9A%E5%81%87%E6%96%B0%E9%97%BB%E6%A3%80%E6%B5%8B/" title="初级项目_虚假新闻检测">
+                        <span class="hidden-mobile">初级项目_虚假新闻检测</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+</div>
+
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

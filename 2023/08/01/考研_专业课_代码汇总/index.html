@@ -1,0 +1,752 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/logo.png">
+  <link rel="icon" href="/img/bg/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="杨再俨">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="数据结构必背手写代码汇总">
+<meta property="og:type" content="article">
+<meta property="og:title" content="考研_专业课_代码汇总">
+<meta property="og:url" content="https://gintoki-jpg.github.io/2023/08/01/%E8%80%83%E7%A0%94_%E4%B8%93%E4%B8%9A%E8%AF%BE_%E4%BB%A3%E7%A0%81%E6%B1%87%E6%80%BB/index.html">
+<meta property="og:site_name" content="Tintoki_blog">
+<meta property="og:description" content="数据结构必背手写代码汇总">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/study.jpg">
+<meta property="article:published_time" content="2023-08-01T12:16:00.000Z">
+<meta property="article:modified_time" content="2023-08-12T09:36:09.084Z">
+<meta property="article:author" content="YangZaiyan">
+<meta property="article:tag" content="数据结构设计">
+<meta property="article:tag" content="算法分析">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gintoki-jpg.github.io/img/bg/study.jpg">
+  
+  
+  
+  <title>考研_专业课_代码汇总 - Tintoki_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"gintoki-jpg.github.io","root":"/","version":"1.9.1","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tintoki_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/bg1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">考研_专业课_代码汇总</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-08-01 20:16" pubdate>
+          2023年8月1日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          17 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">考研_专业课_代码汇总</h1>
+            
+            <div class="markdown-body">
+              
+              <p>本篇博客主要整理考研数据结构中需要着重背诵且的基本数据结构和算法相关代码，由C和C++语言构成。关于这些算法的解释在另一篇笔记中非常详细，这里尽量给出简洁可背的代码，不让整个笔记看起来杂糅。</p>
+<p>另外，这里给的代码也并不是说万精油（没有哪个数据结构给的资料可以说是完全适用），更多的是需要我们去理解其内部核心思想（比如顺序表的删除的实质就是移动元素）并学习代码写作风格，这样遇到由特定要求的题目不至于一筹莫展。</p>
+<p>额外的还给出了某些常用算法的时间复杂度分析，一方面加深对算法的理解，另一方面保证在解题的时候可以直接背诵使用。</p>
+<h1 id="一、线性表"><a href="#一、线性表" class="headerlink" title="一、线性表"></a>一、线性表</h1><h2 id="1-基本数据结构定义"><a href="#1-基本数据结构定义" class="headerlink" title="1.基本数据结构定义"></a>1.基本数据结构定义</h2><h3 id="1-1-顺序表结构体定义"><a href="#1-1-顺序表结构体定义" class="headerlink" title="1.1 顺序表结构体定义"></a>1.1 顺序表结构体定义</h3><p>因为一维数组可以是静态分配也可以是动态分配，所以顺序表结构体定义也有两种（ElemType表示任意元素类型，天勤习惯使用int，王道习惯使用ElemType）</p>
+<p><img src="/images/image-20230802100115118.png" srcset="/img/loading.gif" lazyload alt="静态数组"></p>
+<p><img src="/images/image-20230802104137112.png" srcset="/img/loading.gif" lazyload alt="动态分配"></p>
+<h3 id="1-2-单链表结点定义"><a href="#1-2-单链表结点定义" class="headerlink" title="1.2 单链表结点定义"></a>1.2 单链表结点定义</h3><p><img src="/images/image-20230802100136172.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-3-双链表结点定义"><a href="#1-3-双链表结点定义" class="headerlink" title="1.3 双链表结点定义"></a>1.3 双链表结点定义</h3><p><img src="/images/image-20230802100203806.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-4-静态链表定义"><a href="#1-4-静态链表定义" class="headerlink" title="1.4 静态链表定义"></a>1.4 静态链表定义</h3><p>与顺序表相同，静态链表也需要预先分配一块连续的内存空间，静态链表以next&#x3D;&#x3D;-1作为结束标志</p>
+<p><img src="/images/image-20230803102735177.png" srcset="/img/loading.gif" lazyload></p>
+<p>静态链表的插入、删除操作与单链表相同，只需要修改指针不需要移动元素</p>
+<h2 id="2-顺序表的基本操作"><a href="#2-顺序表的基本操作" class="headerlink" title="2.顺序表的基本操作"></a>2.顺序表的基本操作</h2><h3 id="2-1-初始化"><a href="#2-1-初始化" class="headerlink" title="2.1 初始化"></a>2.1 初始化</h3><p><img src="/images/image-20230802100239644.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-2-按位查找"><a href="#2-2-按位查找" class="headerlink" title="2.2 按位查找"></a>2.2 按位查找</h3><p><img src="/images/image-20230802100301483.png" srcset="/img/loading.gif" lazyload></p>
+<p>顺序表具有随机存储特性，因此其按值查找的时间复杂度为O(1)</p>
+<h3 id="2-3-按值查找"><a href="#2-3-按值查找" class="headerlink" title="2.3 按值查找"></a>2.3 按值查找</h3><p><img src="/images/image-20230802100328368.png" srcset="/img/loading.gif" lazyload></p>
+<p>最好情况：查找元素就在表头，只需要比较一次，时间复杂度为O(1)</p>
+<p>最坏情况：查找元素在表尾或不存在，比较n次，时间复杂度为O(n)</p>
+<p>平均情况：平均比较次数为(n+1)&#x2F;2，时间复杂度为O(n)</p>
+<h3 id="2-4-插入元素"><a href="#2-4-插入元素" class="headerlink" title="2.4 插入元素"></a>2.4 插入元素</h3><p><img src="/images/image-20230802100421968.png" srcset="/img/loading.gif" lazyload></p>
+<p>最好情况：表尾插入，元素不用后移，时间复杂度为O(1)</p>
+<p>最坏情况：表头插入，元素后移语句执行n次，时间复杂度为O(n)</p>
+<p>平均情况：平均移动次数为n&#x2F;2，时间复杂度为O(n)</p>
+<h3 id="2-5-删除元素"><a href="#2-5-删除元素" class="headerlink" title="2.5 删除元素"></a>2.5 删除元素</h3><p><img src="/images/image-20230802100444534.png" srcset="/img/loading.gif" lazyload></p>
+<p>最好情况：删除表尾元素，时间复杂度为O(1)</p>
+<p>最坏情况：删除表头元素，移动除表头元素外的所有元素，时间复杂度为O(n)</p>
+<p>平均情况：平均移动次数为(n-1)&#x2F;2，时间复杂度为O(n)</p>
+<h2 id="3-单链表的基本操作"><a href="#3-单链表的基本操作" class="headerlink" title="3.单链表的基本操作"></a>3.单链表的基本操作</h2><h3 id="3-1-尾插法"><a href="#3-1-尾插法" class="headerlink" title="3.1 尾插法"></a>3.1 尾插法</h3><p><img src="/images/image-20230802100841095.png" srcset="/img/loading.gif" lazyload alt="不含头结点"></p>
+<p>尾插法生成的链表中结点的次序和输入数据的顺序一致，因为有尾指针r的存在因此时间复杂度为n*O(1)&#x3D;O(n)</p>
+<h3 id="3-2-头插法"><a href="#3-2-头插法" class="headerlink" title="3.2 头插法"></a>3.2 头插法</h3><p><img src="/images/image-20230802100911036.png" srcset="/img/loading.gif" lazyload alt="不含头结点"></p>
+<p>头插法建立单链表时，读入数据的顺序与生成的链表中的元素的顺序是相反的。每个结点的插入时间为O(1)，因此长度为n的单链表的建表时间复杂度为O(n)</p>
+<h3 id="3-3-按序查找"><a href="#3-3-按序查找" class="headerlink" title="3.3 按序查找"></a>3.3 按序查找</h3><p><img src="/images/image-20230802114236508.png" srcset="/img/loading.gif" lazyload></p>
+<p>按序查找的时间复杂度显然为O(n)（当没有说明具体什么复杂度的时候统一认为是最坏时间复杂度）</p>
+<h3 id="3-4-按值查找"><a href="#3-4-按值查找" class="headerlink" title="3.4 按值查找"></a>3.4 按值查找</h3><p><img src="/images/image-20230802114216878.png" srcset="/img/loading.gif" lazyload></p>
+<p>很明显按值查找的时间复杂度为O(n)</p>
+<h3 id="3-5-插入元素"><a href="#3-5-插入元素" class="headerlink" title="3.5 插入元素"></a>3.5 插入元素</h3><h4 id="3-5-1-后插操作"><a href="#3-5-1-后插操作" class="headerlink" title="3.5.1 后插操作"></a>3.5.1 后插操作</h4><p>核心是找到插入结点的前一个结点，所以需要首先调用按序查找，在执行下面的代码片段</p>
+<p><img src="/images/image-20230802100939484.png" srcset="/img/loading.gif" lazyload></p>
+<p>算法的主要时间开销在查找元素，时间复杂度为O(n)，若直接给定结点在后面插入新结点则时间复杂度为O(1)</p>
+<h4 id="3-5-2-前插操作"><a href="#3-5-2-前插操作" class="headerlink" title="3.5.2 前插操作"></a>3.5.2 前插操作</h4><p>任何前插操作都可以转换为后插操作，但后插操作时间复杂度为O(n)，下面这种方式实现了以时间复杂度为O(1)的方式进行前插操作</p>
+<p><img src="/images/image-20230802115231012.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-6-删除元素"><a href="#3-6-删除元素" class="headerlink" title="3.6 删除元素"></a>3.6 删除元素</h3><p>核心是找到被删除结点的前一个结点，与插入操作相同需要先使用按序查找，然后执行下面代码</p>
+<p><img src="/images/image-20230802100956653.png" srcset="/img/loading.gif" lazyload></p>
+<p>因此其时间复杂度同样为O(n)，但是，删除结点还有一种时间复杂度为O(1)的算法，本质上就是将其后继节点的值赋予本身然后删除后继节点</p>
+<p><img src="/images/image-20230802115936137.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="4-双链表的基本操作"><a href="#4-双链表的基本操作" class="headerlink" title="4.双链表的基本操作"></a>4.双链表的基本操作</h2><p>双链表在单链表的结点中增加了一个指向其前驱的prior指针，因此双链表中的按值查找和按序查找与单链表相同，但双链表在插入和删除操作的实现上与单链表有较大的不同。因为双链表可以很方便的找到其前驱结点，因此双链表的插入、删除操作的时间复杂度仅为O(1)</p>
+<h3 id="4-1-尾插法"><a href="#4-1-尾插法" class="headerlink" title="4.1 尾插法"></a>4.1 尾插法</h3><p><img src="/images/image-20230803101514472.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="4-2-插入元素"><a href="#4-2-插入元素" class="headerlink" title="4.2 插入元素"></a>4.2 插入元素</h3><p>在p结点后插入s结点</p>
+<p><img src="/images/image-20230803101536853.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="4-3-删除元素"><a href="#4-3-删除元素" class="headerlink" title="4.3 删除元素"></a>4.3 删除元素</h3><p>删除p结点后的q结点</p>
+<p><img src="/images/image-20230803101555240.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="二、栈和队列"><a href="#二、栈和队列" class="headerlink" title="二、栈和队列"></a>二、栈和队列</h1><h2 id="1-基本数据结构定义-1"><a href="#1-基本数据结构定义-1" class="headerlink" title="1.基本数据结构定义"></a>1.基本数据结构定义</h2><h3 id="1-1-顺序栈结构体定义"><a href="#1-1-顺序栈结构体定义" class="headerlink" title="1.1 顺序栈结构体定义"></a>1.1 顺序栈结构体定义</h3><p><img src="/images/image-20230812171528454.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-2-链栈结点定义"><a href="#1-2-链栈结点定义" class="headerlink" title="1.2 链栈结点定义"></a>1.2 链栈结点定义</h3><p><img src="/images/image-20230812171557542.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-3-顺序队列结构体定义"><a href="#1-3-顺序队列结构体定义" class="headerlink" title="1.3 顺序队列结构体定义"></a>1.3 顺序队列结构体定义</h3><p><img src="/images/image-20230812171617258.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-4-链队列结点定义"><a href="#1-4-链队列结点定义" class="headerlink" title="1.4 链队列结点定义"></a>1.4 链队列结点定义</h3><p>链队“头结点”定义</p>
+<p><img src="/images/image-20230812171754174.png" srcset="/img/loading.gif" lazyload></p>
+<p>链队中间结点定义</p>
+<p><img src="/images/image-20230812171826924.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="2-顺序栈的基本操作"><a href="#2-顺序栈的基本操作" class="headerlink" title="2.顺序栈的基本操作"></a>2.顺序栈的基本操作</h2><p>顺序栈的基本图示结构如下</p>
+<p><img src="/images/image-20230812171930360.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-1-初始化-1"><a href="#2-1-初始化-1" class="headerlink" title="2.1 初始化"></a>2.1 初始化</h3><p>初始化操作的实质就是将栈顶指针置为-1</p>
+<p><img src="/images/image-20230812172003166.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-2-判空操作"><a href="#2-2-判空操作" class="headerlink" title="2.2 判空操作"></a>2.2 判空操作</h3><p><img src="/images/image-20230812172031631.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-3-进栈操作"><a href="#2-3-进栈操作" class="headerlink" title="2.3 进栈操作"></a>2.3 进栈操作</h3><p>进栈操作可以简写为stack[++top]&#x3D;x;</p>
+<p><img src="/images/image-20230812172048683.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-4-出栈操作"><a href="#2-4-出栈操作" class="headerlink" title="2.4 出栈操作"></a>2.4 出栈操作</h3><p>出栈操作可以简写为x&#x3D;stack[top–];</p>
+<p><img src="/images/image-20230812172143833.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="3-链栈的基本操作"><a href="#3-链栈的基本操作" class="headerlink" title="3.链栈的基本操作"></a>3.链栈的基本操作</h2><p>链栈的基本图示结构如下</p>
+<p><img src="/images/image-20230812172218956.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-1-初始化"><a href="#3-1-初始化" class="headerlink" title="3.1 初始化"></a>3.1 初始化</h3><p><img src="/images/image-20230812172806386.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-2-判空操作"><a href="#3-2-判空操作" class="headerlink" title="3.2 判空操作"></a>3.2 判空操作</h3><p><img src="/images/image-20230812172829459.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-3-进栈操作"><a href="#3-3-进栈操作" class="headerlink" title="3.3 进栈操作"></a>3.3 进栈操作</h3><p><img src="/images/image-20230812172854403.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-4-出栈操作"><a href="#3-4-出栈操作" class="headerlink" title="3.4 出栈操作"></a>3.4 出栈操作</h3><p>出栈一般需要将出栈元素保存在x中</p>
+<p><img src="/images/image-20230812172938184.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="4-顺序队列的基本操作"><a href="#4-顺序队列的基本操作" class="headerlink" title="4.顺序队列的基本操作"></a>4.顺序队列的基本操作</h2><p>因为顺序队列存在“假溢出”的情况，所以实际使用意义不大，一般都选择使用循环队列替代。循环队列的基本图示如下</p>
+<p><img src="/images/image-20230812173134591.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="4-1-初始化"><a href="#4-1-初始化" class="headerlink" title="4.1 初始化"></a>4.1 初始化</h3><p><img src="/images/image-20230812173210530.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="4-2-判空操作"><a href="#4-2-判空操作" class="headerlink" title="4.2 判空操作"></a>4.2 判空操作</h3><p><img src="/images/image-20230812173236045.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="4-3-进队操作"><a href="#4-3-进队操作" class="headerlink" title="4.3 进队操作"></a>4.3 进队操作</h3><p><img src="/images/image-20230812173307473.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="4-4-出队操作"><a href="#4-4-出队操作" class="headerlink" title="4.4 出队操作"></a>4.4 出队操作</h3><p><img src="/images/image-20230812173331756.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="5-链队的基本操作"><a href="#5-链队的基本操作" class="headerlink" title="5.链队的基本操作"></a>5.链队的基本操作</h2><p><img src="/images/image-20230812173423890.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="5-1-初始化"><a href="#5-1-初始化" class="headerlink" title="5.1 初始化"></a>5.1 初始化</h3><p><img src="/images/image-20230812173450499.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="5-2-判空操作"><a href="#5-2-判空操作" class="headerlink" title="5.2 判空操作"></a>5.2 判空操作</h3><p><img src="/images/image-20230812173518581.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="5-3-入队算法"><a href="#5-3-入队算法" class="headerlink" title="5.3 入队算法"></a>5.3 入队算法</h3><p><img src="/images/image-20230812173540103.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="5-4-出队操作"><a href="#5-4-出队操作" class="headerlink" title="5.4 出队操作"></a>5.4 出队操作</h3><p><img src="/images/image-20230812173602839.png" srcset="/img/loading.gif" lazyload></p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%80%83%E7%A0%94/" class="category-chain-item">考研</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1/">#数据结构设计</a>
+      
+        <a href="/tags/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/">#算法分析</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>考研_专业课_代码汇总</div>
+      <div>https://gintoki-jpg.github.io/2023/08/01/考研_专业课_代码汇总/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>杨再俨</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年8月1日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/07/17/%E8%80%83%E7%A0%94_%E8%8B%B1%E8%AF%AD%E4%B8%80_%E8%A7%A3%E9%A2%98%E6%8A%80%E5%B7%A7/" title="考研_英语一_解题技巧">
+                        <span class="hidden-mobile">考研_英语一_解题技巧</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+</div>
+
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,853 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/logo.png">
+  <link rel="icon" href="/img/bg/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="杨再俨">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="NLP研究能实现人与计算机之间用自然语言进行有效通信的各种理论和方法。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自然语言处理_初级">
+<meta property="og:url" content="https://gintoki-jpg.github.io/2023/02/27/%E4%B8%93%E4%B8%9A_%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86_%E5%88%9D%E7%BA%A7/index.html">
+<meta property="og:site_name" content="Tintoki_blog">
+<meta property="og:description" content="NLP研究能实现人与计算机之间用自然语言进行有效通信的各种理论和方法。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/AI.jpg">
+<meta property="article:published_time" content="2023-02-27T01:11:00.000Z">
+<meta property="article:modified_time" content="2023-04-05T03:07:20.457Z">
+<meta property="article:author" content="YangZaiyan">
+<meta property="article:tag" content="机器学习">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gintoki-jpg.github.io/img/bg/AI.jpg">
+  
+  
+  
+  <title>自然语言处理_初级 - Tintoki_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"gintoki-jpg.github.io","root":"/","version":"1.9.1","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tintoki_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/bg1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">自然语言处理_初级</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-02-27 09:11" pubdate>
+          2023年2月27日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          7.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          62 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">自然语言处理_初级</h1>
+            
+            <div class="markdown-body">
+              
+              <p>参考书：《统计自然语言处理》<br>参考视频：</p>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1r3411q74d/?spm_id_from=333.999.0.0&vd_source=276d55048634a5b508b1b53a1ecd56b3">【西湖大学 张岳老师｜自然语言处理在线课程 课程先导 1节】课程简介_哔哩哔哩_bilibili</a>；</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1hM4y157xX/?spm_id_from=333.337.search-card.all.click&amp;vd_source=276d55048634a5b508b1b53a1ecd56b3%EF%BC%88%E6%9D%8E%E5%AE%8F%E6%AF%85NLP%EF%BC%89">https://www.bilibili.com/video/BV1hM4y157xX/?spm_id_from=333.337.search-card.all.click&amp;vd_source=276d55048634a5b508b1b53a1ecd56b3（李宏毅NLP）</a></p>
+</li>
+</ul>
+<p>参考博客：</p>
+<ul>
+<li>python自然语言处理：<a target="_blank" rel="noopener" href="https://nltk.apachecn.org/#/">https://nltk.apachecn.org</a>（实操）；</li>
+<li>《自然语言处理综论 中文版》：<a target="_blank" rel="noopener" href="https://secsilm.gitbook.io/slp3-zh/">README - slp3-zh (gitbook.io)</a>；</li>
+<li><a target="_blank" rel="noopener" href="https://blog.51cto.com/u_9869701/category6">努力推石头的西西弗斯的博客_自然语言处理_51CTO博客</a>；</li>
+</ul>
+<hr>
+<p>2023&#x2F;2&#x2F;28 9:15 本学期的这几门课实际上啃书的效果都不是很大，效率太低了，推荐直接刷视频然后上手写代码，不管是知识图谱还是自然语言处理还是机器视觉技术，通通适用（因为课后作业也都涉及编程）；</p>
+<p>2023&#x2F;3&#x2F;2 10:15 西湖大学这个课程非常推荐！！！极其适合新手由浅入深进行学习，主要是和课程大纲类似所以可以作为学校课程的替代课程，李宏毅那个更加偏向于实际应用，可以在学完西湖大学的课程之后再看；</p>
+<p>2023&#x2F;3&#x2F;2 15:56 《统计自然语言处理》这本教材可以作为中文版的教材使用，但是因为它可能偏向的是基于统计的方法，所以也不能只看书，还是要结合视频，同时概率论的知识点我们也需要复习掌握；</p>
+<p>2023&#x2F;3&#x2F;4 17:23 知识图谱和自然语言处理这两门课我是真的不知道怎么学了，感觉网上的资源都太杂乱了，西湖大学的课程讲的不是不好，知识点真的非常零碎很难做笔记 – 可能这门课程真的只能上课听讲？或者是按照教学大纲一个一个去网上找知识点；</p>
+<p>2023&#x2F;3&#x2F;9 11:08 这个老师上课讲的东西完全没法听，PPT也做的非常混乱，现在暂定的学习方法就是按照所给的教学大纲和PPT的重点去B站或者百度定向搜索视频或文章来学习；</p>
+<hr>
+<h1 id="绪论"><a href="#绪论" class="headerlink" title="绪论"></a>绪论</h1><p>自然语言处理是一门集语言学、数学、计算机科学和认知科学等于一体的综合性交叉学科，如何让计算机正确、有效地理解和处理人类语言，是当今具有巨大挑战性的理论和技术问题；</p>
+<blockquote>
+<p>“自然语言处理（naturallanguage processing, NLP）就是利用计算机为工具对人类特有的书面形式和口头形式的语言进行各种类型处理和加工的技术”</p>
+<p>“自然语言处理可以定义为研究在人与人交际中以及在人与计算机交际中的语言问题的一门学科。自然语言处理要研制表示语言能力和语言应用的模型，建立计算框架来实现这样的语言模型，提出相应的方法来不断地完善这样的语言模型，根据这样的语言模型设计各种实用系统，并探讨这些实用系统的评测技术”</p>
+<p>​                                                                                                                                         –自然语言处理的定义</p>
+</blockquote>
+<p>基于统计的自然语言处理的理论基础是哲学中的经验主义，基于规则的自然语言处理的理论基础是哲学中的理性主义：</p>
+<ul>
+<li><p>NLP中的理性主义方法是一种基于规则的方法，也称为符号主义方法，这种方法的根本依据是“物理符号系统假设”，即假设人类的智能行为可以使用物理符号系统来模拟</p>
+</li>
+<li><p>NLP中的经验主义方法是一种基于统计的方法，这种方法使用概率或随机的方法来研究语言，建立语言的概率模型</p>
+</li>
+</ul>
+<h2 id="1-NLP概述"><a href="#1-NLP概述" class="headerlink" title="1.NLP概述"></a>1.NLP概述</h2><blockquote>
+<p>语音和文字是构成语言的两个基本属性，语音是语言的物质外壳，文字是记录语言的书写符号系统；</p>
+</blockquote>
+<h3 id="1-1-研究方向"><a href="#1-1-研究方向" class="headerlink" title="1.1 研究方向"></a>1.1 研究方向</h3><p>NLP研究的内容十分广泛，根据其应用的目的不同可以大致分为以下几个方向：</p>
+<p>（1）机器翻译（machine translation，MT）：实现一种语言到另一种语言的自动翻译。<br>（2）自动文摘（automatic summarizing或automatic abstracting）：将原文档的主要内容和含义自动归纳、提炼出来，形成摘要或缩写。<br>（3）信息检索（information retrieval）：信息检索也称情报检索，就是利用计算机系统从海量文档中找到符合用户需要的相关文档。面向两种或两种以上语言的信息检索叫做跨语言信息检索（cross-language&#x2F;trans-lingual information retrieval）。<br>（4）文档分类（document categorization&#x2F;classification）：文档分类也称文本分类（text categorization&#x2F;classification）或信息分类（information categorization&#x2F;classification），其目的就是利用计算机系统对大量的文档按照一定的分类标准（例如，根据主题或内容划分等）实现自动归类。近年来，情感分类（sentiment classification）或称文本倾向性识别（text orientation identification）成为本领域研究的热点。<br>（5）问答系统（question-answering system）：通过计算机系统对用户提出的问题的理解，利用自动推理等手段，在有关知识资源中自动求解答案并做出相应的回答。问答技术有时与语音技术和多模态输入、输出技术，以及人-机交互技术等相结合，构成人-机对话系统<br>（human-computer dialogue system）。<br>（6）信息过滤（information filtering）：通过计算机系统自动识别和过滤那些满足特定条件的文档信息。通常指网络有害信息的自动识别和过滤，主要用于信息安全和防护、网络内容管理等。<br>（7）信息抽取（information extraction）：指从文本中抽取出特定的事件（event）或事实信息，有时候又称事件抽取（event extraction）。<br>（8）文本挖掘（text mining）：有时又称数据挖掘（data mining），是指从文本（多指网络文本）中获取高质量信息的过程。文本挖掘技术一般涉及文本分类、文本聚类（text clustering）、概念或实体抽取（concept&#x2F;entity extraction）、粒度分类、情感分析（sentiment analysis）、自动文摘和实体关系建模（entity relation modeling）等多种技术。<br>（9）舆情分析（public opinion analysis）：由于网上的信息量十分巨大，仅仅依靠人工的方法难以应对海量信息的收集和处理，需要加强相关信息技术的研究，形成一套自动化的网络舆情分析系统，及时应对网络舆情，由被动防堵变为主动梳理、引导。显然，舆情分析是一项十分复杂、涉及问题众多的综合性技术，它涉及网络文本挖掘、观点（意见）挖掘（opinion mining）等各方面的问题。<br>（10）隐喻计算（metaphorical computation）：”隐喻”就是用乙事物或其某些特征来描述甲事物的语言现象。简要地讲，隐喻计算就是研究自然语言语句或篇章中隐喻修辞的理解方法。<br>（11）文字编辑和自动校对（automatic proofreading）：对文字拼写、用词，甚至语法、文档格式等进行自动检查、校对和编排。<br>（12）作文自动评分：对作文质量和写作水平进行自动评价和打分。<br>（13）光读字符识别（optical character recognition，OCR）：通过计算机系统对印刷体或手写体等文字进行自动识别，将其转换成计算机可以处理的电子文本，简称字符识别或文字识别。相对而言，文字识别研究的主要内容更多地属于字符（汉字）图像识别问题，通常被看作是一个模式识别问题。<br>（14）语音识别（speech recognition）：将输入计算机的语音信号识别转换成书面语表示。语音识别也称自动语音识别（automatic speech recognition，ASR）。<br>（15）文语转换（text-to-speech conversion）：将书面文本自动转换成对应的语音表征，又称语音合成（speech synthesis）。<br>（16）说话人识别&#x2F;认证&#x2F;验证（speaker recognition&#x2F;identification&#x2F;verification）：对一说话人的言语样本做声学分析，依此推断（确定或验证）说话人的身份。</p>
+<hr>
+<blockquote>
+<p>Q：信息抽取和信息检索的区别是什么？</p>
+</blockquote>
+<p>A：信息抽取直接从自然语言文本中抽取信息框架，一般是用户感兴趣的事实信息，而信息检索主要是从海量文档集合中找到与用户需求（一般通过关键词表达）相关的文档列表。当然，信息抽取与信息检索也有密切的关系，信息抽取系统通常以信息检索系统（如文本过滤）的输出作为输入，而信息抽取技术又可以用来提高信息检索系统的性能。</p>
+<hr>
+<h3 id="1-2-基本问题"><a href="#1-2-基本问题" class="headerlink" title="1.2 基本问题"></a>1.2 基本问题</h3><blockquote>
+<p>如何面向不同的应用目标，针对不同语言单位的特点，研究歧义消解和未知语言现象的处理策略及实现方法，就成了自然语言处理面临的核心问题；</p>
+</blockquote>
+<p>歧义是自然语言中普遍存在的语言现象，它们广泛地存在于词法、句法、语义、语用和语音等每一个层面。任何一个自然语言处理系统，都无法回避歧义的消解问题。</p>
+<p>一个实用的自然语言处理系统必须具有较好的未知语言现象的处理能力，而且有足够的对各种可能输入形式的容错能力，即我们通常所说的系统的鲁棒性（robustness）问题。</p>
+<h3 id="1-3-基本方法"><a href="#1-3-基本方法" class="headerlink" title="1.3 基本方法"></a>1.3 基本方法</h3><blockquote>
+<p>一般认为，自然语言处理中存在着两种不同的研究方法，一种是理性主义（rationalist）方法，另一种是经验主义（empiricist）方法；</p>
+</blockquote>
+<ul>
+<li>理性主义方法认为，人的大部分语言知识是与生俱来的，由遗传决定<ul>
+<li>NLP中，理性主义方法主张建立符号处理系统，由人工整理和编写初始的语言知识表示体系（通常为规则），构造相应的推理程序，系统根据规则和程序，将自然语言理解为符号结构（逻辑表达式、语义网络、中间语言等）</li>
+</ul>
+</li>
+<li>经验主义方法认为大脑一开始具备的只是具有处理联想、模式识别和通用化处理的能力，这些能力能够协助掌握具体的自然语言结构<ul>
+<li>NLP中，经验主义方法主张通过建立特定的数学模型来学习复杂的、广泛的语言结构，然后利用统计学、模式识别和机器学习等方法来训练模型的参数，以扩大语言使用的规模；</li>
+<li>经验主义的自然语言处理方法是建立在统计方法基础之上的，因此，我们又称其为统计自然语言处理（statistical natural language processing）方法；</li>
+<li>在统计自然语言处理方法中，一般需要收集一些文本作为统计模型建立的基础，这些文本称为语料（corpus）。经过筛选、加工和标注等处理的大批量语料构成的数据库叫做语料库。由于统计方法通常以大规模语料库为基础，因此，又称为基于语料的自然语言处理方法；</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-基本概念"><a href="#2-基本概念" class="headerlink" title="2.基本概念"></a>2.基本概念</h2><h3 id="2-1-常用术语"><a href="#2-1-常用术语" class="headerlink" title="2.1 常用术语"></a>2.1 常用术语</h3><p>自然语言处理NLP：通过算法、统计或常识专门处理语言和各种方法的学科；</p>
+<p>自然语言理解NLU：对某种自然语言的文本的真正理解；</p>
+<p>计算语言学：从语言学的角度来分析、处理自然语言，试图通过计算机来模拟人的语言能力。目前来看，计算机语言学和自然语言处理方向一致，两者可以看作同一事物的不同名称；</p>
+<h3 id="2-2-语言处理层次"><a href="#2-2-语言处理层次" class="headerlink" title="2.2 语言处理层次"></a>2.2 语言处理层次</h3><p>语言处理的层次自底向上依次为：</p>
+<ul>
+<li>形态分析 (Morphological Analysis)</li>
+<li>句法分析 (Syntax)</li>
+<li>语义分析 (Semantic)</li>
+<li>语用分析 (Pragmatics)</li>
+<li>篇章分析 (Discourse)</li>
+<li>世界知识分析 (World)</li>
+</ul>
+<p>从词汇、句法直到世界知识，下一层就是上一层的基础，当下一层表述不合理时，上一层也无法实现正确表达；</p>
+<h4 id="2-2-1-形态分析"><a href="#2-2-1-形态分析" class="headerlink" title="2.2.1 形态分析"></a>2.2.1 形态分析</h4><p>形态分析也称为词汇分析，指的是从完整书写的词形式中识别出词干，例如英语单词cowardly &#x3D;coward（词干）+ ly（后缀）；</p>
+<p>一般形态分析也包括词性分析，上述例子中的ly就是将名词变为形容词；</p>
+<blockquote>
+<p>中文分词：汉语或者大多数东亚语言中的词汇分析与英语有所不同，汉语是词汇间无间隔的句子书写方式，所以这就要求，从句子（即字序列）中切分出词，这个处理称做中文分词</p>
+</blockquote>
+<p>大多数自然语言分析系统通常首先需要将文本分割为有语言学意义的符号单元。广义上来说，这个过程包括分词（切分）、词原型提取、词性标注以及命名实体&#x2F;短语识别等一大类词法处理任务。</p>
+<h4 id="2-2-2-句法分析"><a href="#2-2-2-句法分析" class="headerlink" title="2.2.2 句法分析"></a>2.2.2 句法分析</h4><p>句法和语义是关联的两个语言层次的概念，句法有时候也不够严格地被称为语法或文法（grammer)，严格来说，<code>语法 = 句法 + 语义</code>；</p>
+<p>句法指定义了句子内部各成分之间的形式化的相对位置关系，通常来说，<code>句法 = 词典 + 规则</code>；</p>
+<p>句法分析的目标是给各句子成份分配句法类别标签，并确定各成份之间的句法关系；</p>
+<h4 id="2-2-3-语义分析"><a href="#2-2-3-语义分析" class="headerlink" title="2.2.3 语义分析"></a>2.2.3 语义分析</h4><p>语义分析的目的是为意义完整的话语（utterances）赋予意义，包括词义及词义组合，这是一种与上下文无关的意义；</p>
+<p>上下文相关的语义分析包括：</p>
+<ul>
+<li>句子层面的语义角色标注任务：给出句子内部的谓词-论元结构</li>
+<li>词义消歧</li>
+<li>指代消解</li>
+</ul>
+<h4 id="2-2-4-语用分析"><a href="#2-2-4-语用分析" class="headerlink" title="2.2.4 语用分析"></a>2.2.4 语用分析</h4><p>指文本符号或会话与会话生产者&#x2F;用户之间的关系；</p>
+<p>它对不同的情境上下文背景中，对话语的解释重大影响；</p>
+<p>这部分工作困难重重，目前还没有在此方面取得突破性进展；</p>
+<h4 id="2-2-5-篇章分析"><a href="#2-2-5-篇章分析" class="headerlink" title="2.2.5 篇章分析"></a>2.2.5 篇章分析</h4><p>针对文本整体论述结构的分析，同时，还负责分析文本句子之间的关系；</p>
+<h4 id="2-2-6-世界知识分析"><a href="#2-2-6-世界知识分析" class="headerlink" title="2.2.6 世界知识分析"></a>2.2.6 世界知识分析</h4><p>世界知识是指不受限制的常识知识，这个任务是负责推断出每个语言用户必须具备的一般世界知识；</p>
+<h1 id="一、形态分析"><a href="#一、形态分析" class="headerlink" title="一、形态分析"></a>一、形态分析</h1><p>Morphological Analysis 译为形态分析，又译为词汇分析，其中形态学Morphological是语言学的一个分支，研究词的内部结构，包括屈折变化和构词法两个部分；</p>
+<h2 id="1-词的构成"><a href="#1-词的构成" class="headerlink" title="1.词的构成"></a>1.词的构成</h2><h3 id="1-1-词素"><a href="#1-1-词素" class="headerlink" title="1.1 词素"></a>1.1 词素</h3><blockquote>
+<p>词是基于最小的语义单元-词素构成的</p>
+</blockquote>
+<p>词素可以分成两种：</p>
+<ul>
+<li><p>词干：play cat friend</p>
+</li>
+<li><p>词缀：-ed -s un- -ly</p>
+</li>
+</ul>
+<p>词缀又可以分为两种：</p>
+<ul>
+<li>前缀：un-</li>
+<li>后缀：-ed -s un- -ly</li>
+</ul>
+<h3 id="1-2-变形"><a href="#1-2-变形" class="headerlink" title="1.2 变形"></a>1.2 变形</h3><blockquote>
+<p>变形是同一个单词的不同形式</p>
+</blockquote>
+<p><img src="/images/image-20230311100730470.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-3-形态变换"><a href="#1-3-形态变换" class="headerlink" title="1.3 形态变换"></a>1.3 形态变换</h3><blockquote>
+<p>形态变换可以用来形成新词</p>
+</blockquote>
+<p>衍生 &#x3D; 词干 + 词缀</p>
+<ul>
+<li>friend + -ly &#x3D; friendly</li>
+<li>un- + friendly &#x3D; unfriendly</li>
+<li>unfriendly + -ness &#x3D; unfriendlyness</li>
+</ul>
+<p>组合 &#x3D; 词干 + 词干</p>
+<ul>
+<li>rail + way &#x3D; railway</li>
+</ul>
+<h2 id="2-分词"><a href="#2-分词" class="headerlink" title="2.分词"></a>2.分词</h2><p>分词(tokenize)就是将句子、段落、文章这种长文本，分解为以字词为单位的数据结构，方便后续的处理分析工作；</p>
+<h2 id="3-词形还原"><a href="#3-词形还原" class="headerlink" title="3.词形还原"></a>3.词形还原</h2><p>词形还原主要包含词干化Steamming和原形化Lemmatizing；</p>
+<p>stemming是去掉词缀，比如:</p>
+<p>play -&gt; play<br>replayed -&gt; re-play-ed<br>computerized -&gt; comput-er-ize-d</p>
+<p>Lemmatizing是找到原形，其实也就是基于变形或衍生的不同</p>
+<p><img src="/images/image-20230311101032361.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="4-词形标记"><a href="#4-词形标记" class="headerlink" title="4.词形标记"></a>4.词形标记</h2><p>以句子为单位，而不是单词为单位，为每一个词标上词形，词形标记通常被用于下游的任务：命名实体识别、依赖解析：</p>
+<ul>
+<li>默认标注器</li>
+<li>正则表达式标注器</li>
+<li>查询标注器</li>
+<li>N-Gram标注器</li>
+</ul>
+<h2 id="5-命名实体识别"><a href="#5-命名实体识别" class="headerlink" title="5.命名实体识别"></a>5.命名实体识别</h2><p>命名实体识别（Named Entity Recognition，简称NER），又称作“专名识别”，是指识别文本中具有特定意义的实体，主要包括人名、地名、机构名、专有名词等；</p>
+<h1 id="二、句法分析"><a href="#二、句法分析" class="headerlink" title="二、句法分析"></a>二、句法分析</h1><h2 id="1-语言模型"><a href="#1-语言模型" class="headerlink" title="1.语言模型"></a>1.语言模型</h2><p>参考链接：</p>
+<ul>
+<li>语言模型简介：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/32292060">一起入门语言模型(Language Models) - 知乎 (zhihu.com)</a>；</li>
+<li>语言模型分类：<a target="_blank" rel="noopener" href="https://www.51cto.com/article/714730.html">一文读懂“语言模型”-51CTO.COM</a>；</li>
+</ul>
+<p>语言模型起源于语音识别(speech recognition)，输入一段音频数据，语音识别系统通常会生成多个句子作为候选，究竟哪个句子更合理？就需要用到语言模型对候选句子进行排序；</p>
+<p>什么是语言模型呢？一句话，语言模型是这样一个模型：对于任意的词序列，它能够计算出这个序列是一句话的概率。举俩例子就明白了，比如词序列A：“作者|的|文章|真|水|啊”，这个明显是一句话，一个好的语言模型也会给出很高的概率，再看词序列B：“作者|的|睡觉|苹果|好快”，这明显不是一句话，如果语言模型训练的好，那么序列B的概率就很小很小；</p>
+<blockquote>
+<p>语言模型的定义</p>
+<p>定义1(概率角度)：假设为中文创建一个语言模型，V表示词典（V&#x3D;{猫，狗，猪…}），w<del>i</del>∈V，语言模型表示这样一个模型，给定词典V，能够计算出任意词序列w<del>1</del>、w<del>2</del>…w<del>n</del>是一句话的概率p(w<del>1</del>、w<del>2</del>…w<del>n</del>)，其中p&gt;&#x3D;0；</p>
+<p>定义2(文本生成角度)：给定一个短语(一个词组或一句话)，语言模型可以生成(预测)接下来的一个词；</p>
+</blockquote>
+<p>根据概率论中的链式法则将p展开可以得到</p>
+<p><img src="/images/image-20230311103433553.png" srcset="/img/loading.gif" lazyload></p>
+<p>构建语言模型主要分为两个阶段：</p>
+<ul>
+<li>模型训练：从训练数据（training data）中学习得到语言模型，即从训练样例中统计n-grams的参数，并估计其n-gram的条件概率；</li>
+<li>模型测试：在给定的测试数据（test data）中评价学习得到的语言模型；</li>
+</ul>
+<p>模型测试阶段需要评估一个语言模型的建模质量，一个好的语言模型应该给实际使用的句子打较高的概率；</p>
+<h3 id="1-1-n-gram语言模型"><a href="#1-1-n-gram语言模型" class="headerlink" title="1.1 n-gram语言模型"></a>1.1 n-gram语言模型</h3><p>关于n-gram语言模型只需要看这个视频即可（这个视频是n-gam的全面介绍，非常推荐）：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1hb4y1W7GU/?spm_id_from=333.880.my_history.page.click&vd_source=276d55048634a5b508b1b53a1ecd56b3">n-gram language model（n-gram语言模型）_哔哩哔哩_bilibili</a>；</p>
+<p>n-gram语言模型的局限性：</p>
+<ul>
+<li>数据稀疏问题：<ul>
+<li>理论上，模型阶数越高越好，但由于数据稀疏，N-gram模型中n达到一定值后，n越大性能反而越差（&lt;6），因此n-gram模型无法用于计算高阶；</li>
+<li>同时，由于数据稀疏问题，平滑对于n-gram模型的使用很重要，是否有不需要平滑就可以直接用的语言模型？</li>
+</ul>
+</li>
+<li>语言相似性：<ul>
+<li>基于符号的词表示方法无法考虑其概率相似度</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-2-神经网络语言模型"><a href="#1-2-神经网络语言模型" class="headerlink" title="1.2 神经网络语言模型"></a>1.2 神经网络语言模型</h3><p>因为n-gram语言模型基于符号的词的表示导致其无法用于计算，故介绍了one-hot编码、词的共现矩阵以及词向量模型这些可以用于计算的词的表示方法，下面将介绍一个新的语言模型 – 神经网络语言模型；</p>
+<h1 id="三、未完成…"><a href="#三、未完成…" class="headerlink" title="三、未完成…"></a>三、未完成…</h1><hr>
+<p>2023&#x2F;3&#x2F;29 15:39 这篇文章到此为止吧，参考的资料过多导致知识点太复杂了（几乎没学到什么东西），新开了一篇自然语言的博客，参考<a href="https://gintoki-jpg.github.io/2023/03/29/%E4%B8%93%E4%B8%9A_%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86_%E4%B8%AD%E7%BA%A7/">自然语言处理_中级 - Tintoki_blog (gintoki-jpg.github.io)</a>；</p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E4%B8%93%E4%B8%9A%E8%AF%BE/" class="category-chain-item">专业课</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">#机器学习</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>自然语言处理_初级</div>
+      <div>https://gintoki-jpg.github.io/2023/02/27/专业_自然语言处理_初级/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>杨再俨</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年2月27日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/02/27/%E4%B8%93%E4%B8%9A_%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/" title="机器视觉">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">机器视觉</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/02/27/%E4%B8%93%E4%B8%9A_%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" title="强化学习">
+                        <span class="hidden-mobile">强化学习</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+</div>
+
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

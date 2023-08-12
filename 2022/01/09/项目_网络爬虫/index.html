@@ -1,0 +1,725 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/logo.png">
+  <link rel="icon" href="/img/bg/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="杨再俨">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="借助 selenium、pandas 等工具完成基本的数据爬取和分析。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初级项目_网络爬虫">
+<meta property="og:url" content="https://gintoki-jpg.github.io/2022/01/09/%E9%A1%B9%E7%9B%AE_%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB/index.html">
+<meta property="og:site_name" content="Tintoki_blog">
+<meta property="og:description" content="借助 selenium、pandas 等工具完成基本的数据爬取和分析。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/project.png">
+<meta property="article:published_time" content="2022-01-08T16:07:00.000Z">
+<meta property="article:modified_time" content="2023-02-08T08:01:32.200Z">
+<meta property="article:author" content="YangZaiyan">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="数据爬取">
+<meta property="article:tag" content="网络爬虫">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gintoki-jpg.github.io/img/bg/project.png">
+  
+  
+  
+  <title>初级项目_网络爬虫 - Tintoki_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"gintoki-jpg.github.io","root":"/","version":"1.9.1","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tintoki_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/bg1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">初级项目_网络爬虫</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-01-09 00:07" pubdate>
+          2022年1月9日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          31 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">初级项目_网络爬虫</h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h1><p>项目源码链接：<a target="_blank" rel="noopener" href="https://github.com/Gintoki-jpg/Web_Crawler">Gintoki-jpg&#x2F;Web_Crawler: 简单利用python进行数据获取、数据处理和数据分析 (github.com)</a>；</p>
+<h2 id="1-项目分析"><a href="#1-项目分析" class="headerlink" title="1.项目分析"></a>1.项目分析</h2><p>项目需求概括为以下几点：<br>（1）抓取北京邮电大学、西安电子科技大学、电子科技大学，自 2021 年 10 月 1 日以来的就业帖子，将爬取信息包含规定的字段储存在 3 个不同的 csv 文件中；<br>（2）对三个数据文件进行数据预处理，为后续数据分析的数据做好准备，将预处理完成的三个文件分别存入三个新建的 csv 文件；<br>（3）要求新建一个 csv 文件对上面三个预处理完成的文件进行合并，需要去重并归纳自行）使用 pandas 数据分析库，对以上四个文件的数据进行分析，分别得到如最受北邮学生关注的招聘 TOP20 此类的数据信息；</p>
+<h2 id="2-基本思路"><a href="#2-基本思路" class="headerlink" title="2.基本思路"></a>2.基本思路</h2><p>首先针对数据获取，我对三个学校的就业网站都使用的是 selenium 模拟浏览器行为对数据进行爬取，采取了模拟浏览器向服务器发送 post 请求的方式，获得了含有所需信息的json 数据，并处理、储存数据。而实际上西电的网站是静态网页，所以使用 selenium 可能会导致爬取速度上并没有使用 scrapy 框架+bs4 快。获取并储存数据到三个基本数据文件 BEIYOU_1、XIDIAN_1、CHENGDIAN_1，接下来使用 pandas 库对数据进行预处理。其基本要求即将字符串格式的数字类型转换为整形并使用填充、删除等方式规范文本数据格式，最后将日期转化为标准日期格式。创建第四个文件 CAT_A 时我将前三个文件的数据进行汇总，并着重分析“用人单位”这一项数据的属性，分别提取了几十个高频出现的词汇并对其进行归类，如将带有“研究所”、“研究院”词汇的招聘公司归类为“研究机构”这一雇主类型。最后，编写程序对上述 csv 文件进行分析，主要思想就是按照“浏览次数”或者“职位数量”对数据进行降序排序并取前面数据，得到受欢迎的 TOP 排行榜。针对最后一个最关注 ICT 行业的招聘主题排行，我将其转化为最受欢迎的互联网科技企业的招聘主题 TOP 榜，之所以能够这样处理是因为我在前面对雇主类型“互联网科技企业”进行归类时已经包含了ICT 行业的相关内容，故只需要取各个学校的“互联网科技企业”TOP10 再次依据“浏览次数”和“职位数量”双重降序取前 10 得到最关注 ICT 行业的招聘主题 TOP10。</p>
+<h1 id="二、项目设计"><a href="#二、项目设计" class="headerlink" title="二、项目设计"></a>二、项目设计</h1><h2 id="1-模型设计"><a href="#1-模型设计" class="headerlink" title="1.模型设计"></a>1.模型设计</h2><h3 id="1-1-分类原则"><a href="#1-1-分类原则" class="headerlink" title="1.1 分类原则"></a>1.1 分类原则</h3><p>通过观察并分析，在分析了近百个招聘公司以及查阅了公司基本信息之后，我能够大致凭借公司的名称对其所属行业进行分类。如具有“网络科技”字样的公司属于“互联网科技企业”。由于能力有限以及对相关行业的判断不能特别准确，所以我在下面做的划分可能会出现偏差以及涵盖不全，在接下来我还将寻找更好的解决办法，提高自己对于数据处理以及模型构建的能力。<br>下面是我对招聘信息进行的雇主类型的分类：<br>研究机构——研究院、研究所、实验室<br>金融企业——证券、基金、投资、期货、基金会、房地产、银行、控股、资产、保险、<br>税务<br>医疗科技企业——医疗、医药、生物、药、医院、医<br>工业科技企业——工业、化工、工程、化学、材料、航天、动力、光电、设备、电力、<br>电器、半导体、电气、电机、电路、设计、系统、机械、工厂、机电、中铁、装备、智造<br>社会企业——人力、工作局<br>高新技术企业——电源、新技术、能源<br>互联网科技企业——科技（先医疗，再科技，范围大的放在后面）、技术、电子、信息、<br>网络、计算、工程师、数据、数码、软件、机器人、数科、开发、信号、通信<br>教育单位类——学校、学院、大学、中心<br>人文知识企业——文化、知识<br>专业技术服务企业——检测、管理、咨询、建设、管道<br>媒体——传媒、传播、广告<br>政府企业——委员会<br>生活类企业——乳业、事务所、物流、汽车、饮料、物业、五金、食品…</p>
+<h3 id="1-2-分类方法"><a href="#1-2-分类方法" class="headerlink" title="1.2 分类方法"></a>1.2 分类方法</h3><p>首先将 DataFrame 的“用人单位”列改名为“雇主类型”（因为我们不需要“用人单位”这个字段，而需要根据“用人单位”分类得到“雇主类型”）。接着为了检验“雇主类型”列的数据是否含有相应字段并对其进行处理，我们首先将“雇主类型”列转化为列表便于遍历。接着使用 if…elif…else 结构逐个对列表元素进行匹配，假如匹配成功则将 DataFrame 的原数据进行修改，假如公司名称均不含上述字段，则将其“雇主类型”归类为“其他”。</p>
+<h2 id="2-系统设计"><a href="#2-系统设计" class="headerlink" title="2.系统设计"></a>2.系统设计</h2><p>因为我使用的anaconda的jupyter notebook编辑器进行代码的编写所以并没有分文件进行编写，而是分代码块编写，下面我将分代码块介绍程序设计的原理</p>
+<p>导入需要使用的库</p>
+<p><img src="/images/image-20230208103511480.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-1-数据爬取"><a href="#2-1-数据爬取" class="headerlink" title="2.1 数据爬取"></a>2.1 数据爬取</h3><h4 id="2-1-1-爬取北邮就业网站"><a href="#2-1-1-爬取北邮就业网站" class="headerlink" title="2.1.1 爬取北邮就业网站"></a>2.1.1 爬取北邮就业网站</h4><p>首先使用 driver 打开网址</p>
+<p><img src="/images/image-20230208103542158.png" srcset="/img/loading.gif" lazyload></p>
+<p>接着创建 csv 文件保存爬取数据，我们将需要的字段“招聘主题”、“用人单位”、“发布日期”、“浏览次数”、“职位数量”作为首行，并创建空字典 dict 暂存将要爬取的数据</p>
+<p><img src="/images/image-20230208103600752.png" srcset="/img/loading.gif" lazyload></p>
+<p>准备工作完成之后，下面编写 worm1()爬虫程序<br>首先对北邮就业网站首页进行分析，我们可以获取“招聘主题”、“用人单位”、“发布日期”和“职位数量”的数据，但是“浏览次数”需要我们点击具体招聘帖子获取。当我们获取了“发布时间”后需要进行比较，以判断该帖子是否是“2021-10-1”日期后发布的</p>
+<p><img src="/images/image-20230208103623582.png" srcset="/img/loading.gif" lazyload></p>
+<p>接下来我们点击某一个招聘帖子进入招聘页面，发现此时浏览器的页面跳转为招聘页面（这点与西电不同将在后面介绍）。我们获取完“浏览次数”信息后需要返回，此时只能点击上面的“招聘信息”返回到首页（注意是首页而不是之前进入的页面）</p>
+<p><img src="/images/image-20230208103644412.png" srcset="/img/loading.gif" lazyload></p>
+<p>现在假如我们现在是在第二页，那么我们获取了第二页第一个的“浏览次数”后要获取第二页第二个其他招聘信息就需要先返回首页，然后翻页，然后重复上述操作。这里是翻页操作的代码（包含了获取完 15 条帖子自动点击“下一页”按钮进入下一页）</p>
+<p><img src="/images/image-20230208103704795.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-1-2-爬取成电就业网站"><a href="#2-1-2-爬取成电就业网站" class="headerlink" title="2.1.2 爬取成电就业网站"></a>2.1.2 爬取成电就业网站</h4><p>由于三个网站的爬取使用的都是 selenium 模拟爬取，所以前面的准备操作与北邮相同，此处不做赘述</p>
+<p><img src="/images/image-20230208103748260.png" srcset="/img/loading.gif" lazyload></p>
+<p>进入成电的就业网站，我们可以直接获取到“招聘信息”、“用人单位”、“发布日期”的基本信息，而“浏览次数”默认置零。在获取了“发布日期”后，同样要比较判断是否为规定爬取日期之前的帖子，否则程序终止</p>
+<p><img src="/images/image-20230208103806531.png" srcset="/img/loading.gif" lazyload></p>
+<p>观察发现一页有 20 条招聘信息，爬取完毕后点击“下一页”按钮继续爬取</p>
+<p><img src="/images/image-20230208103821527.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-1-3-爬取西电就业网站"><a href="#2-1-3-爬取西电就业网站" class="headerlink" title="2.1.3 爬取西电就业网站"></a>2.1.3 爬取西电就业网站</h4><p><img src="/images/image-20230208103840627.png" srcset="/img/loading.gif" lazyload></p>
+<p>接着分析西电的网站，能够直接获取的信息是“招聘信息”、“发布日期”、“用人单位”。同北邮一样，我们需要点击招聘帖子才能得到“浏览次数”的信息</p>
+<p><img src="/images/image-20230208103857377.png" srcset="/img/loading.gif" lazyload></p>
+<p>点击进入详情页面后我们发现浏览器是新建了一个页面打开，于是在获取完需要的信息后关闭这个页面即可（并不需要像北邮一样点击回退按钮）</p>
+<p><img src="/images/image-20230208103912744.png" srcset="/img/loading.gif" lazyload></p>
+<p>要实行该操作需要用到句柄转换，由于 selenium 模拟浏览器控制的实际上是句柄对应的页面，并不是我们认为的我们看到的页面，所以需要用到下面这段代码——将句柄转换后关闭新打开的页面，再转换句柄至原来的页面获取其他招聘帖子的信息</p>
+<p><img src="/images/image-20230208103930648.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-2-数据预处理"><a href="#2-2-数据预处理" class="headerlink" title="2.2 数据预处理"></a>2.2 数据预处理</h3><p>因为成电和西电的数据字段相同，所以我们编写的代码相同。北邮只是多了一个对“职位数量”的处理<br>首先使用 pandas 的.read_csv()方法对爬取得到的数据进行读取并保存在 DataFrame 中<br>下面处理日期我们使用 pandas 内置的格式化方法</p>
+<p><img src="/images/image-20230208104120194.png" srcset="/img/loading.gif" lazyload></p>
+<p>接着是将空值 Nan 填充为 0，同样使用内置方法</p>
+<p><img src="/images/image-20230208104134104.png" srcset="/img/loading.gif" lazyload></p>
+<p>接下来是针对北邮特有的“职位数量”进行处理，因为某些招聘信息中不包括“职位数量”，而用的是“无职位数量信息”字段代替，所以我们将该字段作为判断条件，若匹配则将对应的“职位数量”替换为 1，否则直接转化为整型即可</p>
+<p><img src="/images/image-20230208104153879.png" srcset="/img/loading.gif" lazyload></p>
+<p>处理完上述信息后，我们需要自己创建一个序号的列替换隐式索引，因为之前的隐式索引序号并不美观，并且没有列名，并不方便索引</p>
+<p><img src="/images/image-20230208104210819.png" srcset="/img/loading.gif" lazyload></p>
+<p>因为这个文件是包含了前面三个文件的信息，所以我们在读取方式上有一点不同，此处采用了将其置于列表中逐条读取的方法</p>
+<p><img src="/images/image-20230208104238231.png" srcset="/img/loading.gif" lazyload></p>
+<p>首先是去重，这里使用内置函数处理</p>
+<p><img src="/images/image-20230208104252598.png" srcset="/img/loading.gif" lazyload></p>
+<p>接着是对“雇主类型”的分类，这里我们采用简单直接的 for 循环对每个数据进行对比，判断其是否匹配并决定将其“雇主类型”归类为哪一个。下面仅展示部分代码</p>
+<p><img src="/images/image-20230208104312433.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-3-数据分析"><a href="#2-3-数据分析" class="headerlink" title="2.3 数据分析"></a>2.3 数据分析</h3><p>依据“浏览次数”对“招聘主题”进行降序排序并筛选前 20 个数据分别得到最受北邮学生关注的招聘 TOP20、最受西电学生关注的招聘 TOP20、最受成电学生关注的招聘 TOP20</p>
+<p><img src="/images/image-20230208104334592.png" srcset="/img/loading.gif" lazyload></p>
+<p>依据“雇主类型”求和的次数得到 TOP10，首先我们要将“用人单位”转化为“雇主类型”（参考前面的暴力代码），接着使用.value_counts()方法进行计数降序得到最受北邮学生关注的雇主类型 TOP10、最受西电学生关注的雇主类型 TOP10、最受成电学生关注的雇主类型 TOP10</p>
+<p><img src="/images/image-20230208104354361.png" srcset="/img/loading.gif" lazyload></p>
+<p>北邮招聘职位总数、招聘职位数量 TOP10 （简单按帖子主题就行，不需要解析企业名称）、招聘职位所属雇主类型 TOP10——其处理方式就是用内置函数</p>
+<p><img src="/images/image-20230208104416530.png" srcset="/img/loading.gif" lazyload></p>
+<p>最后我们要得到最关注 ICT 行业的招聘主题 TOP10，因为要根据三个学校的总额和排名并且使用“浏览次数”和“职位数量”双重排序，我们不妨转化思路，先将三个学校关注 ICT行业的招聘主题 TOP10 即根据双重排序得到的三个学校各自的“互联网科技企业”TOP10，接着将这 30 个数据再进行排序比较得到最终结果</p>
+<p><img src="/images/image-20230208104435228.png" srcset="/img/loading.gif" lazyload></p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/" class="category-chain-item">项目开发</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/python/">#python</a>
+      
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E7%88%AC%E5%8F%96/">#数据爬取</a>
+      
+        <a href="/tags/%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB/">#网络爬虫</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>初级项目_网络爬虫</div>
+      <div>https://gintoki-jpg.github.io/2022/01/09/项目_网络爬虫/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>杨再俨</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年1月9日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/06/09/%E9%80%9A%E8%AF%86_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" title="计算机网络">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">计算机网络</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+</div>
+
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

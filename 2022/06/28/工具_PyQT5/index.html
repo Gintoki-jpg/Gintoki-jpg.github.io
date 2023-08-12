@@ -1,0 +1,999 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/logo.png">
+  <link rel="icon" href="/img/bg/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="杨再俨">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Pyside2和PyQT5都是基于Qt 的Python库，优点是控件比较丰富、跨平台体验好、文档完善、用户多。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PyQT5">
+<meta property="og:url" content="https://gintoki-jpg.github.io/2022/06/28/%E5%B7%A5%E5%85%B7_PyQT5/index.html">
+<meta property="og:site_name" content="Tintoki_blog">
+<meta property="og:description" content="Pyside2和PyQT5都是基于Qt 的Python库，优点是控件比较丰富、跨平台体验好、文档完善、用户多。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/pyqt5.png">
+<meta property="article:published_time" content="2022-06-28T10:05:00.000Z">
+<meta property="article:modified_time" content="2023-05-13T08:54:04.614Z">
+<meta property="article:author" content="YangZaiyan">
+<meta property="article:tag" content="开发工具">
+<meta property="article:tag" content="图形可视化">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gintoki-jpg.github.io/img/bg/pyqt5.png">
+  
+  
+  
+  <title>PyQT5 - Tintoki_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"gintoki-jpg.github.io","root":"/","version":"1.9.1","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tintoki_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/bg1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">PyQT5</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-06-28 18:05" pubdate>
+          2022年6月28日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          14k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          117 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">PyQT5</h1>
+            
+            <div class="markdown-body">
+              
+              <p>本教程参考自书籍《PyQT5快速开发与实战》</p>
+<p>pyqt5学习视频：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV17J41177ro?from=search&seid=12934554004875981350&spm_id_from=333.788.b_636f6d6d656e74.41&vd_source=276d55048634a5b508b1b53a1ecd56b3">Python-GUI编程-PyQt5 (少)_哔哩哔哩_bilibili</a></p>
+<p>pyqt5中文文档：<a target="_blank" rel="noopener" href="http://code.py40.com/pyqt5/14.html">【第一节】PyQt5简介-PyQt5中文教程 (py40.com)</a></p>
+<blockquote>
+<p>学习进度</p>
+</blockquote>
+<p>2022&#x2F;6&#x2F;27</p>
+<p>现在看的是b站一个up主的视频讲解，整体感觉还可以，没有废话讲得非常有意思，但是肯定只能算是入门，真正需要反复练习才能熟悉使用；</p>
+<p>本质上，easyX是一个画图工具，不适合新手使用，而且不容易把图形界面和功能代码分开，最重要的一点是几乎没有人用easyX，网上的教程都是那种非常水的教程；</p>
+<p>pyside2对新手非常友好的一点就是可以直接使用工程师手动搭建ui界面然后动态加载进入目标文件中，可能需要着重理解的点就是python的类相关以及常见控件的使用方法，QT是pyside2和pyQT的父类，所以学会了pyside2也就基本完全掌握了QT；</p>
+<p>2022&#x2F;6&#x2F;27</p>
+<p>现在晚上9：43，已经差不多把白月黑羽up主的视频和网站笔记看完了，然后因为实际上up主使用的时pyside2，但是相比于pyqt5资料实在太少了（up主主要讲解的是使用设计师开发，可能还需要找一个基于代码开发的视频理解底层原理，不然绑定事件处理函数的时候真的很懵），而且项目实战的视频也很少（大多数的实战视频要收费，免费的也不全），所以考虑还是需要稍微学一下pyqt5然后找合适的项目来练手（如果不练手的话相当于白学了）；</p>
+<p>还有就是在跟着做一遍项目之后自己把爬虫那个代码包装一下尝试看能否变成一个简单好用的小工具；</p>
+<p>2022&#x2F;6&#x2F;30</p>
+<p>现在基本上把PyQt5的入门摸清楚了，然后主要就是信号和槽机制不是特别熟悉，个人觉得可能还是需要多看书吧，然后结合给的代码进行练习，直接干看文档也没什么用；</p>
+<p>结合代码联系可以让我们在实际开发过程中体验并发现问题，说实话文档没什么看头，所以下一步的话就是再看书，把进阶的东西好好理解一下，最后看文档补充自己还没有学习到的知识点；</p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>2022&#x2F;6&#x2F;30 15:35 因为现在网上没有比较统一专业的教导使用PyQt5的教程或者是书籍，所以初学的时候花费了大量时间踩了很多坑，下面是一些根据《PyQt5快速开发与实战》一书进行学习的时候发现的一些问题和心得。现在基本上是简单的将书上的内容都过了一遍，的确受益匪浅，但是有一些存在的问题还是需要注意；</p>
+<p>先说一下安装和配置环境(也就是书上的python3+PyQt5+Eric6)，这个玩意花了我一个上午的时间没弄好，原因有如下：</p>
+<ul>
+<li>首先我创建了名为pyqt_5_2的虚拟环境，接着在该虚拟环境中安装了Eric必须的一些包以及pyqt5的包和pyqt5-tools等，这一步没什么问题都是正常的；</li>
+<li>接着需要手动去官网下载Eric6的压缩包和汉化包，这里有两个问题，一个是Eric6在17版本后就没有汉化包了（这个在CSDN上有好心人分享），还有就是官网的下载速度非常慢，并且官网已经不再提供17版本的安装包（最低都是19），好在我在网上白嫖了一个安装包，但是接下来问题就更多了；</li>
+<li>按照书上的提示，我们需要将汉化包和软件包放在一起，然后执行install.py文件就可以安装成功并且汉化成功，但是我们实际上完成之后的文件夹树结构和书上几乎不一样，并且打开安装好的软件之后就会出现莫名其妙的报错，大概就是说我没有许可之类的，按照书上的配置进行了设置之后也没有任何作用，按照网上的教程（稀碎）反复安装卸载了很多次也没有成功，所以最后选择直接使用作者提供的方法</li>
+<li>下载地址见网盘链接：<a target="_blank" rel="noopener" href="http://pan.baidu.com/s/1i4Pp5VB">http://pan.baidu.com/s/1i4Pp5VB</a> 密码：u83w</li>
+</ul>
+<p>因为环境的问题，所以资源存放的位置可能会有一点杂乱（但是经过一系列测试应该是没有问题的，可以正常运行）</p>
+<ul>
+<li>pyqt5依赖的虚拟环境（我们使用pip下载东西的时候预先要激活这个环境，否则下载到base环境中）：D:\Download_software\My_miniconda\envs\pyqt_5_2 —— 关于这个虚拟环境有必要说一下，因为实际上我们使用的Eric是作者打包好的，但是在配置的时候我们选择的依赖环境是自己创建的环境，所以在进行某些配置比如设计师的汉化的时候可能需要注意区分是虚拟环境中的设计师还是作者给的文件中的设计师（这一点已经证明直接使用designer打开的设计师是虚拟环境中的设计师，记住一点，<code>我们可以在虚拟环境随便动手但是最好别乱动作者给的文件夹</code>）</li>
+<li>书籍配套资源代码：D:\My_document\自学指南\PyQt5资源下载——Chapter*目录对应的书上11各章节的案例脚本；tool目录存放的是一些工具如离线帮助手册、UML类图等</li>
+<li>Eric6软件：D:\WinPyQt5.9-32bit-3.5.3.1\python-3.5.3\Scripts</li>
+<li>项目根目录：D:\My_code\Pycharm\pyqt_5</li>
+</ul>
+<p>接着是创建项目的问题（不要嫌前期准备麻烦，工欲善其事必先利其器，一定要把各方面都做完善接下来的学习过程才不会半途而废）</p>
+<ul>
+<li>我们创建项目的时候一定要在项目根目录下自己再创建一个子文件夹，它不会像其他IDE一样自动创建一个和项目文件名相同的项目文件夹；</li>
+<li>我们创建完项目之后再新建文件，注意新建的文件是没有后缀名之类的，第一件事就是先“另存为”在我们的项目文件夹中，保存格式默认为.py文件</li>
+</ul>
+<p>关于Eric6编辑器，这个编辑器最大的毛病（这也是为什么最后我放弃它的原因）就是使用Tab缩进会出现问题，经常莫名其妙的报错说空格键和Tab键不兼容（即我们复制的py文件的格式可能是Tab缩进的，但是Eric本身只支持使用空格缩进），解决方法是将整个文章取消缩进再缩进，然后手动调整（实际上这样很麻烦）；另一种解决方法就是用pycharm进行编辑（实际上Eric6除了可以直接启动设计师以外，也没有介绍说的那么牛什么专用于QT开发，真要用这玩意估计开发效率降低一倍）;Eric6现在唯一给我比较好的体验让我觉得它比Pycharm好一点的地方就在于它拥有直接编译窗体的功能而Pycharm甚至连ui文件都打不开（但是咱们也基本上不会看ui文件）</p>
+<p>综上所述，最终我还是选择了回归Pycharm+miniconda+环境内置Designer的开发方式，我们只需要简单的在miniconda中配置好PyQt5所需要的环境和工具<code>pip install pyqt5-tools</code>或者<code>pip install pyside2</code>，接着直接在Pycharm中导入相应的interpreter即可进行开发，无论是在创建方式还是书写代码的速度以及报错和环境问题，Pycharm的使用体验远远高出Eric6，同时因为Eric6我使用的是作者直接给的集成环境所以有一些需要额外安装的包比如书写md的包很可能就根本找不到正确的位置安装</p>
+<p>最后声明一点，因为现在是初学阶段，我们做笔记的地方选择的基本都是能够理解但是也比较重要的部分，关于一些不常用的知识点或者是一些较难需要在练习中坜街的知识点我们并没有过分关注，可能会在之后的时间陆续补充进阶知识点；</p>
+<h1 id="一、python语法"><a href="#一、python语法" class="headerlink" title="一、python语法"></a>一、python语法</h1><h2 id="1-partial函数"><a href="#1-partial函数" class="headerlink" title="1.partial函数"></a>1.partial函数</h2><p>函数在定义时如果指定了参数个数，则函数在执行时需要带上所有的必要参数进行调用，然而函数的参数中有一部分依赖于程序的执行，有一部分实际是固定已知的，此时可以使用partial函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> functools<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">add</span>(<span class="hljs-params">a,b</span>):<br>    <span class="hljs-keyword">return</span> a+b<br><span class="hljs-comment">#add(3,4)=7</span><br><span class="hljs-comment">#上述函数我们在调用的时候需要传入a,b两个参数，下面是用partial函数产生一个新的函数</span><br>add_2=functools.partial(add,<span class="hljs-number">3</span>)<br><span class="hljs-comment">#此时我们调用add_2函数就只需要一个参数了</span><br><span class="hljs-comment">#add_2(4)=7</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-lambda表达式"><a href="#2-lambda表达式" class="headerlink" title="2.lambda表达式"></a>2.lambda表达式</h2><p>lambda是一个表达式而非一个语句，lambda返回一个值，lambda用于编写简单函数，def用于处理更强大的任务</p>
+<ul>
+<li>语句是可以单独执行的、能够产生实际效果的代码;</li>
+<li>表达式则是包含在语句中,根据某种条件计算出一个值或得出某种结果,然后由语句去判断和处理的代码</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">fun = <span class="hljs-keyword">lambda</span> x,y:x+y<br>fun(<span class="hljs-number">2</span>,<span class="hljs-number">3</span>)<br><span class="hljs-comment">#得到的结果为5，lambda 关键字后跟参数，接着是冒号后面跟表达式</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="3-类和实例"><a href="#3-类和实例" class="headerlink" title="3.类和实例"></a>3.类和实例</h2><p>python是一门面向对象的编程语言（这一点与C++是一致的）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyClass</span>:<br>	count = <span class="hljs-number">0</span><br>    name = <span class="hljs-string">&#x27;DefaultName&#x27;</span><br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self,name</span>):<br>        self.name = name<br></code></pre></td></tr></table></figure>
+
+<p>我们主要区分关于类的变量和实例的变量（属性和方法统称为变量）</p>
+<ul>
+<li>类级别的变量是该类所有实例共享的，属于类级别的变量在使用时需要带上类名如MyClass.count或MyClass.name</li>
+<li>对象级别的变量是实例对象特有的，属于对象级别的变量在使用时一定要带上self表明属于当前对象如self.name</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyCounter</span>:<br>    __secretCount = <span class="hljs-number">0</span>  <span class="hljs-comment"># 私有变量</span><br>    publicCount = <span class="hljs-number">0</span>    <span class="hljs-comment"># 公开变量</span><br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__privateCountFun</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;这是私有方法&#x27;</span>)        <br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">publicCountFun</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;这是公共方法&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<p>类的方法：与一般函数不同，类的方法必须包含参数self且作为第一个参数（无论是否使用该参数）</p>
+<p>类的私有方法：只能在类的内部使用，以双下划线开头（只能在类的内部使用也就是说不能使用<code>实例.__privateCountFun()</code>这种方式调用私有方法，只能在类定义的时候使用<code>self.privateCountFun()</code>）</p>
+<p>类的私有属性：只能在类内部使用，以双下划线开头</p>
+<ul>
+<li>实例不能访问私有方法或私有属性</li>
+</ul>
+<h1 id="二、Qt-Designer"><a href="#二、Qt-Designer" class="headerlink" title="二、Qt Designer"></a>二、Qt Designer</h1><h2 id="1-概述"><a href="#1-概述" class="headerlink" title="1.概述"></a>1.概述</h2><h3 id="1-1-设计师界面"><a href="#1-1-设计师界面" class="headerlink" title="1.1 设计师界面"></a>1.1 设计师界面</h3><p>Qt Dedsigner符号MVC（模型——视图——控制器）设计模式，做到了显示和业务逻辑的分离</p>
+<ul>
+<li>Widget 通用窗口</li>
+<li>Main Window 主窗口（常用模板）：<code>setMenuBar、addToolBar、setCentralWidget、setStatusBar几种行为只有QMainWindow类具有</code></li>
+</ul>
+<p>控件基类使用原则</p>
+<ul>
+<li><p>如果需要嵌入到其他窗体中，则基于QWidget创建；</p>
+</li>
+<li><p>如果是顶级对话框，则基于QDialog创建；</p>
+</li>
+<li><p>如果是应用程序主窗体，则基于QMainWindow创建；</p>
+</li>
+</ul>
+<p><img src="/images/image-20220628164222266.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-2-使用ui文件"><a href="#1-2-使用ui文件" class="headerlink" title="1.2 使用ui文件"></a>1.2 使用ui文件</h3><p>实际上有多种方法可以使用ui文件，一种就是直接动态加载ui文件，一种就是将ui文件转为py文件</p>
+<h4 id="（1）动态加载ui文件"><a href="#（1）动态加载ui文件" class="headerlink" title="（1）动态加载ui文件"></a>（1）动态加载ui文件</h4><p>使用如下格式动态加载ui文件（这个方法源自于pyside2教程，第一个代码适用于在逻辑文件中使用代码自定义实现信号&#x2F;槽机制，第二个适用于我们在ui文件中创建了简单的信号&#x2F;槽机制直接动态导入就可以使用）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> PyQt5 <span class="hljs-keyword">import</span> uic<br><span class="hljs-keyword">from</span> PyQt5.QtWidgets <span class="hljs-keyword">import</span> QApplication <br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Stats</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-comment"># 从文件中加载UI定义，接着从 UI 定义中动态创建一个相应的窗口对象，此处我们将其命名为ui</span><br>        self.ui = uic.loadUi(<span class="hljs-string">&quot;main.ui&quot;</span>)<br>        <span class="hljs-comment"># 注意：在创建窗口对象后，里面的控件对象也成为窗口对象的属性了，使用.访问属性，注意名字要与设计师中为控件取的名字一一对应！！</span><br>        <span class="hljs-comment"># 比如 self.ui.Button , self.ui.TextEdit</span><br>        <span class="hljs-comment">#为Button控件的clicked事件绑定(connect)事件处理函数handleCalc</span><br>        self.ui.Button.clicked.connect(self.handleCalc)<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">handleCalc</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-comment">#定义handleCalc函数执行的功能</span><br>        info = self.ui.textEdit.toPlainText()<br>        <br><span class="hljs-keyword">if</span> __name__==<span class="hljs-string">&quot;__main__&quot;</span>:<br>    app = QApplication([])<br>    stats = Stats()<br>    stats.ui.show()<br>    app.exec_()<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> PyQt5 <span class="hljs-keyword">import</span> uic<br><span class="hljs-keyword">from</span> PyQt5.QtWidgets <span class="hljs-keyword">import</span> QApplication <br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Stats</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-comment"># 从文件中加载UI定义并从 UI 定义中动态创建一个相应的窗口对象，此处我们将其命名为ui</span><br>        self.ui = uic.loadUi(<span class="hljs-string">&quot;closeWinBtn.ui&quot;</span>)<br><br><span class="hljs-keyword">if</span> __name__==<span class="hljs-string">&quot;__main__&quot;</span>:<br>    app = QApplication([])<br>    stats = Stats()<br>    stats.ui.show()<br>    app.exec_()<br></code></pre></td></tr></table></figure>
+
+<h4 id="（2）静态导入py文件（推荐）"><a href="#（2）静态导入py文件（推荐）" class="headerlink" title="（2）静态导入py文件（推荐）"></a>（2）静态导入py文件（推荐）</h4><p>首先介绍两种方法在pyqt5中将ui文件转换为py文件</p>
+<p>（1）</p>
+<ul>
+<li>借助Eric6“编译窗体”（实际是使用了pyuic5），可以得到编译后的窗体.py文件</li>
+<li><code>使用pyuic5工具进行编译的时候，会报错搜索路径中不存在该进程——在搜索路径tools中可能有一些tools没有安装上，或者是我们指定的路径中没有该工具（比如pyuic5.exe，实际上它是在scripts文件夹下，但我们添加的搜索路径是tools，而且还不能添加多个搜索路径）</code>所以这里最直接暴力的解决方法就是在环境变量中添加pyuic5.exe（没尝试过直接复制exe文件到tools目录下，理论上也是可行的）</li>
+</ul>
+<p><img src="/images/image-20220628164733371.png" srcset="/img/loading.gif" lazyload><img src="/images/image-20220628174145588.png" srcset="/img/loading.gif" lazyload></p>
+<p>（2）通过命令行转换（这一步实际上也是借助pyuic5完成，所以前面我们选择将其路径添加到环境变量中而非直接复制粘贴pyuic5到tools中是正确的<code>2022/6/30 15:49 这句话是针对当时我使用Eric6的时候，直接点击使用窗口编译ui文件报错找不到pyuic5，然后我就把miniconda虚拟环境中的pyuic5添加到用户环境变量中没想到成功了，如果我们使用Pycharm的话根本不需要这么麻烦，直接在Terminal中对ui文件夹下的ui文件执行下面的Shell命令即可</code>）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">pyuic5 -o UI.py stats.ui<br></code></pre></td></tr></table></figure>
+
+<p>转换过后的py文件内容格式大致如下，存放的位置是在项目根目录下</p>
+<p><img src="/images/image-20220629102950951.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们将ui文件转换为py文件只是第一步，接下来就需要使用继承的知识，将界面firstMainWin.py文件导入到业务逻辑文件中使用，实现界面与逻辑的分离</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> PyQt5.QtWidgets <span class="hljs-keyword">import</span> QApplication,QMainWindow<br><span class="hljs-comment">#从firstMainWin.py中导入UI文件的窗体类Ui_MainWindow</span><br><span class="hljs-keyword">from</span> firstMainWin <span class="hljs-keyword">import</span> Ui_MainWindow<br><br><span class="hljs-comment">#继承界面文件的主窗口类</span><br><span class="hljs-comment"># 注意：这里选择要继承的父类，要和UI文件窗体类是同一类型（Ui_MainWindow与MainWindow是相同类型） —— 主窗口是QMainWindow，表单是QWidget，对话框是QDialog</span><br><span class="hljs-comment">#简单来说要继承的父类要么是QMainWindow，要么是QFrame，多利用网络检索判断出错类型</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyMainWindow</span>(<span class="hljs-title class_ inherited__">QMainWindow</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-comment">#简单的说super().__init__()，就是继承父类的init方法；super()函数就是用来继承父类的方法的</span><br>        <span class="hljs-built_in">super</span>().__init__()<br>        <span class="hljs-comment"># 动态创建ui对象，从文件中导入定义的界面类Ui_MainWindow</span><br>        self.ui = Ui_MainWindow()<br>        <span class="hljs-comment"># 初始化界面</span><br>        self.ui.setupUi(self)<br>        <span class="hljs-comment"># 使用界面定义的控件，也是从ui里面访问（这里给出一个示例）</span><br>        self.ui.webview.load(<span class="hljs-string">&#x27;http://www.baidu.com&#x27;</span>)<br>        <br><span class="hljs-comment">#是当前文件就执行，不是当前文件（比如该py文件被import到其他py文件中）就不执行其中的代码块</span><br><span class="hljs-keyword">if</span> __name__==<span class="hljs-string">&quot;__main__&quot;</span>:<br>    app = QApplication([])<br>    stats = Stats()<br>    stats.ui.show()<br>    app.exec_()<br></code></pre></td></tr></table></figure>
+
+<p>咱们上面说过通过设计师可以做到界面显示与业务逻辑的分离，实际上是需要我们手动去实现的，本质上就是在项目中额外新建一个py文件，该py文件作为用户入口文件，导入了之前生成好的界面py文件（动态加载ui文件也是相同的道理），这样当我们修改界面文件的时候对业务逻辑是没有影响的（除非在业务逻辑文件中涉及对界面文件的一些修改操作）</p>
+<ul>
+<li><p>假如使用的是动态加载ui文件，可参照pyside2教程中的做法；</p>
+</li>
+<li><p>假如使用的是import py文件也就是静态加载界面py文件，需要用到继承的知识，尤其需要注意继承的父类；</p>
+</li>
+<li><p>可能书上的代码更加严谨，添加了sys.exit()等异常终止机制，我们这里为了简洁明了选择简约的写法</p>
+</li>
+</ul>
+<h4 id="（3）总结"><a href="#（3）总结" class="headerlink" title="（3）总结"></a>（3）总结</h4><p>实际上我个人更倾向于直接使用动态加载，尽管这样做在最后发布打包程序的时候需要额外手动将ui文件放进去，但是在我们设计的过程中不需要修改一遍ui就编译一遍，可以做到即改即看；</p>
+<p>但是，在之后的开发过程中（2022&#x2F;6&#x2F;30进行天气预报项目时）使用动态加载会出问题，假如我们给某个内置信号自定义了一个自定义槽函数，在使用uic动态加载的过程中会直接报错说根本没有这个槽函数（因为动态加载在加载的时候就已经开始运行代码了，但是运行到自定义槽函数的时候自定义槽函数还在逻辑文件中没有被执行定义，所以就会报错），这个时候就只能使用静态加载了（也就是说尽管我们的静态可能比较麻烦，但是针对任何一种情况不会报错“万精油”）；</p>
+<p>综上，我们要学会<code>熟练使用静态导入进行开发的方式</code>；</p>
+<h3 id="1-3-布局管理"><a href="#1-3-布局管理" class="headerlink" title="1.3 布局管理"></a>1.3 布局管理</h3><p>布局管理：即通过布局将各种不同功能的的控件放在程序主窗口中</p>
+<p>一般的布局方式有两种，分别是通过布局管理器layout进行布局，另一种是通过容器控件进行布局</p>
+<ul>
+<li>容器控件（containers）是指能够容纳其他控件（子控件）的控件，注意与layout（布局管理器）不同，这点从它们的属性也可以看出来（但是它们都被称为对象，因为python面向对象编程）；</li>
+<li>我们在实际开发过程中并不需要严格记住控件有哪些，根据属性即可判断；</li>
+<li>本质上，使用容器控件进行布局最终还是需要依赖于布局管理器进行布局；</li>
+<li>当使用布局管理器接管控件的布局后，控件的geometry属性会成为灰色，此时既无法通过手动拖拽改变控件大小，也无法修改geometry的值改变控件的位置和大小；</li>
+<li>PyQT遵循一个原则：主窗口内的所有窗口控件都有自己的父类</li>
+</ul>
+<p><img src="/images/image-20220628200250057.png" srcset="/img/loading.gif" lazyload><img src="/images/image-20220628200312368.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="（1）geometry属性"><a href="#（1）geometry属性" class="headerlink" title="（1）geometry属性"></a>（1）geometry属性</h4><p>geometry（几何学）属性在pyqt中用于设置控件在窗口中的绝对坐标与自身大小</p>
+<p><img src="/images/image-20220628201125980.png" srcset="/img/loading.gif" lazyload></p>
+<p>表示控件左上角距离主窗口左侧为370px，距离主窗口上侧110px，控件宽度为88px，控件高度为23px；</p>
+<p>+++++++++++++++++++使用layout接管控件后，使用以下属性来设置其中的控件+++++++++++++++++++</p>
+<h4 id="（2）minimumSize-amp-maximumSize"><a href="#（2）minimumSize-amp-maximumSize" class="headerlink" title="（2）minimumSize &amp; maximumSize"></a>（2）minimumSize &amp; maximumSize</h4><p><img src="/images/image-20220628203005530.png" srcset="/img/loading.gif" lazyload></p>
+<p>前者用于设置控件在layout中的最小尺寸，后者设置控件在layout中的最大尺寸</p>
+<p><img src="/images/image-20220628203252804.png" srcset="/img/loading.gif" lazyload></p>
+<p>每个属性右侧都有一个撤回按钮，可以恢复默认设置属性</p>
+<h4 id="（3）sizePolicy属性"><a href="#（3）sizePolicy属性" class="headerlink" title="（3）sizePolicy属性"></a>（3）sizePolicy属性</h4><p><img src="/images/image-20220628203518844-16564197973347.png" srcset="/img/loading.gif" lazyload></p>
+<p>大小策略属性用于实现在layout中对控件进行微调</p>
+<p>Fixed：窗口控件具有其sizeHint（尺寸提示）期望的尺寸且不会改变；<br>Minimum：窗口控件的sizeHint期望的尺寸是其最小尺寸；<br>Maximum：窗口控件的sizeHint期望的尺寸是其最大尺寸；<br>Preferred：窗口控件可以比sizeHint的尺寸大，可以缩小到minisizeHint的尺寸；<br>Ignored：无视sizeHint和minisizeHint提示的尺寸；</p>
+<p>水平伸展和垂直伸展默认都是0，即在同一个layout中的控件随着layout的伸缩的变化比例相同，假如我们分别设置三个标签的垂直伸展为1：3：1，则垂直拉伸layout后出现如下情况：</p>
+<p><img src="/images/image-20220628205058272.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-4-设计顺序"><a href="#1-4-设计顺序" class="headerlink" title="1.4 设计顺序"></a>1.4 设计顺序</h3><p>这一个小节在pyside2中也讲过，使用设计师进行界面设计的大致流程如下</p>
+<ul>
+<li>先不使用任何Layout，把所有控件按位置摆放在界面上（也就是直接在画布上给出整个程序的雏形）；</li>
+<li>然后先从最内层开始进行控件的Layout设定（也就是按照从小到大的顺序，按照情况选择垂直布局或水平布局）；</li>
+<li>逐步拓展到外层进行控件的Layout设定（将小的控件组合为一个Layout后，还可以继续将这些小Layout组合成大的Layout，此时的控件比例肯定会失调，我们将在下一步进行调整）；</li>
+<li>最后调整layout中控件的大小比例，优先使用Layout的layoutStrentch属性来控制，也可以选择加入space等控件协助调整；</li>
+</ul>
+<p>注意：为了方便我们对对象进行管理，我们需要养成设置控件对象名、窗口对象名的习惯（注意不是双击编辑的text内容，而是只能在属性框编辑的objectName）</p>
+<h3 id="1-5-信号和槽概述"><a href="#1-5-信号和槽概述" class="headerlink" title="1.5 信号和槽概述"></a>1.5 信号和槽概述</h3><p>我们可以类比于前端设计中的事件和事件处理函数，当信号发射时（事件被触发），槽函数会自动执行（与事件绑定的事件处理函数会自动执行），PyQT5中信号和槽通过<code>QObject.signal.connect()</code>绑定，信号和槽构建了一种强大的控件编程机制；</p>
+<ul>
+<li>多个信号可以与单个槽绑定；</li>
+<li>单个信号可以和多个槽绑定；</li>
+</ul>
+<p>PyQT5中常用的三种方式将信号与槽进行绑定：</p>
+<ul>
+<li><p>在Designer窗口的UI设计中添加信号和槽（这种方法适用于添加PyQt默认的信号和槽，实际上我们添加自定义的信号和槽也是可以的，只要在业务逻辑文件中对其进行定义）；</p>
+<p>我们可以通过工具栏的编辑信号&#x2F;槽来手动连线进行编辑</p>
+<p><img src="/images/image-20220629110640150.png" srcset="/img/loading.gif" lazyload></p>
+<p>也可以通过信号&#x2F;槽编辑器手动输入来进行编辑</p>
+</li>
+</ul>
+<p><img src="/images/image-20220629110524667.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>通过Eric的“生成对话框代码”产生信号和槽；</li>
+</ul>
+<p>这种方法存在缺点，就是生成的py文件无法直接执行，还需要我们进行改写，这需要我们对其代码机制的深刻理解才能掌握（再次证明Eric6不是一个好的编译器）</p>
+<p><img src="/images/image-20220629111501001.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>通过代码连接信号和槽（pyside2就是这种做法，这种方法可以自定义槽函数）；</li>
+</ul>
+<h1 id="三、PyQt5"><a href="#三、PyQt5" class="headerlink" title="三、PyQt5"></a>三、PyQt5</h1><h2 id="1-PyQt5基本控件类"><a href="#1-PyQt5基本控件类" class="headerlink" title="1.PyQt5基本控件类"></a>1.PyQt5基本控件类</h2><h3 id="1-1-窗口类型"><a href="#1-1-窗口类型" class="headerlink" title="1.1 窗口类型"></a>1.1 窗口类型</h3><ul>
+<li>PyQt中将没有嵌入到其他控件中的控件称为窗口（本质上窗口也是控件，即PyQt中一切皆为控件）；</li>
+</ul>
+<p>QMainWindow QWidget QDialog 三个类用于创建窗口，可以直接使用，也可以继承之后再使用</p>
+<ul>
+<li>QMainWindow是最常用的窗口形式，可以说是GUI程序的主窗口；</li>
+<li>QDialog是对话框窗口的基类（对话框主要用于执行短期任务比如登录、输入信息等）；</li>
+<li>若不确定是作为主窗口还是作为对话框（即可能作为顶层窗口，也可能嵌入到其他窗口中）则使用QWidget类；</li>
+</ul>
+<h4 id="（1）QMainWindow类"><a href="#（1）QMainWindow类" class="headerlink" title="（1）QMainWindow类"></a>（1）QMainWindow类</h4><p>QMainWindow类创建的窗口是顶层窗口（没有父窗口的窗口），它可以包含菜单、工具、子窗口等；</p>
+<p>QMainWindow类继承自QWidget类，拥有它的所有派生方法和属性；</p>
+<p>QMainWindow类中常用方法如下：</p>
+<p><img src="/images/image-20220629123417306.png" srcset="/img/loading.gif" lazyload></p>
+<p>注意：QMainWindow不能设置layout，因为它有自己的布局；</p>
+<h4 id="（2）QWidget类"><a href="#（2）QWidget类" class="headerlink" title="（2）QWidget类"></a>（2）QWidget类</h4><p>基础窗口控件QWidget类是所有用户界面对象的基类，也就是所有的窗口和控件都直接或者间接的继承自QWidget类；</p>
+<ul>
+<li>窗口是指程序的整体界面，可以包含标题栏、菜单栏、工具栏、按钮等；</li>
+<li>控件是指按钮、复选框、进度条等这些组成程序的基本元素；</li>
+<li>一个程序可以有多个窗口，一个窗口也可以有多个控件；</li>
+<li>没有父类的控件会被当做一个窗口处理，此时setWindowTitle()和setWindowIcon()函数会生效；</li>
+</ul>
+<h3 id="1-2-QLable类"><a href="#1-2-QLable类" class="headerlink" title="1.2 QLable类"></a>1.2 QLable类</h3><p>QLable类是界面中的标签类，继承自Qframe类；</p>
+<p>QLable对象可以作为一个占位符显示不可编辑的文本或对象，也可以放置一个GIF动画、纯文本、富文本、链接等；</p>
+<p><img src="/images/image-20220629125122965.png" srcset="/img/loading.gif" lazyload></p>
+<p>QLable类中常用的方法如下</p>
+<p><img src="/images/image-20220629125246072.png" srcset="/img/loading.gif" lazyload></p>
+<p>QLable类中的常用信号如下</p>
+<p><img src="/images/image-20220629125340421.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-3-QLineEdit类"><a href="#1-3-QLineEdit类" class="headerlink" title="1.3 QLineEdit类"></a>1.3 QLineEdit类</h3><p>QLineEdit类的对象是一个单行的文本框控件，可以输入单行的字符串，需要输入多行的字符串则使用QTextEdit类；</p>
+<p>QLineEdit类的常用方法如下</p>
+<p><img src="/images/image-20220629125626517.png" srcset="/img/loading.gif" lazyload></p>
+<p>QLineEdit类的常用信号如下</p>
+<p><img src="/images/image-20220629125715208.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-4-QTextEdit类"><a href="#1-4-QTextEdit类" class="headerlink" title="1.4 QTextEdit类"></a>1.4 QTextEdit类</h3><p>QtextEdit是一个多行文本框，可以显示多行文本的内容，当文本内容超过控件显示范围的时候可以显示水平或垂直滚动条</p>
+<p>QTextEdit常用方法如下</p>
+<p><img src="/images/image-20220629130008171.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-5-QAbstractButton类"><a href="#1-5-QAbstractButton类" class="headerlink" title="1.5 QAbstractButton类"></a>1.5 QAbstractButton类</h3><p>PyQt根据不同的使用场景将按钮分为不同的表现形式；</p>
+<p>按钮基类是QAbstractButton，提供了按钮的通用功能，QAbstractButton是抽象类，不能实例化，必须由其他类继承QAbstractButton类实现不同的功能和不同的表现形式；</p>
+<p>QAbstractButton类提供的状态如下</p>
+<p><img src="/images/image-20220629131602957.png" srcset="/img/loading.gif" lazyload></p>
+<p>QAbustractButton提供的信号如下</p>
+<p><img src="/images/image-20220629131633802.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="（1）QPushButton类"><a href="#（1）QPushButton类" class="headerlink" title="（1）QPushButton类"></a>（1）QPushButton类</h4><p>QpushButton类继承自QAbstractButton，是最常见的按钮类；</p>
+<p>QPushBtton类常用方法如下</p>
+<p><img src="/images/image-20220629131946046.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="（2）QRadioButton类"><a href="#（2）QRadioButton类" class="headerlink" title="（2）QRadioButton类"></a>（2）QRadioButton类</h4><p>提供了一组可供选择的按钮和文本标签，用户可以选择其中一个选项（也就是单选按钮）</p>
+<p><img src="/images/image-20220629132141739.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="（3）QCheckBox"><a href="#（3）QCheckBox" class="headerlink" title="（3）QCheckBox"></a>（3）QCheckBox</h4><p>提供了一组带文本标签的复选框，用户可以选择多个选项</p>
+<p><img src="/images/image-20220629132309631.png" srcset="/img/loading.gif" lazyload></p>
+<p>QCheckBox常用方法如下</p>
+<p><img src="/images/image-20220629132400613.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="（4）QComboBox"><a href="#（4）QComboBox" class="headerlink" title="（4）QComboBox"></a>（4）QComboBox</h4><p>就是我们常见的下拉列表框；</p>
+<p>QComboBox常用方法如下</p>
+<p><img src="/images/image-20220629132522891.png" srcset="/img/loading.gif" lazyload></p>
+<p>QComboBox常用信号如下</p>
+<p><img src="/images/image-20220629132551247.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-6-QDialog类"><a href="#1-6-QDialog类" class="headerlink" title="1.6 QDialog类"></a>1.6 QDialog类</h3><p>为了实现更好的人机交互，操作系统往往会提供一系列的标准对话框完成特定场景下的功能；</p>
+<p>QDialog类的子类的继承结构如下</p>
+<p><img src="/images/image-20220629132934007.png" srcset="/img/loading.gif" lazyload></p>
+<p>QDialog类常用方法如下</p>
+<p><img src="/images/image-20220629133009155.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="（1）QMessageBox"><a href="#（1）QMessageBox" class="headerlink" title="（1）QMessageBox"></a>（1）QMessageBox</h4><p>QMessageBox是最常见的通用弹出式对话框</p>
+<p><img src="/images/image-20220629133055613.png" srcset="/img/loading.gif" lazyload></p>
+<p>QMessageBox的标准按钮类型如下</p>
+<p><img src="/images/image-20220629133216732.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="（2）QInputDialog"><a href="#（2）QInputDialog" class="headerlink" title="（2）QInputDialog"></a>（2）QInputDialog</h4><p><img src="/images/image-20220629133303715.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="（3）QFontDialog"><a href="#（3）QFontDialog" class="headerlink" title="（3）QFontDialog"></a>（3）QFontDialog</h4><p><img src="/images/image-20220629133336238.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="（4）QFileDialog"><a href="#（4）QFileDialog" class="headerlink" title="（4）QFileDialog"></a>（4）QFileDialog</h4><p><img src="/images/image-20220629133413894.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20220629133444580.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-7-窗口绘图类控件"><a href="#1-7-窗口绘图类控件" class="headerlink" title="1.7 窗口绘图类控件"></a>1.7 窗口绘图类控件</h3><p>下面介绍的控件类都是关于如何实现在窗口中绘图（这非常类似于使用easyX进行绘图的图形化界面开发）</p>
+<h4 id="（1）QPainter"><a href="#（1）QPainter" class="headerlink" title="（1）QPainter"></a>（1）QPainter</h4><p><img src="/images/image-20220629153950190.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20220629154143513.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="（2）QPen"><a href="#（2）QPen" class="headerlink" title="（2）QPen"></a>（2）QPen</h4><p>相比于QPainter直接调用函数进行绘图的限制，使用钢笔绘图更加灵活；</p>
+<p><img src="/images/image-20220629154510718.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="（3）QBrush"><a href="#（3）QBrush" class="headerlink" title="（3）QBrush"></a>（3）QBrush</h4><p><img src="/images/image-20220629154731902.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="（4）QPixmap"><a href="#（4）QPixmap" class="headerlink" title="（4）QPixmap"></a>（4）QPixmap</h4><p><img src="/images/image-20220629155126240.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="2-PyQt5高级控件类"><a href="#2-PyQt5高级控件类" class="headerlink" title="2.PyQt5高级控件类"></a>2.PyQt5高级控件类</h2><h3 id="2-1-多线程"><a href="#2-1-多线程" class="headerlink" title="2.1 多线程"></a>2.1 多线程</h3><p>一般来说多线程技术涉及三种方法，其中一种是使用计时器模块QTimer；一种是使用多线程模块QThread；还有一种是使用事件处理程序；</p>
+<h4 id="（1）QTimer"><a href="#（1）QTimer" class="headerlink" title="（1）QTimer"></a>（1）QTimer</h4><p>假如需要在应用程序中周期性的进行某项操作，可以使用QTimer计时器；</p>
+<p>QTimer类提供了重复和单次的定时器，要使用定时器需要事先实例化一个QTimer对象，接着将其timeout信号连接到相应的槽，最后调用start()启动计时器，计时器会以恒定间隔发出timeout信号；</p>
+<h4 id="（2）QThread类"><a href="#（2）QThread类" class="headerlink" title="（2）QThread类"></a>（2）QThread类</h4><p>这是最常用的实现多线程技术的方法，QThread是Qt线程类中<code>最核心的底层类</code>；</p>
+<p>要使用QThread开始一个线程，可以创建它的一个子类，然后覆盖其QThread.run()函数——简单来说就是建立一个自定义类ChildThread使其继承自QThread，并实现其run()方法即可；</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">class</span> <span class="hljs-title class_">ChildThread</span>(<span class="hljs-title class_ inherited__">QThread</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>    	<span class="hljs-built_in">super</span>(Thread,self).__init__()<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">run</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-keyword">pass</span> <span class="hljs-comment">#此处用于定义线程相关的代码</span><br><span class="hljs-comment">#完成上述类的创建我们就可以开始使用一个新线程了</span><br><span class="hljs-comment">#创建新线程</span><br>thread=Thread()<br><span class="hljs-comment">#启动新线程，线程启动后会自动调用其实现的run方法，该方法就是该线程的执行函数</span><br>thread.start()<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="（3）事件处理"><a href="#（3）事件处理" class="headerlink" title="（3）事件处理"></a>（3）事件处理</h4><p>PyQt为事件处理提供了两种机制：一种是前面提到过的高级的信号与槽机制，另一种是低级的事件处理程序；</p>
+<p>低级的事件处理程序也就是QApplication.proccssEvents()函数的使用方法，其作用是处理事件（即刷新页面）；</p>
+<p>当执行耗时的程序时在界面上的表现就是一直卡在某个页面，直到程序执行完成页面才会刷新得到新页面；我们可以在执行耗时程序的地方插入QApplication.proccssEvents()函数，使其一边执行耗时程序一边不断刷新页面（其实这样看来事件处理程序并不能算严格意义上的多线程，仅仅只是一个掩饰并不能提高程序的执行效率）</p>
+<h3 id="2-2-网页交互"><a href="#2-2-网页交互" class="headerlink" title="2.2 网页交互"></a>2.2 网页交互</h3><p>PyQt5中可以通过QWebEngineView类来使用网页控件</p>
+<p><img src="/images/image-20220629164423769.png" srcset="/img/loading.gif" lazyload></p>
+<p>QWebEngineView类的控件使用load()函数加载一个web页面（实际上就是使用HTTP GET方法加载页面），也可以使用setHtml()函数加载本地的Web代码；</p>
+<h1 id="四、信号与槽进阶"><a href="#四、信号与槽进阶" class="headerlink" title="四、信号与槽进阶"></a>四、信号与槽进阶</h1><p>注意：书中的代码很大一部分其实显得冗余，实际上<code>白月黑羽</code>教程中的代码（也可以参考前面我写的代码）这种风格是最简约的，我们有选择性的学习就行，千万不要钻牛角尖；</p>
+<p>PyQt的窗口控件中有很多内置信号，开发者还可以额外添加自定义信号；</p>
+<p>早期的GUI编程中使用的是回调机制（也会是Web编程里面涉及的自动执行的回调函数），PyQt使用了一种新的对象之间的通信机制也就是信号与槽；</p>
+<p>信号与槽主要有如下三种分类：</p>
+<ul>
+<li>内置信号与槽的使用；</li>
+<li>自定义信号与槽的使用（内置只包含一些常用的信号与槽，有些信号的发射找不到对应的内置函数；且内置函数的参数是固定的不能自定义）；</li>
+<li>装饰器的信号与槽的使用（本质上是第一种方法的衍生）</li>
+</ul>
+<h2 id="1-定义信号"><a href="#1-定义信号" class="headerlink" title="1.定义信号"></a>1.定义信号</h2><p>PyQt的<code>内置信号</code>是自动定义的，使用pyqtSignal()函数可以将自定义信号在创建类时定义为类的属性；</p>
+<ul>
+<li>信号必须在类的创建时定义，不能在类创建后作为类的属性动态添加进来；</li>
+</ul>
+<h2 id="2-操作信号"><a href="#2-操作信号" class="headerlink" title="2.操作信号"></a>2.操作信号</h2><p>使用connect()函数可以将信号绑定在槽函数上；</p>
+<p>使用disconnect()函数可以解除信号和槽函数的绑定；</p>
+<p>使用emit()函数可以发射信号（作用类似于主动触发事件；）</p>
+<h2 id="3-事件处理机制"><a href="#3-事件处理机制" class="headerlink" title="3.事件处理机制"></a>3.事件处理机制</h2><p><code>这里我们需要先说明一点，在本节之前文章中出现的所有事件以及事件处理函数都指的是Web开发中的处理机制，是与信号/槽机制非常类似的，但是在这之后介绍的事件处理机制就是PyQt的专属概念了</code></p>
+<p>前面我们提到过PyQt为事件处理提供了两种机制：一种是前面提到过的高级的信号与槽机制，另一种是低级的事件处理程序。至于什么是高级什么是低级我们将在这里给出答案：信号与槽机制可以看作是对事件处理机制的高级封装，我们只需要关心信号的发射、处理就行，信号与槽机制为我们屏蔽了底层事务处理逻辑（我们可能仅仅只是click了一下按钮于是产生了click信号，但是实际底层调用了许多事件处理函数来解决如按钮如何接受并处理鼠标点击事件），而这一系列的底层事务逻辑实际上就是低级的事件处理程序；</p>
+<h3 id="3-1-常见事件类型"><a href="#3-1-常见事件类型" class="headerlink" title="3.1 常见事件类型"></a>3.1 常见事件类型</h3><p>PyQt是对Qt的封装，而Qt程序是由事件驱动的，其每一个动作都由某个事件触发；</p>
+<p><img src="/images/image-20220629200640845.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20220629200701776.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="4-窗口传递数据"><a href="#4-窗口传递数据" class="headerlink" title="4.窗口传递数据"></a>4.窗口传递数据</h2><p>假如程序只有一个窗口则应该关心该窗口内的各个控件之间是如何进行数据传送的；</p>
+<p>如果程序有多个窗口，则还需要关心不同的窗口之间是如何传输数据的；</p>
+<ul>
+<li>对于具有单一窗口的程序来说，一个控件的变化会影响另一个控件的变化，这种变化利用信号与槽的机制非常容易解决；</li>
+<li>对于多窗口情况，一般有两种解决方法<ul>
+<li>一种是主窗口获取子窗口中控件的属性；</li>
+<li>另一种是通过信号与槽机制，一般是子窗口通过发射信号的形式传输数据，主窗口的槽函数获取这些数据；</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-1-单一窗口数据传递"><a href="#4-1-单一窗口数据传递" class="headerlink" title="4.1 单一窗口数据传递"></a>4.1 单一窗口数据传递</h3><p>这个操作方法和同一个控件的信号&#x2F;槽机制非常相似，就是把一个控件的信号绑定在另一个控件的槽函数上</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment">#先创建两个控件对象</span><br>lcd=QLCDNumber(self)<br>sider=QSlider(Qt.Horizontal,self)<br><span class="hljs-comment">#接着连接sider的信号函数和lcd的槽函数</span><br>slider.valueChanged.connect(lcd.display)<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="4-2-多窗口数据传递：调用属性"><a href="#4-2-多窗口数据传递：调用属性" class="headerlink" title="4.2 多窗口数据传递：调用属性"></a>4.2 多窗口数据传递：调用属性</h3><p>注意：我们在下面的介绍过程中可能会默认将子窗口和主窗口分别存储为py文件，这也是我们实际开发中使用的方法，因为我们使用设计师创建窗口的时候一个ui文件只能创建一个窗体，如果一个ui文件中包含多个窗体很容易出现不必要的麻烦；</p>
+<p>PyQt编程过程中经常会遇到输入或选择多个参数的问题，但是直接将所有参数写在一个窗口中会导致主窗口非常臃肿，一般我们会选择调用对话框，在对话框中进行参数的选择，关闭对话框会将参数值返回给主窗口；</p>
+<p>前面我们已经介绍过PyQt中常见的一些对话框类，用于输入数据、修改数据、更改应用设置等；</p>
+<p>使用对话框进行参数的传递也涉及在不同的窗口之间传递数据，这里我们主要介绍通过属性传参；</p>
+<p>将对话框作为一个子窗口，在之后会新建一个主窗口来调用这个子窗口的属性（也就是子窗口作为一个py文件，主窗口作为一个py文件）：直接在主窗口程序中实例化对话框类，接着调用该对话框对象的函数；</p>
+<p><img src="/images/image-20220629205952094.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="4-3-多窗口数据传递：信号与槽"><a href="#4-3-多窗口数据传递：信号与槽" class="headerlink" title="4.3 多窗口数据传递：信号与槽"></a>4.3 多窗口数据传递：信号与槽</h3><p>使用信号与槽机制，一般通过子窗口发射信号，主窗口通过槽函数捕获这个信号，然后获取信号里面的数据；</p>
+<p>子窗口发射的信号有两种</p>
+<ul>
+<li>一种是PyQt内置的一些信号；</li>
+<li>另一种是用户自定义的信号，其参数类型可以自定义；</li>
+</ul>
+<p><img src="/images/image-20220629210639664.png" srcset="/img/loading.gif" lazyload></p>
+<p>上面就是简单的展示了在主窗口文件中如何绑定子窗口的信号，我们在主窗口文件中将子窗口实例化为dialog，接着将dialog的内置信号&#x2F;自定义信号与主窗口的槽函数绑定；</p>
+<h1 id="五、PyQt5图形和特效"><a href="#五、PyQt5图形和特效" class="headerlink" title="五、PyQt5图形和特效"></a>五、PyQt5图形和特效</h1><p>我们很有必要定制窗口样式，以实现统一的窗口风格和美化窗口界面（假如QQ的窗口还是默认的原生窗口样式一定是非常不好看的）</p>
+<p>下面的介绍我们都会结合实际的代码进行演示；</p>
+<h2 id="1-设置窗口风格"><a href="#1-设置窗口风格" class="headerlink" title="1.设置窗口风格"></a>1.设置窗口风格</h2><h2 id="2-设置窗口样式"><a href="#2-设置窗口样式" class="headerlink" title="2.设置窗口样式"></a>2.设置窗口样式</h2><h2 id="3-全屏展开无边框窗口"><a href="#3-全屏展开无边框窗口" class="headerlink" title="3.全屏展开无边框窗口"></a>3.全屏展开无边框窗口</h2><h2 id="4-简单绘图"><a href="#4-简单绘图" class="headerlink" title="4.简单绘图"></a>4.简单绘图</h2><h2 id="5-QSS"><a href="#5-QSS" class="headerlink" title="5.QSS"></a>5.QSS</h2><p>Qt样式表是用来自定义控件外观的一种机制，QSS参考自CSS但是其选择器少且可以使用的QSS属性也少；</p>
+<p>QSS使界面美化和代码层分开便于维护；</p>
+<h2 id="6-设置窗口背景"><a href="#6-设置窗口背景" class="headerlink" title="6.设置窗口背景"></a>6.设置窗口背景</h2><p>窗口背景主要包括背景色和背景图片，主要使用如下三种方式设置窗口背景：</p>
+<ul>
+<li>QSS设置窗口背景；</li>
+<li>QPalette设置窗口背景；</li>
+<li>使用QPainter绘制背景；</li>
+</ul>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%87%AA%E5%AD%A6%E8%AF%BE%E7%A8%8B/" class="category-chain-item">自学课程</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">#开发工具</a>
+      
+        <a href="/tags/%E5%9B%BE%E5%BD%A2%E5%8F%AF%E8%A7%86%E5%8C%96/">#图形可视化</a>
+      
+        <a href="/tags/python/">#python</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>PyQT5</div>
+      <div>https://gintoki-jpg.github.io/2022/06/28/工具_PyQT5/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>杨再俨</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年6月28日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/07/01/%E5%B7%A5%E5%85%B7_Python%E5%B7%A5%E5%85%B7/" title="Python工具">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Python工具</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/06/27/%E5%B7%A5%E5%85%B7_pyside2/" title="Pyside2">
+                        <span class="hidden-mobile">Pyside2</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+</div>
+
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

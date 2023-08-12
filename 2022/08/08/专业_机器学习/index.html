@@ -1,0 +1,1459 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/logo.png">
+  <link rel="icon" href="/img/bg/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="杨再俨">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="机器学习使计算机能够从研究数据和统计信息中学习，机器学习是迈向人工智能（AI）方向的其中一步，机器学习是一种程序，可以分析数据并学习预测结果。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习">
+<meta property="og:url" content="https://gintoki-jpg.github.io/2022/08/08/%E4%B8%93%E4%B8%9A_%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:site_name" content="Tintoki_blog">
+<meta property="og:description" content="机器学习使计算机能够从研究数据和统计信息中学习，机器学习是迈向人工智能（AI）方向的其中一步，机器学习是一种程序，可以分析数据并学习预测结果。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/AI.jpg">
+<meta property="article:published_time" content="2022-08-08T06:01:00.000Z">
+<meta property="article:modified_time" content="2022-09-27T12:10:32.315Z">
+<meta property="article:author" content="YangZaiyan">
+<meta property="article:tag" content="机器学习">
+<meta property="article:tag" content="人工智能">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gintoki-jpg.github.io/img/bg/AI.jpg">
+  
+  
+  
+  <title>机器学习 - Tintoki_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"gintoki-jpg.github.io","root":"/","version":"1.9.1","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tintoki_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/bg1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">机器学习</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-08-08 14:01" pubdate>
+          2022年8月8日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          27k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          223 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">机器学习</h1>
+            
+            <div class="markdown-body">
+              
+              <p>前面学了一堆的知识（主要都是计算机专业的知识，最近确实学不下去了，改一下学习方向），主要目的还是为了能够给学习人工智能打下一个坚实的基础，之前零零碎碎学过一些知识点也差不多忘完了，所以重头开始学（这篇博客也算是专业课的第一篇博客了，可能内容之类的会有点混乱…）</p>
+<p>文章参考：</p>
+<ul>
+<li>机器学习算法<a target="_blank" rel="noopener" href="http://c.biancheng.net/ml_alg/">Python机器学习算法入门教程 (biancheng.net)</a></li>
+<li>《机器学习》周志华</li>
+<li>《动手学深度学习》<a target="_blank" rel="noopener" href="http://zh.d2l.ai/index.html">《动手学深度学习》 — 动手学深度学习 2.0.0-beta1 documentation (d2l.ai)</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/bonheur/">大-道-至-简 - 博客园 (cnblogs.com)</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/pinard/">刘建平Pinard - 博客园 (cnblogs.com)</a></li>
+</ul>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>简单说一下，本科专业选的是人工智能专业，但是刚进入大学真的是什么都不懂（属于是那种软件尽量不要装C盘都不知道的小白），然后稀里糊涂的就开始学什么人工智能导论以及一系列让人懵逼的课程，完了上课也根本不听自己搁下面做其他事（当时真的对这个专业完全没有兴趣，然后感觉听老师讲课也是听天书一样，你试试让一个连算法和数据结构都搞不明白的学生去理解深度学习、决策树…现实吗？？？）。这期间其实也不是完全摆烂，大一大二就迷迷糊糊的学了点东西（跟着B站的李宏毅老师学了课程，也看了周志华老师的《机器学习》，学过李航的《统计学习方法》，但是因为没有一根“线”将这些知识点串起来，导致学完几乎就忘完），今年因为疫情原因上半年没去学校导致全程在家自学，然后就开始写博客，回头把以前学的东西给整理整理（基本上现在是达到学人工智能的门槛了），然后这段时间也学不进去其他东西了，决定对人工智能这个领域做一些深入的学习（主要还是把以前学了的忘了的有体系的整理一下），之后再学学Tensorflow等框架，毕竟自己的专业课不能一直水着。</p>
+<p>我主要就是从一个完全人工智能小白的角度写这篇博客，介绍机器学习和人工智能有啥关系，一系列机器学习算法又有什么意义…需要注意的一点是当今市面上很多教材或者资料使用的术语都不严谨，导致阅读起来会有很多概念上的混淆，这点我在笔记中会注意尽量使用严谨的唯一的名词；</p>
+<p>先简单介绍一下人工智能领域主要包含什么，人工智能领域可以简单分为以下三个部分，这三个部分又包含了许多小的方向，每个方向都是极具挑战的</p>
+<p><img src="/images/image-20220809142830565.png" srcset="/img/loading.gif" lazyload></p>
+<p>用下面这幅图说明机器学习和人工智能什么关系，我们为什么要学机器学习</p>
+<p><img src="/images/image-20220808144546776.png" srcset="/img/loading.gif" lazyload></p>
+<p>可以理解为机器学习是研究人工智能领域的核心方法，我们要步入人工智能领域就一定要学习机器学习；</p>
+<p>从广义上来讲，任何关于使用大量数据训练模型的算法的相关研究都可以归纳于机器学习：</p>
+<ul>
+<li><p>数据集：主要分为训练集、验证集和测试集，三者关系参考<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/377789735">机器学习干货篇：训练集、验证集和测试集 - 知乎 (zhihu.com)</a></p>
+<ul>
+<li><p>将训练数据分为训练集和验证集，算法根据训练集训练得到模型（自动），基于验证集上的性能进行模型选择和调参（手动）；</p>
+</li>
+<li><p>用测试集上的判别效果来估计模型在实际使用时的泛化能力；</p>
+</li>
+</ul>
+</li>
+<li><p>算法：对某种问题的求解过程，如线性回归、决策树、神经网络….</p>
+</li>
+<li><p>模型：通过算法最终学到的结果，如决策树算法的模型是一个具有特定值的if-then语句树；</p>
+</li>
+</ul>
+<p>机器学习按照学习形式来分类主要可以分为：</p>
+<ul>
+<li>有监督学习：学习的数据是带标记的，用于解决<code>分类任务</code>和<code>回归任务</code>；</li>
+<li>无监督学习：学习的数据不带标记，由计算机根据样本的特征或相关性自行探索规律训练出预测模型，用于解决<code>聚类任务</code>和<code>降维任务</code>；</li>
+<li>强化学习：根据合理的情况给予“正向激励”和“负向激励”，具有动态规划的思想，旨在通过与环境交互并获取返回进而改进行为的学习过程；</li>
+<li>深度学习：属于神经网络算法的衍生，旨在研究如何从数据中自动地提取多层特征表示；</li>
+</ul>
+<h1 id="一、机器学习"><a href="#一、机器学习" class="headerlink" title="一、机器学习"></a>一、机器学习</h1><blockquote>
+<p>机器学习的最主要的一项工作就是“训练模型”，也就是从数据中学得模型的过程，这个过程通过执行某个学习算法来完成</p>
+</blockquote>
+<h2 id="1-机器学习概述"><a href="#1-机器学习概述" class="headerlink" title="1.机器学习概述"></a>1.机器学习概述</h2><h3 id="1-1-基本术语"><a href="#1-1-基本术语" class="headerlink" title="1.1 基本术语"></a>1.1 基本术语</h3><ul>
+<li>数据集：要进行机器学习，首先需要有数据，假如我们有一批关于西瓜的数据（色泽&#x3D;青绿；根蒂&#x3D;蜷缩；敲声&#x3D;浑浊），这样的一对括号内的内容我们称为<code>一条“记录”</code>或<code>一个“示例”</code>或<code>一个“样本”</code>或<code>一个“特征向量”</code>；色泽、根蒂被称为<code>“属性”</code>，在属性上的取值如“青绿”被称为<code>“属性值”</code>，由属性张成的空间称为<code>“样本空间”</code>、<code>“属性空间”</code>或<code>“输入空间”</code>；一个样本由d个属性描述，则d称为样本的<code>“维数”</code>；一组记录的集合称为<code>一个“数据集”</code>；</li>
+<li>标记空间&#x2F;输出空间：在有监督学习中，样本x<del>i</del>对应的标记为y<del>i</del>，我们将拥有标记的样本称为<code>“样例”</code>，而把所有训练样本对应的所有标记的集合称为<code>“输出空间”</code>或<code>“标记空间”</code>；</li>
+</ul>
+<hr>
+<ul>
+<li>真值：理想概念下被测物体的真实数值；</li>
+<li>噪声：真值与实际标记（测量值）的差值；</li>
+<li>偏差：真值与算法获得值的差值；</li>
+</ul>
+<hr>
+<ul>
+<li>假设空间：假如属性“色泽”有三种取值，“根蒂”有四种取值，“敲声”有四种取值，则假设空间的规模为3 * 4 * 4&#x3D;48</li>
+<li>版本空间：假设空间中删除与正例不一致的假设</li>
+</ul>
+<h3 id="1-2-任务分类"><a href="#1-2-任务分类" class="headerlink" title="1.2 任务分类"></a>1.2 任务分类</h3><p>前言部分简单说了一下机器学习按照学习形式可以大致分为几个部分，这里我们举一些例子来简单说明一下；</p>
+<h4 id="1-2-1-有监督学习"><a href="#1-2-1-有监督学习" class="headerlink" title="1.2.1 有监督学习"></a>1.2.1 有监督学习</h4><p>监督学习（supervised learning）擅长在“给定输入特征”的情况下预测标签。 每个“特征-标签”对都称为一个样本（example）。 有时，即使标签是未知的，样本也可以指代输入特征（翻译问题，有特征、无标签的机器学习应该属于无监督学习，此处意思大概是对于没有标签的样本我们可以人工标记数据？）。 我们的目标是生成一个模型，能够将任何输入特征映射到标签，即预测。</p>
+<blockquote>
+<p>即使使用简单的描述“给定输入特征的预测标签”，监督学习也可以采取多种形式的模型，并且需要大量不同的建模决策，这取决于输入和输出的类型、大小和数量。</p>
+</blockquote>
+<h5 id="（1）回归问题"><a href="#（1）回归问题" class="headerlink" title="（1）回归问题"></a>（1）回归问题</h5><p>回归（regression）是最简单的监督学习任务之一；</p>
+<p>当标签取任意数值时，我们称之为<em>回归</em>问题。 我们的目标是生成一个模型，它的预测非常接近实际标签值。</p>
+<p>生活中的许多问题都可归类为回归问题。 比如，预测用户对一部电影的评分可以被认为是一个回归问题。总而言之，判断回归问题的一个很好的经验法则是，任何有关“多少”的问题很可能就是回归问题。比如：</p>
+<ul>
+<li>这个手术需要多少小时？</li>
+<li>在未来六小时，这个镇会有多少降雨量？</li>
+</ul>
+<h5 id="（2）分类问题"><a href="#（2）分类问题" class="headerlink" title="（2）分类问题"></a>（2）分类问题</h5><p>这种“哪一个？”的问题叫做分类（classification）问题。 在分类问题中，我们希望模型能够预测样本属于哪个类别（category，正式称为类（class））。</p>
+<p>最简单的分类问题是只有两类，我们称之为“二元分类”。当我们有两个以上的类别时，我们把这个问题称为多元分类（multiclass classification）问题（如手写数字识别）。</p>
+<p>分类问题的常见损失函数被称为交叉熵；</p>
+<p>在回归中，我们训练一个回归函数来输出一个数值； 而在分类中，我们训练一个分类器，它的输出即为预测的类别。</p>
+<h5 id="（3）标记问题"><a href="#（3）标记问题" class="headerlink" title="（3）标记问题"></a>（3）标记问题</h5><p>图中有一只猫，一只公鸡，一只狗，一头驴，背景是一些树。 取决于我们最终想用我们的模型做什么，将其视为简单分类问题可能没有多大意义。 取而代之，我们可能想让模型描绘输入图像的内容，一只猫、一只狗、一头驴，还有一只公鸡。</p>
+<p><img src="/images/image-20220808213731763.png" srcset="/img/loading.gif" lazyload></p>
+<p>标记问题也可以称为多标签分类问题。传统分类问题是将一个样本划分到某一个给定的类别中，这是单标签分类（二分类和多分类都属于此类问题）；在生活中，一个样本，被划分到多个类别中，多标签分类就是将一个样本分类到一个类别或多个类别的但标签分类中，是一个大小不定的类别标签集合。</p>
+<h5 id="（4）搜索问题"><a href="#（4）搜索问题" class="headerlink" title="（4）搜索问题"></a>（4）搜索问题</h5><p>关于搜索问题，我们强调输出结果的顺序，搜索结果的排序十分重要，我们的学习算法需要输出有序的元素子集。 </p>
+<p>如今，搜索引擎使用机器学习和用户行为模型来获取网页相关性得分。</p>
+<h5 id="（5）推荐系统"><a href="#（5）推荐系统" class="headerlink" title="（5）推荐系统"></a>（5）推荐系统</h5><p>另一类与搜索和排名相关的问题是推荐系统（recommender system），它的目标是向特定用户进行“个性化”推荐。 例如，对于电影推荐，科幻迷和喜剧爱好者的推荐结果页面可能会有很大不同。 类似的应用也会出现在零售产品、音乐和新闻推荐等等。</p>
+<p>在某些应用中，客户会提供明确反馈，表达他们对特定产品的喜爱程度。 例如，亚马逊上的产品评级和评论。在其他一些情况下，客户会提供隐性反馈。例如，某用户跳过播放列表中的某些歌曲，这可能说明这些歌曲对此用户不大合适。</p>
+<h5 id="（6）序列学习"><a href="#（6）序列学习" class="headerlink" title="（6）序列学习"></a>（6）序列学习</h5><p>以上大多数问题都具有固定大小的输入和产生固定大小的输出，在这些情况下，模型只会将输入作为生成输出的“原料”，而不会“记住”输入的具体内容。</p>
+<p>如果输入的样本之间没有任何关系，以上模型可能完美无缺。 但是如果输入是连续的，我们的模型可能就需要拥有“记忆”功能。</p>
+<p>序列学习需要摄取输入序列或预测输出序列，或两者兼而有之。 具体来说，输入和输出都是可变长度的序列，例如机器翻译和从语音中转录文本。</p>
+<p>常见类型的序列学习有：</p>
+<p><img src="/images/image-20220808213918141.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="1-2-2-无监督学习"><a href="#1-2-2-无监督学习" class="headerlink" title="1.2.2 无监督学习"></a>1.2.2 无监督学习</h4><h5 id="（1）聚类问题"><a href="#（1）聚类问题" class="headerlink" title="（1）聚类问题"></a>（1）聚类问题</h5><p>没有标签的情况下，我们是否能给数据分类呢？比如，给定一组照片，我们能把它们分成风景照片、狗、婴儿、猫和山峰的照片吗（根据类别对图像进行分类）？同样，给定一组用户的网页浏览记录，我们能否将具有相似行为的用户聚类呢？</p>
+<h5 id="（2）主成成分分析"><a href="#（2）主成成分分析" class="headerlink" title="（2）主成成分分析"></a>（2）主成成分分析</h5><p>我们能否找到少量的参数来准确地捕捉数据的线性相关属性？比如，一个球的运动轨迹可以用球的速度、直径和质量来描述。</p>
+<h5 id="（3）因果关系-amp-概率图模型"><a href="#（3）因果关系-amp-概率图模型" class="headerlink" title="（3）因果关系&amp;概率图模型"></a>（3）因果关系&amp;概率图模型</h5><p>我们能否描述观察到的许多数据的根本原因？例如，如果我们有关于房价、污染、犯罪、地理位置、教育和工资的人口统计数据，我们能否简单地根据经验数据发现它们之间的关系？</p>
+<h5 id="（4）生成对抗网络"><a href="#（4）生成对抗网络" class="headerlink" title="（4）生成对抗网络"></a>（4）生成对抗网络</h5><p>为我们提供一种合成数据的方法，甚至像图像和音频这样复杂的非结构化数据。潜在的统计机制是检查真实和虚假数据是否相同的测试。</p>
+<h4 id="1-2-3-强化学习"><a href="#1-2-3-强化学习" class="headerlink" title="1.2.3 强化学习"></a>1.2.3 强化学习</h4><p>强化学习问题是一类明确考虑与环境交互的问题，前面介绍的两种模型都被称为离线学习，因为所有的学习都是算法与环境断开后进行的。</p>
+<p>与环境交互需要注意以下问题：</p>
+<ul>
+<li>环境还记得我们以前做过什么吗？</li>
+<li>环境是否有助于我们建模？例如，用户将文本读入语音识别器。</li>
+<li>环境是否想要打败模型？例如，一个对抗性的设置，如垃圾邮件过滤或玩游戏？</li>
+<li>环境是否重要？</li>
+<li>环境是否变化？例如，未来的数据是否总是与过去相似，还是随着时间的推移会发生变化？是自然变化还是响应我们的自动化工具而发生变化？</li>
+</ul>
+<p><img src="/images/image-20220808214037499.png" srcset="/img/loading.gif" lazyload></p>
+<p>当环境可被完全观察到时，我们将强化学习问题称为马尔可夫决策过程（markov decision process）。 当状态不依赖于之前的操作时，我们称该问题为上下文赌博机（contextual bandit problem）。 当没有状态，只有一组最初未知回报的可用动作时，这个问题就是经典的多臂赌博机（multi-armed bandit problem）。</p>
+<h4 id="1-2-4-深度学习"><a href="#1-2-4-深度学习" class="headerlink" title="1.2.4 深度学习"></a>1.2.4 深度学习</h4><p>本质上，深度学习是神经网络算法的衍生，是总结大量数据的方法，旨在研究如何从数据中自动的提取多层特征元素。</p>
+<p>深度学习的一个关键优势是它不仅取代了传统学习管道末端的浅层模型，而且还取代了劳动密集型的特征工程过程。 此外，通过取代大部分特定领域的预处理，深度学习消除了以前分隔计算机视觉、语音识别、自然语言处理、医学信息学和其他应用领域的许多界限，为解决各种问题提供了一套统一的工具。</p>
+<h3 id="1-3-一个简单的例子"><a href="#1-3-一个简单的例子" class="headerlink" title="1.3 一个简单的例子"></a>1.3 一个简单的例子</h3><p>我们这里举一个简单的例子来感受一下机器学习的整个过程，当然并不是所有的机器学习都是这样的模式（针对不同的机器学习算法有不同的学习流程），这里只是一个比较经典的例子；</p>
+<ul>
+<li><p>从直观感受来说，机器学习的目的就是让机器具备一个寻找函数的能力；</p>
+</li>
+<li><p>从具体的实践意义来说，机器学习是<code>利用大量数据训练出一个最优模型，再利用此模型预测出其他数据</code>的一种方法，那么根据这个定义可以简单的将机器学习分为训练阶段和预测阶段；</p>
+</li>
+</ul>
+<p>我们将训练过程分为以下几个阶段（假如我们的任务是找出一个function能够拟合red curve这条曲线）：</p>
+<p><img src="/images/image-20220808154411528.png" srcset="/img/loading.gif" lazyload></p>
+<ol>
+<li><p>根据domain knownledge写出含有未知参数的function（称为假设函数&#x2F;模型函数）</p>
+<ul>
+<li>粗略根据red curve选择用hard&#x2F;soft sigmoid&#x2F;Relu拟合写出function；</li>
+</ul>
+</li>
+<li><p>定义损失函数（又称为目标函数、代价函数）：损失函数就像一个度量尺，反映“假设函数”训练结果的优劣，从而做出相应的优化策略（该过程在训练集上进行）；</p>
+</li>
+<li><p>Optimization：介于假设函数和损失函数之间的桥梁，主要目的是调整假设函数中的参数以减小损失函数中的损失（此处选择了优化器之后训练过程中会自动进行）；</p>
+</li>
+<li><p>模型评估、修改模型：将得到的模型在验证集&#x2F;测试集上进行测试，对function进行修改（修改模型往往来自对问题的理解，这里指的是手动修改模型）</p>
+<ul>
+<li><p>增加数据提高function的弹性；</p>
+</li>
+<li><p>增加激活函数的层数提高表征能力更好地拟合复杂曲线；</p>
+</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>上述过程只是概念上的训练过程，与实际使用代码进行模型的训练还是有一些差异的，可以参考 <a target="_blank" rel="noopener" href="https://www.aliyundrive.com/s/jcgTZ6EKjCd">https://www.aliyundrive.com/s/jcgTZ6EKjCd</a> 这篇PDF了解如何使用代码训练一个简单的手写数字识别模型；</p>
+</blockquote>
+<h2 id="2-机器学习算法"><a href="#2-机器学习算法" class="headerlink" title="2.机器学习算法"></a>2.机器学习算法</h2><blockquote>
+<p>本章主要介绍一些传统的机器学习算法</p>
+</blockquote>
+<p><code>机器学习</code>的目的是设计、分析一些让计算机可以自动“学习”的算法，最终让计算机拥有像人类一样的智慧，甚至于超越人类。这一结果的实现，要得益于<code>机器学习算法</code>，它提供了一整套解决问题的方案和思路，即先做什么、再做什么、最后做什么（机器学习算法是机器学习的“火车头”）。</p>
+<h3 id="2-1-线性回归算法"><a href="#2-1-线性回归算法" class="headerlink" title="2.1 线性回归算法"></a>2.1 线性回归算法</h3><blockquote>
+<p>Q：函数(function)和方程(equation)的区别？</p>
+</blockquote>
+<p>参考资料<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%87%BD%E6%95%B0/301912?fr=aladdin">函数（数学术语）_百度百科 (baidu.com)</a>| <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%96%B9%E7%A8%8B/6306?fr=aladdin">方程（数学术语）_百度百科 (baidu.com)</a></p>
+<p>A：很多时候其实我们都没有区分这两者的概念（毕竟x+y+1&#x3D;0和y&#x3D;-x-1的图象是完全一样的），硬要说区别的话，方程表示的思想是未知数之间相互平衡制约的关系，函数表示的是变量与因变量之间一一对应的映射关系；在很多机器学习的教程中是完全没有区分这两个概念的，个人认为这不是一个好的习惯，严格按照定义来说的话在机器学习中应该称呼为函数而非方程；</p>
+<hr>
+<p>线性回归算法即使用线性模型来解决回归问题的算法，其中“线性”表示线性模型，“回归”表示回归问题（可以理解为预测真实值的过程，如预测房价、股价，简单来说就是选择一条函数曲线使其很好地拟合已知数据且很好地预测未知数据）；</p>
+<p>线性回归算法主要用于解决回归问题（即预测连续值的问题），满足这样要求的数学模型被称为“线性回归模型”。最简单的线性回归模型是我们熟知的一次函数，表达式为y&#x3D;kx+b，其函数图像是二维平面中的一条直线，多维&#x2F;多元线性回归可以用函数表达式y&#x3D;a<del>0</del>+a<del>1</del>x<del>1</del>+a<del>2</del>x<del>2</del>+…+a<del>n</del>x<del>n</del>表示；</p>
+<p>线性回归模型表示一个函数，其函数图像是一条直线（不仅限于二维平面），通过寻找输入变量系数(k)的特定权重，拟合输入变量(x)和输出变量(y)之间的关系</p>
+<p><img src="/images/image-20220809103316691.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-1-1-线性回归的模型函数"><a href="#2-1-1-线性回归的模型函数" class="headerlink" title="2.1.1 线性回归的模型函数"></a>2.1.1 线性回归的模型函数</h4><p>一元线性回归：回归分析中，只包括一个自变量和一个因变量，且二者的关系可用一条直线近似表示（两者之间是线性关系）；</p>
+<p>多元线性回归：回归分析中，包括两个或两个以上的自变量，且因变量和自变量之间是线性关系；</p>
+<p>线性回归的模型函数如下（当n&#x3D;1的时候表示是一元线性回归）</p>
+<p><img src="/images/image-20220809103551029.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们默认x<del>0</del>等于1，使用矩阵形式化简可得</p>
+<p><img src="/images/image-20220809103711754.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-1-2-线性回归的损失函数"><a href="#2-1-2-线性回归的损失函数" class="headerlink" title="2.1.2 线性回归的损失函数"></a>2.1.2 线性回归的损失函数</h4><p>之前也说过，如果严格按照模型的定义来说的话其实上面我们介绍的只能称为“假设函数”（称之为“模型函数”无疑是最明智的选择），但在不引起混淆的前提下，我们可以称“假设函数”为模型；</p>
+<p>拥有了最基础的模型之后我们就要根据已知的数据集在假设空间中选出最合适的线性回归模型，这一步需要借助损失函数（用来估量模型的预测值 f(x)与真实值 Y的不一致程度，损失函数越小，模型的效果就越好）</p>
+<p>线性回归中常用的损失函数是均方误差（至于为什么要使用均方误差作为线性回归的损失函数可以参考 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/48205156%EF%BC%89%EF%BC%8C%E5%85%B6%E4%BB%A3%E6%95%B0%E8%A1%A8%E7%A4%BA%E5%A6%82%E4%B8%8B%EF%BC%9A">https://zhuanlan.zhihu.com/p/48205156），其代数表示如下：</a></p>
+<p><img src="/images/image-20220809140553165.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-1-3-损失函数的最小化"><a href="#2-1-3-损失函数的最小化" class="headerlink" title="2.1.3 损失函数的最小化"></a>2.1.3 损失函数的最小化</h4><p>通过定义损失函数，我们将问题转化为找出参数 θ 使得损失函数最小，求解机器学习算法的模型参数（这里所说的求解就是损失函数最小化时的模型参数）常用的两种方法分别是：</p>
+<ul>
+<li><p>梯度下降法：是一种搜索算法，先给 θ 赋初值，再根据使 J(θ) 更小的原则对 θ 进行修改，直到J(θ) 达到最小，求得此时的 θ ；求解方法参考<a target="_blank" rel="noopener" href="https://www.cnblogs.com/pinard/p/5970503.html">梯度下降（Gradient Descent）小结 - 刘建平Pinard - 博客园 (cnblogs.com)</a></p>
+</li>
+<li><p>最小二乘法：是一种方程法，要使 J(θ) 最小，就对 θ 求导，使导数等于 0，求得此时的 θ；求解方法参考<a target="_blank" rel="noopener" href="https://www.cnblogs.com/pinard/p/5976811.html">最小二乘法小结 - 刘建平Pinard - 博客园 (cnblogs.com)</a></p>
+</li>
+</ul>
+<hr>
+<p>最小二乘法通过使得推导结果为0直接求得极值，一步到位；</p>
+<p>梯度下降法是将推导结果一步步代入迭代公式中，逐步进行，适合特征变量很多的情况使用；</p>
+<h4 id="2-1-4-损失函数的正则化"><a href="#2-1-4-损失函数的正则化" class="headerlink" title="2.1.4 损失函数的正则化"></a>2.1.4 损失函数的正则化</h4><p>为了解决过拟合的问题，需要在损失函数中引入正则化，正则化参考<a target="_blank" rel="noopener" href="http://www.360doc.com/content/19/1207/16/32196507_878087342.shtml">什么是正则化、如何理解正则化以及正则化的作用？ (360doc.com)</a></p>
+<h5 id="（1）Lasso回归"><a href="#（1）Lasso回归" class="headerlink" title="（1）Lasso回归"></a>（1）Lasso回归</h5><p>线性回归的L1正则化通常称为Lasso回归，它和一般线性回归的区别是在损失函数上增加了一个L1正则化的项，L1正则化的项有一个常数系数</p>
+<p><img src="/images/image-20220809142022947.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="（2）Ridge回归"><a href="#（2）Ridge回归" class="headerlink" title="（2）Ridge回归"></a>（2）Ridge回归</h5><p>L2正则化通常称为Ridge回归，它和一般线性回归的区别是在损失函数上增加了一个L2正则化的项，和Lasso回归的区别是Ridge回归的正则化项是L2范数，而Lasso回归的正则化项是L1范数</p>
+<p><img src="/images/image-20220809142304013.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="（3）Elasticnet回归"><a href="#（3）Elasticnet回归" class="headerlink" title="（3）Elasticnet回归"></a>（3）Elasticnet回归</h5><p>ElasticNet回归是对Lasso回归和岭回归的一个综合，它的惩罚项是L1范数和L2范数的一个权衡，正则化后的损失函数为</p>
+<p><img src="/images/image-20220809142600881.png" srcset="/img/loading.gif" lazyload></p>
+<p>其中，α和ρ均为超参数，α≥0，1≥ρ≥0。而ρ影响的是性能下降的速度，因为这个参数控制着两个正则化项之间的比例；</p>
+<hr>
+<ul>
+<li><p>Lasso回归（缩减系数）：可以使得一些特征系数变小，甚至一些绝对值较小的系数直接变为零，从而增强模型的泛化能力。因此很适合与参数数目缩减与参数的选择，作为用来估计稀疏参数的线性模型。当进行模型选择的时候，如果特征特别多，需要进行压缩时，就可以选择Lasso回归。</p>
+</li>
+<li><p>Ridge回归（平滑系数）：是在不抛弃任何一个特征的情况下，限制（缩小）了回归系数，使得模型相对而言比较复杂。和Lasso回归相比，这会使得模型保留的特别多，导致解释性差。</p>
+</li>
+<li><p>ElasticNet回归：则是对上面两个进行了权衡。实际上，L1L1正则项可以得到稀疏的θ⃗ θ→,L2L2正则项则可以得到比较小的θ⃗ θ→，ElasticNet回归就是将这两个结合着用。</p>
+</li>
+</ul>
+<hr>
+<p>如何求解正则化之后的损失函数？参考<a target="_blank" rel="noopener" href="https://www.cnblogs.com/pinard/p/6018889.html">Lasso回归算法： 坐标轴下降法与最小角回归法小结 - 刘建平Pinard - 博客园 (cnblogs.com)</a></p>
+<h4 id="2-1-5-线性回归的拓展"><a href="#2-1-5-线性回归的拓展" class="headerlink" title="2.1.5 线性回归的拓展"></a>2.1.5 线性回归的拓展</h4><p>当数据是非线性的形式时，使用线性回归很难拟合该函数，此时可以使用多项式回归（注意不是多元回归），线性模型的函数为</p>
+<p><img src="/images/image-20220809143752885.png" srcset="/img/loading.gif" lazyload></p>
+<p>若此时x<del>n</del>的幂次为高次（而非仅仅是一次），则该模型就成为了多项式线性回归模型，比如有两个特征的二次多项式回归模型</p>
+<p><img src="/images/image-20220809143930478.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-1-6-总结"><a href="#2-1-6-总结" class="headerlink" title="2.1.6 总结"></a>2.1.6 总结</h4><p>线性回归的优点：</p>
+<ul>
+<li><p>建模速度快，不需要很复杂的计算，在数据量大的情况下依然运行速度很快；</p>
+</li>
+<li><p>可以根据系数给出每个变量的理解和解释；</p>
+</li>
+<li><p>对异常值很敏感；</p>
+</li>
+</ul>
+<p>线性回归的缺点：</p>
+<ul>
+<li>不能很好的拟合非线性数据，所以需要先判断变量之间是否线性相关；</li>
+</ul>
+<h3 id="2-2-逻辑回归算法"><a href="#2-2-逻辑回归算法" class="headerlink" title="2.2 逻辑回归算法"></a>2.2 逻辑回归算法</h3><p>线性回归既可以用于回归任务也可以用于分类任务（线性回归+阈值），但是作为分类器线性回归的性能确实很低，所以诞生了逻辑回归；</p>
+<p>逻辑回归主要用于解决二分类问题（逻辑回归前提是假设数据服从伯努利分布），逻辑回归是一种广义的线性回归；</p>
+<p>逻辑回归有两个重要的假设条件：</p>
+<p>（1）假设数据服从伯努利分布；</p>
+<p>（2）假设模型的输出值是样本为正例的概率；</p>
+<p>那么基于这两个假设可以分别得到输出类别为1和0的后验概率估计（即逻辑回归模型函数的意义）：</p>
+<p><img src="/images/image-20220809145941827.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-2-1-逻辑回归的模型函数"><a href="#2-2-1-逻辑回归的模型函数" class="headerlink" title="2.2.1 逻辑回归的模型函数"></a>2.2.1 逻辑回归的模型函数</h4><p>简单来说逻辑回归就是在线性回归的理论基础上引入非线性因素，我们熟知的线性回归模型为</p>
+<p><img src="/images/image-20220809145528661.png" srcset="/img/loading.gif" lazyload></p>
+<p>引入sigmoid函数做转换得到逻辑回归的假设函数形式如下</p>
+<p><img src="/images/image-20220809145623076.png" srcset="/img/loading.gif" lazyload></p>
+<p>其中x是样本输入，0是待求参数</p>
+<h4 id="2-2-2-逻辑回顾的损失函数"><a href="#2-2-2-逻辑回顾的损失函数" class="headerlink" title="2.2.2 逻辑回顾的损失函数"></a>2.2.2 逻辑回顾的损失函数</h4><p>因为逻辑回归不是连续的，这里使用最大似然法推导逻辑回归的损失函数，我们已经知道逻辑回归模型函数h<del>0</del>(x)的意义，将这两个式子写成一个式子得到</p>
+<p><img src="/images/image-20220809150232821.png" srcset="/img/loading.gif" lazyload></p>
+<p>推导出的损失函数形式如下</p>
+<p><img src="/images/image-20220809150509848.png" srcset="/img/loading.gif" lazyload></p>
+<p>该损失函数也被称为“对数似然函数”，也称为“交叉熵”、“香农熵”，可以参考资料<a target="_blank" rel="noopener" href="https://blog.csdn.net/rtygbwwwerr/article/details/50778098">(23条消息) 交叉熵（Cross-Entropy）_rtygbwwwerr的博客-CSDN博客_cross entropy</a></p>
+<h4 id="2-2-3-损失函数的最小化"><a href="#2-2-3-损失函数的最小化" class="headerlink" title="2.2.3 损失函数的最小化"></a>2.2.3 损失函数的最小化</h4><p>对于逻辑回归而言使用传统的最小二乘法求解是不合适的，常用梯度下降法，坐标轴下降法，等牛顿法等，具体求解过程参考<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/51279024">【机器学习笔记】：从零开始学会逻辑回归（一） - 知乎 (zhihu.com)</a></p>
+<h4 id="2-2-4-总结"><a href="#2-2-4-总结" class="headerlink" title="2.2.4 总结"></a>2.2.4 总结</h4><p>优点：</p>
+<ul>
+<li><p>直接对分类可能性进行建模，无需实现假设数据分布，避免了假设分布不准确所带来的问题；</p>
+</li>
+<li><p>形式简单，便利的观测样本概率分数，模型的可解释性非常好，特征的权重可以看到不同的特征对最后结果的影响；</p>
+</li>
+<li><p>训练速度较快，分类速度很快；</p>
+</li>
+<li><p>内存占用少；</p>
+</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li><p>一般准确率不是很高，因为形式非常的简单，很难去拟合数据的真实分布；</p>
+</li>
+<li><p>当特征空间很大时，逻辑回归的性能不是很好；</p>
+</li>
+<li><p>很难处理数据不平衡的问题；</p>
+</li>
+</ul>
+<h3 id="2-3-KNN算法"><a href="#2-3-KNN算法" class="headerlink" title="2.3 KNN算法"></a>2.3 KNN算法</h3><p>KNN算法全称为K最近邻（k-Nearest Neighbor）算法，是一种分类算法（实际上也可以用于回归，只是效果不太好），其核心思想为：如果一个样本在特征空间中的k个最相邻的样本中的大多数属于某一个类别，则该样本也属于这个类别，并具有这个类别上样本的特性（简单理解就是近朱者赤近墨者黑）；</p>
+<p>举例来说，绿色圆要被决定赋予哪个类，是红色三角形还是蓝色四方形？如果K&#x3D;3，由于红色三角形所占比例为2&#x2F;3，因此绿色圆被赋予红色三角形那个类；如果K&#x3D;5，由于蓝色四方形比例为3&#x2F;5，因此绿色圆被赋予蓝色四方形类</p>
+<p><img src="/images/image-20220809155226384.png" srcset="/img/loading.gif" lazyload></p>
+<p>简单介绍一下KNN算法的实现步骤（这只是一个框架，具体的实现后面会介绍）：</p>
+<p>1）算距离：计算测试数据与各个训练数据之间的距离，按照距离的递增关系进行排序，此处的距离是欧氏距离，n维空间下欧式距离计算公式如下</p>
+<p><img src="/images/image-20220809155458142.png" srcset="/img/loading.gif" lazyload></p>
+<p>2）找邻居：选取（圈定）距离最小的K个点，作为待分类样本的近邻；</p>
+<p>3）做分类：确定前K个点所在类别的出现频率，返回前K个点中出现频率最高的类别作为测试数据的预测分类(根据这K个近邻中的大部分样本所属的类别来决定待分类样本该属于哪个分类)；</p>
+<hr>
+<p>实际上KNN算法既可以用作回归任务也可以用作分类任务，KNN做分类的时候使用的决策方式是多数表决法（最近的K个样本中类别数最多的类别作为预测的类别），KNN做回归的时候决策方法一般是选择平均法（最近的K个样本的输出的平均值作为回归预测值），两者的区别不是很大，这里主要对KNN算法做分类进行讲解；</p>
+<h4 id="2-3-1-KNN算法三要素"><a href="#2-3-1-KNN算法三要素" class="headerlink" title="2.3.1 KNN算法三要素"></a>2.3.1 KNN算法三要素</h4><p>在上面已经简单的介绍了一下KNN算法的实现步骤，而这三个因素也是KNN算法的核心所在：K值的选取、距离度量方式以及分类决策规则</p>
+<h5 id="（1）K值的选择"><a href="#（1）K值的选择" class="headerlink" title="（1）K值的选择"></a>（1）K值的选择</h5><p>因为KNN算法中只有一个超参数K，因此不需要像前面的回归算法一样求解最小化损失函数等操作，常规的求解方法是从较小的K值开始通过交叉验证选择一个合适的K值</p>
+<ul>
+<li><p>k越小，即使用较小的领域中的样本进行预测，训练误差会减小，但模型会很复杂，以至于过拟合；</p>
+</li>
+<li><p>k越大，即使用较大的领域中的样本进行预测，训练误差会增大，模型会变得简单，容易导致欠拟合；</p>
+</li>
+</ul>
+<h5 id="（2）距离度量方式"><a href="#（2）距离度量方式" class="headerlink" title="（2）距离度量方式"></a>（2）距离度量方式</h5><p>最常用的是欧氏距离，对于两个n维向量x和y，两者的欧式距离为</p>
+<p><img src="/images/image-20220810160804124.png" srcset="/img/loading.gif" lazyload></p>
+<p>曼哈顿距离表达式为</p>
+<p><img src="/images/image-20220810160836011.png" srcset="/img/loading.gif" lazyload></p>
+<p>闵可夫斯基距离表达式为</p>
+<p><img src="/images/image-20220810160914653.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="（3）决策规则"><a href="#（3）决策规则" class="headerlink" title="（3）决策规则"></a>（3）决策规则</h5><p>对于分类KNN来说可以选择多数表决法、加权多数表决法；对于回归KNN来说可以选择平均值法、加权平均值法；</p>
+<p>一般使用的决策方式都是多数表决法；</p>
+<h4 id="2-3-2-KNN算法的实现"><a href="#2-3-2-KNN算法的实现" class="headerlink" title="2.3.2 KNN算法的实现"></a>2.3.2 KNN算法的实现</h4><p>KNN算法的基本原理很简单，使用代码来实现KNN存在多种选择，这里主要介绍scikit-learn中使用的几种实现方式（可以理解为KNN算法的几种分支）；</p>
+<h5 id="（1）蛮力法"><a href="#（1）蛮力法" class="headerlink" title="（1）蛮力法"></a>（1）蛮力法</h5><p>蛮力法顾名思义就是计算出训练集中所有样本与预测样本之间的距离，然后在最小的K个样本中采用多数多数表决法做出决策，当然这种方式只适合拥有少量样本的简单模型使用；</p>
+<h5 id="（2）KD树"><a href="#（2）KD树" class="headerlink" title="（2）KD树"></a>（2）KD树</h5><p>KD树就是K个特征维度的树，注意这里的K不代表最近的K个样本，而是代表样本特征的维数；</p>
+<p>KD树并没有像蛮力法一样一来就尝试对测试样本进行分类，而是先对训练集进行了建模，建立的模型就是KD树；</p>
+<hr>
+<p>KD树的建立采用的是从m个样本的n个特征中，分别计算n个特征的取值的方差，用方差最大的第k个特征n<del>k</del>作为根节点，选择特征n<del>k</del>的取值的中位数对应的样本作为划分点：</p>
+<ul>
+<li>对于所有第k维特征的取值小于n<del>k</del>中位数的样本划入左子树；</li>
+<li>对于所有第k维特征的取值大于等于n<del>k</del>的中位数的样本划入右子树；</li>
+<li>对于左子树和右子树，使用上述相同的方法寻找方差最大的特征作为根节点，递归生成KD树；</li>
+</ul>
+<p>举个例子，这里有6个二维样本{(2,3)，(5,4)，(9,6)，(4,7)，(8,1)，(7,2)}：</p>
+<ol>
+<li>6个数据点在x，y维度上的数据方差分别为6.97，5.37，所以在x轴上方差更大，所以用x维的特征建树；</li>
+<li>根据x维上的值将数据排序，6个数据的中值(所谓中值，即中间大小的值)为7，所以划分点的数据是（7,2）；</li>
+<li>分割超平面x&#x3D;7将整个空间分为两部分：x&lt;&#x3D;7的部分为左子空间，包含3个节点&#x3D;{(2,3),(5,4),(4,7)}；另一部分为右子空间，包含2个节点&#x3D;{(9,6)，(8,1)}；</li>
+<li>用同样的办法划分左子树的节点{(2,3),(5,4),(4,7)}和右子树的节点{(9,6)，(8,1)}，最终得到的KD树如下</li>
+</ol>
+<p><img src="/images/image-20220810164510417.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<p>生成了KD树之后就可以寻找测试样本的最近邻：对于一个目标点，我们首先在KD树里面找到包含目标点的叶子节点。以目标点为圆心，以目标点到叶子节点样本实例的距离为半径，得到一个超球体，最近邻的点一定在这个超球体内部。然后返回叶子节点的父节点，检查另一个子节点包含的超矩形体是否和超球体相交，如果相交就到这个子节点寻找是否有更加近的近邻,有的话就更新最近邻。如果不相交那就简单了，我们直接返回父节点的父节点，在另一个子树继续搜索最近邻。当回溯到根节点时，算法结束，此时保存的最近邻节点就是最终的最近邻。</p>
+<p>当然上面的描述可能令人眼花，这里举例对点（2，4.5）寻找最近邻：</p>
+<p>先进行二叉查找，先从（7,2）查找到（5,4）节点，在进行查找时是由y &#x3D; 4为分割超平面的，由于查找点为y值为4.5，因此进入右子空间查找到（4,7），形成搜索路径&lt;(7,2)，(5,4)，(4,7)&gt;，但 （4,7）与目标查找点的距离为3.202，而（5,4）与查找点之间的距离为3.041，所以（5,4）为查询点的最近点； 以（2，4.5）为圆心，以3.041为半径作圆，如下图所示。可见该圆和y &#x3D; 4超平面交割，所以需要进入（5,4）左子空间进行查找，也就是将（2,3）节点加入搜索路径中得&lt;(7,2)，(2,3)&gt;；于是接着搜索至（2,3）叶子节点，（2,3）距离（2,4.5）比（5,4）要近，所以最近邻点更新为（2，3），最近距离更新为1.5；回溯查找至（5,4），直到最后回溯到根结点（7,2）的时候，以（2,4.5）为圆心1.5为半径作圆，并不和x &#x3D; 7分割超平面交割，如下图所示。至此，搜索路径回溯完，返回最近邻点（2,3），最近距离1.5；</p>
+<p>要选择K个最近邻则循环K次该算法，得到测试样本的K个最近邻，然后根据多数表决法的到最后的预测；</p>
+<h5 id="（3）球树"><a href="#（3）球树" class="headerlink" title="（3）球树"></a>（3）球树</h5><p>球树是在KD树的基础上改造而来，其分割块不是超矩形体而是超球体</p>
+<p><img src="/images/image-20220810165141366.png" srcset="/img/loading.gif" lazyload></p>
+<p>具体的建树过程和寻找最近邻的方法这里就不再赘述，感兴趣可以参考<a target="_blank" rel="noopener" href="https://www.cnblogs.com/pinard/p/6061661.html">K近邻法(KNN)原理小结 - 刘建平Pinard - 博客园 (cnblogs.com)</a></p>
+<h4 id="2-3-3-总结"><a href="#2-3-3-总结" class="headerlink" title="2.3.3 总结"></a>2.3.3 总结</h4><p>KNN算法特点在于“非参”和“惰性”，其中非参表示KNN建立的模型结构是根据数据决定的而不会对对数据做出任何假设（与之相对的是线性回归中我们总假设数据是一条直线），惰性表示KNN算法不需要像逻辑回归一样对数据进行大量训练才能得到算法模型，KNN算法没有明确的训练数据的过程；</p>
+<p>优点：</p>
+<ul>
+<li><p>思想简单，理论成熟，易于理解，易于实现，既可以用来做分类也可以用来做回归（但是KNN的回归效果不好，很少用）；</p>
+</li>
+<li><p>无需估计参数，即无数据输入假定（对数据没有假设），惰性的，无需训练（或者说模型的训练过程非常快）；</p>
+</li>
+<li><p>精度高，预测效果好，对异常值不敏感；</p>
+</li>
+<li><p>特别适合于多分类问题(multi-modal，对象具有多个类别标签)， kNN比SVM的表现要好；</p>
+</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li><p>计算复杂度高：必须对数据集中的每个数据计算距离值，计算量大，时间开销大，预测阶段可能很慢；</p>
+</li>
+<li><p>空间复杂度高：必须保存全部数据集，存储空间需求大，需要大量的内存；</p>
+</li>
+<li><p>对于样本分类不均衡的问题会产生误判，即对样本容量较小的类域很容易产生误分；</p>
+</li>
+<li><p>输出的可解释性不强，无法给出任何数据的基础结构信息，无法知晓平均实例样本和典型实例样本具有什么特征；</p>
+</li>
+</ul>
+<h3 id="2-4-朴素贝叶斯"><a href="#2-4-朴素贝叶斯" class="headerlink" title="2.4 朴素贝叶斯"></a>2.4 朴素贝叶斯</h3><p>（这章对于概率论的要求比较高，概率论的课程可以参考<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1ot411y7mU?spm_id_from=333.337.search-card.all.click&vd_source=276d55048634a5b508b1b53a1ecd56b3">《概率论与数理统计》教学视频全集（宋浩）_哔哩哔哩_bilibili</a>）</p>
+<p>朴素贝叶斯是有监督学习的一种分类算法，基于“贝叶斯定理实现”和特征条件独立假设，而贝叶斯定理基于概率论和统计学实现；</p>
+<p>下面先简单梳理一下概念：</p>
+<ul>
+<li>贝叶斯分类器：一类分类算法的总称，这类算法以贝叶斯定理为基础；</li>
+<li>朴素贝叶斯：全称为朴素贝叶斯分类器(NBC)，是贝叶斯分类器中最简单、最常见的分类方法，该算法以自变量之间的独立性和连续变量的正态性假设为前提；</li>
+</ul>
+<h4 id="2-4-1-贝叶斯定理"><a href="#2-4-1-贝叶斯定理" class="headerlink" title="2.4.1 贝叶斯定理"></a>2.4.1 贝叶斯定理</h4><p>贝叶斯的思想有点类似于逆向思维，主要用于求现实任务中难以直接获得的概率（逆概），贝叶斯公式表述如下</p>
+<p><img src="/images/image-20220809162709399.png" srcset="/img/loading.gif" lazyload></p>
+<p>该公式表示在B事件发生的条件下A事件发生的条件概率，等于A事件发生条件下B事件发生的条件概率乘以A事件的概率，再除以B事件发生的概率。公式中，P(A)也叫做先验概率，P(A&#x2F;B)叫做后验概率；</p>
+<p>条件概率是指事件A在另外一个事件B已经发生条件下的发生概率。条件概率表示为：P(A|B)，读作“在B条件下A的概率”。若只有两个事件A和B，那么</p>
+<p><img src="/images/image-20220809162905751.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-4-2-朴素贝叶斯的模型函数"><a href="#2-4-2-朴素贝叶斯的模型函数" class="headerlink" title="2.4.2 朴素贝叶斯的模型函数"></a>2.4.2 朴素贝叶斯的模型函数</h4><p>朴素贝叶斯分类器采用了“属性条件独立性假设”：假设所有属性相互独立。基于属性条件独立性假设,贝叶斯公式可重写为</p>
+<p><img src="/images/image-20220809163418590.png" srcset="/img/loading.gif" lazyload></p>
+<p>其中，d为属性数目，xi为x在第i个属性上的取值；</p>
+<blockquote>
+<p>朴素贝叶斯分类器的训练过程就是基于训练集D来估计类先验概率P(c)，并为每个属性估计条件概率P(x<del>i</del>∣c)</p>
+</blockquote>
+<hr>
+<p>2022&#x2F;8&#x2F;10 这章确实因为概率论的原因自己学不下去了，暂时放置一段时间；</p>
+<h3 id="2-5-决策树"><a href="#2-5-决策树" class="headerlink" title="2.5 决策树"></a>2.5 决策树</h3><p>如果完全不了解决策树我们可以先看这个视频[<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1ar4y137GD?spm_id_from=333.337.search-card.all.click&vd_source=276d55048634a5b508b1b53a1ecd56b3">5分钟学算法] #03 决策树 小明毕业当行长_哔哩哔哩_bilibili</a></p>
+<p>决策树算法既可以作为分类算法，也可以作为回归算法，同时也特别适合集成学习；</p>
+<p>决策树算法是<code>一类算法</code>的集合，具体的常用的决策树算法有C4.5和CART算法（以基尼系数为核心）；</p>
+<p>决策树（decision tree）是一个树结构（可以是二叉树或非二叉树，二叉树并不是强制要求）：</p>
+<ul>
+<li>每个非叶节点表示一个特征属性上的测试（特征）；</li>
+<li>每个分支代表这个特征属性在某个值域上的输出（特征值）；</li>
+<li>每个叶节点存放一个类别（分类结果）；</li>
+</ul>
+<p>使用决策树进行决策的过程就是从根节点开始，测试待分类项中相应的特征属性，并按照其值选择输出分支，直到到达叶子节点，将叶子节点存放的类别作为决策结果。</p>
+<p><img src="/images/image-20220810092715254-16600954121675.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>决策树的构造算法</p>
+</blockquote>
+<p>构造决策树的关键步骤是选择分裂属性（也就是我们常说的分类标准）。所谓分裂属性就是在某个节点处按照某一特征属性的不同划分构造不同的分支，其目标是让各个分裂子集尽可能地“纯”。尽可能“纯”就是尽量让一个分裂子集中待分类项属于同一类别。分裂属性分为三种不同的情况：</p>
+<ul>
+<li><p>属性是离散值且不要求生成二叉决策树。此时用属性的每一个划分作为一个分支；</p>
+</li>
+<li><p>属性是离散值且要求生成二叉决策树。此时使用属性划分的一个子集进行测试，按照“属于此子集”和“不属于此子集”分成两个分支；</p>
+</li>
+<li><p>属性是连续值。此时确定一个值作为分裂点split_point，按照&gt;split_point和&lt;&#x3D;split_point生成两个分支（在没有具体的切割要求下，一般选择的split_point都是平均数）</p>
+</li>
+</ul>
+<blockquote>
+<p>决策树构建步骤（即选择具体的构造算法构造决策树，详细过程可以参考视频[<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1ar4y137GD?spm_id_from=333.337.search-card.all.click&vd_source=276d55048634a5b508b1b53a1ecd56b3">5分钟学算法] #03 决策树 小明毕业当行长_哔哩哔哩_bilibili</a>这个视频介绍的是CART的构建过程）：</p>
+</blockquote>
+<p>1.将所有的特征看成一个一个的节点；</p>
+<p>2.遍历所有特征，遍历到其中某一个特征时：遍历当前特征的所有分割方式，找到最好的分割点，将数据划分为不同的子节点，计算划分后子节点的纯度信息；</p>
+<p>3.在遍历的所有特征中，比较寻找最优的特征以及最优特征的最优划分方式，选择纯度最高的划分方式对当前数据集进行分割操作；</p>
+<p>4.对新的子节点继续执行2-3步，直到每个最终的子节点都足够纯；</p>
+<blockquote>
+<p>决策树算法构建的停止条件：</p>
+</blockquote>
+<p>1.当子节点中只有一种类型的时候停止构建(会导致过拟合)；</p>
+<p>2.当前节点种样本数小于某个值，同时迭代次数达到指定值，停止构建，此时使用该节点中出现最多的类别样本数据作为对应值(比较常用)；</p>
+<h4 id="2-5-1-决策树的构造算法"><a href="#2-5-1-决策树的构造算法" class="headerlink" title="2.5.1 决策树的构造算法"></a>2.5.1 决策树的构造算法</h4><h5 id="（1）ID3算法"><a href="#（1）ID3算法" class="headerlink" title="（1）ID3算法"></a>（1）ID3算法</h5><p>信息熵：描述信源的不确定程度 —— 越不确定的事物它的熵就越大，随机变量X的熵的表达式如下：</p>
+<p><img src="/images/image-20220810100140203.png" srcset="/img/loading.gif" lazyload></p>
+<p>其中n代表X的n种不同的离散取值，p<del>i</del>代表了X取值为i的概率，log是为以2或者e为底的对数，例题可以参考<a target="_blank" rel="noopener" href="https://www.cnblogs.com/pinard/p/6050306.html">决策树算法原理(上) - 刘建平Pinard - 博客园 (cnblogs.com)</a>；</p>
+<p>除了单个变量X的信息熵外，还可以推广到多个变量的联合熵，如变量X和Y的联合熵表达式</p>
+<p><img src="/images/image-20220810101933927.png" srcset="/img/loading.gif" lazyload></p>
+<p>进而可以从联合熵得到条件熵的表达式H(X|Y)，类似于条件概率，度量了在条件Y下X的不确定性</p>
+<p><img src="/images/image-20220810102135563.png" srcset="/img/loading.gif" lazyload></p>
+<p>ID3算法用信息增益来判断当前节点应该用什么特征来构建决策树，信息增益越大则越适合用来分类，信息增益的表达式为H(X)-H(X|Y)也就是X在Y条件下的不确定性的减少程度；</p>
+<p>上述概念的关系可以用下图表示</p>
+<p><img src="/images/image-20220810102905566.png" srcset="/img/loading.gif" lazyload></p>
+<p>ID3算法就是利用信息增益大小来判断当前节点应该用什么特征来构建决策树，用计算出的信息增益最大的特征来选择决策树当前节点；</p>
+<p>熟悉ID3的构造算法后，就可以构建决策树了，构建过程这里不做阐述，参考<a target="_blank" rel="noopener" href="https://www.cnblogs.com/pinard/p/6050306.html">决策树算法原理(上) - 刘建平Pinard - 博客园 (cnblogs.com)</a></p>
+<p>ID3算法存在诸多不足，如不能用于连续特征、对于缺失值的情况没有做考虑、没有考虑过拟合的问题、用信息增益作为标准容易偏向取值较多的特征等，于是出现了ID3算法的改进 —— C4.5算法</p>
+<h5 id="（2）C4-5算法"><a href="#（2）C4-5算法" class="headerlink" title="（2）C4.5算法"></a>（2）C4.5算法</h5><p>针对ID3无法处理连续化特征，C4.5将连续的特征离散化，离散化过程这里不做赘述，详情参考<a target="_blank" rel="noopener" href="https://www.cnblogs.com/pinard/p/6050306.html">决策树算法原理(上) - 刘建平Pinard - 博客园 (cnblogs.com)</a></p>
+<hr>
+<p>针对ID3用信息增益作为标准容易偏向取值较多的特征，C4.5引入信息增益比 —— 信息增益和特征熵的比值，表达式为</p>
+<p><img src="/images/image-20220810104024341.png" srcset="/img/loading.gif" lazyload></p>
+<p>其中D为样本特征输出的集合，A为样本特征，特征熵的表达式为</p>
+<p><img src="/images/image-20220810104114228.png" srcset="/img/loading.gif" lazyload></p>
+<p>其中n为特征A的类别数，D<del>i</del>为特征A的第i个取值对应的样本个数，|D|为样本个数</p>
+<p>信息增益比为什么能够解决问题？因为对于特征取值多对应的特征熵就越大，作为分母可以校正分子的偏向问题；</p>
+<hr>
+<p>如何处理ID3缺失值的问题呢？处理缺失值主要分为两种情况：</p>
+<ul>
+<li>在样本某些特征缺失的情况下选择划分的属性；</li>
+<li>选定了划分属性，对于在该属性上缺失特征的样本的处理；</li>
+</ul>
+<p>对于第一种情况，C4.5将数据分为两部分，一部分是有特征值的数据，一部分是没有特征值的数据，将两部分数据辅助权重求信息增益比；</p>
+<p>对于第二种情况，可以将缺失特征的样本同时划分入所有的子节点，将该样本的权重按各个子节点样本的数量比例来分配；</p>
+<hr>
+<p>C4.5引入正则化系数进行初步剪枝处理过拟合问题；</p>
+<hr>
+<p>C4.5仍然存在一些不足：</p>
+<ul>
+<li><p>由于决策树算法非常容易过拟合，因此对于生成的决策树必须要进行剪枝。剪枝的算法有非常多，C4.5的剪枝方法有优化的空间。思路主要是两种，一种是预剪枝，即在生成决策树的时候就决定是否剪枝。另一个是后剪枝，即先生成决策树，再通过交叉验证来剪枝。</p>
+</li>
+<li><p>C4.5生成的是多叉树，即一个父节点可以有多个节点，多时候，在计算机中二叉树模型会比多叉树运算效率高；</p>
+</li>
+<li><p>C4.5只能用于分类，如果能将决策树用于回归的话可以扩大决策树算法的使用范围；</p>
+</li>
+<li><p>C4.5由于使用了熵模型，里面有大量的耗时的对数运算，如果是连续值还有大量的排序运算；</p>
+</li>
+</ul>
+<h5 id="（3）CART算法"><a href="#（3）CART算法" class="headerlink" title="（3）CART算法"></a>（3）CART算法</h5><p>详细关于CART算法的介绍参考<a target="_blank" rel="noopener" href="https://www.cnblogs.com/pinard/p/6053344.html">决策树算法原理(下) - 刘建平Pinard - 博客园 (cnblogs.com)</a></p>
+<p>ID3算法中使用的是信息增益选择特征，C4.5算法中采用信息增益比来选择特征，两者都是基于信息论的熵模型，涉及大量的对数运算，而CART算法采用基尼系数代替C4.5的信息增益比；</p>
+<p>基尼系数代表模型的“不纯度”，基尼系数越低则不纯度越低则特征越好，这与信息增益（比）相反；</p>
+<p>假设某个分类问题种有K个类别，其中第k个类别的概率为p<del>k</del>，则基尼系数的表达式为</p>
+<p><img src="/images/image-20220810145726119.png" srcset="/img/loading.gif" lazyload></p>
+<p>假设给定样本D，有K个类别，其中第k个类别的数量为C<del>k</del>，则样本D的基尼系数表达式为</p>
+<p><img src="/images/image-20220810145912456.png" srcset="/img/loading.gif" lazyload></p>
+<p>假设给定样本D，根据某个特征A的某个特征值将D分为D<del>1</del>和D<del>2</del>两部分，则在特征A的条件下D的基尼系数表达式为</p>
+<p><img src="/images/image-20220810150102038.png" srcset="/img/loading.gif" lazyload></p>
+<p>基尼系数可以作为熵模型的一个近似替代，二分类问题中的基尼系数和熵之半的曲线如下所示</p>
+<p><img src="/images/image-20220810150241196.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>CART算法使用基尼系数选择决策树的特征，同时CART算法每次仅对某个特征的值进行二分，所以CART分类树一定是一个二叉树（ID3和C4.5不一定是二叉树）</p>
+</blockquote>
+<hr>
+<p>CART算法相较于C4.5的另一个特点是既可以做回归也可以做分类，回归树与分类树的区别在于样本的输出：</p>
+<ul>
+<li>如果样本的输出是离散值则是一棵分类树；</li>
+<li>如果样本的输出是连续值则是一棵回归树；</li>
+</ul>
+<p>当决策树建立后，CART分类树采用叶子节点中概率最大的类别作为当前节点的预测类别，CART回归树用最终叶子的均值或中位数来预测输出结果；</p>
+<h4 id="2-5-2-决策树的剪枝处理"><a href="#2-5-2-决策树的剪枝处理" class="headerlink" title="2.5.2 决策树的剪枝处理"></a>2.5.2 决策树的剪枝处理</h4><p>剪枝是决策树算法应对“过拟合”的主要手段；</p>
+<p>在建立决策树的过程中为了尽可能正确的分类训练样本，划分结点的过程将不断重复导致决策树的分支过多（构建的决策树过于具体了），此时可以通过主动去掉一些分支来降低过拟合的风险；</p>
+<p>决策树的剪枝主要分为：</p>
+<ul>
+<li>预剪枝：在决策树的生成过程中对每个结点在划分前进行估计，若当前结点的划分不能带来决策树泛化性能的提升则停止划分并将当前结点标记为叶结点；</li>
+<li>后剪枝：从训练集中生成一棵完整的决策树后，自底向上地对非叶结点进行考察，若将该结点对应的子树替换为叶结点能带来决策树泛化性能的提升则将该子树替换为叶结点；</li>
+</ul>
+<p>至于如何判断决策树的泛化性能是否有提升可以使用验证集进行性能评估；</p>
+<p>更加详细的剪枝策略这里不再赘述，可以参考《机器学习》周志华P80-P83；</p>
+<h4 id="2-5-3-总结"><a href="#2-5-3-总结" class="headerlink" title="2.5.3 总结"></a>2.5.3 总结</h4><p>我们介绍了三种决策树算法，下面给出三者的对比</p>
+<p><img src="/images/image-20220810152452483.png" srcset="/img/loading.gif" lazyload></p>
+<p>当然决策树算法并不仅仅只有这三种，还有利用一组特征来做分类决策的<code>多变量决策树</code>，它选择了最优的一个特征线性组合来做决策，代表算法是OC1（感兴趣可以自学）；</p>
+<p>决策树算法的优点（参考自<a target="_blank" rel="noopener" href="https://www.cnblogs.com/pinard/p/6053344.html">决策树算法原理(下) - 刘建平Pinard - 博客园 (cnblogs.com)</a>）：</p>
+<ul>
+<li><p>简单直观，生成的决策树很直观。</p>
+</li>
+<li><p>基本不需要预处理，不需要提前归一化，处理缺失值。</p>
+</li>
+<li><p>使用决策树预测的代价是O(log2m)O(log2m)。 m为样本数。</p>
+</li>
+<li><p>既可以处理离散值也可以处理连续值。很多算法只是专注于离散值或者连续值。</p>
+</li>
+<li><p>可以处理多维度输出的分类问题。</p>
+</li>
+<li><p>相比于神经网络之类的黑盒分类模型，决策树在逻辑上可以得到很好的解释</p>
+</li>
+<li><p>可以交叉验证的剪枝来选择模型，从而提高泛化能力。</p>
+</li>
+<li><p>对于异常点的容错能力好，健壮性高。</p>
+</li>
+</ul>
+<p>决策树算法的缺点：</p>
+<ul>
+<li><p>决策树算法非常容易过拟合，导致泛化能力不强。可以通过设置节点最少样本数量和限制决策树深度来改进。</p>
+</li>
+<li><p>决策树会因为样本发生一点点的改动，就会导致树结构的剧烈改变。这个可以通过集成学习之类的方法解决。</p>
+</li>
+<li><p>寻找最优的决策树是一个NP难的问题，我们一般是通过启发式方法，容易陷入局部最优。可以通过集成学习之类的方法来改善。</p>
+</li>
+<li><p>有些比较复杂的关系，决策树很难学习，比如异或。这个就没有办法了，一般这种关系可以换神经网络分类方法来解决。</p>
+</li>
+<li><p>如果某些特征的样本比例过大，生成决策树容易偏向于这些特征。这个可以通过调节样本权重来改善。</p>
+</li>
+</ul>
+<h3 id="2-6-感知机"><a href="#2-6-感知机" class="headerlink" title="2.6 感知机"></a>2.6 感知机</h3><p>感知机模型是一种古老的分类模型，尽管它的泛化能力不强，但是它作为之后神经网络、支持向量机的基础，其原理值得好好学习；</p>
+<p>使用感知机的前提是数据是线性可分的且只能处理二分类问题（二维空间能找到一条直线，三维空间能找到一个超平面，将所有的二元类别隔离开）；</p>
+<h4 id="2-6-1-感知机的模型函数"><a href="#2-6-1-感知机的模型函数" class="headerlink" title="2.6.1 感知机的模型函数"></a>2.6.1 感知机的模型函数</h4><p>假设有m个样本，每个样本有n个特征且对应一个二元类别输出{1，-1}</p>
+<p><img src="/images/image-20220811092756180.png" srcset="/img/loading.gif" lazyload></p>
+<p>感知机的模型是尝试找到这样的一个超平面</p>
+<p><img src="/images/image-20220811092909712.png" srcset="/img/loading.gif" lazyload></p>
+<p>能够将1和-1两种类别的样本全部分开（感知机模型往往有多个解，因为数据线性可分对应的分类超平面往往不止一个），使用向量表示上述超平面就是（其中·表示内积）</p>
+<p><img src="/images/image-20220811093414377.png" srcset="/img/loading.gif" lazyload></p>
+<p>进而定义感知机的模型函数为</p>
+<p><img src="/images/image-20220811093501083.png" srcset="/img/loading.gif" lazyload></p>
+<p>其中</p>
+<p><img src="/images/image-20220811093518237.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-6-2-感知机的损失函数"><a href="#2-6-2-感知机的损失函数" class="headerlink" title="2.6.2 感知机的损失函数"></a>2.6.2 感知机的损失函数</h4><p>为了便于定义损失函数，将满足 θ∙x&gt;0 的样本类别输出值取为1，满足 θ∙x&lt;0 的样本类别输出值取为-1，这样取值的好处是只要是正确分类的样本都满足 y·θ∙x&gt;0，只要是错误分类的样本都满足 y·θ∙x&lt;0；</p>
+<p>对于每一个误分类的样本i，到超平面的距离是（其中||θ||<del>2</del>为L2范数）</p>
+<p><img src="/images/image-20220811101651225.png" srcset="/img/loading.gif" lazyload></p>
+<p>假设所有误分类点的集合为M，则所有误分类点到超平面的距离之和为</p>
+<p><img src="/images/image-20220811102022849.png" srcset="/img/loading.gif" lazyload></p>
+<p>当然这只是初步的损失函数，这个损失函数并不能真正反映点到超平面的距离（因为当分子成比例增长的时候分母同样成倍增长，我们称之为函数间隔）这里可以做一些化简（具体怎么化简的参考<a target="_blank" rel="noopener" href="https://www.cnblogs.com/pinard/p/6042320.html">感知机原理小结 - 刘建平Pinard - 博客园 (cnblogs.com)</a>）得到最终的损失函数（称为几何间隔，这是点到超平面真正的距离）</p>
+<p><img src="/images/image-20220811102641033.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-6-3-损失函数的优化"><a href="#2-6-3-损失函数的优化" class="headerlink" title="2.6.3 损失函数的优化"></a>2.6.3 损失函数的优化</h4><blockquote>
+<p>损失函数的优化目标是：误分类的所有样本到超平面的距离之和最小</p>
+</blockquote>
+<p>感知机的损失函数常用的优化方法是梯度下降法或拟牛顿法，注意普通的基于所有样本的梯度和均值的批量梯度下降法是行不通的，因为感知机的损失函数中只有误分类集合M中的样本才能参与损失函数的优化，因此这里只能采用随机梯度下降或者小批量梯度下降（详情参考<a target="_blank" rel="noopener" href="https://www.cnblogs.com/pinard/p/5970503.html">梯度下降（Gradient Descent）小结 - 刘建平Pinard - 博客园 (cnblogs.com)</a>）</p>
+<p>感知机模型采用的是随机梯度下降，即我们每次仅需要使用一个误分类点来更新梯度，具体步骤这里不再赘述；</p>
+<p>感知机算法的整体执行步骤如下：</p>
+<ol>
+<li>算法的输入是m个n维特征的二元样本，输出是分离超平面的模型系数θ向量；</li>
+<li>定义所有x<del>0</del>为1，选择θ向量的初值和步长α的初值。可以将θ向量置为0向量，步长设置为1；</li>
+<li>在训练集中选择一个误分类点；</li>
+<li>对θ向量进行一次随机梯度下降的迭代；</li>
+<li>检查训练集里是否还有误分类的点，如果没有，算法结束，此时的θ向量即为最终结果；如果有，折回第二步再次执行；</li>
+</ol>
+<h3 id="2-7-支持向量机"><a href="#2-7-支持向量机" class="headerlink" title="2.7 支持向量机"></a>2.7 支持向量机</h3><p>支持向量机(SVM)算法在分类领域属于性能非常优越的算法，SVM是一个二分类算法，同时支持线性分类和非线性分类，经过改进后也支持多元分类甚至回归问题；</p>
+<p>Support Vector Machine中的Vector表示数据（在图像中就是点，距离超平面最近的哪些Vector称为支持向量），Machine表示分类器：</p>
+<ul>
+<li>支持向量机的基本模型是定义在特征空间上的间隔最大的线性分类器，其中间隔最大使其区别于感知机；</li>
+<li>支持向量机支持核技巧，这使得它可以处理非线性分类问题；</li>
+<li>支持向量机的学习算法的过程等价于求解凸二次规划的最优算法的问题；</li>
+</ul>
+<p>支持向量机按照学习方法分类主要分为以下几种：</p>
+<ul>
+<li>线性可分支持向量机（硬间隔支持向量机）：当训练数据线性可分时，通过硬间隔最大化，学习一个线性的分类器；</li>
+<li>线性支持向量机（软间隔支持向量机）：当训练数据近似线性可分时，通过软间隔最大化，学习一个线性的分类器；</li>
+<li>非线性支持向量机：当训练数据线性不可分时，通过使用核技巧及软间隔最大化，学习一个非线性的分类器；</li>
+</ul>
+<p>三者的关系如下：</p>
+<ul>
+<li>线性可分SVM由线性分类器导出；</li>
+<li>通过加入松弛变量和惩罚因子可以将SVM推广到线性不可分的情况，通过拉格朗日对偶可以将线性不可分的SVM的优化问题转换为对偶问题求解；</li>
+<li>借助核函数可以将线性的SVM模型转换为非线性模型；</li>
+</ul>
+<p><img src="/images/image-20220811091412838.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>支持向量机学习的基本思想 —— 求解能够正确划分训练集并且几何间距最大的分离超平面；</p>
+</blockquote>
+<h4 id="2-7-1-支持向量机的模型函数"><a href="#2-7-1-支持向量机的模型函数" class="headerlink" title="2.7.1 支持向量机的模型函数"></a>2.7.1 支持向量机的模型函数</h4><p>我们知道感知机的超平面可能有多个，但是支持向量机的超平面只有一个（因为限定了这样的超平面是距离所有支持向量最远的一个超平面）；</p>
+<p>支持向量的模型是使所有的点到超平面的距离大于一定的距离，即所有的分类点要在各自类别的支持向量的两边：</p>
+<p><img src="/images/image-20220811105831007.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-7-2-模型函数的优化"><a href="#2-7-2-模型函数的优化" class="headerlink" title="2.7.2 模型函数的优化"></a>2.7.2 模型函数的优化</h4><p>（这里就不是对损失函数优化了，严格来说支持向量机没有损失函数，因为它已经能够正确分类，只是它还需要附带最大化间隔这个条件）</p>
+<p>通常取函数间隔y&#96;为1，因为支持向量机是固定分子优化分母，同时加上了支持向量的限制，故我们需要优化的函数为</p>
+<p><img src="/images/image-20220811110353120.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<p>2022&#x2F;8&#x2F;11 11:10 支持向量机的推导过程也异常复杂…暂时放一放先把其他知识点过了</p>
+<h3 id="2-8-K-means聚类"><a href="#2-8-K-means聚类" class="headerlink" title="2.8 K-means聚类"></a>2.8 K-means聚类</h3><p>注意聚类任务与分类任务的区别：</p>
+<ul>
+<li>分类是指在一群已经知道类别标号的样本中，训练一种分类器，让其能够对某种未知的样本进行分类，属于一种有监督的学习；</li>
+<li>聚类是指在一群未知类别标号的样本上，用某种算法将他们分成若干类别，是一种无监督学习；</li>
+</ul>
+<h4 id="2-8-1-K-means聚类算法原理"><a href="#2-8-1-K-means聚类算法原理" class="headerlink" title="2.8.1 K-means聚类算法原理"></a>2.8.1 K-means聚类算法原理</h4><p>由聚类组成的簇是一组数据对象的集合，同一簇中的对象彼此相似，不同簇之间的对象相异</p>
+<p><img src="/images/image-20220811140743435.png" srcset="/img/loading.gif" lazyload></p>
+<p>簇有两个重要的属性：</p>
+<ul>
+<li>Inertia：表示簇中的所有数据点相似程度，Inertia计算簇内所有点到该簇的质心的距离的总和，称为簇内距离(Intra cluster distance) —— Inertial越小，聚类越好；</li>
+</ul>
+<p><img src="/images/image-20220811141114871.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>Dunn Index：表示不同簇中的数据点不同程度，Dunn Index考虑了两个簇之间的距离，两个不同簇的质心之间的距离称为簇间距离(Inter cluster distance)，Dunn Index是簇间距离的最小值和簇内距离的最大值的比值 —— Dunn Index越大，聚类越好；</li>
+</ul>
+<p><img src="/images/image-20220811141344271-16601984409384.png" srcset="/img/loading.gif" lazyload></p>
+<p>假设簇分为（C<del>1</del>、C<del>2</del>…C<del>k</del>），则K-means的目标就是最小化平方误差E</p>
+<p><img src="/images/image-20220811151141725.png" srcset="/img/loading.gif" lazyload></p>
+<p>其中u<del>i</del>是簇C<del>i</del>的质心，表达式为</p>
+<p><img src="/images/image-20220811151218780.png" srcset="/img/loading.gif" lazyload></p>
+<p>当然要直接求解上式是一个NP难的问题，所以我们会采用启发式的迭代方法进行求解</p>
+<p>K-means聚类算法是一种基于质心（距离）的算法，每个聚类都与一个质心相关联，下面使用一个例子来展示K-means是如何迭代进行求解的，假如我们需要将下面8个点划分为簇</p>
+<p><img src="/images/image-20220811143544360.png" srcset="/img/loading.gif" lazyload></p>
+<p>1.首先是选择簇的数目K，接着从数据中随机选出K个随机点作为质心，这里我们假设想要选出两个簇</p>
+<p><img src="/images/image-20220811143652068.png" srcset="/img/loading.gif" lazyload></p>
+<p>2.选好质心后将所有的点分配给到某个质心最近的簇，计算点到质心的距离公式为<img src="/images/image-20220811151516752.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20220811143753448.png" srcset="/img/loading.gif" lazyload></p>
+<p>3.接着重新计算新形成的簇的质心，使用公式<img src="/images/image-20220811151218780-166020207227616-166020207371018.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20220811143905939.png" srcset="/img/loading.gif" lazyload></p>
+<p>重复第二步和第三步，直到遇见以下情况之一可以终止该迭代过程：</p>
+<ul>
+<li>新形成的簇的质心没有任何变化；</li>
+<li>多次迭代后所有的数据点仍然在同一簇中；</li>
+<li>达到设置的最大迭代次数；</li>
+</ul>
+<h4 id="2-8-2-K-means-算法原理"><a href="#2-8-2-K-means-算法原理" class="headerlink" title="2.8.2 K-means++算法原理"></a>2.8.2 K-means++算法原理</h4><p>使用K-means随机选择质心的时候可能会产生问题，K-means++算法可以优化初始化质心：</p>
+<p>1.首先从数据点中随机选择一个质心；</p>
+<p><img src="/images/image-20220811150106898.png" srcset="/img/loading.gif" lazyload></p>
+<p>2.接着计算每个数据点到其最近的簇的质心的距离；</p>
+<p><img src="/images/image-20220811150124210.png" srcset="/img/loading.gif" lazyload></p>
+<p>3.从数据点中选择新的簇的质心 —— 下一个质心将是其平方距离离当前质心最远的点（为了确保不同的簇之间的距离足够大）；</p>
+<p><img src="/images/image-20220811150324512.png" srcset="/img/loading.gif" lazyload></p>
+<p>4.重复上述2、3步骤直到选择了K个簇；</p>
+<p><img src="/images/image-20220811150346353.png" srcset="/img/loading.gif" lazyload></p>
+<p>使用K-means++初始化质心往往会改善聚类的结果，且会使得随后的K-means的收敛速度加快；</p>
+<h4 id="2-8-3-总结"><a href="#2-8-3-总结" class="headerlink" title="2.8.3 总结"></a>2.8.3 总结</h4><p>优点：</p>
+<ul>
+<li><p>简单快捷，容易理解，速度快，计算点和簇质心之间的距离：涉及的计算量非常小，具有线性复杂度 O(n)；</p>
+</li>
+<li><p>对所有的数据样本都进行聚类；</p>
+</li>
+<li><p>对满足高斯分布、均匀分布的数据类型聚类效果表较好，适合常规数据集；</p>
+</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li><p>需要事先确定聚类个数；</p>
+</li>
+<li><p>对初始聚类中心敏感，而K-means 也是从随机选择的聚类中心开始，所以可能在不同的算法中产生不同的聚类结果(结果可能不可重复并缺乏一致性)；</p>
+</li>
+<li><p>对孤立点和噪声点相对敏感；</p>
+</li>
+<li><p>很难发现任意形状的簇；</p>
+</li>
+</ul>
+<h3 id="2-9-深度神经网络"><a href="#2-9-深度神经网络" class="headerlink" title="2.9 深度神经网络"></a>2.9 深度神经网络</h3><p>感知机模型是一个具有多个输入和多个输出的模型，可以用下图表示</p>
+<p><img src="/images/image-20220811154549800.png" srcset="/img/loading.gif" lazyload></p>
+<p>然而该模型只能用于二元分类，且无法学习较复杂的非线性模型，因此演化出了人工神经网络（简称神经网络），在感知机的基础上做了如下拓展：</p>
+<ul>
+<li>加入了隐藏层，增强了模型的表达能力（当然随之增强了模型的复杂度）</li>
+</ul>
+<p><img src="/images/image-20220811154833551.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>输出层的神经元可以不止一个，可以有多个输出</li>
+</ul>
+<p><img src="/images/image-20220811154929062.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>对激活函数做拓展，感知机的激活函数是sign(x)过于简单，我们可以选择sigmoid、tanx、softmax、Relu等激活函数（激活函数主要用于拟合非线性函数）</li>
+</ul>
+<p>既然得到了神经网络，自然而然也就得到了深度神经网络(DNN)，DNN可以看作是有很多层隐藏层的神经网络，DNN有时候也被称为多层感知机(MLP)；</p>
+<p>深度神经网络的层与层之间是全连接的，DNN可以简单的看作是和感知机一样的一个线性关系加上一个激活函数的组合；</p>
+<h4 id="2-9-1-DNN的前向传播算法"><a href="#2-9-1-DNN的前向传播算法" class="headerlink" title="2.9.1 DNN的前向传播算法"></a>2.9.1 DNN的前向传播算法</h4><p>DNN的前向传播算法本质上就是利用若干权重系数矩阵W、偏倚向量b以及输入值向量x进行一系列的线性运算和激活运算，从输入层开始一直向后运算到输出层，得到输出结果；</p>
+<h4 id="2-9-2-DNN的反向传播算法"><a href="#2-9-2-DNN的反向传播算法" class="headerlink" title="2.9.2 DNN的反向传播算法"></a>2.9.2 DNN的反向传播算法</h4><p>前面介绍了前向传播算法，好像并没有什么作用？而且我们需要的权重系数矩阵W以及偏向量b这些参数是怎么获得的也没有说明 —— 这就涉及反向传播算法；</p>
+<p>当我们需要寻找合适的所有隐藏层和输出层对应的线性系数W和偏倚向量b，我们可以参考使用一个合适的损失函数来度量训练样本的输出损失，并对这个损失函数进行优化求得最小值，此时对应的W和b就是最优的参数，得到一个良好的模型；DNN中常用的最优化损失函数的方法就是梯度下降法 —— 对DNN的损失函数用梯度下降法进行迭代优化求极小值的过程称为反向传播算法；</p>
+<p>BP算法在网上有很多讲解，感兴趣可以看视频讲解；</p>
+<p>关于DNN的损失函数和激活函数，也有多种选择，详情可以参考<a target="_blank" rel="noopener" href="https://www.cnblogs.com/pinard/p/6437495.html">深度神经网络（DNN）损失函数和激活函数的选择 - 刘建平Pinard - 博客园 (cnblogs.com)</a></p>
+<h4 id="2-9-3-DNN的正则化"><a href="#2-9-3-DNN的正则化" class="headerlink" title="2.9.3 DNN的正则化"></a>2.9.3 DNN的正则化</h4><p>DNN同样会遇到过拟合的问题，因此需要使用正则化解决；</p>
+<h5 id="（1）L2正则化"><a href="#（1）L2正则化" class="headerlink" title="（1）L2正则化"></a>（1）L<del>2</del>正则化</h5><p>DNN的L<del>2</del>正则化通常只针对线性系数矩阵W而不针对偏倚系数b，假如每个样本的损失函数是均方差损失函数，则所有的m个样本的损失函数为</p>
+<p><img src="/images/image-20220811162035646.png" srcset="/img/loading.gif" lazyload></p>
+<p>那么加上了L<del>2</del>正则化之后的损失函数是</p>
+<p><img src="/images/image-20220811162116070.png" srcset="/img/loading.gif" lazyload></p>
+<p>在使用BP算法进行迭代的时候W的梯度下降更新公式变为</p>
+<p><img src="/images/image-20220811162242779.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="（2）集成学习正则化"><a href="#（2）集成学习正则化" class="headerlink" title="（2）集成学习正则化"></a>（2）集成学习正则化</h5><p>这种方式是利用集成学习的思路进行正则化，集成学习主要有Boosting和Bagging两种思路，DNN可以用Bagging的思路来正则化，具体方法感兴趣自行了解；</p>
+<h5 id="（3）dropout正则化"><a href="#（3）dropout正则化" class="headerlink" title="（3）dropout正则化"></a>（3）dropout正则化</h5><p>该方法是指在训练DNN模型的时候，当一批数据进行迭代时，随机的从全连接的DNN网络中去掉一部分的隐藏层神经元，并使用去掉的隐藏层的神经元的网络来拟合下一批训练数据</p>
+<p><img src="/images/image-20220811162820626.png" srcset="/img/loading.gif" lazyload></p>
+<p>dropout方法总结：每轮梯度下降迭代时，它需要将训练数据分成若干批，然后分批进行迭代，每批数据迭代时，需要将原始的DNN模型随机去掉部分隐藏层的神经元，用残缺的DNN模型来迭代更新W,b。每批数据迭代更新完毕后，要将残缺的DNN模型恢复成原始的DNN模型</p>
+<h4 id="2-9-4-卷积神经网络"><a href="#2-9-4-卷积神经网络" class="headerlink" title="2.9.4 卷积神经网络"></a>2.9.4 卷积神经网络</h4><p>参考资料<a target="_blank" rel="noopener" href="https://www.cnblogs.com/pinard/p/6483207.html">卷积神经网络(CNN)模型结构 - 刘建平Pinard - 博客园 (cnblogs.com)</a></p>
+<h4 id="2-9-5-循环神经网络"><a href="#2-9-5-循环神经网络" class="headerlink" title="2.9.5 循环神经网络"></a>2.9.5 循环神经网络</h4><p>参考资料<a target="_blank" rel="noopener" href="https://www.cnblogs.com/pinard/p/6509630.html">循环神经网络(RNN)模型与前向反向传播算法 - 刘建平Pinard - 博客园 (cnblogs.com)</a></p>
+<h4 id="2-9-6-波尔茨曼机"><a href="#2-9-6-波尔茨曼机" class="headerlink" title="2.9.6 波尔茨曼机"></a>2.9.6 波尔茨曼机</h4><p>参考资料<a target="_blank" rel="noopener" href="https://www.cnblogs.com/pinard/p/6509630.html">循环神经网络(RNN)模型与前向反向传播算法 - 刘建平Pinard - 博客园 (cnblogs.com)</a></p>
+<h3 id="2-10-集成学习"><a href="#2-10-集成学习" class="headerlink" title="2.10 集成学习"></a>2.10 集成学习</h3><p>机器学习的有监督学习算法中，我们期望的是学习习得到一个稳定并且在各个方面都表现较好的模型，但是实际上得到的模型都只能得到多个偏好的模型（我们称之为弱监督模型，只在某些方面表现较好），集成学习顾名思义就是将这些弱监督模型组合得到一个更加全面的强监督模型 —— 集成学习的思想就是，即便某一个弱分类器得到了错误的预测，其他的弱分类器也可以将错误纠正：</p>
+<ul>
+<li>弱学习器：常指泛化性能略优于随机猜测的学习器：例如在二分类问题桑精度略高于50%的分类器；</li>
+<li>强学习器：通过一定的方式集成一些弱学习器：例如达到了超过所有弱学习器的准确度的分类器；</li>
+</ul>
+<p>集成学习并不只是一个单一的机器学习算法，它是将几种机器学习技术组合成为一个预测模型的元算法；集成学习是一种技术框架，按照不同的思路组合基础模型得到更好的模型以减小方差、偏差等，因此集成学习实际上需要解决的问题主要有两个：</p>
+<ul>
+<li><blockquote>
+<p>Q：如何得到多个个体学习器；</p>
+</blockquote>
+<ul>
+<li>所有的个体学习器都是同一个种类的，也可以说是同质的，如bagging和bossting系列：<ul>
+<li>个体学习器之间存在强依赖关系，一系列个体学习器基本都需要串行生成，代表算法是Boosting系列算法；</li>
+<li>个体学习器之间不存在强依赖关系，一系列个体学习器可以并行生成，代表算法是Bagging系列算法；</li>
+</ul>
+</li>
+<li>所有的个体学习器不全是一个种类的，也可以说是异质的，如Stacking策略；</li>
+</ul>
+</li>
+<li><blockquote>
+<p>Q：选择一种什么样的学习策略，将这些弱学习器组合成为一个强学习器；</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="2-10-1-集成学习之Bagging"><a href="#2-10-1-集成学习之Bagging" class="headerlink" title="2.10.1 集成学习之Bagging"></a>2.10.1 集成学习之Bagging</h4><blockquote>
+<p>代表算法：随机森林</p>
+</blockquote>
+<p>bagging的中文意义是训练多个分类器后取平均，较为严谨的解释是从训练集从进行子抽样组成每个基模型所需要的子训练集，对所有基模型预测的结果进行综合产生最终的预测结果</p>
+<p><img src="/images/image-20220822093427419.png" srcset="/img/loading.gif" lazyload></p>
+<p>bagging的工作机制：</p>
+<ol>
+<li>从原始样本集中抽取训练集，每轮从原始样本集中使用Bootstraping的方法抽取n个训练样本，共进行k轮抽取，得到k个训练集；</li>
+<li>每次使用一个训练集得到一个模型，k个训练集共得到k个模型；</li>
+<li>对分类问题：将上步得到的k个模型采用投票的方式得到分类结果；对回归问题，计算上述模型的均值作为最后的结果；</li>
+</ol>
+<blockquote>
+<p>关于Bootstraping（自助采样法）</p>
+</blockquote>
+<p>其思想非常简单，即对于m个样本的原始训练集，每次随机采取一个样本后将该样本放回原始训练集，也就是说该样本在下次取样的时候仍然有可能被采集，这样采集m次后得到的有m个样本的新的采样集和原始训练集以及其他采样集是不同的，相应的，这样训练得到的弱学习器也是不同的，</p>
+<h4 id="2-10-2-集成学习之Boosting"><a href="#2-10-2-集成学习之Boosting" class="headerlink" title="2.10.2 集成学习之Boosting"></a>2.10.2 集成学习之Boosting</h4><blockquote>
+<p>代表算法：AdaBoost， Xgboost，GBDT</p>
+</blockquote>
+<p>boosting顾名思义就是提升算法，即从弱分类器开始加强，通过加权来进行训练，基模型的训练过程为阶梯状，基模型的训练集会随着训练结果的变化而变化（调整权重），最后对所有的基模型的预测结果进行线性综合产生最终的预测结果</p>
+<p><img src="/images/image-20220822094851641.png" srcset="/img/loading.gif" lazyload></p>
+<p>boosting的工作机制：</p>
+<ol>
+<li>首先从训练集用初始权重训练出一个弱学习器1；</li>
+<li>根据弱学习的学习误差率表现来更新训练样本的权重，使之前弱学习器1学习误差率高的训练样本点的权重变高，即让误差率高的点在后面的弱学习器2中得到更多的重视；</li>
+<li>然后基于调整权重后的训练集来训练弱学习器2；</li>
+<li>如此重复进行，直到弱学习器数达到事先指定的数目T；</li>
+<li>最终将这T个弱学习器通过集合策略进行整合，得到最终的强学习器；</li>
+</ol>
+<h4 id="2-10-3-集成学习之Stacking"><a href="#2-10-3-集成学习之Stacking" class="headerlink" title="2.10.3 集成学习之Stacking"></a>2.10.3 集成学习之Stacking</h4><p>stacking即堆叠各种各样的分类器，主要思想就是训练一个模型用于组合其他各个模型，方法是利用所有训练好的基模型分别在原始训练集和原始测试集上测试（第j个基模型对第i个训练样本的预测值将作为新的训练集中第i个样本的第j个特征值），得到新的训练集和新的测试集</p>
+<p><img src="/images/image-20220822095413392.png" srcset="/img/loading.gif" lazyload></p>
+<p>stacking的工作机制：</p>
+<ol>
+<li>首先训练多个不同的模型；</li>
+<li>将上述训练得到的模型的输出作为输入来训练一个模型，得到最终的输出；</li>
+</ol>
+<p>按照个体学习器之间的关系，集成学习一般分为三个大类：</p>
+<ul>
+<li><p>Bagging是把各个基模型的结果组织起来，取一个折中的结果；</p>
+</li>
+<li><p>Boosting是根据旧模型中的错误来训练新模型，层层改进；</p>
+</li>
+<li><p>Stacking是把基模型组织起来，注意不是组织结果，而是组织基模型本身；</p>
+</li>
+</ul>
+<h4 id="2-10-4-集成学习之Adaboost"><a href="#2-10-4-集成学习之Adaboost" class="headerlink" title="2.10.4 集成学习之Adaboost"></a>2.10.4 集成学习之Adaboost</h4><p>Adaboost属于Boosting家族中较为典型的算法，因为Boosting算法的基本思想是将弱学习器提升为强学习器；</p>
+<p>更多关于Adaboost算法参考<a target="_blank" rel="noopener" href="https://www.cnblogs.com/bonheur/p/12666332.html">集成学习之AdaBoost算法 - 大-道-至-简 - 博客园 (cnblogs.com)</a></p>
+<h4 id="2-10-5-集成学习之GBDT"><a href="#2-10-5-集成学习之GBDT" class="headerlink" title="2.10.5 集成学习之GBDT"></a>2.10.5 集成学习之GBDT</h4><p>GBDT即梯度提升树算法，Adaboost算法是利用前一轮的弱学习器的误差来更新样本权重值，然后一轮一轮的迭代，GBDT与之类似，但其弱分类器限定只能使用CART回归树模型（无论处理的是回归问题还是二分类问题或多分类问题），且在训练过程中要求模型预测的样本损失尽可能的小；</p>
+<p>更多关于GBDT算法参考<a target="_blank" rel="noopener" href="https://www.cnblogs.com/bonheur/p/12675653.html">集成学习之梯度提升树(GBDT)算法 - 大-道-至-简 - 博客园 (cnblogs.com)</a></p>
+<h4 id="2-10-6-集成学习之随机森林"><a href="#2-10-6-集成学习之随机森林" class="headerlink" title="2.10.6 集成学习之随机森林"></a>2.10.6 集成学习之随机森林</h4><p>随机森林是基于bagging框架下的决策树模型（boosting流派特点是各个弱学习器之间存在依赖关系，bagging流派的各个 弱学习器之间不存在依赖关系可以并行拟合）；</p>
+<p>更多关于随机森林算法参考<a target="_blank" rel="noopener" href="https://www.cnblogs.com/bonheur/p/12696216.html">集成学习之随机森林 - 大-道-至-简 - 博客园 (cnblogs.com)</a></p>
+<h4 id="2-10-7-集成学习之Xgboost"><a href="#2-10-7-集成学习之Xgboost" class="headerlink" title="2.10.7 集成学习之Xgboost"></a>2.10.7 集成学习之Xgboost</h4><p>Xgboost全称极端梯度提升，是大规模进行boosted tree的工具，Xgboost算法实际就是GBDT的改进，既可用于分类任务也可用于回归任务；</p>
+<p>更多关于Xgboost算法参考<a target="_blank" rel="noopener" href="https://www.cnblogs.com/bonheur/p/12469863.html">集成学习之Xgboost - 大-道-至-简 - 博客园 (cnblogs.com)</a></p>
+<h1 id="二、强化学习"><a href="#二、强化学习" class="headerlink" title="二、强化学习"></a>二、强化学习</h1><h2 id="1-概述"><a href="#1-概述" class="headerlink" title="1.概述"></a>1.概述</h2><p>参考自<a target="_blank" rel="noopener" href="https://www.cnblogs.com/pinard/p/9385570.html">强化学习（一）模型基础 - 刘建平Pinard - 博客园 (cnblogs.com)</a>强化学习系列；</p>
+<p>强化学习是与监督学习、无监督学习并列的第三种机器学习算法，强化学习与时间顺序前后关系密切，而监督学习的训练数据之间一般都是相互独立的没有前后依赖关系；</p>
+<p>强化学习的基本思路步骤如下：</p>
+<ol>
+<li>在当前环境状态S<del>t</del>下选择一个合适的动作A<del>t</del>；</li>
+<li>选择好动作后，环境状态会发生改变，此时环境状态变为S<del>t+1</del>，同时我们得到了动作A<del>t</del>的延时奖励R<del>t+1</del>；</li>
+<li>重复上述步骤；</li>
+</ol>
+<p>从上面简单介绍的强化学习思路中我们可以看到，强化学习过程中出现了几个比较重要的因素：</p>
+<ul>
+<li>t时刻的<code>环境状态</code>S<del>t</del>是其环境状态集中的某一个状态；</li>
+<li>t时刻的<code>个体动作</code>A<del>t</del>是其动作集中的某一个动作；</li>
+<li>t时刻的个体在状态S<del>t</del>采取的动作A<del>t</del>对应的<code>延时奖励</code>R<del>t+1</del>会在时刻t+1得到；</li>
+<li><code>个体策略</code>Π，代表个体采取动作的依据，简单来说就是个体依据策略Π选择个体动作，最常见的一种策略表达方式是条件概率分布Π(a|s)，即在状态s时采取的动作a的概率，此时概率大的动作被个体选择的概率较高；</li>
+<li>个体在策略Π和环境状态为s时，采取行动后的<code>价值</code>，常用v<del>Π</del>(s)表示，是一个期望函数；该要素的意义在于针对奖励，只能代表此时的奖励较高但未知到了t+1、t+2…的奖励是否仍然高，因此需要综合考虑当前的延时奖励和后续的延时奖励，价值函数的表达式一般如下</li>
+</ul>
+<p><img src="/images/image-20220822105741835.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><p>γ是<code>奖励衰减因子</code>，取值在[0,1]之间</p>
+<ul>
+<li>如果为0，则是贪婪法，即价值只由当前延时奖励决定；</li>
+<li>如果是1，则所有的后续状态奖励和当前奖励一视同仁。大多数时候，我们会取一个0到1之间的数字，即当前延时奖励的权重比后续奖励的权重大；</li>
+</ul>
+</li>
+<li><p><code>环境状态转化模型</code>，可以理解为一个概率状态机，表示一个概率模型，即在状态s下采取动作a转到下一个状态s’的概率，表示为P<del>ss’</del>^a^；</p>
+</li>
+<li><p><code>探索率</code>，该比率主要用于强化学习的迭代过程，意义在于假如我们直接选择使当前迭代价值最大的动作会导致其他较好的但是并未被我们执行的动作被错过，因此在选择最优动作的时候有一定概率不会选择使当前迭代价值最大的动作；</p>
+</li>
+<li></li>
+</ul>
+<p>这里有一个关于强化学习的例子，涉及上述介绍的要素，<a target="_blank" rel="noopener" href="https://www.cnblogs.com/pinard/p/9385570.html">强化学习（一）模型基础 - 刘建平Pinard - 博客园 (cnblogs.com)</a>（3.强化学习的简单实例）</p>
+<h1 id="三、深度学习"><a href="#三、深度学习" class="headerlink" title="三、深度学习"></a>三、深度学习</h1><p>（这里主要就是整理的《动手学深度学习》这本书的知识点了；）</p>
+<p>“机器学习（machine learning，ML）是一类强大的可以从经验中学习的技术。 通常采用观测数据或与环境交互的形式，机器学习算法会积累更多的经验，其性能也会逐步提高。在这本书中，我们将带你开启机器学习之旅，并特别关注深度学习（deep learning，DL）的基础知识”</p>
+<p>整本书的结构如下</p>
+<p><img src="/images/image-20220808210610573.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="1-概述-1"><a href="#1-概述-1" class="headerlink" title="1.概述"></a>1.概述</h2><p>首先是机器学习的概念，此处的定义比较新奇：</p>
+<p>假设要编写一个程序来响应一个“唤醒词”（比如“Alexa”、“小爱同学”和“Hey Siri”）</p>
+<p>我们可以收集一个包含音频样本的巨大的<code>数据集（dataset）</code>，并对包含和不包含唤醒词的样本进行标记。 通过机器学习算法，我们不需要设计一个“明确地”识别唤醒词的系统。 相反，我们定义一个灵活的程序算法，其由许多<code>参数（parameter）</code>决定。 然后我们使用数据集来确定当下的“最佳参数集”，这些参数通过某种性能度量来获取完成任务的最佳性能。任一调整参数后的程序，我们称为<code>模型（model）</code>。 通过操作参数而生成的所有不同程序（输入-输出映射）的集合称为<code>“模型族”</code>。 <code>使用数据集来选择参数的元程序被称为学习算法（learning algorithm）</code>。</p>
+<p>我们重新回顾一下算法和模型的关系：</p>
+<ul>
+<li>运行算法输出模型；</li>
+<li>算法与模型是一对多的关系，即一个算法运行在不同的训练数据上可以得到不同的模型；</li>
+</ul>
+<p>下面将介绍一些机器学习中的核心组件（这些在前面多多少少也已经接触过了，这里只是作为回顾），这些组件的概念无论是面对什么类型的机器学习都将起到重要的作用：</p>
+<ul>
+<li>用于学习的数据；</li>
+<li>转换数据的模型（其实严格来说模型是训练之后得到的结果，但是很多时候我们把训练之前的“假设函数”也称为模型或“模型函数”）；</li>
+<li>用于量化模型有效性的目标函数（很多时候我们也称其为损失函数）；</li>
+<li>调整模型参数以优化目标函数的算法（梯度下降、随机梯度下降…）；</li>
+</ul>
+<p>当然上面这几个组件是最重要的，但不是仅有这几个组件，这些组件是构成一个完整的机器学习必不可少的部分；</p>
+<h3 id="1-1-组件：数据"><a href="#1-1-组件：数据" class="headerlink" title="1.1 组件：数据"></a>1.1 组件：数据</h3><p>每个数据集由一个个样本（example, sample）组成，大多时候，它们遵循独立同分布(independently and identically distributed, i.i.d.)。 样本有时也叫做数据点（data point）或者数据实（data instance），通常每个样本由一组称特征（features，或协变量（covariates））的属性组成。机器学习模型会针对这些属性进行预测（比如上面预测标签）。</p>
+<p>当每个样本的特征类别数量都是相同的时候，其特征向量是固定长度的，这个长度被称为数据维数（dimensionality）。固定长度的特征向量是一个方便的属性，它有助于我们量化学习大量样本。</p>
+<p>然而，并不是所有的数据都可以用“固定长度”的向量表示。 以图像数据为例，如果它们全部来自标准显微镜设备，那么“固定长度”是可取的； 但是如果图像数据来自互联网，它们很难具有相同的分辨率或形状。 这时，我们可以考虑将图像裁剪成标准尺寸，但这种办法很局限，有丢失信息的风险。</p>
+<p>与传统机器学习方法相比，深度学习的一个主要优势是可以处理不同长度的数据。</p>
+<p>当数据不具有充分代表性，甚至包含了一些社会偏见时，模型就很有可能有偏见。</p>
+<p>我们通常将可用数据集分成两部分：训练数据集用于拟合模型参数，测试数据集用于评估拟合的模型。 然后我们观察模型在这两部分数据集的效能。 </p>
+<h3 id="1-2-组件：模型"><a href="#1-2-组件：模型" class="headerlink" title="1.2 组件：模型"></a>1.2 组件：模型</h3><p>大多数机器学习会涉及到数据的转换，如辨别动物，虽然简单的机器学习模型能够解决如上简单的问题，但本书中关注的问题超出了经典方法的极限，因此需要使用到深度学习。</p>
+<p>深度学习与经典方法的区别主要在于：前者关注的功能强大的模型，这些模型由神经网络错综复杂的交织在一起，包含层层数据转换，因此被称为深度学习（deep learning）。 在讨论深度模型的过程中，我们也将提及一些传统方法。</p>
+<p>深度学习（Deep Learning）是机器学习研究中的一个新的领域，其动机在于建立、模拟人脑进行分析学习的神经网络，它模仿人脑的机制来解释数据，例如图像，声音和文本。</p>
+<h3 id="1-3-组件：目标函数"><a href="#1-3-组件：目标函数" class="headerlink" title="1.3 组件：目标函数"></a>1.3 组件：目标函数</h3><p>在机器学习中，我们需要定义模型的优劣程度的度量，这个度量在大多数情况是“可优化”的，我们称之为目标函数（objective function）。 我们通常定义一个目标函数，并希望优化它到最低点。 因为越低越好，所以这些函数有时被称为损失函数（loss function，或cost function）。 但这只是一个惯例，你也可以取一个新的函数，优化到它的最高点。 这两个函数本质上是相同的，只是翻转一下符号。</p>
+<p>当任务在试图预测数值时，最常见的损失函数是平方误差（squared error），即预测值与实际值之差的平方。 当试图解决分类问题时，最常见的目标函数是最小化错误率，即预测与实际情况不符的样本比例。 有些目标函数（如平方误差）很容易被优化，有些目标（如错误率）由于不可微性或其他复杂性难以直接优化。 在这些情况下，通常会优化替代目标。</p>
+<p>通常，损失函数是根据模型参数定义的，并取决于数据集——在一个数据集上，我们通过最小化总损失来学习模型参数的最佳值。</p>
+<h3 id="1-4-组件：优化算法"><a href="#1-4-组件：优化算法" class="headerlink" title="1.4 组件：优化算法"></a>1.4 组件：优化算法</h3><p>一旦我们获得了一些数据源及其表示、一个模型和一个合适的损失函数（也就是具备上面所有的组件之后），我们接下来就需要一种算法，它能够搜索出最佳参数，以最小化损失函数。 </p>
+<hr>
+<p>更多有关深度学习的资料我们参考博客<a href="https://gintoki-jpg.github.io/2022/09/05/%E4%B8%93%E4%B8%9A_%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">神经网络与深度学习 - Tintoki_blog (gintoki-jpg.github.io)</a>，这篇博客总结了常见的深度学习的一些模型；</p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E4%B8%93%E4%B8%9A%E8%AF%BE/" class="category-chain-item">专业课</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">#机器学习</a>
+      
+        <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">#人工智能</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>机器学习</div>
+      <div>https://gintoki-jpg.github.io/2022/08/08/专业_机器学习/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>杨再俨</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年8月8日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/08/22/%E5%B7%A5%E5%85%B7_%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" title="初级项目_个人博客搭建">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">初级项目_个人博客搭建</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/08/08/%E5%90%8E%E7%AB%AF_JAVA%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/" title="JAVA学习路线">
+                        <span class="hidden-mobile">JAVA学习路线</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+</div>
+
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

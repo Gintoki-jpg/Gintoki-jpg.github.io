@@ -1,0 +1,1037 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/logo.png">
+  <link rel="icon" href="/img/bg/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="杨再俨">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="知识图谱课程实践操作；">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初级项目_电影知识图谱">
+<meta property="og:url" content="https://gintoki-jpg.github.io/2023/03/16/%E9%A1%B9%E7%9B%AE_%E7%94%B5%E5%BD%B1%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/index.html">
+<meta property="og:site_name" content="Tintoki_blog">
+<meta property="og:description" content="知识图谱课程实践操作；">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/project.png">
+<meta property="article:published_time" content="2023-03-16T02:08:00.000Z">
+<meta property="article:modified_time" content="2023-04-22T14:42:27.524Z">
+<meta property="article:author" content="YangZaiyan">
+<meta property="article:tag" content="知识图谱">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gintoki-jpg.github.io/img/bg/project.png">
+  
+  
+  
+  <title>初级项目_电影知识图谱 - Tintoki_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"gintoki-jpg.github.io","root":"/","version":"1.9.1","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tintoki_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/bg1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">初级项目_电影知识图谱</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-03-16 10:08" pubdate>
+          2023年3月16日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          15k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          124 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">初级项目_电影知识图谱</h1>
+            
+            <div class="markdown-body">
+              
+              <p>教程参考链接：</p>
+<ul>
+<li><p>背景知识参考：<a target="_blank" rel="noopener" href="https://www.zhihu.com/people/simmerchan/posts">SimmerChan - 知乎 (zhihu.com)</a>；</p>
+</li>
+<li><p>技术参考（这两篇教程交叉着看具有互补的作用）：</p>
+<ul>
+<li>知识点铺垫：<a target="_blank" rel="noopener" href="https://www.ljjyy.com/archives/2019/11/100586.html">知识图谱学习教程 | 来唧唧歪歪(Ljjyy.com) - 多读书多实践，勤思考善领悟</a>（这个教程中间省略了很多知识点的介绍，而且在我做到第三个部分的时候就已经放弃，代码过时报错太多）；</li>
+<li>完整项目链接：<a target="_blank" rel="noopener" href="https://github.com/SimmerChan/KG-demo-for-movie">SimmerChan&#x2F;KG-demo-for-movie: 从无到有构建一个电影知识图谱，并基于该KG，开发一个简易的KBQA程序。 (github.com)</a>（这个完整的项目我都还没开始做，只能之后有时间了再看）；</li>
+</ul>
+</li>
+</ul>
+<p>环境配置说明：</p>
+<ul>
+<li><p>mysql的安装是按照尚硅谷教程：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1iq4y1u7vj/?p=2&spm_id_from=pageDriver&vd_source=276d55048634a5b508b1b53a1ecd56b3">02-为什么使用数据库及数据库常用概念_哔哩哔哩_bilibili</a>；</p>
+</li>
+<li><p>Scrapy其实是可以不用安装的（因为现在爬取百度的难度比较大，可以直接使用教程中的sql文件，如何将sql文件导入mysql中可以直接在百度搜索）；</p>
+</li>
+<li><p>Protege+Graphviz下载安装参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42257666/article/details/121688656">(10条消息) Graphviz安装配置教程（图文详解）_振华OPPO的博客-CSDN博客</a>和<a target="_blank" rel="noopener" href="https://blog.csdn.net/Jenny_oxaza/article/details/83148300/">(10条消息) Protégé基本教程【Protégé5.5.0版本】_protege软件_喵木木的博客-CSDN博客</a>；</p>
+</li>
+<li><p>D2RQ下载安装参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/benzhujie1245com/article/details/123519995">(10条消息) D2RQ 的安装和基本使用_d2rq安装_空杯的境界的博客-CSDN博客</a>；</p>
+</li>
+<li><p>jena下载与安装：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42727550/article/details/119327716">(10条消息) jena4.1.0安装及使用_jena安装_长安山南君的博客-CSDN博客</a>和<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41104835/article/details/88635600">(10条消息) 知识图谱构建5——Jena 和 Fuseki安装与SPARQL查询_jena fuseki_野有蔓兮的博客-CSDN博客</a>；</p>
+</li>
+</ul>
+<hr>
+<p>2023&#x2F;3&#x2F;19 23:46 纯看知识点是肯定会晕的，建议是边看知识点然后看不下去了手动实践然后记录问题，再继续查资料实践；</p>
+<p>2023&#x2F;3&#x2F;21 9:28 先不要跟着唧唧歪歪的项目流程走了，后面写的太乱了…而且每个小项目讲的也很简单，很容易暴毙，初学还是得找教程相对详细的；</p>
+<p>2023&#x2F;4&#x2F;22 21:56 今天因为要做知识图谱的期末大作业所以回顾了一下之前学习知识图谱的流程，简单总结一下就是唧唧歪歪的项目跟到第三个部分就因为代码版本问题已经没法继续跟下去了，而知乎SimmerChan大佬的无论是文章还是项目都非常的牛，只是可惜时间不足无法继续学习下去。本博客的第一部分主要参考的是SimmerChan和唧唧歪歪的知识点并结合自己在网上查资料等进行的补充，第二部分原计划是跟着唧唧歪歪的从零开始学习知识图谱完整流程跟下来，但是做到基于REFO的知识问答就已经做不下去了，原本是打算第二部分作为一个中间零碎知识点的过渡，便于之后第三部部分直接跟着SimmerChan的项目构建一个完整的电影知识图谱，但是因为时间原因第二部分和第三部分都未能按时完成。关于完整的知识图谱项目，可以关注之后我的知识图谱期末大作业，一个面向暴雨洪涝灾情的知识图谱。</p>
+<hr>
+<h1 id="一、知识图谱基础"><a href="#一、知识图谱基础" class="headerlink" title="一、知识图谱基础"></a>一、知识图谱基础</h1><h2 id="1-知识图谱概述"><a href="#1-知识图谱概述" class="headerlink" title="1.知识图谱概述"></a>1.知识图谱概述</h2><blockquote>
+<p>计算机一直面临着这样的困境 – 无法获取网络文本的语义信息；</p>
+</blockquote>
+<p>为了让机器能够理解文本背后的含义，我们需要对可描述的事物(实体)进行建模，填充它的属性，拓展它和其他事物的联系，即构建机器的先验知识；</p>
+<p><img src="/images/image-20230316210746895.png" srcset="/img/loading.gif" lazyload alt="知识图"></p>
+<p>上面的例子中围绕罗纳尔多这个实体进行了相应的拓展，得到了上述知识图，而这对机器来说就相当于拥有了先验知识，当计算机看到罗纳尔多便会进行推理“这是一个名字为Ronaldo Luís Nazário de Lima的巴西足球运动员”；</p>
+<blockquote>
+<p>上面的知识图并不代表知识图谱的实际组织形式（尽管很多文章都喜欢给这种图），之后会介绍知识[图谱形式化的表现形式](#1.2 知识图谱)；</p>
+</blockquote>
+<h3 id="1-1-语义网络"><a href="#1-1-语义网络" class="headerlink" title="1.1 语义网络"></a>1.1 语义网络</h3><p>知识图谱的本质是为了表示知识，实际上知识图谱的背后的思想可以追溯到另一种知识表示形式 – 语义网络；</p>
+<p>语义网络由相互连接的节点和边组成，节点表示概念或者对象，边表示它们之间的关系（is-a关系，part-of关系等）；</p>
+<p>在表现形式上语义网络和知识图谱相似，但是语义网络更侧重于描述概念之间的关系，知识图谱更偏重描述实体之间的关联</p>
+<p><img src="/images/image-20230316212139380.png" srcset="/img/loading.gif" lazyload alt="语义网络"></p>
+<h3 id="1-2-知识图谱"><a href="#1-2-知识图谱" class="headerlink" title="1.2 知识图谱"></a>1.2 知识图谱</h3><p>知识图谱并没有一个标准的定义，其中一种定义是说，“知识图谱是由一些相互连接的实体及其属性构成”，即知识图谱是由一条条知识组成，每条知识被表示为一个SPO三元组</p>
+<p><img src="/images/image-20230316212738498.png" srcset="/img/loading.gif" lazyload></p>
+<p>在知识图谱中常使用RDF形式化地表示这种三元关系，RDF图中共有三种类型：</p>
+<ul>
+<li>International Resource Identifiers(IRIs)：IRI可以看作URI或URL的推广，在整个网络或者图中唯一定义了一个实体&#x2F;资源（类似身份证号）；</li>
+<li>literals：字面量，可以把它看做是带有数据类型的纯文本 – 借用数据结构中树的概念，字面量类似叶子节点，<code>出度为0</code>，即不能有指向外部节点的边；</li>
+<li>blank nodes：简单来说就是没有IRI和literal的资源，或者说匿名资源；</li>
+</ul>
+<p>SPO三元关系中每个部分对应RDF中的约束：</p>
+<ul>
+<li>Subject可以是IRI或blank node；</li>
+<li>Predicate是IRI；</li>
+<li>Object三种类型都可以；</li>
+</ul>
+<p>“罗纳尔多的中文名是罗纳尔多·路易斯·纳扎里奥·达·利马”这样一个三元组用RDF形式来表示</p>
+<p><img src="/images/image-20230316215227501.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>“ww w.kg.com&#x2F;person&#x2F;1”是一个IRI，用来唯一的表示“罗纳尔多”这个实体；</li>
+<li>“kg:chineseName”也是一个IRI，用来表示“中文名”这样一个属性；</li>
+</ul>
+<blockquote>
+<p>kg是RDF文件中定义的前缀，用于代替某些较长的字符串，如定义prefix如下</p>
+<p>@prefix kg:&lt;http: www&gt;</p>
+<p>则kg:chineseName实际就是http: www&#x2F;chineseName的缩写</p>
+</blockquote>
+<p>这里使用更加形式化的知识图谱对前面的知识图进行表示</p>
+<p><img src="/images/v2-39a6afd47a048522166c48a50e0c6958_r.jpg" srcset="/img/loading.gif" lazyload></p>
+<h2 id="2-知识图谱概念"><a href="#2-知识图谱概念" class="headerlink" title="2.知识图谱概念"></a>2.知识图谱概念</h2><blockquote>
+<p>主要介绍语义网络、语义网、链接数据和知识图谱这些概念之间的区别；</p>
+</blockquote>
+<h3 id="2-1-语义网络"><a href="#2-1-语义网络" class="headerlink" title="2.1 语义网络"></a>2.1 语义网络</h3><p>语义网络Semantic Network，注意与语义网Semantic Web区分；</p>
+<p>语义网络用相互连接的节点和边表示知识：</p>
+<ul>
+<li>节点表示对象、概念</li>
+<li>边表示节点之间的关系</li>
+</ul>
+<p><img src="/images/image-20230319224156156.png" srcset="/img/loading.gif" lazyload alt="语义网络例子"></p>
+<table>
+<thead>
+<tr>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>容易理解和展示</td>
+<td>节点和边的值没有标准，完全是由用户自己定义</td>
+</tr>
+<tr>
+<td>相关概念容易聚类</td>
+<td>多源数据融合比较困难，因为没有标准</td>
+</tr>
+<tr>
+<td></td>
+<td>无法区分概念节点和对象节点</td>
+</tr>
+<tr>
+<td></td>
+<td>无法对节点和边的标签进行定义</td>
+</tr>
+</tbody></table>
+<p>语义网络可以较容易的让我们理解语义和语义关系，其表达形式简单直白，符合自然。但是因为缺少标准，所以语义网络较难应用于实践；</p>
+<p>RDF的提出解决了语义网络的缺点1和缺点2，在节点和边的取值上做了约束，制定了统一标准，为多源数据的融合提供了便利；</p>
+<p>RDFS和OWL解决了语义网络无法区分概念和对象的问题（这将在之后详细介绍），即主要解决语义网络的缺点3和缺点4；</p>
+<h3 id="2-2-语义网和链接数据"><a href="#2-2-语义网和链接数据" class="headerlink" title="2.2 语义网和链接数据"></a>2.2 语义网和链接数据</h3><p>相对于语义网络，语义网和链接数据倾向于描述万维网中的资料和数据之间的关系；</p>
+<p>实际上语义网、链接数据还有Web 3.0都是同一个概念，都是指W3C制定的用于描述和关联万维网数据的一系列技术标准，即<code>语义网技术栈</code>；</p>
+<p><img src="/images/image-20230319230836808.png" srcset="/img/loading.gif" lazyload alt="语义网络技术栈"></p>
+<h3 id="2-3-知识图谱"><a href="#2-3-知识图谱" class="headerlink" title="2.3 知识图谱"></a>2.3 知识图谱</h3><p>知识图谱的更加正式的定义为，由本体作为Schema层，与RDF数据模型兼容的结构化数据集（这个概念不是很好理解可以不用理解）</p>
+<p>链接数据和知识图谱最大的区别在于：</p>
+<ul>
+<li>链接数据强调的是知识图谱之间的相互链接；</li>
+<li>知识图谱不一定要链接外部的知识图谱，更强调有一个本体层定义实体的类型和实体之间的关系；</li>
+</ul>
+<h3 id="2-4-小结"><a href="#2-4-小结" class="headerlink" title="2.4 小结"></a>2.4 小结</h3><p>语义网络是个早期概念，是最早尝试用节点和边表示知识的产物，但是其缺点太多了。之后出现RDF，OWL&#x2F;RDFS等技术重新用节点，边构成的图结构知识表示，就是语义网。语义网克服了语义网络的缺点，成为现在重要的研究对象；</p>
+<p>语义网，链接数据，Web3.0本质上是一个概念即Semantic Web，知识侧重点不一样时，会叫不同的名字：</p>
+<ul>
+<li><p>语义网是更官方的叫法，也是学者喜欢的叫法。这个名字侧重描述“互联网上的知识工程”，更侧重数据细化之后的semantic；</p>
+</li>
+<li><p>链接数据是更简单的叫法，侧重描述数据集之间的链接属性，就是那个web；</p>
+</li>
+</ul>
+<p>知识图谱并没有公认的定义，只需要知道知识图谱是一个图数据结构，包括节点和边，节点上是实体，边表示实体间的关联关系；</p>
+<h2 id="3-知识图谱技术"><a href="#3-知识图谱技术" class="headerlink" title="3.知识图谱技术"></a>3.知识图谱技术</h2><p>RDF和RDFS&#x2F;OWL这两种知识图谱的基础技术，是类语义网概念背后通用的技术，而知识图谱只是其中最广为人知的概念；</p>
+<h3 id="3-1-RDF"><a href="#3-1-RDF" class="headerlink" title="3.1 RDF"></a>3.1 RDF</h3><h4 id="3-1-1-RDF概述"><a href="#3-1-1-RDF概述" class="headerlink" title="3.1.1 RDF概述"></a>3.1.1 RDF概述</h4><p>RDF(Resource Description Framework)是一种用于描述Web资源的标记语言，其本质是一个数据模型：</p>
+<ul>
+<li>资源：所有在Web上被命名且具有URI统一资源描述符的东西，如网页；</li>
+<li>描述：对资源属性的一个陈述，以表明资源的特性或资源之间的联系；</li>
+<li>框架：框架是指与被描述资源无关的通用模型，用以包容和原理资源的多样性、不一致性和重复性；</li>
+</ul>
+<p>总的来说，RDF定义了一种通用的框架，即<code>资源-属性-属性值</code>的三元组，来描述Web上各种资源；</p>
+<p>下面是一个简单的RDF例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs rdf">&lt;rdf : Description about=&#x27; [http://www.textuality](https://link.zhihu.com/?target=http%3A//www.textuality). com/RDF/Why-RDF.html&#x27;&gt; (指明被描述资源的URI) <br>	&lt;Author&gt; Tim Bray &lt;/Author&gt; （被描述资源有一个叫Author即作者的属性，其值是Tim Bray） <br>	&lt;Home-Page rdf:resource=&#x27; [http://www](https://link.zhihu.com/?target=http%3A//www). textuality.com/&#x27;&gt; （被描述资源有一叫Home-Page即主页的属性， 其值指向另一资源）<br>&lt;/rdf: Description&gt;<br></code></pre></td></tr></table></figure>
+
+<p>RDF形式上表示为SPO三元组，也称为语句或知识</p>
+<p><img src="/images/image-20230319231159730.png" srcset="/img/loading.gif" lazyload alt="SPO三元组"></p>
+<p>RDF由节点和边组成，节点表示实体&#x2F;资源、属性，边则表示了实体和实体之间的关系以及实体和属性的关系；</p>
+<p>在[知识图谱简介](#1.2 知识图谱)中介绍了RDF节点和边的类型约束；</p>
+<h4 id="3-1-2-RDF序列化"><a href="#3-1-2-RDF序列化" class="headerlink" title="3.1.2 RDF序列化"></a>3.1.2 RDF序列化</h4><p>如何存储和传输RDF数据？即创建RDF数据集并将其序列化？主要的方式有RDF&#x2F;XML，N-Triples，Turtle，RDFa，JSON-LD等；</p>
+<ul>
+<li>RDF&#x2F;XML，顾名思义，就是用XML的格式来表示RDF数据。之所以提出这个方法，是因为XML的技术比较成熟，有许多现成的工具来存储和解析XML。然而，对于RDF来说，XML的格式太冗长，也不便于阅读，通常不会使用这种方式来处理RDF数据；</li>
+<li>N-Triples，即用多个三元组来表示RDF数据集，是最直观的表示方法。在文件中，每一行表示一个三元组，方便机器解析和处理；</li>
+<li>Turtle，应该是使用得最多的一种RDF序列化方式了。它比RDF&#x2F;XML紧凑，且可读性比N-Triples好；</li>
+<li>RDFa, 即“The Resource Description Framework in Attributes”，是HTML5的一个扩展，在不改变任何显示效果的情况下，让网站构建者能够在页面中标记实体，像人物、地点、时间、评论等等。也就是说，将RDF数据嵌入到网页中，搜索引擎能够更好的解析非结构化页面，获取一些有用的结构化信息；</li>
+<li>JSON-LD，即“JSON for Linking Data”，用键值对的方式来存储RDF数据；</li>
+</ul>
+<h3 id="3-2-RDFS-x2F-OWL"><a href="#3-2-RDFS-x2F-OWL" class="headerlink" title="3.2 RDFS&#x2F;OWL"></a>3.2 RDFS&#x2F;OWL</h3><p>RDF的表达能力有限，无法区分类和对象，也无法定义和描述类的关系或属性 – RDF是对具体事物的描述，缺乏抽象能力，无法对同一个类别的事物进行定义和描述；</p>
+<p>RDFS(模式语言schema language)和OWL(本体语言ontology language)解决了RDF表达能力有限的困境；</p>
+<p>RDFS&#x2F;OWL可以看作是RDF的“衣服”，因为它们都是用来描述RDF数据的，RDFS&#x2F;OWL本质上是一些预定义词汇（vocabulary）构成的集合，用于对RDF进行类定义及其属性的定义；</p>
+<h4 id="3-2-1-RDFS"><a href="#3-2-1-RDFS" class="headerlink" title="3.2.1 RDFS"></a>3.2.1 RDFS</h4><p>RDFS&#x2F;OWL本质上是一些预定义词汇（vocabulary）构成的集合，用于对RDF进行类似的类定义及其属性的定义</p>
+<ul>
+<li>RDFS不区分对象属性(object property，实体和实体之间的关系)和数据属性(data property，实体和literal字面量的关系)</li>
+</ul>
+<p>下面主要介绍RDFS中几个比较重要的词汇</p>
+<ul>
+<li><p>rdfs:Class. 用于定义类。</p>
+</li>
+<li><p>rdfs:domain. 用于表示该属性属于哪个类别。</p>
+</li>
+<li><p>rdfs:range. 用于描述该属性的取值类型。</p>
+</li>
+<li><p>rdfs:subClassOf. 用于描述该类的父类。比如，我们可以定义一个运动员类，声明该类是人的子类。</p>
+</li>
+<li><p>rdfs:subProperty. 用于描述该属性的父属性。比如，我们可以定义一个名称属性，声明中文名称和全名是名称的子类。</p>
+</li>
+</ul>
+<p>RDF和RDFS&#x2F;OWL在知识图谱中代表的层面各不相同</p>
+<p><img src="/images/v2-9950314f9ab6e6c44a2300d03e022bb1_720w.webp" srcset="/img/loading.gif" lazyload></p>
+<p>Data层是用RDF对罗纳尔多知识图的具体描述，Vocabulary是自定义的一些词汇（类别，属性），RDF(S)则是预定义词汇，从下到上是一个具体到抽象的过程；</p>
+<p>图中用红色圆角矩形表示类，绿色字体表示rdf:type，rdfs:domain，rdfs:range三种预定义词汇，虚线表示rdf:type这种所属关系；</p>
+<h4 id="3-2-2-OWL"><a href="#3-2-2-OWL" class="headerlink" title="3.2.2 OWL"></a>3.2.2 OWL</h4><p>RDFS是RDF词汇的拓展，OWL是RDFS的拓展，添加了额外的预定义词汇；</p>
+<p>schema层的描述语言换为OWL后，层次图表示为</p>
+<p><img src="/images/v2-ef0de6ba9620d27ca0f2d2f4b0f18f53_720w.webp" srcset="/img/loading.gif" lazyload></p>
+<p>owl中的常用词汇如下：</p>
+<ul>
+<li><p>描述属性特征的词汇</p>
+<ul>
+<li><p>owl:TransitiveProperty. 表示该属性具有传递性质。例如，我们定义“位于”是具有传递性的属性，若A位于B，B位于C，那么A肯定位于C。</p>
+</li>
+<li><p>owl:SymmetricProperty. 表示该属性具有对称性。例如，我们定义“认识”是具有对称性的属性，若A认识B，那么B肯定认识A。</p>
+</li>
+<li><p>owl:FunctionalProperty. 表示该属性取值的唯一性。 例如，我们定义“母亲”是具有唯一性的属性，若A的母亲是B，在其他地方我们得知A的母亲是C，那么B和C指的是同一个人。</p>
+</li>
+<li><p>owl:inverseOf. 定义某个属性的相反关系。例如，定义“父母”的相反关系是“子女”，若A是B的父母，那么B肯定是A的子女。</p>
+</li>
+</ul>
+</li>
+<li><p>本体映射词汇（Ontology Mapping）</p>
+<ul>
+<li><p>owl:equivalentClass. 表示某个类和另一个类是相同的。</p>
+</li>
+<li><p>owl:equivalentProperty. 表示某个属性和另一个属性是相同的。</p>
+</li>
+<li><p>owl:sameAs. 表示两个实体是同一个实体。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>关于OWL和OWL2的更多信息参考<a target="_blank" rel="noopener" href="https://www.ljjyy.com/archives/2019/11/100605.html#2-OWL%E5%92%8COWL2">知识图谱基础 之 二.知识表示与知识建模 | 来唧唧歪歪(Ljjyy.com) - 多读书多实践，勤思考善领悟</a>；</p>
+<h3 id="3-3-D2RQ"><a href="#3-3-D2RQ" class="headerlink" title="3.3 D2RQ"></a>3.3 D2RQ</h3><p>文章参考：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/coodream2009/p/11321530.html">知识图谱学习与实践（6）——从结构化数据进行知识抽取（D2RQ介绍） - cooldream2009 - 博客园 (cnblogs.com)</a>；</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/smallsmallbright/article/details/84202695">(11条消息) D2R使用方法1_d2rmm_smallsmallbright的博客-CSDN博客</a>；</li>
+</ul>
+<p>将结构化数据转换为RDF有两种主要方式，一种是直接映射，本质上是通过编写启发式规则将数据库中的表转换为RDF三元组（将表结构映射到对应的三元组中），另一种是使用D2RQ；</p>
+<p>D2RQ工具是一种将结构化数据转换成RDF三元组的工具，可以将Mysql的数据映射到在protege中定义的本体上，支持使用SPARQL查询非RDF数据库；</p>
+<p>D2RQ平台的组成：</p>
+<ul>
+<li><p>D2RQ映射语言，一种声明的映射语言，用于描述本体和关系数据模型之间的关系；</p>
+</li>
+<li><p>D2RA引擎，一种服务于Jena语义网工具库插件，使用映射(即使用一个可定制的D2RQ Mapping文件)重写对数据库的SQL访问的Jena API调用，并且将查询结果传递给框架高层；</p>
+</li>
+<li><p>D2R服务器，一个提供调试用的链接数据视图和HTML视图的HTTP服务器，还提供了一个SPARQL协议endpoint数据接口；</p>
+</li>
+</ul>
+<h3 id="3-4-SPARQL"><a href="#3-4-SPARQL" class="headerlink" title="3.4 SPARQL"></a>3.4 SPARQL</h3><p>SPARQL是RDF的查询语言，它基于RDF数据模型，可以对不同的数据集撰写复杂的连接，同时还被所有主流的图数据库支持；</p>
+<p><img src="/images/image-20230320081139321.png" srcset="/img/loading.gif" lazyload alt="SPARQL的查询结构"></p>
+<p>从语法上结构上来看，SPARQL和SQL语言还是有一定的相似性的。比较重要的区别有：</p>
+<ul>
+<li>变量,RDF中的资源,以“?”或者“$”指示；</li>
+<li>三元组模板 (triple pattern), 在WHERE子句中列示关联的三元组模板,之所以称之为模板,因为三元组中允许变量；</li>
+<li>SELECT子句中指示要查询的目标变量；</li>
+</ul>
+<h3 id="3-5-Apache-Jena"><a href="#3-5-Apache-Jena" class="headerlink" title="3.5 Apache Jena"></a>3.5 Apache Jena</h3><p>Jena是一个开源的Java语义网框架，用于构建语义网和链接数据应用，主要组件有：</p>
+<ul>
+<li>TDB：用于存储RDF的组件</li>
+<li>Jena提供了RDFS、OWL和通用规则推理机</li>
+<li>Fuseki：Jena提供的SPARQL服务器，也就是SPARQL endpoint</li>
+</ul>
+<h3 id="3-6-Protege"><a href="#3-6-Protege" class="headerlink" title="3.6 Protege"></a>3.6 Protege</h3><p>protege是一个基于java语言开发的本体编辑和知识获取软件，也被称为本体开发工具，是基于知识的编辑器；</p>
+<p>protege是一个本体编辑和知识获取软件；</p>
+<p>Protégé提供了本体概念类，关系，属性和实例的构建，并且屏蔽了具体的本体描述语言，用户只需在概念层次上进行领域本体模型的构建；</p>
+<p>Protege的主要用途：</p>
+<ul>
+<li>类模拟（Class modeling)：protégé提供了一个图形化用户界面来模拟类（领域概念）和它们的属性及关系；</li>
+<li>实例编辑（Instance editing）：从这些类中，protégé自动产生交互式的形式，全用户或领域专家进入的有效实例成为可能；</li>
+<li>模型处理（Model processing)：protégé有一个插件库，可以定义语义、解答询问以及定义逻辑行为；</li>
+<li>模型交换（Model exchange)：最终的模型（类和实例）能以各种各样的格式被装载和保存，包括XML、UML和资源描述框架RDF；</li>
+</ul>
+<h1 id="二、电影知识图谱"><a href="#二、电影知识图谱" class="headerlink" title="二、电影知识图谱"></a>二、电影知识图谱</h1><p>前面已经介绍了实际在构建知识图谱的过程中会涉及的一些技术，下面就简单的举一个例子介绍构建一个电影知识图谱的大致流程；</p>
+<h2 id="1-结构化数据获取"><a href="#1-结构化数据获取" class="headerlink" title="1.结构化数据获取"></a>1.结构化数据获取</h2><h3 id="1-1-Mysql建库"><a href="#1-1-Mysql建库" class="headerlink" title="1.1 Mysql建库"></a>1.1 Mysql建库</h3><p>库内包含 演员、电影、电影类型、演员-&gt;电影、电影-&gt;类型 五张表：</p>
+<ul>
+<li>演员 ：爬取内容为 ID, 简介， 中文名，外文名，国籍，星座，出生地，出生日期，代表作品，主要成就，经纪公司；</li>
+<li>电影 ：ID，简介，中文名，外文名，出品时间，出品公司，导演，编剧，类型，主演，片长，上映时间，对白语言，主要成就；</li>
+<li>电影类型： 爱情，喜剧，动作，剧情，科幻，恐怖，动画，惊悚，犯罪，冒险，其他；</li>
+<li>演员-&gt;电影： 演员ID， 电影ID；</li>
+<li>电影-&gt; 类型： 电影ID， 类型ID；</li>
+</ul>
+<p>直接按照下面的建表语句创建数据库和数据表即可（cmd或者Navicat的命令列界面皆可进行创建）</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs sql"># Commands <span class="hljs-keyword">to</span> creat mysql database <span class="hljs-keyword">and</span> tables. This database includes actors <span class="hljs-keyword">and</span> films. <br><br># 演员 : ID, 简介， 中文名，外文名，国籍，星座，出生地，出生日期，代表作品，主要成就，经纪公司；<br># actor: actor_id, actor_bio, actor_chName, actor_foreName, actor_nationality, actor_constellation, actor_birthPlace, actor_birthDay, actor_repWorks, actor_achiem, actor_brokerage;<br><br># 电影作品：ID，简介，中文名，外文名，出品时间，出品公司，导演，编剧，类型，主演，片长，上映时间，对白语言，主要成就；<br># movie: movie_id, movie_bio, movie_chName, movie_foreName, movie_prodTime, movie_prodCompany, movie_director, movie_screenwriter, movie_genre, movie_star, movie_length, movie_rekeaseTime, movie_language, movie_achiem;<br><br># 电影类型：爱情，喜剧，动作，剧情，科幻，恐怖，动画，惊悚，犯罪，冒险，其他；<br># genre: genre_id, genre_name<br><br># 演员<span class="hljs-operator">-</span><span class="hljs-operator">&gt;</span>电影： 演员ID， 电影ID；<br># actor_to_movie: actor_id, movie_id;<br><br># 电影<span class="hljs-operator">-</span><span class="hljs-operator">&gt;</span> 类型： 电影ID， 类型ID<br># movie_to_genre: movie_id, genre_id<br><br><span class="hljs-keyword">CREATE</span> DATABASE kg_movie;<br>USE kg_movie;<br><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> actor( actor_id <span class="hljs-type">INT</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>,  actor_bio TEXT, actor_chName <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">100</span>), actor_foreName <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">100</span>), actor_nationality <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">100</span>), actor_constellation <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">100</span>), actor_birthPlace <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">100</span>), actor_birthDay <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">100</span>), actor_repWorks <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">100</span>), actor_achiem TEXT, actor_brokerage <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">100</span>), <span class="hljs-keyword">PRIMARY</span> KEY(actor_id) );<br><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> movie( movie_id <span class="hljs-type">INT</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>, movie_bio TEXT, movie_chName <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">100</span>), movie_foreName <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">100</span>), movie_prodTime <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">100</span>),  movie_prodCompany <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">100</span>), movie_director <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">100</span>), movie_screenwriter <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">100</span>), movie_genre <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">100</span>), movie_star <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">100</span>), movie_length <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">100</span>), movie_rekeaseTime <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">100</span>), movie_language <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">100</span>), movie_achiem TEXT, <span class="hljs-keyword">PRIMARY</span> KEY(movie_id) );<br><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> actor_to_movie( actor_movie_id <span class="hljs-type">INT</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>, actor_id <span class="hljs-type">INT</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>, movie_id <span class="hljs-type">INT</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>, <span class="hljs-keyword">PRIMARY</span> KEY(actor_movie_id) );<br><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> genre ( genre_id <span class="hljs-type">INT</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>, genre_name <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">100</span>), <span class="hljs-keyword">PRIMARY</span> KEY(genre_id)  );<br># <span class="hljs-keyword">Set</span> <span class="hljs-type">char</span> <span class="hljs-keyword">Set</span><br><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> actor <span class="hljs-keyword">CONVERT</span> <span class="hljs-keyword">TO</span> <span class="hljs-type">CHARACTER</span> <span class="hljs-keyword">SET</span> utf8 <span class="hljs-keyword">COLLATE</span> utf8_general_ci;<br><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> movie <span class="hljs-keyword">CONVERT</span> <span class="hljs-keyword">TO</span> <span class="hljs-type">CHARACTER</span> <span class="hljs-keyword">SET</span> utf8 <span class="hljs-keyword">COLLATE</span> utf8_general_ci;<br><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> genre <span class="hljs-keyword">CONVERT</span> <span class="hljs-keyword">TO</span> <span class="hljs-type">CHARACTER</span> <span class="hljs-keyword">SET</span> utf8 <span class="hljs-keyword">COLLATE</span> utf8_general_ci;<br><br><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> genre (genre_id, genre_name) <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">0</span>, <span class="hljs-string">&#x27;爱情&#x27;</span>), (<span class="hljs-number">1</span>, <span class="hljs-string">&#x27;喜剧&#x27;</span>), (<span class="hljs-number">2</span>, <span class="hljs-string">&#x27;动作&#x27;</span>), (<span class="hljs-number">3</span>, <span class="hljs-string">&#x27;剧情&#x27;</span>), (<span class="hljs-number">4</span>, <span class="hljs-string">&#x27;科幻&#x27;</span>), (<span class="hljs-number">5</span>, <span class="hljs-string">&#x27;恐怖&#x27;</span>), (<span class="hljs-number">6</span>, <span class="hljs-string">&#x27;动画&#x27;</span>), (<span class="hljs-number">7</span>, <span class="hljs-string">&#x27;惊悚&#x27;</span>), (<span class="hljs-number">8</span>, <span class="hljs-string">&#x27;犯罪&#x27;</span>), (<span class="hljs-number">9</span>, <span class="hljs-string">&#x27;冒险&#x27;</span>), (<span class="hljs-number">10</span>, <span class="hljs-string">&#x27;其他&#x27;</span>);<br><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> movie_to_genre( movie_genre_id <span class="hljs-type">INT</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>, movie_id <span class="hljs-type">INT</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>, genre_id <span class="hljs-type">INT</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>, <span class="hljs-keyword">PRIMARY</span> KEY(movie_genre_id) );<br><br></code></pre></td></tr></table></figure>
+
+<p>创建完成后可以使用如下语句查看创建的数据库和对应的表</p>
+<p><img src="/images/image-20230316203518557.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-2-导入sql文件"><a href="#1-2-导入sql文件" class="headerlink" title="1.2 导入sql文件"></a>1.2 导入sql文件</h3><p>教程中使用了scrapy框架对百度百科进行爬取，爬取电影类数据，包含电影22219部，演员13967人，演员电影间联系1942个，电影与类别间联系23238，电影类别10个，教程中已经给出了相关的数据集，所以无需重复爬取，直接在Navicat中导入即可</p>
+<p><img src="/images/image-20230316203244932.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-3-小结"><a href="#1-3-小结" class="headerlink" title="1.3 小结"></a>1.3 小结</h3><p>第一部分对半结构化数据即百度百科的电影数据进行了爬取并将其保存在Mysql数据库中，这意味着我们获得了一份结构化数据；</p>
+<h2 id="2-数据处理"><a href="#2-数据处理" class="headerlink" title="2.数据处理"></a>2.数据处理</h2><h3 id="2-1-结构化数据转为RDF"><a href="#2-1-结构化数据转为RDF" class="headerlink" title="2.1 结构化数据转为RDF"></a>2.1 结构化数据转为RDF</h3><p>将结构化数据转换为RDF有两种主要方式，一种是直接映射，本质上是通过编写启发式规则将数据库中的表转换为RDF三元组（将表结构映射到对应的三元组中），另一种是使用D2RQ；</p>
+<p>这里只介绍使用D2RQ的方式，D2RQ主要功能就是将查询语言SPARQL通过mapping文件(R2RML-kit)将其转换为SQL语句进而在关系数据库上进行查询；</p>
+<p>在d2rq的目录下使用</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">./generate-mapping -u root -p root -o kg_demo_mapping_kg_movie.ttl jdbc:mysql:///kg_movie?useSSL=false<br><span class="hljs-meta prompt_"># </span><span class="language-bash">-u 后root是数据库用户，-p 后root是用户密码,jdbc:mysql: 后kg_movie是数据库名称</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">?useSSL=<span class="hljs-literal">false</span>语句设置SSL为<span class="hljs-literal">false</span>以避免提示警告，数据库没设置主键会提示警告。</span><br></code></pre></td></tr></table></figure>
+
+<p>命令可以创建默认mapping映射文件，而实际上还需要根据定义的本体对mapping文件进行修改：</p>
+<ul>
+<li><p>将vocab前缀省略，使得表达简练</p>
+</li>
+<li><p>将默认的映射词汇改为本体中的词汇</p>
+<ul>
+<li>在处理外键的时候要注意当前编辑的属性的domain和range，belongsToClassMap是domain，refersToClassMap是range</li>
+</ul>
+</li>
+</ul>
+<p>编写bat文件可以实现上述要求的对mapping文件的自动修改</p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs bat">@<span class="hljs-built_in">echo</span> off&amp;<span class="hljs-built_in">setlocal</span> enabledelayedexpansion<br><br><span class="hljs-built_in">set</span> db=kg_movie<br><span class="hljs-built_in">set</span> file=kg_demo_mapping_<span class="hljs-variable">%db%</span>.ttl<br><br>:: <span class="hljs-keyword">call</span> <span class="hljs-built_in">findstr</span> /i /v /C:&quot;@prefix vocab&quot; &quot;<span class="hljs-variable">%file%</span>&quot;&gt;&gt;<span class="hljs-variable">%file%</span>.bk<br>:: <span class="hljs-built_in">move</span> /y <span class="hljs-variable">%file%</span>.bk <span class="hljs-variable">%file%</span><br><br><span class="hljs-keyword">for</span> /f &quot;tokens=<span class="hljs-number">1</span>,* delims=:&quot; <span class="hljs-variable">%%b</span> <span class="hljs-keyword">in</span> (&#x27;<span class="hljs-built_in">findstr</span> /n &quot;.*&quot; &quot;<span class="hljs-variable">%file%</span>&quot;&#x27;)<span class="hljs-keyword">do</span> (<br>	<span class="hljs-built_in">set</span> &quot;var=<span class="hljs-variable">%%c</span>&quot;<br>	<span class="hljs-keyword">if</span> &quot;<span class="hljs-variable">!var!</span>&quot; <span class="hljs-keyword">neq</span> &quot;@prefix vocab: &lt;vocab/&gt; .&quot; (<br>		<span class="hljs-keyword">if</span> &quot;<span class="hljs-variable">!var!</span>&quot; <span class="hljs-keyword">equ</span> &quot;&quot; (<br>			&gt;&gt;<span class="hljs-variable">%file%</span>.bk <span class="hljs-built_in">echo</span>,<span class="hljs-variable">!var!</span>) ^<br>		<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> &quot;<span class="hljs-variable">!var!</span>&quot; <span class="hljs-keyword">equ</span> &quot;@prefix jdbc: &lt;http://d2rq.org/terms/jdbc/&gt; .&quot; (<br>		  &gt;&gt;<span class="hljs-variable">%file%</span>.bk <span class="hljs-built_in">echo</span>,<span class="hljs-variable">!var!</span><br>			&gt;&gt;<span class="hljs-variable">%file%</span>.bk <span class="hljs-built_in">echo</span>,@prefix : ^&lt;http://www.kgdemo.com#^&gt; .) ^<br>		<span class="hljs-keyword">else</span> (<br>			<span class="hljs-built_in">echo</span>;&quot;<span class="hljs-variable">!var!</span>&quot;|<span class="hljs-built_in">find</span> &quot;jdbcDSN&quot;&amp;&amp;(<br>				&gt;&gt;<span class="hljs-variable">%file%</span>.bk <span class="hljs-built_in">echo</span>,  d2rq:jdbcDSN ^&quot;jdbc:mysql:///<span class="hljs-variable">%db%</span>?useUnicode=true^&amp;characterEncoding=utf8^&amp;useSSL=false^&quot;;)||(<br>				<span class="hljs-built_in">set</span> &quot;var=!var:vocab= !&quot;<br>	    	<span class="hljs-built_in">set</span> &quot;var=<span class="hljs-variable">!var:actor_actor=actor!</span>&quot;<br>	    	&gt;&gt;<span class="hljs-variable">%file%</span>.bk <span class="hljs-built_in">echo</span>,<span class="hljs-variable">!var!</span>))<br>	)<br>)<br><span class="hljs-built_in">move</span> /y <span class="hljs-variable">%file%</span>.bk <span class="hljs-variable">%file%</span><br></code></pre></td></tr></table></figure>
+
+<p>执行上述bat程序后还需要手动对mapping文件(.ttl)中的内容进行修改</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">Table actor_to_movie (n:m)</span><br>map:actor_to_movie__link a d2rq:PropertyBridge;<br>	d2rq:belongsToClassMap map:actor;  #改前为map:movie<br>	d2rq:property  :hasActedIn;<br>	d2rq:refersToClassMap map:movie;   #改前为map:actor<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-2-启动D2R-Server-在线"><a href="#2-2-启动D2R-Server-在线" class="headerlink" title="2.2 启动D2R-Server(在线)"></a>2.2 启动D2R-Server(在线)</h3><p>D2R Server 是一个将关系数据发送到语义网的工具，该工具可以让RDF浏览器或HTML浏览器访问数据库，并使用SPARQL查询语句查询数据库；</p>
+<p>前面使用默认脚本生成了D2RQ Mapping(Turtle格式的RDF文档)，接着希望通过Mapping文件对关系数据库的数据进行转换和访问，主要有两种方式，一种是通过 D2R Server 自动调用 D2RQ Engine 对数据进行转换访问，另一种在自己的 Java application 中通过 Jena&#x2F;Seasame 的 API 去使用 D2RQ Engine；</p>
+<p>使用D2R-Server默认的数据处理和访问方式浏览链接数据的方式，只需要在D2R目录下执行命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">D2R Server：d2r-server Mapping.ttl #Mapping.ttl 之前生成的 Mapping 文件<br></code></pre></td></tr></table></figure>
+
+<p>然后在 Web 浏览器中访问 <a href="http://localhost:2020，">http://localhost:2020，</a> 便可以默认的 HTML 浏览器、DF 浏览器以及 SPARQL 查询端对数据进行访问；</p>
+<h3 id="2-3-RDF转存为Ntriples-离线"><a href="#2-3-RDF转存为Ntriples-离线" class="headerlink" title="2.3 RDF转存为Ntriples(离线)"></a>2.3 RDF转存为Ntriples(离线)</h3><p>在d2rq目录下执行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">./dump-rdf -o kg_movie.nt kg_demo_mapping_kg_movie.ttl<br></code></pre></td></tr></table></figure>
+
+<p>可以将RDF数据转存为Ntriples格式的文件(.nt)（参考[RDF序列化](#3.1.2 RDF序列化)）</p>
+<p><img src="/images/image-20230320083435773.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-4-Ntriples转为TDB"><a href="#2-4-Ntriples转为TDB" class="headerlink" title="2.4 Ntriples转为TDB"></a>2.4 Ntriples转为TDB</h3><p>TDB 是Jena用于存储RDF的组件，属于存储层面的技术；</p>
+<p>在jena的bat目录下使用如下命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">tdbloader –loc=&#x27;..\tdb&#x27; &#x27;....\d2rq\kg_movie.nt&#x27; # “–loc”指定tdb存储的位置；第二个参数是由Mysql数据转换得到的RDF数据<br></code></pre></td></tr></table></figure>
+
+<p>将Ntriples格式的数据加载到TDB中（也可以认为是使用TDB格式存储RDF数据）</p>
+<h3 id="2-5-启动jena-fuseki-在线"><a href="#2-5-启动jena-fuseki-在线" class="headerlink" title="2.5 启动jena fuseki(在线)"></a>2.5 启动jena fuseki(在线)</h3><p>进入fuseki目录下，运行命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">fuseki-server –loc=..\apache-jena\tdb /kg_movie<br></code></pre></td></tr></table></figure>
+
+<p><em>注意：–loc的参数是前面Ntriples转换为TDB中TDB数据库的路径，kg_movie是显示的数据库名</em></p>
+<p>启动后，访问Fuseki网站地址： <a target="_blank" rel="noopener" href="http://localhost:3030/%E5%8F%AF%E4%BB%A5%E7%9B%B4%E6%8E%A5%E5%9C%A8%E7%BD%91%E9%A1%B5%E4%B8%AD%E4%BD%BF%E7%94%A8SPARQL%E8%BF%9B%E8%A1%8C%E6%9F%A5%E8%AF%A2%EF%BC%88%E4%B9%9F%E5%8F%AF%E4%BB%A5%E6%8A%8A%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E8%BD%AC%E6%8D%A2%E4%B8%BA">http://localhost:3030/可以直接在网页中使用SPARQL进行查询（也可以把自然语言转换为</a> SPARQL 模板后进行查询）</p>
+<p>启动成功后的shell界面</p>
+<p><img src="/images/image-20230321084354564.png" srcset="/img/loading.gif" lazyload></p>
+<p>在网页中使用SPARQL查询界面</p>
+<p><img src="/images/image-20230321084637331.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="3-本体建模"><a href="#3-本体建模" class="headerlink" title="3.本体建模"></a>3.本体建模</h2><p>参考文章：</p>
+<ul>
+<li>概述：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/32389370">实践篇（一）：数据准备和本体建模 - 知乎 (zhihu.com)</a>；</li>
+<li>详细：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Myx74270512/article/details/127761517">(12条消息) Protege 使用教程（详细讲解 入门简单易懂）_protege软件_星川皆无恙的博客-CSDN博客</a>；</li>
+</ul>
+<p>在Apache Jena fuseki服务器的配置文件中，可以指定本体，从而实现推理机制；为了使得Jena能够在目标本体上进行推理，需要使用protege生成自定义的本体文件；</p>
+<p>本体的构建方式主要有两种：自顶向下和自底向上</p>
+<ul>
+<li>开放域知识图谱的本体构建通常用自底向上的方法，自动地从知识图谱中抽取概念、概念层次和概念之间的关系 – 因为开放的世界太过复杂，用自顶向下的方法无法考虑周全，且随着世界变化，对应的概念还在增长；</li>
+<li>领域知识图谱多采用自顶向下的方法来构建本体。一方面，相对于开放域知识图谱，领域知识图谱涉及的概念和范围都是固定或者可控的；另一方面，对于领域知识图谱，我们要求其满足较高的精度；</li>
+</ul>
+<p>这里采用自顶向下的方法来构建本体结构，使用的工具是protege，需求是使用Protege软件构建实体关系最终生成OWL文件；</p>
+<h3 id="3-1-建立IRI"><a href="#3-1-建立IRI" class="headerlink" title="3.1 建立IRI"></a>3.1 建立IRI</h3><p>（1）打开protege后在Ontology IRI中填写新建本体资源的IRI（自定义符合标准即可）</p>
+<p><img src="/images/image-20230320221905684.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-2-类别设计"><a href="#3-2-类别设计" class="headerlink" title="3.2 类别设计"></a>3.2 类别设计</h3><p>（1）点击“Entities”tab标签，选择“Classes”标签，在这个界面，创建电影知识图谱的类&#x2F;概念；</p>
+<p><img src="/images/image-20230320222610239.png" srcset="/img/loading.gif" lazyload></p>
+<p>（2）设置互斥类别（依次对三个属性进行设置）</p>
+<p><img src="/images/image-20230320232816623.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-3-对象属性设计"><a href="#3-3-对象属性设计" class="headerlink" title="3.3 对象属性设计"></a>3.3 对象属性设计</h3><p>（1）切换到”Object Properties”页面，在此界面创建类之间的关系，即对象属性，这里创建了三个对象属性分别是hasActedIn、hasActor、hasGenre</p>
+<ul>
+<li>hasActedIn：某人参演了某电影</li>
+<li>hasActor：某电影的演员</li>
+<li>hasGenre：某电影的题材</li>
+</ul>
+<p>（2）点击hasActedIn属性进行属性配置并依次对三个对象属性进行配置</p>
+<p><img src="/images/image-20230320233344057.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-4-数据属性设计"><a href="#3-4-数据属性设计" class="headerlink" title="3.4 数据属性设计"></a>3.4 数据属性设计</h3><p>（1）最后切换到”Data properties”，在该界面创建类的属性，即数据属性，需要注意数据属性相当于树的叶子节点，只有入度，而没有出度；</p>
+<p>点击DataProperty，建立具体的子属性类别，具体类别按照数据库中的表单进行设计即可；</p>
+<p><img src="/images/image-20230320234328147.png" srcset="/img/loading.gif" lazyload></p>
+<p>（2）为具体的属性类别添加描述限制（对其他具体属性类别依次进行类似描述限制）</p>
+<p><img src="/images/image-20230320234603082.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-5-查看关系图"><a href="#3-5-查看关系图" class="headerlink" title="3.5 查看关系图"></a>3.5 查看关系图</h3><p>首先配置ontoGraf，如依次勾选 Window – Tabs – OntoGraf，接着点击OntoGraf进行查看</p>
+<p><img src="/images/image-20230320235252776.png" srcset="/img/loading.gif" lazyload></p>
+<p>最后保存文件，依次选择File – Save As ，对话框选择Turtle Syntax类型保存即可；</p>
+<h2 id="4-基于REFO的知识问答"><a href="#4-基于REFO的知识问答" class="headerlink" title="4.基于REFO的知识问答"></a>4.基于REFO的知识问答</h2><p>关于REFO和RE的区别参考：<a target="_blank" rel="noopener" href="https://www.cnpython.com/pypi/refo">Python REfO包_程序模块 - PyPI - Python中文网 (cnpython.com)</a>；</p>
+<p>基于REFO的知识问答原理：</p>
+<ol>
+<li>首先通过REFO提供的匹配能力，在输入的自然语言问题中进行匹配查找，如果找到预先设定的词或词性组合，那么就认为该问题与这个词或词性组合匹配；</li>
+<li>预先设定的一个词或词性组合对应着一个SPARQL查询模板，于是借助REFO完成了自然语言到查询模板的转换；</li>
+<li>得到查询模板后，利用Jena fuseki 服务器提供的端口进行查询得到返回的结果；</li>
+</ol>
+<h3 id="4-1-代码结构"><a href="#4-1-代码结构" class="headerlink" title="4.1 代码结构"></a>4.1 代码结构</h3><p><img src="/images/image-20230321082125999.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><p>data目录存放由数据库导出生成的字典文件，用于扩展jieba分词，由 get_dict.sh 生成；</p>
+</li>
+<li><p>utils目录存放查询预处理模块：</p>
+<ul>
+<li>word_tagging.py 用于将词的文本和词性打包；</li>
+<li>rules.py 内定义各种规则并将自然语言转换为SPARQL查询语言，最终以JSON返回结果；</li>
+</ul>
+</li>
+<li><p>query.py 为程序入口，运行它来进行简单的KBQA；</p>
+</li>
+</ul>
+<h3 id="4-2-小结"><a href="#4-2-小结" class="headerlink" title="4.2 小结"></a>4.2 小结</h3><p>这个小节的项目做崩了，总结一下为什么：</p>
+<ul>
+<li>不要贪小便宜去使用以前的环境，以前配置的虚拟环境不仅有许多冗余的包，而且也可能缺少新的项目所需要的包，并且库之间的版本依赖关系也可能因为新加入的或重复下载的包被打乱；</li>
+<li>不要随便去修改除了本项目以外的其他文件（如包文件的<code>__init.py__</code>），很可能修改一时很爽，但改完项目还是跑不起来到时候后悔药都没有（因为那些重要的配置文件不是自己写的也不知道怎么改回去）；<ul>
+<li>解决办法就是把这个库删了重新从网上下载一遍</li>
+</ul>
+</li>
+</ul>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/" class="category-chain-item">项目开发</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/">#知识图谱</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>初级项目_电影知识图谱</div>
+      <div>https://gintoki-jpg.github.io/2023/03/16/项目_电影知识图谱/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>杨再俨</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年3月16日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/03/19/%E9%A1%B9%E7%9B%AE_%E6%96%B0%E9%97%BB%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB/" title="初级项目_新闻文本分类">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">初级项目_新闻文本分类</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/03/03/%E5%85%B6%E4%BB%96_%E5%A4%A7%E9%9B%81%E8%AF%AD%E6%B3%95/" title="六级_语法">
+                        <span class="hidden-mobile">六级_语法</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+</div>
+
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

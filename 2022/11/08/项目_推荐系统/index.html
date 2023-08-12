@@ -1,0 +1,1308 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/logo.png">
+  <link rel="icon" href="/img/bg/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="杨再俨">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="机器学习初级和推荐系统项目实战；">
+<meta property="og:type" content="article">
+<meta property="og:title" content="中级项目_推荐系统">
+<meta property="og:url" content="https://gintoki-jpg.github.io/2022/11/08/%E9%A1%B9%E7%9B%AE_%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:site_name" content="Tintoki_blog">
+<meta property="og:description" content="机器学习初级和推荐系统项目实战；">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/project.png">
+<meta property="article:published_time" content="2022-11-08T00:14:00.000Z">
+<meta property="article:modified_time" content="2023-02-24T09:35:58.909Z">
+<meta property="article:author" content="YangZaiyan">
+<meta property="article:tag" content="机器学习">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gintoki-jpg.github.io/img/bg/project.png">
+  
+  
+  
+  <title>中级项目_推荐系统 - Tintoki_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"gintoki-jpg.github.io","root":"/","version":"1.9.1","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tintoki_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/bg1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">中级项目_推荐系统</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-11-08 08:14" pubdate>
+          2022年11月8日 早上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          23k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          195 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">中级项目_推荐系统</h1>
+            
+            <div class="markdown-body">
+              
+              <p>2022&#x2F;11&#x2F;8 8:16 昨天大概好好想了想，发现最近半年在学校基本没做什么项目，然而下学期就要准备考研了，就更没可能做项目了，所以这里打算开始着手跟着尚硅谷的几个教程做几个项目出来，本来打算的是跟着github上面找到的项目做的，但是发现实际效果（项目整体的可视化程度和完整程度，就是说甚至都展示不出来）和开发时间（因为有些甚至没有Readme文档，所以看源码需要很多时间，当然对自身而言是一个提升，但因为确实现在我们没什么时间了，所以得更换方案了）；然后昨天在寻找项目的时候发现基本上都是一些自己没有接触过的东西，然后就产生了畏惧心理，这里我说一下，对于这些项目中出现的陌生环境以及陌生的框架、技术等，都不要畏惧，因为在基础技能扎实（甚至不需要扎实，只要你学过复习几个小时就能回忆起来）的情况下这些新的概念不过都是一些类似的，而且开发全栈或多种技术框架混合的项目带能算得上一个真正的项目；</p>
+<p>2022&#x2F;11&#x2F;8 10:43 这个项目涉及的代码和使用的框架基本上都是我没有接触过的，暂且打算边学边做，不会再专门花时间系统性的学习（这对我来说也是一次全新的尝试，以前一直都是系统性学习之后做一些简单的项目或者根本没有实战，导致一段时间之后就遗忘了之前学习的知识点）；</p>
+<p>2023&#x2F;2&#x2F;8 9:15 时隔几个月，我又回来准备继续完成这部分的内容了，关于这几个月我在做什么，首先恶补了JAVA相关的技术栈，也是我们在这个项目中会使用到的一些，然后就是准备期末复习…寒假在家接近摆了一个月，只能说任何人无论多么自律真的都会有一段时间低迷，可以偶尔自己放纵但是千万不要习惯于放纵，接着寒假就开始准备考研的事情，把高数的基本章节大概看了看然后这边准备第二轮的高数复习，之所以还是想把这个项目捡起来做还是觉着自己额外学了那么多课外知识不整出个东西来不是很甘心，所以趁最近事情不是很多试一试；我额外补充学习的知识点肯定是不够用的，但是现在已经不适合我慢悠悠的系统性学习之后再跟着做了，边做边理解最后做一个完整的回顾总结；</p>
+<hr>
+<p>项目参考：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1R4411N78S/?spm_id_from=333.1007.top_right_bar_window_history.content.click&vd_source=276d55048634a5b508b1b53a1ecd56b3">尚硅谷机器学习和推荐系统项目实战教程(初学者零基础快速入门)_哔哩哔哩_bilibili</a></p>
+<h1 id="一、推荐系统算法"><a href="#一、推荐系统算法" class="headerlink" title="一、推荐系统算法"></a>一、推荐系统算法</h1><h2 id="1-基于人口统计学的推荐"><a href="#1-基于人口统计学的推荐" class="headerlink" title="1.基于人口统计学的推荐"></a>1.基于人口统计学的推荐</h2><p><img src="/images/2922190-20221108164022321-916709027.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><p>基于人口统计学的推荐机制（Demographic-based Recommendation）是一种最易于实现的推荐方法，它只是简单的根据系统用户的基本信息发现用户的相关程度，然后将相似用户喜爱的其他物品推荐给当前用户</p>
+<ul>
+<li><p>对于没有明确含义的用户信息（比如登录时间、地域等上下文信息），可以通过聚类等手段，给用户打上分类标签；</p>
+</li>
+<li><p>对于特定标签的用户，可以根据预设的规则（知识）或者模型，推荐出对应的物品；</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-1-用户画像"><a href="#1-1-用户画像" class="headerlink" title="1.1 用户画像"></a>1.1 用户画像</h3><p>用户信息标签化的过程一般又称为用户画像（User Profiling）</p>
+<ul>
+<li><p>用户画像（User Profile）就是企业通过收集与分析消费者社会属性、生活习惯、消费行为等主要信息的数据之后，完美地抽象出一个用户的商业全貌作是企业应用大数据技术的基本方式；</p>
+</li>
+<li><p>用户画像为企业提供了足够的信息基础，能够帮助企业快速找到精准用户群体以及用户需求等更为广泛的反馈信息；</p>
+</li>
+<li><p>作为大数据的根基，它完美地抽象出一个用户的信息全貌，为进一步精准、快速地分析用户行为习惯、消费习惯等重要信息，提供了足够的数据基础；</p>
+</li>
+</ul>
+<h2 id="2-基于内容的推荐"><a href="#2-基于内容的推荐" class="headerlink" title="2.基于内容的推荐"></a>2.基于内容的推荐</h2><p><img src="/images/image-20221108164704592.png" srcset="/img/loading.gif" lazyload></p>
+<p>Content-based Recommendations（CB）根据推荐物品或内容的元数据，发现物品的相关性，再基于用户过去的喜好记录，为用户推荐相似的物品；</p>
+<ul>
+<li>通过抽取物品内在或者外在的特征值，实现相似度计算。比如一个电影，有导演、演员、用户标签UGC、用户评论、时长、风格等等，都可以算是特征；通俗的来讲将对物品的特征提取称为“打标签”（有些网站还请专业的人员对物品进行基因编码&#x2F;打标签（PGC）），主要有以下几种形式<ul>
+<li>对于物品的特征提取 —— 打标签<ul>
+<li>专家标签（PGC）</li>
+<li>用户自定义标签（UGC）</li>
+<li>降维分析数据，提取隐语义标签（LFM）</li>
+</ul>
+</li>
+<li>对于文本信息的特征提取 —— 关键词<ul>
+<li>分词、语义处理和情感分析（NLP）</li>
+<li>潜在语义分析（LSA）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>将用户（user）个人信息的特征（基于喜好记录或是预设兴趣标签），和物品（item）的特征相匹配，就能得到用户对物品感兴趣的程度，在一些电影、音乐、图书的社交网站有很成功的应用；</li>
+</ul>
+<h3 id="2-1-相似度计算"><a href="#2-1-相似度计算" class="headerlink" title="2.1 相似度计算"></a>2.1 相似度计算</h3><p>相似度的评判，可以用距离表示，一般更常用的是”余弦相似度”</p>
+<p><img src="/images/image-20221108165049042.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-2-高层次结构"><a href="#2-2-高层次结构" class="headerlink" title="2.2 高层次结构"></a>2.2 高层次结构</h3><p>下图是基于内容推荐系统的高层次结构，参考下图可以对整个推荐系统的运行、架构有一定理解</p>
+<p><img src="/images/image-20221108165839020.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-3-特征工程"><a href="#2-3-特征工程" class="headerlink" title="2.3 特征工程"></a>2.3 特征工程</h3><p>最好的掌握特征工程的方法就是刷两道题，这里推荐Kaggle上的<a target="_blank" rel="noopener" href="https://www.kaggle.com/c/house-prices-advanced-regression-techniques/">House Prices - Advanced Regression Techniques | Kaggle</a></p>
+<p><img src="/images/image-20221108170102192.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>特征（feature）：数据中抽取出来的对结果预测有用的信息，特征的个数就是数据的观测维度；</li>
+<li>特征工程是使用专业背景知识和技巧处理数据，使得特征能在机器学习算法上发挥更好的作用的过程，特征工程一般包括特征清洗（采样、清洗异常样本），特征处理和特征选择；</li>
+</ul>
+<p>		</p>
+<h4 id="2-3-1-特征处理"><a href="#2-3-1-特征处理" class="headerlink" title="2.3.1 特征处理"></a>2.3.1 特征处理</h4><p>特征按照不同的数据类型分类，有不同的特征处理方法</p>
+<h5 id="1-数值型"><a href="#1-数值型" class="headerlink" title="(1)数值型"></a>(1)数值型</h5><blockquote>
+<p>归一化处理</p>
+</blockquote>
+<p><img src="/images/image-20221108170715652.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221108170814387.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>离散化处理</p>
+</blockquote>
+<p><img src="/images/image-20221108170936359.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221108171034838.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221108171257866.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="2-类别型"><a href="#2-类别型" class="headerlink" title="(2)类别型"></a>(2)类别型</h5><p><img src="/images/image-20221108171419069.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221108171436470.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221108171452181.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="3-时间型"><a href="#3-时间型" class="headerlink" title="(3)时间型"></a>(3)时间型</h5><p><img src="/images/image-20221108171515240.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="4-统计型"><a href="#4-统计型" class="headerlink" title="(4)统计型"></a>(4)统计型</h5><p><img src="/images/image-20221108171609735.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-4-反馈数据"><a href="#2-4-反馈数据" class="headerlink" title="2.4 反馈数据"></a>2.4 反馈数据</h3><p>在特征工程之后得到的数据就可以用于模型训练了训练完成之后，我们还需要收集一些反馈数据对整个模型做评估和优化，下面是推荐系统常见的反馈信息</p>
+<p><img src="/images/image-20221108171940330.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-5-基于UGC的推荐"><a href="#2-5-基于UGC的推荐" class="headerlink" title="2.5 基于UGC的推荐"></a>2.5 基于UGC的推荐</h3><p>用户用标签来描述对物品的看法，所以用户生成标签（UGC）是联系用户和物品的纽带，也是反应用户兴趣的重要数据源；</p>
+<blockquote>
+<p>一个用户标签行为的数据集一般由一个三元组（用户，物品，标签）的集合表示，其中一条记录（u，i，b）表示用户u给物品i打上了标签b</p>
+</blockquote>
+<p><img src="/images/image-20221109081953753.png" srcset="/img/loading.gif" lazyload></p>
+<p>缺点：这种方法倾向于给热门标签（谁都会给的标签，如“大片、”搞笑”等）、热门物品（打标签人数最多）比较大的权重，如果一个热门物品同时对应着热门标签，那它就会“霸榜”，推荐的个性化、新颖度就会降低；</p>
+<p>解决方法是将热门标签和热门物品的权重降低一定程度；</p>
+<h4 id="2-5-1-TF-IDF"><a href="#2-5-1-TF-IDF" class="headerlink" title="2.5.1 TF-IDF"></a>2.5.1 TF-IDF</h4><p><img src="/images/image-20221109082454988.png" srcset="/img/loading.gif" lazyload></p>
+<p>TF-IDF的主要思想是：如果某个词或短语在一篇文章中出现的频率TF高，并且在其他文章中很少出现，则认为此词或者短语具有很好的类别区分能力，适合用来分类TF-IDF加权的各种形式常被搜索引擎应用，作为文件与用户查询之间相关程度的度量或评级</p>
+<blockquote>
+<p>词频</p>
+</blockquote>
+<p><img src="/images/image-20221109082550910.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>逆向文件频率</p>
+</blockquote>
+<p><img src="/images/image-20221109082615845.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>基于TF-IDF对UGC的改进</p>
+</blockquote>
+<p><img src="/images/image-20221109082734693.png" srcset="/img/loading.gif" lazyload></p>
+<p>上面的公式如果在分子乘上log(N+1)^2^，分母上乘以n<del>*,i</del>^2^就是完整的TF-IDF公式，但是因为N是不变项，没有必要增大计算量所以可以忽略；</p>
+<p>这种化简的思想非常重要，可以极大的简化计算和算法设计；</p>
+<h2 id="3-基于协同过滤的推荐"><a href="#3-基于协同过滤的推荐" class="headerlink" title="3.基于协同过滤的推荐"></a>3.基于协同过滤的推荐</h2><p>基于内容（Content based，CB）主要利用的是用户评价过的物品的内容特征，而CF方法还可以利用其他用户评分过的物品内容；</p>
+<p>简单来说CF就是利用用户的行为数据、用户和物品的关联；</p>
+<p><img src="/images/image-20221109090412851.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221109085059163.png" srcset="/img/loading.gif" lazyload></p>
+<p>CF的问题在于没有办法解决冷启动的问题，也就是一开始根本没有历史数据和行为数据，就没有办法进行CF的分析；</p>
+<p>协同过滤（Collaborative Filtering,CF）可以分为基于近邻的协同过滤(User-CF&amp;Item-CF)和基于模型的协同过滤(SVD&amp;LSA&amp;SVM)；</p>
+<h3 id="3-1-基于近邻的推荐"><a href="#3-1-基于近邻的推荐" class="headerlink" title="3.1 基于近邻的推荐"></a>3.1 基于近邻的推荐</h3><p><img src="/images/image-20221109085312501.png" srcset="/img/loading.gif" lazyload></p>
+<p>基于用户的推荐：用户Alice和Cary的行为相对接近（对不同的电影评分相近）</p>
+<p>基于物品的推荐：泰坦尼克号和阿甘正传的列评分类似（用户的评分相当于该电影的一组评分）</p>
+<blockquote>
+<p>基于用户的协同过滤</p>
+</blockquote>
+<p><img src="/images/image-20221109085708371.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221109085606853.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>基于物品的协同过滤</p>
+</blockquote>
+<p><img src="/images/image-20221109085747301.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221109085801848.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>User-CF和Item-CF的抉择</p>
+</blockquote>
+<p>推荐策略的选择和具体的应用场景有很大的关系</p>
+<p><img src="/images/image-20221109085921805-166795562099614.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>小结</p>
+</blockquote>
+<p><img src="/images/image-20221109090120200.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-2-基于模型的推荐"><a href="#3-2-基于模型的推荐" class="headerlink" title="3.2 基于模型的推荐"></a>3.2 基于模型的推荐</h3><p>基于模型的协同过滤推荐，就是基于样本的用户偏好信息，训练一个推荐模型。然后根据实时的用户喜好的信息进行预测新物品的得分，计算推荐；</p>
+<p>基本思想（基于的数据仍然是行为数据）：</p>
+<ul>
+<li><p>用户具有一定的特征，决定着他的偏好选择；</p>
+</li>
+<li><p>物品具有一定的特征，影响着用户需是否选择它；</p>
+</li>
+<li><p>用户之所以选择某一个商品，是因为用户特征与物品特征相互匹配；</p>
+</li>
+</ul>
+<p><img src="/images/image-20221109090819720.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>基于模型和基于近邻的区别</p>
+</blockquote>
+<p><img src="/images/image-20221109090954111.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="3-2-1-隐语义模型"><a href="#3-2-1-隐语义模型" class="headerlink" title="3.2.1 隐语义模型"></a>3.2.1 隐语义模型</h4><p>训练模型时，可以基于标签内容来提取物品特征，也可以让模型去发掘物品的潜在特征；这样的模型被称为隐语义模型（Latent Factor Model，LFM）</p>
+<p><img src="/images/image-20221109091109354.png" srcset="/img/loading.gif" lazyload></p>
+<p>隐语义模型如何揭露这些隐藏的特征？</p>
+<p><img src="/images/image-20221109091350943.png" srcset="/img/loading.gif" lazyload></p>
+<p>隐语义模型的实例</p>
+<p><img src="/images/image-20221109091431762.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="1-矩阵因子分解"><a href="#1-矩阵因子分解" class="headerlink" title="(1)矩阵因子分解"></a>(1)矩阵因子分解</h5><p><img src="/images/image-20221109091633879.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221109091616675.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221109091803456.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>LMF的再理解</p>
+</blockquote>
+<p><img src="/images/image-20221109091828406.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221109091846847.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221109092004296.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>至于怎么样拆分为两个矩阵的乘积，这就涉及到一定的领域知识和“玄学”，当然验证方法是可以找到的，就是对比新的矩阵和原矩阵对应位置的数值是否基本一致；</p>
+</blockquote>
+<p><img src="/images/image-20221109092042825.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="2-损失函数"><a href="#2-损失函数" class="headerlink" title="(2)损失函数"></a>(2)损失函数</h5><p><img src="/images/image-20221109093127920.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>ALS算法</p>
+</blockquote>
+<p><img src="/images/image-20221109093316303.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221109093359964.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221109093418883.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221109093517650.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221109093614308.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>梯度下降算法</p>
+</blockquote>
+<p><img src="/images/image-20221109093718149.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="二、电影推荐系统"><a href="#二、电影推荐系统" class="headerlink" title="二、电影推荐系统"></a>二、电影推荐系统</h1><h2 id="1-项目系统设计"><a href="#1-项目系统设计" class="headerlink" title="1.项目系统设计"></a>1.项目系统设计</h2><p>项目以推荐系统建设领域知名的经过修改过的 MovieLens 数据集作为依托，以某科技公司电影网站真实业务数据架构为基础，构建了符合教学体系的一体化的电影推荐系统，包含了离线推荐与实时推荐体系，综合利用了协同过滤算法以及基于内容的推荐方法来提供混合推荐。提供了从前端应用、后台服务、算法设计实现、平台部署等多方位的闭环的业务实现。</p>
+<h3 id="1-1-项目框架"><a href="#1-1-项目框架" class="headerlink" title="1.1 项目框架"></a>1.1 项目框架</h3><h4 id="1-1-1-大数据处理流程"><a href="#1-1-1-大数据处理流程" class="headerlink" title="1.1.1 大数据处理流程"></a>1.1.1 大数据处理流程</h4><p>对于一个数据来讲是存在生命周期的</p>
+<p><img src="/images/image-20221109095127936.png" srcset="/img/loading.gif" lazyload></p>
+<p>下图分别是大数据的实时处理流程和离线处理流程</p>
+<p><img src="/images/image-20221109102320747.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="1-1-2-系统模块设计"><a href="#1-1-2-系统模块设计" class="headerlink" title="1.1.2 系统模块设计"></a>1.1.2 系统模块设计</h4><p><img src="/images/image-20221109101827136.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="1-1-3-项目系统架构"><a href="#1-1-3-项目系统架构" class="headerlink" title="1.1.3 项目系统架构"></a>1.1.3 项目系统架构</h4><p><img src="/images/image-20221109102205460.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>用户可视化：主要负责实现和用户的交互以及业务数据的展示，主体采用 AngularJS2 进行实现，部署在 Apache 服务上；</li>
+<li>综合业务服务：主要实现 JavaEE 层面整体的业务逻辑，通过 Spring 进行构建，对接业务需求，部署在 Tomcat 上；</li>
+<li>数据存储部分<ul>
+<li>业务数据库：项目采用广泛应用的文档数据库 MongDB 作为主数据库，主要负责平台业务逻辑数据的存储；</li>
+<li>搜索服务器：项目使用 ElasticSearch 作为模糊检索服务器，通过利用 ES 强大的匹配查询能力实现基于内容的推荐服务；</li>
+<li>缓存数据库：项目采用 Redis 作为缓存数据库，主要用来支撑实时推荐系统部分对于数据的高速获取需求；</li>
+</ul>
+</li>
+<li>离线推荐部分<ul>
+<li>离线统计服务：批处理统计性业务采用 Spark Core + Spark SQL 进行实现，实现对指标类数据的统计任务；</li>
+<li>离线推荐服务：离线推荐业务采用 Spark Core + Spark MLlib 进行实现，采用ALS 算法进行实现；</li>
+<li>工作调度服务：对于离线推荐部分需要以一定的时间频率对算法进行调度，采用 Azkaban 进行任务的调度；</li>
+</ul>
+</li>
+<li>实时推荐部分<ul>
+<li>日志采集服务：通过利用 Flume-ng 对业务平台中用户对于电影的一次评分行为进行采集，实时发送到 Kafka 集群；</li>
+<li>消息缓冲服务：项目采用 Kafka 作为流式数据的缓存组件，接受来自 Flume 的数据采集请求，并将数据推送到项目的实时推荐系统部分；</li>
+<li>实时推荐服务： ：项目采用 Spark Streaming 作为实时推荐系统，通过接收 Kafka中缓存的数据，通过设计的推荐算法实现对实时推荐的数据处理，并将结构合并更新到 MongoDB 数据库；</li>
+</ul>
+</li>
+</ul>
+<p>对上述项目系统架构具体化</p>
+<p><img src="/images/image-20221109103507262.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="1-1-4-项目数据流图"><a href="#1-1-4-项目数据流图" class="headerlink" title="1.1.4 项目数据流图"></a>1.1.4 项目数据流图</h4><p><img src="/images/image-20221109104003659.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>系统初始化部分</p>
+</blockquote>
+<p>0.通过 Spark SQL 将系统初始化数据加载到 MongoDB 和 ElasticSearch 中；</p>
+<blockquote>
+<p>离线推荐部分</p>
+</blockquote>
+<p>1.通过 Azkaban 实现对于离线统计服务以离线推荐服务的调度，通过设定的运行时间完成对任务的触发执行；</p>
+<p>2.离线统计服务从 MongoDB 中加载数据，将【电影平均评分统计】、【电影评分个数统计】、【最近电影评分个数统计】三个统计算法进行运行实现，并将计算结果回写到 MongoDB 中；离线推荐服务从 MongoDB 中加载数据，通过 ALS 算法分别将【用户推荐结果矩阵】、【影片相似度矩阵】回写到 MongoDB 中；</p>
+<blockquote>
+<p>实时推荐部分</p>
+</blockquote>
+<p>3.Flume 从综合业务服务的运行日志中读取日志更新，并将更新的日志实时推送到Kafka 中；Kafka 在收到这些日志之后，通过 kafkaStream 程序对获取的日志信息进行过滤处理，获取用户评分数据流【UID|MID|SCORE|TIMESTAMP】，并发送到另外一个 Kafka 队列；Spark Streaming 监听 Kafka 队列，实时获取 Kafka 过滤出来的用户评分数据流，融合存储在 Redis 中的用户最近评分队列数据，提交给实时推荐算法，完成对用户新的推荐结果计算；计算完成之后，将新的推荐结构和 MongDB 数据库中的推荐结果进行合并；</p>
+<blockquote>
+<p>业务系统部分</p>
+</blockquote>
+<p>4.推荐结果展示部分，从 MongoDB、ElasticSearch 中将离线推荐结果、实时推荐结果、内容推荐结果进行混合，综合给出相对应的数据；</p>
+<p>5.电影信息查询服务通过对接 MongoDB 实现对电影信息的查询操作；</p>
+<p>6.电影评分部分，获取用户通过 UI 给出的评分动作，后台服务进行数据库记录后，一方面将数据推动到 Redis 群中，另一方面，通过预设的日志框架输出到 Tomcat 中的日志中；</p>
+<p>7.项目通过 ElasticSearch 实现对电影的模糊检索；</p>
+<p>8.电影标签部分，项目提供用户对电影打标签服务；</p>
+<h3 id="1-2-数据源解析"><a href="#1-2-数据源解析" class="headerlink" title="1.2 数据源解析"></a>1.2 数据源解析</h3><p>初始数据源是如下三个csv文件，分别是电影信息、用户评分信息和电影标签信息（数据源被dataloder加载到数据库中）</p>
+<p><img src="/images/image-20221109104051732.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="1-2-1-电影信息"><a href="#1-2-1-电影信息" class="headerlink" title="1.2.1 电影信息"></a>1.2.1 电影信息</h4><p><img src="/images/image-20221109104155427.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="1-2-2-用户评分信息"><a href="#1-2-2-用户评分信息" class="headerlink" title="1.2.2 用户评分信息"></a>1.2.2 用户评分信息</h4><p><img src="/images/image-20221109104249390.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="1-2-3-电影标签信息"><a href="#1-2-3-电影标签信息" class="headerlink" title="1.2.3 电影标签信息"></a>1.2.3 电影标签信息</h4><p><img src="/images/image-20221109104353565.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="1-2-4-主要数据模型"><a href="#1-2-4-主要数据模型" class="headerlink" title="1.2.4 主要数据模型"></a>1.2.4 主要数据模型</h4><p>左边三个就是初始源数据，右边就是整个项目会涉及的其他数据模型</p>
+<p><img src="/images/image-20221109104510773.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-3-项目模块化"><a href="#1-3-项目模块化" class="headerlink" title="1.3 项目模块化"></a>1.3 项目模块化</h3><h4 id="1-3-1-统计推荐模块"><a href="#1-3-1-统计推荐模块" class="headerlink" title="1.3.1 统计推荐模块"></a>1.3.1 统计推荐模块</h4><p>本模块对应整体架构中的离线统计服务，主要分为四个部分：</p>
+<ul>
+<li>历史热门电影统计；</li>
+<li>近期热门电影统计；</li>
+<li>电影平均评分统计；</li>
+<li>各类别Top10优质电影统计；</li>
+</ul>
+<p>主要想法是首先从mongoDB中将原始数据读出，接着离线统计服务做对应的离线统计计算（使用SQL进行统计，对于不同的类型的服务使用的SQL是不同的），将得到的内容写回mongoDB中</p>
+<p><img src="/images/image-20221109104836382.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="1-3-2-离线推荐模块"><a href="#1-3-2-离线推荐模块" class="headerlink" title="1.3.2 离线推荐模块"></a>1.3.2 离线推荐模块</h4><p>本部分的核心是用ALS算法训练隐语义模型，用于计算用户推荐矩阵，附带的一个产品是电影相似度矩阵；</p>
+<p><img src="/images/image-20221109110019543.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221109110220066.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221109110307462.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221109110350752.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="1-3-3-实时推荐模块"><a href="#1-3-3-实时推荐模块" class="headerlink" title="1.3.3 实时推荐模块"></a>1.3.3 实时推荐模块</h4><p>实时推荐系统的要求主要有：计算速度要快，结果可以不是特别精确，有预先设计好的推荐模型；</p>
+<h5 id="1-实时推荐架构"><a href="#1-实时推荐架构" class="headerlink" title="(1)实时推荐架构"></a>(1)实时推荐架构</h5><p><img src="/images/image-20221109111036734.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="2-实时推荐优先级计算"><a href="#2-实时推荐优先级计算" class="headerlink" title="(2)实时推荐优先级计算"></a>(2)实时推荐优先级计算</h5><p><img src="/images/image-20221109111107846.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20221109111224580.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="1-3-4-基于内容的推荐模块"><a href="#1-3-4-基于内容的推荐模块" class="headerlink" title="1.3.4 基于内容的推荐模块"></a>1.3.4 基于内容的推荐模块</h4><p><img src="/images/image-20221109111439242.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-4-工具环境配置"><a href="#1-4-工具环境配置" class="headerlink" title="1.4 工具环境配置"></a>1.4 工具环境配置</h3><h4 id="1-4-1-Windows下环境配置"><a href="#1-4-1-Windows下环境配置" class="headerlink" title="1.4.1 Windows下环境配置"></a>1.4.1 Windows下环境配置</h4><p>按照教程把需要的环境配置一下，因为之前学其他课程可能安装过一些所以有些东西就不需要重复安装了(我是很担心重复安装导致环境出错)，这里对每一个环境的配置做一个记录总结；</p>
+<blockquote>
+<p>数据库的安装(非关系型数据库)</p>
+</blockquote>
+<ul>
+<li><p>MongoDB是由C++语言编写的非关系型数据库，是一个基于分布式文件存储的开源数据库系统，其内容存储形式类似JSON对象，它的字段值可以包含其他文档、数组及文档数组，非常灵活。</p>
+<ul>
+<li>MongoDB安装与配置：根据教程<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44486583/article/details/122873970">(18条消息) MongoDB的下载与安装_头秃怎么办的博客-CSDN博客_mongodb怎么下载</a></li>
+</ul>
+</li>
+<li><p>Redis是一个基于内存的高效的非关系型数据库，另外推荐下载Redis Desktop Manager可视化管理工具，来管理Redis；</p>
+<ul>
+<li><p>Redis的安装依据博客<a target="_blank" rel="noopener" href="https://blog.51cto.com/u_14575624/3655447">Redis下载与安装（Windows）_wx5da4624409480的技术博客_51CTO博客</a></p>
+</li>
+<li><p>Redis可视化工具安装依据博客<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39715000/article/details/120724800">(18条消息) Redis可视化连接工具RedisDesktopManager的下载与安装_乞力马扎罗の黎明的博客-CSDN博客_redis连接工具下载</a></p>
+</li>
+</ul>
+</li>
+<li><p>RedisDump是一个用于Redis数据导入&#x2F;导出的工具，是基于Ruby实现的，所以要安装RedisDump，需要先安装Ruby</p>
+<ul>
+<li>Ruby安装：教程参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38191191/article/details/80836239">(18条消息) 2. Ruby下载安装_开猿节流的博客-CSDN博客_ruby下载</a></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>Andriod SDK的安装</p>
+</blockquote>
+<ul>
+<li><p>在学习爬虫的时候为了使用Android设备做APP抓取，所以额外下载了Andriod SDK(可以看作是一个用于开发和运行Andriod应用的一个软件)，然后被书上忽悠去先下载了Andriod Studio(这是一个功能非常强大的用来做安卓开发调试的官方工具)，However，这里仅仅只是将Android Studio的安装包下载在本地并没有安装，因为安装过程中还需要科学上网…因为目前官网上并没有单独的Android SDK的下载包，所以我在一个小网站找到并下载了适合版本的Andriod SDK镜像，这是我们下载并解压好的文件目录；</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/wangmx1993328/article/details/81905195">(4条消息) Android Studio 下载 与 安装 详细步骤_蚩尤后裔的博客-CSDN博客_android下载安装教程</a>（各显神通的话就直接安装Andriod Studio吧）</li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/nebie/p/9145627.html">Android SDK的下载与安装 - 菜鸟学飞ing - 博客园 (cnblogs.com)</a>（不然还是老老实实的安装镜像）</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/image-20221110090058771.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>你以为这么简单？远远没结束，要想成功安装Andriod SDK必须在电脑上配置JDK环境，这对大多数从事JAVA开发的人来说是最基础的事，但是在此之前我是真的没怎么用过JAVA，所以需要安装配置；Android 开发是在 Java 的基础上进行的，Android 使用 Java 语言 作为开发工具 ，Android SDK 引用了大部分的 Java SDK(就是咱们现在说的JDK)，少部分被 Android SDK 抛弃而是用其独有的，所以安装 Android SDK 之前必须先安装 Java JDK(这玩意是学JAVA最基础需要安装的环境，一切JAVA的根基！！！)；<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/u012934325/article/details/73441617">(18条消息) JDK下载与安装教程_墨笙弘一的博客-CSDN博客_jdk安装教程</a></li>
+</ul>
+</li>
+</ul>
+<p>这里给一个JAVA生态的关系图</p>
+<p><img src="/images/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAeXFzXzI4MTg3NjkxOA==,size_15,color_FFFFFF,t_70,g_se,x_16.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="1-4-2-Linux下环境配置"><a href="#1-4-2-Linux下环境配置" class="headerlink" title="1.4.2 Linux下环境配置"></a>1.4.2 Linux下环境配置</h4><p>前面提到在本地机器上安装环境（该项目中用到了多种工具进行数据的存储、计算、采集和传输）很可能导致一些不必要的冲突，所以这里推荐使用虚拟机进行配置，推荐将CPU的内存设置的尽可能大，即CPU&gt;4、MEM&gt;4GB；</p>
+<p>如果虚拟机磁盘不足可以参考<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2109290">VMware虚拟机下ubuntu磁盘扩容（亲测有效） - 腾讯云开发者社区-腾讯云 (tencent.com)</a>扩容，如果要扩容内存直接修改内存大小即可；</p>
+<h5 id="1-MongoDB（单节点）环境配置"><a href="#1-MongoDB（单节点）环境配置" class="headerlink" title="(1)MongoDB（单节点）环境配置"></a>(1)MongoDB（单节点）环境配置</h5><p>1.通过 WGET 下载 Linux 版本的 MongoDB</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-rhel62-3.4.3.tgz<br></code></pre></td></tr></table></figure>
+
+<p>2.将压缩包解压到指定目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">tar -xf mongodb-linux-x86_64-rhel62-3.4.3.tgz -C ~/<br></code></pre></td></tr></table></figure>
+
+<p><img src="/images/image-20230218200705684.png" srcset="/img/loading.gif" lazyload></p>
+<p>3.将解压后的文件移动到最终的安装目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">mv mongodb-linux-x86_64-rhel62-3.4.3 /usr/local/mongodb<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>若提示权限不够则使用su切换超级用户或者使用sudo提升命令权限</p>
+</blockquote>
+<p><img src="/images/image-20230218202049679.png" srcset="/img/loading.gif" lazyload></p>
+<p>4.在安装目录下创建 data 文件夹用于存放数据和日志</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">mkdir /usr/local/mongodb/data/<br></code></pre></td></tr></table></figure>
+
+<p>5.在 data 文件夹下创建 db 文件夹，用于存放数据</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">mkdir /usr/local/mongodb/data/db/<br></code></pre></td></tr></table></figure>
+
+<p>6.在 data 文件夹下创建 logs 文件夹，用于存放日志</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">mkdir /usr/local/mongodb/data/logs/<br></code></pre></td></tr></table></figure>
+
+<p>7.在 logs 文件夹下创建 log 文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">touch /usr/local/mongodb/data/logs/mongodb.log<br></code></pre></td></tr></table></figure>
+
+<p>8.在 data 文件夹下创建 mongodb.conf 配置文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">touch /usr/local/mongodb/data/mongodb.conf<br></code></pre></td></tr></table></figure>
+
+<p><img src="/images/image-20230218202641673.png" srcset="/img/loading.gif" lazyload></p>
+<p>9.在 mongodb.conf 文件中输入如下内容</p>
+<ul>
+<li>首先使用vim编辑器打开该文件</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">vim ./data/mongodb.conf<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>此时为一般模式，输入i进入编辑模式，输入以下内容</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs conf"># 端口号 port = 27017<br># 数据目录<br>dbpath = /usr/local/mongodb/data/db<br># 日志目录<br>logpath = /usr/local/mongodb/data/logs/mongodb.log<br># 设置后台运行<br>fork = true<br># 日志输出方式<br>logappend = true<br># 开启认证<br>#auth = true<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>编辑模式下ESC退回一般模式，接着输入:wq保存并退出</li>
+</ul>
+<blockquote>
+<p>如果在图形化界面下可以直接使用复制粘贴进文件，使用vim编辑器是在纯代码的环境下</p>
+</blockquote>
+<p>10.启动 MongoDB 服务器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo /usr/local/mongodb/bin/mongod -config /usr/local/mongodb/data/mongodb.conf<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>第一个问题就是直接找不到共享库，解决办法参考<a target="_blank" rel="noopener" href="https://www.ycpai.cn/python/PEmsyin1.html">启动mongodb出现找不到libssl问题如何解决？这篇文章值得一看 - 优草派 (ycpai.cn)</a>即设置符号链接；</p>
+<p>第二个问题是在&#x2F; lib&#x2F;x86_64-linux-gnu文件夹中，有指向libssl.so.1.0.0的名称libssl.so.10和指向libcrypto.so.1.0.0的libcrypt.so.10的符号链接，显示</p>
+<p><img src="/images/image-20230218231940734.png" srcset="/img/loading.gif" lazyload></p>
+<p>2023&#x2F;2&#x2F;18 23:20 现在仍然无法解决，所以没办法往下进行，在<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/33693635/mongod-error-while-loading-shared-libraries-libssl-so-10-libcrypto-so-10/34215650">mongodb - mongod: error while loading shared libraries: libssl.so.10 libcrypto.so.10 - Stack Overflow</a>中寻找答案；<br>2023&#x2F;2&#x2F;18 23:38 初步排查应该是下载的mongondb的版本不同，在Ubuntu上下载了红帽的mongondb；<br>2023&#x2F;2&#x2F;18 23:54 重新安装Ubuntu版本的mongodb，成功运行，安装还是按照上述步骤，只是将网址改为<a target="_blank" rel="noopener" href="https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-ubuntu1604-3.4.4.tgz%EF%BC%9B">https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-ubuntu1604-3.4.4.tgz；</a></p>
+</blockquote>
+<p><img src="/images/image-20230218235602046.png" srcset="/img/loading.gif" lazyload></p>
+<p>11.访问 MongoDB 服务器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">/usr/local/mongodb/bin/mongo<br></code></pre></td></tr></table></figure>
+
+<p><img src="/images/image-20230218235636774.png" srcset="/img/loading.gif" lazyload></p>
+<p>12.停止 MongoDB 服务器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo /usr/local/mongodb/bin/mongod -shutdown -config /usr/local/mongodb/data/mongodb.conf<br></code></pre></td></tr></table></figure>
+
+<p><img src="/images/image-20230218235723625.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="2-Redis（单节点）环境配置"><a href="#2-Redis（单节点）环境配置" class="headerlink" title="(2)Redis（单节点）环境配置"></a>(2)Redis（单节点）环境配置</h5><p>1.通过 WGET 下载 REDIS 的源码</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">wget http://download.redis.io/releases/redis-4.0.2.tar.gz<br></code></pre></td></tr></table></figure>
+
+<p>2.将源代码解压到安装目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">tar -xf redis-4.0.2.tar.gz -C ~/<br></code></pre></td></tr></table></figure>
+
+<p>3.进入 Redis 源代码目录，编译安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd redis-4.0.2/<br></code></pre></td></tr></table></figure>
+
+<p>4.安装 GCC</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo yum install gcc<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Ubuntu下不要使用yum，使用apt-get成功安装，参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41931602/article/details/83211455">(2条消息) 没有已启用的仓库。 执行 “yum repolist all” 查看您拥有的仓库。 您可以用 yum-config-manager –enable &lt;仓库名&gt; 来启用仓库_腾阳的博客-CSDN博客_没有已启用的仓库</a>；</p>
+</blockquote>
+<p>5.编译源代码</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">make MALLOC=libc<br></code></pre></td></tr></table></figure>
+
+<p>6.编译安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo make install<br></code></pre></td></tr></table></figure>
+
+<p>7.创建配置文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo cp ~/redis-4.0.2/redis.conf /etc/<br></code></pre></td></tr></table></figure>
+
+<p>8.修改配置文件中以下内容(推荐使用vim，管理员权限进行修改)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo vim /etc/redis.conf<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs awk">daemonize yes  <span class="hljs-comment">#是否以后台 daemon 方式运行，默认不是后台运行</span><br>pidfile <span class="hljs-regexp">/var/</span>run<span class="hljs-regexp">/redis/</span>redis.pid  <span class="hljs-comment">#redis 的 PID 文件路径（可选）</span><br>logfile <span class="hljs-regexp">/var/</span>log<span class="hljs-regexp">/redis/</span>redis.log  <span class="hljs-comment">#定义log文件位置，该文件需要手动创建（可选）</span><br>dir <span class="hljs-string">&quot;/usr/local/rdbfile&quot;</span>  <span class="hljs-comment">#本地数据库存放路径，默认为./，编译安装默认存在在/usr/local/bin 下，该文件夹需要手动创建（可选）</span><br></code></pre></td></tr></table></figure>
+
+<p>9.启动 Redis 服务器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">redis-server /etc/redis.conf<br></code></pre></td></tr></table></figure>
+
+<p>10.连接 Redis 服务器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">redis-cli<br></code></pre></td></tr></table></figure>
+
+<p>11.停止 Redis 服务器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">redis-cli shutdown<br></code></pre></td></tr></table></figure>
+
+<p><img src="/images/image-20230219113946377.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="3-ElasticSearch-单节点-环境配置"><a href="#3-ElasticSearch-单节点-环境配置" class="headerlink" title="(3)ElasticSearch(单节点)环境配置"></a>(3)ElasticSearch(单节点)环境配置</h5><blockquote>
+<p>在配置之前需要安装Ubuntu下的JAVA环境，详情参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_53137707/article/details/126731868%EF%BC%9B">https://blog.csdn.net/qq_53137707/article/details/126731868；</a></p>
+<p>介绍几个这个步骤可能会用到的Linux命令</p>
+<ul>
+<li>chown elsearch:elsearch elasticsearch-5.6.4 -R：修改该目录的权限为elsearch（elasticsearch不能在root用户下启动，会报错）</li>
+<li>chmod：重置目录权限，使用详情参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/ichen820/article/details/115524278">https://blog.csdn.net/ichen820/article/details/115524278</a></li>
+<li>su elsearch：在root用户的身份下切换为elsearch用户</li>
+<li>rm -rf：删除文件夹</li>
+<li>touch：新建文件</li>
+</ul>
+</blockquote>
+<p>1.通过 Wget 下载 ElasticSearch 安装包</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.6.2.tar.gz<br></code></pre></td></tr></table></figure>
+
+<p>2.修改配置参数</p>
+<p>在limits.conf文件末尾添加如下配置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo vim /etc/security/limits.conf<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs conf">* soft nofile 65536<br>* hard nofile 131072<br>* soft nproc 2048<br>* hard nproc 4096<br></code></pre></td></tr></table></figure>
+
+<p>在90-nproc.conf文件末尾添加</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo vim /etc/security/limits.d/90-nproc.conf<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs conf">* soft nproc 2048<br></code></pre></td></tr></table></figure>
+
+<p>在sysctl.con文件末尾添加</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo vim /etc/sysctl.conf<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs conf">vm.max_map_count=655360<br></code></pre></td></tr></table></figure>
+
+<p>最后执行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo sysctl -p<br></code></pre></td></tr></table></figure>
+
+<p>3.解压 ElasticSearch 到安装目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">tar -xf elasticsearch-5.6.2.tar.gz -C ~/<br></code></pre></td></tr></table></figure>
+
+<p>4.进入 ElasticSearch 安装目录，分别创建 ElasticSearch 数据文件夹 data和ElasticSearch 日志文件夹 logs</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd elasticsearch-5.6.2/<br>mkdir elasticsearch-5.6.2/data/<br>mkdir elasticsearch-5.6.2/logs/<br></code></pre></td></tr></table></figure>
+
+<p>5.修改 ElasticSearch 配置文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">vim ./config/elasticsearch.yml<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">cluster.name:</span> <span class="hljs-string">es-cluster</span> <span class="hljs-comment">#设置集群的名称</span><br><span class="hljs-attr">node.name:</span> <span class="hljs-string">es-node</span> <span class="hljs-comment">#修改当前节点的名称</span><br><span class="hljs-attr">path.data:</span> <span class="hljs-string">/home/tintoki/elasticsearch-5.6.2/bigdata/data</span> <span class="hljs-comment">#修改数据路径</span><br><span class="hljs-attr">path.logs:</span> <span class="hljs-string">/home/tintoki/elasticsearch-5.6.2/bigdata/logs</span> <span class="hljs-comment">#修改日志路径</span><br><span class="hljs-attr">bootstrap.memory_lock:</span> <span class="hljs-literal">false</span> <span class="hljs-comment">#设置 ES 节点允许内存交换</span><br><span class="hljs-attr">bootstrap.system_call_filter:</span> <span class="hljs-literal">false</span> <span class="hljs-comment">#禁用系统调用过滤器</span><br><span class="hljs-attr">network.host:</span> <span class="hljs-number">0.0</span><span class="hljs-number">.0</span><span class="hljs-number">.0</span> <span class="hljs-comment">#设置当前主机名称</span><br><span class="hljs-attr">discovery.zen.ping.unicast.hosts:</span> [<span class="hljs-string">&quot;0.0.0.0&quot;</span>] <span class="hljs-comment">#设置集群的主机列表</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li>yml文件中#后面的内容表示注释，注意不要直接在原注释上面修改，在下面新增；</li>
+<li>&#x2F;home&#x2F;tintoki&#x2F;elasticsearch-5.6.2&#x2F;bigdata&#x2F;data和&#x2F;home&#x2F;tintoki&#x2F;elasticsearch-5.6.2&#x2F;bigdata&#x2F;logs可以手动创建避免无法找到（home目录下不是直接的elasticsearch-5.6.2目录这一点需要注意，尽管在视图中看起来是其直接子目录）；</li>
+</ul>
+</blockquote>
+<p>6.测试</p>
+<p>首先切换用户并进入ElasticSearch安装目录，使用<code>./bin/elasticsearch</code>启动服务，出现如下情形表示开启成功</p>
+<p><img src="/images/image-20230219194446505.png" srcset="/img/loading.gif" lazyload></p>
+<p>重新打开一个shell，输入<code>curl http://0.0.0.0:9200/</code>测试得到如下结果</p>
+<p><img src="/images/image-20230219194626960.png" srcset="/img/loading.gif" lazyload></p>
+<p>在客户端（第二个打开的shell）查看并关闭服务（注意需要切换到elsearch用户下）</p>
+<p><img src="/images/image-20230219194740761.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="4-Azkaban-单节点-环境配置"><a href="#4-Azkaban-单节点-环境配置" class="headerlink" title="(4)Azkaban(单节点)环境配置"></a>(4)Azkaban(单节点)环境配置</h5><p>1.安装 GIT</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo apt-install install git<br></code></pre></td></tr></table></figure>
+
+<p>2.通过 git 下载 Azkaban 源代码</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">git clone https://github.com/azkaban/azkaban.git<br></code></pre></td></tr></table></figure>
+
+<p><img src="/images/image-20230219205940305.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>使用git访问github的时候可能会有速度上的限制一直进不去，可以参考<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/428454772%E4%B8%8B%E8%BD%BDfastgithub%E4%BD%BF%E7%94%A8%EF%BC%88%E4%B8%8B%E8%BD%BD%E7%9A%84%E5%BA%93%E6%98%AFlibicu-dev%E8%80%8C%E4%B8%8D%E6%98%AFlibicu%EF%BC%89%EF%BC%8C%E4%BD%86%E6%98%AF%E4%B8%8D%E7%9F%A5%E9%81%93%E4%BB%80%E4%B9%88%E5%8E%9F%E5%9B%A0%E6%9C%89%E6%97%B6%E5%80%99%E8%BF%98%E6%98%AF%E4%B8%80%E7%9B%B4%E4%B8%8B%E8%BD%BD%E4%B8%8D%E4%BA%86...%EF%BC%88%E5%8F%AA%E8%83%BD%E5%A4%9A%E5%B0%9D%E8%AF%95%E4%B8%A4%E6%AC%A1%EF%BC%8C%E6%B2%A1%E5%88%AB%E7%9A%84%E5%8A%9E%E6%B3%95%EF%BC%8C%E7%BD%91%E4%B8%8A%E8%AF%B4%E7%9A%84%E4%BB%80%E4%B9%88%E6%8A%8Ahttps%E4%BF%AE%E6%94%B9%E4%B8%BAgit%E4%B9%9F%E4%B8%8D%E5%8F%AF%E8%A1%8C%EF%BC%89">https://zhuanlan.zhihu.com/p/428454772下载fastgithub使用（下载的库是libicu-dev而不是libicu），但是不知道什么原因有时候还是一直下载不了...（只能多尝试两次，没别的办法，网上说的什么把https修改为git也不可行）</a></p>
+</blockquote>
+<p>3.安装编译环境</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd azkaban/<br>git checkout -b 3.36.0<br>sudo apt install gcc<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo apt install -y gcc-c++*<br></code></pre></td></tr></table></figure>
+
+<p>（第二个gcc-c++*会抛出一长串东西，不用管）</p>
+<p>4.执行编译命令</p>
+<blockquote>
+<ul>
+<li>使用gradlew命令报错JAVA_HOME的问题，参考<a target="_blank" rel="noopener" href="https://www.zditect.com/article/57550939.html%E8%A7%A3%E5%86%B3%EF%BC%8C%E6%9C%AC%E8%B4%A8%E4%B8%8A%E5%B0%B1%E6%98%AF%E4%B9%8B%E5%89%8D%E8%AE%BE%E7%BD%AEJAVA_HOME%E7%9A%84%E6%97%B6%E5%80%99%E8%AE%BE%E7%BD%AE%E5%88%B0bin%E7%9B%AE%E5%BD%95%E9%87%8C%E9%9D%A2%E5%8E%BB%E4%BA%86%EF%BC%8C%E5%AE%9E%E9%99%85%E4%B8%8A%E5%8F%AA%E9%9C%80%E8%A6%81%E8%AE%BE%E7%BD%AE%E5%88%B0bin%E7%9A%84%E4%B8%8A%E4%B8%80%E7%BA%A7%E7%9B%AE%E5%BD%95%E5%8D%B3%E5%8F%AF%EF%BC%9B">https://www.zditect.com/article/57550939.html解决，本质上就是之前设置JAVA_HOME的时候设置到bin目录里面去了，实际上只需要设置到bin的上一级目录即可；</a></li>
+<li>在分步骤编译的过程中，可能某个步骤会报错，参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44291548/article/details/119022392%E5%92%8Chttp://www.chinacion.cn/article/5065.html%E8%A7%A3%E5%86%B3%EF%BC%8C%E6%9C%AC%E8%B4%A8%E4%B8%8A%E5%B0%B1%E6%98%AF%E9%87%8D%E6%96%B0%E6%89%A7%E8%A1%8C%E8%BF%99%E4%B8%80%E6%AD%A5%E7%9A%84%E7%BC%96%E8%AF%91%E5%8D%B3%E5%8F%AF%EF%BC%88%E4%B8%8D%E8%A6%81%E4%BD%BF%E7%94%A8%60./gradlew">https://blog.csdn.net/weixin_44291548/article/details/119022392和http://www.chinacion.cn/article/5065.html解决，本质上就是重新执行这一步的编译即可（不要使用`./gradlew</a> clean build&#96;一步编译，时间长而且会卡住）；</li>
+</ul>
+</blockquote>
+<p>首先清空编译</p>
+<p><img src="/images/image-20230220095142907.png" srcset="/img/loading.gif" lazyload></p>
+<p>接着编译并安装插件（出现BUILD SUCCESSFUL表示成功）</p>
+<p><img src="/images/image-20230220095246055.png" srcset="/img/loading.gif" lazyload></p>
+<p>最后编译但不运行测试</p>
+<p><img src="/images/image-20230220095421909.png" srcset="/img/loading.gif" lazyload></p>
+<p>5.部署Azkaban Solo</p>
+<p>拷贝并解压压缩文件</p>
+<p><img src="/images/image-20230220095756101.png" srcset="/img/loading.gif" lazyload></p>
+<p>启动 Azkaban Solo 单节点服务</p>
+<p><img src="/images/image-20230220095921771.png" srcset="/img/loading.gif" lazyload></p>
+<p>访问 Azkaban Solo 单节点服务（用户名:azkaban，密码 azkaban）</p>
+<p><img src="/images/image-20230220100157243.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20230220094914946.png" srcset="/img/loading.gif" lazyload></p>
+<p>关闭 Azkaban Solo 单节点服务</p>
+<p><img src="/images/image-20230220100354424.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="5-Spark-单节点-环境配置"><a href="#5-Spark-单节点-环境配置" class="headerlink" title="(5)Spark(单节点)环境配置"></a>(5)Spark(单节点)环境配置</h5><blockquote>
+<ul>
+<li>关于Spark和Scala、Hadoop的关系参考<a target="_blank" rel="noopener" href="https://zhidao.baidu.com/question/1581248874790042060.html%EF%BC%88%E4%B8%89%E8%80%85%E7%9B%B8%E4%BA%92%E7%8B%AC%E7%AB%8B%E6%B2%A1%E5%BF%85%E8%A6%81%E5%85%A8%E9%83%BD%E4%B8%8B%E8%BD%BD%EF%BC%89%EF%BC%9B">https://zhidao.baidu.com/question/1581248874790042060.html（三者相互独立没必要全都下载）；</a></li>
+<li>关于解压报错可以参看<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43988251/article/details/128032586%EF%BC%8C%E4%B8%BB%E8%A6%81%E8%BF%98%E6%98%AF%E5%9B%A0%E4%B8%BA%E7%BD%91%E4%B8%8A%E7%9A%84%E9%93%BE%E6%8E%A5%E6%9C%89%E4%BA%9B%E8%BF%87%E6%9C%9F%E5%AF%BC%E8%87%B4%E4%B8%8B%E8%BD%BD%E7%9A%84%E5%8E%8B%E7%BC%A9%E6%96%87%E4%BB%B6%E6%9C%89%E9%97%AE%E9%A2%98%E8%A7%A3%E5%8E%8B%E5%A4%B1%E8%B4%A5%EF%BC%9B">https://blog.csdn.net/weixin_43988251/article/details/128032586，主要还是因为网上的链接有些过期导致下载的压缩文件有问题解压失败；</a></li>
+<li>关于如何获取最新下载链接以及详细安装参考<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/595304446%EF%BC%9B">https://zhuanlan.zhihu.com/p/595304446；</a></li>
+<li>最后一点，修改环境变量之前最好先查一下资料再修改，避免覆盖到时候什么都找不到了，关于环境变量的配置参考<a target="_blank" rel="noopener" href="https://www.cnblogs.com/c-abc/p/4337179.html%EF%BC%9B">https://www.cnblogs.com/c-abc/p/4337179.html；</a></li>
+</ul>
+</blockquote>
+<p>1.通过wget下载并解压 spark 安装包</p>
+<p>2.进入spark安装目录</p>
+<p><img src="/images/image-20230220144228516.png" srcset="/img/loading.gif" lazyload></p>
+<p>3.复制并修改slave配置文件（新版为worker文件）</p>
+<p><img src="/images/image-20230220144401955.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20230220144440370.png" srcset="/img/loading.gif" lazyload></p>
+<p>4.复制并修改Spark-Env配置文件</p>
+<p><img src="/images/image-20230220144606350.png" srcset="/img/loading.gif" lazyload></p>
+<p>5.启动Spark之前安装并打开ssh服务</p>
+<p>参考链接<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/512937312">https://zhuanlan.zhihu.com/p/512937312</a></p>
+<blockquote>
+<ul>
+<li>开启ssh服务：service ssh start</li>
+<li>查看ssh服务是否开启：ps -e | grep ssh</li>
+<li>检查ssh服务状态（(显示active running表示服务正常)）：sudo systemctl status ssh</li>
+<li>关闭ssh服务：service ssh stop</li>
+</ul>
+</blockquote>
+<p>6.启动Spark</p>
+<p>启动Spark集群</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sbin/start-all.sh<br></code></pre></td></tr></table></figure>
+
+<p><img src="/images/image-20230220150804656.png" srcset="/img/loading.gif" lazyload></p>
+<p>访问 Spark 集群，浏览器访问 http:&#x2F;&#x2F;主机名:8080</p>
+<p><img src="/images/image-20230220131856073.png" srcset="/img/loading.gif" lazyload></p>
+<p>关闭Spark集群</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sbin/stop-all.sh<br></code></pre></td></tr></table></figure>
+
+<p><img src="/images/image-20230220150848267.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="6-Zookeeper-单节点-环境配置"><a href="#6-Zookeeper-单节点-环境配置" class="headerlink" title="(6)Zookeeper(单节点)环境配置"></a>(6)Zookeeper(单节点)环境配置</h5><p>1.通过 wget 下载 zookeeper 安装包</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo wget https://dlcdn.apache.org/zookeeper/zookeeper-3.7.1/apache-zookeeper-3.7.1-bin.tar.gz<br></code></pre></td></tr></table></figure>
+
+<p>（Zookeeper的配置很简单几乎没有任何问题）</p>
+<p>2.启动服务</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">bin/zkServer.sh start<br></code></pre></td></tr></table></figure>
+
+<p>3.查看服务状态</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">bin/zkServer.sh status<br></code></pre></td></tr></table></figure>
+
+<p>4.停止服务</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">bin/zkServer.sh stop<br></code></pre></td></tr></table></figure>
+
+<p><img src="/images/image-20230220200708959.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="7-Flume-ng-单节点-环境配置"><a href="#7-Flume-ng-单节点-环境配置" class="headerlink" title="(7)Flume-ng(单节点)环境配置"></a>(7)Flume-ng(单节点)环境配置</h5><p>1.wget下载flume安装包</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">wget https://dlcdn.apache.org/flume/1.11.0/apache-flume-1.11.0-bin.tar.gz<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>获取最新的下载地址可以在<a target="_blank" rel="noopener" href="https://flume.apache.org/download.html%E5%AF%BB%E6%89%BE%EF%BC%9B">https://flume.apache.org/download.html寻找；</a></p>
+</blockquote>
+<p>2.解压</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">tar -xf apache-flume-1.8.0-bin.tar.gz -C ~/<br></code></pre></td></tr></table></figure>
+
+<h5 id="8-Kafka-单节点-环境配置"><a href="#8-Kafka-单节点-环境配置" class="headerlink" title="(8)Kafka(单节点)环境配置"></a>(8)Kafka(单节点)环境配置</h5><p>1.下载并解压Kafka安装包，进入目录修改配置文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">vim config/server.properties<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-attr">host.name</span>=<span class="hljs-string">tintoki-virtual-machine</span><br><span class="hljs-comment">#修改主机名</span><br><span class="hljs-attr">port</span>=<span class="hljs-string">9092</span><br><span class="hljs-comment">#修改服务端口号</span><br><span class="hljs-attr">zookeeper.connect</span>=<span class="hljs-string">tintoki-virtual-machine:2181</span><br><span class="hljs-comment">#修改 Zookeeper 服务器地址</span><br></code></pre></td></tr></table></figure>
+
+<p>2.开启服务（启动kafka服务之前需要先开启zookeeper服务）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">bin/kafka-server-start.sh -daemon ./config/server.properties<br></code></pre></td></tr></table></figure>
+
+<p>3.创建Topic</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">bin/kafka-topics.sh --bootstrap-server tintoki-virtual-machine:9092 --create --topic tintoki-demo --partitions 1<br></code></pre></td></tr></table></figure>
+
+<p>查看话题列表</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">bin/kafka-topics.sh --bootstrap-server tintoki-virtual-machine:9092 --list<br></code></pre></td></tr></table></figure>
+
+<p><img src="/images/image-20230221091508654.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>Kafka创建主题报错参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/zhangphil/article/details/123093909%E5%92%8C[(1%E6%9D%A1%E6%B6%88%E6%81%AF)">https://blog.csdn.net/zhangphil/article/details/123093909和[(1条消息)</a> Kafka报错：Exception in thread “main“ joptsimple.UnrecognizedOptionException: zookeeper is not a recogn_血煞长虹的博客-CSDN博客](<a target="_blank" rel="noopener" href="https://blog.csdn.net/succing/article/details/127334561)%E8%A7%A3%E5%86%B3%EF%BC%9B">https://blog.csdn.net/succing/article/details/127334561)解决；</a></p>
+</blockquote>
+<p>4.关闭服务</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">bin/kafka-server-stop.sh<br></code></pre></td></tr></table></figure>
+
+<h5 id="9-IDEA集成开发环境"><a href="#9-IDEA集成开发环境" class="headerlink" title="(9)IDEA集成开发环境"></a>(9)IDEA集成开发环境</h5><p>Linux下安装IDEA参考<a target="_blank" rel="noopener" href="https://www.ngui.cc/el/381715.html?action=onClick%EF%BC%88%E6%9C%89%E8%B4%A6%E5%8F%B7%E5%8F%AF%E4%BB%A5%E6%97%A0%E9%9C%80%E5%8F%82%E8%80%83pojie%EF%BC%89%EF%BC%9B">https://www.ngui.cc/el/381715.html?action=onClick（有账号可以无需参考pojie）；</a></p>
+<p>启动IDEA</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">bin/idea.sh<br></code></pre></td></tr></table></figure>
+
+<h5 id="10-Maven安装"><a href="#10-Maven安装" class="headerlink" title="(10)Maven安装"></a>(10)Maven安装</h5><ul>
+<li><p>配置maven mvn 命令参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37933685/article/details/80691044%EF%BC%9B">https://blog.csdn.net/qq_37933685/article/details/80691044；</a></p>
+</li>
+<li><p>IDEA配置Maven参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/coldLight1/article/details/119760681">https://blog.csdn.net/coldLight1/article/details/119760681</a> (Windows版)，<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43790083/article/details/128984966%EF%BC%88Linux%E7%89%88%EF%BC%89%EF%BC%9B">https://blog.csdn.net/weixin_43790083/article/details/128984966（Linux版）；</a></p>
+</li>
+</ul>
+<h2 id="2-项目框架搭建"><a href="#2-项目框架搭建" class="headerlink" title="2.项目框架搭建"></a>2.项目框架搭建</h2><p>2023&#x2F;2&#x2F;22 16:45 今天下午简单的搞了一下，然后遇到了非常多的问题（报错一头雾水，不知道怎么管理项目树…这就是啥都不懂然后强行进行项目的后果），短暂的反思过后决定应该先学会简单使用IDEA，至少需要了解它的一些特性，学习完毕后再继续进行项目的跟进；</p>
+<p>2023&#x2F;2&#x2F;22 19:01 刚才又简单的回顾了一下尚硅谷的IDEA教程，参考<a href="https://gintoki-jpg.github.io/2022/07/19/%E5%90%8E%E7%AB%AF_JAVA/#%E5%9B%9B%E3%80%81IDEA%E9%9B%86%E6%88%90%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83">JAVA - Tintoki_blog (gintoki-jpg.github.io)</a>，发现投入时间和精力去学习IDEA没什么必要，反之我们在项目开发过程中总结遇到的问题进而逐渐熟悉使用IDEA进行开发是更好的选择，所以不要担心花费过多的时间，只要能解决的问题就不是问题（期间记录好解决问题的思路）；</p>
+<hr>
+<h3 id="2-1-目录结构"><a href="#2-1-目录结构" class="headerlink" title="2.1 目录结构"></a>2.1 目录结构</h3><p><img src="/images/image-20230223172145506.png" srcset="/img/loading.gif" lazyload alt="完整目录结构"></p>
+<blockquote>
+<ul>
+<li><p>根据教程的指示我们并没有生成和教程一样的.xml文件，参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/xinhe96/article/details/123789402%E8%A7%A3%E5%86%B3%EF%BC%88%E9%A1%B9%E7%9B%AE%E7%9B%AE%E5%BD%95%E4%B8%8B%E6%89%A7%E8%A1%8C%60mvn">https://blog.csdn.net/xinhe96/article/details/123789402解决（项目目录下执行`mvn</a> idea:module&#96;）；</p>
+</li>
+<li><p>由于操作失误导致DataLoader变成了directory和moudle，在删除之后发现新建提示存在同名moudle，参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43751200/article/details/125158407%E8%A7%A3%E5%86%B3%EF%BC%9B">https://blog.csdn.net/qq_43751200/article/details/125158407解决；</a></p>
+</li>
+</ul>
+</blockquote>
+<p><img src="/images/image-20230223171447360.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<blockquote>
+<p>Q：IDEA中的directory和moudle有什么区别？为什么有时候创建会出错？</p>
+</blockquote>
+<h3 id="2-2-版本信息"><a href="#2-2-版本信息" class="headerlink" title="2.2 版本信息"></a>2.2 版本信息</h3><p>MovieRecommender&#x2F;pom.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span><br>        <span class="hljs-comment">&lt;!--項目共據版本信息，與系統環境版本略有不同--&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">log4j.version</span>&gt;</span>1.2.17<span class="hljs-tag">&lt;/<span class="hljs-name">log4j.version</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">slf4j.version</span>&gt;</span>1.7.22<span class="hljs-tag">&lt;/<span class="hljs-name">slf4j.version</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">mongodb-spark.version</span>&gt;</span>2.0.0<span class="hljs-tag">&lt;/<span class="hljs-name">mongodb-spark.version</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">casbah.version</span>&gt;</span>3.1.1<span class="hljs-tag">&lt;/<span class="hljs-name">casbah.version</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">elasticsearch-spark.version</span>&gt;</span>5.6.2<span class="hljs-tag">&lt;/<span class="hljs-name">elasticsearch-spark.version</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">elasticsearch.version</span>&gt;</span>5.6.2<span class="hljs-tag">&lt;/<span class="hljs-name">elasticsearch.version</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">redis.version</span>&gt;</span>2.9.0<span class="hljs-tag">&lt;/<span class="hljs-name">redis.version</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">kafka.version</span>&gt;</span>0.10.2.1<span class="hljs-tag">&lt;/<span class="hljs-name">kafka.version</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">spark.version</span>&gt;</span>3.2.3<span class="hljs-tag">&lt;/<span class="hljs-name">spark.version</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">scala.version</span>&gt;</span>2.11.8<span class="hljs-tag">&lt;/<span class="hljs-name">scala.version</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">jblas.version</span>&gt;</span>1.2.1<span class="hljs-tag">&lt;/<span class="hljs-name">jblas.version</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="2-3-项目依赖"><a href="#2-3-项目依赖" class="headerlink" title="2.3 项目依赖"></a>2.3 项目依赖</h3><blockquote>
+<ul>
+<li>IDEA同步失敗Unresolved dependency：<a target="_blank" rel="noopener" href="https://blog.csdn.net/zhonglunshun/article/details/128655893">https://blog.csdn.net/zhonglunshun/article/details/128655893</a></li>
+<li>Maven提示vulnerabilities info：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_38189581/article/details/128322847">https://blog.csdn.net/weixin_38189581/article/details/128322847</a></li>
+<li>Dependency ‘org.apache.spark:spark-sql_2.13:3.2.3’ not found：這種按照所屬的groupid在<a target="_blank" rel="noopener" href="https://mvnrepository.com/%E4%B8%AD%E5%B0%8B%E6%89%BE%E5%8F%AF%E7%94%A8%E7%9A%84artifactId%E5%92%8Cversion%E5%8D%B3%E5%8F%AF%EF%BC%8C%E6%B3%A8%E6%84%8F%E5%9A%B4%E6%A0%BC%E5%9A%B4%E6%A0%BC%E5%8C%B9%E9%85%8D">https://mvnrepository.com/中尋找可用的artifactId和version即可，注意嚴格嚴格匹配</a></li>
+</ul>
+</blockquote>
+<p>MovieRecommender&#x2F;pom.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span><br>        <span class="hljs-comment">&lt;!--引入共同的日志管理工具--&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.slf4j<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>jcl-over-slf4j<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>$&#123;slf4j.version&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.slf4j<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>slf4j-api<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>$&#123;slf4j.version&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.slf4j<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>slf4j-log4j12<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>$&#123;slf4j.version&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>log4j<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>log4j<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>$&#123;log4j.version&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">build</span>&gt;</span><br>        <span class="hljs-comment">&lt;!-- 声明并引入子项目共有的插件 --&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">plugins</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>maven-compiler-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.6.1<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>                <span class="hljs-comment">&lt;!-- 所有的编译用 JDK1.8--&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">source</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">source</span>&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">target</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">target</span>&gt;</span><br>                <span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">plugins</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">pluginManagement</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">plugins</span>&gt;</span><br>                <span class="hljs-comment">&lt;!--maven 的打包插件 --&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>maven-assembly-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.0.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">executions</span>&gt;</span><br>                        <span class="hljs-tag">&lt;<span class="hljs-name">execution</span>&gt;</span><br>                            <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>make-assembly<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span><br>                            <span class="hljs-tag">&lt;<span class="hljs-name">phase</span>&gt;</span>package<span class="hljs-tag">&lt;/<span class="hljs-name">phase</span>&gt;</span><br>                            <span class="hljs-tag">&lt;<span class="hljs-name">goals</span>&gt;</span><br>                                <span class="hljs-tag">&lt;<span class="hljs-name">goal</span>&gt;</span>single<span class="hljs-tag">&lt;/<span class="hljs-name">goal</span>&gt;</span><br>                            <span class="hljs-tag">&lt;/<span class="hljs-name">goals</span>&gt;</span><br>                        <span class="hljs-tag">&lt;/<span class="hljs-name">execution</span>&gt;</span><br>                    <span class="hljs-tag">&lt;/<span class="hljs-name">executions</span>&gt;</span><br>                <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span><br>                <span class="hljs-comment">&lt;!-- 该插件用于将 scala 代码编译成 class 文件 --&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>net.alchim31.maven<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>scala-maven-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>4.8.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">executions</span>&gt;</span><br>                        <span class="hljs-comment">&lt;!-- 绑定到 maven 的编译阶段 --&gt;</span><br>                        <span class="hljs-tag">&lt;<span class="hljs-name">execution</span>&gt;</span><br>                            <span class="hljs-tag">&lt;<span class="hljs-name">goals</span>&gt;</span><br>                                <span class="hljs-tag">&lt;<span class="hljs-name">goal</span>&gt;</span>compile<span class="hljs-tag">&lt;/<span class="hljs-name">goal</span>&gt;</span><br>                                <span class="hljs-tag">&lt;<span class="hljs-name">goal</span>&gt;</span>testCompile<span class="hljs-tag">&lt;/<span class="hljs-name">goal</span>&gt;</span><br>                            <span class="hljs-tag">&lt;/<span class="hljs-name">goals</span>&gt;</span><br>                        <span class="hljs-tag">&lt;/<span class="hljs-name">execution</span>&gt;</span><br>                    <span class="hljs-tag">&lt;/<span class="hljs-name">executions</span>&gt;</span><br>                <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">plugins</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">pluginManagement</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">build</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>MovieRecommender&#x2F;Recommender&#x2F;pom.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependencyManagement</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span><br>            <span class="hljs-comment">&lt;!-- 引入 Spark 相关的 Jar 包 --&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.spark<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spark-core_2.13<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.2.3<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.spark<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spark-sql_2.13<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.2.3<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.spark<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spark-streaming_2.13<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.2.3<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.spark<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spark-mllib_3.2.3<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.2.3<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.spark<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spark-graphx_3.2.3<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.2.3<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.scala-lang<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>scala-library<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>$&#123;scala.version&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">dependencyManagement</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">build</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">plugins</span>&gt;</span><br>            <span class="hljs-comment">&lt;!-- 父项目已声明该 plugin ,子项目在引入的时候,不用声明版本和已经声明的配置 --&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>net.alchim31.maven<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>scala-maven-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">plugins</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">build</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>MovieRecommender&#x2F;Recommender&#x2F;DataLoader&#x2F;pom.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span><br>        <span class="hljs-comment">&lt;!-- Spark 的依赖引入 --&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.spark<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spark-core_2.13<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.spark<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spark-sql_2.13<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>        <span class="hljs-comment">&lt;!-- 引入 Scala --&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.scala-lang<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>scala-library<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.13.10<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>        <span class="hljs-comment">&lt;!-- 加入 MongoDB 的驱动 --&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.mongodb<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>casbah-core_2.12<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.1.1<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.mongodb.spark<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>mongo-spark-connector_2.13<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>10.1.1<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>        <span class="hljs-comment">&lt;!-- 加入 ElasticSearch 的驱动 --&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.elasticsearch.client<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>transport<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>$&#123;elasticsearch.version&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.elasticsearch<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>elasticsearch-spark-20_2.11<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>$&#123;elasticsearch-spark.version&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>            <span class="hljs-comment">&lt;!-- 将不需要依赖的包从依赖路径中除去 --&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">exclusions</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">exclusion</span>&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.hive<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>hive-service<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>                <span class="hljs-tag">&lt;/<span class="hljs-name">exclusion</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">exclusions</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="2-4-未解决问题汇总"><a href="#2-4-未解决问题汇总" class="headerlink" title="2.4 未解决问题汇总"></a>2.4 未解决问题汇总</h3><blockquote>
+<p>这个问题在网上没有任何有效的解决办法，最离谱的是新建一个项目之后可以正常的对目录结构进行全局库的配置…而且不管怎么配置怎么捣鼓都是没问题的，查阅了大量资料也没找出来解决办法（主要是还花费了我两三个小时真的无语），因此只能删除整个项目重新开始；</p>
+</blockquote>
+<p><img src="/images/image-20230223230511895.png" srcset="/img/loading.gif" lazyload></p>
+<p>———–2023&#x2F;2&#x2F;22———–<br>IDEA同步失敗Unresolved dependency：<a target="_blank" rel="noopener" href="https://blog.csdn.net/zhonglunshun/article/details/128655893">https://blog.csdn.net/zhonglunshun/article/details/128655893</a><br>Maven提示vulnerabilities info：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_38189581/article/details/128322847">https://blog.csdn.net/weixin_38189581/article/details/128322847</a><br>Dependency ‘org.apache.spark:spark-sql_2.13:3.2.3’ not found：這種按照所屬的groupid在<a target="_blank" rel="noopener" href="https://mvnrepository.com/%E4%B8%AD%E5%B0%8B%E6%89%BE%E5%8F%AF%E7%94%A8%E7%9A%84artifactId%E5%92%8Cversion%E5%8D%B3%E5%8F%AF%EF%BC%8C%E6%B3%A8%E6%84%8F%E5%9A%B4%E6%A0%BC%E5%9A%B4%E6%A0%BC%E5%8C%B9%E9%85%8D">https://mvnrepository.com/中尋找可用的artifactId和version即可，注意嚴格嚴格匹配</a></p>
+<p>———–2023&#x2F;2&#x2F;23———–<br>IDEA配置安裝scala：首先需要在Ubuntu中下載scala，參考<a target="_blank" rel="noopener" href="https://www.lxlinux.net/6435.html%EF%BC%8C%E7%84%B6%E5%BE%8C%E5%9C%A8IDEA%E4%B8%AD%E4%B8%8B%E8%BC%89scala%E6%8F%92%E4%BB%B6%E4%B8%A6%E5%9C%A8IDEA%E4%B8%AD%E9%80%B2%E8%A1%8C%E9%85%8D%E7%BD%AE%EF%BC%8C%E6%AD%A4%E8%99%95%E5%8F%83%E8%80%83https://blog.csdn.net/u010416101/article/details/127505064%EF%BC%9B">https://www.lxlinux.net/6435.html，然後在IDEA中下載scala插件並在IDEA中進行配置，此處參考https://blog.csdn.net/u010416101/article/details/127505064；</a><br>Mongodb 重新啓動報錯，解決辦法參考<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42910468/article/details/103076136%EF%BC%9B">https://blog.csdn.net/qq_42910468/article/details/103076136；</a><br>scala編譯報錯，原因是java和scala版本不同，解決方法參考<a target="_blank" rel="noopener" href="https://blog.csdn.net/miaohui8023/article/details/105327734%E5%92%8Chttps://blog.csdn.net/miaohui8023/article/details/105314937(%E4%BB%96%E5%AA%BD%E7%9A%84%E4%B8%8D%E7%9F%A5%E9%81%93IDEA%E6%8A%BD%E4%BB%80%E9%BA%BC%E9%A2%A8%E9%A3%9B%E5%BE%97%E7%B5%A6%E6%88%91%E8%AA%AAresources%E9%87%8D%E5%BE%A9%EF%BC%8C%E4%B8%80%E7%9B%B4%E4%BF%AE%E6%94%B9%E4%B8%8D%E5%A5%BD%E5%8F%AA%E8%83%BD%E9%87%8D%E6%96%B0%E6%90%AD%E5%BB%BA%E9%A0%85%E7%9B%AE)">https://blog.csdn.net/miaohui8023/article/details/105327734和https://blog.csdn.net/miaohui8023/article/details/105314937(他媽的不知道IDEA抽什麼風飛得給我說resources重復，一直修改不好只能重新搭建項目)</a>;</p>
+<p>———–2023&#x2F;2&#x2F;24———–</p>
+<p>IDEA測試鏈接Mongdb<a target="_blank" rel="noopener" href="https://www.ttt5.cn/145835.html">https://www.ttt5.cn/145835.html</a>;<br>spark、scala版本號需要保持一致<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_36172296/article/details/115572036%EF%BC%9B">https://blog.csdn.net/weixin_36172296/article/details/115572036；</a><br>spark版本需要與mongdb對應<a target="_blank" rel="noopener" href="https://spark-packages.org/package/mongodb/mongo-spark">https://spark-packages.org/package/mongodb/mongo-spark</a>;<br>NoSuchFieldError（以上兩點都可以歸結爲版本衝突，也就是run時候會報該錯誤）<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_39452168/article/details/108146847%EF%BC%8CMaven">https://blog.csdn.net/weixin_39452168/article/details/108146847，Maven</a> helper使用方法參考<a target="_blank" rel="noopener" href="https://blog.csdn.net/GyaoG/article/details/120599475%EF%BC%8C%E7%8F%BE%E5%9C%A8%E5%8F%AA%E9%9C%80%E8%A6%81%E7%B4%B0%E5%BF%83%E7%9A%84%E6%8A%8A%E8%A1%9D%E7%AA%81%E7%9A%84%E4%BE%9D%E8%B3%B4%E8%A7%A3%E6%B1%BA%E5%8D%B3%E5%8F%AF%EF%BC%9B">https://blog.csdn.net/GyaoG/article/details/120599475，現在只需要細心的把衝突的依賴解決即可；</a></p>
+<hr>
+<blockquote>
+<p>2023&#x2F;2&#x2F;24 17:35 已放弃，凭借现在自己的实力确实没办法解决这些问题，等之后再进行；</p>
+</blockquote>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/" class="category-chain-item">项目开发</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">#机器学习</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>中级项目_推荐系统</div>
+      <div>https://gintoki-jpg.github.io/2022/11/08/项目_推荐系统/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>杨再俨</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年11月8日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/11/12/%E5%90%8E%E7%AB%AF_MAVEN/" title="Maven">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Maven</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/11/01/%E9%A1%B9%E7%9B%AE_%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90%E5%99%A8/" title="初级项目_语法分析器">
+                        <span class="hidden-mobile">初级项目_语法分析器</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+</div>
+
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

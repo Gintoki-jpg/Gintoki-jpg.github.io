@@ -1,0 +1,1043 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/logo.png">
+  <link rel="icon" href="/img/bg/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="杨再俨">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="主要总结《程序员的自我修养》书中一些比较通用且重要的知识点；">
+<meta property="og:type" content="article">
+<meta property="og:title" content="程序员的自我修养">
+<meta property="og:url" content="https://gintoki-jpg.github.io/2022/09/25/%E9%80%9A%E8%AF%86_%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/index.html">
+<meta property="og:site_name" content="Tintoki_blog">
+<meta property="og:description" content="主要总结《程序员的自我修养》书中一些比较通用且重要的知识点；">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/cpp.png">
+<meta property="article:published_time" content="2022-09-25T01:09:00.000Z">
+<meta property="article:modified_time" content="2023-03-01T14:55:42.906Z">
+<meta property="article:author" content="YangZaiyan">
+<meta property="article:tag" content="课程学习">
+<meta property="article:tag" content="计算机基础">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gintoki-jpg.github.io/img/bg/cpp.png">
+  
+  
+  
+  <title>程序员的自我修养 - Tintoki_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"gintoki-jpg.github.io","root":"/","version":"1.9.1","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tintoki_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/bg1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">程序员的自我修养</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-09-25 09:09" pubdate>
+          2022年9月25日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          10k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          85 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">程序员的自我修养</h1>
+            
+            <div class="markdown-body">
+              
+              <p>这本书其实很早之前就已经看过一遍了，但那个时候因为没有编译原理和操作系统的基础所以看的很痛苦（但是实际上这本书写的真的非常非常好），这段时间发现书中有些概念对于学习其他课程有参考作用，所以打算做一个总结；</p>
+<h1 id="第一章-绪论"><a href="#第一章-绪论" class="headerlink" title="第一章 绪论"></a>第一章 绪论</h1><p>“计算机科学领域的任何问题都可以通过增加一个间接的中间层来解决”</p>
+<h2 id="1-SMP与多核"><a href="#1-SMP与多核" class="headerlink" title="1.SMP与多核"></a>1.SMP与多核</h2><p>计算机越快越好，这无容置疑，但是因为制作工艺的限制，CPU的频率在后来的时间并没有能大幅度的提高，于是有人提出这样的想法：增加CPU的数量；</p>
+<p>其中一种常见的多CPU形式是<code>对称多处理器(SMP)</code>，也就是每个CPU在系统中所处的低位和发挥的作用一样且对称（我也不太理解这句话啥意思，感觉有点矛盾）；</p>
+<p>因为程序并不是能够分解成若干个完全不相关的子问题，这也就意味着提速的效果并不与CPU的数量成正比（书上很有意思的例子就是一个女人十个月生一个孩子，但是十个女人不可能一个月生十个孩子）；</p>
+<p>多处理器适用于同时处理大量相互独立的请求，但是多处理器很贵，用在PC上好像不太现实？所以厂商将这些多处理器结合在一起：共享昂贵的缓存部件并只保留多个核心，这就是<code>多核处理器</code>，可以认为多核处理器就是多处理器的阉割版本；</p>
+<hr>
+<blockquote>
+<p>Q：处理器和CPU的关系？</p>
+</blockquote>
+<p>A：电脑中不止一个处理器，其中最重要的中央处理器我们称为CPU(<em>Central Processing Unit</em>)，关于操作系统中我们提到的处理机，可以认为是处理机&#x3D;CPU+存储器+I&#x2F;O接口；</p>
+<blockquote>
+<p>Q：现在的电脑上是几个CPU？</p>
+</blockquote>
+<p>A：市面上的电脑都只是一个CPU（因为它们的主板仅支持一个CPU），理论上是可以装多个CPU的（也就是多处理器，这需要主板的支持），但是这种电脑基本上不会售卖给普通用户（太贵了，而且日常生活根本用不了两个CPU）</p>
+<blockquote>
+<p>Q：四核八线程究竟是什么意思？这个线程是不是就是我们操作系统里面讲的线程？</p>
+</blockquote>
+<p>A：回答参考<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/36883660/answer/69420964">怎么理解市场上的多核笔记本，是真的多核吗? 四核八线程怎么理解？ 可以做并行开发吗？ - 知乎 (zhihu.com)</a></p>
+<p>首先四核八线程表示这个PC上有一个CPU，该CPU有四个独立的核心（每个核心包含一套完整的流水线、主要存储单元、缓存、主要执行单元等，但是这四个核心一般不会完全独立运行），八线程指的是这四个核心能够支持最多同时执行八组任务&#x2F;作业（具体怎么支持的这就是咱们操作系统要讲的了，多线程并发执行既可以从软件也可以从硬件上实现）；</p>
+<p>这里讲的线程和操作系统中的线程相同点在于都是最基本的调度单位，不同点在于CPU的线程是实际上逻辑处理器的个数（固定），操作系统的线程是工作中开的几百几千个的线程（可变）：</p>
+<ul>
+<li>进程是最小的资源分配单位；</li>
+<li>线程是调度的基本单位（在支持线程的系统中才有线程的概念，Linux没有线程的概念）；</li>
+</ul>
+<p>那么工作中开了几百个线程，远远大于CPU支持的线程，这可能吗？这是完全可能的，参考下面这张图（待会下面还会说到，图中的逻辑处理器就是我们常说的6核12线程的线程），这就需要操作系统的介入来调度执行这些线程，至于这怎么实现的可以参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42940836/article/details/124132744">(29条消息) 普通PC的CPU只有几个核心，是怎么对付成百上千个线程的_金装二百五的博客-CSDN博客</a></p>
+<p><img src="/images/image-20220925102706724.png" srcset="/img/loading.gif" lazyload></p>
+<p>关于线程的并发执行我们做一个小总结：</p>
+<p>不论是在多处理器的计算机上还是在单处理器的计算机上，线程总是“并发”执行的。当线程数量小于等于处理器（逻辑处理器也算）数量时，线程的并发是真正的并发，不同的线程运行在不同的处理器上，彼此之间互不相干；但对于线程数量大于处理器数量的情况，线程的并发会受到一些阻碍，因为此时至少有一个处理器会运行多个线程。</p>
+<blockquote>
+<p>Q：讲了那么多感觉有点懂了但是又好像还是有点迷糊，要不总结一下？</p>
+</blockquote>
+<p>A：回答参考<a target="_blank" rel="noopener" href="https://www.cnblogs.com/net-saiya/p/14069971.html">CPU个数、CPU核心数、CPU线程数(逻辑处理器) - 一切从新开始 - 博客园 (cnblogs.com)</a></p>
+<ul>
+<li>CPU个数：CPU芯片的个数，市面上的电脑都只有一个CPU；</li>
+<li>CPU核心数：现在市面上的电脑都是多核处理器，多核就是指硬件上存在着几个核心。比如，双核就是包括2个相对独立的CPU核心单元组，四核就包含4个相对独立的CPU核心单元组；</li>
+<li>逻辑处理器&#x2F;线程：模拟出的CPU核心数，这利用到了超线程技术；（不要被网上说的什么只有Intel有超线程但是AMD没有，为啥我的AMD就有多线程？ —— 有一种可能是2022年AMD已经能够实现超线程技术）<ul>
+<li>CPU的线程：有几个能干活的；</li>
+<li>操作系统的线程：有多少活需要干；</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>Q：Windows的线程和Linux的线程区别在哪里？</p>
+</blockquote>
+<p>Winodws中的进程和线程概念非常明确，并且有相应的Windows API能够创建（CreateProcess和CreateThread）并操纵；</p>
+<p>Linux中实际上是没有进程和线程概念的（只是很多时候我们习惯性的将Windows的概念套用在Linux上），我们在Linux中创建的线程本质上是使用进程来模拟（而这种模拟出来的进程比实际上的进程要“轻量”一些，因此在Linux中我们称线程为轻量级进程LWP），Linux中将所有的执行实体（无论是线程还是进程）都称为<code>任务</code>，每个任务都类似于Windows下的单线程进程，不同之处在于这些任务都“轻量”且可以选择共享内存空间；Linux下使用以下系统调用创建任务</p>
+<p><img src="/images/image-20220925112541632.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<h2 id="2-线程模型"><a href="#2-线程模型" class="headerlink" title="2.线程模型"></a>2.线程模型</h2><p>大多数操作系统（包括Windows和Linux），都在内核里提供线程的支持，内核线程由多处理器或操作系统调度实现并发；</p>
+<p>然而用户实际使用的线程并不是内核线程，而是存在于用户态的用户线程：用户线程不一定对应同等数量的内核线程；</p>
+<blockquote>
+<p>一对一模型</p>
+</blockquote>
+<p>一个用户使用的线程唯一对应一个内核使用的线程（但是一个内核中的线程不一定有用户线程对应）</p>
+<p><img src="/images/image-20220925114145646.png" srcset="/img/loading.gif" lazyload></p>
+<p>一对一模型的优点：</p>
+<ul>
+<li>这样用户线程就和内核线程一致，线程之间的并发是真正的并发，一个线程因为某原因阻塞时，其他线程执行不会受到影响；</li>
+<li>此外，一对一模型也可以让多线程程序在多处理器的系统上有更好的表现；</li>
+</ul>
+<p>一对一模型的缺点：</p>
+<ul>
+<li>由于许多操作系统限制了内核线程的数量，因此一对一线程会让用户的线程数量受到限制；</li>
+<li>许多操作系统内核线程调度时，上下文切换的开销较大，导致用户线程的执行效率下降；</li>
+</ul>
+<blockquote>
+<p>多对一模型</p>
+</blockquote>
+<p>多个用户线程映射到一个内核线程上，线程之间的切换由用户态代码进行（因此相对于一对一，多对一的线程切换会很快）</p>
+<p><img src="/images/image-20220925114421157.png" srcset="/img/loading.gif" lazyload></p>
+<p>多对一模型的优点：</p>
+<ul>
+<li>高效的上下文切换和几乎无限制的线程数量；</li>
+</ul>
+<p>多对一模型的缺点：</p>
+<ul>
+<li>如果其中一个用户线程阻塞，那么所有的线程都将无法执行，因为此时内核里的线程也随之阻塞了；</li>
+<li>另外，在多处理器系统上，处理器的增多对多对一模型的线程性能也不会有明显的帮助；</li>
+</ul>
+<blockquote>
+<p>多对多模型</p>
+</blockquote>
+<p>多对多模型结合一对一和多对一的优点，将多个用户进程映射到少数但不止一个内核线程上：</p>
+<ul>
+<li><p>在多对多模型中，一个用户线程阻塞并不会使得所有的用户线程阻塞，因为此时还有别的线程可以被调度来执行；</p>
+</li>
+<li><p>另外，多对多模型对用户线程的数量也没什么限制，在多处理器系统上，多对多模型的线程也能得到一定的性能提升，不过提升的幅度不如一对一模型高；</p>
+</li>
+</ul>
+<p><img src="/images/image-20220925114746034.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="——–静态链接——–"><a href="#——–静态链接——–" class="headerlink" title="——–静态链接——–"></a>——–静态链接——–</h1><h1 id="第二章-编译和链接"><a href="#第二章-编译和链接" class="headerlink" title="第二章 编译和链接"></a>第二章 编译和链接</h1><p>通常我们很少关注编译和链接过程，因为在Windows环境下我们的开发环境几乎都是集成开发环境IDE，这样的IDE通常将编译和链接过程一步完成，这样的过程合并称为构建Build；然而IDE为我们提供的强大功能导致很多系统软件的运行机制和机理被掩盖，因此需要深入了解这些机制很有必要；</p>
+<p>下面我们的讨论无特殊说明的情况下都默认是在Linux系统下进行相关分析；</p>
+<h2 id="1-构建"><a href="#1-构建" class="headerlink" title="1.构建"></a>1.构建</h2><p>将一个源文件构建成一个可执行文件主要分为如下四步：</p>
+<ul>
+<li>预处理Prepressing：将.c文件预编译为.i文件；</li>
+<li>编译Compilation：将.i文件预编译为.s汇编码文件；</li>
+<li>汇编Assembly：将.s文件汇编为.o目标文件；</li>
+<li>链接Linking：将一系列.o文件以及相关库文件进行链接得到可执行文件.out；</li>
+</ul>
+<h3 id="1-1-预编译"><a href="#1-1-预编译" class="headerlink" title="1.1 预编译"></a>1.1 预编译</h3><p>源代码文件.c以及相关头文件.h被预编译为.i文件，预编译过程主要处理那些源代码文件中以#开始的预编译指令，主要处理规则如下：</p>
+<ul>
+<li><p>将所有的”#define”删除，并且展开所有的宏定义；</p>
+</li>
+<li><p>处理所有条件预编译指令，比如”#if”、”#ifdef”、”#elif”、”#else”、“#endif”；</p>
+</li>
+<li><p>处理”#include”预编译指令，将被包含的文件插入到该预编译指令的位置。注意，这个过程是递归进行的，也就是说被包含的文件可能还包含其他文件；</p>
+</li>
+<li><p>删除所有的注释“&#x2F;&#x2F;”和“&#x2F;**&#x2F;”；</p>
+</li>
+<li><p>添加行号和文件名标识，比如<code>#2“hello.c”2</code>，以便于编译时编译器产生调试用的行号信息及用于编译时产生编译错误或警告时能够显示行号；</p>
+</li>
+<li><p>保留所有的#pragma编译器指令，因为编译器须要使用它们；</p>
+</li>
+</ul>
+<p>经过预编译之后的.i文件不会包含任何宏定义（所有的宏都被展开）；</p>
+<h3 id="1-2-编译"><a href="#1-2-编译" class="headerlink" title="1.2 编译"></a>1.2 编译</h3><blockquote>
+<p>编译过程就是把预处理完的文件进行一系列词法分析、语法分析、语义分析及优化，最后生成相应的汇编代码文件；（这个部分在编译原理中有详细解释<a href="https://gintoki-jpg.github.io/2022/09/20/%E9%80%9A%E8%AF%86_%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/">汇编语言 - Tintoki_blog (gintoki-jpg.github.io)</a>）</p>
+</blockquote>
+<p>有些版本的GCC将预编译和编译两个步骤合并成一个步骤（称为预编译编译），编译过程主要步骤如下：</p>
+<ul>
+<li>扫描.i文件（与词法分析同步进行）；</li>
+<li>词法分析：将源码的空字符去除，每个非空字符转换为一个token；</li>
+<li>语法分析：对token进行构建，将其组合为语法树；</li>
+<li>语义分析：对语法树的叶结点进行检查并标识节点类型；</li>
+<li>中间语言：将语法树拆分为顺序表示，将整个式子优化得到中间代码；</li>
+<li>目标代码生成以及优化；</li>
+</ul>
+<h3 id="1-3-汇编"><a href="#1-3-汇编" class="headerlink" title="1.3 汇编"></a>1.3 汇编</h3><p>汇编器将汇编代码转换成机器指令，因为几乎汇编语言和机器语言一一对应，所以汇编相较于编译更简单，只需要根据汇编指令和机器指令对照表逐个翻译即可；</p>
+<h3 id="1-4-链接"><a href="#1-4-链接" class="headerlink" title="1.4 链接"></a>1.4 链接</h3><p>很多人有疑惑，为什么汇编器不直接输出可执行文件而是输出一个目标文件呢？</p>
+<p>这是因为我们需要将一大堆文件链接起来才能得到最终的可执行文件，至于为什么，我们会在之后逐个介绍、层层深入；</p>
+<h2 id="2-编译过程"><a href="#2-编译过程" class="headerlink" title="2.编译过程"></a>2.编译过程</h2><p>尽管这部分编译原理有详细讲解，但是我们这里先串一遍以及介绍一些编译原理中没有涉及到的知识；</p>
+<p>我们使用下面这行代码作为讲解源文件CompilerExpression.c，简述它如何从源代码到最终代码</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-built_in">array</span>[index] = (index+<span class="hljs-number">4</span>)*(<span class="hljs-number">2</span>+<span class="hljs-number">6</span>)<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-1-词法分析"><a href="#2-1-词法分析" class="headerlink" title="2.1 词法分析"></a>2.1 词法分析</h3><blockquote>
+<p>将源代码分割为token并去除空格</p>
+</blockquote>
+<p>首先源代码会被程序输入到扫描器中，扫描器进行词法分析，运用一种类似有限自动机的算法将源代码的字符序列分割成一系列的记号token；</p>
+<p>CompilerExpression.c经过扫描之后产生了16个记号</p>
+<p><img src="/images/image-20220925220311976.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20220925220356183.png" srcset="/img/loading.gif" lazyload></p>
+<p>词法分析产生的记号可以大致分为：</p>
+<ul>
+<li>标识符</li>
+<li>关键字</li>
+<li>字面量（数字、字符串等）</li>
+<li>特殊符号（运算符号）</li>
+</ul>
+<p>当然在识别记号的同时，扫描器也完成了其他工作比如将标识符存入符号表，将数字、字符串常量存放到文字表等；</p>
+<h3 id="2-2-语法分析"><a href="#2-2-语法分析" class="headerlink" title="2.2 语法分析"></a>2.2 语法分析</h3><blockquote>
+<p>对token进行语法分析产生Syntax Tree</p>
+</blockquote>
+<p>接着语法分析器会对记号进行语法分析，整个分析过程采用上下文无关语法的分析手段，产生的语法树是以表达式为节点的树；</p>
+<p>例子中的语法树如下</p>
+<p><img src="/images/image-20220925220903000.png" srcset="/img/loading.gif" lazyload></p>
+<p>观察上述语法树我们可以知道：</p>
+<ul>
+<li>符号和数字是最小的表达式，所以它们通常作为整个语法树的叶结点；</li>
+<li>语法分析的同时大多数运算符号的优先级被确定（如圆括号表达式的优先级比乘法高，乘法表达式的优先级比加法高等）；</li>
+<li>有些符号具有多重含义，语法分析阶段需要对这种内容进行区分；</li>
+<li>如果出现表达式不合法（如括号不匹配）则编译器报告语法分析阶段的错误；</li>
+</ul>
+<h3 id="2-3-语义分析"><a href="#2-3-语义分析" class="headerlink" title="2.3 语义分析"></a>2.3 语义分析</h3><blockquote>
+<p>对语法树的节点进行检查并标识</p>
+</blockquote>
+<p>语法合规的句子不一定有意义，比如“你飞小鸡”；</p>
+<p>编译器能够分析的语义是静态语义，也就是在编译期间可以确定的语义，静态语义通常包括声明和类型的匹配、类型的转换；</p>
+<p>经过语义分析器分析之后，整个语法树的表达式都被标识了类型（如果有些类型需要做隐式转换则语义分析程序会在语法树中插入相应的转换节点）；</p>
+<p>例子中的语法树如下</p>
+<p><img src="/images/image-20220925221648475.png" srcset="/img/loading.gif" lazyload></p>
+<p>可以看到每个表达式都被标识了类型，语义分析器在进行语义分析的同时还对符号表中的符号类型进行了更新；</p>
+<h3 id="2-4-中间语言生成"><a href="#2-4-中间语言生成" class="headerlink" title="2.4 中间语言生成"></a>2.4 中间语言生成</h3><blockquote>
+<p>对语法树进行优化（将其转换为中间代码并优化）</p>
+</blockquote>
+<p>简单举个例子，上面的表达式(2+6)在编译的过程中就可以确定它的值；</p>
+<p>因为直接在语法树上进行优化比较困难，所以源代码优化器（优化器的一种）往往将整个语法树转换为中间代码（即语法树的顺序表示）；</p>
+<p>中间代码接近目标代码，但是一般它和目标机器以及运行环境无关；</p>
+<p>中间代码有很多种类型，在不同的编译器中有不同的表现形式，比较常见的有<code>三地址码</code>和<code>P-代码</code>：</p>
+<ul>
+<li>一个三地址码语句中有三个变量地址</li>
+</ul>
+<p>上述例子中的语法树被翻译为如下三地址码：</p>
+<p><img src="/images/image-20220925222433121.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>中间代码使得编译器可以分为前端和后端，前端负责产生与机器无关的中间代码，后端将中间代码转换成目标机器代码</p>
+</blockquote>
+<h3 id="2-5-目标代码生成与优化"><a href="#2-5-目标代码生成与优化" class="headerlink" title="2.5 目标代码生成与优化"></a>2.5 目标代码生成与优化</h3><p>编译器后端主要包含代码生成器和目标代码生成器：</p>
+<ul>
+<li>代码生成器将中间代码转换为目标机器代码（这个过程十分依赖目标机器）；</li>
+</ul>
+<p><img src="/images/image-20220925222936303.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>目标代码优化器对上述目标代码进行优化，比如选择合适的寻址方式、删除多余的指令等</li>
+</ul>
+<p><img src="/images/image-20220925222912716.png" srcset="/img/loading.gif" lazyload></p>
+<p>当我们得到目标文件后会遇到新的问题，目标代码中定义在其他模块的变量的地址应该如何确定？事实上，定义其他模块的全局变量和函数最终在运行时的绝对地址都要在链接的时候才能确定；</p>
+<hr>
+<blockquote>
+<p>Q：操作系统说在程序载入的时候使用重定位确定程序的实际地址，这里所说的链接确定绝对地址，这有冲突吗？</p>
+</blockquote>
+<p>A：当然没有冲突，你自己看看你问的什么问题；</p>
+<hr>
+<h2 id="3-静态链接"><a href="#3-静态链接" class="headerlink" title="3.静态链接"></a>3.静态链接</h2><p>人们将每个源码模块独立地编译，然后按照需求将它们“组装”，这个组装模块的过程就是链接；</p>
+<p>链接过程主要包括地址和空间分配、符号决议和重定位等步骤；</p>
+<p>最基本的静态链接过程如下，每个模块的源代码文件经过编译器编译为目标文件后，目标文件和库文件链接形成可执行文件：</p>
+<ul>
+<li>库文件实际就是一组目标文件的包，是一些最常用的代码编译成目标文件打包的集合；</li>
+<li>最常见的库是运行时库，是支持程序运行的基本函数的集合；</li>
+</ul>
+<h1 id="第三章-目标文件"><a href="#第三章-目标文件" class="headerlink" title="第三章 目标文件"></a>第三章 目标文件</h1><p>.o目标文件即经过编译(我们之后的介绍中在不引起混淆的情况下默认编译就是“源语言为高级语言，目标语言是机器语言”，忽略汇编过程)但并未链接的文件，本章讨论源代码在经过编译后是如何存储的（即.o目标文件中到底存放了什么）；</p>
+<p>.o目标文件从结构上来讲是编译后的可执行文件格式，只是还没有经过链接，其中的某些符号以及某些地址并没有被调整；</p>
+<p>在开始之前我们先给出一些Windows下和Linux相对的概念，便于类比学习（因为整本书是基于Linux系统的，但是我们比较熟悉的是Windows，所以拿Windows辅助理解）：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>可执行文件格式&#x2F;后缀名</th>
+<th>目标文件</th>
+<th>动态链接库</th>
+<th>静态链接库</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Windows</td>
+<td>PE格式&#x2F;.exe文件</td>
+<td>.obj文件</td>
+<td>.dll</td>
+<td>.lib</td>
+</tr>
+<tr>
+<td>Linux</td>
+<td>ELF格式&#x2F;ELF文件</td>
+<td>.o文件</td>
+<td>.so</td>
+<td>.a</td>
+</tr>
+</tbody></table>
+<h2 id="1-目标文件格式"><a href="#1-目标文件格式" class="headerlink" title="1.目标文件格式"></a>1.目标文件格式</h2><p>不管是Windows下的PE可执行文件还是Linux下的ELF可执行文件，都是COFF格式的变种(而COFF是.out的升级版本)；而目标文件从广义上看几乎与可执行文件的格式一样，所以广义上可以将目标文件与可执行文件看作是同种格式的文件：</p>
+<ul>
+<li>Windows下统称为<code>PE-COFF文件格式</code>；</li>
+<li>Linux下统称为<code>ELF文件格式</code>；</li>
+</ul>
+<p>当然不只是目标文件、可执行文件按照可执行文件格式存储，动态链接库和静态链接库文件同样是按照可执行文件格式存储的；因为Linux中除了可执行文件使用ELF格式，还有其他几类文件使用这种格式，所以我们这里总结</p>
+<table>
+<thead>
+<tr>
+<th>ELF文件类型</th>
+<th>说明</th>
+<th>实例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>可重定位文件</td>
+<td>这类文件包含了代码和数据，可以被用来链接成可执行文件或共享目标文件，静态链接库也可以归为这一类</td>
+<td>静态链接库，Linux的.o | Windows的.obj</td>
+</tr>
+<tr>
+<td>可执行文件</td>
+<td>这类文件包含了可以直接执行的程序，它的代表就是ELF可执行文件，它们一般都没有扩展名</td>
+<td>Windows的.exe | Unix的.out</td>
+</tr>
+<tr>
+<td>共享目标文件</td>
+<td>这种文件包含了代码和数据，可以在以下两种情况下使用。一种是链接器可以使用这种文件跟其他的可重定位文件和共享目标文件链接，产生新的目标文件。第二种是动态链接器可以将几个这种共享目标文件与可执行文件结合，作为进程映像的一部分来运行</td>
+<td>动态链接库，Linux的.so | Windows的DLL</td>
+</tr>
+<tr>
+<td>核心转储文件</td>
+<td>当进程意外终止时，系统可以将该进程的地址空间的内容及终止时的一些其他信息转储到核心转储文件</td>
+<td>Linux下的core dump</td>
+</tr>
+</tbody></table>
+<h2 id="2-目标文件结构"><a href="#2-目标文件结构" class="headerlink" title="2.目标文件结构"></a>2.目标文件结构</h2><ul>
+<li>目标文件中至少包含编译后的机器指令代码、数据；</li>
+<li>目标文件中还包含链接时需要的信息如符号表、调试信息、字符串等；</li>
+</ul>
+<p>一般地，目标文件将上述信息按不同的属性以“段”的形式存储：</p>
+<ul>
+<li>程序源代码编译后的机器指令通常被存放在代码段；</li>
+<li>全局变量和局部静态变量数据通常被放在数据段；</li>
+</ul>
+<p>我们先给出一个基本的ELF类型文件的结构作为下面论述的参考</p>
+<p><img src="/images/image-20220928231813312.png" srcset="/img/loading.gif" lazyload></p>
+<p>(1)文件头描述了整个文件的文件属性，包括文件是否可执行、是静态链接还是动态链接、可执行文件入口地址、目标硬件、目标操作系统等信息；文件头还包括一个段表，描述了文件中各个段在文件中的偏移位置以及段的属性等，从段表中可以得到每个段的所有信息；（其实这里有点争议，书中说段表在文件头中，但是又说段表是除了文件头之外最重要的结构，便于理解的话我们认为符号表和段表都在头文件之外）</p>
+<p>(2).bss段只是为了未初始化的全局变量和局部静态变量预留位置，实际上它并没有内容，因此它在文件中也不占据空间；尽管.bss段的变量只有名称和大小，但是没有具体值，但仍然需要在段表中记录大小，在符号表中记录符号；</p>
+<hr>
+<blockquote>
+<p>Q：有个问题困扰我很久了，编译原理中说符号表是用来记录标识符及其相关信息，是不是意味着标识符就是符号？符号到底是个啥玩意？</p>
+</blockquote>
+<p>A：官方解释是，符号表示一个地址，该地址可能是某个函数&#x2F;子程序的起始地址，也可能是某个变量的起始地址；符号名是链接过程中的函数名或变量名；</p>
+<p>在计算机编程语言中，标识符是用户编程时使用的名字，用于给变量、常量、函数、语句块等命名；</p>
+<p>所以我们其实是可以认为标识符等价于符号（注意是符号而不是单词符号，单词符号包括了标识符），常见的符号有如下：</p>
+<ul>
+<li>全局符号（main函数）；</li>
+<li>外部符号（引用的其他目标文件中的全局符号）；</li>
+<li>段名（如.data或.text）；</li>
+<li>局部符号（局部变量，这样的符号对链接没有作用）；</li>
+<li>行号信息（不可见，同样对链接没有作用）；</li>
+<li>特殊符号（由特定的链接器决定）；</li>
+</ul>
+<p>后面我们还会好好介绍符号，现在先不要着急，一步一步学习；</p>
+<hr>
+<h3 id="2-1-字符串表"><a href="#2-1-字符串表" class="headerlink" title="2.1 字符串表"></a>2.1 字符串表</h3><p>ELF文件中有很多字符串，如段名、变量名等，因为字符串的长度不固定所以一种常见的做法就是将字符串集中放在一个表，然后使用字符串在表中的偏移来引用字符串；</p>
+<p>如下是一个基本的字符串表</p>
+<p><img src="/images/image-20220929084743494.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-2-符号表"><a href="#2-2-符号表" class="headerlink" title="2.2 符号表"></a>2.2 符号表</h3><p>链接过程中，我们将函数和变量统称为符号，变量名或函数名统称为符号名；</p>
+<p>ELF文件中的符号表结构很简单，是一个Elf32_Sym结构的数组，每个Elf32_Sym对应一个符号；</p>
+<p>现在我们来介绍一下强符号和弱符号：</p>
+<ul>
+<li>强符号：编译器默认函数和初始化过的全局变量&#x2F;函数；</li>
+<li>弱符号：未初始化的全局变量&#x2F;函数</li>
+</ul>
+<p>针对强弱符号的概念，链接器会按照如下规则处理与选择被多次定义的全局符号：</p>
+<p>规则1：不允许强符号被多次定义（即不同的目标文件中不能有同名的强符号）：如果有多个强符号定义，则链接器报符号重复定义错误。<br>规则2：如果一个符号在某个目标文件中是强符号，在其他文件中都是弱符号，那么选择强符号。<br>规则3：如果一个符号在所有目标文件中都是弱符号，那么选择其中占用空间最大的个。比如目标文件A定义全局变量global为int型，占4个字节：目标文件B定义 global为double型，占8个字节，那么目标文件A和B链接后，符号global占8个字节（尽量不要使用多个不同类型的弱符号，否则容易导致很难发现的程序错误）。</p>
+<p>对外部目标文件的符号引用在目标文件中最终被链接成可执行文件时，需要被正确的决议：</p>
+<ul>
+<li>强引用：如果对外部符号进行引用，但并未找到该符号的定义，则链接器报错；</li>
+<li>弱引用：如果对外部符号进行引用，但并未找到该符号的定义，链接器不会报错但是会默认赋值；</li>
+</ul>
+<p>强引用和弱引用主要用于库的链接过程；</p>
+<p>弱符号和弱引用对库来说十分有用：</p>
+<ul>
+<li>库中定义的弱符号可以被用户定义的强符号覆盖，从而使得程序可以使用自定义版本的库函数；</li>
+<li>程序可以对某些扩展功能模块的引用定义为弱引用，当我们将扩展模块与程序链接在一起时，功能模块就可以正常使用；如果我们去掉了某些功能模块，那么程序也可以正常链接，只是缺少了相应的功能，这使得程序的功能更加容易裁剪和组合；</li>
+</ul>
+<h1 id="第四章-静态链接"><a href="#第四章-静态链接" class="headerlink" title="第四章 静态链接"></a>第四章 静态链接</h1><p>我们已经对ELF文件从整体轮廓到某些局部的细节都有一定的了解，当我们有两个目标文件时，如何将它们链接起来形成一个可执行文件？</p>
+<p>下面我们使用a.c和b.c作为例子展开本章的内容</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">extern</span> <span class="hljs-type">int</span> shared;<br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span>&#123;					<span class="hljs-comment">//全局符号main</span><br>    <span class="hljs-type">int</span> a = <span class="hljs-number">100</span>;<br>    swap(&amp;a,&amp;shared);		<span class="hljs-comment">//引用b.c中的swap和shared</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> shared = <span class="hljs-number">1</span>;				<span class="hljs-comment">//全局符号shared</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">swap</span><span class="hljs-params">(<span class="hljs-type">int</span> *a,<span class="hljs-type">int</span> *b)</span>&#123;	 <span class="hljs-comment">//全局符号swap</span><br>    *a^=*b^=*a^=*b;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>将上述两个源文件经过编译后得到a.o和b.o两个目标文件，我们要做的就是将a.o和b.o两个目标文件链接在一起形成一个可执行文件ab；</p>
+<hr>
+<p>这里额外花点时间介绍一下extern关键字的用法；</p>
+<p>C++为了和C兼容，在符号管理上，C++有一个用于声明或定义C的符号的关键字（当然”extern”绝对不止这一个用法）：</p>
+<ul>
+<li>extern标识的变量或函数声明，它们定义在别的文件中，提示编译器在其他模块中寻找定义；</li>
+<li>extern是C&#x2F;C++中表明函数和全局变量作用范围的关键字；</li>
+<li>extern “C”是用于定义或声明一个C符号的关键字，C++编译器会将在extern “C”的大括号内部的代码当作C语言代码处理；</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">extern</span> <span class="hljs-string">&quot;C&quot;</span>&#123;<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">func</span><span class="hljs-params">(<span class="hljs-type">int</span>)</span></span>;<br>    <span class="hljs-type">int</span> var;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<hr>
+<p>首先抛出第一个问题：对于多个输入目标文件，链接器如何将它们的各个段合并到输出文件？</p>
+<p>最简单的方法是将输入的目标文件按照次序叠加起来</p>
+<p><img src="/images/image-20220929103556021.png" srcset="/img/loading.gif" lazyload></p>
+<p>这样做会造成的问题就是在有很多输入文件的情况下，输出文件会有很多零散的段，这将浪费大量空间；</p>
+<p>很自然的，我们想到将相似的段进行合并，如下所示</p>
+<p><img src="/images/image-20220929103821271.png" srcset="/img/loading.gif" lazyload></p>
+<p>现在的链接器空间分配策略基本都采用的是这种方法，使用这种方法的链接器一般采用一种叫做<code>两步链接</code>的方法，整个链接过程分两步：</p>
+<ol>
+<li>空间与地址分配：扫描所有的输入目标文件，并且获得它们的各个段的长度、属性和位置，并且将输入目标文件中的符号表中所有的符号定义和符号引用收集起来，统一放到一个全局符号表。这一步中，链接器将能够获得所有输入目标文件的段长度，并且将它们合并，计算出输出文件中各个段合并后的长度与位置，并建立映射关系。</li>
+<li>符号解析与重定位：使用上面第一步中收集到的所有信息，读取输入文件中段的数据、重定位信息，并且进行符号解析与重定位、调整代码中的地址等。事实上第二步是链接过程的核心，特别是重定位过程。</li>
+</ol>
+<p>链接后程序中使用的地址是程序在进程中的虚拟地址（不要关注实际物理地址，从用户的角度看待问题，虚拟地址到物理地址的映射交给操作系统处理）-关于这点其实有争议，因为操作系统中我们介绍过实际重定位有三种形式，这里应该指的是编译时重定位；</p>
+<h2 id="1-符号解析与重定位"><a href="#1-符号解析与重定位" class="headerlink" title="1.符号解析与重定位"></a>1.符号解析与重定位</h2><p>链接过程的重定位我们就不做介绍（因为在操作系统中已经有过详细的介绍了），链接的另一个作用在于目标文件中用到的符号被定义在其他目标文件中故需要链接；</p>
+<p>重定位过程伴随着符号的解析过程，每个目标文件都可能定义一些符号，也可能引用到定义在其他目标文件的符号。重定位的过程中，每个重定位的入口都是对一个符号的引用，那么当链接器须要对某个符号的引用进行重定位时，它就要确定这个符号的目标地址。这时候链接器就会去查找由所有输入目标文件的符号表组成的全局符号表，找到相应的符号后进行重定位；</p>
+<p>在链接器扫描完所有的输入目标文件之后，所有这些未定义的符号都应该能够在全局符号表中找到，否则链接器就报符号未定义错误；</p>
+<h2 id="2-COMMON块"><a href="#2-COMMON块" class="headerlink" title="2.COMMON块"></a>2.COMMON块</h2><p>本节主要介绍不进入BSS段的那些符号是如何被处理的；</p>
+<p>前面说到，由于弱符号机制允许同一个符号的定义存在于多个文件中，所以可能导致如果一个弱符号定义在多个目标文件中而它们的类型不同，我们该如何处理（因为符号类型对链接器是透明的），主要有如下符号定义类型不一致的几种情况：</p>
+<ul>
+<li>两个或两个以上强符号类型不一致 —— 这种情况无需处理，因为多个强符号定义本身就是非法的，链接器报符号多重定义错误；</li>
+<li>有一个强符号，其他都是弱符号，类型不一致；</li>
+<li>两个或两个以上若符号类型不一致；</li>
+</ul>
+<hr>
+<p>2022&#x2F;9&#x2F;30 17:07 可能我们得把这本书的整理放一放了，这本书确实写的很好很好，介绍的概念基本上都是以前没有听说过的或者一直在编程过程中直到但是没有引起重视的，但是现在因为时间关系所以我们先放一下，之后需要使用的时候再继续看；</p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E9%80%9A%E8%AF%86%E8%AF%BE%E7%A8%8B/" class="category-chain-item">通识课程</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/">#课程学习</a>
+      
+        <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">#计算机基础</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>程序员的自我修养</div>
+      <div>https://gintoki-jpg.github.io/2022/09/25/通识_程序员的自我修养/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>杨再俨</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年9月25日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/09/29/%E9%A1%B9%E7%9B%AE_bos/" title="中级项目_bos lab">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">中级项目_bos lab</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/09/20/%E9%80%9A%E8%AF%86_%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/" title="汇编语言">
+                        <span class="hidden-mobile">汇编语言</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+</div>
+
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

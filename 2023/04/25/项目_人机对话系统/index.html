@@ -1,0 +1,837 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/logo.png">
+  <link rel="icon" href="/img/bg/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="杨再俨">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="自然语言处理课程设计；">
+<meta property="og:type" content="article">
+<meta property="og:title" content="中级项目_人机对话系统">
+<meta property="og:url" content="https://gintoki-jpg.github.io/2023/04/25/%E9%A1%B9%E7%9B%AE_%E4%BA%BA%E6%9C%BA%E5%AF%B9%E8%AF%9D%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:site_name" content="Tintoki_blog">
+<meta property="og:description" content="自然语言处理课程设计；">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/project.png">
+<meta property="article:published_time" content="2023-04-25T13:50:00.000Z">
+<meta property="article:modified_time" content="2023-06-13T08:45:18.630Z">
+<meta property="article:author" content="YangZaiyan">
+<meta property="article:tag" content="自然语言处理">
+<meta property="article:tag" content="NLP">
+<meta property="article:tag" content="深度学习">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gintoki-jpg.github.io/img/bg/project.png">
+  
+  
+  
+  <title>中级项目_人机对话系统 - Tintoki_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"gintoki-jpg.github.io","root":"/","version":"1.9.1","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tintoki_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/bg1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">中级项目_人机对话系统</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-04-25 21:50" pubdate>
+          2023年4月25日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          11k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          91 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">中级项目_人机对话系统</h1>
+            
+            <div class="markdown-body">
+              
+              <p>参考资料：</p>
+<ul>
+<li>综述：<a target="_blank" rel="noopener" href="https://github.com/qhduan/ConversationalRobotDesign">qhduan&#x2F;ConversationalRobotDesign: 对话机器人（聊天机器人）设计思考 (github.com)</a>；</li>
+<li>参考代码：<ul>
+<li>后端模型：<a target="_blank" rel="noopener" href="https://github.com/Schellings/Seq2SeqModel">Schellings&#x2F;Seq2SeqModel: 基于小黄鸡50w对话语料构建的SequenceToSequence生成式对话模型。 (github.com)</a>；</li>
+<li>前端界面：<a target="_blank" rel="noopener" href="https://github.com/Schellings/chatbot_html">Schellings&#x2F;chatbot_html: 聊天机器人前端网页，通过Ajax请求后端接口，返回机器人应答数据。 (github.com)</a>；</li>
+<li>代码配套视频：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1QY411L7Cf/?vd_source=276d55048634a5b508b1b53a1ecd56b3">NLP 实践 TensorFlow 打造聊天机器人_哔哩哔哩_bilibili</a>；</li>
+<li>代码配套文案：<a target="_blank" rel="noopener" href="https://blog.csdn.net/icarus_/category_11519669.html">(5条消息) NLP实践TensorFlow打造Android聊天机器人_Icarus_的博客-CSDN博客</a>；</li>
+</ul>
+</li>
+<li>语料库：<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/codemayq/chinese_chatbot_corpus">codemayq&#x2F;chinese_chatbot_corpus: 中文公开聊天语料库 (github.com)</a>；</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/candlewill/Dialog_Corpus">candlewill&#x2F;Dialog_Corpus: 用于训练中英文对话系统的语料库 Datasets for Training Chatbot System (github.com)</a>；</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>2023&#x2F;4&#x2F;25 22:01 选择的题目是基于文本的人机对话系统，相对来说是所有题目中虽简单的一个，但是网上的相关资料仍然不是很多，所以还是需要进行大范围的筛选得到合适的代码和参考；</p>
+<p>2023&#x2F;4&#x2F;25 23:11 刚刚稍微了解了一下，然后发现之所以网上没有相关资料是因为检索的内容不正确，只需要检索“聊天机器人”即可获得大量参考资料；</p>
+<p>2023&#x2F;4&#x2F;26 10:17 网上的chatbot的相关资料比较少，可能是因为这不是最近的热门？大部分代码还是较老的版本，尽量选择较新的版本作为参考；另一方面，大部分代码并不是自己手动撸的，仅仅只是调用各种各样的语音转文本接口、智能机器人接口等实现，这种代码参考不得；</p>
+<p>2023&#x2F;4&#x2F;26 16:03 刚才尝试运行了代码，非常顺利的得到了较好的运行结果（只是不知道为什么有些时候会答非所问，但是一开始的表现已经足够支持我选择这份代码作为参考了）。代码主要分为两部分，前端部分是一个html网页，主要用于与用户进行交互，后端部分主要分为模型训练部分和前端交互部分。个人认为需要改的就是模型训练部分和前端展示部分，参考资料（教程类）目前还没有搜集到很多，一步一步来；</p>
+<p>2023&#x2F;4&#x2F;27 20:41 这个视频教程说实话非常水，大概看一看了解使用了什么技术之后自行Google深入学习；基本等于啥也没讲（刚才速刷基本刷完了），先简单的把近几年的NLP技术过一遍，然后从代码入手，本质上我们还是基于代码来理解整个项目；</p>
+<hr>
+<h1 id="一、背景介绍"><a href="#一、背景介绍" class="headerlink" title="一、背景介绍"></a>一、背景介绍</h1><h2 id="1-对话机器人概述"><a href="#1-对话机器人概述" class="headerlink" title="1.对话机器人概述"></a>1.对话机器人概述</h2><p>一般来说一个完整的对话机器人(例如Siri、小艺)的实现包含以下三个部分：对话系统、问答系统+聊天机器人，当然如果仅仅只是想实现一个陪伴闲聊的系统那么只需实现一个聊天机器人即可。</p>
+<h3 id="1-1-对话系统"><a href="#1-1-对话系统" class="headerlink" title="1.1 对话系统"></a>1.1 对话系统</h3><p>对话系统特指Task-oriented dialogue system，即为了完成某一种任务而发明的对话系统，这种任务的特征有：</p>
+<ul>
+<li><code>结果唯一</code>，例如买一张机票，订一场电影，买一杯咖啡；</li>
+<li><code>任务需要多项要素</code>，例如机票需要时间、起始地、到达地；电影需要名称、电影院、场次时间；咖啡需要时间、大杯小杯、口味；</li>
+<li><code>任务需要通过多轮对话、多轮反复确认达成</code>，例如：你要大杯的咖啡还是小杯的？你需要几点送？你确定要 9 点送？</li>
+</ul>
+<h3 id="1-2-问答系统"><a href="#1-2-问答系统" class="headerlink" title="1.2 问答系统"></a>1.2 问答系统</h3><p>QA系统既不能帮你买咖啡也不能帮你订机票，仅仅只是一个问答系统。</p>
+<p>一个最简单的问答系统就是当数据足够多的时候，去匹配问题的相似度，若匹配成功则接给用户这个问题的答案，该方法存在很多问题：</p>
+<p>1、准确率取决于相似度算法；<br>2、很难设置相似度算法的阈值；<br>3、数据库要求比较大；<br>4、扩展性比较差；</p>
+<p>但实际上该算法作为最基本的一部分，是对话机器人不可缺少的：</p>
+<p>1、不需要训练，假设你的领导要你给线上产品添加一个问答的时候，他并不喜欢：“我的深度学习模型训练5个小时之后，这个答案就上线了”，这样的回答；<br>2、自定义问题成本低；<br>3、非常容易解释；<br>4、对于完全匹配的问题可以绝对准确，如果是其他的概率模型的话，就必然有可能不准确，而简单的模型不会出错；</p>
+<h4 id="1-2-1-问答对"><a href="#1-2-1-问答对" class="headerlink" title="1.2.1 问答对"></a>1.2.1 问答对</h4><p>注意与“Knowledge based QA”区分，该系统使用的训练数据都是问答对（即问题是一句话，回答是确定的一个词或一句话），而问答对并不能构成知识，知识必须是有结构的、有属性的、互相关联的数据。</p>
+<h4 id="1-2-2-基于知识的问答"><a href="#1-2-2-基于知识的问答" class="headerlink" title="1.2.2 基于知识的问答"></a>1.2.2 基于知识的问答</h4><p>（此部分实际就是知识图谱课程的问答系统那部分实现的功能）</p>
+<p>学术上不区分基于知识的问答，还是基于知识图谱的问答（知识和知识图谱的概念可以认为等价）。</p>
+<p>要构建这种类型的问答系统，需要提供一个知识库，例如一堆有关联的三元组（Triples），它们可以存储于普通数据库或者专门的图数据库（graph database），或者语义网相关的 RDF 数据库。</p>
+<p>系统的输入是自然语言，上下文是知识库，输出结果往往是知识库中的一个关系或者一个实体。</p>
+<h4 id="1-2-3-基于检索的问答"><a href="#1-2-3-基于检索的问答" class="headerlink" title="1.2.3 基于检索的问答"></a>1.2.3 基于检索的问答</h4><p>基于检索的问答系统也可以被称为Text-based的问答，问答的输入是用户的一个问题，而上下文是一个或多个文字信息碎片，输出答案可能是一个实体、一个属性、或者一个短句。</p>
+<h3 id="1-3-聊天机器人"><a href="#1-3-聊天机器人" class="headerlink" title="1.3 聊天机器人"></a>1.3 聊天机器人</h3><p>聊天机器人chatbot也可以被称为Non-task-oriented dialogue system，或者 General dialogue system，此类系统不需要完成一个明确任务（和上面的对话系统相反），它的存在目的往往只是为了尽可能的延长对话，并且完成一些的模糊的目标。例如排解用户无聊，打发时间，一些隐含的心理状况分析，鼓励用户，讨好用户。</p>
+<p>模板方法是机器人相关实现的最重要的方法（没有之一），实际上在绝大多数的对话系统中都依然存在（Siri，小冰），并且在一些学术文献上被证明与其他系统相比依然拥有更好的效果（当然现在(2023&#x2F;4&#x2F;27)已经证明GPT才是最强的）。</p>
+<p>与模板方法相对的，是基于深度学习的 Neural Conversation 模型，是一种基于神经机器翻译技术演变而来的<code>对话生成模型</code>。类似机器翻译（输入的是问题，给出的“翻译”是回答，对话中，上一句对话也可以“翻译”到下一句对话；类似的还有作诗机，上一句诗“翻译”出下一句诗（GPT本质上就是一种基于Transformer的生成式对话模型）。</p>
+<p>另外一种兼容上述两者的模型是混合模式，即兼具检索模式和生成模式，在之前的一段时间作为聊天机器人最常用的一种解决方案。其中的检索模式主要产生候选数据集，生成模式来产生最终的答案。</p>
+<h2 id="2-Seq2Seq架构"><a href="#2-Seq2Seq架构" class="headerlink" title="2.Seq2Seq架构"></a>2.Seq2Seq架构</h2><p>Seq2Seq架构与语言模型的关系：</p>
+<ul>
+<li><p>语言模型是一种可以生成文本或预测一系列单词的可能性的模型。它们通常用于语言生成、文本分类和语言建模等任务。</p>
+</li>
+<li><p>Seq2Seq（序列到序列）是一种神经网络架构，通常用于自然语言处理（NLP）任务，例如机器翻译和文本摘要。该架构旨在接受一系列输入标记（例如单词或字符）并生成一系列输出标记。</p>
+</li>
+</ul>
+<p>Seq2Seq序列可以<code>用作</code>一种语言模型（应用领域交叉），其中输入和输出序列代表同一文本的不同部分。例如，在机器翻译中，输入序列可能是一种语言中的句子，而输出序列则是将该句子翻译成另一种语言的结果。同时Seq2Seq模型可以使用类似于语言模型的技术进行训练，例如最大似然估计或困惑度最小化。还可以使用注意力机制进行增强，这在语言模型中通常用于提高性能。</p>
+<blockquote>
+<p>Seq2Seq架构和语言模型都是NLP中重要的工具，这两个工具没有孰优孰劣之分（毕竟它俩的应用范围不同）：</p>
+<ul>
+<li>Seq2Seq架构通常用于涉及生成或转换序列的任务，例如机器翻译、文本摘要和对话生成。旨在将可变长度的标记序列作为输入，并生成可变长度的标记序列作为输出；</li>
+<li>语言模型在NLP中用于广泛的任务，包括语言生成、文本分类、情感分析等。语言模型旨在预测一系列单词的概率或根据给定提示生成新的文本；</li>
+</ul>
+<p>使用哪种工具取决于具体的任务和输入输出数据的性质。</p>
+</blockquote>
+<p>Seq2Seq（Sequence-to-sequence）正如字面意思：输入一个序列，输出另一个序列，其中输入序列和输出序列的长度是可变的。任何满足[输入序列，输出序列]条件的架构都可以称为Seq2Seq序列架构。</p>
+<p><img src="/images/7de837145a4b5f801bc7dbd3f79ed858-16835051323294.gif" srcset="/img/loading.gif" lazyload alt="Seq2Seq序列问题 -- 翻译“知识就是力量”"></p>
+<p>针对Seq2Seq序列问题，比如翻译一句话，可以通过Encoder-Decoder模型来解决。</p>
+<p>Encoder-Decoder指的是同时具备编码和解码的框架（如下图所示），借助中间的定长向量C传递信息</p>
+<p><img src="/images/image-20230508082044181.png" srcset="/img/loading.gif" lazyload></p>
+<p>针对不同的任务，可以选择不同的编码器和解码器（常选用RNN、LSTM或GRU）</p>
+<h1 id="二、前端网页"><a href="#二、前端网页" class="headerlink" title="二、前端网页"></a>二、前端网页</h1><p>整体目录结构如下</p>
+<p><img src="/images/image-20230612154304906.png" srcset="/img/loading.gif" lazyload></p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs 1c">├─ chatCSS<br><span class="hljs-string">|  └─ chat.css</span><br>├─ chatImages<br>├─ chatJs<br><span class="hljs-string">|  ├─ chat.js</span><br><span class="hljs-string">|  ├─ flexible.js</span><br><span class="hljs-string">|  └─ jquery.min.js</span><br>└─ index.html<br></code></pre></td></tr></table></figure>
+
+<p>其中</p>
+<ul>
+<li>.html文件为网页文件，默认使用浏览器打开渲染得到与用户进行交互的可视化界面；</li>
+<li>chat.css使用css文件对html网页进行可视化的修饰；</li>
+<li>chatImages保存了前端网页中可能会使用到的一些图像文件；</li>
+<li>chatJs为javascript语言编写的网页逻辑交互代码；</li>
+</ul>
+<h2 id="1-chatJs"><a href="#1-chatJs" class="headerlink" title="1.chatJs"></a>1.chatJs</h2><h3 id="1-1-chat-js"><a href="#1-1-chat-js" class="headerlink" title="1.1 chat.js"></a>1.1 chat.js</h3><p>主要实现了一个简单的聊天界面，用户输入消息后将其发送给服务器，并将服务器返回的消息显示在界面上。下面是对代码的一些解释</p>
+<p>定义show函数，用于在聊天界面中显示聊天信息。它接受三个参数：headSrc表示头像的路径，str表示要显示的文本消息，className表示要应用于消息容器的类名。函数会生成一个包含头像和消息文本的HTML字符串，并调用upView函数将该字符串添加到聊天界面中。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/*聊天信息*/</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">show</span>(<span class="hljs-params">headSrc, str, className</span>) &#123;<br>	<span class="hljs-keyword">var</span> html = <span class="hljs-string">&quot;&lt;div class=&quot;</span> + className + <span class="hljs-string">&quot;&gt;&lt;div class=&#x27;msg&#x27;&gt;&lt;img src=&quot;</span> + headSrc + <span class="hljs-string">&quot; /&gt;&quot;</span> +<br>		<span class="hljs-string">&quot;&lt;p&gt;&lt;i class=&#x27;msg_input&#x27;&gt;&lt;/i&gt;&quot;</span> + str + <span class="hljs-string">&quot;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&quot;</span>;<br>	<span class="hljs-title function_">upView</span>(html);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>定义upView的函数，用于更新聊天界面的视图。它接受一个包含HTML代码的字符串作为参数，并将该字符串添加到具有类名为message的容器中。然后，它使用动画效果将页面滚动到最底部，以确保最新的消息可见。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/*更新视图*/</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">upView</span>(<span class="hljs-params">html</span>) &#123;<br>	$(<span class="hljs-string">&#x27;.message&#x27;</span>).<span class="hljs-title function_">append</span>(html);<br>	$(<span class="hljs-string">&#x27;body,html&#x27;</span>).<span class="hljs-title function_">animate</span>(&#123;<br>		<span class="hljs-attr">scrollTop</span>: $(<span class="hljs-string">&#x27;.message&#x27;</span>).<span class="hljs-title function_">outerHeight</span>() - <span class="hljs-variable language_">window</span>.<span class="hljs-property">innerHeight</span><br>	&#125;, <span class="hljs-number">200</span>); <span class="hljs-comment">// 自动将页面移动到最底部</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>接着定义两个变量：flag和message。flag用于控制防止连续点击提交消息的功能，message用于接收接口返回的数据。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> flag = <span class="hljs-literal">true</span>; <span class="hljs-comment">// 防止连续点击提交消息</span><br><span class="hljs-keyword">var</span> message = <span class="hljs-string">&#x27;&#x27;</span>; <span class="hljs-comment">// 接收接口返回的数据</span><br></code></pre></td></tr></table></figure>
+
+<p>下面是一个jQuery的文档就绪函数，表示当文档加载完成后执行其中的代码。在这个函数内部，首先给具有id为inputVal的元素设置焦点，然后为具有类名为footer的元素的子元素input绑定了一个keyup事件处理程序。当输入框中有内容时，将背景颜色设置为#114F8E，否则设置为#ddd。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js">$(<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>	$(<span class="hljs-string">&#x27;#inputVal&#x27;</span>).<span class="hljs-title function_">focus</span>();<br>	$(<span class="hljs-string">&#x27;.footer&#x27;</span>).<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;keyup&#x27;</span>, <span class="hljs-string">&#x27;input&#x27;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>		<span class="hljs-keyword">if</span> ($(<span class="hljs-variable language_">this</span>).<span class="hljs-title function_">val</span>().<span class="hljs-property">length</span> &gt; <span class="hljs-number">0</span>) &#123;<br>			$(<span class="hljs-variable language_">this</span>).<span class="hljs-title function_">next</span>().<span class="hljs-title function_">css</span>(<span class="hljs-string">&#x27;background&#x27;</span>, <span class="hljs-string">&#x27;#114F8E&#x27;</span>);<br>		&#125; <span class="hljs-keyword">else</span> &#123;<br>			$(<span class="hljs-variable language_">this</span>).<span class="hljs-title function_">next</span>().<span class="hljs-title function_">css</span>(<span class="hljs-string">&#x27;background&#x27;</span>, <span class="hljs-string">&#x27;#ddd&#x27;</span>);<br>		&#125;<br>	&#125;);<br></code></pre></td></tr></table></figure>
+
+<p>接下来的两行代码为具有类名为footer的元素下的p元素绑定了一个click事件处理程序，并为整个文档绑定了一个keyup事件处理程序。当用户点击footer元素下的p元素时，会调用getMessage函数。当用户按下回车键时，也会调用getMessage函数。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js">$(<span class="hljs-string">&#x27;.footer p&#x27;</span>).<span class="hljs-title function_">click</span>(getMessage);<br>$(<span class="hljs-variable language_">document</span>).<span class="hljs-title function_">keyup</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params">ev</span>) &#123;<br>	<span class="hljs-keyword">if</span> (ev.<span class="hljs-property">keyCode</span> == <span class="hljs-number">13</span>) &#123;<br>		<span class="hljs-title function_">getMessage</span>();<br>	&#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>getMessage函数用于获取用户输入的消息，并发送给服务器进行处理。函数首先获取具有id为inputVal的输入框的值，并存储在变量val中。然后，它检查输入框是否为空，如果是空的话则直接返回。接下来，它检查flag变量，如果为true，则执行以下操作：</p>
+<ol>
+<li>将flag设置为false，以防止连续点击提交消息。</li>
+<li>调用show函数，将用户输入的消息显示在聊天界面中。</li>
+<li>设置变量url为一个API的地址。</li>
+<li>清空输入框的值并将背景颜色设置为#ddd。</li>
+<li>发起一个异步的AJAX请求，使用GET方法向服务器发送数据。请求的URL是上面定义的url，数据是用户输入的消息。</li>
+<li>在请求完成后，将flag设置为true，以允许再次点击提交消息。</li>
+<li>将服务器返回的响应文本存储在message变量中。</li>
+<li>使用setTimeout函数延迟一定时间后，调用show函数将服务器返回的消息显示在聊天界面中。</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs js">	<span class="hljs-keyword">function</span> <span class="hljs-title function_">getMessage</span>(<span class="hljs-params"></span>) &#123;<br>		<span class="hljs-keyword">var</span> val = $(<span class="hljs-string">&#x27;#inputVal&#x27;</span>).<span class="hljs-title function_">val</span>();<br>		<span class="hljs-keyword">if</span> (val == <span class="hljs-string">&#x27;&#x27;</span>)<br>			<span class="hljs-keyword">return</span>;<br>		<span class="hljs-keyword">if</span> (flag) &#123;<br>			flag = <span class="hljs-literal">false</span>;<br>			<span class="hljs-title function_">show</span>(<span class="hljs-string">&quot;./chatImages/woman.png&quot;</span>, $(<span class="hljs-string">&quot;.footer input&quot;</span>).<span class="hljs-title function_">val</span>(), <span class="hljs-string">&quot;show&quot;</span>);<br>			<span class="hljs-keyword">var</span> url = <span class="hljs-string">&quot;http://127.0.0.1:8000/api/chatbot&quot;</span>;<br>			$(<span class="hljs-string">&quot;.footer input&quot;</span>).<span class="hljs-title function_">val</span>(<span class="hljs-string">&quot;&quot;</span>).<span class="hljs-title function_">next</span>().<span class="hljs-title function_">css</span>(<span class="hljs-string">&#x27;background&#x27;</span>, <span class="hljs-string">&#x27;#ddd&#x27;</span>); <span class="hljs-comment">//清空input</span><br>			$.<span class="hljs-title function_">ajax</span>(&#123;<br>				<span class="hljs-attr">type</span>: <span class="hljs-string">&quot;get&quot;</span>,<br>				<span class="hljs-attr">dataType</span>: <span class="hljs-string">&quot;json&quot;</span>,<br>				<span class="hljs-attr">async</span>: <span class="hljs-literal">true</span>,<br>				<span class="hljs-attr">url</span>: url,<br>				<span class="hljs-attr">data</span>: &#123;<br>					<span class="hljs-attr">infos</span>: val,<br>				&#125;,<br>				<span class="hljs-attr">complete</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) &#123;<br>					flag = <span class="hljs-literal">true</span>;<br>					message = data.<span class="hljs-property">responseText</span><br>					<span class="hljs-built_in">setTimeout</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>						<span class="hljs-title function_">show</span>(<span class="hljs-string">&quot;chatImages/man.png&quot;</span>, message, <span class="hljs-string">&quot;send&quot;</span>);<br>					&#125;, <span class="hljs-number">500</span>);<br>				&#125;<br>			&#125;);<br>		&#125;<br>	&#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h3 id="1-2-flexible-js"><a href="#1-2-flexible-js" class="headerlink" title="1.2 flexible.js"></a>1.2 flexible.js</h3><p>该文件主要定义了一个自执行函数，根据屏幕尺寸动态调整网页的字体大小以实现响应式布局。代码整体逻辑如下：</p>
+<ol>
+<li>定义了一个匿名函数，并立即执行该函数。函数接受两个参数：doc和win，分别表示document对象和window对象。</li>
+<li>在函数内部，首先获取了docEl变量，它引用了doc.documentElement，即网页的根元素<html>。</li>
+<li>根据当前浏览器支持的事件，将resizeEvt变量设置为’orientationchange’（用户水平或垂直翻转设备时触发的事件）或’resize’（调整窗口大小时触发的事件）。</li>
+<li>定义了一个名为recalc的函数，用于计算并设置根元素的字体大小。在该函数内部，首先获取了当前浏览器窗口的宽度，保存在clientWidth变量中。</li>
+<li>判断clientWidth是否存在（不为0或undefined）。如果为0或不存在，表示无法获取到有效的窗口宽度，函数直接返回。</li>
+<li>接下来，根据窗口宽度clientWidth的大小来设置根元素的字体大小。如果clientWidth大于等于720，将根元素的fontSize属性设置为’100px’；否则，根据当前窗口宽度与720的比例，动态计算并设置根元素的字体大小。</li>
+<li>在函数末尾，通过条件判断检测是否支持addEventListener方法。如果不支持，则直接返回，不进行后续的事件监听。</li>
+<li>使用win.addEventListener方法监听resizeEvt事件，当浏览器窗口大小改变时，调用recalc函数重新计算并设置根元素的字体大小。</li>
+<li>使用doc.addEventListener方法监听DOMContentLoaded事件，即当初始的 HTML 文档被完全加载和解析完成时，调用recalc函数。</li>
+</ol>
+<p>通过执行这段代码，页面加载时会根据浏览器窗口的大小动态调整根元素的字体大小，以适应不同的设备和屏幕尺寸，实现响应式的布局效果。</p>
+<h3 id="1-3-jquery-min-js"><a href="#1-3-jquery-min-js" class="headerlink" title="1.3 jquery.min.js"></a>1.3 jquery.min.js</h3><p>jquery.min.js是jQuery库的压缩版本，它包含了jQuery框架的所有功能和方法，但经过了压缩和优化，使得文件大小更小，加载速度更快。</p>
+<p>jQuery是一个JavaScript库，提供了许多简化和增强JavaScript编程的功能。它封装了复杂的DOM操作、事件处理、动画效果、AJAX请求等常见的Web开发任务，使得开发者可以使用更简洁的语法来完成这些任务。</p>
+<p>使用jquery.min.js文件，可以在网页中引入jQuery库，并在代码中使用jQuery提供的方法和功能。通过使用jQuery，开发者可以更快速、高效地编写和管理JavaScript代码，简化了对浏览器差异性的处理，提高了开发效率。</p>
+<p>如果在项目中使用了jQuery库，通常会在HTML文件中通过<script>标签引入jquery.min.js文件，然后就可以在自己的JavaScript代码中使用jQuery提供的功能了。</p>
+<h2 id="2-RestfulAPI-py"><a href="#2-RestfulAPI-py" class="headerlink" title="2.RestfulAPI.py"></a>2.RestfulAPI.py</h2><p>该文件实现了与服务器端与前端页面进行交互的接口，主要使用Tensorflow和Tornado库。</p>
+<p>BaseHandler类是一个继承自Tornado的RequestHandler的自定义处理器，主要用于解决跨域请求问题（即浏览器中从一个域名的网页去请求另一个域名的资源）。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">class</span> <span class="hljs-title class_">BaseHandler</span>(<span class="hljs-title class_ inherited__">RequestHandler</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;解决JS跨域请求问题&quot;&quot;&quot;</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">set_default_headers</span>(<span class="hljs-params">self</span>):<br>        self.set_header(<span class="hljs-string">&#x27;Access-Control-Allow-Origin&#x27;</span>, <span class="hljs-string">&#x27;*&#x27;</span>)<br>        self.set_header(<span class="hljs-string">&#x27;Access-Control-Allow-Methods&#x27;</span>, <span class="hljs-string">&#x27;POST, GET&#x27;</span>)<br>        self.set_header(<span class="hljs-string">&#x27;Access-Control-Max-Age&#x27;</span>, <span class="hljs-number">1000</span>)<br>        self.set_header(<span class="hljs-string">&#x27;Access-Control-Allow-Headers&#x27;</span>, <span class="hljs-string">&#x27;*&#x27;</span>)<br>        <span class="hljs-comment"># self.set_header(&#x27;Content-type&#x27;, &#x27;application/json&#x27;)</span><br></code></pre></td></tr></table></figure>
+
+<p>在具体实现中，BaseHandler类继承自Tornado的RequestHandler类，通过重写其中的set_default_headers方法来设置HTTP响应头，从而允许跨域请求。主要设置了以下响应头：</p>
+<ul>
+<li>'Access-Control-Allow-Origin': '*'：允许所有来源（即允许跨域请求），解除浏览器对跨域请求的限制。</li>
+<li>'Access-Control-Allow-Methods': 'POST, GET'：允许的HTTP请求方法为POST和GET。</li>
+<li>'Access-Control-Max-Age': 1000：设置响应的最大缓存时间。</li>
+<li>'Access-Control-Allow-Headers': '*'：允许请求中的任意自定义头部。+</li>
+</ul>
+<p>IndexHandler类将BaseHandler类的功能与处理HTTP GET请求的逻辑结合起来，实现了处理聊天机器人API请求的具体行为。它通过继承BaseHandler类，获得了处理跨域请求的能力，并通过重写get()方法，实现了根据请求参数获取聊天机器人回答并返回给客户端的功能。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">class</span> <span class="hljs-title class_">IndexHandler</span>(<span class="hljs-title class_ inherited__">BaseHandler</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">get</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-comment"># 向响应中，添加数据</span><br>        infos = self.get_query_argument(<span class="hljs-string">&quot;infos&quot;</span>) <span class="hljs-comment"># 获取名为infos的查询参数的值，该参数用于传递聊天信息。</span><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Q:&quot;</span>, infos)<br>        <span class="hljs-comment"># 捕捉服务器异常信息</span><br>        <span class="hljs-keyword">try</span>:<br>            result = chatbot_api(infos=infos) <span class="hljs-comment"># 调用chatbot_api函数，将获取的聊天信息传递给它，以获取聊天机器人的回答</span><br>        <span class="hljs-keyword">except</span>:<br>            result = <span class="hljs-string">&quot;服务器内部错误&quot;</span><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;A:&quot;</span>, <span class="hljs-string">&quot;&quot;</span>.join(result))<br>        self.write(<span class="hljs-string">&quot;&quot;</span>.join(result)) <span class="hljs-comment"># 将聊天机器人的回答作为响应返回给客户端，使用self.write()方法发送响应</span><br></code></pre></td></tr></table></figure>
+
+<p>IndexHandler类中的get方法用于处理HTTP GET请求。在get方法中，获取名为infos的查询参数，调用chatbot_api函数获取聊天机器人的回答，并将结果返回给客户端。</p>
+<p>chatbot_api函数是聊天机器人的核心逻辑。它接受一个字符串参数infos，表示聊天信息。在函数内部，首先创建一个DataUnit对象，该对象使用data_config参数进行初始化。然后通过os.path.join将模型保存路径和模型名称拼接成完整的路径。接下来，重置TensorFlow的默认图，并创建一个Seq2Seq模型对象，使用batch_size、encoder_vocab_size、decoder_vocab_size和mode等参数进行初始化。然后，创建一个配置对象config，并设置允许GPU显存增长的选项。接着，使用该配置对象创建一个TensorFlow会话sess。在会话中，首先初始化全局变量，然后加载保存的模型。之后，进入一个无限循环，在循环中获取用户输入的聊天信息q，对其进行处理和预测，并将结果返回。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">chatbot_api</span>(<span class="hljs-params">infos</span>):<br>    du = DataProcessing.DataUnit(**data_config)<br>    save_path = os.path.join(BASE_MODEL_DIR, MODEL_NAME)<br>    batch_size = <span class="hljs-number">1</span><br>    tf.reset_default_graph()<br>    model = Seq2Seq(batch_size=batch_size,<br>                    encoder_vocab_size=du.vocab_size,<br>                    decoder_vocab_size=du.vocab_size,<br>                    mode=<span class="hljs-string">&#x27;decode&#x27;</span>,<br>                    **model_config)<br>    <span class="hljs-comment"># 创建session的时候允许显存增长</span><br>    config = tf.ConfigProto()<br>    config.gpu_options.allow_growth = <span class="hljs-literal">True</span><br><br>    <span class="hljs-keyword">with</span> tf.Session(config=config) <span class="hljs-keyword">as</span> sess:<br>        init = tf.global_variables_initializer()<br>        sess.run(init)<br>        model.load(sess, save_path)<br>        <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>            q = infos<br>            <span class="hljs-keyword">if</span> q <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span> <span class="hljs-keyword">or</span> q.strip() == <span class="hljs-string">&#x27;&#x27;</span>:<br>                <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;请输入聊天信息&quot;</span><br>                <span class="hljs-keyword">continue</span><br>            q = q.strip()<br>            indexs = du.transform_sentence(q)<br>            x = np.asarray(indexs).reshape((<span class="hljs-number">1</span>, -<span class="hljs-number">1</span>))<br>            xl = np.asarray(<span class="hljs-built_in">len</span>(indexs)).reshape((<span class="hljs-number">1</span>,))<br>            pred = model.predict(<br>                sess, np.array(x),<br>                np.array(xl)<br>            )<br>            result = du.transform_indexs(pred[<span class="hljs-number">0</span>])<br>            <span class="hljs-keyword">return</span> result<br></code></pre></td></tr></table></figure>
+
+<p>其中在TensorFlow会话中执行了以下操作（也就是核心的预测生成部分）：</p>
+<ul>
+<li>初始化全局变量；</li>
+<li>加载保存的模型；</li>
+<li>进入无限循环：<ul>
+<li>获取用户输入的聊天信息；</li>
+<li>对聊天信息进行处理和预测；</li>
+<li>将结果返回；</li>
+</ul>
+</li>
+</ul>
+<p>最后，设计完成所需的类后，就可以开启服务。开启服务的步骤如下：</p>
+<ol>
+<li>创建一个Tornado应用对象，并将IndexHandler与路由/api/chatbot绑定；</li>
+<li>指定应用监听的端口为8000；</li>
+<li>启动Tornado的I/O循环，开始监听端口的连接，使API服务可用；</li>
+</ol>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E8%B7%B5/" class="category-chain-item">课程实践</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/">#自然语言处理</a>
+      
+        <a href="/tags/NLP/">#NLP</a>
+      
+        <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">#深度学习</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>中级项目_人机对话系统</div>
+      <div>https://gintoki-jpg.github.io/2023/04/25/项目_人机对话系统/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>杨再俨</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年4月25日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/04/28/%E9%A1%B9%E7%9B%AE_%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB%E7%B3%BB%E7%BB%9F/" title="初级项目_图像分类">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">初级项目_图像分类</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/04/24/%E9%A1%B9%E7%9B%AE_%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F/" title="中级项目_目标检测系统">
+                        <span class="hidden-mobile">中级项目_目标检测系统</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+</div>
+
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

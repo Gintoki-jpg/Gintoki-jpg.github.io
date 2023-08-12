@@ -1,0 +1,773 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/logo.png">
+  <link rel="icon" href="/img/bg/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="杨再俨">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="大三下智能信息网络实验课程期末大作业；">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初级项目_虚假新闻检测">
+<meta property="og:url" content="https://gintoki-jpg.github.io/2023/04/19/%E9%A1%B9%E7%9B%AE_%E8%99%9A%E5%81%87%E6%96%B0%E9%97%BB%E6%A3%80%E6%B5%8B/index.html">
+<meta property="og:site_name" content="Tintoki_blog">
+<meta property="og:description" content="大三下智能信息网络实验课程期末大作业；">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/project.png">
+<meta property="article:published_time" content="2023-04-19T02:51:00.000Z">
+<meta property="article:modified_time" content="2023-04-20T01:23:19.254Z">
+<meta property="article:author" content="YangZaiyan">
+<meta property="article:tag" content="数据分析">
+<meta property="article:tag" content="NLP">
+<meta property="article:tag" content="Kaggle">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gintoki-jpg.github.io/img/bg/project.png">
+  
+  
+  
+  <title>初级项目_虚假新闻检测 - Tintoki_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"gintoki-jpg.github.io","root":"/","version":"1.9.1","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tintoki_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/bg1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">初级项目_虚假新闻检测</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-04-19 10:51" pubdate>
+          2023年4月19日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          7.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          59 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">初级项目_虚假新闻检测</h1>
+            
+            <div class="markdown-body">
+              
+              <p>参考链接：</p>
+<ul>
+<li>概述：<a target="_blank" rel="noopener" href="https://www.kaggle.com/code/paramarthasengupta/fake-news-detector-eda-prediction-99/notebook">Fake News Detector: EDA &amp; Prediction(99+%) | Kaggle</a>；</li>
+<li>数据处理：<a target="_blank" rel="noopener" href="https://www.kaggle.com/code/eisgandar/detect-fake-real-news-glove-emb-lstm">📢 Detect Fake &amp; Real News ~ Glove emb, LSTM | Kaggle</a>；</li>
+</ul>
+<hr>
+<p>2023&#x2F;4&#x2F;12 10:38 参考代码中有各种各样的解决方式，一些侧重原始数据的分析，一些侧重机器学习以及结果的预测，推荐直接在Kaggle上对代码进行运行（无需额外搭建环境），尽量选择comments数量多的代码参考（对于运行不了的代码适当放弃，没必要在修改原始代码上面花费这么多时间，这么多参考直接找新的就行）；</p>
+<p>2023&#x2F;4&#x2F;12 14:20 这些代码全都跑不起来，真的让人头大，一方面是因为代码的年限太久远了（库更新之后肯定会有不兼容的地方），所以找比赛尽量找时间点较近的比赛；</p>
+<p>2023&#x2F;4&#x2F;12 14:20 因为之前选择向DataSet太过久远（8 years ago），所以很多代码尽管看起来漂亮但实际上并不能很好的运行，也就没有必要和这种项目磕时间，所以决定放弃MBTI项目转而使用Kaggle上的预训练模型FaceNet，等它的数据全部跑出来之后就可以按照这个模型进行学习和理解；</p>
+<p>2023&#x2F;4&#x2F;18 7:56 找了那么久的数据库和代码，然而还是没找到一个合适的，反而回过头来看最初的项目是最好的，最后再试试，实在不行就还是回到最初的代码改一改，或者不用Kaggle的那些项目（原因还是远古代码的可行性太低了）重新寻找新的项目；</p>
+<p>2023&#x2F;4&#x2F;20 9:22 这个项目对于期末大作业来说过于简单了…虽然各方面都符合要求，但是这个难度实在太低了，所以决定放弃，重开一个自动驾驶的博客；</p>
+<hr>
+<h1 id="一、数据集介绍"><a href="#一、数据集介绍" class="headerlink" title="一、数据集介绍"></a>一、数据集介绍</h1><h2 id="1-背景介绍"><a href="#1-背景介绍" class="headerlink" title="1.背景介绍"></a>1.背景介绍</h2><p>新闻是有关当前事件的信息。这可以通过许多不同的媒介提供，例如口头传播、印刷、邮政系统、广播、电子通信或通过观察者和事件证人的证言。</p>
+<p>新闻报道的常见主题包括战争、政府、政治、教育、健康、环境、经济、商业、时尚和娱乐，以及体育赛事、古怪或不寻常的事件。自古以来，关于皇家仪式、法律、税收、公共卫生和罪犯的政府公告被称为新闻。</p>
+<p>技术和社会发展，通常由政府的通信和间谍网络推动，增加了新闻传播的速度，同时也影响了其内容。我们今天所知的新闻类型与报纸密切相关。在现代，或者说在计算机时代，我们看到了从硬拷贝模式向在线新闻获取模式的大规模转移。</p>
+<p>假新闻是被呈现为新闻的虚假或误导性信息。它往往旨在损害某个人或实体的声誉，或通过广告收入牟利。媒体学者诺兰·希格登提供了一个更广泛的假新闻定义，即“被呈现为新闻的虚假或误导性内容，并以口头、书面、印刷、电子和数字通信等各种格式传播”。</p>
+<p>假新闻曾经在印刷品中普遍存在，随着社交媒体的兴起，尤其是Facebook新闻订阅功能，假新闻的普及率已经增加。政治极化、后真相政治、确认偏见和社交媒体算法被认为是假新闻传播的原因。有时，敌对的外国行为者特别是在选举期间制造和传播假新闻。匿名托管的假新闻网站的使用使得很难就假新闻源起诉诽谤行为。在某些定义中，假新闻包括被误解为真实的讽刺文章，以及标题耸人听闻或引人点击却在正文中没有支持的文章。</p>
+<p>假新闻可以通过与真实新闻竞争来降低真实新闻的影响力；Buzzfeed的一项分析发现，关于2016年美国总统选举的头条假新闻在Facebook上获得的参与度比主要媒体机构的头条新闻更高。假新闻还可能破坏对严肃媒体报道的信任。有时，这个词汇被用来质疑合法的新闻，美国总统唐纳德·特朗普因使用它来形容任何关于他自己的负面新闻报道而受到赞誉。由于特朗普的误用，这个术语越来越受到批评，英国政府决定避免使用这个术语，因为它“定义不清”，“混淆了从真正的错误到外国干涉的各种错误信息”。</p>
+<h2 id="2-Fake-news分析"><a href="#2-Fake-news分析" class="headerlink" title="2.Fake news分析"></a>2.Fake news分析</h2><p>借助pandas工具可以读取Fake.csv文件中的内容</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs py">fake_news = pd.read_csv(<span class="hljs-string">&quot;/kaggle/input/fake-and-real-news-dataset/Fake.csv&quot;</span>)<br>fake_news.head()<br></code></pre></td></tr></table></figure>
+
+<p>下面展示的是Fake.csv文件中前五条数据，主要分为四列：title,text,subject和dae</p>
+<p><img src="/images/image-20230419110843104.png" srcset="/img/loading.gif" lazyload></p>
+<p>其中subject列指的是新闻的主题，经过统计主要有23481条数据，使用迭代subject的方式对所有主题计数</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">for</span> key,count <span class="hljs-keyword">in</span> fake_news.subject.value_counts().iteritems():<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;<span class="hljs-subst">&#123;key&#125;</span>:\t<span class="hljs-subst">&#123;count&#125;</span>&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<p>可以得到不同主题对应的fake news的数量</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">News:</span>	<span class="hljs-number">9050</span><br><span class="hljs-attr">politics:</span>	<span class="hljs-number">6841</span><br><span class="hljs-attr">left-news:</span>	<span class="hljs-number">4459</span><br><span class="hljs-attr">Government News:</span>	<span class="hljs-number">1570</span><br><span class="hljs-attr">US_News:</span>	<span class="hljs-number">783</span><br><span class="hljs-attr">Middle-east:</span>	<span class="hljs-number">778</span><br></code></pre></td></tr></table></figure>
+
+<p>借助matplotlib以及seaborn库可以更直观的得到不同主题的新闻的数量分布</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs py">plt.figure(figsize=(<span class="hljs-number">8</span>,<span class="hljs-number">5</span>))<br>sns.countplot(<span class="hljs-string">&quot;subject&quot;</span>, data=fake_news)<br>plt.show()<br></code></pre></td></tr></table></figure>
+
+<p><img src="/images/image-20230419111513034.png" srcset="/img/loading.gif" lazyload></p>
+<p>词云是这样的一种技术手段，它可以将一段文本中使用的单词进行图像化表示，其中每个单词的大小表示其在文本中的频率或重要性（因此常用单词比不常用单词更大、更引人注目），单词通常以随机或半随机的方式排列。词云可以用于快速可视化大量文本中最常见的主题，是数据分析、营销和视觉交流的有用工具。</p>
+<p>下面借助词云来对fake news数据集中所有文本的text列进行图形化</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs py">text = <span class="hljs-string">&#x27;&#x27;</span><br><span class="hljs-keyword">for</span> news <span class="hljs-keyword">in</span> fake_news.text.values:<br>    text += <span class="hljs-string">f&quot; <span class="hljs-subst">&#123;news&#125;</span>&quot;</span><br>wordcloud = WordCloud(<br>    width = <span class="hljs-number">3000</span>,<br>    height = <span class="hljs-number">2000</span>,<br>    background_color = <span class="hljs-string">&#x27;black&#x27;</span>,<br>    stopwords = <span class="hljs-built_in">set</span>(nltk.corpus.stopwords.words(<span class="hljs-string">&quot;english&quot;</span>))).generate(text)<br>fig = plt.figure(<br>    figsize = (<span class="hljs-number">40</span>, <span class="hljs-number">30</span>),<br>    facecolor = <span class="hljs-string">&#x27;k&#x27;</span>,<br>    edgecolor = <span class="hljs-string">&#x27;k&#x27;</span>)<br>plt.imshow(wordcloud, interpolation = <span class="hljs-string">&#x27;bilinear&#x27;</span>)<br>plt.axis(<span class="hljs-string">&#x27;off&#x27;</span>)<br>plt.tight_layout(pad=<span class="hljs-number">0</span>)<br>plt.show()<br><span class="hljs-keyword">del</span> text<br></code></pre></td></tr></table></figure>
+
+<p><img src="/images/image-20230419112224526.png" srcset="/img/loading.gif" lazyload></p>
+<p>有意思的是，排除一些停用词以外，词云中最显眼的几个单词是Donald Trump,White House,Twitter等，这意味着在fake news中这些单词的占比较大（另一方面这也很符合现实情况），在后续分析中将起到重要作用。</p>
+<h2 id="3-Real-news分析"><a href="#3-Real-news分析" class="headerlink" title="3.Real news分析"></a>3.Real news分析</h2><p>同样地，借助pandas工具读取True.csv文件中的信息</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs py">true_news = pd.read_csv(<span class="hljs-string">&quot;/kaggle/input/fake-and-real-news-dataset/True.csv&quot;</span>)<br>ture_news.head()<br></code></pre></td></tr></table></figure>
+
+<p><img src="/images/image-20230419152725617.png" srcset="/img/loading.gif" lazyload></p>
+<p>观察text列，发现real news的text列中的文本都有发布源比如“WASHINGTON (Reuters)”，这点与fake news的text有所区别，除了来自路透社的新闻以外，另外的一些text则是来自推特的推文，real news中很少有不包含任何发布信息的text。</p>
+<p>下面我们对real news的信息做一个统计</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment">#Getting Total Rows</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Total Records:\t<span class="hljs-subst">&#123;ture_news.shape[<span class="hljs-number">0</span>]&#125;</span>&quot;</span>)<br><br><span class="hljs-comment">#Counting by Subjects </span><br><span class="hljs-keyword">for</span> key,count <span class="hljs-keyword">in</span> ture_news.subject.value_counts().iteritems():<br>  <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;<span class="hljs-subst">&#123;key&#125;</span>:\t<span class="hljs-subst">&#123;count&#125;</span>&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">Total</span> Records:	<span class="hljs-number">21416</span><br><span class="hljs-attribute">politicsNews</span>:	<span class="hljs-number">11271</span><br><span class="hljs-attribute">worldnews</span>:	<span class="hljs-number">10145</span><br></code></pre></td></tr></table></figure>
+
+<p>将上述信息进行可视化展示得到</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs py">sns.countplot(x=<span class="hljs-string">&quot;subject&quot;</span>, data=ture_news)<br>plt.show()<br></code></pre></td></tr></table></figure>
+
+<p><img src="/images/image-20230419154931664.png" srcset="/img/loading.gif" lazyload></p>
+<p>与fake news相同，借助词云对real news的单词做统计</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs py">text = <span class="hljs-string">&#x27;&#x27;</span><br><span class="hljs-keyword">for</span> news <span class="hljs-keyword">in</span> ture_news.text.values:<br>    text += <span class="hljs-string">f&quot; <span class="hljs-subst">&#123;news&#125;</span>&quot;</span><br>wordcloud = WordCloud(<br>    width = <span class="hljs-number">3000</span>,<br>    height = <span class="hljs-number">2000</span>,<br>    background_color = <span class="hljs-string">&#x27;black&#x27;</span>,<br>    stopwords = <span class="hljs-built_in">set</span>(nltk.corpus.stopwords.words(<span class="hljs-string">&quot;english&quot;</span>))).generate(<span class="hljs-built_in">str</span>(text))<br>fig = plt.figure(<br>    figsize = (<span class="hljs-number">40</span>, <span class="hljs-number">30</span>),<br>    facecolor = <span class="hljs-string">&#x27;k&#x27;</span>,<br>    edgecolor = <span class="hljs-string">&#x27;k&#x27;</span>)<br>plt.imshow(wordcloud, interpolation = <span class="hljs-string">&#x27;bilinear&#x27;</span>)<br>plt.axis(<span class="hljs-string">&#x27;off&#x27;</span>)<br>plt.tight_layout(pad=<span class="hljs-number">0</span>)<br>plt.show()<br><span class="hljs-keyword">del</span> text<br></code></pre></td></tr></table></figure>
+
+<p><img src="/images/image-20230419155411189.png" srcset="/img/loading.gif" lazyload></p>
+<p>比较显眼的几个单词分别是United State,White House,Donald Trump,President Donald以及North Korea等。</p>
+<h2 id="4-综合数据分析"><a href="#4-综合数据分析" class="headerlink" title="4.综合数据分析"></a>4.综合数据分析</h2><p>我们将fake news和real news合并，同时分别给real news和fake news打标签1,0(具体表现为增加news_class列)，将合并得到的结果进行输出（分别展示合并的结果的前五条和后五条）</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs py">true_news[<span class="hljs-string">&quot;news_class&quot;</span>], fake_news[<span class="hljs-string">&quot;news_class&quot;</span>] = <span class="hljs-number">1</span>, <span class="hljs-number">0</span><br>news = pd.concat([true_news, fake_news])<br></code></pre></td></tr></table></figure>
+
+<p><img src="/images/image-20230419172424708.png" srcset="/img/loading.gif" lazyload alt="real_news"></p>
+<p><img src="/images/image-20230419172444108.png" srcset="/img/loading.gif" lazyload alt="fake_news"></p>
+<p>对合并后的数据集进行统计，得到的统计信息如下，结果表明一共有44898条数据，每条数据都有五列，分别是title(新闻标题),text(新闻文本),subject(新闻主题),date(发布时间),news_class(新闻类别)</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment">#get basic information about dataset</span><br>news.info(memory_usage = <span class="hljs-literal">True</span>, verbose = <span class="hljs-literal">True</span>)<br></code></pre></td></tr></table></figure>
+
+<p><img src="/images/image-20230419172646011.png" srcset="/img/loading.gif" lazyload></p>
+<p>在对后面的数据进行探索性分析之前，需要先简单对合并后的数据进行去重和去除空值的处理以避免冗余、无效数据的干扰</p>
+<p>检查数据集中是否存在重复的值（经检查，存在209条重复值），如果有则删除这些重复值</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment">#check whether there are duplicated values</span><br>news.duplicated().<span class="hljs-built_in">sum</span>()<br><span class="hljs-comment">#if there are duplicated values, drop duplicated them from the dataset</span><br>news.drop_duplicates(inplace = <span class="hljs-literal">True</span>)<br><span class="hljs-built_in">print</span>(colored(<span class="hljs-string">&quot;\nDUPLICATED VALUES WERE SUCCESFULLY DROPPED...&quot;</span>, <span class="hljs-string">&quot;green&quot;</span>))<br></code></pre></td></tr></table></figure>
+
+<p>除了删除重复值外，还需要检查是否存在空值（实际结果是不存在空值），若存在则将其删除，最终剩余数据数量为44689条</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment">#check whether there are &#x27;nan&#x27; values</span><br>news.isnull().<span class="hljs-built_in">sum</span>()<br></code></pre></td></tr></table></figure>
+
+<p>matplotlib以及seaborn库对处理完毕后的数据集的real news和fake news的数据进行可视化，可以看到两者的数量分布相对均匀，并没有出现某个类别的新闻数量明显多于另一个类的现象</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># bar chart</span><br>plt.figure(figsize = [<span class="hljs-number">8</span>, <span class="hljs-number">7</span>], clear = <span class="hljs-literal">True</span>, facecolor = <span class="hljs-string">&#x27;white&#x27;</span>)<br>sns.barplot(x = news[<span class="hljs-string">&quot;news_class&quot;</span>].value_counts().index,<br>            y = news[<span class="hljs-string">&quot;news_class&quot;</span>].value_counts(),<br>            saturation = <span class="hljs-number">1</span>).<span class="hljs-built_in">set</span>(title = <span class="hljs-string">&quot;The number of ture and fake news (true - 1, fake - 0)&quot;</span>);<br><span class="hljs-comment"># fan chart</span><br>fig = px.pie(data_frame = news, names = <span class="hljs-string">&quot;news_class&quot;</span>, hole = <span class="hljs-number">0.4</span>, title = <span class="hljs-string">&quot;counts in news_class&quot;</span>,<br>             width = <span class="hljs-number">1000</span>, height = <span class="hljs-number">500</span>, color_discrete_sequence = px.colors.sequential.Sunset_r)<br>fig.update_traces(textposition = <span class="hljs-string">&quot;inside&quot;</span>, textinfo = <span class="hljs-string">&quot;percent+label&quot;</span>,<br>                  marker = <span class="hljs-built_in">dict</span>(line = <span class="hljs-built_in">dict</span>(width = <span class="hljs-number">1.2</span>, color = <span class="hljs-string">&quot;#000000&quot;</span>)))<br>fig.update_layout(title_x = <span class="hljs-number">0.5</span>, title_font = <span class="hljs-built_in">dict</span>(size = <span class="hljs-number">30</span>), uniformtext_minsize = <span class="hljs-number">25</span>)<br>fig.show()<br></code></pre></td></tr></table></figure>
+
+<p><img src="/images/image-20230419185826976.png" srcset="/img/loading.gif" lazyload alt="条形图"></p>
+<p><img src="/images/image-20230419191058656.png" srcset="/img/loading.gif" lazyload alt="扇形图"></p>
+<p>查看处理完毕的news数据的主题列subject，即不同主题类型的新闻分布</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment">#look class frequencies of &#x27;subject&#x27; variable</span><br>news[<span class="hljs-string">&quot;subject&quot;</span>].value_counts()<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">politicsNews</span>       <span class="hljs-number">11220</span><br><span class="hljs-attribute">worldnews</span>           <span class="hljs-number">9991</span><br><span class="hljs-attribute">News</span>                <span class="hljs-number">9050</span><br><span class="hljs-attribute">politics</span>            <span class="hljs-number">6838</span><br><span class="hljs-attribute">left</span>-news           <span class="hljs-number">4459</span><br><span class="hljs-attribute">Government</span> News     <span class="hljs-number">1570</span><br><span class="hljs-attribute">US_News</span>              <span class="hljs-number">783</span><br><span class="hljs-attribute">Middle</span>-east          <span class="hljs-number">778</span><br><span class="hljs-attribute">Name</span>: subject, dtype: int64<br></code></pre></td></tr></table></figure>
+
+<p>对上述数据进行可视化，可以看到政治类新闻是数量是数量最多的，而中东主题和美国本土的新闻数量较少</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># bar chart</span><br>plt.figure(figsize = [<span class="hljs-number">15</span>, <span class="hljs-number">9</span>], clear = <span class="hljs-literal">True</span>, facecolor = <span class="hljs-string">&#x27;white&#x27;</span>)<br>sns.barplot(x = news[<span class="hljs-string">&quot;subject&quot;</span>].value_counts().index,<br>            y = news[<span class="hljs-string">&quot;subject&quot;</span>].value_counts(),<br>            saturation = <span class="hljs-number">1</span>).<span class="hljs-built_in">set</span>(title = <span class="hljs-string">&quot;The number of different news subjects&quot;</span>);<br><span class="hljs-comment"># fan chart</span><br>fig = px.pie(news, names = <span class="hljs-string">&quot;subject&quot;</span>, title = <span class="hljs-string">&quot;counts in news_class&quot;</span>, hole = <span class="hljs-number">0.5</span>,<br>            width = <span class="hljs-number">1000</span>, height = <span class="hljs-number">500</span>, color_discrete_sequence = px.colors.sequential.Sunset_r)<br>fig.update_traces(textposition = <span class="hljs-string">&quot;inside&quot;</span>, textinfo = <span class="hljs-string">&quot;percent+label&quot;</span>,<br>                  marker = <span class="hljs-built_in">dict</span>(line = <span class="hljs-built_in">dict</span>(width = <span class="hljs-number">1.2</span>, color = <span class="hljs-string">&quot;#000000&quot;</span>)))<br>fig.update_layout(title_x = <span class="hljs-number">0.5</span>, title_font = <span class="hljs-built_in">dict</span>(size = <span class="hljs-number">30</span>), uniformtext_minsize = <span class="hljs-number">25</span>)<br>fig.show()<br></code></pre></td></tr></table></figure>
+
+<p><img src="/images/image-20230419190017599.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20230419191200528.png" srcset="/img/loading.gif" lazyload alt="扇形图"></p>
+<p>最后分别查看real news和fake news中不同主题类型的news占比</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">pd.crosstab(news[<span class="hljs-string">&quot;news_class&quot;</span>], news[<span class="hljs-string">&quot;subject&quot;</span>],normalize = <span class="hljs-literal">True</span>).plot(kind = <span class="hljs-string">&quot;bar&quot;</span>, backend = <span class="hljs-string">&quot;matplotlib&quot;</span>,legend = <span class="hljs-literal">True</span>, stacked = <span class="hljs-literal">True</span>);<br></code></pre></td></tr></table></figure>
+
+<p><img src="/images/image-20230419191854506.png" srcset="/img/loading.gif" lazyload alt="table"></p>
+<p><img src="/images/image-20230419192000844.png" srcset="/img/loading.gif" lazyload alt="plot"></p>
+<p>可以看到在real news中只有两种类型的新闻，而在fake news中politics以及News类占比较大。</p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E8%B7%B5/" class="category-chain-item">课程实践</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">#数据分析</a>
+      
+        <a href="/tags/NLP/">#NLP</a>
+      
+        <a href="/tags/Kaggle/">#Kaggle</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>初级项目_虚假新闻检测</div>
+      <div>https://gintoki-jpg.github.io/2023/04/19/项目_虚假新闻检测/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>杨再俨</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年4月19日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/04/20/%E9%A1%B9%E7%9B%AE_%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6/" title="中级项目_模拟自动驾驶">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">中级项目_模拟自动驾驶</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/04/10/%E8%80%83%E7%A0%94_%E8%8B%B1%E8%AF%AD%E4%B8%80_%E8%AF%AD%E6%B3%95/" title="考研_英语一_语法">
+                        <span class="hidden-mobile">考研_英语一_语法</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+</div>
+
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

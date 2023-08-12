@@ -1,0 +1,1210 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/logo.png">
+  <link rel="icon" href="/img/bg/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="杨再俨">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="一、概述1.基本概念(1) 机器字长：CPU一次能处理的比特数，通常等于内部寄存器的位数；指令字长：一个指令中包含的比特数；存储字长：一个存储单元中包含的比特数，也就是MDR的位数；三者必须都是字节整数倍，一般地，存储字长&#x3D;机器字长&#x3D;指令字长 数据字长：数据总线的宽度，指一次能够传输信息的位数，并不一定等于MDR的位数；计算机位数：机器字长；操作系统位数：操作系统可寻址的位数；">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计组期末复习笔记">
+<meta property="og:url" content="https://gintoki-jpg.github.io/2022/06/11/%E6%9C%9F%E6%9C%AB_%E8%AE%A1%E7%BB%84%E5%A4%8D%E4%B9%A0/index.html">
+<meta property="og:site_name" content="Tintoki_blog">
+<meta property="og:description" content="一、概述1.基本概念(1) 机器字长：CPU一次能处理的比特数，通常等于内部寄存器的位数；指令字长：一个指令中包含的比特数；存储字长：一个存储单元中包含的比特数，也就是MDR的位数；三者必须都是字节整数倍，一般地，存储字长&#x3D;机器字长&#x3D;指令字长 数据字长：数据总线的宽度，指一次能够传输信息的位数，并不一定等于MDR的位数；计算机位数：机器字长；操作系统位数：操作系统可寻址的位数；">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/com_com.png">
+<meta property="article:published_time" content="2022-06-11T14:07:00.000Z">
+<meta property="article:modified_time" content="2023-03-01T14:56:39.883Z">
+<meta property="article:author" content="YangZaiyan">
+<meta property="article:tag" content="期末复习">
+<meta property="article:tag" content="计算机基础">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gintoki-jpg.github.io/img/bg/com_com.png">
+  
+  
+  
+  <title>计组期末复习笔记 - Tintoki_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"gintoki-jpg.github.io","root":"/","version":"1.9.1","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tintoki_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/bg1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">计组期末复习笔记</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-06-11 22:07" pubdate>
+          2022年6月11日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          22k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          184 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">计组期末复习笔记</h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h1><h2 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1.基本概念"></a>1.基本概念</h2><p>(1)</p>
+<p>机器字长：CPU一次能处理的比特数，通常等于内部寄存器的位数；<br>指令字长：一个指令中包含的比特数；<br>存储字长：一个存储单元中包含的比特数，也就是MDR的位数；<br>三者必须都是字节整数倍，一般地，存储字长&#x3D;机器字长&#x3D;指令字长</p>
+<p>数据字长：数据总线的宽度，指一次能够传输信息的位数，并不一定等于MDR的位数；<br>计算机位数：机器字长；<br>操作系统位数：操作系统可寻址的位数；</p>
+<p>(2)</p>
+<p>指令周期：CPU从主存中取出并执行一条指令花费的全部时间；<br>机器周期：也称为CPU周期，是组成指令周期的基本单位；<br>CPU时钟周期：也称为节拍、T周期，是组成机器周期的基本单位，是CPU中最小的时间单位，一个微操作至少需要一个时钟周期；<br>一般地，一个指令周期可分为四个机器周期，一个机器周期可分为多个节拍，一个机器周期内执行一系列的微操作，每个微操作由它对应的控制信号控制数据通路的开关完成；</p>
+<p>(3)</p>
+<p>主频：CPU时钟周期的倒数，表示机器时钟的频率，即1s内的节拍个数；<br>CPI：完整执行一条指令需要花费的CPU时钟周期个数；<br>$$<br>CPU执行时间&#x3D;CPU时钟个数*CPU时钟周期&#x3D;CPU时钟个数&#x2F;主频&#x3D;（指令条数 * CPI）&#x2F;主频<br>$$<br>(4)</p>
+<p>MIPS：单位时间执行多少百万(10^6)条指令；<br>$$<br>MIPS（单位条）&#x3D;执行指令的条数&#x2F;（执行时间*10^6）&#x3D;主频（单位MHz）&#x2F;CPI<br>$$<br>MFLOPS：单位时间执行多少百万次浮点运算；<br>GFLOPS：每秒执行多少十亿(10^9)次浮点运算；<br>TFLOPS：单位时间执行多少万亿(10^12)次浮点运算；</p>
+<p>(5)</p>
+<p>CPU时钟周期：一个CPU时钟周期周期多少秒；<br>主频：1s多少个CPU时钟周期；</p>
+<p>CPI：执行一条指令需要多少个CPU时钟周期；<br>IPC：一个CPU时钟周期能执行多少条指令；</p>
+<p>(6)冯诺依曼计算机的主要设计思想是采用存储程序的方式，以运算器为中心；现代计算机主要以存储器为中心，仍然遵循存储程序的思想；</p>
+<p>存储程序架构的计算机主要的组成部分均为 运算器、控制器、存储器、输入设备和输出设备</p>
+<p>（7）取指周期中从内存中读出的信息流是指令流（计算机硬件可直接执行的每一个基本的算术运算或逻辑运算操作）；</p>
+<p>执行周期中从内存中读出的信息流是数据流（解算某一个问题中的一串指令序列）；</p>
+<p>（8）现代计算机系统的多级划分</p>
+<p>第一级是微程序设计级，这是一个硬件级别，由机器硬件直接执行微指令；<br>第二级是一般机器级，也称为机器语言级，也是硬件级，由微程序解释机器指令；<br>第三级别是操作系统级，由操作系统程序实现，软件级；<br>第四级是汇编语言级，由汇编程序支持和执行，软件级；<br>第五级是高级语言级，由各种高级语言编译程序支持和执行，软件级；</p>
+<h1 id="二、数制"><a href="#二、数制" class="headerlink" title="二、数制"></a>二、数制</h1><h2 id="1-概念辨析"><a href="#1-概念辨析" class="headerlink" title="1.概念辨析"></a>1.概念辨析</h2><p>（1）ASCLL码是7位二进制数，因为计算机基本存储单元为字节，故最左边（最高位）补0；</p>
+<p>（2）</p>
+<p>二进制以0b开头，八进制以0开头，十六进制以0x开头；</p>
+<p>二进制以B结尾binary，八进制以O结尾octal，十进制以D结尾decimal，十六进制以H结尾hexadecimal；<br>$$<br>1个字节&#x3D;8个二进制数&#x3D;8&#x2F;3个八进制数&#x3D;2个十六进制数<br>$$<br>十进制转二进制：整数部分使用除k取余法，小数部分使用乘k取整法，分数使用分数移位法</p>
+<p><img src="/images/image-20220618160714866.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20220618160735547.png" srcset="/img/loading.gif" lazyload></p>
+<p>（3）</p>
+<p>小端方案：数据的低有效位放在存储体中的低地址；<br>大端方案：数据的高有效位放在存储体中的高地址；</p>
+<p>（4）类型转换</p>
+<p>char 1B-&gt;short 2B-&gt;int 4B</p>
+<p>默认情况下（也就是隐式转换）在计算机中都是短型转长型，且C语言中的程序数值以补码格式存储，类型转换不会改变原变量的类型和数据</p>
+<p>常见的隐式类型转换主要有算术转换、赋值转换和输出转换</p>
+<p><img src="/images/image-20220611170351800.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20220611170410674.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20220611170432359.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="2-校验码"><a href="#2-校验码" class="headerlink" title="2.校验码"></a>2.校验码</h2><p>（1）一般地，奇偶校验在数据左边增加校验位，CRC在数据右边增加校验位（实际上在计网的首部或者帧中校验和是有固定存放字段的）<br>（2）校验码指的是既能够发现错误又能够纠正错误</p>
+<p><img src="/images/image-20220611160839232.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-1-汉明码"><a href="#2-1-汉明码" class="headerlink" title="2.1 汉明码"></a>2.1 汉明码</h3><p>P3读4位，P4读8位；</p>
+<p><img src="/images/image-20220618111838063.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-2-CRC"><a href="#2-2-CRC" class="headerlink" title="2.2 CRC"></a>2.2 CRC</h3><p><img src="/images/image-20220611161512526.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20220611161523876.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-3-模2除法"><a href="#2-3-模2除法" class="headerlink" title="2.3 模2除法"></a>2.3 模2除法</h3><p>该除法常用于计算CRC的校验位</p>
+<p><img src="/images/image-20220611162200408.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="3-定点数的表示与运算"><a href="#3-定点数的表示与运算" class="headerlink" title="3.定点数的表示与运算"></a>3.定点数的表示与运算</h2><h3 id="3-1-定点数的表示"><a href="#3-1-定点数的表示" class="headerlink" title="3.1 定点数的表示"></a>3.1 定点数的表示</h3><p>常见的定点数据格式有int char long,常见的浮点数据格式有double float;</p>
+<p>定点数指的是小数点固定的数据格式，我们一般都讨论的是有符号数的定点表示（包括下面也是）;</p>
+<p>而对于无符号数实际上用定点表示也不会出错，只是此时它的符号位会失去意义成为数值位（类型转换中需要注意的问题）；</p>
+<p>有符号数的定点机器表示主要有如下四种形式：</p>
+<p><img src="/images/image-20220611164408403.png" srcset="/img/loading.gif" lazyload></p>
+<p><u>一定一定要记住只有负数的补码才能使用变换规则</u></p>
+<p>四种码制之间主要有如下关系：</p>
+<p><img src="/images/image-20220611164633351.png" srcset="/img/loading.gif" lazyload></p>
+<p>四种码制的表示范围主要如下：</p>
+<p><img src="/images/image-20220611164759553.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-2-定点数的运算"><a href="#3-2-定点数的运算" class="headerlink" title="3.2 定点数的运算"></a>3.2 定点数的运算</h3><h4 id="3-2-1-算术移位"><a href="#3-2-1-算术移位" class="headerlink" title="3.2.1 算术移位"></a>3.2.1 算术移位</h4><p>算术移位的对象为有符号数，移位的过程中始终保持符号位不变；</p>
+<p><img src="/images/image-20220611165220241.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="3-2-2-逻辑移位"><a href="#3-2-2-逻辑移位" class="headerlink" title="3.2.2 逻辑移位"></a>3.2.2 逻辑移位</h4><p>逻辑移位的对象为无符号数</p>
+<p><img src="/images/image-20220611165329654.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="3-2-3-符号拓展"><a href="#3-2-3-符号拓展" class="headerlink" title="3.2.3 符号拓展"></a>3.2.3 符号拓展</h4><p>符号拓展常用于【类型转换】，在类型转换的过程中用于将短类型的数转换为长类型的数<br>遵循的规则就是算术移位的规则：</p>
+<ul>
+<li>整数的短数据转换为长数据就是将原有机器数的数值部分算数右移；</li>
+<li>小数的短数据转换为长数据就是将原有机器数的数值部分算数左移；</li>
+</ul>
+<p><img src="/images/image-20220611165612801.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="3-2-4-乘法运算"><a href="#3-2-4-乘法运算" class="headerlink" title="3.2.4 乘法运算"></a>3.2.4 乘法运算</h4><p>（1）原码一位乘法</p>
+<p><img src="/images/image-20220611170705272.png" srcset="/img/loading.gif" lazyload></p>
+<p>（2）补码一位乘法</p>
+<p><img src="/images/image-20220611170735069.png" srcset="/img/loading.gif" lazyload></p>
+<p>上述介绍的两种方法都是非常复杂的乘法运算，实际考察只会让我们用【带求补器的原码阵列乘法器】求x*y的乘积或者【带求补器的补码阵列乘法器】，<br>例：x&#x3D;+15,y&#x3D;-13，使用【带求补器】的【原码阵列乘法器】求乘积xy<br>具体步骤为：<br>（1）符号位单独运算 0异或1&#x3D;1；<br>（2）求出[|x|]补&#x3D;1111，[|y|]补&#x3D;1101，列长式计算出[|x|]补 * [|y|]补&#x3D;11000011，这是结果的绝对值部分不带符号位；<br>注意：在对1111 0000 111100 1111000做加法的时候我们最好挨着挨着加不要和往常十进制一样，很容易搞错进位；</p>
+<p><img src="/images/image-20220615154929328-16552793887553.png" srcset="/img/loading.gif" lazyload><br>（3)加上符号位得到最终结果[x]原*[y]原&#x3D;1，11000011</p>
+<p>例：x&#x3D;-15,y&#x3D;-13，使用【带求补器】的【补码阵列乘法器】求乘积xy<br>具体步骤为：<br>（1）符号位单独运算，1异或1&#x3D;0；<br>（2）求出[|x|]补&#x3D;1111，[|y|]补&#x3D;1101，列长式计算出[|x|]补 * [|y|]补&#x3D;11000011,这是结果的绝对值部分不带符号位;</p>
+<p><img src="/images/image-20220615154929328.png" srcset="/img/loading.gif" lazyload><br>（3)加上符号位得到最终结果[x]补*[y]补&#x3D;0，11000011</p>
+<h4 id="3-2-5-除法运算"><a href="#3-2-5-除法运算" class="headerlink" title="3.2.5 除法运算"></a>3.2.5 除法运算</h4><p>（1）原码恢复余数除法</p>
+<p><img src="/images/image-20220611170830150.png" srcset="/img/loading.gif" lazyload></p>
+<p>（2）原码加减交替法</p>
+<p><img src="/images/image-20220611170905503.png" srcset="/img/loading.gif" lazyload></p>
+<p>（3）补码加减交替法</p>
+<p><img src="/images/image-20220611170931899.png" srcset="/img/loading.gif" lazyload></p>
+<p>这里的除法同理，上面都很复杂，实际考试过程中最多让我们使用【阵列除法器】计算x&#x2F;y<br>例：x&#x3D;0.101001,y&#x3D;0.111,求x&#x2F;y<br>步骤：<br>（1）首先需要求出被除数的补和除数的补以及除数的负数的补[x]补&#x3D;0.101001，[y]补&#x3D;0.111，[-y]补&#x3D;1.001<br>（2）使用除法规则列式计算</p>
+<p>注意：这里就是普通的二进制加法，不是模2运算，模2运算至今只在CRC中用到；</p>
+<p><img src="/images/image-20220615154847828.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="3-2-6-判断溢出"><a href="#3-2-6-判断溢出" class="headerlink" title="3.2.6 判断溢出"></a>3.2.6 判断溢出</h4><p>使用双符号位判断溢出：<br>运算结果的两个符号位相异时表示溢出（两个符号位要参加运算，在进位并且舍去超出机器字长的部分后得到的双符号位用于判断溢出）；<br>无论是否溢出，双符号位的最高位永远是正确符号</p>
+<h2 id="4-浮点数的表示与运算"><a href="#4-浮点数的表示与运算" class="headerlink" title="4.浮点数的表示与运算"></a>4.浮点数的表示与运算</h2><p>并不是说无符号数不能用浮点表示，只是有符号数更加常用，浮点数主要由两大部分组成——阶码&amp;尾数</p>
+<p><img src="/images/image-20220611171151320.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="4-1-浮点数尾数的规格化"><a href="#4-1-浮点数尾数的规格化" class="headerlink" title="4.1 浮点数尾数的规格化"></a>4.1 浮点数尾数的规格化</h3><p><img src="/images/image-20220615112136336.png" srcset="/img/loading.gif" lazyload></p>
+<p>这里的左规可能进行多次，但是右规只会进行一次，而且左规和右规也不是算数移位，就是普通的将整体向小数点左&#x2F;右边移动；</p>
+<p><img src="/images/image-20220618172022643.png" srcset="/img/loading.gif" lazyload></p>
+<p>实际上考题并不会考察过于复杂，我们在做题过程中也完全不需要担心难度，下面给出常见例题</p>
+<p><img src="/images/image-20220618164553938.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="4-2-浮点数的运算"><a href="#4-2-浮点数的运算" class="headerlink" title="4.2 浮点数的运算"></a>4.2 浮点数的运算</h3><p>下面给一个例子，加减法基本步骤是相同的，主要是舍入那里可能需要注意一下；</p>
+<p><img src="/images/image-20220618173143948.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="5-算术逻辑单元"><a href="#5-算术逻辑单元" class="headerlink" title="5.算术逻辑单元"></a>5.算术逻辑单元</h2><h3 id="5-1-FA-amp-CLA"><a href="#5-1-FA-amp-CLA" class="headerlink" title="5.1 FA&amp;CLA"></a>5.1 FA&amp;CLA</h3><p>（1）最基本的组成是由异或门实现的【一位全加器】</p>
+<p><img src="/images/image-20220615125810633.png" srcset="/img/loading.gif" lazyload></p>
+<p>（2）一位全加器只能实现1位二进制的计算，要实现多位的加法如10010111+10011110的运算，我们可以选择使用一个FA搭配进位触发器实现【串行加法器】</p>
+<p><img src="/images/image-20220615125951404.png" srcset="/img/loading.gif" lazyload></p>
+<p>（3）串行加法器因为使用Ai+Bi串行相加，效率非常低（也就是A1+B1完了才能输入A2和B2并执行A2+B2），所以我们可以选择使用将多个FA串联形成【串行进位的并行加法器】</p>
+<p><img src="/images/image-20220615130304771.png" srcset="/img/loading.gif" lazyload></p>
+<p>尽管可以同时计算多个Ai+Bi，但是因为本位和同时依赖于低位进位，所以低位的延迟限制了整个并行加法器的速度；</p>
+<p>（4）我们利用进位Ci的递归特性，使用特殊的线路设计可以实现【并行进位的并行加法器】</p>
+<p><img src="/images/image-20220615130527915.png" srcset="/img/loading.gif" lazyload></p>
+<p>（5）由于并行进位设计时需要非常多的额外线路，所以我们需要限制并行进位的数量，常见的是限制4个FA为一组构成一个并行进位的并行加法器，我们称为【4位CLA加法器】</p>
+<p><img src="/images/image-20220615130745351.png" srcset="/img/loading.gif" lazyload></p>
+<p>（6）然而4位CLA加法器最多只能实现4位二进制的计算，当我们需要计算多位的二进制数时需要对其进行扩充，假设我们直接将CLA串联形成【组内并行、组间串行】的加法器</p>
+<p><img src="/images/image-20220615131036940.png" srcset="/img/loading.gif" lazyload></p>
+<p>（7）我们发现这种扩充方式受限于组间的进位延迟，所以我们增加一个CLA加法器，将其他加法器的Gi和Pi作为输入，可以实现【组内并行、组间并行】的加法器（前面是加线，这里直接加器件）</p>
+<p><img src="/images/image-20220615131304184.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="5-2-ALU"><a href="#5-2-ALU" class="headerlink" title="5.2 ALU"></a>5.2 ALU</h3><p>我们最常见的ALU芯片是4位的74181，它仅支持4位的二进制运算，假如我们需要进行16位二进制的运算，借鉴上面对CLA的扩充，我们有两种方式</p>
+<p><img src="/images/image-20220615131457228.png" srcset="/img/loading.gif" lazyload></p>
+<p>第一种是直接将4个74181串联</p>
+<p><img src="/images/image-20220615131623348.png" srcset="/img/loading.gif" lazyload></p>
+<p>第二种是增加一个74182将4个74181并联</p>
+<p><img src="/images/image-20220615131700629.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="三、存储系统"><a href="#三、存储系统" class="headerlink" title="三、存储系统"></a>三、存储系统</h1><h2 id="1-存储器分类"><a href="#1-存储器分类" class="headerlink" title="1.存储器分类"></a>1.存储器分类</h2><p>（1）按照存取方式分类：</p>
+<p>​	随机存储器RAM：<br>​		-静态RAM SRAM（触发器原理）：基本存储元使用六晶体管MOS<br>​		-动态RAM DRAM（电容充电原理）：基本存储元使用一个晶体管，需要刷新（集中刷新、分散刷新、异步刷新），其刷新的单位是行所以只需要行地址，用于用户编程；</p>
+<p>​	只读存储器ROM（也是随机存取的，只是早期设计的只能随机取，U盘就属于ROM）：写入比读出慢很多，存放系统程序；<br>​	串行访问存储器：<br>​		顺序存取存储器（如磁带CD-ROM）<br>​		直接存取存储器（如磁盘DAM），方式介于顺序和随机之间</p>
+<p>（2）按照可保存性分类：</p>
+<p>​	非易失性：如ROM<br>​	易失性：断电后信息消失，如RAM</p>
+<p>（3）刷新方式</p>
+<p>首先因为DRAM的电荷最多维持2ms，所以通常取刷新间隔为2ms（也称为【刷新周期】），在这段时间内无论采用什么样的刷新方式都必须将存储芯片的所有行全部刷新；<br>其次对DRAM的刷新以行为单位，与列无关，同时不需要片选对整体刷新，默认就是对整体而非某个芯片；<br>最后是一次完整的刷新过程花费时间【刷新时间】等于一个【存储周期】；</p>
+<p>集中刷新：在2ms内取一段固定的时间作为刷新时间对整个存储芯片进行刷新，这段时间称为“死时间”；<br>分散刷新：将存取周期延长，如原本存储芯片的存取周期为0.5us，则增加0.5us的刷新时间使系统存取周期为1us——*<u>这么做会不会有问题？2ms内有些行刷新到了有些行没有？或者是2ms内多次刷新同一行？</u>*<br>异步刷新：将刷新周期缩短，新的刷新周期的计算方法<br>$$<br>新刷新周期&#x3D;原刷新周期&#x2F;存储芯片的行数<br>$$<br>与集中刷新相比，缩短了2ms的固定刷新周期（但是仍然存在死时间，只不过死时间的长度变短了）；与分散刷新相比，并没有增加存储芯片的存取周期，而且不会出现后面的问题；</p>
+<h2 id="2-存储器分级"><a href="#2-存储器分级" class="headerlink" title="2.存储器分级"></a>2.存储器分级</h2><p>我们常见的三级存储系统如下：</p>
+<p><img src="/images/image-20220612092652016.png" srcset="/img/loading.gif" lazyload></p>
+<p>计算题中常出现的是两级存储系统，也就是上图去掉辅存；<br>这种类型的计算题基本上都是默认主存和Cache可同时访问CPU；<br>Cache称为顶层存储器，主存称为底层存储器，假设Cache的命中率为x，Cache的存取时间为T，主存的存取时间为W，<br>$$<br>平均存取时间&#x3D;T<em>x+W</em>(1-x)<br>$$</p>
+<h2 id="3-概念辨析"><a href="#3-概念辨析" class="headerlink" title="3.概念辨析"></a>3.概念辨析</h2><p>主存由DRAM实现（ROM与DRAM可共同作为主存的一部分，统一构成主存的地址域），Cache由SRAM实现；<br>RAM的特点在于将地址分为行地址和列地址，SRAM的行地址和列地址可能不同长度，在寻址时同时传送行、列地址；DRAM的行地址和列地址长度相同，所以可以复用地址线，先后将行地址和列地址传送；</p>
+<p>对任何一种存储器来说，在读写操作以后都需要一段时间来恢复内部状态，存取周期包括了恢复状态这一段时间；</p>
+<p>要求某存储芯片的引脚数目，计算公式通常为：<br>$$<br>总数目&#x3D;数据线数目+地址线数目+1条片选线CS+1条读控制RD+1条写控制WE<br>$$<br>（1）有时候读&#x2F;写控制线可集成为一根，具体根据选择题判断；<br>（2）在计算DRAM时，因为使用了地址复用所以地址线实际只用了计算出的地址线的一半，而没有片选线，取之增加了1条行通选线和1条列通选线；</p>
+<h2 id="4-CPU与存储器芯片的连接"><a href="#4-CPU与存储器芯片的连接" class="headerlink" title="4.*CPU与存储器芯片的连接"></a>4.*CPU与存储器芯片的连接</h2><h3 id="4-1-合理选择存储芯片"><a href="#4-1-合理选择存储芯片" class="headerlink" title="4.1 合理选择存储芯片"></a>4.1 合理选择存储芯片</h3><p>系统程序区只能用ROM芯片，用户地址区只能用RAM芯片；<br>使用ROM存放系统程序、标准程序及常数，RAM用于用户编程；</p>
+<h3 id="4-2-地址线的连接"><a href="#4-2-地址线的连接" class="headerlink" title="4.2 地址线的连接"></a>4.2 地址线的连接</h3><p>CPU的地址线往往比存储芯片的地址线多，通常将CPU低位地址线与存储芯片的地址线连接，CPU地址线的高位保留，用于扩充存储芯片（字拓展）时使用；</p>
+<h3 id="4-3-数据线的连接"><a href="#4-3-数据线的连接" class="headerlink" title="4.3 数据线的连接"></a>4.3 数据线的连接</h3><p>当CPU的数据线和存储芯片的数据线不相等时【一定】要对存储芯片进行位拓展</p>
+<h3 id="4-4-存储芯片的拓展"><a href="#4-4-存储芯片的拓展" class="headerlink" title="4.4 存储芯片的拓展"></a>4.4 存储芯片的拓展</h3><p>当位拓展和字拓展都可以使用时优先选择位拓展；</p>
+<p>无论什么拓展方式，需要的芯片数量计算方式都是直接用总存储容量相除即可</p>
+<h4 id="（1）位拓展——数据线不够"><a href="#（1）位拓展——数据线不够" class="headerlink" title="（1）位拓展——数据线不够"></a>（1）位拓展——数据线不够</h4><p>地址端对应相连（所有的A0在一根线上、所有的A1在一根线上…），片选端、读写控制端分别在一根线上（所有的芯片连接在WE线上，所有的芯片连接在CS线上）；<br>数据端分别引出；</p>
+<p><img src="/images/image-20220614163423851.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="（2）字拓展——地址线不够"><a href="#（2）字拓展——地址线不够" class="headerlink" title="（2）字拓展——地址线不够"></a>（2）字拓展——地址线不够</h4><p>地址线对应相连（所有的A0在一根线上、所有的A1在一根线上…），数据线对应相连（所有的D0在一根线上、所有的D1在一根线上），读写控制线为1根（所有的芯片连接在WE线上）；<br>片选端分别引出；</p>
+<p><img src="/images/image-20220614163756798.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="（3）字位同时拓展"><a href="#（3）字位同时拓展" class="headerlink" title="（3）字位同时拓展"></a>（3）字位同时拓展</h4><p>先位成组，再字拓片选</p>
+<p>地址线对应相连（所有的A0在一根线上、所有的A1在一根线上…），读写控制线为1根（所有的芯片连接在WE线上）；<br>数据端组内分别引出，组间对应相连；片选端组间分别引出，组内不区分；</p>
+<p><img src="/images/image-20220614163908187.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="5-存储器的特殊结构"><a href="#5-存储器的特殊结构" class="headerlink" title="5.存储器的特殊结构"></a>5.存储器的特殊结构</h2><h3 id="5-1-双端口RAM"><a href="#5-1-双端口RAM" class="headerlink" title="5.1 双端口RAM"></a>5.1 双端口RAM</h3><p>允许两个独立的控制器同时异步地访问存储单元</p>
+<h3 id="5-2-多模块存储器"><a href="#5-2-多模块存储器" class="headerlink" title="5.2 多模块存储器"></a>5.2 多模块存储器</h3><h4 id="（1）单体多字存储器"><a href="#（1）单体多字存储器" class="headerlink" title="（1）单体多字存储器"></a>（1）单体多字存储器</h4><p>存储器中只有一个存储体（一个存储模块），但每个存储单元中存储多个字，一次能够读出多个字，提高了存储器的带宽；</p>
+<p>优点是可以同时取出n条指令和数据；缺点是若指令和数据不是连续存放则效率没有提升；</p>
+<h4 id="（2）高位交叉编制的多体存储器"><a href="#（2）高位交叉编制的多体存储器" class="headerlink" title="（2）高位交叉编制的多体存储器"></a>（2）高位交叉编制的多体存储器</h4><p>高位地址表示现在访问的哪个存储体，低位地址决定现在访问的是哪个存储单元</p>
+<p>如00 000就是第一个存储体的第一个存储单元，01 001就是第二个存储体的第二个存储单元；</p>
+<p>特点：</p>
+<p>模块内的地址连续，这种存储器只扩容并没有提速（因为00 001和00 002都是第一个存储体，不能并行读取也就不能提速）；</p>
+<h4 id="（3）低位交叉编制的多体存储器"><a href="#（3）低位交叉编制的多体存储器" class="headerlink" title="（3）低位交叉编制的多体存储器"></a>（3）低位交叉编制的多体存储器</h4><p>高位地址决定现在访问的是哪个存储单元，低位地址表示现在访问的哪个存储体；</p>
+<p>如00 001就是第二个存储体的第一个存储单元，01 000就是第一个存储体的第二个存储单元；</p>
+<p>低位交叉编制利用了【流水线】的概念，使用【流水线方式存取】</p>
+<p>&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;假设一个存储模块存取一个字的存取周期为T，总线的传送周期为r（也就是经过r时间启动下一个存储模块进行存取），存储模块数为m，为实现流水线存取，需要满足&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;<br>$$<br>m&gt;&#x3D;T&#x2F;r<br>$$<br>当m&#x3D;T&#x2F;r时效率最高，当模块数多于一定的数量（T&#x2F;r）后，流水线的效率将不再提升，下面分别给出m&#x3D;T&#x2F;r和m&gt;T&#x2F;r的【过程图】</p>
+<p><img src="/images/image-20220620202412326.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20220620202309997.png" srcset="/img/loading.gif" lazyload></p>
+<p>当使用流水线方式进行存取时，连续存取n个字所需要的时间为<br>$$<br>t&#x3D;T+(n-1)<em>r<br>$$<br>使用普通顺序方式进行存取时，连续存取n个字所需要的时间为<br>$$<br>t&#x3D;n</em>T<br>$$<br>在做题的过程中我们要计算带宽时常默认顺序存储器和交叉存储器都连续读出m&#x3D;模块数个字；</p>
+<p>总结：当n足够大的时候,连续存取n个字，一个存储周期内，低位交叉存储器可以提供的数据量为普通单模块的T&#x2F;r倍(不一定等于存储模块数量【m&gt;&#x3D;T&#x2F;r效率不再提升】)</p>
+<h2 id="6-Cache"><a href="#6-Cache" class="headerlink" title="6.*Cache"></a>6.*Cache</h2><h3 id="（1）基本概念"><a href="#（1）基本概念" class="headerlink" title="（1）基本概念"></a>（1）基本概念</h3><p>采用存储体结构上的优化速度仍然匹配不上CPU，所以考虑直接优化存储元，引入了局部性原理的Cache层次化设计；<br>CPU与Cache&#x2F;主存之间交换数据以字为单位。Cache与主存之间交换数据以块（多个字）为单位</p>
+<p>空间局部性：访问顺序与存放顺序是一致的；<br>时间局部性：访问过的元素再次访问则时间局部性好；</p>
+<p>命中率：设一个程序执行期间Cache的总命中次数为Nc，访问主存的次数为Nm，则命中率H为<br>$$<br>H&#x3D;Nc&#x2F;(Nc+Nm)<br>$$<br>缺失率&#x3D;1-命中率</p>
+<p>Cache-主存系统平均访问时间Ta：假设命中率为H，tc为命中时Cache的访问时间，tm为未命中时的访问时间<br>——访问时间指的是CPU访问存储单元的时间（一般认为存取周期等于访问时间）<br>——Cache和主存同时被访问&#x2F;先访问Cache未命中时再访问主存这两种方式，tc相同而tm不同<br>$$<br>Ta&#x3D;H*tc+(1-H)*tm<br>$$</p>
+<p>假设已知命中时间tc，未命中时间tm，平均访问时间Ta,则<br>$$<br>系统效率&#x3D;tc&#x2F;Ta<br>$$</p>
+<p>$$<br>不使用Cache时间&#x2F;使用Cache时间&#x3D;性能提升&#x3D;tm&#x2F;Ta<br>$$</p>
+<h3 id="（2）地址映射"><a href="#（2）地址映射" class="headerlink" title="（2）地址映射"></a>（2）地址映射</h3><p>——地址映射：把主存地址空间映射到Cache地址空间，也就是将主存中的信息按照某种映射关系装入Cache中</p>
+<p>——地址变换：在信息按上述映射关系装入Cache后，CPU执行程序时，会将程序中的主存地址变换成Cache地址</p>
+<h4 id="a-直接映射"><a href="#a-直接映射" class="headerlink" title="a)直接映射"></a>a)直接映射</h4><p>地址映射规则：将主存分区，每个区域内的主存块数与Cache内的块数相同；</p>
+<ol>
+<li><p>主存中的每一块只能映射到Cache内的固定行，规则为<br>$$<br>i&#x3D;j mod m<br>$$<br>其中i为Cache的行号，j为主存的块号，m为Cache的总块数</p>
+</li>
+<li><p>不使用替换算法，产生冲突直接替换原有内容；</p>
+</li>
+<li><p>为了在Cache中记住自己存储的数据块属于主存中的哪一个区，Cache需要额外在Cache行中设置标记字段，假设主存有256块，Cache有8块，则主存要划分32个区，Cache需要5位标记字段来标记区号，3位标记Cache行号；</p>
+</li>
+<li><p>使用直接映射，则CPU使用的内存地址结构为：</p>
+</li>
+</ol>
+<p><img src="/images/image-20220615110223533.png" srcset="/img/loading.gif" lazyload></p>
+<p>​												标记：区号的标记     Cache行号：Cache字块的地址    块内地址：Cache字块内的地址</p>
+<ol start="5">
+<li>地址变换过程为：先按照Cache行号找到Cache中的块，接着用标记字段与Cache中的区号&#x2F;标记进行比较，如果相同则命中，使用块内地址在Cache中取出需要的数据；</li>
+</ol>
+<p><img src="/images/image-20220615105915720-16552623321835.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="b-全相联映射"><a href="#b-全相联映射" class="headerlink" title="b)全相联映射"></a>b)全相联映射</h4><p>地址映射规则：主存的任意一块可以映射到Cache中的任意一块</p>
+<ol>
+<li><p>主存与缓存分成相同大小的数据块。</p>
+</li>
+<li><p>主存的某一数据块可以装入缓存的任意一块空间中。</p>
+</li>
+<li><p>为了在Cache中记住自己存储的数据块来自主存中的哪一块，Cache需要额外在Cache行中设置标记字段，假设主存有2048个地址块，则Cache标记字段的位数为11位</p>
+</li>
+<li><p>假设使用全相联映射，则CPU使用的内存地址结构为：</p>
+</li>
+</ol>
+<p><img src="/images/image-20220615104838717.png" srcset="/img/loading.gif" lazyload></p>
+<p>​														标记：主存字块的标记    块内地址：Cache块内的地址</p>
+<ol start="5">
+<li>地址变换过程为：先按照标记找到存储主存块数据的Cache块，若找到则代表命中，接着使用块内地址在Cache块中取出需要的数据；</li>
+</ol>
+<p><img src="/images/image-20220615105131280.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="c-组相联映射"><a href="#c-组相联映射" class="headerlink" title="c)组相联映射"></a>c)组相联映射</h4><p>地址映射规则：将主存分区，将Cache分组，要求主存的每个区的块数与Cache的组数相同（主存中一个区分为4块所以Cache中需要4组）</p>
+<p>为了在Cache中记住自己存储的数据块来自主存中的哪一个区，Cache额外增加了标记字段；</p>
+<p>假设每组有r个Cache块，则称为r路组相联；</p>
+<p><img src="/images/image-20220615110736918.png" srcset="/img/loading.gif" lazyload></p>
+<ol>
+<li>Cache组间采用直接映射（主存块存放到哪个组是固定的），组内采用全相联映射（主存块存放到组内的哪一行是灵活的）</li>
+</ol>
+<p>组间直接映射规则：<br>$$<br>Cache组号&#x3D;主存块号modcache组数<br>$$<br>2.使用组相联映射，CPU的内存地址结构为：</p>
+<p><img src="/images/image-20220615111507191.png" srcset="/img/loading.gif" lazyload></p>
+<p>​												标记：主存区号的标记    组号：Cache组的地址    块内地址：Cache中的字块内的地址</p>
+<p>3.地址变换过程：首先使用组号找到Cache中的组，然后将标记与该组所有Cache块中的区号比较，如果相同则命中，使用块内地址取出需要的数据；</p>
+<h3 id="（3）替换算法"><a href="#（3）替换算法" class="headerlink" title="（3）替换算法"></a>（3）替换算法</h3><p>直接映射不需要考虑使用替换算法，我们介绍最常用的LRU算法（书上使用计数器可能不容易理解，基本原理还是堆栈）<br>疑问：栈只能栈顶进出，所以栈底元素是怎么被删除的？？</p>
+<p><img src="/images/image-20220618131343744.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="7-虚拟存储器"><a href="#7-虚拟存储器" class="headerlink" title="7.虚拟存储器"></a>7.虚拟存储器</h2><p>引入虚存可以解决很多问题，编程用户无需关注具体物理存储器的细节，操作系统通过虚拟技术扩大存储容量；</p>
+<p>虚拟存储器功能简单来说就是用户给出一个逻辑地址，虚拟存储器给出该虚拟地址对应的物理地址中存储的数据；</p>
+<p>虚拟存储器具备【主存的速度】和【辅存的容量】；</p>
+<p>虚拟存储器主要由软硬件一起实现，根据虚拟地址和物理地址之间的映射单位可将虚拟存储器分为以下两类（段页式较复杂不介绍）：</p>
+<p>页式虚拟存储器</p>
+<p><img src="/images/image-20220614232227049.png" srcset="/img/loading.gif" lazyload></p>
+<p>段式虚拟存储器</p>
+<p><img src="/images/image-20220614232300961.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="四、指令系统"><a href="#四、指令系统" class="headerlink" title="四、指令系统"></a>四、指令系统</h1><h2 id="1-基本概念-1"><a href="#1-基本概念-1" class="headerlink" title="1.基本概念"></a>1.基本概念</h2><p>指令是计算机运行的最小功能单位，位于硬件和软件的交界面上；</p>
+<p>高级语言可以在不同计算机上运行，但机器语言只能在固定计算机上运行；<br>$$<br>一条指令就是机器语言的一条语句<br>$$</p>
+<p>$$<br>指令集&#x3D;指令系统&#x3D;本计算机所有指令构成的集合<br>$$</p>
+<p>将指令字长等于机器长度的指令称为单字长指令；<br>若一个指令系统中的所有指令长度都是相等的，则称为定长指令字；若指令的长度随指令功能的差异变化称为变长指令字；<br>操作码位数不变称为定长操作码指令，反之称为变长操作码指令，注意变长操作码的指令不一定就是变长指令字；</p>
+<p>操作码字段：指出该指令具备的功能和操作，一般地，n位定长操作码的指令系统最大能够表示2^n条不同的指令；<br>地址码字段：指出被操作对象（指令或数据，其中数据又被称为操作数）的地址信息;</p>
+<p><u>指令的分类</u>：</p>
+<p>（1）从功能层面上分类：</p>
+<p><img src="/images/image-20220613135528585.png" srcset="/img/loading.gif" lazyload></p>
+<p>（2）从计组层次结构分类：</p>
+<p><img src="/images/image-20220613135600448.png" srcset="/img/loading.gif" lazyload></p>
+<p>（3）按操作对象物理地址分类：</p>
+<p><img src="/images/image-20220613135638152.png" srcset="/img/loading.gif" lazyload></p>
+<p>注意，【中断隐指令】和【通道指令】这种特殊指令都是不属于指令集中的指令</p>
+<h2 id="2-拓展操作码"><a href="#2-拓展操作码" class="headerlink" title="2.拓展操作码"></a>2.拓展操作码</h2><p>拓展操作码是最常见的变长操作码，需要注意以下几点：<br>（1）不允许短码是长码的前缀；<br>（2）对使用频率高的指令分配较短的操作码；</p>
+<p><img src="/images/image-20220613135402011.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="3-寻址方式"><a href="#3-寻址方式" class="headerlink" title="3.寻址方式"></a>3.寻址方式</h2><p>首先要明确寻址分为【指令寻址】和【数据寻址】，指令寻址即确定下一条要执行的指令的有效地址（如果不止一条指令的执行则这是必须的，并不是所有寻找指令有效地址都叫指令寻址），数据寻址即确定本条指令的操作对象【数据&#x2F;指令】的有效地址（非必须，某指令可以没有操作对象）；<br>通常我们将形式地址表示为（A），有效地址表示为（EA），注意（A）表示A编号的寄存器或A地址的内存单元中存放的【数值】，A表示编号为A的寄存器或内存单元地址为A的内存单元；</p>
+<h3 id="3-1-指令寻址"><a href="#3-1-指令寻址" class="headerlink" title="3.1 指令寻址"></a>3.1 指令寻址</h3><p>（1）顺序寻址方式：通过(PC)+1自动形成下一条指令的地址；<br>（2）跳跃寻址方式：通过转移指令给出下一条指令的地址的计算方式，是否跳跃可能受到当前状态的影响；</p>
+<h3 id="3-2-数据寻址"><a href="#3-2-数据寻址" class="headerlink" title="3.2 数据寻址"></a>3.2 数据寻址</h3><p>（1）隐含寻址：如add一地址指令，默认第二个操作数由ACC给出；<br>（2）立即数寻址：地址码字段直接给出操作数，如操作数为3，地址码字段直接存0011即可；<br>（3）主存直接寻址：EA&#x3D;A,地址码字段是有效地址（操作数所在内存地址）；<br>（4）主存间接寻址：一次间址，EA&#x3D;(A)；地址码字段是形式地址，可以看作地址码字段中存放的是指针，该指针指向存放操作数的有效地址的地址，一次间接寻址需要访存两次，多次间接寻址就需要更多访存次数；<br>（5）寄存器直接寻址：地址码字段给出操作数所在的寄存器编号，不需要访存；<br>（6）寄存器间接寻址：地址码字段给出指针，该指针指向存放操作数的有效地址的地址，需要访存；</p>
+<p>（7）相对寻址：EA&#x3D;(PC)+A 常用于转移指令，便于程序浮动；<br>（8）基址寻址：EA&#x3D;(BR)+A 常用于多道程序，形式地址A作为偏移量改变，BR作为基址，其中存放的内容不能修改，面向系统；<br>（9）变址寻址：EA&#x3D;(IX)+A 常用于循环程序，变址寄存器内容（IX）作为偏移量可以改变，形式地址A作为基地址不改变，面向用户；<br><em>上述三者统称为偏移寻址，使用寄存器实现</em></p>
+<p>（10）堆栈寻址：<br>-寄存器堆栈（硬）：栈顶不变，整体数据移动，破坏性读出；<br>-存储器堆栈（软）：栈顶变化，整体数据不移动，非破坏性读出；<br>入栈和出栈的顺序是相反的，而入栈根据栈顶指针指向的不同也有两种方式：<br>    -若进栈操作是先修改指针，再存入数据 (SP-1)-&gt;SP  (SP)-&gt;MAR  a-&gt;MAR，说明栈顶指针指向栈顶元素<br>    -若进栈操作是先存入数据，再修改指针（A）-&gt;Msp   (SP)-1-&gt;SP，说明栈顶指向栈顶空单元<br>    -至于SP+1还是-1是根据计算机从高地址开始存储还是从低地址开始存储；</p>
+<p>考题常会组合考察，如变址间接寻址指的是先变址（IX）+A，再间址（（IX）+A）</p>
+<h2 id="4-指令集"><a href="#4-指令集" class="headerlink" title="4.指令集"></a>4.指令集</h2><h3 id="4-1-CISC（复杂指令系统）"><a href="#4-1-CISC（复杂指令系统）" class="headerlink" title="4.1 CISC（复杂指令系统）"></a>4.1 CISC（复杂指令系统）</h3><p>一条指令完成一个功能；</p>
+<p>大多能够实现软件兼容；</p>
+<p>指令数量巨多；</p>
+<p>大多数为微程序控制，流水线技术可用可不用；</p>
+<h3 id="4-2-RISC（精简指令系统）"><a href="#4-2-RISC（精简指令系统）" class="headerlink" title="4.2 RISC（精简指令系统）"></a>4.2 RISC（精简指令系统）</h3><p>一条指令完成一个基本动作；</p>
+<p>大多数RISC不能与老机器兼容；</p>
+<p>数量较少、定长、可访存指令只有Load&#x2F;Atore、使用的通用寄存器较多（中间结果多）；</p>
+<p>采用简单的组合逻辑控制（硬布线控制器），必须实现指令流水线；</p>
+<h2 id="5-指令周期"><a href="#5-指令周期" class="headerlink" title="5.指令周期"></a>5.指令周期</h2><p>CPU从主存中取出并执行一条指令的全部时间称为指令周期，一个指令周期通常可以划分为若干个机器周期，不同的指令一般划分的机器周期数目不同，常见的指令周期一般包含以下四个周期，</p>
+<p>四个指令周期都有访问主存的操作，但是访存的目的不同：<br>取指周期：取指令<br>间址周期：获取操作数有效地址（而不是操作数）<br>执行周期：取操作数<br>中断周期：保存断点<br>CPU内部提供四个触发器硬件结构来区分不同的周期阶段</p>
+<p>（1）取指周期的任务：根据PC中的内容（下一条指令的地址）从主存中取出指令，并存放在IR中，同时PC+1</p>
+<p><img src="/images/image-20220619102845576.png" srcset="/img/loading.gif" lazyload></p>
+<p>（2）间址周期的任务：对于间接寻址的指令，为了在执行周期阶段获取操作数，需要在间址周期获取操作数的有效地址</p>
+<p><img src="/images/image-20220619103141731.png" srcset="/img/loading.gif" lazyload></p>
+<p>（3）执行周期的任务：根据IR中指令的操作码和MDR中的操作数通过ALU操作产生执行结果（这里仅仅只是介绍了需要用到ALU的执行周期的大致任务）</p>
+<p>PS：因为每条指令的执行周期各不相同，所以不给出统一数据流(换句话说其他三个指令周期的数据流都是固定的，硬背就行)</p>
+<p>（4）中断周期的任务：处理中断请求</p>
+<p><img src="/images/image-20220619103350108.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="6-方框图-amp-指令周期流程图"><a href="#6-方框图-amp-指令周期流程图" class="headerlink" title="6.方框图&amp;指令周期流程图"></a>6.方框图&amp;指令周期流程图</h2><h3 id="6-1-常考概念"><a href="#6-1-常考概念" class="headerlink" title="6.1 常考概念"></a>6.1 常考概念</h3><p>（1）常见符号</p>
+<p>DBUS：数据总线<br>ABUS(D)：数存地址总线<br>ABUS(1)：指存地址总线<br>RD(D)：数存读命令<br>WE(D)：数存写命令<br>RD(1)指存读命令<br>#R1：表示立即寻址，给出的操作数就是R1<br>~：公操作符号，表示一条指令执行完毕进入公操作</p>
+<p>（2）常见微操作</p>
+<p>AC&lt;-(AC)OP(A)   (AC)表示累加寄存器AC中的数；(A)表示存储单元&#x2F;寄存器中的数；OP表操作性质;&lt;-表将操作结果传送到指定地方<br>M(MAR)-&gt;MDR     将MAR所指主存中的内容经数据总线送入MDR中，M表示主存<br>Ad(IR)-&gt;MAR     将IR中的形式地址送入MAR中，Ad表示指令中的地址码部分（也就是形式地址）</p>
+<p>（3）常见指令</p>
+<p>mov指令将第二个操作数（寄存器&#x2F;内存中的内容或某个常数值）复制到第一个操作数（寄存器或内存）；</p>
+<p>push&#x2F;pop:将操作数压入内存的栈&#x2F;弹栈；</p>
+<p>add&#x2F;sub:add将两个操作数相加并将结果保存在第一个操作数中；sub将两个操作数相减结果保存到第一个操作数中；</p>
+<p>inc&#x2F;dec：分别是自增1和自减1；</p>
+<p>*lad指令将主存中的数据存储到寄存器中；</p>
+<p>*sto是将寄存器中的数据存储到主存中；</p>
+<p>lad和sto是寄存器-主存指令，需要三个CPU周期，其他都是寄存器-寄存器指令只需要两个CPU周期。</p>
+<h3 id="6-2-方框图"><a href="#6-2-方框图" class="headerlink" title="6.2 方框图"></a>6.2 方框图</h3><p>方框图并不完全等同于指令周期流程图，但作用都是描述计指令的指令周期；</p>
+<p>PS：</p>
+<ol>
+<li>【方框图】中的菱形符号表示某种判别或测试，时间上属于上一个方框的CPU周期&#x2F;机器周期，并不单独占用一个CPU周期；</li>
+<li>【方框图】中的一个方框代表一个CPU周期&#x2F;机器周期，方框中的内容表示数据通路的操作或某种控制操作；</li>
+</ol>
+<p><img src="/images/image-20220619105202344.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="6-3-指令周期流程图"><a href="#6-3-指令周期流程图" class="headerlink" title="6.3 指令周期流程图"></a>6.3 指令周期流程图</h3><p>PS：</p>
+<ol>
+<li>流程图中的方框并不代表一个机器周期，而是一个节拍，菱形符号表示某种判别或测试；</li>
+<li>流程图内部标注一个节拍做的微操作，流程图旁边标注了每一个节拍中用到的微操作控制信号；</li>
+<li>不用为每个微操作画一个框，当有些控制信号可以同时有效时（PC0 G ARi）这些步骤可以合成为一个步骤，因为一个节拍里可以同时安排执行资源不发生冲突的微操作；</li>
+</ol>
+<p>例题：请根据下面给出的数据通路图，画出ADD R2,R0的指令周期流程图</p>
+<p><img src="/images/image-20220619102009229.png" srcset="/img/loading.gif" lazyload></p>
+<p>指令周期流程图可以看作是详细的对方框图中的某个指令的设计；</p>
+<p><img src="/images/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0ODIzNzU2,size_16,color_FFFFFF,t_70.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="6-4-数据通路"><a href="#6-4-数据通路" class="headerlink" title="6.4 数据通路"></a>6.4 数据通路</h3><p>实际上基于数据通路（数据的流动方向）的对指令的分析就是使用自然语言描述指令周期流程图，也就是分析指令周期流程图的细节实现；</p>
+<p>例题：请根据下面的数据通路，分析指令ADD (R0),R1 的指令流程和控制信号</p>
+<p><img src="/images/image-20220619112311566.png" srcset="/img/loading.gif" lazyload></p>
+<p>一般来说【取指周期】因为固定四个步骤所以非常好区分，但是很多时候我们都是将【间址周期和执行周期】混在一起当作执行周期来分析的（比如上面画指令周期流程也是如此）</p>
+<p><img src="/images/image-20220619112930313.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20220619113023771.png" srcset="/img/loading.gif" lazyload></p>
+<p>关于数据通路，还有一种考点就是不需要我们写出取指周期，因为已经直接给出了指令，让我们分析如ADD指令的数据通路，分析方法就是上述分析间址周期和执行周期的方法</p>
+<p><img src="/images/image-20220619114058053.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="7-指令执行方案"><a href="#7-指令执行方案" class="headerlink" title="7.指令执行方案"></a>7.指令执行方案</h2><p>一个指令周期通常分为多个执行步骤，每个步骤完成一部分的功能，可选择三种不同的方案安排指令的执行步骤</p>
+<p>（1）单指令周期</p>
+<p>对所有指令都选用相同的执行时间来完成，下一条指令只能在前一条指令执行结束后才能启动，指令周期取决于执行时间最长的指令的执行时间；</p>
+<p>（2）多指令周期</p>
+<p>对不同类型的指令分配不同的机器周期，下一条指令仍然只能在前一条指令执行结束后才能启动；</p>
+<p>（3）流水线方案</p>
+<p>指令之间可以并行执行；</p>
+<h2 id="8-指令流水线"><a href="#8-指令流水线" class="headerlink" title="8.*指令流水线"></a>8.*指令流水线</h2><h3 id="（1）基本概念-1"><a href="#（1）基本概念-1" class="headerlink" title="（1）基本概念"></a>（1）基本概念</h3><p>假设一个我们将一个指令周期分为三个阶段（注意指令流水线都是阶段的概念而非机器周期）：取指、分析、执行，因为这三个阶段使用的硬件不同，所以有条件实现指令流水线</p>
+<p>假设三个阶段的执行时间都相等均为t，分别使用如下三种方式可得到执行时间上的差异</p>
+<p><img src="/images/image-20220614221851644.png" srcset="/img/loading.gif" lazyload></p>
+<p>上述第二种和第三种方式都是利用了指令流水线，我们常用以下两种方式来表示指令流水线</p>
+<p>指令执行过程图随着指令序列的增加高度会增加，而时空图因为限定了只有固定数量的硬件资源，所以高度不变</p>
+<p><img src="/images/image-20220614222225595.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="（2）性能指标"><a href="#（2）性能指标" class="headerlink" title="（2）性能指标"></a>（2）性能指标</h3><p>这里我们讨论的是理想情况下的性能指标，也就是上一个指令第一个阶段完成下一条指令立刻能够执行，其中k指将一条指令划分为k个阶段</p>
+<p><img src="/images/image-20220614223033745.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20220614223200009.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20220614223233904.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="（3）影响因素"><a href="#（3）影响因素" class="headerlink" title="（3）影响因素"></a>（3）影响因素</h3><p>首先，各个阶段（我们不称为机器周期，阶段也可能包含多个机器周期）的执行时间可能并不相同，为了方便流水线的设计，我们需要统一阶段执行时间（以最长阶段执行时间为标准），方式是在流水线的每一个功能段部件后面添加缓冲寄存器，防止上一条指令还在执行下一条指令直接就流入；</p>
+<p>其次，划分的阶段的使用的硬件资源也不可能完全不相关，这就会导致【结构相关】也称为资源冲突，解决方法要么重新配置资源，要么延缓产生冲突的阶段的执行；</p>
+<p>还有可能，后面一条指令需要前面指令的输出，在顺序执行下没有问题，但是并行执行可能前一条指令还未产生输出下一条指令就需要使用输出了，这称为【数据相关】也称数据冲突，解决方法是延缓下一条指令的执行，可以使用硬件或软件来实现；也可以使用数据旁路技术，也就是直接在硬件上增加线路不经过存储器直接传入硬件；或者通过编译优化调整指令执行顺序；</p>
+<p>第四种可能是由于转移指令或其他改变PC值的指令造成断流（PC本来是按照+1取指令，结果发现因为跳转指令执行成功进而自己取的大部分指令都作废了），解决方法是提高转移方向的准确率或者同时执行转移成功和转移失败两个控制流方向上的指令；</p>
+<h1 id="五、中央处理器"><a href="#五、中央处理器" class="headerlink" title="五、中央处理器"></a>五、中央处理器</h1><h2 id="1-基本概念-2"><a href="#1-基本概念-2" class="headerlink" title="1.基本概念"></a>1.基本概念</h2><h3 id="1-1-总线-amp-数据通路"><a href="#1-1-总线-amp-数据通路" class="headerlink" title="1.1 总线&amp;数据通路"></a>1.1 总线&amp;数据通路</h3><p>计算机的各个组成部件通过总线连接在一起，总线是一些平行导线的集合；</p>
+<p>CPU内部的一条数据通路，包括寄存器组、算术逻辑部件以及连接它们的总线；<br>数据通路是数据在功能部件之间传送的路径，是一个逻辑上的概念，数据通路一定包含数据总线，除此之外还有其他数据通路部件；<br>数据通路表示的是数据流经的路径，数据总线是承载其数据流动的媒介；<br>可以认为数据通路这个概念只存在于CPU内部，但是总线概念是整个计算机内部的范围；<br>数据通路的主要作用就是实现CPU内部的运算器和寄存器&amp;寄存器和寄存器之间的数据交换 </p>
+<p>CPU内部的数据通路的结构主要有以下三种：</p>
+<p>​	(1)CPU内部单总线：所有寄存器的输入端和输出端连接在同一条数据总线上；<br>​	单总线结构中一个时钟只允许传输一个数据（否则会发生碰撞）</p>
+<p>​	(2)CPU内部多总线：所有寄存器的输入端和输出端连接在多条数据总线上；<br>​	可同时在多个总线上传送不同的数据</p>
+<p>​	(3)专用数据通路：不使用公共的数据总线，直接定制化总线&#x2F;导线</p>
+<h3 id="1-2-运算器-amp-控制器"><a href="#1-2-运算器-amp-控制器" class="headerlink" title="1.2 运算器&amp;控制器"></a>1.2 运算器&amp;控制器</h3><p>控制器负责从主存中取指令并确定指令类型；<br>运算器接收来自控制器的控制信号并执行相应动作，算术逻辑部件通过完成运算来执行这些动作；</p>
+<p>控制器控制整个计算机系统的运行，分为CPU内部控制（依靠数据通路）和系统外部控制（依靠一组系统总线-数据总线 地址总线 控制总线）：</p>
+<ul>
+<li>系统内部的控制：根据控制信号构建数据通路，完成微操作规定的功能；</li>
+<li>系统外部的控制：依靠一组系统总线进行控制；</li>
+</ul>
+<p>根据产生微操作控制信号的方式不同(也就是根据微操作信号发生器的结构不同)，控制器分为硬布线和微程序；<br>硬布线控制器：</p>
+<ul>
+<li>主要由PC IR 指令译码器 MAR MDR 时序系统 微操作发生器组成；</li>
+<li>微操作控制信号由组合逻辑电路根据当前指令码、状态和时序即时产生；</li>
+<li>执行速度快，不易扩充，常用于RISC；</li>
+</ul>
+<p>微操作发生器：</p>
+<ul>
+<li>输入：IR中的操作码、时钟脉冲、指令标志、外来信号； 			</li>
+<li>输出：微操作控制信号（CPU内部控制信号&#x2F;到控制总线的控制信号）；</li>
+<li>微操作控制信号以微程序的形式存放在控制存储器中；</li>
+<li>执行速度慢，易扩充，常用于CISC；</li>
+</ul>
+<h3 id="1-3-CPU基本功能"><a href="#1-3-CPU基本功能" class="headerlink" title="1.3 CPU基本功能"></a>1.3 CPU基本功能</h3><p>1.指令控制：由控制器控制完成取指令、分析指令以及执行指令的操作，即程序的顺序控制<br>2.操作控制：一条指令周期内可产生若干控制信号，控制器负责管理并产生这些控制信号<br>3.时间控制：控制器对上述控制信号进行时间上的控制<br>4.数据加工：运算器进行算数和逻辑运算<br>5.中断处理：计算机对特殊情况进行处理</p>
+<h3 id="1-4-CPU中的主要寄存器"><a href="#1-4-CPU中的主要寄存器" class="headerlink" title="1.4 CPU中的主要寄存器"></a>1.4 CPU中的主要寄存器</h3><p>指令和数据都需要保存在存储器中，根据保存的方式不同，计算机可分为两种架构：冯诺依曼架构和哈弗架构。</p>
+<ul>
+<li>冯·诺依曼架构的计算机，其特点是程序中的指令和数据混合存储；</li>
+<li>使用哈弗架构的计算机系统的特点是：指令和数据被分开独立存储，它们分别被存放到程序存储器和数据存储器</li>
+</ul>
+<p>DR:数据缓冲寄存器，主要用来暂时存放ALU的运算结果，弥补CPU与外围设备速度上的差别<br>IR:指令寄存器用来保存当前正在执行的指令；IR的OP字段将作为指令译码器的输入；保留从指存&#x2F;主存中读出的指令<br>PC:用于保存下一条指令的地址<br>AR:数据地址寄存器用于保存将要访问数据在的数存&#x2F;主存的中的【地址】<br>PSWR：程序状态字寄存器，保存如进位标志(C)，运算结果溢出(V)，运算结果为0标志(Z)，运算结果为负(N)<br>OC:操作控制器</p>
+<p>程序员可见（可编程）的寄存器：PC PSWR 通用寄存器组<br>程序员不可见寄存器：MAR MDR IR</p>
+<h2 id="2-硬布线控制器"><a href="#2-硬布线控制器" class="headerlink" title="2.硬布线控制器"></a>2.硬布线控制器</h2><p>硬布线的控制单元CU的输入主要有译码后的指令信息、时序信号、反馈信息，其中CLK经过节拍发生器产生时序信号T0 T1 T2 T3</p>
+<p>硬布线设计中，选择CPU的控制方式和安排微操作时序与微程序设计不同</p>
+<p><img src="/images/image-20220619130659456.png" srcset="/img/loading.gif" lazyload></p>
+<p>CPU的控制方式也就是产生不同微操作命令序列所用的时序控制方式，主要有以下三种方式：</p>
+<p><img src="/images/image-20220619130927588.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="3-微程序控制器"><a href="#3-微程序控制器" class="headerlink" title="3.微程序控制器"></a>3.微程序控制器</h2><p>首先我们需要知道为什么需要微指令，微指令是属于微程序控制器概念下的用于解释机器指令的微命令集合，<br>尽管硬件可以直接执行机器指令，但是当我们研究其本质时发现它还能被拆分为多个小的微操作，这些微操作对应相应的控制信号，<br>因此我们根据控制信号的产生方式不同将控制器分为微程序和硬布线，注意硬布线和微程序都是用于解释机器指令的，除了产生控制信号的方式不同（对应的电路逻辑也不同，也就是微操作信号发生器的结构不同），其他概念几乎一样（输入输出都是一样的）——这也导致很多书本上直接在画图的时候不区分是硬布线控制器还是微程序控制器很容易让人混淆（CU暗示硬布线，CM暗示微程序）<br>考试中硬布线的考点为画组合逻辑图；微程序的考点为设计微指令格式</p>
+<p>微程序逻辑采用存储逻辑实现，基本思想为：将控制信号编译为微指令存放在控制存储器中</p>
+<h3 id="3-1-概念辨析"><a href="#3-1-概念辨析" class="headerlink" title="3.1 概念辨析"></a>3.1 概念辨析</h3><p>【一条机器指令&#x3D;一个微程序&#x3D;若干微指令&#x3D;若干若干微命令】</p>
+<p>机器指令：是计算机运行的最小功能单位<br>微命令：是微操作的控制信号 【如PC-&gt;MAR】， 是控制序列的最小单位<br>微操作：是微命令的执行过程，与微命令一一对应，是执行部件中最基本的操作<br>微指令：若干微命令（在同一CPU&#x2F;机器周期内，能够并行执行的一组微命令）的集合，存放在控制存储器中（微程序控制器特有概念）<br>微地址：存放微指令的控制存储器的单元<br>微周期：从读取一条微指令到执行完毕所花的时间<br>微程序：实现一条机器指令功能的【微指令序列】</p>
+<p>控制存储器CM：主要用于存储微程序，位于CPU内部，采用的是ROM——微程序一般不能改写<br>主存：主要用来存放程序和数据，位于CPU的外部，使用的是RAM——程序一般可以改写</p>
+<h3 id="3-2-微程序信号发生器主要结构"><a href="#3-2-微程序信号发生器主要结构" class="headerlink" title="3.2 微程序信号发生器主要结构"></a>3.2 微程序信号发生器主要结构</h3><p>控制存储器CM：存放微程序（实际上存的是微指令，类似于说主存存放的程序实际上存的是机器指令）<br>微指令寄存器CMDR：存放从CM中取出的微指令，其位数与微指令长度相同<br>微地址形成部件：对【机器指令】操作码进行处理产生初始微地址<br>微地址寄存器CMAR：接收来自微地址形成部件的微地址，为从CM中取微指令做准备</p>
+<h3 id="3-3-微指令的格式"><a href="#3-3-微指令的格式" class="headerlink" title="3.3 微指令的格式"></a>3.3 微指令的格式</h3><p>微指令的格式与微指令的编码方式有关，通常分为水平型跟垂直型微指令：</p>
+<p>水平型微指令的特点是，一次能定义并执行多个并行操作的微命令，从编码方式来看，直接编码和字段直接编码（包括书上介绍的所有伪指令编码方式）都属于水平类型；</p>
+<p>水平型微指令由操作控制字段跟顺序控制字段构成</p>
+<ul>
+<li>操作控制字段：又称微操作码字段，用以【产生】某一步操作所需要的各个微操作所需的各个【控制信号】</li>
+<li>顺序控制字段：又称微地址码字段，用来【控制产生】下一条将要执行的微指令的【微地址】</li>
+</ul>
+<p><img src="/images/image-20220619131814909.png" srcset="/img/loading.gif" lazyload></p>
+<p>垂直型微指令的特点是，采用类似机器指令操作码的方式，在微指令中设置微操作码字段，由微操作码规定微指令功能，一条垂直型微指令只能定义并执行一种微操作的微命令；</p>
+<p><img src="/images/image-20220619131755775.png" srcset="/img/loading.gif" lazyload></p>
+<p>两种格式的比较：<br>    水平型微指令并行操作能力强，效率高，灵活性强；<br>    水平型微指令执行一条指令的时间短，并行好；<br>    水平型微指令字长较长，微程序短；垂直型指令字长短，微程序长；<br>    垂直型与指令相似，易于编写；</p>
+<h3 id="3-4-微指令的编码方式（控制方式）"><a href="#3-4-微指令的编码方式（控制方式）" class="headerlink" title="3.4 微指令的编码方式（控制方式）"></a>3.4 微指令的编码方式（控制方式）</h3><p>注意：不要认为这讲的是如何对微指令进行编码进而存储在CM中！微指令的编码方式指的是【如何对微指令的<u>控制字段</u>进行编码，以形成控制信号】</p>
+<p>编码的目标是在保证速度的情况下尽量缩短微指令字长；</p>
+<p>(1)直接编码方式：<br>    操作控制字段中的每个位不需要进行译码，【每一位都代表一个微操作命令】，例如控制字段中的某位为1，则代表着该控制信号&#x2F;微命令有效，反之0代表无效</p>
+<p><img src="/images/image-20220619132100575.png" srcset="/img/loading.gif" lazyload></p>
+<p>直接编码的缺点是导致微指令的字长过长，n个微指令就需要微指令的操作字段长n位，造成占用控存容量大；</p>
+<p>(2)字段直接编码方式：</p>
+<ul>
+<li><p>将操作控制字段分为若干个小段；分段规则：互斥性微命令在同一段内（一个段一时间只能执行一个微命令），相容性微命令在不同段内；</p>
+</li>
+<li><p>需要译码——字段内部使用的不是直接编码而是最短编码法（字段直接编码可不是直接编码）；</p>
+</li>
+<li><p>保留一位作为状态码；（某字段长度为3最多只能表示7个互斥的微命令，通常使用000作为状态码表示此字段不发出任何微命令）</p>
+</li>
+<li><p>与直接编码方式相比较，字段直接编码方式中字段长度为3的二进制译码后 对应于 直接编码方式中字段长度为7表示的微命令种类，直接节约了4位的空间；</p>
+</li>
+</ul>
+<p><img src="/images/image-20220619132509001.png" srcset="/img/loading.gif" lazyload></p>
+<p>例题：</p>
+<p><img src="/images/image-20220619132702397.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-5-微地址形成方式"><a href="#3-5-微地址形成方式" class="headerlink" title="3.5 微地址形成方式"></a>3.5 微地址形成方式</h3><p>微指令的地址形成主要有两个方式：</p>
+<ol>
+<li>根据【机器指令】的操作码经过微地址形成部件形成；</li>
+<li>直接由【微指令】的顺序控制（下地址）字段给出，又称为断定方式；</li>
+<li>其他方式：<ol>
+<li>增量计数法，即(CMAR)+1——&gt;CMAR；(类似于PC)</li>
+<li>硬件直接产生微程序入口地址；</li>
+</ol>
+</li>
+</ol>
+<p>关于断定方式的例题：</p>
+<p><img src="/images/image-20220619133558881.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="六、总线"><a href="#六、总线" class="headerlink" title="六、总线"></a>六、总线</h1><h2 id="1-基本概念-3"><a href="#1-基本概念-3" class="headerlink" title="1.基本概念"></a>1.基本概念</h2><p>总线可以理解为与计算机相关的所有物理线路；数据通路则是在数据流动过程中经过的虚拟路径，包括总线和结点设备；</p>
+<p>分时、共享是总线的两个特点；</p>
+<p>猝发传送方式是指，只需要传输一次地址就可以连续多次读出地址连续的数据；</p>
+<p>总线的设计实际上是为了解决I&#x2F;O设备与主机之间的交互，但是在后来的发展中计算机系统中总线可用于计算机内部等其他地方；<br>$$<br>总线传输周期&#x3D;总线周期&#x3D;传输一次数据需要花费的时间&#x3D;(总线工作频率)^-1&#x3D;(单位时间内能传输多少次数据)^-1<br>$$</p>
+<p>$$<br>总线时钟周期&#x3D;CPU时钟周期&#x3D;(总线时钟频率)^-1<br>$$</p>
+<p>$$<br>总线带宽&#x3D;总线工作频率*总线宽度&#x2F;8 （单位：B&#x2F;s）&#x3D;单位时间内总线上传输的字节<br>$$</p>
+<p>当题干中出现如下名词，注意总线时钟周期和总线传输周期的关系，只需要抓住总线带宽的含义——单位时间内总线上传输的字节</p>
+<h2 id="2-总线的分类"><a href="#2-总线的分类" class="headerlink" title="2.总线的分类"></a>2.总线的分类</h2><p>按照传输格式：</p>
+<p>​	串行总线（一位一位传输）<br>​	并行总线（并行传输，造价高一般用于机器内部）</p>
+<p>按照时序控制方式：</p>
+<p>​	同步总线<br>​	异步总线</p>
+<p>按照功能划分：</p>
+<p>​	片内总线（芯片内部的总线，比如CPU内部寄存器与寄存器之间的总线）<br>​	系统总线（电脑内部，芯片之间或功能部件如CPU、主存、I&#x2F;O接口之间的总线）<br>​		-数据总线：双向传输总线<br>​		-地址总线：单向传输总线，只能通过CPU向外部传输数据，（间接寻址中的有效地址通过数据总线回传给CPU）用以选择主存单元地址或I&#x2F;O端口地址<br>​		-控制总线：成对单向传输总线</p>
+<p>​	通信总线（也称为外部总线，计算机和计算机之间的总线）</p>
+<h2 id="3-总线仲裁"><a href="#3-总线仲裁" class="headerlink" title="3.总线仲裁"></a>3.总线仲裁</h2><p>总线仲裁方式按照仲裁控制机构可分为集中仲裁和分布仲裁；</p>
+<p>不论使用哪种仲裁方式，整体流程都是：主设备发出请求信号、若多个主设备要使用总线则进行裁决、裁决过后获得使用权的主设备使用总线；</p>
+<p>“总线请求”、“<u>总线忙</u>”信号均由设备发出，“总线允许”信号由总线控制器发出，而计时器方式中甚至不需要“总线允许”信号</p>
+<h3 id="3-1-集中仲裁：链式查询方式"><a href="#3-1-集中仲裁：链式查询方式" class="headerlink" title="3.1 集中仲裁：链式查询方式"></a>3.1 集中仲裁：链式查询方式</h3><p>链式查询过过程中部件离控制器越近其优先级越高，反之越低；</p>
+<p>缺点是对硬件电路故障敏感且优先级固定无法改变；</p>
+<h3 id="3-2-集中仲裁：计时器定时查询方式"><a href="#3-2-集中仲裁：计时器定时查询方式" class="headerlink" title="3.2 集中仲裁：计时器定时查询方式"></a>3.2 集中仲裁：计时器定时查询方式</h3><p>特点是当地址线上的计数值与请求使用总线设备的地址一致时，该设备获得总线的控制权并终止计数器的计数和查询；</p>
+<h3 id="3-3-集中仲裁：独立请求方式"><a href="#3-3-集中仲裁：独立请求方式" class="headerlink" title="3.3 集中仲裁：独立请求方式"></a>3.3 集中仲裁：独立请求方式</h3><p>特点是不使用公共的线，当总线上的部件需要使用总线时，直接经过各自的总线请求发送请求信号并在总线控制器中排队，需要的控制器内部结果较为复杂；</p>
+<h3 id="3-4-分布仲裁"><a href="#3-4-分布仲裁" class="headerlink" title="3.4 分布仲裁"></a>3.4 分布仲裁</h3><p>与集中仲裁的区别是不需要中央仲裁器，而是拥有各自的仲裁号与仲裁器；</p>
+<h2 id="4-总线定时"><a href="#4-总线定时" class="headerlink" title="4.总线定时"></a>4.总线定时</h2><p>安排总线传输的4个阶段在时序控制下的顺序执行，通常情况下可将一个总线传输周期分为如下四个阶段：</p>
+<p>（1）申请分配阶段，主设备提出申请，经仲裁后选出获得控制权的主设备；</p>
+<p>（2）寻址阶段，主设备启动从设备；</p>
+<p>（3）传输阶段，主设备和从设备进行数据交换；</p>
+<p>（4）结束阶段，主设备及那个相关信息从总线上撤除，让出总线使用权；</p>
+<h3 id="4-1-同步定时方式"><a href="#4-1-同步定时方式" class="headerlink" title="4.1 同步定时方式"></a>4.1 同步定时方式</h3><p>即系统采用统一的时钟信号协调发送方和接收方，</p>
+<p>缺点是在这种情况下属于强制同步，强制要求主从设备在一个总线传输周期内完成数据传输，就算没完成在下一个周期也会启动新的传输任务，不适合设备传输速率差距较大的设备；</p>
+<h3 id="4-2-异步定时方式"><a href="#4-2-异步定时方式" class="headerlink" title="4.2 异步定时方式"></a>4.2 异步定时方式</h3><p>没有统一的时钟信号，直接根据握手信号来实现控制，主设备提出请求信号，从设备提出回答信号；</p>
+<p>根据请求和回答信号是否互锁，分为不互锁、半互锁和全互锁方式</p>
+<p>在异步定时方式中传送操作按需求分配时间</p>
+<h2 id="5-总线标准"><a href="#5-总线标准" class="headerlink" title="5.总线标准"></a>5.总线标准</h2><p>设置总线标准是为了解决不同厂家产品的兼容性，比如厂家都按照USB总线标准来制作产品，则设计出的任何产品都可以直接插在USB产品上使用；</p>
+<p>USB：通用【串行】总线，用于连接外部设备的I&#x2F;O总线</p>
+<h1 id="七、I-x2F-O系统"><a href="#七、I-x2F-O系统" class="headerlink" title="七、I&#x2F;O系统"></a>七、I&#x2F;O系统</h1><h2 id="1-基本概念-4"><a href="#1-基本概念-4" class="headerlink" title="1.基本概念"></a>1.基本概念</h2><p>整个I&#x2F;O系统主要包括以下几个概念：外部设备（包含输入&#x2F;输出设备、辅存设备）、接口、输入设备（鼠标、键盘）、输出设备（打印机、显示器）、辅存设备（辅存既可以作为输入设备也可以作为输出设备）</p>
+<p>I&#x2F;O系统主要由以下两部分组成：</p>
+<p>-I&#x2F;O硬件，如外设、I&#x2F;O接口和I&#x2F;O总线等；<br>-I&#x2F;O软件，如驱动程序、管理程序等；</p>
+<h2 id="2-I-x2F-O接口"><a href="#2-I-x2F-O接口" class="headerlink" title="2.I&#x2F;O接口"></a>2.I&#x2F;O接口</h2><p>I&#x2F;O接口也称为I&#x2F;O控制器，是主机和外设之间的交接界面，通过接口实现主机和外设之间的信息交换；</p>
+<p>I&#x2F;O接口的框图如下：</p>
+<p><img src="/images/image-20220613104842146.png" srcset="/img/loading.gif" lazyload></p>
+<p>在外设和接口之间的数据传送方式有并行和串行，而在主机和接口之间的之间的数据传送方式只能通过并行方式；</p>
+<p>I&#x2F;O端口（I&#x2F;O端口不是I&#x2F;O接口，I&#x2F;O接口是整个控制器也就是上面的整个框图）：</p>
+<p>​	简单来说就是上面框图中的CPU可直接访问的寄存器，主要有数据端口（读写操作）、状态端口（读操作）和控制端口（写操作）<br>$$<br>接口&#x3D;端口+控制逻辑电路<br>$$<br>I&#x2F;O端口需要地址才能被CPU访问到，编址方式有两种：<br>-统一编址：将主存单元地址分配给I&#x2F;O端口使用，这会使得内存容量变小<br>-独立编址：I&#x2F;O端口的地址空间与主存地址空间是两个独立的地址空间，需要设置专门的I&#x2F;O指令来访问I&#x2F;O端口</p>
+<h2 id="3-I-x2F-O方式"><a href="#3-I-x2F-O方式" class="headerlink" title="3.*I&#x2F;O方式"></a>3.*I&#x2F;O方式</h2><p>主机和外设之间进行数据交流需要CPU来控制，而I&#x2F;O方式的演变过程实际就是解放CPU的过程：</p>
+<p>-程序查询方式：CPU通过程序不断查询I&#x2F;O设备是否做好准备，在此期间CPU不能做任何事</p>
+<p><img src="/images/image-20220618213131423-16555591089735.png" srcset="/img/loading.gif" lazyload></p>
+<p>-程序中断方式：只有I&#x2F;O设备准备就绪并向CPU发出中断请求时，CPU才会放下自己的任务执行中断程序；</p>
+<p>-DMA方式：在主存和某些高速I&#x2F;O设备之间增加了DMA数据通路，将这些I&#x2F;O设备与主存之间的数据交换的控制完全交给DMA处理；</p>
+<p>-通道方式：将低速的I&#x2F;O设备从总线上分离，使用通道（特殊CPU）统一管理（通道指令不属于机器指令）</p>
+<h3 id="3-1-程序查询方式"><a href="#3-1-程序查询方式" class="headerlink" title="3.1 程序查询方式"></a>3.1 程序查询方式</h3><p><img src="/images/image-20220618213105898.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-1-程序中断方式"><a href="#3-1-程序中断方式" class="headerlink" title="3.1 程序中断方式"></a>3.1 程序中断方式</h3><p>程序中断的流程大致为：</p>
+<ol>
+<li>中断源向CPU发出中断请求；</li>
+<li>中断判优，既可以使用硬件（总线里面的排队器）也可以使用软件（查询程序）；</li>
+<li>CPU响应中断源发出的中断请求，首先执行中断隐指令（硬件完成）：<ol>
+<li>关中断</li>
+<li>保存断点</li>
+<li>通过软件查询法&#x2F;硬件向量法引出中断服务程序（中断向量是中断服务程序的入口【地址】）</li>
+</ol>
+</li>
+<li>接着进行中断处理（中断服务程序完成）：<ol>
+<li>保护现场和屏蔽字</li>
+<li>…</li>
+<li>中断返回</li>
+</ol>
+</li>
+</ol>
+<h4 id="（1）单重中断"><a href="#（1）单重中断" class="headerlink" title="（1）单重中断"></a>（1）单重中断</h4><p>将中断信号的来源将中断分为内中断和外中断：</p>
+<ul>
+<li><p>内中断主要是处理器和内存内部产生的中断，外中断指的是处理器和内存以外的部件引起的中断；</p>
+</li>
+<li><p>外中断又可以分为可屏蔽中断和非屏蔽中断，非屏蔽中断指的是关中断时中断请求也会被响应，可屏蔽中断指的是会受到中断标志位状态的影响（屏蔽技术用于多重中断）；</p>
+</li>
+</ul>
+<p>中断判优中的优先级：<br>（1）硬件故障中断是最高优先级，其次是软件中断；<br>（2）非屏蔽中断优先于可屏蔽中断；<br>（3）DMA请求优于I&#x2F;O设备的请求；<br>（4）高速设备优于低速设备；<br>（5）输入设备优于输出设备；<br>（6）实时设备优于普通设备；</p>
+<p>注意：关中断、保存断点以及中断服务程序寻址都是由硬件完成，中断返回由中断服务程序的最后一条指令完成；</p>
+<p><img src="/images/image-20220618213354189.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="（2）多重中断"><a href="#（2）多重中断" class="headerlink" title="（2）多重中断"></a>（2）多重中断</h4><p>多重中断基于中断屏蔽技术，在多重中断的执行中，不能随意的中断程序，只有优先级高的中断源有权中断优先级低的中断源，优先级的设置由中断屏蔽技术实现；</p>
+<p>中断屏蔽技术：给每个中断源都配备一个屏蔽触发器，一般用1表示屏蔽请求，0表示可以正常申请中断请求，所有中断源的屏蔽触发器组合在一起构成一个屏蔽字；</p>
+<p>关于使用屏蔽字修改中断源的优先级表格写法：<br>（1）每个中断源至少可以屏蔽自己的请求（IM置1）；<br>（2）行中断源可屏蔽列对应的中断源的请求（也就是行中断源的优先级高于列中断源的），则填1，否则填0；<br>（3）最终将整行组合得到行中断源的屏蔽字；</p>
+<p>注意：</p>
+<p>-中断级屏蔽值：只有当某级的中断被响应后才会关闭本级和低于本级的IM（也就是对应的IM设置为1），中断级屏蔽值针对中断未被响应；本级还未执行并且想要将本级的优先级置为最高，则本级的IM为0，后面的IM全部为1；</p>
+<p>-中断源的屏蔽字：王道中的屏蔽字指的是中断被响应后屏蔽包括本身的任何一个低级中断源的中断请求；</p>
+<p><img src="/images/image-20220618211408579.png" srcset="/img/loading.gif" lazyload></p>
+<p>多重中断的另一个考点就是画出CPU程序执行轨迹，逐步分析即可</p>
+<p><img src="/images/image-20220618211935746.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-2-DMA方式"><a href="#3-2-DMA方式" class="headerlink" title="3.2 DMA方式"></a>3.2 DMA方式</h3><p>DMA方式是一种完全由硬件执行I&#x2F;O【交换】的方式，DMA控制器从CPU完全接管了对总线的控制，数据【交换】不会经过CPU，而是直接在内存和I&#x2F;O设备之间进行；</p>
+<p>DMA主要工作流程如下：</p>
+<ol>
+<li>预处理阶段，CPU对某些寄存器的值进行初始化，准备好数据后启动I&#x2F;O设备；</li>
+<li>数据传送阶段：CPU正常执行主程序，同时DMA控制器完成一批数据的传送：<ol>
+<li>I&#x2F;O设备将数据写满数据缓冲寄存器，写满后向DMA控制器发送DMA请求；</li>
+<li>DMA控制器向CPU发送总线请求；</li>
+<li>CPU接收到DMA请求后判断是否响应该DMA请求，若响应请求则CPU将总线的控制权交给DMA控制器；</li>
+<li>DMA控制器接管总线；</li>
+<li>当数据块传输结束后DMA发出中断信号通过系统总线传送给CPU；</li>
+</ol>
+</li>
+<li>后处理：CPU执行中断服务程序，做DMA结束处理；</li>
+</ol>
+<p>因为主存和I&#x2F;O设备可以直接通过DMA交换信息，所以当I&#x2F;O设备和CPU同时访存时可能出现冲突，DMA控制器通常与CPU采用以下3种方式访问主存：<br>（1）停止CPU访问主存：强制停止CPU这段时间内的访存；<br>（2）DMA与CPU交替访存：前提条件是CPU的工作周期比内存存取周期长很多，将一个CPU周期分为两个部分，前部分给CPU访存，后部分给DMA访存；<br>（3）周期窃取：DMA需要访存的时候CPU让出部分的周期给DMA访存；</p>
+<p><img src="/images/image-20220618215620840.png" srcset="/img/loading.gif" lazyload></p>
+<p>DMA方式和中断方式的区别：</p>
+<ul>
+<li>对中断请求的响应只能发生在【每条指令】执行完毕，也就是指令的【执行周期】后；对DMA请求的响应可以发生在任何一个机器周期结束时（取指周期、执行周期、间址周期，中断周期应该不算）；</li>
+<li>DMA请求的优先级高于中断请求；</li>
+<li>中断的过程需要CPU参与控制，但是DMA不需要CPU的干预（DMA的前期准备和后期清场还是需要CPU）；</li>
+<li>中断过程靠程序传送数据，DMA方式靠硬件传送数据；</li>
+</ul>
+<p>最后我们来看一个中断方式和DMA方式的计算题</p>
+<p>其中使用中断方式，每传输一次数据，就需要中断一次</p>
+<p><img src="/images/image-20220618220322823.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20220618220548801.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-3-通道方式"><a href="#3-3-通道方式" class="headerlink" title="3.3 通道方式"></a>3.3 通道方式</h3><p>DMA控制器减轻了CPU对数据输入输出的控制，而通道处理器的出现是直接使得CPU将“传输控制”的功能完全交给了通道，CPU之后只负责“数据处理”功能；</p>
+<p>CPU与通道分时使用存储器实现CPU内部运算与I&#x2F;O设备并行工作；</p>
+<p>通道方式与DMA的区别：</p>
+<ul>
+<li>在DMA方式中，数据的传送方向、存放数据的内存始址以及传送的数据块长度等都由CPU控制；而在通道方式中，这些都由通道来进行控制。</li>
+</ul>
+<h2 id="4-I-x2F-O设备"><a href="#4-I-x2F-O设备" class="headerlink" title="4.I&#x2F;O设备"></a>4.I&#x2F;O设备</h2><h3 id="4-1-显示器"><a href="#4-1-显示器" class="headerlink" title="4.1 显示器"></a>4.1 显示器</h3><p>屏幕大小：对角线长度表示；<br>分辨率：屏幕上能够存储的像素个数；<br>灰度级：一个像素的颜色表示，8位灰度级表示一个像素的灰度级可在256级中选1级表示；<br>刷新：利用VRAM中存储的信息刷新屏幕上的光点；<br>$$<br>VRAM容量&#x3D;分辨率*灰度级位数<br>$$</p>
+<p>$$<br>VRAM带宽&#x3D;分辨率<em>灰度级位数</em>帧频（1s刷新多少次）<br>$$</p>
+<h3 id="4-2-外存储器"><a href="#4-2-外存储器" class="headerlink" title="4.2 外存储器"></a>4.2 外存储器</h3><h4 id="（1）磁盘"><a href="#（1）磁盘" class="headerlink" title="（1）磁盘"></a>（1）磁盘</h4><p>磁盘的主要框图如下：</p>
+<p><img src="/images/image-20220613182810681-16551162176022.png" srcset="/img/loading.gif" lazyload></p>
+<p>一块硬盘有多个记录面，每个记录面有多条磁道，每条磁道划分为多个扇区（也称为块），扇区是磁盘最小的读写单位；</p>
+<p>注意：尽管同一个盘面的磁道半径不同，但每条磁道存储的信息量是相同的，这是因为角速度的固定成本低于线速度，保证角度相同的每一块数据量都相同；</p>
+<p>磁盘的性能指标主要有如下：</p>
+<p><img src="/images/image-20220613183651233.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20220613183807714.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20220613183849629.png" srcset="/img/loading.gif" lazyload></p>
+<p>当主机需要在磁盘上读写时，需要寻址，磁盘的地址格式如下：</p>
+<p>驱动器就是上面那个图的磁头架，一般一个驱动器带一个磁盘，盘面号寻找盘面，磁道号寻找磁道，扇区号寻找扇区</p>
+<p><img src="/images/image-20220613184109057.png" srcset="/img/loading.gif" lazyload></p>
+<p>磁盘常见的计算题有如下两种：<br>$$<br>格式化容量&#x3D;面数<em>磁道数</em>扇区数*扇区容量<br>$$</p>
+<p>$$<br>最高位密度&#x3D;每道记录的信息量&#x2F;最小磁道周长<br>$$</p>
+<p>$$<br>数据传输速率&#x3D;转速（单位时间转数）*每条磁道记录的信息量<br>$$</p>
+<p>$$<br>平均等待时间&#x3D;（1&#x2F;2）*（1&#x2F;转速）<br>$$</p>
+<h4 id="（2）磁盘阵列"><a href="#（2）磁盘阵列" class="headerlink" title="（2）磁盘阵列"></a>（2）磁盘阵列</h4><p>因为磁盘比较便宜所以可以用很多磁盘组成磁盘阵列</p>
+<p>RAID0类似交叉存储，提高读写速度；<br>RAID1是为了保证数据正确直接镜像复制了完全一样的数据存在另一个磁盘；<br>RAID2~RAID5使用校验码自动纠错保证数据的正确性；</p>
+<h4 id="（3）光盘"><a href="#（3）光盘" class="headerlink" title="（3）光盘"></a>（3）光盘</h4><p>光盘几乎和磁盘相同，CD-ROM只读，CD-R只能写一次，CD-RW可重复读写，DVD-ROM高容量CD-ROM</p>
+<h4 id="（4）SSD"><a href="#（4）SSD" class="headerlink" title="（4）SSD"></a>（4）SSD</h4><p>利用大量的闪存片组成（U盘用了一点闪存片），本质上还是ROM</p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E9%80%9A%E8%AF%86%E8%AF%BE%E7%A8%8B/" class="category-chain-item">通识课程</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">#期末复习</a>
+      
+        <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">#计算机基础</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>计组期末复习笔记</div>
+      <div>https://gintoki-jpg.github.io/2022/06/11/期末_计组复习/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>杨再俨</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年6月11日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/06/11/%E6%9C%9F%E6%9C%AB_%E8%AE%A1%E7%BD%91%E5%A4%8D%E4%B9%A0/" title="计网期末复习笔记">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">计网期末复习笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/06/09/%E9%80%9A%E8%AF%86_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" title="计算机网络">
+                        <span class="hidden-mobile">计算机网络</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+</div>
+
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

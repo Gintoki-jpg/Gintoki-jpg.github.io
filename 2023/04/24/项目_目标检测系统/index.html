@@ -1,0 +1,1257 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/logo.png">
+  <link rel="icon" href="/img/bg/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="杨再俨">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="机器视觉技术课程设计；">
+<meta property="og:type" content="article">
+<meta property="og:title" content="中级项目_目标检测系统">
+<meta property="og:url" content="https://gintoki-jpg.github.io/2023/04/24/%E9%A1%B9%E7%9B%AE_%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:site_name" content="Tintoki_blog">
+<meta property="og:description" content="机器视觉技术课程设计；">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/project.png">
+<meta property="article:published_time" content="2023-04-24T14:20:00.000Z">
+<meta property="article:modified_time" content="2023-05-29T13:10:32.071Z">
+<meta property="article:author" content="YangZaiyan">
+<meta property="article:tag" content="深度学习">
+<meta property="article:tag" content="机器视觉">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gintoki-jpg.github.io/img/bg/project.png">
+  
+  
+  
+  <title>中级项目_目标检测系统 - Tintoki_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"gintoki-jpg.github.io","root":"/","version":"1.9.1","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tintoki_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/bg1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">中级项目_目标检测系统</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-04-24 22:20" pubdate>
+          2023年4月24日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          29k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          243 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">中级项目_目标检测系统</h1>
+            
+            <div class="markdown-body">
+              
+              <p>参考链接：</p>
+<ul>
+<li><p>论文：《Robust Real-Time Face Detection》（老师说不需要按照论文的那个识别算法来进行，因此我们选择YOLOv5进行实现也可以）</p>
+</li>
+<li><p>目标检测概述：<a target="_blank" rel="noopener" href="https://blog.csdn.net/yegeli/article/details/109861867">(5条消息) 目标检测（Object Detection）_图像算法AI的博客-CSDN博客</a>；</p>
+</li>
+<li><p>目标检测算法汇总：<a target="_blank" rel="noopener" href="https://github.com/object-detection-algorithm">本仓库不再维护，最新内容前往：https://github.com/zjykzj</a>；</p>
+<ul>
+<li><p><code>YOLOv5系列</code></p>
+<ul>
+<li><p>YOLOv5目标检测展示：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1YL4y1J7xz?p=6">番外. 电脑是如何学会瞬间识别物体的 图像识别专家Joseph Redmon为你解读研发之路_哔哩哔哩_bilibili</a>；</p>
+</li>
+<li><p>YOLOv5网络模型详解：</p>
+<ul>
+<li>视频：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1T3411p7zR/?spm_id_from=333.337.search-card.all.click&vd_source=276d55048634a5b508b1b53a1ecd56b3">YOLOv5网络详解_哔哩哔哩_bilibili</a>；</li>
+<li>博文：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37541097/article/details/123594351">(5条消息) YOLOv5网络详解_太阳花的小绿豆的博客-CSDN博客</a>；</li>
+</ul>
+</li>
+<li><p>YOLOv5目标检测：</p>
+<ul>
+<li>YOLOv5官方项目地址：<a target="_blank" rel="noopener" href="https://github.com/ultralytics/yolov5">ultralytics&#x2F;yolov5: YOLOv5 🚀 in PyTorch &gt; ONNX &gt; CoreML &gt; TFLite (github.com)</a>；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>R-CNN系列</code></p>
+<ul>
+<li>R-CNN算法复现代码：<a target="_blank" rel="noopener" href="https://github.com/object-detection-algorithm/R-CNN">object-detection-algorithm&#x2F;R-CNN: 目标检测 - R-CNN算法实现 (github.com)</a>；</li>
+<li>项目文档：<a target="_blank" rel="noopener" href="https://r-cnn.readthedocs.io/zh_CN/latest/">R-CNN</a>；</li>
+<li>项目视频讲解：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV11U4y1w7yL/?spm_id_from=333.1007.top_right_bar_window_history.content.click&vd_source=276d55048634a5b508b1b53a1ecd56b3">RCNN全系列详解及代码实现_哔哩哔哩_bilibili</a>；</li>
+<li>R-CNN代码解读：<ul>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/42643788">RCNN 论文阅读记录 - 知乎 (zhihu.com)</a>；</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_30091945/category_9816446.html">(11条消息) 目标检测_daipuweiai的博客-CSDN博客</a>；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Make Sense标注工具：<a target="_blank" rel="noopener" href="https://blog.csdn.net/To_ChaRiver/article/details/119619515">(9条消息) make-sense | 图像标注工具_YawQinse的博客-CSDN博客</a>；</p>
+</li>
+<li><p>数据集的制作：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1tf4y1t7ru?p=10&vd_source=276d55048634a5b508b1b53a1ecd56b3">自制数据集及训练_哔哩哔哩_bilibili</a>；</p>
+</li>
+</ul>
+<hr>
+<p>2023&#x2F;4&#x2F;22 9:50 课设题目选择的是目标检测系统，基本的步骤就是先按照肆十二的几个YOLO检测算法全部过一遍，然后把论文看了（可以同步看），最后把核心代码以及可视化界面修改一下即可；</p>
+<p>2023&#x2F;4&#x2F;25 10:31 简单过了一下肆十二的视频前半部分，也下载了源码，进行了相关的环境配置，现在的问题就是数据集的收集，直接使用COCO肯定是不行的过于庞大，所以先暂时下载了一些较小的数据集； </p>
+<p>2023&#x2F;4&#x2F;25 21:10 基本上了解了目标检测的相关知识，关于选择的网络模型（YOLOv5）确实需要看视频好好理解（这玩意不能直接调库，需要手动实现），纯看文本的话的确会出现看不懂的情况（关于YOLOv5的详细信息等到时候确定了选择什么样的网络模型后再深入研究）。另外数据集的话已经下载在E盘中，是关于Traffic检测的数据集，可以选择适当的时间测试是否可行；</p>
+<p>2023&#x2F;5&#x2F;8 11:37 距离上次接触这个项目已经很长一段时间了，为了方便回顾，这里我先做一下进度总结。前面所作的工作一句话总结 – “啥也没做”，这也透露出一个优质的工作日志是多么的重要，不过没关系，那我们就当这个项目是一个全新项目来开始做。首先是代码和数据库以及环境都准备完毕，只需要放在Kaggle上先跑一遍验证代码可行性（在此之前先看视频把整个代码结构理顺，博主这个代码结构看的我头疼）。然后因为使用的是预训练模型，所以下面一个重要的工作就是自己写代码训练出一个预训练模型出来（或者说直接拿traffic来训练一个直接的模型？）。可视化界面小小的修改一下就行，毕竟前面学过的pyqt也能用上；</p>
+<p>2023&#x2F;5&#x2F;8 16:14 肆十二的代码过于扯淡（完全就没什么理解意义，只是为了好看交差），而且直接使用的是预训练模型进行微调，这与老师让我们自己实现检测算法背道而驰，另外一点，Kaggle跑不起来那个代码（应该是YOLOv5的版本问题）。所以现在需要重新寻找合适的参考资料进行参考，宁愿多花时间考察也不要拿到代码就开干；</p>
+<p>2023&#x2F;5&#x2F;8 16:55 YOLOv5是一个开源的代码，所以直接实现YOLOv5代码不是一个明智的选择，因此可以根据原始的YOLOv5写一个阉割版的检测算法。或者是不使用YOLOv5用其他算法（好处就是不需要自己重写YOLOv5）…现在要找一个项目真的麻烦（不过在这个过程中学到了很多其他的知识点也挺好）…</p>
+<p>2023&#x2F;5&#x2F;9 0:19 现在已经找到新的参考代码了，然后开始从数据集入手根据教程慢慢将模型训练出来，训练完毕后对代码进行理解即可。这个教程比较粗糙可能需要在过程中参考其他资料，同时配套代码可能有些错误的地方，需要小小的修改即可运行（现在已经处理到“创建微调数据集”）；</p>
+<p>2023&#x2F;5&#x2F;10 20:28 经过长久的租借云GPU等操作，终于在此时此刻完成了对代码功能的检验上面，接下来的工作就是对代码进行结构的梳理和理解；</p>
+<p>2023&#x2F;5&#x2F;11 20:29 参考文章做的是一个汽车的检测器，这里我们来实现一个cat的检测器，首先就需要获取新的数据集，因此对数据集的获取代码需要重新编写；</p>
+<p>2023&#x2F;5&#x2F;11 22:16 现在已经把新的代码文件写好了，主要是预测cat（本质上就是换了数据集），接下来就只需要理解代码并编写代码的注释即可（顺便可以看作者推荐的论文和参考，但是论文全英文的是真的难以理解，还是先找视频入门）。并且经过询问gpt，它告知我可以既检测图像中的车辆也可以检测图像中的猫（大概思路就是先使用第一个模型检测车辆，检测出来后将图像用第二个模型检测猫咪即可）</p>
+<p>2023&#x2F;5&#x2F;13 15:52 功夫不负有心人，本来今天早晨以为这个项目要黄了（因为我做的是图像目标检测而实际上需要我们做的是视频目标检测），但是经过gpt的配合成功的将用于图像检测的R-CNN应用到了视频中，因此可以继续该项目。现在还剩下的工作就是可视化界面的设计和代码重构，完成这两部分之后就可以直接写最后的设计文档；</p>
+<p>2023&#x2F;5&#x2F;14 17:02 今天已经把代码重构完毕，整个项目也能够跑起来了（除了某些瑕疵比如检测框大小、检测分数为1等），剩下的工作就是写设计文档分析项目、以及进行源码注释即可；</p>
+<p>2023&#x2F;5&#x2F;27 16:19 今天已经把那些小问题处理完毕，检测其余视频并没有尝试过，但是至少现在这个作业能交，可能泛化能力不是特别强，接下来把最后的设计文档好好完成就行，代码部分不用再修改；</p>
+<hr>
+<h1 id="一、背景介绍"><a href="#一、背景介绍" class="headerlink" title="一、背景介绍"></a>一、背景介绍</h1><hr>
+<blockquote>
+<p>Q：目标检测和目标跟踪的区别？</p>
+</blockquote>
+<p>A：回答链接<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/news/40338">https://cloud.tencent.com/developer/news/40338</a></p>
+<ul>
+<li>目标检测是指在图像或视频（一系列的图像）中扫描和搜索目标，即在一个场景中对目标进行定位和识别；</li>
+<li>目标跟踪是实时锁定一个&#x2F;一些特定的移动目标，跟踪是一系列的检测；</li>
+</ul>
+<hr>
+<h2 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1.基本概念"></a>1.基本概念</h2><p>计算机视觉中关于图像识别有四大类任务：</p>
+<p>（1）分类-Classification：解决“是什么？”的问题，即给定一张图片或一段视频判断里面包含什么类别的目标；</p>
+<p>（2）定位-Location：解决“在哪里？”的问题，即定位出这个目标的的位置；</p>
+<p>（3）检测-Detection：解决“在哪里？是什么？”的问题，即定位出这个目标的位置并且知道目标物是什么；</p>
+<p>（4）分割-Segmentation：分为实例的分割（Instance-level）和场景分割（Scene-level），解决“每一个像素属于哪个目标物或场景”的问题；</p>
+<p>详细来说，目标检测（Object Detection）的任务是找出图像中所有感兴趣的目标（物体），确定它们的类别和位置，是计算机视觉领域的核心问题之一。由于各类物体有不同的外观、形状和姿态，加上成像时光照、遮挡等因素的干扰，目标检测一直是计算机视觉领域最具有挑战性的问题。可以认为目标检测是一个分类和回归问题的叠加。</p>
+<p>目标检测的核心问题主要有以下几个：</p>
+<p>（1）分类问题：即图片（或某个区域）中的图像属于哪个类别。</p>
+<p>（2）定位问题：目标可能出现在图像的任何位置。</p>
+<p>（3）大小问题：目标有各种不同的大小。</p>
+<p>（4）形状问题：目标可能有各种不同的形状。</p>
+<p>基于深度学习的目标检测算法主要分为两类Two stage和One stage：</p>
+<ul>
+<li>Two stage的检测流程为先首先进行区域生成，该区域称之为region proposal（简称RP，一个有可能包含待检物体的预选框），再通过卷积神经网络进行样本分类。常见tow stage目标检测算法有：R-CNN、SPP-Net、Fast R-CNN、Faster R-CNN和R-FCN等；</li>
+<li>One stage的检测流程中不需要RP，直接在网络中提取特征来预测物体分类和位置。常见的one stage目标检测算法有：OverFeat、YOLOv1、YOLOv2、YOLOv3、SSD和RetinaNet等；</li>
+</ul>
+<p><img src="/images/image-20230425192006181.png" srcset="/img/loading.gif" lazyload></p>
+<p>目标检测的主要应用有：人脸检测、行人检测、车辆检测和遥感监测。</p>
+<h2 id="2-算法原理"><a href="#2-算法原理" class="headerlink" title="2.算法原理"></a>2.算法原理</h2><p>目标检测分为两大系列——R-CNN系列和YOLO系列，RCNN系列是基于区域检测的代表性算法，YOLO系列是基于区域提取的代表性算法，另外还有著名的SSD是基于前两个系列的改进。</p>
+<h3 id="2-1-R-CNN系列"><a href="#2-1-R-CNN系列" class="headerlink" title="2.1 R-CNN系列"></a>2.1 R-CNN系列</h3><h4 id="2-1-1-R-CNN"><a href="#2-1-1-R-CNN" class="headerlink" title="2.1.1 R-CNN"></a>2.1.1 R-CNN</h4><p>R-CNN(全称Regions with CNN features) ，是R-CNN系列的第一代算法，并没有过多的使用“深度学习”思想，而是将“深度学习”和传统的“计算机视觉”的知识相结合。比如R-CNN pipeline中的第二步和第四步其实就属于传统的“计算机视觉”技术。使用选择搜索selective search提取region proposals，使用SVM实现分类。<br><img src="/images/image-20230425192951876.png" srcset="/img/loading.gif" lazyload></p>
+<p>R-CNN的基本流程如下：</p>
+<ol>
+<li>预训练模型：选择一个预训练 （pre-trained）神经网络（如AlexNet、VGG）；</li>
+<li>重新训练全连接层：使用需要检测的目标重新训练（re-train）最后的全连接层（connected layer）；</li>
+<li>提取 proposals 并计算CNN 特征：利用选择性搜索（Selective Search）算法提取所有proposals（大约2000幅images），调整（resize&#x2F;warp）它们成固定大小，以满足 CNN输入要求（因为全连接层的限制），然后将feature map 保存到本地磁盘；</li>
+<li>训练SVM：利用feature map 训练SVM来对目标和背景进行分类（每个类一个二进制SVM）；</li>
+<li>边界框回归（Bounding boxes Regression）：训练将输出一些校正因子的线性回归分类器；</li>
+</ol>
+<p>R-CNN的缺点很明显：</p>
+<ol>
+<li>每个region proposal都需要经过一个AlexNet特征提取，而这些region proposal可能出现大量重复的区域，产生大量重复的计算；</li>
+<li>R-CNN的训练过程不是连续的，三个模块（提取、分类、回归）是分别训练的，并且在训练时候，对于存储空间消耗较大；</li>
+</ol>
+<h4 id="2-1-2-Fast-R-CNN"><a href="#2-1-2-Fast-R-CNN" class="headerlink" title="2.1.2 Fast R-CNN"></a>2.1.2 Fast R-CNN</h4><p>Fast R-CNN是基于R-CNN和SPPnets进行的改进。SPPnets，其创新点在于只进行一次图像特征提取（而不是每个候选区域计算一次），然后根据算法，将候选区域特征图映射到整张图片特征图中。</p>
+<p><img src="/images/image-20230425193906825.png" srcset="/img/loading.gif" lazyload></p>
+<p>SPPnets的基本流程如下：</p>
+<ol>
+<li>使用selective search生成region proposal，大约2000个左右区域候选框；</li>
+<li>(joint training)缩放图片的scale得到图片金字塔，FP得到conv5的特征金字塔；</li>
+<li>(joint training)对于每个scale的每个ROI，求取映射关系，在conv5中剪裁出对应的patch。并用一个单层的SSP layer来统一到一样的尺度（对于AlexNet是6*6）；</li>
+<li>(joint training) 继续经过两个全连接得到特征，这特征又分别共享到两个新的全连接，连接上两个优化目标。第一个优化目标是分类，使用softmax，第二个优化目标是bbox regression，使用了一个平滑的L1-loss；</li>
+<li>测试时需要加上NMS处理：利用窗口得分分别对每一类物体进行非极大值抑制提出重叠建议框，最终得到每个类别中回归修正后的得分最高的窗口；</li>
+</ol>
+<h4 id="2-1-3-Faster-R-CNN"><a href="#2-1-3-Faster-R-CNN" class="headerlink" title="2.1.3 Faster R-CNN"></a>2.1.3 Faster R-CNN</h4><p>Faster R-CNN在结构上将特征抽取、region proposal提取， bbox regression，分类都整合到了一个网络中，使得综合性能有较大提高，在检测速度方面尤为明显。</p>
+<p>其中的Region Proposal Network(RPN)取代了selective search生成待检测区域，一定程度上减少了训练时间，真正实现了一个完全的End-To-End的CNN目标检测模型。</p>
+<p><img src="/images/image-20230425194651004.png" srcset="/img/loading.gif" lazyload></p>
+<p>Faster R-CNN的网络结构和对应基本流程如下：</p>
+<ol>
+<li>Conv Layers。作为一种CNN网络目标检测方法，Faster RCNN首先使用一组基础的卷积&#x2F;激活&#x2F;池化层提取图像的特征，形成一个特征图，用于后续的RPN层和全连接层；</li>
+<li>Region Proposal Networks（RPN）。RPN网络用于生成候选区域，该层通过softmax判断锚点（anchors）属于前景还是背景，在利用bounding box regression（包围边框回归）获得精确的候选区域；</li>
+<li>RoI Pooling。该层收集输入的特征图和候选区域，综合这些信息提取候选区特征图（proposal feature maps），送入后续全连接层判定目标的类别；</li>
+<li>Classification。利用取候选区特征图计算所属类别，并再次使用边框回归算法获得边框最终的精确位置；</li>
+</ol>
+<p>尽管Faster R-CNN的效果已经提升很大，但是因为获取region proposal，再对每个proposal分类这个过程需要大量时间，因此Faster R-CNN还是无法实现实时检测。</p>
+<h3 id="2-2-YOLO系列"><a href="#2-2-YOLO系列" class="headerlink" title="2.2 YOLO系列"></a>2.2 YOLO系列</h3><h4 id="2-2-1-YOLOv1"><a href="#2-2-1-YOLOv1" class="headerlink" title="2.2.1 YOLOv1"></a>2.2.1 YOLOv1</h4><p>YOLO（You Only Look Once ）是继R-CNN系列之后，针对DL目标检测速度问题提出的另一种框架，其核心思想是生成RoI+目标检测两阶段（two-stage）算法用一套网络的一阶段（one-stage）算法替代，直接在输出层回归bounding box的位置和所属类别。</p>
+<p>R-CNN系列的物体检测方法需要产生大量可能包含待检测物体的先验框, 然后用分类器判断每个先验框对应的边界框里是否包含待检测物体，以及物体所属类别的概率或者置信度，同时需要后处理修正边界框，最后基于一些准则过滤掉置信度不高和重叠度较高的边界框，进而得到检测结果。这种基于先产生候选区再检测的方法虽然有相对较高的检测准确率，但运行速度较慢。</p>
+<p>YOLO创造性的将物体检测任务直接当作回归问题（regression problem）来处理，将候选区和检测两个阶段合二为一。只需一眼就能知道每张图像中有哪些物体以及物体的位置。</p>
+<p><img src="/images/image-20230425201041702.png" srcset="/img/loading.gif" lazyload alt="各物体检测系统框架"></p>
+<p>实际上，YOLO并没有真正去掉候选区，而是采用了预定义候选区的方法，也就是将图片划分为<code>7*7</code>个网格，每个网格允许预测出2个边框，总共<code>49*2</code>个bounding box，可以理解为98个候选区域，它们很粗略地覆盖了图片的整个区域。YOLO以降低mAP为代价，大幅提升了时间效率。</p>
+<p><img src="/images/image-20230425201143521.png" srcset="/img/loading.gif" lazyload></p>
+<p>每个网格单元预测2个边界框和置信度分数。这些置信度分数反映了该模型对框是否包含目标的可靠程度，以及它预测框的准确程度。如果该单元格中不存在目标，则置信度分数应为零。否则，我们希望置信度分数等于预测框与真实值之间联合部分的交集(IOU)。</p>
+<p>每个边界框包含5个预测：x,y,w,h和置信度。(x,y)坐标表示边界框相对于网格单元边界框的中心，宽度和高度是相对于整张图像预测的，置信度表示预测框与实际边界框之间的IOU。</p>
+<p>每个边界框还预测C个条件类别概率，这些概率以包含目标的网格单元为条件。每个网格单元只预测的一组类别概率，而不管边界框的的数量是多少。</p>
+<p>YOLOv1网络的结构如下，包含24个卷积层+2层全连接层</p>
+<p><img src="/images/image-20230425202729283.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="3-数据集"><a href="#3-数据集" class="headerlink" title="3.数据集"></a>3.数据集</h2><h3 id="3-1-MS-COCO"><a href="#3-1-MS-COCO" class="headerlink" title="3.1 MS COCO"></a>3.1 MS COCO</h3><p>MS COCO的全称是Microsoft Common Objects in Context，起源于微软于2014年出资标注的Microsoft COCO数据集（COCO在目标检测中的地位与ImageNet在图片分类中的地位类似），主要用于目标检测，图像分割，姿态估计等。该数据集收集了大量包含常见物体的日常场景图片，并提供像素级的实例标注以更精确地评估检测和分割算法的效果，致力于推动场景理解的研究进展.</p>
+<p>相比ImageNet，COCO更加偏好目标与其场景共同出现的图片，即non-iconic images。这样的图片能够反映视觉上的语义，更符合图像理解的任务要求。而相对的iconic images则更适合浅语义的图像分类等任务。</p>
+<p>COCO数据集分大类有12个，分别是：[‘appliance’, ‘food’, ‘indoor’, ‘accessory’, ‘electronic’, ‘furniture’, ‘vehicle’, ‘sports’, ‘animal’, ‘kitchen’, ‘person’, ‘outdoor’]。</p>
+<p>COCO数据集分小类有80个，分别是：[‘person’, ‘bicycle’, ‘car’, ‘motorcycle’, ‘airplane’, ‘bus’, ‘train’, ‘truck’, ‘boat’, ‘traffic light’, ‘fire hydrant’, ‘stop sign’, ‘parking meter’, ‘bench’, ‘bird’, ‘cat’, ‘dog’, ‘horse’, ‘sheep’, ‘cow’, ‘elephant’, ‘bear’, ‘zebra’, ‘giraffe’, ‘backpack’, ‘umbrella’, ‘handbag’, ‘tie’, ‘suitcase’, ‘frisbee’, ‘skis’, ‘snowboard’, ‘sports ball’, ‘kite’, ‘baseball bat’, ‘baseball glove’, ‘skateboard’, ‘surfboard’, ‘tennis racket’, ‘bottle’, ‘wine glass’, ‘cup’, ‘fork’, ‘knife’, ‘spoon’, ‘bowl’, ‘banana’, ‘apple’, ‘sandwich’, ‘orange’, ‘broccoli’, ‘carrot’, ‘hot dog’, ‘pizza’, ‘donut’, ‘cake’, ‘chair’, ‘couch’, ‘potted plant’, ‘bed’, ‘dining table’, ‘toilet’, ‘tv’, ‘laptop’, ‘mouse’, ‘remote’, ‘keyboard’, ‘cell phone’, ‘microwave’, ‘oven’, ‘toaster’, ‘sink’, ‘refrigerator’, ‘book’, ‘clock’, ‘vase’, ‘scissors’, ‘teddy bear’, ‘hair drier’, ‘toothbrush’]</p>
+<h3 id="3-2-ImageNet"><a href="#3-2-ImageNet" class="headerlink" title="3.2 ImageNet"></a>3.2 ImageNet</h3><p>ImageNet是一个计算机视觉系统识别项目， 是目前世界上图像识别最大的数据库。ImageNet是美国斯坦福的计算机科学家，模拟人类的识别系统建立的。能够从图片识别物体。ImageNet数据集文档详细，有专门的团队维护，使用非常方便，在计算机视觉领域研究论文中应用非常广，几乎成为了目前深度学习图像领域算法性能检验的“标准”数据集。ImageNet数据集有1400多万幅图片，涵盖2万多个类别；其中有超过百万的图片有明确的类别标注和图像中物体位置的标注。</p>
+<h3 id="3-3-Google-Open-Image"><a href="#3-3-Google-Open-Image" class="headerlink" title="3.3 Google Open Image"></a>3.3 Google Open Image</h3><p>Open Image是谷歌团队发布的数据集。最新发布的Open Images V4包含190万图像、600个种类，1540万个bounding-box标注，是当前最大的带物体位置标注信息的数据集。这些边界框大部分都是由专业注释人员手动绘制的，确保了它们的准确性和一致性。另外，这些图像是非常多样化的，并且通常包含有多个对象的复杂场景（平均每张图像8个对象）。</p>
+<h3 id="3-4-PASCAL-VOC"><a href="#3-4-PASCAL-VOC" class="headerlink" title="3.4 PASCAL VOC"></a>3.4 PASCAL VOC</h3><p>参考链接：<a target="_blank" rel="noopener" href="https://arleyzhang.github.io/articles/1dc20586/">目标检测数据集PASCAL VOC简介 | arleyzhang</a>；</p>
+<p>VOC数据集是目标检测经常用的一个数据集，自2005年起每年举办一次比赛，最开始只有4类，到2007年扩充为20个类，共有两个常用的版本：2007和2012（因为二者互斥不相容）。学术界常用5k的train&#x2F;val 2007和16k的train&#x2F;val 2012作为训练集，test 2007作为测试集，用10k的train&#x2F;val 2007+test 2007和16k的train&#x2F;val 2012作为训练集，test2012作为测试集，分别汇报结果。</p>
+<p>虽然近期的目标检测或分割模型更倾向于使用MS COCO数据集，但是这丝毫不影响 PASCAL VOC数据集的重要性，毕竟PASCAL对于目标检测或分割类型来说属于先驱者的地位。</p>
+<p>下面介绍PASCAL VOC数据集在几个关键时间点的调整：</p>
+<ul>
+<li>2005年只有4个类别：bicycles, cars, motorbikes, people。其Train&#x2F;validation&#x2F;test共有图片1578 张，包含2209个已标注的目标；</li>
+<li>2007年类别扩充到20类。其Train&#x2F;validation&#x2F;test共有9963张图片，包含24640个已标注的目标（07年之前的数据集中test部分都是公布的，但是之后的都没有公布）；</li>
+<li>2009年之前，虽然每年的数据集都在变大（08年比07年略少），但是每年的数据集都是不一样的，也就是说每年的数据集都是互斥的，没有重叠的图片。从2009年开始，PASCAL VOC通过在前一年的数据集基础上增加新数据的方式来扩充数据集。如09年的数据集包含08年的数据集，也就是说08年的数据集是09年的一个子集，以后每年都是这样的扩充方式，直到2012年；</li>
+<li>从09年到11年，数据量仍然通过上述方式不断增长，11年到12年，用于<code>分类、检测和person layout</code> 任务的数据量没有改变。主要是针对<code>分割和动作识别</code>，完善相应的数据子集以及标注信息；</li>
+</ul>
+<p>对于分类和检测任务来说（分割任务以及其他任务的数据集不多介绍），可以绘制PASCAL VOC数据集的发展历程，其中相同颜色表示相同的数据集</p>
+<p><img src="/images/image-20230508194138559.png" srcset="/img/loading.gif" lazyload alt="分类和检测任务"></p>
+<blockquote>
+<ul>
+<li><p>VOC 2012用于分类和检测的数据包含 2008-2011年间的所有数据，并与VOC2007互斥；</p>
+</li>
+<li><p>截止2012年，最终用于分类和检测的数据集规模为：train&#x2F;val ：11540 张图片，包含 27450 个已被标注的 ROI annotated objects ；</p>
+</li>
+</ul>
+</blockquote>
+<p>PASCAL VOC 数据集的20个类别及其层级结构如下：</p>
+<p><img src="/images/image-20230508193014213.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>从2007年开始，PASCAL VOC每年的数据集都是这个层级结构</li>
+<li>总共4个大类：vehicle,household,animal,person</li>
+<li>总共20个小类，预测的时候只输出图中黑色粗体的类别（上标表示每个类别加入挑战赛的年份）</li>
+<li>该数据集主要关注分类和检测，即分类和检测用到的数据集相对规模较大。关于其他任务比如分割，动作识别等，其数据集一般是分类和检测数据集的子集（规模较小）。</li>
+</ul>
+<h4 id="3-4-1-VOC-2007"><a href="#3-4-1-VOC-2007" class="headerlink" title="3.4.1 VOC 2007"></a>3.4.1 VOC 2007</h4><p>VOC 2007数据集中的部分样本可以在此处查看：<a target="_blank" rel="noopener" href="http://host.robots.ox.ac.uk/pascal/VOC/voc2007/examples/index.html">PASCAL VOC2007 Example Images (ox.ac.uk)</a>；</p>
+<p>数据集总体统计情况（包含测试集），可以看到person类最多</p>
+<p><img src="/images/image-20230508194601734.png" srcset="/img/loading.gif" lazyload></p>
+<p>训练集，验证集，测试集的划分情况如下</p>
+<p><img src="/images/image-20230508194800966.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>VOC 2007数据集被分为两个子集：trainval和test，两者各占数据总量的约50%。其中trainval又分为两个子集：train和val，二者分别各占trainval的50%；</li>
+<li>对于其中任何一张图像来说，都至少包含一个object（该object与该图像的class是相关的，更多的，图中的其他objects可以是其他类别）；</li>
+</ul>
+<h4 id="3-4-2-VOC-2012"><a href="#3-4-2-VOC-2012" class="headerlink" title="3.4.2 VOC 2012"></a>3.4.2 VOC 2012</h4><p>VOC 2012数据集中的部分样本可以在此处查看：<a target="_blank" rel="noopener" href="http://host.robots.ox.ac.uk/pascal/VOC/voc2012/examples/index.html">PASCAL VOC2011 Example Images (ox.ac.uk)</a>;</p>
+<p>数据集总体统计情况（不包含测试集），可以看到仍然是person类最多</p>
+<p><img src="/images/image-20230508200011240.png" srcset="/img/loading.gif" lazyload></p>
+<p>因为VOC 2012的test部分没有公布，因此仅展示trainval部分的数据统计</p>
+<p><img src="/images/image-20230508200124800.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="3-4-3-2007-VS-2012"><a href="#3-4-3-2007-VS-2012" class="headerlink" title="3.4.3 2007 VS. 2012"></a>3.4.3 2007 VS. 2012</h4><p>VOC 2007 与 2012 数据集及二者的并集数据量对比</p>
+<p><img src="/images/image-20230508200234215.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>黑色字体所示数字是官方给定的，由于VOC2012数据集中 test 部分没有公布，因此红色字体所示数字为<code>估计数据</code>，按照PASCAL 通常的划分方法，即 trainval 与test 各占总数据量的一半</p>
+</blockquote>
+<h4 id="3-4-4-VOC结构"><a href="#3-4-4-VOC结构" class="headerlink" title="3.4.4 VOC结构"></a>3.4.4 VOC结构</h4><p>因为本项目使用的是VOC 2007的数据集，因此下面我们下载并分析VOC 2007的数据集格式（VOC2012 的数据集组织结构是类似的，不一样的地方在于VOC2012 中没有 test类的图片和以及相关标签和分割文件，因为这部分数据 VOC2012没有公布）</p>
+<p>VOC 2007的下载链接如下：</p>
+<ul>
+<li>2007 trainval：<a target="_blank" rel="noopener" href="http://host.robots.ox.ac.uk/pascal/VOC/voc2007/VOCtrainval_06-Nov-2007.tar">http://host.robots.ox.ac.uk/pascal/VOC/voc2007/VOCtrainval_06-Nov-2007.tar</a> (450MB tar file)</li>
+<li>2007 test：<a target="_blank" rel="noopener" href="http://host.robots.ox.ac.uk/pascal/VOC/voc2007/VOCtest_06-Nov-2007.tar">http://host.robots.ox.ac.uk/pascal/VOC/voc2007/VOCtest_06-Nov-2007.tar</a> (430MB tar file)</li>
+</ul>
+<p>另一种下载方式就是在镜像网站<a target="_blank" rel="noopener" href="https://pjreddie.com/projects/pascal-voc-dataset-mirror/">Pascal VOC Dataset Mirror (pjreddie.com)</a>中复制下载链接进入迅雷下载，该方式下载速度非常快；</p>
+<p>下载完毕后对文件进行解压（注意直接解压会被解压到同一个目录下无法区分，可以设置解压路径以区分），无论是trainval还是test解压后都将得到如下形式的目录结构</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs angelscript">.<br>├── Annotations 进行detection 任务时的 标签文件，xml文件形式<br>├── ImageSets 存放数据集的分割文件，比如train，val，test<br>├── JPEGImages 存放 .jpg格式的图片文件<br>├── SegmentationClass 存放 按照<span class="hljs-keyword">class</span> 分割的图片<br>└── <span class="hljs-symbol">SegmentationObject</span> 存放 按照 <span class="hljs-symbol">object</span> 分割的图片<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>Annotation 文件夹存放的是xml文件，该文件是对图片的解释，每张图片都对应一个同名的xml文件</li>
+<li>ImageSets 文件夹存放的是txt文件，这些txt将数据集的图片分成了各种集合。如Main下的train.txt中记录的是用于训练的图片集合</li>
+<li>JPEGImages 文件夹存放的是数据集的原图片</li>
+<li>SegmentationClass以及SegmentationObject 文件夹存放的都是图片，且都是图像分割结果图</li>
+</ul>
+<h5 id="1-Annotation"><a href="#1-Annotation" class="headerlink" title="(1)Annotation"></a>(1)Annotation</h5><p>Annotation文件夹的内容如下</p>
+<p><img src="/images/image-20230508222136654.png" srcset="/img/loading.gif" lazyload></p>
+<p>其中xml主要介绍了对应图片的基本信息，如来自哪个文件夹、文件名、来源、图像尺寸以及图像中包含哪些目标以及目标的信息等等</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">annotation</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">folder</span>&gt;</span>VOC2007<span class="hljs-tag">&lt;/<span class="hljs-name">folder</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">filename</span>&gt;</span>000001.jpg<span class="hljs-tag">&lt;/<span class="hljs-name">filename</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">source</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">database</span>&gt;</span>The VOC2007 Database<span class="hljs-tag">&lt;/<span class="hljs-name">database</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">annotation</span>&gt;</span>PASCAL VOC2007<span class="hljs-tag">&lt;/<span class="hljs-name">annotation</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">image</span>&gt;</span>flickr<span class="hljs-tag">&lt;/<span class="hljs-name">image</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">flickrid</span>&gt;</span>341012865<span class="hljs-tag">&lt;/<span class="hljs-name">flickrid</span>&gt;</span><br>	<span class="hljs-tag">&lt;/<span class="hljs-name">source</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">owner</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">flickrid</span>&gt;</span>Fried Camels<span class="hljs-tag">&lt;/<span class="hljs-name">flickrid</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>Jinky the Fruit Bat<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>	<span class="hljs-tag">&lt;/<span class="hljs-name">owner</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">size</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">width</span>&gt;</span>353<span class="hljs-tag">&lt;/<span class="hljs-name">width</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">height</span>&gt;</span>500<span class="hljs-tag">&lt;/<span class="hljs-name">height</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">depth</span>&gt;</span>3<span class="hljs-tag">&lt;/<span class="hljs-name">depth</span>&gt;</span><br>	<span class="hljs-tag">&lt;/<span class="hljs-name">size</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">segmented</span>&gt;</span>0<span class="hljs-tag">&lt;/<span class="hljs-name">segmented</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">object</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>dog<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">pose</span>&gt;</span>Left<span class="hljs-tag">&lt;/<span class="hljs-name">pose</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">truncated</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-name">truncated</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">difficult</span>&gt;</span>0<span class="hljs-tag">&lt;/<span class="hljs-name">difficult</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">bndbox</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">xmin</span>&gt;</span>48<span class="hljs-tag">&lt;/<span class="hljs-name">xmin</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">ymin</span>&gt;</span>240<span class="hljs-tag">&lt;/<span class="hljs-name">ymin</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">xmax</span>&gt;</span>195<span class="hljs-tag">&lt;/<span class="hljs-name">xmax</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">ymax</span>&gt;</span>371<span class="hljs-tag">&lt;/<span class="hljs-name">ymax</span>&gt;</span><br>		<span class="hljs-tag">&lt;/<span class="hljs-name">bndbox</span>&gt;</span><br>	<span class="hljs-tag">&lt;/<span class="hljs-name">object</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">object</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>person<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">pose</span>&gt;</span>Left<span class="hljs-tag">&lt;/<span class="hljs-name">pose</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">truncated</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-name">truncated</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">difficult</span>&gt;</span>0<span class="hljs-tag">&lt;/<span class="hljs-name">difficult</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">bndbox</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">xmin</span>&gt;</span>8<span class="hljs-tag">&lt;/<span class="hljs-name">xmin</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">ymin</span>&gt;</span>12<span class="hljs-tag">&lt;/<span class="hljs-name">ymin</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">xmax</span>&gt;</span>352<span class="hljs-tag">&lt;/<span class="hljs-name">xmax</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">ymax</span>&gt;</span>498<span class="hljs-tag">&lt;/<span class="hljs-name">ymax</span>&gt;</span><br>		<span class="hljs-tag">&lt;/<span class="hljs-name">bndbox</span>&gt;</span><br>	<span class="hljs-tag">&lt;/<span class="hljs-name">object</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">annotation</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>filename ：文件名</li>
+<li>source，owner：图片来源及拥有者</li>
+<li>size：图片大小</li>
+<li>segmented：是否分割</li>
+<li>object：表明这是一个目标，里面的内容是目标的相关信息<ul>
+<li>name：object名称，20个类别</li>
+<li>pose：拍摄角度：front, rear, left, right, unspecified</li>
+<li>truncated：目标是否被截断（比如在图片之外），或者被遮挡（超过15%）</li>
+<li>difficult：检测难易程度，这个主要是根据目标的大小，光照变化，图片质量来判断</li>
+<li>bndbox：bounding box 的左上角点和右下角点的4个坐标值</li>
+</ul>
+</li>
+</ul>
+<p>difficult 标签示例：图中白色虚线，被标记为 difficult，被标记为difficult的示例不参与evaluation</p>
+<p><img src="/images/image-20230508213047782.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="2-ImageSets"><a href="#2-ImageSets" class="headerlink" title="(2)ImageSets"></a>(2)ImageSets</h5><p>mageSets存放数据集的分割文件，包含三个子文件夹 Layout，Main，Segmentation，其中Main文件夹存放的是用于分类和检测的数据集分割文件，Layout文件夹用于 person layout任务，Segmentation用于分割任务</p>
+<p><img src="/images/image-20230508222450108.png" srcset="/img/loading.gif" lazyload></p>
+<p>Main文件夹中主要的几个文件如下</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs stylus">├── Main<br>│   ├── train<span class="hljs-selector-class">.txt</span> 写着用于训练的图片名称 共<span class="hljs-number">2501</span>个<br>│   ├── val<span class="hljs-selector-class">.txt</span> 写着用于验证的图片名称 共<span class="hljs-number">2510</span>个<br>│   ├── trainval<span class="hljs-selector-class">.txt</span> train与val的合集 共<span class="hljs-number">5011</span>个<br>│   ├── test<span class="hljs-selector-class">.txt</span> 写着用于测试的图片名称 共<span class="hljs-number">4952</span>个<br></code></pre></td></tr></table></figure>
+
+<p>以train.txt为例，其存放的内容形式如下</p>
+<p><img src="/images/image-20230508222636403.png" srcset="/img/loading.gif" lazyload></p>
+<p>实际上就是对数据集的分割，train.txt部分的内容用于train，其他的用于val和test等</p>
+<p>Main中剩下的文件是每一类别在train或val或test中的ground truth，这个ground truth是为了方便classification 任务而提供的；如果是detection的话，使用的是Annotation中的xml标签文件</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs stylus">├── Main<br>│   ├── aeroplane_test<span class="hljs-selector-class">.txt</span> 写着用于训练的图片名称 共<span class="hljs-number">2501</span>个，指定正负样本<br>│   ├── aeroplane_train<span class="hljs-selector-class">.txt</span> 写着用于验证的图片名称 共<span class="hljs-number">2510</span>个，指定正负样本<br>│   ├── aeroplane_trainval<span class="hljs-selector-class">.txt</span> train与val的合集 共<span class="hljs-number">5011</span>个，指定正负样本<br>│   ├── aeroplane_val<span class="hljs-selector-class">.txt</span> 写着用于测试的图片名称 共<span class="hljs-number">4952</span>个，指定正负样本<br>……<br>……<br></code></pre></td></tr></table></figure>
+
+<p>以diningtable_trainval.txt为例，其存放的内容形式如下</p>
+<p><img src="/images/image-20230508223039742.png" srcset="/img/loading.gif" lazyload></p>
+<p>前面一列是训练集中的图片名称，这一列跟trainval.txt文件中的内容是一样的，后面一列是标签，即训练集中这张图片是不是diningtable，是的话为1，否则为-1。其他所有类似的 (class)_(imgset).txt 文件均是如此：</p>
+<ul>
+<li>(class)_train 存放的是训练使用的数据，每一个class都有2501个train数据；</li>
+<li>(class)_val 存放的是验证使用的数据，每一个class都有2510个val数据；</li>
+<li>(class)_trainval 将上面两个进行了合并，每一个class有5011个数据；</li>
+<li>(class)_test 存放的是测试使用的数据，每一个class有4952个test数据；</li>
+</ul>
+<p>所有文件都指定了正负样本，每个class的实际数量为正样本的数量，train和val两者没有交集。</p>
+<h2 id="4-相关技术"><a href="#4-相关技术" class="headerlink" title="4.相关技术"></a>4.相关技术</h2><h3 id="4-1-迁移学习"><a href="#4-1-迁移学习" class="headerlink" title="4.1 迁移学习"></a>4.1 迁移学习</h3><p>实际训练的时候很少能够拥有足够大的数据集进行训练，因此迁移学习在实际的卷积网络训练的过程中非常重要（除了训练数据集的原因，cv领域的训练时间及其长也是一个原因）。</p>
+<p>迁移学习简单来说就是先将模型在大数据集如Imagenet上进行预训练，然后将训练完成的模型作为指定数据集的初始化或固定的特征提取器。</p>
+<p>迁移学习主要有以下用途（即两种不同的权重处理方式）：</p>
+<ol>
+<li><code>将预训练的卷积网络作为固定特征提取器</code>。除了预训练模型最后的全连接层外，将会冻结所有网络的权重。最后的全连接层将会被一个新的随机初始化的全连接层替代，并且仅训练该层。</li>
+<li><code>微调预训练的卷积网络</code>。不使用随机初始化而是用一个预训练网络来初始化网络，剩下的训练过程与普通卷积网络训练相同。可以微调卷积网络的所有层，或者可以保持一些早期的层固定不变（避免过拟合），只微调网络的一些较高层部分。这是因为观察到卷积网络的早期的层包含更多通用特征（例如，边缘检测器或颜色斑点检测器），这些特征对许多任务都通用，但是卷积网络的顶层对于原始数据集中包含的类的细节随着层数的升高逐渐具体（例如训练犬类，可能早期的层能够提取到的特征是体型，但是高层提取到的特征是毛发特征、瞳孔颜色等）。</li>
+</ol>
+<p>什么情况下应该使用迁移学习呢？主要有两个因素：</p>
+<ul>
+<li>新数据集的规模；</li>
+<li>新数据集与原数据集的相似程度；</li>
+</ul>
+<p>根据以上两个因素将迁移学习的应用场景分为四类：</p>
+<ol>
+<li><code>新数据集很小，与原始数据集相似</code>。由于数据集很小，存在过拟合的问题，所以微调卷积网络不是一个好主意；由于数据与原始数据相似，卷积网络中的高级特征与此数据集相关，因此使用固定特征提取器的方式，再训练一个线性分类器是最好的选择；</li>
+<li><code>新数据集很大，与原始数据集相似</code>。因为有更多的数据，所以对整个网络进行微调不会产生过拟合；</li>
+<li><code>新数据集很小，与原始数据集非常不同</code>。因为数据很小，所以使用固定特征提取器的方式，再训练一个线性分类器。但是由于数据集有很大的不同，所以不能直接从包含更多数据集特定特征的网络顶部来训练分类器，而是固定网络早期权重，微调网络顶部权重的方式来训练线性分类器；</li>
+<li><code>新数据集很大，与原始数据集非常不同</code>。由于数据集非常大，能够从头开始训练一个卷积网络。但是在实践中，用来自预训练模型的权重初始化仍然非常有效，这种情况下对网络进行微调的效果将会非常好；</li>
+</ol>
+<h3 id="4-2-Hard-Negative-Mining"><a href="#4-2-Hard-Negative-Mining" class="headerlink" title="4.2 Hard Negative Mining"></a>4.2 Hard Negative Mining</h3><p>参考链接：</p>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/46292829">rcnn中的Hard negative mining方法是如何实现的？ - 知乎 (zhihu.com)</a>；</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/fenglepeng/article/details/117870253">(1条消息) 深度学习之 hard negative mining （难例挖掘）_奔跑的大西吉的博客-CSDN博客</a>；</p>
+</li>
+</ul>
+<hr>
+<p>Hard Negative Mining又称为难例挖掘，其中hard是指困难样本，negative是指负样本（目标检测任务中，定义样本为图像中的各种检测区域（一般是矩形框），正样本是指包含检测目标的区域，负样本是指不包含或仅包含部分检测目标的区域（具体正负样本的标签需要人为进行标注，也就是说包含多少目标信息的区域可以被标注是正样本是人为主观判定的）。注意负样本和背景的区别，背景不包含任何检测目标，而负样本可以包含部分检测目标），而hard negative是指对负样本进行分类的时候loss较大（即预测标签和真实标签的差别较大）的那些负样本，换句话说，hard negative就是容易将负样本分类为正样本的那些负样本。</p>
+<ul>
+<li>easy negative：在ROI(region of interest)中，没有目标全是背景，则分类器很容易将其分类为负样本（该ROI的真实标签是负样本）；</li>
+<li>hard negative：在ROI中，有很大一部分都是目标，造成极大的干扰，因此分类器很容易将其分类为正样本（该ROI的真实标签是负样本，这就是假阳性）；</li>
+</ul>
+<p>而hard negative mining是指在负样本集中多加入一些hard negative，这样会比单纯的easy negative组成的负样本集的训练效果好（可以认为hard negative是错题集）。</p>
+<p>如何在训练过程中选择并使用困难负样本？原理非常简单，先用初始样本集去训练网络（为了平衡数据，此时使用的负样本也只是所有负样本的子集），再用训练好的网络去预测负样本集中剩余的样本，选择其中最容易被判断为正样本的负样本作为困难样本将其加入负样本集中，并重新训练网络，如此循环可以发现网络的分类性能越来越强。</p>
+<p>hard negative mining的缺点在于因为它需要迭代训练，因此很难用到end-to-end的检测模型中，如果非要用到end-to-end的卷积模型中，需要每次都将网络冻结一段时间来生成hard negative，但这种做法和线上优化会产生冲突，例如使用SGD(随机梯度下降)来训练网络需要上万次的对网络的更新，如果每迭代几次就冻结网络一段时间，则整个网络的训练时间会相当大。在fast rcnn和faster rcnn中都没有使用hnm，原因就是如此，一般只有使用svm的时候才会使用该方法（svm分类器和hnm交替训练）。</p>
+<hr>
+<blockquote>
+<p>Q：为什么使用了hnm的效果会更好？hnm出现的原因是什么？</p>
+</blockquote>
+<p>A：难例挖掘hnm和非最大抑制nms都是为了解决目标检测领域的经典问题 – 正负样本不平衡+低召回率。</p>
+<p>目标检测任务和图像分类任务的不同在于，图像分类往往只有一个输出，而目标检测的输出个数是未知的（除了标注数据ground-truth以外，模型无法知道自己在一张图上要预测多少物体，也就是需要在图像上给出多少个检测框）。在目标检测领域，召回率定义为所有标注的真实边界框（检测目标）有多少被检测出来（更直白的说recall就是所有某类物体中被检测出来的概率）。</p>
+<p>为了提高召回率，基本的思想就是“宁可错杀一千，绝不放过一个”（不管检测了多少次，只要能检测出目标就行。如图像中有一只cat和一个car，最理想的效果就是图像上被给出两个检测框分别框出了cat和car；退一步，图像上给出了很多个检测框，这其中有检测出cat和car的框也可以），因此模型往往会提出远高于真实边界框数量的区域建议region proposal（例子中我们期望输出cat和car两个检测框，模型一般会给我们几十个甚至几百个建议检测框）。这样会导致一个问题，这些提出的区域建议往往大部分都是负样本（即包含少量目标信息甚至不包含目标信息的区域）。</p>
+<p>为了让模型能够正常训练，需要通过某种方法抑制大量的easy negative，同时尽可能多的挖掘hard negative。</p>
+<blockquote>
+<p>Q：如何更通俗的理解hnm？</p>
+</blockquote>
+<p>A：选自知乎评论</p>
+<p>“首先要做一个目标检测器，那第一个目标就是把应该检测到的检测出来，即高recall,因为你的目的就是把那些前景比如车啊，人啊检测出来，然后再去谈你的precision，你的目标检测器可能会有一些误检之类的，比如把树当成了人。而想要达到高的recall,就应该放置更多的anchor，因为越多你才能覆盖图像上的每个区域，才能把每个区域的物体检测出来。但是呢，一张图片上的前景毕竟是少数，大部分是背景，这就导致大部分的anchor都是负例，并且还是非常容易区分的负例，因为大部分的anchor与前景根本就不相交。如果都所有的anchor都参与训练，大量的容易区分的anchor的梯度会覆盖掉难区分的负例和正例的梯度，让检测器称为一个检测背景的检测器。怎么解决容易区分的负例带来的这种影响，那就是难负例挖掘，只让比较难的参与训练。”</p>
+<hr>
+<h3 id="4-3-PyTorch数据加载"><a href="#4-3-PyTorch数据加载" class="headerlink" title="4.3 PyTorch数据加载"></a>4.3 PyTorch数据加载</h3><p>参考链接：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/marsggbo/p/11308889.html">一文弄懂Pytorch的DataLoader, DataSet, Sampler之间的关系 - marsggbo - 博客园 (cnblogs.com)</a>；</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35608277/article/details/123626699">(2条消息) 【pytorch】|Dataloader dataset sampler torchvision_rrr2的博客-CSDN博客</a>；</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44804542/article/details/115821939">(1条消息) Pytorch笔记：DataLoader，Dataset和Sampler_valueerror: dataset attribute should not be set af_硝烟_1994的博客-CSDN博客</a>；</li>
+</ul>
+<hr>
+<p>pytorch的五大模块为：数据、模型、损失函数、优化器和迭代训练。其中的数据模块可细分为如下四个部分：</p>
+<ul>
+<li>数据收集：收集样本和标注标签；</li>
+<li>数据划分：将收集到的数据划分为训练集、验证集和测试集；</li>
+<li>数据读取：该部分对应pytorch的Dataloader，而Dataloader包括Sampler和Dataset，其中Sampler的功能是生成索引index，Dataset的功能是根据生成的index读取样本及标签；</li>
+<li>数据预处理：对应pytorch的transforms；</li>
+</ul>
+<p>Dataset、Dataloader和Sampler三个类都是torch.utils.data 包下的模块(类)，torch&#x2F;utils&#x2F;data下面一共含有4个主文件</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs 1c"><span class="hljs-string">|---- dataloader.py</span><br><span class="hljs-string">|---- dataset.py</span><br><span class="hljs-string">|---- distributed.py</span><br><span class="hljs-string">|---- sampler.py</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>Dataset是数据集的类，主要用于定义数据集</li>
+<li>Sampler是采样器的类，用于定义从数据集中选出数据的规则，比如是随机取数据还是按照顺序取等等</li>
+<li>Dataloader是数据的加载类，Dataset和Sampler会作为参数传递给Dataloader。Dataloader是对于Dataset和Sampler的进一步包装，用于实际读取数据，而Dataset和Sampler则负责定义。模型训练、测试所获得的数据是Dataloader传递的。</li>
+</ul>
+<p>pytorch 的数据加载到模型的操作顺序是这样的：</p>
+<ol>
+<li>创建一个 Dataset 对象；</li>
+<li>创建一个 DataLoader 对象；</li>
+<li>循环这个 DataLoader 对象，通过dataset、sampler参数将img和label加载到模型中进行训练；</li>
+</ol>
+<p>假设数据集中的数据是一组图像，每张图像都有一张对应的index，则读取数据只需要index即可。获取index的方式有多种，有顺序也有乱序，由Sampler完成。获取到index后，只需要根据index对Dataset中的数据进行读取即可，因此Dataloader、Dataset和Sampler三者的关系如下</p>
+<p><img src="/images/image-20230515091100055.png" srcset="/img/loading.gif" lazyload></p>
+<p>简单来说，用一个Dataset类抽象地表示数据集，在训练时Dataloader作为迭代器，每次产生一个batch大小的数据以节省内存。</p>
+<h4 id="4-3-1-DataLoader"><a href="#4-3-1-DataLoader" class="headerlink" title="4.3.1 DataLoader"></a>4.3.1 DataLoader</h4><p>Dataloader对Dataset（和Sampler等）打包，完成最后对数据的读取的执行工作，一般不需要自己定义或者重写一个Dataloader的类（或子类），直接使用即可，通过传入参数定制Dataloader，定制化的功能在Dataset（和Sampler等）中完成。</p>
+<p>Dataloader的参数及其含义如下</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">from</span> torch.utils.data <span class="hljs-keyword">import</span> DataLoader<br><br>DataLoader(dataset, batch_size=<span class="hljs-number">1</span>, shuffle=<span class="hljs-literal">False</span>, sampler=<span class="hljs-literal">None</span>, batch_sampler=<span class="hljs-literal">None</span>, num_workers=<span class="hljs-number">0</span>, collate_fn=<span class="hljs-literal">None</span>, pin_memory=<span class="hljs-literal">False</span>, drop_last=<span class="hljs-literal">False</span>, timeout=<span class="hljs-number">0</span>, worker_init_fn=<span class="hljs-literal">None</span>, multiprocessing_context=<span class="hljs-literal">None</span>)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>dataset(Dataset): 传入的数据集</li>
+<li>batch_size(int, optional): 每个batch有多少个样本</li>
+<li>shuffle(bool, optional): 在每个epoch开始的时候，对数据进行重新排序</li>
+<li>sampler(Sampler, optional): 自定义从数据集中取样本的策略，如果指定这个参数，那么shuffle必须为False</li>
+<li>batch_sampler(Sampler, optional): 与sampler类似，但是一次只返回一个batch的indices（索引），需要注意的是，一旦指定了这个参数，那么batch_size,shuffle,sampler,drop_last就不能再制定了（互斥 – Mutually exclusive）</li>
+<li>num_workers (int, optional): 这个参数决定了有几个进程来处理data loading。0意味着所有的数据都会被load进主进程。（默认为0）</li>
+<li>pin_memory (bool, optional)： 如果设置为True，那么data loader将会在返回它们之前，将tensors拷贝到CUDA中的固定内存（CUDA pinned memory）中.</li>
+<li>collate_fn (callable, optional): 将一个list的sample组成一个mini-batch的函数</li>
+<li>drop_last (bool, optional): 这个是对最后的未完成的batch来说的，比如你的batch_size设置为64，而一个epoch只有100个样本，如果设置为True,那么训练的时候后面的36个就被扔掉了…<br>如果为False（默认），那么会继续正常执行，只是最后的batch_size会小一点</li>
+<li>timeout(numeric, optional): 如果是正数，表明等待从worker进程中收集一个batch等待的时间，若超出设定的时间还没有收集到，那就不收集这个内容了。这个numeric应总是大于等于0。默认为0</li>
+<li>worker_init_fn (callable, optional): worker初始化函数，如果该参数非空则在每个worker子进程上与worker id作为输入</li>
+<li>multiprocessing_context：多道处理</li>
+</ul>
+<h4 id="4-3-2-Sampler"><a href="#4-3-2-Sampler" class="headerlink" title="4.3.2 Sampler"></a>4.3.2 Sampler</h4><p>Sampler的作用在于生成相应的索引。在DataLoader类的初始化参数里有两种Sampler：sampler和batch_sampler，都默认为None。前者的作用是生成一系列的index，而batch_sampler则是将sampler生成的indices打包分组，得到一个又一个batch的index。</p>
+<p>Sampler类是一个抽象父类，其主要用于设置从一个序列中返回样本的规则，即采样的规则。所有的采样器（无论是pytorch中已经实现的还是自定义的采样器）都继承自Sampler类</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Sampler</span>(<span class="hljs-title class_ inherited__">object</span>):<br>    <span class="hljs-string">r&quot;&quot;&quot;Base class for all Samplers.</span><br><span class="hljs-string">    Every Sampler subclass has to provide an __iter__ method, providing a way</span><br><span class="hljs-string">    to iterate over indices of dataset elements, and a __len__ method that</span><br><span class="hljs-string">    returns the length of the returned iterators.</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    <span class="hljs-comment"># 一个迭代器基类</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, data_source</span>): <span class="hljs-comment"># 初始化</span><br>        <span class="hljs-keyword">pass</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__iter__</span>(<span class="hljs-params">self</span>): <span class="hljs-comment"># 用于产生迭代索引值，指定每个step需要读取哪些数据</span><br>        <span class="hljs-keyword">raise</span> NotImplementedError<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__len__</span>(<span class="hljs-params">self</span>): <span class="hljs-comment"># 返回每次迭代器的长度</span><br>        <span class="hljs-keyword">raise</span> NotImplementedError<br>        <br></code></pre></td></tr></table></figure>
+
+<p>Sampler是一个可迭代对象，使用step方法可以返回下一个迭代后的结果，因此其主要的类方法就是 iter 方法，定义了迭代后返回的内容。</p>
+<p>无论是自定义的Sampler还是pytorch已经实现的Sampler，每次都只会返回一个索引，而在训练时是对批量的数据进行训练，该工作需要BatchSampler来完成。BatchSampler的作用就是将前面的Sampler采样得到的索引值进行合并，当数量等于一个batch大小后就将这一批的索引值返回</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">class</span> <span class="hljs-title class_">BatchSampler</span>(<span class="hljs-title class_ inherited__">Sampler</span>):<br>    <span class="hljs-string">r&quot;&quot;&quot;Wraps another sampler to yield a mini-batch of indices.</span><br><span class="hljs-string">    Args:</span><br><span class="hljs-string">        sampler (Sampler): Base sampler.</span><br><span class="hljs-string">        batch_size (int): Size of mini-batch.</span><br><span class="hljs-string">        drop_last (bool): If ``True``, the sampler will drop the last batch if</span><br><span class="hljs-string">            its size would be less than ``batch_size``</span><br><span class="hljs-string">    Example:</span><br><span class="hljs-string">        &gt;&gt;&gt; list(BatchSampler(SequentialSampler(range(10)), batch_size=3, drop_last=False))</span><br><span class="hljs-string">        [[0, 1, 2], [3, 4, 5], [6, 7, 8], [9]]</span><br><span class="hljs-string">        &gt;&gt;&gt; list(BatchSampler(SequentialSampler(range(10)), batch_size=3, drop_last=True))</span><br><span class="hljs-string">        [[0, 1, 2], [3, 4, 5], [6, 7, 8]]</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br><span class="hljs-comment"># 批次采样</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, sampler, batch_size, drop_last</span>):<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> <span class="hljs-built_in">isinstance</span>(sampler, Sampler):<br>            <span class="hljs-keyword">raise</span> ValueError(<span class="hljs-string">&quot;sampler should be an instance of &quot;</span><br>                             <span class="hljs-string">&quot;torch.utils.data.Sampler, but got sampler=&#123;&#125;&quot;</span><br>                             .<span class="hljs-built_in">format</span>(sampler))<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> <span class="hljs-built_in">isinstance</span>(batch_size, _int_classes) <span class="hljs-keyword">or</span> <span class="hljs-built_in">isinstance</span>(batch_size, <span class="hljs-built_in">bool</span>) <span class="hljs-keyword">or</span> \<br>                batch_size &lt;= <span class="hljs-number">0</span>:<br>            <span class="hljs-keyword">raise</span> ValueError(<span class="hljs-string">&quot;batch_size should be a positive integeral value, &quot;</span><br>                             <span class="hljs-string">&quot;but got batch_size=&#123;&#125;&quot;</span>.<span class="hljs-built_in">format</span>(batch_size))<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> <span class="hljs-built_in">isinstance</span>(drop_last, <span class="hljs-built_in">bool</span>):<br>            <span class="hljs-keyword">raise</span> ValueError(<span class="hljs-string">&quot;drop_last should be a boolean value, but got &quot;</span><br>                             <span class="hljs-string">&quot;drop_last=&#123;&#125;&quot;</span>.<span class="hljs-built_in">format</span>(drop_last))<br>        self.sampler = sampler<br>        self.batch_size = batch_size<br>        self.drop_last = drop_last<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__iter__</span>(<span class="hljs-params">self</span>):<br>        batch = []<br>        <span class="hljs-comment"># 一旦达到batch_size的长度，说明batch被填满，就可以yield出去了</span><br>        <span class="hljs-keyword">for</span> idx <span class="hljs-keyword">in</span> self.sampler:<br>            batch.append(idx)<br>            <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(batch) == self.batch_size:<br>                <span class="hljs-keyword">yield</span> batch<br>                batch = []<br>        <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(batch) &gt; <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> self.drop_last:<br>            <span class="hljs-keyword">yield</span> batch<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__len__</span>(<span class="hljs-params">self</span>):<br>     <span class="hljs-comment"># 比如epoch有100个样本，batch_size选择为64，那么drop_last的结果为1，不drop_last的结果为2</span><br>        <span class="hljs-keyword">if</span> self.drop_last:<br>            <span class="hljs-keyword">return</span> <span class="hljs-built_in">len</span>(self.sampler) // self.batch_size<br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-keyword">return</span> (<span class="hljs-built_in">len</span>(self.sampler) + self.batch_size - <span class="hljs-number">1</span>) // self.batch_size<br><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>DataLoader的部分初始化参数之间存在互斥关系：</p>
+<ul>
+<li>如果自定义了batch_sampler,那么这些参数都必须使用默认值：batch_size,shuffle,sampler,drop_last.</li>
+<li>如果自定义了sampler，那么shuffle需要设置为False</li>
+<li>如果sampler和batch_sampler都为None,那么batch_sampler使用Pytorch已经实现好的BatchSampler,而sampler分两种情况：</li>
+<li>若shuffle&#x3D;True,则sampler&#x3D;RandomSampler(dataset)【使用较多】</li>
+<li>若shuffle&#x3D;False,则sampler&#x3D;SequentialSampler(dataset)</li>
+</ul>
+</blockquote>
+<h4 id="4-3-3-Dataset"><a href="#4-3-3-Dataset" class="headerlink" title="4.3.3 Dataset"></a>4.3.3 Dataset</h4><p>作用：保存数据集的图片和相应的标签，通过索引能够完成图片的加载以及预处理、标签的加载以及预处理。Datasets是后续构建Dataloader工具函数的实例参数之一。</p>
+<p>Dataset 是抽象类，所有自定义的 Dataset 都需要继承该类，并且重写<code>__getitem()__</code>方法和<code>__len__()</code>方法（不覆写这两个方法会直接返回错误） 。<code>__getitem()__</code>方法的作用是接收一个索引，返回索引对应的样本和标签，这是我们自己需要实现的逻辑。<code>__len__()</code>方法是返回所有样本的数量。</p>
+<h1 id="二、R-CNN论文详解及实现"><a href="#二、R-CNN论文详解及实现" class="headerlink" title="二、R-CNN论文详解及实现"></a>二、R-CNN论文详解及实现</h1><p>R-CNN阅读地址：《<a href="https://link.zhihu.com/?target=https://arxiv.org/pdf/1311.2524v5.pdf">Rich feature hierarchies for accurate object detection and semantic segmentation</a>》</p>
+<h2 id="1-选择性搜索算法"><a href="#1-选择性搜索算法" class="headerlink" title="1.选择性搜索算法"></a>1.选择性搜索算法</h2><p>选择性搜索算法在R-CNN中用于获取图像中大量的候选目标框，其相关论文于2012年发表于IJCV会议，论文名为<a target="_blank" rel="noopener" href="https://ivi.fnwi.uva.nl/isis/publications/2013/UijlingsIJCV2013/UijlingsIJCV2013.pdf">Selective Search for Object Recognition</a>。</p>
+<p>在R-CNN架构的第一步就是寻找推荐区域(Region Proposal)，推荐区域也被称为ROI(Region Of Interest)。获取推荐区域的方法主要有滑动窗口、规则块和选择性搜索：</p>
+<ul>
+<li>滑动窗口：本质上就是穷举法，利用不同的尺度和长宽比把所有可能的大大小小的块都穷举出来，然后送去识别，识别出来概率大的就留下来。很明显，这样的方法复杂度太高，产生了很多的冗余候选区域，在现实当中不可行。</li>
+<li>规则块：在穷举法的基础上进行了一些剪枝，只选用固定的大小和长宽比。但是对于普通的目标检测来说，规则块依然需要访问很多的位置，复杂度高。</li>
+<li>选择性搜索：规则块的问题在于如何有效去除冗余的候选区域，考虑到冗余候选区域大多是发生了重叠，选择性搜索自底向上合并相邻的重叠区域从而减少冗余。</li>
+</ul>
+<p>选择性搜索的算法流程如下</p>
+<p><img src="/images/image-20230512205651799.png" srcset="/img/loading.gif" lazyload></p>
+<p>选择性搜索输入的是彩色图像，输出为候选的目标边界框集合。选择性搜索主要流程分为以下几个步骤：</p>
+<ol>
+<li>利用felzenszwalb分割算法获取初始区域集合R，同时初始化相似性度量集合S；</li>
+<li>遍历整个区域集合S，得到所有的相邻区域对(r<del>i</del>,r<del>j</del>)集合；</li>
+<li>遍历所有区域对(r<del>i</del>,r<del>j</del>)集合，计算区域r<del>i</del>和r<del>j</del>的相似性度量，同时将该相似性度量加入集合S；</li>
+<li>在S不为空的情况下，进行循环处理，在循环中<ol>
+<li>找到相似性度量最大对应的区域对(r<del>i</del>,r<del>j</del>)；</li>
+<li>将区域r<del>i</del>和r<del>j</del>合并，记作r<del>t</del>；</li>
+<li>从集合S中删除与区域r<del>i</del>相邻的其他区域的相似性度量；</li>
+<li>从集合S中删除与区域r<del>j</del>相邻的其他区域的相似性度量；</li>
+<li>计算区域r<del>t</del>与其相邻区域之间的相似性度量，将其加入集合S中；</li>
+<li>将区域r<del>t</del>加入区域集合R；</li>
+</ol>
+</li>
+</ol>
+<p>论文中的相似性度量主要使用了颜色相似度、纹理相似度、大小相似度和吻合相似度，具体的每个相似度的计算参考<a target="_blank" rel="noopener" href="https://daipuweiai.blog.csdn.net/article/details/96134725">相似性度量</a>。</p>
+<h2 id="2-边界框回归"><a href="#2-边界框回归" class="headerlink" title="2.边界框回归"></a>2.边界框回归</h2><p>目标检测相较于传统的图像分类，不仅需要实现对目标的分类，还需要解决目标的定位问题（即获取目标在原始图像中的位置信息），R-CNN利用边界框回归来预测物体的目标检测框。</p>
+<p>输入到边界框回归的数据集为{(P^i^,G^i^)}<del>i&#x3D;1,…,N</del>，其中P^i^&#x3D;(P^i^<del>x</del>,P^i^<del>y</del>,P^i^<del>w</del>,P^i^<del>h</del>),G^i^&#x3D;(G^i^<del>x</del>,G^i^<del>y</del>,G^i^<del>w</del>,G^i^<del>h</del>)：</p>
+<ul>
+<li>P^i^表示第i个待预测的候选目标检测框即Region Proposal，在R-CNN中P^i^利用选择性搜索算法进行获取；<ul>
+<li>P^i^<del>x</del>表示候选目标框的中心点在原始图像中的x坐标；</li>
+<li>P^i^<del>y</del>表示候选目标框的中心点在原始图像中的y坐标；</li>
+<li>P^i^<del>w</del>表示候选目标框的长度；</li>
+<li>P^i^<del>h</del>表示候选目标框的宽度；</li>
+</ul>
+</li>
+<li>G^i^表示第i个真实目标检测框即ground-truth<ul>
+<li>G^i^的四维特征的含义与P^i^相同；</li>
+</ul>
+</li>
+</ul>
+<p>边界框回归需要做的是利用某种映射关系，使得候选目标框Region Proposal的映射目标框无限接近真实目标框ground-truth。边界框回归过程的图像表示如下</p>
+<p><img src="/images/image-20230512214522707.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>红色框代表候选目标框，红色圆圈代表选候选目标框的中心点；</li>
+<li>绿色框代表真实目标框，绿色圆圈代表选真实目标框的中心点；</li>
+<li>蓝色框代表边界框回归算法预测目标框，蓝色圆圈代表选边界框回归算法预测目标框的中心点；</li>
+</ul>
+<p>R-CNN论文指出，边界框回归利用平移变换和尺度变换来实现映射，更进一步的，边界框回归要设计4个不同的Ridge回归模型分别求解w<del>x</del>,w<del>y</del>,w<del>w</del>,w<del>h</del>。</p>
+<blockquote>
+<p>注意，IoU较大时(论文中认为IoU大于0.6)，边界框回归可视为线性变换；</p>
+</blockquote>
+<p>后记：我们知道深度神经网络的基本作用是分类，而在目标检测中设计的深度网络一般是全卷积网络，目的是为了保持目标的尺度不变性。候选框到真实框的映射也是基于目标尺度不变性，生成的候选框region proposal要求必须在真实框的附近。基本做法是随机生成大量框，用CNN剔除非目标的框后剩下的就是候选框，候选框经过微调进一步向目标框逼近，最后执行回归得到预测框。</p>
+<h2 id="3-IoU与非极大抑制"><a href="#3-IoU与非极大抑制" class="headerlink" title="3.IoU与非极大抑制"></a>3.IoU与非极大抑制</h2><p>在RCNN中，候选框主要是由选择性搜索算法获取的。为了涵盖每张图片中对各个目标，选择行搜索算法会返回将近2000个候选框，因此带来大量重叠率较高的目标框。因此在分类和定位任务结束后，利用非极大抑制算法删除多余重复候选框很有必要。</p>
+<ul>
+<li><p>IoU是描述两个矩形框之间重合程度的指标，在RCNN中常用于衡量边界框回归算法得到的预测目标框与真实目标框之间的重合程度。</p>
+</li>
+<li><p>非极大抑制算法（Non-Maximum Suppression，NMS）用于去除大量重复的候选目标框。</p>
+</li>
+</ul>
+<p>IoU交并比全称为Intersection over Union，假设两个目标框分别为A和B，则两个目标框的交并比计算公式为<img src="/images/image-20230512223552838.png" srcset="/img/loading.gif" lazyload>，实际上就是两个目标框的交集与并集的比值。</p>
+<p>非极大抑制(Non-Maximum Suppression，NMS)就是抑制最大值，也可以将其理解为搜索局部最大值（R-CNN中的NMS特指目标检测领域中搜索分类概率最大的目标框的非极大抑制算法而非通用的非极大抑制）。</p>
+<p>通常采用分类概率与IoU作为指标来实现目标框的非极大抑制，算法流程如下：</p>
+<ol>
+<li>按照目标框对应的分类概率进行排序，选取分类概率最大的目标框，记作current_box；</li>
+<li>计算current_box与剩余目标框之间的IoU；</li>
+<li>将IoU大于阈值的目标框舍弃；</li>
+<li>在剩余的目标框中再选出最大分类概率的目标框，按照上述流程循环直至条件结束；</li>
+</ol>
+<p>从上述流程可以看出，非极大抑制是一种贪心算法，其主要目的就是消除多余的重叠比例较高的目标框。</p>
+<h2 id="4-R-CNN详解"><a href="#4-R-CNN详解" class="headerlink" title="4.R-CNN详解"></a>4.R-CNN详解</h2><p>R-CNN主要有如下两个特点：</p>
+<ul>
+<li>层次化的多阶段特征：在候选区域（Region proposal）上自下而上使用大型卷积神经网络(CNNs)进行提取图像特征，之后用于定位和分割物体；</li>
+<li>迁移学习：当带标签的训练数据不足时，先针对辅助任务进行有监督预训练，再进行特定任务的调优，即微调(fine-tuning)，就可以产生明显的性能提升；</li>
+</ul>
+<p>R-CNN的模型架构如下所示</p>
+<p><img src="/images/image-20230512232736916.png" srcset="/img/loading.gif" lazyload></p>
+<ol>
+<li>推荐区域提取：R-CNN首先在输入图像中提取接近2000个目标框区域 – R-CNN使用选择性搜索算法生成推荐区域Region proposals；</li>
+<li>特征提取：利用选择性搜索算法得到原始图像的推荐区域后，R-CNN将这些区域送入CNN中提取深度特征 – R-CNN采用alexnet作为提取图像特征的主干网络；<ul>
+<li>一般将alexnet的最后专用于Imagenet的1000-way分类层丢弃，采用新的分类层；</li>
+<li>alexnet要求输入图像必须是<code>227*227</code>的RGB彩色图像，因此需要将选择性搜索算法得到的推荐区域的图像尺寸转换为<code>227*227</code>；</li>
+</ul>
+</li>
+<li>最后利用这些深度特征进行目标的分类与定位两大任务；</li>
+</ol>
+<p>因为上述模型结合了推荐区域Region proposals和CNN，因此取名为R-CNN：Region with CNN features。</p>
+<h3 id="4-1-训练阶段"><a href="#4-1-训练阶段" class="headerlink" title="4.1 训练阶段"></a>4.1 训练阶段</h3><p>R-CNN的训练阶段和测试阶段有所区别，这里先介绍训练阶段</p>
+<ul>
+<li>训练阶段alexnet模型采用的是有监督预训练和特定领域内参数微调的训练方式；</li>
+<li>提取特征完成后，还需要训练每个类别的svm分类器，完成分类任务；</li>
+<li>除了分类任务，R-CNN还需要完成定位任务，将alexnet获得的特征向量按照类别分别送入x,y,w,h这四个分量回归器，利用梯度下度算进行训练每个分量回归器的权重。注意在这里特征向量的选择必须是与真实框(Ground Truth)之间IoU大于0.6的对应推荐区域提取出来的特征向量；</li>
+</ul>
+<p>R-CNN的训练流程如图所示</p>
+<p><img src="/images/image-20230512234522158.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="4-2-测试阶段"><a href="#4-2-测试阶段" class="headerlink" title="4.2 测试阶段"></a>4.2 测试阶段</h3><p>测试阶段可以理解为使用训练好检测器检测图像中的目标，其基本流程如下：</p>
+<ol>
+<li>先利用选择性搜索算法获取目标检测框，同时将目标框填充为正方形并转换为尺寸大小<code>227*227</code>；</li>
+<li>通过alexnet提取图像特征；</li>
+<li>利用每个类别训练好的svm二分类器对alexnet提取得到的特征向量的每个类别进行打分，选择最高分为预测类别；</li>
+<li>将每个类别的特征向量送入每个类别的边界回归器进行定位预测，此时可能产生目标框重叠，故使用NMS删除IoU大于阈值的重复目标框；</li>
+</ol>
+<p>R-CNN的测试流程如图所示</p>
+<p><img src="/images/image-20230512235448133.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="4-3-核心问题"><a href="#4-3-核心问题" class="headerlink" title="4.3 核心问题"></a>4.3 核心问题</h3><blockquote>
+<p>Q：为什么微调和训练svm使用的正负样本的阈值不同？</p>
+</blockquote>
+<p>A：</p>
+<p>微调阶段，因为CNN对小样本容易过拟合，因此需要大量的训练数据，因此对IoU的限制比较宽松：</p>
+<ul>
+<li>Ground Truth+与Ground Truth相交IoU&gt;0.5的建议框为正样本，否则为负样本</li>
+</ul>
+<p>而svm属于强分类器，适用于小样本训练，故对样本IoU的限制比较严格：</p>
+<ul>
+<li>Ground Truth为正样本，与Ground Truth相交IoU＜0.3的建议框为负样本</li>
+</ul>
+<blockquote>
+<p>Q：为什么不直接在微调结束后，在alexnet后直接加上softmax进行分类，而是采用svm进行分类？</p>
+</blockquote>
+<p>A：因为微调使用的训练数据中的正样本并不强调精准的位置，且微调阶段的负样本是随机抽样的，因此直接使用softmax会导致mAP降低；</p>
+<h2 id="5-RNN算法实现"><a href="#5-RNN算法实现" class="headerlink" title="5.RNN算法实现"></a>5.RNN算法实现</h2><p>实现一个R-CNN算法来进行目标检测的完整过程主要包括如下步骤（这里以检测图像中的cat为例）：</p>
+<p>1.准备数据集，本项目使用PASCAL VOC 2007数据集</p>
+<ul>
+<li>每张图片的大小可能不一样；</li>
+<li>每张图片都有相应的标注信息，这个标注信息可以作为监督学习的标准。bonding box 图像数据集中明确给出，因此可以作为标注；</li>
+<li>更多关于VOC 2007数据集的信息参考[背景介绍](# 3.4.1 VOC 2007)；</li>
+</ul>
+<p>2.数据集预处理</p>
+<ul>
+<li>从VOC数据集种提取cat类别数据(pascal_voc_cat.py)：抽取数据集中的任何一个类别的数据，作为此次训练对象（R-CNN并不是一次就能够训练出能够识别出所有类别的模型，它的基本原理是将这种训练的过程重复进行N次，N就是数据集的类别数量，训练完毕后R-CNN即可识别N种类别的物体）；</li>
+<li>创建微调数据集(create_finetune_data.py)：针对其中一个类别(cat)的数据，进行2分类的数据处理，为之后对Alexnet进行微调作准备<ul>
+<li>标注边界框：选择voc数据集中某一类别的图片的真实框体（在标注文件中给出）</li>
+<li>候选建议：使用区域候选方法（选择性搜索算法）选择多个候选框</li>
+<li>计算候选框与标注边界框的Iou<ul>
+<li>正样本：IoU大于等于0.5；</li>
+<li>负样本：剩余的候选区域中，IoU大于0，小于0.5且其大小必须大于标注框的1&#x2F;5；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>创建分类器数据集(create_classifier_data.py)：为进一步进行svm二分类器的模型训练提供数据<ul>
+<li>标注边界框：选择voc数据集中某一类别的图片的真实框体（在标注文件中给出）</li>
+<li>候选建议：使用区域候选方法（选择性搜索算法）选择多个候选框</li>
+<li>计算候选框与标注边界框的Iou<ul>
+<li>正样本：标注边界框；</li>
+<li>负样本：IoU大于0，小于0.3且其候选建议的大小必须大于标注框的1&#x2F;5（为了减少负样本的数量）；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>创建边界框回归数据集(create_bbox_regression_data.py)：利用微调数据集的正样本（IoU&gt;&#x3D;0.5），再进一步提取IoU&gt;0.6的候选建议(数据集都是正例，故loss都是0)</li>
+</ul>
+<p>3.区域候选建议(selectivesearch.py)：使用选择性搜索算法实现</p>
+<ul>
+<li>实例化gs；</li>
+<li>配置gs的区域候选方式；</li>
+<li>使用gs的process方法取候选框；</li>
+</ul>
+<p>4.创建自定义数据集合(custom_finetune_dataset.py)和迭代器(custom_batch_sampler.py)用于形成input数据送入网络；</p>
+<p>5.卷积神经网络训练(finetune.py)：</p>
+<ul>
+<li>使用finetune的方法继承alexnet的网络模型和参数，微调alexnet网络使其能够实现2分类，使网络模型能够确定一张图像中是否有car或cat（取决于训练数据）；</li>
+</ul>
+<p>6.分类器训练：R-CNN完成alexnet卷积模型的微调后，额外使用svm二分类器，采用负样本挖掘的方法进行模型训练(linear_svm.py)</p>
+<ul>
+<li>先取得和正例相同数目的负例作为训练样本；</li>
+<li>进行第一轮训练并计算出准确率和loss，根据验证集准确率表现，同时判断是否可以存储为最好的模型参数；</li>
+<li>进行难分辨负样本挖掘，将挖掘好的难分辨负样本数据加到负样本总数据中，进行下一轮训练；</li>
+<li>经过多轮训练，存储一个最好的二分类器；</li>
+</ul>
+<p>7.边界框回归器训练(bbox_regression.py)：使用svm对候选建议进行分类后，使用对应类别的边界框回归器预测其坐标偏移值，进一步提高检测精度</p>
+<ul>
+<li><p>通过提高IoU阈值（&gt;0.6）过滤正样本候选建议，将候选建议和标注边界框之间的转换看成线性回归问题，并通过岭回归（ridge regression）来训练权重w；</p>
+</li>
+<li><p>在读取alexnet的网络的基础上，冻结住alexnet的网络，并且取得alexnet中feature层的输出，送入一个线性的计算的模型，计算出4个输出，用于衡量偏移情况；</p>
+</li>
+<li><p>进行框体的非极大抑制的处理；</p>
+</li>
+</ul>
+<p>8.目标检测器实现(cat_detector.py)：</p>
+<ul>
+<li>输入图像；</li>
+<li>使用选择性搜索算法计算得到候选建议；</li>
+<li>逐个计算候选建议：<ul>
+<li>使用alexnet模型计算特征</li>
+<li>使用线性svm分类器计算得到分类结果</li>
+</ul>
+</li>
+<li>对所有分类为cat的候选建议执行非最大抑制；</li>
+</ul>
+<p>整个项目主要分为如下五个模块：</p>
+<ol>
+<li>区域建议生成：借助选择性搜索算法selectivesearch实现，生成类别独立的区域建议；	</li>
+<li>特征提取：借助卷积神经网络alexnet实现，从每个区域建议中提取固定长度的特征向量；</li>
+<li>线性svm实现：输入特征向量，输出每个类别的成绩；</li>
+<li>边界回归：使用每个类指定的边界框回归器计算候选建议的坐标偏移；</li>
+<li>非最大抑制：对候选建议做非最大抑制，得到最终的候选建议；</li>
+</ol>
+<p>R-CNN项目结构如下所示（该项目结构是对github上的一个论文复现项目的结构梳理，并不是我们的项目结构，仅理解用）</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli">├──images                     <span class="hljs-comment"># 测试图像</span><br>├──data                       <span class="hljs-comment"># 训练数据集</span><br>├──models					<span class="hljs-comment"># 模型文件</span><br>├──bbox_regression.py		 <span class="hljs-comment"># 边界框回归器训练</span><br>├──cat_detector.py			 <span class="hljs-comment"># 检测器实现</span><br>├──finetune.py				<span class="hljs-comment"># 卷积神经网络微调训练</span><br>├──linear_svm.py			<span class="hljs-comment"># 线性svm分类器训练</span><br>├──utils				    <br>│   ├──create_bbox_regression_data.py       	<span class="hljs-comment"># 创建边界框回归数据集</span><br>│   ├──create_classifier_data.py			   <span class="hljs-comment"># 创建分类器（二分类）数据集</span><br>│   ├──create_finetune_data.py				   <span class="hljs-comment"># 创建微调数据集</span><br>│   ├──custom_<span class="hljs-keyword">batch</span>_sampler.py				   <span class="hljs-comment"># 自定义批量采样器</span><br>│   ├──custom_bbox_regression_dataset.py        <span class="hljs-comment"># 自定义边界框回归数据集类</span><br>│   ├──custom_classifier_dataset.py			   <span class="hljs-comment"># 自定义分类器数据集类</span><br>│   ├──custom_finetune_dataset.py			   <span class="hljs-comment"># 自定义微调数据集类</span><br>│   ├──custom_hard_negative_mining_dataset.py<br>│   ├──pascal_voc_cat.py					  <span class="hljs-comment"># 创建cat类别数据集</span><br>│   ├──selectivesearch.py					  <span class="hljs-comment"># 区域候选建议算法</span><br>│   └──util.py                                  <span class="hljs-comment"># 辅助函数</span><br>├──README.md        		<span class="hljs-comment"># 帮助文档</span><br>└── environments.yml         <span class="hljs-comment"># 环境配置</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="三、目标检测系统"><a href="#三、目标检测系统" class="headerlink" title="三、目标检测系统"></a>三、目标检测系统</h1><p>题目：目标检测系统</p>
+<p>说明：构建一套实时目标检测系统，界面显示实时视频同时展示检测结果（需要注意的是视频检测而不是简单的图像检测）</p>
+<p>设计文档内容：</p>
+<ol>
+<li>系统功能描述；</li>
+<li>系统设计：系统框图及其组成模块描述；</li>
+<li>核心算法设计：该部分需要自行理解消化后撰写；</li>
+<li>系统实现：算法实现、界面实现；</li>
+<li>系统实践：<ul>
+<li>核心算法评估：实验数据集、实验参数、算法性能展示与问题分析；</li>
+<li>系统测试：界面功能介绍，系统工作过程及结果展示；</li>
+</ul>
+</li>
+<li>实验总结：系统的优势与缺点；</li>
+</ol>
+<p>（这部分内容作为一个项目的设计文档，参考项目：<a target="_blank" rel="noopener" href="https://github.com/Gintoki-jpg/R-CNN_cat">Gintoki-jpg&#x2F;R-CNN_cat: 北邮机器视觉课程设计 (github.com)</a>）</p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E8%B7%B5/" class="category-chain-item">课程实践</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">#深度学习</a>
+      
+        <a href="/tags/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/">#机器视觉</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>中级项目_目标检测系统</div>
+      <div>https://gintoki-jpg.github.io/2023/04/24/项目_目标检测系统/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>杨再俨</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年4月24日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/04/25/%E9%A1%B9%E7%9B%AE_%E4%BA%BA%E6%9C%BA%E5%AF%B9%E8%AF%9D%E7%B3%BB%E7%BB%9F/" title="中级项目_人机对话系统">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">中级项目_人机对话系统</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/04/23/%E9%A1%B9%E7%9B%AE_%E7%81%BE%E6%83%85%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" title="初级项目_灾情知识图谱">
+                        <span class="hidden-mobile">初级项目_灾情知识图谱</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+</div>
+
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

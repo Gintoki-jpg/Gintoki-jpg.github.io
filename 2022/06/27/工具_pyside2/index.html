@@ -1,0 +1,1192 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/logo.png">
+  <link rel="icon" href="/img/bg/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="杨再俨">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Pyside2和PyQT5都是基于Qt 的Python库，优点是控件比较丰富、跨平台体验好、文档完善、用户多。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Pyside2">
+<meta property="og:url" content="https://gintoki-jpg.github.io/2022/06/27/%E5%B7%A5%E5%85%B7_pyside2/index.html">
+<meta property="og:site_name" content="Tintoki_blog">
+<meta property="og:description" content="Pyside2和PyQT5都是基于Qt 的Python库，优点是控件比较丰富、跨平台体验好、文档完善、用户多。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/pyside2.png">
+<meta property="article:published_time" content="2022-06-27T08:03:00.000Z">
+<meta property="article:modified_time" content="2022-06-27T14:12:55.293Z">
+<meta property="article:author" content="YangZaiyan">
+<meta property="article:tag" content="开发工具">
+<meta property="article:tag" content="图形可视化">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gintoki-jpg.github.io/img/bg/pyside2.png">
+  
+  
+  
+  <title>Pyside2 - Tintoki_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"gintoki-jpg.github.io","root":"/","version":"1.9.1","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tintoki_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/bg1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">Pyside2</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-06-27 16:03" pubdate>
+          2022年6月27日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          18k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          150 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Pyside2</h1>
+            
+            <div class="markdown-body">
+              
+              <p>首先简单说一下为什么选择pyqt5和pyside2（这两个“亲兄弟”操作基本完全一样，所以之后就不再区分了），之前有段时间尝试了学习C语言的可视化编程工具easyX，但是学习体验非常不佳，而相比之下pyside2的操作更符合正常的开发习惯，同时之后也可以迁移到C++的QT图形开发，一举多得。</p>
+<ul>
+<li><p>本质上，easyX是一个画图工具，不适合新手使用，而且不容易把图形界面和功能代码分开，最重要的一点是几乎没有人用easyX，网上的教程都是那种非常水的教程；</p>
+</li>
+<li><p>pyside2对新手非常友好的一点就是可以直接使用工程师手动搭建ui界面然后动态加载进入目标文件中，需要着重理解的点就是python的类相关以及常见控件的使用方法，QT是pyside2和pyQT的父类，所以学会了pyside2也就基本完全掌握了QT；</p>
+</li>
+</ul>
+<p>教程参考：<a target="_blank" rel="noopener" href="https://www.byhy.net/tut/py/gui/qt_01/">Python Qt 简介 | 白月黑羽 (byhy.net)</a></p>
+<h1 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h1><h2 id="1-图形界面开发"><a href="#1-图形界面开发" class="headerlink" title="1.图形界面开发"></a>1.图形界面开发</h2><p>用 <code>Python</code> 语言开发 <code>跨平台</code> 的图形界面的程序，主要有3种选择：</p>
+<ul>
+<li><p>Tkinter</p>
+<p>基于Tk的Python库，这是Python官方采用的标准库，优点是作为Python标准库、稳定、发布程序较小，缺点是控件相对较少。</p>
+</li>
+<li><p>wxPython</p>
+<p>基于wxWidgets的Python库，优点是控件比较丰富，缺点是稳定性相对差点、文档少、用户少。</p>
+</li>
+<li><p>PySide2、PyQt5</p>
+<p>基于Qt 的Python库，优点是控件比较丰富、跨平台体验好、文档完善、用户多。</p>
+<p>缺点是 库比较大，发布出来的程序比较大。</p>
+</li>
+</ul>
+<p>PySide2、PyQt5 都是基于著名的 Qt 库。Qt库里面有非常强大的图形界面开发库，但是Qt库是C++语言开发的，PySide2、PyQt5可以让我们通过Python语言使用Qt。</p>
+<h2 id="2-示例程序"><a href="#2-示例程序" class="headerlink" title="2.示例程序"></a>2.示例程序</h2><p>下面我们给出一个简单的示例程序</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> PySide2.QtWidgets <span class="hljs-keyword">import</span> QApplication, QMainWindow, QPushButton,  QPlainTextEdit,QMessageBox<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Stats</span>():<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>        self.window = QMainWindow()<br>        self.window.resize(<span class="hljs-number">500</span>, <span class="hljs-number">400</span>)<br>        self.window.move(<span class="hljs-number">300</span>, <span class="hljs-number">300</span>)<br>        self.window.setWindowTitle(<span class="hljs-string">&#x27;薪资统计&#x27;</span>)<br><br>        self.textEdit = QPlainTextEdit(self.window)<br>        self.textEdit.setPlaceholderText(<span class="hljs-string">&quot;请输入薪资表&quot;</span>)<br>        self.textEdit.move(<span class="hljs-number">10</span>, <span class="hljs-number">25</span>)<br>        self.textEdit.resize(<span class="hljs-number">300</span>, <span class="hljs-number">350</span>)<br><br>        self.button = QPushButton(<span class="hljs-string">&#x27;统计&#x27;</span>, self.window)<br>        self.button.move(<span class="hljs-number">380</span>, <span class="hljs-number">80</span>)<br><br>        self.button.clicked.connect(self.handleCalc)<br><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">handleCalc</span>(<span class="hljs-params">self</span>):<br>        info = self.textEdit.toPlainText()<br>        <span class="hljs-comment"># 薪资20000以上和 以下的人员名单</span><br>        salary_above_20k = <span class="hljs-string">&#x27;&#x27;</span><br>        salary_below_20k = <span class="hljs-string">&#x27;&#x27;</span><br>        <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> info.splitlines():<br>            <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> line.strip():<br>                <span class="hljs-keyword">continue</span><br>            parts = line.split(<span class="hljs-string">&#x27; &#x27;</span>)<br>            <span class="hljs-comment"># 去掉列表中的空字符串内容</span><br>            parts = [p <span class="hljs-keyword">for</span> p <span class="hljs-keyword">in</span> parts <span class="hljs-keyword">if</span> p]<br>            name,salary,age = parts<br>            <span class="hljs-keyword">if</span> <span class="hljs-built_in">int</span>(salary) &gt;= <span class="hljs-number">20000</span>:<br>                salary_above_20k += name + <span class="hljs-string">&#x27;\n&#x27;</span><br>            <span class="hljs-keyword">else</span>:<br>                salary_below_20k += name + <span class="hljs-string">&#x27;\n&#x27;</span><br>        QMessageBox.about(self.window,<br>                    <span class="hljs-string">&#x27;统计结果&#x27;</span>,<br>                    <span class="hljs-string">f&#x27;&#x27;&#x27;薪资20000 以上的有：\n<span class="hljs-subst">&#123;salary_above_20k&#125;</span></span><br><span class="hljs-string">                    \n薪资20000 以下的有：\n<span class="hljs-subst">&#123;salary_below_20k&#125;</span>&#x27;&#x27;&#x27;</span><br>                    )<br><br>app = QApplication([])<br>stats = Stats()<br>stats.window.show()<br>app.exec_()<br></code></pre></td></tr></table></figure>
+
+<p>其对应的图形化界面和功能如下：</p>
+<p>在文本框中{姓名 薪资 年龄}，点击统计按钮后就可以得出薪资高于20000和低于20000的人群</p>
+<p><img src="/images/image-20220627163158904.png" srcset="/img/loading.gif" lazyload></p>
+<p>之所以要将这个程序封装在python类中是防止后续添加其他功能的时候出现太多全局变量或者不方便调用某些函数，所以在pyside2图形界面开发的过程中，【python类】是一个非常重要的概念；</p>
+<p><code> def __init__(self)</code>定义的就是整个图形化界面;</p>
+<p><code> self.button.clicked.connect(self.handleCalc)</code>将事件和处理函数绑定;</p>
+<p><code>def handleCalc(self)</code>定义的是点击’统计’按钮后触发的事件对应的处理函数;</p>
+<p><code>app = QApplication([])</code>表示实例化一个名为app的QApplication类,提供了整个图形界面程序的底层管理功能，比如：初始化、程序入口参数的处理，用户事件（对界面的点击、输入、拖拽）分发给各个对应的控件等,我们必须在任何界面控件对象创建前，先创建它;</p>
+<p><code>app.window.show()</code>表明将主窗口window(这里我们主窗口的名字就叫window)的全部控件都显示在界面上;</p>
+<p><code>app.exec_()</code>进入事件处理循环,监听触发的事件并分配给相应的对象进行处理(如果不加这个界面窗口只会一闪而过);</p>
+<h1 id="二、基础知识"><a href="#二、基础知识" class="headerlink" title="二、基础知识"></a>二、基础知识</h1><h2 id="1-QT-designer"><a href="#1-QT-designer" class="headerlink" title="1.QT designer"></a>1.QT designer</h2><p>在环境变量安装的pyside2的对应目录下</p>
+<figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs moonscript">..\My_miniconda\envs\pyqt_5\Lib\site-packages\PySide2<br></code></pre></td></tr></table></figure>
+
+<p>我们之后的设计基本上都会围绕设计师展开</p>
+<p><img src="/images/image-20220627165652167.png" srcset="/img/loading.gif" lazyload></p>
+<p>当我们在设计师中设计完成后点击保存会生成ui文件</p>
+<p><img src="/images/image-20220627165749934.png" srcset="/img/loading.gif" lazyload></p>
+<p>ui文件本质上就是一个XML文件，我们需要将其用在python中有多种方式，而最常使用的是动态加载的方式，与直接编码写的不同之处在于<code>def __init__(self)</code>函数体以及</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> PySide2.QtWidgets <span class="hljs-keyword">import</span> QApplication, QMessageBox<br><span class="hljs-keyword">from</span> PySide2.QtUiTools <span class="hljs-keyword">import</span> QUiLoader<br><span class="hljs-keyword">from</span> PySide2.QtCore <span class="hljs-keyword">import</span> QFile<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Stats</span>:<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-comment"># 从ui文件夹下的stats.ui文件中加载UI定义</span><br>        qfile_stats=QFile(<span class="hljs-string">&quot;ui/stats.ui&quot;</span>)<br>        qfile_stats.<span class="hljs-built_in">open</span>(QFile.ReadOnly)<br>        qfile_stats.close()<br><br>        <span class="hljs-comment"># 从 UI 定义中动态创建一个相应的窗口对象，此处我们将其命名为ui</span><br>        <span class="hljs-comment"># 注意：在创建窗口对象后，里面的控件对象也成为窗口对象的属性了，使用.访问属性，注意名字要与设计师中为控件取的名字一一对应！！</span><br>        <span class="hljs-comment"># 比如 self.ui.Button , self.ui.TextEdit</span><br>        self.ui = QUiLoader().load(qfile_stats)<br>        <span class="hljs-comment">#为Button控件的clicked事件绑定(connect)事件处理函数handleCalc</span><br>        self.ui.Button.clicked.connect(self.handleCalc)<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">handleCalc</span>(<span class="hljs-params">self</span>):<br>        info = self.ui.TextEdit.toPlainText()<br>        salary_above_20k = <span class="hljs-string">&#x27;&#x27;</span><br>        salary_below_20k = <span class="hljs-string">&#x27;&#x27;</span><br>        <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> info.splitlines():<br>            <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> line.strip():<br>                <span class="hljs-keyword">continue</span><br>            parts = line.split(<span class="hljs-string">&#x27; &#x27;</span>)<br>            parts = [p <span class="hljs-keyword">for</span> p <span class="hljs-keyword">in</span> parts <span class="hljs-keyword">if</span> p]<br>            name,salary,age = parts<br>            <span class="hljs-keyword">if</span> <span class="hljs-built_in">int</span>(salary) &gt;= <span class="hljs-number">20000</span>:<br>                salary_above_20k += name + <span class="hljs-string">&#x27;\n&#x27;</span><br>            <span class="hljs-keyword">else</span>:<br>                salary_below_20k += name + <span class="hljs-string">&#x27;\n&#x27;</span><br>        QMessageBox.about(self.ui,<br>                    <span class="hljs-string">&#x27;统计结果&#x27;</span>,<br>                    <span class="hljs-string">f&#x27;&#x27;&#x27;薪资20000 以上的有：\n<span class="hljs-subst">&#123;salary_above_20k&#125;</span></span><br><span class="hljs-string">                    \n薪资20000 以下的有：\n<span class="hljs-subst">&#123;salary_below_20k&#125;</span>&#x27;&#x27;&#x27;</span><br>                    )<br><br>app = QApplication([])<br>stats = Stats()<br>stats.ui.show()<br>app.exec_()<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-页面布局Layout"><a href="#2-页面布局Layout" class="headerlink" title="2.页面布局Layout"></a>2.页面布局Layout</h2><p>仅仅简单的将控件摆放在窗口上只是图形界面开发的第一步，我们常按照以下步骤来进行图形化界面设计：</p>
+<ul>
+<li>先不使用任何Layout，把所有控件按位置摆放在界面上（也就是直接在画布上给出整个程序的雏形）；</li>
+<li>然后先从最内层开始进行控件的Layout设定（也就是按照从小到大的顺序，按照情况选择垂直布局或水平布局）；</li>
+<li>逐步拓展到外层进行控件的Layout设定（将小的控件组合为一个Layout后，还可以继续将这些小Layout组合成大的Layout，此时的控件比例肯定会失调，我们将在下一步进行调整）；</li>
+<li>最后调整layout中控件的大小比例，优先使用Layout的layoutStrentch属性来控制，也可以选择加入space等控件协助调整；</li>
+</ul>
+<p>Layout的作用不仅仅只是将小组件组合在一起便于控制，当整体窗口都组成一个大的Layout后可以实现随着窗口的拖拽，各控件有比例的缩放；</p>
+<p>注意：与PPT中的组合不同，pyside2中的控件组合为一个Layout后，使用鼠标拖拽的方法只能改变Layout的大小，其内部的空间大小以及间隔等无法简单地使用鼠标拖拽完成，需要进入到Layout的设置界面</p>
+<p><img src="/images/image-20220627171850912.png" srcset="/img/loading.gif" lazyload></p>
+<p>通过修改其属性值调整其控件的大小比例等</p>
+<h1 id="三、进阶知识"><a href="#三、进阶知识" class="headerlink" title="三、进阶知识"></a>三、进阶知识</h1><h2 id="1-窗口切换"><a href="#1-窗口切换" class="headerlink" title="1.窗口切换"></a>1.窗口切换</h2><p>当我们有诸如登录的等需求，涉及多个页面的切换问题时，我们在原窗口绑定一个事件处理函数：实例化另外一个窗口，显示新窗口，关闭老窗口;</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> PySide2 <span class="hljs-keyword">import</span> QtWidgets<br><span class="hljs-keyword">import</span> sys<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Window2</span>(QtWidgets.QMainWindow):<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-built_in">super</span>().__init__()<br>        self.setWindowTitle(<span class="hljs-string">&#x27;窗口2&#x27;</span>)<br><br>        centralWidget = QtWidgets.QWidget()<br>        self.setCentralWidget(centralWidget)<br><br>        button = QtWidgets.QPushButton(<span class="hljs-string">&#x27;你好，我是新窗口的按钮&#x27;</span>)<br><br>        grid = QtWidgets.QGridLayout(centralWidget)<br>        grid.addWidget(button)<br><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">MainWindow</span>(QtWidgets.QMainWindow):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-built_in">super</span>().__init__()<br>        self.setWindowTitle(<span class="hljs-string">&#x27;窗口1&#x27;</span>)<br><br>        centralWidget = QtWidgets.QWidget()<br>        self.setCentralWidget(centralWidget)<br><br>        button = QtWidgets.QPushButton(<span class="hljs-string">&#x27;点击此处打开新窗口&#x27;</span>)<br>        button.clicked.connect(self.open_new_window)<br><br>        grid = QtWidgets.QGridLayout(centralWidget)<br>        grid.addWidget(button)<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">open_new_window</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-comment"># 实例化另外一个窗口</span><br>        self.window2 = Window2()<br>        <span class="hljs-comment"># 显示新窗口</span><br>        self.window2.show()<br>        <span class="hljs-comment"># 关闭自己</span><br>        self.close()<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    app = QtWidgets.QApplication(sys.argv)<br>    window = MainWindow()<br>    window.show()<br>    sys.exit(app.exec_())<br></code></pre></td></tr></table></figure>
+
+
+
+<p>运行结果如下</p>
+<p><img src="/images/image-20220627172456681.png" srcset="/img/loading.gif" lazyload><img src="/images/image-20220627172516055.png" srcset="/img/loading.gif" lazyload></p>
+<p>注意：如果经常要在两个窗口来回跳转，可以使用<code>hide()</code>方法隐藏窗口，而不是<code>closes()</code>方法关闭窗口。这样还有一个好处：被隐藏的窗口再次显示时，原来的操作内容还保存着，不会消失。</p>
+<h2 id="2-弹出对话框"><a href="#2-弹出对话框" class="headerlink" title="2.弹出对话框"></a>2.弹出对话框</h2><p>有的时候，我们需要弹出一个模式对话框输入一些数据，然后回到 原窗口。</p>
+<p>所谓模式对话框，就是弹出此对话框后， 原窗口就处于不可操作的状态，只有当模式对话框关闭才能继续。</p>
+<p>参考代码如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> PySide2 <span class="hljs-keyword">import</span> QtWidgets<br><span class="hljs-keyword">import</span> sys<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyDialog</span>(QtWidgets.QDialog):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-built_in">super</span>().__init__()<br>        self.setWindowTitle(<span class="hljs-string">&#x27;模式对话框&#x27;</span>)<br><br>        self.resize(<span class="hljs-number">500</span>, <span class="hljs-number">400</span>)<br>        self.textEdit = QtWidgets.QPlainTextEdit(self)<br>        self.textEdit.setPlaceholderText(<span class="hljs-string">&quot;请输入薪资表&quot;</span>)<br>        self.textEdit.move(<span class="hljs-number">10</span>, <span class="hljs-number">25</span>)<br>        self.textEdit.resize(<span class="hljs-number">300</span>, <span class="hljs-number">350</span>)<br><br>        self.button = QtWidgets.QPushButton(<span class="hljs-string">&#x27;统计&#x27;</span>, self)<br>        self.button.move(<span class="hljs-number">380</span>, <span class="hljs-number">80</span>)<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">MainWindow</span>(QtWidgets.QMainWindow):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-built_in">super</span>().__init__()<br>        self.setWindowTitle(<span class="hljs-string">&#x27;主窗口&#x27;</span>)<br><br>        centralWidget = QtWidgets.QWidget()<br>        self.setCentralWidget(centralWidget)<br><br>        button = QtWidgets.QPushButton(<span class="hljs-string">&#x27;打开模式对话框&#x27;</span>)<br>        button.clicked.connect(self.open_new_window)<br><br>        grid = QtWidgets.QGridLayout(centralWidget)<br>        grid.addWidget(button)<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">open_new_window</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-comment"># 实例化一个对话框类</span><br>        self.dlg = MyDialog()<br>        <span class="hljs-comment"># 显示对话框，代码阻塞在这里，</span><br>        <span class="hljs-comment"># 等待对话框关闭后，才能继续往后执行</span><br>        self.dlg.exec_()<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    app = QtWidgets.QApplication(sys.argv)<br>    window = MainWindow()<br>    window.show()<br>    sys.exit(app.exec_())<br></code></pre></td></tr></table></figure>
+
+<p>运行结果如下，关闭模式对话框后才能操作主窗口（这与上面所说的切换不太一样，两个窗口会同时存在但只能操作弹出的窗口）</p>
+<p><img src="/images/image-20220627173253773.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20220627173326051.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="3-发布程序"><a href="#3-发布程序" class="headerlink" title="3.发布程序"></a>3.发布程序</h2><p>我们知道python与C&#x2F;C++不同，无法编译后直接得到可执行文件，所以需要借助特殊的方法生成可执行文件及其依赖</p>
+<p>此处使用pyinstaller制作可执行文件（还有很多其他方法可以选择）</p>
+<p>首先在程序对应的环境下安装pyinstaller<code>pip install pyinstaller</code>，接着输入如下固定格式的命令即可生成可执行文件夹</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">pyinstaller httpclient.py --noconsole --hidden-import PySide2.QtXml<br></code></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<ul>
+<li><p><code>noconsole</code> 指定不要命令行窗口，否则我们的程序运行的时候，还会多一个黑窗口。 但是我建议大家可以先去掉这个参数，等确定运行成功后，再加上参数重新制作exe。因为这个黑窗口可以显示出程序的报错，这样我们容易找到问题的线索；</p>
+</li>
+<li><p><code>hidden-import PySide2.QtXml</code> 参数是因为这个 QtXml库是动态导入，PyInstaller没法分析出来，需要我们告诉它；</p>
+</li>
+<li><p>生成的文件夹中我们需要手动添加项目以来的ui文件（pyinstaller不会自动帮我们打包ui文件），同时一些使用的png文件也需要手动添加到该可执行文件夹中；</p>
+</li>
+</ul>
+<p>程序在打包之前可以添加主窗口图标和应用程序图标使其看起来更加专业</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> PySide2.QtGui <span class="hljs-keyword">import</span>  QIcon<br><span class="hljs-comment">#添加主窗口图标</span><br>app = QApplication([])<br><span class="hljs-comment"># 加载 icon</span><br>app.setWindowIcon(QIcon(<span class="hljs-string">&#x27;logo.png&#x27;</span>))<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">生成可执行文件时指定.ico格式的应用程序图标</span><br>pyinstaller httpclient.py --noconsole --hidden-import PySide2.QtXml --icon=&quot;logo.ico&quot;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h1 id="四、附录"><a href="#四、附录" class="headerlink" title="四、附录"></a>四、附录</h1><h2 id="1-常用控件"><a href="#1-常用控件" class="headerlink" title="1.常用控件"></a>1.常用控件</h2><p>注意：下面介绍的方法涉及代码和设计师，有些代码我们大概知道意思就行，比如设置文本框默认提示文字，实际我们在开发过程中只需要在设计师中的右下角搜索到相应属性并手动修改值即可，有些代码比如给按钮设置图标就只能在代码中实现，另外一些代码比如信号以及获取文本框内容这种就需要我们理解并会使用（在设计师中可以直接增添表格的行、列，但用户实际使用时需要增加表格的行、列就需要我们结合代码实现）</p>
+<h3 id="（1）按钮"><a href="#（1）按钮" class="headerlink" title="（1）按钮"></a>（1）按钮</h3><p><code>QPushButton</code> 就是常见的按钮<img src="/images/windows-pushbutton.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="信号"><a href="#信号" class="headerlink" title="信号"></a>信号</h5><p>当按钮被点击就会发出 <code>clicked</code> 信号，可以这样指定处理该信号的函数</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">button.clicked.connect(handleCalc)<br></code></pre></td></tr></table></figure>
+
+
+
+<h5 id="改变文本"><a href="#改变文本" class="headerlink" title="改变文本"></a>改变文本</h5><p>代码中可以使用 <code>setText</code> 方法来改变按钮文本，比如</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">button.setText(text)<br></code></pre></td></tr></table></figure>
+
+
+
+<h5 id="禁用、启用"><a href="#禁用、启用" class="headerlink" title="禁用、启用"></a>禁用、启用</h5><p>所有控件（继承自QWidget类）都支持 禁用和启用方法，禁用后，该控件不再处理用户操作</p>
+<ul>
+<li>禁用</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">button.setEnabled(<span class="hljs-literal">False</span>)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>启用</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">button.setEnabled(<span class="hljs-literal">True</span>)<br></code></pre></td></tr></table></figure>
+
+
+
+<h5 id="设置图标"><a href="#设置图标" class="headerlink" title="设置图标"></a>设置图标</h5><p>可以通过如下方法给按钮设置图标</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">from</span> PySide2.QtCore <span class="hljs-keyword">import</span> Qt,QSize<br><span class="hljs-keyword">from</span> PySide2.QtGui <span class="hljs-keyword">import</span> QIcon<br><br><span class="hljs-comment"># 设置图标</span><br>button.setIcon(QIcon(<span class="hljs-string">&#x27;logo.png&#x27;</span>))<br><br><span class="hljs-comment"># 设置图标大小</span><br>button.setIconSize(QSize(<span class="hljs-number">30</span>, <span class="hljs-number">30</span>))<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="（2）单行文本框"><a href="#（2）单行文本框" class="headerlink" title="（2）单行文本框"></a>（2）单行文本框</h3><p><code>QLineEdit</code> 是只能单行编辑的文本框<img src="/images/windows-lineedit-165632882263613.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="信号1"><a href="#信号1" class="headerlink" title="信号1"></a>信号1</h5><p>文本被修改。当文本框中的内容被键盘编辑，被点击就会发出 <code>textChanged </code>信号，可以这样指定处理该信号的函数，Qt在调用这个信号处理函数时，传入的参数就是文本框目前的内容字符串。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">edit.textChanged.connect(handleTextChange)<br></code></pre></td></tr></table></figure>
+
+
+
+<h5 id="信号2"><a href="#信号2" class="headerlink" title="信号2"></a>信号2</h5><p>按下回车键。当用户在文本框中任何时候按下回车键，就会发出 <code>returnPressed</code> 信号。有时我们需要处理这种情况，比如登录界面，用户输完密码直接按回车键就进行登录处理，比再用鼠标点击登录按钮快捷的多。可以指定处理 returnPressed 信号，如下所示</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">passwordEdit.returnPressed.connect(onLogin)<br></code></pre></td></tr></table></figure>
+
+
+
+<h5 id="获取文本"><a href="#获取文本" class="headerlink" title="获取文本"></a>获取文本</h5><p>通过 <code>text</code> 方法获取编辑框内的文本内容，比如</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">text = edit.text()<br></code></pre></td></tr></table></figure>
+
+
+
+<h5 id="设置提示"><a href="#设置提示" class="headerlink" title="设置提示"></a>设置提示</h5><p>通过 <code>setPlaceholderText</code> 方法可以设置提示文本内容，比如</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">edit.setPlaceholderText(<span class="hljs-string">&#x27;请在这里输入URL&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+
+
+<h5 id="设置文本"><a href="#设置文本" class="headerlink" title="设置文本"></a>设置文本</h5><p>通过 <code>setText</code> 方法设置编辑框内的文本内容为参数里面的文本字符串，比如，原来的所有内容会被清除</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">edit.setText(<span class="hljs-string">&#x27;你好，Tintoki&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+
+
+<h5 id="清除所有文本"><a href="#清除所有文本" class="headerlink" title="清除所有文本"></a>清除所有文本</h5><p><code>clear</code> 方法可以清除编辑框内所有的文本内容，比如</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">edit.clear()<br></code></pre></td></tr></table></figure>
+
+
+
+<h5 id="拷贝文本到剪贴板"><a href="#拷贝文本到剪贴板" class="headerlink" title="拷贝文本到剪贴板"></a>拷贝文本到剪贴板</h5><p><code>copy</code> 方法可以拷贝当前选中文本到剪贴板，比如</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">edit.copy()<br></code></pre></td></tr></table></figure>
+
+
+
+<h5 id="粘贴剪贴板的文本"><a href="#粘贴剪贴板的文本" class="headerlink" title="粘贴剪贴板的文本"></a>粘贴剪贴板的文本</h5><p><code>paste</code> 方法可以把剪贴板内容，拷贝到编辑框当前光标所在处，比如</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">edit.paste()<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="（3）多行文本框"><a href="#（3）多行文本框" class="headerlink" title="（3）多行文本框"></a>（3）多行文本框</h3><p><code>QPlainTextEdit</code> 是可以<code>多行编辑</code>的纯文本编辑框<img src="/images/11111.png" srcset="/img/loading.gif" lazyload>文本浏览框内置了一个 <a target="_blank" rel="noopener" href="https://doc.qt.io/qtforpython-5/PySide2/QtGui/QTextDocument.html">QTextDocument</a> 类型的对象 ，用于存放文档</p>
+<h5 id="信号1-1"><a href="#信号1-1" class="headerlink" title="信号1"></a>信号1</h5><p>文本被修改。当文本框中的内容被键盘编辑，被点击就会发出 <code>textChanged </code>信号，可以这样指定处理该信号的函数</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">edit.textChanged.connect(handleTextChange)<br></code></pre></td></tr></table></figure>
+
+<p>注意： Qt在调用这个信号处理函数时，<strong>不会传入</strong>文本框目前的内容字符串，作为参数。这个行为和单行文本框不同。</p>
+<h5 id="信号2-1"><a href="#信号2-1" class="headerlink" title="信号2"></a>信号2</h5><p>光标位置改变当文本框中的光标位置变动，就会发出 <code>cursorPositionChanged</code> 信号，可以这样指定处理该信号的函数</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">edit.cursorPositionChanged.connect(handleChanged)<br></code></pre></td></tr></table></figure>
+
+
+
+<h5 id="获取文本-1"><a href="#获取文本-1" class="headerlink" title="获取文本"></a>获取文本</h5><p>通过 <code>toPlainText</code> 方法获取编辑框内的文本内容，比如</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">text = edit.toPlainText()<br></code></pre></td></tr></table></figure>
+
+
+
+<h5 id="获取选中文本"><a href="#获取选中文本" class="headerlink" title="获取选中文本"></a>获取选中文本</h5><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 获取 QTextCursor 对象</span><br>textCursor = edit.textCursor()<br>selection = textCursor.selectedText()<br></code></pre></td></tr></table></figure>
+
+
+
+<h5 id="设置提示-1"><a href="#设置提示-1" class="headerlink" title="设置提示"></a>设置提示</h5><p>通过 <code>setPlaceholderText</code> 方法可以设置提示文本内容，比如</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">edit.setPlaceholderText(<span class="hljs-string">&#x27;请在这里输入薪资表&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+
+
+<h5 id="设置文本-1"><a href="#设置文本-1" class="headerlink" title="设置文本"></a>设置文本</h5><p>通过 <code>setPlainText</code> 方法设置编辑框内的文本内容为参数里面的文本字符串，比如，原来的所有内容会被清除</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">edit.setPlainText(<span class="hljs-string">&#x27;&#x27;&#x27;你好，Tintoki hello byhy&#x27;&#x27;&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+
+
+<h5 id="在末尾添加文本"><a href="#在末尾添加文本" class="headerlink" title="在末尾添加文本"></a>在末尾添加文本</h5><p>通过 <code>appendPlainText</code> 方法在编辑框末尾添加文本内容，比如</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">edit.appendPlainText(<span class="hljs-string">&#x27;你好，Tintoki&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<p>注意：这种方法会在添加文本后 <code>自动换行</code></p>
+<h5 id="在光标处插入文本"><a href="#在光标处插入文本" class="headerlink" title="在光标处插入文本"></a>在光标处插入文本</h5><p>通过 <code>insertPlainText</code> 方法在光标末尾添加文本内容，比如</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">edit.insertPlainText(<span class="hljs-string">&#x27;你好，白月黑羽&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<p>注意：这种方法 <code>不会</code> 在添加文本后自动换行</p>
+<h5 id="清除所有文本-1"><a href="#清除所有文本-1" class="headerlink" title="清除所有文本"></a>清除所有文本</h5><p><code>clear</code> 方法可以清除编辑框内所有的文本内容，比如</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">edit.clear()<br></code></pre></td></tr></table></figure>
+
+
+
+<h5 id="拷贝文本到剪贴板-1"><a href="#拷贝文本到剪贴板-1" class="headerlink" title="拷贝文本到剪贴板"></a>拷贝文本到剪贴板</h5><p><code>copy</code> 方法可以拷贝当前选中文本到剪贴板，比如</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">edit.copy()<br></code></pre></td></tr></table></figure>
+
+
+
+<h5 id="粘贴剪贴板文本"><a href="#粘贴剪贴板文本" class="headerlink" title="粘贴剪贴板文本"></a>粘贴剪贴板文本</h5><p><code>paste</code> 方法可以把剪贴板内容，拷贝到编辑框当前光标所在处，比如</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">edit.paste()<br></code></pre></td></tr></table></figure>
+
+
+
+<h5 id="设置最大行数"><a href="#设置最大行数" class="headerlink" title="设置最大行数"></a>设置最大行数</h5><p>有时候，代码会不断往文本框添加内容，为了防止占用过多资源，可以设置文本框最大行数，像这样设置最大为 1000行</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">edit.document().setMaximumBlockCount(<span class="hljs-number">1000</span>)<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="（4）文本浏览框"><a href="#（4）文本浏览框" class="headerlink" title="（4）文本浏览框"></a>（4）文本浏览框</h3><p><code>QTextBrowser</code> 是 <code>只能查看文本</code> 的控件，通常用来显示一些操作日志信息、或者不需要用户编辑的大段文本内容。<br>该控件 获取文本、设置文本、清除文本、剪贴板复制粘贴等操作和上面介绍的多行纯文本框是一样的，下面介绍其独特之处。</p>
+<h5 id="在末尾添加文本-1"><a href="#在末尾添加文本-1" class="headerlink" title="在末尾添加文本"></a>在末尾添加文本</h5><p>通过 <code>append</code> 方法在编辑框末尾添加文本内容，比如</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">textBrowser.append(<span class="hljs-string">&#x27;你好，Tintoki&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+
+
+<p>有时，浏览框里面的内容长度超出了可见范围，我们在末尾添加了内容，往往希望控件自动翻滚到当前添加的这行，</p>
+<p>可以通过 <code>ensureCursorVisible</code> 方法来实现</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs py">textBrowser.append(<span class="hljs-string">&#x27;你好，Tintoki&#x27;</span>)<br>textBrowser.ensureCursorVisible()<br></code></pre></td></tr></table></figure>
+
+<p>注意：这种方法会在添加文本后 <code>自动换行</code></p>
+<h5 id="在光标处插入文本-1"><a href="#在光标处插入文本-1" class="headerlink" title="在光标处插入文本"></a>在光标处插入文本</h5><p>通过 <code>insertPlainText</code> 方法在光标末尾添加文本内容，比如</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">edit.insertPlainText(<span class="hljs-string">&#x27;你好，Tintoki&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<p>注意：这种方法 <code>不会</code> 在添加文本后自动换行</p>
+<h3 id="（5）标签"><a href="#（5）标签" class="headerlink" title="（5）标签"></a>（5）标签</h3><p><code>QLabel</code> 就是常见的标签，可以用来显示文字（包括纯文本和富文本）、图片 甚至动画<img src="/images/36257654_69479746-df463100-0e3b-11ea-96e8-eacee44ae22d.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="改变文本-1"><a href="#改变文本-1" class="headerlink" title="改变文本"></a>改变文本</h5><p>代码中可以使用 <code>setText</code> 方法来改变标签文本内容，比如</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">button.setText(text)<br></code></pre></td></tr></table></figure>
+
+
+
+<h5 id="显示图片"><a href="#显示图片" class="headerlink" title="显示图片"></a>显示图片</h5><p>QLabel可以用来显示图片，有时一个图片可以让界面好看很多，如下图所示</p>
+<p><img src="/images/tut_20200807110637_13.png" srcset="/img/loading.gif" lazyload></p>
+<p>可以在 Qt Designer上 属性编辑器 QLabel 栏 的 pixmap 属性设置中选择图片文件指定显示的图片</p>
+<h3 id="（6）组合选择框"><a href="#（6）组合选择框" class="headerlink" title="（6）组合选择框"></a>（6）组合选择框</h3><p><code>QComboBox</code> 是组合选择框，如下图所示</p>
+<p><img src="/images/36257654_69479914-bb83ea80-0e3d-11ea-9566-27ecade0a1ae.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="信号-1"><a href="#信号-1" class="headerlink" title="信号"></a>信号</h5><p>选项改变。如果用户操作修改了QComboBox中的选项就会发出 <code>currentIndexChanged </code>信号，可以这样指定处理该信号的函数</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">cbox.currentIndexChanged.connect(handleSelectionChange)<br></code></pre></td></tr></table></figure>
+
+
+
+<h5 id="添加一个选项"><a href="#添加一个选项" class="headerlink" title="添加一个选项"></a>添加一个选项</h5><p>代码中可以使用 <code>addItem</code> 方法来添加一个选项到 <code>末尾</code> ，参数就是选项文本</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">cbox.addItem(<span class="hljs-string">&#x27;A&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+
+
+<h5 id="添加多个选项"><a href="#添加多个选项" class="headerlink" title="添加多个选项"></a>添加多个选项</h5><p>代码中可以使用 <code>addItems</code> 方法来添加多个选项到 <code>末尾</code>，参数是包含了多个选项文本的列表</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">cbox.addItems([<span class="hljs-string">&#x27;byhy&#x27;</span>,<span class="hljs-string">&#x27;A&#x27;</span>,<span class="hljs-string">&#x27;B&#x27;</span>])<br></code></pre></td></tr></table></figure>
+
+
+
+<h5 id="清空选项"><a href="#清空选项" class="headerlink" title="清空选项"></a>清空选项</h5><p>代码中可以使用 <code>clear</code> 方法来清空选项，也就是删除选择框内所有的选项</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">cbox.clear()<br></code></pre></td></tr></table></figure>
+
+
+
+<h5 id="获取当前选项文本"><a href="#获取当前选项文本" class="headerlink" title="获取当前选项文本"></a>获取当前选项文本</h5><p>代码中可以使用 <code>currentText</code> 方法来获取当前 <code>选中的选项</code> 的文本，比如</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">method = cbox.currentText()<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="（7）列表"><a href="#（7）列表" class="headerlink" title="（7）列表"></a>（7）列表</h3><p><code>QListWidget</code> 是列表控件，如下图所示<img src="/images/windows-listview.png" srcset="/img/loading.gif" lazyload></p>
+<p>在设计师中使用如下方法创建列表<img src="/images/36257654_69544723-46deb680-0fcb-11ea-8903-9e1a20a8e5a1.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="添加一个选项-1"><a href="#添加一个选项-1" class="headerlink" title="添加一个选项"></a>添加一个选项</h5><p>代码中可以使用 <code>addItem</code> 方法来添加一个选项到 <code>末尾</code> ，参数就是选项文本</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">listWidget.addItem(<span class="hljs-string">&#x27;byhy&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+
+
+<h5 id="添加多个选项-1"><a href="#添加多个选项-1" class="headerlink" title="添加多个选项"></a>添加多个选项</h5><p>代码中可以使用 <code>addItems</code> 方法来添加多个选项到 <code>末尾</code>，参数是包含了多个选项文本的列表</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">listWidget.addItems([<span class="hljs-string">&#x27;byhy&#x27;</span>,<span class="hljs-string">&#x27;白月黑羽&#x27;</span>,<span class="hljs-string">&#x27;python教程&#x27;</span>])<br></code></pre></td></tr></table></figure>
+
+
+
+<h5 id="删除一个选项"><a href="#删除一个选项" class="headerlink" title="删除一个选项"></a>删除一个选项</h5><p>代码中可以使用 <code>takeItem</code> 方法来删除1个选项，参数是该选项所在行</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">listWidget.takeItem(<span class="hljs-number">1</span>)<br></code></pre></td></tr></table></figure>
+
+<p>就会删除第二行选项</p>
+<h5 id="清空选项-1"><a href="#清空选项-1" class="headerlink" title="清空选项"></a>清空选项</h5><p>代码中可以使用 <code>clear</code> 方法来清空选项，也就是删除选择框内所有的选项</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">listWidget.clear()<br></code></pre></td></tr></table></figure>
+
+
+
+<h5 id="获取当前选项文本-1"><a href="#获取当前选项文本-1" class="headerlink" title="获取当前选项文本"></a>获取当前选项文本</h5><p><code>currentItem</code> 方法可以得到列表当前选中项对象（QListWidgetItem） ，再调用这个对象的 <code>text</code> 方法，就可以获取文本内容，比如</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">listWidget.currentItem().text()<br></code></pre></td></tr></table></figure>
+
+
+
+<p>可以使用 item 方法获取指定某行的 QListWidgetItem，比如，</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">listWidget.item(<span class="hljs-number">0</span>).text()<br></code></pre></td></tr></table></figure>
+
+<p>就获取了 <code>第1行</code> 的列表项的文本。</p>
+<h3 id="（8）表格"><a href="#（8）表格" class="headerlink" title="（8）表格"></a>（8）表格</h3><p><code>QTableWidget</code> 是表格控件，如下图所示<img src="/images/36257654_69506983-dfdde500-0f6b-11ea-8feb-69cfbee1c2f4.png" srcset="/img/loading.gif" lazyload></p>
+<p>表格控件单元格里面可以显示文字，也可以显示富文本、图片等内容。表格控件的每个单元格里面要显示内容，都必须创建一个 <code>QTableWidgetItem</code> 类型的对象</p>
+<p>在设计师中使用如下方式创建表格</p>
+<p><img src="/images/36257654_69507025-0865df00-0f6c-11ea-836b-fa37f0eeea5c.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="创建列和标题栏"><a href="#创建列和标题栏" class="headerlink" title="创建列和标题栏"></a>创建列和标题栏</h5><p>我们可以通过 Qt designer 为一个表格创建列和对应的标题栏，只需要双击 Qt designer 设计的窗体中的表格控件， 就会出现这样的对话框。</p>
+<p><img src="/images/36257654_69507937-4f090880-0f6f-11ea-9db0-c169f8b64909.png" srcset="/img/loading.gif" lazyload></p>
+<p>在 <code>列</code> 标签栏中，点击左下角的加号，就可以为 添加一个列，并且设置标题栏名称。</p>
+<p><img src="/images/36257654_69508054-95f6fe00-0f6f-11ea-9280-053202d3f5b3.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="插入一行、删除一行"><a href="#插入一行、删除一行" class="headerlink" title="插入一行、删除一行"></a>插入一行、删除一行</h5><p><code>insertRow</code> 方法可以在指定位置插入一行，比如</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">table.insertRow(<span class="hljs-number">0</span>)<br></code></pre></td></tr></table></figure>
+
+<p>就插入一行到第 <code>1</code> 行这个位置， 表格原来第1行（包括原来的第1行）以后的内容，全部往下移动一行。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">table.insertRow(<span class="hljs-number">2</span>)<br></code></pre></td></tr></table></figure>
+
+<p>就插入一行到第 <code>3</code> 行这个位置， 表格原来第3行（包括原来的第3行）以后的内容，全部往下移动一行。</p>
+<p><code>removeRow</code> 方法可以删除指定位置的一行，比如</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">table.removeRow(<span class="hljs-number">0</span>)<br></code></pre></td></tr></table></figure>
+
+<p>就删除第 <code>1</code> 行， 表格原来第1行以后的内容，全部往上移动一行。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">table.removeRow(<span class="hljs-number">2</span>)<br></code></pre></td></tr></table></figure>
+
+<p>就删除第 <code>3</code> 行， 表格原来第3行以后的内容，全部往上移动一行。</p>
+<h5 id="设置单元格内容、对齐、属性"><a href="#设置单元格内容、对齐、属性" class="headerlink" title="设置单元格内容、对齐、属性"></a>设置单元格内容、对齐、属性</h5><p>qt表格的单元格内的内容对象 是一个单元格对象 <code>QTableWidgetItem</code> 实例</p>
+<p>如果单元格 <code>没有被设置过</code> 内容，可以这样</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">from</span> PySide2.QtWidgets <span class="hljs-keyword">import</span> QTableWidgetItem<br>table.setItem(row, <span class="hljs-number">0</span>, QTableWidgetItem(<span class="hljs-string">&#x27;Tintoki&#x27;</span>))<br></code></pre></td></tr></table></figure>
+
+<p>如果单元格 <code>已经被设置过</code> 文本内容，<code>item</code> 方法可以获取指定位置的 QTableWidgetItem ，再调用这个对象的 <code>setText</code> 方法，就可以设置单元格文本内容，比如</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">table.item(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>).setText(<span class="hljs-string">&#x27;Tintoki&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<p>就设置了 <code>第1行，第1列</code> 的单元格里面的文本。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">table.item(<span class="hljs-number">2</span>,<span class="hljs-number">4</span>).setText(<span class="hljs-string">&#x27;Tintoki&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<p>就设置了 <code>第3行，第5列</code> 的单元格里面的文本。</p>
+<p>如果希望某个单元格为 <strong>只读</strong>，不允许修改，可以使用QTableWidgetItem对象的 <code>setFlags</code> 方法，像这样</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">from</span> PySide2.QtWidgets <span class="hljs-keyword">import</span> QTableWidgetItem<br><span class="hljs-keyword">from</span> PySide2.QtCore <span class="hljs-keyword">import</span> Qt<br><br>item = QTableWidgetItem(<span class="hljs-string">&#x27;白月黑羽&#x27;</span>)<br>item.setFlags(Qt.ItemIsEnabled) <span class="hljs-comment"># 参数名字段不允许修改</span><br>table.setItem(row, <span class="hljs-number">0</span>, item)<br></code></pre></td></tr></table></figure>
+
+<p>如果想文本内容 <strong>居中对齐</strong>，每个当对应的QTableWidgetItem 调用 setTextAlignment，如下</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">from</span> PySide2.QtWidgets <span class="hljs-keyword">import</span> QTableWidgetItem<br><span class="hljs-keyword">from</span> PySide2.QtCore <span class="hljs-keyword">import</span> Qt<br><br>item = QTableWidgetItem()<br>item.setText(<span class="hljs-string">&#x27;白月黑羽&#x27;</span>)<br><span class="hljs-comment"># 文本居中</span><br>item.setTextAlignment(Qt.AlignCenter) <br>table.setItem(row, <span class="hljs-number">0</span>, item)<br></code></pre></td></tr></table></figure>
+
+<p>如果想设置 表格框 和 单元格边线 的颜色，可以使用样式如下</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs css">QTableWidget &#123;<br>	<span class="hljs-attribute">border</span>:<span class="hljs-number">1px</span> solid green;<br>    gridline-<span class="hljs-attribute">color</span>: <span class="hljs-built_in">rgb</span>(<span class="hljs-number">71</span>, <span class="hljs-number">191</span>, <span class="hljs-number">255</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h5 id="获取单元格文本的内容"><a href="#获取单元格文本的内容" class="headerlink" title="获取单元格文本的内容"></a>获取单元格文本的内容</h5><p><code>item</code> 方法可以指定位置的单元格对象（QTableWidgetItem） ，再调用这个对象的 <code>text</code> 方法，就可以获取文本内容，比如</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">table.item(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>).text()<br></code></pre></td></tr></table></figure>
+
+<p>就获取了 <code>第1行，第1列</code> 的单元格里面的文本。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">table.item(<span class="hljs-number">2</span>,<span class="hljs-number">4</span>).text()<br></code></pre></td></tr></table></figure>
+
+<p>就获取了 <code>第3行，第5列</code> 的单元格里面的文本。</p>
+<h5 id="获取所有行数、列数"><a href="#获取所有行数、列数" class="headerlink" title="获取所有行数、列数"></a>获取所有行数、列数</h5><p>代码中可以使用 <code>rowCount</code> 方法来获取表格所有的 <code>行数</code> ，比如</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">rowcount = table.rowCount()<br></code></pre></td></tr></table></figure>
+
+<p>可以使用 <code>columnCount</code> 方法来获取表格所有的 <code>列数</code> ，比如</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">rowcount = table.columnCount()<br></code></pre></td></tr></table></figure>
+
+<h5 id="获取当前选中是第几行"><a href="#获取当前选中是第几行" class="headerlink" title="获取当前选中是第几行"></a>获取当前选中是第几行</h5><p>代码中可以使用 <code>currentRow</code> 方法来获取当前选中是第几行，比如</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">currentrow = table.currentRow()<br></code></pre></td></tr></table></figure>
+
+<p>注意：行数是从0开始的， 第一行的行数是 0</p>
+<h5 id="设置表格行数、列数"><a href="#设置表格行数、列数" class="headerlink" title="设置表格行数、列数"></a>设置表格行数、列数</h5><p>代码中可以使用 <code>setRowCount</code> 方法来设置表格 <code>行数</code> ，比如</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">table.setRowCount(<span class="hljs-number">10</span>)<br></code></pre></td></tr></table></figure>
+
+<p>代码中可以使用 <code>setColumnCount</code> 方法来设置表格 <code>列数</code> ，比如</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">table.setColumnCount(<span class="hljs-number">10</span>)<br></code></pre></td></tr></table></figure>
+
+<h5 id="清除-x2F-删除所有内容"><a href="#清除-x2F-删除所有内容" class="headerlink" title="清除&#x2F;删除所有内容"></a>清除&#x2F;删除所有内容</h5><p><code>clearContents</code> 方法可以清除表格所有的内容，比如</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">table.clearContents()<br></code></pre></td></tr></table></figure>
+
+<p>清除后，仍然会留下表格栏，如果连表格栏都要删除，可以使用 <code>setRowCount(0)</code>，像这样</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">table.setRowCount(<span class="hljs-number">0</span>)<br></code></pre></td></tr></table></figure>
+
+<h5 id="设定列宽、宽度自动缩放"><a href="#设定列宽、宽度自动缩放" class="headerlink" title="设定列宽、宽度自动缩放"></a>设定列宽、宽度自动缩放</h5><p>Qt Designer 上目前没法拖拽设定 每个列的宽度，只能在代码中指定，如下所示</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 设定第1列的宽度为 180像素</span><br>table.setColumnWidth(<span class="hljs-number">0</span>, <span class="hljs-number">180</span>)<br><br><span class="hljs-comment"># 设定第2列的宽度为 100像素</span><br>table.setColumnWidth(<span class="hljs-number">1</span>, <span class="hljs-number">100</span>)<br></code></pre></td></tr></table></figure>
+
+<p>如想让 表格控件宽度 随着父窗口的缩放自动缩放，可以在属性编辑器中勾选 <code>HorizontalHeaderStretchLastSection</code>或者使用下面代码</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">table.horizontalHeader().setStretchLastSection(<span class="hljs-literal">True</span>)<br></code></pre></td></tr></table></figure>
+
+<h5 id="信号：单元格内容改动"><a href="#信号：单元格内容改动" class="headerlink" title="信号：单元格内容改动"></a>信号：单元格内容改动</h5><p>当用户修改了一个单元格的内容，会发出 <code>cellChanged</code> 信号，并且携带参数指明该单元格的行号和列号，我们的代码可以对该信号进行相应的处理，示例代码如下</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>    <span class="hljs-comment"># 指定单元格改动信号处理函数</span><br>    self.ui.table.cellChanged.connect(self.cfgItemChanged)<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">cfgItemChanged</span>(<span class="hljs-params">self,row,column</span>):<br>    <span class="hljs-comment"># 获取更改内容</span><br>    cfgName = self.ui.table.item(row, <span class="hljs-number">0</span>).text() <span class="hljs-comment"># 首列为配置名称</span><br>    cfgValue = self.ui.table.item(row, column).text()<br></code></pre></td></tr></table></figure>
+
+<h5 id="边界线样式"><a href="#边界线样式" class="headerlink" title="边界线样式"></a>边界线样式</h5><p>表格控件的边界线颜色可以通过QSS 属性 <code>gridline-color</code> 指定，如下所示</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs py">QTableWidget &#123;<br>    gridline-color: green;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>就会指定表格边界线颜色为 绿色。</p>
+<h3 id="（9）单选按钮和按钮组"><a href="#（9）单选按钮和按钮组" class="headerlink" title="（9）单选按钮和按钮组"></a>（9）单选按钮和按钮组</h3><p><code>QRadioButton</code> 是单选按钮，如下图所示</p>
+<p><img src="/images/36257654_69709779-0a30cd80-1139-11ea-8ac6-eb19387ad278.png" srcset="/img/loading.gif" lazyload></p>
+<p>注意：</p>
+<p><code>同一个父窗口</code> 里面的多个单选按钮，只能选中一项。如果有多组单选按钮，每组都应该有不同的父控件，或者不同的Layout。</p>
+<p>通常建议：多组单选按钮，放到不同的按钮组 <code>QButtonGroup</code>中，按钮组就是父控件</p>
+<h5 id="信号：选中状态改变"><a href="#信号：选中状态改变" class="headerlink" title="信号：选中状态改变"></a>信号：选中状态改变</h5><p>如果用户操作点击了按钮组 <code>QButtonGroup</code> 中的一个按钮， QButtonGroup 就会发出 <code>buttonClicked</code> 信号，可以这样指定处理该信号的函数</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">buttongroup.buttonClicked.connect(handleButtonClicked)<br></code></pre></td></tr></table></figure>
+
+<p>然后，在处理函数中调用QButtonGroup对象的 <code>checkedButton()</code> 函数，返回值就是被选中的按钮对象。</p>
+<p>再调用这个返回的按钮对象的 <code>text()</code> 方法得到界面文本，就可以知道是哪个选项被选中了。</p>
+<h3 id="（10）勾选按钮和按钮组"><a href="#（10）勾选按钮和按钮组" class="headerlink" title="（10）勾选按钮和按钮组"></a>（10）勾选按钮和按钮组</h3><p><code>QCheckBox</code> 是勾选按钮，如下图所示</p>
+<p><img src="/images/36257654_69712525-f3d94080-113d-11ea-87f7-473072834121.png" srcset="/img/loading.gif" lazyload></p>
+<p>注意：</p>
+<p>通常建议：多组勾选按钮，放到不同的按钮组<code>QButtonGroup</code> 中，按钮组就是父控件。</p>
+<p>可以在 Qt设计师中设置 QButtonGroup 的 <code>exclusive</code> 属性，来控制是否只能单选一个选项。</p>
+<h5 id="信号：选中状态改变-1"><a href="#信号：选中状态改变-1" class="headerlink" title="信号：选中状态改变"></a>信号：选中状态改变</h5><p>如果用户操作点击了按钮组 <code>QButtonGroup</code> 中的一个按钮， QButtonGroup 就会发出 <code>buttonClicked</code> 信号，可以这样指定处理该信号的函数</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">buttongroup.buttonClicked.connect(handleButtonClicked)<br></code></pre></td></tr></table></figure>
+
+<p>QButtonGroup 设置为 <code>单选</code> 情况下：</p>
+<p>在处理函数中调用QButtonGroup对象的 <code>checkedButton()</code> 函数，返回值就是被选中的按钮对象。</p>
+<p>再调用这个返回的按钮对象的 <code>text()</code> 方法得到界面文本，就可以知道是哪个选项被选中了。</p>
+<p>QButtonGroup 设置为 <code>多选</code> 情况下：</p>
+<p>要得知哪些按钮被选中， 可以对所有该组中的按钮调用 <code>isChecked</code>方法来判断。</p>
+<h3 id="（11）Tab页控件"><a href="#（11）Tab页控件" class="headerlink" title="（11）Tab页控件"></a>（11）Tab页控件</h3><p>可以通过tab页控件把界面分为好几个页面，如下所示</p>
+<p><img src="/images/36257654_69714203-f4270b00-1140-11ea-9b5b-df183e26a618.png" srcset="/img/loading.gif" lazyload></p>
+<p>通过Qt designer 只需要拖拽控件到各个页面即可，要修改tab页的标题，可以先点击该tab页，然后在下图所示处修改</p>
+<p><img src="/images/36257654_69714395-49631c80-1141-11ea-99d7-aed8ec5284fb.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="tab页中布局Layout"><a href="#tab页中布局Layout" class="headerlink" title="tab页中布局Layout"></a>tab页中布局Layout</h5><p>如果我们要在tab页上布局， 你可能会在对象查看器总直接右键点击该tab，可以你会发现右键菜单里面没有布局项。</p>
+<ol>
+<li>首先需要你在tab页上添加一个控件</li>
+<li>然后点击 在对象查看器 右键点击上层 TabWidget ，这时，你就会发现有布局菜单了</li>
+</ol>
+<h3 id="（12）进度条"><a href="#（12）进度条" class="headerlink" title="（12）进度条"></a>（12）进度条</h3><p><code>QProgressBar</code> 是进度条，如下图所示</p>
+<p><img src="/images/36257654_71140490-58bf1c80-224c-11ea-9d95-4dc971740ac1.png" srcset="/img/loading.gif" lazyload></p>
+<p>进度条也是一个常用的控件，当程序需要做一件比较耗费时间的任务（比如统计数据，下载文件等）时，可以用来向用户指示操作的进度。</p>
+<p>而且有了进度显示，用户就知道应用程序仍在运行，并没有出问题。</p>
+<p>QProgressBar进度条把每个进度称之为一个step（步骤）。</p>
+<p>我们可以通过它的 <code>setRange</code> 方法设定步骤个数，比如</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">progressBar.setRange(<span class="hljs-number">0</span>,<span class="hljs-number">5</span>)<br></code></pre></td></tr></table></figure>
+
+<p>就设定了，进度分为5步。</p>
+<p>然后，通过 <code>setValue</code> 方法，指定当前完成到了哪一步，比如</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">progressBar.setValue(<span class="hljs-number">3</span>)<br></code></pre></td></tr></table></figure>
+
+<p>就表示完成了 3&#x2F;5， 也就是 60%， 进度条就会显示60%的进度。</p>
+<p>可以使用reset()将进度条倒退到开头。</p>
+<p>有时候我们的任务没法知道完成了多少，比如下载一个未知大小的文件。</p>
+<p>这时，可以把range 范围都设置为0，这样，进度条会显示忙碌指示符，而不是显示进度百分比。</p>
+<h3 id="（13）数字输入框"><a href="#（13）数字输入框" class="headerlink" title="（13）数字输入框"></a>（13）数字输入框</h3><p><code>QSpinBox</code> 是数字输入框，可以输入或使用上下箭头选择数字，如下图所示</p>
+<p><img src="/images/tut_20200415160730_83.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="获取数字"><a href="#获取数字" class="headerlink" title="获取数字"></a>获取数字</h5><p>通过 <code>value</code> 方法获取编辑框内的文本内容，比如</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">number = box.value()<br></code></pre></td></tr></table></figure>
+
+<p>注意：返回的是整数对象，不是字符串</p>
+<h5 id="设置数字"><a href="#设置数字" class="headerlink" title="设置数字"></a>设置数字</h5><p>通过 <code>setValue</code> 方法可以设置提示文本内容，比如</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">box.setValue(<span class="hljs-number">100</span>)<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="（14）选择文件框"><a href="#（14）选择文件框" class="headerlink" title="（14）选择文件框"></a>（14）选择文件框</h3><p><code>QFileDialog</code> 类可以用来选择文件或者目录，如下图所示</p>
+<p><img src="/images/tut_20200415162258_31.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="选择目录"><a href="#选择目录" class="headerlink" title="选择目录"></a>选择目录</h5><p>通过 <code>getExistingDirectory 静态方法</code> 选择目录。</p>
+<p>该方法，第一个参数是父窗口对象，第二个参数是选择框显示的标题。比如</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">from</span> PySide2.QtWidgets <span class="hljs-keyword">import</span> QFileDialog<br><br>filePath = QFileDialog.getExistingDirectory(self.ui, <span class="hljs-string">&quot;选择存储路径&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<p>返回值即为选择的路径字符串。如果用户点击了选择框的取消选择按钮则返回空字符串。</p>
+<h5 id="选择单个文件"><a href="#选择单个文件" class="headerlink" title="选择单个文件"></a>选择单个文件</h5><p>如果你想弹出文件选择框，选择一个<code>已经存在</code>的文件，可以使用QFileDialog静态方法 <code>getOpenFileName</code>，比如</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">from</span> PySide2.QtWidgets <span class="hljs-keyword">import</span> QFileDialog<br><br>filePath, _  = QFileDialog.getOpenFileName(<br>            self.ui,             <span class="hljs-comment"># 父窗口对象</span><br>            <span class="hljs-string">&quot;选择你要上传的图片&quot;</span>, <span class="hljs-comment"># 标题</span><br>            <span class="hljs-string">r&quot;d:\\data&quot;</span>,        <span class="hljs-comment"># 起始目录</span><br>            <span class="hljs-string">&quot;图片类型 (*.png *.jpg *.bmp)&quot;</span> <span class="hljs-comment"># 选择类型过滤项，过滤内容在括号中</span><br>        )<br></code></pre></td></tr></table></figure>
+
+<p>该方法返回值是一个元组，第一个元素是选择的文件路径，第二个元素是文件类型，如果你只想获取文件路径即可，可以采用上面的代码写法。</p>
+<p>如果用户点击了选择框的取消选择按钮，返回空字符串。</p>
+<p>如果你想弹出文件选择框，选择路径和文件名，来<code>保存一个文件</code>，可以使用 QFileDialog 静态方法 <code>getSaveFileName</code> ，比如</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">from</span> PySide2.QtWidgets <span class="hljs-keyword">import</span> QFileDialog<br><br>filePath, _  = QFileDialog.getSaveFileName(<br>            self.ui,             <span class="hljs-comment"># 父窗口对象</span><br>            <span class="hljs-string">&quot;保存文件&quot;</span>, <span class="hljs-comment"># 标题</span><br>            <span class="hljs-string">r&quot;d:\\data&quot;</span>,        <span class="hljs-comment"># 起始目录</span><br>            <span class="hljs-string">&quot;json类型 (*.json)&quot;</span> <span class="hljs-comment"># 选择类型过滤项，过滤内容在括号中</span><br>        )<br></code></pre></td></tr></table></figure>
+
+<h5 id="选择多个文件"><a href="#选择多个文件" class="headerlink" title="选择多个文件"></a>选择多个文件</h5><p>如果要选择多个文件，使用 <code>getOpenFileNames 静态方法</code></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">from</span> PySide2.QtWidgets <span class="hljs-keyword">import</span> QFileDialog<br><br>filePaths, _  = QFileDialog.getOpenFileNames(<br>            self.ui,             <span class="hljs-comment"># 父窗口对象</span><br>            <span class="hljs-string">&quot;选择你要上传的图片&quot;</span>, <span class="hljs-comment"># 标题</span><br>            <span class="hljs-string">r&quot;d:\\data&quot;</span>,        <span class="hljs-comment"># 起始目录</span><br>            <span class="hljs-string">&quot;图片类型 (*.png *.jpg *.bmp)&quot;</span> <span class="hljs-comment"># 选择类型过滤项，过滤内容在括号中</span><br>        )<br></code></pre></td></tr></table></figure>
+
+<p>上例中filePaths对应的返回值是一个列表，里面包含了选择的文件。</p>
+<p>如果用户点击了选择框的取消选择按钮，返回空列表。</p>
+<h3 id="（15）提示框"><a href="#（15）提示框" class="headerlink" title="（15）提示框"></a>（15）提示框</h3><p><code>QMessageBox</code> 类可以用来弹出各种提示框</p>
+<p>该类可以通过一系列静态方法，显示如下弹出框</p>
+<ul>
+<li>错误报告</li>
+</ul>
+<p><img src="/images/tut_20200415165417_19.png" srcset="/img/loading.gif" lazyload></p>
+<p>使用 <code>critical</code> 方法</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs py">QMessageBox.critical(<br>    self.ui,<br>    <span class="hljs-string">&#x27;错误&#x27;</span>,<br>    <span class="hljs-string">&#x27;请选择爬取数据存储路径！&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>警告</li>
+</ul>
+<p><img src="/images/tut_20200415172108_64.png" srcset="/img/loading.gif" lazyload></p>
+<p>使用 <code>warning</code> 方法</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs py">QMessageBox.warning(<br>    self.ui,<br>    <span class="hljs-string">&#x27;阅读太快&#x27;</span>,<br>    <span class="hljs-string">&#x27;阅读客户协议必须超过1分钟&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>信息提示</li>
+</ul>
+<p><img src="/images/tut_20200415171206_49.png" srcset="/img/loading.gif" lazyload></p>
+<p>使用 <code>information</code> 方法</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs py">QMessageBox.information(<br>    self.ui,<br>    <span class="hljs-string">&#x27;操作成功&#x27;</span>,<br>    <span class="hljs-string">&#x27;请继续下一步操作&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<p>也可以使用 <code>about</code> 方法</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs py">QMessageBox.about(<br>    self.ui,<br>    <span class="hljs-string">&#x27;操作成功&#x27;</span>,<br>    <span class="hljs-string">&#x27;请继续下一步操作&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>确认继续</li>
+</ul>
+<p><img src="/images/tut_20200415171652_39.png" srcset="/img/loading.gif" lazyload></p>
+<p>使用 <code>question</code> 方法</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs py">choice = QMessageBox.question(<br>    self.ui,<br>    <span class="hljs-string">&#x27;确认&#x27;</span>,<br>    <span class="hljs-string">&#x27;确定要删除本文件吗？&#x27;</span>)<br><br><span class="hljs-keyword">if</span> choice == QMessageBox.Yes:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;你选择了yes&#x27;</span>)<br><span class="hljs-keyword">if</span> choice == QMessageBox.No:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;你选择了no&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="（16）输入对话框"><a href="#（16）输入对话框" class="headerlink" title="（16）输入对话框"></a>（16）输入对话框</h3><p><code>QInputDialog</code> 输入对话框 只让用户输入一行数据信息，比如姓名、年龄等。</p>
+<p>可以方便的用来获取简单的信息。</p>
+<p><img src="/images/tut_20200619172616_95.png" srcset="/img/loading.gif" lazyload></p>
+<p>其他更多控件请参考：<a target="_blank" rel="noopener" href="https://www.byhy.net/tut/py/gui/qt_05_4/">常用控件4 | 白月黑羽 (byhy.net)</a></p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%87%AA%E5%AD%A6%E8%AF%BE%E7%A8%8B/" class="category-chain-item">自学课程</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">#开发工具</a>
+      
+        <a href="/tags/%E5%9B%BE%E5%BD%A2%E5%8F%AF%E8%A7%86%E5%8C%96/">#图形可视化</a>
+      
+        <a href="/tags/python/">#python</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Pyside2</div>
+      <div>https://gintoki-jpg.github.io/2022/06/27/工具_pyside2/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>杨再俨</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年6月27日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/06/28/%E5%B7%A5%E5%85%B7_PyQT5/" title="PyQT5">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">PyQT5</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/06/27/%E5%85%B6%E4%BB%96_%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/" title="算法刷题">
+                        <span class="hidden-mobile">算法刷题</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+</div>
+
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

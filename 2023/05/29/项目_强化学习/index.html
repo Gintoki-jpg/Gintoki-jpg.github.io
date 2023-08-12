@@ -1,0 +1,1224 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/logo.png">
+  <link rel="icon" href="/img/bg/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="杨再俨">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="强化学习期末实践；">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初级项目_强化学习算法">
+<meta property="og:url" content="https://gintoki-jpg.github.io/2023/05/29/%E9%A1%B9%E7%9B%AE_%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:site_name" content="Tintoki_blog">
+<meta property="og:description" content="强化学习期末实践；">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/project.png">
+<meta property="article:published_time" content="2023-05-29T13:11:00.000Z">
+<meta property="article:modified_time" content="2023-06-03T07:34:25.482Z">
+<meta property="article:author" content="YangZaiyan">
+<meta property="article:tag" content="机器视觉">
+<meta property="article:tag" content="强化学习">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gintoki-jpg.github.io/img/bg/project.png">
+  
+  
+  
+  <title>初级项目_强化学习算法 - Tintoki_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"gintoki-jpg.github.io","root":"/","version":"1.9.1","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tintoki_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/bg1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">初级项目_强化学习算法</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-05-29 21:11" pubdate>
+          2023年5月29日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          30k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          251 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">初级项目_强化学习算法</h1>
+            
+            <div class="markdown-body">
+              
+              <p>任务要求：基于深度学习的强化学习算法实现，提交代码，撰写实验报告</p>
+<p>任务分为两部分：</p>
+<ul>
+<li>用Deep Q-learning Network（DQN）算法完成实验</li>
+<li>环境：<a target="_blank" rel="noopener" href="https://gymnasium.farama.org/environments/classic_control/mountain_car/">Mountain Car - Gymnasium Documentation (farama.org)</a>；</li>
+<li>任选一种Policy Gradient或Actor-Critic相关算法完成实验<ul>
+<li>环境：<a target="_blank" rel="noopener" href="https://gymnasium.farama.org/environments/classic_control/mountain_car_continuous/">Mountain Car Continuous - Gymnasium Documentation (farama.org)</a>；</li>
+</ul>
+</li>
+</ul>
+<p>这两个任务的环境不同，前者是离散空间，后者是连续动作空间。</p>
+<p>其中代码要求有适当的注释，禁止完全抄袭。实验报告不要粘贴大量源代码，内容至少包括实现方法、实验结果分析和讨论与思考三大部分：</p>
+<p>1.实现方法及所采用的算法总结<br>2.实验结果分析：要求逻辑清晰，语言精炼，粘贴程序的实际运行测试结果并加以文字说明<br>3.讨论与思考</p>
+<p>参考链接：</p>
+<ul>
+<li><p>DDPG算法介绍：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_46133643/article/details/124356983">(13条消息) 深度强化学习-DDPG算法原理与代码_indigo love的博客-CSDN博客</a>；</p>
+</li>
+<li><p>DQN算法设计：<a target="_blank" rel="noopener" href="https://aistudio.baidu.com/aistudio/projectdetail/2023570">DQN解决MountainCar问题 - 飞桨AI Studio (baidu.com)</a>；</p>
+</li>
+<li><p>DQN参考代码：<a target="_blank" rel="noopener" href="https://github.com/georgepsh/MountainCar-v0_DQN/blob/master/MountainCar-v0_DQN.ipynb">MountainCar-v0_DQN&#x2F;MountainCar-v0_DQN.ipynb at master · georgepsh&#x2F;MountainCar-v0_DQN (github.com)</a>（这哥们真的是我的宝藏！！！）；</p>
+</li>
+<li><p>DDPG参考代码：<a target="_blank" rel="noopener" href="https://github.com/georgepsh/MountainCarContinuous-v0_DDGP/blob/master/MountainCarContinuous-v0_DDPG.ipynb">MountainCarContinuous-v0_DDGP&#x2F;MountainCarContinuous-v0_DDPG.ipynb at master · georgepsh&#x2F;MountainCarContinuous-v0_DDGP (github.com)</a>；</p>
+</li>
+</ul>
+<hr>
+<p>2023&#x2F;5&#x2F;29 21:18 现在基本已经把之前做过的强化学习的内容忘完了，包括环境之类的，所以还需要先复习环境相关，然后在网上搜索相关的算法实现（注意这里的算法一定要能够解决gym环境中的问题），结合算法边理解相关知识边理解和修改代码（这个不需要像cv一样训练很久，相对来说比较简单）；</p>
+<p>2023&#x2F;5&#x2F;29 21:37 看了一下，之前的作业几乎没什么参考价值，现在目录下有一个gym环境一个gymnasium环境，到时候找到相关的参考之后这两个环境肯定有一个能跑的，所以也不用再费尽心思去测试环境；</p>
+<p>2023&#x2F;5&#x2F;30 10:03 网上的代码基本上都是祖传代码，很多语法什么的放到现在都已经不兼容了，很难找到有效的资料，还有一种解决方法就是直接找GPT的帮助；</p>
+<p>2023&#x2F;5&#x2F;20 10:32 既然在自己的电脑上跑不起来（是否是tf1的原因？ – 现在环境直接爆炸了，几乎所有找的代码都跑不起来），不妨试试Kaggle？代码跑不通就换一个代码，不要一直和代码磕 – 我总感觉不是代码的问题，是本身环境就有问题（几乎所有的代码都一直报错说tuple没有reshape，这不是闹着玩吗）</p>
+<p>2023&#x2F;5&#x2F;30 19:40 网上找的大部分代码都无法运行的原因是环境本身的问题，相同的代码在paddle平台是可以运行的，但是在本地安装要求的环境后就无法执行，不仅仅只是一份代码，几乎所有的代码都在报错说是数据格式的问题，考虑是否与gym版本有问题（或者我们可以尝试不使用gym而是使用gymnasium替代？）。至少现在DQN的可运行代码已经找到，接下来就先训练之后尝试将模型下载到本地运行test可视化。然后再寻找解决连续MountainCar的算法 – 既然最基础的DQN已经解决了，就不要再继续折腾，继续攻克之后的连续MountainCar；</p>
+<p>2023&#x2F;5&#x2F;30 23:00 现在真的要被搞冒火了，很神奇的就是不管是什么代码始终无法在本地运行，看来现在能够依靠的只有百度的PaddlePaddle平台或者是更广泛的Kaggle平台；</p>
+<p>2023&#x2F;5&#x2F;31 15:27 破案了，之前找的代码什么的跑不起来纯粹不是因为代码的问题，无论是tf1还是tf2还是pytorch都是同样的原因，也就是gym的版本过高很多命令都不适用，只需要把gym的版本降下来即可。另外一点，不要适用百度的paddle框架，这个框架的版本的差距甚至比gym还要离谱，两个版本之间几乎是不兼容的（真牛逼！）。现在终于成功的解决问题了，然后接下来就是先把DQN的弄完之后弄policy gradient；</p>
+<p>2023&#x2F;5&#x2F;31 17:14 现在已经把两个作业的代码都找到并且都成功运行了，接下来需要做的就是把两个代码的注释写了之后重构代码，然后开始写实验设计。因为参考的代码和飞浆给的代码有一些区别，所以一切的立足点都是在理解代码基础之上，其他的参考资料结合代码进行解释；</p>
+<p>2023&#x2F;5&#x2F;31 19:52 这个老兄的代码功底太强了，gpt几乎无法重构他的代码，既然如此的话只能选择按照百度的方法或者在pycharm中将其拆分为多个模块进行编写，先处理DPG算法的代码 – 现在已经将其转换成pycharm的格式，接下来只需要修改过程输出、保存模型、保存输出图像即可；</p>
+<p>2023&#x2F;6&#x2F;1 10:48 通过不断地经过自己手动修改以及失败之后我明白一件事情，就是对于这种不是特别复杂但是又没办法自己修改的代码，交给GPT才是最好的选择（前提是你得规定让GPT做什么，不然GPT确实没办法给出有效的答复 – 规定工作环境是很有必要的），自己进行手动修改+copilot是一个非常愚蠢的行为，既浪费了时间也根本没有能够提高避免查重的概率。GPT重构完成之后，在pycharm中对self_code中的代码分文件书写类，同时修改输出，做完这些基本上就解决代码的问题了；</p>
+<p>2023&#x2F;6&#x2F;1 16:37 现在已经成功解决完毕代码问题，运行的相关结果以及代码都在pycharm的对应目录下。接下来只需要结合GPT和百度设计以及其他参考资料对算法进行解释即可（可以先稍微放一放，最近搞这个弄得有点状态不是很好）；</p>
+<hr>
+<h1 id="一、背景介绍"><a href="#一、背景介绍" class="headerlink" title="一、背景介绍"></a>一、背景介绍</h1><h2 id="1-常见问题"><a href="#1-常见问题" class="headerlink" title="1.常见问题"></a>1.常见问题</h2><blockquote>
+<p>Q_1：经典的Q学习算法和DQN的区别是什么？</p>
+</blockquote>
+<p>A：<a href="https://gintoki-jpg.github.io/2023/02/27/%E4%B8%93%E4%B8%9A_%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/#3-1-Q%E5%AD%A6%E4%B9%A0">传统Q学习算法</a>&amp;<a href="https://gintoki-jpg.github.io/2023/02/27/%E4%B8%93%E4%B8%9A_%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/#3-1-DQN">DQN</a>参考链接，DQN（Deep Q-Network）是一种基于深度学习的增强学习算法，它是对经典的Q学习算法的扩展和改进。DQN和传统Q学习算法之间的主要区别如下：</p>
+<ol>
+<li>近似值函数表示：传统的Q学习算法使用表格来存储和更新每个状态-动作对的Q值。然而，这种表格表示法在状态空间很大时变得不可行，因为需要存储大量的Q值。DQN通过使用深度神经网络来近似Q值函数，将状态作为输入，输出对应于每个动作的Q值。这种近似值函数的表示使得DQN可以处理更大和连续的状态空间。</li>
+<li>经验回放：传统的Q学习算法在每次迭代中使用当前的经验样本进行更新。然而，这样的更新方式会导致样本相关性和数据效率低下。DQN引入了经验回放机制，它将每个时刻的经验样本存储在一个回放缓冲区中，并从中随机抽取样本进行更新。这样可以打破样本相关性，提高数据的利用效率，并增加算法的稳定性。</li>
+<li>目标网络：DQN还使用了目标网络（target network）来稳定学习过程。在传统的Q学习中，更新当前的Q值函数会导致目标值的变化。这会引起学习过程中的波动和不稳定性。DQN通过使用一个独立的目标网络来计算目标Q值，该目标网络的参数较为稳定，减少了目标值的变动。目标网络的参数定期更新为当前Q网络的参数，从而保持学习的稳定性。</li>
+<li>动作选择策略：传统的Q学习算法通常使用ε-greedy策略来选择动作，其中ε是一个小的概率，以便在探索和利用之间进行平衡。DQN在训练初期也使用ε-greedy策略，但随着训练的进行，它逐渐减少探索率，从而更多地利用学习到的Q值来选择动作。</li>
+</ol>
+<p>DQN通过引入深度神经网络、经验回放、目标网络和改进的动作选择策略，提高了Q学习算法的性能和适用性，尤其在处理大型状态空间和连续动作空间时具有优势。</p>
+<blockquote>
+<p>Q_2：Policy Gradient和Actor-Critic的区别是什么？</p>
+</blockquote>
+<p>A：Policy Gradient（策略梯度）和Actor-Critic（演员-评论家）是两种常见的强化学习算法，它们在更新策略和值函数时有一些关键的区别：</p>
+<ol>
+<li>更新方式：<ul>
+<li>Policy Gradient：策略梯度方法直接对策略进行参数化，并通过最大化期望回报的梯度来更新策略参数。它通过采样多条轨迹来估计梯度，并使用梯度上升法进行参数更新。策略梯度方法主要关注策略的优化，而值函数的更新是间接通过策略梯度进行的。</li>
+<li>Actor-Critic：Actor-Critic方法包含一个策略网络（Actor）和一个值函数网络（Critic）。策略网络负责选择动作，值函数网络评估状态的值。它们共同协作，策略网络根据值函数的反馈来更新策略参数，而值函数网络则根据实际回报来更新值函数参数。Actor-Critic方法结合了策略优化和值函数估计的优点。</li>
+</ul>
+</li>
+<li>更新频率：<ul>
+<li>Policy Gradient：策略梯度方法通常使用一整条轨迹（episode）进行参数更新。它在每个轨迹结束后，根据整个轨迹的回报来计算梯度，并更新策略参数。这种方法适合于离散的任务，其中轨迹较短且易于采样。</li>
+<li>Actor-Critic：Actor-Critic方法可以在每个时间步骤进行参数更新。策略网络可以在每个时间步骤选择动作，而值函数网络可以根据每个时间步骤的奖励信号进行更新。这使得Actor-Critic方法适用于连续时间的任务，并能够在每个时间步骤上进行在线学习。</li>
+</ul>
+</li>
+<li>值函数估计：<ul>
+<li>Policy Gradient：策略梯度方法通常不直接估计值函数，而是通过采样得到的回报来估计策略的优劣程度，并利用梯度上升法更新策略参数。</li>
+<li>Actor-Critic：Actor-Critic方法同时估计策略和值函数。值函数网络用于评估状态的值，提供策略更新的反馈信号。这种值函数估计可以减少策略梯度估计中的方差，并提高学习的稳定性和效率。</li>
+</ul>
+</li>
+</ol>
+<p>Policy Gradient通过直接最大化回报梯度来更新策略，而Actor-Critic通过结合策略网络和值函数网络进行更新。Actor-Critic方法在更新频率和值函数估计方面提供了更大的灵活性和稳定性。</p>
+<blockquote>
+<p>Q_3：Mountain Car Continuous环境和Mountain Car环境的区别？</p>
+</blockquote>
+<p>A：</p>
+<p>Mountain Car环境是一个经典的离散动作空间环境。在这个环境中，有一辆小车位于一个山谷中，目标是让小车能够通过施加力来逆向爬上陡峭的山坡。小车的动作可以是向左、向右或者不施加力。初始时，小车几乎无法爬上山坡，但通过连续尝试施加合适的力，小车最终可以积累足够的动量来成功爬上山坡。这个环境的奖励是负的时间步骤，目标是在尽可能少的步骤内到达目标点。</p>
+<p>Mountain Car Continuous环境是Mountain Car环境的连续动作版本。在这个环境中，小车的动作空间是一个连续的实数范围，可以施加一个在[-1, 1]之间的力。这使得代理能够以更细腻的方式调整施加的力，从而更有效地爬上山坡。其余的环境设置和奖励函数与Mountain Car环境相似。</p>
+<blockquote>
+<p>Q_4：DDPG算法属于Policy Grandient算法还是Actor-Critic算法呢？</p>
+</blockquote>
+<p>A：DDPG（Deep Deterministic Policy Gradient）是一种强化学习算法，它属于Actor-Critic（AC）方法的一种变种。</p>
+<p>Actor-Critic（AC）方法是一类结合了策略（Policy）学习和值函数（Value Function）学习的强化学习算法。在AC方法中，有两个主要组件：一个策略网络（Actor）和一个值函数网络（Critic）。策略网络用于学习生成动作的策略，而值函数网络用于估计状态或状态动作对的值函数。</p>
+<p>DDPG是AC方法的一种扩展，它使用深度神经网络来表示策略网络和值函数网络，并且采用了离散动作空间的AC算法（DQN）的思想来处理连续动作空间。DDPG使用了一个确定性的策略（Deterministic Policy），而不是传统的随机策略，这使得它能够直接输出连续动作。</p>
+<p>因此，DDPG既包含了策略梯度（Policy Gradient）的思想，也包含了Actor-Critic方法中值函数的学习。它可以被视为一种Policy Gradient算法的变种，同时也是一种Actor-Critic算法。</p>
+<h2 id="2-前置知识"><a href="#2-前置知识" class="headerlink" title="2.前置知识"></a>2.前置知识</h2><h3 id="2-1-MountainCar"><a href="#2-1-MountainCar" class="headerlink" title="2.1 MountainCar"></a>2.1 MountainCar</h3><h4 id="2-1-1-离散MountainCar"><a href="#2-1-1-离散MountainCar" class="headerlink" title="2.1.1 离散MountainCar"></a>2.1.1 离散MountainCar</h4><p>MountainCar问题中，小车每次都被初始化在一个山谷的谷底，其目标是以最少的移动次数到达右侧山顶黄色小旗的位置。小车无法直接开到山顶位置，因为其发动机的动力不足。唯一能够成功的方式就是让小车通过左右移动来积蓄足够的动量以冲向山顶。</p>
+<p><img src="/images/mountain_car.gif" srcset="/img/loading.gif" lazyload></p>
+<p>MountainCar问题中，智能体就是小车，环境是小车所属的运动空间，小车与环境进行交互后会获得当前的状态，状态包括以下两个状态变量</p>
+<p><img src="/images/image-20230530211118690.png" srcset="/img/loading.gif" lazyload></p>
+<p>小车会根据当前的状态，依据现有的策略执行相应的动作</p>
+<p><img src="/images/image-20230530211200808.png" srcset="/img/loading.gif" lazyload></p>
+<p>MountainCar中，触发以下两种情况中的任何一种则表示一轮实验终止（注意一轮实验就是一个episode）：</p>
+<ol>
+<li>小车达到右侧小旗的位置</li>
+<li>小车的移动次数超过200次</li>
+</ol>
+<p>小车每次都会根据当前状态执行上述三种动作之一，若没有触发终止条件则小车每移动一次都会获得reward&#x3D;-1。</p>
+<h4 id="2-1-2-DQN算法"><a href="#2-1-2-DQN算法" class="headerlink" title="2.1.2 DQN算法"></a>2.1.2 DQN算法</h4><p>DQN算法中，智能体与环境进行交互后，会获得环境提供的状态s<del>t</del>。接收到该观测值后，智能体会根据神经网络对当前状态下的不同action的Q值进行预测，同时返回一个选择的行动α<del>t</del>。智能体将该行动反馈给环境，环境会给出对应的奖励r<del>t</del>、新的状态s<del>t+1</del>以及一个bool值，代表是否触发终止条件。每次智能体和环境的交互完成后，DQN算法会将（即s<del>t</del>,α<del>t</del>,r<del>t</del>,s<del>t+1</del>）作为一条经验存储在经验池中，然后随机抽取一批经验作为输入对神经网络进行训练。</p>
+<p>一般的，构建智能体的框架结构如下（智能体与环境交互图）</p>
+<p><img src="/images/image-20230530213709062.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><p>Model：用来定义前向 (Forward) 网络，通常是一个策略网络 (Policy Network) 或者一个值函数网络 (Value Function)，输入是当前环境状态。在MountainCar的实验中，将在Model结构中构建一个值函数网络，用于获得在当前环境状态下所有action对应的Q值。</p>
+</li>
+<li><p>Algorithm：定义了具体的算法来更新前向网络 (Model)，也就是通过定义损失函数来更新 Model，与算法相关的计算都可定义在Algorithm中。</p>
+</li>
+<li><p>Agent：Agent负责算法与环境的交互，在交互过程中把生成的数据提供给Algorithm来更新模型。</p>
+</li>
+</ul>
+<p>DQN算法采用经验回放和目标网络冻结作为创新点：</p>
+<ul>
+<li>经验回放(Experience Replay)：使用一个经验池存储多条经验s,a,r,s’, 再从中随机抽取一批用于训练，很好的解决了样本关联性的问题，同时，因为经验池里的经验可以得到重复利用，也提升了利用效率。</li>
+<li>目标网络冻结(Freezing Target Networks)：复制一个和原来Q网络结构一样的Target Q网络，在一个时间段内固定Target Q网络的参数，用于计算Q目标值，这样在原来的Q网络中，target Q就是一个固定的数值，不会再产生优化目标不明确的问题。</li>
+</ul>
+<p>DQN算法的主要流程如下</p>
+<p><img src="/images/image-20230530213313087.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-2-MountainCar-Continuous"><a href="#2-2-MountainCar-Continuous" class="headerlink" title="2.2 MountainCar-Continuous"></a>2.2 MountainCar-Continuous</h3><h4 id="2-2-1-连续MountainCar"><a href="#2-2-1-连续MountainCar" class="headerlink" title="2.2.1 连续MountainCar"></a>2.2.1 连续MountainCar</h4><p>MountainCarContinuous与MountainCar的区别在于，其动作也就是应用的引擎力应当是连续值。</p>
+<h4 id="2-2-2-DDPG算法"><a href="#2-2-2-DDPG算法" class="headerlink" title="2.2.2 DDPG算法"></a>2.2.2 DDPG算法</h4><p>DDPG(Deep Deterministic Policy Gradient)算法是一种专门用于解决连续控制问题的在线式深度强化学习算法，借鉴了DQN算法中的一些思想。</p>
+<p>在求解连续动作空间问题时主要有两种方式，一种是对连续动作做离散化处理后利用强化学习算法如DQN进行求解；另一种是使用Policy Grandient算法如Reinforce直接求解。对于第一种方式，离散化的处理会导致结果不符合实际情况；而对于第二种方式来说，PG算法在求解连续控制问题时效果又不是很好。</p>
+<p>DDPG算法是AC框架下的一种在线深度强化学习算法，算法内部包括Actor网络和Critic网络，每个网络分别遵从各自的更新法则进行更新从而使得累计期望回报最大化。</p>
+<p>DDPG算法将确定性策略梯度算法和DQN算法中的相关技术结合在一起，具体而言，DDPG算法主要包括以下三个关键技术：</p>
+<ul>
+<li>经验回放：智能体将得到的经验数据放入经验池中，更新网络参数时按照批量进行采样；</li>
+<li>目标网络：在Actor网络和Critic网络外再使用一套用于估计目标的Target Actor网络和Target Critic网络。在更新目标网络时，为了避免参数更新过快，采用软更新方式；</li>
+<li>噪声探索：确定性策略输出的动作为确定性动作，缺乏对环境的探索。在训练阶段，给Actor网络输出的动作加入噪声，从而让智能体具备一定的探索能力；</li>
+</ul>
+<h5 id="1-经验回放"><a href="#1-经验回放" class="headerlink" title="(1)经验回放"></a>(1)经验回放</h5><p>经验回放是一种让经验概率分布变得稳定的技术，可以提高训练的稳定性。经验回放主要有“存储”和“回放”两大关键步骤：</p>
+<ul>
+<li>存储：将经验以固定形式存储到经验池中；</li>
+<li>回放：按照某种规则从经验池中采样一条或多条数据；</li>
+</ul>
+<p>经验回放的优点：</p>
+<ul>
+<li><p>在训练Q网络时，可以打破数据之间的相关性，使得数据满足独立同分布，从而减小参数更新的方差，提高收敛速度。</p>
+</li>
+<li><p>能够重复使用经验，数据利用率高，对于数据获取困难的情况尤其有用。</p>
+</li>
+</ul>
+<p>经验回放的缺点：</p>
+<ul>
+<li>无法应用于回合更新和多步学习算法。但是将经验回放应用于Q学习，就规避了这个缺点。</li>
+</ul>
+<h5 id="2-目标网络"><a href="#2-目标网络" class="headerlink" title="(2)目标网络"></a>(2)目标网络</h5><p>因为DDPG是基于AC框架的算法，因此必然会包含Actor和Critic网络。额外的，每个网络都有其对应的目标网络，因此DDPG算法一共包含四个网络分别是Actor,Critic,Target Actor和Target Critic。</p>
+<p>算法更新主要更新的是Actor和Critic网络的参数，其中Actor网络通过最大化累积期望回报来更新，Critic网络通过最小化评估值与目标值之间的误差来更新。在训练阶段，从Replay Buffer中采样一个批次的数据。假设采样得到的一条数据为(s,α,r,s’,done)，则Actor和Critic网络的更新过程如下</p>
+<p><img src="/images/image-20230531163738379.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20230531163803948.png" srcset="/img/loading.gif" lazyload></p>
+<p>对于目标网络的更新，主要采取的是软更新的方式，也称为指数平均移动EMA。即引入一个学习率Γ，将旧网络的目标网络参数和新的对应网络参数做加权平均，然后赋值给目标网络</p>
+<p><img src="/images/image-20230531164038698.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="3-噪声探索"><a href="#3-噪声探索" class="headerlink" title="(3)噪声探索"></a>(3)噪声探索</h5><p>探索对于智能体来说是至关重要的，而确定性策略“天生”就缺乏探索能力，因此需要人为给输出的动作上加入噪声，从而让智能体具备探索能力。DDPG算法中采用Ornstein Uhlenbeck过程作为动作噪声，而实际上OU噪声也可以使用服从正态分布的噪声替代（这就是TD3算法），实现起来更简单。</p>
+<p>需要注意的是，噪声只会加在训练阶段Actor网络输出的动作上，推理阶段不要加上噪声，以及在更新网络参数时也不要加上噪声。总的来说就是，只需要在训练阶段让智能体具备探索能力，推理时是不需要的。</p>
+<h1 id="二、DQN解决MountainCar"><a href="#二、DQN解决MountainCar" class="headerlink" title="二、DQN解决MountainCar"></a>二、DQN解决MountainCar</h1><p>使用Q学习解决MountainCar有很多参考，但实际上该算法在这个任务上的表现不够好，平均需要训练600-700次才能上坡。</p>
+<p>而且，实际的Mountain Car的observation上的两个变量是一对连续的float数字，然而因为Q-learning本身的特点（需要构建一个Q-table），因此使用Q学习需要将每个连续的observation都四舍五入强制转换为了int来避免维度爆炸的问题。当state的observation变为离散后，环境中的状态的数量是就变成可数的，这样构建出的Q-table就更简单，更加方便于查找，但是也非常容易导致误差。</p>
+<p><img src="/images/image-20230530212613974.png" srcset="/img/loading.gif" lazyload></p>
+<p>实际上在面对一些较为复杂的环境时，也就是连续的state会生成无限多种的状态，这样就会导致Q-table产生维度爆炸的问题，所以针对无限state的环境我们可以使用一种基于神经网络的方法：Deep Q-Network。</p>
+<p>DQN与Q学习相比，优点在于使用Network代替Table以减少内存和查找速度。DQN同时拥有两个Q网络，分别是Q和Q<del>target</del>。使用Q模拟真实值，Q<del>target</del>模拟预测值，通过选定的Loss函数计算出Q与Q<del>target</del>之间的loss来更新函数。在算法初始化的时候Q&#x3D;Q<del>target</del>，此处使用了unsupervisor learning的思想，这个方法被称作TargetNet，它一定程度降低了当前Q值和目标Q值的相关性。而Q<del>target</del>在训练过程中也会通过公式Q<del>target</del>&#x3D;Q每隔固定的eposide来更新。</p>
+<h2 id="1-实验设计"><a href="#1-实验设计" class="headerlink" title="1.实验设计"></a>1.实验设计</h2><p>使用DQN算法解决MountainCar问题的主要步骤如下：</p>
+<ol>
+<li>构建模型：主要包含设计Agent、定义经验回放算法、DQN模型等；</li>
+<li>训练配置：定义超参数，加载实验环境并实例化模型；</li>
+<li>训练模型：执行多轮训练，不断调整参数，以达到较好的效果；</li>
+<li>模型评估：使用训练好的模型进行MountainCar测试，可对其进行可视化观察Agent的表现，同时计算平均reward；</li>
+</ol>
+<p><img src="/images/image-20230530213400482.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-1-模型构建"><a href="#1-1-模型构建" class="headerlink" title="1.1 模型构建"></a>1.1 模型构建</h3><h4 id="1-1-1-经验回放"><a href="#1-1-1-经验回放" class="headerlink" title="1.1.1 经验回放"></a>1.1.1 经验回放</h4><p>为了解决样本的相关性过强并提高数据的使用率，DQN采取经验回放的方法。经验回放算法的核心思想是通过存储和重复使用先前的经验来打破时间上的相关性，提高训练的效率和稳定性。它还可以更好地利用样本数据，减少在环境中采集样本的次数</p>
+<p>经验回放算法的基本执行步骤如下：</p>
+<ol>
+<li>经验存储：使用一个固定大小的经验存储器（experience replay buffer）来存储智能体在环境中的经验。这些经验包括当前状态、采取的动作、获得的奖励、下一个状态以及一个标记，表示该经验是否是终止状态。</li>
+<li>经验收集：智能体与环境进行交互，根据当前的策略选择动作，并观察环境的反馈。智能体将这些经验（也称为样本）添加到经验存储器中。</li>
+<li>经验回放：从经验存储器中随机采样一批经验样本。这是与传统的在线学习不同之处，传统方法通常是即时使用新采集的样本进行学习。通过从经验存储器中随机采样，可以打破样本间的相关性，减少梯度下降的方差。</li>
+<li>Q网络更新：使用采样得到的经验样本进行Q网络的更新。对于每个样本，计算目标Q值和当前Q值之间的差异，然后使用梯度下降方法最小化这个差异来更新Q网络的参数。</li>
+<li>重复训练步骤：重复执行经验收集、经验回放和Q网络更新的步骤，直到达到预设的训练步数或满足停止条件。</li>
+</ol>
+<p>下面的代码实现了一个经验回放类，也可以称为经验池类。主要包含以下属性：</p>
+<ul>
+<li><p><code>memory</code>经验池，用于存储经验对象。</p>
+</li>
+<li><p><code>capacity</code>表示经验池的容量，即可以存储的经验数量的最大值。</p>
+</li>
+<li><p><code>Transition</code>是一个转换函数或类，用于将输入的参数组合成经验对象。</p>
+</li>
+</ul>
+<p>经验池类除了包含基本的初始化方法外，还包含以下方法：</p>
+<ol>
+<li><code>push(self, *args)</code>: 该方法接受任意数量的参数，并将这些参数作为输入创建一个新的经验对象，并将其添加到经验池中。</li>
+<li><code>sample(self, batch_size)</code>: 经验采样方法，它从经验池中随机选择指定数量的经验对象进行采样。</li>
+<li><code>__len__(self)</code>: 返回当前经验池中的经验数量，即<code>self.memory</code>的长度。</li>
+</ol>
+<p>经验池类的完整代码如下</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">class</span> <span class="hljs-title class_">ReplayMemory</span>(<span class="hljs-title class_ inherited__">object</span>): <span class="hljs-comment"># 经验回放算法</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, capacity,transition</span>):<br>        self.capacity = capacity <span class="hljs-comment"># 经验池容量</span><br>        self.memory = deque(maxlen=capacity)  <span class="hljs-comment"># 使用deque数据结构作为经验池，设置最大长度为容量</span><br>        self.Transition = transition<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">push</span>(<span class="hljs-params">self, *args</span>):<br>        self.memory.append(self.Transition(*args))  <span class="hljs-comment"># 直接使用append方法添加经验</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">sample</span>(<span class="hljs-params">self, batch_size</span>):<br>        batch = random.sample(self.memory, batch_size) <span class="hljs-comment"># 从经验池中随机采样</span><br>        <span class="hljs-keyword">return</span> batch<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__len__</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">len</span>(self.memory) <span class="hljs-comment"># 返回经验池中的经验数量</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="1-1-2-DQN模型"><a href="#1-1-2-DQN模型" class="headerlink" title="1.1.2 DQN模型"></a>1.1.2 DQN模型</h4><p>DQN模型通过估计网络和目标网络的交替更新来实现Q值的逼近和训练，通过最小化估计值和目标值之间的损失来提高模型的性能。实现DQN模型主要需要实现DQN模型的核心功能，DQN模型通过估计网络和目标网络的交替更新来实现Q值的逼近和训练，通过最小化估计值和目标值之间的损失来提高模型的性能等。</p>
+<p>DQN模型的主要属性如下：</p>
+<ul>
+<li><code>layers</code>是一个列表，表示神经网络的层结构。</li>
+<li><code>lr</code>是超参数学习率，默认为0.0005。</li>
+<li><code>optim_method</code>是优化器的选择，默认为Adam优化器。</li>
+</ul>
+<p>在DQN类的初始化方法中，调用<code>build_model()方法</code>创建了目标网络（<code>TargetNetwork</code>）和估计网络（<code>EstimateNetwork</code>），并初始化了损失函数（<code>MSELoss</code>）和优化器（<code>optimizer</code>）</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">build_model</span>(<span class="hljs-params">self</span>): <span class="hljs-comment"># 构建模型</span><br>        <span class="hljs-keyword">def</span> <span class="hljs-title function_">init_weights</span>(<span class="hljs-params">layer</span>):<br>            <span class="hljs-keyword">if</span> <span class="hljs-built_in">isinstance</span>(layer, nn.Linear):  <span class="hljs-comment"># 使用isinstance检查类型</span><br>                nn.init.xavier_normal_(layer.weight)<br><br>        self.EstimateNetwork = nn.Sequential(*self.layers) <span class="hljs-comment"># 使用nn.Sequential构建神经网络</span><br>        self.EstimateNetwork.apply(init_weights) <span class="hljs-comment"># 使用apply方法初始化权重</span><br><br>        self.TargetNetwork = copy.deepcopy(self.EstimateNetwork)  <span class="hljs-comment"># 使用copy.deepcopy进行深拷贝</span><br>        self.TargetNetwork.load_state_dict(self.EstimateNetwork.state_dict()) <span class="hljs-comment"># 使用load_state_dict加载参数</span><br><br>        self.optimizer = self.optim_method(self.EstimateNetwork.parameters(), lr=self.lr) <span class="hljs-comment"># 使用优化器优化估计网络</span><br></code></pre></td></tr></table></figure>
+
+<p>build_model方法顾名思义，就是用于构建网络模型，其中的辅助方法init_weights用于初始化权重。该方法首先使用nn.Sequential构建EstimateNetwork神经网络，然后初始化其权重。接下来通过深拷贝将EstimateNetwork的参数拷贝给TargetNetwork，最后调用优化器对EstimateNetwork进行优化。</p>
+<p>除了初始化方法和build_model方法外，DQN类还有以下类方法：</p>
+<ul>
+<li><code>Q_target(self, inp)</code>: 该方法用于计算目标值，接受输入<code>inp</code>并返回目标网络对输入的输出。</li>
+<li><code>Q_estimate(self, inp)</code>: 该方法用于计算估计值。</li>
+<li><code>update_target(self)</code>: 该方法用于更新目标网络，将估计网络的参数复制给目标网络，以便更新目标值时使用。</li>
+<li><code>update_parameters(self, estimated, targets)</code>用于更新网络参数。该方法计算估计值和目标值之间的损失，在更新网络参数之前还会进行梯度清零和反向传播以及梯度裁剪操作，最后调用优化器的step方法来更新参数。</li>
+</ul>
+<h4 id="1-1-3-Agent类"><a href="#1-1-3-Agent类" class="headerlink" title="1.1.3 Agent类"></a>1.1.3 Agent类</h4><p>DQN算法中的智能体类负责定义智能体的行为策略、管理经验回放池和执行模型的优化，从而使得智能体能够通过与环境的交互逐渐学习并改进其决策能力。DQN算法中的Agent需要具备如下基本功能：</p>
+<ol>
+<li>定义动作选择策略：Agent类中的<code>act</code>方法根据当前状态选择动作。它根据ε-greedy策略，在一定的探索率ε下，以一定概率随机选择动作，以便探索环境；否则，根据当前策略（由DQN模型给出）选择具有最大动作值的动作。这种策略使得智能体能够在探索和利用之间进行权衡。</li>
+<li>经验回放池管理：Agent类中的<code>memory</code>对象是一个经验回放池（Replay Memory），用于存储智能体与环境之间的交互经验。它可以存储过去的状态、动作、奖励、下一个状态等，并且支持从中随机采样一批经验用于模型的优化。经验回放池的作用是使得智能体可以从先前的经验中进行学习，打破时间上的相关性，提高样本的有效利用率。</li>
+<li>模型优化：Agent类中的<code>optimize</code>方法实现了DQN算法中的优化步骤。它从经验回放池中采样一批经验数据，计算当前状态的动作值估计和下一个状态的目标值，并使用这些值来更新DQN模型的参数。通过不断迭代优化模型参数，智能体可以逐渐提高其在环境中的表现和决策能力。</li>
+</ol>
+<p>下面的代码实现了一个名为Agent的智能体类，该类主要有如下属性：</p>
+<ul>
+<li><code>device</code>：模型计算使用的设备。</li>
+<li><code>transition</code>：用于定义经验回放池中的转换数据结构。</li>
+<li><code>env</code>：交互环境，即智能体进行训练和决策的环境。</li>
+<li><code>model</code>：DQN模型，用于估计和优化动作值函数。</li>
+<li><code>n_actions</code>：动作空间的大小。</li>
+<li><code>goal</code>：目标分数，当智能体达到或超过该分数时，任务被认为是成功的。</li>
+<li><code>min_score</code>：最低分数，当智能体的得分低于该分数时，任务被认为是失败的。</li>
+<li><code>eps_start</code>：初始的ε-greedy策略中的ε值，用于探索动作空间。</li>
+<li><code>eps_end</code>：最终的ε-greedy策略中的ε值，探索策略随时间衰减。</li>
+<li><code>eps_decay</code>：ε-greedy策略中ε的衰减率。</li>
+<li><code>gamma</code>：折扣因子，用于计算目标值的折扣累积奖励。</li>
+<li><code>batch_size</code>：每次优化时从经验回放池中抽样的批次大小。</li>
+<li><code>memory_size</code>：经验回放池的最大容量。</li>
+<li><code>max_episode</code>：最大训练轮数。</li>
+<li><code>upd_rate</code>：目标网络更新频率，表示每经过多少次优化操作后更新目标网络。</li>
+</ul>
+<p>Agent类的<code>act</code>方法实现了根据给定状态和探索率选择一个动作的功能，根据随机数与ε值的大小比较对动作进行选择</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">act</span>(<span class="hljs-params">self, state, eps</span>):<br>        <span class="hljs-keyword">if</span> random.random() &lt; eps: <span class="hljs-comment"># 若随机数小于epsilon，随机选择动作</span><br>            <span class="hljs-keyword">return</span> torch.tensor([[random.randrange(self.n_actions)]], device=self.device, dtype=torch.long) <span class="hljs-comment"># 随机选择动作</span><br>        <span class="hljs-keyword">else</span>: <span class="hljs-comment"># 否则使用当前策略</span><br>            <span class="hljs-keyword">with</span> torch.no_grad():<br>                result = self.model.Q_estimate(state).<span class="hljs-built_in">max</span>(<span class="hljs-number">1</span>)[<span class="hljs-number">1</span>] <span class="hljs-comment"># 选择最大的动作</span><br>                <span class="hljs-keyword">return</span> result.view(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>)<br></code></pre></td></tr></table></figure>
+
+<p><code>optimize</code>方法用于执行DQN算法中的优化。基本的执行步骤如下：</p>
+<ol>
+<li>判断经验池中的经验数量大小与批大小的关系：<ul>
+<li>如果经验回放池中的经验数量小于批大小，则不执行优化，直接return结束optimize方法</li>
+<li>否则执行优化</li>
+</ul>
+</li>
+<li>从经验回放池中采样一个批次的经验数据，并进行转换；</li>
+<li>计算当前状态的估计值和下一个状态的目标值<ul>
+<li>估计值由当前状态和选择的动作对应的Q值估计给出</li>
+<li>目标值由下一个状态的最大Q值和实际奖励计算得到</li>
+</ul>
+</li>
+<li>使用目标值来更新模型的参数</li>
+</ol>
+<p>以下是optimize方法的代码实现</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">optimize</span>(<span class="hljs-params">self</span>): <span class="hljs-comment"># 优化模型</span><br>        <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(self.memory) &lt; self.batch_size: <span class="hljs-comment"># 若经验池中的经验数量小于批大小，不进行优化</span><br>            <span class="hljs-keyword">return</span><br><br>        transitions = self.memory.sample(self.batch_size) <span class="hljs-comment"># 从经验池中采样</span><br>        batch = self.Transition(*<span class="hljs-built_in">zip</span>(*transitions)) <span class="hljs-comment"># 将经验转换为批</span><br><br>        next_state_batch = torch.cat(batch.next_state) <span class="hljs-comment"># 将批中的下一个状态拼接为一个张量</span><br>        state_batch = torch.cat(batch.state) <span class="hljs-comment"># 将批中的状态拼接为一个张量</span><br>        action_batch = torch.cat(batch.action)<br>        reward_batch = torch.cat(batch.reward)<br>        done_batch = torch.cat(batch.done)<br><br>        estimate_value = self.model.Q_estimate(state_batch).gather(<span class="hljs-number">1</span>, action_batch) <span class="hljs-comment"># 估计值</span><br><br>        Q_value_next = torch.zeros(self.batch_size, device=self.device) <span class="hljs-comment"># 目标值</span><br>        <span class="hljs-keyword">with</span> torch.no_grad():<br>            Q_value_next[~done_batch] = self.model.Q_target(next_state_batch).<span class="hljs-built_in">max</span>(<span class="hljs-number">1</span>)[<span class="hljs-number">0</span>].detach()[~done_batch] <span class="hljs-comment"># 若未结束，使用目标网络计算目标值</span><br>        target_value = (Q_value_next * self.gamma) + reward_batch <span class="hljs-comment"># 计算目标值</span><br><br>        self.model.update_parameters(estimate_value, target_value) <span class="hljs-comment"># 更新参数</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="1-2-训练配置"><a href="#1-2-训练配置" class="headerlink" title="1.2 训练配置"></a>1.2 训练配置</h3><p>训练配置的具体流程为：</p>
+<ol>
+<li>设置超参数、创建模型</li>
+<li>创建模型</li>
+<li>实例化Agent代理</li>
+</ol>
+<p>本实验需要借助gym库创建MountainCar环境，其常用的API如下所示</p>
+<p><img src="/images/image-20230602103031385.png" srcset="/img/loading.gif" lazyload></p>
+<p>通过gym创建MountainCar训练环境并设置全局变量</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs py">device = torch.device(<span class="hljs-string">&quot;cuda&quot;</span> <span class="hljs-keyword">if</span> torch.cuda.is_available() <span class="hljs-keyword">else</span> <span class="hljs-string">&quot;cpu&quot;</span>)  <span class="hljs-comment"># 选择设备</span><br>env = gym.make(<span class="hljs-string">&#x27;MountainCar-v0&#x27;</span>)  <span class="hljs-comment"># 创建环境</span><br>n_actions = env.action_space.n  <span class="hljs-comment"># 动作空间</span><br>n_states = env.observation_space.shape[<span class="hljs-number">0</span>]  <span class="hljs-comment"># 状态空间</span><br>Transition = namedtuple(<span class="hljs-string">&#x27;Transition&#x27;</span>,<br>                            (<span class="hljs-string">&#x27;state&#x27;</span>, <span class="hljs-string">&#x27;action&#x27;</span>, <span class="hljs-string">&#x27;next_state&#x27;</span>, <span class="hljs-string">&#x27;reward&#x27;</span>, <span class="hljs-string">&#x27;done&#x27;</span>))  <span class="hljs-comment"># 定义一个命名元组，用于存储经验（状态，动作，下一个状态，奖励，是否结束）</span><br></code></pre></td></tr></table></figure>
+
+<p>然后通过自定义的layers传入DQN类实例化模型</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 神经网络</span><br>layers = (<br>        nn.Linear(n_states, <span class="hljs-number">256</span>),  <span class="hljs-comment"># 输入层</span><br>        nn.ReLU(),  <span class="hljs-comment"># 激活函数</span><br>        nn.Linear(<span class="hljs-number">256</span>, <span class="hljs-number">256</span>),  <span class="hljs-comment"># 隐藏层</span><br>        nn.ReLU(),  <span class="hljs-comment"># 激活函数</span><br>        nn.Linear(<span class="hljs-number">256</span>, n_actions),  <span class="hljs-comment"># 输出层</span><br>    )<br>Model = DQN(layers, lr=<span class="hljs-number">0.0005</span>, optim_method=optim.Adam)  <span class="hljs-comment"># 创建模型</span><br></code></pre></td></tr></table></figure>
+
+<p>最后对智能体进行实例化</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs py">MountainCarAgent = Agent(device, Transition, env, Model, n_actions, goal=-<span class="hljs-number">110</span>, min_score=-<span class="hljs-number">200</span>, \<br>                             eps_start=<span class="hljs-number">1</span>, eps_end=<span class="hljs-number">0.001</span>, eps_decay=<span class="hljs-number">0.9</span>, gamma=<span class="hljs-number">0.99</span>, \<br>                             batch_size=<span class="hljs-number">64</span>, memory_size=<span class="hljs-number">100000</span>, max_episode=<span class="hljs-number">2000</span>)<br></code></pre></td></tr></table></figure>
+
+<h3 id="1-3-训练模型"><a href="#1-3-训练模型" class="headerlink" title="1.3 训练模型"></a>1.3 训练模型</h3><p>基于DQN算法的在MountainCar环境下进行模型训练的具体步骤如下：</p>
+<ol>
+<li>初始化训练参数和数据记录：<ul>
+<li>初始化智能体的参数、设备、目标分数和最低分数等。</li>
+<li>创建空列表，用于记录每个episode的奖励。</li>
+<li>初始化连续成功的次数。</li>
+</ul>
+</li>
+<li>开始训练循环：<ul>
+<li>使用for循环迭代训练的episode次数。</li>
+<li>重置环境状态，获取初始状态。</li>
+<li>将初始状态转换为张量，并放入设备中。</li>
+</ul>
+</li>
+<li>执行每个episode的动作选择、环境交互和优化过程：<ul>
+<li>使用while循环，直到达到episode结束条件（结束标志done为True）。</li>
+<li>根据当前状态和探索率选择一个动作。</li>
+<li>将动作转换为张量，并放入设备中。</li>
+<li>执行动作，获取下一个状态、奖励、结束标志done和其他信息。</li>
+<li>计算该步骤的奖励。</li>
+<li>根据特定公式修改奖励。</li>
+<li>将next_state、action、modified_reward和done转换为张量，并放入设备中。</li>
+<li>将状态、动作、下一个状态、奖励和结束标志存储到经验回放池中。</li>
+<li>更新当前状态为下一个状态。</li>
+<li>调用agent.optimize()方法进行模型的优化。</li>
+</ul>
+</li>
+<li>更新目标网络和探索率：<ul>
+<li>如果当前episode是目标网络更新的步骤（每经过agent.target_update_rate个episode），则更新目标网络的参数。</li>
+<li>更新探索率，将其乘以衰减率但不会小于最终探索率。</li>
+</ul>
+</li>
+<li>记录奖励并检查训练是否成功：<ul>
+<li>将当前episode的奖励添加到all_scores列表中。</li>
+<li>每50个episode，计算最近50个episode的平均奖励，并输出平均奖励。</li>
+<li>如果连续5个episode的平均奖励大于等于目标分数，则认为训练成功。<ul>
+<li>如果训练成功，则输出训练成功的episode数，并可以进行模型保存等操作。</li>
+<li>否则，重置连续成功的次数为0。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>返回记录的奖励列表all_scores。</li>
+</ol>
+<p>具体的代码以及注释参考代码文件。</p>
+<h3 id="1-4-模型评估"><a href="#1-4-模型评估" class="headerlink" title="1.4 模型评估"></a>1.4 模型评估</h3><p>训练完成后，对模型进行评估，评估模型主要是在一个while循环中，测试指定episodes轮：</p>
+<ol>
+<li>选择并执行动作，获取下一个状态、奖励和完成标志；</li>
+<li>累积当前episode的奖励；</li>
+<li>判断是否达到episode结束条件，若游戏结束则更新计数器和记录奖励，然后重置reward以及状态；</li>
+<li>输出评估结果；</li>
+</ol>
+<p>如下是模型评估的代码</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">test</span>(<span class="hljs-params">agent, episodes=<span class="hljs-number">50</span>, render=<span class="hljs-literal">False</span></span>):<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;----------Start testing----------&#x27;</span>)<br>    state = agent.env.reset() <span class="hljs-comment"># 初始化状态</span><br>    state = torch.tensor(state).to(agent.device).<span class="hljs-built_in">float</span>().unsqueeze(<span class="hljs-number">0</span>)<br>    ep_count = <span class="hljs-number">0</span><br>    current_episode_reward = <span class="hljs-number">0</span><br>    scores = []<br>    <span class="hljs-keyword">while</span> ep_count &lt; episodes: <span class="hljs-comment"># 默认测试50个episode（如果不开渲染可以测试100个或更多）</span><br>        <span class="hljs-keyword">if</span> render:<br>            agent.env.render()<br>        action = agent.act(state, <span class="hljs-number">0</span>) <span class="hljs-comment"># 选择动作</span><br>        state, reward, done, _ = agent.env.step(action.item()) <span class="hljs-comment"># 执行动作</span><br>        state = torch.tensor(state).to(agent.device).<span class="hljs-built_in">float</span>().unsqueeze(<span class="hljs-number">0</span>) <span class="hljs-comment"># 转换为tensor</span><br>        current_episode_reward += reward <span class="hljs-comment"># 计算reward</span><br><br>        <span class="hljs-keyword">if</span> done: <span class="hljs-comment"># 如果游戏结束</span><br>            ep_count += <span class="hljs-number">1</span> <span class="hljs-comment"># episode数加1</span><br>            scores.append(current_episode_reward) <span class="hljs-comment"># 记录每个episode的reward</span><br>            current_episode_reward = <span class="hljs-number">0</span> <span class="hljs-comment"># 重置reward</span><br>            state = agent.env.reset() <span class="hljs-comment"># 重置状态</span><br>            state = torch.tensor(state).to(agent.device).<span class="hljs-built_in">float</span>().unsqueeze(<span class="hljs-number">0</span>) <span class="hljs-comment"># 转换为tensor</span><br><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;average score:&#x27;</span>, <span class="hljs-built_in">sum</span>(scores) / <span class="hljs-built_in">len</span>(scores))<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;max reward:&#x27;</span>, <span class="hljs-built_in">max</span>(scores))<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;min reward:&#x27;</span>, <span class="hljs-built_in">min</span>(scores))<br></code></pre></td></tr></table></figure>
+
+<h2 id="2-实验结果分析"><a href="#2-实验结果分析" class="headerlink" title="2.实验结果分析"></a>2.实验结果分析</h2><p>模型训练完毕后，可以看到模型训练过程的输出以及对应的可视化图像</p>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs subunit">----------Start training----------<br>episode 50 : <span class="hljs-string">-190</span>.2 average score<br>episode 100 : <span class="hljs-string">-135</span>.48 average score<br>episode 150 : <span class="hljs-string">-134</span>.14 average score<br>episode 200 : <span class="hljs-string">-134</span>.42 average score<br>episode 250 : <span class="hljs-string">-119</span>.28 average score<br>episode 300 : <span class="hljs-string">-123</span>.76 average score<br>episode 350 : <span class="hljs-string">-121</span>.5 average score<br><span class="hljs-keyword">success </span>at episode 377<br></code></pre></td></tr></table></figure>
+
+<p><img src="/images/image-20230602105615811.png" srcset="/img/loading.gif" lazyload></p>
+<p>模型训练的最大轮数为2000个episode，目标分数是-110，最低分数是-200。可以看到模型在第377个episode训练完成，这表示连续5个episode的平均奖励大于等于目标分数。</p>
+<p>观察训练图像可以看出，随着episode的增加，模型的分数也越来越高，最后可以稳定在-100到-120之间。</p>
+<p>这里需要注意选择合适的学习率非常重要，一开始我选择使用的学习率是0.0001，但是因为其过小导致模型一直无法收敛，训练200轮后得分仍然在-190左右。</p>
+<p>利用训练好的模型在MountainCar环境下进行测试，其输出如下</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver"><span class="hljs-comment">----------Start testing----------</span><br><span class="hljs-built_in">average</span> score: <span class="hljs-number">-116.9</span><br><span class="hljs-built_in">max</span> reward: <span class="hljs-number">-86.0</span><br><span class="hljs-built_in">min</span> reward: <span class="hljs-number">-157.0</span><br></code></pre></td></tr></table></figure>
+
+<p>如果在test函数中设置render为True，还可以看到每次小车的运动轨迹。这里我们对小车进行了50次测试，其平均分数为-116.9，可以看到这个分数与目标分数接近，这也表示模型训练的结果较好。</p>
+<p>小车通过DQN算法不断学习和改进，以实现用最少的移动次数快速到达终点。</p>
+<h1 id="三、DDPG解决MountainCarContinuous"><a href="#三、DDPG解决MountainCarContinuous" class="headerlink" title="三、DDPG解决MountainCarContinuous"></a>三、DDPG解决MountainCarContinuous</h1><h2 id="1-实验设计-1"><a href="#1-实验设计-1" class="headerlink" title="1.实验设计"></a>1.实验设计</h2><p>与解决MountainCar的DQN算法的设计相同，使用DDPG算法解决MountainCarContinuous问题的具体步骤也分为：</p>
+<ol>
+<li>模型构建</li>
+<li>训练配置</li>
+<li>训练模型</li>
+<li>模型评估</li>
+</ol>
+<h3 id="1-1-模型构建-1"><a href="#1-1-模型构建-1" class="headerlink" title="1.1 模型构建"></a>1.1 模型构建</h3><p>前面已经介绍过，DDPG算法主要包括三个关键技术：经验回放、目标网络和噪声探索，下面将分别实现。</p>
+<h4 id="1-1-1-经验回放-1"><a href="#1-1-1-经验回放-1" class="headerlink" title="1.1.1 经验回放"></a>1.1.1 经验回放</h4><p>从存储的角度来看，经验回放可以分为集中式回放和分布式回放；从采样的角度来看，经验回放可以分为均匀回放和优先回放。下面这段代码实现的是集中式均匀回放（实际上与DQN中实现的经验回放算法完全一致）</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">class</span> <span class="hljs-title class_">ReplayMemory</span>: <span class="hljs-comment"># 经验回放算法</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, capacity, transition</span>):<br>        self.capacity = capacity <span class="hljs-comment"># 经验池的容量</span><br>        self.memory = deque(maxlen=capacity) <span class="hljs-comment"># 用deque实现经验池，deque是一个双向队列，可以从两端append和pop</span><br>        self.Transition = transition <span class="hljs-comment"># 用于保存transition的数据结构</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">push</span>(<span class="hljs-params">self, *args</span>):<br>        self.memory.append(self.Transition(*args)) <span class="hljs-comment"># 将transition存入经验池</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">sample</span>(<span class="hljs-params">self, batch_size</span>):<br>        <span class="hljs-keyword">return</span> random.sample(self.memory, <span class="hljs-built_in">min</span>(batch_size, <span class="hljs-built_in">len</span>(self.memory))) <span class="hljs-comment"># 从经验池中随机采样</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__len__</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">len</span>(self.memory) <span class="hljs-comment"># 返回经验池的长度</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="1-1-2-噪声探索"><a href="#1-1-2-噪声探索" class="headerlink" title="1.1.2 噪声探索"></a>1.1.2 噪声探索</h4><p>在DDPG（Deep Deterministic Policy Gradient）算法中，噪声探索起着关键的作用。它的目的是在训练过程中引入一定程度的随机性，以便智能体能够探索环境并发现更优的策略。</p>
+<p>DDPG算法是一种用于解决连续动作空间的强化学习算法。它结合了深度神经网络和确定性策略梯度（DPG）算法的思想。在DPG中，智能体学习一个确定性策略函数，直接输出动作值，而不是输出动作的概率分布。这使得DPG算法在处理连续动作空间时更有效。</p>
+<p>然而，确定性策略在探索未知环境时可能会陷入局部最优解。为了解决这个问题，DDPG引入了一种噪声探索方法。噪声可以增加智能体的行动多样性，从而使其有更多机会探索环境中的不同策略，并找到更优的策略。</p>
+<p>常用的噪声探索方法之一是OU（Ornstein-Uhlenbeck）噪声。OU噪声是一种具有回归特性的随机过程，它可以产生连续的随机值。在DDPG中，OU噪声被添加到智能体选择的动作上，以产生随机性。OU噪声具有以下特点：</p>
+<ol>
+<li>OU噪声是一种高度相关的噪声，具有回归特性，它会将值推回到平均值附近。这使得智能体的行动不会变得过于剧烈或不稳定。</li>
+<li>OU噪声具有可调节的方差和均值，可以通过调整参数来控制噪声的幅度。这使得智能体可以根据需要在探索和利用之间进行权衡。</li>
+<li>OU噪声的自相关性可以帮助智能体在时间上保持一定的一致性。这对于连续动作空间中的探索非常有用，因为它可以使智能体在执行连续动作时保持平滑性。</li>
+</ol>
+<p>下面这段代码实现了一个OU噪声类，用于生成具有回归性质的噪声</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Noise</span>: <span class="hljs-comment"># Ornstein-Uhlenbeck噪声</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, mu, theta, sigma, action_dim</span>):<br>        self.mu = mu <span class="hljs-comment"># 均值</span><br>        self.theta = theta <span class="hljs-comment"># 回归速度</span><br>        self.sigma = sigma <span class="hljs-comment"># 标准差</span><br>        self.action_dim = action_dim <span class="hljs-comment"># 动作维度</span><br>        self.state = np.full(action_dim, mu) <span class="hljs-comment"># 初始化状态</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">reset</span>(<span class="hljs-params">self</span>):<br>        self.state = np.full(self.action_dim, self.mu) <span class="hljs-comment"># 重置状态</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">make_noise</span>(<span class="hljs-params">self</span>):<br>        delta = self.theta * (self.mu - self.state) + self.sigma * np.random.randn(self.action_dim) <span class="hljs-comment"># 计算噪声</span><br>        <span class="hljs-comment"># self.state += delta</span><br>        self.state = np.clip(self.state + delta, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>) <span class="hljs-comment"># 将噪声限制在[0, 1]之间</span><br>        <span class="hljs-keyword">return</span> self.state<br></code></pre></td></tr></table></figure>
+
+<p>在类的初始化方法中定义了OU噪声的参数，分别是均值、回归速度、标准差和动作维度，这些参数将用于后续计算噪声。另外一个属性是state，表示噪声状态，在初始化时该属性被设置为长度为action_dim且数组元素都是mu的数组，这表示初始状态下的噪声值都是均值。</p>
+<p>类的reset方法用于重置噪声状态，执行该方法后噪声的状态将回到初始状态。</p>
+<p>类的make_noise方法用于生成噪声，具体的执行步骤为：</p>
+<ol>
+<li>计算OU过程的变化量delta，该变化量主要分为噪声向均值回归的速度和随机扰动两部分。</li>
+<li>接着更新state为当前状态加上delta，使得噪声的值具有一定的回归性质。因为MountainCarContinuous环境的限制，因此需要将状态限制在[0,1]范围内。</li>
+<li>返回更新后的噪声作为生成的噪声。</li>
+</ol>
+<h4 id="1-1-3-目标网络"><a href="#1-1-3-目标网络" class="headerlink" title="1.1.3 目标网络"></a>1.1.3 目标网络</h4><p>下面是DDPG中的Actor网络和Critic网络关系</p>
+<p><img src="/images/image-20230602152940646.png" srcset="/img/loading.gif" lazyload></p>
+<p>Actor网络</p>
+<ul>
+<li>和AC不同，Actor输出的是一个动作；</li>
+<li>Actor的功能是，输出一个动作A，这个动作A输入到Crititc后，能够获得最大的Q值。</li>
+<li>所以Actor的更新方式和AC不同，不是用带权重梯度更新，而是用梯度上升。</li>
+</ul>
+<p>Critic网络</p>
+<ul>
+<li>Critic网络的作用是预估Q，虽然它还叫Critic，但和AC中的Critic不一样，这里预估的是Q不是V；</li>
+<li>注意Critic的输入有两个：动作和状态，需要一起输入到Critic中；</li>
+<li>Critic网络的loss其还是和AC一样，用的是TD-error。这里就不详细说明了，我详细大家学习了那么久，也知道为什么了。</li>
+</ul>
+<p>在DDPG算法中，值网络（Critic网络）用于评估给定状态和动作的值函数（Q函数）的估计值，即根据当前策略评估动作的好坏。策略网络（Actor网络）则用于生成确定性的动作值，即根据给定状态选择最优的动作。这两个网络通过交互和优化的方式相互影响和更新，从而达到同时学习值函数和策略函数的目的，以优化智能体的决策和行为策略。</p>
+<p>在我们构建的Critic网络中，包含三个线性层的神经网络，输入层的维度为状态的维度，输出层的维度为1，中间隐藏层的维度通过参数指定。Critic网络的的前向传播算法根据输入的状态和动作经过一系列的线性层和激活函数（如ReLU）处理，最终输出值函数的估计值。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">class</span> <span class="hljs-title class_">ValueNetwork</span>(nn.Module): <span class="hljs-comment"># 值网络，即Critic网络</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, hidden_size_1, hidden_size_2, input_size, action_size</span>):<br>        <span class="hljs-built_in">super</span>(ValueNetwork, self).__init__()<br><br>        self.linear1 = nn.Linear(input_size, hidden_size_1) <span class="hljs-comment"># 输入层，输入维度为state的维度，输出维度为hidden_size_1</span><br>        self.linear2 = nn.Linear(hidden_size_1 + action_size, hidden_size_2) <span class="hljs-comment"># 隐藏层，输入维度为hidden_size_1 + action_size，输出维度为hidden_size_2</span><br>        self.linear3 = nn.Linear(hidden_size_2, <span class="hljs-number">1</span>) <span class="hljs-comment"># 输出层，输出维度为1</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">forward</span>(<span class="hljs-params">self, state, action</span>): <span class="hljs-comment"># 前向传播算法</span><br>        x = F.relu(self.linear1(state))<br>        x = torch.cat((x, action), dim=<span class="hljs-number">1</span>) <span class="hljs-comment"># 将state和action拼接在一起</span><br>        x = F.relu(self.linear2(x))<br>        x = self.linear3(x)<br>        <span class="hljs-keyword">return</span> x<br></code></pre></td></tr></table></figure>
+
+<p>Actor网络用于近似策略函数，包含三个线性层的神经网络，输入层的维度为状态的维度，输出层的维度为动作的维度，中间隐藏层的维度通过参数指定。Actor网络的前向传播输入状态，经过一系列的线性层和激活函数（如ReLU）处理，最终输出一个确定性的动作值。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">class</span> <span class="hljs-title class_">PolicyNetwork</span>(nn.Module): <span class="hljs-comment"># 策略网络，即Actor网络</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, hidden_size_1, hidden_size_2, input_size, action_size</span>):<br>        <span class="hljs-built_in">super</span>(PolicyNetwork, self).__init__()<br><br>        self.linear1 = nn.Linear(input_size, hidden_size_1) <span class="hljs-comment"># 输入层，输入维度为state的维度，输出维度为hidden_size_1</span><br>        self.linear2 = nn.Linear(hidden_size_1, hidden_size_2) <span class="hljs-comment"># 隐藏层，输入维度为hidden_size_1，输出维度为hidden_size_2</span><br>        self.linear3 = nn.Linear(hidden_size_2, action_size) <span class="hljs-comment"># 输出层，输出维度为action的维度</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">forward</span>(<span class="hljs-params">self, state</span>):<br>        x = F.relu(self.linear1(state))<br>        x = F.relu(self.linear2(x))<br>        x = torch.tanh(self.linear3(x))<br>        <span class="hljs-keyword">return</span> x<br></code></pre></td></tr></table></figure>
+
+<h4 id="1-1-4-DDPG模型"><a href="#1-1-4-DDPG模型" class="headerlink" title="1.1.4 DDPG模型"></a>1.1.4 DDPG模型</h4><p>我们已经知道DDPG算法的伪代码</p>
+<p><img src="/images/image-20230531164751942.png" srcset="/img/loading.gif" lazyload></p>
+<p>DDPG算法的核心逻辑是通过交替进行Critic网络参数更新和Actor网络参数更新，并使用软更新策略来更新目标网络的参数。通过这样的方式逐步优化智能体的策略和值函数的估计，实现在连续动作空间下的强化学习。实现DDPG算法的核心逻辑主要分为如下几个步骤：</p>
+<ol>
+<li>初始化：<ul>
+<li>定义算法的参数，如网络结构、学习率、优化器等。</li>
+<li>创建值网络（Critic网络）的估计网络和目标网络，以及策略网络（Actor网络）的估计网络和目标网络。</li>
+<li>将估计网络的参数复制给目标网络。</li>
+</ul>
+</li>
+<li>定义Q函数（值函数）的估计和目标：<ul>
+<li>提供一个状态和动作作为输入，分别通过值网络的估计网络和目标网络计算对应的Q值。</li>
+</ul>
+</li>
+<li>定义策略的估计和目标：<ul>
+<li>提供一个状态作为输入，通过策略网络的估计网络和目标网络计算对应的策略动作。</li>
+</ul>
+</li>
+<li>Critic网络参数更新：<ul>
+<li>根据估计值和目标值计算Critic网络的损失。</li>
+<li>使用Critic网络的优化器对损失进行反向传播和参数更新。</li>
+<li>对梯度进行裁剪，防止梯度爆炸。</li>
+<li>更新Critic网络的参数。</li>
+</ul>
+</li>
+<li>Actor网络参数更新：<ul>
+<li>根据状态计算Actor网络的损失。</li>
+<li>使用Actor网络的优化器对损失进行反向传播和参数更新。</li>
+<li>对梯度进行裁剪，防止梯度爆炸。</li>
+<li>更新Actor网络的参数。</li>
+</ul>
+</li>
+<li>目标网络软更新：<ul>
+<li>通过软更新策略，将估计网络的参数以一定的权重加到目标网络的参数上，实现目标网络的平滑更新。</li>
+</ul>
+</li>
+</ol>
+<p>DDPG类的初始化方法定义了各项参数以及网络结构</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, layers_sizes, polyak=<span class="hljs-number">0.9999</span>,</span><br><span class="hljs-params">                 critic_lr=<span class="hljs-number">0.0001</span>, critic_optim_method=optim.Adam, critic_loss=F.mse_loss,</span><br><span class="hljs-params">                 actor_lr=<span class="hljs-number">0.0001</span>, actor_optim_method=optim.Adam</span>):<br>        self.polyak = polyak <span class="hljs-comment"># 软更新的系数</span><br><br>        self.CriticEstimate = ValueNetwork(*layers_sizes) <span class="hljs-comment"># 创建Critic的估计网络</span><br>        self.CriticTarget = ValueNetwork(*layers_sizes)  <span class="hljs-comment"># 创建Critic的目标网络</span><br>        self.CriticTarget.load_state_dict(self.CriticEstimate.state_dict()) <span class="hljs-comment"># 将估计网络的参数复制给目标网络</span><br>        self.critic_loss = critic_loss <span class="hljs-comment"># Critic网络的损失函数</span><br>        self.critic_optimizer = critic_optim_method(self.CriticEstimate.parameters(), lr=critic_lr) <span class="hljs-comment"># Critic网络的优化器</span><br><br>        self.ActorEstimate = PolicyNetwork(*layers_sizes) <span class="hljs-comment"># 创建Actor的估计网络</span><br>        self.ActorTarget = PolicyNetwork(*layers_sizes) <span class="hljs-comment"># 创建Actor的目标网络</span><br>        self.ActorTarget.load_state_dict(self.ActorEstimate.state_dict()) <span class="hljs-comment"># 将估计网络的参数复制给目标网络</span><br>        self.actor_optimizer = actor_optim_method(self.ActorEstimate.parameters(), lr=actor_lr) <span class="hljs-comment"># Actor网络的优化器</span><br></code></pre></td></tr></table></figure>
+
+<p>接着定义了几个函数用于获取网络输出</p>
+<ul>
+<li>Q_estimate函数返回Critic网络估计值。</li>
+<li>Q_target函数返回Critic网络目标值。</li>
+<li>action_estimate函数返回Actor网络估计值。</li>
+<li>action_target函数返回Actor网络目标值。</li>
+</ul>
+<p>DDPG类的update_critic_params函数和update_critic_params函数用于更新网络参数：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">update_critic_params</span>(<span class="hljs-params">self, estimates, targets</span>): <span class="hljs-comment"># 更新Critic网络的参数</span><br>        loss = self.critic_loss(estimates, targets) <span class="hljs-comment"># 计算损失</span><br>        self.critic_optimizer.zero_grad() <span class="hljs-comment"># 梯度清零</span><br>        loss.backward() <span class="hljs-comment"># 反向传播</span><br>        torch.nn.utils.clip_grad_norm_(self.CriticEstimate.parameters(), <span class="hljs-number">1</span>) <span class="hljs-comment"># 梯度裁剪</span><br>        self.critic_optimizer.step() <span class="hljs-comment"># 更新参数</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">update_actor_params</span>(<span class="hljs-params">self, states</span>):<br>        loss = self.actor_loss(states)<br>        self.actor_optimizer.zero_grad()<br>        loss.backward()<br>        torch.nn.utils.clip_grad_norm_(self.ActorEstimate.parameters(), <span class="hljs-number">1</span>)<br>        self.actor_optimizer.step()<br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>update_critic_params函数用于更新Critic网络的参数。<ul>
+<li>根据输入的估计值和目标值计算损失。</li>
+<li>通过优化器将损失进行反向传播和参数更新，同时进行梯度裁剪。</li>
+</ul>
+</li>
+<li>update_actor_params函数用于更新Actor网络的参数。<ul>
+<li>根据输入的状态计算Actor网络的损失。</li>
+<li>通过优化器将损失进行反向传播和参数更新，同时进行梯度裁剪。</li>
+</ul>
+</li>
+</ul>
+<p>额外的，actor_loss函数实现计算Actor网络的损失函数。通过调用action_estimate获取Actor网络的估计值，接着返回负的Critic网络估计值的平均值，即最大化Critic网络的Q值。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">actor_loss</span>(<span class="hljs-params">self, states</span>): <span class="hljs-comment"># Actor网络的损失函数</span><br>        actions = self.action_estimate(states) <span class="hljs-comment"># 估计值</span><br>        <span class="hljs-keyword">return</span> -self.Q_estimate(states, actions).mean() <span class="hljs-comment"># 最大化Q值</span><br></code></pre></td></tr></table></figure>
+
+<p>soft_update函数通过迭代估计模型和目标模型的参数，并将目标模型参数进行软更新。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">soft_update</span>(<span class="hljs-params">self, estimate_model, target_model</span>): <span class="hljs-comment"># 软更新</span><br>        <span class="hljs-keyword">for</span> estimate_param, target_param <span class="hljs-keyword">in</span> <span class="hljs-built_in">zip</span>(estimate_model.parameters(), target_model.parameters()): <span class="hljs-comment"># 更新每一个参数</span><br>            target_param.data.copy_(target_param.data * self.polyak + estimate_param.data * (<span class="hljs-number">1</span> - self.polyak))<br></code></pre></td></tr></table></figure>
+
+<h4 id="1-1-5-Agent类"><a href="#1-1-5-Agent类" class="headerlink" title="1.1.5 Agent类"></a>1.1.5 Agent类</h4><p>DDPG算法的Agent类的实现基本与DQN中的Agent实现类似，同样包含初始化方法、act方法以及optimize方法。类的初始化方法主要用于接收并初始化一系列参数，代码中都有注释因此这里不再过多解释。</p>
+<p>Agent的act方法用于选择动作，其选择动作的步骤主要如下</p>
+<ol>
+<li>接收当前状态和一个epsilon值，用于epsilon-greedy策略。</li>
+<li>使用模型的估计网络基于当前状态选择动作。</li>
+<li>通过噪声对象生成噪声，并与动作相加。</li>
+<li>限制动作范围在环境的动作空间内，通过clamp_方法实现。</li>
+</ol>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">act</span>(<span class="hljs-params">self, state, eps</span>): <span class="hljs-comment"># 选择动作</span><br>        <span class="hljs-keyword">with</span> torch.no_grad(): <span class="hljs-comment"># 关闭梯度</span><br>            action = self.Model.action_estimate(state) <span class="hljs-comment"># 基于当前状态选择动作</span><br>            noise = torch.tensor(eps * self.noise.make_noise()).unsqueeze(<span class="hljs-number">0</span>) <span class="hljs-comment"># 增加噪声</span><br>            action += noise <span class="hljs-comment"># 在动作上增加噪声</span><br>        <span class="hljs-keyword">return</span> action.clamp_(self.env.action_space.low[<span class="hljs-number">0</span>], self.env.action_space.high[<span class="hljs-number">0</span>]) <span class="hljs-comment"># 限制动作范围在环境的动作空间内</span><br></code></pre></td></tr></table></figure>
+
+<p>Agent的optimize方法实现了对网络优化，通过更新Critic网络参数和Actor网络参数，以逐步提升智能体的策略和值函数的估计。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">optimize</span>(<span class="hljs-params">self</span>): <span class="hljs-comment"># 优化器</span><br>        <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(self.memory) &lt; self.batch_size: <span class="hljs-comment"># 经验池中的样本数量小于batch_size，不需要进行优化</span><br>            <span class="hljs-keyword">return</span><br><br>        transitions = self.memory.sample(self.batch_size) <span class="hljs-comment"># 从经验池中采样</span><br>        batch = self.Transition(*<span class="hljs-built_in">zip</span>(*transitions)) <span class="hljs-comment"># 将样本转换为batch</span><br><br>        next_state_batch = torch.cat(batch.next_state)<br>        state_batch = torch.cat(batch.state)<br>        action_batch = torch.cat(batch.action)<br>        reward_batch = torch.cat(batch.reward)<br>        done_batch = torch.cat(batch.done)<br><br>        estimates = self.Model.Q_estimate(state_batch, action_batch) <span class="hljs-comment"># 网络的估计值</span><br>        Q_next = torch.zeros(self.batch_size, device=self.device).unsqueeze(<span class="hljs-number">1</span>) <span class="hljs-comment"># 下一个状态的Q值</span><br>        <span class="hljs-keyword">with</span> torch.no_grad():<br>            next_actions = self.Model.action_target(next_state_batch) <span class="hljs-comment"># 下一个状态的动作</span><br>            Q_next[~done_batch] = self.Model.Q_target(next_state_batch, next_actions)[~done_batch] <span class="hljs-comment"># 下一个状态的Q值</span><br>        targets = reward_batch.unsqueeze(<span class="hljs-number">1</span>) + self.gamma * Q_next <span class="hljs-comment"># 目标值</span><br>        self.Model.update_critic_params(estimates, targets) <span class="hljs-comment"># 更新Critic网络参数</span><br>        self.Model.update_actor_params(state_batch) <span class="hljs-comment"># 更新Actor网络参数</span><br></code></pre></td></tr></table></figure>
+
+<p>当执行optimize方法时，它会按照以下方法进行优化：</p>
+<ol>
+<li>检查经验池中的样本数量是否大于批大小。如果小于批大小，方法将直接返回，不进行优化。</li>
+<li>从经验池中随机采样一批数据。</li>
+<li>将采样得到的数据分别提取为状态、动作、奖励、下一个状态和完成标志的张量。</li>
+<li>使用值网络（Critic网络）的估计网络计算当前状态和动作的值估计。</li>
+<li>创建一个全零张量作为下一个状态的Q值。</li>
+<li>对于未完成的样本，使用目标网络计算下一个状态的动作值，并将其赋值给下一个状态的Q值。</li>
+<li>计算目标值作为当前奖励加上折扣因子乘以下一个状态的Q值。</li>
+<li>调用模型的方法，更新Critic网络参数和Actor网络参数。</li>
+</ol>
+<h3 id="1-2-训练配置-1"><a href="#1-2-训练配置-1" class="headerlink" title="1.2 训练配置"></a>1.2 训练配置</h3><p>此处的配置过程与DQN算法中的配置过程相同，首先通过gym创建MountainCarContinuous训练环境并设置全局变量</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs py">device = torch.device(<span class="hljs-string">&quot;cuda&quot;</span> <span class="hljs-keyword">if</span> torch.cuda.is_available() <span class="hljs-keyword">else</span> <span class="hljs-string">&quot;cpu&quot;</span>)<br>env = gym.make(<span class="hljs-string">&#x27;MountainCarContinuous-v0&#x27;</span>)<br>n_actions = env.action_space.shape[<span class="hljs-number">0</span>]  <span class="hljs-comment"># 动作空间的维度，1</span><br>n_states = env.observation_space.shape[<span class="hljs-number">0</span>]  <span class="hljs-comment"># 状态空间的维度，2</span><br>Transition = namedtuple(<span class="hljs-string">&#x27;Transition&#x27;</span>, (<span class="hljs-string">&#x27;state&#x27;</span>, <span class="hljs-string">&#x27;action&#x27;</span>, <span class="hljs-string">&#x27;next_state&#x27;</span>, <span class="hljs-string">&#x27;reward&#x27;</span>, <span class="hljs-string">&#x27;done&#x27;</span>))  <span class="hljs-comment"># 定义Transition元组</span><br>noise = Noise(<span class="hljs-number">0</span>, <span class="hljs-number">0.15</span>, <span class="hljs-number">0.2</span>, n_actions)  <span class="hljs-comment"># 定义噪声</span><br></code></pre></td></tr></table></figure>
+
+<p>然后通过自定义的layers传入DDPG类实例化模型</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs py">layers = (<span class="hljs-number">256</span>, <span class="hljs-number">256</span>, n_states, n_actions)  <span class="hljs-comment"># 定义神经网络的结构</span><br><br>Model = DDPG(layers, polyak=<span class="hljs-number">0.999</span>, \<br>                 critic_lr=<span class="hljs-number">0.005</span>, critic_optim_method=optim.Adam, critic_loss=F.mse_loss, \<br>                 actor_lr=<span class="hljs-number">0.0005</span>, actor_optim_method=optim.Adam)  <span class="hljs-comment"># 定义DDPG模型</span><br></code></pre></td></tr></table></figure>
+
+<p>最后对智能体进行实例化</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs py">MountainCarAgent = Agent(device, Transition, env, Model, noise, goal=<span class="hljs-number">91</span>, min_score=-<span class="hljs-number">100</span>, \<br>                             gamma=<span class="hljs-number">0.9</span>, batch_size=<span class="hljs-number">128</span>, memory_size=<span class="hljs-number">20000</span>, max_episode=<span class="hljs-number">100</span>, upd_rate=<span class="hljs-number">1</span>,<br>                             exploration_episodes=<span class="hljs-number">10</span>)  <span class="hljs-comment"># 定义agent</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="1-3-训练模型-1"><a href="#1-3-训练模型-1" class="headerlink" title="1.3 训练模型"></a>1.3 训练模型</h3><p>基于DDPG算法，在MountainCarContinuous环境下训练一个Agent，其核心在于在主循环中对每个episode进行训练。因为此处的代码大部分和DQN中的训练模型模块重复，因此这里仅介绍不同的地方。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">if</span> ep &gt; agent.exploration_episodes: <span class="hljs-comment"># 前几个episode使用epsilon-greedy策略</span><br>	action = agent.act(state, eps) <span class="hljs-comment"># 选择动作</span><br><span class="hljs-keyword">else</span>: <span class="hljs-comment"># 后面的episode使用随机策略</span><br>	action = torch.tensor([np.random.uniform(agent.env.action_space.low[<span class="hljs-number">0</span>], agent.env.action_space.high[<span class="hljs-number">0</span>])]) <span class="hljs-comment"># 随机选择动作</span><br>	action = action.unsqueeze(<span class="hljs-number">0</span>) <span class="hljs-comment"># 将动作转换为tensor</span><br></code></pre></td></tr></table></figure>
+
+<p>在初始阶段，Agent对环境了解有限，还没有收集到足够的经验。如果直接使用当前的策略网络来选择动作，可能会导致Agent陷入局部最优解，无法发现更好的策略。通过引入epsilon-greedy策略，可以以一定的概率选择随机动作，探索环境中不同的动作选择，从而更全面地探索环境，收集更多的经验。</p>
+<p>而随着训练的进行，Agent逐渐积累了更多的经验，对环境的了解也逐渐增加。因此，在后面的episode中，可以逐渐减小epsilon的值，让Agent更加倾向于选择当前估计最优的动作，以加快收敛到最优策略的速度。</p>
+<p>因为DDPG算法的收敛速度比较快，所以判断成功的标准与DQN不同</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">if</span> np.mean(all_scores[:-<span class="hljs-number">10</span>:-<span class="hljs-number">1</span>]) &gt;= agent.goal: <span class="hljs-comment"># 如果连续10个episode的平均reward大于goal，就保存模型</span><br>	successful_sequences += <span class="hljs-number">1</span><br>	<span class="hljs-keyword">if</span> successful_sequences == <span class="hljs-number">5</span>:<br>		<span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;success at episode&#x27;</span>, ep)<br>		<span class="hljs-keyword">return</span> all_scores<br><span class="hljs-keyword">else</span>:<br>	successful_sequences = <span class="hljs-number">0</span> <span class="hljs-comment"># 如果连续10个episode的平均reward小于goal，就重置successful_sequences</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="1-4-模型评估-1"><a href="#1-4-模型评估-1" class="headerlink" title="1.4 模型评估"></a>1.4 模型评估</h3><p>test函数用于测试训练好的Agent在MountainCarContinuous环境下的表现，其代码如下</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">test</span>(<span class="hljs-params">agent,episodes = <span class="hljs-number">50</span>,render = <span class="hljs-literal">False</span></span>):<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;----------Start testing----------&#x27;</span>)<br>    scores = []<br>    <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(episodes): <span class="hljs-comment"># 测试50个episode</span><br>        state = agent.env.reset() <span class="hljs-comment"># 初始化环境</span><br>        state = torch.tensor(state).to(agent.device).<span class="hljs-built_in">float</span>().unsqueeze(<span class="hljs-number">0</span>) <span class="hljs-comment"># 将state转换为tensor</span><br>        episode_reward = <span class="hljs-number">0</span> <span class="hljs-comment"># 记录每个episode的reward</span><br>        done = <span class="hljs-literal">False</span> <span class="hljs-comment"># 记录训练是否结束</span><br><br>        <span class="hljs-keyword">while</span> <span class="hljs-keyword">not</span> done:<br>            <span class="hljs-keyword">if</span> render: <span class="hljs-comment"># 如果render为True，则渲染环境</span><br>                agent.env.render()<br>            action = agent.act(state, <span class="hljs-number">0</span>) <span class="hljs-comment"># 选择动作，epsilon为0，即完全按照actor网络选择动作</span><br>            state, reward, done, _ = agent.env.step(action) <span class="hljs-comment"># 执行动作，返回下一个状态、reward、是否结束、以及info</span><br>            state = torch.tensor(state).to(agent.device).<span class="hljs-built_in">float</span>().unsqueeze(<span class="hljs-number">0</span>)<br>            episode_reward += reward<br><br>        scores.append(episode_reward)<br><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;average score:&#x27;</span>, <span class="hljs-built_in">sum</span>(scores) / <span class="hljs-built_in">len</span>(scores))<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;max reward:&#x27;</span>, <span class="hljs-built_in">max</span>(scores))<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;min reward:&#x27;</span>, <span class="hljs-built_in">min</span>(scores))<br></code></pre></td></tr></table></figure>
+
+<p>核心在于测试阶段不需要探索，因此选择动作的时候的epsilon被设为0。通过执行选择的动作获取需要的信息，将下一个状态转换为tensor，并累加奖励到当前episode的reward。</p>
+<p>每个eposide都将reward保存到scores列表中，最后输出测试结果。</p>
+<h2 id="2-实验结果分析-1"><a href="#2-实验结果分析-1" class="headerlink" title="2.实验结果分析"></a>2.实验结果分析</h2><p>MountainCar以及MountainCarCountinuous环境本身就是一个具有挑战性的问题，需要更多的探索和学习过程才能找到有效的策略。DQN算法与DDPG算法相比，可能需要更多的训练和调优才能达到较好的性能。这并不意味着DQN算法劣于DDPG算法，在处理离散动作空间的问题上，DQN算法表现出色；而在处理连续动作空间的问题上，DDPG算法更为适用。使用哪种算法取决于具体问题的性质和要求。</p>
+<p>以下是DDPG算法在训练过程中的表现</p>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs subunit">----------Start training----------<br><span class="hljs-string">-32</span>.57999070546883 at episode 1<br><span class="hljs-string">-33</span>.51094860898655 at episode 2<br><span class="hljs-string">-34</span>.582150023628 at episode 3<br><span class="hljs-string">-35</span>.57697056390748 at episode 4<br><span class="hljs-string">-32</span>.52166978406886 at episode 5<br>episode 5 : <span class="hljs-string">-33</span>.75434593721195 average score<br><span class="hljs-string">-33</span>.40841506922292 at episode 6<br><span class="hljs-string">-33</span>.32177132678317 at episode 7<br><span class="hljs-string">-31</span>.567093970977933 at episode 8<br><span class="hljs-string">-33</span>.1938497927424 at episode 9<br><span class="hljs-string">-35</span>.80485747012956 at episode 10<br>episode 10 : <span class="hljs-string">-33</span>.720858512271874 average score<br>95.04311467530225 at episode 11<br>95.04600922740354 at episode 12<br>95.75226781157222 at episode 13<br>94.6952507746258 at episode 14<br>95.32320696155898 at episode 15<br>episode 15 : 37.99691965442552 average score<br>96.20291414661227 at episode 16<br>94.62420640626543 at episode 17<br>96.39043425577762 at episode 18<br>95.93245207258869 at episode 19<br>97.02252299241141 at episode 20<br>episode 20 : 95.66547384986845 average score<br>95.52305832954589 at episode 21<br>96.06678708626804 at episode 22<br>94.3707215235742 at episode 23<br><span class="hljs-keyword">success </span>at episode 23<br></code></pre></td></tr></table></figure>
+
+<p>对应的训练性能曲线如下</p>
+<p><img src="/images/image-20230602165727253.png" srcset="/img/loading.gif" lazyload></p>
+<p>训练好的模型在测试环境下得到的分数如下</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver"><span class="hljs-comment">----------Start testing----------</span><br><span class="hljs-built_in">average</span> score: <span class="hljs-number">96.69259337679256</span><br><span class="hljs-built_in">max</span> reward: <span class="hljs-number">97.50456212093064</span><br><span class="hljs-built_in">min</span> reward: <span class="hljs-number">95.32685001504397</span><br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E8%B7%B5/" class="category-chain-item">课程实践</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/">#机器视觉</a>
+      
+        <a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">#强化学习</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>初级项目_强化学习算法</div>
+      <div>https://gintoki-jpg.github.io/2023/05/29/项目_强化学习/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>杨再俨</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年5月29日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/07/07/%E8%80%83%E7%A0%94_%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/" title="考研_数学公式">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">考研_数学公式</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/05/19/%E9%A1%B9%E7%9B%AE_%E5%91%BD%E5%90%8D%E5%AE%9E%E4%BD%93%E8%AF%86%E5%88%AB/" title="初级项目_命名实体识别">
+                        <span class="hidden-mobile">初级项目_命名实体识别</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+</div>
+
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
