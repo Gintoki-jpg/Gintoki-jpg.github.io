@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/study.jpg">
 <meta property="article:published_time" content="2023-07-12T13:28:00.000Z">
-<meta property="article:modified_time" content="2023-08-04T09:25:29.181Z">
+<meta property="article:modified_time" content="2023-08-14T12:31:05.198Z">
 <meta property="article:author" content="YangZaiyan">
 <meta property="article:tag" content="数据结构设计">
 <meta property="article:tag" content="算法分析">
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          52k 字
+          55k 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          433 分钟
+          456 分钟
         
       </span>
     
@@ -402,8 +402,25 @@
 <h2 id="3-抽象数据类型"><a href="#3-抽象数据类型" class="headerlink" title="3.抽象数据类型"></a>3.抽象数据类型</h2><p>数据类型是指一组性质相同的值的集合以及定义在此集合上的一些操作的总称，因为不同的数据类型有不同隐藏的细节，进而引出了抽象数据类型ADT的概念</p>
 <p>抽象数据类型（ADT）：是指一个数学模型以及定义在该模型上的一组操作。一个抽象数据类型定义了：一个数据对象、数据对象中各数据元素之间的关系以及对数据元素的操作。ADT体现了程序设计中对问题的分解、抽象和信息隐藏的特性</p>
 <p>为了便于在之后的学习中对抽象数据类型进行规范的描述，给出如下抽象数据类型的标准格式</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c">ADT 抽象数据类型名<br>Data <br>    数据元素之间逻辑关系的定义<br>Operation<br>    操作<span class="hljs-number">1</span><br>    操作<span class="hljs-number">2</span><br>    操作<span class="hljs-number">3</span><br>    ......<br>endADT<br></code></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c">ADT 抽象数据类型名<br>Data （数据集合和数据关系集合）<br>    数据元素之间逻辑关系的定义<br>Operation（操作集合）<br>    操作<span class="hljs-number">1</span><br>    操作<span class="hljs-number">2</span><br>    操作<span class="hljs-number">3</span><br>    ......<br>endADT<br></code></pre></td></tr></table></figure>
 
+<p>举例说明</p>
+<ul>
+<li>栈的抽象数据类型可以描述为：插入和删除只能在一端进行的线性表；<ul>
+<li>数据对象集合是存储在栈内的数据元素</li>
+<li>操作集合为元素进栈、元素出栈、判断栈空等操作</li>
+<li>数据关系集合为一对一（线性表是一对一，树是一对多，图是多对多）</li>
+</ul>
+</li>
+<li>队列的抽象数据类型可以描述为：插入元素只能在一端进行，删除元素只能在另一端进行的线性表；<ul>
+<li>数据对象集合是存储在队列内的数据元素</li>
+<li>操作集合为元素进队、元素出队、判断队空等操作</li>
+<li>数据关系集合为一对一</li>
+</ul>
+</li>
+</ul>
+<p>设计ADT的题目需要注意以下几点：</p>
+<p>1）注意 ADT 的结构格式，类似于 C 语言的结构体的写法<br>2）ADT 大括号内用数据对象集、数据关系集和操作集分开（或者参考上述代码块中用Data和Operation分开）<br>3）考研中出现的题目，一般必有数据对象集。<br>4）如果数据对象之间有很强的关联性，则应写出合适的数据关系集。如果遇到树形结构或图结构的数据关系，则用类似的边集表示方法写出。考研中最可能出现的 4 种关系：没关系、顺序关系、树形关系和图关系。<br>5）若有操作集，则写出。<br>6）不同的数据对象类型，自上而下依次列出<br>7）相同类型的数据对象，用集合表示法写出，一般考研中涉及的题目用集合的列举法表示即可<br>8）不同的操作自上而下依次列出</p>
 <hr>
 <blockquote>
 <p>Q：抽象数据类型和逻辑结构之间有什么关系？</p>
@@ -666,12 +683,15 @@
 <p><img src="/images/image-20230716212705925.png" srcset="/img/loading.gif" lazyload></p>
 <h5 id="2-按值查找-1"><a href="#2-按值查找-1" class="headerlink" title="(2)按值查找"></a>(2)按值查找</h5><p>按值查找是指在单链表中查找给定值的结点，找到后返回元素地址或序号。相对于按位查找，按值查找算法比较简单，下面直接给出按值查找算法的C++描述，在这里算法返回的是元素的序号。</p>
 <p><img src="/images/image-20230716213514726.png" srcset="/img/loading.gif" lazyload alt="按值查找"></p>
-<h4 id="3-2-4-插入操作"><a href="#3-2-4-插入操作" class="headerlink" title="3.2.4 插入操作"></a>3.2.4 插入操作</h4><p>单链表的插入操作在这里定义为在单链表的第i个位置上插入值为 x 的元素。该操作可分为两个阶段，首先进行按位查找操作，即找到第i-1个位置的元素，然后在该元素后插入新元素。查找操作可直接调用按位查找Get函数，插入新元素的步骤在构造函数中已经进行了分析（即分别修改前后指针）。下面直接给出插入操作的C++算法。</p>
+<h4 id="3-2-4-插入操作"><a href="#3-2-4-插入操作" class="headerlink" title="3.2.4 插入操作"></a>3.2.4 插入操作</h4><blockquote>
+<p>单链表的插入操作必须先找到其前驱结点的位置</p>
+</blockquote>
+<p>单链表的插入操作在这里定义为在单链表的第i个位置上插入值为 x 的元素。该操作可分为两个阶段，首先进行按位查找操作，即找到第i-1个位置的元素，然后在该元素后插入新元素。查找操作可直接调用按位查找Get函数，插入新元素的步骤在构造函数中已经进行了分析（即分别修改前后指针）。下面直接给出插入操作的C++算法。</p>
 <p><img src="/images/image-20230716213822577.png" srcset="/img/loading.gif" lazyload alt="插入操作"></p>
 <p>上述插入操作首先查找插入位置i的前一个元素，因此平均时间复杂度与按位查找的时间复杂度相同，为O（n）。</p>
 <p>另外一种插入操作是在指定的元素之前或者之后进行插入，相应的插入函数并没有写入LinkList类中，可根据需要自行加入。因为操作比较简单故此处不再赘述。</p>
 <h4 id="3-2-5-删除操作"><a href="#3-2-5-删除操作" class="headerlink" title="3.2.5 删除操作"></a>3.2.5 删除操作</h4><blockquote>
-<p>单链表的删除操作必须知道其前驱结点的位置，对应的，要在某一结点后插入一个结点则必须知道这个结点的地址；</p>
+<p>与插入操作相同，单链表的删除操作必须知道其前驱结点的位置，对应的，要在某一结点后插入一个结点则必须知道这个结点的地址；</p>
 </blockquote>
 <p>删除操作是指删除线性表中的第i个元素，并将该元素的值返回。与插入操作类似，删除操作首先进行查找操作，找到第 i-1个元素，然后再将第i个元素删除。</p>
 <p><img src="/images/image-20230716214123898.png" srcset="/img/loading.gif" lazyload alt="删除操作示意图"></p>
@@ -740,7 +760,7 @@
 <p><img src="/images/image-20230717222203137.png" srcset="/img/loading.gif" lazyload></p>
 <h1 id="第三章-线性表拓展"><a href="#第三章-线性表拓展" class="headerlink" title="第三章 线性表拓展"></a>第三章 线性表拓展</h1><p>第二章介绍了基本的线性表结构(逻辑结构)，本章将学习几种特殊类型的线性表 – 栈、队列、串以及多维数组（注意这几个概念同样也是逻辑结构）</p>
 <ul>
-<li>栈的插入和删除操作只能在表尾进行；队列的插入操作只能在表尾进行，删除操作只能在表头进行。因此，栈和队列被认为是操作受限的线性表。</li>
+<li>栈的插入和删除操作只能在表尾进行；队列的插入操作只能在表尾进行，删除操作只能在表头进行。因此，栈和队列被认为是操作受限的线性表。因而不是任何对线性表的操作都可以作为栈和队列的操作，比如不可以随便读取栈或队列中间的某个数据。</li>
 <li>串是一种以字符作为数据元素的线性表，也称为字符串，是重要的非数值处理对象，在各种程序设计语言中，一般都有“串”的概念。</li>
 <li>数组是有限个类型相同的变量的集合，而多维数组则是数组的扩展，多维数组在不同的程序设计语言中的实现方式各有不同。</li>
 </ul>
@@ -763,6 +783,9 @@
 <p>队列的逻辑结构如下</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c">ADT 队列（Queue）<br>Data <br>    元素具有相同类型，相邻元素具有前驱和后继关系<br>Operation<br>    <span class="hljs-title function_">InitQueue</span><span class="hljs-params">(*Q)</span>:初始化操作，建立一个空队列<br>    <span class="hljs-title function_">DestroyQueue</span><span class="hljs-params">(*Q)</span>:若队列Q存在则销毁它<br>    <span class="hljs-title function_">ClearQueue</span><span class="hljs-params">(*Q)</span>:将队列Q清空<br>    <span class="hljs-title function_">QueueEmpty</span><span class="hljs-params">(*Q)</span>:若队列为空则返回1否则返回0<br>    <span class="hljs-title function_">GetHead</span><span class="hljs-params">(Q,*e)</span>:若队列存在且非空，用e返回队列Q的队头元素<br>    <span class="hljs-title function_">EnQueue</span><span class="hljs-params">(*Q,e)</span>:若队列Q存在，插入新元素e到队列Q中并使其成为队尾元素<br>    <span class="hljs-title function_">DeQueue</span><span class="hljs-params">(*Q,*e)</span>:删除队列Q中的队头元素，并用e返回其值<br>    <span class="hljs-title function_">QueueLength</span><span class="hljs-params">(Q)</span>:返回队列Q的元素个数<br>endADT<br></code></pre></td></tr></table></figure>
 
+<blockquote>
+<p>栈和队列的共同点是都只允许在端点处插入和删除元素，即都是限制存取点的线性结构</p>
+</blockquote>
 <h3 id="1-3-串"><a href="#1-3-串" class="headerlink" title="1.3 串"></a>1.3 串</h3><p>串是由零个和多个字符组成的有限序列，又称为字符串：</p>
 <ul>
 <li>一般将串记为s&#x3D;”a1a2a3…an”(n&gt;&#x3D;0)，其中s是串的名称，双引号括起来的字符序列是串的值，值可以是字母、数字或其他字符，i就是该字符在串中的位置，n称为串的长度</li>
@@ -791,7 +814,10 @@
 <p>最重要的一点是，无论数组的维数是多少，数组中的数据类型都必须一致。</p>
 <p>综上，可以认为一维数组是线性表(特指顺序表)的基本表现形式，n维数组是对线性表数据结构的一种拓展。</p>
 <hr>
-<h2 id="2-栈详解"><a href="#2-栈详解" class="headerlink" title="2.栈详解"></a>2.栈详解</h2><h3 id="2-1-顺序栈"><a href="#2-1-顺序栈" class="headerlink" title="2.1 顺序栈"></a>2.1 顺序栈</h3><p>栈的顺序存储结构简称为顺序栈。类似于顺序表，顺序栈也可以用C++数组来实现。由于栈底位置固定不变，因此可将栈底设置在数组两端的任意一端，通常把数组下标为0的一端作为栈底。同时设置栈顶指针top表示栈顶位置，当进行入栈操作时，top加1，当进行出栈操作时，top减1，栈的高度为top+1。当栈为空时，top&#x3D;-1。设数组的大小为StackSize，则当栈满时，top&#x3D;StackSize-1。下图说明了在顺序栈中进行入栈和出栈时，栈中元素和栈顶指针的变化。</p>
+<h2 id="2-栈详解"><a href="#2-栈详解" class="headerlink" title="2.栈详解"></a>2.栈详解</h2><p>栈的数学性质：当n个不同的元素进栈，出栈元素不同的排列个数为</p>
+<p><img src="/images/image-20230813200318538.png" srcset="/img/loading.gif" lazyload></p>
+<p>上述公式称为卡特兰数，使用数学归纳法可证明，此处不再赘述</p>
+<h3 id="2-1-顺序栈"><a href="#2-1-顺序栈" class="headerlink" title="2.1 顺序栈"></a>2.1 顺序栈</h3><p>栈的顺序存储结构简称为顺序栈。类似于顺序表，顺序栈也可以用C++数组来实现。由于栈底位置固定不变，因此可将栈底设置在数组两端的任意一端，通常把数组下标为0的一端作为栈底。同时设置栈顶指针top表示栈顶位置，当进行入栈操作时，top加1，当进行出栈操作时，top减1，栈的高度为top+1。当栈为空时，top&#x3D;-1。设数组的大小为StackSize，则当栈满时，top&#x3D;StackSize-1。下图说明了在顺序栈中进行入栈和出栈时，栈中元素和栈顶指针的变化。</p>
 <p><img src="/images/image-20230718203435185.png" srcset="/img/loading.gif" lazyload alt="顺序栈操作示意图"></p>
 <h4 id="2-1-1-类声明"><a href="#2-1-1-类声明" class="headerlink" title="2.1.1 类声明"></a>2.1.1 类声明</h4><p>直接给出顺序栈的C++类声明</p>
 <p><img src="/images/image-20230718203534373.png" srcset="/img/loading.gif" lazyload alt="顺序栈"></p>
@@ -799,6 +825,9 @@
 <p><img src="/images/image-20230718203733743.png" srcset="/img/loading.gif" lazyload alt="顺序栈基本成员函数"></p>
 <h3 id="2-2-链式栈"><a href="#2-2-链式栈" class="headerlink" title="2.2 链式栈"></a>2.2 链式栈</h3><p>栈的链式存储结构称为链栈，其实现原理类似于单链表，结点结构与单链表相同。由于插入和删除操作都在表头进行，因此链栈在实现时直接将栈顶指针指向栈顶元素，无须像单链表一样增加表头结点（头结点的存在本身是为了统一开始结点和其他结点上的操作的不同，但因为栈只会操作开始结点所以头结点失去存在的意义）。</p>
 <p><img src="/images/image-20230718203910757.png" srcset="/img/loading.gif" lazyload alt="链式栈示意图"></p>
+<blockquote>
+<p>因为链栈在链表的头部进行操作，而链表插入和删除都需要找到开始结点的前驱节点，因此在没有头结点的情况下，只有表头指针没有表尾指针的循环单链表是不能快速找到开始结点的前驱结点的（时间复杂度为O(n)），因此不适合做链栈</p>
+</blockquote>
 <h4 id="2-2-1-类声明"><a href="#2-2-1-类声明" class="headerlink" title="2.2.1 类声明"></a>2.2.1 类声明</h4><p>下面给出链栈的C++模板类声明</p>
 <p><img src="/images/image-20230718204107061.png" srcset="/img/loading.gif" lazyload alt="链栈"></p>
 <h4 id="2-2-2-成员函数实现"><a href="#2-2-2-成员函数实现" class="headerlink" title="2.2.2 成员函数实现"></a>2.2.2 成员函数实现</h4><h5 id="1-入栈和出栈"><a href="#1-入栈和出栈" class="headerlink" title="(1)入栈和出栈"></a>(1)入栈和出栈</h5><p>由于栈是操作受限的线性表，因此链栈的基本操作可以看成是单链表操作的简化。链栈的入和出操作如下所示</p>
@@ -809,6 +838,46 @@
 <h5 id="2-析构函数"><a href="#2-析构函数" class="headerlink" title="(2)析构函数"></a>(2)析构函数</h5><p>链栈类的实例在生命期结束时，需要利用析构函数将所有链表中的结点释放</p>
 <p><img src="/images/image-20230718204348787.png" srcset="/img/loading.gif" lazyload alt="析构函数"></p>
 <p>析构函数的时间复杂度为O（n）</p>
+<h3 id="2-3-共享栈"><a href="#2-3-共享栈" class="headerlink" title="2.3 共享栈"></a>2.3 共享栈</h3><p>利用栈底位置相对不变的特性，可让两个<code>顺序栈</code>共享一个一维数组空间，将两个栈的栈底分别设置在共享空间的两端，两个栈顶向共享空间的中间延伸，如图所示</p>
+<p><img src="/images/image-20230813193717634.png" srcset="/img/loading.gif" lazyload></p>
+<p>两个栈的栈顶指针都指向栈顶元素，top0&#x3D;-1时0号栈为空，top1&#x3D;MaxSize时1号栈为空；仅当两个栈顶指针相邻（top1-top0&#x3D;1）时，判断为栈满。当0号栈进栈时top0先加1再赋值，1 号栈进栈时 top1 先减 1 再赋值；出栈时则刚好相反。</p>
+<p>共享栈是为了更有效地利用存储空间，两个栈的空间相互调节，只有在整个存储空间被占满时才发生上溢。其存取数据的时间复杂度均为 0（1），所以对存取效率没有什么影响。</p>
+<h3 id="2-4-栈的应用"><a href="#2-4-栈的应用" class="headerlink" title="2.4 栈的应用"></a>2.4 栈的应用</h3><p>因为栈具有记忆当前状态的功能，因此栈常用于递归调用（调用自己）、子程序调用（调用其他函数）、表达式求值以及括号匹配等</p>
+<h4 id="2-4-1-表达式转换-amp-求值"><a href="#2-4-1-表达式转换-amp-求值" class="headerlink" title="2.4.1 表达式转换&amp;求值"></a>2.4.1 表达式转换&amp;求值</h4><p>参考链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Amentos/article/details/127182926">《数据结构》：中缀表达式转后缀表达式 + 后缀表达式的计算_Amentos的博客-CSDN博客</a>；</p>
+<ul>
+<li><p>中缀表达式：操作符以中缀形式位于运算数中间（如：3+2），是我们日常通用的算术和逻辑公式表示方法。</p>
+</li>
+<li><p>后缀表达式：又称逆波兰式（Reverse Polish Notation - RPN），操作符以后缀形式位于两个运算数后（如：3+2的后缀表达形式就是3 2 +）。</p>
+</li>
+<li><p>前缀表达式：又称波兰式（Polish Notation），操作符以前缀形式位于两个运算数前（如：3+2的前缀表达形式就是+ 3 2）。</p>
+</li>
+</ul>
+<p>中缀表达式往往需要使用括号将操作符和对应的操作数括起来，用于指示运算的次序。中缀表达式适合于人类的思维结构和运算习惯，但并不适用于计算机。尤其是包含括号的中缀表达式，对计算机而言是非常复杂的结构。与中缀表达式不同，后缀表达式不需要使用括号来标识操作符的优先级。后缀表达式的计算按操作符从左到右出现的顺序依次执行(不考虑运算符之间的优先级)，对于计算机而言是比较简单的结构。</p>
+<p>下面介绍借助字符栈完成中缀表达式到后缀表达式的转换：从左至右依次遍历中缀表达式各个字符</p>
+<ol>
+<li>若字符为运算数：直接送入后缀表达式</li>
+<li>若字符为左括号：直接入栈（左括号优先级最低）</li>
+<li>若字符为右括号：直接出栈（不送入后缀表达式），并将出栈字符依次送入后缀表达式，直到栈顶字符为左括号（左括号也要出栈，但不送入后缀表达式）</li>
+<li>若字符为操作符<ul>
+<li>若栈空，直接入栈</li>
+<li>若栈非空，判断栈顶操作符，若栈顶操作符优先级低于该操作符，该操作符入栈；否则一直出栈，并将出栈字符依次送入后缀表达式，直到栈空或栈顶操作符优先级低于该操作符，该操作符再入栈</li>
+<li>总结：只要满足<code>栈空</code>或者<code>优先级高于栈顶操作符</code>即可将该操作符入栈，否则出栈直到满足条件之一</li>
+</ul>
+</li>
+<li>重复以上步骤直至遍历完成中缀表达式，接着判断字符栈是否为空，非空则直接出栈，并将出栈字符依次送入后缀表达式</li>
+</ol>
+<p>而实际上我们在解题的时候这样进行会非常缓慢，下面举一个例子快速得到后缀表达式（作图法，依次根据运算顺序进行转换）</p>
+<p><img src="/images/image-20230814201057711.png" srcset="/img/loading.gif" lazyload></p>
+<p>得到后缀表达式之后，同样可以借助一个运算数栈来对其进行计算：从左至右依次遍历后缀表达式各个字符</p>
+<ol>
+<li>若字符为运算数：直接入栈</li>
+<li>若字符为操作符：连续出栈两次，使用出栈的两个数据进行相应计算，并将计算结果入栈<ul>
+<li>第一个出栈的运算数为 a ，第二个出栈的运算数为 b ，此时的操作符为 - ，则计算 <em>b-a</em> （注：a和b顺序不能反），并将结果入栈</li>
+<li>运算先后顺序为：第二次出栈运算数  操作符  第一次出栈运算数</li>
+</ul>
+</li>
+<li>重复以上步骤直至遍历完成后缀表达式，最后栈中的数据就是中缀表达式的计算结果</li>
+</ol>
 <h2 id="3-队列详解"><a href="#3-队列详解" class="headerlink" title="3.队列详解"></a>3.队列详解</h2><h3 id="3-1-循环队列"><a href="#3-1-循环队列" class="headerlink" title="3.1 循环队列"></a>3.1 循环队列</h3><p>类似于顺序表，队列也可以采用顺序存储结构进行存储，即使用数组存储队列元素。由于队列的操作是在队列两端进行的，因此一般需要设置队头和队尾两个指针。对于空队列，队头和队尾均为-1，随着元素的入队，队尾不断后移。假定队头位置固定，不难发现当队头元素出队时，队列中的其他每个元素都需要向前移动一个单元，因此出队操作的时间复杂度为O（n）</p>
 <p><img src="/images/image-20230718210251506.png" srcset="/img/loading.gif" lazyload alt="队头固定的队列的出队操作"></p>
 <p>为了简化出队操作，可以允许队头指针改变，当队头元素出队时，其他元素不需要移动，而只需要将队头指针后移。但这也带来一个问题，由于元素出队时队头指针后移，出队元素所占用的空间就不能再使用了，这势必会导致存储队列的空间越来越小，直到无法使用。为了解决这个问题，通常采用循环队列实现顺序存储结构。</p>
@@ -834,6 +903,13 @@
 <h3 id="3-2-链队列"><a href="#3-2-链队列" class="headerlink" title="3.2 链队列"></a>3.2 链队列</h3><p>队列的链式存储结构称为链队列，因此链队列可看成仅在表头删除和表尾插入的单链表。</p>
 <p>如果仅有单链表的头指针，不便于在表尾进行插入操作，因此通常会在表尾增加一个尾指针，指向最后一个结点。为了使空队列和非空队列的操作一致，多采用带有头结点的链队列。</p>
 <p><img src="/images/image-20230718211826448.png" srcset="/img/loading.gif" lazyload alt="链队列示意图"></p>
+<blockquote>
+<ul>
+<li>对于带头结点的链表来说，只带队尾指针（队尾指针指向终端结点）的循环单链表因为入队操作和出队操作的时间复杂度都为O(1)（入队从队尾入，出队从队头出，因为知道终端结点所以可以直接操作）</li>
+<li>类似的分析，因为只带队首指针的非循环双链表在插入操作时需要O(n)的时间复杂度找到最后一个元素，因此不适合用于做链队列</li>
+<li>用含头结点的单链表表示的链队的队头在链表的链尾（队列元素为1，此时既是队头也是队尾）或链中（队列元素大于1，因为头结点存在故队头在链表中间），队尾始终在链尾</li>
+</ul>
+</blockquote>
 <h4 id="3-2-1-类声明"><a href="#3-2-1-类声明" class="headerlink" title="3.2.1 类声明"></a>3.2.1 类声明</h4><p>下面是链队列的C++模板类声明</p>
 <p><img src="/images/image-20230718212651450.png" srcset="/img/loading.gif" lazyload></p>
 <p>链队列类的构造函数将队列初始化为空队列，front 和 rear 都指向头结点。反之，当 front和rear都指向同一结点时，队列为空队列。</p>
@@ -850,6 +926,14 @@
 <h5 id="3-查找队头元素-1"><a href="#3-查找队头元素-1" class="headerlink" title="(3)查找队头元素"></a>(3)查找队头元素</h5><p><img src="/images/image-20230718213108071.png" srcset="/img/loading.gif" lazyload></p>
 <h5 id="4-析构函数"><a href="#4-析构函数" class="headerlink" title="(4)析构函数"></a>(4)析构函数</h5><p>析构函数完成链队列中所有结点的释放，具体实现如下</p>
 <p><img src="/images/image-20230718213159246.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-3-双端队列"><a href="#3-3-双端队列" class="headerlink" title="3.3 双端队列"></a>3.3 双端队列</h3><p>双端队列是指允许两端都可以进行入队和出队操作的队列，如图所示</p>
+<p><img src="/images/image-20230813194053522.png" srcset="/img/loading.gif" lazyload></p>
+<p>其元素的逻辑结构仍是线性结构。将队列的两端分别称为前端和后端，两端都可以入队和出队。可以将双端队列看作栈底连在一起的两个栈，与共享栈不同之处在于双端队列的“栈顶指针”向两端延伸而不是向中间靠拢</p>
+<p>在双端队列进队时，前端进的元素排列在队列中后端进的元素的前面，后端进的元素排列在队列中前端进的元素的后面。在双端队列出队时，无论是前端还是后端出队，先出的元素排列在后出的元素的前面。</p>
+<p>还有一种概念是输出受限的双端队列：允许在一端进行插入和删除，但在另一端只允许插入的双端队列称为输出受限的双端队列，如图所示</p>
+<p><img src="/images/image-20230813194409140.png" srcset="/img/loading.gif" lazyload></p>
+<p>与此对应的，有输入受限的双端队列：允许在一端进行插入和删除，但在另一端只允许删除的双端队列称为，输入受限的双端队列。</p>
+<p>若限定双端队列从某个端点插入的元素只能从该端点删除（即输入输出均受限），则该双端队列就蜕变为两个栈底相邻接的栈。</p>
 <h2 id="4-串详解"><a href="#4-串详解" class="headerlink" title="4.串详解"></a>4.串详解</h2><h3 id="4-1-串的存储结构"><a href="#4-1-串的存储结构" class="headerlink" title="4.1 串的存储结构"></a>4.1 串的存储结构</h3><p>串是一种结点元素仅由一个字符构成的线性表，存储时既可以采用顺序存储结构，也可以采用链式存储结构。需要注意的是，串的操作往往将串作为一个整体来考虑，因此串在存储时还要考虑一些特殊技巧。</p>
 <h4 id="4-1-1-顺序串"><a href="#4-1-1-顺序串" class="headerlink" title="4.1.1 顺序串"></a>4.1.1 顺序串</h4><p>串的顺序存储结构称为顺序串，可采用数组存储串中的字符序列。一般来说，串的顺序存储方式有多种，在此介绍两种最常用的方法。</p>
 <p>第一种存储方法中，data数组存储字符串序列，length表示串的长度，可以使用顺序表的C++模板类<code>SqlList&lt;char&gt;</code>来实现</p>
