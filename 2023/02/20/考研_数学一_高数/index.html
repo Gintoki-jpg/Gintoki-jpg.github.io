@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/study.jpg">
 <meta property="article:published_time" content="2023-02-20T07:43:00.000Z">
-<meta property="article:modified_time" content="2023-08-16T08:54:25.373Z">
+<meta property="article:modified_time" content="2023-08-17T09:40:43.001Z">
 <meta property="article:author" content="YangZaiyan">
 <meta property="article:tag" content="高等数学">
 <meta name="twitter:card" content="summary_large_image">
@@ -221,7 +221,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          62k 字
+          63k 字
         
       </span>
     
@@ -232,7 +232,7 @@
         
         
         
-          513 分钟
+          526 分钟
         
       </span>
     
@@ -720,16 +720,19 @@
 <p>第一类间断点只有：可去间断点(不满足极限值等于函数值)，跳跃间断点(x<del>0</del>点左极限值不等于右极限值) – 极限值均存在</p>
 <p>第二类间断点包含：无穷间断点，振荡间断点 – 极限值均不存在</p>
 </blockquote>
-<h3 id="2-3-可导-amp-连续-amp-可积"><a href="#2-3-可导-amp-连续-amp-可积" class="headerlink" title="2.3 可导&amp;连续&amp;可积"></a>2.3 可导&amp;连续&amp;可积</h3><p>下面是总结的四者之间的关系<br>$$<br>可微&#x3D;可导&gt;&#x3D;连续&gt;&#x3D;可积<br>$$</p>
+<h3 id="2-3-一元函数-amp-多元函数"><a href="#2-3-一元函数-amp-多元函数" class="headerlink" title="2.3 一元函数&amp;多元函数"></a>2.3 一元函数&amp;多元函数</h3><p>一元函数的微分、连续以及可积有如下不等关系<br>$$<br>可微&#x3D;可导&gt;&#x3D;连续&gt;&#x3D;可积<br>$$</p>
 <ul>
 <li>可导必定连续，连续不一定可导（光滑必定一笔画，但一笔画不一定光滑）；</li>
 <li>可微和可导等价；</li>
 <li>可积不一定连续，连续必定可积（可积是指符合定积分存在定理而非原函数存在定理）；</li>
 </ul>
+<p>一元函数和多元函数在极限存在、连续、可导以及可微的相互关系上有相同也有不同，下面这张图完整的总结了它们之间的关系</p>
+<p><img src="/images/image-20230817164510213.png" srcset="/img/loading.gif" lazyload></p>
 <h2 id="3-未定式极限计算"><a href="#3-未定式极限计算" class="headerlink" title="3.未定式极限计算*"></a>3.未定式极限计算*</h2><blockquote>
 <ul>
 <li>未定式表示其极限可能存在可能不存在，需要通过计算来判断，除了下面七种未定式，其他非未定式要么极限一定存在要么极限一定不存在。对于非未定式，直接硬算就行，没什么难度；</li>
 <li>这里仅仅只是提供一个解决大部分未定式极限计算的方法，不能保证对所有的未定式的极限计算都有用（数学最重要的是掌握知识点的核心而不是硬背解题模板）</li>
+<li>注意这里的0&#x2F;0型是“趋于0&#x2F;趋于0”的形式，如果是形如“真正的0&#x2F;趋于0”结果可以直接算出就是0</li>
 </ul>
 </blockquote>
 <p><img src="/images/image-20230222213027307.png" srcset="/img/loading.gif" lazyload alt="七种未定式"></p>
@@ -855,7 +858,10 @@
 <li>在分段点用导数定义求导（定义法）</li>
 </ul>
 <p>一般分段函数(绝对值函数也是分段函数需要注意)求导的题型都会先让学生根据题干所给条件求出分段函数g(x)的具体表达式，然后再对g(x)进行求导</p>
-<h4 id="3-2-2-复合函数"><a href="#3-2-2-复合函数" class="headerlink" title="3.2.2 复合函数"></a>3.2.2 复合函数</h4><p>洋葱法则：从函数最外层到最内层依次求导，不需要使用链式法则的中间变量</p>
+<h4 id="3-2-2-复合函数"><a href="#3-2-2-复合函数" class="headerlink" title="3.2.2 复合函数"></a>3.2.2 复合函数</h4><blockquote>
+<p>官方的教材对一元复合函数的求导使用的是和多元复合函数求导相同的链式法则，实际完全没必要，对于一元复合函数求导直接使用如下“洋葱法则”即可</p>
+</blockquote>
+<p>洋葱法则：从函数最外层到最内层依次求导，不需要使用链式法则的中间变量</p>
 <p><img src="/images/image-20230812160356940.png" srcset="/img/loading.gif" lazyload></p>
 <blockquote>
 <ul>
@@ -864,15 +870,6 @@
 </ul>
 <p><img src="/images/image-20230812160511596.png" srcset="/img/loading.gif" lazyload></p>
 </blockquote>
-<p>这里介绍几个比较有特点的题型</p>
-<p><img src="/images/image-20230325105441563.png" srcset="/img/loading.gif" lazyload alt="例题_1"></p>
-<ul>
-<li>这道题是典型的复合函数求导，需要注意f是关于(x+y)一个变量的函数，F是关于x,y,z三个变量的函数；</li>
-<li>另外一点，遇到这种有多个变量的情况，并且题干中并没有明确说明y和x之间是否存在关系时，我们认为所有的变量都是相关的，也就是在进行求导或者求微分的操作的时候均考虑（这样就算之后题目中说到了两个变量之间是独立的，也可以使用dy&#x2F;dx&#x3D;0确保最后的通式仍然正确）<ul>
-<li>为什么y和x无关时，y对x的导数是0？因为导数的几何意义是函数在某点的变化率，而如果y和x无关也就意味着y不会随着x的变化而变化，即变化率是0，因此y对x的导数是0；</li>
-</ul>
-</li>
-</ul>
 <h4 id="3-2-3-反函数"><a href="#3-2-3-反函数" class="headerlink" title="3.2.3 反函数"></a>3.2.3 反函数</h4><p><img src="/images/image-20230709101403227.png" srcset="/img/loading.gif" lazyload></p>
 <blockquote>
 <ul>
@@ -891,11 +888,11 @@
 <h4 id="3-2-5-隐函数"><a href="#3-2-5-隐函数" class="headerlink" title="3.2.5 隐函数"></a>3.2.5 隐函数</h4><p>隐函数是指y不能表达成关于x的式子，主要有三种求导方法（一般情况下这三种方法都可以互相替换，但最好根据具体的情况选择最合适的方法）</p>
 <ul>
 <li>直接求导法：直接等式两边同时对x求导即可，这种情况下需要注意y是x的函数</li>
-<li>全微分形式不变：说白了就是简单的复合函数求导公式推导而来的微分公式，这种情况下y仍然是x的函数</li>
+<li>微分形式不变：说白了就是简单的复合函数求导公式推导而来的微分公式，这种情况下y仍然是x的函数</li>
 </ul>
 <p><img src="/images/image-20230812161331388.png" srcset="/img/loading.gif" lazyload></p>
 <ul>
-<li>隐函数存在定理：详情参考[隐函数存在定理](# 2.2 隐函数存在定理)，这种情况下对x求偏导视y为常数，对y求偏导视x为常数</li>
+<li>隐函数存在定理：详情参考[隐函数存在定理](# 2.2.1 隐函数存在定理(公式法))，这种情况下对x求偏导视y为常数，对y求偏导视x为常数</li>
 </ul>
 <p><img src="/images/image-20230812161616407.png" srcset="/img/loading.gif" lazyload></p>
 <table>
@@ -1459,6 +1456,7 @@
 </ul>
 </li>
 <li>连续使用分部积分法的时候一定要把上一次的分部积分形式解出来才能继续使用分部积分</li>
+<li>根据分部积分法的特点，对于被积函数中含有f’(x)以及∫f(x)dx形式的积分一般都使用分部积分解决（这种问题称为升降阶问题，千万不要把积分或导数求出来再代入计算，会很麻烦）</li>
 </ul>
 </blockquote>
 <p>分部积分的推广公式如下</p>
@@ -1579,10 +1577,11 @@
 <p><img src="/images/image-20230228105521640.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="2-4-定积分比大小"><a href="#2-4-定积分比大小" class="headerlink" title="2.4 定积分比大小"></a>2.4 定积分比大小</h3><p>定积分比较大小这种题型常作为选择题出现，针对积分较简单的可以尝试直接用牛莱公式、定积分的奇偶性等直接计算</p>
 <p><img src="/images/image-20230815110600460.png" srcset="/img/loading.gif" lazyload></p>
-<p>而针对某些较复杂的积分，主要使用保号性解决，主要分为两种题型：</p>
+<p>而针对某些较复杂的积分，主要使用保号性解决，主要分为三种题型：</p>
 <ol>
 <li>区间相同被积函数不同：常利用积分的保号性解决</li>
 <li>区间不同被积函数相同：利用换元法，将区间换元为相同的区间转换为第一类比较大小的题型</li>
+<li>区间不同被积函数也不同：利用换元法将区间转换为相同区间，即第一类比较大小的题型</li>
 </ol>
 <p>换元法常用到以下诱导公式需要记忆（实际就是三角变换公式）</p>
 <p><img src="/images/image-20230815110716379.png" srcset="/img/loading.gif" lazyload></p>
@@ -1732,21 +1731,36 @@
 <li>更一般的是利用等价无穷小或极限计算等将待比较被积函数化为已知chi’du的形式再比较（这是利用了本节出题的特点就只能是从已知的四个尺度进行演化，不可能完全创新）</li>
 </ul>
 <h2 id="5-积分等式-amp-积分不等式"><a href="#5-积分等式-amp-积分不等式" class="headerlink" title="5.积分等式&amp;积分不等式*"></a>5.积分等式&amp;积分不等式*</h2><p>积分等式或积分不等式顾名思义就是显式含积分的等式或不等式（这与微分不等式略有不同）；</p>
-<h3 id="5-1-积分等式"><a href="#5-1-积分等式" class="headerlink" title="5.1 积分等式"></a>5.1 积分等式</h3><p>该考点一般会作为应用大题考察，要么是让证明某个积分等式成立，要么是计算某个积分，这一节难度极大（涉及中值定理的都不会简单），本质还是需要在刷题过程中巩固；</p>
+<h3 id="5-1-积分等式"><a href="#5-1-积分等式" class="headerlink" title="5.1 积分等式"></a>5.1 积分等式</h3><p>该考点一般会作为应用大题考察，要么是让证明某个积分等式成立，要么是计算某个积分。主要有以下主流方法：</p>
+<ol>
+<li>通过常用积分等式搭配基本积分法，证明某特殊积分等式后求解另一复杂积分；</li>
+<li>积分中值定理（拉格朗日常与罗尔搭配使用）以及推广的积分中值定理；</li>
+<li>夹逼准则计算复杂积分；</li>
+</ol>
 <h4 id="5-1-1-中值定理"><a href="#5-1-1-中值定理" class="headerlink" title="5.1.1 中值定理"></a>5.1.1 中值定理</h4><p>前面我们已经介绍过各种不同的<a href="#%E5%85%AD%E3%80%81%E4%B8%AD%E5%80%BC%E5%AE%9A%E7%90%86">中值定理</a>，涉及积分形式的有一个积分中值定理</p>
 <p><img src="/images/image-20230816165418377.png" srcset="/img/loading.gif" lazyload></p>
 <p>这里补充一个积分中值定理的推广形式，当g(x)为1的时候就是普通的积分中值定理</p>
 <p><img src="/images/image-20230314104921098.png" srcset="/img/loading.gif" lazyload alt="积分中值定理推广"></p>
+<blockquote>
+<p>一般题干给出的条件中，出现∫(抽象函数*具体函数)dx的形式就可以考虑使用推广积分中值定理</p>
+</blockquote>
 <h4 id="5-1-2-夹逼准则"><a href="#5-1-2-夹逼准则" class="headerlink" title="5.1.2 夹逼准则"></a>5.1.2 夹逼准则</h4><p>夹逼定理一般用于计算复杂积分，即被积函数不容易积分的时候进行放缩处理</p>
 <ul>
 <li>积分的夹逼最好直接夹在两个数或表达式而不是积分之间，因为夹在积分中间还需要额外计算积分；</li>
 </ul>
 <h4 id="5-1-3-积分法"><a href="#5-1-3-积分法" class="headerlink" title="5.1.3 积分法"></a>5.1.3 积分法</h4><p>积分法就是使用基本积分法来推导，一般会要求先使用基本积分法得到一个新的积分法，然后利用新的积分法来解决问题；</p>
-<h3 id="5-2-积分不等式"><a href="#5-2-积分不等式" class="headerlink" title="5.2 积分不等式"></a>5.2 积分不等式</h3><h4 id="5-2-1-函数单调性"><a href="#5-2-1-函数单调性" class="headerlink" title="5.2.1 函数单调性"></a>5.2.1 函数单调性</h4><p>利用单调性证明不等式是主流方法，通常的做法是先让某一积分限（通常是上限）变量化为x，之后构造辅助函数，通过研究辅助函数的单调性来证明不等式；</p>
-<p>一般适用于所给条件为<code>“f(x)在[a,b]上连续”</code>的情形，或者其上下限、被积函数及其复杂；</p>
-<h4 id="5-2-2-拉格朗日中值定理"><a href="#5-2-2-拉格朗日中值定理" class="headerlink" title="5.2.2 拉格朗日中值定理"></a>5.2.2 拉格朗日中值定理</h4><p>该方法一般适用于所给条件为<code>“f(x)为一阶可导且某一端点的值较简单（通常为0）”</code>或出现<code>f与f&#39;之间的关系</code>；</p>
-<h4 id="5-2-3-泰勒公式"><a href="#5-2-3-泰勒公式" class="headerlink" title="5.2.3 泰勒公式"></a>5.2.3 泰勒公式</h4><p>当题干出现<code>f(x)二阶可导且某端点值较简单（通常为0）</code>且一般要求解决二阶导数f’’(x)的问题；</p>
-<h4 id="5-2-4-积分法"><a href="#5-2-4-积分法" class="headerlink" title="5.2.4 积分法"></a>5.2.4 积分法</h4><p>此方法是最基本也最核心的方法，即使用基本积分法来证明不等式。简单来说就是直接把要证明的积分计算出来（这要求一定的计算能力）</p>
+<h3 id="5-2-积分不等式"><a href="#5-2-积分不等式" class="headerlink" title="5.2 积分不等式"></a>5.2 积分不等式</h3><p>积分不等式的研究方法与微分不等式类似，主流方法都是使用函数单调性，偶尔可能会使用凹凸性（如“函数端点值相同证明函数在区间上大于或小于端点值”，只需要求解凹凸性即可）。</p>
+<p>往往很多时候整个积分不好处理我们可以只研究被积函数，利用积分的保号性得到积分的大小关系，这是第二种解题思路。</p>
+<h4 id="5-2-1-研究整个积分"><a href="#5-2-1-研究整个积分" class="headerlink" title="5.2.1 研究整个积分"></a>5.2.1 研究整个积分</h4><h5 id="1-函数性态"><a href="#1-函数性态" class="headerlink" title="(1)函数性态"></a>(1)函数性态</h5><p>利用单调性证明不等式是主流方法，通常的做法是先让某一积分限（通常是上限）变量化为x，之后构造辅助函数，通过研究辅助函数的单调性来证明不等式；</p>
+<p>一般适用于所给条件为<code>“f(x)在[a,b]上连续”</code>的情形，或者其上下限、被积函数比较复杂；</p>
+<blockquote>
+<p>除了单调性和凹凸性，有时候利用几何性质画图也能帮助解题</p>
+</blockquote>
+<h5 id="2-积分法"><a href="#2-积分法" class="headerlink" title="(2)积分法"></a>(2)积分法</h5><p>此方法是最基本也最核心的方法，即使用基本积分法来证明不等式。简单来说就是直接把要证明的积分计算出来（这要求一定的计算能力）</p>
+<h4 id="5-2-2-研究被积函数"><a href="#5-2-2-研究被积函数" class="headerlink" title="5.2.2 研究被积函数"></a>5.2.2 研究被积函数</h4><h5 id="1-拉格朗日中值定理"><a href="#1-拉格朗日中值定理" class="headerlink" title="(1)拉格朗日中值定理"></a>(1)拉格朗日中值定理</h5><p>用拉格朗日中值定理处理被积函数，得到被积函数的不等式后，利用积分的保号性得到积分的不等式</p>
+<p>该方法一般适用于所给条件为<code>“f(x)为一阶可导且某一端点的值较简单（通常为0，往往用于构造中值定理中的f(a)）”</code>或出现<code>f与f&#39;之间的关系</code>（适用条件不用太care，更一般的是通过具体题型来选择方法而不是通过这种使用条件来判断）；</p>
+<h5 id="2-泰勒公式"><a href="#2-泰勒公式" class="headerlink" title="(2)泰勒公式"></a>(2)泰勒公式</h5><p>将f(x)展开成泰勒公式，甩掉拉格朗日余项后得到不等式，然后利用积分保号性得到积分不等式</p>
+<p>当题干出现<code>f(x)二阶可导且某端点值较简单（通常为0，往往作为函数展开点）</code>且一般要求解决二阶导数f’’(x)的问题；</p>
 <h1 id="八、一元函数积分学的应用"><a href="#八、一元函数积分学的应用" class="headerlink" title="八、一元函数积分学的应用"></a>八、一元函数积分学的应用</h1><h2 id="1-几何应用-1"><a href="#1-几何应用-1" class="headerlink" title="1.几何应用"></a>1.几何应用</h2><p>一元积分学的几何应用与一元微分学的几何应用的一个重大区别就是，不需要过多的分析只需要直接套公式+强大的计算能力即可。因此本讲要求记忆所给公式，注意以下公式均假设曲线都是连续的</p>
 <h3 id="1-1-平面图形面积"><a href="#1-1-平面图形面积" class="headerlink" title="1.1 平面图形面积"></a>1.1 平面图形面积</h3><h4 id="1-1-1-直角坐标系"><a href="#1-1-1-直角坐标系" class="headerlink" title="1.1.1 直角坐标系"></a>1.1.1 直角坐标系</h4><p><img src="/images/image-20230307220925835.png" srcset="/img/loading.gif" lazyload alt="直角坐标系"></p>
 <p>仅靠上面的公式并不能解决所有问题，更常用的是将直角坐标系下的平面图形面积分为X型和Y型解题</p>
@@ -1790,14 +1804,21 @@
 <p><img src="/images/image-20230816163151269.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="1-7-截面面积已知的立体体积"><a href="#1-7-截面面积已知的立体体积" class="headerlink" title="1.7 截面面积已知的立体体积"></a>1.7 截面面积已知的立体体积</h3><p>这种题型非常简单，就是刚开始学习一元函数积分的时候“切土豆”的例子，使用微元法求解</p>
 <p><img src="/images/image-20230515233111227.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="2-物理应用-1"><a href="#2-物理应用-1" class="headerlink" title="2.物理应用"></a>2.物理应用</h2><p>这里的题型是对一类题型的总结，其解题方法具有参考意义，并不仅限于解答给出的题型</p>
+<h2 id="2-物理应用-1"><a href="#2-物理应用-1" class="headerlink" title="2.物理应用"></a>2.物理应用</h2><p>这里的题型是对一类题型的总结，其解题方法（即微元法）具有参考意义，并不仅限于解答给出的这几种题型</p>
 <h3 id="2-1-变力沿直线做功"><a href="#2-1-变力沿直线做功" class="headerlink" title="2.1 变力沿直线做功"></a>2.1 变力沿直线做功</h3><p>此类题型题干一般都是“力F随着x改变而改变”，使用微元法解决</p>
 <p><img src="/images/image-20230515231422192.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="2-2-抽水做功"><a href="#2-2-抽水做功" class="headerlink" title="2.2 抽水做功"></a>2.2 抽水做功</h3><p>这类题型与上一题的区别在于力不变，位移在改变，需要做合理的坐标系能够帮助解题（同样使用微元法）</p>
+<h3 id="2-2-抽水做功"><a href="#2-2-抽水做功" class="headerlink" title="2.2 抽水做功"></a>2.2 抽水做功</h3><p>这类题型同样是“力随x的改变而改变”（其实就是变力做功的具体题型），需要做合理的坐标系能够帮助解题（同样使用微元法）</p>
 <p><img src="/images/image-20230515231630335.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="2-3-静水压力"><a href="#2-3-静水压力" class="headerlink" title="2.3 静水压力"></a>2.3 静水压力</h3><p>水压力问题的特点：压强随着水的深度改变而改变，使用微元法解题，同样的，合理的坐标系能够帮助解题</p>
 <p><img src="/images/image-20230515232042905.png" srcset="/img/loading.gif" lazyload></p>
-<h1 id="九、多元函数微分学"><a href="#九、多元函数微分学" class="headerlink" title="九、多元函数微分学"></a>九、多元函数微分学</h1><h2 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1.基本概念"></a>1.基本概念</h2><h3 id="1-1-平面点集"><a href="#1-1-平面点集" class="headerlink" title="1.1 平面点集"></a>1.1 平面点集</h3><p>二元函数f(x,y)的定义域是平面上的点集，平面点集就是平面直角坐标系xOy上的点组成的集合，即以两个实数组成的有序数组(x,y)为元素的集合；</p>
+<blockquote>
+<p>这个平板没有宽度的意思准确来说是没有厚度，ABCD这个面就是平板的前面（平板被认为没有厚度）</p>
+</blockquote>
+<h3 id="2-4-位移大小与总路程"><a href="#2-4-位移大小与总路程" class="headerlink" title="2.4 位移大小与总路程"></a>2.4 位移大小与总路程</h3><p><img src="/images/image-20230817105147223.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-5-细杆质心"><a href="#2-5-细杆质心" class="headerlink" title="2.5 细杆质心"></a>2.5 细杆质心</h3><p>（这种题型直接套公式就行，没有过多解释的必要）</p>
+<p><img src="/images/image-20230817105650336.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="九、多元函数微分学"><a href="#九、多元函数微分学" class="headerlink" title="九、多元函数微分学"></a>九、多元函数微分学</h1><p>本讲名为多元函数实际上大部分都讲的是二元函数的微分，微分学的部分可以用二元的思想类比多元（这与多元函数积分既介绍了二元函数也介绍了三元函数略有区别）</p>
+<h2 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1.基本概念"></a>1.基本概念</h2><h3 id="1-1-平面点集-非重点"><a href="#1-1-平面点集-非重点" class="headerlink" title="1.1 平面点集(非重点)"></a>1.1 平面点集(非重点)</h3><p>二元函数f(x,y)的定义域是平面上的点集，平面点集就是平面直角坐标系xOy上的点组成的集合，即以两个实数组成的有序数组(x,y)为元素的集合；</p>
 <p>领域的概念：</p>
 <p><img src="/images/image-20230315193933732.png" srcset="/img/loading.gif" lazyload alt="邻域"></p>
 <p>给定平面上的一个点集E，可以使用领域的概念将平面上的点分为内点、外点和边界点</p>
@@ -1814,17 +1835,21 @@
 <li>若E是一个平面区域，且E内的任一条简单闭曲线的内部还在E内，则这样的 E称为单连通区域（通俗一点单连通区域没有“洞”），否则就叫多连通区域；</li>
 </ul>
 <h3 id="1-2-二元函数的极限"><a href="#1-2-二元函数的极限" class="headerlink" title="1.2 二元函数的极限"></a>1.2 二元函数的极限</h3><p><img src="/images/image-20230315213208770.png" srcset="/img/loading.gif" lazyload alt="定义"></p>
-<blockquote>
-<p>结论1：通过找不同的趋近方式(可以是直线趋近也可以是曲线趋近)其函数值不同来证明二重极限不存在，不能通过穷举所有的趋近方式来证明二重极限存在；</p>
-</blockquote>
+<ul>
+<li><p>二元函数的极限也称为二重极限，与一元极限中x-&gt;x<del>0</del>有且仅有两种方式不同，二重极限中(x,y)-&gt;(x<del>0</del>,y<del>0</del>)一般有无穷多种方式；</p>
+</li>
+<li><p>通过找不同的趋近方式(可以是直线趋近也可以是曲线趋近)其函数值不同来证明二重极限不存在，不能通过穷举所有的趋近方式来证明二重极限存在；</p>
+</li>
+<li><p>除了洛必达法则和单调有界准则以外（这两个是一元函数微分特有），其他一元函数求极限的方法（如唯一性、局部有界性、局部保号性、戴帽脱帽法、运算规则、无穷小替换等）都可用于求解二元极限，二元极限一般能求出来就是存在的，一般求不出来就考虑寻找某特殊趋近方式证明其不存在；</p>
+</li>
+</ul>
 <h3 id="1-3-二元函数的连续性"><a href="#1-3-二元函数的连续性" class="headerlink" title="1.3 二元函数的连续性"></a>1.3 二元函数的连续性</h3><p><img src="/images/image-20230315213439549.png" srcset="/img/loading.gif" lazyload alt="定义"></p>
+<ul>
+<li>二元函数在某点的极限值等于二元函数在该点的函数值，则说明二元函数在该点连续；若二元函数在区域D上每一点都连续则称f(x,y)在区域D上连续；</li>
+</ul>
 <blockquote>
 <p>对于不连续的情况，多元函数并不要求讨论间断点类型；</p>
 </blockquote>
-<p>二元函数的连续性比较容易判断，如何判断二元函数f(x,y)在(x<del>0</del>,y<del>0</del>)处的偏导数是否连续呢？主要步骤如下</p>
-<p><img src="/images/image-20230315215934423.png" srcset="/img/loading.gif" lazyload></p>
-<p>注意，定义法就是指类似<img src="/images/image-20230320214222562.png" srcset="/img/loading.gif" lazyload>的方式求解在(x<del>0</del>,y<del>0</del>)处的偏导数，该偏导数可以认为是精确值；</p>
-<p>公式法指的是类似<img src="/images/image-20230320214344249.png" srcset="/img/loading.gif" lazyload>，也就是利用题干所给的公式求解在(x,y)的偏导数表达式，接着代入x-&gt;x<del>0</del>和y-&gt;y<del>0</del>得到逼近值；</p>
 <h3 id="1-4-二元函数的偏导数"><a href="#1-4-二元函数的偏导数" class="headerlink" title="1.4 二元函数的偏导数"></a>1.4 二元函数的偏导数</h3><p><img src="/images/image-20230315213505725.png" srcset="/img/loading.gif" lazyload alt="定义"></p>
 <ul>
 <li>偏导数的几何含义是曲面与平面x&#x3D;x<del>0</del>或y&#x3D;y<del>0</del>相交得到的曲线在(x<del>0</del>,y<del>0</del>)处切线的斜率（下面的例子中，偏导数f<del>x</del>(x<del>0</del>,y<del>0</del>)是M<del>0</del>T<del>x</del>对x轴的斜率，偏导数f<del>y</del>(x<del>0</del>,y<del>0</del>)是M<del>0</del>T<del>y</del>对y轴的斜率）；</li>
@@ -1836,33 +1861,42 @@
 <li><p>导数等同于微商，但偏导数的记号是一个整体，不能看作分子和分母的商；</p>
 </li>
 </ul>
-<p>二阶偏导按照对变量求导的次序不同有如下形式（重点记忆第二和第三种形式，谁在前面就表示对谁先求导）</p>
+<h4 id="1-4-1-高阶偏导数"><a href="#1-4-1-高阶偏导数" class="headerlink" title="1.4.1 高阶偏导数"></a>1.4.1 高阶偏导数</h4><p>若偏导数仍具有偏导数，则称其为二阶偏导数。二阶偏导按照对变量求导的次序不同有如下形式（重点记忆第二和第三种形式，谁在前面就表示对谁先求导）</p>
 <p><img src="/images/image-20230315215222289.png" srcset="/img/loading.gif" lazyload></p>
 <ul>
-<li>对x求偏导的时候将y和其他无关变量视作常数，对y求偏导同理；</li>
-<li><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%85%A8%E5%AF%BC%E6%95%B0/7146883">全导数</a>是复合链式法则中的概念，与偏导数不是相对的概念。例如，z与x之间存在中间变量u和v，则z对x的导数就称为全导数；</li>
+<li><p>对x求偏导的时候将y和其他无关变量视作常数，对y求偏导同理 – 在解答某些<code>客观题</code>(主观题因为涉及过程分不推荐这样用)的时候可以直接代入视作常数的值加快计算。比如要计算在(1,1)点的f’<del>x</del>(x,y)，则可以先令y&#x3D;1代入f(x,y)的式子简化表达式得到f(x,1)，然后再对x求偏导得到f’<del>x</del>(x,1)，令x&#x3D;1得到最终结果（注意代值以后就不能对该变量进行后续求导，比如不能对f(x,1)求y的偏导数，因为对常数求导的结果为0）</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%85%A8%E5%AF%BC%E6%95%B0/7146883">全导数</a>是复合链式法则中的概念，与偏导数不是相对的概念。即尽管z与x存在若干中间变量，但最终z只是x的函数z&#x3D;z(x)，则z对x的导数dz&#x2F;dx就称为全导数；</p>
+</li>
+<li><p>对于第二种和第三种形式的高阶偏导数又称为混合偏导数，如果这两个混合偏导在区域D内连续则在该区域内两个二阶混合偏导必然相等 – 实际上，二元初等函数的偏导数仍然是初等函数，这意味着二元初等函数的二阶混合偏导一定是相等的。换句话说，只要不是抽象函数一般都可以认为其混合偏导相等，即无论是先对x求偏导还是先对y求偏导最终结果相同（这在计算某些混合偏导时非常有用，类似于二重积分的换序处理简化计算）</p>
+</li>
 </ul>
-<p>对于第二种和第三种形式的高阶偏导数又称为混合偏导数，具有如下定理</p>
-<p><img src="/images/image-20230325101434248.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="1-5-全微分-不去心"><a href="#1-5-全微分-不去心" class="headerlink" title="1.5 全微分(不去心)"></a>1.5 全微分(不去心)</h3><p>由偏导数的定义可知，二元函数对某个自变量的偏导数表示当另一个自变量固定时，因变量相对于该自变量的变化率。类比一元函数微分学中的增量与微分之间的关系，可以得到二元函数的偏微分定义如下</p>
+<h4 id="1-4-2-偏导数的连续性"><a href="#1-4-2-偏导数的连续性" class="headerlink" title="1.4.2 偏导数的连续性"></a>1.4.2 偏导数的连续性</h4><p>判断二元函数f(x,y)在(x<del>0</del>,y<del>0</del>)处的偏导数是否连续的主要步骤如下</p>
+<p><img src="/images/image-20230315215934423.png" srcset="/img/loading.gif" lazyload></p>
+<p>注意，定义法就是指类似<img src="/images/image-20230320214222562.png" srcset="/img/loading.gif" lazyload>的方式求解在(x<del>0</del>,y<del>0</del>)处的偏导数，该偏导数可以认为是精确值；</p>
+<p>公式法指的是类似<img src="/images/image-20230320214344249.png" srcset="/img/loading.gif" lazyload>，也就是利用题干所给的公式求解在(x,y)的偏导数表达式，接着代入x-&gt;x<del>0</del>和y-&gt;y<del>0</del>得到逼近值；</p>
+<h3 id="1-5-二元函数的全微分-不去心"><a href="#1-5-二元函数的全微分-不去心" class="headerlink" title="1.5 二元函数的全微分(不去心)"></a>1.5 二元函数的全微分(不去心)</h3><p>由偏导数的定义可知，二元函数对某个自变量的偏导数表示当另一个自变量固定时，因变量相对于该自变量的变化率。类比一元函数微分学中的增量与微分之间的关系，可以得到二元函数的偏微分定义如下</p>
 <p><img src="/images/image-20230315221546234.png" srcset="/img/loading.gif" lazyload></p>
 <p>上面两个式子左端称为二元函数对x和y的偏增量，右端称为二元函数对x和y的偏微分。然而实际问题常常研究的是多元函数中多个自变量同时变化时对应的因变量变化，也就是全增量问题。类比一元函数，可以得到二元函数的全微分定义如下</p>
 <p><img src="/images/image-20230315214146433.png" srcset="/img/loading.gif" lazyload alt="定义"></p>
 <blockquote>
 <ul>
+<li><p>二元函数全微分的几何意义为使用平面AΔx+BΔy来拟合曲面Δz</p>
+</li>
 <li><p>多元函数在某点可微分则在该点必定连续</p>
 </li>
-<li><p>在某点可微的<code>必要条件</code>是偏导数f’<del>x</del>和f’<del>y</del>都存在（这里偏导存在在前，可微在后，<code>可微可以推出偏导存在</code>）</p>
-<p>在某点可微的<code>充分条件</code>是偏导数存在且连续（偏导存在且连续在前，可微在后，<code>偏导存在且连续可以推出可微，但是偏导存在不连续不能推出不可微</code>）</p>
+<li><p>多元函数在某点可微的<code>必要条件</code>是偏导数f’<del>x</del>和f’<del>y</del>都存在（这里偏导存在在前，可微在后，<code>可微可以推出偏导存在</code>）</p>
+<p>多元函数在某点可微的<code>充分条件</code>是偏导数存在且连续（偏导存在且连续在前，可微在后，<code>偏导存在且连续可以推出可微，但是偏导存在不连续不能推出不可微</code>）</p>
 </li>
 <li><p>叠加原理：二元函数的全微分dz等于它的两个偏微分求和即f’<del>x</del>(x,y)dx+f’<del>y</del>(x,y)dy – 这里就是dz和dx以及dy，不要去考虑为什么不是偏导数的写法，因为偏导数并不类似于微商；</p>
 </li>
 </ul>
 </blockquote>
-<p>判断二元函数f(x,y)在点(x<del>0</del>,y<del>0</del>)是否可微的主要步骤如下</p>
+<p>判断二元函数f(x,y)在点(x<del>0</del>,y<del>0</del>)是否可微的主要步骤如下（实际上就是判断曲面和平面之间的误差是否是距离ρ的高阶无穷小）</p>
 <p><img src="/images/image-20230315215450852.png" srcset="/img/loading.gif" lazyload></p>
-<p>利用叠加原理可以很容易求出dz，注意利用基本微分法则求微分是基本功</p>
-<p>例如，对方程<img src="/images/image-20230325110709414.png" srcset="/img/loading.gif" lazyload>求微分有<img src="/images/image-20230325110744411.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>实际上根据多元函数的关系图可以知道，偏导数连续是可微的充分条件，因此另一种证明二元函数可微的手段就是证明二元函数的两个偏导数均连续</p>
+</blockquote>
 <h3 id="1-6-二元函数的方向导数"><a href="#1-6-二元函数的方向导数" class="headerlink" title="1.6 二元函数的方向导数"></a>1.6 二元函数的方向导数</h3><p><img src="/images/image-20230315214611377.png" srcset="/img/loading.gif" lazyload alt="定义"></p>
 <p>其中l是xoy平面上以P<del>0</del>(x<del>0</del>,y<del>0</del>)为起点的一条射线，其与x轴的夹角为α，与y轴的夹角为β</p>
 <p><img src="/images/image-20230320164903445.png" srcset="/img/loading.gif" lazyload></p>
@@ -1891,34 +1925,50 @@
 <li>梯度方向&#x3D;等值线某点法线方向；</li>
 </ul>
 <p><img src="/images/image-20230320170001272.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="2-多元函数微分法则"><a href="#2-多元函数微分法则" class="headerlink" title="2.多元函数微分法则"></a>2.多元函数微分法则</h2><h3 id="2-1-链式求导法则"><a href="#2-1-链式求导法则" class="headerlink" title="2.1 链式求导法则"></a>2.1 链式求导法则</h3><ul>
-<li>u和v都是中间变量，u和v都是一元函数<img src="/images/image-20230315222438960.png" srcset="/img/loading.gif" lazyload></li>
-<li>u和v都是中间变量，u和v都是二元函数<img src="/images/image-20230315222551704.png" srcset="/img/loading.gif" lazyload></li>
-<li>其他情形，作图写出对应链式即可</li>
-</ul>
-<p><img src="/images/image-20230315222648579.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/images/image-20230315222701164.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/images/image-20230315222856107.png" srcset="/img/loading.gif" lazyload></p>
-<p>z对x的偏导数表示将y看作不变求x的偏导数(z&#x3D;z(x,y))，f对x的偏导数表示将u和y看作不变求x的偏导数(z&#x3D;f(u,x,y)) – 这句话很绕，简单理解，如果将f也写作z，会出现等式左边和等式右边都出现z对x求偏导，抵消之后就没有了…而实际上z对x求偏导和f对x求偏导的结果是不一样的，所以需要区分书写；</p>
+<h2 id="2-多元函数微分法则"><a href="#2-多元函数微分法则" class="headerlink" title="2.多元函数微分法则"></a>2.多元函数微分法则</h2><h3 id="2-1-复合函数求导法"><a href="#2-1-复合函数求导法" class="headerlink" title="2.1 复合函数求导法"></a>2.1 复合函数求导法</h3><p>复合函数求导法则也称为链式求导(作图求导)法则，注意这与一元函数的“洋葱法则”是有区别的，一定要画出对应的复合结构图（其他情况均可类推）</p>
+<p><img src="/images/image-20230817170859925.png" srcset="/img/loading.gif" lazyload></p>
+<p>链式求导法则常和以下定理结合使用：无论z对哪个变量求导，也无论z求了几阶导，求导后的新函数仍然具有与原函数完全相同的复合结构（下图是一个解题过程中的示例）</p>
+<p><img src="/images/image-20230817171333266.png" srcset="/img/loading.gif" lazyload></p>
 <blockquote>
-<p>小技巧：</p>
+<p>一般情况下对复合函数的复合结构图中间变量使用数字表示，对隐函数的复合结构图中间变量使用字母表示</p>
 <ul>
-<li>可以利用f’<del>i</del>表示f对第i个位置的变量的一阶偏导数，例如当f(u,v)则f’<del>1</del>表示f对u求偏导，f’<del>2</del>表示f对v求偏导；</li>
-<li>可以利用f’’<del>ij</del>表示f对第i个位置的变量求一阶偏导数，然后对f’<del>1</del>的第j个位置的变量求二阶偏导数；</li>
-<li>当已知函数的二阶偏导数连续时，f’’<del>12</del>&#x3D;f’’<del>21</del> – 二元函数的两个二阶混合偏导若连续则相等（参考[混合偏导数](#1.4 二元函数的偏导数)）；</li>
+<li>利用f’<del>i</del>表示f对第i个位置的变量的一阶偏导数，例如当f(u,v)则f’<del>1</del>表示f对u求偏导，f’<del>2</del>表示f对v求偏导；</li>
+<li>利用f’’<del>ij</del>表示f对第i个位置的变量求一阶偏导数，然后对f’<del>1</del>的第j个位置的变量求二阶偏导数；</li>
 </ul>
 </blockquote>
-<h3 id="2-2-隐函数存在定理"><a href="#2-2-隐函数存在定理" class="headerlink" title="2.2 隐函数存在定理"></a>2.2 隐函数存在定理</h3><p>隐函数就是无法将表达式提取为y关于x的表达式，这并不意味着y和x无关，仅仅只是无法将y用x显式表示。</p>
-<p>利用下面的隐函数存在定理，不仅可以判断一个二元方程F(x,y)&#x3D;0是否确定一个一元隐函数(最多可能确定两个一元隐函数)，一个三元方程是否确定一个二元隐函数(最多可能确定三个二元隐函数)，也可以直接求出对应的隐函数的导数。</p>
+<h3 id="2-2-隐函数求导法"><a href="#2-2-隐函数求导法" class="headerlink" title="2.2 隐函数求导法"></a>2.2 隐函数求导法</h3><p>隐函数就是无法将表达式提取为y关于x的表达式，这并不意味着y和x无关，仅仅只是无法将y用x显式表示。多元隐函数求导与一元隐函数求导有相似之处，有三种方法可以使用</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>复合函数求导法</td>
+<td>这种方法也就是常说的直接对方程两边对变量求偏导，这是最容易想到也是计算量最大的方法</td>
+</tr>
+<tr>
+<td>全微分形式不变</td>
+<td>这种方法对于理解计算过程很有帮助，掌握之后也是一大解题利器</td>
+</tr>
+<tr>
+<td>隐函数存在定理（公式法）</td>
+<td>公式法的好处在于，因为公式中的x,y,z相对于F来说都是独立互不纠缠的，所以在对某变量求导时可以将其他变量视作常数。且利用公式法求解方程组问题可以很快得到答案</td>
+</tr>
+</tbody></table>
+<h4 id="2-2-1-隐函数存在定理-公式法"><a href="#2-2-1-隐函数存在定理-公式法" class="headerlink" title="2.2.1 隐函数存在定理(公式法)"></a>2.2.1 隐函数存在定理(公式法)</h4><p>利用下面的隐函数存在定理，不仅可以判断一个二元方程F(x,y)&#x3D;0是否确定一个一元隐函数(最多可能确定两个一元隐函数)，一个三元方程是否确定一个二元隐函数(最多可能确定三个二元隐函数)，也可以直接求出对应的隐函数的偏导数。</p>
 <p><img src="/images/image-20230315223926088.png" srcset="/img/loading.gif" lazyload alt="二元隐函数"></p>
 <p><img src="/images/image-20230315224146196.png" srcset="/img/loading.gif" lazyload alt="三元隐函数"></p>
 <blockquote>
 <ul>
-<li>隐函数存在定理一般只用来判断方程F能够确定几个具有连续偏导的隐函数，正常情况下题干让求解隐函数的偏导数直接左右同时求偏导即可；</li>
-<li>公式中的F’<del>x</del>和F’<del>y</del>或F’<del>z</del>都表示F对x或y或z求一阶偏导数；</li>
-<li>公式法既可以求解函数在(x<del>0</del>,y<del>0</del>)处偏导数的值，也可以求解函数的偏导数的表达式，区别就在于公式中的F’<del>x</del>、F’<del>y</del>和F’<del>z</del>是具体的值还是表达式；</li>
+<li>隐函数存在定理除了可以用来判断方程F能够确定几个具有连续偏导的隐函数外，也可以用于求解隐函数的偏导数；</li>
+<li>公式中的F’<del>x</del>和F’<del>y</del>或F’<del>z</del>都表示F对x或y或z求一阶偏导数，也就是说视其他变量为常数；</li>
 </ul>
 </blockquote>
+<p>对于隐函数方程组来说，可以直接套用以下公式解决问题（当然使用复合函数求导等手段处理之后联立方程求解也行，但是效率和准确度上相对来说没那么高）</p>
+<p><img src="/images/image-20230817173814635.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-2-2-全微分形式不变"><a href="#2-2-2-全微分形式不变" class="headerlink" title="2.2.2 全微分形式不变"></a>2.2.2 全微分形式不变</h4><p><img src="/images/image-20230817173126518.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="2-3-逆问题"><a href="#2-3-逆问题" class="headerlink" title="2.3 逆问题"></a>2.3 逆问题</h3><p>一般的偏导数问题都是给出函数表达式z&#x3D;z(x,y)，要求求解z对x或y的偏导。逆问题就是给出z对x或y的偏导，要求使用积分得到原函数表达式z&#x3D;z(x,y)</p>
 <p>逆问题本身非常简单，需要注意的是如果已知的是混合偏导，在对y求不定积分时，得到的应该是<code>原函数+关于x的函数φ(x)</code>；而在进一步的对x求偏导时，对于φ(x)其原函数应当也是关于x的函数所以可以仍然用φ(x)表示，注意最后还应当再加上关于y的函数w(y)</p>
 <h2 id="3-多元函数的极值和最值"><a href="#3-多元函数的极值和最值" class="headerlink" title="3.多元函数的极值和最值"></a>3.多元函数的极值和最值</h2><p>广义极值的定义</p>
