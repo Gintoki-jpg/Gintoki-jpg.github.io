@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/study.jpg">
 <meta property="article:published_time" content="2023-07-12T13:28:00.000Z">
-<meta property="article:modified_time" content="2023-08-17T11:34:46.565Z">
+<meta property="article:modified_time" content="2023-08-18T08:03:59.563Z">
 <meta property="article:author" content="YangZaiyan">
 <meta property="article:tag" content="数据结构设计">
 <meta property="article:tag" content="算法分析">
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          55k 字
+          58k 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          460 分钟
+          483 分钟
         
       </span>
     
@@ -796,12 +796,13 @@
 <p>串的逻辑结构如下</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c">ADT 串（<span class="hljs-built_in">string</span>）<br>Data <br>    串中的元素仅由一个字符组成，相邻元素之间具有前驱和后继的关系<br>Operation<br>    <span class="hljs-title function_">StrAssign</span><span class="hljs-params">(T,*chars)</span>:生成一个值等于字符串常量chars的串T——这个地方指针的使用我不是很理解<br>    <span class="hljs-title function_">StrCopy</span><span class="hljs-params">(T,S)</span>:若串S存在，则将串S复制得到串T<br>    <span class="hljs-title function_">ClearString</span><span class="hljs-params">(S)</span>：若串S存在，则将S清空<br>    <span class="hljs-title function_">StringEmpty</span><span class="hljs-params">(S)</span>:若串S为空则返回1，否则返回0<br>    <span class="hljs-title function_">StrLength</span><span class="hljs-params">(S)</span>:返回串S的元素个数，即串的长度<br>    <span class="hljs-title function_">StrCompare</span><span class="hljs-params">(S,T)</span>:比较两个串的大小<br>    <span class="hljs-title function_">Concat</span><span class="hljs-params">(T,S1,S2)</span>：用T返回由S1和S2联接得到的新串<br>    <span class="hljs-title function_">SubString</span><span class="hljs-params">(Sub,S,pos,len)</span>:Sub返回串S的第pos个字符起长度为len的子串<br>    <span class="hljs-title function_">Index</span><span class="hljs-params">(S,T,pos)</span>:若主串S中存在和串T值相同的子串，则返回它在主串S中第pos个字符后第一次出现的位置<br>    <span class="hljs-title function_">Replace</span><span class="hljs-params">(S,T,V)</span>:用V替换主串S中出现的所有与T相等的不重叠的子串<br>    <span class="hljs-title function_">StrInsert</span><span class="hljs-params">(S,pos,T)</span>:在串S的第pos个字符之前插入串T<br>    <span class="hljs-title function_">StrDelete</span><span class="hljs-params">(S,pos,len)</span>:从串S中删除第pos个字符起长度为len的子串<br>endADT<br></code></pre></td></tr></table></figure>
 
-<h3 id="1-4-数组-amp-多维数组"><a href="#1-4-数组-amp-多维数组" class="headerlink" title="1.4 数组&amp;多维数组"></a>1.4 数组&amp;多维数组</h3><p>数组是一种有限个相同类型变量构成的集合（注意这里的数组是一个逻辑结构，并不是前面C++程序设计语言中的数组基本数据类型）：</p>
+<h3 id="1-4-多维数组"><a href="#1-4-多维数组" class="headerlink" title="1.4 多维数组"></a>1.4 多维数组</h3><p>数组array是由n(n&gt;&#x3D;1)个类型相同的数据元素构成的有限序列，每个数据元素称为一个数组元素，每个元素在n个线性关系中的序号称为该元素的下标，下标的取值范围称为数组的维界。（注意这里的数组是一个逻辑结构，并不是前面C++程序设计语言中的数组基本数据类型）：</p>
 <ul>
 <li>一维数组是有序的元素序列，二维数组可以理解为数组元素是一维数组的数组，类推可以得到n维数组是每个元素均为n-1维数组的一维数组</li>
 <li>多维数组通常用来存储结构比较复杂的相关联数据</li>
 </ul>
 <p><img src="/images/image-20230718202257394.png" srcset="/img/loading.gif" lazyload alt="一个m行n列的二维数组示意图"></p>
+<p>数组一旦被定义，其维数和维界就不再改变，因此除了结构体的初始化和销毁外，数组只会进行存取元素和修改元素的操作（最常见的两种操作是查找和修改）。</p>
 <p>一个基本的数组的逻辑结构如下</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c">ADT 数组（Array）<br>Data<br>    数组的元素类型定义为ElementType，假设数组元素的下标范围为[<span class="hljs-number">0</span>, MaxSize<span class="hljs-number">-1</span>]<br>    数组的实际长度定义为Length（表示数组中已存储的元素个数）<br>Operation<br>    <span class="hljs-title function_">InitArray</span><span class="hljs-params">(&amp;arr)</span>: 初始化一个空数组<br>    <span class="hljs-title function_">DestroyArray</span><span class="hljs-params">(&amp;arr)</span>: 销毁数组，释放相关内存空间<br>    <span class="hljs-title function_">GetLength</span><span class="hljs-params">(arr)</span>: 返回数组的实际长度<br>    <span class="hljs-title function_">IsEmpty</span><span class="hljs-params">(arr)</span>: 判断数组是否为空，若为空则返回1，否则返回0<br>    <span class="hljs-title function_">ClearArray</span><span class="hljs-params">(&amp;arr)</span>: 将数组清空，将长度设置为0<br>    <span class="hljs-title function_">GetElement</span><span class="hljs-params">(arr, i)</span>: 返回数组中第i个元素的值<br>    <span class="hljs-title function_">SetElement</span><span class="hljs-params">(&amp;arr, i, e)</span>: 设置数组中第i个元素的值为e<br>    <span class="hljs-title function_">InsertElement</span><span class="hljs-params">(&amp;arr, i, e)</span>: 在数组的第i个位置插入元素e<br>    <span class="hljs-title function_">DeleteElement</span><span class="hljs-params">(&amp;arr, i)</span>: 删除数组中第i个位置的元素<br>    <span class="hljs-title function_">Traverse</span><span class="hljs-params">(arr, visit)</span>: 遍历数组的所有元素，依次调用visit函数进行访问<br>endADT<br></code></pre></td></tr></table></figure>
 
@@ -813,7 +814,27 @@
 <p>数组和其他线性结构不同。顺序表、链表、栈和队列存储的都是不可再分的数据元素（如数字 5、字符 ‘a’ 等），而数组既可以用来存储不可再分的数据元素，也可以用来存储像顺序表、链表这样的数据结构。比如说，数组可以直接存储多个顺序表。我们知道，顺序表的底层实现还是数组，因此等价于数组中继续存储数组，这与平时使用的二维数组类似。</p>
 <p>最重要的一点是，无论数组的维数是多少，数组中的数据类型都必须一致。</p>
 <p>综上，可以认为一维数组是线性表(特指顺序表)的基本表现形式，n维数组是对线性表数据结构的一种拓展。</p>
+<blockquote>
+<p>Q：数组与线性表的关系？</p>
+</blockquote>
+<p>A：数组是线性表的推广，一维数组可以视为一个线性表，二维数组可以视为其数据元素为线性表的线性表。</p>
 <hr>
+<h3 id="1-5-广义表"><a href="#1-5-广义表" class="headerlink" title="1.5 广义表"></a>1.5 广义表</h3><p>广义表是指，表元素可以是原子或广义表的一种线性表的拓展结构。下面是一些广义表的例子</p>
+<p><img src="/images/image-20230818153311764.png" srcset="/img/loading.gif" lazyload></p>
+<p>考研题型中最常考察的是广义表的长度和深度求法，总结如下：</p>
+<ul>
+<li><p>广义表的长度：为表中最上层元素的个数，如广义表 C 的长度为 2，注意不是 3。</p>
+</li>
+<li><p>广义表的深度：为表中括号的<code>最大层数</code>。注意，求深度时需要将子表展开，如广义表D应该展开为（（d，e），（b，（c，d））），深度为 3。</p>
+</li>
+</ul>
+<p>表头（Head）和表尾（Tail）：当广义表非空时，第一个元素为广义表的表头，其余元素组成的表是广义表的表尾。</p>
+<h4 id="1-5-1-头尾链表存储结构"><a href="#1-5-1-头尾链表存储结构" class="headerlink" title="1.5.1 头尾链表存储结构"></a>1.5.1 头尾链表存储结构</h4><p>下图展示了例子中广义表的<code>头尾链表存储结构</code>的存储情况，其中有两种结点：原子结点和广义表结点。其中原子结点有两个域：标记域和数据域；广义表结点有三个域：标记域、头指针域和尾指针域。</p>
+<p><img src="/images/image-20230818153730008.png" srcset="/img/loading.gif" lazyload></p>
+<p>标记域用于区分当前节点是原子(0标记)还是广义表(1标记)，头指针域指向原子或广义表结点，尾指针域为空或指向本层中的下一个广义表结点</p>
+<h4 id="1-5-2-拓展线性表存储结构"><a href="#1-5-2-拓展线性表存储结构" class="headerlink" title="1.5.2 拓展线性表存储结构"></a>1.5.2 拓展线性表存储结构</h4><p>下图展示了例子中广义表的<code>拓展线性表存储结构</code>的存储情况，其中也有两种结点，即原子结点和广义表结点，不同的是原子结点有3个域：标记域、数据域和尾指针域；广义表结点也有3个域：标记域、头指针域与尾指针域。</p>
+<p><img src="/images/image-20230818154416559.png" srcset="/img/loading.gif" lazyload></p>
+<p>其中，标记域用于区分当前结点是原子（用0来表示），还是广义表（用1来表示）。这种存储结构类似于带头结点的单链表存储结构（而上一种类似于不带头结点的单链表存储结构），每一个子表都有一个不存储信息的头结点来标记其存在。</p>
 <h2 id="2-栈详解"><a href="#2-栈详解" class="headerlink" title="2.栈详解"></a>2.栈详解</h2><p>栈的数学性质：当n个不同的元素进栈，出栈元素不同的排列个数为</p>
 <p><img src="/images/image-20230813200318538.png" srcset="/img/loading.gif" lazyload></p>
 <p>上述公式称为卡特兰数，使用数学归纳法可证明，此处不再赘述</p>
@@ -1011,7 +1032,7 @@
 <p><img src="/images/image-20230720111752913.png" srcset="/img/loading.gif" lazyload></p>
 <p>KMP 算法不需要对主串进行回溯，相对于 BF 算法做了很大的改进，算法的时间复杂度为O（m+n）。</p>
 <p>尽管BF匹配的最坏时间复杂度为O(nm)，但在一般情况下其实际执行时间近似为O(m+n)，因此BF算法至今仍被采用。KMP算法仅仅只在主串与子串有大量“部分匹配”的特点时其执行时间才比BF算法快得多，其主要优点是主串不需要回溯，这意味着对于规模较大的外存中字符串的匹配操作可以分段进行，先读入内存一部分进行匹配，完成后写回外存，主串无需回溯确保了在发生不匹配时不需要将之前写回外存的部分再次读入，减少了I&#x2F;O操作提高执行效率。</p>
-<h2 id="5-数组-amp-多维数组详解"><a href="#5-数组-amp-多维数组详解" class="headerlink" title="5.数组&amp;多维数组详解"></a>5.数组&amp;多维数组详解</h2><p>数组array是由类型相同的数据元素构成的有序集合。对于k维数组，每个元素都受到k个线性关系的约束，比如m行n列的二维数组</p>
+<h2 id="5-多维数组详解"><a href="#5-多维数组详解" class="headerlink" title="5.多维数组详解"></a>5.多维数组详解</h2><p>对于k维数组，每个元素都受到k个线性关系的约束，比如m行n列的二维数组</p>
 <p><img src="/images/image-20230720160337200.png" srcset="/img/loading.gif" lazyload></p>
 <p>其中每个元素均被两个线性关系约束：</p>
 <ul>
@@ -1020,7 +1041,14 @@
 <li><p>第j列上，除第一个结点外a<del>ij</del>的直接前驱为a<del>i,j-1</del>，除最后一个结点外a<del>ij</del>的直接后继为a<del>i,j+1</del>；</p>
 </li>
 </ul>
-<h3 id="5-1-一般数组的存储结构"><a href="#5-1-一般数组的存储结构" class="headerlink" title="5.1 一般数组的存储结构"></a>5.1 一般数组的存储结构</h3><p>由于计算机的内存结构都是一维的，因此在存储多维数组时，需要将数组中的所有元素按某种次序排成一个线性序列，然后将其按顺序存储到内存中。一般来说，数组不执行删除和插入操作，所以通常采用顺序存储方法来存储数组。多维数组通常有两种存储方式：行优先存储和列优先存储。</p>
+<blockquote>
+<ul>
+<li>矩阵、多维数组与广义表都属于拓展线性结构，表中的数据元素本身也是一个复合结构 – 一般讨论多维数组都以二维数组为例，同时以矩阵来称呼二维数组</li>
+<li>考研数据结构中，矩阵的逻辑表示中第一个元素有的为a<del>0,0</del>，有的为a<del>1,1</del>（王道&#x2F;北邮和天勤的书写方式就不一样），解题时需要区分。而使用二维数组作为矩阵的存储结构，则二维数组的第一个元素基本都是<code>A[0][0]</code>(C语言中数组下标一定从0开始)。学习和解题时注意区分即可，数据结构的教辅和试题相当灵活没有统一性。</li>
+</ul>
+</blockquote>
+<h3 id="5-1-一般数组的存储结构"><a href="#5-1-一般数组的存储结构" class="headerlink" title="5.1 一般数组的存储结构"></a>5.1 一般数组的存储结构</h3><p>大多数计算机语言都提供了数组数据类型，因此逻辑意义上的数组可以采用计算机语言中的数组数据类型进行存储，一个数组中的所有元素在内存中占用一段连续的存储空间。</p>
+<p>由于计算机的内存结构都是一维的，因此在存储多维数组时，需要将数组中的所有元素按某种次序排成一个线性序列，然后将其按顺序存储到内存中。一般来说，数组不执行删除和插入操作，所以通常采用顺序存储方法来存储数组。多维数组通常有两种存储方式：行优先存储和列优先存储（这是书上的原话，很多学校的试题答案也是这样写的。然而对于三维除了行、列还有宽，因此其实这句话并不严谨。暂且认为书上研究多维数组都默认以二维数组作为研究对象）。下面将以二维数组(矩阵)为例说明这两种存储方式。</p>
 <h4 id="5-1-1-行优先存储"><a href="#5-1-1-行优先存储" class="headerlink" title="5.1.1 行优先存储"></a>5.1.1 行优先存储</h4><p>基本思想是按行存储，即存储完第i行再接着存储第i+1 行。如存储二维数组 A<del>mn</del>，按行优先顺序存储的线性序列为</p>
 <p><img src="/images/image-20230720161514439.png" srcset="/img/loading.gif" lazyload></p>
 <p>二维数组以及其按行优先存储的示意图如下</p>
@@ -1037,22 +1065,26 @@
 <blockquote>
 <p>在FORTRAN语言中数组按列优先存储</p>
 </blockquote>
-<h3 id="5-2-稀疏矩阵的存储结构"><a href="#5-2-稀疏矩阵的存储结构" class="headerlink" title="5.2 稀疏矩阵的存储结构"></a>5.2 稀疏矩阵的存储结构</h3><p>当矩阵A<del>mn</del>中的非零元素个数远小于矩阵元素的总数时(具体什么叫远小于目前没有统一的定论)，称A<del>mn</del>为稀疏矩阵（稀疏矩阵被认为是一种具备特殊逻辑结构的多维数组）。在存储稀疏矩阵时，只需要存储非零元素即可。</p>
-<p>下面将介绍常见的稀疏矩阵的压缩方法：三元组表和十字链表（三元组表和十字链表都属于数组的存储结构，专用于存储稀疏矩阵）</p>
-<h4 id="5-2-1-三元组表"><a href="#5-2-1-三元组表" class="headerlink" title="5.2.1 三元组表"></a>5.2.1 三元组表</h4><h5 id="1-稀疏矩阵的顺序存储"><a href="#1-稀疏矩阵的顺序存储" class="headerlink" title="(1)稀疏矩阵的顺序存储"></a>(1)稀疏矩阵的顺序存储</h5><p>将稀疏矩阵中每个非零元素的行号、列号及值构成一个三元组（3-tuples），将所有的三元组组成一个线性表进行顺序存储，就构成了三元组表。</p>
+<h3 id="5-2-稀疏矩阵的存储结构"><a href="#5-2-稀疏矩阵的存储结构" class="headerlink" title="5.2 稀疏矩阵的存储结构"></a>5.2 稀疏矩阵的存储结构</h3><p>当矩阵A<del>mn</del>中的非零元素个数远小于矩阵元素的总数时(具体什么叫远小于目前没有统一的定论)，称A<del>mn</del>为稀疏矩阵（稀疏矩阵被认为是一种具备特殊逻辑结构的多维数组）。在存储稀疏矩阵时，只需要存储非零元素即可。（严书对于稀疏矩阵的定义非常抽象，“相同元素或零元素在矩阵中的分布存在一定规律的矩阵称为特殊矩阵，反之称为稀疏矩阵”，这个定义知道就好，考研以北邮所给定义为准）</p>
+<p>下面将介绍常见的稀疏矩阵的压缩方法（以下压缩方法都属于存储结构而非逻辑结构，专用于存储稀疏矩阵）：</p>
+<ul>
+<li>稀疏矩阵的顺序存储：三元组表示法、伪地址表示法</li>
+<li>稀疏矩阵的链式存储：邻接表表示法、十字链表表示法</li>
+</ul>
+<h4 id="5-2-1-稀疏矩阵的顺序存储"><a href="#5-2-1-稀疏矩阵的顺序存储" class="headerlink" title="5.2.1 稀疏矩阵的顺序存储"></a>5.2.1 稀疏矩阵的顺序存储</h4><h5 id="1-三元组表示法"><a href="#1-三元组表示法" class="headerlink" title="(1)三元组表示法"></a>(1)三元组表示法</h5><p>将稀疏矩阵中每个非零元素的行号、列号及值构成一个三元组（3-tuples），将所有的三元组组成一个线性表进行顺序存储，就构成了三元组表。</p>
 <p>使用C++实现的三元组结构如下</p>
 <p><img src="/images/image-20230720170128135.png" srcset="/img/loading.gif" lazyload alt="三元组结构"></p>
 <p>使用C++实现的三元组表模板结构如下</p>
 <p><img src="/images/image-20230720170221057.png" srcset="/img/loading.gif" lazyload alt="三元组表"></p>
 <p>下图展示了使用三元组表存储稀疏矩阵的示意图，一般按照行优先顺序遍历稀疏矩阵的每个非零元素，然后追加到三元组表中。所有三元组表的元素按行号有序，行号相同的元素按列号有序，这种特性称为三元组表的有序性。</p>
 <p><img src="/images/image-20230720170755837.png" srcset="/img/loading.gif" lazyload></p>
-<h5 id="2-稀疏矩阵的转置"><a href="#2-稀疏矩阵的转置" class="headerlink" title="(2)稀疏矩阵的转置"></a>(2)稀疏矩阵的转置</h5><p>下面以矩阵的转置操作为例，说明采用三元组表存储结构如何实现矩阵的操作以及操作中可采用的一些技巧。</p>
-<h6 id="a-简单转置"><a href="#a-简单转置" class="headerlink" title="a)简单转置"></a>a)简单转置</h6><p>对于 m 行n列的稀疏矩阵，转置后变为n行m 列的稀疏矩阵，但转置前后三元组表的结构并没有改变，而只是表中的各个三元组的行号和列号互换，并且次序发生了变化，以保证新表的有序性。一种简单的转置方法是遍历n趟三元组表(即遍历“列”趟三元组)，第一趟遍历找出列号为0的三元组，并将其行号和列号对调，添加到转置矩阵对应的三元组表中。第二趟遍历找出列号为1 的三元组并进行相同的操作，依次类推，最后一趟遍历找出列号为n-1的三元组。由于每趟遍历都需要比较所有的t个三元组的列号（其中t是稀疏矩阵非零元素的个数），因此算法的时间复杂度为O（nt）。</p>
+<p>下面以矩阵的转置操作为例，说明采用三元组表存储结构如何实现矩阵的操作以及操作中可采用的一些技巧。</p>
+<h6 id="a-稀疏矩阵的简单转置"><a href="#a-稀疏矩阵的简单转置" class="headerlink" title="a)稀疏矩阵的简单转置"></a>a)稀疏矩阵的简单转置</h6><p>对于 m 行n列的稀疏矩阵，转置后变为n行m 列的稀疏矩阵，但转置前后三元组表的结构并没有改变，而只是表中的各个三元组的行号和列号互换，并且次序发生了变化，以保证新表的有序性。一种简单的转置方法是遍历n趟三元组表(即遍历“列”趟三元组)，第一趟遍历找出列号为0的三元组，并将其行号和列号对调，添加到转置矩阵对应的三元组表中。第二趟遍历找出列号为1 的三元组并进行相同的操作，依次类推，最后一趟遍历找出列号为n-1的三元组。由于每趟遍历都需要比较所有的t个三元组的列号（其中t是稀疏矩阵非零元素的个数），因此算法的时间复杂度为O（nt）。</p>
 <p>下图是将上面原始矩阵进行转置过后得到的结果</p>
 <p><img src="/images/image-20230720171309195.png" srcset="/img/loading.gif" lazyload></p>
 <p>稀疏矩阵简单转置算法的C++实现代码如下</p>
 <p><img src="/images/image-20230720171400178.png" srcset="/img/loading.gif" lazyload></p>
-<h6 id="b-快速转置"><a href="#b-快速转置" class="headerlink" title="b)快速转置"></a>b)快速转置</h6><p>上述稀疏矩阵的简单转置算法并不是最优的，下面给出一种快速的稀疏矩阵转置算法，其时间复杂度为 O（n+t）。</p>
+<h6 id="b-稀疏矩阵的快速转置"><a href="#b-稀疏矩阵的快速转置" class="headerlink" title="b)稀疏矩阵的快速转置"></a>b)稀疏矩阵的快速转置</h6><p>上述稀疏矩阵的简单转置算法并不是最优的，下面给出一种快速的稀疏矩阵转置算法，其时间复杂度为 O（n+t）。</p>
 <p>稀疏矩阵快速转置算法的基本思想是在原始三元组表（设为A）中依次取每个三元组，交换其行号和列号后，直接存放到转置矩阵的三元组表（设为B）中的适当位置。其中关键的问题是如何确定三元组在 B 中的位置。不难发现，A 中第 0 列的第一个非零元素一定存储在 B中下标为0 的位置上，该列中其他非零元素应存放在B[0]后面连续的位置上，那么第1列的第一个非零元素在 B 中的位置便等于第0列的第一个非零元素在 B 中的位置加上第 0 列的非零元素的个数，依次类推。因此引入两个数组作为辅助数据结构：</p>
 <ul>
 <li>number[n]：存储矩阵 A 中每列非零元素的个数；</li>
@@ -1069,13 +1101,45 @@
 <p><img src="/images/image-20230720172718636.png" srcset="/img/loading.gif" lazyload></p>
 <p>(3)复杂度分析</p>
 <p>稀疏矩阵快速转置算法中有 3 个循环操作，前两个操作各循环 n 次，第三个操作循环 t次，因此算法的时间复杂度为O（n+t），相对于时间复杂度为O（nt）的简单转置算法，这种算法效率更高。</p>
-<h4 id="5-2-2-十字链表"><a href="#5-2-2-十字链表" class="headerlink" title="5.2.2 十字链表"></a>5.2.2 十字链表</h4><h5 id="1-稀疏矩阵的链式存储"><a href="#1-稀疏矩阵的链式存储" class="headerlink" title="(1)稀疏矩阵的链式存储"></a>(1)稀疏矩阵的链式存储</h5><p>由于三元组表是一种顺序存储方式，对于经常进行插入或删除结点操作的稀疏矩阵，三元组表并不适合，此时采用链式存储结构存储这种矩阵更为恰当。链式存储结构存储稀疏矩阵的方法也有多种，在这里仅介绍一种十字链表存储方法。</p>
-<p>采用十字链表存储稀疏矩阵时，同三元组表一样，也是仅存储所有非零元素。同一行的非零元素构成一个带头结点的循环链表，同一列的非零元素也构成一个带头结点的循环链表。对于每个非零元素，采用一个五元组结点表示，五元组分别为非零元素的行号（row）、列号（col）、值（val）、同一行下一个非零元素的地址（rnext）、同一列下一个非零元素的地址（cnext）。下图是十字链表的结点结构示意图</p>
+<h5 id="2-伪地址表示法"><a href="#2-伪地址表示法" class="headerlink" title="(2)伪地址表示法"></a>(2)伪地址表示法</h5><p>伪地址即元素在矩阵中按照行优先或列优先存储的相对位置。该方法存储稀疏矩阵与三元素类似，只是三元组每一行中有两个存储单元存放地址，而伪地址法只需要一个。故伪地址法每一行只需要两个存储单元，一个用来存放矩阵元素值，另一个用来存放伪地址。</p>
+<p>伪地址表示法需要2N个存储单元，其中N为非零元素个数。对于一个m*n的稀疏矩阵A，元素<code>A[i][j]</code>的伪地址计算方法为n(i-1)+j。</p>
+<h4 id="5-2-2-稀疏矩阵的链式存储"><a href="#5-2-2-稀疏矩阵的链式存储" class="headerlink" title="5.2.2 稀疏矩阵的链式存储"></a>5.2.2 稀疏矩阵的链式存储</h4><p>由于三元组表是一种顺序存储方式，对于经常进行插入或删除结点操作的稀疏矩阵，三元组表并不适合，此时采用链式存储结构存储这种矩阵更为恰当。链式存储结构存储稀疏矩阵的方法也有多种，最常用的是邻接表表示法和十字链表表示法。</p>
+<h5 id="1-十字链表表示法"><a href="#1-十字链表表示法" class="headerlink" title="(1)十字链表表示法"></a>(1)十字链表表示法</h5><p>采用十字链表存储稀疏矩阵时，同三元组表一样，也是仅存储所有非零元素。同一行的非零元素构成一个带头结点的循环链表，同一列的非零元素也构成一个带头结点的循环链表。对于每个非零元素，采用一个五元组结点表示，五元组分别为非零元素的行号（row）、列号（col）、值（val）、同一行下一个非零元素的地址（rnext）、同一列下一个非零元素的地址（cnext）。下图是十字链表的结点结构示意图</p>
 <p><img src="/images/image-20230720173036013.png" srcset="/img/loading.gif" lazyload></p>
 <p>使用C++实现的十字链表的非零元素结点结构如下</p>
 <p><img src="/images/image-20230720173122290.png" srcset="/img/loading.gif" lazyload></p>
 <p>每行和每列构成的循环链表的头结点，可采用与非零元素结点相同的结构。每行头结点的 row 域表示本行的行号，而 col 域表示本行非零元素的个数。每列头结点的 col域表示本列的列号，而row域表示本列非零元素的个数，val域不使用。所有行的头结点又可以构成一个带头结点的循环链表，同理，所有列的头结点也可以构成一个带头结点的循环链表，两个链表可采用同一个头结点存储，该结点的 row 域和 col 域可用于表示矩阵的行数和列数。下图展示了采用十字链表存储稀疏矩阵的示意图</p>
 <p><img src="/images/image-20230720173250122.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="2-邻接表表示法"><a href="#2-邻接表表示法" class="headerlink" title="(2)邻接表表示法"></a>(2)邻接表表示法</h5><p>邻接表表示法将矩阵中的每一行的非零元素串成一个链表，链表结点中有两个分量，分别表示该结点对应的元素值及其列号。</p>
+<blockquote>
+<p>这里的邻接表和图中的邻接表是同一个东西。图的邻接矩阵相当于这里的稀疏矩阵，图的邻接表相当于稀疏矩阵的邻接表表示（由此也可以发现图之所以使用邻接表也是出于一种节约空间的考量）。邻接表表示将在图的章节详细介绍。</p>
+</blockquote>
+<h3 id="5-3-特殊矩阵的存储结构"><a href="#5-3-特殊矩阵的存储结构" class="headerlink" title="5.3 特殊矩阵的存储结构"></a>5.3 特殊矩阵的存储结构</h3><p>压缩存储：指为多个值相同的元素只分配一个存储空间，对零元素不分配存储空间。其目的是节省存储空间。</p>
+<p>特殊矩阵：指具有许多相同矩阵元素或零元素，并且这些相同矩阵元素或零元素的分布有一定规律性的矩阵。考研数据结构中主要涉及三种特殊矩阵：对称矩阵、三角矩阵以及对角矩阵。</p>
+<p>特殊矩阵的压缩存储方法：找出特殊矩阵中值相同的矩阵元素的分布规律，把那些呈现规律性分布的、值相同的多个矩阵元素压缩存储到一个存储空间中。</p>
+<h4 id="5-3-1-对称矩阵"><a href="#5-3-1-对称矩阵" class="headerlink" title="5.3.1 对称矩阵"></a>5.3.1 对称矩阵</h4><p>n阶矩阵中的元素可以分为三个部分：上三角区、主对角线和下三角区</p>
+<p><img src="/images/image-20230818141134922.png" srcset="/img/loading.gif" lazyload></p>
+<p>对一个n阶矩阵A中的任意一个元素a<del>i,j</del>都有a<del>ij</del>&#x3D;&#x3D;a<del>j,i</del>则称其为对称矩阵。因为对于n阶对称矩阵，其上三角区和下三角区的元素相同，若仍采用二维数组存放，则会浪费几乎一半的空间，为此将n阶对称矩阵A存放在一维数组B[n（n+1）&#x2F;2]中，即元素a<del>i,j</del>存放在b<del>k</del>中。比如只存放下三角部分（含主对角）的元素。</p>
+<p>元素a<del>i,j</del>与元素b<del>k</del>的下标对应关系如下（数组下标从0开始，下三角部分按行优先存储（下面与之类似，默认都是行优先存储））</p>
+<p><img src="/images/image-20230818141614628.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="5-3-2-三角矩阵"><a href="#5-3-2-三角矩阵" class="headerlink" title="5.3.2 三角矩阵"></a>5.3.2 三角矩阵</h4><p>下三角矩阵中，上三角区的所有元素均为同一常量。其存储思想与对称矩阵类似，不同之处在于存储完下三角区和主对角线上的元素之后，紧接着存储对角线上方的常量一次，故可以将n阶下三角矩阵A压缩存储在 B[n（n+1）&#x2F;2+1]中。</p>
+<p><img src="/images/image-20230818141947934.png" srcset="/img/loading.gif" lazyload></p>
+<p>元素下标之间的对应关系如下（数组下标从0开始）</p>
+<p><img src="/images/image-20230818142021056.png" srcset="/img/loading.gif" lazyload></p>
+<p>下三角矩阵在内存中的压缩存储形式如下</p>
+<p><img src="/images/image-20230818142102307.png" srcset="/img/loading.gif" lazyload></p>
+<p>与之类似的，上三角矩阵中，下三角区的所有元素均为同一常量。只需存储主对角线、上三角区上的元素和下三角区的常量一次，可将其压缩存储在 B[n（n+1）&#x2F;2+1]中。</p>
+<p><img src="/images/image-20230818142212148.png" srcset="/img/loading.gif" lazyload></p>
+<p>元素下标之间的对应关系如下（数组下标从0开始）</p>
+<p><img src="/images/image-20230818142246515.png" srcset="/img/loading.gif" lazyload></p>
+<p>上三角矩阵在内存中的压缩存储形式如下</p>
+<p><img src="/images/image-20230818142315400.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="5-3-3-对角矩阵"><a href="#5-3-3-对角矩阵" class="headerlink" title="5.3.3 对角矩阵"></a>5.3.3 对角矩阵</h4><p>对角矩阵也称带状矩阵。对于n阶矩阵A中的任意一个元素a<del>i,j</del>，当|i-j|&gt;1时，有a<del>i,j</del>&#x3D;0（1&lt;&#x3D;i，j&lt;&#x3D;n），则称为三对角矩阵。</p>
+<p><img src="/images/image-20230818143152100.png" srcset="/img/loading.gif" lazyload></p>
+<p>在三对角矩阵中，所有非零元素都集中在以主对角线为中心的3条对角线的区域，其他区域的元素都为零（天勤规定的是均为c，其中c可以为0）。</p>
+<p>三对角矩阵也可以采用压缩存储，将3条对角线上的元素按行优先方式存放在一维数组B中，且a<del>1,1</del>存放于B[0]中，其存储形式如图所示。</p>
+<p><img src="/images/image-20230818143250306.png" srcset="/img/loading.gif" lazyload></p>
+<p>因此矩阵A中3条对角线上的元素a<del>i,j</del>在一维数组B中存放的下标为k&#x3D;2i+j-3。反之，若已知三对角矩阵中某元素a<del>i,j</del>存放在一维数组B中第k个位置，可得i&#x3D;向下取整[(k+1)&#x2F;3+1],j&#x3D;k-2i+3。</p>
 <h1 id="第四章-树"><a href="#第四章-树" class="headerlink" title="第四章 树"></a>第四章 树</h1><p>树型结构是一类重要的非线性结构，其特点是结点之间有分支，并具有层次关系。树在计算机领域中有着广泛的应用，在源程序的编译中，用树来表示源程序的语法结构；在数据库系统中，可以用树来组织信息；在计算机信息存储或传输方式中，XML、DOM树、JSON数据、磁盘路径结构等也都是用树来组织信息的。</p>
 <h2 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1.基本概念"></a>1.基本概念</h2><h3 id="1-1-树概述"><a href="#1-1-树概述" class="headerlink" title="1.1 树概述"></a>1.1 树概述</h3><p>树是一种复杂的数据结构，它是由 n(n≥1)个有限结点组成的一个具有层次关系的集合，把它叫作“树”是因为它看起来像一棵倒挂的树，也就是说树是根朝上，而叶朝下的，如下图所示</p>
 <p><img src="/images/image-20230720212923053.png" srcset="/img/loading.gif" lazyload alt="树的示例"></p>
