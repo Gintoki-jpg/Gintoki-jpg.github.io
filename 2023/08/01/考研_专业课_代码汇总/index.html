@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/study.jpg">
 <meta property="article:published_time" content="2023-08-01T12:16:00.000Z">
-<meta property="article:modified_time" content="2023-08-22T12:30:10.416Z">
+<meta property="article:modified_time" content="2023-08-29T09:38:38.183Z">
 <meta property="article:author" content="YangZaiyan">
 <meta property="article:tag" content="数据结构设计">
 <meta property="article:tag" content="算法分析">
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.8k 字
+          7k 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          32 分钟
+          58 分钟
         
       </span>
     
@@ -402,6 +402,7 @@
 <li>rtag&#x3D;0表示rchild为指针指向结点的右孩子；rtag&#x3D;1表示rchild为线索指向结点的直接后继；</li>
 </ul>
 </blockquote>
+<h3 id="1-3-并查集定义"><a href="#1-3-并查集定义" class="headerlink" title="1.3 并查集定义"></a>1.3 并查集定义</h3><p><img src="/images/image-20230826171553053.png" srcset="/img/loading.gif" lazyload></p>
 <h2 id="2-二叉树的遍历"><a href="#2-二叉树的遍历" class="headerlink" title="2.二叉树的遍历"></a>2.二叉树的遍历</h2><blockquote>
 <p>二叉树的深度优先包括前、中、后序三种遍历方式，广度优先即指层序优先遍历</p>
 </blockquote>
@@ -444,6 +445,159 @@
 <p>代码结构与中序线索化相似，区别在于将连接线索的代码放到两递归入口的后面。</p>
 </blockquote>
 <p><img src="/images/image-20230821175419188.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="4-并查集的基本操作"><a href="#4-并查集的基本操作" class="headerlink" title="4.并查集的基本操作"></a>4.并查集的基本操作</h2><h3 id="4-1-初始化-1"><a href="#4-1-初始化-1" class="headerlink" title="4.1 初始化"></a>4.1 初始化</h3><p><img src="/images/image-20230826171623657.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="4-2-原始操作"><a href="#4-2-原始操作" class="headerlink" title="4.2 原始操作"></a>4.2 原始操作</h3><h4 id="4-2-1-原始查找"><a href="#4-2-1-原始查找" class="headerlink" title="4.2.1 原始查找"></a>4.2.1 原始查找</h4><p>该函数返回x所属的根结点，时间复杂度为O(n)（即树的高度）</p>
+<p><img src="/images/image-20230826171713630.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="4-2-2-原始合并"><a href="#4-2-2-原始合并" class="headerlink" title="4.2.2 原始合并"></a>4.2.2 原始合并</h4><p>无论是原始还是优化后的合并操作的时间复杂度均为O(1)，主要影响的是查找操作的时间复杂度</p>
+<p><img src="/images/image-20230826172051779.png" srcset="/img/loading.gif" lazyload></p>
+<p>若要合并两个非根结点，则先使用Find找到对应的根结点后，再对两个根结点执行Union操作</p>
+<h3 id="4-3-优化操作"><a href="#4-3-优化操作" class="headerlink" title="4.3 优化操作"></a>4.3 优化操作</h3><h4 id="4-3-1-优化合并"><a href="#4-3-1-优化合并" class="headerlink" title="4.3.1 优化合并"></a>4.3.1 优化合并</h4><p>使得树高不超过[logn]+1，使Find操作的复杂度降低为O(logn)</p>
+<p><img src="/images/image-20230826172205051.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="4-3-2-优化查找-压缩路径"><a href="#4-3-2-优化查找-压缩路径" class="headerlink" title="4.3.2 优化查找(压缩路径)"></a>4.3.2 优化查找(压缩路径)</h4><p>压缩路径后，Find操作的时间复杂度低于O(logn)（甚至可能为常数级别）</p>
+<p><img src="/images/image-20230826171953150.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="六、图"><a href="#六、图" class="headerlink" title="六、图"></a>六、图</h1><h2 id="1-基本数据结构定义-4"><a href="#1-基本数据结构定义-4" class="headerlink" title="1.基本数据结构定义"></a>1.基本数据结构定义</h2><h3 id="1-1-邻接矩阵定义"><a href="#1-1-邻接矩阵定义" class="headerlink" title="1.1 邻接矩阵定义"></a>1.1 邻接矩阵定义</h3><p>邻接矩阵是图的顺序存储结构</p>
+<p><img src="/images/image-20230826174145334.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-2-邻接表定义"><a href="#1-2-邻接表定义" class="headerlink" title="1.2 邻接表定义"></a>1.2 邻接表定义</h3><p>邻接表是图的链式存储结构，由顶点表和边表两部分组成</p>
+<ol>
+<li>顶点表结点存储顶点信息和指向第一个边表结点的指针</li>
+<li>边表结点存储与当前顶点邻接的顶点序号以及指向下一边表结点的指针</li>
+</ol>
+<p><img src="/images/image-20230826174228683.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="2-图的遍历"><a href="#2-图的遍历" class="headerlink" title="2.图的遍历"></a>2.图的遍历</h2><h3 id="2-1-深度优先-DFS"><a href="#2-1-深度优先-DFS" class="headerlink" title="2.1 深度优先(DFS)"></a>2.1 深度优先(DFS)</h3><p>图的深度优先类似二叉树的先序遍历。二叉树的先序遍历对每个结点需要递归访问两个分支，图的深度优先需要递归访问多个分支。</p>
+<p>算法执行过程如下：</p>
+<ol>
+<li>任取一个顶点访问；</li>
+<li>检查这个顶点的所有邻接顶点，递归访问其中未被访问的顶点</li>
+</ol>
+<p>以邻接表为存储结构的DFS如下</p>
+<p><img src="/images/image-20230826174844512.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-2-广度优先-BFS"><a href="#2-2-广度优先-BFS" class="headerlink" title="2.2 广度优先(BFS)"></a>2.2 广度优先(BFS)</h3><p>图的广度优先类似树的层序遍历，同样需要借助队列实现。算法执行流程如下：</p>
+<ol>
+<li>任取图中一个顶点访问，将该顶点入队并标记为已访问；</li>
+<li>队列非空时执行遍历循环：出队，依次检查出队顶点的所有邻接顶点，访问没有被访问过的邻接顶点并将其入队；</li>
+<li>队列空时跳出循环表示遍历完成；</li>
+</ol>
+<p>以邻接表为存储结构的广度优先搜索算法如下</p>
+<p><img src="/images/image-20230826175058458.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-3-非连通图的遍历"><a href="#2-3-非连通图的遍历" class="headerlink" title="2.3 非连通图的遍历"></a>2.3 非连通图的遍历</h3><p>上述遍历代码针对的是连通图，针对非连通图直接暴力遍历每个顶点即可</p>
+<p><img src="/images/image-20230826175042050.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="3-最小生成树"><a href="#3-最小生成树" class="headerlink" title="3.最小生成树"></a>3.最小生成树</h2><p>普里姆和克鲁斯卡尔算法都是针对无向图的最小生成树算法</p>
+<h3 id="3-1-普里姆算法"><a href="#3-1-普里姆算法" class="headerlink" title="3.1 普里姆算法"></a>3.1 普里姆算法</h3><p>从树中某个顶点v<del>0</del>开始，构造生成树的算法执行过程如下：</p>
+<ol>
+<li>将v<del>0</del>到其他顶点的所有边作为候选边；</li>
+<li>重复以下步骤n-1次使得其他n-1个顶点被归入树中：<ol>
+<li>从候选边中挑选出权值最小的边输出，并将与该边另一端相连的顶点v并入树中；</li>
+<li>考察所有甚于顶点v<del>i</del>，若(v,v<del>i</del>)的权值比lowcost[v<del>i</del>]小则更新该值</li>
+</ol>
+</li>
+</ol>
+<p>以邻接矩阵为图的存储结构的普里姆算法如下</p>
+<p><img src="/images/image-20230826184033784.png" srcset="/img/loading.gif" lazyload></p>
+<p>该算法的核心部分是双重循环，因此该算法的时间复杂度为O(n^2^)</p>
+<h3 id="3-2-克鲁斯卡尔算法"><a href="#3-2-克鲁斯卡尔算法" class="headerlink" title="3.2 克鲁斯卡尔算法"></a>3.2 克鲁斯卡尔算法</h3><p>算法思想非常直接：每次找出侯选边中权值最小的边，将该边并入生成树中，重复该操作直到所有边都被检测完</p>
+<p><img src="/images/image-20230827174545413.png" srcset="/img/loading.gif" lazyload></p>
+<p>算法的时间花费主要在sort和单层循环，更一般的，克鲁斯卡尔算法的时间复杂度由所选取的排序算法决定。排序算法处理的数据规模由图的边数决定，与图的顶点数无关，该算法适用于稀疏图。</p>
+<h2 id="4-最短路径"><a href="#4-最短路径" class="headerlink" title="4.最短路径"></a>4.最短路径</h2><p>以下两个算法均针对有向图的最短路径</p>
+<h3 id="4-1-迪杰斯特拉算法"><a href="#4-1-迪杰斯特拉算法" class="headerlink" title="4.1 迪杰斯特拉算法"></a>4.1 迪杰斯特拉算法</h3><p>该算法需要三个辅助数组：</p>
+<ul>
+<li>dist[v<del>i</del>]表示从源顶点到v<del>i</del>的最短路径长度</li>
+<li>path[v<del>i</del>]表示从源顶点到v<del>i</del>的最短路径上v<del>i</del>的前一个结点</li>
+<li>set[v<del>i</del>]标记了顶点v<del>i</del>是否已经被归入最短路径中</li>
+</ul>
+<p>该算法的执行流程如下：</p>
+<ol>
+<li>从当前dist[]数组中选出最小值并将该顶点v<del>u</del>的set设置为1；</li>
+<li>以v<del>u</del>为中间顶点更新源顶点到剩余未被归入的顶点的路径长度；</li>
+<li>对1、2执行n-1次得到源顶点到其余n-1个结点的最短路径；</li>
+</ol>
+<p><img src="/images/image-20230827173138866.png" srcset="/img/loading.gif" lazyload></p>
+<p>因为是嵌套双层循环，所以可以得出时间复杂度为O(n^2^)</p>
+<p>利用path数组可以输出源顶点到目标顶点的路径，借助栈实现</p>
+<p><img src="/images/image-20230827173324745.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="4-2-弗洛伊德算法"><a href="#4-2-弗洛伊德算法" class="headerlink" title="4.2 弗洛伊德算法"></a>4.2 弗洛伊德算法</h3><p>迪杰斯特拉是求解图中某一顶点到其他顶点的最短路径，弗洛伊德可以求解图中任意两个顶点之间的最短路径（并且算法更加简单，只是时间复杂度较高）</p>
+<p>需要使用两个辅助数组：</p>
+<ul>
+<li>A用于记录当前任意两个顶点最短路径的长度</li>
+<li>Path用于记录当前两个顶点最短路径上的中间顶点</li>
+</ul>
+<p>算法流程如下：</p>
+<ol>
+<li>初始化两个矩阵，将图的邻接矩阵赋值给A，将Path中的所有元素设置为-1；</li>
+<li>以顶点k为中间顶点，对图中所有顶点对的路径进行更新；</li>
+</ol>
+<p><img src="/images/image-20230827173716416.png" srcset="/img/loading.gif" lazyload></p>
+<p>因为主要部分是三层循环，故该算法的时间复杂度为O(n^3^)</p>
+<p>借助矩阵A和矩阵Path可以输出任意两个顶点间的最短路径序列</p>
+<p><img src="/images/image-20230827173757818.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="5-拓扑排序"><a href="#5-拓扑排序" class="headerlink" title="5.拓扑排序"></a>5.拓扑排序</h2><h3 id="5-1-顺拓扑排序"><a href="#5-1-顺拓扑排序" class="headerlink" title="5.1 顺拓扑排序"></a>5.1 顺拓扑排序</h3><p>在一个有向图无环图中找到拓扑排序的基本流程如下：</p>
+<ol>
+<li>从有向图中找到入度为0的顶点输出；</li>
+<li>删除1中的顶点以及从该顶点出发的全部边；</li>
+<li>重复上述两步直到图中不存在入度为0的点；</li>
+</ol>
+<p><img src="/images/image-20230828162730647.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="5-2-逆拓扑排序"><a href="#5-2-逆拓扑排序" class="headerlink" title="5.2 逆拓扑排序"></a>5.2 逆拓扑排序</h3><p>在一个有向图无环图中找到逆拓扑排序的基本流程如下：</p>
+<ol>
+<li>从有向图中找到出度为0的顶点输出；</li>
+<li>删除1中的顶点以及到达该顶点的全部边；</li>
+<li>重复上述两步直到图中不存在出度为0的点；</li>
+</ol>
+<p>逆拓扑排序可以借鉴顺拓扑排序的算法思想，但更常考的是利用深度优先实现逆拓扑排序，只需要修改深度优先代码中的<code>Visit(v);</code>代码段的位置即可</p>
+<p><img src="/images/image-20230828162742896.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="七、排序"><a href="#七、排序" class="headerlink" title="七、排序"></a>七、排序</h1><blockquote>
+<p>若没有特殊说明，本章所有排序算法都默认是非递减排序</p>
+</blockquote>
+<h2 id="1-插入类排序"><a href="#1-插入类排序" class="headerlink" title="1.插入类排序"></a>1.插入类排序</h2><h3 id="1-1-直接插入排序"><a href="#1-1-直接插入排序" class="headerlink" title="1.1 直接插入排序"></a>1.1 直接插入排序</h3><p>算法思想：每趟排序都将一个待排序的关键字按照其大小插入到有序序列的适当位置，直到所有待排序关键字都被插入到有序序列中</p>
+<p><img src="/images/image-20230829170932061.png" srcset="/img/loading.gif" lazyload></p>
+<p>时间复杂度分析：</p>
+<ul>
+<li><p>最坏情况：整个序列为逆序，基本操作总执行次数为n(n-1)&#x2F;2，时间复杂度为O(n^2^)</p>
+</li>
+<li><p>最好情况：整个序列有序，内层循环始终不执行，时间复杂度为O(n)</p>
+</li>
+<li><p>平均情况：时间复杂度为O(n^2^)</p>
+</li>
+</ul>
+<p>空间复杂度分析：算法所需辅助空间不随无序序列的规模变化而变化（常量），故空间复杂度为O(1)</p>
+<h3 id="1-2-折半插入排序"><a href="#1-2-折半插入排序" class="headerlink" title="1.2 折半插入排序"></a>1.2 折半插入排序</h3><p>折半插入排序算法是对直接插入排序算法的一种改进，它通过减少比较次数来提高排序的效率。这个算法与直接插入排序算法的不同之处在于，在寻找插入位置时使用了二分查找，这样可以减少比较的次数，从而提高了排序的效率。在实际应用中，折半插入排序通常比直接插入排序更快，特别是对于大型数据集</p>
+<p><img src="/images/image-20230829171503568.png" srcset="/img/loading.gif" lazyload></p>
+<p>时间复杂度分析：</p>
+<ul>
+<li>最好情况：O(nlogn)</li>
+<li>最坏情况：O(n^2^)</li>
+<li>平均情况：O(n^2^)</li>
+</ul>
+<p>空间复杂度仍然为O(1)</p>
+<h3 id="1-3-希尔排序"><a href="#1-3-希尔排序" class="headerlink" title="1.3 希尔排序"></a>1.3 希尔排序</h3><p>希尔排序又称为缩小增量排序，是对直接插入排序的一种改进（直接插入排序适用于序列基本有序的情况）。希尔排序的每趟排序都会使得序列整体更加有序，减少了元素的移动次数提升效率。</p>
+<p>其代码类比直接插入排序，相当接近</p>
+<p><img src="/images/image-20230829172021465.png" srcset="/img/loading.gif" lazyload></p>
+<p>希尔排序的时间复杂度和增量的选取相关（无论怎么选，增量的最后一个值一定取1）：</p>
+<ul>
+<li>增量从n&#x2F;2开始，每次都除以2向下取整，此时时间复杂度为O(n^2^)；</li>
+<li>另一种情况是选取增量为2^k^+1&lt;&#x3D;n，此时时间复杂度为O(n^1.5^)；</li>
+</ul>
+<p>希尔排序的空间复杂度为O(1)</p>
+<h2 id="2-交换类排序"><a href="#2-交换类排序" class="headerlink" title="2.交换类排序"></a>2.交换类排序</h2><h3 id="2-1-起泡排序"><a href="#2-1-起泡排序" class="headerlink" title="2.1 起泡排序"></a>2.1 起泡排序</h3><p>每趟起泡排序都会使得无序序列中最大的关键字被交换到最后，起泡排序算法的结束条件是在一趟排序过程中没有发生关键字的交换</p>
+<p><img src="/images/image-20230829172612678.png" srcset="/img/loading.gif" lazyload></p>
+<p>时间复杂度分析：</p>
+<ul>
+<li>最坏情况：待排序列逆序，基本操作总的执行次数为n(n-1)&#x2F;2，时间复杂度为O(n^2^)</li>
+<li>最好情况：待排序列有序，内层循环不执行，时间复杂度为O(n)</li>
+<li>平均情况：时间复杂度为O(n^2^)</li>
+</ul>
+<p>空间复杂度：辅助数组仅有temp一个，空间复杂度为O(1)</p>
+<h3 id="2-2-快速排序"><a href="#2-2-快速排序" class="headerlink" title="2.2 快速排序"></a>2.2 快速排序</h3><p>一趟快速排序的过程实际就是对无序序列进行一次划分的过程，划分后比枢轴小的关键字都在枢轴左边，比枢轴大的关键字都在枢轴右边。每趟快速排序结束后都会有一个关键字到达最终位置。</p>
+<p><img src="/images/image-20230829173023648.png" srcset="/img/loading.gif" lazyload></p>
+<p>时间复杂度分析（快速排序的排序趟数与初始序列有关，待排序列越无序算法效率越高，待排序列越有序算法效率越低）：</p>
+<ul>
+<li>最好情况：O(nlogn)</li>
+<li>最坏情况：O(n^2^)</li>
+<li>平均情况：O(nlogn)</li>
+</ul>
+<h2 id="3-选择类排序"><a href="#3-选择类排序" class="headerlink" title="3.选择类排序"></a>3.选择类排序</h2><h3 id="3-1-简单选择排序"><a href="#3-1-简单选择排序" class="headerlink" title="3.1 简单选择排序"></a>3.1 简单选择排序</h3><p>算法思想：从头到尾顺序扫描无序序列，选择最小的关键字与第一个关键字交换，接着从剩下的无序序列的关键字中继续这种选择和交换，最终使得序列有序</p>
+<p><img src="/images/image-20230829173614366.png" srcset="/img/loading.gif" lazyload></p>
+<p>时间复杂度分析：简单选择排序的双层循环的执行次数和初始序列没有关系，基本操作执行总次数为n(n-1)&#x2F;2，时间复杂度为O(n^2^)</p>
+<p>空间复杂度分析：O(1)</p>
 
               
             </div>
