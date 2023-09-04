@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/study.jpg">
 <meta property="article:published_time" content="2023-03-02T02:01:00.000Z">
-<meta property="article:modified_time" content="2023-08-07T08:25:27.905Z">
+<meta property="article:modified_time" content="2023-09-04T14:50:51.753Z">
 <meta property="article:author" content="YangZaiyan">
 <meta property="article:tag" content="概率论与数理统计">
 <meta name="twitter:card" content="summary_large_image">
@@ -221,7 +221,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          19k 字
+          23k 字
         
       </span>
     
@@ -232,7 +232,7 @@
         
         
         
-          161 分钟
+          188 分钟
         
       </span>
     
@@ -288,6 +288,11 @@
 <p>2023&#x2F;5&#x2F;15 17:34 书本知识点总结完毕，将高数和线代知识点总结完毕后进行刷题巩固；</p>
 <p>2023&#x2F;6&#x2F;18 19:46 不要忘了概率论之前整理的笔记，对于一些很难搞清楚的概念之类的可以参考笔记（毕竟笔记也是当时耗费大量时间整理的）；</p>
 <p>2023&#x2F;7&#x2F;18 15:41 今天复习第五讲的时候再次用到了之前整理的笔记，概率论当时整理的笔记真的是很好的，一定要整理下来！！！ 现在(16:59)已经基本把之前大二学习概率论时候的笔记整理完毕，只剩下最后区间估计的知识点因为涉及做题过程中理解，所以暂时先不整理，之后有需要可以回过头看看。现在基本上没什么疑惑点了，其实只要搞清楚概率论和数理统计两门学科之间的关系就能很容易的搞清楚这六章知识点的脉络。相对来说第五讲作为过渡性知识点会比较简单，而第六讲作为最终集大成者，基本上是考研题的大题所在，需要花时间理解和刷题掌握；</p>
+<blockquote>
+<p>2023&#x2F;9&#x2F;1 概率论强化开启</p>
+</blockquote>
+<p>2023&#x2F;9&#x2F;2 10:58 全集分解思想后面应该还会深化，此处暂时不整理（张宇的概率论强化前后关系比较密切，最后学完九讲后建议从头到尾检查一遍有没有没复习整理到的）</p>
+<p>2023&#x2F;9&#x2F;4 17:31 不管效果怎么样，总之在前前后后各种心态爆炸以及焦虑的情况下，完成了最终对概率论的强化，基本上所有的知识点都整合完毕（不要过于在意是否遗漏什么知识点，不可能把考题所有的知识点都整理上，还需要结合刷题才能查漏补缺，听课不可能做到对知识点的完全掌握）。概率论的强化完成也意味着数学强化阶段完成，接下来就不是看视频的事情了，而是全心投入刷题的过程中。关于刷题选什么题来刷、怎么刷、事件安排如何具体在实践中动态调整。数学和专业课基本上都进入刷题的阶段了，无论之前复习的效果如何，总之九月份一定需要开启刷题的状态；</p>
 <hr>
 <h1 id="一、随机事件与概率"><a href="#一、随机事件与概率" class="headerlink" title="一、随机事件与概率"></a>一、随机事件与概率</h1><hr>
 <blockquote>
@@ -304,24 +309,24 @@
 <p>概率论中的许多定理与结论，如大数定理、中心极限定理等保证了统计推断的合理性。做统计推断一般都需要对黑箱子做各种各样的假设，这些假设都是概率模型，统计推断实际上就是在估计概率模型的参数；</p>
 <p>换句话说，概率论研究概率模型，数理统计挑选概率模型；</p>
 <hr>
-<h2 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1.基本概念"></a>1.基本概念</h2><h3 id="1-1-随机试验"><a href="#1-1-随机试验" class="headerlink" title="1.1 随机试验"></a>1.1 随机试验</h3><p>称一个试验为随机试验如果满足：</p>
+<h2 id="1-随机试验与随机事件"><a href="#1-随机试验与随机事件" class="headerlink" title="1.随机试验与随机事件"></a>1.随机试验与随机事件</h2><h3 id="1-1-随机试验"><a href="#1-1-随机试验" class="headerlink" title="1.1 随机试验"></a>1.1 随机试验</h3><p>称一个试验为随机试验如果满足：</p>
 <p>（1）试验可以在相同的条件下重复进行；<br>（2）试验所有可能结果是明确可知道的，并且不止一个；<br>（3）每一次试验会出现哪一个结果，事先并不能确定；</p>
 <blockquote>
 <p>抛硬币就是就是一个随机试验；</p>
 <p>如果不能确切知道某一随机试验的全部可能结果，但是可以知道该结果不会超出某个值（这个范围甚至可以是(-∞，+∞)），此时也符合第二条件；</p>
 </blockquote>
-<h3 id="1-2-随机事件"><a href="#1-2-随机事件" class="headerlink" title="1.2 随机事件"></a>1.2 随机事件</h3><p>在随机试验中，可能出现也可能不出现的结果称为随机事件，简称为事件；</p>
-<ul>
-<li>每次试验中一定会发生的事件称为必然事件，记为全集Ω；</li>
-<li>每次试验中一定不发生的事件称为不可能事件，记为空集；</li>
-</ul>
-<h3 id="1-3-样本空间"><a href="#1-3-样本空间" class="headerlink" title="1.3 样本空间"></a>1.3 样本空间</h3><p>随机试验的每一个不可再分的结果称为一个<code>样本点</code>（或基本事件），记为ω；</p>
+<h3 id="1-2-样本空间"><a href="#1-2-样本空间" class="headerlink" title="1.2 样本空间"></a>1.2 样本空间</h3><p>随机试验的每一个不可再分的结果称为一个<code>样本点</code>（或基本事件），记为ω；</p>
 <p>由样本点全体组成的集合称为<code>样本空间</code>（或基本事件空间），记为Ω；</p>
 <blockquote>
 <p>抛硬币的样本空间Ω&#x3D;{正面，反面}，其基本事件为w<del>1</del>&#x3D;{正面}，w<del>2</del>&#x3D;{反面}；</p>
 </blockquote>
-<h2 id="2-事件的关系和运算"><a href="#2-事件的关系和运算" class="headerlink" title="2.事件的关系和运算"></a>2.事件的关系和运算</h2><p>概率论中一个极其重要的基本功就是将题目中所给的基本事件用符号表示，这决定了后续解题的基础 – 一定注意是对基本事件进行符号化表示，比如令事件A为“抽到正品且通过验收”则这种设法是不妥当的，应当设事件B为“抽到正品”，事件C为“通过验收”。</p>
-<h3 id="2-1-定义"><a href="#2-1-定义" class="headerlink" title="2.1 定义"></a>2.1 定义</h3><blockquote>
+<h3 id="1-3-随机事件"><a href="#1-3-随机事件" class="headerlink" title="1.3 随机事件"></a>1.3 随机事件</h3><p>在随机试验中，可能出现也可能不出现的结果称为随机事件，简称为事件；</p>
+<ul>
+<li>每次试验中一定会发生的事件称为必然事件，记为全集Ω；</li>
+<li>每次试验中一定不发生的事件称为不可能事件，记为空集；</li>
+</ul>
+<p>概率论中一个极其重要的基本功就是将题目中所给的基本事件用符号表示，这决定了后续解题的基础 – 一定注意是对基本事件进行符号化表示，比如令事件A为“抽到正品且通过验收”则这种设法是不妥当的，应当设事件B为“抽到正品”，事件C为“通过验收”。</p>
+<h4 id="1-3-1-事件的关系"><a href="#1-3-1-事件的关系" class="headerlink" title="1.3.1 事件的关系"></a>1.3.1 事件的关系</h4><blockquote>
 <p>事件由集合定义，因此事件的运算本质上就是集合的运算；</p>
 <p>事件的关系主要有：包含、相等、相容、互斥和对立；</p>
 <p>事件的运算主要有：和，差，积；</p>
@@ -345,7 +350,7 @@
 <li><code>事件运算先后顺序约定为：逆运算、积运算，最后是和运算或差运算</code>；</li>
 </ul>
 </blockquote>
-<h3 id="2-2-运算法则"><a href="#2-2-运算法则" class="headerlink" title="2.2 运算法则"></a>2.2 运算法则</h3><p><img src="/images/image-20230411205625402.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="1-3-2-运算法则"><a href="#1-3-2-运算法则" class="headerlink" title="1.3.2 运算法则"></a>1.3.2 运算法则</h4><p><img src="/images/image-20230411205625402.png" srcset="/img/loading.gif" lazyload></p>
 <blockquote>
 <ul>
 <li><p>这里列出的运算法则是完全正确的，而其他未列出的运算法则必须以此推导，不能理所当然的认为存在；</p>
@@ -355,7 +360,7 @@
 </ul>
 <p><img src="/images/image-20230611161328876.png" srcset="/img/loading.gif" lazyload></p>
 </blockquote>
-<h2 id="3-概率的定义"><a href="#3-概率的定义" class="headerlink" title="3.概率的定义"></a>3.概率的定义</h2><p>概率的公理化定义如下：</p>
+<h2 id="2-概率"><a href="#2-概率" class="headerlink" title="2.概率"></a>2.概率</h2><h3 id="2-1-基本概念"><a href="#2-1-基本概念" class="headerlink" title="2.1 基本概念"></a>2.1 基本概念</h3><p>概率的公理化定义如下：</p>
 <p><img src="/images/image-20230411205923539.png" srcset="/img/loading.gif" lazyload></p>
 <blockquote>
 <ul>
@@ -363,33 +368,8 @@
 <li>概率的公理化定义并不能应用于计算，常用于该定义判断某事件函数P(·)是否是概率；</li>
 </ul>
 </blockquote>
-<h2 id="4-古典概型和几何概型"><a href="#4-古典概型和几何概型" class="headerlink" title="4.古典概型和几何概型"></a>4.古典概型和几何概型</h2><h3 id="4-1-古典概型"><a href="#4-1-古典概型" class="headerlink" title="4.1 古典概型"></a>4.1 古典概型</h3><p>称随机试验的概率模型为古典概型，如果其样本空间满足：</p>
-<ul>
-<li>只有有限个样本点（如抛硬币、掷色子）；</li>
-<li>每个样本点发生的可能性都一样（等可能性）；</li>
-</ul>
-<p>如果古典概型的基本事件总数为n，事件A包含k个基本事件，则事件A发生的概率为</p>
-<p><img src="/images/image-20230411210350777.png" srcset="/img/loading.gif" lazyload></p>
-<p>关于古典概型的题型，主要有以下几种考点</p>
-<p><img src="/images/image-20230411210812045.png" srcset="/img/loading.gif" lazyload></p>
-<blockquote>
-<ul>
-<li>关于排列和组合，并不需要理解的特别透彻（这很容易导致做题的时候麻木，只需要知道组合是排列除以组内部的顺序即可），可以用三个水果选两个来画图直观理解；</li>
-<li>无论是随机分配问题还是随机抽样问题，本质上还是借助古典概型的定义来求概率，即P(事件A)&#x3D;基本事件数&#x2F;基本事件总数，随机分配和随机抽样问题的区别就在于基本事件总数的计算方式不同；</li>
-<li>这种题的难度都不会很大，不要再像高中一样去背什么捆绑法之类的，简单能够理解就行；</li>
-<li>关于排列组合，如下比较重要的性质需要记忆（可加快某些计算的速度）<br><img src="/images/image-20230718155724036.png" srcset="/img/loading.gif" lazyload></li>
-</ul>
-</blockquote>
-<h3 id="4-2-几何概型"><a href="#4-2-几何概型" class="headerlink" title="4.2 几何概型"></a>4.2 几何概型</h3><p>称随机试验的概率模型为几何概型，如果其样本空间满足：</p>
-<ul>
-<li>样本空间Ω是一个可度量的有界区域（可度量指的是长度或面积）；</li>
-<li>每个样本点发生的可能性一样；</li>
-</ul>
-<p><img src="/images/image-20230411210630471.png" srcset="/img/loading.gif" lazyload></p>
-<blockquote>
-<p>古典概型与几何概型的区别：基本事件有限、等可能发生的随机试验为古典概型；基本事件无限且具有几何度量、等可能发生的随机试验为几何概型；</p>
-</blockquote>
-<h2 id="5-重要公式求概率"><a href="#5-重要公式求概率" class="headerlink" title="5.重要公式求概率"></a>5.重要公式求概率</h2><h3 id="5-1-概率的性质"><a href="#5-1-概率的性质" class="headerlink" title="5.1 概率的性质"></a>5.1 概率的性质</h3><p>（1）有界性：对于任一事件A，有0&lt;&#x3D;P(A)&lt;&#x3D;1</p>
+<p>概率主要有以下两个性质性质</p>
+<p>（1）有界性：对于任一事件A，有0&lt;&#x3D;P(A)&lt;&#x3D;1</p>
 <blockquote>
 <ul>
 <li><p>不可能事件的概率为0，但是概率为0的事件不一定是不可能事件；</p>
@@ -402,46 +382,88 @@
 <p><img src="/images/image-20230411211137006.png" srcset="/img/loading.gif" lazyload></p>
 <p>单调性在解题过程中尤其重要，概率公式的变形主要有以下几种</p>
 <p><img src="/images/image-20230411211227288.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="5-2-重要公式"><a href="#5-2-重要公式" class="headerlink" title="5.2 重要公式"></a>5.2 重要公式</h3><p>（所有难以理解的概率公式都可以使用文氏图的方式画出来 – P(A)表示集合A的面积占全集Ω面积的比率）</p>
-<h4 id="5-2-1-逆事件概率公式"><a href="#5-2-1-逆事件概率公式" class="headerlink" title="5.2.1 逆事件概率公式"></a>5.2.1 逆事件概率公式</h4><p><img src="/images/image-20230411211352275.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-2-古典概型求概率"><a href="#2-2-古典概型求概率" class="headerlink" title="2.2 古典概型求概率"></a>2.2 古典概型求概率</h3><p>称随机试验的概率模型为古典概型，如果其样本空间满足：</p>
+<ul>
+<li>只有有限个样本点（如抛硬币、掷色子）；</li>
+<li>每个样本点发生的可能性都一样（等可能性）；</li>
+</ul>
+<p>如果古典概型的基本事件总数为n，事件A包含k个基本事件，则事件A发生的概率为</p>
+<p><img src="/images/image-20230411210350777.png" srcset="/img/loading.gif" lazyload></p>
+<p>关于古典概型的题型，考研数学中仅有如下两种题型（其他题型均可转化为该模型，且这两个模型之间也可以互相转换）</p>
+<ol>
+<li>随机分配问题</li>
+<li>简单随机抽样问题</li>
+</ol>
 <blockquote>
 <ul>
-<li>逆事件概率公式主要提供了一种解题的思想方法；</li>
+<li><p>关于排列和组合，并不需要理解的特别透彻（这很容易导致做题的时候麻木，只需要知道组合是排列除以组内部的顺序即可），可以用三个水果选两个来画图直观理解；</p>
+<ul>
+<li>排列P(n,m)带内部顺序；组合C(n,m)不带顺序，即排列除以内部顺序</li>
+</ul>
+</li>
+<li><p>无论是随机分配问题还是随机抽样问题，本质上还是借助古典概型的定义来求概率，即P(事件A)&#x3D;基本事件数&#x2F;基本事件总数，随机分配和随机抽样问题的区别就在于基本事件总数的计算方式不同；</p>
+</li>
+<li><p>这种题的难度都不会很大，不要再像高中一样去背什么捆绑法之类的，简单能够理解就行；</p>
+</li>
+<li><p>关于排列组合，如下比较重要的性质需要记忆（可加快某些计算的速度）</p>
+<p><img src="/images/image-20230718155724036.png" srcset="/img/loading.gif" lazyload></p>
+</li>
 </ul>
 </blockquote>
-<h4 id="5-2-2-加法公式"><a href="#5-2-2-加法公式" class="headerlink" title="5.2.2 加法公式"></a>5.2.2 加法公式</h4><p><img src="/images/image-20230411211434662.png" srcset="/img/loading.gif" lazyload></p>
-<blockquote>
-<p>注意：</p>
+<h4 id="2-2-1-随机分配问题"><a href="#2-2-1-随机分配问题" class="headerlink" title="2.2.1 随机分配问题"></a>2.2.1 随机分配问题</h4><p><img src="/images/image-20230901110850978.png" srcset="/img/loading.gif" lazyload></p>
 <ul>
-<li><p>概率有加法对应但是事件的运算可没有</p>
+<li>注意题干中的修辞，“某指定n个盒子中各有一球”即只有一种情况，“恰有n个盒子各有一球”即需要随机抽取出n个盒子有组合数C(N,n)种情况</li>
+</ul>
+<h4 id="2-2-2-随机抽样问题"><a href="#2-2-2-随机抽样问题" class="headerlink" title="2.2.2 随机抽样问题"></a>2.2.2 随机抽样问题</h4><p><img src="/images/image-20230901111247630.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>“先后无放回取出k个球”与“任取k个球”的概率相同，利用这点可以将第二种类型的求解转换为第三种类型</li>
+<li>“抓阄模型”是一种重要的模型，即中奖的概率与买彩票的先后顺序无关，一般题干叙述“第三次取到白球”即为抓阄模型（无论是否有放回），题干叙述为“第三次才取到白球”即为乘法公式</li>
+</ul>
+<h3 id="2-3-几何概型求概率"><a href="#2-3-几何概型求概率" class="headerlink" title="2.3 几何概型求概率"></a>2.3 几何概型求概率</h3><p>称随机试验的概率模型为几何概型，如果其样本空间满足：</p>
+<ul>
+<li>样本空间Ω是一个可度量的有界区域（可度量指的是长度或面积）；</li>
+<li>每个样本点发生的可能性一样；</li>
+</ul>
+<p><img src="/images/image-20230411210630471.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>古典概型与几何概型的区别：基本事件有限、等可能发生的随机试验为古典概型；基本事件无限且具有几何度量、等可能发生的随机试验为几何概型；</p>
+</blockquote>
+<h3 id="2-4-重要公式求概率"><a href="#2-4-重要公式求概率" class="headerlink" title="2.4 重要公式求概率"></a>2.4 重要公式求概率</h3><p>（所有难以理解的概率公式都可以使用文氏图的方式画出来 – P(A)表示集合A的面积占全集Ω面积的比率）</p>
+<h4 id="2-4-1-对立思想"><a href="#2-4-1-对立思想" class="headerlink" title="2.4.1 对立思想"></a>2.4.1 对立思想</h4><p><img src="/images/image-20230901112110173.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-4-2-互斥思想"><a href="#2-4-2-互斥思想" class="headerlink" title="2.4.2 互斥思想"></a>2.4.2 互斥思想</h4><p><img src="/images/image-20230901112225922.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><p>P(ABC^-^)&#x3D;P(AB)-P(ABC) – 令AB&#x3D;P即可推出；</p>
 </li>
-<li><p><img src="/images/image-20230411211504666.png" srcset="/img/loading.gif" lazyload></p>
+<li><p>注意P(AB^-^)!&#x3D;P(A)-P(B)</p>
+<p><img src="/images/image-20230710155604888.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>事件的运算中只有和事件没有事件做加法运算</p>
 </li>
 <li><p>另外，对于大于3个以上事件的概率加法公式，也有记忆的必要，这里给出通式</p>
 </li>
 </ul>
 <p><img src="/images/image-20230611222131474.png" srcset="/img/loading.gif" lazyload></p>
-</blockquote>
-<h4 id="5-2-3-减法公式"><a href="#5-2-3-减法公式" class="headerlink" title="5.2.3 减法公式"></a>5.2.3 减法公式</h4><p><img src="/images/image-20230411211543621.png" srcset="/img/loading.gif" lazyload></p>
-<blockquote>
+<h4 id="2-4-3-独立思想"><a href="#2-4-3-独立思想" class="headerlink" title="2.4.3 独立思想"></a>2.4.3 独立思想</h4><p><img src="/images/image-20230901112513927.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-4-4-条件概率"><a href="#2-4-4-条件概率" class="headerlink" title="2.4.4 条件概率"></a>2.4.4 条件概率</h4><p><img src="/images/image-20230901113817677.png" srcset="/img/loading.gif" lazyload></p>
 <ul>
-<li>P(ABC^-^)&#x3D;P(AB)-P(ABC) – 令AB&#x3D;P即可推出；</li>
-<li>注意P(AB^-^)!&#x3D;P(A)-P(B)，因为<img src="/images/image-20230710155604888.png" srcset="/img/loading.gif" lazyload></li>
+<li>乘法公式既可以使用条件概率的思想，也可以使用互斥思想，解题时需要同时想到；</li>
+<li>乘法公式的拓展（同样做分母的概率需要大于0）</li>
 </ul>
-</blockquote>
-<h4 id="5-2-4-条件概率公式"><a href="#5-2-4-条件概率公式" class="headerlink" title="5.2.4 条件概率公式"></a>5.2.4 条件概率公式</h4><p><img src="/images/image-20230411211645995.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20230901113043390.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="1-条件概率公式"><a href="#1-条件概率公式" class="headerlink" title="(1)条件概率公式"></a>(1)条件概率公式</h5><p><img src="/images/image-20230411211645995.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>条件概率一定需要注意“垂帘听政”的事件的概率需要大于0</li>
+</ul>
 <blockquote>
-<p>注意：</p>
 <p><img src="/images/image-20230411211800947.png" srcset="/img/loading.gif" lazyload></p>
 </blockquote>
-<h4 id="5-2-5-乘法公式"><a href="#5-2-5-乘法公式" class="headerlink" title="5.2.5 乘法公式"></a>5.2.5 乘法公式</h4><p><img src="/images/image-20230411211857139.png" srcset="/img/loading.gif" lazyload></p>
-<h4 id="5-2-6-全概率公式"><a href="#5-2-6-全概率公式" class="headerlink" title="5.2.6 全概率公式"></a>5.2.6 全概率公式</h4><p>全概率公式又称为全集分解公式，是一种“由因导果”的思想；</p>
-<p><img src="/images/image-20230411211943499.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="2-全概率公式"><a href="#2-全概率公式" class="headerlink" title="(2)全概率公式"></a>(2)全概率公式</h5><p>全概率公式又称为全集分解公式，是一种“由因导果”的思想；</p>
+<p><img src="/images/image-20230901113721511.png" srcset="/img/loading.gif" lazyload></p>
 <blockquote>
-<p>全概率公式的特点是，某事件的发生是可能在多种条件下的，而这些条件一起构成了一个完备事件组（当然这些条件可以是与该事件没啥关系的事件，比如“(我去游泳|小明吃饭了)”，但是一旦两者以条件概率的形式写出来则两者就有了条件的这种关系）</p>
+<p>全概率公式的特点是，某事件的发生是可能在多种条件下的，而这些条件一起构成了一个完备事件组（当然这些条件可以是主观上与该事件没啥关系的事件，比如“(我去游泳|小明吃饭了)”，但是一旦两者以条件概率的形式写出来则两者就有了条件的这种关系）</p>
 </blockquote>
-<h4 id="5-2-7-贝叶斯公式"><a href="#5-2-7-贝叶斯公式" class="headerlink" title="5.2.7 贝叶斯公式"></a>5.2.7 贝叶斯公式</h4><p>贝叶斯公式又称为逆概率公式，是一种“由果导因”的思想，即已知事件B发生，求事件A<del>j</del>发生的概率</p>
-<p><img src="/images/image-20230411212206908.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="3-贝叶斯公式"><a href="#3-贝叶斯公式" class="headerlink" title="(3)贝叶斯公式"></a>(3)贝叶斯公式</h5><p>贝叶斯公式又称为逆概率公式，是一种“由果导因”的思想，即已知事件B发生，求事件A<del>j</del>发生的概率</p>
+<p><img src="/images/image-20230901113626790.png" srcset="/img/loading.gif" lazyload></p>
 <blockquote>
 <ul>
 <li>注意P(B)和P(B|A)的区别与联系对理解贝叶斯公式有很大作用，P(B)是在样本空间Ω下计算的事件B发生的概率，而P(B|A)是在已知事件A发生的条件下（也就是样本空间现在缩减为A）计算的；</li>
@@ -452,15 +474,19 @@
 </li>
 </ul>
 </blockquote>
-<h3 id="5-3-常用不等式"><a href="#5-3-常用不等式" class="headerlink" title="5.3 常用不等式"></a>5.3 常用不等式</h3><p>概率的等量关系如加法公式、减法公式等重要公式前面已经介绍过这里不再赘述，这里主要总结常用的概率不等式</p>
+<h4 id="2-4-5-常用不等式"><a href="#2-4-5-常用不等式" class="headerlink" title="2.4.5 常用不等式"></a>2.4.5 常用不等式</h4><p>概率的等量关系如加法公式、减法公式等重要公式前面已经介绍过这里不再赘述，这里主要总结常用的概率不等式</p>
 <p><img src="/images/image-20230422163540306.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="6-事件的独立性"><a href="#6-事件的独立性" class="headerlink" title="6.事件的独立性"></a>6.事件的独立性</h2><p>设A,B为两个事件，如果P(AB)&#x3D;P(A)P(B)则称事件A与事件B相互独立，简称事件A和事件B独立：</p>
+<h4 id="2-4-6-最值思想"><a href="#2-4-6-最值思想" class="headerlink" title="2.4.6 最值思想"></a>2.4.6 最值思想</h4><p>涉及最值的题目一般需要进行转换才能求解</p>
+<p><img src="/images/image-20230901113306185.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="3-事件的独立性"><a href="#3-事件的独立性" class="headerlink" title="3.事件的独立性"></a>3.事件的独立性</h2><h3 id="3-1-独立的定义"><a href="#3-1-独立的定义" class="headerlink" title="3.1 独立的定义"></a>3.1 独立的定义</h3><p>两个事件独立的定义如下</p>
+<p><img src="/images/image-20230901122420196.png" srcset="/img/loading.gif" lazyload></p>
 <blockquote>
 <ul>
 <li>不可能事件与任何事件(包括其他不可能事件)相互独立；</li>
 <li>事件A与事件B相互独立则A的对立事件与B也相互独立；</li>
 </ul>
 </blockquote>
+<p>多个事件的相互独立和两两独立的定义如下</p>
 <p><img src="/images/image-20230411212844176.png" srcset="/img/loading.gif" lazyload></p>
 <blockquote>
 <ul>
@@ -468,9 +494,15 @@
 <li>相互独立可以简化交事件的概率计算：P(A<del>1</del>∩A<del>2</del>∩…∩A<del>n</del>)&#x3D;P(A<del>1</del>)P(A<del>2</del>)…P(A<del>n</del>)；</li>
 </ul>
 </blockquote>
-<h1 id="二、一维随机变量及其分布"><a href="#二、一维随机变量及其分布" class="headerlink" title="二、一维随机变量及其分布"></a>二、一维随机变量及其分布</h1><h2 id="1-基本概念-1"><a href="#1-基本概念-1" class="headerlink" title="1.基本概念"></a>1.基本概念</h2><p>随机变量的意义在于统一和量化<code>事件</code>（原本使用集合来定义事件，这导致很难用数学方法来分析）；</p>
+<h3 id="3-2-独立的判定"><a href="#3-2-独立的判定" class="headerlink" title="3.2 独立的判定"></a>3.2 独立的判定</h3><p><img src="/images/image-20230901122907475.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>独立的等价说法是，无论事件B是否发生都不会影响A的发生，则事件A，B相互独立（第四点）</li>
+<li>独立不具备传递性；</li>
+<li>判断事件是否独立，不要用主观常识去判断，一定举例代入公式计算得出结论；</li>
+</ul>
+<h1 id="二、一维随机变量及其分布"><a href="#二、一维随机变量及其分布" class="headerlink" title="二、一维随机变量及其分布"></a>二、一维随机变量及其分布</h1><h2 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1.基本概念"></a>1.基本概念</h2><p>随机变量的意义在于统一和量化<code>事件</code> – 原本使用集合来定义事件，这导致很难用数学方法来分析。因此引入随机变量函数的概念，将不确定的各种事件ω通过随机变量函数X(ω)映射到实数轴，进而统一分析</p>
 <h3 id="1-1-随机变量"><a href="#1-1-随机变量" class="headerlink" title="1.1 随机变量"></a>1.1 随机变量</h3><blockquote>
-<p>定义：随机变量X(ω)是一个定义在Ω上的实值单值<code>函数</code>，即该函数的定义域是样本空间Ω（注意其定义域不一定是实数集），值域是实数轴；</p>
+<p>定义：随机变量X(ω)是一个定义在Ω上的实值单值<code>函数</code>，即该函数的定义域是样本空间Ω（注意其定义域不一定是实数集，可以是任何事件集合），值域是实数轴；</p>
 </blockquote>
 <ul>
 <li><p>该函数的自变量ω是样本空间Ω中的基本事件，之所以称该函数为随机变量就是因为自变量ω的出现是有一定的概率，因此其对应的函数值也是随机出现的，需要与普通函数的x是一个确定值区分；</p>
@@ -478,8 +510,8 @@
 <li><p>正因为自变量ω不是一个确定的值，因此不能使用微积分工具来研究随机变量函数的性质，于是引出了研究随机变量的工具 – 分布函数；</p>
 </li>
 </ul>
-<p>（一般的随机变量函数X(ω)我们简称为随机变量X，因为之后的所有研究对象都是函数值X所以可以忽略自变量ω）</p>
-<h3 id="1-2-分布函数"><a href="#1-2-分布函数" class="headerlink" title="1.2 分布函数"></a>1.2 分布函数</h3><blockquote>
+<p>（一般的，随机变量函数X(ω)我们简称为随机变量X，因为之后的所有研究对象都是函数值X所以可以忽略自变量ω）</p>
+<h3 id="1-2-分布函数"><a href="#1-2-分布函数" class="headerlink" title="1.2 分布函数"></a>1.2 分布函数</h3><h4 id="1-2-1-分布函数的定义"><a href="#1-2-1-分布函数的定义" class="headerlink" title="1.2.1 分布函数的定义"></a>1.2.1 分布函数的定义</h4><blockquote>
 <p>定义：设X是随机变量，x是任意实数，则称函数<code>F(x)=P&#123;X&lt;=x&#125;（x∈R）</code>为随机变量X的分布函数，也称X服从分布F(x)分布，记为X~F(x)</p>
 </blockquote>
 <p>关于上述定义需要说明：</p>
@@ -487,12 +519,14 @@
 <li>随机变量X的定义域是Ω，但是<code>任何</code>分布函数F(x)的定义域都是R，也就是x属于(-∞，+∞)，在后续解题过程中一定要考虑这点然后分情况处理；</li>
 <li>分布函数的x从-∞取值到+∞对应ω从空集取值到Ω；</li>
 <li>因为分布函数F(x)中的x是一个确定值，因此可以研究其相关性质；</li>
+<li>分布函数的泛化写法如下（很重要）</li>
 </ul>
-<p>分布函数主要有以下五条基本性质（无论是离散还是连续都有这样的结论，这也是分布函数的<code>充要条件</code>）</p>
+<p>$$<br>P（狗&lt;&#x3D;猫）&#x3D;F狗(猫)<br>$$</p>
+<h4 id="1-2-2-分布函数的性质"><a href="#1-2-2-分布函数的性质" class="headerlink" title="1.2.2 分布函数的性质"></a>1.2.2 分布函数的性质</h4><p>分布函数主要有以下五条基本性质（无论是离散还是连续都有这样的结论，这也是分布函数的<code>充要条件</code>）</p>
 <p><img src="/images/image-20230418223318672.png" srcset="/img/loading.gif" lazyload></p>
 <p>(4)分布函数本质上是事件的概率，即P{X&lt;&#x3D;x}，因此有0&lt;&#x3D;F(x)&lt;&#x3D;1，即任何分布函数都是有界函数；</p>
 <p>(5)离散型随机变量的分布函数是阶梯状的（对应阶梯图像右连续，右连续是指函数f(x)在x<del>0</del>点的取值与limx-&gt;x<del>0</del>^+^f(x)是相同的），连续型随机变量的分布函数是连续的（其概率密度函数f(x)不一定连续）</p>
-<p>分布函数一个简单且重要的应用是求概率</p>
+<h4 id="1-2-3-分布函数的应用"><a href="#1-2-3-分布函数的应用" class="headerlink" title="1.2.3 分布函数的应用"></a>1.2.3 分布函数的应用</h4><p>分布函数一个简单且重要的应用是求概率</p>
 <p><img src="/images/image-20230418223720312.png" srcset="/img/loading.gif" lazyload></p>
 <blockquote>
 <p>注意：</p>
@@ -506,14 +540,15 @@
 </li>
 </ul>
 </blockquote>
-<h2 id="2-常见随机变量"><a href="#2-常见随机变量" class="headerlink" title="2.常见随机变量"></a>2.常见随机变量</h2><blockquote>
+<h2 id="2-常见随机变量"><a href="#2-常见随机变量" class="headerlink" title="2.常见随机变量"></a>2.常见随机变量</h2><p>离散型随机变量与连续型随机变量的不同之处：</p>
 <ul>
 <li><p>分布律是指X取每个值对应的概率，是离散型随机变量特有的；</p>
 </li>
 <li><p>概率密度函数类似于分布律，同样也是每个X值对应的概率，是连续型随机变量特有的；</p>
 </li>
+<li><p>离散型随机变量的分布律与分布函数互相唯一确定，但对于连续型随机变量来说，其概率密度函数f(x)唯一确定分布函数F(x)，但分布函数F(x)对应多个概率密度函数f(x)（有限个点取值不影响积分取值）</p>
+</li>
 </ul>
-</blockquote>
 <h3 id="2-1-离散型随机变量"><a href="#2-1-离散型随机变量" class="headerlink" title="2.1 离散型随机变量"></a>2.1 离散型随机变量</h3><blockquote>
 <p>定义：如果随机变量X的取值是有限个或可列个值，则称X为离散型随机变量（反之，称X为[连续型随机变量](# 2.2 连续型随机变量)）；</p>
 </blockquote>
@@ -541,9 +576,14 @@
 </ul>
 </blockquote>
 <h3 id="2-2-连续型随机变量"><a href="#2-2-连续型随机变量" class="headerlink" title="2.2 连续型随机变量"></a>2.2 连续型随机变量</h3><blockquote>
-<p>定义：如果X的分布函数的形式为<img src="/images/image-20230418224901621.png" srcset="/img/loading.gif" lazyload>，其中f(t)是非负可积的函数，则称X为连续型随机变量，同时称f(t)为X的概率密度函数，记为X~f(t)</p>
+<p>定义：如果X的分布函数的形式为</p>
+<p><img src="/images/image-20230418224901621.png" srcset="/img/loading.gif" lazyload></p>
+<p>其中f(t)是非负可积的函数，则称X为连续型随机变量，同时称f(t)为X的概率密度函数，记为X~f(t)</p>
 </blockquote>
-<p>上述定义中，<code>f(x)为某随机变量X的概率密度函数的充要条件是f(x)&gt;=0且f(x)在-∞到+∞上的积分为1</code>；</p>
+<ul>
+<li>上述定义中，<code>f(x)为某随机变量X的概率密度函数的充要条件是f(x)&gt;=0且f(x)在-∞到+∞上的积分为1</code>；</li>
+<li>为什么不类似离散型的定义那样，直接定义连续型随机变量X为取值连续的变量？因为连续型随机变量在某点的取值根本就测不到，更别说用每一点来对其进行定义；</li>
+</ul>
 <p>关于连续型随机变量：</p>
 <ul>
 <li>连续型随机变量在任意一点的概率都为0；</li>
@@ -590,6 +630,7 @@
 </blockquote>
 <h2 id="3-八大分布"><a href="#3-八大分布" class="headerlink" title="3.八大分布"></a>3.八大分布</h2><p>概率论八大分布是数理统计中最常用的概率分布(概率分布是指用于表述随机变量取值的概率规律)，它们可以用来研究各种随机现象，并影响着大量实际问题的解决方案，以度量其实际应用的准确性。因此，深入理解概率论八大分布是数理统计和实际应用上的必要，也是重要的一步。（随机变量的分布并不等价于随机变量的分布函数，注意区分！！！）</p>
 <p><img src="/images/image-20230428165156675.png" srcset="/img/loading.gif" lazyload alt="常见分布的期望和方差"></p>
+<p>需要注意的是，此处给出的八大分布只是最经典、最基础的分布，而考研题型中可能出现拓展或对经典分布的一般化（故不要随意将经典分布的结论用到未知分布上），解题的立足点都是基于经典分布做推导</p>
 <h3 id="3-1-离散型分布"><a href="#3-1-离散型分布" class="headerlink" title="3.1 离散型分布"></a>3.1 离散型分布</h3><h4 id="3-1-1-两点分布-B-1-p"><a href="#3-1-1-两点分布-B-1-p" class="headerlink" title="3.1.1 两点分布_B(1,p)"></a>3.1.1 两点分布_B(1,p)</h4><p>在介绍0-1分布之前先介绍伯努利试验，先从独立试验开始说起；</p>
 <ul>
 <li>独立试验：如果试验的结果之间相互独立则称试验相互独立；</li>
@@ -606,6 +647,8 @@
 <p>定义：</p>
 <p><img src="/images/image-20230418231616274.png" srcset="/img/loading.gif" lazyload></p>
 </blockquote>
+<p>0-1分布有如下重要性质（解题思想）</p>
+<p><img src="/images/image-20230902104259870.png" srcset="/img/loading.gif" lazyload></p>
 <h4 id="3-1-2-二项分布-B-n-p"><a href="#3-1-2-二项分布-B-n-p" class="headerlink" title="3.1.2 二项分布_B(n,p)"></a>3.1.2 二项分布_B(n,p)</h4><p>二项分布也称为Ber-En分布，上面介绍的两点分布实际上是一种特殊的二项分布，即n&#x3D;1时的二项分布，二项分布的定义如下</p>
 <blockquote>
 <p>定义：</p>
@@ -614,15 +657,20 @@
 <ul>
 <li>n重伯努利试验服从二项分布，若X是n重伯努利试验中事件A发生的次数，则X~B(n,p)，其中p&#x3D;P(A)；</li>
 </ul>
+<p>二项分布的三种计算方法(后两种一个适用于X具体取值，一个适用于X在某一个范围)</p>
+<p><img src="/images/image-20230904100754782.png" srcset="/img/loading.gif" lazyload></p>
 <h4 id="3-1-3-泊松分布-P-λ"><a href="#3-1-3-泊松分布-P-λ" class="headerlink" title="3.1.3 泊松分布_P(λ)"></a>3.1.3 泊松分布_P(λ)</h4><p>泊松分布的理解：某场合下，单位时间内质点来流个数为X(X为自然数)，参数λ称为强度，则随机变量X服从泊松分布P(λ)，且E(X)&#x3D;λ，即单位时间内质点来流的平均个数为λ</p>
 <blockquote>
 <p>定义：</p>
 <p><img src="/images/image-20230419194457147.png" srcset="/img/loading.gif" lazyload></p>
 </blockquote>
 <ul>
+<li>注意泊松分布的k值是非负整数（不能有半个人也不能有负人…）</li>
 <li>泊松分布的公式是少数无法直接用自然语言转换的、需要强行记忆的公式；</li>
 <li>举实例理解泊松分布，某交叉路口的汽车流可看作泊松分布，其中X表示一分钟(单位时间)内汽车通过的数量，假如题目告知一分钟内有汽车通过的概率P{X&gt;&#x3D;1}&#x3D;0.7，则可依据公式求解出强度λ；</li>
 </ul>
+<p>关于泊松分布，考研大纲要求需要掌握泊松定理（常用于将复杂二项分布转换为可计算的泊松分布）</p>
+<p><img src="/images/image-20230902104931565.png" srcset="/img/loading.gif" lazyload></p>
 <h4 id="3-1-4-几何分布-G-p"><a href="#3-1-4-几何分布-G-p" class="headerlink" title="3.1.4 几何分布_G(p)"></a>3.1.4 几何分布_G(p)</h4><p>几何分布也称为Ber-E<del>∞</del>分布，这并不意味着进行无穷次伯努利试验，而是重复进行伯努利试验当首次命中时即停止</p>
 <ul>
 <li>几何分布与几何没有任何关系（但是几何概型与几何有关系）；</li>
@@ -635,13 +683,16 @@
 <ul>
 <li>设X表示伯努利试验中事件A首次发生所需做的试验次数，则X~G(p)，其中p&#x3D;P(A)</li>
 </ul>
+<p>积分分布具有无记忆性，当m,n均大于0时有如下结论</p>
+<p><img src="/images/image-20230902104534854.png" srcset="/img/loading.gif" lazyload></p>
 <h4 id="3-1-5-超几何分布-H-n-N-M"><a href="#3-1-5-超几何分布-H-n-N-M" class="headerlink" title="3.1.5 超几何分布_H(n,N,M)"></a>3.1.5 超几何分布_H(n,N,M)</h4><blockquote>
 <p>定义：</p>
 <p><img src="/images/image-20230419195229795.png" srcset="/img/loading.gif" lazyload></p>
 </blockquote>
 <p>超几何分布常常出现在从一个有限总体中不放回的随机抽样，其中的N表示产品总数，M表示其中的不合格品数量，n表示不放回的随机抽取数量，k表示抽取到的不合格产品的数量（关于k的取值范围实在是没必要记忆，理解为抽取到的不合格产品的数量即可）</p>
-<h3 id="3-2-连续型分布"><a href="#3-2-连续型分布" class="headerlink" title="3.2 连续型分布"></a>3.2 连续型分布</h3><p>注意连续型分布的概率密度函数的定义域都统一是开区间，这点需要与分布函数定义域的左闭右开做区分！！！</p>
+<h3 id="3-2-连续型分布"><a href="#3-2-连续型分布" class="headerlink" title="3.2 连续型分布"></a>3.2 连续型分布</h3><p>注意连续型分布的概率密度函数的定义域端点值可取可不取，这点需要与分布函数定义域的左闭右开做区分！！！ – 换句话说连续型随机变量的概率密度函数的定义域有没有等号都是对的，也就是说(a,b),[a,b]甚至(a,b]或者[a,b)都是正确的写法，因为连续函数在有限个点的取值根本测不到，也不会影响最终的分布函数</p>
 <h4 id="3-2-1-均匀分布-U-a-b"><a href="#3-2-1-均匀分布-U-a-b" class="headerlink" title="3.2.1 均匀分布_U(a,b)"></a>3.2.1 均匀分布_U(a,b)</h4><p>均匀分布的背景是一维的几何概型，即概率计算方式为测度之比 – 若题目明确说明了随机变量X在区间(a,b)是服从均匀分布的，则在这段区间上的f(x)一定不为0且相等</p>
+<p>均匀分布的另一种等价提法“X在I上的任一子区间取值的概率与该子区间长度成正比”</p>
 <blockquote>
 <p>定义：</p>
 <p><img src="/images/image-20230419195431900.png" srcset="/img/loading.gif" lazyload></p>
@@ -663,69 +714,60 @@
 <li>假设某元件的工作寿命X(小时)服从参数为λ的指数分布，则该元件正常工作t小时的概率为P{X&gt;t}&#x3D;1-F(t)；</li>
 <li>指数分布具有无记忆性（在无耗损，即失效率不变的情况下），这意味着元件继续正常工作10小时的概率P{X&gt;10}与其之前的工作状态无关，即P{X&gt;10+已工作时长|X已工作时长}&#x3D;P{X&gt;10}；</li>
 </ul>
+<p>指数函数的重要性质</p>
+<p><img src="/images/image-20230902105434681.png" srcset="/img/loading.gif" lazyload></p>
 <h4 id="3-2-3-正态分布-N-μ-σ-2"><a href="#3-2-3-正态分布-N-μ-σ-2" class="headerlink" title="3.2.3 正态分布_N(μ,σ^2^)"></a>3.2.3 正态分布_N(μ,σ^2^)</h4><p>正态分布是最重要的分布，在后面会介绍，所有的分布最终都会趋于正态分布</p>
 <blockquote>
-<p>定义：</p>
+<p>正态分布的定义：</p>
 <p><img src="/images/image-20230419200930978.png" srcset="/img/loading.gif" lazyload></p>
 </blockquote>
 <ul>
 <li>正态分布曲线图，均值不变，方差越大，图像越低，随机变量的取值越分散（因为方差的本质就是表示随机变量取值的分散程度）</li>
 </ul>
-<p>比正态分布更重要的是标准正态分布</p>
 <blockquote>
-<p>定义：</p>
+<p>标准正态分布的定义：</p>
 <p><img src="/images/image-20230419201232816.png" srcset="/img/loading.gif" lazyload></p>
 </blockquote>
 <p>关于正态分布主要有以下结论：</p>
 <p><img src="/images/image-20230419201355466.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="4-一维随机变量函数的分布"><a href="#4-一维随机变量函数的分布" class="headerlink" title="4.一维随机变量函数的分布*"></a>4.一维随机变量函数的分布*</h2><p>设X为随机变量，有函数y&#x3D;g(x)，称Y&#x3D;g(X)函数为以随机变量X为自变量的函数，该函数仍然是随机变量；</p>
-<p>随机变量的函数仍然是随机变量，所以仍然可以研究其分布，随机变量函数的分布主要分为两类：</p>
-<ul>
-<li><code>自变量为离散型-&gt;因变量为离散型</code><ul>
-<li>这种形式较为简单，直接对应概率相加即可；</li>
-</ul>
-</li>
-</ul>
-<p><img src="/images/image-20230419202352253.png" srcset="/img/loading.gif" lazyload></p>
-<ul>
-<li><code>自变量为连续型-&gt;因变量为混合型/连续型</code>（此处的混合指的是，因变量在区间端点离散取值，在区间内部连续取值，即同时具有连续型和离散型随机变量特征，其分布函数的图像大致如<img src="/images/image-20230710204540320.png" srcset="/img/loading.gif" lazyload>)<ul>
-<li>这种形式用分布函数法解决，即先求分布函数F<del>Y</del>(y)再求f<del>Y</del>(y)</li>
-</ul>
-</li>
-</ul>
-<p><img src="/images/image-20230419202333110.png" srcset="/img/loading.gif" lazyload></p>
-<p>对于上述因变量为混合型&#x2F;连续型的问题，更一般的步骤为：</p>
+<p>如果随机变量X和Y分别都服从正态分布即<code>X~N</code>且<code>Y~N</code>，则有以下结论</p>
+<p><img src="/images/image-20230427170206964.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="4-一维随机变量函数的分布"><a href="#4-一维随机变量函数的分布" class="headerlink" title="4.一维随机变量函数的分布*"></a>4.一维随机变量函数的分布*</h2><p>设X为随机变量，有函数&#x2F;对应法则y&#x3D;g(x)，则称Y&#x3D;g(X)函数为以随机变量X为自变量的函数，该函数仍然是随机变量。因为随机变量的函数仍然是随机变量，所以仍然可以研究其分布。这部分的问题主要分为三类：</p>
 <ol>
-<li>明确Y&#x3D;F(X)是什么，设Y的分布函数为G<del>Y</del>(y)，概率密度函数为g<del>Y</del>(y)；</li>
-<li>因为y的范围同样也是(-∞,+∞)，因此分情况讨论在不同情况下的G<del>Y</del>(y)&#x3D;P{Y&lt;&#x3D;y}&#x3D;P{F(X)&lt;&#x3D;y}；</li>
-<li>根据g<del>Y</del>(y)&#x3D;G<del>Y</del>(y)’求解出对应的概率密度函数；</li>
+<li>离散型-&gt;离散型</li>
+<li>连续型-&gt;连续型&#x2F;混合型(一般地，所谓混合型指的是，因变量在区间端点离散取值，在区间内部连续取值，即同时具有连续型和离散型随机变量的特征)</li>
+<li>连续型-&gt;离散型</li>
 </ol>
+<h3 id="4-1-离散型-gt-离散型"><a href="#4-1-离散型-gt-离散型" class="headerlink" title="4.1 离散型-&gt;离散型"></a>4.1 离散型-&gt;离散型</h3><p><img src="/images/image-20230902154023691.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="4-2-连续型-gt-连续型-x2F-混合型"><a href="#4-2-连续型-gt-连续型-x2F-混合型" class="headerlink" title="4.2 连续型-&gt;连续型&#x2F;混合型"></a>4.2 连续型-&gt;连续型&#x2F;混合型</h3><h4 id="4-2-1-分布函数法"><a href="#4-2-1-分布函数法" class="headerlink" title="4.2.1 分布函数法"></a>4.2.1 分布函数法</h4><p>分布函数法实际就是利用分布函数的定义来解题</p>
+<p><img src="/images/image-20230902154201184.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>当对应法则y&#x3D;g(x)在正概密区间上单调时，可以由分布函数法推出公式法</li>
+<li>当对应法则y&#x3D;g(x)在正概密区间上不单调时，一般作图，根据曲线Y&#x3D;g(X)在直线Y&#x3D;y的下方求解出X的取值范围，进而解题</li>
+</ul>
+<h4 id="4-2-2-公式法"><a href="#4-2-2-公式法" class="headerlink" title="4.2.2 公式法"></a>4.2.2 公式法</h4><p>公式法的核心就是不等号两边同时取反函数，假如对应法则在区间上单调减则需要改变不等号的方向</p>
+<p><img src="/images/image-20230902154550039.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="4-2-3-重要结论"><a href="#4-2-3-重要结论" class="headerlink" title="4.2.3 重要结论"></a>4.2.3 重要结论</h4><p><img src="/images/image-20230902154806796.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>当对应法则为X的分布函数时，Y服从(0,1)上的均匀分布（前提是X的分布函数在X的正概密区间上单调增）</li>
+</ul>
+<h3 id="4-3-连续型-gt-离散型"><a href="#4-3-连续型-gt-离散型" class="headerlink" title="4.3 连续型-&gt;离散型"></a>4.3 连续型-&gt;离散型</h3><p><img src="/images/image-20230902154944792.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>这种情况下的对应法则一般都是人为制造的法则，比如取整函数；</li>
+</ul>
+<h3 id="4-4-补充知识点"><a href="#4-4-补充知识点" class="headerlink" title="4.4 补充知识点"></a>4.4 补充知识点</h3><p>一些特殊的独立同分布的随机变量，其和的分布也是同类型的（前面说的正态分布也有这个性质），分别如下</p>
+<p><img src="/images/image-20230424154832345.png" srcset="/img/loading.gif" lazyload></p>
+<p>上述结果对n个相互独立的随机变量也成立</p>
 <h1 id="第三讲-多维随机变量及其分布"><a href="#第三讲-多维随机变量及其分布" class="headerlink" title="第三讲 多维随机变量及其分布"></a>第三讲 多维随机变量及其分布</h1><p>显然一维随机变量只能表示单个特征，为了表示多维特征，因此需要引入多维随机变量，一般以研究二维随机变量为主。</p>
-<h2 id="1-基本概念-2"><a href="#1-基本概念-2" class="headerlink" title="1.基本概念"></a>1.基本概念</h2><p>一维随机变量的定义：随机变量X(ω)是一个定义在Ω上的实值单值函数，即该函数的定义域是样本空间Ω（注意其定义域不一定是实数集），值域是实数轴；</p>
-<blockquote>
+<h2 id="1-基本概念-1"><a href="#1-基本概念-1" class="headerlink" title="1.基本概念"></a>1.基本概念</h2><blockquote>
+<p>一维随机变量的定义：随机变量X(ω)是一个定义在Ω上的实值单值函数，即该函数的定义域是样本空间Ω（注意其定义域不一定是实数集），值域是实数轴；</p>
 <p>n维随机变量的定义：若X<del>1</del>,X<del>2</del>…X<del>n</del>是定义在<code>同一个样本空间Ω上</code>的n个一维随机变量，则称(X<del>1</del>,X<del>2</del>…X<del>n</del>)为n维随机变量或n维随机向量；</p>
 </blockquote>
-<ul>
-<li>一般研究n维随机变量以二维随机变量为主。无论是连续型还是离散型，二维随机变量的分布函数主要分为三类：联合分布函数、边缘分布函数和条件分布函数</li>
-</ul>
-<h3 id="1-1-联合分布函数"><a href="#1-1-联合分布函数" class="headerlink" title="1.1 联合分布函数"></a>1.1 联合分布函数</h3><blockquote>
-<p>定义：记为(X<del>1</del>,X<del>2</del>…X<del>n</del>)服从F(x<del>1</del>,x<del>2</del>…x<del>n</del>)</p>
-<p><img src="/images/image-20230420224739341.png" srcset="/img/loading.gif" lazyload></p>
-</blockquote>
-<ul>
-<li>对于二维随机变量(X,Y)来说，其联合分布函数为F(x,y)，F(x,y)是事件A&#x3D;{X&lt;&#x3D;x}与B&#x3D;{Y&lt;&#x3D;y}同时发生的概率；</li>
-</ul>
-<p>二维随机变量的联合分布函数主要有如下性质</p>
-<p><img src="/images/image-20230420225511203.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="1-2-边缘分布函数"><a href="#1-2-边缘分布函数" class="headerlink" title="1.2 边缘分布函数"></a>1.2 边缘分布函数</h3><p>二维随机变量(X,Y)的联合分布函数为F(x,y)，则随机变量X与Y的分布函数F<del>X</del>(x)与F<del>Y</del>(y)分别称为(X,Y)关于X和关于Y的边缘分布函数；</p>
-<p>F<del>X</del>(x)和F<del>Y</del>(y)的计算方式非常简单，由概率性质可得（图中的笔记是如何利用联合分布函数和边缘分布函数判断X和Y两个随机变量独立，是边缘分布的一个应用，在[随机变量的独立性](# 4.随机变量的独立性)会有更详细的介绍）</p>
-<p><img src="/images/image-20230420230031860.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/images/image-20230420230053123.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="2-常见二维随机变量"><a href="#2-常见二维随机变量" class="headerlink" title="2.常见二维随机变量"></a>2.常见二维随机变量</h2><p>这里给出离散型和连续型随机变量的概念汇总，这也是解题需要掌握的内容（本章的核心）</p>
+<p>本章的核心知识框架如下</p>
 <p><img src="/images/image-20230710203508894.png" srcset="/img/loading.gif" lazyload></p>
 <blockquote>
 <ul>
-<li><p>混合型的二维随机变量会在多维随机变量函数的分布那一节的知识点中考察，也就是X和Y中一个是离散型一个是连续型，使用分布函数搭配全集分解思想求解即可；</p>
+<li><p>(离散型，连续型)的二维随机变量(二维混合型，注意与一维混合型的区别)会在多维随机变量函数的分布那一节的知识点中考察，使用分布函数搭配全集分解思想&#x2F;等价事件求解即可；</p>
 </li>
 <li><p>分布律是指X取每个值对应的概率，是离散型随机变量特有的；</p>
 </li>
@@ -733,28 +775,51 @@
 </li>
 </ul>
 </blockquote>
-<h3 id="2-1-离散型随机变量-1"><a href="#2-1-离散型随机变量-1" class="headerlink" title="2.1 离散型随机变量"></a>2.1 离散型随机变量</h3><blockquote>
-<p>二维离散型随机变量定义：如果二维随机变量(X,Y)只能取有限对值或可列对值，则称(X,Y)为二维离散型随机变量</p>
-</blockquote>
-<p>离散型<code>联合分布律</code>以及<code>边缘分布律</code>定义如下</p>
-<p><img src="/images/image-20230420230537648.png" srcset="/img/loading.gif" lazyload></p>
-<p>二维离散型变量的分布函数主要分为三类：联合分布函数、边缘分布函数和条件分布函数（当然下面展示的其实是联合分布函数、边缘分布律和条件分布律 – 分布函数不等于分布律，一定要注意这一点）</p>
-<p><code>(X,Y)</code>的<code>联合分布函数</code>的定义如下</p>
-<p><img src="/images/image-20230420230717678.png" srcset="/img/loading.gif" lazyload></p>
-<p><code>X,Y</code>的<code>边缘分布律</code>分别为</p>
-<p><img src="/images/image-20230420230903806.png" srcset="/img/loading.gif" lazyload></p>
-<p>二维离散型随机变量的<code>条件分布律</code>的定义如下</p>
-<p><img src="/images/image-20230420231017491.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="2-2-连续型随机变量-1"><a href="#2-2-连续型随机变量-1" class="headerlink" title="2.2 连续型随机变量"></a>2.2 连续型随机变量</h3><blockquote>
-<p>二维连续型随机变量定义：</p>
-<p><img src="/images/image-20230420231149028.png" srcset="/img/loading.gif" lazyload></p>
-</blockquote>
-<p>若(X,Y)的联合分布函数为F(x,y)，联合概率密度函数为f(x,y)，则有如下性质成立（<code>其中最重要的是2，3</code>）</p>
+<h3 id="1-1-联合分布"><a href="#1-1-联合分布" class="headerlink" title="1.1 联合分布"></a>1.1 联合分布</h3><p>求解联合分布主要涉及求解联合分布函数、联合分布律（结合古典概型）或联合概率密度</p>
+<p><img src="/images/image-20230903153111039.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="1-1-1-联合分布函数"><a href="#1-1-1-联合分布函数" class="headerlink" title="1.1.1 联合分布函数"></a>1.1.1 联合分布函数</h4><p><img src="/images/image-20230903152450503.png" srcset="/img/loading.gif" lazyload alt="定义"></p>
+<ul>
+<li>对于二维随机变量(X,Y)来说，其联合分布函数为F(x,y)，F(x,y)是事件A&#x3D;{X&lt;&#x3D;x}与B&#x3D;{Y&lt;&#x3D;y}同时发生的概率，即F(x,y)&#x3D;P(AB)；</li>
+</ul>
+<p>F(x,y)是联合分布函数的充要条件如下（即联合分布的性质）</p>
+<p><img src="/images/image-20230903152602690.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="1-离散型求联合分布函数"><a href="#1-离散型求联合分布函数" class="headerlink" title="(1)离散型求联合分布函数"></a>(1)离散型求联合分布函数</h5><p>题干给出二维随机变量(X,Y)的分布律，求(X,Y)的分布函数F(x,y)，为了不重不漏，主要遵循以下步骤：</p>
+<ol>
+<li>划分平面区域：离散型的所有可能取值点（集中点）以及坐标原点，以所有的点为起点，向上和向右划分区域</li>
+<li>分情况讨论：使用“锄头”每个区域依次讨论，F(x,y)为处于“锄头”左下方区域中的取值点的概率求和</li>
+</ol>
+<p><img src="/images/image-20230903162537808.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="2-连续型求联合分布函数"><a href="#2-连续型求联合分布函数" class="headerlink" title="(2)连续型求联合分布函数"></a>(2)连续型求联合分布函数</h5><p>已知二维随机变量(X,Y)的概率密度f(x,y)，求解(X,Y)的分布函数F(x,y)，具体步骤如下：</p>
+<ol>
+<li>坐标轴换元，将x轴换为s，y轴换为t，方便后序求解积分</li>
+<li>划分区域：正概率密度区间与坐标轴相交的点（交点）和坐标原点，以所有的点为起点，向上和向右划分区域</li>
+<li>分情况讨论：移动“锄头”，计算“锄头”与正概密区域围成的积分区域的二重积分即为F(x,y)</li>
+</ol>
+<p><img src="/images/image-20230903163552788.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="1-1-2-联合分布律"><a href="#1-1-2-联合分布律" class="headerlink" title="1.1.2 联合分布律"></a>1.1.2 联合分布律</h4><p><img src="/images/image-20230903152356714.png" srcset="/img/loading.gif" lazyload alt="定义"></p>
+<h4 id="1-1-3-联合概率密度"><a href="#1-1-3-联合概率密度" class="headerlink" title="1.1.3 联合概率密度"></a>1.1.3 联合概率密度</h4><p><img src="/images/image-20230903152747067.png" srcset="/img/loading.gif" lazyload></p>
+<p>若(X,Y)的联合分布函数为F(x,y)，联合概率密度函数为f(x,y)，则有如下性质成立</p>
 <p><img src="/images/image-20230621195740225.png" srcset="/img/loading.gif" lazyload></p>
-<blockquote>
-<p>上述混合求偏导的时候，对谁先求偏导没有要求（结果都是一样的），注意x和y是两个没有关系的变量因此不会有链式法则的出现；</p>
-</blockquote>
-<p>若(X,Y)~f(x,y)，则X的边缘分布函数和边缘密度函数分别为（Y的边缘分布函数和边缘密度函数同理）</p>
+<ul>
+<li>上述混合求偏导的时候，对谁先求偏导没有要求（结果都是一样的），注意x和y是两个没有关系的变量因此不会有链式法则的出现；</li>
+</ul>
+<h5 id="1-二维均匀分布"><a href="#1-二维均匀分布" class="headerlink" title="(1)二维均匀分布"></a>(1)二维均匀分布</h5><p><img src="/images/image-20230903155534720.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>二维均匀分布的背景是二维几何概型（即“操场掉馅饼，用碗接”）</li>
+<li>关于二维均匀分布，很多人会在f(x,y)的区间为开区间还是闭区间上纠结，实际上开区间和闭区间都是正确的，但是习惯上都写作开区间；</li>
+</ul>
+<h5 id="2-二维正态分布"><a href="#2-二维正态分布" class="headerlink" title="(2)二维正态分布"></a>(2)二维正态分布</h5><p><img src="/images/image-20230903155718159.png" srcset="/img/loading.gif" lazyload></p>
+<p>关于二维正态分布，有如下重要性质</p>
+<p><img src="/images/image-20230903155839355.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>若X和Y的联合分布是二维正态分布，则其边缘分布、条件分布以及线性组合aX+bY(a!&#x3D;0或b!&#x3D;0)都服从正态分布</li>
+<li>其中ρ是X和Y的相关系数，计算公式如下。X和Y相互独立的充分必要条件是X和Y不相关即ρ&#x3D;0</li>
+</ul>
+<p><img src="/images/image-20230903160108365.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-2-边缘分布"><a href="#1-2-边缘分布" class="headerlink" title="1.2 边缘分布"></a>1.2 边缘分布</h3><p>求解边缘分布主要涉及求解边缘分布函数、边缘概率密度以及边缘分布律</p>
+<p><img src="/images/image-20230903153906767.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="1-2-1-边缘分布律"><a href="#1-2-1-边缘分布律" class="headerlink" title="1.2.1 边缘分布律"></a>1.2.1 边缘分布律</h4><p><img src="/images/image-20230903154951797.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="1-2-2-边缘概率密度"><a href="#1-2-2-边缘概率密度" class="headerlink" title="1.2.2 边缘概率密度"></a>1.2.2 边缘概率密度</h4><p>若(X,Y)~f(x,y)，则X的边缘分布函数和边缘密度函数分别为（Y的边缘分布函数和边缘密度函数同理）</p>
 <p><img src="/images/image-20230420231756658.png" srcset="/img/loading.gif" lazyload></p>
 <blockquote>
 <p>边缘概率密度函数的计算如果直接从高数的思维来理解很容易绕晕，这里的口诀就是用于快速计算边缘概率密度的，不要把它和高数中的二重积分或者一重积分的几何运用搞混；</p>
@@ -763,81 +828,85 @@
 <li>边缘密度函数的图像仅仅只是为了确定有意义的范围限，并要求去使用一重积分计算几何区域的面积，所以使用一重积分的思想就是无稽之谈；</li>
 </ul>
 </blockquote>
-<p>若(X,Y)~f(x,y)，则条件概率密度函数的定义如下</p>
-<p><img src="/images/image-20230420231922936.png" srcset="/img/loading.gif" lazyload></p>
-<p>类比联合概率密度函数和联合分布函数的关系，可以得到二维连续型随机变量的条件分布函数的定义</p>
-<p><img src="/images/image-20230420232026021.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="2-3-小结"><a href="#2-3-小结" class="headerlink" title="2.3 小结"></a>2.3 小结</h3><ul>
-<li>已知(X,Y)的联合分布（包括联合分布函数F(x,y)，联合概率密度函数f(x,y)，以及联合分布律p<del>ij</del>），则可以确定边缘分布（包括边缘分布函数、边缘概率密度函数以及边缘分布律）和条件分布（包括条件分布函数、条件分布律或条件概率密度函数）；</li>
-<li>反之，仅知道边缘分布无法确定其联合分布（除非附加其他条件）；</li>
+<h3 id="1-3-条件分布"><a href="#1-3-条件分布" class="headerlink" title="1.3 条件分布"></a>1.3 条件分布</h3><p>求解条件分布主要涉及求解条件分布律或条件概率密度</p>
+<p><img src="/images/image-20230903153811392.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>上述联合概率密度联立可得如下公式，其意义为使用两个条件概率密度可完全分离x和y两个变量</li>
 </ul>
+<p><img src="/images/image-20230903160308791.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="1-3-1-条件分布律"><a href="#1-3-1-条件分布律" class="headerlink" title="1.3.1 条件分布律"></a>1.3.1 条件分布律</h4><p>二维离散型随机变量的<code>条件分布律</code>的定义如下</p>
+<p><img src="/images/image-20230420231017491.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="1-3-2-条件概率密度"><a href="#1-3-2-条件概率密度" class="headerlink" title="1.3.2 条件概率密度"></a>1.3.2 条件概率密度</h4><p>若(X,Y)~f(x,y)，则条件概率密度函数的定义如下</p>
+<p><img src="/images/image-20230420231922936.png" srcset="/img/loading.gif" lazyload></p>
+<p>二维连续型随机变量的条件分布函数的定义如下</p>
+<p><img src="/images/image-20230903153656508.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="1-3-3-亚当-夏娃公式"><a href="#1-3-3-亚当-夏娃公式" class="headerlink" title="1.3.3 亚当-夏娃公式"></a>1.3.3 亚当-夏娃公式</h4><p>该公式适用于有条件分布的题型，根据全集分解思想推导而来</p>
+<p><img src="/images/image-20230903164143083.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-4-小结"><a href="#1-4-小结" class="headerlink" title="1.4 小结"></a>1.4 小结</h3><p>已知(X,Y)的联合分布（包括联合分布函数F(x,y)，联合概率密度函数f(x,y)，以及联合分布律p<del>ij</del>），则可以确定边缘分布（包括边缘分布函数、边缘概率密度函数以及边缘分布律）和条件分布（包括条件分布函数、条件分布律或条件概率密度函数）。反之，仅知道边缘分布无法确定其联合分布（除非附加其他条件）</p>
 <p>(1)离散型随机变量的联合分布与边缘分布、条件分布之间的转换</p>
 <p><img src="/images/image-20230424145023577.png" srcset="/img/loading.gif" lazyload></p>
 <p>（2）连续型随机变量的联合分布与边缘分布、条件分布之间的转换</p>
 <p><img src="/images/image-20230424145109497.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="3-常见二维分布"><a href="#3-常见二维分布" class="headerlink" title="3.常见二维分布"></a>3.常见二维分布</h2><h3 id="3-1-二维均匀分布"><a href="#3-1-二维均匀分布" class="headerlink" title="3.1 二维均匀分布"></a>3.1 二维均匀分布</h3><p>二维均匀分布的背景是二维几何概型（即“操场掉馅饼，用碗接”）</p>
+<h2 id="2-随机变量的独立性"><a href="#2-随机变量的独立性" class="headerlink" title="2.随机变量的独立性"></a>2.随机变量的独立性</h2><p>之所以在一维随机变量中不讨论独立性是因为一维的随机变量只有一个不存在与谁独立，但是在二维以及多维随机变量中需要研究该问题，但是也非常简单，前面[事件的独立性](# 3.事件的独立性)中介绍了两个事件相互独立需要满足的条件，因为随机变量是事件的量化表示，所以随机变量的独立性定义与之类似。</p>
 <blockquote>
-<p>定义：</p>
-<p><img src="/images/image-20230420232940660.png" srcset="/img/loading.gif" lazyload></p>
-</blockquote>
-<ul>
-<li>关于二维均匀分布，很多人会在f(x,y)的区间为开区间还是闭区间上纠结，实际上开区间和闭区间都是正确的，但是习惯上都写作开区间；</li>
-</ul>
-<h3 id="3-2-二维正态分布"><a href="#3-2-二维正态分布" class="headerlink" title="3.2 二维正态分布"></a>3.2 二维正态分布</h3><p><img src="/images/image-20230621210402489.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="4-随机变量的独立性"><a href="#4-随机变量的独立性" class="headerlink" title="4.随机变量的独立性"></a>4.随机变量的独立性</h2><p>之所以在一维随机变量中不讨论独立性是因为一维的随机变量只有一个不存在与谁独立，但是在二维以及多维随机变量中需要研究该问题，但是也非常简单，前面[事件的独立性](# 6.事件的独立性)中介绍了两个事件相互独立需要满足的条件，因为随机变量是事件的量化表示，所以随机变量的独立性定义与之类似。</p>
-<blockquote>
-<p>定义：</p>
+<p>定义1：</p>
 <p><img src="/images/image-20230424145828807.png" srcset="/img/loading.gif" lazyload></p>
+<p>定义2：</p>
 <p><img src="/images/image-20230424150216521.png" srcset="/img/loading.gif" lazyload></p>
 </blockquote>
-<p>简单概括来说，对于离散型随机变量，其相互独立的充要条件为（更常用的判断独立的方式，即使用分布律或概率密度函数）</p>
+<ul>
+<li>因为相互独立的定义中要求任意x,y都成立，因此利用定义正向穷举法证明随机变量独立是不可行的，但是可以利用定义找出存在一对x,y使得等式不成立进而证明不独立</li>
+</ul>
+<p><img src="/images/image-20230903160831666.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-1-离散型判独立"><a href="#2-1-离散型判独立" class="headerlink" title="2.1 离散型判独立"></a>2.1 离散型判独立</h3><p>对于离散型随机变量，其相互独立的充要条件为</p>
 <p><img src="/images/image-20230424150436907.png" srcset="/img/loading.gif" lazyload></p>
-<p>对于连续型随机变量，其相互独立的充要条件为</p>
+<ul>
+<li>推论：若(X,Y)的联合分布律表格中存在p<del>i,j</del>&#x3D;0，则X,Y必定不独立</li>
+</ul>
+<h3 id="2-2-连续型判独立"><a href="#2-2-连续型判独立" class="headerlink" title="2.2 连续型判独立"></a>2.2 连续型判独立</h3><p>对于连续型随机变量，其相互独立的充要条件为</p>
 <p><img src="/images/image-20230424150558407.png" srcset="/img/loading.gif" lazyload></p>
-<p>若多维随机变量相互独立，则具有如下性质（其中第三条最重要！！！）</p>
-<p><img src="/images/image-20230424150702725.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/images/image-20230424150908081.png" srcset="/img/loading.gif" lazyload></p>
-<blockquote>
-<p>“设(X,Y)是二维随机变量，若X与Y相互独立，则条件分布等于边缘分布。”这条性质的逆用也非常实用，拿连续型随机变量举例，若X和Y相互独立，则联合概率密度f(x,y)等于边缘密度的乘积f<del>X</del>(x)·f<del>Y</del>(y)。</p>
-</blockquote>
-<h2 id="5-多维随机变量函数的分布"><a href="#5-多维随机变量函数的分布" class="headerlink" title="5.多维随机变量函数的分布"></a>5.多维随机变量函数的分布</h2><p>已知X,Y为随机变量，g(x,y)是二元函数，那么以随机变量X,Y作为自变量的函数U&#x3D;g(X,Y)也是随机变量，被称为随机变量X,Y的函数。</p>
-<p>本节求解的问题为：</p>
+<h3 id="2-3-重要性质"><a href="#2-3-重要性质" class="headerlink" title="2.3 重要性质"></a>2.3 重要性质</h3><p>判独立时没有思路可以考虑使用以下口诀（非严格证明，大体不能用）</p>
+<p><img src="/images/image-20230903161648581.png" srcset="/img/loading.gif" lazyload></p>
+<p>若多维随机变量相互独立，则具有如下性质</p>
 <ul>
-<li>已知(X,Y)的联合分布，求U&#x3D;g(X,Y)的分布；</li>
-<li>已知(X,Y)的联合分布，且U&#x3D;g(X,Y)，V&#x3D;h(X,Y)，求(U,V)的分布；</li>
+<li><code>“设(X,Y)是二维随机变量，若X与Y相互独立，则条件分布等于边缘分布”</code></li>
 </ul>
-<p>主要可分为如下三种类型的题型（当然前两种类型最常见）：</p>
+<p>这条性质的逆用也非常实用，拿连续型随机变量举例，若X和Y相互独立，则联合概率密度f(x,y)等于边缘密度的乘积f<del>X</del>(x)·f<del>Y</del>(y)</p>
+<h2 id="3-多维随机变量函数的分布"><a href="#3-多维随机变量函数的分布" class="headerlink" title="3.多维随机变量函数的分布"></a>3.多维随机变量函数的分布</h2><p>已知X,Y为随机变量，g(x,y)是二元函数，那么以随机变量X,Y作为自变量的函数U&#x3D;g(X,Y)也是随机变量，被称为随机变量X,Y的函数。这部分知识体系如下</p>
+<p><img src="/images/image-20230903165039853.png" srcset="/img/loading.gif" lazyload></p>
 <ul>
-<li>(离散,离散)-&gt;离散：先确定函数Z的值后，求其相应的概率，一般使用矩阵法；</li>
-<li>(连续,连续)-&gt;连续：<ul>
-<li>分布函数法：<img src="/images/image-20230424152343607.png" srcset="/img/loading.gif" lazyload></li>
-<li>卷积公式法（分布函数好理解而且万能，卷积公式针对某些特定题型可以较快解决，个人推荐在熟练掌握分布函数法的基础上再尝试使用卷积公式法）</li>
-</ul>
+<li><p>“分布函数法”好理解而且万能(但是分情况讨论很耗费时间)，“卷积公式法”针对某些特定题型可以较快解决，建议在熟练掌握分布函数法的基础上再尝试使用卷积公式法；</p>
 </li>
-<li>(离散,连续)-&gt;连续：使用“全集分解思想”，即将事件对离散型的一切可能值进行全集分解，然后利用全概率公式求解；</li>
+<li><p>“全集分解思想”适用于已知变量相互独立时，将事件对离散型的一切可能值进行全集分解，然后利用全概率公式求解；</p>
+</li>
+<li><p>“等价事件”是一种更加万能的方式，在独立条件下可以推出“全集分解”（条件分布中的条件可以甩掉）</p>
+</li>
 </ul>
-<p>对于上述第三种形式，给出下面这道例题帮助理解（这道题具备一般性，很有意义）</p>
-<p><img src="/images/image-20230427172150629.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="5-1-离散-离散-gt-离散"><a href="#5-1-离散-离散-gt-离散" class="headerlink" title="5.1 (离散,离散)-&gt;离散"></a>5.1 (离散,离散)-&gt;离散</h3><p>矩阵法解题的大致方式如下</p>
-<p><img src="/images/image-20230424153455946.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="5-2-连续-连续-gt-连续"><a href="#5-2-连续-连续-gt-连续" class="headerlink" title="5.2 (连续,连续)-&gt;连续"></a>5.2 (连续,连续)-&gt;连续</h3><p>二维随机变量函数的分布函数法如下</p>
-<p><img src="/images/image-20230424153903425.png" srcset="/img/loading.gif" lazyload alt="分布函数法"></p>
-<p>对上式进行恒等变形就可以得到卷积公式 – “积谁不换谁，换完求偏导”（注意上面是先dx再dy，下面是先dy再dx，但是对应的有效积分区域都是一样的）</p>
-<p><img src="/images/image-20230424154217962.png" srcset="/img/loading.gif" lazyload></p>
-<p>进一步的，若随机变量X与Y相互独立，还可以将卷积公式写为如下形式(并不是说X的概率密度函数的参数只能是x，同理Y的概率密度函数也可以是除了y的其他，因为说白了x和y都只是代表数值的变量而已)</p>
-<p><img src="/images/image-20230424154302943.png" srcset="/img/loading.gif" lazyload></p>
-<p>当然并不只是简单的将该公式写出来就行了，还需要借助口诀“不积先定限，限内画条线，先交为下限，后交为上限”将在(-∞,+∞）的积分公式求解出来，主要借助正概率密度区间。</p>
-<h4 id="5-2-1-常见卷积公式"><a href="#5-2-1-常见卷积公式" class="headerlink" title="5.2.1 常见卷积公式"></a>5.2.1 常见卷积公式</h4><p>下面展示常见的卷积公式</p>
-<p><img src="/images/image-20230424154438993.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/images/image-20230424154450803.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/images/image-20230424154519056.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/images/image-20230424154552933.png" srcset="/img/loading.gif" lazyload></p>
-<p>max函数和min函数并不是用卷积公式求解的，下面的求解方法具有代表性和一般性，值得学习</p>
-<p><img src="/images/image-20230424154610445.png" srcset="/img/loading.gif" lazyload></p>
-<h4 id="5-2-2-补充知识点"><a href="#5-2-2-补充知识点" class="headerlink" title="5.2.2 补充知识点"></a>5.2.2 补充知识点</h4><p>一些特殊的独立同分布的随机变量，其和的分布也是同类型的，分别如下</p>
-<p><img src="/images/image-20230424154832345.png" srcset="/img/loading.gif" lazyload></p>
-<p>如果随机变量X和Y均服从正态分布(注意这里并不要求一定独立，两个变量之间的相关性由协方差确定)，则有以下结论（关于第四点有争议，参考意义不大）</p>
-<p><img src="/images/image-20230427170206964.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-1-多维-gt-一维"><a href="#3-1-多维-gt-一维" class="headerlink" title="3.1 多维-&gt;一维*"></a>3.1 多维-&gt;一维*</h3><h4 id="3-1-1-离散-离散-gt-离散"><a href="#3-1-1-离散-离散-gt-离散" class="headerlink" title="3.1.1 (离散,离散)-&gt;离散"></a>3.1.1 (离散,离散)-&gt;离散</h4><p>主要有两种考题，已知联合分布律求Z的分布律(较简单)或已知边缘分布律求Z的分布律(较难)</p>
+<p><img src="/images/image-20230903165432508.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="3-1-2-连续-连续-gt-连续"><a href="#3-1-2-连续-连续-gt-连续" class="headerlink" title="3.1.2 (连续,连续)-&gt;连续"></a>3.1.2 (连续,连续)-&gt;连续</h4><p>这部分考察已知联合概率密度，求解二维随机变量函数的分布，主要有分布函数法和卷积公式法</p>
+<p><img src="/images/image-20230903165738733.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>关于卷积公式法，是通过分布函数法恒等变形得到（此处不做推导），将</li>
+</ul>
+<h5 id="1-卷积公式法"><a href="#1-卷积公式法" class="headerlink" title="(1)卷积公式法"></a>(1)卷积公式法</h5><p>使用卷积公式法解题有依照如下严格步骤：</p>
+<ol>
+<li>写出被积函数&#x2F;概率密度函数f(x,y)以及对应法则Z&#x3D;g(X,Y)</li>
+<li>卷积公式三部曲<ol>
+<li>换概率密度函数中的字母(“积谁不换谁，换完求偏导，偏导带绝对值”)，换正概密区间的字母(取值范围)</li>
+<li>换区域(正概密区域图像改变)</li>
+<li>计算z的边缘密度，借助口诀“求谁不积谁，不积先定限，限内画条线，先交为下限，后交为上限”</li>
+</ol>
+</li>
+</ol>
+<h5 id="2-最值函数的分布"><a href="#2-最值函数的分布" class="headerlink" title="(2)最值函数的分布"></a>(2)最值函数的分布</h5><p><img src="/images/image-20230903170229138.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>max函数和min函数并不是用卷积公式求解，这点需要注意；</li>
+</ul>
+<h4 id="3-1-3-离散-连续-gt-连续"><a href="#3-1-3-离散-连续-gt-连续" class="headerlink" title="3.1.3 (离散,连续)-&gt;连续"></a>3.1.3 (离散,连续)-&gt;连续</h4><p>因为这种混合型的不存在联合分布故无法使用公式，只能基于分布函数的定义求解</p>
+<p><img src="/images/image-20230903171916713.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-2-一维-gt-多维"><a href="#3-2-一维-gt-多维" class="headerlink" title="3.2 一维-&gt;多维"></a>3.2 一维-&gt;多维</h3><p><img src="/images/image-20230903172254994.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-3-多维-gt-多维"><a href="#3-3-多维-gt-多维" class="headerlink" title="3.3 多维-&gt;多维"></a>3.3 多维-&gt;多维</h3><p><img src="/images/image-20230903172306789.png" srcset="/img/loading.gif" lazyload></p>
 <h1 id="第四讲-随机变量的数字特征"><a href="#第四讲-随机变量的数字特征" class="headerlink" title="第四讲 随机变量的数字特征"></a>第四讲 随机变量的数字特征</h1><p>在大多数时候时候并不会直接将整个随机变量的分布告知，此时若需要研究随机变量，需要寻找其数字特征。如下是第四讲的核心知识框架</p>
 <p><img src="/images/image-20230807150759609.png" srcset="/img/loading.gif" lazyload></p>
 <h2 id="1-一维随机变量的数字特征"><a href="#1-一维随机变量的数字特征" class="headerlink" title="1.一维随机变量的数字特征"></a>1.一维随机变量的数字特征</h2><h3 id="1-1-数学期望"><a href="#1-1-数学期望" class="headerlink" title="1.1 数学期望"></a>1.1 数学期望</h3><h4 id="1-1-1-数学期望的定义"><a href="#1-1-1-数学期望的定义" class="headerlink" title="1.1.1 数学期望的定义"></a>1.1.1 数学期望的定义</h4><blockquote>
@@ -849,6 +918,7 @@
 <p><img src="/images/image-20230428162747192.png" srcset="/img/loading.gif" lazyload></p>
 </blockquote>
 <ul>
+<li>通俗定义：数学期望就是随机变量的取值与取值概率乘积的和，诸如g(X)、g(X,Y)等的期望计算公式的基本思想都是如此；</li>
 <li>根据上述定义可知，一维随机变量有概率密度或分布律不一定表示其一定有期望；</li>
 <li>连续型随机变量的函数的数学期望的公式非常好理解，把x那一点的取值用g(x)替代即可，其取值对应的概率密度f(x)不变；</li>
 <li><code>数学期望又被称为概率平均值，常常简称为期望或均值</code>，主要刻画了随机变量的一切可能值的集中位置；</li>
@@ -857,13 +927,25 @@
 <p><img src="/images/image-20230428163903538.png" srcset="/img/loading.gif" lazyload></p>
 <ul>
 <li>随机变量的数学期望是一个常数，常数的期望是其本身；</li>
+<li>随机变量分解思想<ul>
+<li>根据数学期望的线性性质，当a<del>i</del>&#x3D;1时，即在任何条件下，若X&#x3D;X<del>1</del>+X<del>2</del>+…+X<del>n</del>则有EX&#x3D;EX<del>1</del>+EX<del>2</del>+…+EX<del>n</del>；</li>
+<li>在任何条件下，若X&#x3D;X<del>1</del>+X<del>2</del>+…+X<del>n</del>则有DX&#x3D;DX<del>1</del>+DX<del>2</del>+…+DX<del>n</del>+2ΣCov(X<del>i</del>,X<del>j</del>)，在独立的条件下协方差可消去；</li>
+<li>这种分解思想在面对一些随机变量本身的分析很麻烦的情况下，不直接利用随机变量的概率分布，仅利用数学期望和方差的性质就可求解。一般的做法是将原随机变量X分解为伯努利随机变量X<del>i</del>，利用X<del>i</del>的期望和方差来求解X的期望和方差（这个的技术性太高了，目前也只知道这么做，后续遇到了新题型再补充）</li>
+</ul>
+</li>
 </ul>
 <h3 id="1-2-方差-amp-标准差"><a href="#1-2-方差-amp-标准差" class="headerlink" title="1.2 方差&amp;标准差"></a>1.2 方差&amp;标准差</h3><h4 id="1-2-1-方差的定义"><a href="#1-2-1-方差的定义" class="headerlink" title="1.2.1 方差的定义"></a>1.2.1 方差的定义</h4><blockquote>
 <p>随机变量方差的定义：</p>
 <p><img src="/images/image-20230428164038615.png" srcset="/img/loading.gif" lazyload></p>
 </blockquote>
+<ul>
+<li>通俗定义：随机变量X的方差DX就是(X-EX)^2^的期望，因此有以下公式成立（不常用，一般使用的是上述定义中的公式计算）</li>
+</ul>
+<p><img src="/images/image-20230903212516985.png" srcset="/img/loading.gif" lazyload></p>
 <h4 id="1-2-2-方差的性质"><a href="#1-2-2-方差的性质" class="headerlink" title="1.2.2 方差的性质"></a>1.2.2 方差的性质</h4><p>随机变量的方差通常有如下性质：</p>
 <p><img src="/images/image-20230428164249210.png" srcset="/img/loading.gif" lazyload></p>
+<p>补充一个重要等式，常用于快速计算某些题型</p>
+<p><img src="/images/image-20230903212955980.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="1-3-切比雪夫不等式"><a href="#1-3-切比雪夫不等式" class="headerlink" title="1.3 切比雪夫不等式"></a>1.3 切比雪夫不等式</h3><p>切比雪夫不等式主要描述了这样一件事：随机变量X与其数学期望EX的差值不会很大，即该差值&gt;&#x3D;ε的概率会很小</p>
 <blockquote>
 <p>定义：</p>
@@ -892,6 +974,9 @@
 <h3 id="2-2-协方差与相关系数"><a href="#2-2-协方差与相关系数" class="headerlink" title="2.2 协方差与相关系数"></a>2.2 协方差与相关系数</h3><h4 id="2-2-1-定义"><a href="#2-2-1-定义" class="headerlink" title="2.2.1 定义"></a>2.2.1 定义</h4><blockquote>
 <p>协方差的定义：</p>
 <p><img src="/images/image-20230428165901170.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>协方差的计算式除了用期望表示以外，可以用方差表示Cov(X,Y)&#x3D;1&#x2F;2[D(X+Y)-DX-DY]</li>
+</ul>
 </blockquote>
 <blockquote>
 <p>相关系数的定义：</p>
@@ -912,35 +997,53 @@
 <p><img src="/images/image-20230428170620758.png" srcset="/img/loading.gif" lazyload></p>
 <h2 id="3-独立性与相关性"><a href="#3-独立性与相关性" class="headerlink" title="3.独立性与相关性"></a>3.独立性与相关性</h2><h3 id="3-1-独立性"><a href="#3-1-独立性" class="headerlink" title="3.1 独立性"></a>3.1 独立性</h3><p>通过分布来判断独立性（独立就是指没有任何关系）</p>
 <p><img src="/images/image-20230428171719769.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="3-2-相关性"><a href="#3-2-相关性" class="headerlink" title="3.2 相关性"></a>3.2 相关性</h3><p>通过数字特征来判断相关性</p>
+<h3 id="3-2-相关性"><a href="#3-2-相关性" class="headerlink" title="3.2 相关性"></a>3.2 相关性</h3><p>通过数字特征来判断相关性（最终落实到E(XY)&#x3D;EXEY上）</p>
 <p><img src="/images/image-20230428171801000.png" srcset="/img/loading.gif" lazyload></p>
-<p>相关性和独立性有以下几个重要结论：</p>
+<h3 id="3-3-重要结论"><a href="#3-3-重要结论" class="headerlink" title="3.3 重要结论"></a>3.3 重要结论</h3><p>相关性和独立性有以下几个重要结论：</p>
 <ul>
-<li><p>如果(X,Y)服从二维正态分布，则X和Y相互独立；</p>
+<li><p>如果X与Y相关，则X,Y不独立，反之不一定；</p>
 </li>
-<li><p>如果X与Y相互独立，则X,Y不相关，反之不一定；</p>
+<li><p>如果X与Y独立，则X,Y不相关，反之不一定；</p>
 </li>
-<li><p>如果X与Y相关，则X,Y不独立；</p>
+<li><p>如果(X,Y)服从二维正态分布，则X,Y相互独立与X,Y不相关互为充要条件</p>
+</li>
+<li><p>如果(X,Y)服从两点分布，则X,Y相互独立与X,Y不相关互为充要条件</p>
 </li>
 </ul>
 <p>一般解题，要求讨论随机变量X和Y之间的相关性和独立性时，先计算协方差判断相关性，再通过分布判断独立性</p>
 <p><img src="/images/image-20230428172258208.png" srcset="/img/loading.gif" lazyload></p>
-<h1 id="第五讲-大数定律与中心极限定理"><a href="#第五讲-大数定律与中心极限定理" class="headerlink" title="第五讲 大数定律与中心极限定理"></a>第五讲 大数定律与中心极限定理</h1><p>第五讲作为概率论知识点中的最后一讲，其主要意义在于将概率论中的知识点进行汇总并适当与数理统计联系作为章节过渡。</p>
+<h1 id="第五讲-大数定律与中心极限定理"><a href="#第五讲-大数定律与中心极限定理" class="headerlink" title="第五讲 大数定律与中心极限定理"></a>第五讲 大数定律与中心极限定理</h1><p>第五讲作为概率论知识点中的最后一讲，其主要意义在于将概率论中的知识点进行汇总并适当与数理统计联系作为章节过渡（承上启下）。</p>
 <p>大数定律用最简单的话来说就是“测试的次数越多得到的实验结论越准确”；中心极限定理的“中心”指的是这个系列定理很重要，用最简单的话来说就是“任何大量相互独立的随机变量的和的极限分布是正态分布”。</p>
-<p>为什么我要用最简单的话来描述大数定律和中心极限定理？因为本讲的内容重点在于理解而不是记忆其形式，所以最重要也是最核心的就是记住每个定律或定理到底说了什么。</p>
 <h2 id="1-依概率收敛"><a href="#1-依概率收敛" class="headerlink" title="1.依概率收敛"></a>1.依概率收敛</h2><blockquote>
 <p>设随机变量X与随机变量序列{X<del>n</del>}（其中n&#x3D;1,2,3…），如果对任意的ε&gt;0有</p>
 <p><img src="/images/image-20230515110634228.png" srcset="/img/loading.gif" lazyload></p>
 <p>则称随机变量序列{X<del>n</del>}依概率收敛于随机变量X，记作</p>
 <p><img src="/images/image-20230515110918640.png" srcset="/img/loading.gif" lazyload></p>
 </blockquote>
-<p>这里简单解释一下定义中的变量含义：</p>
+<p>定义中的变量含义：</p>
 <ul>
-<li>X是随机变量，代表了所有事件的集合（即事件可能发生的所有结果）；</li>
-<li>X<del>n</del>表示试验n次事件发生的集合；</li>
-<li>依概率收敛说的就是，当n趋于无穷也就是当试验次数足够大的时候，事件发生的集合X<del>n</del>几乎和事件可能发生的结果的集合X一致；</li>
+<li><p>X是随机变量，代表了所有事件的集合（即事件可能发生的所有结果）；</p>
+</li>
+<li><p>X<del>n</del>表示试验n次事件发生的集合；</p>
+</li>
+<li><p>依概率收敛说的就是，当n趋于无穷也就是当试验次数足够大的时候，事件发生的集合X<del>n</del>几乎和事件可能发生的结果的集合X一致；</p>
+</li>
+<li><p>公式中的|X<del>n</del>-X|&lt;ε表示的是一个事件，其概率衡量了两个集合的相似程度，此处的随机变量X也可以用常数a来替代；</p>
+</li>
 </ul>
-<p>公式中的|X<del>n</del>-X|&lt;ε表示的是一个事件，其概率衡量了两个集合的相似程度，此处的随机变量X也可以用常数a来替代；</p>
+<p>若题干要求证明X<del>n</del>依概率收敛到a，主要步骤如下：</p>
+<ol>
+<li>构造并计算表达式P{|X<del>n</del>-a|&lt;ξ}</li>
+<li>计算极限limP{|X<del>n</del>-a|&lt;ξ}</li>
+</ol>
+<hr>
+<blockquote>
+<p>Q：此处的依概率收敛与高数中极限收敛有什么关系？</p>
+</blockquote>
+<p>A：</p>
+<p><img src="/images/image-20230904094753780.png" srcset="/img/loading.gif" lazyload></p>
+<p>高数中的极限收敛之所以不像概率论中的依概率收敛带概率，本质上是因为极限收敛中的通项X<del>n</del>是确定的，而概率收敛中的X<del>n</del>表示随机事件，因此需要借助概率对其进行度量</p>
+<hr>
 <h2 id="2-大数定律"><a href="#2-大数定律" class="headerlink" title="2.大数定律"></a>2.大数定律</h2><p>大数定律告诉我们可以用频率近似代替概率，能用样本均值近似代替总体均值(数学期望)。大数定理将属于数理统计的样本均值和属于概率论的数学期望(总体均值)联系在一起，为用统计方法来估计期望提供了理论依据。（大数定律的考点主要在其使用条件，而n-&gt;∞作为默认使用条件也应当注意）</p>
 <table>
 <thead>
@@ -974,23 +1077,45 @@
 <td>估算期望</td>
 </tr>
 </tbody></table>
-<h3 id="2-1-切比雪夫大数定律"><a href="#2-1-切比雪夫大数定律" class="headerlink" title="2.1 切比雪夫大数定律*"></a>2.1 切比雪夫大数定律*</h3><p>速记：样本均值依概率收敛到期望的均值(等价于均值的期望，也就是数学期望)，是所有大数定理的本质</p>
-<p><img src="/images/image-20230515121514408.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>可以认为伯努利大数定律与其他两个不属于同一体系</p>
+</blockquote>
+<h3 id="2-1-切比雪夫大数定律"><a href="#2-1-切比雪夫大数定律" class="headerlink" title="2.1 切比雪夫大数定律"></a>2.1 切比雪夫大数定律</h3><p>速记：样本均值依概率收敛到期望的均值(等价于均值的期望，也就是数学期望)，是所有大数定理的本质</p>
+<p>成立条件：</p>
 <ul>
-<li>相比于辛钦大数定律，切比雪夫并没有要求随机变量是同分布的，因此更具一般性；</li>
-<li>切比雪夫大数定律的使用条件“为{X<del>n</del>}相互独立和DX<del>i</del>存在且一致有上界C”，出题点常在计算DX<del>i</del>得出其无上界，进而不服从切比雪夫大数定律</li>
+<li>相互独立</li>
+<li>方差存在且一致有上界（有公共上界）</li>
 </ul>
+<p><img src="/images/image-20230515121514408.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<ul>
+<li>上述式子中的X<del>i</del>可以广义化，常考的是左右两边同时广义化为X<del>i</del>的函数g(X<del>i</del>);</li>
+<li>相比于辛钦大数定律，切比雪夫并没有要求随机变量是同分布的，因此更具一般性；</li>
+<li>切比雪夫大数定律的使用条件“为{X<del>n</del>}相互独立和DX<del>i</del>存在且一致有上界C”，出题点常在计算DX<del>i</del>得出其无上界，进而不服从切比雪夫大数定律；</li>
+</ul>
+</blockquote>
 <h3 id="2-2-伯努利大数定律"><a href="#2-2-伯努利大数定律" class="headerlink" title="2.2 伯努利大数定律"></a>2.2 伯努利大数定律</h3><p>速记：频率依概率收敛到概率，由切比雪夫不等式推导</p>
 <p><img src="/images/image-20230515121609362.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="2-3-辛钦大数定律"><a href="#2-3-辛钦大数定律" class="headerlink" title="2.3 辛钦大数定律"></a>2.3 辛钦大数定律</h3><p>速记：样本均值依概率收敛到数学期望，是伯努利大数定理的推广</p>
+<p>由伯努利大数定律可以拓展得到经验分布函数，即使用经验分布函数来近似分布函数</p>
+<p><img src="/images/image-20230904095743317.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-3-辛钦大数定律"><a href="#2-3-辛钦大数定律" class="headerlink" title="2.3 辛钦大数定律*"></a>2.3 辛钦大数定律*</h3><p>速记：样本均值依概率收敛到数学期望，是伯努利大数定理的推广</p>
+<p>成立条件：</p>
+<ul>
+<li>相互独立</li>
+<li>同分布（若X<del>i</del>为来自总体X的简单随机样本，则X<del>i</del>独立同分布于X）</li>
+<li>期望存在</li>
+</ul>
 <p><img src="/images/image-20230515121713967.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
 <ul>
 <li>因为{X<del>n</del>}是独立同分布的随机变量序列，可以推出X<del>i</del>的期望都相同即E(X<del>i</del>)&#x3D;u；</li>
-<li>当X<del>i</del>是服从0-1分布的随机变量时，辛钦大数定律就是伯努利大数定律，换句话说伯努利大数定律是辛钦大数定律的一种特例情况；</li>
+<li>当X<del>i</del>是服从0-1分布的随机变量时，辛钦大数定律就是伯努利大数定律（不常考，知道就行）</li>
 <li>辛钦大数定律的使用条件为“{X<del>n</del>}独立同分布且EX<del>i</del>存在”，出题点常在“EX<del>i</del>存在”，比如“{X<del>n</del>}服从同一离散型分布”或“{X<del>n</del>}服从同一连续型分布”都不能保证数学期望一定存在，因此不服从辛钦大数定律；</li>
 </ul>
-<h2 id="3-中心极限定理"><a href="#3-中心极限定理" class="headerlink" title="3.中心极限定理"></a>3.中心极限定理</h2><p>中心极限定理用一句话概括：“在一定条件下，大量独立同分布的随机变量的和的极限分布是正态分布”。</p>
+</blockquote>
+<h2 id="3-中心极限定理"><a href="#3-中心极限定理" class="headerlink" title="3.中心极限定理"></a>3.中心极限定理</h2><p>中心极限定理用一句话概括：“在一定条件下，大量独立同分布的随机变量的和的极限分布是正态分布(任何分布求和近似正态分布)”。</p>
 <h3 id="3-1-列维-林德伯格定理"><a href="#3-1-列维-林德伯格定理" class="headerlink" title="3.1 列维-林德伯格定理*"></a>3.1 列维-林德伯格定理*</h3><p><img src="/images/image-20230807154226435.png" srcset="/img/loading.gif" lazyload alt="独立同分布中心极限定理"></p>
+<p>上述式子中，带极限则等号成立，不带极限则约等号</p>
 <blockquote>
 <ul>
 <li>定理的三个条件“独立、同分布、期望和方差存在”缺一不可（注意具有相同的期望和方差并不一定同分布）；</li>
@@ -1002,7 +1127,7 @@
 <h3 id="3-2-棣莫弗-拉普拉斯定理"><a href="#3-2-棣莫弗-拉普拉斯定理" class="headerlink" title="3.2 棣莫弗-拉普拉斯定理"></a>3.2 棣莫弗-拉普拉斯定理</h3><p><img src="/images/image-20230807154949962.png" srcset="/img/loading.gif" lazyload alt="二项分布中心极限定理"></p>
 <blockquote>
 <ul>
-<li>拉普拉斯定理是由林德伯格定理推导得来的，因为二项分布可以认为是由n个两点分布求和得到</li>
+<li>拉普拉斯定理是由林德伯格定理推导得来的，因为二项分布可以认为是由n个两点分布求和得到，即二项分布在n很大时近似正态分布</li>
 </ul>
 </blockquote>
 <h1 id="第六讲-数理统计"><a href="#第六讲-数理统计" class="headerlink" title="第六讲 数理统计"></a>第六讲 数理统计</h1><h2 id="1-总体与样本"><a href="#1-总体与样本" class="headerlink" title="1.总体与样本"></a>1.总体与样本</h2><p>前面已经讲过数理统计和概率论的区别，数理统计是一门基于现实的，根据观察到的结果来估计未知概率规律的学科。</p>
@@ -1030,6 +1155,12 @@
 <li><p>作为随机变量的函数，统计量也是一个随机变量（关于多维随机变量的函数，可参考[二维随机变量函数的分布](# 5.多维随机变量函数的分布)），因此统计量也存在分布，也就是之后会介绍的三大分布；</p>
 </li>
 </ul>
+<hr>
+<blockquote>
+<p>Q：总体、样本以及统计量之间有什么联系？</p>
+</blockquote>
+<p>A：这三者都是随机变量，抽象总体为理想概率论模型，具体样本为现实统计学模型，统计量是针对具体样本的处理手段</p>
+<hr>
 <h3 id="2-2-常用统计量"><a href="#2-2-常用统计量" class="headerlink" title="2.2 常用统计量"></a>2.2 常用统计量</h3><p>样本数字特征和顺序统计量都是常用的统计量（除了常见的统计量，根据具体问题和分析需求，还可以构造其他统计量来描述和分析数据）</p>
 <h4 id="2-2-1-样本数字特征"><a href="#2-2-1-样本数字特征" class="headerlink" title="2.2.1 样本数字特征"></a>2.2.1 样本数字特征</h4><p>注意，总体X的数字特征如数学期望(总体均值)、方差和标准差、矩等都是概率论中的理想概念，这里介绍的样本数字特征是数理统计中的真实统计概念（因此在说均值或者方差的时候不加“样本”前缀一般都默认是总体的数字特征）。</p>
 <p>设X<del>1</del>,X<del>2</del>…X<del>n</del>是来自总体X的简单随机样本，则相应的样本数字特征定义如下</p>
@@ -1037,15 +1168,17 @@
 <h4 id="2-2-2-顺序统计量"><a href="#2-2-2-顺序统计量" class="headerlink" title="2.2.2 顺序统计量"></a>2.2.2 顺序统计量</h4><p>将样本X<del>1</del>,X<del>2</del>…X<del>n</del>的n个观测值按照取值从小到大的顺序排列x<del>(1)</del>&lt;&#x3D;x<del>(2)</del>&lt;&#x3D;…&lt;&#x3D;x<del>(n)</del>，称随机变量X<del>(k)</del>为第k顺序统计量，其中X<del>(1)</del>是最小顺序统计量，X<del>(n)</del>是最大顺序统计量</p>
 <p>最大值函数和最小值函数的一个重要考点是作为随机变量的函数的时候的分布，对应结论如下（常用于综合性大题）</p>
 <p><img src="/images/image-20230515125030842.png" srcset="/img/loading.gif" lazyload></p>
-<h4 id="2-2-3-常用统计量的性质"><a href="#2-2-3-常用统计量的性质" class="headerlink" title="2.2.3 常用统计量的性质"></a>2.2.3 常用统计量的性质</h4><p><img src="/images/image-20230515125131797.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-2-3-常用统计量的数字特征"><a href="#2-2-3-常用统计量的数字特征" class="headerlink" title="2.2.3 常用统计量的数字特征"></a>2.2.3 常用统计量的数字特征</h4><p><img src="/images/image-20230515125131797.png" srcset="/img/loading.gif" lazyload></p>
 <p>对上面的结论做进一步的解释。首先介绍无偏估计的概念<br>$$<br>若E(θ’)&#x3D;θ，则称θ’是θ的无偏估计<br>$$<br>已知总体X的期望为EX，方差为DX。样本的均值和方差分别是X^——^和S^2^。我们也可以利用无偏估计的概念联系总体和样本之间的数字特征</p>
 <p><img src="/images/image-20230718164701976.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="2-3-三大分布"><a href="#2-3-三大分布" class="headerlink" title="2.3 三大分布"></a>2.3 三大分布</h3><p>三大分布作为之后参数估计和假设检验的铺垫，均源自正态分布（这些分布都是概率论中的概念）。三大分布是数理统计中最常用的抽样分布（即统计量的分布，换句话说，统计量经常都服从这三大分布之一），这三大分布的概率密度无需记忆，只需要知道相应统计量的典型模式以及对应分布曲线的示意图和分位数即可。</p>
+<p>这三大分布都是统计量的分布，此处的统计量并不是指前面介绍的常见统计量，而是一些具有特殊分布的统计量。</p>
 <h4 id="2-3-1-卡方分布"><a href="#2-3-1-卡方分布" class="headerlink" title="2.3.1 卡方分布"></a>2.3.1 卡方分布</h4><p>（1）典型模式</p>
 <p><img src="/images/image-20230515130036646.png" srcset="/img/loading.gif" lazyload></p>
 <ul>
+<li>为了记忆，我们可以将服从卡方分布的统计量X称为卡方统计量，后续t统计量、F统计量同理；</li>
 <li>自由度是指和式中的独立变量的个数；</li>
-<li>某分布的上α分位点(上侧α分位数)为μ<del>α</del>指的是：点μ<del>α</del>的右侧，概率密度曲线下方与x轴围成区域的面积为α；</li>
+<li>某分布的上α分位点(上侧α分位数)为μ<del>α</del>指的是：点μ<del>α</del>的右侧，概率密度曲线下方与x轴围成区域的面积为α – 注意上分位点u<del>α</del>是x轴上的一个点，即x&#x3D;u<del>α</del>；</li>
 </ul>
 <p>（2）性质</p>
 <p><img src="/images/image-20230515130445967.png" srcset="/img/loading.gif" lazyload></p>
@@ -1057,15 +1190,16 @@
 <p><img src="/images/image-20230515130835121.png" srcset="/img/loading.gif" lazyload></p>
 <p>（2）性质</p>
 <p><img src="/images/image-20230515130904628.png" srcset="/img/loading.gif" lazyload></p>
-<h4 id="2-3-4-正态总体下的结论"><a href="#2-3-4-正态总体下的结论" class="headerlink" title="2.3.4 正态总体下的结论*"></a>2.3.4 正态总体下的结论*</h4><p>若X<del>1</del>,X<del>2</del>…X<del>n</del>是来自正态总体N(μ,σ^2^)的一个样本，X^——^,S^2^分别代表样本的均值和方差，则</p>
-<p><img src="/images/image-20230515131458108.png" srcset="/img/loading.gif" lazyload>、</p>
+<p>额外的，t分布与F分布之间的相互转换</p>
+<p><img src="/images/image-20230904170252311.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-3-4-正态总体下的结论"><a href="#2-3-4-正态总体下的结论" class="headerlink" title="2.3.4 正态总体下的结论*"></a>2.3.4 正态总体下的结论*</h4><p><img src="/images/image-20230904170813797.png" srcset="/img/loading.gif" lazyload></p>
 <blockquote>
 <ul>
 <li>上述四个结论实际上是三大分布的应用，也是后面参数估计和假设检验的理论依据，直接看结论可能存在一定难度，下面给出推导过程</li>
 </ul>
 <p><img src="/images/image-20230807160644471.png" srcset="/img/loading.gif" lazyload></p>
 </blockquote>
-<h2 id="3-参数的点估计"><a href="#3-参数的点估计" class="headerlink" title="3.参数的点估计"></a>3.参数的点估计</h2><p>参考链接：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/104618189">统计学基础–点估计和区间估计 - 知乎 (zhihu.com)</a>，举个简单的例子点估计就是估计全校男生身高为1.75m，区间估计就是估计全校男生身高在1.70~1.80m之间；</p>
+<h2 id="3-点估计和评价标准"><a href="#3-点估计和评价标准" class="headerlink" title="3.点估计和评价标准"></a>3.点估计和评价标准</h2><p>参考链接：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/104618189">统计学基础–点估计和区间估计 - 知乎 (zhihu.com)</a>，举个简单的例子点估计就是估计全校男生身高为1.75m，区间估计就是估计全校男生身高在1.70~1.80m之间；</p>
 <hr>
 <p>数理统计就是一门根据样本数据情况推断总体数据情况的学科，主要分为以下三种类型：</p>
 <ul>
@@ -1094,34 +1228,47 @@
 <h3 id="3-1-概念"><a href="#3-1-概念" class="headerlink" title="3.1 概念"></a>3.1 概念</h3><p>设总体X的分布函数为F(x,θ)，其中θ是一个未知参数。X<del>1</del>,X<del>2</del>…X<del>n</del>是取自总体X的一个样本，由样本构造的一个统计量<code>θ^</code>(X<del>1</del>,X<del>2</del>…X<del>n</del>)作为参数θ的估计量，如果x<del>1</del>,x<del>2</del>…x<del>n</del>是样本的一个观测值，将其代入估计量<code>θ^</code>中称这个值为未知参数θ的估计值。</p>
 <h4 id="3-1-1-矩估计法"><a href="#3-1-1-矩估计法" class="headerlink" title="3.1.1 矩估计法"></a>3.1.1 矩估计法</h4><p>矩估计法的特点是不需要知道总体X的分布，但这就导致不能充分利用已知的信息(比如已知总体分布是正态分布但是因为使用的是矩估计，所以这个信息不会被使用)，矩估计量不具备唯一性；</p>
 <p>矩估计的基本思想就是利用样本均值去逼近总体均值，用样本方差估计总体方差（分一个未知参数和两个未知参数的情况）</p>
-<p><img src="/images/image-20230807162209816.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20230904171110234.png" srcset="/img/loading.gif" lazyload></p>
 <ul>
 <li>因为点估计都是“估计”，故最终得到的结果不是精确值而是估计值，估计值一般带^与精确值做区分；</li>
 <li>矩估计量中的样本均值大写，矩估计值中的样本均值小写；</li>
+<li>矩估计中，能用一阶矩就不能用二阶矩，只有当一阶矩不能使用时（一阶矩求解出来不包含未知数即无法建立方程）才能用二阶矩；</li>
 </ul>
-<h4 id="3-1-2-最大似然估计"><a href="#3-1-2-最大似然估计" class="headerlink" title="3.1.2 最大似然估计"></a>3.1.2 最大似然估计</h4><p>基本思想是最大似然原理，即在未知参数θ取某个值的时候，整个样本获得观测值的概率最大的参数值<code>θ^</code>作为θ的估计。主要根据总体X是离散型还是连续型分为如下两个</p>
-<p><img src="/images/image-20230807162521977.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="3-2-估计量的评估"><a href="#3-2-估计量的评估" class="headerlink" title="3.2 估计量的评估"></a>3.2 估计量的评估</h3><p><img src="/images/image-20230515172106523.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="4-参数的区间估计"><a href="#4-参数的区间估计" class="headerlink" title="4.参数的区间估计"></a>4.参数的区间估计</h2><h3 id="4-1-区间估计"><a href="#4-1-区间估计" class="headerlink" title="4.1 区间估计"></a>4.1 区间估计</h3><p>给定置信度求未知参数置信区间的问题，称为参数的区间估计问题（置信区间的长度表示估计的精度，置信区间越短表示估计的精度越高）。区间估计的推导过程如下（主要依赖前面介绍的[正态总体下的结论](# 2.3.4 正态总体下的结论* )）</p>
+<h4 id="3-1-2-最大似然估计"><a href="#3-1-2-最大似然估计" class="headerlink" title="3.1.2 最大似然估计"></a>3.1.2 最大似然估计</h4><p>基本思想是最大似然原理，即在未知参数θ取某个值的时候，整个样本获得观测值的概率最大的参数值<code>θ^</code>作为θ的估计。可以使用以下形式帮助理解<br>$$<br>θ作为一个标签取值为多少时，概率P(抽样得到的观测值;Θ)最大<br>$$<br>根据总体X是离散型还是连续型分为不同的似然函数，主要求解步骤如下</p>
+<p><img src="/images/image-20230904171827240.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>连乘的处理方式是先求对数再求导；</li>
+<li>若似然函数无驻点，意味着似然函数单调<ul>
+<li>若似然函数单调增，要使得似然函数得最大值，需具体分析似然函数的等式以及参数取值范围</li>
+<li>若似然函数单调减，要使得似然函数得最大值，需具体分析似然函数的等式以及参数取值范围</li>
+</ul>
+</li>
+<li>若似然函数为常数，同样类似上述分析，利用范围求解参数。此时求解出的点估计量是处于一个区间内的，表明此时的点估计量不具备唯一性；</li>
+</ul>
+<h3 id="3-2-估计量的评估"><a href="#3-2-估计量的评估" class="headerlink" title="3.2 估计量的评估"></a>3.2 估计量的评估</h3><p><img src="/images/image-20230904172538939.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="4-区间估计和假设检验"><a href="#4-区间估计和假设检验" class="headerlink" title="4.区间估计和假设检验"></a>4.区间估计和假设检验</h2><h3 id="4-1-区间估计"><a href="#4-1-区间估计" class="headerlink" title="4.1 区间估计"></a>4.1 区间估计</h3><p>给定置信度求未知参数置信区间的问题，称为参数的区间估计问题（置信区间的长度表示估计的精度，置信区间越短表示估计的精度越高）。区间估计的推导过程如下（主要依赖前面介绍的[正态总体下的结论](# 2.3.4 正态总体下的结论* )）</p>
 <p><img src="/images/image-20230807161322032.png" srcset="/img/loading.gif" lazyload></p>
-<p>下面给出正态总体均值的置信区间表格（这个结论本质上硬背下来也没什么意义，重要的应该是理解上面那段推导）</p>
-<p><img src="/images/image-20230515172524118.png" srcset="/img/loading.gif" lazyload></p>
+<p>下面给出正态总体均值的置信区间结论</p>
+<p><img src="/images/image-20230904172659769.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="4-2-假设检验"><a href="#4-2-假设检验" class="headerlink" title="4.2 假设检验"></a>4.2 假设检验</h3><p>区间估计与假设检验的关系非常密切，假设检验的推导如下（即小概率事件发生则拒绝整个H<del>0</del>原假设）</p>
 <p><img src="/images/image-20230807161524986.png" srcset="/img/loading.gif" lazyload></p>
 <p>下面给出正态总体下的六大检验及其拒绝域</p>
 <p><img src="/images/image-20230515173216205.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>拒绝域的形式与备择假设H<del>1</del>的形式一致，方便记忆</li>
+</ul>
 <h3 id="4-3-两类错误"><a href="#4-3-两类错误" class="headerlink" title="4.3 两类错误"></a>4.3 两类错误</h3><p><img src="/images/image-20230515173243124.png" srcset="/img/loading.gif" lazyload></p>
 <p>其中犯第一类错误的概率α就是前面所说的显著性水平α（但是在具体的考题中不会利用这个性质来求α，求解α和β都是直接利用公式计算条件概率），比如P{判定无病|有病}&#x3D;α，这个α一定要严格控制（有病但是不治疗后果很严重）；第二类错误可以认为是P{判定有病|无病}&#x3D;β，这个β尽量小即可（没有病多吃点药可能影响不大）</p>
-<blockquote>
 <ul>
 <li>犯两类错误的概率α与β，并不满足β&#x3D;1-α，在固定样本容量n的条件下，α小，β就大；β小，α就大.在实际应用中，我们总是在控制α的条件下，尽量使β小，这是因为人们常常把拒绝H<del>0</del>比错误地接受H<del>0</del>看得更重要；</li>
-<li>某些考题可能会更换措辞，针对这种题型只需要记住上述基本结论和下面的等价描述</li>
+<li>某些考题可能会更换措辞，针对这种题型只需要记住上述基本结论和下面的等价描述<ul>
 <li>拒绝H<del>0</del>&#x3D;&#x3D;接受H<del>1</del></li>
 <li>接受H<del>0</del>&#x3D;&#x3D;拒绝H<del>1</del></li>
 <li>H<del>0</del>为真&#x3D;&#x3D;H<del>1</del>为假</li>
 <li>H<del>0</del>为假&#x3D;&#x3D;H<del>1</del>为真</li>
 </ul>
-</blockquote>
+</li>
+</ul>
 
               
             </div>

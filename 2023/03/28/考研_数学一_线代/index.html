@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/study.jpg">
 <meta property="article:published_time" content="2023-03-28T14:22:00.000Z">
-<meta property="article:modified_time" content="2023-08-29T13:56:09.629Z">
+<meta property="article:modified_time" content="2023-08-31T03:24:03.810Z">
 <meta property="article:author" content="YangZaiyan">
 <meta property="article:tag" content="线性代数">
 <meta name="twitter:card" content="summary_large_image">
@@ -221,7 +221,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          18k 字
+          19k 字
         
       </span>
     
@@ -232,7 +232,7 @@
         
         
         
-          149 分钟
+          163 分钟
         
       </span>
     
@@ -285,6 +285,7 @@
 </blockquote>
 <p>2023&#x2F;8&#x2F;26 16:06 张宇这个线代听的我非常的抓马，感觉前面几章真的很简单…与高数不同，线代前面几章感觉完全是废话，而且书上的知识点整理也细稀碎，同时例题也不够经典。伴随第一轮打基础的时候笔记整理的不是很好，线代刚开始强化有点迷茫。暂且先把笔记整理一下，然后速刷前几章（真的是速刷，可以边跳边看，然后不重要或者不好整理的知识点直接丢弃即可）；</p>
 <p>2023&#x2F;8&#x2F;28 20:28 经过不懈的努力，终于快速刷到第七讲了。感觉听的很难受的其中一个原因估计是线代强化没什么新的知识点和难度所以让人昏昏欲睡，好好听完之后的三章，争取这周把概率论的强化开启吧，强化速刷完成后刷题才是最重要的；</p>
+<p>2023&#x2F;8&#x2F;31 11:22 终于结束线代强化了，真的很痛苦…一方面自己挺久没做张宇的题忘了很多知识点，另一方面张宇线代强化和之前重复部分太多听的人昏昏欲睡，而且有些地方讲的也不严谨。好在结束线代强化就OK，下面抓紧时间完成概率论的强化，方法雷同，速刷；</p>
 <hr>
 <h1 id="第一讲-行列式"><a href="#第一讲-行列式" class="headerlink" title="第一讲 行列式"></a>第一讲 行列式</h1><h2 id="1-行列式的定义"><a href="#1-行列式的定义" class="headerlink" title="1.行列式的定义"></a>1.行列式的定义</h2><p>二阶行列式的几何意义：二阶行列式是由两个二维向量组成，其运算规则的结果（叉乘结果）为以这个两个向量为邻边的平行四边形的面积</p>
 <p><img src="/images/image-20230415142630649.png" srcset="/img/loading.gif" lazyload></p>
@@ -456,7 +457,7 @@
 </blockquote>
 <h5 id="2-矩阵幂的计算"><a href="#2-矩阵幂的计算" class="headerlink" title="(2)矩阵幂的计算"></a>(2)矩阵幂的计算</h5><p>计算矩阵的幂主要有如下五种方法</p>
 <p><img src="/images/image-20230826163704007.png" srcset="/img/loading.gif" lazyload></p>
-<h4 id="2-1-7-正交化"><a href="#2-1-7-正交化" class="headerlink" title="2.1.7 正交化"></a>2.1.7 正交化</h4><p>矩阵和向量组是完全等价的概念，因此向量组的正交化也可以说是矩阵的正交化</p>
+<h4 id="2-1-7-正交化-amp-单位化"><a href="#2-1-7-正交化-amp-单位化" class="headerlink" title="2.1.7 正交化&amp;单位化"></a>2.1.7 正交化&amp;单位化</h4><p>矩阵和向量组是完全等价的概念，因此向量组的正交化&amp;单位化也可以说是矩阵的正交化&amp;单位化</p>
 <h5 id="1-基本概念-1"><a href="#1-基本概念-1" class="headerlink" title="(1)基本概念"></a>(1)基本概念</h5><p>下面这几个概念都是相对向量定义的；</p>
 <blockquote>
 <p>a)内积</p>
@@ -470,19 +471,24 @@
 </blockquote>
 <p><img src="/images/image-20230415153830644.png" srcset="/img/loading.gif" lazyload></p>
 <blockquote>
-<p>c)模</p>
+<p>c)模与单位向量</p>
 </blockquote>
 <p><img src="/images/image-20230415153854577.png" srcset="/img/loading.gif" lazyload></p>
 <ul>
-<li>注意，如果题干让求解与两个向量正交的单位向量，求解出的结果应该有两个分别表示不同方向的单位正交向量</li>
+<li>注意，如果题干让求解与某向量正交的单位向量，求解出的结果应该有两个分别表示不同方向的单位正交向量</li>
 </ul>
-<h5 id="2-施密特正交化"><a href="#2-施密特正交化" class="headerlink" title="(2)施密特正交化*"></a>(2)施密特正交化*</h5><p>标准正交向量组的定义如下</p>
+<blockquote>
+<p>d)标准&#x2F;规范正交向量组</p>
+</blockquote>
+<p>标准&#x2F;规范正交向量组的定义如下</p>
 <p><img src="/images/image-20230415154324788.png" srcset="/img/loading.gif" lazyload></p>
 <p>其中的标准指的是该组中的向量都是单位向量，正交表示任意两个不同向量之间的点积都是0（点积的几何意义）。</p>
-<p>通常使用<code>施密特正交化</code>（详细的推导查看<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/136627868">如何理解施密特（Schmidt）正交化 - 知乎 (zhihu.com)</a>）方法对向量组进行正交化处理，其定义如下</p>
+<h5 id="2-施密特正交化"><a href="#2-施密特正交化" class="headerlink" title="(2)施密特正交化*"></a>(2)施密特正交化*</h5><ul>
+<li>详细的推导查看<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/136627868">如何理解施密特（Schmidt）正交化 - 知乎 (zhihu.com)</a>；</li>
+</ul>
+<p>施密特正交化方法的原理非常简单，从几何意义上理解，假如原本的两个向量不垂直，则分别找原本向量和在该向量的垂线方向上的向量即可得到正交的两个向量。施密特正交化方法本质上就是一种将任意坐标系(任意线性无关的向量作为基)变为直角坐标系(相互正交的向量作为基)的方法，即找出原来线性无关的向量张成的向量空间中相互正交的基向量。</p>
+<p>通常使用<code>施密特正交化</code>方法对向量组进行正交化处理（施密特正交化不包括单位化），正交化处理得到正交向量组后，对其进行单位化处理得到标准&#x2F;规范正交向量组</p>
 <p><img src="/images/image-20230415154459950.png" srcset="/img/loading.gif" lazyload></p>
-<p>该正交化方法的原理非常简单，从几何意义上理解，假如原本的两个向量不垂直，则分别找原本向量和在该向量的垂线方向上的向量即可得到正交的两个向量</p>
-<p>施密特正交化方法本质上就是一种将任意坐标系(任意线性无关的向量作为基)变为直角坐标系(相互正交的向量作为基)的方法，更直接的说，施密特正交化就是找出原来线性无关的向量张成的向量空间中相互正交的基向量</p>
 <h3 id="2-2-三大运算"><a href="#2-2-三大运算" class="headerlink" title="2.2 三大运算"></a>2.2 三大运算</h3><p>矩阵的三大运算：转置、求逆、伴随，在后续介绍很多性质时这三个运算常常一起出现</p>
 <h4 id="2-2-1-转置矩阵"><a href="#2-2-1-转置矩阵" class="headerlink" title="2.2.1 转置矩阵"></a>2.2.1 转置矩阵</h4><h5 id="1-转置矩阵的定义"><a href="#1-转置矩阵的定义" class="headerlink" title="(1)转置矩阵的定义"></a>(1)转置矩阵的定义</h5><p><img src="/images/image-20230415153547285.png" srcset="/img/loading.gif" lazyload></p>
 <h5 id="2-转置矩阵的性质"><a href="#2-转置矩阵的性质" class="headerlink" title="(2)转置矩阵的性质"></a>(2)转置矩阵的性质</h5><p>转置矩阵满足下列运算规律</p>
@@ -497,7 +503,8 @@
 </blockquote>
 <p>A的伴随矩阵和A满足关系<code>A*A=AA*=|A|E</code> – 任何一个方阵都存在相应的伴随矩阵。该式子称为基本定义式，可广义化<br>$$<br>狗狗*&#x3D;狗*狗&#x3D;|狗|E<br>$$</p>
 <ul>
-<li>对任意方阵A都有伴随矩阵A*，这并不意味着对任何一个矩阵都有逆矩阵，两者之间没有必然的联系；</li>
+<li>对任意方阵A都有伴随矩阵A*，这并不意味着对任何一个方阵都有逆矩阵，两者之间没有必然的联系；</li>
+<li>矩阵A不可逆时，仍然可以有伴随，使用定义式求解伴随矩阵即可；</li>
 </ul>
 <h5 id="2-伴随矩阵的性质"><a href="#2-伴随矩阵的性质" class="headerlink" title="(2)伴随矩阵的性质"></a>(2)伴随矩阵的性质</h5><p>伴随矩阵主要有以下十大重要性质（这些性质全都可以由基本定义式推出）:</p>
 <p><img src="/images/image-20230827104939250.png" srcset="/img/loading.gif" lazyload></p>
@@ -965,6 +972,7 @@
 <li>(1)中补充第五点“A,B相同特征值对应的线性无关的特征向量个数相同”；</li>
 <li>(1)中补充第六点“若矩阵A和矩阵B相似，则tr(A)&#x3D;tr(B)（相似矩阵的迹相同）”</li>
 <li>即使(1)中的性质全部成立，两个矩阵也不一定相似（(1)中的性质只是矩阵相似的必要条件）；</li>
+<li>关于(5)，并不要求A一定可逆，不可逆矩阵A仍然有不可逆的伴随矩阵<code>A*</code>，只是求解<code>A*</code>时不能使用公式法；</li>
 <li>矩阵相似，具有相同的特征方程和特征值但不一定具备相同的特征向量；</li>
 <li>对于分块矩阵，有如下相似结论</li>
 </ul>
@@ -1011,43 +1019,81 @@
 <p>A：参考链接<a target="_blank" rel="noopener" href="http://www.gaosan.com/gaokao/415331.html">非零特征值的个数与秩有什么关系_高三网 (gaosan.com)</a>（这些定理了解即可，因为不是书上给的定理所以不要用）。这篇文章为我们介绍了非零特征值和零特征值这两种特征值之间的区别，角度比较新颖感兴趣可以拓展看看（毕竟考研根本就没有相关的题型会考这个知识点）。下面是我根据文章整理的一点感悟，对理解线代的知识有一定帮助但尽量不要用这个推论去判断矩阵是否可相似对角化，老老实实算出所有特征向量判断才是最推荐的方式</p>
 <p><img src="/images/image-20230807180635929.png" srcset="/img/loading.gif" lazyload></p>
 <hr>
-<h3 id="2-4-正交对角化"><a href="#2-4-正交对角化" class="headerlink" title="2.4 正交对角化"></a>2.4 正交对角化</h3><p>在相似对角化中有结论“实对称矩阵必然可相似于对角矩阵”，实对称矩阵A指的是组成A的元素都是实数且A为对称矩阵(A^T^&#x3D;A)，实对称矩阵之所以一定能够相似对角化是因为它与普通矩阵之间的区别（即实对称矩阵的n个特征向量一定线性无关）</p>
+<h3 id="2-4-正交对角化"><a href="#2-4-正交对角化" class="headerlink" title="2.4 正交对角化"></a>2.4 正交对角化</h3><h4 id="2-4-1-实对称矩阵"><a href="#2-4-1-实对称矩阵" class="headerlink" title="2.4.1 实对称矩阵"></a>2.4.1 实对称矩阵</h4><p>在相似对角化中有结论“实对称矩阵必然可相似于对角矩阵”，实对称矩阵A指的是组成A的元素都是实数且A为对称矩阵(A^T^&#x3D;A)，实对称矩阵之所以一定能够相似对角化是因为它与普通矩阵之间的区别（即实对称矩阵的n个特征向量一定线性无关）</p>
 <p><img src="/images/image-20230829212817220.png" srcset="/img/loading.gif" lazyload></p>
-<p>关于实对称矩阵主要有如下结论</p>
-<p><img src="/images/image-20230606204733413.png" srcset="/img/loading.gif" lazyload></p>
-<p>使用<code>正交矩阵</code>对实对称矩阵A进行相似对角化的步骤如下：</p>
+<p>关于实对称矩阵有以下结论</p>
+<p><img src="/images/image-20230830101505611.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>关于第一点，若求解λ的方程得到有复数的特征值，因为实对称矩阵的特征值一定为实数故可直接舍去该复数取值范围；</li>
+<li>关于第二点，正交矩阵是指由标准&#x2F;规范正交基组成的矩阵，此处的Q仍要与对角矩阵的每个主对角元素(特征值)一一对应；</li>
+<li>关于第四点，结论中的特征向量仅需正交无需单位化<ul>
+<li>充分性，因为实对称矩阵A必有n个线性无关的向量，根据向量组正交化的条件可知这n个线性无关的向量一定可以正交化处理；</li>
+<li>必要性，因为n个相互正交的特征向量必然也是线性无关的，故一定可以相似对角化，进而证明A^T^&#x3D;A；</li>
+</ul>
+</li>
+<li>补充第五点，“若A为n阶实对称矩阵，则A*同样是n阶实对称矩阵，但反推不成立”</li>
+</ul>
+<h4 id="2-4-2-正交矩阵"><a href="#2-4-2-正交矩阵" class="headerlink" title="2.4.2 正交矩阵"></a>2.4.2 正交矩阵</h4><p>关于正交矩阵有以下常用结论</p>
+<p><img src="/images/image-20230830103301219.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-4-3-正交对角化"><a href="#2-4-3-正交对角化" class="headerlink" title="2.4.3 正交对角化"></a>2.4.3 正交对角化</h4><p>使用<code>正交矩阵</code>对实对称矩阵A进行相似对角化称为“正交对角化”，主要步骤如下：</p>
 <ul>
 <li>先求出A的所有特征值和对应的特征向量；</li>
 <li>将所有的特征向量进行正交化处理（使用斯密特正交化），然后将正交之后的向量进行单位化处理（分子为向量分量，分母为分量平方和开根号）；</li>
 <li>得到正交矩阵Q对应的对角矩阵λ；</li>
 </ul>
 <blockquote>
-<p>使用可逆矩阵P(列向量线性无关)和正交矩阵Q(列向量为单位向量且相互正交，条件更强)对A进行相似变化都是对图形进行改变，不同的是使用正交矩阵不会扭曲图像；</p>
-<p>题干若没有要求使用正交矩阵对矩阵A进行相似对角化则无需对特征向量进行施密特正交化，只需求解出特征向量构成对应的可逆矩阵P即可（流程和普通矩阵相似对角化相同）</p>
+<p>使用可逆矩阵P(列向量线性无关)和正交矩阵Q(列向量为单位向量且相互正交，条件更强)对A进行相似变化都是对图形进行改变，不同的是使用正交矩阵不会扭曲图像（即原曲线相对位置之间的距离不会改变，x^T^x&#x3D;y^T^y）；</p>
+<p>题干若没有要求使用正交矩阵对实对称矩阵A进行相似对角化则无需对特征向量进行施密特正交化，只需求解出特征向量构成对应的可逆矩阵P即可（即普通矩阵相似对角化）</p>
 </blockquote>
-<h3 id="2-5-矩阵相似的应用"><a href="#2-5-矩阵相似的应用" class="headerlink" title="2.5 矩阵相似的应用"></a>2.5 矩阵相似的应用</h3><h4 id="2-5-1-反求参数"><a href="#2-5-1-反求参数" class="headerlink" title="2.5.1 反求参数"></a>2.5.1 反求参数</h4><p><img src="/images/image-20230606210456949.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-5-相似理论的应用"><a href="#2-5-相似理论的应用" class="headerlink" title="2.5 相似理论的应用"></a>2.5 相似理论的应用</h3><h4 id="2-5-1-反求参数"><a href="#2-5-1-反求参数" class="headerlink" title="2.5.1 反求参数"></a>2.5.1 反求参数</h4><p><img src="/images/image-20230606210456949.png" srcset="/img/loading.gif" lazyload></p>
 <p>补充常用的第四点：k<del>i</del>&#x3D;n-r(λ<del>i</del>E-A)，即重根的个数&#x3D;无关的特征向量个数&#x3D;k<del>i</del>。该等式的理论依据是，矩阵A可相似对角化的条件是每个k<del>i</del>重特征值λ<del>i</del>都有k<del>i</del>个线性无关的特征向量，等价于(λ<del>i</del>E-A)x&#x3D;0这个齐次线性方程组的解空间的维度为k<del>i</del>维。</p>
-<h4 id="2-5-2-反求矩阵A以及f-A"><a href="#2-5-2-反求矩阵A以及f-A" class="headerlink" title="2.5.2 反求矩阵A以及f(A)"></a>2.5.2 反求矩阵A以及f(A)</h4><p>利用相似的定义和矩阵运算性质可以由相似矩阵反求原矩阵</p>
+<h4 id="2-5-2-反求矩阵A以及f-A"><a href="#2-5-2-反求矩阵A以及f-A" class="headerlink" title="2.5.2 反求矩阵A以及f(A)"></a>2.5.2 反求矩阵A以及f(A)</h4><p>利用相似的定义和矩阵运算性质可以由相似矩阵反求原矩阵（进一步的，如果P是正交矩阵，可以利用P^-1^&#x3D;P^T^避免求解逆矩阵）</p>
 <p><img src="/images/image-20230606211032057.png" srcset="/img/loading.gif" lazyload></p>
-<p>实际上，因为相似手段的相同，当A可逆时f(A)、A^-1^以及A*三者的线性组合仍然相似（注意并不包含A^T^）</p>
+<p>实际上，因为相似手段的相同，当A可逆时f(A)、A^-1^以及A*三者的线性组合仍然相似（注意并不包含A^T^，因为它的相似手段与其他不同）</p>
 <p><img src="/images/image-20230829214747348.png" srcset="/img/loading.gif" lazyload></p>
 <h1 id="第六讲-二次型"><a href="#第六讲-二次型" class="headerlink" title="第六讲 二次型"></a>第六讲 二次型</h1><hr>
 <blockquote>
-<p>Q：概念辨析（在学习上一章相似理论的时候其实已经有疑惑了，但是那个时候大概糊弄一下还能学下去，但是这一章如果不搞明白线性代数这些最基本的概念，学习过程会变得很困难）</p>
+<p>Q：概念辨析（以下概念将是考研线代中最难理解的的几个）</p>
 </blockquote>
 <p>A：参考链接：</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/452504241">矩阵合同的本质是什么，在坐标系或者基中？ - 知乎 (zhihu.com)</a>；</li>
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42743783/article/details/113958516">(16条消息) 矩阵的等价，相似，合同_b&#x3D;paq_落尘per的博客-CSDN博客</a>；</li>
 </ul>
-<p><img src="/images/image-20230606233540823.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>前置知识点：</p>
+<ul>
+<li>线性变换：线性变换是一个向量变成另一个向量的过程，可以使用矩阵来描述</li>
+<li>二次型：二次型是描述一个空间的几何性质的量，可以使用对应的二次型矩阵来描述</li>
+<li>过渡矩阵：过渡矩阵是用于实现基变换的矩阵</li>
+</ul>
+<p>（1）矩阵等价</p>
+<p>定义：对同型矩阵A、B，存在可逆阵P和Q，使得B&#x3D;PAQ</p>
+<p>几何意义：两个矩阵对应着两个不同的线性变换，但是这两个线性变换作用在同一个向量上得到的结果是一样的，则这两个矩阵等价。即两个不同空间的同一个线性变换之间是等价关系（空间不同，基不同）。</p>
+<p>（2）矩阵合同</p>
+<p>定义：对同型方阵A、B，存在可逆阵P使得B&#x3D;P^T^AP</p>
+<p>几何意义：同一个空间的同一个二次型在不同坐标系下对应的两个矩阵是合同关系（空间相同，基不同），P为两组基之间的过渡矩阵</p>
+<p>（3）矩阵相似</p>
+<p>定义：对同型方阵A、B，存在可逆阵P，使得B&#x3D;P^(-1)^AP</p>
+<p>几何意义：同一个空间的同一个线性变换在不同坐标系下对应的两个矩阵是相似关系（空间相同，基不同），P为两组基之间的过渡矩阵。</p>
+<p>三者关系</p>
+<ol>
+<li>等价（只有秩相同）–&gt;合同（秩和正负惯性指数相同）–&gt;相似（秩，正负惯性指数，特征值均相同），成立条件逐步加强</li>
+<li>合同矩阵未必相似，相似矩阵未必合同（在矩阵是<code>对称矩阵</code>时，相似一定合同，反之不真）</li>
+</ol>
+</blockquote>
 <hr>
-<h2 id="1-二次型及二次型矩阵"><a href="#1-二次型及二次型矩阵" class="headerlink" title="1.二次型及二次型矩阵"></a>1.二次型及二次型矩阵</h2><blockquote>
-<p>定义</p>
+<h2 id="1-二次型及二次型矩阵"><a href="#1-二次型及二次型矩阵" class="headerlink" title="1.二次型及二次型矩阵"></a>1.二次型及二次型矩阵</h2><h3 id="1-1-基本概念-1"><a href="#1-1-基本概念-1" class="headerlink" title="1.1 基本概念"></a>1.1 基本概念</h3><blockquote>
+<p>二次型的定义</p>
 <p><img src="/images/image-20230607100336710.png" srcset="/img/loading.gif" lazyload></p>
 </blockquote>
-<p>二次型的通式表达式(也称完全展开式)非常麻烦，一般使用其矩阵表达式进行表示</p>
-<p><img src="/images/image-20230607100517233.png" srcset="/img/loading.gif" lazyload></p>
+<p>二次型的通式表达式（完全展开式）如下</p>
+<p><img src="/images/image-20230831103336814.png" srcset="/img/loading.gif" lazyload alt="完全展开式"></p>
+<p>鉴于通式表达式(也称完全展开式)非常麻烦，一般使用其矩阵表达式进行表示</p>
+<p><img src="/images/image-20230831103505677.png" srcset="/img/loading.gif" lazyload alt="矩阵表达式"></p>
+<blockquote>
+<p>完全展开式并不要求会使用，但需要清楚如何由完全展开式得到矩阵表达式</p>
+</blockquote>
 <p>在二次型的矩阵表达式中，实对称矩阵A称为二次型f(x)的矩阵（简称二次型矩阵）</p>
 <ul>
 <li><p>二次型矩阵A可以认为是二次型的系数矩阵；</p>
@@ -1063,33 +1109,33 @@
 <li>矩阵A的其他元素a<del>ij</del>是混合项x<del>i</del>x<del>j</del>系数的1&#x2F;2；</li>
 </ul>
 <p>化二次型为标准型的几何意义就是找到一个合适的基，使得该基下的二次型（描述一个空间或流体几何性质的量）只含有平方项没有交叉项</p>
-<h2 id="2-矩阵合同"><a href="#2-矩阵合同" class="headerlink" title="2.矩阵合同"></a>2.矩阵合同</h2><p>矩阵合同和二次型合同可以认为是等价的，不过多区分</p>
-<h3 id="2-1-基本概念"><a href="#2-1-基本概念" class="headerlink" title="2.1 基本概念"></a>2.1 基本概念</h3><p>线性变换的定义：前面已经介绍过坐标变换公式y&#x3D;Cx(这里的y和x的位置决定了是从哪个坐标系变换到哪个坐标系)，该坐标代换公式指的是从坐标系(x<del>1</del>,x<del>2</del>…x<del>n</del>)到(y<del>1</del>,y<del>2</del>…y<del>n</del>)的变换，其中矩阵C是对应的线性变换（线性变换与矩阵等价，可以使用矩阵表示线性变换）。若矩阵C是可逆矩阵，则称该线性变换为可逆线性变换</p>
-<p>有了线性变换的定义，就可以对二次型进行线性变换</p>
-<p><img src="/images/image-20230607102038612.png" srcset="/img/loading.gif" lazyload></p>
-<p>上述二次型f(x)与g(y)的系数矩阵A和B有如下关系</p>
-<p><img src="/images/image-20230607102145830.png" srcset="/img/loading.gif" lazyload></p>
-<p>其中A和B都是n阶矩阵，C为可逆矩阵。称满足上述等式的矩阵A和B合同，对应的二次型f(x)与g(y)为合同二次型。</p>
-<blockquote>
-<p>从几何上也很好理解，矩阵A和B分别描述了二次型f(x)和g(y)表示的空间，该空间在不同坐标系(x和y)下的描述不同(A和B)，但实际上是同一个空间(f(x)&#x3D;g(x))。这两个不同坐标系之间的坐标变换就是可逆矩阵C(也称为过渡矩阵)；</p>
-</blockquote>
-<p>合同有如下三个基本性质(没有过多介绍的必要)</p>
-<p><img src="/images/image-20230607102754821.png" srcset="/img/loading.gif" lazyload></p>
-<p>关于合同，还有一些解题常用的性质：</p>
+<h3 id="1-2-线性变换"><a href="#1-2-线性变换" class="headerlink" title="1.2 线性变换"></a>1.2 线性变换</h3><p>前面已经介绍过坐标变换公式y&#x3D;Cx(这里的y和x的位置决定了是从哪个坐标系变换到哪个坐标系)，该坐标代换公式指的是从坐标系(x<del>1</del>,x<del>2</del>…x<del>n</del>)到(y<del>1</del>,y<del>2</del>…y<del>n</del>)的变换，其中矩阵C是对应的线性变换（线性变换与矩阵等价，可以使用矩阵表示线性变换）。完整定义如下</p>
+<p><img src="/images/image-20230831103905678.png" srcset="/img/loading.gif" lazyload alt="线性变换的定义"></p>
 <ul>
-<li>若矩阵A和B合同，则两矩阵的秩相同（可逆线性变换不会改变二次型的秩）；</li>
-<li>与对称矩阵合同的矩阵同样是对称矩阵（但这并不意味着变换矩阵C是对称矩阵）；</li>
+<li>正交矩阵是一种特殊的可逆矩阵，正交变换法和配方法都是可逆线性变换</li>
 </ul>
-<h4 id="2-1-1-矩阵合同判断"><a href="#2-1-1-矩阵合同判断" class="headerlink" title="2.1.1 矩阵合同判断"></a>2.1.1 矩阵合同判断</h4><p>显然按照定义，判断与A合同的矩阵B需要找到满足条件的C使得“B&#x3D;C^T^AC”，这是不现实的，一般使用如下定理判断矩阵A和B是否合同</p>
-<p>“二次型&#x2F;实对称矩阵合同的充要条件是有相同的正负惯性指数，或秩相同且正(负)惯性指数相同”，该定理被称为[惯性定理](# 3.惯性定理)</p>
-<h3 id="2-2-二次型的标准型与规范型"><a href="#2-2-二次型的标准型与规范型" class="headerlink" title="2.2 二次型的标准型与规范型"></a>2.2 二次型的标准型与规范型</h3><p>合同变换(也就是坐标系变换)的目的在于找到一个“最佳”的坐标系状态，能够很好的描述二次型表示的空间。换句话说，当二次型中只有平方项没有交叉项时，此时的坐标系就是“最佳”状态。</p>
-<p><img src="/images/image-20230607103343593.png" srcset="/img/loading.gif" lazyload></p>
-<p>将二次型化为标准型或规范型主要有如下两种方法</p>
-<p><img src="/images/image-20230607103715134.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-3-标准型-amp-规范型"><a href="#1-3-标准型-amp-规范型" class="headerlink" title="1.3 标准型&amp;规范型"></a>1.3 标准型&amp;规范型</h3><h4 id="1-3-1-基本概念"><a href="#1-3-1-基本概念" class="headerlink" title="1.3.1 基本概念"></a>1.3.1 基本概念</h4><p>二次型的标准型和规范型的定义如下</p>
+<p><img src="/images/image-20230831104033692.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><p>任何二次型都可以通过配方法（作可逆线性变换x&#x3D;Cy）化为标准型或规范型</p>
+<ul>
+<li>此处的C列向量一般不是A的特征向量，d<del>i</del>一般也不是A的特征值</li>
+</ul>
+</li>
+<li><p>任何二次型也可以通过正交变换x&#x3D;Qy化为标准型（但无法化为规范型，因为其化作的对角矩阵的元素一定是矩阵A的特征值不一定满足规范型的规定）</p>
+<ul>
+<li>此处的Q列向量均为A的特征向量，d<del>i</del>均为对应的A的特征值</li>
+</ul>
+</li>
+<li><p>惯性定理：使用配方法或正交变换法，化作的标准型或规范型可能是不同的，但是其正项个数和负项个数都是不变的，正项个数p称为正惯性指数，负项个数q称为负惯性指数。</p>
+</li>
+</ul>
+<p><img src="/images/image-20230607104506548.png" srcset="/img/loading.gif" lazyload></p>
 <blockquote>
-<p>配方法可以看作是使用可逆矩阵对A进行相似对角化，正交变换法可以看作是使用正交矩阵对A进行相似对角化；</p>
+<p>惯性定理的条件2是主要用于判别两个矩阵是否合同，即判断两个矩阵的正负惯性指数是否相同；</p>
+<p>配方法可以看作是使用可逆矩阵对A进行相似对角化，正交变换法可以看作是使用正交矩阵对A进行正交对角化；</p>
 </blockquote>
-<h4 id="2-2-1-配方法化标准型"><a href="#2-2-1-配方法化标准型" class="headerlink" title="2.2.1 配方法化标准型"></a>2.2.1 配方法化标准型</h4><p>配方法实际就是初中的知识点，简单思想就是一直配完全平方直到所有的x<del>i</del>都配方完成（可能涉及诸如(x<del>1</del>+x<del>2</del>+x<del>3</del>)^2^这种展开式，需要加强记忆）。下面给出例题进行理解</p>
+<h4 id="1-3-2-配方法化标准型"><a href="#1-3-2-配方法化标准型" class="headerlink" title="1.3.2 配方法化标准型"></a>1.3.2 配方法化标准型</h4><p>配方法实际就是初中的知识点，简单思想就是一直配完全平方直到所有的x<del>i</del>都配方完成（可能涉及诸如(x<del>1</del>+x<del>2</del>+x<del>3</del>)^2^这种展开式，需要加强记忆）。下面给出例题进行理解</p>
 <p><img src="/images/image-20230607105749418.png" srcset="/img/loading.gif" lazyload></p>
 <blockquote>
 <p>注意事项</p>
@@ -1103,8 +1149,7 @@
 <p>注意事项</p>
 <p><img src="/images/image-20230607110343124.png" srcset="/img/loading.gif" lazyload></p>
 </blockquote>
-<h4 id="2-2-2-正交变换化标准型"><a href="#2-2-2-正交变换化标准型" class="headerlink" title="2.2.2 正交变换化标准型"></a>2.2.2 正交变换化标准型</h4><p>正交变化化标准型，实际上就是使用正交矩阵将二次型的矩阵A进行相似对角化的过程（为什么正交变化可以？因为得到的对角矩阵λ就是标准型的系数矩阵）。</p>
-<p>使用正交变化化标准型的主要步骤如下（一般情况下题干没要求使用正交变换则使用配方法，因为正交变换太麻烦了）：</p>
+<h4 id="1-3-3-正交变换法化标准型"><a href="#1-3-3-正交变换法化标准型" class="headerlink" title="1.3.3 正交变换法化标准型"></a>1.3.3 正交变换法化标准型</h4><p>正交变化化标准型，实际上就是使用正交矩阵将二次型的矩阵A进行相似对角化的过程，使用正交变化化标准型的主要步骤如下（一般情况下题干没要求使用正交变换则使用配方法，因为正交变换太麻烦了）：</p>
 <ol>
 <li>加头：由二次型f写出对应的二次矩阵A</li>
 <li>求出A的所有特征值和对应的特征向量；</li>
@@ -1116,22 +1161,51 @@
 <blockquote>
 <p>注意事项</p>
 <p><img src="/images/image-20230607111837229.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/images/image-20230607111913573.png" srcset="/img/loading.gif" lazyload></p>
 </blockquote>
-<h2 id="3-惯性定理"><a href="#3-惯性定理" class="headerlink" title="3.惯性定理"></a>3.惯性定理</h2><p>惯性定理：使用配方法或正交变换法，化作的标准型或规范型可能是不同的，但是其正项个数和负项个数都是不变的，正项个数p称为正惯性指数，负项个数q称为负惯性指数。</p>
-<p><img src="/images/image-20230607104506548.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-4-最值问题"><a href="#1-4-最值问题" class="headerlink" title="1.4 最值问题"></a>1.4 最值问题</h3><p><img src="/images/image-20230831105926365.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-5-几何应用"><a href="#1-5-几何应用" class="headerlink" title="1.5 几何应用"></a>1.5 几何应用</h3><p><img src="/images/image-20230831110143714.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="2-矩阵合同"><a href="#2-矩阵合同" class="headerlink" title="2.矩阵合同"></a>2.矩阵合同</h2><blockquote>
+<p>考研数学只需掌握实对称矩阵的合同即可，对于一般矩阵合同的考察不做要求</p>
+</blockquote>
+<h3 id="2-1-基本概念"><a href="#2-1-基本概念" class="headerlink" title="2.1 基本概念"></a>2.1 基本概念</h3><p>有了线性变换的定义，就可以对二次型进行线性变换</p>
+<p><img src="/images/image-20230607102038612.png" srcset="/img/loading.gif" lazyload></p>
+<p>上述二次型f(x)与g(y)的系数矩阵A和B有如下关系</p>
+<p><img src="/images/image-20230607102145830.png" srcset="/img/loading.gif" lazyload></p>
+<p>其中A和B都是n阶矩阵，C为可逆矩阵。称满足上述等式的矩阵A和B合同，对应的二次型f(x)与g(y)为合同二次型。</p>
 <blockquote>
-<p>条件2是主要用于判别两个矩阵是否合同，即判断两个矩阵的正负惯性指数是否相同；</p>
+<ul>
+<li>从几何上也很好理解，矩阵A和B分别描述了二次型f(x)和g(y)表示的空间，该空间在不同坐标系(x和y)下的描述不同(A和B)，但实际上是同一个空间(f(x)&#x3D;g(x))。这两个不同坐标系之间的坐标变换就是可逆矩阵C(也称为过渡矩阵)；</li>
+<li>合同变换(也就是坐标系变换)的目的在于找到一个“最佳”的坐标系状态，能够很好的描述二次型表示的空间。换句话说，当二次型中只有平方项没有交叉项时，此时的坐标系就是“最佳”状态。</li>
+</ul>
 </blockquote>
-<h2 id="4-正定二次型"><a href="#4-正定二次型" class="headerlink" title="4.正定二次型"></a>4.正定二次型</h2><blockquote>
+<p>合同有如下三个基本性质</p>
+<p><img src="/images/image-20230607102754821.png" srcset="/img/loading.gif" lazyload></p>
+<p>关于合同，还有一些解题常用的性质：</p>
+<ul>
+<li>若矩阵A和B合同，则两矩阵的秩相同（可逆线性变换不会改变二次型的秩）；</li>
+<li>与对称矩阵合同的矩阵同样是对称矩阵（但这并不意味着变换矩阵C是对称矩阵）；</li>
+</ul>
+<h3 id="2-2-矩阵合同判断"><a href="#2-2-矩阵合同判断" class="headerlink" title="2.2 矩阵合同判断"></a>2.2 矩阵合同判断</h3><p>显然按照定义，判断与A合同的矩阵B需要找到满足条件的C使得“B&#x3D;C^T^AC”，这是不现实的，一般使用如下结论判断矩阵A和B是否合同</p>
+<p><img src="/images/image-20230831110659554.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="3-正定二次型"><a href="#3-正定二次型" class="headerlink" title="3.正定二次型"></a>3.正定二次型</h2><h3 id="3-1-基本概念"><a href="#3-1-基本概念" class="headerlink" title="3.1 基本概念"></a>3.1 基本概念</h3><blockquote>
 <p>定义</p>
 <p><img src="/images/image-20230607150004457.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>正定二次型的前提是A为实对称矩阵</li>
+</ul>
 </blockquote>
-<h3 id="4-1-正定二次型的判别"><a href="#4-1-正定二次型的判别" class="headerlink" title="4.1 正定二次型的判别"></a>4.1 正定二次型的判别</h3><p>正定二次型的充要条件如下：</p>
+<p>正定二次型有如下常用性质</p>
+<p><img src="/images/image-20230831111127989.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>A正定则可以推出A^T^、A^-1^以及A*正定</li>
+<li>A^T^以及A^-1^正定可以推出A正定，但A*正定不能推出A正定</li>
+<li>若A正定且为正交矩阵，则A为单位矩阵</li>
+</ul>
+<h3 id="3-2-常用结论"><a href="#3-2-常用结论" class="headerlink" title="3.2 常用结论"></a>3.2 常用结论</h3><p>正定二次型的充要条件如下：</p>
 <p><img src="/images/image-20230607150320156.png" srcset="/img/loading.gif" lazyload></p>
-<p>正定二次型的必要条件如下：</p>
-<p><img src="/images/image-20230607150359901.png" srcset="/img/loading.gif" lazyload></p>
-<p>一般来说，考题主要分为两种考察方式，分别是判断具体型二次型的正定问题和判断抽象型二次型的正定问题：</p>
+<p>正定二次型的必要条件如下（可用于快速否定）：</p>
+<p><img src="/images/image-20230831110952571.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-3-正定二次型判断"><a href="#3-3-正定二次型判断" class="headerlink" title="3.3 正定二次型判断"></a>3.3 正定二次型判断</h3><p>一般来说，考题主要分为两种考察方式，分别是判断具体型二次型的正定问题和判断抽象型二次型的正定问题：</p>
 <ul>
 <li>首先判断二次型矩阵A是否是对称矩阵(这一步主要是针对抽象型矩阵)；</li>
 <li>接着利用六大充要条件判断所给二次型是否正定<ul>
@@ -1140,10 +1214,11 @@
 </ul>
 </li>
 </ul>
-<h3 id="4-2-正定二次型的性质"><a href="#4-2-正定二次型的性质" class="headerlink" title="4.2 正定二次型的性质"></a>4.2 正定二次型的性质</h3><ul>
-<li>A正定则可以推出A^T^、A^-1^以及A*正定</li>
-<li>A^T^以及A^-1^正定可以推出A正定，但A*正定不能推出A正定</li>
-</ul>
+<p>另外，还有一种新题型，即判断f(x<del>1</del>,x<del>2</del>,x<del>3</del>)&#x3D;()^2^+()^2^+()^2^平方和形式的二次型是否正定。此处的平方和不一定是由配方法（可逆线性变换）得到的，因此平方和前面的系数并不一定是真正的正负惯性指数，一般使用定义法判别（令平方和为0建立齐次方程组，判断该齐次方程组是否有非零解&#x2F;系数矩阵行列式是否为0即可）</p>
+<p><img src="/images/image-20230831111658783.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>之所以平方和前面的系数并不一定是真正的正负惯性指数，是因为只有可逆线性变换才不改变正负惯性指数，而所给线性变换未知是否可逆</p>
+</blockquote>
 
               
             </div>
