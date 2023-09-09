@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/study.jpg">
 <meta property="article:published_time" content="2023-02-20T07:43:00.000Z">
-<meta property="article:modified_time" content="2023-09-03T13:42:15.829Z">
+<meta property="article:modified_time" content="2023-09-06T14:10:33.743Z">
 <meta property="article:author" content="YangZaiyan">
 <meta property="article:tag" content="高等数学">
 <meta name="twitter:card" content="summary_large_image">
@@ -232,7 +232,7 @@
         
         
         
-          575 分钟
+          577 分钟
         
       </span>
     
@@ -497,6 +497,7 @@
 <h3 id="4-2-因式分解"><a href="#4-2-因式分解" class="headerlink" title="4.2 因式分解"></a>4.2 因式分解</h3><p><img src="/images/image-20230220174623311.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="4-3-重要不等式"><a href="#4-3-重要不等式" class="headerlink" title="4.3 重要不等式"></a>4.3 重要不等式</h3><p><img src="/images/image-20230819154135207.png" srcset="/img/loading.gif" lazyload></p>
 <p>(9)<br>$$<br>当0&lt;&#x3D;t&lt;&#x3D;1时，有0&lt;&#x3D;ln(1+t)&lt;&#x3D;t<br>$$</p>
+<p>(10)<br>$$<br>a-b&lt;&#x3D;|a-b|,b-a&lt;&#x3D;|a-b|（去绝对值常用）<br>$$</p>
 <h3 id="4-4-充分条件-amp-必要条件"><a href="#4-4-充分条件-amp-必要条件" class="headerlink" title="4.4 充分条件&amp;必要条件*"></a>4.4 充分条件&amp;必要条件*</h3><p>充分条件是前推后，必要条件是后推前，需要注题干描述的术语（非常的绕，自己找合适的方式理解）</p>
 <ul>
 <li>xx是yy的充分&#x2F;必要条件，这里xx在前，yy在后</li>
@@ -648,7 +649,8 @@
 <li>关于第一点，实际上还有其他类型也可以用洛必达，但是针对考研来说我们只认为有两种形式可以使用洛必达</li>
 <li>第三点简单来说就是，函数极限存在其对应的洛必达结果可能不存在，而函数对应的洛必达结果存在则函数的极限一定存在；</li>
 </ul>
-<h3 id="1-3-泰勒公式"><a href="#1-3-泰勒公式" class="headerlink" title="1.3 泰勒公式"></a>1.3 泰勒公式</h3><p>泰勒公式是计算极限的重要工具，下面给出几个重要泰勒展开式</p>
+<h3 id="1-3-泰勒公式"><a href="#1-3-泰勒公式" class="headerlink" title="1.3 泰勒公式"></a>1.3 泰勒公式</h3><p>（泰勒公式怎么记参考“<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/gN2XW8N-cqFkawQ3k1nPlA">高等数学中“泰勒公式”的口诀记忆及其应用与典型题求解 (qq.com)</a>”）</p>
+<p>泰勒公式是计算极限的重要工具，下面给出几个重要泰勒展开式</p>
 <p><img src="/images/image-20230222194201160.png" srcset="/img/loading.gif" lazyload alt="x-&gt;0的几个重要麦克劳林展开式"></p>
 <blockquote>
 <p>注意：</p>
@@ -691,6 +693,13 @@
 <li><p><code>有限个</code>无穷小的<code>乘积</code>是无穷小</p>
 </li>
 </ul>
+<p>与之相对的，无穷大并不具备这些良好的性质</p>
+<ul>
+<li>无穷大求和不是无穷大</li>
+<li>无穷大*有界量不是无穷大（无界量）</li>
+<li>无穷大比阶，当n-&gt;无穷时</li>
+</ul>
+<p>$$<br>ln^λn&lt;n^a&lt;a&lt;n&lt;n!&lt;n^n<br>$$</p>
 <p>在<code>泰勒公式</code>的应用中，会对<code>高阶无穷小</code>进行计算，主要有以下法则</p>
 <p><img src="/images/image-20230222200907119.png" srcset="/img/loading.gif" lazyload></p>
 <h4 id="1-5-1-等价无穷小"><a href="#1-5-1-等价无穷小" class="headerlink" title="1.5.1 等价无穷小"></a>1.5.1 等价无穷小</h4><h5 id="1-普通函数型"><a href="#1-普通函数型" class="headerlink" title="(1)普通函数型"></a>(1)普通函数型</h5><p><img src="/images/image-20230808194656075.png" srcset="/img/loading.gif" lazyload></p>
@@ -707,8 +716,8 @@
 </blockquote>
 <p>除了上述常用等价无穷小外，下面补充解题中产生的其他有意义的无穷小</p>
 <p><img src="/images/image-20230808162540977.png" srcset="/img/loading.gif" lazyload alt="重要极限无穷小"></p>
-<p>$$<br>e^f-e^g&#x3D;e^g(e^f&#x2F;e^g-1)等价于e^g(f-g)（当x趋于0时）<br>$$</p>
-<p>$$<br>e^x&#x3D;1+x+x^2&#x2F;2+o(x^2)，因此e^x-x-1等价于x^2&#x2F;2（当x趋于0时）<br>$$</p>
+<p>$$<br>e^f-e^g&#x3D;e^g(e^f&#x2F;e^g-1)等价于e^g(f-g)（当x趋于0时，这是一种常见处理手段）<br>$$</p>
+<p>$$<br>e^x&#x3D;1+x+x^2&#x2F;2+o(x^2)，因此e^x-x-1等价于x^2&#x2F;2（当x趋于0时，这是一种常见处理手段）<br>$$</p>
 <h5 id="2-复合函数型"><a href="#2-复合函数型" class="headerlink" title="(2)复合函数型"></a>(2)复合函数型</h5><p><img src="/images/image-20230808194807119.png" srcset="/img/loading.gif" lazyload></p>
 <blockquote>
 <ul>

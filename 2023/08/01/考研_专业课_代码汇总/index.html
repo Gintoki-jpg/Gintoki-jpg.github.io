@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/study.jpg">
 <meta property="article:published_time" content="2023-08-01T12:16:00.000Z">
-<meta property="article:modified_time" content="2023-09-01T08:54:00.012Z">
+<meta property="article:modified_time" content="2023-09-09T07:02:21.044Z">
 <meta property="article:author" content="YangZaiyan">
 <meta property="article:tag" content="数据结构设计">
 <meta property="article:tag" content="算法分析">
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          7.9k 字
+          8.6k 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          66 分钟
+          72 分钟
         
       </span>
     
@@ -545,9 +545,8 @@
 <p>逆拓扑排序可以借鉴顺拓扑排序的算法思想，但更常考的是利用深度优先实现逆拓扑排序，只需要修改深度优先代码中的<code>Visit(v);</code>代码段的位置即可</p>
 <p><img src="/images/image-20230828162742896.png" srcset="/img/loading.gif" lazyload></p>
 <h1 id="七、内部排序"><a href="#七、内部排序" class="headerlink" title="七、内部排序"></a>七、内部排序</h1><blockquote>
-<p>若没有特殊说明，本章所有排序算法都默认是非递减排序</p>
+<p>若没有特殊说明，本章所有排序算法都默认是非递减排序。</p>
 </blockquote>
-<p>稳定性口诀：“快选一堆西瓜”，这里“快”指快速排序，“选”指简单选择排序，“堆”指堆排序，“西”指希尔排序，除了这四种以外的排序算法都是稳定的</p>
 <h2 id="1-插入类排序"><a href="#1-插入类排序" class="headerlink" title="1.插入类排序"></a>1.插入类排序</h2><h3 id="1-1-直接插入排序"><a href="#1-1-直接插入排序" class="headerlink" title="1.1 直接插入排序"></a>1.1 直接插入排序</h3><p>算法思想：每趟排序都将一个待排序的关键字按照其大小插入到有序序列的适当位置，直到所有待排序关键字都被插入到有序序列中</p>
 <p><img src="/images/image-20230829170932061.png" srcset="/img/loading.gif" lazyload></p>
 <p>时间复杂度分析：</p>
@@ -596,10 +595,13 @@
 <li>平均情况：O(nlogn)</li>
 </ul>
 <h2 id="3-选择类排序"><a href="#3-选择类排序" class="headerlink" title="3.选择类排序"></a>3.选择类排序</h2><h3 id="3-1-简单选择排序"><a href="#3-1-简单选择排序" class="headerlink" title="3.1 简单选择排序"></a>3.1 简单选择排序</h3><p>算法思想：从头到尾顺序扫描无序序列，选择最小的关键字与第一个关键字交换，接着从剩下的无序序列的关键字中继续这种选择和交换，最终使得序列有序</p>
-<p><img src="/images/image-20230829173614366.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20230829173614366.png" srcset="/img/loading.gif" lazyload alt="交换版"></p>
 <p>时间复杂度分析：简单选择排序的双层循环的执行次数和初始序列没有关系，基本操作执行总次数为n(n-1)&#x2F;2，时间复杂度为O(n^2^)</p>
 <p>空间复杂度分析：O(1)</p>
-<h3 id="3-2-堆排序"><a href="#3-2-堆排序" class="headerlink" title="3.2 堆排序"></a>3.2 堆排序</h3><p>堆排序也称为快速选择排序，它在借助堆的性质可以很快选出序列中的最值。堆排序整个过程就是不断调整堆，使得不符合堆定义的完全二叉树变为符合堆定义的完全二叉树</p>
+<blockquote>
+<p>简单选择排序有两个版本，数组使用交换版（不稳定），链表使用插入版（稳定）</p>
+</blockquote>
+<h3 id="3-2-堆排序"><a href="#3-2-堆排序" class="headerlink" title="3.2 堆排序"></a>3.2 堆排序</h3><p>堆排序也称为快速选择排序，它在借助堆的性质可以很快选出序列中的最值。堆排序整个过程就是不断调整堆，使得不符合堆定义的完全二叉树变为符合堆定义的完全二叉树（下面代码假设完全二叉树从下标1开始存储，若从0开始存储则某些规则会有小变动）</p>
 <p><img src="/images/image-20230831170658305.png" srcset="/img/loading.gif" lazyload></p>
 <p>时间复杂度分析（适用于关键字个数非常多的情况下的排序）：</p>
 <ul>
@@ -614,6 +616,53 @@
 <h2 id="5-基数排序"><a href="#5-基数排序" class="headerlink" title="5.基数排序"></a>5.基数排序</h2><p>基数排序的算法代码不做要求，假设n为待排序列中关键字的个数，d为待排关键字的位数，r<del>d</del>为关键字基的个数（桶的个数）。</p>
 <p>时间复杂度分析（适用于关键字很多但关键字的基较小）：一趟“分配”和“收集”需要的时间为n+r<del>d</del>，整个排序需要d趟“分配”和“收集”，故时间复杂度为O(d(n+r<del>d</del>))</p>
 <p>空间复杂度分析：每个桶实际都是一个队列，共r<del>d</del>个桶故空间复杂度为O(r<del>d</del>)</p>
+<h2 id="6-排序算法助记"><a href="#6-排序算法助记" class="headerlink" title="6.排序算法助记"></a>6.排序算法助记</h2><h3 id="6-1-时间复杂度与稳定性"><a href="#6-1-时间复杂度与稳定性" class="headerlink" title="6.1 时间复杂度与稳定性"></a>6.1 时间复杂度与稳定性</h3><p>下图是常见内部排序的时间复杂度与稳定性总结，需要记忆的是平均时间复杂度以及稳定性</p>
+<p><img src="/images/image-20230906144522418.png" srcset="/img/loading.gif" lazyload alt="内部排序比较"></p>
+<p>“村里有两只动物，一只叫插帽龟（插入、冒泡、归并），一只叫做统计鸡（桶、计数、基数），它两做事情非常稳重（稳定）。</p>
+<p>统计鸡喜欢做数学运算（加法和乘法，对应桶、计数、基数排序的平均时间复杂度）。某一天，插帽龟在选择帽子插的时候，恩姓长老慌了（选择、冒泡、插入，时间复杂度为n^2^），恩老大喊：“快点归还给堆”（快速、归并以及堆的时间复杂度为nlogn）。</p>
+<p>”</p>
+<blockquote>
+<p>最坏情况下，桶排序和快速排序的时间复杂度为O(n^2^)，其他与平均情况下相同（最好情况下的时间复杂度意义不大）</p>
+</blockquote>
+<h3 id="6-2-算法思想"><a href="#6-2-算法思想" class="headerlink" title="6.2 算法思想"></a>6.2 算法思想</h3><p>下面这张表格帮助速记算法思想（仅仅针对我下面给出的代码，对其他书写风格的代码可能不适用）</p>
+<table>
+<thead>
+<tr>
+<th>算法</th>
+<th>思想</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>插入排序（直接插入、折半、希尔）</td>
+<td>前有序，后无序，无序<code>逐个插</code>有序（每趟无序第一个成为有序）</td>
+</tr>
+<tr>
+<td>冒泡排序</td>
+<td>前无序，后有序，无序<code>换大</code>到有序（每趟无序最后一个成为有序）</td>
+</tr>
+<tr>
+<td>快速排序</td>
+<td>j往左，i往右，j小i大换i,j，指针相遇填枢轴</td>
+</tr>
+<tr>
+<td>简单选择排序</td>
+<td>前有序，后无序，无序<code>选小</code>到有序（每趟无序第一个成为有序）</td>
+</tr>
+<tr>
+<td>堆排序</td>
+<td>前无序，后有序，无序<code>选首</code>到有序（每趟无序最后一个成为有序）</td>
+</tr>
+<tr>
+<td>二路归并排序</td>
+<td>从前往后两两归并（每个归并后的子序列分别内部有序）</td>
+</tr>
+</tbody></table>
+<h3 id="6-3-常见结论"><a href="#6-3-常见结论" class="headerlink" title="6.3 常见结论"></a>6.3 常见结论</h3><ul>
+<li>直接插入在“容易插”的情况下是O(n)，起泡“起得好”的情况下是O(n)，此处的“容易插和起得好”都指初始序列有序；快速排序反着来，“待排序列越无序算法效率越高，待排序列越有序算法效率越低”；</li>
+<li>交换类（起泡、快速）和选择类（简单选择、堆）经过一趟排序，能够保证一个关键字到达最终位置</li>
+<li>交换类排序，其排序趟数和原始序列相关</li>
+<li>简单选择和折半插入，其关键字比较次数与原始序列无关（即比较次数一定）</li>
+</ul>
 <h1 id="八、查找"><a href="#八、查找" class="headerlink" title="八、查找"></a>八、查找</h1><h2 id="1-线性存储结构"><a href="#1-线性存储结构" class="headerlink" title="1.线性存储结构"></a>1.线性存储结构</h2><h3 id="1-1-顺序查找"><a href="#1-1-顺序查找" class="headerlink" title="1.1 顺序查找"></a>1.1 顺序查找</h3><p><img src="/images/image-20230901164554034.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="1-2-折半查找"><a href="#1-2-折半查找" class="headerlink" title="1.2 折半查找"></a>1.2 折半查找</h3><p><img src="/images/image-20230901164614343.png" srcset="/img/loading.gif" lazyload></p>
 <h2 id="2-排序二叉树"><a href="#2-排序二叉树" class="headerlink" title="2.排序二叉树"></a>2.排序二叉树</h2><h3 id="2-1-查找"><a href="#2-1-查找" class="headerlink" title="2.1 查找"></a>2.1 查找</h3><p>非递归实现如下</p>
