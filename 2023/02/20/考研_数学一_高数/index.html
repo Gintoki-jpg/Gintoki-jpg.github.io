@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/study.jpg">
 <meta property="article:published_time" content="2023-02-20T07:43:00.000Z">
-<meta property="article:modified_time" content="2023-09-06T14:10:33.743Z">
+<meta property="article:modified_time" content="2023-09-13T14:06:59.102Z">
 <meta property="article:author" content="YangZaiyan">
 <meta property="article:tag" content="高等数学">
 <meta name="twitter:card" content="summary_large_image">
@@ -221,7 +221,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          69k 字
+          70k 字
         
       </span>
     
@@ -232,7 +232,7 @@
         
         
         
-          577 分钟
+          581 分钟
         
       </span>
     
@@ -1493,6 +1493,8 @@
 <p><img src="/images/image-20230301183612852.png" srcset="/img/loading.gif" lazyload></p>
 <p><img src="/images/image-20230301183625683.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="1-4-不定积分积分法"><a href="#1-4-不定积分积分法" class="headerlink" title="1.4 不定积分积分法"></a>1.4 不定积分积分法</h3><p>无论是不定积分还是定积分的考研题型技巧性都不会很强，特别依赖公式所以公式非常重要！！！这一章涉及非常多的[三角公式](# 3.三角函数)也需要记忆；</p>
+<p>初等函数的原函数一定存在，但某些初等函数的原函数不能用初等函数表示，这里仅罗列不要求记忆。一般遇到这种类型的就不要继续往下硬求积分了，考虑使用性质或者交换积分次序&#x2F;求导等手段解题</p>
+<p><img src="/images/image-20230912223847484.png" srcset="/img/loading.gif" lazyload></p>
 <h4 id="1-4-1-基本积分公式"><a href="#1-4-1-基本积分公式" class="headerlink" title="1.4.1 基本积分公式*"></a>1.4.1 基本积分公式*</h4><h5 id="1-重要积分公式"><a href="#1-重要积分公式" class="headerlink" title="(1)重要积分公式"></a>(1)重要积分公式</h5><p>以下积分公式要求全部记忆</p>
 <p><img src="/images/image-20230815202050600.png" srcset="/img/loading.gif" lazyload></p>
 <hr>
@@ -1741,7 +1743,8 @@
 <ul>
 <li>使用上面两个公式的前提是求导变量和积分变量在各自的位置上互不纠缠，否则需要换元再使用公式（记住换元时令t换元为u其中x视为常数）</li>
 </ul>
-<h4 id="3-5-2-分段函数的变限积分"><a href="#3-5-2-分段函数的变限积分" class="headerlink" title="3.5.2 分段函数的变限积分"></a>3.5.2 分段函数的变限积分</h4><p>注意分段函数的变限积分与分段函数的定积分有区别，后者只需要在不同的区间段代入相应的被积函数计算即可，前者需要对求导变量x进行讨论（简单，做题直接上手分析就行不要畏惧）</p>
+<h4 id="3-5-2-分段函数的变限积分"><a href="#3-5-2-分段函数的变限积分" class="headerlink" title="3.5.2 分段函数的变限积分"></a>3.5.2 分段函数的变限积分</h4><p><img src="/images/image-20230912224400454.png" srcset="/img/loading.gif" lazyload alt="通用方法"></p>
+<p>注意分段函数的变限积分与分段函数的定积分有区别，后者只需要在不同的区间段代入相应的被积函数计算即可，前者需要对求导变量x进行讨论（简单，做题直接上手分析就行不要畏惧）</p>
 <ul>
 <li>积分变量t与求导变量x的取值在同一区间则无需额外分情况计算</li>
 </ul>
@@ -2179,6 +2182,12 @@
 <ul>
 <li>在计算二次积分时，如果被积函数中既有x又有y，但此时是先积y再积x，在对y求积分时x可以视作常数用于凑微分等；</li>
 </ul>
+<p>一般情况下，计算二重积分按照以下步骤进行（特别是选择题以及填空题，考察技巧性而非计算能力）：</p>
+<ol>
+<li>先观察积分区域是否具有对称性（一般对称或轮转对称）；</li>
+<li>若积分区域不具备明显的对称性可以考虑分割积分区域，使得分割后的各个积分区域有对称性，在各区域上分别积分；</li>
+<li>使用一般对称性时，需要考虑被积函数的奇偶性，如果被积函数不具备明显的奇偶性则考虑拆分被积函数分别积分；</li>
+</ol>
 <h3 id="2-1-直角坐标系"><a href="#2-1-直角坐标系" class="headerlink" title="2.1 直角坐标系"></a>2.1 直角坐标系</h3><blockquote>
 <p>口诀：“后积先定限，限内画条线，先交写下限，后交写上限”（该口诀同样适用于改变积分次序）</p>
 </blockquote>
@@ -2279,11 +2288,24 @@
 <li>某些时候题干所给的公式并不是已知类型（可分离变量、一阶线性），需要结合恒等变形或换元（重要）化为已知类型，比如y’+1&#x3D;e^-y^sinx就可以先恒等变形为(e^y^)’+e^y^&#x3D;sinx，再令e^y^&#x3D;u得到u’+u&#x3D;sinx；</li>
 <li>具体求解阶段直接套用相关公式（硬背）即可，没有捷径可言；</li>
 </ul>
+<h3 id="1-4-解的性质"><a href="#1-4-解的性质" class="headerlink" title="1.4 解的性质"></a>1.4 解的性质</h3><p>参考链接：</p>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/GXSLBx8irIQkwmPK4fMIew">一阶线性微分方程解的性质与结构 </a>；</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/vN4Vp4xI8_3_o4vpIctU_A">二阶线性微分方程解的性质与结构 </a>；</p>
+</li>
+</ul>
+<p>下面会出现三种解，“特解”“通解”以及“解”，其中“特解”指的是常数C确定的通解，而“解”并没有指明是特解还是通解</p>
+<h4 id="1-4-1-一阶线性微分方程"><a href="#1-4-1-一阶线性微分方程" class="headerlink" title="1.4.1 一阶线性微分方程"></a>1.4.1 一阶线性微分方程</h4><p><img src="/images/image-20230913212427354.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="1-4-2-二阶线性微分方程"><a href="#1-4-2-二阶线性微分方程" class="headerlink" title="1.4.2 二阶线性微分方程"></a>1.4.2 二阶线性微分方程</h4><p><img src="/images/image-20230913214449851.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="6">
+<li>若y<del>1</del>、y<del>2</del>、y<del>3</del>分别是(2)式三个线性无关的解，则C<del>1</del>y<del>1</del>+C<del>2</del>y<del>2</del>+C<del>3</del>y<del>3</del>(C<del>1</del>+C<del>2</del>+C<del>3</del>&#x3D;1)是(2)式的通解；</li>
+</ol>
 <h2 id="2-一阶微分方程"><a href="#2-一阶微分方程" class="headerlink" title="2.一阶微分方程"></a>2.一阶微分方程</h2><h3 id="2-1-变量可分离型"><a href="#2-1-变量可分离型" class="headerlink" title="2.1 变量可分离型"></a>2.1 变量可分离型</h3><p>能把微分方程写成一端只含y的函数和dy，另一端只含x的函数和 dx，那么原方程就称为可分离变量的微分方程。</p>
 <p>变量可分离型的微分方程解法非常简单，只需要两边同时求积分即可</p>
 <p><img src="/images/image-20230403172219547.png" srcset="/img/loading.gif" lazyload></p>
 <blockquote>
-<p>有时候将g(y)放在分母中即附加了条件g(y)!&#x3D;0，这可能导致最后的通解并不是全部解，一般情况下我们将g(y)&#x3D;0代入假如此时方程也成立，称之为奇解，考虑通解中C是否能够取得某个常数使得通解能够表示为奇解的形式，如果不能则直接写原本的通解即可，否则加上奇解。</p>
+<p>有时候将g(y)放在分母中即附加了条件g(y)!&#x3D;0，这可能导致最后的通解并不是全部解，一般情况下我们将g(y)&#x3D;0代入假如此时方程也成立，称之为奇解，考虑通解中C是否能够取得某个常数使得通解能够表示为奇解的形式，如果不能则直接写原本的通解即可，否则加上奇解（即做题过程不用考虑奇解）。</p>
 </blockquote>
 <h3 id="2-2-可化为变量可分离型"><a href="#2-2-可化为变量可分离型" class="headerlink" title="2.2 可化为变量可分离型"></a>2.2 可化为变量可分离型</h3><h4 id="2-2-1-非齐次型微分方程"><a href="#2-2-1-非齐次型微分方程" class="headerlink" title="2.2.1 非齐次型微分方程"></a>2.2.1 非齐次型微分方程</h4><p>使用换元法，令u&#x3D;ax+by+c，化为可分离变量的形式</p>
 <p><img src="/images/image-20230403172355343.png" srcset="/img/loading.gif" lazyload></p>
@@ -2354,7 +2376,7 @@
 </li>
 </ul>
 <blockquote>
-<p>无论是第二种特解还是第三种特解，其自由项一定都是大纲要求的两种之一，不必过分担心；</p>
+<p>无论是第二种特解还是第三种特解，其自由项一定都是大纲要求的两种之一，不必过分担心</p>
 </blockquote>
 <h3 id="4-2-二阶常系数微分方程的解"><a href="#4-2-二阶常系数微分方程的解" class="headerlink" title="4.2 二阶常系数微分方程的解"></a>4.2 二阶常系数微分方程的解</h3><p>前面介绍的解的结构只是二阶微分方程抽象解的形式，这里给出具体解题过程中如何求通解和特解（根据考研大纲，只要求掌握常系数微分方程的求解即可）。</p>
 <h4 id="4-2-1-二阶齐次微分方程的通解"><a href="#4-2-1-二阶齐次微分方程的通解" class="headerlink" title="4.2.1 二阶齐次微分方程的通解"></a>4.2.1 二阶齐次微分方程的通解</h4><p>对于y’’+py’+qy&#x3D;0，其对应的特征方程为r^2^+pr+q&#x3D;0（如何得到的参见张宇视频，可以直接硬背），对特征方程求根，有以下三种情况分别对应齐次微分方程的通解情况</p>
@@ -2362,7 +2384,7 @@
 <h4 id="4-2-2-二阶非齐次微分方程的特解"><a href="#4-2-2-二阶非齐次微分方程的特解" class="headerlink" title="4.2.2 二阶非齐次微分方程的特解"></a>4.2.2 二阶非齐次微分方程的特解</h4><p>因为非齐次的通解&#x3D;齐次的通解+非齐次的特解，上面已经讨论过齐次的通解，因此这里只需要讨论非齐次的特解。</p>
 <p>对于y’’+py’+q&#x3D;f(x)，最重要的是如何设置其特解y*，主要根据自由项的形式不同设置不同的特解，设置之后将特解反向代入非齐次方程得到具体的特解。</p>
 <p><img src="/images/image-20230412233039921.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="4-3-n阶常系数微分方程的解"><a href="#4-3-n阶常系数微分方程的解" class="headerlink" title="4.3 n阶常系数微分方程的解"></a>4.3 n阶常系数微分方程的解</h3><p>称如下形式的微分方程为n阶(n&gt;&#x3D;3)常系数齐次线性微分方程</p>
+<h3 id="4-3-n阶常系数微分方程的解"><a href="#4-3-n阶常系数微分方程的解" class="headerlink" title="4.3 n阶常系数微分方程的解"></a>4.3 n阶常系数微分方程的解</h3><p>称如下形式的微分方程为n阶(n&gt;&#x3D;3)常系数齐次线性微分方程（如下结论不适用于一阶和二阶）</p>
 <p><img src="/images/image-20230412233113129.png" srcset="/img/loading.gif" lazyload></p>
 <p>其对应的特征方程为</p>
 <p><img src="/images/image-20230412233153799.png" srcset="/img/loading.gif" lazyload></p>
