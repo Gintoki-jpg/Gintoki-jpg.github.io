@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/study.jpg">
 <meta property="article:published_time" content="2023-02-20T07:43:00.000Z">
-<meta property="article:modified_time" content="2023-09-13T14:06:59.102Z">
+<meta property="article:modified_time" content="2023-09-16T06:29:33.926Z">
 <meta property="article:author" content="YangZaiyan">
 <meta property="article:tag" content="高等数学">
 <meta name="twitter:card" content="summary_large_image">
@@ -232,7 +232,7 @@
         
         
         
-          581 分钟
+          583 分钟
         
       </span>
     
@@ -312,6 +312,10 @@
 <p>2023&#x2F;8&#x2F;8 16:41 说真的如果强化阶段不看张宇的视频简直就是一大损失，讲的太好了！我听课的时候有一种要起飞的感觉。虽然强化阶段的题型把我虐的体无完肤，但是我能明显感觉到自己积累的知识点和具体解题时候的运用的差距在哪里，通过这种不断地巩固我相信我的数学能力能够更上一层楼。需要注意因为强化阶段一节课的知识量就非常的巨大，所以推荐听一节课马上就做一节课的课后总结，千万不要拖到后面会忘记很多细节，效果也会大打折扣；</p>
 <p>2023&#x2F;8&#x2F;22 17:07 最近听课的效率越来越低，之前半天能听一讲，现在一天听一讲还犯困。暂时也不知道该怎么办了，好在最后高数的两讲都没什么难度，坚持一下把最后两讲混完；</p>
 <p>2023&#x2F;8&#x2F;24 22:25 状态真的非常差，可能需要调整了。今天把高数最后两讲听完了，本来以为只需要一天就能听完没想到还是拖了两天，真的很煎熬。总结了一些之前没有顾及到的知识点，基本上现在的笔记是完整的了，可以准备开始背诵。需要注意的是最后一讲非常重要，但是张宇确实讲的不是很好，而且题型也感觉不是特别的好，给人的感觉就挺懵逼的…所以还是得要刷题才能加深对知识点的掌握。总之高数强化的听课就到此结束，不再过多花时间。接下来的打算就是稳步将线代和概率论的强化完成之后，找到适合自己的题开始刷（尽量就别选张宇的，换个题型可能能增加自己的适应程度）。专业课也按照原计划一点点积累，急不来。最近确实被这个数学整的有点不自在（打游戏啥的调整状态是真的不可取），坚持吧，这是没办法的事；</p>
+<blockquote>
+<p>笔记纠错</p>
+</blockquote>
+<p>2023&#x2F;9&#x2F;16 14:11 最近刷题的过程中可能会对笔记中的某些内容产生疑问或者发现错误、补充知识点，故在原完结笔记的基础上进行补充。原版的副本已经保存在pad上，这个版本追求更加精简、更加适用于快速回顾和解题；</p>
 <hr>
 <h1 id="一、高数预备知识"><a href="#一、高数预备知识" class="headerlink" title="一、高数预备知识"></a>一、高数预备知识</h1><p>这一章作为衔接高中数学和高等数学之间的桥梁，总结了一些重要且常用的知识点。</p>
 <h2 id="1-函数"><a href="#1-函数" class="headerlink" title="1.函数"></a>1.函数</h2><blockquote>
@@ -596,10 +600,13 @@
 <p>1.1介绍完函数极限的定义之后，下面的基本都是在讲如何求解极限（没必要特地去总结有哪些更细致的方法什么有理化之类的（有的教程甚至总结了20多种方法，全记下来是最愚蠢的行为），核心就是下面几个以及<code>3.未定式极限计算</code>，其他的衍生题型无非就是多了一些对待求多项式的变形而已）</p>
 </blockquote>
 <h3 id="1-1-函数极限"><a href="#1-1-函数极限" class="headerlink" title="1.1 函数极限"></a>1.1 函数极限</h3><h4 id="1-1-1-函数极限的定义-去心"><a href="#1-1-1-函数极限的定义-去心" class="headerlink" title="1.1.1 函数极限的定义(去心)"></a>1.1.1 函数极限的定义(去心)</h4><p><img src="/images/image-20230822093205182.png" srcset="/img/loading.gif" lazyload alt="函数趋于某一点的极限"></p>
-<p>自变量取值双向性：x-&gt;x<del>0</del>的方式，既需要考虑x-&gt;x<del>0</del>^-^，也需要考虑x-&gt;x<del>0</del>^+^</p>
+<ul>
+<li>函数极限不存在有两种情况，一种是左右极限不相等，一种是极限趋于无穷</li>
+<li>自变量取值双向性：x-&gt;x<del>0</del>的方式，既需要考虑x-&gt;x<del>0</del>^-^，也需要考虑x-&gt;x<del>0</del>^+^</li>
+</ul>
 <blockquote>
 <p>结论1：因为函数极限的定义是在<code>去心邻域</code>，这表示f(x)在x0有无极限和f(x)在x0是否有定义无关；</p>
-<p>结论2：函数在某点极限存在的<code>充要条件</code>是在该点左极限和右极限存在且相等 – 常用于判断极限是否存在；</p>
+<p>结论2：函数在某点极限存在的<code>充要条件</code>是在该点左极限和右极限存在且相等 – 常用于判断极限是否存在或反求间断点的极限值；</p>
 <p>结论3：如果极限存在则它可以表示为一个确定的数值，这也是一种常规的抽象表示方法limf(x)&#x3D;A。实际上除了极限，考研数学中当某点导数f’(x<del>0</del>)存在、某区间上定积分存在、二重积分以及三重积分存在均可令其为A建立等式；</p>
 </blockquote>
 <p><img src="/images/image-20230822093243664.png" srcset="/img/loading.gif" lazyload alt="函数趋于无穷的极限"></p>
@@ -791,7 +798,7 @@
 <li>可积不一定连续，连续必定可积（可积是指符合定积分存在定理而非原函数存在定理）；</li>
 </ul>
 <p>一元函数和多元函数在极限存在、连续、可导以及可微的相互关系上有相同也有不同，下面这张图完整的总结了它们之间的关系</p>
-<p><img src="/images/image-20230817164510213.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/image-20230916142046305.png" srcset="/img/loading.gif" lazyload></p>
 <h2 id="3-未定式极限计算"><a href="#3-未定式极限计算" class="headerlink" title="3.未定式极限计算*"></a>3.未定式极限计算*</h2><blockquote>
 <ul>
 <li>未定式表示其极限可能存在可能不存在，需要通过计算来判断，除了下面七种未定式，其他非未定式要么极限一定存在要么极限一定不存在。对于非未定式，直接硬算就行，没什么难度；</li>
@@ -1122,7 +1129,7 @@
 <p>实际上，曲线的拐点只可能有两种情况，一种是二阶导存在且为0，另一种是二阶导数不存在，如图所示</p>
 <p><img src="/images/image-20230813151815830.png" srcset="/img/loading.gif" lazyload></p>
 <h5 id="2-充分条件-1"><a href="#2-充分条件-1" class="headerlink" title="(2)充分条件"></a>(2)充分条件</h5><blockquote>
-<p>第一充分条件：若f(x)在x<del>0</del>连续且在x<del>0</del>的<code>某去心邻域内存在二阶导数</code>，则f’’(x)在x<del>0</del>左右邻域变号是拐点的充分条件（如果二阶导数根本不存在，不能使用这个判断，如y&#x3D;x^1&#x2F;3^）</p>
+<p>第一充分条件：若f(x)在x<del>0</del>连续且在x<del>0</del>的<code>某去心邻域内存在二阶导数</code>，则f’’(x)在x<del>0</del>左右邻域变号是拐点的充分条件</p>
 <p>第二充分条件：若f(x)在x<del>0</del>点处三阶可导，且f’’(x<del>0</del>)&#x3D;0，f’’’(x<del>0</del>)！&#x3D;0则(x<del>0</del>,f(x<del>0</del>))为曲线的拐点</p>
 <ul>
 <li>当f’’’(x<del>0</del>)&#x3D;0时无法用第二充分条件判断</li>
@@ -2213,7 +2220,7 @@
 </blockquote>
 <h3 id="2-2-极坐标系"><a href="#2-2-极坐标系" class="headerlink" title="2.2 极坐标系"></a>2.2 极坐标系</h3><p>极坐标系下的二重积分计算有以下注意点：</p>
 <ul>
-<li>极坐标系下几乎所有的计算都是<code>先积r再积θ</code>（与定限顺序相反），一般不讨论积分次序的交换问题（当然如果考察交换积分次序也要会换元，换元法那里会简单介绍）；</li>
+<li>极坐标系下几乎所有的计算都是<code>先积r再积θ</code>（与定限顺序相反），一般不讨论积分次序的交换问题；</li>
 <li>一般积分区域是圆、圆环或扇形，或被积函数形如f(x^2^+y^2^)、f(x&#x2F;y)、f(y&#x2F;x)的情况下选择极坐标系；</li>
 </ul>
 <h4 id="2-2-2-极坐标系计算"><a href="#2-2-2-极坐标系计算" class="headerlink" title="2.2.2 极坐标系计算"></a>2.2.2 极坐标系计算</h4><p>在极坐标系下，按照积分区域与极点位置关系的不同，一般将二重积分的计算分为三种情况：</p>
@@ -2221,6 +2228,8 @@
 <blockquote>
 <p>上述三种情况同样适用口诀“后积先定限，限内画条线，先交写下限，后交写上限”</p>
 </blockquote>
+<h4 id="2-2-3-极坐标交换积分次序"><a href="#2-2-3-极坐标交换积分次序" class="headerlink" title="2.2.3 极坐标交换积分次序"></a>2.2.3 极坐标交换积分次序</h4><p>以下面这道题简单介绍如何在极坐标系下进行积分次序的转换</p>
+<p><img src="/images/image-20230916141955882.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="2-3-坐标系转换"><a href="#2-3-坐标系转换" class="headerlink" title="2.3 坐标系转换"></a>2.3 坐标系转换</h3><p>二重积分坐标系转换主要分为两种情况，一种是给出极坐标系需要转换为直角坐标系计算如（因为这个积分在极坐标系下非常的难算）</p>
 <p><img src="/images/image-20230403162652394.png" srcset="/img/loading.gif" lazyload></p>
 <p>一种是给出直角坐标系需要转换为极坐标系下计算如</p>
@@ -2343,6 +2352,7 @@
 </li>
 </ul>
 </blockquote>
+<h3 id="2-5-全微分方程"><a href="#2-5-全微分方程" class="headerlink" title="2.5 全微分方程"></a>2.5 全微分方程</h3><p><img src="/images/image-20230916135724121.png" srcset="/img/loading.gif" lazyload></p>
 <h2 id="3-二阶可降阶微分方程"><a href="#3-二阶可降阶微分方程" class="headerlink" title="3.二阶可降阶微分方程"></a>3.二阶可降阶微分方程</h2><h3 id="3-1-y’’-x3D-f-x-y’-型"><a href="#3-1-y’’-x3D-f-x-y’-型" class="headerlink" title="3.1 y’’&#x3D;f(x,y’)型"></a>3.1 y’’&#x3D;f(x,y’)型</h3><p>该形式方程中不显示含未知函数y</p>
 <p><img src="/images/image-20230820190741384.png" srcset="/img/loading.gif" lazyload></p>
 <blockquote>
@@ -2450,7 +2460,6 @@
 <p><img src="/images/image-20230416162258841.png" srcset="/img/loading.gif" lazyload></p>
 <ul>
 <li>有界本意指的是既有上界又有下界，但是因为{S<del>n</del>}天生有下界且单调不减，故只需证明存在上界即可；</li>
-<li>直接使用收敛原则的情形很少见，因为{S<del>n</del>}的有界性实际并不好证明，更常用的是后面四种正项级数的敛散性判别法；</li>
 </ul>
 <h5 id="2-比较判别法"><a href="#2-比较判别法" class="headerlink" title="(2)比较判别法"></a>(2)比较判别法</h5><p><img src="/images/image-20230416162406800.png" srcset="/img/loading.gif" lazyload></p>
 <ul>
@@ -2460,16 +2469,17 @@
 <h5 id="3-比较判别法的极限形式"><a href="#3-比较判别法的极限形式" class="headerlink" title="(3)比较判别法的极限形式"></a>(3)比较判别法的极限形式</h5><p>该判别法的证明直接用高阶无穷小、同阶无穷小以及低阶无穷小证明即可</p>
 <p><img src="/images/image-20230416162546100.png" srcset="/img/loading.gif" lazyload></p>
 <ul>
-<li>一般选择v<del>n</del>是已知敛散性的级数（也就是所谓的尺度），常见尺度如下</li>
-</ul>
-<p><img src="/images/image-20230821212312562.png" srcset="/img/loading.gif" lazyload></p>
-<ul>
-<li>比较判别法的极限形式一定要注意失效条件<ul>
+<li>比较判别法的极限形式一定要注意失效条件（失效表示此时并不是同敛散）<ul>
 <li>当A&#x3D;+∞，v<del>n</del>收敛，失效；</li>
 <li>当A&#x3D;0，v<del>n</del>发散，失效；</li>
 </ul>
 </li>
+<li>一般选择v<del>n</del>是已知敛散性的级数（也就是所谓的尺度），常见比较尺度如下</li>
 </ul>
+<p><img src="/images/image-20230916140434527.png" srcset="/img/loading.gif" lazyload alt="四大尺度"></p>
+<blockquote>
+<p>助记：上述等比级数中的q需要带绝对值，而p级数和广义p级数以及交错p级数中的p需要大于0</p>
+</blockquote>
 <h5 id="4-比值判别法"><a href="#4-比值判别法" class="headerlink" title="(4)比值判别法"></a>(4)比值判别法</h5><p>也称为达朗贝尔判别法</p>
 <p><img src="/images/image-20230416162620656.png" srcset="/img/loading.gif" lazyload></p>
 <ul>
@@ -2484,7 +2494,8 @@
 </ul>
 <h5 id="6-积分判别法"><a href="#6-积分判别法" class="headerlink" title="(6)积分判别法"></a>(6)积分判别法</h5><p><img src="/images/image-20230806200814739.png" srcset="/img/loading.gif" lazyload></p>
 <ul>
-<li>积分判别法适用于通项中含不好处理的项；</li>
+<li>函数f(x)满足连续、非负且单调减，积分下限可以为任意正整数a（对应求和下限为a）</li>
+<li>积分判别法适用于通项中含不好处理的项（一般是含有对数的级数）；</li>
 </ul>
 <h4 id="1-2-2-交错级数"><a href="#1-2-2-交错级数" class="headerlink" title="1.2.2 交错级数"></a>1.2.2 交错级数</h4><p>若级数的各项出现严格正负相间的情况，则称这样的级数为交错级数（若不严格则称为任意项级数），一般写为（这样可以使得各项的正负号明显的呈现）</p>
 <p><img src="/images/image-20230416163057666.png" srcset="/img/loading.gif" lazyload></p>
@@ -2494,7 +2505,7 @@
 <p><img src="/images/image-20230416171007244.png" srcset="/img/loading.gif" lazyload></p>
 <blockquote>
 <ul>
-<li>交错级数的考点在于题干不会直接告知级数是交错级数，需要将通项化简为(-1)^n^相关的形式；</li>
+<li>交错级数的考点在于题干不会直接告知级数是交错级数，一般需要将通项化简为(-1)^n^相关的形式（不绝对，某些题直接利用绝对值也能够进行放缩求解）；</li>
 <li>莱布尼兹判别法仅是充分条件而非必要条件，因此若无法证明u<del>n</del>单调不增则该方法失效，另谋他法（一般将其拆分利用性质判断）</li>
 <li>莱布尼兹判别法严格要求需要在整个定义域上u<del>n</del>均单调不减，但实际上因为前有限项求和并不会影响级数整体的敛散性，所以可以只研究当n-&gt;+∞时u<del>n</del>的单调性！！！</li>
 <li>可以将u<del>n</del>&#x3D;f(n)连续化为f(x)通过f’(x)的正负来判别u<del>n</del>的增减性</li>
@@ -2517,12 +2528,14 @@
 <li><p>关于任意项级数与绝对值级数之间的敛散性关系，还有如下常见结论（结合题型理解记忆）</p>
 </li>
 </ul>
-<p><img src="/images/image-20230821213933056.png" srcset="/img/loading.gif" lazyload></p>
-<h4 id="1-2-4-抽象级数"><a href="#1-2-4-抽象级数" class="headerlink" title="1.2.4 抽象级数"></a>1.2.4 抽象级数</h4><p>一个非常常用的条件转换技巧为：将一个级数收敛或通项趋于0转换为当n充分大时，通项|u<del>n</del>|&lt;1；</p>
+<p><img src="/images/image-20230916140347261.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="1-2-4-抽象级数"><a href="#1-2-4-抽象级数" class="headerlink" title="1.2.4 抽象级数"></a>1.2.4 抽象级数</h4><p>有如下常见抽象数项级数的敛散性判别结论</p>
+<p><img src="/images/image-20230916140225371.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>一般在做抽象函数的题目时（选择题），总是能够根据上述结论得到正确答案，而错误答案需要逐个举反例验证因此不推荐使用排除法；</p>
+</blockquote>
+<p>额外的，有一个非常常用的条件转换技巧为：将一个级数收敛或通项趋于0转换为当n充分大时，通项|u<del>n</del>|&lt;1；</p>
 <p><img src="/images/image-20230822102808683.png" srcset="/img/loading.gif" lazyload></p>
-<p>有如下常见抽象数项级数的敛散性判别结论（同样地，结合题型理解）</p>
-<p><img src="/images/image-20230821215601930.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/images/image-20230821215812852.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="1-3-收敛级数的性质"><a href="#1-3-收敛级数的性质" class="headerlink" title="1.3 收敛级数的性质"></a>1.3 收敛级数的性质</h3><blockquote>
 <p>性质1：收敛级数的项任意加括号后所得的新级数仍收敛，且其和不变；</p>
 </blockquote>
@@ -2535,8 +2548,6 @@
 <blockquote>
 <p>性质2：若原级数绝对收敛，不论将其各项如何重新排列，所得的新级数也绝对收敛，且其和不变（换句话说，绝对收敛的级数具有可交换性）</p>
 </blockquote>
-<h3 id="1-4-常见常数项级数"><a href="#1-4-常见常数项级数" class="headerlink" title="1.4 常见常数项级数"></a>1.4 常见常数项级数</h3><p>此处的常数项级数也可以作为比较判别法中的尺度</p>
-<p><img src="/images/image-20230416225507853.png" srcset="/img/loading.gif" lazyload></p>
 <h2 id="2-幂级数"><a href="#2-幂级数" class="headerlink" title="2.幂级数"></a>2.幂级数</h2><p>幂级数章节的基本考点分为两个：判断幂级数在哪个收敛域上收敛以及收敛时其和函数是什么，这一节将围绕这两个考点展开；</p>
 <h3 id="2-1-基本概念"><a href="#2-1-基本概念" class="headerlink" title="2.1 基本概念"></a>2.1 基本概念</h3><p>在介绍幂级数之前需要先介绍函数项级数，函数项级数的定义如下</p>
 <p><img src="/images/image-20230416164147545.png" srcset="/img/loading.gif" lazyload></p>
@@ -2598,8 +2609,8 @@
 </blockquote>
 <h4 id="2-3-2-和函数的性质"><a href="#2-3-2-和函数的性质" class="headerlink" title="2.3.2 和函数的性质"></a>2.3.2 和函数的性质</h4><p>幂级数的和函数有如下性质</p>
 <p><img src="/images/image-20230729091653525.png" srcset="/img/loading.gif" lazyload></p>
-<h4 id="2-3-3-重要展开式"><a href="#2-3-3-重要展开式" class="headerlink" title="2.3.3 重要展开式"></a>2.3.3 重要展开式</h4><p>如下七个重要展开式都需要熟练记忆，无论是幂级数求和还是和函数展开都会用到</p>
-<p><img src="/images/image-20230416224223282.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-3-3-重要展开式"><a href="#2-3-3-重要展开式" class="headerlink" title="2.3.3 重要展开式"></a>2.3.3 重要展开式</h4><p>如下重要展开式都需要熟练记忆，无论是幂级数求和还是和函数展开都会用到（顺逆均需记忆）</p>
+<p><img src="/images/image-20230916140711169.png" srcset="/img/loading.gif" lazyload></p>
 <h4 id="2-3-4-方法总结"><a href="#2-3-4-方法总结" class="headerlink" title="2.3.4 方法总结"></a>2.3.4 方法总结</h4><p>当题干要求求解具体幂级数的和函数，主要按照如下步骤进行：</p>
 <ol>
 <li>首先求出收敛域（之后的积分或求导都有可能导致收敛域的改变，因此一开始就求解出收敛域可以保证结果不出错）</li>
@@ -2645,11 +2656,6 @@
 <li>使用已知展开式替换并结合收敛域写出成立范围</li>
 <li>分析级数在端点的敛散性，整理表达式得出最终结果</li>
 </ol>
-<h3 id="2-5-结论汇总"><a href="#2-5-结论汇总" class="headerlink" title="2.5 结论汇总"></a>2.5 结论汇总</h3><p>除了常见七大展开式外，以下均为解题过程中积累的重要展开式</p>
-<p>(1)</p>
-<p><img src="/images/image-20230806205616073.png" srcset="/img/loading.gif" lazyload alt="两个基本展开式"></p>
-<p>(2)</p>
-<p><img src="/images/image-20230822164840490.png" srcset="/img/loading.gif" lazyload alt="八大分母展开式(看分母记忆)"></p>
 <h2 id="3-傅里叶级数"><a href="#3-傅里叶级数" class="headerlink" title="3.傅里叶级数"></a>3.傅里叶级数</h2><p>前面介绍泰勒级数的时候我们知道，如果f(x)满足任意阶可导的条件，则f(x)可以直接展开成泰勒级数。这里如果f(x)满足更苛刻的条件，则可以展开成傅里叶级数（也称为三角级数） – 根据考研试题的特点，如果题目确定要考察傅里叶级数相关的问题则一定会满足这个展开条件不用去证明；</p>
 <blockquote>
 <p>定义：</p>
@@ -2798,7 +2804,7 @@
 <p><img src="/images/image-20230807095930754.png" srcset="/img/loading.gif" lazyload></p>
 <ul>
 <li>上述二次曲面所给的方程都是标准方程，考研基本也只会考察这些二次曲面的标准方程；</li>
-<li>关于上述二次曲面的记忆方式，最简单直接的就是使用截痕法，还可以使用伸缩法、投影法等，方法不唯一，只要能记忆就行；</li>
+<li>关于上述二次曲面的记忆方式，最简单直接的就是使用截痕法，还可以使用伸缩法、投影法、旋转法（绕着谁转谁不变…）等，方法不唯一，只要能记忆就行；</li>
 </ul>
 <h4 id="3-2-2-柱面方程"><a href="#3-2-2-柱面方程" class="headerlink" title="3.2.2 柱面方程"></a>3.2.2 柱面方程</h4><blockquote>
 <p>柱面是指动直线沿着定曲线平行移动所形成的曲面（简单来说就是缺少x,y,z其中任意一个字母的空间曲面方程就是柱面方程） – 柱面不一定是闭合的</p>
