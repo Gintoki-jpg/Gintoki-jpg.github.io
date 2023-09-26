@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/project.png">
 <meta property="article:published_time" content="2023-04-28T02:38:00.000Z">
-<meta property="article:modified_time" content="2023-05-06T08:38:42.325Z">
+<meta property="article:modified_time" content="2023-09-26T14:00:39.269Z">
 <meta property="article:author" content="YangZaiyan">
 <meta property="article:tag" content="机器视觉技术">
 <meta name="twitter:card" content="summary_large_image">
@@ -232,7 +232,7 @@
         
         
         
-          156 分钟
+          161 分钟
         
       </span>
     
@@ -360,6 +360,40 @@
 <p>Step 2：视觉词典构造（Visual Dictionary Construction）。利用上一步得到的特征向量集，抽取其中有代表性的向量，作为单词，形成视觉词典。一般是从图像库中选取一部分来自不同场景或类别的图像来组成训练图像集，并提取其局部特征，然后对训练图像的所有局部特征向量通过适当的去冗余处理得到一些有代表性的特征向量，将其定义为视觉单词。通常所采用的处理方法是对训练图像的所有局部特征向量进行聚类分析，将聚类中心定义为视觉单词。所有视觉单词组成视觉词典，用于图像的直方图表示。 – K-means聚类</p>
 <p>Step 3：特征向量量化(Feature Vector Quantization)。BoVW模型采用向量量化技术实现，向量量化结果是将图像的局部特征向量量化为视觉单词中与其距离最相似的视觉单词。向量量化过程实际上是一个搜索过程，通常采用最近邻搜索算法，搜索出与图像局部特征向量最为匹配的视觉单词。 – KNN最近邻聚类</p>
 <p>Step 4：用视觉单词直方图表示图像，也称为量化编码集成(Pooling)。一幅图像的所有局部特征向量被量化后，可统计出视觉词典中每个视觉单词在该图像中出现的频数，得到一个关于视觉单词的直方图，其本质是上一步所得量化编码的全局统计结果，是按视觉单词索引顺序组成的一个数值向量（各个元素的值还可以根据一定的规则进行加权）。该向量即为图像的最终表示形式。</p>
+<hr>
+<blockquote>
+<p>Q：K-means聚类和KNN最近邻有什么区别？</p>
+</blockquote>
+<p>A：K-Means和K-Nearest Neighbors（KNN）是两种不同的机器学习算法，用于不同类型的任务，有以下主要区别：</p>
+<ol>
+<li>任务类型：<ul>
+<li>K-Means：K-Means是一种聚类算法，用于将数据分成不同的组或簇，以便相似的数据点在同一组中。</li>
+<li>KNN：KNN是一种分类和回归算法，用于根据数据点周围的邻居来预测新数据点的类别或数值。</li>
+</ul>
+</li>
+<li>目标：<ul>
+<li>K-Means：K-Means的目标是将数据分成K个簇，其中每个簇具有相似的数据点，以最小化簇内数据点的差异。</li>
+<li>KNN：KNN的目标是根据最接近的K个邻居的标签或数值来预测新数据点的标签或数值。</li>
+</ul>
+</li>
+<li>学习过程：<ul>
+<li>K-Means：K-Means是一种无监督学习算法，它根据数据点之间的距离和相似性来组织数据。</li>
+<li>KNN：KNN可以是有监督或无监督的，但通常用于有监督学习，其中需要已知数据点的标签或数值来进行预测。</li>
+</ul>
+</li>
+<li>超参数：<ul>
+<li>K-Means：K-Means需要选择簇的数量K作为超参数，通常需要一些启发式方法来确定最佳值。</li>
+<li>KNN：KNN需要选择K（最近邻居的数量）以及距离度量方法作为超参数。</li>
+</ul>
+</li>
+<li>应用：<ul>
+<li>K-Means：K-Means常用于图像分割、客户细分、无监督特征学习等聚类任务。</li>
+<li>KNN：KNN常用于分类任务，如文本分类、图像分类、推荐系统等，以及回归任务。</li>
+</ul>
+</li>
+</ol>
+<p>-Means旨在发现数据内部的结构，而KNN则用于根据最近的邻居来做出预测。</p>
+<hr>
 <h1 id="二、程序设计"><a href="#二、程序设计" class="headerlink" title="二、程序设计"></a>二、程序设计</h1><p>本项目是基于词袋模型的图像分类，涉及到的知识点有SIFT特征提取、K-means聚类以及SVM支持向量机等，本部分将分模块对整个程序进行介绍。</p>
 <h2 id="1-流程说明"><a href="#1-流程说明" class="headerlink" title="1.流程说明"></a>1.流程说明</h2><p>“词袋模型+SVM图像分类”的整个程序的流程主要分为以下几部分：</p>
 <ol>

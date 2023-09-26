@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/project.png">
 <meta property="article:published_time" content="2023-03-28T11:29:00.000Z">
-<meta property="article:modified_time" content="2023-04-19T11:41:45.317Z">
+<meta property="article:modified_time" content="2023-09-26T13:51:03.862Z">
 <meta property="article:author" content="YangZaiyan">
 <meta property="article:tag" content="机器视觉技术">
 <meta name="twitter:card" content="summary_large_image">
@@ -221,7 +221,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          7.6k 字
+          7.5k 字
         
       </span>
     
@@ -232,7 +232,7 @@
         
         
         
-          64 分钟
+          63 分钟
         
       </span>
     
@@ -336,7 +336,7 @@
 <figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs brainfuck"><span class="hljs-comment">读取图像</span> <span class="hljs-literal">--</span>&gt; <span class="hljs-comment">图像预处理（灰度化、滤波处理（采用高斯滤波））</span><span class="hljs-literal">--</span>&gt; <span class="hljs-comment">边缘检测（Canny算法）</span> <span class="hljs-literal">--</span>&gt; <span class="hljs-comment">Hough圆检测</span> <span class="hljs-literal">--</span>&gt; <span class="hljs-comment">输出检测到的圆的信息（例如圆心坐标和半径）</span><span class="hljs-literal">--</span>&gt; <span class="hljs-comment">在图像中标出圆形区域</span><br></code></pre></td></tr></table></figure>
 
 <p>整体算法流程描述为：初始读入待检测图像，将其转换为灰度图并使用高斯滤波核进行滤波处理以减少噪声影响，接着使用Canny算法对图像进行边缘检测，找出图像中的所有边缘，接着在提取出边缘的基础上使用Hough圆检测算法检测图像中的圆并输出已检测出的圆心坐标和半径，并在原图中标示出圆形区域；</p>
-<h2 id="2-函数说明"><a href="#2-函数说明" class="headerlink" title="2.函数说明"></a>2.函数说明</h2><p>在实现过程中除了Canny算法和Hough算法以外还使用了大量opencv库中的函数，如imread、imwrite等，这些函数的使用方式参考这篇文章：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41185868/article/details/79675875">(6条消息) Py之cv2：cv2(OpenCV，opencv-python)库的简介、安装、使用方法(常见函数、图像基本运算等)最强详细攻略_cv2是什么库_一个处女座的程序猿的博客-CSDN博客</a>；</p>
+<h2 id="2-函数说明"><a href="#2-函数说明" class="headerlink" title="2.函数说明"></a>2.函数说明</h2><p>在实现过程中除了Canny算法和Hough算法以外还使用了大量opencv库中的函数，如imread、imwrite等，这些函数的使用方式参考这篇文章：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41185868/article/details/79675875">Py之cv2</a>；</p>
 <h3 id="2-1-Canny边缘提取"><a href="#2-1-Canny边缘提取" class="headerlink" title="2.1 Canny边缘提取"></a>2.1 Canny边缘提取</h3><p>直接调用Opencv库分别实现Canny边缘检测和Hough圆检测，首先导入必要的库以及待检测图像</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> cv2<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><br>image_path=<span class="hljs-string">&#x27;D:\My_code\jupyter notebook\Data_Pictures\coin.jpg&#x27;</span><br>save_path=<span class="hljs-string">&#x27;D:/My_code/jupyter notebook/Data_Pictures/&#x27;</span><br><span class="hljs-comment"># 读入图像</span><br>image_origin=cv2.imread(image_path)<br></code></pre></td></tr></table></figure>
 
