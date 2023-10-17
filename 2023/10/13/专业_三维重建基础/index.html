@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/AI.jpg">
 <meta property="article:published_time" content="2023-10-13T01:37:00.000Z">
-<meta property="article:modified_time" content="2023-10-14T15:13:32.707Z">
+<meta property="article:modified_time" content="2023-10-17T02:24:53.095Z">
 <meta property="article:author" content="YangZaiyan">
 <meta property="article:tag" content="机器学习">
 <meta property="article:tag" content="机器视觉技术">
@@ -223,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.6k 字
+          3.3k 字
         
       </span>
     
@@ -234,7 +234,7 @@
         
         
         
-          13 分钟
+          28 分钟
         
       </span>
     
@@ -278,12 +278,12 @@
               
               <p>参考视频：</p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV15f4y1v7pa/?vd_source=276d55048634a5b508b1b53a1ecd56b3">计算机视觉之三维重建篇(精简版） 北京邮电大学 鲁鹏_哔哩哔哩_bilibili</a>（与本科课程中的三维重建部分不同，这个视频介绍的更简洁、更易懂，强推！）；</li>
-<li><a target="_blank" rel="noopener" href="https://space.bilibili.com/592250247/channel/collectiondetail?sid=155845&ctype=0">CV-xueba的个人空间-CV-xueba个人主页-哔哩哔哩视频 (bilibili.com)</a>（这部分属于三维重建的进阶技术）；</li>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV15f4y1v7pa/?vd_source=276d55048634a5b508b1b53a1ecd56b3">计算机视觉之三维重建篇(精简版） 北京邮电大学 鲁鹏_哔哩哔哩_bilibili</a>（与机器视觉那门课中的三维重建部分不同，这个视频介绍的更简洁、更易懂，强推！）；</li>
+<li><a target="_blank" rel="noopener" href="https://space.bilibili.com/592250247/channel/collectiondetail?sid=155845&ctype=0">CV-xueba的个人空间-CV-xueba个人主页-哔哩哔哩视频 (bilibili.com)</a>（这部分属于三维重建的应用，前半部分和上面是重合的，直接看后面部分就行）；</li>
 </ul>
 <p>参考笔记：</p>
 <ul>
-<li><a href="https://gintoki-jpg.github.io/2023/02/27/%E4%B8%93%E4%B8%9A_%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89%E5%9F%BA%E7%A1%80/#9-%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA">机器视觉基础 - Tintoki_blog (gintoki-jpg.github.io)</a>；</li>
+<li><a href="https://gintoki-jpg.github.io/2023/02/27/%E4%B8%93%E4%B8%9A_%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89%E5%9F%BA%E7%A1%80/#9-%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA">机器视觉基础 - Tintoki_blog (gintoki-jpg.github.io)</a>（该笔记整理自机器视觉的三维重建部分，比较详细但0基础可能看不懂，推荐看完本博客再看这个链接）；</li>
 </ul>
 <hr>
 <p>2023&#x2F;10&#x2F;13 10:15 三维重建基础实际上在机器视觉基础那门课程中就已经介绍过，但是因为当时课程时间比较紧张并没有细致进行学习（特别是最后面的运动恢复结构），只是囫囵吞枣式的总结了相关笔记。本篇博客将用通俗易懂的语言将三维重建中涉及的基础知识以及核心内容进行展现；</p>
@@ -291,6 +291,7 @@
 <p>前面给出的视频链接讲的非常好，特别是有之前机器视觉的基础过后，二刷有完全不同的理解。听完之后适当做整理；</p>
 <p>2023&#x2F;10&#x2F;14 15:15 影消点和影消线这部分属于新内容，刚开始第一遍听迷迷糊糊的不是很懂，可适当参考别的教程，一定要手写做笔记理解（感觉三维重建本质上就是对数学的综合应用）；</p>
 <p>当然对有些概念之间的变换可能存在疑惑，只需要用自己能够理解的方式理解即可（现在不是复现论文阶段）；</p>
+<p>2023&#x2F;10&#x2F;17 10:02 截止目前，鲁鹏三维重建基础篇过完，接下来就是三维重建的应用篇。再说一遍不要钻牛角尖也不要一遍又一遍的审查自己是否遗漏了某个知识点（既然这个点可以不被记住说明它不重要），学习的过程说白了就是一遍又一遍复习巩固的过程，现阶段就只是为了刷脸熟为后面的阅读文献打基础，到时候不懂的再回头看或者重新学也行；</p>
 <hr>
 <h1 id="一、三维重建基础"><a href="#一、三维重建基础" class="headerlink" title="一、三维重建基础"></a>一、三维重建基础</h1><p>三维重建基础主要包含以下内容</p>
 <ul>
@@ -322,7 +323,8 @@
 <h2 id="2-摄像机标定"><a href="#2-摄像机标定" class="headerlink" title="2.摄像机标定"></a>2.摄像机标定</h2><p>摄像机标定先求解投影矩阵，进而求解相机的内外参数</p>
 <h3 id="2-1-求解投影矩阵"><a href="#2-1-求解投影矩阵" class="headerlink" title="2.1 求解投影矩阵"></a>2.1 求解投影矩阵</h3><p><img src="/images/image-20231014225640619.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="2-2-求解内外参数"><a href="#2-2-求解内外参数" class="headerlink" title="2.2 求解内外参数"></a>2.2 求解内外参数</h3><p><img src="/images/image-20231014225720353.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="3-单视图测量"><a href="#3-单视图测量" class="headerlink" title="3.单视图测量"></a>3.单视图测量</h2><p><img src="/images/image-20231014225825610.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="3-单视图测量"><a href="#3-单视图测量" class="headerlink" title="3.单视图测量"></a>3.单视图测量</h2><p>从单张视图恢复三维场景的应用场景极少，只有在特定的情况下才能使用</p>
+<p><img src="/images/image-20231014225825610.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="3-1-常见2D变换"><a href="#3-1-常见2D变换" class="headerlink" title="3.1 常见2D变换"></a>3.1 常见2D变换</h3><p>二维空间上的点主要有以下四种常见的变换方式，可以映射为二维空间上的另一个点</p>
 <p><img src="/images/image-20231014225905964.png" srcset="/img/loading.gif" lazyload></p>
 <p>可以看出，欧式变换是相似变换的特例，相似变换是仿射变换的特例，仿射变换是透视变换的特例；</p>
@@ -334,7 +336,61 @@
 <h3 id="3-3-3D空间"><a href="#3-3-3D空间" class="headerlink" title="3.3 3D空间"></a>3.3 3D空间</h3><h4 id="3-3-1-基本概念"><a href="#3-3-1-基本概念" class="headerlink" title="3.3.1 基本概念"></a>3.3.1 基本概念</h4><p><img src="/images/image-20231014230500847.png" srcset="/img/loading.gif" lazyload></p>
 <h4 id="3-3-2-影消点-amp-影消线"><a href="#3-3-2-影消点-amp-影消线" class="headerlink" title="3.3.2 影消点&amp;影消线"></a>3.3.2 影消点&amp;影消线</h4><p><img src="/images/image-20231014230610897.png" srcset="/img/loading.gif" lazyload></p>
 <p><img src="/images/image-20231014230715373.png" srcset="/img/loading.gif" lazyload></p>
-
+<h2 id="4-三维重建基础"><a href="#4-三维重建基础" class="headerlink" title="4.三维重建基础"></a>4.三维重建基础</h2><p>使用单视图从2D到3D的映射具有歧义性</p>
+<p><img src="/images/image-20231017090459501.png" srcset="/img/loading.gif" lazyload></p>
+<p>本章开始将介绍更加常用的三维重建方法也就是多视图重建，本章主要介绍多视图重建中的一些理论基础。因为多视图可以由两视图推广得出，因此下面常用两视图进行讲解说明。</p>
+<h3 id="4-1-三角化"><a href="#4-1-三角化" class="headerlink" title="4.1 三角化"></a>4.1 三角化</h3><p>三角化是指，已知两个相机的内参数K和K’以及两个像素点p和p’，同时相机O<del>2</del>到O<del>1</del>的旋转平移变换已知。可以知道三维点P一定是两条映射光线的交点，即<br>$$<br>P&#x3D;l*l’<br>$$<br><img src="/images/image-20231017090849969.png" srcset="/img/loading.gif" lazyload></p>
+<p>实际情况下，因为存在噪声故两直线通常不相交，因此将上述问题建模为数学问题</p>
+<p><img src="/images/image-20231017091013498.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="4-2-极几何"><a href="#4-2-极几何" class="headerlink" title="4.2 极几何"></a>4.2 极几何</h3><p>在进行三角化操作之前，需要保证某些参数是已知的，即三角化之前需要进行如下两个前置操作：</p>
+<ol>
+<li>摄像机几何：获取摄像机的内外参数</li>
+<li>极几何：已知像素面I上的一点p，如何求解另一个像素面I’上的对应点p’</li>
+</ol>
+<blockquote>
+<p>极几何定理：像素点p的对应点p’一定在极线l’上</p>
+<p><img src="/images/image-20231017091359353.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>极几何就是约束两个对应点之间的关系（但并不能具体求出对应点，后面会介绍相关求解方法）</li>
+</ul>
+</blockquote>
+<p>如何用代数描述两个点之间的极几何关系？这就引出下面的本质矩阵和基础矩阵的概念</p>
+<h4 id="4-2-1-本质矩阵"><a href="#4-2-1-本质矩阵" class="headerlink" title="4.2.1 本质矩阵"></a>4.2.1 本质矩阵</h4><p><img src="/images/image-20231017091618521.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="4-2-2-基础矩阵"><a href="#4-2-2-基础矩阵" class="headerlink" title="4.2.2 基础矩阵"></a>4.2.2 基础矩阵</h4><p><img src="/images/image-20231017091723910.png" srcset="/img/loading.gif" lazyload></p>
+<p>关于使用八点算法进行基础矩阵估计，可以参考链接：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV15f4y1v7pa?p=13&vd_source=276d55048634a5b508b1b53a1ecd56b3">三维重建-4-4.基础矩阵估计_哔哩哔哩_bilibili</a>；</p>
+<h2 id="5-双目立体视觉系统"><a href="#5-双目立体视觉系统" class="headerlink" title="5.双目立体视觉系统"></a>5.双目立体视觉系统</h2><p>双目立体视觉系统是一种特殊的多视图几何系统，这种重建系统模拟人的视觉系统进行构建，更一般的说就是两视图为平行视图的视觉系统</p>
+<h3 id="5-1-平行视图下的极几何"><a href="#5-1-平行视图下的极几何" class="headerlink" title="5.1 平行视图下的极几何"></a>5.1 平行视图下的极几何</h3><p><img src="/images/image-20231017091916040.png" srcset="/img/loading.gif" lazyload></p>
+<p>根据极几何可以知道平行视图下p和p’的对应关系，即p的对应点p’在扫描线上，进一步的，借助相关匹配法或归一化相关匹配即可定位p的对应点p’，具体执行参考链接：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV15f4y1v7pa?p=16&vd_source=276d55048634a5b508b1b53a1ecd56b3">三维重建-5-3平行视图的对应点搜索_哔哩哔哩_bilibili</a>；</p>
+<h3 id="5-2-平行视图下的三角化"><a href="#5-2-平行视图下的三角化" class="headerlink" title="5.2 平行视图下的三角化"></a>5.2 平行视图下的三角化</h3><p><img src="/images/image-20231017091944936.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="5-3-图像校正"><a href="#5-3-图像校正" class="headerlink" title="5.3 图像校正"></a>5.3 图像校正</h3><p>实际重构的过程中，构建的两视图往往并不是真正的平行视图，此时需要借助图像校正将双目系统中的不平行的两个像素面矫正为“平行”</p>
+<p><img src="/images/image-20231017092120149.png" srcset="/img/loading.gif" lazyload></p>
+<p>图像校正过程主要分为以下五个步骤</p>
+<p><img src="/images/image-20231017092602436.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="6-多视图几何"><a href="#6-多视图几何" class="headerlink" title="6.多视图几何"></a>6.多视图几何</h2><p>多视图几何主要应用于运动恢复结构，即通过三维场景的多张图像恢复出三维结构信息以及每张图片对应的摄像机参数</p>
+<p><img src="/images/image-20231017093937173.png" srcset="/img/loading.gif" lazyload></p>
+<p>多视图几何包含了两视图的情况，且相较于上一节介绍的比较特殊的平行视图而言，运动恢复结构更加通用，主要分为以下三种典型任务：</p>
+<ul>
+<li>欧式结构恢复：适用于扫地机器人或无人驾驶</li>
+<li>仿射结构恢复：适用于待重构物体离摄像机较远且其深度变化不大的情况</li>
+<li>透视结构恢复：适用范围最广，比如利用互联网下载的图片进行三维场景的恢复</li>
+</ul>
+<p>下面还是以两视图的情况作介绍，可以拓展到多视图的情况</p>
+<h3 id="6-1-欧式结构恢复"><a href="#6-1-欧式结构恢复" class="headerlink" title="6.1 欧式结构恢复"></a>6.1 欧式结构恢复</h3><p>欧式结构恢复的前提是摄像机的内参数已知而外参数未知，即内参数K<del>i</del>已知，因此需要恢复的投影矩阵M的问题变为求解外参数R<del>i</del>和T<del>i</del>的问题</p>
+<p><img src="/images/image-20231017094012208.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="6-1-1-本质矩阵分解"><a href="#6-1-1-本质矩阵分解" class="headerlink" title="6.1.1 本质矩阵分解"></a>6.1.1 本质矩阵分解</h4><p><img src="/images/image-20231017094052893.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="6-2-仿射结构恢复"><a href="#6-2-仿射结构恢复" class="headerlink" title="6.2 仿射结构恢复"></a>6.2 仿射结构恢复</h3><p>仿射相机作为透视相机的一个特例，因其参数更少因此相对透视结构恢复更易求解</p>
+<p><img src="/images/image-20231017094913332.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="6-2-1-因式分解法"><a href="#6-2-1-因式分解法" class="headerlink" title="6.2.1 因式分解法"></a>6.2.1 因式分解法</h4><p><img src="/images/image-20231017095042067.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="6-3-透视结构恢复"><a href="#6-3-透视结构恢复" class="headerlink" title="6.3 透视结构恢复"></a>6.3 透视结构恢复</h3><p><img src="/images/image-20231017095359652.png" srcset="/img/loading.gif" lazyload></p>
+<p>透视结构恢复的常规方法有三种：</p>
+<ul>
+<li>代数法：适用于两视图的情况，可以借助增量法拓展到多视图的情况。缺点是会出现误差积累；</li>
+<li>因式分解法：前提是假定所有的点都是可见的，因此存在遮挡或建立对应点失败的情况下不能使用该方法；</li>
+<li>捆绑调整法：捆绑调整可以有效的克服前面两者的问题，但是因为是非线性最小化的思想，因此求解可能较慢。常常将代数法或因式分解法的结果作为捆绑调整法的初始解，结合使用；</li>
+</ul>
+<h4 id="6-3-1-代数法"><a href="#6-3-1-代数法" class="headerlink" title="6.3.1 代数法"></a>6.3.1 代数法</h4><p><img src="/images/image-20231017100205292.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="二、三维重建应用"><a href="#二、三维重建应用" class="headerlink" title="二、三维重建应用"></a>二、三维重建应用</h1><h2 id="1-前置知识点"><a href="#1-前置知识点" class="headerlink" title="1.前置知识点"></a>1.前置知识点</h2><p>视频链接（直接56:39开始）：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1aU4y1T74j/?spm_id_from=333.788&vd_source=276d55048634a5b508b1b53a1ecd56b3">计算机视觉之三维重建（深入浅出SfM与SLAM核心算法）—— 7.多视图几何（下）_哔哩哔哩_bilibili</a>；</p>
+<h2 id="2-SfM-运动恢复结构-系统设计"><a href="#2-SfM-运动恢复结构-系统设计" class="headerlink" title="2.SfM(运动恢复结构)系统设计"></a>2.SfM(运动恢复结构)系统设计</h2><h2 id="3-SLAM-同时定位与建图-系统设计"><a href="#3-SLAM-同时定位与建图-系统设计" class="headerlink" title="3.SLAM(同时定位与建图)系统设计"></a>3.SLAM(同时定位与建图)系统设计</h2>
               
             </div>
             <hr/>
