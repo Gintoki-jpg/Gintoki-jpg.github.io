@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/AI.jpg">
 <meta property="article:published_time" content="2023-10-13T01:37:00.000Z">
-<meta property="article:modified_time" content="2023-10-17T02:24:53.095Z">
+<meta property="article:modified_time" content="2023-10-18T13:02:23.010Z">
 <meta property="article:author" content="YangZaiyan">
 <meta property="article:tag" content="机器学习">
 <meta property="article:tag" content="机器视觉技术">
@@ -223,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.3k 字
+          6.2k 字
         
       </span>
     
@@ -234,7 +234,7 @@
         
         
         
-          28 分钟
+          52 分钟
         
       </span>
     
@@ -390,7 +390,105 @@
 </ul>
 <h4 id="6-3-1-代数法"><a href="#6-3-1-代数法" class="headerlink" title="6.3.1 代数法"></a>6.3.1 代数法</h4><p><img src="/images/image-20231017100205292.png" srcset="/img/loading.gif" lazyload></p>
 <h1 id="二、三维重建应用"><a href="#二、三维重建应用" class="headerlink" title="二、三维重建应用"></a>二、三维重建应用</h1><h2 id="1-前置知识点"><a href="#1-前置知识点" class="headerlink" title="1.前置知识点"></a>1.前置知识点</h2><p>视频链接（直接56:39开始）：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1aU4y1T74j/?spm_id_from=333.788&vd_source=276d55048634a5b508b1b53a1ecd56b3">计算机视觉之三维重建（深入浅出SfM与SLAM核心算法）—— 7.多视图几何（下）_哔哩哔哩_bilibili</a>；</p>
-<h2 id="2-SfM-运动恢复结构-系统设计"><a href="#2-SfM-运动恢复结构-系统设计" class="headerlink" title="2.SfM(运动恢复结构)系统设计"></a>2.SfM(运动恢复结构)系统设计</h2><h2 id="3-SLAM-同时定位与建图-系统设计"><a href="#3-SLAM-同时定位与建图-系统设计" class="headerlink" title="3.SLAM(同时定位与建图)系统设计"></a>3.SLAM(同时定位与建图)系统设计</h2>
+<p>关于三维重建，前面的基础篇已经介绍了很多前置知识点，这里额外补充两个之后会用到的</p>
+<h3 id="1-1-PnP问题"><a href="#1-1-PnP问题" class="headerlink" title="1.1 PnP问题"></a>1.1 PnP问题</h3><p>PnP问题直观来说就是在已知摄像机内参数K，像素点a,b,c的二维像素点坐标以及其对应点A,B,C的三维世界坐标的情况下，求解摄像机的外参数R和T</p>
+<p><img src="/images/image-20231018163150890.png" srcset="/img/loading.gif" lazyload></p>
+<p>基本求解思路分为两步：</p>
+<ol>
+<li>求解A,B,C三点在当前摄像机坐标系下的坐标；</li>
+<li>通过摄像机坐标系和世界坐标系的坐标对应关系求解摄像机坐标系相对于世界坐标系的旋转R和平移T</li>
+</ol>
+<p>$$<br>Xc&#x3D;[R|T]Xw<br>$$</p>
+<p>具体求解步骤如下：</p>
+<p><img src="/images/image-20231018163414403.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-2-RANSAC"><a href="#1-2-RANSAC" class="headerlink" title="1.2 RANSAC"></a>1.2 RANSAC</h3><p>RANSAC的详细介绍参考链接：<a href="https://gintoki-jpg.github.io/2023/02/27/%E4%B8%93%E4%B8%9A_%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89%E5%9F%BA%E7%A1%80/#3-4-RANSAC">机器视觉基础 - Tintoki_blog (gintoki-jpg.github.io)</a>；</p>
+<p>RANSAC全称随机采样一致性，是一种适用于数据受到异常值污染的情况下的模型拟合方法。最基础的应用是使用RANSAC拟合边缘直线，实际上RANSAC也可以用于拟合三维重建中的本质矩阵或基础矩阵。 </p>
+<p>在真实的三维重建系统中一定会用到RANSAC方法，否则无法得到正确的结果。</p>
+<h3 id="1-3-单应矩阵"><a href="#1-3-单应矩阵" class="headerlink" title="1.3 单应矩阵"></a>1.3 单应矩阵</h3><p>单应矩阵与本质矩阵、基础矩阵一样，描述了两幅图像像点之间的对应关系。特殊之处在于其采集的三维点都来自同一个空间平面。</p>
+<p><img src="/images/image-20231018164239181.png" srcset="/img/loading.gif" lazyload></p>
+<p>当三维点都来自同一个平面时，使用本质矩阵或基础矩阵会得到错误的结果，此时需要使用单应矩阵进行描述。</p>
+<p><img src="/images/image-20231018164748289.png" srcset="/img/loading.gif" lazyload alt="单应矩阵的定义"></p>
+<p>具体如何估计单应矩阵H的方法这里不介绍，感兴趣自行Google。</p>
+<p>下面这张表格展示了本质矩阵、基础矩阵与单应矩阵之间的联系与区别</p>
+<p><img src="/images/image-20231018164920539.png" srcset="/img/loading.gif" lazyload></p>
+<p>在进行三维重建系统设计时，因为无法确定三维点究竟是否位于同一个平面上，因此既考虑基础矩阵也考虑单应矩阵，最后进行投票确定具体矩阵。</p>
+<h2 id="2-SfM-运动恢复结构-系统设计"><a href="#2-SfM-运动恢复结构-系统设计" class="headerlink" title="2.SfM(运动恢复结构)系统设计"></a>2.SfM(运动恢复结构)系统设计</h2><blockquote>
+<p>注：本节所介绍的SfM是基于欧式结构恢复，即摄像机内参数是可以获取到的</p>
+</blockquote>
+<p>一个基本的SfM系统具有如下形式的输入和输出</p>
+<p><img src="/images/image-20231018165319891.png" srcset="/img/loading.gif" lazyload></p>
+<p>回顾前面介绍过的欧式结构恢复的数学模型如下</p>
+<p><img src="/images/image-20231018165418258.png" srcset="/img/loading.gif" lazyload></p>
+<p>现在面临的问题是，在设计系统时是不能确定像素点坐标x<del>ij</del>和摄像机内参数K<del>i</del>的。换句话说，整个系统应当如何获取这两个“已知”：</p>
+<ul>
+<li>摄像机的内参数可以直接通过读取相片的EXIF信息获取</li>
+</ul>
+<p>因此，对SfM系统进行建模得到的数学模型如下</p>
+<p><img src="/images/image-20231018170102249.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-1-双视图恢复"><a href="#2-1-双视图恢复" class="headerlink" title="2.1 双视图恢复"></a>2.1 双视图恢复</h3><p>当重建问题为双视图的情况时，SfM系统的数学模型以及求解步骤如下</p>
+<p><img src="/images/image-20231018170346707.png" srcset="/img/loading.gif" lazyload></p>
+<p>可以看到与之前介绍的欧式结构恢复的不同之处在于多了额外的对应点计算这一步骤，对应点计算又可细分为：</p>
+<ol>
+<li>特征提取</li>
+<li>特征匹配</li>
+</ol>
+<h4 id="2-1-1-特征提取"><a href="#2-1-1-特征提取" class="headerlink" title="2.1.1 特征提取"></a>2.1.1 特征提取</h4><p>SIFT特征的详细介绍参考链接：<a href="https://gintoki-jpg.github.io/2023/02/27/%E4%B8%93%E4%B8%9A_%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89%E5%9F%BA%E7%A1%80/#5-3-SIFT%E7%AE%97%E6%B3%95">机器视觉基础 - Tintoki_blog (gintoki-jpg.github.io)</a>。</p>
+<p>图像特征提取就是从图像中提取SIFT特征点，之所以选取SIFT特征点是因为它具有尺度不变特性。使用SIFT特征提取器对图像提取特征点，得到的SIFT特征点是一个中心点坐标+一个尺度不变的区域。一般地，最终会将一个SIFT特征表示为一个128维的向量</p>
+<p><img src="/images/image-20231018192703177.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-1-2-特征匹配"><a href="#2-1-2-特征匹配" class="headerlink" title="2.1.2 特征匹配"></a>2.1.2 特征匹配</h4><p>假定已经从图像中提取出足够多的SIFT特征点，下一步就是匹配两张图像中对应的SIFT特征点，基本思路如下：</p>
+<ol>
+<li>对于左图中的特征点i，在右图中寻找其匹配点。找到与i维度距离最近的特征点j<del>1</del>和次近特征点j<del>2</del>，分别记距离为d<del>1</del>和d<del>2</del>；</li>
+<li>计算距离比d<del>1</del>&#x2F;d<del>2</del>，如果小于某个阈值则认为右图中的特征点j<del>1</del>与左图中的特征点i是一对匹配点；</li>
+</ol>
+<p><img src="/images/image-20231018193626793.png" srcset="/img/loading.gif" lazyload></p>
+<p>对上述特征匹配做简单的解释：</p>
+<ul>
+<li>之所以要借助阈值筛选是为了避免出现左图中的一个点对应右图中的多个相似点的情况，这种点容易导致后续恢复出错，故不进行匹配；</li>
+</ul>
+<h4 id="2-1-3-基础矩阵估计"><a href="#2-1-3-基础矩阵估计" class="headerlink" title="2.1.3 基础矩阵估计"></a>2.1.3 基础矩阵估计</h4><p>图像特征匹配完成后，就可以利用匹配的点对基础矩阵F进行估计。但是因为图像特征匹配不能保证所有的匹配点都是正确的匹配点，因此估计基础矩阵F的时候需要借助RANSAC</p>
+<p><img src="/images/image-20231018194912591.png" srcset="/img/loading.gif" lazyload></p>
+<p>注意，d)既可以选择自适应也可以选择认为规定迭代次数，需要根据具体情况进行选择</p>
+<hr>
+<p>后续的步骤在[欧式结构恢复](# 6.1 欧式结构恢复)中有详细介绍，此处完全相同不赘述。综上，两视图情况下的SfM恢复的完整流程如下</p>
+<p><img src="/images/image-20231018195411570.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-2-多视图恢复"><a href="#2-2-多视图恢复" class="headerlink" title="2.2 多视图恢复"></a>2.2 多视图恢复</h3><p>多视图恢复是两视图恢复的拓展，一般也被称为基于增量法的SfM系统（常见的有OpenMVG）</p>
+<p><img src="/images/image-20231018200515297.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>注：重建得到的三维点的点云都是以第一个摄像机为世界坐标系构建</p>
+</blockquote>
+<p>多视图恢复主要分为两个步骤：</p>
+<ol>
+<li>预处理</li>
+<li>增量法求解SfM</li>
+</ol>
+<h4 id="2-2-1-预处理"><a href="#2-2-1-预处理" class="headerlink" title="2.2.1 预处理"></a>2.2.1 预处理</h4><p>因为此处是多视图的恢复，也就意味着图像集中有多对图像，需要两两进行特征点匹配并同时计算基础矩阵和单应矩阵</p>
+<p><img src="/images/image-20231018200937914.png" srcset="/img/loading.gif" lazyload></p>
+<p>之所以基础矩阵和单应矩阵都要计算是因为未知空间三维点是否处于同一空间平面上，将基础矩阵和单应矩阵都计算出来后，利用其他点进行投票得出最终的矩阵</p>
+<h4 id="2-2-2-增量法求解SfM"><a href="#2-2-2-增量法求解SfM" class="headerlink" title="2.2.2 增量法求解SfM"></a>2.2.2 增量法求解SfM</h4><p><img src="/images/image-20231018201353049.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="1-连通图构建"><a href="#1-连通图构建" class="headerlink" title="(1)连通图构建"></a>(1)连通图构建</h5><p>两个图像的对应点指的是一对匹配的特征点，对应点的Tracks这个概念指的是同一个特征点在不同图像中出现的次数</p>
+<p><img src="/images/image-20231018201732390.png" srcset="/img/loading.gif" lazyload></p>
+<p>比如上图中有两个Tracks为3的对应点，有一个Tracks为2的对应点。Tracks越大表示该特征点越可靠，因此常常会设置一个阈值，低于该Tracks阈值的特征点后续将被剔除不用于重构。我们称Tracks大于阈值的对应点为t点。</p>
+<p>所谓连通图&#x2F;匹配图指的是结点为图像集中的图像，若对应点的对数大于某个阈值则两个结点之间存在边</p>
+<p><img src="/images/image-20231018202407574.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="2-初始点云重构"><a href="#2-初始点云重构" class="headerlink" title="(2)初始点云重构"></a>(2)初始点云重构</h5><p>初始时，从连通图G中任意选取两个顶点（两张图像），使其满足条件“所有特征点三角化时射线夹角的中位数不大于60°不小于3°”</p>
+<p>之所以选择这样的两个图像作为初始重建对象是因为作为后续增量重建的基础，初始图像的选择需要非常严格，前面介绍过：</p>
+<ul>
+<li>如果两个摄像机靠得太近(基线太短)，极小的偏差也容易产生较大的影响；</li>
+<li>如果两个摄像机靠得太远(基线太长)，容易产生被遮挡得问题；</li>
+</ul>
+<p>选择了两张图像后进行两视图重构，需要注意的是并不是重构这两张图像中所有的对应点e，而只重构Tracks大于设定阈值的点t。这样做也是为了保证用于重建的点都是稳定点</p>
+<h5 id="3-多视图重构"><a href="#3-多视图重构" class="headerlink" title="(3)多视图重构"></a>(3)多视图重构</h5><p>每当完成两幅图的重建就删除这两幅图像对应的结点之间的边，然后选取新边，此处选择新边需要遵循原则：新边的t点与已重建的三维点的交集个数最大。</p>
+<p>之所以要这样选择是因为下一步进行PnP估计摄像机外参数的时候，已知的(二维像素点,三维空间点)点对越多估计的效果就越好。</p>
+<p><img src="/images/image-20231018204431701.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-3-SfM系统改进"><a href="#2-3-SfM系统改进" class="headerlink" title="2.3 SfM系统改进"></a>2.3 SfM系统改进</h3><p>OpenMVG存在的问题是提取特征点以及建立特征点匹配需要消耗大量时间，可以有如下改进思想：</p>
+<ul>
+<li>针对图像多、特征点多、匹配耗时长的情况，引入词袋模型以及基于词袋模型的图像检索。</li>
+</ul>
+<p>引入词袋模型后，原本大量的特征点都可以被同一个单词表示，大大减少了待匹配的特征点数量。在词袋模型中，相同的单词构成一对匹配，因此进行特征点匹配的时候只需要将特征点映射为单词，转换为单词的匹配即可。基于词袋模型的匹配实际就是将两个图像转换为词典表示后，对两个图像进行相似性度量</p>
+<p><img src="/images/image-20231018205443475.png" srcset="/img/loading.gif" lazyload></p>
+<p>但是，直接使用词频进行计算存在一些问题，比如一些常用的无意义词汇“的”“地”“得”频率非常高但是对于整体的表示是没有意义的，我们更倾向于选择使用那些“特殊”的单词来表示整体。因此引入基于TF-IDF的相似性度量（此处与NLP中的概念是类似的）</p>
+<p><img src="/images/image-20231018205729841.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="3-SLAM-同时定位与建图-系统设计"><a href="#3-SLAM-同时定位与建图-系统设计" class="headerlink" title="3.SLAM(同时定位与建图)系统设计"></a>3.SLAM(同时定位与建图)系统设计</h2>
               
             </div>
             <hr/>
