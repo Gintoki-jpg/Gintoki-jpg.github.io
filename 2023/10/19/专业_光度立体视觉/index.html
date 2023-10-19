@@ -1,0 +1,713 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/logo.png">
+  <link rel="icon" href="/img/bg/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="杨再俨">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="光度立体视觉是一种相对常见几何立体视觉的三维重建方式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="光度立体视觉">
+<meta property="og:url" content="https://gintoki-jpg.github.io/2023/10/19/%E4%B8%93%E4%B8%9A_%E5%85%89%E5%BA%A6%E7%AB%8B%E4%BD%93%E8%A7%86%E8%A7%89/index.html">
+<meta property="og:site_name" content="Tintoki_blog">
+<meta property="og:description" content="光度立体视觉是一种相对常见几何立体视觉的三维重建方式">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/AI.jpg">
+<meta property="article:published_time" content="2023-10-19T10:41:00.000Z">
+<meta property="article:modified_time" content="2023-10-19T13:18:14.873Z">
+<meta property="article:author" content="YangZaiyan">
+<meta property="article:tag" content="机器视觉技术">
+<meta property="article:tag" content="三维重建">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gintoki-jpg.github.io/img/bg/AI.jpg">
+  
+  
+  
+  <title>光度立体视觉 - Tintoki_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"gintoki-jpg.github.io","root":"/","version":"1.9.1","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tintoki_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/bg1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">光度立体视觉</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-10-19 18:41" pubdate>
+          2023年10月19日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          16 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">光度立体视觉</h1>
+            
+            <div class="markdown-body">
+              
+              <p>2023&#x2F;10&#x2F;19 18:42 作为本科毕设的选题，光度立体视觉重建相对前面三维重建基础中介绍的几何立体视觉重建有较大的不同，且网上的参考资料比较杂乱（很多公众号的文章要么就是错的要么就是钓鱼，盲目借鉴很容易暴雷）。这篇博客以一个小白的角度，从光度立体视觉的基本概念入手，逐步深入该领域。后续将解析一些经典的论文进行巩固（常规的几何立体视觉学习到SLAM就差不多了，后续研究重点放在光度立体领域）；</p>
+<p>考虑到这方面资料确实不多，可以先把互联网上有用的资料收集整理完后直接看Woodham的论文。网上资料真的是…乱七八糟，本来想找一找相关的算法相关的数学原理看一看，结果全都是那种几乎不能看的文章…于是选择自力更生从论文开始入手；</p>
+<h1 id="一、基本概念"><a href="#一、基本概念" class="headerlink" title="一、基本概念"></a>一、基本概念</h1><p>参考链接：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/p1ALNPL5KtlppjxJBxBkfg%EF%BC%9B">https://mp.weixin.qq.com/s/p1ALNPL5KtlppjxJBxBkfg；</a></li>
+<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/hE1q9tAaDSi-EMp3F3OJzg%EF%BC%9B">https://mp.weixin.qq.com/s/hE1q9tAaDSi-EMp3F3OJzg；</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.zywvvd.com/notes/study/image-processing/photometric-stereo/basic/%EF%BC%9B">https://www.zywvvd.com/notes/study/image-processing/photometric-stereo/basic/；</a></li>
+<li><a target="_blank" rel="noopener" href="https://pages.cs.wisc.edu/~csverma/CS766_09/Stereo/stereo.html%EF%BC%9B">https://pages.cs.wisc.edu/~csverma/CS766_09/Stereo/stereo.html；</a></li>
+</ul>
+<h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h2><p>光度立体法是SFS（Shape From Shading）阴影恢复形状方法的一个分支，与SFS不同的是，光度立体法使用多幅图像来还原物体表面的三维结构，它要求物体和摄像机的相对位置不变，然后使用不同方向的光源照射物体，从而产生不同的明暗效果。测量任何给定像素的高度不是光度立体技术的主要考虑因素。相反，该技术通过使用3D表面取向及其对反射光的影响产生对比度图像，突出局部3D表面变化。</p>
+<p>光度立体法的主要应用：</p>
+<ul>
+<li><p>快消品外包装检测</p>
+</li>
+<li><p>五金圆柱表面鼓包检测</p>
+</li>
+<li><p>塑胶壳表面凹坑、压痕检测</p>
+</li>
+<li><p>金属表面划痕、压伤、凹坑检测</p>
+</li>
+</ul>
+<h2 id="2-原理"><a href="#2-原理" class="headerlink" title="2.原理"></a>2.原理</h2><p>光度立体法的主要用途是重建物体表面的法向量以及物体不同表面点的反射率。关键点在于它不像传统的几何重建（例如立体匹配）方法那样需要去考虑图像的匹配问题。光度立体法重建只需要采集三张以上，由不同方向的光照射物体的图像。在这个过程中，物体和相机都不动，因此图像天然就是对齐的，这使得整个过程非常的简洁。</p>
+<p>Woodham教授提出的光度立体法有三个假设：</p>
+<ul>
+<li>假设相机的投影是正交投影，这样图像上的点的坐标可以直接反映三维物体的表面坐标。</li>
+</ul>
+<p><img src="/images/image-20231019185854278.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>假设入射光由远处的单一点光源发出，这样照射到物体表面每一点的光的方向一致，强度一致。可采用观察距离远大于目标尺寸的点光源或者具有均匀照明强度的远心照明光源替代。</li>
+<li>假设物体表面具有lambertian反射特性，即它对入射光产生漫反射，在每个方向上反射的光强都是一致的。</li>
+</ul>
+<p>基于上述的假设，可以将像素值与光源以及物体表面的法向量联系在一起</p>
+<p><img src="/images/image-20231019210614014.png" srcset="/img/loading.gif" lazyload></p>
+<p>公式中，ρ和N代表物体表面的特性，L和I分别表示光源j的方向和强度。</p>
+<p>N和L都是三维空间中的3x1的单位向量，光源的强度可以用常量1表示。像素值t可以直接通过图像获得，光源方向可以提前标定求得。因此在物体和相机都不动的情况下，用至少三个不共面的光线照射物体表面i点，进而将N和ρ求解出来。</p>
+<h2 id="3-对比"><a href="#3-对比" class="headerlink" title="3.对比"></a>3.对比</h2><p>光度立体法并不是用于取代传统几何重建方法的(因为光度立体不适用于绝对高度的重建)，而是和几何重建方法构成了互补关系</p>
+<p><img src="/images/image-20231019200808415.png" srcset="/img/loading.gif" lazyload></p>
+<p>与传统立体视觉相比，光度立体可以很轻易识别两图像中的对应点，而传统方法做不到。光度立体可以计算出表面的反射系数。并且在许多情况下，用表面方向来描述物体形状比用基准面以上距离或高度来描述要好。</p>
+<p>由于该方法特殊性，当前常用于进行多视角样品三维形貌复现，而在视觉检测领域中最典型的即为样品的凹凸缺陷检测识别。随着研究的不断深入，朗伯体光度立体法无法满足现实场景的复杂多变特性，在计算机视觉领域亦发展延伸出了非朗伯体表面的光度立体法，诸如鲁棒性估计法、复杂反射模型法、基于实例的方法和基于深度学习的方法等。</p>
+<h1 id="二、论文解读"><a href="#二、论文解读" class="headerlink" title="二、论文解读"></a>二、论文解读</h1><p>参考文章：</p>
+<ul>
+<li>《PHOTOMETRIC STEREO: A REFLECTANCE MAP TECHNIQUE FOR DETERMINING SURFACE ORIENTATION FROM IMAGE INTENSITY》</li>
+<li>《Photometric method for determining surface orientation from multiple images》</li>
+</ul>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%AF%95%E8%AE%BE/" class="category-chain-item">毕设</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89%E6%8A%80%E6%9C%AF/">#机器视觉技术</a>
+      
+        <a href="/tags/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA/">#三维重建</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>光度立体视觉</div>
+      <div>https://gintoki-jpg.github.io/2023/10/19/专业_光度立体视觉/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>杨再俨</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年10月19日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/10/13/%E4%B8%93%E4%B8%9A_%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA%E5%9F%BA%E7%A1%80/" title="三维重建基础">
+                        <span class="hidden-mobile">三维重建基础</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+</div>
+
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
