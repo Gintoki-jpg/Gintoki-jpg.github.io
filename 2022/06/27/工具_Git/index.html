@@ -18,16 +18,16 @@
   <meta name="author" content="杨再俨">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Git是一个开源的分布式版本控制系统，可以有效、高速地处理从很小到非常大的项目版本管理。">
+    <meta name="description" content="Git是一个开源的分布式版本控制系统，可以有效、高速地处理从很小到非常大的项目版本管理。本博客主要介绍与其相关的两个工具的使用。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git">
 <meta property="og:url" content="https://gintoki-jpg.github.io/2022/06/27/%E5%B7%A5%E5%85%B7_Git/index.html">
 <meta property="og:site_name" content="Tintoki_blog">
-<meta property="og:description" content="Git是一个开源的分布式版本控制系统，可以有效、高速地处理从很小到非常大的项目版本管理。">
+<meta property="og:description" content="Git是一个开源的分布式版本控制系统，可以有效、高速地处理从很小到非常大的项目版本管理。本博客主要介绍与其相关的两个工具的使用。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gintoki-jpg.github.io/img/bg/git.png">
 <meta property="article:published_time" content="2022-06-27T03:16:00.000Z">
-<meta property="article:modified_time" content="2023-07-04T08:07:15.015Z">
+<meta property="article:modified_time" content="2023-11-02T07:03:14.711Z">
 <meta property="article:author" content="YangZaiyan">
 <meta property="article:tag" content="开发工具">
 <meta name="twitter:card" content="summary_large_image">
@@ -221,7 +221,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.4k 字
+          3.4k 字
         
       </span>
     
@@ -232,7 +232,7 @@
         
         
         
-          12 分钟
+          29 分钟
         
       </span>
     
@@ -274,14 +274,70 @@
             
             <div class="markdown-body">
               
-              <p>文章链接：<a target="_blank" rel="noopener" href="https://www.yuque.com/tintoki/gl9lfg/qidpe7">https://www.yuque.com/tintoki/gl9lfg/qidpe7</a></p>
-<h2 id="1-后记"><a href="#1-后记" class="headerlink" title="1.后记"></a>1.后记</h2><p>语雀的文章大致上简单的介绍了git的一些细节，但是我相信很多人学git只是为了把github当作一个仓库来保存自己的一些文件或者只是想知道git到底是怎么玩的，并不乐意花时间看那些概念，所以这里直接上步骤；（实际上是因为我不常用git，偶尔用一次会忘记…所以做一个使用记录）</p>
-<p>参考文章：</p>
+              <p>Git基本原理：<a target="_blank" rel="noopener" href="https://www.yuque.com/tintoki/gl9lfg/qidpe7">https://www.yuque.com/tintoki/gl9lfg/qidpe7</a></p>
+<p>语雀的文章大致上简单的介绍了git的一些细节，但是我相信很多人学git只是为了把github当作一个仓库来保存自己的一些文件或者只是想知道git到底是怎么玩的，并不乐意花时间看那些生涩的概念。这篇博客主要介绍两种常用的Git图形化管理工具，相比于纯使用git命令行，这两个工具能更轻松的对文件进行管理。</p>
+<h1 id="一、图形化管理工具"><a href="#一、图形化管理工具" class="headerlink" title="一、图形化管理工具"></a>一、图形化管理工具</h1><p>Git Extensions 和 TortoiseGit 都是用于与 Git 版本控制系统集成的工具，两者之间的区别如下：</p>
+<ul>
+<li>Git Extensions：Git Extensions 是一个独立的 Git GUI 客户端，它提供了一套图形用户界面 (GUI) 工具，用于帮助用户更轻松地使用 Git。Git Extensions 可以在 Windows 操作系统上使用，并提供了诸如提交、克隆、分支管理、合并等功能，同时还包括一些可视化的工具，以帮助用户查看提交历史和分支结构等。Git Extensions 是一个开源项目，可以免费使用，并提供了一些附加功能，如 Git LFS 支持等。</li>
+<li>TortoiseGit：TortoiseGit 是另一个用于 Windows 的 Git GUI 客户端，它集成到 Windows Explorer 文件管理器中，允许用户在文件和文件夹上右键单击以执行 Git 操作。TortoiseGit 的设计目标是提供一种简单、直观的方式来管理 Git 存储库，特别是对于那些习惯使用 Windows 资源管理器的用户来说。TortoiseGit 是一个独立的项目，也是开源软件。</li>
+</ul>
+<p>尽管两者是两个不同的项目，但它们都是为 Windows 操作系统开发的 Git 图形界面工具。用户可以根据偏好选择使用其中一个，或者甚至两者都使用，以根据具体任务和需求来执行 Git 操作。这两个工具的目标都是使 Git 更易于使用，并提供直观的方式来管理代码版本控制。</p>
+<h2 id="1-Git-Extensions"><a href="#1-Git-Extensions" class="headerlink" title="1.Git Extensions"></a>1.Git Extensions</h2><h3 id="1-1-下载和安装"><a href="#1-1-下载和安装" class="headerlink" title="1.1 下载和安装"></a>1.1 下载和安装</h3><p>参考链接（没啥技术含量，一直下一步就完事）：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38685043/article/details/119858393">Git扩展工具–GitExtension的安装和配置–2021-8-22-CSDN博客</a>；</li>
+</ul>
+<p>老版的Git Extensions安装包会在安装的同时提示一起安装Git和kdiff，现在比较新的版本应该是没有这个选项了，需自行安装。Git Extensions安装完成后打开软件可能会出现如下提示，安装额外运行时即可</p>
+<p><img src="/images/image-20231102110632379.png" srcset="/img/loading.gif" lazyload></p>
+<p>第一次进入软件需要进行一些设置，链接文章中有很详细的介绍不再赘述，下图是我本地的一个setting界面，注意不同用户可能因为原始环境提示信息不同，一项一项照着repair即可</p>
+<p><img src="/images/image-20231102111002919.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>第一行提示Git版本过旧，懒得更新了将就用没什么问题；</li>
+<li>第三行意思是需要配置比较工具kdiff，恰好我本地没有安装过因此检测不到，kdiff下载地址:[<a target="_blank" rel="noopener" href="https://sourceforge.net/projects/kdiff3/">KDiff3 download | SourceForge.net</a>]，下载过后一直下一步即可。安装好kdiff后进行如下配置即可</li>
+</ul>
+<p><img src="/images/image-20231102112400006.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>最后一行提示没有设置语言，点击repair选择简体中文即可；</li>
+</ul>
+<p>当setting中的配置全绿即可开始使用</p>
+<h3 id="1-2-Git-Extensions实战"><a href="#1-2-Git-Extensions实战" class="headerlink" title="1.2 Git Extensions实战"></a>1.2 Git Extensions实战</h3><p>参考文章：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ningboliuwei/p/6606279.html">最简单的 GitExtensions 教程（持续更新中） - 刘慰 - 博客园 (cnblogs.com)</a>；</li>
+</ul>
+<h4 id="1-2-1-创建本地库"><a href="#1-2-1-创建本地库" class="headerlink" title="1.2.1 创建本地库"></a>1.2.1 创建本地库</h4><p>进入本地需要上传到Github的目录中，右键选择创建新的仓库</p>
+<p><img src="/images/image-20231102142719423.png" srcset="/img/loading.gif" lazyload></p>
+<p>默认直接创建即可</p>
+<p><img src="/images/image-20231102142824286.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="1-2-2-创建远程库"><a href="#1-2-2-创建远程库" class="headerlink" title="1.2.2 创建远程库"></a>1.2.2 创建远程库</h4><p>进入Github，新建仓库，填入仓库名和描述（可选）其他维持默认即可</p>
+<p><img src="/images/image-20231102142941954.png" srcset="/img/loading.gif" lazyload></p>
+<p>创建仓库成功后，复制如下网址到剪切板</p>
+<p><img src="/images/image-20231102143040569.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="1-2-3-提交-amp-推送"><a href="#1-2-3-提交-amp-推送" class="headerlink" title="1.2.3 提交&amp;推送"></a>1.2.3 提交&amp;推送</h4><p>回到本地库的目录，右键选择Commit(提交)</p>
+<p><img src="/images/image-20231102143301731.png" srcset="/img/loading.gif" lazyload></p>
+<p>输入提交信息（随便写写），然后选择提交并推送（提交是提交到本地仓库，推送是推送到远程仓库Github）</p>
+<p><img src="/images/image-20231102143353360.png" srcset="/img/loading.gif" lazyload></p>
+<p>出现以下弹窗表明当前目录没有文件被修改，选择第一个即可</p>
+<p><img src="/images/image-20231102143435099.png" srcset="/img/loading.gif" lazyload></p>
+<p>这一步表示提交到本地库成功，接下来点击“确定”进入推送到远程库的环节</p>
+<p><img src="/images/image-20231102143507251.png" srcset="/img/loading.gif" lazyload></p>
+<p>本地库第一次推送到远程库的时候需要进行配置（实际就是告诉本地库推送的网址是什么），选择“是”</p>
+<p><img src="/images/image-20231102143525181.png" srcset="/img/loading.gif" lazyload></p>
+<p>名称可以随意填写，网址使用刚才复制到剪切板的网址，填写完毕后点击保存出现如下弹窗，选择“是”（后续出现的选择分支、跟踪什么弹窗都默认选择“是”即可）</p>
+<p><img src="/images/image-20231102143739318.png" srcset="/img/loading.gif" lazyload></p>
+<p>如果出现如下报错表明访问Github超时（没啥好的解决办法，可以稍微等会再试试），点击确定退出推送即可</p>
+<p><img src="/images/image-20231102143832381.png" srcset="/img/loading.gif" lazyload alt="image-20231102143832381"></p>
+<p>每一次推送都面临不成功的可能，在推送过程中遇到这种推送失败的报错是很常见的。不必过分担心，之前的内容修改已经保存到本地库，只需要后续等待网络稳定再推送即可（检验网络是否稳定的方法就是去访问Github，能访问成功就OK）</p>
+<p><img src="/images/image-20231102145212408.png" srcset="/img/loading.gif" lazyload></p>
+<p>出现如下弹窗表明推送成功</p>
+<p><img src="/images/image-20231102145901632.png" srcset="/img/loading.gif" lazyload></p>
+<p>在Github的仓库中也可以看到相应的文件</p>
+<p><img src="/images/image-20231102150042453.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="2-Tortoisegit"><a href="#2-Tortoisegit" class="headerlink" title="2.Tortoisegit"></a>2.Tortoisegit</h2><p>为什么有了Git Extensions还需要Tortoisegit？因为Git Extensions 右键菜单中只有对整个 Repository（仓库）的操作，但是没有 Tortoisegit 那样简便的网络仓库的（PULL 和 PUSH）(拉取和推送)的操作。Git Extensions具有项目代码的编辑功能，而Tortoisegit 完全是版本控制工具，无法对项目进行修改（需要借助其他工具编辑）。</p>
+<h3 id="2-1-下载和安装"><a href="#2-1-下载和安装" class="headerlink" title="2.1 下载和安装"></a>2.1 下载和安装</h3><p>参考文章：</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/tzwbk/p/13896509.html">Git小乌龟的安装及使用 - 醉温柔 - 博客园 (cnblogs.com)</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/xuanwotianming153/p/8504762.html">git 小乌龟安装教程 - 闪闪&amp;红星 - 博客园 (cnblogs.com)</a></li>
 </ul>
-<h3 id="1-1-新建git项目"><a href="#1-1-新建git项目" class="headerlink" title="1.1 新建git项目"></a>1.1 新建git项目</h3><p>(1)首先新建github项目(gitee操作类似不再赘述)</p>
+<h3 id="2-2-Tortoisegit实战"><a href="#2-2-Tortoisegit实战" class="headerlink" title="2.2 Tortoisegit实战"></a>2.2 Tortoisegit实战</h3><h4 id="2-2-1-新建git项目"><a href="#2-2-1-新建git项目" class="headerlink" title="2.2.1 新建git项目"></a>2.2.1 新建git项目</h4><p>(1)首先新建github项目(gitee操作类似不再赘述)</p>
 <p><img src="/images/image-20221108085015993.png" srcset="/img/loading.gif" lazyload></p>
 <p>(2)新建完成项目以后打开项目，点击克隆、下载，复制这串地址</p>
 <p><img src="/images/image-20221108085249734.png" srcset="/img/loading.gif" lazyload></p>
@@ -294,7 +350,7 @@
 <p>点击右侧远端，将之前码云或者github上面的那串复制的http地址写入url以及推送url里面，先点击添加&#x2F;保存，跳出的框不用做任何修改，直接确定</p>
 <p><img src="/images/image-20221108090202654.png" srcset="/img/loading.gif" lazyload></p>
 <p><img src="/images/image-20221108090300305.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="1-2-提交-amp-推送"><a href="#1-2-提交-amp-推送" class="headerlink" title="1.2 提交&amp;推送"></a>1.2 提交&amp;推送</h3><p>之后我们需要对仓库的内容进行更新，只需要先提交，再推送即可，需要注意的是，提交只是提交到本地版本库，并非提交到远程版本服务器，所以，要想在远程版本服务器上看到最新的修改，还需要推送；</p>
+<h4 id="2-2-2-提交-amp-推送"><a href="#2-2-2-提交-amp-推送" class="headerlink" title="2.2.2 提交&amp;推送"></a>2.2.2 提交&amp;推送</h4><p>之后我们需要对仓库的内容进行更新，只需要先提交，再推送即可，需要注意的是，提交只是提交到本地版本库，并非提交到远程版本服务器，所以，要想在远程版本服务器上看到最新的修改，还需要推送；</p>
 <p>我们新建的仓库在完成了1.1的配置之后还没有东西，我们这里来进行同步更新；</p>
 <p><img src="/images/image-20221108090742563.png" srcset="/img/loading.gif" lazyload></p>
 <p>需要注意提交弹出框的日志信息一定要写（随便写点啥），不然无法选中提交按钮</p>
@@ -316,7 +372,7 @@
 <p>注意：git的使用当然并不只是这么简单，我们只是总结了日常最常用的动作，如果需要深入使用git还是需要掌握一定的git基本知识的，可以参考文章<a target="_blank" rel="noopener" href="https://www.yuque.com/tintoki/gl9lfg/qidpe7%E8%BF%9B%E8%A1%8C%E5%AD%A6%E4%B9%A0%EF%BC%9B">https://www.yuque.com/tintoki/gl9lfg/qidpe7进行学习；</a></p>
 </blockquote>
 <hr>
-<h3 id="1-3-问题汇总"><a href="#1-3-问题汇总" class="headerlink" title="1.3 问题汇总"></a>1.3 问题汇总</h3><blockquote>
+<h4 id="2-2-3-问题汇总"><a href="#2-2-3-问题汇总" class="headerlink" title="2.2.3 问题汇总"></a>2.2.3 问题汇总</h4><blockquote>
 <p>推送远端报错</p>
 </blockquote>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">Updates were rejected because the remote contains work that you do  not have locally. This is usually caused by another repository pushing to the same ref. You may want to first integrate the remote changes  (e.g., &#x27;git pull ...&#x27;) before pushing again.<br>hint: See the &#x27;Note about fast-forwards&#x27; in &#x27;git push --help&#x27; for details.<br></code></pre></td></tr></table></figure>
